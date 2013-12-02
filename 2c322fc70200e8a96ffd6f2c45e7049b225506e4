@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "832b3ac2_ac734b78",
+        "filename": "runtime/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-02T17:36:41Z",
+      "side": 1,
+      "message": "why static? because its so small?",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832b3ac2_6c6313a2",
+        "filename": "runtime/native/java_lang_VMClassLoader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-02T17:36:41Z",
+      "side": 1,
+      "message": "new warning? does it happen booting a device?",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "632006df_0855273c",
+        "filename": "runtime/zip_archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-02T17:36:41Z",
+      "side": 1,
+      "message": "do we need zlib.h include here anymore?",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4325c2ed_6a5db729",
+        "filename": "runtime/zip_archive_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-02T17:36:41Z",
+      "side": 1,
+      "message": "ASSERT_TRUE(error_msg.empty());",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
