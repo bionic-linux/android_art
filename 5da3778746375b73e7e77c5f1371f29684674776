@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4325c2ed_0a6ebb89",
+        "filename": "runtime/zip_archive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-02T18:24:10Z",
+      "side": 0,
+      "message": "note we used to include the container filename in all messages. can we include that in the after version as well.",
+      "revId": "5da3778746375b73e7e77c5f1371f29684674776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
