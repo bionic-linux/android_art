@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "63ae4695_9b222f02",
+        "filename": "runtime/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-02T19:35:26Z",
+      "side": 1,
+      "message": "Yes, that was the reasoning. Note that libz is used outside zip parsing, so i have to include it here.",
+      "parentUuid": "832b3ac2_ac734b78",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832b3ac2_6c6313a2",
         "filename": "runtime/native/java_lang_VMClassLoader.cc",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "23c8ce74_f67500e3",
+        "filename": "runtime/native/java_lang_VMClassLoader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-02T19:35:26Z",
+      "side": 1,
+      "message": "No, but I\u0027ve removed it from this patchset (to minimize changes here)",
+      "parentUuid": "832b3ac2_6c6313a2",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4325c2ed_0a851bf2",
         "filename": "runtime/zip_archive.cc",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2013-12-02T18:24:10Z",
       "side": 1,
       "message": "for some of these we lost useful context. for example, here we lost the filename. for most of them it doesn\u0027t matter, but one of the main reasons Ian changed to have error_msg was so the message could be included in IOExceptions. \n\ncan we just add this extra info back where it seems appropriate? like the entry name here?",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63d566ff_06c95e3e",
+        "filename": "runtime/zip_archive.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-02T19:35:26Z",
+      "side": 1,
+      "message": "Done. It looks like I had removed higher level code in dex2oat and dex_file that augmented this message with entry / filename details. I\u0027ve reverted those changes.\n\nFor example, see users of ExtractToMemMap :\n\nhttps://cs.corp.google.com/#android/art/dex2oat/dex2oat.cc\u0026q\u003dEXtractToMemMap\u0026l\u003d222\nhttps://cs.corp.google.com/#android/art/runtime/dex_file.cc\u0026q\u003dExtractToMemMap\u0026l\u003d248",
+      "parentUuid": "4325c2ed_0a851bf2",
       "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "63ae4695_db1ca7c4",
+        "filename": "runtime/zip_archive.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-02T19:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632006df_0855273c",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4325c2ed_6a5db729",
         "filename": "runtime/zip_archive_test.cc",
         "patchSetId": 2
@@ -115,6 +187,24 @@
       "writtenOn": "2013-12-02T17:36:41Z",
       "side": 1,
       "message": "ASSERT_TRUE(error_msg.empty());",
+      "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63d566ff_26d742df",
+        "filename": "runtime/zip_archive_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-02T19:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4325c2ed_6a5db729",
       "revId": "2c322fc70200e8a96ffd6f2c45e7049b225506e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
