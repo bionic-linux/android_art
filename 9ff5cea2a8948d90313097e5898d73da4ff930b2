@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43eea235_ee694f10",
+        "filename": "runtime/gc/space/space_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2013-12-09T22:00:09Z",
+      "side": 1,
+      "message": "I believe that variables names are supposed to be lower case, create_space.",
+      "revId": "9ff5cea2a8948d90313097e5898d73da4ff930b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e41a52_56745260",
+        "filename": "runtime/gc/space/space_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2013-12-09T22:00:09Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "9ff5cea2a8948d90313097e5898d73da4ff930b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43eea235_ce4f2ba9",
+        "filename": "runtime/gc/space/space_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2013-12-09T22:00:09Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "9ff5cea2a8948d90313097e5898d73da4ff930b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
