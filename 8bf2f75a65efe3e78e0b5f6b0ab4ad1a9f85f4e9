@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8a77388_2467923f",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-12T17:30:52Z",
+      "side": 1,
+      "message": "From what I could tell, if a class is Erroneous at compile time, it will fail never pass verification at run time. Is that assumption accurate ?",
+      "range": {
+        "startLine": 1677,
+        "startChar": 15,
+        "endLine": 1677,
+        "endChar": 26
+      },
+      "revId": "8bf2f75a65efe3e78e0b5f6b0ab4ad1a9f85f4e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6839c300_a02a3aaa",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2013-12-12T17:30:52Z",
+      "side": 1,
+      "message": "AddRejectedClass used to be private in MethodVerifier.\n\nThe compilation pass will ignore all classes that have hard verification failure, but subclasses of classes with such failures are never marked as rejected.\n\nThe complication here is that decision is made by ClassLinker and not MethodVerifier (which only performs very basic super-class checks). Perhaps the \"clean\" solution is to share a rejection list between MethodVerifier and ClassLinker and not make it the MethodVerifier\u0027s job to keep track of rejected classes ?",
+      "range": {
+        "startLine": 1681,
+        "startChar": 32,
+        "endLine": 1681,
+        "endChar": 48
+      },
+      "revId": "8bf2f75a65efe3e78e0b5f6b0ab4ad1a9f85f4e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
