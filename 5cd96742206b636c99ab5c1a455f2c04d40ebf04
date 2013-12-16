@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c86c6f4a_12b29216",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2013-12-16T15:33:27Z",
+      "side": 1,
+      "message": "Might be worthwhile to add a few words on the commit messages to explain the motivation for the change.",
+      "revId": "5cd96742206b636c99ab5c1a455f2c04d40ebf04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
