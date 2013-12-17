@@ -46,6 +46,29 @@
       "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e85053a6_9fabb7a3",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2013-12-17T23:46:03Z",
+      "side": 1,
+      "message": "Oh these 2 deps won\u0027t work expected: they will just trigger the \"touch\" command in build/core/phony_package.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 57
+      },
+      "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
