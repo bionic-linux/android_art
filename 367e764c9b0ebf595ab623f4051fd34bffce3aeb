@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e85053a6_5cabfd09",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-17T23:12:10Z",
+      "side": 1,
+      "message": "so I do think we want to keep the boot.art target for now",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
