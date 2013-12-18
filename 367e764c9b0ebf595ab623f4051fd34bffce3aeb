@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c84d4f11_db67133f",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2013-12-18T00:12:41Z",
+      "side": 1,
+      "message": "Yes, it\u0027s in the build project now.\nThe rule to build it is in build/core/dex_preopt_libart.mk. The rule to install it is in build/core/dex_preopt_odex_install.mk. Basically my change installs boot.art as the .odex files of the boot jars, the same way as how we install the boot jars .odex files for libdvm-based dexpreopt.",
+      "parentUuid": "e85053a6_3fcce370",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85053a6_9fabb7a3",
         "filename": "build/Android.oat.mk",
         "patchSetId": 8
