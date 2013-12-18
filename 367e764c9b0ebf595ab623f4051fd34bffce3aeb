@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e85053a6_3fcce370",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-18T00:00:11Z",
+      "side": 1,
+      "message": "Don\u0027t we need to have some rule for the boot.art to be installed? even if it just to have the rule for the copy from the built location to the installed location? or is that the build project now too?",
+      "parentUuid": "c84d4f11_7b17dfcd",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85053a6_9fabb7a3",
         "filename": "build/Android.oat.mk",
         "patchSetId": 8
@@ -60,6 +84,30 @@
       "writtenOn": "2013-12-17T23:46:03Z",
       "side": 1,
       "message": "Oh these 2 deps won\u0027t work expected: they will just trigger the \"touch\" command in build/core/phony_package.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 57
+      },
+      "revId": "367e764c9b0ebf595ab623f4051fd34bffce3aeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e85053a6_df97ff30",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2013-12-18T00:00:11Z",
+      "side": 1,
+      "message": "yeah, might as well nuke these.",
+      "parentUuid": "e85053a6_9fabb7a3",
       "range": {
         "startLine": 117,
         "startChar": 0,
