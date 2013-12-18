@@ -22,6 +22,30 @@
       "revId": "bc79de086b89394b46a4388bda08a0ee8f813463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08f0470e_bdb01fe7",
+        "filename": "runtime/common_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2013-12-18T14:12:51Z",
+      "side": 1,
+      "message": "OK, let\u0027s be consistent with the majority of the code, not with the exceptional UniquePtr\u003c\u003e.reset().",
+      "parentUuid": "08f0470e_3ddb6f3d",
+      "range": {
+        "startLine": 647,
+        "startChar": 9,
+        "endLine": 647,
+        "endChar": 14
+      },
+      "revId": "bc79de086b89394b46a4388bda08a0ee8f813463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
