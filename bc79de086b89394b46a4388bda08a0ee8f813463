@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08f0470e_3ddb6f3d",
+        "filename": "runtime/common_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2013-12-18T14:07:29Z",
+      "side": 1,
+      "message": "I\u0027d prefer \"Reset\" to keep consistency in methods naming.",
+      "range": {
+        "startLine": 647,
+        "startChar": 9,
+        "endLine": 647,
+        "endChar": 14
+      },
+      "revId": "bc79de086b89394b46a4388bda08a0ee8f813463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
