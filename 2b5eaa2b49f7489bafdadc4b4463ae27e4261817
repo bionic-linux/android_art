@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "685e23ff_27298471",
+        "filename": "runtime/verifier/method_verifier-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-20T16:10:04Z",
+      "side": 1,
+      "message": "For consistency, trivial accessors like this can be placed directly in the header file (as opposed to the -inl.h).",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 19
+      },
+      "revId": "2b5eaa2b49f7489bafdadc4b4463ae27e4261817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
