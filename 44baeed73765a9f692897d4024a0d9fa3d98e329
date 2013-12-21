@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "685e23ff_22924f38",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-21T01:08:38Z",
+      "side": 1,
+      "message": "full-stop.",
+      "range": {
+        "startLine": 689,
+        "startChar": 55,
+        "endLine": 689,
+        "endChar": 59
+      },
+      "revId": "44baeed73765a9f692897d4024a0d9fa3d98e329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8649bc8_5744638a",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-21T01:08:38Z",
+      "side": 1,
+      "message": "full-stop.",
+      "range": {
+        "startLine": 690,
+        "startChar": 55,
+        "endLine": 690,
+        "endChar": 59
+      },
+      "revId": "44baeed73765a9f692897d4024a0d9fa3d98e329",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8649bc8_17aaeb26",
         "filename": "compiler/dex/quick/x86/int_x86.cc",
         "patchSetId": 1
