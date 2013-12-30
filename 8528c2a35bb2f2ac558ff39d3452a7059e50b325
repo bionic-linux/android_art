@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dec497b_8782eaeb",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-30T23:24:00Z",
+      "side": 1,
+      "message": "In terms of memory reclaimed, wouldn\u0027t it get more faster to reclaim the discontinuous (typically large) spaces first?",
+      "range": {
+        "startLine": 1139,
+        "startChar": 0,
+        "endLine": 1140,
+        "endChar": 0
+      },
+      "revId": "8528c2a35bb2f2ac558ff39d3452a7059e50b325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8649bc8_115bd047",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-30T23:24:00Z",
+      "side": 1,
+      "message": "Comment why we can\u0027t GC (ie threads not in good state for changes to spaces..)",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 0
+      },
+      "revId": "8528c2a35bb2f2ac558ff39d3452a7059e50b325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8649bc8_714a4c73",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-30T23:24:00Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(gc_complete_lock_)",
+      "range": {
+        "startLine": 529,
+        "startChar": 27,
+        "endLine": 529,
+        "endChar": 29
+      },
+      "revId": "8528c2a35bb2f2ac558ff39d3452a7059e50b325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8649bc8_9147e066",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2013-12-30T23:24:00Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(gc_complete_lock_)",
+      "range": {
+        "startLine": 530,
+        "startChar": 55,
+        "endLine": 530,
+        "endChar": 57
+      },
+      "revId": "8528c2a35bb2f2ac558ff39d3452a7059e50b325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
