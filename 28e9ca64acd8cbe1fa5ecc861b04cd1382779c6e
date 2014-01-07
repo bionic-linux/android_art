@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_2ddc7985",
+        "filename": "runtime/arch/quick_alloc_entrypoints.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Currently we don\u0027t but I thought we might want to switch the entrypoint allocator in the earlier designs.",
+      "parentUuid": "2d80bdc3_ca17b39b",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_a93e053b",
         "filename": "runtime/arch/quick_alloc_entrypoints.cc",
         "patchSetId": 4
@@ -65,6 +83,24 @@
         "endLine": 60,
         "endChar": 6
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d25f1ed_0d0a553b",
+        "filename": "runtime/arch/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Yes, there just needs to be a default, even if its overridden right away.",
+      "parentUuid": "0d7db99f_a93e053b",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -94,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_4d560d1e",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd609da_9a2811b3",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd609da_a512966b",
         "filename": "runtime/entrypoints/entrypoint_utils.h",
         "patchSetId": 4
@@ -111,6 +165,24 @@
         "endLine": 82,
         "endChar": 4
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_2ffe2d53",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd609da_a512966b",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -140,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_4f26014c",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Shouldn\u0027t matter.",
+      "parentUuid": "4d25f1ed_473c2ea7",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_29075575",
         "filename": "runtime/entrypoints/entrypoint_utils.h",
         "patchSetId": 4
@@ -157,6 +247,24 @@
         "endLine": 107,
         "endChar": 4
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d25f1ed_6d5b1135",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7db99f_29075575",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -186,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_4fa9e12f",
+        "filename": "runtime/entrypoints/portable/portable_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d80bdc3_4504f42d",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd609da_e58bbe52",
         "filename": "runtime/gc/collector/garbage_collector.cc",
         "patchSetId": 4
@@ -203,6 +329,24 @@
         "endLine": 87,
         "endChar": 6
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d25f1ed_6dadd1b5",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd609da_e58bbe52",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -232,6 +376,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_2fe46d94",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "I didn\u0027t measure any performance loss.",
+      "parentUuid": "0d7db99f_84e1b045",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_a94fe5a5",
         "filename": "runtime/gc/collector/mark_sweep.cc",
         "patchSetId": 4
@@ -255,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "ad266df6_106eec1b",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Fixed in new CL.",
+      "parentUuid": "0d7db99f_a94fe5a5",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd609da_85cf529b",
         "filename": "runtime/gc/collector/mark_sweep.cc",
         "patchSetId": 4
@@ -272,6 +452,24 @@
         "endLine": 1187,
         "endChar": 2
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_cffe711b",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Without hardcoding the maximum number of allocation spaces, the approach of iterating over the spaces for each reference would be significantly slower than the current approach. In the new CL i make sure the spaces are sorted in the manner that the spaces most likely to contain more references are processed first. Keep in mind that references get deleted from the stack once we have found a space which contains them. So the allocation stack should get smaller each iteration. Added a few more comments.",
+      "parentUuid": "8dd609da_85cf529b",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -324,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_cd7cbd45",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "I was just matching the return types, might as well change to uint64_t though.",
+      "parentUuid": "8dd609da_859e724c",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d80bdc3_e5e8a09d",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 4
@@ -341,6 +557,24 @@
         "endLine": 237,
         "endChar": 2
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_d3929e83",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Its handled now.",
+      "parentUuid": "2d80bdc3_e5e8a09d",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -370,6 +604,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_0d709564",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "This is only an optimization to avoid a virtual function call.",
+      "parentUuid": "2d80bdc3_05efdc9c",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_848770fc",
         "filename": "runtime/gc/collector/semi_space.h",
         "patchSetId": 4
@@ -387,6 +639,24 @@
         "endLine": 269,
         "endChar": 2
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_d20f3a44",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Added comments.",
+      "parentUuid": "0d7db99f_848770fc",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -416,6 +686,24 @@
     },
     {
       "key": {
+        "uuid": "ad266df6_f3c7e27d",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Added comment.",
+      "parentUuid": "2d80bdc3_a5fce88c",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d80bdc3_e58d00d9",
         "filename": "runtime/gc/heap-inl.h",
         "patchSetId": 4
@@ -433,6 +721,24 @@
         "endLine": 60,
         "endChar": 10
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_1319d65c",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "2d80bdc3_e58d00d9",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -462,6 +768,24 @@
     },
     {
       "key": {
+        "uuid": "ad266df6_73adb2b5",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "2d80bdc3_c5fec41b",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d80bdc3_0574bc14",
         "filename": "runtime/gc/heap-inl.h",
         "patchSetId": 4
@@ -479,6 +803,24 @@
         "endLine": 146,
         "endChar": 8
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_53b22e15",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d80bdc3_0574bc14",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -508,6 +850,24 @@
     },
     {
       "key": {
+        "uuid": "ad266df6_b350caef",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "I think I\u0027ll just delete the TODO since we suspend threads in UpdateProcessState. And no we couldn\u0027t get rid of the checks in the allocator entrypoints.",
+      "parentUuid": "0d7db99f_8a19b75e",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_ea75cb5b",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -525,6 +885,24 @@
         "endLine": 335,
         "endChar": 4
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_f34a423d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Yes, it can get called at any point, including when the GC is running.",
+      "parentUuid": "0d7db99f_ea75cb5b",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -554,6 +932,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_edfb815a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Saves a bit more memory.",
+      "parentUuid": "0d7db99f_2ad4232c",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_2a0983f5",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -571,6 +967,24 @@
         "endLine": 386,
         "endChar": 2
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_53f50eab",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "No, they can both be non-null. I might end up deleting the allocation stacks in the future.",
+      "parentUuid": "0d7db99f_2a0983f5",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -600,6 +1014,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_f2951e6e",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d80bdc3_45d4f4d3",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_0af5a739",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -617,6 +1049,24 @@
         "endLine": 1145,
         "endChar": 4
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_725bee34",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7db99f_0af5a739",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -646,6 +1096,24 @@
     },
     {
       "key": {
+        "uuid": "ad266df6_53bfceb3",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "StartGC doesn\u0027t block since we don\u0027t want to block the GC thread if we have gc disabled due to a GetPrimitiveArrayCritical.",
+      "parentUuid": "8dd609da_061fe86e",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_ca9a4fdb",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -663,6 +1131,24 @@
         "endLine": 1162,
         "endChar": 44
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_7393f245",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7db99f_ca9a4fdb",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -692,6 +1178,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_32ca168d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7db99f_4a615f20",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dd609da_a6129c6b",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -709,6 +1213,24 @@
         "endLine": 1337,
         "endChar": 2
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_33821aee",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Fixed in new CL.",
+      "parentUuid": "8dd609da_a6129c6b",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -738,6 +1260,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_8d8ac5bd",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dd609da_450deac7",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad266df6_0a887bc1",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 4
@@ -755,6 +1295,24 @@
         "endLine": 485,
         "endChar": 40
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_336b3a7e",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad266df6_0a887bc1",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -784,6 +1342,24 @@
     },
     {
       "key": {
+        "uuid": "8d2b69c2_b250c6ef",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad266df6_4ac553d9",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d25f1ed_a7a6cad7",
         "filename": "runtime/utils.cc",
         "patchSetId": 4
@@ -801,6 +1377,24 @@
         "endLine": 441,
         "endChar": 3
       },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_92d66211",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 1,
+      "message": "Probably not, 63 bits should be enough.",
+      "parentUuid": "4d25f1ed_a7a6cad7",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

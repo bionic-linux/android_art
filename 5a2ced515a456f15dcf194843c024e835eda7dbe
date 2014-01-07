@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "4d25f1ed_4d6a8d76",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 0,
+      "message": "Yes",
+      "parentUuid": "2d80bdc3_6531f071",
+      "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_6461f4eb",
         "filename": "runtime/gc/collector/semi_space.h",
         "patchSetId": 4
@@ -65,6 +83,24 @@
         "endLine": 434,
         "endChar": 4
       },
+      "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_323df6a6",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-07T23:04:26Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "8d2b69c2_895bd9e0",
       "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
