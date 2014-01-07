@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d80bdc3_6531f071",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 0,
+      "message": "This IsMallocSpace() call was redundant because of line 474 above, and it does not imply that we sweep a non-MallocSpace, correct?",
+      "range": {
+        "startLine": 483,
+        "startChar": 23,
+        "endLine": 483,
+        "endChar": 28
+      },
+      "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_6461f4eb",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 0,
+      "message": "I see that these lists were dead code (should have been removed in a previous CL).",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 2
+      },
+      "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2b69c2_895bd9e0",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 0,
+      "message": "I guess the changes in this file is a refactoring. I think the IsStarted() check was necessary for some compiler test to pass (and not to crash). How about adding it back?",
+      "range": {
+        "startLine": 434,
+        "startChar": 2,
+        "endLine": 434,
+        "endChar": 4
+      },
+      "revId": "5a2ced515a456f15dcf194843c024e835eda7dbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

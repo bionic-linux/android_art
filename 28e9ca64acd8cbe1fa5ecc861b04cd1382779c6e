@@ -1,0 +1,809 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d80bdc3_2a074775",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Nice improvements.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_ca17b39b",
+        "filename": "runtime/arch/quick_alloc_entrypoints.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Note to self: Why do we need separate alloc entry points for dlmalloc/rosalloc?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_a93e053b",
+        "filename": "runtime/arch/quick_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "I assume this default value kAllocatorTypeDLMalloc isn\u0027t used at all, that is, it\u0027s always overwritten via the ChangeCollector() call from Heap::Heap(). Is this right?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_9a2811b3",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Mention the allocator_type change issue here (leave a TODO)?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_a512966b",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "In the comment, can you elaborate on the allocator change issue while the entry point is ongoing with regard to the collector transition issue and the ResolveType(), EnsureInitialized() which may cause the thread to be suspended?\n\nAs we discussed in the in-person conversation, it\u0027d be nice if we can avoid the need to check the allocator change here, or do it in a cleaner way. Any better idea?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d25f1ed_473c2ea7",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Would it be worth checking allocator_type !\u003d heap-\u003eGetCurrentAllocator() before calling heap-\u003eAllocObject(), rather than falling through?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_29075575",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Why the asymmetry, calling Heap::AllocObject() (as opposed to calling Class::Alloc() with the current allocator here while calling Array::Alloc() with the current allocator below in line 165?",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_4504f42d",
+        "filename": "runtime/entrypoints/portable/portable_alloc_entrypoints.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Can we make this static?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 9
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_e58bbe52",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "In what call path does this case (the mutator lock is already exclusively held) happens? Leave a comment?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 6
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_84e1b045",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "In the old code, the allocation stack space used to be temporarily reused as a buffer passed to FreeList(). In the new code, we use this separate stack-allocated buffer. There\u0027s no noticeable performance loss due to this, I assume?",
+      "range": {
+        "startLine": 1131,
+        "startChar": 0,
+        "endLine": 1131,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_a94fe5a5",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Does this if statement filter out the bump pointer spaces?",
+      "range": {
+        "startLine": 1141,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_85cf529b",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "In the new code, we iterate over \u0027objects\u0027 (the allocation stack) three times, once for each of the alloc spaces (dlmalloc and rosalloc ones) and once for the large object space (IIUC), as opposed to once in the old code. Is there a rationale for this? Would it make sense to swap the inner/outer loops so that we iterate over the allocation stack iteration loop once?",
+      "range": {
+        "startLine": 1187,
+        "startChar": 0,
+        "endLine": 1187,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_e402e4d0",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Is it the case that to_space_ can point to either one of the bump pointer spaces (normal case) or the rosalloc/dlmalloc space (which happens when the application goes from the background to the foreground)?\n\nWould it make it a bit cleaner if it was structured like:\n\nif (space \u003d\u003d to_space_ \u0026\u0026 space-\u003eGetLiveBitMap() !\u003d nullptr) {\n  BindLiveToMarkBitmap(to_space_);\n} else if (space-\u003eGetGcRetentionPolicy() \u003d\u003d space::kGcRetentionPolicyNeverCollect\n          || space-\u003eGetGcRetentionPolicy() \u003d\u003d space::kGcRetentionPolicyFullCollect) {\n  ImmuneSpace(space);\n}\n\nas whether a space has a non-null live bitmap could be independent of whether to call ImmuneSpace() on it?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 6
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_859e724c",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Is there a reason not to use uint64_t instead int here?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_e5e8a09d",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "What happens if the freed bytes is negative? Would it be ok in terms of RecordFree()?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_05efdc9c",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "I believe this is necessary when we switch from background (bump pointer) to foreground (free list). Is there a reason not to call GetLiveBitmap() on the to-space and to instead store (cache) the live bitmap object in to_space_live_bitmap_ other than a performance one?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 10
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_848770fc",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Can you leave a short comment/note on what this to_space_ and from_space_ could point to in what situations, such as a bump pointer space or a rosalloc/dlmalloc space?",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_a5fce88c",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Why do we keep this live bitmap here outside of the space itself (is it performance)?",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_e58d00d9",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Same comment as the quick entrypoint code. It\u0027d be nice if we can avoid the need to check this.",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 10
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_c5fec41b",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Just paraphrasing to confirm, as rosalloc_space_ is of type RosAllocSpace rather than type MallocSpace this call can be inlined without the reinterpret_cast.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 8
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_0574bc14",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Move DCHECK above line 145 (a minor point)?\n\nSame comment for line 156.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 8
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_8a19b75e",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Typo: TOOD -\u003e TODO.\n\nAlso, if we suspend the threads here, could we get rid of the code that checks/detects that the allocator has changed in the quick alloc entry point path (I guess not)?",
+      "range": {
+        "startLine": 292,
+        "startChar": 5,
+        "endLine": 292,
+        "endChar": 9
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_ea75cb5b",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "This function gets called asynchronously with regard to the GC, right?",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_2ad4232c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Why trigger a collection here when the process state didn\u0027t change?",
+      "range": {
+        "startLine": 344,
+        "startChar": 4,
+        "endLine": 344,
+        "endChar": 26
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_2a0983f5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Isn\u0027t it the case that only one of rosalloc_space_ and dlmalloc_space_ is not null? If so, we don\u0027t need to pass two live bitmaps to MarkAllocStack (and avoiding adding a new parameter to it)? Or, is this meant to be general enough to be able to handle two non-null distinct live bitmaps?",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d80bdc3_45d4f4d3",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 908,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "int64_t instead of int32_t?",
+      "range": {
+        "startLine": 908,
+        "startChar": 0,
+        "endLine": 908,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_0af5a739",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "To reduce the indentation level, how about doing:\n\nif (collector_type \u003d\u003d collector_type_) {\n  return;\n}\n\ninstead?",
+      "range": {
+        "startLine": 1145,
+        "startChar": 2,
+        "endLine": 1145,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_061fe86e",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "The code in StartGC() already existed and worked, but I wonder why we need to busy-wait here. Is there a way to simply block-wait?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1153,
+        "endChar": 4
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_ca9a4fdb",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "rosalloc_space_ could be null here. Maybe move this Compact() call below after main_space is set and pass main_space instead? Test with kUseRosAlloc \u003d false?",
+      "range": {
+        "startLine": 1162,
+        "startChar": 29,
+        "endLine": 1162,
+        "endChar": 44
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_4a615f20",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "nit: we don\u0027t need to initialize it to nullptr as it\u0027ll be overwritten anyway below?",
+      "range": {
+        "startLine": 1185,
+        "startChar": 45,
+        "endLine": 1185,
+        "endChar": 52
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_a6129c6b",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "This is communicated in person, but if kUseRosAlloc is false (we use dlmalloc), then this code would overwrite the new main space (after the zygote fork) with the newly-created non-moving space here. The fix, as we discussed, is to not overwrite dlmalloc_space_ here and store the new non-moving space to non_moving_space_.",
+      "range": {
+        "startLine": 1337,
+        "startChar": 0,
+        "endLine": 1337,
+        "endChar": 2
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd609da_450deac7",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "allocations -\u003e allocator (to be consistent with the others)?",
+      "range": {
+        "startLine": 95,
+        "startChar": 43,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_0a887bc1",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "nit: Is name GetRosAllocSpace() better as it matches the class name RosAllocSpace?",
+      "range": {
+        "startLine": 485,
+        "startChar": 24,
+        "endLine": 485,
+        "endChar": 40
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad266df6_4ac553d9",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "I think \"is\" is missing. Either add \"is\" or remove \"it\"?",
+      "range": {
+        "startLine": 384,
+        "startChar": 5,
+        "endLine": 384,
+        "endChar": 7
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d25f1ed_a7a6cad7",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-07T01:56:05Z",
+      "side": 1,
+      "message": "Would it be worth keeping the size_t version as well in case we really want unsigned 64-bit size_t?",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 3
+      },
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
