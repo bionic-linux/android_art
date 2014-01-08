@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdcac190_36663688",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T23:46:34Z",
+      "side": 1,
+      "message": "arguments shouldn\u0027t be camel case but c_unit",
+      "range": {
+        "startLine": 31,
+        "startChar": 39,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_fbe54701",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T23:46:34Z",
+      "side": 1,
+      "message": "Trivial empty member functions should be defined in the header.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_bbefcfdd",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T23:46:34Z",
+      "side": 1,
+      "message": "It would make reasoning about the thread-safety of passes a lot simpler if this data were immutable. I don\u0027t see a reason why it isn\u0027t.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_fcc9c198",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T23:46:34Z",
+      "side": 1,
+      "message": "Currently no passes are freed so this is a memory leak. Is the intent to use the arena?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_d635c25e",
+        "filename": "compiler/dex/pass_driver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T23:46:34Z",
+      "side": 1,
+      "message": "Argument naming convention: create_default_passes\nHere and below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 54,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
