@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da395b3_b073782d",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T17:08:34Z",
+      "side": 1,
+      "message": "There is a UNUSED macro in art/runtime/base/macros.h, so change this and the below to be UNUSED(cUnit)",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 11
+      },
+      "revId": "507a380a88aafa175c2eccd34bd3e1baf1251502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d76fd12_865e4ad1",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T17:08:34Z",
+      "side": 1,
+      "message": "I think the doxygen comments need a once over. We don\u0027t put comments that just describe the name of a variable beneath them.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "507a380a88aafa175c2eccd34bd3e1baf1251502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da89190_af1799cd",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T17:08:34Z",
+      "side": 1,
+      "message": "Similarly.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "507a380a88aafa175c2eccd34bd3e1baf1251502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d76fd12_a65b46e0",
+        "filename": "compiler/dex/pass_driver.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-08T17:08:34Z",
+      "side": 1,
+      "message": "Capital first letter on member function names.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "507a380a88aafa175c2eccd34bd3e1baf1251502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
