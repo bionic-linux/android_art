@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdcac190_73f0400b",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-01-08T20:35:21Z",
+      "side": 1,
+      "message": "No space after UNUSED here (and other instances of UNUSED() below).",
+      "revId": "3187694d15746904abcc4dbd852d0b789efe5563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
