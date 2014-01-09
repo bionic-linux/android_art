@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdcac190_5c431185",
+        "filename": "compiler/dex/bb_optimizations.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd43d2d_25f71802",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcac190_36663688",
         "filename": "compiler/dex/pass.cc",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "cdcac190_59168363",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcac190_36663688",
+      "range": {
+        "startLine": 31,
+        "startChar": 39,
+        "endLine": 31,
+        "endChar": 44
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_a560c81e",
+        "filename": "compiler/dex/pass.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "I moved all functions that are one line and the constructors in the .h; let me know if you want me to move the others then",
+      "parentUuid": "0dd1393f_fbe54701",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd1393f_bbefcfdd",
         "filename": "compiler/dex/pass.h",
         "patchSetId": 4
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cdcac190_795fffce",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd1393f_bbefcfdd",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 25
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd43d2d_3c8059de",
         "filename": "compiler/dex/pass_driver.cc",
         "patchSetId": 4
@@ -105,6 +201,30 @@
       "writtenOn": "2014-01-09T00:04:10Z",
       "side": 1,
       "message": "this is another case of s/Pass */Pass* /g",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_7b213700",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd43d2d_3c8059de",
       "range": {
         "startLine": 72,
         "startChar": 14,
@@ -164,6 +284,54 @@
     },
     {
       "key": {
+        "uuid": "0dd1393f_de139925",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "As you saw they are static, so it should be fine like this, I\u0027ll fix it as the comment below requests",
+      "parentUuid": "2dd43d2d_fcc9c198",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_9f699f83",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done for the immutable (I believe, let me know if I missed something); and I used UniquePtr",
+      "parentUuid": "cdcac190_36b4f663",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd1393f_db2bab12",
         "filename": "compiler/dex/pass_driver.cc",
         "patchSetId": 4
@@ -175,6 +343,30 @@
       "writtenOn": "2014-01-09T00:04:10Z",
       "side": 1,
       "message": "s/ */* /g",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_5b1e7bba",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd1393f_db2bab12",
       "range": {
         "startLine": 101,
         "startChar": 45,
@@ -210,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "0dd1393f_dbba8b55",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "done, though I really did for each case I could because that sed would mess up the copyright as well (and any other non related *)",
+      "parentUuid": "cdcac190_16ca1ade",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd1393f_9b253340",
         "filename": "compiler/dex/pass_driver.cc",
         "patchSetId": 4
@@ -233,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "cdcac190_47133e72",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure we cared because it was getting killed at the end of the function, done in case you preferred anyway :)",
+      "parentUuid": "0dd1393f_9b253340",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 21
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcac190_d635c25e",
         "filename": "compiler/dex/pass_driver.h",
         "patchSetId": 4
@@ -244,6 +484,30 @@
       "writtenOn": "2014-01-08T23:46:34Z",
       "side": 1,
       "message": "Argument naming convention: create_default_passes\nHere and below.",
+      "range": {
+        "startLine": 32,
+        "startChar": 54,
+        "endLine": 32,
+        "endChar": 73
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_bcd8e9b8",
+        "filename": "compiler/dex/pass_driver.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-09T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcac190_d635c25e",
       "range": {
         "startLine": 32,
         "startChar": 54,
