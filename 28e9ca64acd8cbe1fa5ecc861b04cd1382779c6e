@@ -476,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "2dd43d2d_aa03f725",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-09T02:25:45Z",
+      "side": 1,
+      "message": "OK. Certainly, it\u0027s more convenient to code this way when we don\u0027t know how many allocation spaces we have. I didn\u0027t notice that \u0027count\u0027 gets updated.",
+      "parentUuid": "8d2b69c2_cffe711b",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_e402e4d0",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 4
@@ -534,6 +552,24 @@
       "side": 1,
       "message": "I was just matching the return types, might as well change to uint64_t though.",
       "parentUuid": "8dd609da_859e724c",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_6a1f1f6e",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-09T02:25:45Z",
+      "side": 1,
+      "message": "Thanks. I think this is better for the 64-bit mode.",
+      "parentUuid": "4d25f1ed_cd7cbd45",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -950,6 +986,24 @@
     },
     {
       "key": {
+        "uuid": "2dd43d2d_2a93678a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-09T02:25:45Z",
+      "side": 1,
+      "message": "I assume that there\u0027s no situation where a no-op state update callback (process_state_ \u003d\u003d process_state) gets called repeatedly because it would cause unnecessary full GC invocations. I don\u0027t know enough about process states, however.",
+      "parentUuid": "4d25f1ed_edfb815a",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d7db99f_2a0983f5",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 4
@@ -985,6 +1039,24 @@
       "side": 1,
       "message": "No, they can both be non-null. I might end up deleting the allocation stacks in the future.",
       "parentUuid": "0d7db99f_2a0983f5",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_79949fb2",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-09T02:25:45Z",
+      "side": 1,
+      "message": "Isn\u0027t it the case that we use only one of rosalloc_space_ and dlmalloc_space_ based on the (compile-time constant) value of kUseRosAlloc (and the non-moving space is a separate dlmalloc space that dlmalloc_space_ does not point to)?",
+      "parentUuid": "ad266df6_53f50eab",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1395,6 +1467,24 @@
       "side": 1,
       "message": "Probably not, 63 bits should be enough.",
       "parentUuid": "4d25f1ed_a7a6cad7",
+      "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_a9eae51b",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-09T02:25:45Z",
+      "side": 1,
+      "message": "I think we will eventually need to add back the size_t version because otherwise the existing call sites of PrettySize with a parameter of type size_t would not probably compile in 64-bit mode because of the signed/unsigned compiler warnings. I don\u0027t think it\u0027d make sense to go add casts to PrettySize call sites, as in \"PrettySize(s)\" -\u003e PrettySize(static_cast\u003cint64_t\u003e(s))\" to lose precision, either. I think in 32-bit mode they compile as size_t (32-bit unsigned) gets auto-converted to int64 (signed 64-bit.)",
+      "parentUuid": "8d2b69c2_92d66211",
       "revId": "28e9ca64acd8cbe1fa5ecc861b04cd1382779c6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
