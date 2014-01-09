@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2dd43d2d_25f71802",
+        "filename": "compiler/dex/bb_optimizations.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T04:50:31Z",
+      "side": 1,
+      "message": "note, the virtual here can be lost and will benefit calling from one member function in CodeLayout to another. C++ lacks a final keyword, so removing the virtual on an overriding member function means its final and can\u0027t be overridden. Its general style in ART to lose the virtual unless we think there will be a sub-class.",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcac190_36663688",
         "filename": "compiler/dex/pass.cc",
         "patchSetId": 4
