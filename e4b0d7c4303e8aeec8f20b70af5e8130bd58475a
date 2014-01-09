@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "2dd43d2d_3c8059de",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T00:04:10Z",
+      "side": 1,
+      "message": "this is another case of s/Pass */Pass* /g",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 15
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd43d2d_fcc9c198",
         "filename": "compiler/dex/pass_driver.cc",
         "patchSetId": 4
@@ -87,6 +110,99 @@
         "startChar": 0,
         "endLine": 73,
         "endChar": 23
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_36b4f663",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T00:04:10Z",
+      "side": 1,
+      "message": "Ah, static. I\u0027d prefer that the passes were immutable given we\u0027re sharing them across threads then. As this is a leak can you use UniquePtr to ensure valgrind cleanliness.",
+      "parentUuid": "2dd43d2d_fcc9c198",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_db2bab12",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T00:04:10Z",
+      "side": 1,
+      "message": "s/ */* /g",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 46
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_16ca1ade",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T00:04:10Z",
+      "side": 1,
+      "message": "s/ */* /",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd1393f_9b253340",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-09T00:04:10Z",
+      "side": 1,
+      "message": "use the arena?",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 21
       },
       "revId": "e4b0d7c4303e8aeec8f20b70af5e8130bd58475a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
