@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdcac190_25b5d0d5",
+        "filename": "compiler/dex/mir_graph.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done and did NULL -\u003e nullptr while I was at it",
+      "parentUuid": "cdcac190_811819fe",
+      "range": {
+        "startLine": 1195,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 39
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd43d2d_f82adbfd",
         "filename": "compiler/dex/pass.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2014-01-11T23:41:18Z",
       "side": 1,
       "message": "1 character indent here",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d4251dd_88185bfe",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done, also updated bb_optimizations.h accordingly",
+      "parentUuid": "2dd43d2d_f82adbfd",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2dd43d2d_73982c14",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd43d2d_d82f1f0c",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 183
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4251dd_65aae206",
         "filename": "compiler/dex/pass.h",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2014-01-11T23:41:18Z",
       "side": 1,
       "message": "1 character indent.",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcac190_05bad4c4",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4251dd_65aae206",
       "range": {
         "startLine": 127,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4d4251dd_28158fc4",
+        "filename": "compiler/dex/pass.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4251dd_85a7e63b",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdcac190_6115fdc3",
         "filename": "compiler/dex/pass_driver.cc",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2014-01-11T23:41:18Z",
       "side": 1,
       "message": "Can you improve the comment just saying that all passes are immutable and there shared by all threads currently?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "19c7c36dffa001e20ddccdfc075c69d114c53756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dd43d2d_b377e41a",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-13T17:31:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcac190_6115fdc3",
       "range": {
         "startLine": 64,
         "startChar": 0,
