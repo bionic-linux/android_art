@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd7ba135_0bce9d6a",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-01-14T13:50:43Z",
+      "side": 1,
+      "message": "The whole point of UniquePtr is defeated by the plain pointer here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "4e97c539408f47145526f0062c1c06df99146a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
