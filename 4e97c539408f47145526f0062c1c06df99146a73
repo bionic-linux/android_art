@@ -22,6 +22,30 @@
       "revId": "4e97c539408f47145526f0062c1c06df99146a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1b3107_c6972c2f",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-01-14T17:20:56Z",
+      "side": 1,
+      "message": "agreed, I\u0027d overlooked this. Jean can you fix this, this should be a UniquePtr[] or else it is still a memory leak.",
+      "parentUuid": "cd7ba135_0bce9d6a",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "4e97c539408f47145526f0062c1c06df99146a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
