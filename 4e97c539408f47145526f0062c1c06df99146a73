@@ -46,6 +46,30 @@
       "revId": "4e97c539408f47145526f0062c1c06df99146a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6de9d52a_a32be412",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-01-14T22:58:32Z",
+      "side": 1,
+      "message": "So I\u0027ve tried in various ways of doing this but it seems that you can\u0027t really create a UniquePtr of UniquePtrs of non copy-able instances.\n\nEverything I\u0027ve tried gets me yelled at that either UniquePtr is not happy or Pass is not happy.\n\nI would suggest another solution which is to have a global static UniquePtr to a PassHolder that automatically creates these passes internally in an array and we can retrieve them via a simple get API.\n\nOnce that gets killed, I can free the passes without UniquePtr underneath.\n\nOr you have a wonderful solution that I\u0027ve overlooked :)",
+      "parentUuid": "4d1b3107_c6972c2f",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "4e97c539408f47145526f0062c1c06df99146a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
