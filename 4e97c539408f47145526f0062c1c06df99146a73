@@ -94,6 +94,30 @@
       "revId": "4e97c539408f47145526f0062c1c06df99146a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8db2895a_d1bea4b6",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-01-15T15:17:10Z",
+      "side": 1,
+      "message": "Why does it need to be allocated on the heap?\n\n  template \u003ctypename PassType\u003e\n  Pass* GetPassInstance() {\n    static PassType pass;\n    return \u0026pass;\n  }\n\n  [...]\n\n  static Pass* const passes[] \u003d {\n      GetPassInstance\u003cCodeLayout\u003e(),\n      GetPassInstance\u003cSSATransformation\u003e(),\n      GetPassInstance\u003cConstantPropagation\u003e(),\n      GetPassInstance\u003cInitRegLocations\u003e(),\n      GetPassInstance\u003cMethodUseCount\u003e(),\n      GetPassInstance\u003cNullCheckEliminationAndTypeInferenceInit\u003e(),\n      GetPassInstance\u003cNullCheckEliminationAndTypeInference\u003e(),\n      GetPassInstance\u003cBBCombine\u003e(),\n      GetPassInstance\u003cBBOptimizations\u003e(),\n  };\n\nShouldn\u0027t the passes be const or even constexpr?",
+      "parentUuid": "ad810d4e_614bc075",
+      "range": {
+        "startLine": 74,
+        "startChar": 25,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "4e97c539408f47145526f0062c1c06df99146a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
