@@ -22,6 +22,24 @@
       "revId": "a0e4b01b6b1ef5c88e340e6b2c09f83e535777a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "727c56f1_d10d56c2",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-30T23:10:30Z",
+      "side": 0,
+      "message": "Yes, it is the same.",
+      "parentUuid": "52811216_21502227",
+      "revId": "a0e4b01b6b1ef5c88e340e6b2c09f83e535777a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
