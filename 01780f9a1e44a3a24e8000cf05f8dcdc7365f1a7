@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92870a29_e3f52e9f",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "This comment is no longer true. Get rid of it?",
+      "range": {
+        "startLine": 1201,
+        "startChar": 6,
+        "endLine": 1201,
+        "endChar": 47
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_41b996f6",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "If RemoveSpace() nullify main_space_, the delete here will cause a null pointer dereference?",
+      "range": {
+        "startLine": 1202,
+        "startChar": 6,
+        "endLine": 1202,
+        "endChar": 17
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b4c6fd_d1014ed1",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "I guess this is because the zygote space reuses the old alloc space\u0027s bitmaps in MallocSpace::CreateZygoteSpace(). With this in mind, what (something bad) happens if the old alloc space\u0027s bitmaps are null when calling RemoveSpace on the old alloc space?",
+      "range": {
+        "startLine": 1432,
+        "startChar": 65,
+        "endLine": 1433,
+        "endChar": 46
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_bcaef578",
+        "filename": "runtime/gc/space/dlmalloc_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "In parallel to this TODO, should RosAllocSpace::Clear() get a similar TODO?",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 45
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_23abc658",
+        "filename": "runtime/gc/space/malloc_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Remove this LOG line?",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 40
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_bc199591",
+        "filename": "runtime/gc/space/malloc_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "itself, or ourselves?",
+      "range": {
+        "startLine": 128,
+        "startChar": 55,
+        "endLine": 128,
+        "endChar": 62
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_3c8a0507",
+        "filename": "runtime/gc/space/space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Should this \"|| type \u003d\u003d kSpaceTypeZygoteSpace\" part be removed? Or, is there some code that relies on this?",
+      "range": {
+        "startLine": 110,
+        "startChar": 41,
+        "endLine": 110,
+        "endChar": 73
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_bca435ca",
+        "filename": "runtime/gc/space/space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Is there a reason to move Sweep() all the way up to Space, as opposed to \nContinuousSpace which has the live/mark bitmaps? It seems like Sweep() goes with the bitmaps?",
+      "range": {
+        "startLine": 171,
+        "startChar": 15,
+        "endLine": 171,
+        "endChar": 20
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_7c947d29",
+        "filename": "runtime/gc/space/space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 2
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_1cab8158",
+        "filename": "runtime/gc/space/zygote_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Optional: would it make sense to get rid of \u0027const\u0027 from the \u0027visitor\u0027 parameter of VisitMarkedRange()?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_be742d14",
+        "filename": "runtime/gc/space/zygote_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "How about DCHECK\u0027ing here that the bitmaps are null before reseting them to the given bitmaps to verify that \u0027create_bitmaps\u0027 was false in the constructor call?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2b4c6fd_83ec9d32",
+        "filename": "runtime/gc/space/zygote_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "Should this update objects_allocated_ (as objects are collected)?",
+      "range": {
+        "startLine": 76,
+        "startChar": 18,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_9ecbe9e6",
+        "filename": "runtime/gc/space/zygote_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 1,
+      "message": "This comment should talk about zygote space.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 63
+      },
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

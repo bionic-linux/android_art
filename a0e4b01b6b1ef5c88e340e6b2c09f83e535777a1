@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52811216_21502227",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-30T02:07:36Z",
+      "side": 0,
+      "message": "This does not change the behavior because the image space\u0027s Sweep() is no-op/empty, right?",
+      "range": {
+        "startLine": 1149,
+        "startChar": 4,
+        "endLine": 1149,
+        "endChar": 33
+      },
+      "revId": "a0e4b01b6b1ef5c88e340e6b2c09f83e535777a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
