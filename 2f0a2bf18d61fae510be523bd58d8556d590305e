@@ -22,6 +22,24 @@
       "revId": "2f0a2bf18d61fae510be523bd58d8556d590305e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92870a29_f70fa347",
+        "filename": "runtime/gc/space/zygote_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-01-31T17:50:45Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "32d9fe6f_9193be41",
+      "revId": "2f0a2bf18d61fae510be523bd58d8556d590305e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
