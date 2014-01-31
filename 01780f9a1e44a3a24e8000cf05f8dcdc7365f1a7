@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "12d6ba3f_905dfab7",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-01-31T05:13:03Z",
+      "side": 1,
+      "message": "I mean the code \"main_space_ \u003d nullptr;\" around line 470, not the delete. Isn\u0027t main_space_ null when it returned from RemoveSpace()?",
+      "parentUuid": "727c56f1_114fee00",
+      "revId": "01780f9a1e44a3a24e8000cf05f8dcdc7365f1a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2b4c6fd_d1014ed1",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
