@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e9b62a_a0bbdac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-04T21:37:09Z",
+      "side": 1,
+      "message": "Maybe refer to the change that changes the behavior?",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "9bd097a917b191b0d3cf1c133337e07ba759eaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d25422b3_63f4223b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-04T21:37:09Z",
+      "side": 1,
+      "message": "It looks like System.gc() just calls Runtime.getRuntime.gc(). How does it change the behavior? I\u0027m missing something.",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "9bd097a917b191b0d3cf1c133337e07ba759eaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
