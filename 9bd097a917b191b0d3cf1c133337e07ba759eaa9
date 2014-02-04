@@ -45,6 +45,24 @@
       "revId": "9bd097a917b191b0d3cf1c133337e07ba759eaa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72e9b62a_c0aa5e53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-04T21:38:00Z",
+      "side": 1,
+      "message": "Required for \nhttps://android-review.googlesource.com/#/c/80253/\nSorry, should have put that in the commit message.",
+      "parentUuid": "d25422b3_63f4223b",
+      "revId": "9bd097a917b191b0d3cf1c133337e07ba759eaa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
