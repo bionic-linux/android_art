@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf48f97a_3d58dfc4",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-02-11T00:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af83c5c3_76b538fc",
+      "range": {
+        "startLine": 1726,
+        "startChar": 0,
+        "endLine": 1726,
+        "endChar": 49
+      },
+      "revId": "971433dbecdfa78d64642c05bf85a1341d709354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af83c5c3_f6a8689f",
         "filename": "compiler/dex/quick/x86/int_x86.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cf48f97a_1d5d23b5",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-02-11T00:31:56Z",
+      "side": 1,
+      "message": "Done.  why not the other NULLs, like 1770?   What is the rule?",
+      "parentUuid": "af83c5c3_f6a8689f",
+      "range": {
+        "startLine": 1776,
+        "startChar": 20,
+        "endLine": 1776,
+        "endChar": 24
+      },
+      "revId": "971433dbecdfa78d64642c05bf85a1341d709354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af83c5c3_d69f6478",
         "filename": "compiler/dex/quick/x86/int_x86.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-02-10T21:43:27Z",
       "side": 1,
       "message": "nullptr",
+      "range": {
+        "startLine": 1798,
+        "startChar": 20,
+        "endLine": 1798,
+        "endChar": 24
+      },
+      "revId": "971433dbecdfa78d64642c05bf85a1341d709354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf48f97a_fd61276b",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-02-11T00:31:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af83c5c3_d69f6478",
       "range": {
         "startLine": 1798,
         "startChar": 20,
