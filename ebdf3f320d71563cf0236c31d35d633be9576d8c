@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9e016b_b7f9b09c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-13T18:52:39Z",
+      "side": 1,
+      "message": "It might be that this race isn\u0027t a problem (or it\u0027s not a race) since Heap::AllocObjectWithAllocator() sets the class (and there\u0027s a CAS in between) before pushing the object onto the alloca stack.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "ebdf3f320d71563cf0236c31d35d633be9576d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
