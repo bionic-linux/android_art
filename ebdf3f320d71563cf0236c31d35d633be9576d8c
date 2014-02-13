@@ -22,6 +22,24 @@
       "revId": "ebdf3f320d71563cf0236c31d35d633be9576d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f9e016b_d7d39415",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-13T18:54:17Z",
+      "side": 1,
+      "message": "Maybe, but VisitObjects should never be a performance critical, so I\u0027ll stick to this to be safe.",
+      "parentUuid": "8f9e016b_b7f9b09c",
+      "revId": "ebdf3f320d71563cf0236c31d35d633be9576d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
