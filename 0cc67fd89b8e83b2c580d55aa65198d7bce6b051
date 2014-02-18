@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f646d9a_2b9925ad",
+        "filename": "compiler/compiler_backend.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-02-18T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f8b8d70_734cfa5c",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 2
+      },
+      "revId": "0cc67fd89b8e83b2c580d55aa65198d7bce6b051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f8b8d70_3346723d",
         "filename": "compiler/compiler_backend.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2014-02-18T02:16:11Z",
       "side": 1,
       "message": "idle thought, we should remove ART_USE_PORTABLE.. as the gate to LLVM support and just have ART_USE_LLVM with command line arguments for any greater fidelity",
+      "range": {
+        "startLine": 282,
+        "startChar": 7,
+        "endLine": 282,
+        "endChar": 32
+      },
+      "revId": "0cc67fd89b8e83b2c580d55aa65198d7bce6b051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f860164_34d17e0e",
+        "filename": "compiler/compiler_backend.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-02-18T09:29:41Z",
+      "side": 1,
+      "message": "Agree.",
+      "parentUuid": "6f8b8d70_3346723d",
       "range": {
         "startLine": 282,
         "startChar": 7,
