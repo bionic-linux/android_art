@@ -118,6 +118,29 @@
       "revId": "4e97c539408f47145526f0062c1c06df99146a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f75b176_6a309bcf",
+        "filename": "compiler/dex/pass_driver.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-02-21T08:10:30Z",
+      "side": 1,
+      "message": "Found these LOG(DEBUG) messages added in this change (one here, one below) that probably shouldn\u0027t be LOG(DEBUG). See https://android-review.googlesource.com/83140",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 53
+      },
+      "revId": "4e97c539408f47145526f0062c1c06df99146a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
