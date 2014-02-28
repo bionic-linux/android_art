@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c58ad41_c2d20610",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Does the stack trace help with diagnosing a heap corruption because it might show some code might be missing a reference to update on a moving gc?",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_9c2591bf",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Raw meaning an object whose class is null?",
+      "range": {
+        "startLine": 356,
+        "startChar": 13,
+        "endLine": 356,
+        "endChar": 16
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c52b523_2c80b79c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Do we want to say something like obj is null to stream?",
+      "range": {
+        "startLine": 367,
+        "startChar": 4,
+        "endLine": 367,
+        "endChar": 10
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_42a9762d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 381,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 14
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_fca92da5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "On a foreground to background transition, do we completely delete/unmap the main free list space? If so, that space may not even be part of the continuous space list and its mem map may be unmapped. Do we want/is it reasonable to be able to detect a case where a moving GC fails to update a reference somewhere which may still be pointing to this deleted space?",
+      "range": {
+        "startLine": 386,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 4
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c52b523_4ca41357",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "If this \u003c\u003c is to print the address, then we may need \"hex\" or reinterpret_cast\u003cvoid*\u003e to print a hex address?",
+      "range": {
+        "startLine": 390,
+        "startChar": 24,
+        "endLine": 390,
+        "endChar": 26
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_22cfa248",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Depending on the definition of this function or what we need, is there a case where we\u0027d like to know if an address is within the continuous space ranges even if it\u0027s not aligned?",
+      "range": {
+        "startLine": 903,
+        "startChar": 25,
+        "endLine": 903,
+        "endChar": 57
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_41661640",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "A side question, might it be good if these functions can be called manually from within gdb. I\u0027m not sure what conditions have to be met for a function to be called manually within gdb, however.",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 5
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_22f0c245",
+        "filename": "runtime/runtime_linux.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-02-28T19:22:33Z",
+      "side": 1,
+      "message": "Maybe print some header text like \"the fault address is \" in front of what DumpObject() prints?",
+      "range": {
+        "startLine": 313,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 10
+      },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
