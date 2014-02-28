@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "3c52b523_0f63adee",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Yes, it shows where all the threads were suspended during the last GC. This is likely to be where the heap corruption happened.",
+      "parentUuid": "7c58ad41_c2d20610",
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c5da930_9c2591bf",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 356,
         "endChar": 16
       },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_5cd5d9d3",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Changed it to be more descriptive.",
+      "parentUuid": "5c5da930_9c2591bf",
       "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "7c58ad41_3d87c350",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c52b523_2c80b79c",
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c58ad41_42a9762d",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -88,6 +142,24 @@
         "endLine": 381,
         "endChar": 14
       },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_9cda31ff",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c58ad41_42a9762d",
       "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "5c5da930_fceecd9c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "The space is not unmapped, we just take the mem map and put it in allocator_mem_map_.",
+      "parentUuid": "5c5da930_fca92da5",
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c52b523_4ca41357",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -134,6 +224,24 @@
         "endLine": 390,
         "endChar": 26
       },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_7d641bf8",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "\u003c\u003c Object* works fine to print the address.",
+      "parentUuid": "3c52b523_4ca41357",
       "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "5c5da930_1c5c01b7",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 903,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Not currently, we could add a IsContinuousSpaceObjectAddress which doesn\u0027t check alignment in the future.",
+      "parentUuid": "7c58ad41_22cfa248",
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c5da930_41661640",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 1
@@ -186,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "5c5da930_1cf08145",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "You might be able to call them from GDB already, since they don\u0027t acquire any locks.",
+      "parentUuid": "5c5da930_41661640",
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c58ad41_22f0c245",
         "filename": "runtime/runtime_linux.cc",
         "patchSetId": 1
@@ -203,6 +347,24 @@
         "endLine": 313,
         "endChar": 10
       },
+      "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5da930_bcfe1518",
+        "filename": "runtime/runtime_linux.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T20:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c58ad41_22f0c245",
       "revId": "75602f0cbf9fa281a37e752cf39aec09e02106ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
