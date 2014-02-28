@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "7c58ad41_578c9623",
+        "filename": "runtime/mirror/array-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-02-28T17:38:58Z",
+      "side": 1,
+      "message": "Array allocations come directly from entrypoints and are performance critical, adding unnecessary SIRTs will regress performance.",
+      "parentUuid": "7c0a6d15_7230b800",
+      "revId": "8580154e01910459d99074ef10584b8d647d912f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc0199f4_6a8a079a",
         "filename": "runtime/mirror/array-inl.h",
         "patchSetId": 1
