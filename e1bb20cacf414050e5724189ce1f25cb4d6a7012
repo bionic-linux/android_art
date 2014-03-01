@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c52b523_7b38a3b2",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-01T00:45:02Z",
+      "side": 1,
+      "message": "Locks::mutator_lock_-\u003eAssertExclusiveHeld(self);",
+      "range": {
+        "startLine": 175,
+        "startChar": 26,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "e1bb20cacf414050e5724189ce1f25cb4d6a7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_8852ec2c",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-01T00:45:02Z",
+      "side": 1,
+      "message": "comment why NO_THREAD_SAFETY_ANALYSIS, ie only read when other threads suspended. If so then assert the mutator lock is exlusively held.",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 450,
+        "endChar": 66
+      },
+      "revId": "e1bb20cacf414050e5724189ce1f25cb4d6a7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c58ad41_283ae0e0",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-01T00:45:02Z",
+      "side": 1,
+      "message": "DEFAULT_MUTEX_ACQUIRED_AFTER;",
+      "range": {
+        "startLine": 529,
+        "startChar": 27,
+        "endLine": 529,
+        "endChar": 28
+      },
+      "revId": "e1bb20cacf414050e5724189ce1f25cb4d6a7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c52b523_fbfdb387",
+        "filename": "runtime/thread.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-01T00:45:02Z",
+      "side": 1,
+      "message": "// namesapce collector\n // namesapce gc\n\nI\u0027m surprised these aren\u0027t lint errors :-/",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "e1bb20cacf414050e5724189ce1f25cb4d6a7012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
