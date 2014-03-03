@@ -22,6 +22,30 @@
       "revId": "93cd17d70e4a0819ff3dcefd0ba5a11a17cdd71f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c920913_392ebf10",
+        "filename": "runtime/elf_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-03T22:03:06Z",
+      "side": 1,
+      "message": "The PointerToLowMem routine has an assert built in which will break when this isn\u0027t 64bit clean. This is a build fix.",
+      "parentUuid": "7c58ad41_eeccc9a8",
+      "range": {
+        "startLine": 1066,
+        "startChar": 24,
+        "endLine": 1066,
+        "endChar": 45
+      },
+      "revId": "93cd17d70e4a0819ff3dcefd0ba5a11a17cdd71f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
