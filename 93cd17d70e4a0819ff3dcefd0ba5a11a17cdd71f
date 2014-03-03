@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c58ad41_eeccc9a8",
+        "filename": "runtime/elf_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-03-03T21:57:13Z",
+      "side": 1,
+      "message": "Do we want to be baking assumptions about files being loaded to low mem here? Seems like we\u0027d want this code to be 64-bit clean.",
+      "range": {
+        "startLine": 1066,
+        "startChar": 24,
+        "endLine": 1066,
+        "endChar": 45
+      },
+      "revId": "93cd17d70e4a0819ff3dcefd0ba5a11a17cdd71f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
