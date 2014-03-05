@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc76f9c4_4602b767",
+        "filename": "build/Android.common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-03-05T16:54:00Z",
+      "side": 1,
+      "message": "first, this seems to be a no-op because its commented out. This is make not cpp.\n\nsecond, this doesn\u0027t seem to be the right thing because if you are building this project, I believe it really is required.\n\nIf you are building using only embedded, perhaps this project should be removed from the manifest?\n\nI defer to Ying on the best way to deal with embedded, perhaps we need to change things to tolerate an empty value, but the concern here is that people forget to set it correctly for their processor which we had seen with Dalvik in the past.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
