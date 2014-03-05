@@ -22,6 +22,24 @@
       "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cd641da_579fe407",
+        "filename": "build/Android.common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-03-05T21:48:16Z",
+      "side": 1,
+      "message": "Maybe we should make the DALVIK_VM_LIB check in build/core/dex_preopt.mk nonfatal. So embedded build gets a warning but can still proceeded.",
+      "parentUuid": "dc76f9c4_4602b767",
+      "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
