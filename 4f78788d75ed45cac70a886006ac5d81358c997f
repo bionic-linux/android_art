@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c7df19f_03910d85",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-03-05T17:46:25Z",
+      "side": 1,
+      "message": "alternatively, you could put this just around the CLOCK_MONOTONIC line.",
+      "revId": "4f78788d75ed45cac70a886006ac5d81358c997f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
