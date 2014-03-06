@@ -82,6 +82,24 @@
       "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb929a9_3b51ef26",
+        "filename": "build/Android.common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-03-06T18:49:27Z",
+      "side": 1,
+      "message": "Sounds good to me.\nI just realized build/core/dex_preopt.mk will be misconfigured, if DALVIK_VM_LIB is not set.",
+      "parentUuid": "dca43989_638a629a",
+      "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
