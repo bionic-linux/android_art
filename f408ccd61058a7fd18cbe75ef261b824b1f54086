@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cc2511e_b3c420d6",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-06T09:28:22Z",
+      "side": 1,
+      "message": "Odd that you need to do that. Shouldn\u0027t HOST_ARCH be set to x86_64 if BUILD_HOST_64bit is set?",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccb593b_11572c96",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-06T09:28:22Z",
+      "side": 1,
+      "message": "In the comment, it\u0027s a mix of type an variable names. Could you make it consistent? Just having a name is fine by me.",
+      "range": {
+        "startLine": 660,
+        "startChar": 70,
+        "endLine": 660,
+        "endChar": 78
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cc2511e_5385bc86",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-06T09:28:22Z",
+      "side": 1,
+      "message": "-\u003e Remember returned code pointer in R10 ?",
+      "range": {
+        "startLine": 661,
+        "startChar": 45,
+        "endLine": 661,
+        "endChar": 46
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcce5d4a_5285b486",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-06T09:28:22Z",
+      "side": 1,
+      "message": "ditto for consistent parameters in the comment.",
+      "range": {
+        "startLine": 776,
+        "startChar": 55,
+        "endLine": 776,
+        "endChar": 61
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
