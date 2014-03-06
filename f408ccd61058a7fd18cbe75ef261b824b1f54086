@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fca73d88_b9f403a0",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-06T09:31:29Z",
+      "side": 1,
+      "message": "Its a piece of brain damage we hope to clean up once we have a working 64bit host build.",
+      "parentUuid": "1cc2511e_b3c420d6",
+      "range": {
+        "startLine": 43,
+        "startChar": 8,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dccb593b_11572c96",
         "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fca73d88_39c49350",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-06T09:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dccb593b_11572c96",
+      "range": {
+        "startLine": 660,
+        "startChar": 70,
+        "endLine": 660,
+        "endChar": 78
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cc2511e_5385bc86",
         "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2014-03-06T09:28:22Z",
       "side": 1,
       "message": "-\u003e Remember returned code pointer in R10 ?",
+      "range": {
+        "startLine": 661,
+        "startChar": 45,
+        "endLine": 661,
+        "endChar": 46
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca43989_57e11c7e",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-06T09:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc2511e_5385bc86",
       "range": {
         "startLine": 661,
         "startChar": 45,
