@@ -163,6 +163,30 @@
       "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca43989_37c260d6",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-06T09:36:04Z",
+      "side": 1,
+      "message": "I\u0027ll punt on Thread* for now. We consistently use self as the variable to hold Thread::Current(), but I don\u0027t find it a very revealing name.",
+      "parentUuid": "fcce5d4a_5285b486",
+      "range": {
+        "startLine": 776,
+        "startChar": 55,
+        "endLine": 776,
+        "endChar": 61
+      },
+      "revId": "f408ccd61058a7fd18cbe75ef261b824b1f54086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
