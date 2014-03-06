@@ -40,6 +40,48 @@
       "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca43989_638a629a",
+        "filename": "build/Android.common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2014-03-06T01:19:23Z",
+      "side": 1,
+      "message": "That\u0027ll do but in that case embedded builds will still be vulnerable to build/core/dex_preopt* changes. I still prefer including build/core/dex_preopt.mk conditionally.\n\nI\u0027m sorry if my question doesn\u0027t make sense due to my lack of ART know-how but is it sensible to make DEX2OAT_TARGET_INSTRUCTION_SET_FEATURES check non-fatal instead or set it to default in case we do not include dex_preopt.mk?",
+      "parentUuid": "9cd641da_579fe407",
+      "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fca73d88_87d2080f",
+        "filename": "build/Android.common.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2014-03-06T01:19:23Z",
+      "side": 1,
+      "message": "My bad. I didn\u0027t upload the correct patch here.",
+      "parentUuid": "dc76f9c4_4602b767",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "422fc8e4fd6b01972691030c7304093b246d128e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
