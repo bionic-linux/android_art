@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bc586570_5ac235d6",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "dca43989_b1e093e6",
+      "range": {
+        "startLine": 1154,
+        "startChar": 6,
+        "endLine": 1154,
+        "endChar": 37
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c348108_2ad39e15",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2014-03-07T03:48:20Z",
       "side": 1,
       "message": "full-stop at the end of comments",
+      "range": {
+        "startLine": 1158,
+        "startChar": 41,
+        "endLine": 1158,
+        "endChar": 45
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_e0e397ba",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c348108_2ad39e15",
       "range": {
         "startLine": 1158,
         "startChar": 41,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9c348108_c0e013b1",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc4c9db4_ffc69b35",
+      "range": {
+        "startLine": 1164,
+        "startChar": 11,
+        "endLine": 1164,
+        "endChar": 12
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c348108_6a9c865b",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -105,6 +177,30 @@
       "writtenOn": "2014-03-07T03:48:20Z",
       "side": 1,
       "message": "sizeof(uint64_t)\nAdd a comment as to what\u0027s going on here",
+      "range": {
+        "startLine": 1185,
+        "startChar": 28,
+        "endLine": 1185,
+        "endChar": 29
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_20de1ff6",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c348108_6a9c865b",
       "range": {
         "startLine": 1185,
         "startChar": 28,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "bc586570_baa6f13a",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca43989_3104a3e1",
+      "range": {
+        "startLine": 1199,
+        "startChar": 42,
+        "endLine": 1199,
+        "endChar": 46
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dca43989_f1fdab87",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2014-03-07T03:48:20Z",
       "side": 1,
       "message": "full-stop, and below",
+      "range": {
+        "startLine": 1360,
+        "startChar": 26,
+        "endLine": 1360,
+        "endChar": 33
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c348108_00db1b05",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Why below?",
+      "parentUuid": "dca43989_f1fdab87",
       "range": {
         "startLine": 1360,
         "startChar": 26,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "fc4c9db4_e5760ce7",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Renamed to make it clear. Window was used to distinguish from a proper stack frame.",
+      "parentUuid": "9c348108_4aa1c28d",
+      "range": {
+        "startLine": 1405,
+        "startChar": 9,
+        "endLine": 1405,
+        "endChar": 22
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dca43989_91ba37c1",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -197,6 +365,30 @@
       "writtenOn": "2014-03-07T03:48:20Z",
       "side": 1,
       "message": "add comment that negative implies error",
+      "range": {
+        "startLine": 1453,
+        "startChar": 14,
+        "endLine": 1453,
+        "endChar": 15
+      },
+      "revId": "b98099e86fb4a964088fcfc5e95295ab78889310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc4c9db4_a547e492",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-03-07T15:54:25Z",
+      "side": 1,
+      "message": "Added short comment here and longer explanation before function.",
+      "parentUuid": "dca43989_91ba37c1",
       "range": {
         "startLine": 1453,
         "startChar": 14,
