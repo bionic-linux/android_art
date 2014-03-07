@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c526d52_18ba85c2",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-07T17:14:23Z",
+      "side": 1,
+      "message": "nor does Apple have CHECK_MUTEX_CALL?",
+      "range": {
+        "startLine": 657,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 7
+      },
+      "revId": "6daf0d32d86725dfcea339c52f9e18899abd9099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
