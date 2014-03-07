@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc586570_031694a4",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-07T19:54:41Z",
+      "side": 1,
+      "message": "inline isn\u0027t necessary here. If you are trying to tune for performance use the attributes HOT or ALWAYS_INLINE.",
+      "range": {
+        "startLine": 1131,
+        "startChar": 2,
+        "endLine": 1131,
+        "endChar": 9
+      },
+      "revId": "62c92659e0777fa12c0b45ba3459ce11c622ba6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
