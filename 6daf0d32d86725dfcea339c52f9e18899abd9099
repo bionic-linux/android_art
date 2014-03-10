@@ -22,6 +22,30 @@
       "revId": "6daf0d32d86725dfcea339c52f9e18899abd9099",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c25a9ed_87bf46de",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-03-10T08:57:15Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure I was able to build this on a Mac so I think you might be mistaken.\n\nCHECK_MUTEX_CALL is defined as CHECK_PTHREAD_CALL(call, args name_) and CHECK_PTHREAD_CALL is defined for all platforms. There\u0027s nothing in either of these expansions that needs to be architecture specific.\n\n(In fact, CHECK_MUTEX_CALL is used in several other ifdef __APPLE__ blocks)",
+      "parentUuid": "7c526d52_18ba85c2",
+      "range": {
+        "startLine": 657,
+        "startChar": 2,
+        "endLine": 657,
+        "endChar": 7
+      },
+      "revId": "6daf0d32d86725dfcea339c52f9e18899abd9099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
