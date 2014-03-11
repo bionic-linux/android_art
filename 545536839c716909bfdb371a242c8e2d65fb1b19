@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce81dcd_90b844a9",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-11T15:32:03Z",
+      "side": 1,
+      "message": "I worry about robustness here. We may expect no code items for proxy methods too.",
+      "range": {
+        "startLine": 1293,
+        "startChar": 0,
+        "endLine": 1293,
+        "endChar": 30
+      },
+      "revId": "545536839c716909bfdb371a242c8e2d65fb1b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
