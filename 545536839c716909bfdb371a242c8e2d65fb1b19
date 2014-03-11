@@ -46,6 +46,30 @@
       "revId": "545536839c716909bfdb371a242c8e2d65fb1b19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_50279c43",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1293,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-11T15:52:32Z",
+      "side": 1,
+      "message": "I\u0027m easy on where the check is, I\u0027d prefer it was a warning rather than fatal.",
+      "parentUuid": "3c1ab5b4_8c212b85",
+      "range": {
+        "startLine": 1293,
+        "startChar": 0,
+        "endLine": 1293,
+        "endChar": 30
+      },
+      "revId": "545536839c716909bfdb371a242c8e2d65fb1b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
