@@ -33,6 +33,24 @@
       "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb9e1da_692c9a7a",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-13T02:08:11Z",
+      "side": 1,
+      "message": "What happens if there\u0027s an exception in initializer error?",
+      "parentUuid": "dce519f4_a1c25a72",
+      "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
