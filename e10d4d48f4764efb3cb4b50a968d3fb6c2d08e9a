@@ -87,6 +87,24 @@
       "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dce519f4_6fb03908",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-03-13T16:22:46Z",
+      "side": 1,
+      "message": "There is a catch handler, isn\u0027t there? In EliminateClassInitChecks(), the BasicBlock for the catch handler will go through the SetInitialBits() branch and the BasicBlock for the assignment will go through the Union() branch, so it will have the bit set and the check will not be eliminated.",
+      "parentUuid": "fce81dcd_e9b510f8",
+      "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
