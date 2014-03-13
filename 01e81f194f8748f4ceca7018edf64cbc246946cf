@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcfadd80_4c38d4b2",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-13T22:07:51Z",
+      "side": 1,
+      "message": "heap -\u003e collector?",
+      "range": {
+        "startLine": 906,
+        "startChar": 20,
+        "endLine": 906,
+        "endChar": 24
+      },
+      "revId": "01e81f194f8748f4ceca7018edf64cbc246946cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c20adde_058505f2",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-13T22:07:51Z",
+      "side": 1,
+      "message": "heap -\u003e collector?",
+      "range": {
+        "startLine": 140,
+        "startChar": 62,
+        "endLine": 140,
+        "endChar": 66
+      },
+      "revId": "01e81f194f8748f4ceca7018edf64cbc246946cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcfadd80_ac217884",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-13T22:07:51Z",
+      "side": 1,
+      "message": "Heap -\u003e Collector?",
+      "range": {
+        "startLine": 141,
+        "startChar": 28,
+        "endLine": 141,
+        "endChar": 47
+      },
+      "revId": "01e81f194f8748f4ceca7018edf64cbc246946cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
