@@ -105,6 +105,24 @@
       "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb9e1da_7a861abe",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-13T17:12:20Z",
+      "side": 1,
+      "message": "The potential for an exception in SGET/SPUT I don\u0027t currently think breaks a basic block but I think we will for catch blocks. I can see that if the catch block is considered as an in edge to the second assignment and the state isn\u0027t checked, we should re-check. We have unit tests for this kind of behavior in CTS, its probably worth adding more unit tests in the quick compiler like the LVN tests.",
+      "parentUuid": "dce519f4_6fb03908",
+      "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
