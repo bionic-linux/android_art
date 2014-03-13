@@ -69,6 +69,24 @@
       "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce81dcd_e9b510f8",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-13T16:17:40Z",
+      "side": 1,
+      "message": "Ok. How is the case:\n\nclass MyOtherClass {\n  static {\n    throw new Exception(\"boo\");\n  }\n  static int x;\n}\nclass MyClass {\n\nstatic {\n  try {\n    MyOtherClass.x \u003d 100;  // Should fail with EIIE\n  } catch(Throwable ignored) {\n  }\n  MyOtherClass.x \u003d 100;  // Should fail again.\n}\n\nhandled?",
+      "parentUuid": "3c1ab5b4_7a2e2111",
+      "revId": "e10d4d48f4764efb3cb4b50a968d3fb6c2d08e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
