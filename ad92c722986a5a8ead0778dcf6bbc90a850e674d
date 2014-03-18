@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c08adab_91397eee",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-03-18T19:20:34Z",
+      "side": 1,
+      "message": "the predominant style for this is {} not { }",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "ad92c722986a5a8ead0778dcf6bbc90a850e674d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
