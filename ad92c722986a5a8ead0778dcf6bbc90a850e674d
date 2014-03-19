@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ca891a1_a6320c6e",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-19T08:46:55Z",
+      "side": 1,
+      "message": "Renamed to data.",
+      "parentUuid": "1cffb1b9_681f3b74",
+      "range": {
+        "startLine": 118,
+        "startChar": 26,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "ad92c722986a5a8ead0778dcf6bbc90a850e674d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c08adab_91397eee",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-03-18T19:20:34Z",
       "side": 1,
       "message": "the predominant style for this is {} not { }",
+      "range": {
+        "startLine": 32,
+        "startChar": 18,
+        "endLine": 32,
+        "endChar": 21
+      },
+      "revId": "ad92c722986a5a8ead0778dcf6bbc90a850e674d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cba6def_c1bcd84e",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-03-19T08:46:55Z",
+      "side": 1,
+      "message": "Ok, will do an overall cleanup in a follow up CL.",
+      "parentUuid": "7c08adab_91397eee",
       "range": {
         "startLine": 32,
         "startChar": 18,
