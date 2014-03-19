@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1cffb1b9_681f3b74",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-03-19T01:20:02Z",
+      "side": 1,
+      "message": "Instead of naming it \"vector\", a better name would be appropriate.",
+      "range": {
+        "startLine": 118,
+        "startChar": 26,
+        "endLine": 118,
+        "endChar": 32
+      },
+      "revId": "ad92c722986a5a8ead0778dcf6bbc90a850e674d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c08adab_91397eee",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 1
