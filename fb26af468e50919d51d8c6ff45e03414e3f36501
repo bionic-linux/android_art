@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6a2564_0a0e9b4f",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-20T22:28:00Z",
+      "side": 1,
+      "message": "Note this code, if you enable libgtest_host on 32bit hosts then you cause segvs in the gtest global variable destructor code. I believe this to be a gtest bug.",
+      "range": {
+        "startLine": 179,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 9
+      },
+      "revId": "fb26af468e50919d51d8c6ff45e03414e3f36501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
