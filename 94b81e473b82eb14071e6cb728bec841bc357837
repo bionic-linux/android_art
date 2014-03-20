@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6a2564_2a26ffc9",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-03-20T22:29:26Z",
+      "side": 1,
+      "message": "Some explanation of why?",
+      "range": {
+        "startLine": 1106,
+        "startChar": 23,
+        "endLine": 1106,
+        "endChar": 24
+      },
+      "revId": "94b81e473b82eb14071e6cb728bec841bc357837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
