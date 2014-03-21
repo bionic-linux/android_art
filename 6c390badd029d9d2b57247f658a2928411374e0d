@@ -16,6 +16,24 @@
       "revId": "6c390badd029d9d2b57247f658a2928411374e0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cf3951c_e4fe8ed3",
+        "filename": "runtime/offsets.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-21T23:27:41Z",
+      "side": 1,
+      "message": "Have no idea cpplint doesn\u0027t fail. Done.",
+      "parentUuid": "3c5e35d0_c3ce294a",
+      "revId": "6c390badd029d9d2b57247f658a2928411374e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
