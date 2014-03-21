@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c5e35d0_c3ce294a",
+        "filename": "runtime/offsets.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-21T23:23:49Z",
+      "side": 1,
+      "message": "Isn\u0027t there supposed to be an empty line before the protected:? How is this even passing cpplint?",
+      "revId": "6c390badd029d9d2b57247f658a2928411374e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
