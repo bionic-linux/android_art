@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcdf857e_5f48e4ec",
+        "filename": "compiler/dex/quick/x86/target_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-03-22T00:15:38Z",
+      "side": 1,
+      "message": "No issue if I do not use xchg. Could be a LIR optimization doing the damage. Still investigating.",
+      "revId": "813e5bace9c67dbe9704a20ccd01744330c0f5bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
