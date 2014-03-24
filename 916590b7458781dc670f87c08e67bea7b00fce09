@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cb2c15a_70a1a9b8",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1018083
+      },
+      "writtenOn": "2014-03-24T22:20:17Z",
+      "side": 1,
+      "message": "is this in lieu of a todo?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 76
+      },
+      "revId": "916590b7458781dc670f87c08e67bea7b00fce09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cbcc931_b5a8285e",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1018083
+      },
+      "writtenOn": "2014-03-24T22:20:17Z",
+      "side": 1,
+      "message": "related to earlier comment",
+      "range": {
+        "startLine": 637,
+        "startChar": 54,
+        "endLine": 637,
+        "endChar": 55
+      },
+      "revId": "916590b7458781dc670f87c08e67bea7b00fce09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
