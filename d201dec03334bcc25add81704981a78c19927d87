@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "1c23318f_a5381e53",
+        "filename": "runtime/gc/accounting/remembered_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T20:34:13Z",
+      "side": 0,
+      "message": "Will a segfault give us the stack trace, but a DCHECK does not? If it\u0027s the case, maybe a DCHECK failure should cause a stack trace to be printed?\n\nI think that a benefit might be assertion/invariant documentation. And, if the distance from DCHECK to the segfault point is far, then diagnosis may be quicker on a DCHECK failure than a segfault where obj may be passed around among functions.",
+      "parentUuid": "dc6ef9af_3975279d",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c78f56e_19f5cf35",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 3
@@ -160,6 +178,24 @@
       "side": 0,
       "message": "Just added a log fatal in the if statement, sound good?",
       "parentUuid": "3c78f56e_d9019763",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc1f3d43_844c060e",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T20:34:13Z",
+      "side": 0,
+      "message": "Yes.",
+      "parentUuid": "3c3d559f_f4e7304f",
       "revId": "d201dec03334bcc25add81704981a78c19927d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
