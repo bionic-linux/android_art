@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3d559f_1125ae8f",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T19:23:55Z",
+      "side": 1,
+      "message": "This was changed from Object to HeapReference so that the MarkObject() now updates the field (with the forwarding address), correct?",
+      "range": {
+        "startLine": 580,
+        "startChar": 58,
+        "endLine": 580,
+        "endChar": 65
+      },
+      "revId": "407f702da4f867c074fc3c8c688b8f8c32279eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3d559f_f1ce6249",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T19:23:55Z",
+      "side": 1,
+      "message": "I see the need to convert from Object* to HeapReference, but it seems not ideal to have a HeapReference on the stack because it\u0027s not a heap reference (a reference in the heap) and because if a read barrier might trigger here, a bad thing may happen (though this is specific to the semi-space collector which does not have a read barrier.)\n\nHow about changing the argument type of MarkObject() from HeapReference to ObjectReference and using ObjectReference here()? Since ObjectReference is a super class of HeapReference, MarkObject() would work for both ObjectReference and HeapReference?\n\nAlternatively, Is it possible to get rid of MarkObjectCallback() as it appears the only remaining use is for ProcessReferences() which does not seem to have a problem with using MarkHeapReferenceCallback?",
+      "range": {
+        "startLine": 634,
+        "startChar": 7,
+        "endLine": 634,
+        "endChar": 10
+      },
+      "revId": "407f702da4f867c074fc3c8c688b8f8c32279eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6ef9af_b642267e",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T19:23:55Z",
+      "side": 1,
+      "message": "Similar comment as above. How about using ObjectReference here instead of HeapReference?",
+      "range": {
+        "startLine": 646,
+        "startChar": 7,
+        "endLine": 646,
+        "endChar": 10
+      },
+      "revId": "407f702da4f867c074fc3c8c688b8f8c32279eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6ef9af_9609aaff",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T19:23:55Z",
+      "side": 1,
+      "message": "nit: This comment should be Object::VisitReferences()?",
+      "range": {
+        "startLine": 1309,
+        "startChar": 9,
+        "endLine": 1309,
+        "endChar": 41
+      },
+      "revId": "407f702da4f867c074fc3c8c688b8f8c32279eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3d559f_519bb6a5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-25T19:23:55Z",
+      "side": 1,
+      "message": "nit: is_static",
+      "range": {
+        "startLine": 1919,
+        "startChar": 68,
+        "endLine": 1919,
+        "endChar": 74
+      },
+      "revId": "407f702da4f867c074fc3c8c688b8f8c32279eff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
