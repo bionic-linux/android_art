@@ -22,6 +22,24 @@
       "revId": "0620817394e2594ae0b1d22c900067e672b29e97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcd6a580_4d2ccd79",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T01:13:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd6a580_4a7793e3",
+      "revId": "0620817394e2594ae0b1d22c900067e672b29e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
