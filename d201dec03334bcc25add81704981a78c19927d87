@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "1c23318f_2811636d",
+        "filename": "runtime/gc/accounting/remembered_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T20:57:56Z",
+      "side": 0,
+      "message": "I suppose you are right, though DCHECK aborts do tend to not give stack traces due to deadlocks fairly often.",
+      "parentUuid": "1c75f176_5510ecd7",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c78f56e_19f5cf35",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 3
