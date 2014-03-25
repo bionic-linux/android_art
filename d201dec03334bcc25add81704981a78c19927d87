@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "3c78f56e_9ca8ed5e",
+        "filename": "runtime/gc/accounting/remembered_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T19:58:25Z",
+      "side": 0,
+      "message": "Yes",
+      "parentUuid": "3c3d559f_91843e8d",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3d559f_11992eef",
         "filename": "runtime/gc/accounting/remembered_set.cc",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 99,
         "endChar": 10
       },
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc6ef9af_3975279d",
+        "filename": "runtime/gc/accounting/remembered_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T19:58:25Z",
+      "side": 0,
+      "message": "I dislike null DCHECKs when you will get a segfault + stack trace if the object is null. It adds code and slows debug builds without providing real benefit",
+      "parentUuid": "3c3d559f_11992eef",
       "revId": "d201dec03334bcc25add81704981a78c19927d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "3c78f56e_1ce4ddc2",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T19:58:25Z",
+      "side": 0,
+      "message": "There are a lot of things we initialize in InitializePhase which weren\u0027t in the constructor before. I just made it more consistent.",
+      "parentUuid": "3c78f56e_19f5cf35",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c78f56e_d9019763",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 3
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "3c3d559f_f4e7304f",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T19:58:25Z",
+      "side": 0,
+      "message": "Just added a log fatal in the if statement, sound good?",
+      "parentUuid": "3c78f56e_d9019763",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3d559f_9110be37",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 3
@@ -111,6 +183,24 @@
         "endLine": 278,
         "endChar": 8
       },
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3d559f_94ffccd2",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-25T19:58:25Z",
+      "side": 0,
+      "message": "Same as comment in other file.",
+      "parentUuid": "3c3d559f_9110be37",
       "revId": "d201dec03334bcc25add81704981a78c19927d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
