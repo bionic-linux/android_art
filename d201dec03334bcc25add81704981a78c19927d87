@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "1c75f176_5510ecd7",
+        "filename": "runtime/gc/accounting/remembered_set.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-03-25T20:43:25Z",
+      "side": 0,
+      "message": "DCHECK will print more context since it will LOG(FATAL) which will cause a Runtime::Abort()",
+      "parentUuid": "1c23318f_a5381e53",
+      "revId": "d201dec03334bcc25add81704981a78c19927d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c78f56e_19f5cf35",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 3
