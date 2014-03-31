@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "f9a02f5c_bcac011a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-31T18:00:48Z",
+      "side": 1,
+      "message": "Yes that is the reason, previously we would keep doing sticky until it did not free enough memory. This meant that the last few sticky GC would only free a handful of bytes, and this is inefficient.",
+      "parentUuid": "199423fe_5d6ffb84",
+      "revId": "5ae2c9335a0c4eeaf4c67a52d066f16aad1aa907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9a02f5c_1ccbb53b",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 1160,
         "endChar": 11
       },
+      "revId": "5ae2c9335a0c4eeaf4c67a52d066f16aad1aa907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94bcf71_816f6d84",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-03-31T18:00:48Z",
+      "side": 1,
+      "message": "Will do in another CL.",
+      "parentUuid": "f9a02f5c_1ccbb53b",
       "revId": "5ae2c9335a0c4eeaf4c67a52d066f16aad1aa907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
