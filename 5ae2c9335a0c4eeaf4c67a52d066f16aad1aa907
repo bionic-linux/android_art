@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "199423fe_5d6ffb84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-31T17:55:54Z",
+      "side": 1,
+      "message": "Presumably, the new logic avoid excessive/repeated sticky GCs because the next GC type would sometimes be the partial GC, correct?\n\nAnother way to view this may be that with the new code AllocateWithGc() now honors the next_gc_type_ set at the last GC, which it didn\u0027t?",
+      "range": {
+        "startLine": 11,
+        "startChar": 62,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "5ae2c9335a0c4eeaf4c67a52d066f16aad1aa907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9a02f5c_1ccbb53b",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-03-31T17:55:54Z",
+      "side": 1,
+      "message": "A short comment on what this code intends to do (including the following gc_plan_ loop)?",
+      "range": {
+        "startLine": 1160,
+        "startChar": 2,
+        "endLine": 1160,
+        "endChar": 11
+      },
+      "revId": "5ae2c9335a0c4eeaf4c67a52d066f16aad1aa907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
