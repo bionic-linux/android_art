@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9c3cfc8_e4cafa35",
+        "filename": "runtime/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-04-14T11:23:43Z",
+      "side": 1,
+      "message": "Moved to its own file, and imported test from the Dart code base (where this code is originally from).",
+      "parentUuid": "59ee9b35_e86307ed",
+      "range": {
+        "startLine": 429,
+        "startChar": 6,
+        "endLine": 429,
+        "endChar": 14
+      },
+      "revId": "fd63b864855203169dc84a915ae1205c9d39c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c3cfc8_8473466e",
         "filename": "runtime/utils.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-04-14T10:47:15Z",
       "side": 1,
       "message": "duplicate: remove",
+      "range": {
+        "startLine": 442,
+        "startChar": 5,
+        "endLine": 442,
+        "endChar": 7
+      },
+      "revId": "fd63b864855203169dc84a915ae1205c9d39c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_c4cffe43",
+        "filename": "runtime/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-04-14T11:23:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9c3cfc8_8473466e",
       "range": {
         "startLine": 442,
         "startChar": 5,
