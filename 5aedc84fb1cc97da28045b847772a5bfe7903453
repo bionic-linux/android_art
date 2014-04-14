@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9980137b_705dfed6",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-14T22:57:16Z",
+      "side": 1,
+      "message": "s/virtual// as the class is FINAL and we have OVERRIDE. Similar below.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9982ff7_5cf81d5c",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2473,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-14T22:57:16Z",
+      "side": 1,
+      "message": "Move inside function definition.",
+      "range": {
+        "startLine": 2470,
+        "startChar": 0,
+        "endLine": 2473,
+        "endChar": 73
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9982ff7_dc034da2",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2476,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-14T22:57:16Z",
+      "side": 1,
+      "message": "!Contains ?",
+      "range": {
+        "startLine": 2476,
+        "startChar": 32,
+        "endLine": 2476,
+        "endChar": 51
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9982ff7_9c4b85f4",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-14T22:57:16Z",
+      "side": 1,
+      "message": "FINAL again and lose the virtuals?",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
