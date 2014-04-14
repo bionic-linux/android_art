@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59ee9b35_e86307ed",
+        "filename": "runtime/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T10:47:15Z",
+      "side": 1,
+      "message": "Maybe it deserves its own module in runtime/base directory. BTW do you have some tests? You can take a look at runtime/base/bit_vector.h/cc and runtime/base/bit_vector_test.cc",
+      "range": {
+        "startLine": 429,
+        "startChar": 6,
+        "endLine": 429,
+        "endChar": 14
+      },
+      "revId": "fd63b864855203169dc84a915ae1205c9d39c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_8473466e",
+        "filename": "runtime/utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T10:47:15Z",
+      "side": 1,
+      "message": "duplicate: remove",
+      "range": {
+        "startLine": 442,
+        "startChar": 5,
+        "endLine": 442,
+        "endChar": 7
+      },
+      "revId": "fd63b864855203169dc84a915ae1205c9d39c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
