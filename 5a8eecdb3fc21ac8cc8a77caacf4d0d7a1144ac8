@@ -1,0 +1,740 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59ee9b35_25ccfafd",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "In the future we\u0027ll need to do this for double too. I suggest adding a TODO so we don\u0027t forget.",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 57
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_85c986f0",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "The correct test is \"instruction.Opcode() !\u003d Instruction::INVOKE_STATIC \u0026\u0026 instruction.Opcode() !\u003d Instruction::INVOKE_STATIC_RANGE\".",
+      "range": {
+        "startLine": 269,
+        "startChar": 26,
+        "endLine": 269,
+        "endChar": 76
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_65c602e0",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Why checking that? I don\u0027t see such check in the verifier, the quick compiler or the interpreter. By convention, args[i] contains the low reg of a reg pair. We only skip args[i + 1] as you do some lines below.",
+      "range": {
+        "startLine": 295,
+        "startChar": 57,
+        "endLine": 295,
+        "endChar": 83
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_047636aa",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Add a TODO to not forget kPrimDouble in the future.",
+      "range": {
+        "startLine": 303,
+        "startChar": 8,
+        "endLine": 303,
+        "endChar": 41
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_44702eac",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Why not moving it to BuildReturn with a special case for kPrimVoid. The return logic would be at the same place.",
+      "range": {
+        "startLine": 362,
+        "startChar": 22,
+        "endLine": 362,
+        "endChar": 33
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_a4cda2a9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "What about MOVE_RESULT and MOVE_RESULT_OBJECT ?",
+      "range": {
+        "startLine": 496,
+        "startChar": 22,
+        "endLine": 496,
+        "endChar": 38
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_a5880aa0",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Is it really useful since we have isInvalid? I suggest only keep IsValid and remove isInvalid.",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 14
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_a443e683",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Split in 2 DCHECK",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 99,
+        "endChar": 44
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_85a22616",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 14,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_e59212cc",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Why using \"enum\"? Could you use \"static constexpr\" instead ?",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 6
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_8414e62a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 38
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_a55aca6b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 30,
+        "endLine": 125,
+        "endChar": 38
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_04bf56de",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "I suggest moving this to a dedicated function (GetHighStackIndex ?) so the logic is in one place.",
+      "range": {
+        "startLine": 168,
+        "startChar": 31,
+        "endLine": 168,
+        "endChar": 73
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_4715c459",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 191,
+        "startChar": 55,
+        "endLine": 191,
+        "endChar": 63
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_e4b03a0b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Do we load/store boolean, byte, char and short as integer ? I mean, do we always generate code using ldr/str instructions only or do we support ldrb/strb, ldrh/strh, ... ?",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_c700b423",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Dump the type for info.",
+      "range": {
+        "startLine": 391,
+        "startChar": 6,
+        "endLine": 391,
+        "endChar": 47
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_24ab729e",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Dump the type for info.",
+      "range": {
+        "startLine": 414,
+        "startChar": 8,
+        "endLine": 414,
+        "endChar": 49
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_04a8f69d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Dump the type for info.",
+      "range": {
+        "startLine": 453,
+        "startChar": 6,
+        "endLine": 453,
+        "endChar": 49
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_44a2eebf",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Maybe we should make a difference between types we do not expect (boolean, byte, ...) and types we do not support yet (float and double).",
+      "range": {
+        "startLine": 540,
+        "startChar": 4,
+        "endLine": 540,
+        "endChar": 12
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_64a56ac6",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Dump the type for info.",
+      "range": {
+        "startLine": 541,
+        "startChar": 6,
+        "endLine": 541,
+        "endChar": 36
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_c41ede46",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 38
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_27123873",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 38
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_870fcc49",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "const Location\u0026 ?",
+      "range": {
+        "startLine": 190,
+        "startChar": 55,
+        "endLine": 190,
+        "endChar": 63
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_8554e63d",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "IsValid",
+      "range": {
+        "startLine": 432,
+        "startChar": 14,
+        "endLine": 432,
+        "endChar": 22
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_04211684",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Mask",
+      "range": {
+        "startLine": 437,
+        "startChar": 15,
+        "endLine": 437,
+        "endChar": 19
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_642e0a74",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "MaskInPlace",
+      "range": {
+        "startLine": 443,
+        "startChar": 15,
+        "endLine": 443,
+        "endChar": 28
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_6551e24b",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Shift",
+      "range": {
+        "startLine": 449,
+        "startChar": 13,
+        "endLine": 449,
+        "endChar": 18
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c3cfc8_442b0e62",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "BitSize",
+      "range": {
+        "startLine": 454,
+        "startChar": 13,
+        "endLine": 454,
+        "endChar": 20
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_670c4055",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Encode",
+      "range": {
+        "startLine": 459,
+        "startChar": 15,
+        "endLine": 459,
+        "endChar": 21
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_c729d4a1",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Decode",
+      "range": {
+        "startLine": 465,
+        "startChar": 11,
+        "endLine": 465,
+        "endChar": 17
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_c53eeeed",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Update",
+      "range": {
+        "startLine": 472,
+        "startChar": 15,
+        "endLine": 472,
+        "endChar": 21
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_e73850e9",
+        "filename": "test/403-optimizing-long/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T09:03:22Z",
+      "side": 1,
+      "message": "Is it worth adding test for negative values ?",
+      "range": {
+        "startLine": 27,
+        "startChar": 21,
+        "endLine": 27,
+        "endChar": 25
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
