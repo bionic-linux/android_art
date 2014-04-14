@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39f3a71c_8754ec3d",
+        "filename": "runtime/oat_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-14T17:03:10Z",
+      "side": 0,
+      "message": "This is a bogus check. Unlike OatWriter::OatClass (where I fix 2 ^ 16 to 1 \u003c\u003c 16, https://android-review.googlesource.com/#/c/90726/1/compiler/oat_writer.h), OatFile::OatClass doesn\u0027t keep the status in int16_t.",
+      "parentUuid": "19c7c3d6_ce6d578a",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 98
+      },
+      "revId": "9b417e4f0f87da6bfe8dc5f02c987acfcb6dca31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9980137b_819f9ace",
         "filename": "runtime/oat_file.h",
         "patchSetId": 2
