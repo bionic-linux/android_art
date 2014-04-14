@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79851f89_837080ad",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-14T18:48:38Z",
+      "side": 1,
+      "message": "We should document seemingly arbitrary constants.",
+      "range": {
+        "startLine": 226,
+        "startChar": 56,
+        "endLine": 226,
+        "endChar": 59
+      },
+      "revId": "be626297990e8111ffb951aa12e86d12e2cb7118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
