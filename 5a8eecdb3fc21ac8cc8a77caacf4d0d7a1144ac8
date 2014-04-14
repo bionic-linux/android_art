@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "39f3a71c_67c9e094",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T10:34:51Z",
+      "side": 1,
+      "message": "I\u0027m more concerned about just ignoring this pattern. I don\u0027t think we ever expect to encounter it. In the interpreter we load adjacent register pair {lo, hi\u003dlo+1} without checking anything. At least, you should LOG(WARNING) when it happens.\n\nIt\u0027s an interesting point and we should figure out if verifier, interpreter and compilers are on the same page about that.",
+      "parentUuid": "59ee9b35_652a82a7",
+      "range": {
+        "startLine": 295,
+        "startChar": 57,
+        "endLine": 295,
+        "endChar": 83
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9c3cfc8_047636aa",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 1
@@ -425,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "39f3a71c_07b1fc0c",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T10:34:51Z",
+      "side": 1,
+      "message": "OK, I always get confused about this property.",
+      "parentUuid": "f9c3cfc8_c4f09eba",
+      "range": {
+        "startLine": 153,
+        "startChar": 14,
+        "endLine": 153,
+        "endChar": 22
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ee9b35_e59212cc",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 1
@@ -623,6 +671,30 @@
       "side": 1,
       "message": "For simplicity, I\u0027m currently only treating locals as 32bits and use 32bits instructions/registers. For static/instance fields we might use different instructions/registers if we pack multiple fields in a single word, but I don\u0027t believe we do that.",
       "parentUuid": "f9c3cfc8_e4b03a0b",
+      "range": {
+        "startLine": 220,
+        "startChar": 8,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "5a8eecdb3fc21ac8cc8a77caacf4d0d7a1144ac8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_e7b5f0f8",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-14T10:34:51Z",
+      "side": 1,
+      "message": "Yes, I think we\u0027ll need these for field and array elements. I just wanted to be sure we do not forget it.",
+      "parentUuid": "f9c3cfc8_c409befa",
       "range": {
         "startLine": 220,
         "startChar": 8,
