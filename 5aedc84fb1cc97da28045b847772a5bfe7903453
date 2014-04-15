@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f9c3cfc8_27ab749e",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-15T06:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9980137b_705dfed6",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 10
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9982ff7_5cf81d5c",
         "filename": "runtime/debugger.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-04-14T22:57:16Z",
       "side": 1,
       "message": "Move inside function definition.",
+      "range": {
+        "startLine": 2470,
+        "startChar": 0,
+        "endLine": 2473,
+        "endChar": 73
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ee9b35_5347446d",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2473,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-15T06:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9982ff7_5cf81d5c",
       "range": {
         "startLine": 2470,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f9c3cfc8_07a8f89d",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2476,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-15T06:41:57Z",
+      "side": 1,
+      "message": "No, this is correct here. If we already have an ObjectId for \u0027this\u0027, we call Add to increment the reference counter of the corresponding registry entry.",
+      "parentUuid": "f9982ff7_dc034da2",
+      "range": {
+        "startLine": 2476,
+        "startChar": 32,
+        "endLine": 2476,
+        "endChar": 51
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9982ff7_9c4b85f4",
         "filename": "runtime/trace.h",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2014-04-14T22:57:16Z",
       "side": 1,
       "message": "FINAL again and lose the virtuals?",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 11
+      },
+      "revId": "5aedc84fb1cc97da28045b847772a5bfe7903453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39f3a71c_3276f8aa",
+        "filename": "runtime/trace.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-15T06:41:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9982ff7_9c4b85f4",
       "range": {
         "startLine": 58,
         "startChar": 6,
