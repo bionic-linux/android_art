@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59585b1a_8f0a55ef",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-16T10:14:21Z",
+      "side": 1,
+      "message": "Would be nice to also dump the method name and DEX pc so we can take a look when it happens. Feel free to do this in your next CL.",
+      "range": {
+        "startLine": 302,
+        "startChar": 55,
+        "endLine": 302,
+        "endChar": 57
+      },
+      "revId": "19a3bcbdee00802072e84eb68a79d070445c1b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
