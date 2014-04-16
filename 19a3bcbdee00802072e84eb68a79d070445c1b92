@@ -22,6 +22,30 @@
       "revId": "19a3bcbdee00802072e84eb68a79d070445c1b92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59585b1a_8fda55b5",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-04-16T13:21:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59585b1a_8f0a55ef",
+      "range": {
+        "startLine": 302,
+        "startChar": 55,
+        "endLine": 302,
+        "endChar": 57
+      },
+      "revId": "19a3bcbdee00802072e84eb68a79d070445c1b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
