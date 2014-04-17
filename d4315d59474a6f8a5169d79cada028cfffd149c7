@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "853507d4_124d01a7",
+        "filename": "compiler/common_compiler_test.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-04-17T22:55:17Z",
+      "side": 1,
+      "message": "we don\u0027t put user id\u0027s in TODO\u0027s in android. see http://source.android.com/source/code-style.html",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a51a0b65_93e7dcf7",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 3
@@ -18,6 +41,76 @@
         "startChar": 17,
         "endLine": 509,
         "endChar": 43
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45586f41_82788e09",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-04-17T22:55:17Z",
+      "side": 1,
+      "message": "i actually don\u0027t care about doing the checksum in order.",
+      "parentUuid": "a51a0b65_93e7dcf7",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 509,
+        "endChar": 43
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c51d3f5e_1e574a8a",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-04-17T22:55:17Z",
+      "side": 1,
+      "message": "i thought if we included the foo-inl.h, we didn\u0027t include foo.h?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45586f41_fd324be3",
+        "filename": "runtime/oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-04-17T22:55:17Z",
+      "side": 1,
+      "message": "I thought Ian\u0027s goal was to move all of these to be just before the code pointer? then OatMethodOffsets can go away since in its place we\u0027d just have an array of code offsets?\n\ni thought maybe this was because these were common vs quick specific, but the rest seem to be quick specific as well?",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
       },
       "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
