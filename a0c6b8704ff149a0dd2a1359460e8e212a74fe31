@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45586f41_5ecb8a85",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-04-18T15:05:28Z",
+      "side": 1,
+      "message": "Maybe it is a good idea to refactor a bit. A lot of the code that is touched here is duplicated.",
+      "revId": "a0c6b8704ff149a0dd2a1359460e8e212a74fe31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
