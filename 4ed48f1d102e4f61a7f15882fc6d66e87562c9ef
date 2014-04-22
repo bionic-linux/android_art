@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e53fa3e6_60d02c31",
+        "filename": "runtime/mirror/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-22T17:09:21Z",
+      "side": 1,
+      "message": "Instrumentation::GetQuickCodeFor() for class initializers returns pointer to the quick_to_interpreter_bridge in the oat file (see OatHeader::quick_to_interpreter_bridge_offset_) after checking only for the art_quick_to_interpreter_bridge.\n\nI\u0027m wondering what happens when we decide to skip compilation of a method other than a class initializer. This needs more investigation.",
+      "range": {
+        "startLine": 379,
+        "startChar": 60,
+        "endLine": 379,
+        "endChar": 91
+      },
+      "revId": "4ed48f1d102e4f61a7f15882fc6d66e87562c9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
