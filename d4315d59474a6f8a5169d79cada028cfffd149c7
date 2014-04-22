@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e53fa3e6_40a890ae",
+        "filename": "compiler/common_compiler_test.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-22T17:34:15Z",
+      "side": 1,
+      "message": "OK. And the TODO is now done.",
+      "parentUuid": "853507d4_124d01a7",
+      "range": {
+        "startLine": 185,
+        "startChar": 9,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a51a0b65_93e7dcf7",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c5a7ff88_07a298cc",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-22T17:34:15Z",
+      "side": 1,
+      "message": "Moving the maps before the code makes these unnecessary.",
+      "parentUuid": "45586f41_82788e09",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 509,
+        "endChar": 43
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c51d3f5e_1e574a8a",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 3
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "e53fa3e6_c09b0094",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-22T17:34:15Z",
+      "side": 1,
+      "message": "I wasn\u0027t aware of that. Shall do.",
+      "parentUuid": "c51d3f5e_1e574a8a",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45586f41_fd324be3",
         "filename": "runtime/oat.cc",
         "patchSetId": 3
@@ -106,6 +178,30 @@
       "writtenOn": "2014-04-17T22:55:17Z",
       "side": 1,
       "message": "I thought Ian\u0027s goal was to move all of these to be just before the code pointer? then OatMethodOffsets can go away since in its place we\u0027d just have an array of code offsets?\n\ni thought maybe this was because these were common vs quick specific, but the rest seem to be quick specific as well?",
+      "range": {
+        "startLine": 361,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 33
+      },
+      "revId": "d4315d59474a6f8a5169d79cada028cfffd149c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e53fa3e6_60a78cdc",
+        "filename": "runtime/oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-22T17:34:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the gc_map_offset_ but I intend to move the frame info in a separate CL. The ArtMethod::quick_frame_size_in_bytes_ is used for native and runtime methods as well and removing that usage will not be trivial.",
+      "parentUuid": "45586f41_fd324be3",
       "range": {
         "startLine": 361,
         "startChar": 0,
