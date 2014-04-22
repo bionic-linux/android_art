@@ -22,6 +22,30 @@
       "revId": "4ed48f1d102e4f61a7f15882fc6d66e87562c9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65349307_c47cb043",
+        "filename": "runtime/mirror/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-04-22T17:38:46Z",
+      "side": 1,
+      "message": "we can now skip compilation for everything (see \"mm use-art-interpret-only\"). I\u0027m guessing this is just not used in those cases? If you are concerned about this change breaking that, you can use that target to switch and use \"mm use-art-full\" to switch back)",
+      "parentUuid": "e53fa3e6_60d02c31",
+      "range": {
+        "startLine": 379,
+        "startChar": 60,
+        "endLine": 379,
+        "endChar": 91
+      },
+      "revId": "4ed48f1d102e4f61a7f15882fc6d66e87562c9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
