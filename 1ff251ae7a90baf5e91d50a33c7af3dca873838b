@@ -69,6 +69,30 @@
       "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5137f9f_049076c9",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-23T19:16:31Z",
+      "side": 1,
+      "message": "OK. I was going to say the following, but there\u0027s already ObjectArray\u003cT\u003e::OffsetOfElement() which we can use in this case?\n\n---\n\nDo we need MirrorType? It does not seem that sizeof(HeapReference\u003cMirrorType\u003e) is a function of MirrorType or MirrorType is propagated to the return type.\n\nIf this is only for object arrays, I\u0027d imagine something like:\n\nstatic MemberOffset ObjectArrayDataOffsetAtIndex(int32_t index) {\n  size_t component_size \u003d sizeof(HeapReference\u003cObject\u003e);\n  return MemberOffset(DataOffset(component_size).SizeValue() + component_size * index);\n}\n\nassuming that we don\u0027t need to parameterize it with MirrorType and we\u0027d like to emphasize that it\u0027s only for object arrays. We could also consider moving it to object_array.h and losing the \"ObjectArray\" name prefix.\n\nA minor point: I think the convention is to have MirrorType include the *. So, HeapReference\u003cMirrorType\u003e instead of HeapReference\u003cMirrorType*\u003e, if we need to use MirrorType at all.",
+      "parentUuid": "c5137f9f_64a20ace",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
