@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "85fd0775_43453978",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1038009
+      },
+      "writtenOn": "2014-04-23T23:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f76b98_4e13b32d",
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "652bb3c3_0cc0972f",
         "filename": "runtime/base/bit_vector.cc",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "85fd0775_63e4bd72",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1038009
+      },
+      "writtenOn": "2014-04-23T23:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "652bb3c3_0cc0972f",
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5f76b98_ee01bfd0",
         "filename": "runtime/base/bit_vector.cc",
         "patchSetId": 2
@@ -47,6 +83,30 @@
       "writtenOn": "2014-04-23T21:10:15Z",
       "side": 1,
       "message": "That\u0027s confusing. I don\u0027t think the BitVector should be confused with a large binary number where you\u0027d want to print the most significant digit first.",
+      "range": {
+        "startLine": 385,
+        "startChar": 24,
+        "endLine": 385,
+        "endChar": 33
+      },
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_c62ae4af",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1038009
+      },
+      "writtenOn": "2014-04-23T23:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f76b98_ee01bfd0",
       "range": {
         "startLine": 385,
         "startChar": 24,
