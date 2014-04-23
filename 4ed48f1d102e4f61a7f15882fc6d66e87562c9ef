@@ -46,6 +46,30 @@
       "revId": "4ed48f1d102e4f61a7f15882fc6d66e87562c9ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8526e7f6_8db2c5e9",
+        "filename": "runtime/mirror/art_method.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-23T21:11:46Z",
+      "side": 1,
+      "message": "oatdump is the only case where we hit this. I guess I could remove this check and fix oatdump instead.",
+      "parentUuid": "65349307_c47cb043",
+      "range": {
+        "startLine": 379,
+        "startChar": 60,
+        "endLine": 379,
+        "endChar": 91
+      },
+      "revId": "4ed48f1d102e4f61a7f15882fc6d66e87562c9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
