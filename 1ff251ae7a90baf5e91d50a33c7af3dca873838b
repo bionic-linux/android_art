@@ -22,6 +22,29 @@
       "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_5c7242f9",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-23T17:53:30Z",
+      "side": 1,
+      "message": "How about supporting non-object arrays as well?\n\nI\u0027m thinking of something like:\n\ntemplate\u003ctypename ComponentType\u003e\nstatic MemberOffset DataOffsetAtIndex(int32_t index) {\n  size_t component_size \u003d sizeof(ComponentType);\n  return MemberOffset(DataOffset(component_size).SizeValue() + component_size * index);\n}",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
