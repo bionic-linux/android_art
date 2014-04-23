@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2557fb42_40a7dfad",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-04-23T16:41:27Z",
+      "side": 1,
+      "message": "Typo?",
+      "range": {
+        "startLine": 1321,
+        "startChar": 74,
+        "endLine": 1321,
+        "endChar": 75
+      },
+      "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
