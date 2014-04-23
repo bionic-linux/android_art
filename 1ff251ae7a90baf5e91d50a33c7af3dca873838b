@@ -45,6 +45,30 @@
       "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5137f9f_64a20ace",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-04-23T18:28:30Z",
+      "side": 1,
+      "message": "I am not sure I agree. The issue is that on a high level, object arrays contain links to objects. But with your change, one would have to write \u003cHeapReference\u003cmirror::X\u003e\u003e so that component_size gets the right size, which is not as intuitive and straightforward as just \u003cmirror::X\u003e.",
+      "parentUuid": "85fd0775_5c7242f9",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
