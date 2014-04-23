@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5f76b98_4e13b32d",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-23T21:10:15Z",
+      "side": 1,
+      "message": "src_size \u003d BitsToWords(highest_bit);\n\nIf we\u0027re calculating the highest_bit unconditionally, we may as well use it to limit the loop below and potentially avoid the reallocating branch.",
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "652bb3c3_0cc0972f",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-23T21:10:15Z",
+      "side": 1,
+      "message": "Why don\u0027t you construct the whole string in a stringstream?",
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5f76b98_ee01bfd0",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-23T21:10:15Z",
+      "side": 1,
+      "message": "That\u0027s confusing. I don\u0027t think the BitVector should be confused with a large binary number where you\u0027d want to print the most significant digit first.",
+      "range": {
+        "startLine": 385,
+        "startChar": 24,
+        "endLine": 385,
+        "endChar": 33
+      },
+      "revId": "0a1b15f213000af6d84d1dbb68bb25c43839679a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
