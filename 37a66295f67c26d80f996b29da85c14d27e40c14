@@ -278,6 +278,29 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_652f7cae",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T17:51:17Z",
+      "side": 1,
+      "message": "We rely on the zero\u0027ed header for some of the fields\u0027 initial value here. Can you add DCHECKs that check that the fields have zero initial values for the purpose of verification and documentation? For example,\n\nDCHECK(!new_run-\u003eIsThreadLocal());",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 4
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_432ff916",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -501,6 +524,29 @@
         "startChar": 29,
         "endLine": 807,
         "endChar": 30
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_21e48a71",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T17:51:17Z",
+      "side": 1,
+      "message": "How about DCHECK\u0027ing that all the bits before first_bitmap_idx_ are all set here to verify that there\u0027s no slots \u0027leaked\u0027?",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 4
       },
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
