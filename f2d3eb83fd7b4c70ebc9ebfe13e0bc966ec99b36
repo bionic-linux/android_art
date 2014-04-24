@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45aeaf94_b80c59cb",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-24T11:53:49Z",
+      "side": 1,
+      "message": "Should this be a CHECK? Or perhaps another condition in the if-clause below? Should we revisit all uses of GetQuickToInterpreterBridge() and check the trampoline as well?",
+      "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
