@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45aeaf94_18a2a59e",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-24T10:34:08Z",
+      "side": 1,
+      "message": "This definition assigns a value that\u0027s never used, get rid of it. Just define the src_size below.",
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25b37bfb_1770b45e",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-24T10:34:08Z",
+      "side": 1,
+      "message": "I\u0027d prefer BitsToWords(highest_bit + 1). (My original suggestion in PS2 was obviously wrong.)",
+      "range": {
+        "startLine": 171,
+        "startChar": 13,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05c83774_96076ce6",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-24T10:34:08Z",
+      "side": 1,
+      "message": "I see you have dropped the non-index dump altogether. That\u0027s not exactly what I meant. I just wanted the ordering to go from the lowest bits just like the index dump. Add it back if you consider it useful.",
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05c83774_16bb5cd6",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-24T10:34:08Z",
+      "side": 1,
+      "message": "Please don\u0027t compare a bool to true. Just \"if (res) {\".",
+      "range": {
+        "startLine": 377,
+        "startChar": 11,
+        "endLine": 377,
+        "endChar": 19
+      },
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
