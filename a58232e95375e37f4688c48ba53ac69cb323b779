@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_2472d8f8",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-04-24T19:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45aeaf94_18a2a59e",
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25b37bfb_1770b45e",
         "filename": "runtime/base/bit_vector.cc",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2014-04-24T10:34:08Z",
       "side": 1,
       "message": "I\u0027d prefer BitsToWords(highest_bit + 1). (My original suggestion in PS2 was obviously wrong.)",
+      "range": {
+        "startLine": 171,
+        "startChar": 13,
+        "endLine": 171,
+        "endChar": 35
+      },
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_eef28779",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-04-24T19:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b37bfb_1770b45e",
       "range": {
         "startLine": 171,
         "startChar": 13,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_c449349b",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-04-24T19:22:19Z",
+      "side": 1,
+      "message": "no it\u0027s fine, I used to use it but no need anymore",
+      "parentUuid": "05c83774_96076ce6",
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05c83774_16bb5cd6",
         "filename": "runtime/base/bit_vector.cc",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2014-04-24T10:34:08Z",
       "side": 1,
       "message": "Please don\u0027t compare a bool to true. Just \"if (res) {\".",
+      "range": {
+        "startLine": 377,
+        "startChar": 11,
+        "endLine": 377,
+        "endChar": 19
+      },
+      "revId": "a58232e95375e37f4688c48ba53ac69cb323b779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_6e1677e0",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-04-24T19:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05c83774_16bb5cd6",
       "range": {
         "startLine": 377,
         "startChar": 11,
