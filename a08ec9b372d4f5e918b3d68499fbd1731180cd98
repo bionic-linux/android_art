@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5104b96_06451c79",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "We don\u0027t need to set this to false as the header must be zeroed at this point, correct?",
+      "range": {
+        "startLine": 547,
+        "startChar": 13,
+        "endLine": 547,
+        "endChar": 30
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_c215a258",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "This is the nullcheck this change intends to remove by using the dedicated full run, correct?",
+      "range": {
+        "startLine": 567,
+        "startChar": 17,
+        "endLine": 567,
+        "endChar": 33
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_a9117975",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "Can we keep these two DCHECKs?",
+      "range": {
+        "startLine": 573,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 78
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_776ab86e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "I think this DCHECK_NE should be retained, as \"DCHECK(IsThreadLocal());\". If it\u0027s not thread-local, calling this function would be a bug as thread-local free bit map should not be in use.\n\nPerhaps, the dedicated_full_run_\u0027s is_thread_local_ wasn\u0027t kept always set ti true due to line 613 in PS2?",
+      "range": {
+        "startLine": 879,
+        "startChar": 2,
+        "endLine": 879,
+        "endChar": 32
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_28bb8fd6",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "This is where the ptr array was nulled out, which caused a change in space_test.h. It wasn\u0027t necessary to do so.",
+      "range": {
+        "startLine": 1099,
+        "startChar": 4,
+        "endLine": 1099,
+        "endChar": 19
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_e82d2bca",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 0,
+      "message": "So, FreeList() no longer null out the pointer array, which is probably an optimization?",
+      "range": {
+        "startLine": 352,
+        "startChar": 43,
+        "endLine": 352,
+        "endChar": 50
+      },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

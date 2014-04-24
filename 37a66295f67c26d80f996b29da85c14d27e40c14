@@ -1,0 +1,1361 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e516c38e_59825340",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Is it possible to initialize dedicated_full_runs_ to point to dedicated_full_run_storage_ at this point?",
+      "range": {
+        "startLine": 45,
+        "startChar": 47,
+        "endLine": 45,
+        "endChar": 54
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_46455426",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Nice as it\u0027s now possible to see the bracket index in the lock names in the mutex dump.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_b96d47d5",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Move this to the end of Initialize() where its other fields are initialized?",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 46
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_26781808",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Should this be kCheckZeroMemory (which is currently equivalent)?",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 21
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_c5b76cc2",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Good point.",
+      "range": {
+        "startLine": 368,
+        "startChar": 13,
+        "endLine": 368,
+        "endChar": 18
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_19fa9b58",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Note to self: now it returns the byte size instead of number of pages.",
+      "range": {
+        "startLine": 449,
+        "startChar": 9,
+        "endLine": 449,
+        "endChar": 18
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_e6656059",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Nice that the debug build is probably somewhat faster.\n\nParanoid: DCHECK_EQ(total_bytes % sizeof(uword), 0)?",
+      "range": {
+        "startLine": 475,
+        "startChar": 11,
+        "endLine": 475,
+        "endChar": 16
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_a316a5dc",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "This is probably intended to be (note the location of the parentheses): \n\nreinterpret_cast\u003cbyte*\u003e(new_run) + headerSizes[idx];",
+      "range": {
+        "startLine": 541,
+        "startChar": 20,
+        "endLine": 541,
+        "endChar": 72
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_461554a0",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "numOfSlots[idx] and bracketSizes[idx] can be cached/hoisted out of the loop.",
+      "range": {
+        "startLine": 542,
+        "startChar": 29,
+        "endLine": 542,
+        "endChar": 39
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_c3ff6913",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but is prefetching beneficial for all the slots which can be up to \u003e 200, given the cost of this loop? Did you try limiting it to a fixed number?",
+      "range": {
+        "startLine": 543,
+        "startChar": 8,
+        "endLine": 543,
+        "endChar": 26
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_432ff916",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "So, lower_bound() wasn\u0027t necessary, I take it.",
+      "range": {
+        "startLine": 561,
+        "startChar": 18,
+        "endLine": 561,
+        "endChar": 23
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_037df1c1",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Note to self: is it safe to pass in dedicated_full_run_ to MergeThreadLocalFreeBitMapToAllocBitMap()",
+      "range": {
+        "startLine": 599,
+        "startChar": 28,
+        "endLine": 599,
+        "endChar": 67
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_c283e23f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "This comment needs to be updated.",
+      "range": {
+        "startLine": 605,
+        "startChar": 10,
+        "endLine": 605,
+        "endChar": 60
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_a0ca184e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "first_bitmap_idx_ is meant to be a vector index, not a slot index, as I understand. Why compare it to numOfSlots[idx]?\n\nEither case, why is this case? Because it was full? But it\u0027s all free now.\n\nWould it be the case regardless of what is_all_free_after_merge is?",
+      "range": {
+        "startLine": 606,
+        "startChar": 10,
+        "endLine": 606,
+        "endChar": 74
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_00b684e0",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Why set it to zero here? Isn\u0027t first_bitmap_idx_ already updated by MergeThreadLocalFreeBitMapToAllocBitMap()?",
+      "range": {
+        "startLine": 608,
+        "startChar": 8,
+        "endLine": 608,
+        "endChar": 48
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_0087a44f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I think this code (lines 612-623) should be skipped if thread_local_run \u003d\u003d dedicated_full_run_ as, I think, it\u0027d be cleaner if we don\u0027t insert dedicated_full_run_ into the full_runs_ or update its is_thread_local_ field.",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 80
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_455fdc1c",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Thanks for adding IsThreadLocal() and SetIsThreadLocal().",
+      "range": {
+        "startLine": 630,
+        "startChar": 26,
+        "endLine": 630,
+        "endChar": 42
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_d992c374",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Call ZeroHeader() above the MutexLock? Two other places where the same comment applies.",
+      "range": {
+        "startLine": 751,
+        "startChar": 11,
+        "endLine": 751,
+        "endChar": 21
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_a5b42811",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "run is dead at this point. Get rid of line 753?",
+      "range": {
+        "startLine": 753,
+        "startChar": 6,
+        "endLine": 753,
+        "endChar": 20
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_45ad1cbd",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "For consistency, get rid of the \u0027_\u0027 here or add it to all the fields?",
+      "range": {
+        "startLine": 807,
+        "startChar": 29,
+        "endLine": 807,
+        "endChar": 30
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_17c6e47d",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I guess this is where a bound check was removed by masking the end of the alloc bit map, correct?",
+      "range": {
+        "startLine": 822,
+        "startChar": 4,
+        "endLine": 822,
+        "endChar": 28
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_374cc086",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Either just \"32\" or \"sizeof(*alloc_bitmap_ptr) * kBitsPerByte\"?",
+      "range": {
+        "startLine": 824,
+        "startChar": 58,
+        "endLine": 824,
+        "endChar": 87
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_ac850780",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "num_vec?\n\nHoist this out of the loop?",
+      "range": {
+        "startLine": 838,
+        "startChar": 17,
+        "endLine": 838,
+        "endChar": 26
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_006cc445",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I think it\u0027s good idea to DCHECK that the run is actually full before returning here, in case there\u0027s a bug in first_bitmap_idx_.",
+      "range": {
+        "startLine": 841,
+        "startChar": 6,
+        "endLine": 841,
+        "endChar": 12
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_e3154a58",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "When there\u0027s no available slot, we are returning (nullptr) without incrementing first_bitmap_idx_. This means the first_bitmap_idx_ is left pointing the last vector, as opposed to the next (invalid) vector. And, next time AllocSlot() is called, it\u0027d have to search the last vector even if the run is full.\n\nIs this as intended?\n\nI guess how it should be because we removed the bound check above. Correct?",
+      "range": {
+        "startLine": 842,
+        "startChar": 4,
+        "endLine": 842,
+        "endChar": 5
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_97793452",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Since we zero out the memory for each slot as it is freed, it may be worth experimenting with a hand-written C++ memory zero routine for a smaller size (eg \u003c 64 bytes), as opposed to always calling memset.\n\nLeave a TODO?",
+      "range": {
+        "startLine": 870,
+        "startChar": 2,
+        "endLine": 870,
+        "endChar": 8
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_63c03a31",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Good refactoring.",
+      "range": {
+        "startLine": 879,
+        "startChar": 19,
+        "endLine": 879,
+        "endChar": 38
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_4efe071c",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "DCHECK_GE?",
+      "range": {
+        "startLine": 980,
+        "startChar": 2,
+        "endLine": 980,
+        "endChar": 10
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_23164ab1",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "DCHECK_NE?",
+      "range": {
+        "startLine": 982,
+        "startChar": 2,
+        "endLine": 982,
+        "endChar": 10
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_037dee3c",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "\u0027bits\u0027 -\u003e \u0027vector\u0027?",
+      "range": {
+        "startLine": 991,
+        "startChar": 20,
+        "endLine": 991,
+        "endChar": 24
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d01310_81347a02",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I guess this was simplified due to the last vector mask.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 4,
+        "endLine": 1005,
+        "endChar": 6
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_37596071",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "This DCHECK is redundant and can be removed.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 15,
+        "endLine": 1130,
+        "endChar": 47
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_32d7ae5e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Nice. This got rid of free_from_run.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 8,
+        "endLine": 1171,
+        "endChar": 16
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d01310_21464e37",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Nice refactoring.",
+      "range": {
+        "startLine": 1176,
+        "startChar": 4,
+        "endLine": 1176,
+        "endChar": 10
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d01310_61405618",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Nice simplification.",
+      "range": {
+        "startLine": 1193,
+        "startChar": 7,
+        "endLine": 1193,
+        "endChar": 10
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_3225eece",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "run is dead and this line can be removed?",
+      "range": {
+        "startLine": 1262,
+        "startChar": 10,
+        "endLine": 1262,
+        "endChar": 24
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_88cd7b42",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "I don\u0027t think dedicated_full_run_ would show up here as it points to a statically allocated memory, separate from the space memory, and we can undo the change around here, right?",
+      "range": {
+        "startLine": 1550,
+        "startChar": 26,
+        "endLine": 1550,
+        "endChar": 45
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_a80f9fbe",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "So, thread_local_run could be nullptr? Not always pointing to dedicated_full_run_ if revoked?",
+      "range": {
+        "startLine": 1600,
+        "startChar": 9,
+        "endLine": 1600,
+        "endChar": 25
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_8829fb11",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Assuming it can be null, how about making each case explicit and get rid of the continue, as in:\n\nif (thread_local_run \u003d\u003d nullptr) {\n  thread-\u003eSetRosAllocRun(idx, dedicated_full_run_);\n} else if (thread_local_run \u003d\u003d dedicated_full_run) {\n  // nothing to do.\n} else {\n  thread-\u003eSetRosAllocRun(idx, dedicated_full_run_);\n  DCHECK_EQ(thread_local_run-\u003emagic_num_, kMagicNum);\n  ...\n}\n\n?",
+      "range": {
+        "startLine": 1606,
+        "startChar": 8,
+        "endLine": 1606,
+        "endChar": 16
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_9204a2e2",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Move this above line 1609, right after line 1608?",
+      "range": {
+        "startLine": 1611,
+        "startChar": 6,
+        "endLine": 1611,
+        "endChar": 48
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_681677e0",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Similarly, thread_local_run is dead at this point and this line can be removed?",
+      "range": {
+        "startLine": 1631,
+        "startChar": 8,
+        "endLine": 1631,
+        "endChar": 35
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85cb4765_088c0bdf",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "If we make dedicated_full_run_ as a size bracket idx 0, then how about asserting that the numOfSlots[0] is largest in the numOfSlots array so that its alloc bit map must be the largest? We rely on this fact.",
+      "range": {
+        "startLine": 1778,
+        "startChar": 43,
+        "endLine": 1778,
+        "endChar": 44
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_92794252",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Similarly, dedicated_full_run_ isn\u0027t part of the space memory and the page map. We can remove the change around here?",
+      "range": {
+        "startLine": 1878,
+        "startChar": 28,
+        "endLine": 1878,
+        "endChar": 47
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_e0e540b2",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "How about:\n\n// The index of the first bitmap vector which may contain an available slot.",
+      "range": {
+        "startLine": 193,
+        "startChar": 36,
+        "endLine": 193,
+        "endChar": 108
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_20d90802",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "It seems that \"first_bitmap_idx_\" could be interpreted to mean something else as it\u0027s taken literally. How about \"first_search_vec_idx_\" or something like that in the sense that we search for an free slot starting from that vector?",
+      "range": {
+        "startLine": 193,
+        "startChar": 13,
+        "endLine": 193,
+        "endChar": 30
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5137f9f_c7e780f6",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "\"per section\" -\u003e \"per run\"?",
+      "range": {
+        "startLine": 228,
+        "startChar": 42,
+        "endLine": 228,
+        "endChar": 53
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_e311cd74",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "\"Words\" -\u003e \"Vectors\"? Let\u0027s call it a vector as technically necessarily uword !\u003d uint32_t and for terminology consistency.",
+      "range": {
+        "startLine": 229,
+        "startChar": 11,
+        "endLine": 229,
+        "endChar": 30
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_ce34b767",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "GetLastBitMapLastVectorMask()?",
+      "range": {
+        "startLine": 262,
+        "startChar": 18,
+        "endLine": 262,
+        "endChar": 33
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_2e72abf8",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Either lose \"with a specific value\" (the word \"Fill\" already implies what it does) or say \"Set all bits\"?",
+      "range": {
+        "startLine": 277,
+        "startChar": 29,
+        "endLine": 277,
+        "endChar": 50
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5104b96_03acee78",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "This is a page-sized memory. How about\n\nbyte dedicated_full_runs_storage_[kPageSize]\n\n?",
+      "range": {
+        "startLine": 472,
+        "startChar": 16,
+        "endLine": 472,
+        "endChar": 43
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_f9f21f79",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "This should now be the number of bytes instead of pages.",
+      "range": {
+        "startLine": 522,
+        "startChar": 5,
+        "endLine": 522,
+        "endChar": 39
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_2ebbcbd6",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Comment that it returns the bracket size?",
+      "range": {
+        "startLine": 528,
+        "startChar": 2,
+        "endLine": 528,
+        "endChar": 8
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5137f9f_0751981e",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "For clarification, is another way to put this that so that we won\u0027t incorrectly retain the thread-local run from the previous rosalloc space (which could be invalidated/deallocated) after setting up a new one?",
+      "range": {
+        "startLine": 599,
+        "startChar": 70,
+        "endLine": 600,
+        "endChar": 62
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_6b465566",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Same comment from another file: Setting up new thread local buffers by calling revoke upon a brand new rosalloc space seems unintuitive to me.",
+      "range": {
+        "startLine": 607,
+        "startChar": 27,
+        "endLine": 607,
+        "endChar": 54
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_cb8dc96d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me what this code want to do. Stepping back a bit, what does the (un)set_as_default param for AddSpace() and RemoveSpace() mean?\n\nWe\u0027d like to remove it from the continuous_spaces_ and alloc_spaces_ (presumably to avoid trimming as the comment says), but not clearing fields like main_space_, rosalloc_space_, dlmalloc_space_?\n\nCould there be a cleaner way?\n\nAnd what exactly does not work for debug builds?",
+      "range": {
+        "startLine": 1470,
+        "startChar": 33,
+        "endLine": 1470,
+        "endChar": 38
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_324845e9",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Note to self: By passing true, AddSpace() does the revoke.",
+      "range": {
+        "startLine": 42,
+        "startChar": 51,
+        "endLine": 42,
+        "endChar": 55
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_52786908",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Double semicolons.",
+      "range": {
+        "startLine": 150,
+        "startChar": 40,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e516c38e_48527f9a",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Is this what the new thread had to do for the main thread? Same comment as the one in thread.cc.",
+      "range": {
+        "startLine": 639,
+        "startChar": 9,
+        "endLine": 639,
+        "endChar": 33
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85fd0775_72a12d96",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T01:58:42Z",
+      "side": 1,
+      "message": "Say why in the comment?\n\nIt seems unintuitive to need to call Revoke...() in a fresh thread?",
+      "range": {
+        "startLine": 347,
+        "startChar": 4,
+        "endLine": 347,
+        "endChar": 5
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
