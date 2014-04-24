@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_008eaa68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Not sure, I presume it removed 1 compare and 1 conditional branch from each allocation. That should be a speedup, but it should also be hard to measure. Since its implemented, I propose we keep it. I think I have a way of reducing the complexity.",
+      "parentUuid": "a5104b96_32e4ce71",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d01310_64e14437",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -71,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_6054c6fe",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_59825340",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_46455426",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -88,6 +124,24 @@
         "endLine": 69,
         "endChar": 27
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_02094e47",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Agreed, this is mostly for figuring out which bracket locks are contending.",
+      "parentUuid": "a5104b96_46455426",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_6524dc38",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_b96d47d5",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_26781808",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -134,6 +206,24 @@
         "endLine": 320,
         "endChar": 21
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_1ebd2959",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_26781808",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -209,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_5ec7b1d8",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_e6656059",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_a316a5dc",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -226,6 +334,24 @@
         "endLine": 541,
         "endChar": 72
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_80d0fa31",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "85fd0775_a316a5dc",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -255,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_1ee44971",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_461554a0",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_c3ff6913",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -272,6 +416,24 @@
         "endLine": 543,
         "endChar": 26
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_043a3cba",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "It is certainly worth investigating this more.",
+      "parentUuid": "85fd0775_c3ff6913",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -301,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_2f2ab107",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5e8dfcd_652f7cae",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_432ff916",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -318,6 +498,24 @@
         "endLine": 561,
         "endChar": 23
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_c25686e3",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Its sorted by increasing order already.",
+      "parentUuid": "85fd0775_432ff916",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -347,6 +545,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_60c84631",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "The free bitmap of the dedicated full run.",
+      "parentUuid": "85fd0775_037df1c1",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_c283e23f",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -364,6 +580,24 @@
         "endLine": 605,
         "endChar": 60
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_e139c2ef",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cb4765_c283e23f",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -393,6 +627,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_c13cc6e2",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Stale check, updated.",
+      "parentUuid": "85fd0775_a0ca184e",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_00b684e0",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -416,6 +668,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_80cd5a42",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Stale code, deleted.",
+      "parentUuid": "85fd0775_00b684e0",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_0087a44f",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -433,6 +703,24 @@
         "endLine": 623,
         "endChar": 80
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_22a72a98",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_0087a44f",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -485,6 +773,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_81d0fe31",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 751,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_d992c374",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_a5b42811",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -502,6 +808,24 @@
         "endLine": 753,
         "endChar": 20
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_41c6f67e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cb4765_a5b42811",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -531,6 +855,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_82b63ec8",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cb4765_45ad1cbd",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_21e48a71",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -548,6 +890,24 @@
         "endLine": 820,
         "endChar": 4
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_09f0956f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e5abf4_21e48a71",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -577,6 +937,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_c198469a",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Yes, since the bits are always masked we don\u0027t need to worry about allocating there.",
+      "parentUuid": "a5104b96_17c6e47d",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_374cc086",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -594,6 +972,24 @@
         "endLine": 824,
         "endChar": 87
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_62c85231",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_374cc086",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -623,6 +1019,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_a2e17aaf",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to since the loop usually will return before going to the next bitmap vector.",
+      "parentUuid": "a5104b96_ac850780",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_006cc445",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -640,6 +1054,24 @@
         "endLine": 841,
         "endChar": 12
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_211f2a4f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_006cc445",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -669,6 +1101,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_22f56a68",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Yes, the point of that is that the last bitmap word is still valid memory so we don\u0027t need to check that we are on a valid word before doing the ffs.",
+      "parentUuid": "85fd0775_e3154a58",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_97793452",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -686,6 +1136,24 @@
         "endLine": 870,
         "endChar": 8
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_e15382f0",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_97793452",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -738,6 +1206,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_4119964e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_4efe071c",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_23164ab1",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -755,6 +1241,24 @@
         "endLine": 982,
         "endChar": 10
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_610e9207",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_23164ab1",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -784,6 +1288,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_405ee259",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_037dee3c",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d01310_81347a02",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -807,6 +1329,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_a1e17aaf",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "65d01310_81347a02",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_37596071",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -824,6 +1364,24 @@
         "endLine": 1130,
         "endChar": 47
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_25c1f465",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_37596071",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -922,6 +1480,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_6393f046",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_3225eece",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_88cd7b42",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -939,6 +1515,24 @@
         "endLine": 1550,
         "endChar": 45
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_c149269b",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "It used to be allocated in the RosAlloc space, the check isn\u0027t necessary anymore. Deleted.",
+      "parentUuid": "85cb4765_88cd7b42",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -968,6 +1562,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_035b14db",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Not anymore.",
+      "parentUuid": "85cb4765_a80f9fbe",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_8829fb11",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -985,6 +1597,24 @@
         "endLine": 1606,
         "endChar": 16
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_012b0eb5",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Can\u0027t be null anymore with new patchset.",
+      "parentUuid": "85cb4765_8829fb11",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1014,6 +1644,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_055158e8",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_9204a2e2",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_681677e0",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -1031,6 +1679,24 @@
         "endLine": 1631,
         "endChar": 35
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_0054ea2f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cb4765_681677e0",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1060,6 +1726,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_650e9c07",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters which size bracket we use.",
+      "parentUuid": "85cb4765_088c0bdf",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_92794252",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -1077,6 +1761,24 @@
         "endLine": 1878,
         "endChar": 47
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_04f23c09",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1878,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5104b96_92794252",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1129,6 +1831,42 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_d00e4c52",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_20d90802",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_2ea8ffad",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_e0e540b2",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5137f9f_c7e780f6",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -1146,6 +1884,24 @@
         "endLine": 228,
         "endChar": 53
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_85772815",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5137f9f_c7e780f6",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1175,6 +1931,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_04515ce8",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_e311cd74",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_ce34b767",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -1192,6 +1966,24 @@
         "endLine": 262,
         "endChar": 33
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_45e9a048",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_ce34b767",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1221,6 +2013,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_64c5c03f",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Stale comment, there used to be a parameter.",
+      "parentUuid": "e516c38e_2e72abf8",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_03acee78",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -1238,6 +2048,24 @@
         "endLine": 472,
         "endChar": 43
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_6563fc20",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Needs to be static since we do ::Thread() before the RosAllocSpace is created.",
+      "parentUuid": "a5104b96_03acee78",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1267,6 +2095,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_c460548b",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_f9f21f79",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_2ebbcbd6",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -1284,6 +2130,24 @@
         "endLine": 528,
         "endChar": 8
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_241c9800",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e516c38e_2ebbcbd6",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1313,6 +2177,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_4448c4e9",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "This is not a normal case, the tests just do strange stuff by adding multiple RosAlloc spaces.",
+      "parentUuid": "c5137f9f_0751981e",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_6b465566",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 2
@@ -1330,6 +2212,24 @@
         "endLine": 607,
         "endChar": 54
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_0e933b7a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Deleted the revoke after, no longer necessary.",
+      "parentUuid": "e516c38e_6b465566",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1359,6 +2259,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_ee01a7d0",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "The problem is that since the space is protected, when RosAlloc tries to trim it it attempts to read the magic number (only for debug builds). But since the protection is set to PROT_NONE it faults. This is fixed if you remove the space since it doesn\u0027t get trimmed. I think this is a long existing bug with background compaction + debug builds. I can\u0027t think of cleaner ways, let me know if you can.",
+      "parentUuid": "e516c38e_cb8dc96d",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_324845e9",
         "filename": "runtime/gc/space/space_test.h",
         "patchSetId": 2
@@ -1376,6 +2294,24 @@
         "endLine": 42,
         "endChar": 55
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_8ecaeb4e",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_324845e9",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1405,6 +2341,24 @@
     },
     {
       "key": {
+        "uuid": "a5e5abf4_24ef3869",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85fd0775_52786908",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_48527f9a",
         "filename": "runtime/runtime.cc",
         "patchSetId": 2
@@ -1428,6 +2382,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_cecb0351",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "e516c38e_48527f9a",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fd0775_72a12d96",
         "filename": "runtime/thread.cc",
         "patchSetId": 2
@@ -1445,6 +2417,24 @@
         "endLine": 347,
         "endChar": 5
       },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_6e9cb75f",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "85fd0775_72a12d96",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "85b427df_89cd8542",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "Yes, I\u0027ll add a DCHECK that verifies its set properly.",
+      "parentUuid": "a5104b96_06451c79",
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_c215a258",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 567,
         "endChar": 33
       },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_a1117a75",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "Yes",
+      "parentUuid": "85cb4765_c215a258",
       "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_22bbaad6",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a5104b96_a9117975",
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_776ab86e",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -88,6 +142,24 @@
         "endLine": 879,
         "endChar": 32
       },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5e5abf4_ef652959",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "a5104b96_776ab86e",
       "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "c5e8dfcd_e5670cef",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "I assume setting the pointer to NULL was to mimic dlmalloc behavior?",
+      "parentUuid": "85cb4765_28bb8fd6",
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_e82d2bca",
         "filename": "runtime/gc/space/space_test.h",
         "patchSetId": 2
@@ -134,6 +224,24 @@
         "endLine": 352,
         "endChar": 50
       },
+      "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e8dfcd_d0b1ec1f",
+        "filename": "runtime/gc/space/space_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-24T22:40:04Z",
+      "side": 0,
+      "message": "Yes, there wasn\u0027t any real reason to write null in the array. Only the tests used this functionality.",
+      "parentUuid": "e516c38e_e82d2bca",
       "revId": "a08ec9b372d4f5e918b3d68499fbd1731180cd98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
