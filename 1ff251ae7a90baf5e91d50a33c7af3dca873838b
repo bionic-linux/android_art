@@ -93,6 +93,24 @@
       "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5f76b98_8e791b52",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1039576
+      },
+      "writtenOn": "2014-04-24T04:58:16Z",
+      "side": 1,
+      "message": "Changing notation to HeapReference\u003cObject\u003e could touch almost all source files refactored by Ian Rogers in bounds of 64-bit enabling efforts. Thus it does not sounds reasonable to change HeapReference notation at this moment.\n\nPlease note that this patch is just a fix which is required for ongoing efforts on 64-bit quick code generation for multiple platforms. \n\nI\u0027d suggest to keep the patch as is with simplified notation, supporting only arrays of objects. There are no similar calculations in QCG for non-object arrays AFAIK.",
+      "parentUuid": "c5137f9f_049076c9",
+      "revId": "1ff251ae7a90baf5e91d50a33c7af3dca873838b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
