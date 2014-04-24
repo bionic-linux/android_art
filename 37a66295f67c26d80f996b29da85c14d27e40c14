@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5104b96_32e4ce71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T02:48:53Z",
+      "side": 1,
+      "message": "BTW, did this portion (the dedicated_full_run thing) of the change have a  performance improvement? It\u0027s good in general to evaluate the benefit (eg speedup) against the cost (eg additional RAM/LOC/complexity).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65d01310_64e14437",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-24T02:48:53Z",
+      "side": 1,
+      "message": "Nice speedup.",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_59825340",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
