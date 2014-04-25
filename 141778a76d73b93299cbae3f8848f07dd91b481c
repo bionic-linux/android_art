@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a593eb68_2b2ab99e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "Comment on what this is? Or name it a bit more specifically (eg kPrefetchNewRunDataByZeroing or something)?",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 44
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b427df_21072da5",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "Likely redundant, but fully spell out RosAlloc::Run* to match the type of the variable?",
+      "range": {
+        "startLine": 47,
+        "startChar": 64,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_89181992",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "The data part of the run should already be zero at this point. Is this just to zero it as an alternative way of prefetching it? Comment this briefly?",
+      "range": {
+        "startLine": 552,
+        "startChar": 10,
+        "endLine": 552,
+        "endChar": 32
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_2ac63f7e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "This DCHECK should be outside/above the if statement as this is the sanity check on the result of MergeThreadLocalFreeBitMapToAllocBitMap() returning false. As we pass in the dedicated full run through MergeThreadLocalFreeBitMapToAllocBitMap(), and it is IsFull(), it fits nicely that way.",
+      "range": {
+        "startLine": 626,
+        "startChar": 10,
+        "endLine": 626,
+        "endChar": 45
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_aeb237e9",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "This should be first_search_vec_idx to match the field name.",
+      "range": {
+        "startLine": 825,
+        "startChar": 14,
+        "endLine": 825,
+        "endChar": 30
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_319068ca",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "I see this logic is needed for the last vector mask.",
+      "range": {
+        "startLine": 927,
+        "startChar": 8,
+        "endLine": 927,
+        "endChar": 25
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_8fb579d6",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:45:23Z",
+      "side": 1,
+      "message": "Once more, can this DCHECK moved outside/above the if statement since it\u0027d check that the dedicated full run is a thread-local run as it should be.",
+      "range": {
+        "startLine": 1631,
+        "startChar": 6,
+        "endLine": 1631,
+        "endChar": 12
+      },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
