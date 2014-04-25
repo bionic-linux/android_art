@@ -617,6 +617,24 @@
     },
     {
       "key": {
+        "uuid": "25bffbdf_7aeb7518",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "Yes, since its always 0, it should never clear any of the alloc bit map bits.",
+      "parentUuid": "a593eb68_6bd04131",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_c283e23f",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -957,6 +975,24 @@
       "side": 1,
       "message": "Can you remove the underscore before the equal sign?",
       "parentUuid": "6587332a_ac0ecb50",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_b7b44311",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "Done, forgot to do the change.",
+      "parentUuid": "6587332a_3e03dd2e",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -2071,6 +2107,24 @@
     },
     {
       "key": {
+        "uuid": "a593eb68_57195f4e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll add a comment.",
+      "parentUuid": "6587332a_5e2fb1ad",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_92794252",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -2453,6 +2507,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_924bdd6b",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "Added, reason was that it was not necessarily word aligned as bytes.",
+      "parentUuid": "6587332a_de22c1bf",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_f9f21f79",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -2612,6 +2684,24 @@
     },
     {
       "key": {
+        "uuid": "25bffbdf_7a5a550b",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6587332a_1e4c5986",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_6b465566",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 2
@@ -2706,6 +2796,24 @@
       "side": 1,
       "message": "OK. What\u0027s the reason not to pass false (meaning as non default) to RemoveSpace() here and AddSpace() in line 1479 below?",
       "parentUuid": "85b427df_ee01a7d0",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_525fa51c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T21:13:10Z",
+      "side": 1,
+      "message": "As we discussed, the reason that I pass in false is to preserve the pointer to the main space since we need it for the next collector transition.",
+      "parentUuid": "6587332a_2f480de9",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
