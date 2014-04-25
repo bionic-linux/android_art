@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2581bb17_bb6a7fb8",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-25T07:00:49Z",
+      "side": 1,
+      "message": "DCHECK(!IsConcurrent()) ?\nI\u0027d prefer we weren\u0027t predicated on a lock being held, at least document the meaning.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 52
+      },
+      "revId": "a1feafa5db9679c63b9b5cde6a89484e57eb6ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_5bcb4385",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-25T07:00:49Z",
+      "side": 1,
+      "message": "again, meaning of the lock and I\u0027d prefer we weren\u0027t using it as a predicate",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 52
+      },
+      "revId": "a1feafa5db9679c63b9b5cde6a89484e57eb6ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
