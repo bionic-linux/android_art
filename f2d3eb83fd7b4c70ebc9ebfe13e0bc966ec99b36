@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6587332a_3251561f",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-25T05:51:15Z",
+      "side": 1,
+      "message": "portable?",
+      "range": {
+        "startLine": 665,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 54
+      },
+      "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45aeaf94_b80c59cb",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 7
@@ -13,6 +36,24 @@
       "writtenOn": "2014-04-24T11:53:49Z",
       "side": 1,
       "message": "Should this be a CHECK? Or perhaps another condition in the if-clause below? Should we revisit all uses of GetQuickToInterpreterBridge() and check the trampoline as well?",
+      "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_94566a8b",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-25T05:51:15Z",
+      "side": 1,
+      "message": "seems like it belongs in the if clause below, it\u0027ll be worth revisiting other checks like this, although I don\u0027t expect many",
+      "parentUuid": "45aeaf94_b80c59cb",
       "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
