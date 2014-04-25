@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_b830c523",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T18:37:00Z",
+      "side": 1,
+      "message": "I don\u0027t believe we ever run this collector with the threads already suspended. I\u0027ll delete this case.",
+      "parentUuid": "2581bb17_bb6a7fb8",
+      "revId": "a1feafa5db9679c63b9b5cde6a89484e57eb6ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2581bb17_5bcb4385",
         "filename": "runtime/gc/collector/semi_space.cc",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 116,
         "endChar": 52
       },
+      "revId": "a1feafa5db9679c63b9b5cde6a89484e57eb6ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_607db88e",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T18:37:00Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment.",
+      "parentUuid": "2581bb17_5bcb4385",
       "revId": "a1feafa5db9679c63b9b5cde6a89484e57eb6ce4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
