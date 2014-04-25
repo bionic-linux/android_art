@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6587332a_ef5d15a7",
+        "filename": "runtime/gc/collector/immune_region.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-04-25T04:38:33Z",
+      "side": 1,
+      "message": "This change makes the immune region only cover spaces that don\u0027t have bound bitmaps.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 55
+      },
+      "revId": "eaa71b559d979e23932f6367b109ef934c38d736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
