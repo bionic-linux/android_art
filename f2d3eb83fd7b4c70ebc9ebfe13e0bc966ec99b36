@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65c57378_b90d9f0a",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-25T12:53:46Z",
+      "side": 1,
+      "message": "I currently don\u0027t see the need for that (not for this CL). The need to handle quick_to_interpreter_bridge_offset_ comes from the ImageWriter::FixupMethod() where it\u0027s used if quick_code \u003d\u003d nullptr for non-abstract method. The portable_to_interpreter_bridge_offset_ is used only for abstract methods.",
+      "parentUuid": "6587332a_3251561f",
+      "range": {
+        "startLine": 665,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 54
+      },
+      "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45aeaf94_b80c59cb",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 7
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "seems like it belongs in the if clause below, it\u0027ll be worth revisiting other checks like this, although I don\u0027t expect many",
       "parentUuid": "45aeaf94_b80c59cb",
+      "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65c57378_790827f7",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-25T12:53:46Z",
+      "side": 1,
+      "message": "Done. Added 5 other comparisons or DCHECKs as appropriate under the assumption that ClassLinker::GetQuickOatCodeFor() never returns the trampoline but ArtMethod::GetEntryPointFromQuickCompiledCode() might.\n\nAfter that I found out that the ArtMethod::GetOatCodePointer() was broken and fixed it.",
+      "parentUuid": "a593eb68_94566a8b",
       "revId": "f2d3eb83fd7b4c70ebc9ebfe13e0bc966ec99b36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
