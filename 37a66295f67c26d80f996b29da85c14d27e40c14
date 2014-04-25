@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "2581bb17_e72aa2af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "My view leans toward that a speedup must be measurable by definition (that is, a non-measurable speedup isn\u0027t a speedup) just like Key Results must be measurable. Anyhow, yes, let\u0027s keep it.",
+      "parentUuid": "85b427df_008eaa68",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d01310_64e14437",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -142,6 +160,24 @@
       "side": 1,
       "message": "Agreed, this is mostly for figuring out which bracket locks are contending.",
       "parentUuid": "a5104b96_46455426",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_6a34b701",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "c5e8dfcd_02094e47",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -563,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "a593eb68_6bd04131",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "This looks safe as the thread-local free bit map of the dedicated full run is always zero?",
+      "parentUuid": "85b427df_60c84631",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85cb4765_c283e23f",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -873,6 +927,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_ac0ecb50",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "I don\u0027t see any change in this line.",
+      "parentUuid": "c5e8dfcd_82b63ec8",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e5abf4_21e48a71",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -908,6 +980,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a5e5abf4_21e48a71",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_0c2517ce",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "85b427df_09f0956f",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1031,6 +1121,24 @@
       "side": 1,
       "message": "I don\u0027t think we want to since the loop usually will return before going to the next bitmap vector.",
       "parentUuid": "a5104b96_ac850780",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_0e898b16",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "c5e8dfcd_a2e17aaf",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1347,6 +1455,29 @@
     },
     {
       "key": {
+        "uuid": "2581bb17_f06416ed",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "I think this DCHECK should be kept.",
+      "range": {
+        "startLine": 1127,
+        "startChar": 8,
+        "endLine": 1127,
+        "endChar": 17
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_37596071",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -1382,6 +1513,52 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "a5104b96_37596071",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_4fc5413f",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "Good one.",
+      "range": {
+        "startLine": 1137,
+        "startChar": 8,
+        "endLine": 1137,
+        "endChar": 17
+      },
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_6fca0552",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1157,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "I think this should be kept.",
+      "range": {
+        "startLine": 1157,
+        "startChar": 8,
+        "endLine": 1157,
+        "endChar": 17
+      },
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1744,6 +1921,24 @@
     },
     {
       "key": {
+        "uuid": "2581bb17_702e6682",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1778,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "I think it does in FillAllocBitMap() in the next line so it will fill a large enough alloc bit map to cover all the bracket sizes. In this case, since size bracket idx 0 happens to have the largest alloc bit map, it works.\n\nAlso the size_bracket_idx_ field and the filled alloc bit map must match as well because the dedicated full run is passed into a function where a normal run is expected. For example, in AllocFromRun().",
+      "parentUuid": "c5e8dfcd_650e9c07",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5104b96_92794252",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 2
@@ -1990,6 +2185,24 @@
     },
     {
       "key": {
+        "uuid": "a593eb68_f4088e45",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "Right, no need for two Last\u0027s.",
+      "parentUuid": "c5e8dfcd_45e9a048",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_2e72abf8",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 2
@@ -2066,6 +2279,24 @@
       "side": 1,
       "message": "Needs to be static since we do ::Thread() before the RosAllocSpace is created.",
       "parentUuid": "a5104b96_03acee78",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_90075ae6",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "I didn\u0027t mean dropping static but using type byte instead of size_t.\n\n  static byte dedicated_full_runs_storage_[kPageSize];\n\nseemed simpler to have a page-sized memory, than\n\n  static size_t dedicated_full_runs_storage_[kPageSize/sizeof(size_t)];\n\nwith a division.",
+      "parentUuid": "c5e8dfcd_6563fc20",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -2195,6 +2426,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_8fe8198c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "If this only applies to space_test, is there a reason not to move it back to SpaceTest::AddSpace() where it was before? Or, does this have a value being here instead of there?",
+      "parentUuid": "a5e5abf4_4448c4e9",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e516c38e_6b465566",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 2
@@ -2271,6 +2520,24 @@
       "side": 1,
       "message": "The problem is that since the space is protected, when RosAlloc tries to trim it it attempts to read the magic number (only for debug builds). But since the protection is set to PROT_NONE it faults. This is fixed if you remove the space since it doesn\u0027t get trimmed. I think this is a long existing bug with background compaction + debug builds. I can\u0027t think of cleaner ways, let me know if you can.",
       "parentUuid": "e516c38e_cb8dc96d",
+      "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_2f480de9",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-25T04:48:29Z",
+      "side": 1,
+      "message": "OK. What\u0027s the reason not to pass false (meaning as non default) to RemoveSpace() here and AddSpace() in line 1479 below?",
+      "parentUuid": "85b427df_ee01a7d0",
       "revId": "37a66295f67c26d80f996b29da85c14d27e40c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
