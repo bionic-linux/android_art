@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "a593eb68_80cd4442",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a593eb68_2b2ab99e",
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85b427df_21072da5",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 47,
         "endChar": 67
       },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_9c9e91dc",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b427df_21072da5",
       "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_c353ca99",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "It sometimes is faster than prefetching but introduces a measurable increase in memory usage. Comment added.",
+      "parentUuid": "6587332a_89181992",
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2581bb17_2ac63f7e",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 4
@@ -88,6 +142,24 @@
         "endLine": 626,
         "endChar": 45
       },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_e0f28879",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2581bb17_2ac63f7e",
       "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_0307a2a4",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a593eb68_aeb237e9",
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a593eb68_319068ca",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 4
@@ -140,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "6587332a_2343c6cf",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "It was causing a DCHECK to fail but was benign.",
+      "parentUuid": "a593eb68_319068ca",
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6587332a_8fb579d6",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 4
@@ -157,6 +265,24 @@
         "endLine": 1631,
         "endChar": 12
       },
+      "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a593eb68_a00fa0be",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-25T19:13:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6587332a_8fb579d6",
       "revId": "141778a76d73b93299cbae3f8848f07dd91b481c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
