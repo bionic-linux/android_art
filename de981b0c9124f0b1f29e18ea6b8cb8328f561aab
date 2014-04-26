@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6587332a_5e409117",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-26T00:36:08Z",
+      "side": 0,
+      "message": "Not sure what this change is about. Was removing the if statements here and in ReclaimPhase() to fix a (potential) bug with the non-concurrent collector?",
+      "range": {
+        "startLine": 181,
+        "startChar": 6,
+        "endLine": 181,
+        "endChar": 18
+      },
+      "revId": "de981b0c9124f0b1f29e18ea6b8cb8328f561aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

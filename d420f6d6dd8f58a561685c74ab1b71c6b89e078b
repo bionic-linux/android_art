@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a593eb68_d4dd4d29",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-26T00:36:08Z",
+      "side": 1,
+      "message": "Keep the ALWAYS_INLINE?",
+      "range": {
+        "startLine": 69,
+        "startChar": 34,
+        "endLine": 69,
+        "endChar": 35
+      },
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6587332a_beb18d20",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-26T00:36:08Z",
+      "side": 1,
+      "message": "These could cause the rosalloc verification to take its own pause, separate from GC\u0027s pause.\n\nI think that to have a clear separation in who to blame upon verification errors (for example, if the pre didn\u0027t fail but post failed, then GC is to blame), it makes sense to let each collector choose when to run these verifications (just like this change now lets each collector when to pause) and have the verification run in the same pause that the collector takes.\n\nFor SemiSpace, how about moving lines 71 and 73 to the beginning and the end of SemiSpace::MarkPhase() or in appropriate places in RunPhases().\n\nFor MarkSweep, how about moving lines 71 and 73 to the beginning and the end of SemiSpace::PausePhase() or in appropriate places in  RunPhases().\n\nNote that the SemiSpace\u0027s and MarkSweep\u0027s pre-sweep gc verifications are part of the collectors\u0027 pause where I suggest moving the rosalloc verification calls to.",
+      "range": {
+        "startLine": 71,
+        "startChar": 13,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2581bb17_70ff4148",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-26T00:36:08Z",
+      "side": 1,
+      "message": "If we call these from within a collector\u0027s pause like one of the other comments suggests, we could add back those thread safety annotations.",
+      "range": {
+        "startLine": 447,
+        "startChar": 69,
+        "endLine": 447,
+        "endChar": 94
+      },
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
