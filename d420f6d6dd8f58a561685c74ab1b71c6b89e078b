@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "05f3d71b_a1a638af",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-28T22:46:56Z",
+      "side": 1,
+      "message": "OK. I guess that since it\u0027s now a template function, it will be specialized and inlined anyway without it.",
+      "parentUuid": "a554cbb1_83711e24",
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6587332a_beb18d20",
         "filename": "runtime/gc/collector/garbage_collector.cc",
         "patchSetId": 3
@@ -78,6 +96,24 @@
       "side": 1,
       "message": "I put it in pre sweeping GC verification, is that good enough?",
       "parentUuid": "6587332a_beb18d20",
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05f3d71b_c1bc245f",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-28T22:46:56Z",
+      "side": 1,
+      "message": "I suggest going in the other direction. Placing it side by side with the pre-sweep gc verification isn\u0027t the main point, by which I was merely suggesting a code location to move it to. The point is, as I understand, to get the verification to give us information on who\u0027s to blame (gc or mutator). The whole reason to have the convention of having both \u0027pre\u0027 and \u0027post\u0027 in the first place is this very reason, it\u0027s not just that \u0027pre\u0027 needs to happen some time before a GC and \u0027post\u0027 needs to happen some time after a GC. They need to be part of the same GC pause for this blame attribution purpose. Otherwise, if a \u0027post\u0027 fails, since mutators are already resumed, we can\u0027t tell if it\u0027s mutator or what GC did during the pause that caused the problem.",
+      "parentUuid": "e55a43dc_0b91c189",
       "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
