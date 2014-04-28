@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c557ffb2_8ae04f35",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-04-28T18:32:47Z",
+      "side": 1,
+      "message": "Does this mean we only have r0-r4 and r12 as useful registers?  Maybe this is temporary?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 39
+      },
+      "revId": "5a5017c09abc1b0a855da473e91ae1f3814df457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
