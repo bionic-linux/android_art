@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "a5f92b00_fb92af41",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-28T22:56:57Z",
+      "side": 1,
+      "message": "I get what you mean, but if we have concurrent sweeping it will be impossible verify the RosAllocSpace after sweeping but before the mutators can change it. Do you think adding a boolean flag which does not do concurrent sweeping to be a good option?",
+      "parentUuid": "05f3d71b_c1bc245f",
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2581bb17_70ff4148",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 3
