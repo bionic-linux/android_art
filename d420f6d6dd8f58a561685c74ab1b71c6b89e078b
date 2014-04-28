@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "a554cbb1_83711e24",
+        "filename": "runtime/gc/accounting/space_bitmap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-28T19:02:39Z",
+      "side": 1,
+      "message": "error: attributes are not allowed on a function-definition",
+      "parentUuid": "a593eb68_d4dd4d29",
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6587332a_beb18d20",
         "filename": "runtime/gc/collector/garbage_collector.cc",
         "patchSetId": 3
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e55a43dc_0b91c189",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-28T19:02:39Z",
+      "side": 1,
+      "message": "I put it in pre sweeping GC verification, is that good enough?",
+      "parentUuid": "6587332a_beb18d20",
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2581bb17_70ff4148",
         "filename": "runtime/gc/heap.h",
         "patchSetId": 3
@@ -65,6 +101,24 @@
         "endLine": 447,
         "endChar": 94
       },
+      "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c557ffb2_caa727dd",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-04-28T19:02:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2581bb17_70ff4148",
       "revId": "d420f6d6dd8f58a561685c74ab1b71c6b89e078b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
