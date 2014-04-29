@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5c04bc0_e37cb294",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-29T08:24:11Z",
+      "side": 1,
+      "message": "Just a general comment about this form of loop. After working in LLVM, I got used to write such loop as \"for (size_t i \u003d 0, e \u003d locations-\u003eGetInputCount(); i \u003c e; ++i)\".\nThis only works if \"locations-\u003eGetInputCount()\" never changes during the loop of course. But it avoids to evaluate this expression each time we loop. The compiler may optimize this already, but we can\u0027t be sure it\u0027ll be really done, especially with non-const objects.\nThe pre-increment vs post-decrement is more a question of style. I use pre-increment for integers as I would for iterators so I always use the same style.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 57
+      },
+      "revId": "5a5017c09abc1b0a855da473e91ae1f3814df457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857b475f_828eba66",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-04-29T08:24:11Z",
+      "side": 1,
+      "message": "Is BitVector more suitable here ?",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 26
+      },
+      "revId": "5a5017c09abc1b0a855da473e91ae1f3814df457",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c557ffb2_8ae04f35",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
