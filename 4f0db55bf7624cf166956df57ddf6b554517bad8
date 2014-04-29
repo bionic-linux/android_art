@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "857b475f_6296166c",
+        "filename": "compiler/dex/quick/mips/int_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-29T08:38:33Z",
+      "side": 1,
+      "message": "Please fix the indentation.",
+      "revId": "4f0db55bf7624cf166956df57ddf6b554517bad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "857b475f_4299129b",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-04-29T08:38:33Z",
+      "side": 1,
+      "message": "Does this need to be platform-specific?",
+      "revId": "4f0db55bf7624cf166956df57ddf6b554517bad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
