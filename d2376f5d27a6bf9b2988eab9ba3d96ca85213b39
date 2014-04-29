@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05caf7dd_1a0fad4f",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-29T18:54:20Z",
+      "side": 1,
+      "message": "I wasn\u0027t probably clear enough. But, I thought we agreed on running both \u0027pre\u0027 and \u0027presweep\u0027 as part of the GC\u0027s pause, and let \u0027post\u0027 have its own pause, if necessary. In PS5, it seems \u0027presweep\u0027 happens as part of the GC\u0027s pause, but \u0027pre\u0027 does not for the CMS case. I won\u0027t repeat my reasoning :) but if we move this PreGcVerification() call down to line 146 after \"ScopedPause pause(this)\", it\u0027d fit, I think.",
+      "range": {
+        "startLine": 140,
+        "startChar": 15,
+        "endLine": 140,
+        "endChar": 32
+      },
+      "revId": "d2376f5d27a6bf9b2988eab9ba3d96ca85213b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_0aae3f1e",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-29T18:54:20Z",
+      "side": 1,
+      "message": "How about \"presweepingverify\" or \"presweepverify\" to add \"verify\" in it? Without it, it may not be clear what it does. Accordingly, \"nopresweepingverify\", \"presweepingverify_rosalloc\" and \"nopresweepingverify_rosalloc\"?",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "d2376f5d27a6bf9b2988eab9ba3d96ca85213b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c37fc9_4ab83762",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-04-29T18:54:20Z",
+      "side": 1,
+      "message": "This one needs a \"no\" prefix.",
+      "range": {
+        "startLine": 142,
+        "startChar": 29,
+        "endLine": 142,
+        "endChar": 49
+      },
+      "revId": "d2376f5d27a6bf9b2988eab9ba3d96ca85213b39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
