@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3f9cb5_30f8082d",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-01T00:21:44Z",
+      "side": 1,
+      "message": "char*",
+      "range": {
+        "startLine": 342,
+        "startChar": 45,
+        "endLine": 342,
+        "endChar": 51
+      },
+      "revId": "5afa08f95d43dd24fb4b3d7a08aa1ec23386ad54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
