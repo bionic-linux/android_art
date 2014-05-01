@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a292485_11a86ea9",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-01T00:15:28Z",
+      "side": 1,
+      "message": "the compiler runs as a native thread and should not be accessing the Java heap except through the compiler driver (which should have the \"compiler interface\" separated out)",
+      "range": {
+        "startLine": 1004,
+        "startChar": 69,
+        "endLine": 1004,
+        "endChar": 94
+      },
+      "revId": "d7f7ee5aa555855623e928b63577021fdb9edfb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
