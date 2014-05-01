@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4a587c41_ceb0f71d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-01T19:48:20Z",
+      "side": 1,
+      "message": "Nice speedup!",
+      "range": {
+        "startLine": 18,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "8794020dc8c3a03ef0b280612bc301bbe01aede7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a587c41_ae2143be",
         "filename": "runtime/entrypoints/entrypoint_utils.h",
         "patchSetId": 3
