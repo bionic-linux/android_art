@@ -22,6 +22,52 @@
       "revId": "5afa08f95d43dd24fb4b3d7a08aa1ec23386ad54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a442856_aff3790e",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-01T07:41:16Z",
+      "side": 1,
+      "message": "This should be buffer.str(). I have a patch underway.",
+      "range": {
+        "startLine": 345,
+        "startChar": 8,
+        "endLine": 345,
+        "endChar": 14
+      },
+      "revId": "5afa08f95d43dd24fb4b3d7a08aa1ec23386ad54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea25b0a9_cd0fe94c",
+        "filename": "runtime/base/bit_vector.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-01T07:41:16Z",
+      "side": 1,
+      "message": "Do you mind if I change how we output things here? I\u0027d like to print something like:\n(00001001)",
+      "range": {
+        "startLine": 372,
+        "startChar": 14,
+        "endLine": 372,
+        "endChar": 15
+      },
+      "revId": "5afa08f95d43dd24fb4b3d7a08aa1ec23386ad54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
