@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a71c0c6_9cd7c9f7",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-02T04:37:27Z",
+      "side": 1,
+      "message": "cf. https://android-review.googlesource.com/#/c/92535/4/compiler/image_writer.cc",
+      "range": {
+        "startLine": 590,
+        "startChar": 57,
+        "endLine": 590,
+        "endChar": 59
+      },
+      "revId": "6e83c172f385cb45dd13bbcf41d2df8e410828c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
