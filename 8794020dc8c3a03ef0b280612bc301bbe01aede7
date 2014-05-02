@@ -48,6 +48,24 @@
     },
     {
       "key": {
+        "uuid": "4a587c41_f17b9a46",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-05-02T00:48:47Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "4a587c41_ae2143be",
+      "revId": "8794020dc8c3a03ef0b280612bc301bbe01aede7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3f9cb5_65bfecc0",
         "filename": "runtime/entrypoints/entrypoint_utils.h",
         "patchSetId": 3
@@ -65,6 +83,24 @@
         "endLine": 142,
         "endChar": 53
       },
+      "revId": "8794020dc8c3a03ef0b280612bc301bbe01aede7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a587c41_11974e34",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-05-02T00:48:47Z",
+      "side": 1,
+      "message": "Stale comment.",
+      "parentUuid": "4a3f9cb5_65bfecc0",
       "revId": "8794020dc8c3a03ef0b280612bc301bbe01aede7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
