@@ -22,6 +22,24 @@
       "revId": "cf9180e31efeddbc6f3fea02b926d75d22e53d02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa49887_e3b652c8",
+        "filename": "compiler/dex/quick/codegen_util.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1039576
+      },
+      "writtenOn": "2014-05-06T01:23:36Z",
+      "side": 1,
+      "message": "Done. Avoided usage of \"spills\" separate variable.",
+      "parentUuid": "6a346007_f01ece78",
+      "revId": "cf9180e31efeddbc6f3fea02b926d75d22e53d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
