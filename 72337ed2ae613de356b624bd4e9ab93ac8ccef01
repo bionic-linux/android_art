@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8afd1475_98e67d4d",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-08T02:05:34Z",
+      "side": 1,
+      "message": "HandleTable rather than the rather long winded SirtObjectWrapper, give it a size argument (default 1) so that a table may hold multiple values. Rename StackIndirectReferenceTable to HandleTable?",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 28
+      },
+      "revId": "72337ed2ae613de356b624bd4e9ab93ac8ccef01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8afd1475_58e53543",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-08T02:05:34Z",
+      "side": 1,
+      "message": "klass?",
+      "range": {
+        "startLine": 304,
+        "startChar": 38,
+        "endLine": 304,
+        "endChar": 48
+      },
+      "revId": "72337ed2ae613de356b624bd4e9ab93ac8ccef01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
