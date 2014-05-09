@@ -58,6 +58,24 @@
       "revId": "238e87232ad59701082947045704bdd6c1b65f70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac4d062_4a60bfdd",
+        "filename": "runtime/gc/reference_processor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-05-09T17:52:09Z",
+      "side": 1,
+      "message": "No, wait doesn\u0027t let you hold any locks other than the one associated with the condition.",
+      "parentUuid": "eac4d062_2a72a3c1",
+      "revId": "238e87232ad59701082947045704bdd6c1b65f70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
