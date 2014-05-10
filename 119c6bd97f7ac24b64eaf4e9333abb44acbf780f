@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab46cfe_255274ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-10T00:37:43Z",
+      "side": 1,
+      "message": "Just leaving what we discussed in person as notes:\n\nWhat would move turned out to be the class of ArtMethod, not an ArtMethod as ArtMethods do not move (or if they do, they shouldn\u0027t.)\n\nI think that the order of the root visit should not matter. If SanityCheckFrame causes the order to matter, it shouldn\u0027t do what it does at least during the root visit of a moving collector, or it should become moving-gc-aware and mark/forward the objects before doing address comparisons.",
+      "range": {
+        "startLine": 12,
+        "startChar": 22,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "119c6bd97f7ac24b64eaf4e9333abb44acbf780f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
