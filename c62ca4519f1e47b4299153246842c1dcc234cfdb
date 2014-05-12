@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a862067_947b8a9a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-05-12T15:24:08Z",
+      "side": 1,
+      "message": "I\u0027m not too thrilled with the two types of arrangements we have for these files. boot-arm.art / boot-arm64.art vs arm/boot.art and arm64/boot.art if there\u0027s no preopt.\n\nIt would be good to be consistent, but this is fine if it unblocks you.",
+      "revId": "c62ca4519f1e47b4299153246842c1dcc234cfdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
