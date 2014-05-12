@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa4d7811_a758e50f",
+        "filename": "compiler/dex/quick/arm64/codegen_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-12T22:33:22Z",
+      "side": 1,
+      "message": "style nit: for routines that just cause death we\u0027ve generally put them in the .cc file to save space (as they should never be called).",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 51
+      },
+      "revId": "9ea73e16302e7d8bb1bdadb8bcaf5732d6875a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
