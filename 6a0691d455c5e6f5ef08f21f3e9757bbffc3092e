@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cafc6cef_1c3cb54d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-05-13T23:34:21Z",
+      "side": 1,
+      "message": "it seems like this would make more sense as \n\nifdef USE_DLMALLOC\n\nsince its protecting a dlmalloc specific call.\n\njust a thought.",
+      "range": {
+        "startLine": 895,
+        "startChar": 0,
+        "endLine": 895,
+        "endChar": 20
+      },
+      "revId": "6a0691d455c5e6f5ef08f21f3e9757bbffc3092e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
