@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "2aeee834_3f2b67e8",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-05-13T20:03:07Z",
+      "side": 1,
+      "message": "Renamed to HandleScope.",
+      "parentUuid": "8afd1475_98e67d4d",
+      "revId": "72337ed2ae613de356b624bd4e9ab93ac8ccef01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8afd1475_58e53543",
         "filename": "runtime/gc/heap-inl.h",
         "patchSetId": 1
@@ -42,6 +60,24 @@
         "endLine": 304,
         "endChar": 48
       },
+      "revId": "72337ed2ae613de356b624bd4e9ab93ac8ccef01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_1f2823e8",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-05-13T20:03:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afd1475_58e53543",
       "revId": "72337ed2ae613de356b624bd4e9ab93ac8ccef01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
