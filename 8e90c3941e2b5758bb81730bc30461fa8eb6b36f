@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2aeee834_c257043c",
+        "filename": "runtime/handle.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "14?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ae46051_a4e92c4b",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "describe",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_a27760e7",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "Scoped handle storage of a fixed size that is stack allocated.",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 15
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_86f4eef7",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "SIRT? fix comments",
+      "range": {
+        "startLine": 651,
+        "startChar": 42,
+        "endLine": 651,
+        "endChar": 43
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aeee834_02df2c9b",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "What\u0027s a Handleerences?",
+      "range": {
+        "startLine": 652,
+        "startChar": 9,
+        "endLine": 652,
+        "endChar": 25
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_26e7e24b",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-13T21:04:38Z",
+      "side": 1,
+      "message": "rename to top_handle_scope",
+      "range": {
+        "startLine": 666,
+        "startChar": 23,
+        "endLine": 666,
+        "endChar": 28
+      },
+      "revId": "8e90c3941e2b5758bb81730bc30461fa8eb6b36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
