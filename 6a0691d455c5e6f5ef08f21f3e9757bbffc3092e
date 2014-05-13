@@ -22,6 +22,30 @@
       "revId": "6a0691d455c5e6f5ef08f21f3e9757bbffc3092e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaf9f8ff_be4135c9",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-13T23:40:45Z",
+      "side": 1,
+      "message": "Good point, I\u0027ll modify the code here and in the dalvik change.",
+      "parentUuid": "cafc6cef_1c3cb54d",
+      "range": {
+        "startLine": 895,
+        "startChar": 0,
+        "endLine": 895,
+        "endChar": 20
+      },
+      "revId": "6a0691d455c5e6f5ef08f21f3e9757bbffc3092e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
