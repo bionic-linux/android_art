@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca98ecf7_1cea1513",
+        "filename": "compiler/elf_writer_mclinker.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "Is the reason that we don\u0027t need to use a StackHandleScope here is that we won\u0027t refer to the wrapped objects after the ResolveMethod call, correct?",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 6
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a6434c9_fafd69d5",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "Unaligned?",
+      "range": {
+        "startLine": 1447,
+        "startChar": 31,
+        "endLine": 1447,
+        "endChar": 32
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a6434c9_ba03f12d",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "It looks like the right-hand \u0027|\u0027 is unaligned.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 31,
+        "endLine": 1056,
+        "endChar": 32
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca98ecf7_5c3bbde6",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 1061,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 1061,
+        "startChar": 31,
+        "endLine": 1061,
+        "endChar": 32
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0af3e41b_c4871202",
+        "filename": "runtime/handle_scope-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "\u0027inline\u0027?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 16
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cafc6cef_5f00efcb",
+        "filename": "runtime/handle_scope-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-05-14T19:46:31Z",
+      "side": 1,
+      "message": "\u0027inline\u0027?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "eb8167a4f4d27fce0530f6724ab8032610cd146b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
