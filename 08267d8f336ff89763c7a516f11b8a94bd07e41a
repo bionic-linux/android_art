@@ -1,0 +1,717 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a07c8cc_57660cf5",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "indentation is off",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_b7bfa8ef",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Remove break.",
+      "range": {
+        "startLine": 175,
+        "startChar": 6,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_97bee4c1",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Please create a constant for this return value, and check for that constant at the call site.",
+      "range": {
+        "startLine": 856,
+        "startChar": 12,
+        "endLine": 856,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_170654ea",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "missing end paren.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_5700cccb",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Why can\u0027t you compute the encoding at this point?",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_179ad48f",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Indentation is off (here and other 2 lines declaration).",
+      "range": {
+        "startLine": 372,
+        "startChar": 19,
+        "endLine": 372,
+        "endChar": 27
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_765510d6",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "2014",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_b6eb28ca",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "indentation is off here and other two lines declarations.",
+      "range": {
+        "startLine": 1152,
+        "startChar": 40,
+        "endLine": 1152,
+        "endChar": 41
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_16581c0e",
+        "filename": "compiler/utils/arm/assembler_arm32.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "2014",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_d6fa2495",
+        "filename": "compiler/utils/arm/assembler_arm32.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "OVERRIDE",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_9a4bad3d",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Identation is off here and on 2 line declarations.",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_5739ecc3",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2153,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "too many new lines",
+      "range": {
+        "startLine": 2153,
+        "startChar": 0,
+        "endLine": 2153,
+        "endChar": 1
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_dafa4595",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Remove CHECK, it\u0027s been done line 2165.",
+      "range": {
+        "startLine": 2172,
+        "startChar": 17,
+        "endLine": 2172,
+        "endChar": 39
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_3ae0a1e2",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2210,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2210,
+        "startChar": 8,
+        "endLine": 2210,
+        "endChar": 15
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_f740001b",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2227,
+        "startChar": 15,
+        "endLine": 2227,
+        "endChar": 17
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_760350da",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2246,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2246,
+        "startChar": 8,
+        "endLine": 2246,
+        "endChar": 15
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_5600d4cb",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2278,
+        "startChar": 15,
+        "endLine": 2278,
+        "endChar": 17
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_1adddd26",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2295,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2295,
+        "startChar": 2,
+        "endLine": 2295,
+        "endChar": 7
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_56e734f8",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "OVERRIDE",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_d6c86459",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "This is quite expensive. Can we have a mode where we\u0027re always pessimistic? I know force_32 does it, but maybe we need another flag just for the branches.",
+      "range": {
+        "startLine": 451,
+        "startChar": 46,
+        "endLine": 451,
+        "endChar": 52
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_b7eb28ca",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "const Thumb2Assembler\u0026 assembler",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_da13652d",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 599,
+        "startChar": 9,
+        "endLine": 599,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_36cef862",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "const Thumb2Assembler\u0026 assembler_",
+      "range": {
+        "startLine": 641,
+        "startChar": 10,
+        "endLine": 641,
+        "endChar": 25
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_1a067dea",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Remove debugging code.",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a07c8cc_37e0b8e2",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 114,
+        "startChar": 21,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_36b718df",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Move fstream first.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_76b190e6",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_7a0339da",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "of -\u003e or",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_b687a802",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Is that always in the PATH? (I\u0027m thinking about builds that don\u0027t call envsetup.sh)",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_5a00f5cb",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "end.",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a08b4da_bab951de",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-14T10:16:44Z",
+      "side": 1,
+      "message": "Why not Thumb2Assembler assembler ?",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
