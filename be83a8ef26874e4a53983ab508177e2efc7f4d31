@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea9db0d4_6139dec4",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3976,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-14T08:46:03Z",
+      "side": 1,
+      "message": "#else\n  UNIMPLEMENTED(WARNING) \u003c\u003c \"Native heap inspection is only supported with dlmalloc\";",
+      "range": {
+        "startLine": 3976,
+        "startChar": 0,
+        "endLine": 3976,
+        "endChar": 4
+      },
+      "revId": "be83a8ef26874e4a53983ab508177e2efc7f4d31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caaaaceb_72dd30ed",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-14T08:46:03Z",
+      "side": 1,
+      "message": "perhaps:\n#elif USE_JEMALLOC\n  // Jemalloc trims internally and so no explicit trmming is required.\n#else\n  UNIMPLEMENTED(WARNING) \u003c\u003c \"Add trimming support\";",
+      "range": {
+        "startLine": 899,
+        "startChar": 1,
+        "endLine": 899,
+        "endChar": 6
+      },
+      "revId": "be83a8ef26874e4a53983ab508177e2efc7f4d31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
