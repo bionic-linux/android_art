@@ -16,6 +16,24 @@
       "revId": "1f16ebac739b2f730c5c8e7462aaf583ad4b1b63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1cc41d_56bbb4fd",
+        "filename": "compiler/dex/quick/mir_to_lir.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-05-14T09:26:47Z",
+      "side": 1,
+      "message": "Done. (Mentioned that in the comment in PS3.)",
+      "parentUuid": "0a5e84cf_2c09378f",
+      "revId": "1f16ebac739b2f730c5c8e7462aaf583ad4b1b63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
