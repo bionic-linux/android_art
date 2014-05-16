@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a531cfd_3953739e",
+        "filename": "runtime/mirror/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1039576
+      },
+      "writtenOn": "2014-05-16T18:27:00Z",
+      "side": 1,
+      "message": "Andreas, do we need additional condition here \"|| entry_point \u003d\u003d GetQuickGenericJniTrampoline()\" ?",
+      "revId": "f6c0ea3bf3eee02b176d9a6157fbf67687b54de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
