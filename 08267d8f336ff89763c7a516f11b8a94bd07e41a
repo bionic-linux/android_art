@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa1c9852_695d21a4",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c8cc_57660cf5",
+      "range": {
+        "startLine": 156,
+        "startChar": 34,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_b7bfa8ef",
         "filename": "compiler/utils/arm/assembler_arm.cc",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Remove break.",
+      "range": {
+        "startLine": 175,
+        "startChar": 6,
+        "endLine": 175,
+        "endChar": 11
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_892a5d05",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c8cc_b7bfa8ef",
       "range": {
         "startLine": 175,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ea9db0d4_a7c47676",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Yeah, should do that.  This was copied from the quick compiler with a few modifications",
+      "parentUuid": "2a07c8cc_97bee4c1",
+      "range": {
+        "startLine": 856,
+        "startChar": 12,
+        "endLine": 856,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_170654ea",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 15
@@ -82,6 +154,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "missing end paren.",
+      "range": {
+        "startLine": 188,
+        "startChar": 8,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_e9291110",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c8cc_170654ea",
       "range": {
         "startLine": 188,
         "startChar": 8,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "caaaaceb_608b9ac8",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Because there are two possible encodings depending on whether we are in ARM or thumb.  I didn\u0027t want to burden the caller with the responsibility of knowing what instruction set the assembler will generate.  The caller should just create an Address and the assembler should call the either encodingArm() or encodingThumb().  I ended up with this format after going through a phase of using a different class for each instruction set (ArmAddress and ThumbAddress) but realized that everything that uses Address then needs to know which one to create.\n\nPotentially we could also use this for the ARM64 assembler then the code generator could be common for all ARM (might not be that simple, but that is my hope).",
+      "parentUuid": "2a07c8cc_5700cccb",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_179ad48f",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 15
@@ -128,6 +248,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Indentation is off (here and other 2 lines declaration).",
+      "range": {
+        "startLine": 372,
+        "startChar": 19,
+        "endLine": 372,
+        "endChar": 27
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2cfc7a_717eeabe",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c8cc_179ad48f",
       "range": {
         "startLine": 372,
         "startChar": 19,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "4a2cfc7a_9157de3c",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1cc41d_765510d6",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a1cc41d_b6eb28ca",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 15
@@ -174,6 +342,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "indentation is off here and other two lines declarations.",
+      "range": {
+        "startLine": 1152,
+        "startChar": 40,
+        "endLine": 1152,
+        "endChar": 41
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_7ec1590f",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done, and fixed all the others too",
+      "parentUuid": "0a1cc41d_b6eb28ca",
       "range": {
         "startLine": 1152,
         "startChar": 40,
@@ -255,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "4a2cfc7a_9140be6c",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done, and all the others too",
+      "parentUuid": "8a08b4da_9a4bad3d",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_5739ecc3",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 15
@@ -289,6 +505,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Remove CHECK, it\u0027s been done line 2165.",
+      "range": {
+        "startLine": 2172,
+        "startChar": 17,
+        "endLine": 2172,
+        "endChar": 39
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_498ea5d9",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Not really.  The offset was changed on line 2170.  I think it\u0027s best to keep it in case someone decides to change the offset to something other than zero and breaks the following code.",
+      "parentUuid": "8a08b4da_dafa4595",
       "range": {
         "startLine": 2172,
         "startChar": 17,
@@ -439,6 +679,30 @@
     },
     {
       "key": {
+        "uuid": "aa1c9852_698b61c8",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Also did the one in assembler_arm32.h",
+      "parentUuid": "0a1cc41d_56e734f8",
+      "range": {
+        "startLine": 44,
+        "startChar": 23,
+        "endLine": 44,
+        "endChar": 24
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a1cc41d_d6c86459",
         "filename": "compiler/utils/arm/assembler_thumb2.h",
         "patchSetId": 15
@@ -450,6 +714,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "This is quite expensive. Can we have a mode where we\u0027re always pessimistic? I know force_32 does it, but maybe we need another flag just for the branches.",
+      "range": {
+        "startLine": 451,
+        "startChar": 46,
+        "endLine": 451,
+        "endChar": 52
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_3ee521b2",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "It\u0027s not too expensive.  It\u0027s a memmove.  I don\u0027t think that making all branches 32 bit is efficient.  It would eliminate the use of cbz/cbnz and those are important for thumb performance.\n\nAre you worried about compile time performance?  I don\u0027t think that a couple of memmoves in the assembler is anywhere near as complex in time as the rest of the compiler.\n\nIf you insist I can certainly add the flag to force 32 bit branches but in the absence of any evidence I would rather not as it complicates the code and adds another test path.",
+      "parentUuid": "0a1cc41d_d6c86459",
       "range": {
         "startLine": 451,
         "startChar": 46,
@@ -485,6 +773,30 @@
     },
     {
       "key": {
+        "uuid": "4a2cfc7a_bcdaf981",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "The reason for making this a pointer is that the caller can just pass \u0027this\u0027 as an argument rather than \u0027*this\u0027.  Forcing the caller to insert a dereference on every call seems wrong.",
+      "parentUuid": "2a07c8cc_b7eb28ca",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_da13652d",
         "filename": "compiler/utils/arm/assembler_thumb2.h",
         "patchSetId": 15
@@ -496,6 +808,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 599,
+        "startChar": 9,
+        "endLine": 599,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_c9729527",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a08b4da_da13652d",
       "range": {
         "startLine": 599,
         "startChar": 9,
@@ -531,6 +867,30 @@
     },
     {
       "key": {
+        "uuid": "aa1c9852_e9775114",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "See comment above",
+      "parentUuid": "0a1cc41d_36cef862",
+      "range": {
+        "startLine": 641,
+        "startChar": 10,
+        "endLine": 641,
+        "endChar": 25
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_1a067dea",
         "filename": "compiler/utils/assembler.h",
         "patchSetId": 15
@@ -542,6 +902,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Remove debugging code.",
+      "range": {
+        "startLine": 107,
+        "startChar": 21,
+        "endLine": 107,
+        "endChar": 28
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_de16c5de",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "oops, missed these ones during the cull.",
+      "parentUuid": "8a08b4da_1a067dea",
       "range": {
         "startLine": 107,
         "startChar": 21,
@@ -577,6 +961,30 @@
     },
     {
       "key": {
+        "uuid": "4a2cfc7a_3ce7e94b",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a07c8cc_37e0b8e2",
+      "range": {
+        "startLine": 114,
+        "startChar": 21,
+        "endLine": 114,
+        "endChar": 28
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a1cc41d_36b718df",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 15
@@ -588,6 +996,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Move fstream first.",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a2cfc7a_5cf49df6",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1cc41d_36b718df",
       "range": {
         "startLine": 20,
         "startChar": 10,
@@ -623,6 +1055,30 @@
     },
     {
       "key": {
+        "uuid": "8a3274d1_1e113de5",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a1cc41d_76b190e6",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_7a0339da",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 15
@@ -634,6 +1090,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "of -\u003e or",
+      "range": {
+        "startLine": 32,
+        "startChar": 63,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1c9852_49678561",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a08b4da_7a0339da",
       "range": {
         "startLine": 32,
         "startChar": 63,
@@ -669,6 +1149,30 @@
     },
     {
       "key": {
+        "uuid": "4a2cfc7a_bc03d92d",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Have to think about this.  Do we have any builds that don\u0027t all envsetup.sh?  I\u0027ll ask Brian",
+      "parentUuid": "0a1cc41d_b687a802",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_5a00f5cb",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 15
@@ -692,6 +1196,30 @@
     },
     {
       "key": {
+        "uuid": "aa1c9852_6964415c",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a08b4da_5a00f5cb",
+      "range": {
+        "startLine": 102,
+        "startChar": 32,
+        "endLine": 102,
+        "endChar": 35
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_bab951de",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 15
@@ -703,6 +1231,30 @@
       "writtenOn": "2014-05-14T10:16:44Z",
       "side": 1,
       "message": "Why not Thumb2Assembler assembler ?",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a3274d1_3e0e01c2",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-16T21:28:04Z",
+      "side": 1,
+      "message": "Wanted to use the factory method because that\u0027s what the compilers should use.  I guess I could have done it in only one test but that doesn\u0027t really matter.",
+      "parentUuid": "8a08b4da_bab951de",
       "range": {
         "startLine": 119,
         "startChar": 7,
