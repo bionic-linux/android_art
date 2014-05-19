@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "2a58a819_f8772514",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation.\n\nAbout ARM64: let\u0027s not think about it, I\u0027d like us to use vixl as much as possible.",
+      "parentUuid": "caaaaceb_608b9ac8",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_179ad48f",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 15
@@ -541,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "2a58a819_58675161",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "Ah yes, indeed, I missed that. So yeah, let\u0027s keep it. Shoult it be a DCHECK though?",
+      "parentUuid": "aa1c9852_498ea5d9",
+      "range": {
+        "startLine": 2172,
+        "startChar": 17,
+        "endLine": 2172,
+        "endChar": 39
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_3ae0a1e2",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 15
@@ -750,6 +798,30 @@
     },
     {
       "key": {
+        "uuid": "0a3da49e_57f2c67c",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "Yes, I\u0027m worried about compile time performance. And it\u0027s not just a memmove right? You need to go through all branching instructions to change their offsets have the memmove.\n\nI agree with you that compared to what\u0027s going on in the compiler, it\u0027s not so expensive. But with a baseline compiler, it might be.\n\nI also agree with you that in the absence of evidence, let\u0027s stick with that :)",
+      "parentUuid": "8a3274d1_3ee521b2",
+      "range": {
+        "startLine": 451,
+        "startChar": 46,
+        "endLine": 451,
+        "endChar": 52
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_b7eb28ca",
         "filename": "compiler/utils/arm/assembler_thumb2.h",
         "patchSetId": 15
@@ -785,6 +857,30 @@
       "side": 1,
       "message": "The reason for making this a pointer is that the caller can just pass \u0027this\u0027 as an argument rather than \u0027*this\u0027.  Forcing the caller to insert a dereference on every call seems wrong.",
       "parentUuid": "2a07c8cc_b7eb28ca",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a3da49e_77efc28f",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "That makes it easier, but is at odds with google\u0027s c++ style guide (that I know, we\u0027re not following fully....).",
+      "parentUuid": "4a2cfc7a_bcdaf981",
       "range": {
         "startLine": 489,
         "startChar": 17,
@@ -1173,6 +1269,30 @@
     },
     {
       "key": {
+        "uuid": "4a531cfd_04464634",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "Yes, AFAIR almost all of them (if not all).",
+      "parentUuid": "4a2cfc7a_bc03d92d",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_5a00f5cb",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 15
@@ -1255,6 +1375,30 @@
       "side": 1,
       "message": "Wanted to use the factory method because that\u0027s what the compilers should use.  I guess I could have done it in only one test but that doesn\u0027t really matter.",
       "parentUuid": "8a08b4da_bab951de",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a3da49e_d716b6de",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-19T08:27:37Z",
+      "side": 1,
+      "message": "Your call, but at this level of unit testing, I would not worry.",
+      "parentUuid": "8a3274d1_3e0e01c2",
       "range": {
         "startLine": 119,
         "startChar": 7,
