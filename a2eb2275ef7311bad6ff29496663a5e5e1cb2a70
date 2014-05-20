@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f1ab865_35fea389",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-20T17:42:49Z",
+      "side": 1,
+      "message": "TODO: ?",
+      "range": {
+        "startLine": 725,
+        "startChar": 7,
+        "endLine": 725,
+        "endChar": 10
+      },
+      "revId": "a2eb2275ef7311bad6ff29496663a5e5e1cb2a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_f5df0b1d",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-20T17:42:49Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 742,
+        "startChar": 7,
+        "endLine": 742,
+        "endChar": 10
+      },
+      "revId": "a2eb2275ef7311bad6ff29496663a5e5e1cb2a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
