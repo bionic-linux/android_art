@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf1dbc5e_3eb446be",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-20T06:41:08Z",
+      "side": 1,
+      "message": "We should avoid redundancy between this and MarkObject above.",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 82
+      },
+      "revId": "5ba6625c4f50445a44c63874fb031347c07fa3f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f1ab865_7cdac883",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-20T06:41:08Z",
+      "side": 1,
+      "message": "what is the mutator lock guarding here?",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 32
+      },
+      "revId": "5ba6625c4f50445a44c63874fb031347c07fa3f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
