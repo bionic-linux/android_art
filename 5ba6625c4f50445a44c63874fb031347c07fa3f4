@@ -45,6 +45,30 @@
       "revId": "5ba6625c4f50445a44c63874fb031347c07fa3f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a3da49e_a2e48673",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1037563
+      },
+      "writtenOn": "2014-05-20T06:46:23Z",
+      "side": 1,
+      "message": "It is needed to change thread running state from \u0027suspended\u0027 to \u0027running\u0027. If the thread is in the suspended state, then GCDaemon visits the thread\u0027s roots, otherwise the thread is asked to visit its roots.",
+      "parentUuid": "9f1ab865_7cdac883",
+      "range": {
+        "startLine": 798,
+        "startChar": 0,
+        "endLine": 798,
+        "endChar": 32
+      },
+      "revId": "5ba6625c4f50445a44c63874fb031347c07fa3f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
