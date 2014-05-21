@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff281483_a9424672",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-21T08:15:27Z",
+      "side": 1,
+      "message": "separate CL?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 76
+      },
+      "revId": "3b91b9d626d77448af68f9c691a7bba01676a2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f58ec40_8b07917d",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-21T08:15:27Z",
+      "side": 1,
+      "message": "make RAX the hidden argument?",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 76
+      },
+      "revId": "3b91b9d626d77448af68f9c691a7bba01676a2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff281483_e92f2ec2",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-21T08:15:27Z",
+      "side": 1,
+      "message": "these are ambiguous enough that comments would be useful",
+      "range": {
+        "startLine": 1608,
+        "startChar": 0,
+        "endLine": 1608,
+        "endChar": 50
+      },
+      "revId": "3b91b9d626d77448af68f9c691a7bba01676a2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
