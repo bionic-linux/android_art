@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff281483_352c6f89",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-21T00:33:35Z",
+      "side": 1,
+      "message": "Once you\u0027ve finished with WIP, remove this.",
+      "revId": "10d585894689b92cef0162ec036a3a72b7fcb583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff281483_7549d746",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-21T00:33:35Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "10d585894689b92cef0162ec036a3a72b7fcb583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f2f188c_94068a38",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-21T00:33:35Z",
+      "side": 1,
+      "message": "In general, we don\u0027t like to check in commented-out debugging code.  For code that isn\u0027t fully tested or incomplete, use UNIMPLEMENTED(WARNING) or UNIMPLEMENTED(FATAL) - or just a DCHECK() if that fits.",
+      "revId": "10d585894689b92cef0162ec036a3a72b7fcb583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
