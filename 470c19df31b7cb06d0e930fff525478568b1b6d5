@@ -39,6 +39,29 @@
       "revId": "470c19df31b7cb06d0e930fff525478568b1b6d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfa05c5b_2b6ae5ff",
+        "filename": "compiler/dex/quick/x86/x86_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-05-22T21:56:01Z",
+      "side": 1,
+      "message": "Pext -\u003e Pextr\nAnd for all cases below as well.",
+      "range": {
+        "startLine": 441,
+        "startChar": 2,
+        "endLine": 441,
+        "endChar": 14
+      },
+      "revId": "470c19df31b7cb06d0e930fff525478568b1b6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
