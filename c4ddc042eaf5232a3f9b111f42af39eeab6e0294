@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a531cfd_ed1042b5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-22T21:45:07Z",
+      "side": 1,
+      "message": "it\u0027s -\u003e its",
+      "range": {
+        "startLine": 902,
+        "startChar": 21,
+        "endLine": 902,
+        "endChar": 22
+      },
+      "revId": "c4ddc042eaf5232a3f9b111f42af39eeab6e0294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
