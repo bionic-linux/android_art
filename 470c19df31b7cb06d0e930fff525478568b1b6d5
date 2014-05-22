@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f6c24f1_3d6f9b10",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-05-22T21:02:16Z",
+      "side": 1,
+      "message": "This seems to be wrong according to email with Bill.  The problem is that there are now 3 registers aliased together, and the master isn\u0027t guaranteed to be all Live.",
+      "revId": "470c19df31b7cb06d0e930fff525478568b1b6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
