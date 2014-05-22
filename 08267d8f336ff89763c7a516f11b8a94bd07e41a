@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "bfa05c5b_05fef816",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-22T20:01:59Z",
+      "side": 1,
+      "message": "I was thinking that we should use the vixl stuff but make the ARM64 assembler a derived class of ARMAssembler rather than Assembler.  There are a lot of common instructions the code generators could benefit from the commonality.",
+      "parentUuid": "2a58a819_f8772514",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_179ad48f",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 15
@@ -589,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "ff965405_33957a28",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-22T20:01:59Z",
+      "side": 1,
+      "message": "I will change it do DCHECK.  Unlikely to make any performance difference though.",
+      "parentUuid": "2a58a819_58675161",
+      "range": {
+        "startLine": 2172,
+        "startChar": 17,
+        "endLine": 2172,
+        "endChar": 39
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a08b4da_3ae0a1e2",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 15
@@ -881,6 +929,30 @@
       "side": 1,
       "message": "That makes it easier, but is at odds with google\u0027s c++ style guide (that I know, we\u0027re not following fully....).",
       "parentUuid": "4a2cfc7a_bcdaf981",
+      "range": {
+        "startLine": 489,
+        "startChar": 17,
+        "endLine": 489,
+        "endChar": 32
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_a43aa8b7",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-22T20:01:59Z",
+      "side": 1,
+      "message": "Looking at the C++ style guide, I think this is allowed:\n\n-----\n\nIn fact it is a very strong convention in Google code that input arguments are values or const references while output arguments are pointers. Input parameters may be const pointers, but we never allow non-const reference parameters except when required by convention, e.g., swap().\n\nHowever, there are some instances where using const T* is preferable to const T\u0026 for input parameters. For example:\n\nYou want to pass in a null pointer.\nThe function saves a pointer or reference to the input.\nRemember that most of the time input parameters are going to be specified as const T\u0026. Using const T* instead communicates to the reader that the input is somehow treated differently. So if you choose const T* rather than const T\u0026, do so for a concrete reason; otherwise it will likely confuse readers by making them look for an explanation that doesn\u0027t exist.\n\n-----",
+      "parentUuid": "0a3da49e_77efc28f",
       "range": {
         "startLine": 489,
         "startChar": 17,
@@ -1281,6 +1353,30 @@
       "side": 1,
       "message": "Yes, AFAIR almost all of them (if not all).",
       "parentUuid": "4a2cfc7a_bc03d92d",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_04559cd4",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-22T20:01:59Z",
+      "side": 1,
+      "message": "It will be hard to do this without getting access to the assembler.  I\u0027ll do some investigation about the best way to handle this",
+      "parentUuid": "4a531cfd_04464634",
       "range": {
         "startLine": 68,
         "startChar": 34,
