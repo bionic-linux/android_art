@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff965405_d40bd9b1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-05-23T06:04:28Z",
+      "side": 1,
+      "message": "can we move the defaulting into GetCompilerExecutable()?\n\nI assume its the same for image_space.cc?",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "dc28215ab4269ca3c1a803ca89d8d41b4eb2eac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff7f3495_9c582d66",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-05-23T06:04:28Z",
+      "side": 1,
+      "message": "make a new whitespace line separate section here that initializes compiler_executable_ as appropriate then you don\u0027t need to check at the usage sites.",
+      "revId": "dc28215ab4269ca3c1a803ca89d8d41b4eb2eac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
