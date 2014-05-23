@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "5fd680dc_f40e16c4",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-05-23T18:29:58Z",
+      "side": 1,
+      "message": "Yes.  The ultimate goal would be to have a single arm code generator for both 64 and 32 bit.  Unobtainable?  Maybe, but we could move in that direction.  There will be a lot of common code.  Definitely a stretch but would be worth while in the end if we didn\u0027t have to support two code generators for ARM.",
+      "parentUuid": "9f7638c4_534e0483",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 13
+      },
+      "revId": "08267d8f336ff89763c7a516f11b8a94bd07e41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a07c8cc_179ad48f",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 15
