@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "9f9d5828_90a562a9",
+        "filename": "compiler/dex/quick/x86/codegen_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-05-23T00:32:00Z",
+      "side": 1,
+      "message": "Done for @params.  @notes seem short enough and aren\u0027t sentences.",
+      "parentUuid": "bfa05c5b_d07a0cc8",
+      "range": {
+        "startLine": 428,
+        "startChar": 4,
+        "endLine": 428,
+        "endChar": 6
+      },
+      "revId": "470c19df31b7cb06d0e930fff525478568b1b6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfa05c5b_2b6ae5ff",
         "filename": "compiler/dex/quick/x86/x86_lir.h",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2014-05-22T21:56:01Z",
       "side": 1,
       "message": "Pext -\u003e Pextr\nAnd for all cases below as well.",
+      "range": {
+        "startLine": 441,
+        "startChar": 2,
+        "endLine": 441,
+        "endChar": 14
+      },
+      "revId": "470c19df31b7cb06d0e930fff525478568b1b6d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_90bec2c1",
+        "filename": "compiler/dex/quick/x86/x86_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-05-23T00:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa05c5b_2b6ae5ff",
       "range": {
         "startLine": 441,
         "startChar": 2,
