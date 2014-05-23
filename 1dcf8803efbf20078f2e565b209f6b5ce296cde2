@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff7f3495_ea4e2fa5",
+        "filename": "runtime/base/bit_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-23T15:46:19Z",
+      "side": 1,
+      "message": "it would be useful to add documentation",
+      "range": {
+        "startLine": 37,
+        "startChar": 10,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "1dcf8803efbf20078f2e565b209f6b5ce296cde2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
