@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f34c006_c165c29d",
+        "filename": "runtime/base/bit_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-05-26T10:28:00Z",
+      "side": 1,
+      "message": "Is that STL specific? I would add a comment around those two methods.",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 24
+      },
+      "revId": "a5b8fde2d2bc3167078694fad417fddfe442a6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
