@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff71899_714bf0e7",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-05-27T19:45:00Z",
+      "side": 1,
+      "message": "LOG can\u0027t be reached.",
+      "revId": "daf6ba1a3731af17076daedab4c28c700af3c142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ffd0472_e106f038",
+        "filename": "compiler/dex/quick/x86/x86_lir.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-05-27T19:45:00Z",
+      "side": 1,
+      "message": "Why did you put the FP back in?  These may be used for non-FP uses as well.",
+      "revId": "daf6ba1a3731af17076daedab4c28c700af3c142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
