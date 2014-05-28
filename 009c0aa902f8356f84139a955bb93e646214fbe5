@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f10f896_8383beb2",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "We gave an exemption to the 100 char length length coding convention limit to the first art of this file (makes it a lot easier to read).  However, the rest of the file should adhere.",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df16f08e_a5b23e80",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "\u003e100",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd54c00_c0fd9e1b",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "\u003e100",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd54c00_e00aa286",
+        "filename": "compiler/dex/quick/x86/assemble_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "\u003e 100 (and quite a few others)",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fd54c00_0008668c",
+        "filename": "compiler/dex/quick/x86/codegen_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "\u003e 100",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f10f896_e390b2f5",
+        "filename": "compiler/dex/quick/x86/codegen_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "\u003e 100",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f10f896_c38db6df",
+        "filename": "compiler/dex/quick/x86/target_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-05-28T12:44:48Z",
+      "side": 1,
+      "message": "Delete debugging code.",
+      "revId": "009c0aa902f8356f84139a955bb93e646214fbe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
