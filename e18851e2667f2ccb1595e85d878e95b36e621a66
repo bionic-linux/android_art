@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe21c19_95428620",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-06-02T12:45:12Z",
+      "side": 1,
+      "message": "For consistency, GetReturnWide should also take \"RegisterClass reg_class\".",
+      "range": {
+        "startLine": 774,
+        "startChar": 30,
+        "endLine": 774,
+        "endChar": 44
+      },
+      "revId": "e18851e2667f2ccb1595e85d878e95b36e621a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
