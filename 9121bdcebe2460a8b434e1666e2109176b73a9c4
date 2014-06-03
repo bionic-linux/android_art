@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_d0dd9eee",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1659,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-03T17:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe21c19_35d4f276",
+      "range": {
+        "startLine": 1659,
+        "startChar": 30,
+        "endLine": 1659,
+        "endChar": 36
+      },
+      "revId": "9121bdcebe2460a8b434e1666e2109176b73a9c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe21c19_f588aaa6",
         "filename": "compiler/dex/quick/gen_common.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-06-02T16:54:26Z",
       "side": 1,
       "message": "kCoreReg",
+      "range": {
+        "startLine": 1924,
+        "startChar": 32,
+        "endLine": 1924,
+        "endChar": 38
+      },
+      "revId": "9121bdcebe2460a8b434e1666e2109176b73a9c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_70da92f7",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1924,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-03T17:57:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe21c19_f588aaa6",
       "range": {
         "startLine": 1924,
         "startChar": 32,
