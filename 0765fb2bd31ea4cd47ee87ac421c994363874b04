@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf505ca5_05fc3850",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-03T23:29:47Z",
+      "side": 1,
+      "message": "is this really working around compiler bugs or there are real load/store optimizations breaking things? If so we should make sure that we have appropriate memory barriers in.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "0765fb2bd31ea4cd47ee87ac421c994363874b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
