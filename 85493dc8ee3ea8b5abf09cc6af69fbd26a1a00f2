@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_c552b695",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-04T16:56:53Z",
+      "side": 1,
+      "message": "? Should there be a TODO to remove this or hide the other accessor.",
+      "range": {
+        "startLine": 161,
+        "startChar": 10,
+        "endLine": 161,
+        "endChar": 85
+      },
+      "revId": "85493dc8ee3ea8b5abf09cc6af69fbd26a1a00f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
