@@ -22,6 +22,24 @@
       "revId": "24eedfc55bef6e5c6248d85b0a220520662ea1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfd51034_c70d029c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-04T16:40:05Z",
+      "side": 1,
+      "message": "Only GetReference doesn\u0027t have a user.",
+      "parentUuid": "3f162cdd_7b559bd3",
+      "revId": "24eedfc55bef6e5c6248d85b0a220520662ea1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
