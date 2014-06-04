@@ -22,6 +22,24 @@
       "revId": "85493dc8ee3ea8b5abf09cc6af69fbd26a1a00f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_9655dcd6",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-04T16:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f33447f_c552b695",
+      "revId": "85493dc8ee3ea8b5abf09cc6af69fbd26a1a00f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
