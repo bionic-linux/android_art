@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f10f896_4698b4ef",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Thumb2",
+      "parentUuid": "1fb328fb_774d7081",
+      "range": {
+        "startLine": 187,
+        "startChar": 70,
+        "endLine": 187,
+        "endChar": 71
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fae2c94_382cc9bb",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 18
@@ -36,6 +60,30 @@
       "writtenOn": "2014-05-28T08:27:46Z",
       "side": 1,
       "message": "a abstract -\u003e an abstract",
+      "range": {
+        "startLine": 316,
+        "startChar": 13,
+        "endLine": 316,
+        "endChar": 21
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_a96e7f3f",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fae2c94_382cc9bb",
       "range": {
         "startLine": 316,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_cd9c2417",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Wasn\u0027t aware that was a \"thing\".  I don\u0027t really care about whitespace formatting, honestly, but whatever.",
+      "parentUuid": "7fcb4466_4276f2b2",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 82
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcb4466_2271eeb9",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 18
@@ -82,6 +154,30 @@
       "writtenOn": "2014-05-28T08:27:46Z",
       "side": 1,
       "message": "Too many new lines.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 1
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_bfb6a1c3",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "See previous comment",
+      "parentUuid": "7fcb4466_2271eeb9",
       "range": {
         "startLine": 273,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bf293c21_f72c5a25",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcb4466_627bf699",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 1
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcb4466_8280fa39",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 18
@@ -128,6 +248,30 @@
       "writtenOn": "2014-05-28T08:27:46Z",
       "side": 1,
       "message": "Indentation is off.",
+      "range": {
+        "startLine": 707,
+        "startChar": 25,
+        "endLine": 707,
+        "endChar": 33
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f26384e_d38854a7",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcb4466_8280fa39",
       "range": {
         "startLine": 707,
         "startChar": 25,
@@ -248,6 +392,30 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_69d4e777",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": "Hmm, was in original code. I understood it as written and think it\u0027s pretty clear.",
+      "parentUuid": "7fcb4466_c281223c",
+      "range": {
+        "startLine": 1230,
+        "startChar": 36,
+        "endLine": 1230,
+        "endChar": 40
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcb4466_028cea70",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 18
@@ -259,6 +427,24 @@
       "writtenOn": "2014-05-28T08:27:46Z",
       "side": 1,
       "message": "Same comment for the new lines: Either 1 or 2, but consistent.",
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_4d681433",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1036486
+      },
+      "writtenOn": "2014-06-05T19:46:22Z",
+      "side": 1,
+      "message": ":-)",
+      "parentUuid": "7fcb4466_028cea70",
       "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
