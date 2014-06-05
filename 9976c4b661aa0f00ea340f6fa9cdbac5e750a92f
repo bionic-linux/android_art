@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "7f81844b_95f6263f",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-06-05T20:58:00Z",
+      "side": 1,
+      "message": "I spent too much time in AAR... the convention there is two lines between methods. Might have even been a lint thing....",
+      "parentUuid": "df2c3030_cd9c2417",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 82
+      },
+      "revId": "9976c4b661aa0f00ea340f6fa9cdbac5e750a92f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcb4466_2271eeb9",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 18
