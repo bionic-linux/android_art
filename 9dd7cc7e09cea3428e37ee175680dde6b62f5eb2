@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_86ba8a57",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2c3030_06067ab5",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe21c19_f67e6df1",
         "filename": "runtime/mirror/art_method.h",
         "patchSetId": 3
@@ -42,6 +60,24 @@
         "endLine": 93,
         "endChar": 57
       },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_86d12a89",
+        "filename": "runtime/mirror/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe21c19_f67e6df1",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "df4350e0_c0b62ac5",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "GetDexFile already has an internal GetInterfaceMethodIfProxy",
+      "parentUuid": "df4350e0_e0f8069f",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1b2808_bde6b54d",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -88,6 +142,24 @@
         "endLine": 226,
         "endChar": 68
       },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_4af475a8",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1b2808_bde6b54d",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_b8478d82",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "It is called internally by GetDexFile.",
+      "parentUuid": "df4350e0_c0e06ae5",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f1b2808_7df01dff",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -134,6 +224,24 @@
         "endLine": 284,
         "endChar": 73
       },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_ca0725e6",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f1b2808_7df01dff",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "bf505ca5_ad33e22c",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4350e0_2016ee1e",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_401bfa46",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -180,6 +306,24 @@
         "endLine": 320,
         "endChar": 45
       },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_4d301e20",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4350e0_401bfa46",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -209,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_53df4271",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4350e0_0015f20d",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_a00afeef",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -232,6 +394,24 @@
     },
     {
       "key": {
+        "uuid": "3f162cdd_6a04d9e1",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df4350e0_a00afeef",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df2c3030_26937608",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -249,6 +429,24 @@
         "endLine": 380,
         "endChar": 39
       },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_8a012dd3",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T20:06:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2c3030_26937608",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
