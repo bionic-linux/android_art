@@ -1,0 +1,395 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf505ca5_929de1e0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3339,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Combine these two if statements into one?",
+      "range": {
+        "startLine": 3338,
+        "startChar": 6,
+        "endLine": 3339,
+        "endChar": 71
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_443c6bdc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Combine the if statements?",
+      "range": {
+        "startLine": 3356,
+        "startChar": 8,
+        "endLine": 3357,
+        "endChar": 73
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_d2dfe997",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Should line 1552 be like here and just call m-\u003eGetDexFile() without going through GetDeclaringClass()-\u003eGetDexCache()?",
+      "range": {
+        "startLine": 1606,
+        "startChar": 4,
+        "endLine": 1606,
+        "endChar": 19
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_f2cd45fa",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "This \u0027m\u0027 could have moved due to the GetReturnType() call above? Use a Handle?",
+      "range": {
+        "startLine": 689,
+        "startChar": 52,
+        "endLine": 689,
+        "endChar": 53
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_8984de84",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "If we use proxy_method directly for the PrettyMethod (in the same line), then we could use proxy_method directly within the DCHECK as well? And how about swapping lines 606 and 607 to avoid the look of using the method under wrapping it in a handle?",
+      "range": {
+        "startLine": 607,
+        "startChar": 10,
+        "endLine": 607,
+        "endChar": 30
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_d217e9d6",
+        "filename": "runtime/handle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s an easy way to prevent Assign() from being called on NullHandle?",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 11
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_d2c5a91a",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Is this SetJ call necessary?",
+      "range": {
+        "startLine": 361,
+        "startChar": 11,
+        "endLine": 361,
+        "endChar": 15
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_9216281d",
+        "filename": "runtime/interpreter/interpreter_switch_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Is this SetJ() call necessary?",
+      "range": {
+        "startLine": 269,
+        "startChar": 15,
+        "endLine": 269,
+        "endChar": 19
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_89e37ef0",
+        "filename": "runtime/mirror/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Why don\u0027t we have to call GetInterfaceMethodIfProxy() here? I guess I don\u0027t understand what a proxy method is really.",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_728e15dc",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "If this can cause a GC, which was the bug, how about adding a comment to note that?",
+      "range": {
+        "startLine": 227,
+        "startChar": 17,
+        "endLine": 227,
+        "endChar": 30
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_9201616e",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "m could be moved after the GetClassFromTypeIdex() call? Use a handle around m by declaring a handle for m as a local variable?",
+      "range": {
+        "startLine": 372,
+        "startChar": 13,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_0989aea8",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "If this bug refers to the use of m after the GetClasFromTypeIdx() call, then use a Handle to fix this bug?",
+      "range": {
+        "startLine": 378,
+        "startChar": 26,
+        "endLine": 378,
+        "endChar": 40
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_7227e43d",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 383,
+        "startChar": 45,
+        "endLine": 383,
+        "endChar": 46
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f33447f_921e28f6",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "If the above GetReturnType() could invoke a GC, then called_method directory here isn\u0027t moving GC-safe? Maybe store the Handle for called_method above in a local variable and use it here, as in,\n\nHandle\u003cmirror::ArtMethod\u003e h_called_method \u003d hs.NewHandle(called_method);\nMethodHelper mh(h_called_method);\n\n...\n\n  return_type \u003d \u0026reg_types_.FromClass(h_called_method-\u003eGetReturnTypeDescriptor(),\n\n?",
+      "range": {
+        "startLine": 2145,
+        "startChar": 46,
+        "endLine": 2145,
+        "endChar": 59
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_928721c0",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3837,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Same comment as above. Wrap mirror_method in a handle and use it here?",
+      "range": {
+        "startLine": 3837,
+        "startChar": 45,
+        "endLine": 3837,
+        "endChar": 59
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f162cdd_e9fb1a27",
+        "filename": "test/ReferenceMap/stack_walk_refmap_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Same comment as the one in stack_walk_jni.cc",
+      "range": {
+        "startLine": 61,
+        "startChar": 17,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_32464de0",
+        "filename": "test/StackWalk/stack_walk_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T00:27:34Z",
+      "side": 1,
+      "message": "Maybe this MethodHelper isn\u0027t necessary?\n\nIt\u0027s used in macro REG (through CHECK_REGS), but we just call GetMethod() to extract the method out of the MethodHelper there.\n\nDo we still need a Handle independent of MethodHelper if GC can happen in the following code?",
+      "range": {
+        "startLine": 63,
+        "startChar": 17,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
