@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "df4350e0_9ae093ad",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3339,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf505ca5_929de1e0",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f162cdd_443c6bdc",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 3357,
         "endChar": 73
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_c37ab595",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f162cdd_443c6bdc",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_cf82d33f",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "This way is probably correct actually, I\u0027ll fix it.",
+      "parentUuid": "bf505ca5_d2dfe997",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_f2cd45fa",
         "filename": "runtime/entrypoints/entrypoint_utils.h",
         "patchSetId": 2
@@ -88,6 +142,24 @@
         "endLine": 689,
         "endChar": 53
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_5ada0bf7",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "parentUuid": "bf505ca5_f2cd45fa",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_8f8cdb72",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Deleted the method helper here, it is no longer needed.",
+      "parentUuid": "3f162cdd_8984de84",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_d217e9d6",
         "filename": "runtime/handle.h",
         "patchSetId": 2
@@ -134,6 +224,24 @@
         "endLine": 105,
         "endChar": 11
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_6363a1e6",
+        "filename": "runtime/handle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "I plan on making it inherit ConstHandle instead of Handle but that requires changing most Handle parameters to be ConstHandles which will be another CL.",
+      "parentUuid": "bf505ca5_d217e9d6",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_2f582f32",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Not sure, it might be necessary to clear the other 32 bits of JValue? I\u0027ll add shertz as reviewer.",
+      "parentUuid": "bf505ca5_d2c5a91a",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f33447f_9216281d",
         "filename": "runtime/interpreter/interpreter_switch_impl.cc",
         "patchSetId": 2
@@ -186,6 +312,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_03c3cd71",
+        "filename": "runtime/interpreter/interpreter_switch_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "See other comment.",
+      "parentUuid": "7f33447f_9216281d",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f162cdd_89e37ef0",
         "filename": "runtime/mirror/art_method.h",
         "patchSetId": 2
@@ -203,6 +347,24 @@
         "endLine": 82,
         "endChar": 15
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_23c8498b",
+        "filename": "runtime/mirror/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "I think we only need that at call sites where we used to use MethodHelper::IsStatic, I\u0027ll try to make sure I didn\u0027t miss any.",
+      "parentUuid": "3f162cdd_89e37ef0",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -255,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_a3b4590d",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "I\u0027ll use a HandleWrapper for now.",
+      "parentUuid": "bf505ca5_9201616e",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f162cdd_0989aea8",
         "filename": "runtime/reflection.cc",
         "patchSetId": 2
@@ -272,6 +452,24 @@
         "endLine": 378,
         "endChar": 40
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_83b7dd11",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Its actually related to the args since they could contain StackReferences. This will be hard to fix, I\u0027ll need to use a RememberForGC visitor like in the trampolines I think.",
+      "parentUuid": "3f162cdd_0989aea8",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -301,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_43c1c560",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f33447f_7227e43d",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f33447f_921e28f6",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 2
@@ -318,6 +534,24 @@
         "endLine": 2145,
         "endChar": 59
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_03aaeda9",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f33447f_921e28f6",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -347,6 +581,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_23afe9b9",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3837,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf505ca5_928721c0",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f162cdd_e9fb1a27",
         "filename": "test/ReferenceMap/stack_walk_refmap_jni.cc",
         "patchSetId": 2
@@ -370,6 +622,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_af6c3fd9",
+        "filename": "test/ReferenceMap/stack_walk_refmap_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f162cdd_e9fb1a27",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_32464de0",
         "filename": "test/StackWalk/stack_walk_jni.cc",
         "patchSetId": 2
@@ -387,6 +657,24 @@
         "endLine": 63,
         "endChar": 19
       },
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_cf6973c9",
+        "filename": "test/StackWalk/stack_walk_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-06T01:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf505ca5_32464de0",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
