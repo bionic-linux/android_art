@@ -289,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "df4350e0_a0851e49",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:14:09Z",
+      "side": 1,
+      "message": "It seems \u0027result\u0027 is zero-initialized at line 327. MethodExitEvent takes it as a const reference where I don\u0027t expect a mutation to it. So, it should still be all zero at this point?\n\nSebastien?",
+      "parentUuid": "1f1b2808_2f582f32",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f33447f_9216281d",
         "filename": "runtime/interpreter/interpreter_switch_impl.cc",
         "patchSetId": 2
@@ -476,6 +494,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_06b43abd",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:14:09Z",
+      "side": 1,
+      "message": "I see. I guess another CL.",
+      "parentUuid": "df2c3030_83b7dd11",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f33447f_7227e43d",
         "filename": "runtime/reflection.cc",
         "patchSetId": 2
@@ -640,6 +676,24 @@
     },
     {
       "key": {
+        "uuid": "1f1b2808_d24cb8ad",
+        "filename": "test/ReferenceMap/stack_walk_refmap_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:14:09Z",
+      "side": 1,
+      "message": "Now we can/should remove the unused arg \u0027mh\u0027 from IS_IN_REF_BITMAP().",
+      "parentUuid": "1f1b2808_af6c3fd9",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_32464de0",
         "filename": "test/StackWalk/stack_walk_jni.cc",
         "patchSetId": 2
@@ -675,6 +729,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "bf505ca5_32464de0",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_72592c68",
+        "filename": "test/StackWalk/stack_walk_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:14:09Z",
+      "side": 1,
+      "message": "We can remove the \u0027mh\u0027 arg from REG().",
+      "parentUuid": "1f1b2808_cf6973c9",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
