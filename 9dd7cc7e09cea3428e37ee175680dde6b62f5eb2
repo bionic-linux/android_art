@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "df2c3030_06067ab5",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "I wonder if we should pretty-print non_proxy_method in addition to proxy_method in case of a check failure.",
+      "range": {
+        "startLine": 606,
+        "startChar": 55,
+        "endLine": 606,
+        "endChar": 67
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe21c19_f67e6df1",
         "filename": "runtime/mirror/art_method.h",
         "patchSetId": 3
@@ -18,6 +41,213 @@
         "startChar": 32,
         "endLine": 93,
         "endChar": 57
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_e0f8069f",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Here we get the dex file before going through GetInterfaceMethodIfProxy(). But we do it in the other order in GetReturnType(). Does this matter?",
+      "range": {
+        "startLine": 184,
+        "startChar": 30,
+        "endLine": 184,
+        "endChar": 37
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_bde6b54d",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Might it help simplify the code if we always call GetMethod() instead of accessing method_ directly?",
+      "range": {
+        "startLine": 226,
+        "startChar": 32,
+        "endLine": 226,
+        "endChar": 68
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_c0e06ae5",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Same, but we are not calling GetInterfaceMethodIfProxy() here. Is it ok?",
+      "range": {
+        "startLine": 263,
+        "startChar": 30,
+        "endLine": 263,
+        "endChar": 37
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f1b2808_7df01dff",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 284,
+        "startChar": 37,
+        "endLine": 284,
+        "endChar": 73
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_2016ee1e",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "same.",
+      "range": {
+        "startLine": 309,
+        "startChar": 32,
+        "endLine": 309,
+        "endChar": 39
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_401bfa46",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "same.",
+      "range": {
+        "startLine": 320,
+        "startChar": 11,
+        "endLine": 320,
+        "endChar": 45
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_0015f20d",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 324,
+        "startChar": 32,
+        "endLine": 324,
+        "endChar": 39
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df4350e0_a00afeef",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 337,
+        "startChar": 32,
+        "endLine": 337,
+        "endChar": 39
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_26937608",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T19:02:06Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 380,
+        "startChar": 32,
+        "endLine": 380,
+        "endChar": 39
       },
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
