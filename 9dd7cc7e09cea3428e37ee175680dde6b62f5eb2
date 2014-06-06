@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_e810e06f",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:15:17Z",
+      "side": 1,
+      "message": "Now it looks the GetInterfaceMethodIfProxy() calls (lines 284 and 285) were removed and we aren\u0027t calling GetMethod(). Did you mean to call GetMethod()?",
+      "parentUuid": "3f162cdd_ca0725e6",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df4350e0_2016ee1e",
         "filename": "runtime/object_utils.h",
         "patchSetId": 3
@@ -447,6 +465,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "df2c3030_26937608",
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf505ca5_0ecbed2f",
+        "filename": "runtime/object_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-06T23:15:17Z",
+      "side": 1,
+      "message": "No change in this line?",
+      "parentUuid": "3f162cdd_8a012dd3",
       "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
