@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfe21c19_f67e6df1",
+        "filename": "runtime/mirror/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-06T14:41:14Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this here. I believe a proxy method can\u0027t be static. Generated proxy class only has a constructor as direct method. There is no \u003cclinit\u003e method.",
+      "range": {
+        "startLine": 93,
+        "startChar": 32,
+        "endLine": 93,
+        "endChar": 57
+      },
+      "revId": "9dd7cc7e09cea3428e37ee175680dde6b62f5eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
