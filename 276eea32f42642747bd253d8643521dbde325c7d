@@ -730,6 +730,24 @@
     },
     {
       "key": {
+        "uuid": "7f33447f_1b9310d6",
+        "filename": "test/ReferenceMap/stack_walk_refmap_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-07T03:43:52Z",
+      "side": 1,
+      "message": "Can you remove the unused first parameter \u0027mh\u0027 of IS_IN_REF_BITMAP()?",
+      "parentUuid": "1f1b2808_d24cb8ad",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_32464de0",
         "filename": "test/StackWalk/stack_walk_jni.cc",
         "patchSetId": 2
@@ -783,6 +801,24 @@
       "side": 1,
       "message": "We can remove the \u0027mh\u0027 arg from REG().",
       "parentUuid": "1f1b2808_cf6973c9",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff749443_94c86cec",
+        "filename": "test/StackWalk/stack_walk_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-06-07T03:43:52Z",
+      "side": 1,
+      "message": "Can you remove the unused first parameter \u0027mh\u0027 of REG()?",
+      "parentUuid": "1f1b2808_72592c68",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
