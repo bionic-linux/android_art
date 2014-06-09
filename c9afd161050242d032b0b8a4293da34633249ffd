@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "df2c3030_2c4ef581",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-09T17:46:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f81844b_66b75613",
+      "revId": "c9afd161050242d032b0b8a4293da34633249ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf505ca5_d784b4bc",
         "filename": "runtime/mirror/art_method.h",
         "patchSetId": 5
@@ -42,6 +60,24 @@
         "endLine": 444,
         "endChar": 85
       },
+      "revId": "c9afd161050242d032b0b8a4293da34633249ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2c3030_2c583532",
+        "filename": "runtime/mirror/art_method.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-06-09T17:46:11Z",
+      "side": 1,
+      "message": "Style guide says to minimize vertical white space, should I delete the extra white spaces in the header instead?",
+      "parentUuid": "bf505ca5_d784b4bc",
       "revId": "c9afd161050242d032b0b8a4293da34633249ffd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
