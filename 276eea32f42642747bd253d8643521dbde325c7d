@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "df719054_90f5daed",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-09T14:32:47Z",
+      "side": 1,
+      "message": "Yeah the \"SetJ(0)\" is needless: JValue should already be initialized in constructor.",
+      "parentUuid": "bf505ca5_31a08897",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf7e9c23_2f8cc570",
         "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
         "patchSetId": 2
@@ -383,6 +401,24 @@
       "side": 1,
       "message": "See other comment.",
       "parentUuid": "7f33447f_9216281d",
+      "revId": "276eea32f42642747bd253d8643521dbde325c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df719054_b0fa56db",
+        "filename": "runtime/interpreter/interpreter_switch_impl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-09T14:32:47Z",
+      "side": 1,
+      "message": "Note: here result is initialized at the right place. The compute goto interpreter should do the same.",
+      "parentUuid": "df2c3030_03c3cd71",
       "revId": "276eea32f42642747bd253d8643521dbde325c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
