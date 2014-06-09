@@ -22,6 +22,30 @@
       "revId": "08491a76bfe3db3fc602c038f0d1b3c23607f192",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f646c99_e84553d3",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-06-09T17:45:54Z",
+      "side": 1,
+      "message": "Changed to -LIBART and -libart.",
+      "parentUuid": "7f33447f_94012d29",
+      "range": {
+        "startLine": 192,
+        "startChar": 31,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "08491a76bfe3db3fc602c038f0d1b3c23607f192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
