@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_94012d29",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-06-09T05:00:06Z",
+      "side": 1,
+      "message": "I thought this meant optional, I think NDEBUG would be clearer?\n\nactually, probably LIBART/LIBARTD libart/libartd are clearest?",
+      "range": {
+        "startLine": 192,
+        "startChar": 31,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "08491a76bfe3db3fc602c038f0d1b3c23607f192",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
