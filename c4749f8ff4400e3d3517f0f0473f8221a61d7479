@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f804079_9bf2a376",
+        "filename": "test/ThreadStress/ThreadStress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-06-11T17:51:13Z",
+      "side": 1,
+      "message": "/** javadoc",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "c4749f8ff4400e3d3517f0f0473f8221a61d7479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_d4187adc",
+        "filename": "test/ThreadStress/ThreadStress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-06-11T17:51:13Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 59,
+        "startChar": 19,
+        "endLine": 59,
+        "endChar": 24
+      },
+      "revId": "c4749f8ff4400e3d3517f0f0473f8221a61d7479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_7bda3ff7",
+        "filename": "test/ThreadStress/ThreadStress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-06-11T17:51:13Z",
+      "side": 1,
+      "message": "WS",
+      "range": {
+        "startLine": 239,
+        "startChar": 86,
+        "endLine": 239,
+        "endChar": 87
+      },
+      "revId": "c4749f8ff4400e3d3517f0f0473f8221a61d7479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
