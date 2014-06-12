@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf713c8e_d7923ed0",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T18:24:01Z",
+      "side": 1,
+      "message": "isn\u0027t this unnecessary? I don\u0027t see explicit register usage.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 59
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf713c8e_374c52ab",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T18:24:01Z",
+      "side": 1,
+      "message": "AH",
+      "range": {
+        "startLine": 398,
+        "startChar": 29,
+        "endLine": 398,
+        "endChar": 32
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6328c5_6369adc7",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T18:24:01Z",
+      "side": 1,
+      "message": "ah, EAX for Fstsw.. I wonder if we could allocate just EAX.\nThere\u0027s also sahf which would have a shorter encoding than this AND, but its only available in 32-bit mode.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 34
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf713c8e_fa4c8187",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T18:24:01Z",
+      "side": 1,
+      "message": "fwiw, it may be nice to tag this as an unlikely branch",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 25
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
