@@ -46,6 +46,52 @@
       "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df74307d_dbf8ab9f",
+        "filename": "test/JniTest/JniTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T17:04:57Z",
+      "side": 1,
+      "message": "s/On/From/",
+      "range": {
+        "startLine": 38,
+        "startChar": 50,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df74307d_1be303f2",
+        "filename": "test/JniTest/jni_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-12T17:04:57Z",
+      "side": 1,
+      "message": "s/On/From/",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
