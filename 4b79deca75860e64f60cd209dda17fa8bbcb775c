@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f6920a1_9c79c90d",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-06-12T14:34:47Z",
+      "side": 1,
+      "message": "Seems like you should always return false here, otherwise the code line 822 will crash.",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 820,
+        "endChar": 44
+      },
+      "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
