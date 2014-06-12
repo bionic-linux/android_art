@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7fd6e483_33661aa9",
+        "filename": "test/JniTest/JniTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-06-12T17:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df74307d_dbf8ab9f",
+      "range": {
+        "startLine": 38,
+        "startChar": 50,
+        "endLine": 38,
+        "endChar": 52
+      },
+      "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df74307d_1be303f2",
         "filename": "test/JniTest/jni_test.cc",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2014-06-12T17:04:57Z",
       "side": 1,
       "message": "s/On/From/",
+      "range": {
+        "startLine": 106,
+        "startChar": 32,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "4b79deca75860e64f60cd209dda17fa8bbcb775c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd6e483_d3705e5d",
+        "filename": "test/JniTest/jni_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-06-12T17:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df74307d_1be303f2",
       "range": {
         "startLine": 106,
         "startChar": 32,
