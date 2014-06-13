@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "7fd6e483_7e9179f7",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1039893
+      },
+      "writtenOn": "2014-06-13T20:05:08Z",
+      "side": 1,
+      "message": "I think, I can change this to:\n\nMarkTemp(rs_rAX);\nFreeTemp(rs_rAX);\nLockTemp(rs_rAX);\n\nsave FPU to AX and compare it with 0x400\n\nFreeTemp(rs_rAX);\nClobber(rs_rAX);\nUnmarkTemp(rs_rAX);",
+      "parentUuid": "1f6328c5_6369adc7",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 34
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf713c8e_fa4c8187",
         "filename": "compiler/dex/quick/x86/fp_x86.cc",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2014-06-12T18:24:01Z",
       "side": 1,
       "message": "fwiw, it may be nice to tag this as an unlikely branch",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 406,
+        "endChar": 25
+      },
+      "revId": "9078aa96fbc94a4100a5bc154b65115545aee95c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd6e483_dea18552",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1039893
+      },
+      "writtenOn": "2014-06-13T20:05:08Z",
+      "side": 1,
+      "message": "Ian, I\u0027m sorry, I didn\u0027t catch your point on \"unlikely branch\". Could you specify this a bit?",
+      "parentUuid": "bf713c8e_fa4c8187",
       "range": {
         "startLine": 404,
         "startChar": 2,
