@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "bf713c8e_6c28b1ed",
+        "filename": "compiler/dex/quick/arm64/target_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-16T15:14:07Z",
+      "side": 1,
+      "message": "Neglected to remove this ifdef\u0027d out block.  Replacing with a comment block.",
+      "revId": "3b78173c8bd6fbc5e8365c7ff4e6fa1e86ce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f6e38af_7c0b088c",
         "filename": "compiler/dex/quick/gen_invoke.cc",
         "patchSetId": 6
@@ -30,6 +47,24 @@
       "writtenOn": "2014-06-16T10:29:17Z",
       "side": 1,
       "message": "xArm64?",
+      "revId": "3b78173c8bd6fbc5e8365c7ff4e6fa1e86ce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f4e8057_e6c2243a",
+        "filename": "compiler/dex/quick/gen_invoke.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-16T15:14:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f6e38af_7c0b088c",
       "revId": "3b78173c8bd6fbc5e8365c7ff4e6fa1e86ce4326",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
