@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f4e8057_269eec83",
+        "filename": "compiler/dex/quick/arm64/assemble_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2014-06-16T10:29:17Z",
+      "side": 1,
+      "message": "Note: the checks we do here are incomplete. A commit will follow to repair this.",
+      "revId": "3b78173c8bd6fbc5e8365c7ff4e6fa1e86ce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6e38af_7c0b088c",
+        "filename": "compiler/dex/quick/gen_invoke.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1750,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2014-06-16T10:29:17Z",
+      "side": 1,
+      "message": "xArm64?",
+      "revId": "3b78173c8bd6fbc5e8365c7ff4e6fa1e86ce4326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
