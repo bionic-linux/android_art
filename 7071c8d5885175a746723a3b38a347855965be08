@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "246b81de_97da44f3",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-06-18T12:09:20Z",
+      "side": 1,
+      "message": "The DCHECK is for rl_src, the if() is for rl_dest.",
+      "parentUuid": "04975d03_c5d4897b",
+      "revId": "7071c8d5885175a746723a3b38a347855965be08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2492a112_596943ff",
         "filename": "compiler/dex/quick/x86/fp_x86.cc",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-06-18T12:06:35Z",
       "side": 1,
       "message": "ditto",
+      "revId": "7071c8d5885175a746723a3b38a347855965be08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e47c09a6_b5f0a070",
+        "filename": "compiler/dex/quick/x86/fp_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-06-18T12:09:20Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "2492a112_596943ff",
       "revId": "7071c8d5885175a746723a3b38a347855965be08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
