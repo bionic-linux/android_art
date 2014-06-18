@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2492a112_b97e4fbb",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-18T11:36:55Z",
+      "side": 1,
+      "message": "Looks unrelated to promotion - please move to it\u0027s own CL.",
+      "revId": "393afcc36c6f6a1b11259ea0a9a5a1cd7166dc4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64d659dd_25e1c662",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-18T11:36:55Z",
+      "side": 1,
+      "message": "Again, looks like this should be in a different CL.",
+      "revId": "393afcc36c6f6a1b11259ea0a9a5a1cd7166dc4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2492a112_d97b13ca",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-18T11:36:55Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "393afcc36c6f6a1b11259ea0a9a5a1cd7166dc4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04975d03_45e15961",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2204,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2014-06-18T11:36:55Z",
+      "side": 1,
+      "message": "same.",
+      "revId": "393afcc36c6f6a1b11259ea0a9a5a1cd7166dc4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
