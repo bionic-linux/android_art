@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84b42ddf_ba161161",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-22T06:18:16Z",
+      "side": 1,
+      "message": "This doesn\u0027t look efficient:\n\nxor temp, temp\nresult \u003d src1 - src2   \u003c-- likely involves an extra mov\nsetGT temp\nresult \u003d result ROL 1  \u003c-- this doesn\u0027t feel like a fast instruction\nresult \u003d result AND 1\nresult \u003d -result\nadd result, temp\n\n7 or 8 instructions. The same effect can be had from:\n\ncmp src1, src2  \u003c-- 64-bit compare\nsetGT result  \u003c-- result8 \u003d (src1 \u003e src2) ? 1 : 0\nsetLT temp \u003c-- temp8 \u003d (src1 \u003c src2) ? 1 : 0\nsub8 result, temp  \u003c-- result8 is 0, -1 or 1\nmovsx result, result  \u003c-- Sign extend the byte result in result to 32-bit\n\nwhich is 5 instructions.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "0498223110174a055c743219c6cd82bee90d6034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
