@@ -22,6 +22,30 @@
       "revId": "0498223110174a055c743219c6cd82bee90d6034",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e416c98e_4816ff1d",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2014-06-23T04:31:41Z",
+      "side": 1,
+      "message": "Agree. Will upload a new CL.",
+      "parentUuid": "84b42ddf_ba161161",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "0498223110174a055c743219c6cd82bee90d6034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
