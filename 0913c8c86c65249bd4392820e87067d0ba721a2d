@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04abdd9e_87b5ccd4",
+        "filename": "runtime/monitor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-06-24T20:28:39Z",
+      "side": 1,
+      "message": "* const",
+      "range": {
+        "startLine": 1120,
+        "startChar": 8,
+        "endLine": 1120,
+        "endChar": 10
+      },
+      "revId": "0913c8c86c65249bd4392820e87067d0ba721a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
