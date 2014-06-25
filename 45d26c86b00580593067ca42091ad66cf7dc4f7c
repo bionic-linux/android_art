@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c57978_ff16571e",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2457,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-25T15:21:37Z",
+      "side": 1,
+      "message": "i think the bug had a better comment, explaining that the DirectByteBuffer field has type \u0027int\u0027. (i.e. explaining where the limit comes from.)",
+      "revId": "45d26c86b00580593067ca42091ad66cf7dc4f7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24bf01e0_9a4e49f4",
+        "filename": "runtime/jni_internal_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-25T15:21:37Z",
+      "side": 1,
+      "message": "+ 1 is a more discriminating test.",
+      "revId": "45d26c86b00580593067ca42091ad66cf7dc4f7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
