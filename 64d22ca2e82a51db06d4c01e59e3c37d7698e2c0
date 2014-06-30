@@ -22,6 +22,29 @@
       "revId": "64d22ca2e82a51db06d4c01e59e3c37d7698e2c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "841c2dfc_fd476382",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4266,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-30T09:04:28Z",
+      "side": 1,
+      "message": "Here we disable allocation tracking. We delete all allocation records. I think we should clear the TypeCache to avoid holding unused weak globals.",
+      "range": {
+        "startLine": 4266,
+        "startChar": 4,
+        "endLine": 4266,
+        "endChar": 5
+      },
+      "revId": "64d22ca2e82a51db06d4c01e59e3c37d7698e2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

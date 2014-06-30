@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c450e5a6_ff475b82",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-30T09:04:28Z",
+      "side": 0,
+      "message": "I think we were missing a destructor to delete the weak global for the method.",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "fe7aee2d20b47dad6029a588e0c7394f0c75d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c450e5a6_1f580763",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-06-30T09:04:28Z",
+      "side": 0,
+      "message": "Same than AllocRecordStackTraceElement: we were missing a destructor to delete the weak global for the type. This should have happened when disabling allocation tracking where we delete all AllocRecord objects.",
+      "range": {
+        "startLine": 104,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 17
+      },
+      "revId": "fe7aee2d20b47dad6029a588e0c7394f0c75d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
