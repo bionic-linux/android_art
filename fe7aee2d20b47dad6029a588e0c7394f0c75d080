@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "04cafddd_97052be1",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-07-07T17:30:24Z",
+      "side": 0,
+      "message": "kWeakGlobalsMax is 51200 vs kDefaultNumAllocRecords which is 64k. So we need some type of deduplication to avoid overflowing the table. The eventual plans is to add a new weak global table specifically allocation records using the code from: \nhttps://android-review.googlesource.com/#/c/94656/",
+      "parentUuid": "c450e5a6_ff475b82",
+      "revId": "fe7aee2d20b47dad6029a588e0c7394f0c75d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c450e5a6_1f580763",
         "filename": "runtime/debugger.cc",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 104,
         "endChar": 17
       },
+      "revId": "fe7aee2d20b47dad6029a588e0c7394f0c75d080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cafddd_179bfb65",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-07-07T17:30:24Z",
+      "side": 0,
+      "message": "Good point, but we would still overflow the weak global table even with this destructor.",
+      "parentUuid": "c450e5a6_1f580763",
       "revId": "fe7aee2d20b47dad6029a588e0c7394f0c75d080",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

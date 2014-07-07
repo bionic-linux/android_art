@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "e4c6c9d8_736d22d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-07-07T17:30:24Z",
+      "side": 1,
+      "message": "I now clear the cache when you disable allocation tracking. Deleted the TODO.",
+      "parentUuid": "a4f851d3_56c0955e",
+      "revId": "64d22ca2e82a51db06d4c01e59e3c37d7698e2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "841c2dfc_fd476382",
         "filename": "runtime/debugger.cc",
         "patchSetId": 2
@@ -42,6 +60,24 @@
         "endLine": 4266,
         "endChar": 5
       },
+      "revId": "64d22ca2e82a51db06d4c01e59e3c37d7698e2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cafddd_97d6cbf7",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4266,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-07-07T17:30:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "841c2dfc_fd476382",
       "revId": "64d22ca2e82a51db06d4c01e59e3c37d7698e2c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
