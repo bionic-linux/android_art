@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043d9d9e_77d8a2fb",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-08T14:20:30Z",
+      "side": 1,
+      "message": "I would prefer to have 3 bytes here, { 0x12, 0x34, 0x56 }, and perform both the aligned read of 0x1234 and unaligned read of 0x3456. Same for the other tests, even the peek/pokeByte should try an address other than the start of the array.",
+      "range": {
+        "startLine": 520,
+        "startChar": 19,
+        "endLine": 520,
+        "endChar": 23
+      },
+      "revId": "8ea5f22de7ee08f6c1474a7a5be8c8d388fcda8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_6b242dcf",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-08T14:20:30Z",
+      "side": 1,
+      "message": "I\u0027d prefer 0x1234567887654321 with different high and low words.",
+      "range": {
+        "startLine": 548,
+        "startChar": 56,
+        "endLine": 548,
+        "endChar": 75
+      },
+      "revId": "8ea5f22de7ee08f6c1474a7a5be8c8d388fcda8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
