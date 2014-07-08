@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c498e5f7_d077ac54",
+        "filename": "runtime/debugger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-08T08:00:17Z",
+      "side": 1,
+      "message": "Clears",
+      "range": {
+        "startLine": 168,
+        "startChar": 7,
+        "endLine": 168,
+        "endChar": 12
+      },
+      "revId": "9b41de5044b058800402a0d5194098cf01105147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043d9d9e_547f24b8",
+        "filename": "runtime/debugger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-08T08:00:17Z",
+      "side": 1,
+      "message": "deletes",
+      "range": {
+        "startLine": 168,
+        "startChar": 32,
+        "endLine": 168,
+        "endChar": 38
+      },
+      "revId": "9b41de5044b058800402a0d5194098cf01105147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
