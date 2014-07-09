@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "445eb5fe_a7283411",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Can you add a description of this class? It\u0027s not obvious what its purpose is.",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 17
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043d9d9e_f76812ff",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "source_or_dest_reg?",
+      "range": {
+        "startLine": 371,
+        "startChar": 11,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043d9d9e_d7631622",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "obj_reg?",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "445eb5fe_adc1f56a",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Can we refactor this method to avoid duplicating too much code? I only see few differences between CompileBaseline and CompileOptimized.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_51e55e42",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "I\u0027d prefer adding the instruction set as prefix to the class name (here ARMNullCheckSlowPath). IMO that helps to avoid confusion between classes for each target. I don\u0027t think the namespace is enough.",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_3600c868",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Move to kPrimBoolean case?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 20,
+        "endLine": 1036,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043d9d9e_dd9a5760",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Move to kPrimShort case?",
+      "range": {
+        "startLine": 1048,
+        "startChar": 20,
+        "endLine": 1048,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_1642ec72",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Same than ARM codegen",
+      "range": {
+        "startLine": 1047,
+        "startChar": 20,
+        "endLine": 1047,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_3637e81c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "Same than ARM codegen",
+      "range": {
+        "startLine": 1059,
+        "startChar": 20,
+        "endLine": 1059,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "445eb5fe_8d6431ef",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1288,
+        "startChar": 2,
+        "endLine": 1288,
+        "endChar": 18
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c498e5f7_91efe620",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1301,
+        "startChar": 2,
+        "endLine": 1301,
+        "endChar": 28
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043d9d9e_9d3fef4d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-07-09T15:40:04Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1357,
+        "startChar": 2,
+        "endLine": 1357,
+        "endChar": 15
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
