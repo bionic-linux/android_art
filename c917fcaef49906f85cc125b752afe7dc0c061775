@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "993578d4_b2ee4090",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445eb5fe_a7283411",
+      "range": {
+        "startLine": 347,
+        "startChar": 6,
+        "endLine": 347,
+        "endChar": 17
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043d9d9e_f76812ff",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "source_or_dest_reg?",
+      "range": {
+        "startLine": 371,
+        "startChar": 11,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993578d4_7218d810",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043d9d9e_f76812ff",
       "range": {
         "startLine": 371,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "993578d4_521dd4fe",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043d9d9e_d7631622",
+      "range": {
+        "startLine": 372,
+        "startChar": 11,
+        "endLine": 372,
+        "endChar": 14
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "445eb5fe_adc1f56a",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "Can we refactor this method to avoid duplicating too much code? I only see few differences between CompileBaseline and CompileOptimized.",
+      "range": {
+        "startLine": 33,
+        "startChar": 20,
+        "endLine": 33,
+        "endChar": 35
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "593f80b5_f0dde0f5",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "I expect them to be different at some point, for example they\u0027ll choose a different ordering for the blocks. So I\u0027m a bit reluctant in doing some sharing that is most probably going to be obsolete.",
+      "parentUuid": "445eb5fe_adc1f56a",
       "range": {
         "startLine": 33,
         "startChar": 20,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "19298885_aed7f7d1",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Changed to NullCheckSlowPathARM to make it consistent with other classes in here. We might want to homogenize the naming with other parts of the runtime at some point.",
+      "parentUuid": "c498e5f7_51e55e42",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 23
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c498e5f7_3600c868",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "Move to kPrimBoolean case?",
+      "range": {
+        "startLine": 1036,
+        "startChar": 20,
+        "endLine": 1036,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993578d4_b2640071",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c498e5f7_3600c868",
       "range": {
         "startLine": 1036,
         "startChar": 20,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "19298885_6ef10f77",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043d9d9e_dd9a5760",
+      "range": {
+        "startLine": 1048,
+        "startChar": 20,
+        "endLine": 1048,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c498e5f7_1642ec72",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
@@ -174,6 +342,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "Same than ARM codegen",
+      "range": {
+        "startLine": 1047,
+        "startChar": 20,
+        "endLine": 1047,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993578d4_9261fc60",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c498e5f7_1642ec72",
       "range": {
         "startLine": 1047,
         "startChar": 20,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "593f80b5_70f1f076",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c498e5f7_3637e81c",
+      "range": {
+        "startLine": 1059,
+        "startChar": 20,
+        "endLine": 1059,
+        "endChar": 29
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "445eb5fe_8d6431ef",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -220,6 +436,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 1288,
+        "startChar": 2,
+        "endLine": 1288,
+        "endChar": 18
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993578d4_722e9819",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "445eb5fe_8d6431ef",
       "range": {
         "startLine": 1288,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "19298885_2efb0759",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c498e5f7_91efe620",
+      "range": {
+        "startLine": 1301,
+        "startChar": 2,
+        "endLine": 1301,
+        "endChar": 28
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043d9d9e_9d3fef4d",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -266,6 +530,30 @@
       "writtenOn": "2014-07-09T15:40:04Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 1357,
+        "startChar": 2,
+        "endLine": 1357,
+        "endChar": 15
+      },
+      "revId": "c917fcaef49906f85cc125b752afe7dc0c061775",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "993578d4_5233947f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-10T10:43:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "043d9d9e_9d3fef4d",
       "range": {
         "startLine": 1357,
         "startChar": 2,
