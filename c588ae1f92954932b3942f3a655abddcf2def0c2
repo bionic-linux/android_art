@@ -22,6 +22,30 @@
       "revId": "c588ae1f92954932b3942f3a655abddcf2def0c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f97cb4a5_b5bd00a0",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-07-10T21:30:36Z",
+      "side": 1,
+      "message": "I think that the idea was that a promoted register on a 64 bit machine should handle both 32 and 64 bit values, so it is good to combine them.\n\nIn fact, should the code above be changed to handle machines with merged single/double registers in the same manner as 64 bit registers here? \n\nI have to admit that I don\u0027t understand this code too well.",
+      "parentUuid": "396bacde_d780bceb",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 43
+      },
+      "revId": "c588ae1f92954932b3942f3a655abddcf2def0c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
