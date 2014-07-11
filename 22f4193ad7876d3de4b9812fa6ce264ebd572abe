@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "396bacde_b11e707e",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-07-11T12:33:56Z",
+      "side": 1,
+      "message": "Does this handle MIPS?   It would be better to add a new virtual function that can be invoked once before the start of the loop to decide if they are aliased or not.",
+      "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
