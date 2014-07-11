@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59b4e0af_316cb20b",
+        "filename": "runtime/native/sun_misc_Unsafe.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-07-11T22:01:47Z",
+      "side": 1,
+      "message": "I\u0027ll fix the spacing ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 66,
+        "endLine": 32,
+        "endChar": 91
+      },
+      "revId": "8e419cac27f5909d1aaa5a952bbead66aefc8a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
