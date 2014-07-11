@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bfe48c_1858b135",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-11T22:04:56Z",
+      "side": 0,
+      "message": "Isn\u0027t that actually really bad anyways, as it\u0027s overflowing right now? On 64b systems we don\u0027t double the core_counts array.",
+      "range": {
+        "startLine": 1169,
+        "startChar": 8,
+        "endLine": 1169,
+        "endChar": 56
+      },
+      "revId": "75cb5a2468dfa79600cec8668fc2e85bbc7334a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
