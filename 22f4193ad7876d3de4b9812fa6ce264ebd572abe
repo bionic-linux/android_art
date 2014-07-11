@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "59b4e0af_eb086dbb",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-11T18:48:48Z",
+      "side": 1,
+      "message": "Let\u0027s make it intention-revealing. I\u0027ll introduce the function Mark suggested in PS3.",
+      "parentUuid": "d979b0b6_9731e623",
+      "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1980a8c3_b0b66871",
         "filename": "compiler/dex/quick/ralloc_util.cc",
         "patchSetId": 4
