@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d979b0b6_9731e623",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-07-11T17:34:26Z",
+      "side": 1,
+      "message": "Or for easier route make the if part correspond to x86 and x86_64. And else for everything else.",
+      "parentUuid": "396bacde_b11e707e",
+      "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1980a8c3_b0b66871",
         "filename": "compiler/dex/quick/ralloc_util.cc",
         "patchSetId": 4
