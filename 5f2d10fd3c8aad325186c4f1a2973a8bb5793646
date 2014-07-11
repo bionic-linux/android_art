@@ -16,6 +16,24 @@
       "revId": "5f2d10fd3c8aad325186c4f1a2973a8bb5793646",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7971a4c6_3947af65",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2014-07-11T04:57:01Z",
+      "side": 1,
+      "message": "Mark is right here. If you look into DoPromotion method (how it promotes fp and core regs) you can see that for all platforms core regs are promoted independent on whether it is wide or not-wide. FP regs are promoted separately for kThumb2 and together for other platforms. So here we should be consistent with the algorithm of promoting. I will upload a new patch.",
+      "parentUuid": "1980a8c3_85ff6ccc",
+      "revId": "5f2d10fd3c8aad325186c4f1a2973a8bb5793646",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
