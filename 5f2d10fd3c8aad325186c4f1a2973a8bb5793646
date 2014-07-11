@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1980a8c3_85ff6ccc",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-07-11T03:07:33Z",
+      "side": 1,
+      "message": "I think we need a per-arch function to see if single/double regs alias for this to be done.  Otherwise, the old case is right (i.e. for ARM).",
+      "revId": "5f2d10fd3c8aad325186c4f1a2973a8bb5793646",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
