@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1980a8c3_d61c39d0",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-07-11T23:01:19Z",
+      "side": 1,
+      "message": "How about put CasFieldObjectStrongSequentiallyConsistent (putting the type before the Strong...)? This applies to the other functions as well.",
+      "range": {
+        "startLine": 709,
+        "startChar": 20,
+        "endLine": 709,
+        "endChar": 62
+      },
+      "revId": "8e419cac27f5909d1aaa5a952bbead66aefc8a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b4e0af_316cb20b",
         "filename": "runtime/native/sun_misc_Unsafe.cc",
         "patchSetId": 1
