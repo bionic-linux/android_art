@@ -16,6 +16,52 @@
       "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1980a8c3_b0b66871",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-07-11T16:20:02Z",
+      "side": 1,
+      "message": "Needs period.",
+      "range": {
+        "startLine": 1164,
+        "startChar": 62,
+        "endLine": 1164,
+        "endChar": 70
+      },
+      "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f97cb4a5_cad9ef2e",
+        "filename": "compiler/dex/quick/ralloc_util.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-07-11T16:20:02Z",
+      "side": 1,
+      "message": "Needs period.",
+      "range": {
+        "startLine": 1173,
+        "startChar": 56,
+        "endLine": 1173,
+        "endChar": 64
+      },
+      "revId": "22f4193ad7876d3de4b9812fa6ce264ebd572abe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
