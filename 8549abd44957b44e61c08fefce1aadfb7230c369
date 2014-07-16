@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "39a80c90_f2bd069f",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "rs_dest",
+      "range": {
+        "startLine": 207,
+        "startChar": 77,
+        "endLine": 207,
+        "endChar": 84
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198d0845_5181763e",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Make this shorter for two special cases:\n\n  if ((true_val \u003d\u003d 0 \u0026\u0026 code \u003d\u003d kCondEq) ||\n      (false_val \u003d\u003d 0 \u0026\u0026 code \u003d\u003d kCondNe)) {\n    OpRegRegReg(kOpSub, rl_dest, left_op, right_op);\n    DCHECK(last_lir_insn_-\u003eu.m.def_mask-\u003eHasBit(ResourceMask::kCCode));\n    LIR* it \u003d OpIT(kCondNe, \"\");\n    LoadConstant(rl_dest, code \u003d\u003d kCondEq ? false_val : true_val);\n    OpEndIt(it);\n    return;\n  }",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_4ff471ee",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Right at the beginning you should\n\n  if (false_val \u003d\u003d 0 ||\n      true_val \u003d\u003d 1 || true_val \u003d\u003d 0xffffffff ||\n      true_val \u003d\u003d false_val + 1) {\n    ccode \u003d NegateComparison(ccode);\n    std::swap(true_val, false_val);\n  }\n\nThat will make the special cases below much shorter even when including some new cases:\n\n  if (true_val \u003d\u003d 0) {\n    left_op \u003d zero_reg;\n  } else {\n    left_op \u003d rs_dest.GetReg();\n    LoadConstantNoClobber(rs_dest, true_val);\n  }\n  if (false_val \u003d\u003d 1) {  // Whether true_val \u003d\u003d 0 or not.\n    right_op \u003d zero_reg;\n    opcode \u003d kA64Csinc4rrrc;\n  } else if (false_val \u003d\u003d 0xffffffff) {  // Whether true_val \u003d\u003d 0 or not.\n    right_op \u003d zero_reg;\n    opcode \u003d kA64Csinv4rrrc;\n  } else if (false_val \u003d\u003d true_val + 1) {\n    right_op \u003d left_op;\n    opcode \u003d kA64Csinc4rrrc;\n  } else if (false_val \u003d\u003d -true_val) {  // NOTE: New case.\n    right_op \u003d left_op;\n    opcode \u003d kA64Csneg4rrrc;\n  } else if (false_val \u003d\u003d ~true_val) {  // NOTE: New case.\n    right_op \u003d left_op;\n    opcode \u003d kA64Csinv4rrrc;\n  } else if (true_val \u003d\u003d 0) {\n    right_op \u003d rs_dest.GetReg();\n    LoadConstantNoClobber(rs_dest, false_val);\n    opcode \u003d kA64Csel4rrrc;\n  } else {\n    // Generic case.\n    // TODO:  Load false_val to a temp reg.\n    opcode \u003d kA64Csel4rrrc;\n  }\n\n  NewLIR4(is_wide ? WIDE(opcode) : opcode,\n          rs_dest.GetReg(), left_op, right_op, code);",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c1b053_a98a4559",
         "filename": "compiler/dex/quick/arm64/int_arm64.cc",
         "patchSetId": 1
@@ -30,6 +87,126 @@
       "writtenOn": "2014-07-16T10:49:30Z",
       "side": 1,
       "message": "Maybe, this could be improved as \"(true_val \u003d\u003d ~false_val) \u0026\u0026 (true_val \u003d\u003d 0 || true_val \u003d\u003d 0xffffffff)\". I guess gcc will figure out, anyway.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39a80c90_f287c6fd",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "I assume this LOG shall be removed before final submission.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_0c443781",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Assuming the ARM\u0027s new GenSelect (or GenSelectConst32) is modified according to my comments, this special case is useful only to save 2 bytes if one of check_class, object_class or result_reg isn\u0027t Low8(). In that case the SUB will be a 4-byte insn while the CMP is always a 2-byte insn. This tiny difference should not warrant a special case.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 6,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_8c502745",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Reorder the load insn and slow_path_target in the fast path and drop this load insn from the slow path.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_8ca2e71c",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "GenSelectConst32?",
+      "range": {
+        "startLine": 1386,
+        "startChar": 17,
+        "endLine": 1386,
+        "endChar": 26
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_4c70ffe9",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Looking at ArmMir2Lir::GenSelect() I think we should make this int32_t.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 27,
+        "endLine": 1387,
+        "endChar": 35
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9961058_6cdf7b9f",
+        "filename": "compiler/dex/quick/x86/codegen_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-16T11:17:49Z",
+      "side": 1,
+      "message": "Bad indentation.",
       "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
