@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_78a38123",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a80c90_f2bd069f",
+      "range": {
+        "startLine": 207,
+        "startChar": 77,
+        "endLine": 207,
+        "endChar": 84
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "198d0845_5181763e",
         "filename": "compiler/dex/quick/arm/int_arm.cc",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_78514147",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "While it makes the actual cases cleaner, it tears the logic apart. I don\u0027t like it, but I\u0027ll do it.\n\nYour new cases are nice, but don\u0027t happen in practice, btw. Values are either very simple, or very weird. A code size optimization would be to use a delta in the generic case, but it\u0027s not clear whether two 16b movs or an add with immediate is faster.",
+      "parentUuid": "d9961058_4ff471ee",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c1b053_a98a4559",
         "filename": "compiler/dex/quick/arm64/int_arm64.cc",
         "patchSetId": 1
@@ -70,6 +112,24 @@
       "writtenOn": "2014-07-16T10:49:30Z",
       "side": 1,
       "message": "A quick look at this seems to suggest that you may be able to factor out this \"widening\" (e.g. use \"opcode \u003d kA64Csinc4rrrc;\" here and do the \"widening\" below).",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_deedd5da",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c1b053_a98a4559",
       "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "19c8a874_13d523c9",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Basically done.",
+      "parentUuid": "f9c4b462_efb35de8",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39a80c90_f287c6fd",
         "filename": "compiler/dex/quick/arm64/int_arm64.cc",
         "patchSetId": 1
@@ -104,6 +182,24 @@
       "writtenOn": "2014-07-16T11:17:49Z",
       "side": 1,
       "message": "I assume this LOG shall be removed before final submission.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19c8a874_53f6bb70",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39a80c90_f287c6fd",
       "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -133,6 +229,30 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_bec8e15d",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "I had considered extending the signature of GenSelect[Const32] to signal a preloaded value in a follow-up. This would make sure you can always take the optimal case here, and would be another argument to then remove x86 special-casing.",
+      "parentUuid": "d9961058_0c443781",
+      "range": {
+        "startLine": 1171,
+        "startChar": 6,
+        "endLine": 1171,
+        "endChar": 37
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9961058_8c502745",
         "filename": "compiler/dex/quick/gen_common.cc",
         "patchSetId": 1
@@ -150,6 +270,24 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_fe1779de",
+        "filename": "compiler/dex/quick/gen_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "I\u0027ll do that for now, but there is a reason for this design: I want to allow other registers than kArg0, as this means potential movs on architectures with many registers. In that case the load in the fast path might be elided, but in the slow path we might have to reload.",
+      "parentUuid": "d9961058_8c502745",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9961058_8ca2e71c",
         "filename": "compiler/dex/quick/mir_to_lir.h",
         "patchSetId": 1
@@ -161,6 +299,30 @@
       "writtenOn": "2014-07-16T11:17:49Z",
       "side": 1,
       "message": "GenSelectConst32?",
+      "range": {
+        "startLine": 1386,
+        "startChar": 17,
+        "endLine": 1386,
+        "endChar": 26
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c52478_9fa3db53",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9961058_8ca2e71c",
       "range": {
         "startLine": 1386,
         "startChar": 17,
@@ -196,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "59ba20ef_de1cb505",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Not that I think this one is better for some reason, but done.",
+      "parentUuid": "d9961058_4c70ffe9",
+      "range": {
+        "startLine": 1387,
+        "startChar": 27,
+        "endLine": 1387,
+        "endChar": 35
+      },
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9961058_6cdf7b9f",
         "filename": "compiler/dex/quick/x86/codegen_x86.h",
         "patchSetId": 1
@@ -207,6 +393,24 @@
       "writtenOn": "2014-07-16T11:17:49Z",
       "side": 1,
       "message": "Bad indentation.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59ba20ef_be1101ec",
+        "filename": "compiler/dex/quick/x86/codegen_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-16T20:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9961058_6cdf7b9f",
       "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
