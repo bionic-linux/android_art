@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9c1b053_a98a4559",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2014-07-16T10:49:30Z",
+      "side": 1,
+      "message": "A quick look at this seems to suggest that you may be able to factor out this \"widening\" (e.g. use \"opcode \u003d kA64Csinc4rrrc;\" here and do the \"widening\" below).",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c4b462_efb35de8",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2014-07-16T10:49:30Z",
+      "side": 1,
+      "message": "Maybe, this could be improved as \"(true_val \u003d\u003d ~false_val) \u0026\u0026 (true_val \u003d\u003d 0 || true_val \u003d\u003d 0xffffffff)\". I guess gcc will figure out, anyway.",
+      "revId": "8549abd44957b44e61c08fefce1aadfb7230c369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
