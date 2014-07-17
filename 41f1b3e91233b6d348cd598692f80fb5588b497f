@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "590860ab_9cb195cf",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-17T16:25:00Z",
+      "side": 1,
+      "message": "I\u0027ve moved them up and added a TODO. While not currently used in any other way but with 0 and 1, it should be general.",
+      "parentUuid": "b9f87cd3_432c6681",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 44
+      },
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9fb70cc_043676d1",
         "filename": "compiler/dex/quick/arm64/int_arm64.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "590860ab_1cd5a5c8",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-17T16:25:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fb70cc_043676d1",
+      "range": {
+        "startLine": 90,
+        "startChar": 29,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f87cd3_635642ea",
         "filename": "compiler/dex/quick/arm64/int_arm64.cc",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2014-07-17T09:56:51Z",
       "side": 1,
       "message": "This has a dependency on the previous load insn. It should not be used if the false_val is itself inexpensive for the LoadConstantNoClobber() below.\n\nWhen we\u0027re doing this, we should also add another condition to the NegateComparison()+swap() at the beginning to prefer an inexpensive constant in true_val if all the previous conditions fail. That helps when we enter the function with true_val \u003d 0x1001, false_val \u003d 0x0FFF, for example.\n\nHowever, I don\u0027t think these cases will be very common. The whole delta encoding should probably be dropped because the logic is too complicated to be worth it for such a rare case.",
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598b0070_d0d27c70",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-17T16:25:00Z",
+      "side": 1,
+      "message": "All 32b constants will be marked inexpensive with Matteo\u0027s CL. All can be encoded with a movz and a movk.\n\nIt is not clear whether the dependency has a significant impact on runtime, but it saves a full instruction. And again I can just say: this would cover *all* the remaining cases I have seen when logging numbers.\n\nAs such, I prefer to have the logic in here, but switchable.",
+      "parentUuid": "b9f87cd3_635642ea",
       "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
