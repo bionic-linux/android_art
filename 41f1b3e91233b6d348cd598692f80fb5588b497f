@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f87cd3_432c6681",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-17T09:56:51Z",
+      "side": 1,
+      "message": "Move these DCHECKs to the beginning of the function to cover the special case above.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 44
+      },
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb70cc_043676d1",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-17T09:56:51Z",
+      "side": 1,
+      "message": "int32_t?",
+      "range": {
+        "startLine": 90,
+        "startChar": 29,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f87cd3_635642ea",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-17T09:56:51Z",
+      "side": 1,
+      "message": "This has a dependency on the previous load insn. It should not be used if the false_val is itself inexpensive for the LoadConstantNoClobber() below.\n\nWhen we\u0027re doing this, we should also add another condition to the NegateComparison()+swap() at the beginning to prefer an inexpensive constant in true_val if all the previous conditions fail. That helps when we enter the function with true_val \u003d 0x1001, false_val \u003d 0x0FFF, for example.\n\nHowever, I don\u0027t think these cases will be very common. The whole delta encoding should probably be dropped because the logic is too complicated to be worth it for such a rare case.",
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f87cd3_03fb0e8c",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-17T09:56:51Z",
+      "side": 1,
+      "message": "MOVZX? (Otherwise we retain 24 bits.)\n\nOr just delay the refactoring for the x86 GenSelect() until you actually provide the preloaded value. Then the MOVZX will be unnecessary if the high 24 bits are already 0.",
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
