@@ -79,6 +79,24 @@
       "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb70cc_44b46eba",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2014-07-17T10:15:10Z",
+      "side": 1,
+      "message": "rs_dest is set to zero two instruction above so no need to do movzx here, however zeroing rs_dest is not safe itself if it is equal to one of the source registers.",
+      "parentUuid": "b9f87cd3_03fb0e8c",
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
