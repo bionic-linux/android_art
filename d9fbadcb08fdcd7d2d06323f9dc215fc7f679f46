@@ -22,6 +22,30 @@
       "revId": "d9fbadcb08fdcd7d2d06323f9dc215fc7f679f46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598b0070_909f1457",
+        "filename": "compiler/dex/quick/arm64/int_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-17T17:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7938c45c_a49eac11",
+      "range": {
+        "startLine": 94,
+        "startChar": 30,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "d9fbadcb08fdcd7d2d06323f9dc215fc7f679f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
