@@ -97,6 +97,24 @@
       "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7938c45c_213cce49",
+        "filename": "compiler/dex/quick/x86/int_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-07-17T10:16:35Z",
+      "side": 1,
+      "message": "Sorry, missed that.",
+      "parentUuid": "d9fb70cc_44b46eba",
+      "revId": "41f1b3e91233b6d348cd598692f80fb5588b497f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
