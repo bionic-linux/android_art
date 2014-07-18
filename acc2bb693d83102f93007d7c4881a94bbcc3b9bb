@@ -22,6 +22,30 @@
       "revId": "acc2bb693d83102f93007d7c4881a94bbcc3b9bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "195ee8cf_8624ca9c",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-18T08:44:34Z",
+      "side": 1,
+      "message": "... or you should probably say \"standard Java modifiers\".",
+      "parentUuid": "195ee8cf_e61fbe4e",
+      "range": {
+        "startLine": 1653,
+        "startChar": 20,
+        "endLine": 1653,
+        "endChar": 27
+      },
+      "revId": "acc2bb693d83102f93007d7c4881a94bbcc3b9bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
