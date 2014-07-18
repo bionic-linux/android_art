@@ -46,6 +46,30 @@
       "revId": "acc2bb693d83102f93007d7c4881a94bbcc3b9bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e1025_42b79b6e",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-18T17:28:38Z",
+      "side": 1,
+      "message": "That comment is taken more or less verbatim from the code in ClassLinker which does a CHECK on this. But yes, standard Java modifiers.",
+      "parentUuid": "195ee8cf_8624ca9c",
+      "range": {
+        "startLine": 1653,
+        "startChar": 20,
+        "endLine": 1653,
+        "endChar": 27
+      },
+      "revId": "acc2bb693d83102f93007d7c4881a94bbcc3b9bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
