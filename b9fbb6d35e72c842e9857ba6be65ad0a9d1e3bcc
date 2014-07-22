@@ -22,6 +22,29 @@
       "revId": "b9fbb6d35e72c842e9857ba6be65ad0a9d1e3bcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91530f5_e5e839cd",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-07-22T15:08:38Z",
+      "side": 1,
+      "message": "prefer Thread::AssertExceptionPending() ?",
+      "range": {
+        "startLine": 544,
+        "startChar": 11,
+        "endLine": 544,
+        "endChar": 44
+      },
+      "revId": "b9fbb6d35e72c842e9857ba6be65ad0a9d1e3bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
