@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "191c281e_420bdf46",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-22T16:14:37Z",
+      "side": 1,
+      "message": "Yes, you are right, changed to ERROR.",
+      "parentUuid": "d957f0b2_982ae598",
+      "range": {
+        "startLine": 543,
+        "startChar": 10,
+        "endLine": 543,
+        "endChar": 15
+      },
+      "revId": "b9fbb6d35e72c842e9857ba6be65ad0a9d1e3bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d91530f5_e5e839cd",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-07-22T15:08:38Z",
       "side": 1,
       "message": "prefer Thread::AssertExceptionPending() ?",
+      "range": {
+        "startLine": 544,
+        "startChar": 11,
+        "endLine": 544,
+        "endChar": 44
+      },
+      "revId": "b9fbb6d35e72c842e9857ba6be65ad0a9d1e3bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f918342e_89b7e96d",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-07-22T16:14:37Z",
+      "side": 1,
+      "message": "Because this does not exist. :-) I added AssertPendingException (as there is AssertNoPendingException).",
+      "parentUuid": "d91530f5_e5e839cd",
       "range": {
         "startLine": 544,
         "startChar": 11,
