@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d957f0b2_982ae598",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-07-22T08:28:03Z",
+      "side": 1,
+      "message": "Doesn\u0027t FATAL imply exit?",
+      "range": {
+        "startLine": 543,
+        "startChar": 10,
+        "endLine": 543,
+        "endChar": 15
+      },
+      "revId": "b9fbb6d35e72c842e9857ba6be65ad0a9d1e3bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
