@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f65b4a_74e66e78",
+        "filename": "compiler/dex/quick/arm/utility_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-07-28T10:08:00Z",
+      "side": 0,
+      "message": "This is an intentional failure that SHOULD HAVE NOT made it in the patch I upstreamed. Sorry for that! \n\nA valid load/ store (IS_BINARY_OP) will fail, dumping the LIR and aborting on CHECK(false). This was added to catch all the uses of Load/Store without offsets and to extend the LOAD_STORE_FILTER.\n\nI will retest both arches, run CTS and upstream the proper version this time.",
+      "revId": "fcc36ba2a2b8fd10e6eebd21ecb6329606443ded",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
