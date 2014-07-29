@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "560aef14_e17cfc3c",
+        "filename": "runtime/trace.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-07-29T05:21:42Z",
+      "side": 1,
+      "message": "fs",
+      "range": {
+        "startLine": 160,
+        "startChar": 11,
+        "endLine": 160,
+        "endChar": 19
+      },
+      "revId": "024e5c2bc52a435b6f5848bf9e4f3f67d7d612eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
