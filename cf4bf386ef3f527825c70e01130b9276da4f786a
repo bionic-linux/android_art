@@ -22,6 +22,30 @@
       "revId": "cf4bf386ef3f527825c70e01130b9276da4f786a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36f65b4a_3d631893",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2014-07-29T20:24:16Z",
+      "side": 1,
+      "message": "If we are being called from installd we cannot lock (since we will be locked from there)",
+      "parentUuid": "36f65b4a_dabd5254",
+      "range": {
+        "startLine": 699,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 89
+      },
+      "revId": "cf4bf386ef3f527825c70e01130b9276da4f786a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
