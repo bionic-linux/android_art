@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "563f4fb5_b69ab090",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4168,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-07-30T23:30:07Z",
+      "side": 1,
+      "message": "Does this need to be rounded up by BumpPointerSpace::kAlignment?",
+      "range": {
+        "startLine": 4168,
+        "startChar": 22,
+        "endLine": 4168,
+        "endChar": 35
+      },
+      "revId": "1961b3bbeb2696aeb6754f3328496e829a4ee9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1624f7a2_84c5441f",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4215,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-07-30T23:30:07Z",
+      "side": 1,
+      "message": "Is flushing the alloc stack necessary? It looks like none of the Walk() calls below relies on the live bitmap.\n\nIf it is necessary, would there be a race condition between this and a thread pushing a new object onto the allocation stack?",
+      "range": {
+        "startLine": 4214,
+        "startChar": 0,
+        "endLine": 4215,
+        "endChar": 30
+      },
+      "revId": "1961b3bbeb2696aeb6754f3328496e829a4ee9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
