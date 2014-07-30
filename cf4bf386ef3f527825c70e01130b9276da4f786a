@@ -46,6 +46,30 @@
       "revId": "cf4bf386ef3f527825c70e01130b9276da4f786a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1624f7a2_7f5f6321",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-07-30T00:04:30Z",
+      "side": 1,
+      "message": "I\u0027m just wondering why we don\u0027t see the same issue with dex2oat",
+      "parentUuid": "36f65b4a_3d631893",
+      "range": {
+        "startLine": 699,
+        "startChar": 0,
+        "endLine": 701,
+        "endChar": 89
+      },
+      "revId": "cf4bf386ef3f527825c70e01130b9276da4f786a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
