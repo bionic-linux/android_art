@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6016bf5_55292c0a",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-07-31T16:41:23Z",
+      "side": 1,
+      "message": "[Not for this change] : I\u0027ve always wondered why this was \"true\". We just generated the image a few lines ago. Why do we have to validate it again ?",
+      "revId": "1a762136398ffa4ed2c366d344b45ca4244d6c6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
