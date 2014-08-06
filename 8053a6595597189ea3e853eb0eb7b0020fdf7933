@@ -45,6 +45,29 @@
       "revId": "8053a6595597189ea3e853eb0eb7b0020fdf7933",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16431782_b2555a88",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-08-06T22:42:11Z",
+      "side": 1,
+      "message": "Surround this with UNLIKELY?",
+      "range": {
+        "startLine": 118,
+        "startChar": 8,
+        "endLine": 118,
+        "endChar": 69
+      },
+      "revId": "8053a6595597189ea3e853eb0eb7b0020fdf7933",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
