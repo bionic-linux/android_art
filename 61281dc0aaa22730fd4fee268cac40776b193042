@@ -16,6 +16,24 @@
       "revId": "61281dc0aaa22730fd4fee268cac40776b193042",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6f7ab98_4bac45bb",
+        "filename": "runtime/dex_file_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-08-07T11:06:38Z",
+      "side": 1,
+      "message": "By default it will call \u0027delete\u0027 not \u0027free\u0027. I don\u0027t think it  worth bothering customizing it.",
+      "parentUuid": "b6f7ab98_2bad79ba",
+      "revId": "61281dc0aaa22730fd4fee268cac40776b193042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
