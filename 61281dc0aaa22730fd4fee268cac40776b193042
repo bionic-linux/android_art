@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f7ab98_2bad79ba",
+        "filename": "runtime/dex_file_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-08-07T11:03:40Z",
+      "side": 1,
+      "message": "std::unique_ptr ?",
+      "revId": "61281dc0aaa22730fd4fee268cac40776b193042",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
