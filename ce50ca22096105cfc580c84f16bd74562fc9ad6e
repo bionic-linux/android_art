@@ -22,6 +22,30 @@
       "revId": "ce50ca22096105cfc580c84f16bd74562fc9ad6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6e89fcd_c54cd0af",
+        "filename": "runtime/native_bridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-08-08T14:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360c9b77_63296a72",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 41
+      },
+      "revId": "ce50ca22096105cfc580c84f16bd74562fc9ad6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
