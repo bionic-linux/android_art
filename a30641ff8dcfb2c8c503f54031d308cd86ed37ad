@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6432b33_0e5aebb4",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-15T23:13:23Z",
+      "side": 1,
+      "message": "we usually just LOG(FATAL), if dumping this way is preferred (rather than LOG(FATAL) \u003c\u003c exc-\u003eDump();) should we put something into logging?",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 19
+      },
+      "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
