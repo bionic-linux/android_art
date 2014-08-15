@@ -22,6 +22,30 @@
       "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b695ebbe_9e4539d9",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-08-15T23:17:56Z",
+      "side": 1,
+      "message": "The issue that I was trying to solve is the cut-off in the log. As far as I was told, the logger doesn\u0027t differentiate between multi-line log messages, and cuts everything simply at a certain length. So this is trying to log each line separately.",
+      "parentUuid": "b6432b33_0e5aebb4",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 19
+      },
+      "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
