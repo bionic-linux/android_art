@@ -46,6 +46,30 @@
       "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68be3a0_0c557f85",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-16T00:00:15Z",
+      "side": 1,
+      "message": "Right, I\u0027m not sure this is the right place for that kind of functionality though. Perhaps when we log long lines we can do the split and keep short logs together.",
+      "parentUuid": "b695ebbe_9e4539d9",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 19
+      },
+      "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
