@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b90dab_0af37b4d",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-21T17:43:42Z",
+      "side": 1,
+      "message": "Prefer store to move here.",
+      "range": {
+        "startLine": 249,
+        "startChar": 6,
+        "endLine": 249,
+        "endChar": 10
+      },
+      "revId": "e1b010c7eda13f5ce8c07508226b5737cbf46eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13aec965_aceb6711",
+        "filename": "compiler/dex/mir_graph.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-21T17:43:42Z",
+      "side": 1,
+      "message": "Prefer store to move here.",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "e1b010c7eda13f5ce8c07508226b5737cbf46eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b90dab_6a8317b4",
+        "filename": "compiler/dex/quick/x86/x86_lir.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-21T17:43:42Z",
+      "side": 1,
+      "message": "can you briefly document the difference between mfence and sfence here",
+      "range": {
+        "startLine": 624,
+        "startChar": 35,
+        "endLine": 624,
+        "endChar": 41
+      },
+      "revId": "e1b010c7eda13f5ce8c07508226b5737cbf46eef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
