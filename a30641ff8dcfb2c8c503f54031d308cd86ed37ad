@@ -70,6 +70,30 @@
       "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b90dab_70cc66a4",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-08-21T19:23:11Z",
+      "side": 1,
+      "message": "Just using standard functionality now, which should break at line-breaks anyways.",
+      "parentUuid": "f68be3a0_0c557f85",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 19
+      },
+      "revId": "a30641ff8dcfb2c8c503f54031d308cd86ed37ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
