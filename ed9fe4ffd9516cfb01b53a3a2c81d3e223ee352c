@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d34c31b5_e57e0cb8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3855,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-08-21T23:04:28Z",
+      "side": 0,
+      "message": "This SafeMap holds handleless fields.",
+      "range": {
+        "startLine": 3855,
+        "startChar": 43,
+        "endLine": 3855,
+        "endChar": 52
+      },
+      "revId": "ed9fe4ffd9516cfb01b53a3a2c81d3e223ee352c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

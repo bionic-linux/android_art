@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d34c31b5_85690801",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4013,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-08-21T23:04:28Z",
+      "side": 1,
+      "message": "ResolveField() has an allocation site (GC point).",
+      "range": {
+        "startLine": 4013,
+        "startChar": 32,
+        "endLine": 4013,
+        "endChar": 44
+      },
+      "revId": "67ef46adfb2c4990832e23aebeb9c0582d8519c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d34c31b5_e559ec6c",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-08-21T23:04:28Z",
+      "side": 1,
+      "message": "Also, ResolveString() here and ResolveType() in line 1222 has an allocation site (GC point).",
+      "range": {
+        "startLine": 1216,
+        "startChar": 42,
+        "endLine": 1216,
+        "endChar": 55
+      },
+      "revId": "67ef46adfb2c4990832e23aebeb9c0582d8519c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
