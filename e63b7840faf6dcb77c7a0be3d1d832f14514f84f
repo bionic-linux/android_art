@@ -22,6 +22,24 @@
       "revId": "e63b7840faf6dcb77c7a0be3d1d832f14514f84f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53076152_f068752f",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1010712
+      },
+      "writtenOn": "2014-08-22T23:55:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f169a2_237918d6",
+      "revId": "e63b7840faf6dcb77c7a0be3d1d832f14514f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
