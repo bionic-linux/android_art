@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f169a2_22b3d61e",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-22T15:29:57Z",
+      "side": 1,
+      "message": "why is this needed? I\u0027d like to avoid it.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 43
+      },
+      "revId": "321318d7e843dec0ae7f7e4bd2fe6920f76fa0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
