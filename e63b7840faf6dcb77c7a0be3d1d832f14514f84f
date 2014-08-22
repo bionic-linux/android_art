@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13f169a2_237918d6",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1016743
+      },
+      "writtenOn": "2014-08-22T21:01:22Z",
+      "side": 1,
+      "message": "change the name/concept: to memory barrier\ncheck LIR for the specifics of what exists and mimics the options here.\n\nalso change the storetomove namenclature",
+      "range": {
+        "startLine": 231,
+        "startChar": 27,
+        "endLine": 231,
+        "endChar": 28
+      },
+      "revId": "e63b7840faf6dcb77c7a0be3d1d832f14514f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
