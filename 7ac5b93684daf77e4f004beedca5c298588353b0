@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9399d985_7202f8a6",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-24T19:58:00Z",
+      "side": 1,
+      "message": "I\u0027d add a string here, just for the benefit of a person who may tickle this: \u003c\u003c \"Unexpected failure to resolve method: \"",
+      "revId": "7ac5b93684daf77e4f004beedca5c298588353b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
