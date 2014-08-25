@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "739e256e_c5203a01",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-08-25T23:18:26Z",
+      "side": 1,
+      "message": "In what context do we actually need to generate an LFENCE?  This feels sufficiently esoteric that I wouldn\u0027t add it preemptively.",
+      "parentUuid": "f389353b_a12c0686",
+      "range": {
+        "startLine": 460,
+        "startChar": 10,
+        "endLine": 461,
+        "endChar": 19
+      },
+      "revId": "c2defc64d6c815e60a1e2d5403a09c4951bba93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9399d985_3c4afe71",
         "filename": "compiler/dex/compiler_enums.h",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "739e256e_e5cffee9",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-08-25T23:18:26Z",
+      "side": 1,
+      "message": "I would call this something like NTStoreStore, to make it clear that it orders non-temporal stores.  StoreStore should remain a no-op on x86.\n\nI was never clear on whether non-temporal stores just needed to be followed by an SFENCE to preserve TSO, or also needed to be preceded by a fence of some sort.  If we only need this after a nontemporal store, then NTStoreStore seems particularly appropriate.",
+      "parentUuid": "9399d985_3c4afe71",
+      "range": {
+        "startLine": 462,
+        "startChar": 10,
+        "endLine": 462,
+        "endChar": 20
+      },
+      "revId": "c2defc64d6c815e60a1e2d5403a09c4951bba93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3c4d562_81fd5d4b",
         "filename": "compiler/dex/compiler_enums.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2014-08-25T22:41:13Z",
       "side": 1,
       "message": "the same as AnyAny ?",
+      "range": {
+        "startLine": 463,
+        "startChar": 10,
+        "endLine": 463,
+        "endChar": 21
+      },
+      "revId": "c2defc64d6c815e60a1e2d5403a09c4951bba93a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "739e256e_45928ad6",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-08-25T23:18:26Z",
+      "side": 1,
+      "message": "Seems like it should just be AnyAny.",
+      "parentUuid": "f3c4d562_81fd5d4b",
       "range": {
         "startLine": 463,
         "startChar": 10,
