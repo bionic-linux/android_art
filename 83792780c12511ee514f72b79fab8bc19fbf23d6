@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3b431fe_e29b6221",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2014-08-26T17:44:21Z",
+      "side": 1,
+      "message": "I think we need to be a little clearer about the semantics, since they affect the legality of transformations.  I would have expected this primarily to occur after a group of NT store instructions, to ensure that WC buffers are flushed before subsequent stores become visible.  That\u0027s necessary because a subsequent volatile store doesn\u0027t come with a fence to enforce this ordering.  We don\u0027t care about enforcing Store-\u003eLoad ordering in that position, since that is already explicitly enforced precisely where we need it.  Thus SFENCE makes sense in this position.\n\nThe current comment makes it sound as if this is intended to be used before NT stores.  I couldn\u0027t tell from the Intel documentation whether prior memory operations can be reordered with a subsequent NT store.  If so, I would expect that Load-\u003eStore reordering would also be an issue, since volatile loads don\u0027t come with fences.  Thus I would expect that either an MFENCE or nothing is needed in this position.  The GNU code I was quickly able to find seems to assume that nothing is needed there.\n\nIf the GNU code is correct, I think the comment should read something like: \"Use NTStoreStore to order non-temporal stores with respect to all later store-to-memory instructions.  Only generated together with non-temporal stores.\"",
+      "range": {
+        "startLine": 461,
+        "startChar": 64,
+        "endLine": 461,
+        "endChar": 72
+      },
+      "revId": "83792780c12511ee514f72b79fab8bc19fbf23d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
