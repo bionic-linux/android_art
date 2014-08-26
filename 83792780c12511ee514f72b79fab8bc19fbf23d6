@@ -22,6 +22,30 @@
       "revId": "83792780c12511ee514f72b79fab8bc19fbf23d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d4092d_9cf9ad9e",
+        "filename": "compiler/dex/compiler_enums.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-08-26T17:52:23Z",
+      "side": 1,
+      "message": "Completely agreed. This comment is not correct because it does suggest it comes before when in reality we use it after the non-temporal stores. Thanks for catching this!",
+      "parentUuid": "d3b431fe_e29b6221",
+      "range": {
+        "startLine": 461,
+        "startChar": 64,
+        "endLine": 461,
+        "endChar": 72
+      },
+      "revId": "83792780c12511ee514f72b79fab8bc19fbf23d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
