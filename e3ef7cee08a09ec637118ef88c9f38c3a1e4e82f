@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73eaa5f0_5ae9e4c9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2486,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T22:04:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2486,
+        "endChar": 6
+      },
+      "revId": "e3ef7cee08a09ec637118ef88c9f38c3a1e4e82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73eaa5f0_9adf4c23",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T22:04:06Z",
+      "side": 1,
+      "message": "Add a comment to describe this. As you only need FieldGaps could you prototype FieldGaps and move the rest of this to class_linker.cc?",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 19
+      },
+      "revId": "e3ef7cee08a09ec637118ef88c9f38c3a1e4e82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93e5591e_67e410b3",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T22:04:06Z",
+      "side": 1,
+      "message": "for the sake of 3 kinds of gap (4, 2 and 1 byte) this feels high overhead",
+      "range": {
+        "startLine": 546,
+        "startChar": 84,
+        "endLine": 546,
+        "endChar": 93
+      },
+      "revId": "e3ef7cee08a09ec637118ef88c9f38c3a1e4e82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73eaa5f0_7a8028eb",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T22:04:06Z",
+      "side": 1,
+      "message": "This needs explanation. Static fields don\u0027t leave holes in super/sub classes so why the complexity here?",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 607,
+        "endChar": 33
+      },
+      "revId": "e3ef7cee08a09ec637118ef88c9f38c3a1e4e82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73eaa5f0_fa7ad839",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T22:04:06Z",
+      "side": 1,
+      "message": "Explain what shuffle means?",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 510,
+        "endChar": 75
+      },
+      "revId": "e3ef7cee08a09ec637118ef88c9f38c3a1e4e82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
