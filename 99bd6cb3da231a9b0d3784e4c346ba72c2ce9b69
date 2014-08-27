@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3d0553d_ed68e0fc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2486,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "Avoid inline (its a linker directive ;-) ), prefer HOT..",
+      "range": {
+        "startLine": 2486,
+        "startChar": 0,
+        "endLine": 2486,
+        "endChar": 6
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d0553d_0d643c25",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2486,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "out arguments should be on the right and pointers not references",
+      "range": {
+        "startLine": 2486,
+        "startChar": 32,
+        "endLine": 2486,
+        "endChar": 41
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c54578_b62da182",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2506,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "fix references to pointers, \"* \", out arguments on the right",
+      "range": {
+        "startLine": 2506,
+        "startChar": 39,
+        "endLine": 2506,
+        "endChar": 41
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d4092d_36d3cde5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2506,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "current_field_idx",
+      "range": {
+        "startLine": 2506,
+        "startChar": 41,
+        "endLine": 2506,
+        "endChar": 54
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c54578_d627f59f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2518,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "I\u0027d avoid UNLIKELY in cases like this as it screws up inlining in the UNLIKELY path. One day we\u0027ll have proper profile guided optimization.",
+      "range": {
+        "startLine": 2518,
+        "startChar": 8,
+        "endLine": 2518,
+        "endChar": 16
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d4092d_f6f79567",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "prefer a struct? What are first and second here?",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 532,
+        "endChar": 47
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c54578_763709cd",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 544,
+        "startChar": 2,
+        "endLine": 544,
+        "endChar": 8
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d0553d_0d4b1c96",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "avoid macros, this seems unnecessary",
+      "range": {
+        "startLine": 557,
+        "startChar": 8,
+        "endLine": 557,
+        "endChar": 23
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d4092d_76e4a5b2",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "and a \"g bs s\" to you too",
+      "range": {
+        "startLine": 557,
+        "startChar": 24,
+        "endLine": 557,
+        "endChar": 32
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c54578_b65481de",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "Add a comment explaining what this computes",
+      "range": {
+        "startLine": 510,
+        "startChar": 25,
+        "endLine": 510,
+        "endChar": 47
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d0553d_cd440483",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-08-27T04:23:10Z",
+      "side": 1,
+      "message": "unnecessary, implicitly inline",
+      "range": {
+        "startLine": 510,
+        "startChar": 9,
+        "endLine": 510,
+        "endChar": 15
+      },
+      "revId": "99bd6cb3da231a9b0d3784e4c346ba72c2ce9b69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
