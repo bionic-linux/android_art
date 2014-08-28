@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f35a15dc_88da9784",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1047773
+      },
+      "writtenOn": "2014-08-28T18:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7321c530_62fde77a",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 24
+      },
+      "revId": "77d1fcf5719c2904946d188af34b3b4c83d7fbb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1330897d_dfadb7bd",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2014-08-28T06:19:57Z",
       "side": 1,
       "message": "// The size of gap, 1, 2 or 4.\nprefer uint32_t?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 14
+      },
+      "revId": "77d1fcf5719c2904946d188af34b3b4c83d7fbb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f35a15dc_65374616",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1047773
+      },
+      "writtenOn": "2014-08-28T18:24:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1330897d_dfadb7bd",
       "range": {
         "startLine": 140,
         "startChar": 0,
