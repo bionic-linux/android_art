@@ -16,6 +16,24 @@
       "revId": "c4f5a6cf083c780d14acc45823b72d32d330f40e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53e9212a_60eef293",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1047773
+      },
+      "writtenOn": "2014-08-28T19:00:43Z",
+      "side": 1,
+      "message": "You\u0027re right, locking was completely unnecessary, removed.",
+      "parentUuid": "f35a15dc_68095b4f",
+      "revId": "c4f5a6cf083c780d14acc45823b72d32d330f40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
