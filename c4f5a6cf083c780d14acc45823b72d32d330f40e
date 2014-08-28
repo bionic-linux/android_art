@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f35a15dc_68095b4f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-08-28T18:48:31Z",
+      "side": 1,
+      "message": "Why add SHARED_LOCKS_REQUIRED(Locks::mutator_lock_), this doesn\u0027t touch any mirror objects.",
+      "revId": "c4f5a6cf083c780d14acc45823b72d32d330f40e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
