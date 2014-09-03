@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3092e312_a564ea9b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-09-03T22:34:57Z",
+      "side": 1,
+      "message": "General note, I have a WIP to clean this up. But thanks for using the common interface rather than embedding logic in here.",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 70
+      },
+      "revId": "79fc73e23b9699c591e6f731bdea21b91d657320",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
