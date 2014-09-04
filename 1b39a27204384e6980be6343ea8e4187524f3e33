@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b09df327_1e15e9d4",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-09-04T14:02:08Z",
+      "side": 1,
+      "message": "You don\u0027t need the following code, there is already a HReversePostOrder visitor that does the visit for you.\n\nThe order has actually already been computed when finding dominators.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 69
+      },
+      "revId": "1b39a27204384e6980be6343ea8e4187524f3e33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
