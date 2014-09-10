@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "101a3fb4_757e3286",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-09-10T15:24:55Z",
+      "side": 1,
+      "message": "Sadly we added that pattern due to std::string allocation performance issues related to GetDescriptor next to never returning something requiring a std::string and GetDescriptor being very hot at dex2oat time. In general its nice to observe the return value optimization:\nhttp://en.wikipedia.org/wiki/Return_value_optimization\nbut for std::string where the std::string is just wrapping a \u0027const char*\u0027 this leads to a malloc and strcpy. Do we care enough here to bother optimizing? Do we have yet another C++ string implementation that could avoid the malloc and strcpy when its known the backing storage is not going to get freed? I think ideally we wouldn\u0027t be copying the anti-pattern in GetDescriptor elsewhere - unless we have to :-/",
+      "parentUuid": "f0aa0b52_991fcb78",
+      "range": {
+        "startLine": 869,
+        "startChar": 9,
+        "endLine": 869,
+        "endChar": 20
+      },
+      "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90d1cfe4_2cfc4f4b",
         "filename": "runtime/dex_file.h",
         "patchSetId": 4
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "LocationHelper is never shared between threads.\n\nIf you\u0027re concerned about concurrently changing file system, then I\u0027d need to call the whole notion of canonical dex location ill-defined.",
       "parentUuid": "90d1cfe4_2cfc4f4b",
+      "range": {
+        "startLine": 872,
+        "startChar": 8,
+        "endLine": 872,
+        "endChar": 22
+      },
+      "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101a3fb4_554a166e",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-09-10T15:24:55Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be in dex file, which captures the binary representation of a dex file on disk. This and path related utilities should be moved to the class linker. The motivation for this is that dex_file.h/cc is the eventual successor for a lot of tools like dexdump. As such we want to avoid clutter, and clutter that will cause churn.",
+      "parentUuid": "f0aa0b52_19dafb84",
       "range": {
         "startLine": 872,
         "startChar": 8,
@@ -299,6 +347,29 @@
         "startChar": 51,
         "endLine": 451,
         "endChar": 78
+      },
+      "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0168b8e_4e53a7a0",
+        "filename": "runtime/utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-09-10T15:24:55Z",
+      "side": 1,
+      "message": "iirc we used to pick up UniquePtr from libnativehelper, should these similarly be pushed up?",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 50
       },
       "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
