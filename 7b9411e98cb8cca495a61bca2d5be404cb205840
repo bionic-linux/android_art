@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "d0fa6781_b2243816",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T15:13:51Z",
+      "side": 1,
+      "message": "I\u0027d really avoid coding based on what the compiler might or might not do... \n\nEspecially since the last case is by far the most common one!",
+      "parentUuid": "f0aa0b52_dacf7163",
+      "range": {
+        "startLine": 969,
+        "startChar": 4,
+        "endLine": 971,
+        "endChar": 3
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0aa0b52_3af9e59a",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 6
