@@ -374,6 +374,30 @@
       "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0aa0b52_baecf599",
+        "filename": "runtime/utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-09-10T15:48:06Z",
+      "side": 1,
+      "message": "It depends. How often do devs need to use C functions that, like realpath(), return malloc()ed memory?",
+      "parentUuid": "f0168b8e_4e53a7a0",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 50
+      },
+      "revId": "4c96204bf0d62abaa78906c76e5de18a381bfe81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
