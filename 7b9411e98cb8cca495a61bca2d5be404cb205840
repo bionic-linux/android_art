@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0aa0b52_5ac62187",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "nit: if you changed the above you should change this as well.",
+      "range": {
+        "startLine": 611,
+        "startChar": 83,
+        "endLine": 611,
+        "endChar": 100
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fa6781_d2e464f4",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "const char* ?",
+      "range": {
+        "startLine": 966,
+        "startChar": 23,
+        "endLine": 966,
+        "endChar": 25
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0aa0b52_9ac3396f",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "you don\u0027t need this.\n\nelse {\n return dex_location;\n}\n\nshould be enough.",
+      "range": {
+        "startLine": 969,
+        "startChar": 4,
+        "endLine": 971,
+        "endChar": 3
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0aa0b52_3af9e59a",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "The followings are just my preferences. Feel free to disagree though and keep the current version :)\n\n1) This only works if the entries are sorted. If we already know that all the files will have the same base location then why not asserting it and computing just for the first? \n\nI think it will be clearer if we use a local map to store the cache of dex_location-\u003ecanonical_location. It will obviously have just one element in the current setup.\n\n2) I\u0027d prefer if the logic for creating/splitting multidex names stay in DexFile. If we ever need to update or fix stuff it will spare us to remember that there\u0027s a duplication here. Since we already have GetBaseLocation, how about \n\nstd::string DexFile::UpdateBaseLocation(std::string\u0026 dex_location, std::string\u0026 new_base_location)?",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 339,
+        "endChar": 5
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90262ff7_ed8b810c",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "this looks pretty silly with the if just above it.",
+      "range": {
+        "startLine": 407,
+        "startChar": 8,
+        "endLine": 407,
+        "endChar": 56
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0aa0b52_ba99559c",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T13:46:25Z",
+      "side": 1,
+      "message": "This seems pretty useless to me:\nL355: you already have the canonical location\nL440: the key is the canonical location.\n\nI don\u0027t see other usages.",
+      "range": {
+        "startLine": 451,
+        "startChar": 51,
+        "endLine": 451,
+        "endChar": 78
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
