@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "d0fa6781_327fa8ec",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2014-09-10T14:57:29Z",
+      "side": 1,
+      "message": "Or we could just ignore the multi-dex use case performance for the moment (there won\u0027t be that many dex files anyway) and call GetDexCanonicalLocation() to keep this particular CL simple.",
+      "parentUuid": "f0aa0b52_da81b1f1",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 339,
+        "endChar": 5
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90262ff7_ed8b810c",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 6
