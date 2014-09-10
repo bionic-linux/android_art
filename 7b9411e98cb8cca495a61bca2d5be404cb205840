@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "f0aa0b52_1aaae95a",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T15:11:02Z",
+      "side": 1,
+      "message": "I\u0027d be ok with that. I prefer clarity much more over micro-optimization. \n\nIf I compare PS6 and PS9 I\u0027d definitely prefer PS9.",
+      "parentUuid": "d0fa6781_327fa8ec",
+      "range": {
+        "startLine": 324,
+        "startChar": 3,
+        "endLine": 339,
+        "endChar": 5
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90262ff7_ed8b810c",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 6
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "L440: The key is _not_ the canonical location; that assumption was always wrong. And I should clearly rewrite that debugging output to use oat_dex_files_storage_ now that the oat_dex_files_ can contain duplicates.\n\nBesides, this is a convenient place to store the canonical location without using the string_cache_.",
       "parentUuid": "f0aa0b52_ba99559c",
+      "range": {
+        "startLine": 451,
+        "startChar": 51,
+        "endLine": 451,
+        "endChar": 78
+      },
+      "revId": "7b9411e98cb8cca495a61bca2d5be404cb205840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fa6781_92f81c26",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-09-10T15:11:02Z",
+      "side": 1,
+      "message": "I don\u0027t really mind. Still it seems a bit wasteful to cache this just to print it in debug builds. I think it will be acceptable to just query for the canonical location again in that case.",
+      "parentUuid": "f0aa0b52_7aaafd74",
       "range": {
         "startLine": 451,
         "startChar": 51,
