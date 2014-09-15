@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d06fc739_c4083ebc",
+        "filename": "runtime/field_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-15T18:20:27Z",
+      "side": 1,
+      "message": "No, I\u0027ll look into it once I finish rebasing.",
+      "parentUuid": "f0c4cb62_9fd4bfcd",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "709e1b6e_7fc3921b",
         "filename": "runtime/handle.h",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2014-09-15T17:35:25Z",
       "side": 1,
       "message": "Do we want to split this into immutable HandleWrapper that extends Handle and MutableHandleWrapper that extends MutableHandle?",
+      "range": {
+        "startLine": 148,
+        "startChar": 29,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06fc739_64530aa1",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-15T18:20:27Z",
+      "side": 1,
+      "message": "The significant uses I saw were using it as a mutable handle. I\u0027ll take a look whether splitting out is beneficial.",
+      "parentUuid": "b0933369_6a575206",
       "range": {
         "startLine": 148,
         "startChar": 29,
