@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c4cb62_9fd4bfcd",
+        "filename": "runtime/field_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-09-15T17:35:25Z",
+      "side": 1,
+      "message": "Is there a reason that we don\u0027t have a FieldHelper/MutableFieldHelper split like MethodHelper/MutableMethodHelper?",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709e1b6e_7fc3921b",
+        "filename": "runtime/handle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-09-15T17:35:25Z",
+      "side": 1,
+      "message": "I like that NullHandle is immutable.",
+      "range": {
+        "startLine": 150,
+        "startChar": 6,
+        "endLine": 150,
+        "endChar": 16
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0933369_6a575206",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-09-15T17:35:25Z",
+      "side": 1,
+      "message": "Do we want to split this into immutable HandleWrapper that extends Handle and MutableHandleWrapper that extends MutableHandle?",
+      "range": {
+        "startLine": 148,
+        "startChar": 29,
+        "endLine": 148,
+        "endChar": 42
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709e1b6e_7ffc724c",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-09-15T17:35:25Z",
+      "side": 1,
+      "message": "Do we want to have a variant that returns Handle instead MutableHandle?Depending on the call site, we don\u0027t always need a mutable one.",
+      "range": {
+        "startLine": 191,
+        "startChar": 19,
+        "endLine": 191,
+        "endChar": 28
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c4cb62_3f0f2bc6",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-09-15T17:35:25Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 199,
+        "startChar": 19,
+        "endLine": 199,
+        "endChar": 35
+      },
+      "revId": "155774fd8c28735936d80a0f0ec04110c37bc5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
