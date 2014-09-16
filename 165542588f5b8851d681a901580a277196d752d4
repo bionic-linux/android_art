@@ -22,6 +22,30 @@
       "revId": "165542588f5b8851d681a901580a277196d752d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50baf7ee_bb447363",
+        "filename": "test/004-StackWalk/stack_walk_jni.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-09-16T14:29:47Z",
+      "side": 0,
+      "message": "This check is not really what this test is intended for, so I think it\u0027s not a problem to remove it.\n\nOn the other hand, it was not my intention to remove the test\u0027s coverage, so I added it back.",
+      "parentUuid": "50baf7ee_fbf8abe3",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "165542588f5b8851d681a901580a277196d752d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
