@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70c53b78_f9c55779",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-16T14:18:54Z",
+      "side": 1,
+      "message": "Might be worth to add a TODO about devirtualization support.",
+      "range": {
+        "startLine": 375,
+        "startChar": 26,
+        "endLine": 375,
+        "endChar": 40
+      },
+      "revId": "10f8a95b483a447dd6803e7a0f352343d95d2452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50baf7ee_d8796dd6",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-16T14:18:54Z",
+      "side": 1,
+      "message": "I like how you describe the generated code in VisitInvokeStatic. Could you please do the same here? It helps readibility.",
+      "range": {
+        "startLine": 875,
+        "startChar": 34,
+        "endLine": 875,
+        "endChar": 52
+      },
+      "revId": "10f8a95b483a447dd6803e7a0f352343d95d2452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
