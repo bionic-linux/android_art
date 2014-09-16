@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10d4ff2c_d6bee44c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-16T16:55:55Z",
+      "side": 1,
+      "message": "remove trailing spaces",
+      "range": {
+        "startLine": 912,
+        "startChar": 45,
+        "endLine": 912,
+        "endChar": 47
+      },
+      "revId": "8e37e04d57c4b52c96fe0c435cde2f4cc57b7720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10d4ff2c_b6c368d3",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-16T16:55:55Z",
+      "side": 1,
+      "message": "remove trailing spaces",
+      "range": {
+        "startLine": 915,
+        "startChar": 32,
+        "endLine": 915,
+        "endChar": 34
+      },
+      "revId": "8e37e04d57c4b52c96fe0c435cde2f4cc57b7720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
