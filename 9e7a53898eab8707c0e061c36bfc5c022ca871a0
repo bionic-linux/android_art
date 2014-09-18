@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "906aaf64_f01c585a",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-09-18T21:56:26Z",
+      "side": 1,
+      "message": "Add a comment that IsMethodPossiblyInlined goes into the verifier and we shouldn\u0027t hold locks when we call it.",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07ee724_9b973735",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3243,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-09-18T21:56:26Z",
+      "side": 1,
+      "message": "Why is this only for debug builds now?",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
