@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5064b799_6b04fde7",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-09-18T22:54:36Z",
+      "side": 1,
+      "message": "self-\u003eAssertThreadSuspensionIsAllowable() checks that no locks are held, add it to the appropriate methods with comments as necessary.",
+      "parentUuid": "906aaf64_f01c585a",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07ee724_9b973735",
         "filename": "runtime/debugger.cc",
         "patchSetId": 1
