@@ -37,6 +37,42 @@
     },
     {
       "key": {
+        "uuid": "9081cf4e_9b2bb79e",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-22T09:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "906aaf64_f01c585a",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05413b2_86c28c16",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3183,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-22T09:08:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5064b799_6b04fde7",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d07ee724_9b973735",
         "filename": "runtime/debugger.cc",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2014-09-18T21:56:26Z",
       "side": 1,
       "message": "Why is this only for debug builds now?",
+      "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9081cf4e_1b2027b6",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3243,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-22T09:08:40Z",
+      "side": 1,
+      "message": "I moved out the kIsDebugBuild test for taking a lock only when needed (I didn\u0027t want to take the lock for a method that is not called in non debug builds).\n\nThe difference in UnwatchLocation is we already hold the lock.",
+      "parentUuid": "d07ee724_9b973735",
       "revId": "9e7a53898eab8707c0e061c36bfc5c022ca871a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
