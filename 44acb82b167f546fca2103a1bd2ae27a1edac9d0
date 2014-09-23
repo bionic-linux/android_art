@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508bd76f_85703017",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-23T12:46:44Z",
+      "side": 1,
+      "message": "Perhaps move the computation in a dedicated method (GetLiveRegisterStackOffset?) and use it there and in RestoreLiveRegisters.",
+      "range": {
+        "startLine": 482,
+        "startChar": 28,
+        "endLine": 482,
+        "endChar": 85
+      },
+      "revId": "44acb82b167f546fca2103a1bd2ae27a1edac9d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05413b2_3768a0bc",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-23T12:46:44Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 504,
+        "startChar": 28,
+        "endLine": 504,
+        "endChar": 85
+      },
+      "revId": "44acb82b167f546fca2103a1bd2ae27a1edac9d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05413b2_97cf1496",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-09-23T12:46:44Z",
+      "side": 1,
+      "message": "not: remove empty line (above)",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 4
+      },
+      "revId": "44acb82b167f546fca2103a1bd2ae27a1edac9d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
