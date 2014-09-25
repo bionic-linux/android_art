@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9049cf4f_9cd44acd",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-09-25T23:06:10Z",
+      "side": 1,
+      "message": "Are these not guaranteed to be null terminated? Either way, add a new variable for std::min(descriptor1.size(), descriptor2.size())",
+      "revId": "3a1a98eb3ec3698bf695c6972afffe5bb9491d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
