@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "108f9fae_cf8b82a3",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-09-26T22:50:42Z",
+      "side": 1,
+      "message": "art_dont_bother",
+      "revId": "8f0bbd235c30c99f16e10100036537dd0c0080b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "308ae39d_b4c85639",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-09-26T22:50:42Z",
+      "side": 1,
+      "message": "remove the above line",
+      "revId": "8f0bbd235c30c99f16e10100036537dd0c0080b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d046e741_12076cee",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2014-09-26T22:50:42Z",
+      "side": 1,
+      "message": "So you are going to disable art-run-tests on the build server? which is required by vendor/google/build/tasks/emulator_tests.mk and vendor/google/build/tasks/google_tests.mk.",
+      "revId": "8f0bbd235c30c99f16e10100036537dd0c0080b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
