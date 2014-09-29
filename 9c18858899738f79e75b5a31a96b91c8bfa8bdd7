@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e76c92_62aeb62c",
+        "filename": "compiler/dex/quick/arm64/assemble_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2014-09-29T13:41:46Z",
+      "side": 0,
+      "message": "Vladimir, I noticed you are working on something similar in,\n\n  https://android-review.googlesource.com/#/c/108713/5\n\nPlease, keep in mind the bug above. This could be incorporated in your patch, or could go in a separate CL. Let me know what you prefer.",
+      "revId": "9c18858899738f79e75b5a31a96b91c8bfa8bdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
