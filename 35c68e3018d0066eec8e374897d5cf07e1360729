@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00a5412_413cc85a",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-09-30T15:43:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t all these use hex, which is closer to binary?",
+      "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
