@@ -34,6 +34,24 @@
       "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7029bc84_f100429f",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-09-30T16:26:39Z",
+      "side": 1,
+      "message": "I think you making a mistake from binary to decimal is what lead Mark to suggest it :-)",
+      "parentUuid": "b00a5412_61234c1a",
+      "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
