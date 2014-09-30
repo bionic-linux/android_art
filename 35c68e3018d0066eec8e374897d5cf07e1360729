@@ -52,6 +52,24 @@
       "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b206c_9907fbb3",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-30T17:03:48Z",
+      "side": 1,
+      "message": "I would have made the same mistake in hex. There is no benefit translating a single nibble...",
+      "parentUuid": "7029bc84_f100429f",
+      "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
