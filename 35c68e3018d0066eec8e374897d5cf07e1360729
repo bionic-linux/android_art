@@ -16,6 +16,24 @@
       "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b00a5412_61234c1a",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-09-30T16:17:39Z",
+      "side": 1,
+      "message": "I don\u0027t see an advantage for short numbers (almost all are just a nibble), but if you prefer, go ahead... :-)",
+      "parentUuid": "b00a5412_413cc85a",
+      "revId": "35c68e3018d0066eec8e374897d5cf07e1360729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
