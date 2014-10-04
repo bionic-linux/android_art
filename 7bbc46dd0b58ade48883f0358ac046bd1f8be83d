@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "902550f1_6d8af1aa",
+        "filename": "test/800-smali/build",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-10-04T19:56:45Z",
+      "side": 1,
+      "message": "I assume because he copied it from an existing file. in which case I think 2008 is appropriate.",
+      "parentUuid": "90b9d0ac_db653303",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "902550f1_4d8f2db9",
+        "filename": "test/800-smali/info.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-10-04T19:56:45Z",
+      "side": 1,
+      "message": "WS",
+      "range": {
+        "startLine": 2,
+        "startChar": 99,
+        "endLine": 2,
+        "endChar": 100
+      },
+      "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50c2f81e_e11ace60",
         "filename": "test/800-smali/src/Main.java",
         "patchSetId": 1
@@ -36,6 +83,30 @@
       "writtenOn": "2014-10-04T08:45:01Z",
       "side": 1,
       "message": "2014",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "701a9cb5_c932f530",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-10-04T19:56:45Z",
+      "side": 1,
+      "message": "this case seems odder, was this derived substantially from an existing file",
+      "parentUuid": "50c2f81e_e11ace60",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -63,6 +134,53 @@
         "startLine": 55,
         "startChar": 13,
         "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "701a9cb5_8938fd14",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-10-04T19:56:45Z",
+      "side": 1,
+      "message": "I think he is considering moving a few 1000 over. not sure i\u0027d want them to be completely parallel at a process level either.",
+      "parentUuid": "50c2f81e_01183a66",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "701a9cb5_e935311b",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2014-10-04T19:56:45Z",
+      "side": 1,
+      "message": "space after catch",
+      "range": {
+        "startLine": 59,
+        "startChar": 14,
+        "endLine": 59,
         "endChar": 21
       },
       "revId": "7bbc46dd0b58ade48883f0358ac046bd1f8be83d",
