@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0d0a811_64114445",
+        "filename": "runtime/indirect_reference_table-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-10-06T20:25:32Z",
+      "side": 1,
+      "message": "s/kWithoutReadBarrier/kReadBarrierOption/\n\nThis should not unconditionally disable the RB. Looks like a merge error in this cherry-pick.  Will send a fix.",
+      "range": {
+        "startLine": 80,
+        "startChar": 57,
+        "endLine": 80,
+        "endChar": 76
+      },
+      "revId": "4838d6651eab0e8c0687ba44ce38e83b4553a4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
