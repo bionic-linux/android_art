@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90b9d0ac_9b781b34",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1106,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-10-06T09:27:16Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of this change? Could you add a comment please?",
+      "range": {
+        "startLine": 1106,
+        "startChar": 23,
+        "endLine": 1106,
+        "endChar": 81
+      },
+      "revId": "e10bf7da8cfebb79ee9b20709d27b7ebfcb67ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
