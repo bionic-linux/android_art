@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0b988d9_b8553092",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "use -inl.h to avoid this.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_0ad7ab76",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "you appear to be using key and entry interchangeably, fix.",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_4af1a329",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "\\n, here and below",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_b89c50fe",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "key vs entry",
+      "range": {
+        "startLine": 88,
+        "startChar": 71,
+        "endLine": 88,
+        "endChar": 74
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70c8dc75_8aa2db09",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "bits in a bitmap?",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 45
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b988d9_389040db",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-07T23:29:47Z",
+      "side": 1,
+      "message": "missing comment, move out to its own file again.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 20
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
