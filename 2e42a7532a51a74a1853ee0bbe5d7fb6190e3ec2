@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "50c2f81e_f96e026f",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-07T15:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0bfc88a_9298fddc",
+      "range": {
+        "startLine": 312,
+        "startChar": 19,
+        "endLine": 312,
+        "endChar": 50
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0bfc88a_35c33b66",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-07T15:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b9d0ac_90a8f56e",
+      "range": {
+        "startLine": 312,
+        "startChar": 52,
+        "endLine": 312,
+        "endChar": 55
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50c2f81e_f9c84260",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 3
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "90b9d0ac_904795e9",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-07T15:27:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50c2f81e_f9c84260",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0bfc88a_7261c930",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2014-10-07T14:44:24Z",
       "side": 1,
       "message": "Doesn\u0027t `HInstructionList::AddInstruction\u0027 already update the users of the newly added instruction?  Actually, perhaps `UpdateInputsUsers\u0027 should be used in `HInstructionList::AddInstruction\u0027 to replace the existing similar code.",
+      "range": {
+        "startLine": 355,
+        "startChar": 20,
+        "endLine": 355,
+        "endChar": 34
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0bfc88a_15aab792",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-07T15:27:19Z",
+      "side": 1,
+      "message": "Yes, but it\u0027s being removed below (line 424 on the left side of gerrit).",
+      "parentUuid": "d0bfc88a_7261c930",
       "range": {
         "startLine": 355,
         "startChar": 20,
