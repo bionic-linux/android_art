@@ -68,6 +68,29 @@
       "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0bfc88a_7261c930",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T14:44:24Z",
+      "side": 1,
+      "message": "Doesn\u0027t `HInstructionList::AddInstruction\u0027 already update the users of the newly added instruction?  Actually, perhaps `UpdateInputsUsers\u0027 should be used in `HInstructionList::AddInstruction\u0027 to replace the existing similar code.",
+      "range": {
+        "startLine": 355,
+        "startChar": 20,
+        "endLine": 355,
+        "endChar": 34
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
