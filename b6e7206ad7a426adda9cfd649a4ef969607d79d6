@@ -22,6 +22,30 @@
       "revId": "b6e7206ad7a426adda9cfd649a4ef969607d79d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c2f81e_79345284",
+        "filename": "test/407-arrays/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-07T15:14:42Z",
+      "side": 1,
+      "message": "Or maybe just update the comment? The test does not really depend on having the code in the same method, so I think it\u0027s fine to not rewriting it once it\u0027s supported (besides the support may arrive in a long time).",
+      "parentUuid": "50c2f81e_39dfaa1d",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "b6e7206ad7a426adda9cfd649a4ef969607d79d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
