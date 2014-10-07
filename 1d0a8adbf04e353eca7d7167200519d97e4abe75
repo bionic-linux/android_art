@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90b9d0ac_3065898c",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Maybe document (here and/or in your commit message) that this method replaces expressions matching the pattern \"b \u003d\u003d 1\" (resp. \"b \u003d\u003d 0\") with \"b\" (resp \"!b\")?",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_909555cd",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Looks like a stray comment.",
+      "range": {
+        "startLine": 1021,
+        "startChar": 0,
+        "endLine": 1021,
+        "endChar": 80
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_70c541c9",
+        "filename": "compiler/optimizing/register_allocator_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Wrap long line.",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 120
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_90ca35d9",
+        "filename": "compiler/optimizing/register_allocator_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 111
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_102f25fc",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Nit: swap lines 312 and 313?",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 28
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0bfc88a_15c63752",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Nit: shouldn\u0027t `continue\u0027 be enclosed in braces and on its own line?",
+      "range": {
+        "startLine": 330,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 43
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c2f81e_39180ae2",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 1,
+      "message": "Duplicate with comment in ssa_liveness_analysis.h?",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 80
+      },
+      "revId": "1d0a8adbf04e353eca7d7167200519d97e4abe75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

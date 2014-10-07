@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90b9d0ac_109ac500",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-07T16:08:47Z",
+      "side": 0,
+      "message": "Why was this DCHECK removed? Is is not longer relevant?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 2,
+        "endLine": 1016,
+        "endChar": 54
+      },
+      "revId": "e9da5d17fb6e8fde383c943c184905d63ed0c644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
