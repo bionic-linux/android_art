@@ -46,6 +46,30 @@
       "revId": "b6e7206ad7a426adda9cfd649a4ef969607d79d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_f0837190",
+        "filename": "test/407-arrays/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-10-07T15:34:21Z",
+      "side": 1,
+      "message": "That\u0027s fine. I was more thinking about consistency where only long would be tested through a method call.",
+      "parentUuid": "50c2f81e_79345284",
+      "range": {
+        "startLine": 98,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "b6e7206ad7a426adda9cfd649a4ef969607d79d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
