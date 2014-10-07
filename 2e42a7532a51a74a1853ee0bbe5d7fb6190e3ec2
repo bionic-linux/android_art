@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0bfc88a_9298fddc",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-10-07T14:32:23Z",
+      "side": 1,
+      "message": "\"e \u003d instruction-\u003eInputCount(); i \u003c e\" ?",
+      "range": {
+        "startLine": 312,
+        "startChar": 19,
+        "endLine": 312,
+        "endChar": 50
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b9d0ac_90a8f56e",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-10-07T14:32:23Z",
+      "side": 1,
+      "message": "++i",
+      "range": {
+        "startLine": 312,
+        "startChar": 52,
+        "endLine": 312,
+        "endChar": 55
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c2f81e_f9c84260",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2014-10-07T14:32:23Z",
+      "side": 1,
+      "message": "No test case for use of Add ?",
+      "range": {
+        "startLine": 354,
+        "startChar": 2,
+        "endLine": 354,
+        "endChar": 19
+      },
+      "revId": "2e42a7532a51a74a1853ee0bbe5d7fb6190e3ec2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
