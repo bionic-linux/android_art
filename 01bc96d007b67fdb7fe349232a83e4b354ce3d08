@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b007b451_66bfaf8a",
+        "filename": "runtime/base/bit_field.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-08T18:57:40Z",
+      "side": 1,
+      "message": "uword is a worthless turd, we should remove and move to uintptr_t which has a meaning for people other than those who worked on Dalvik\u0027s GC.",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "01bc96d007b67fdb7fe349232a83e4b354ce3d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
