@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0b988d9_bbd28ade",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-10-08T00:17:20Z",
+      "side": 1,
+      "message": "What\u0027s the relationship between GcMap and GcMapBuilder? Does the latter build the former?",
+      "range": {
+        "startLine": 299,
+        "startChar": 2,
+        "endLine": 299,
+        "endChar": 14
+      },
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_b8553092",
         "filename": "runtime/gc_map.h",
         "patchSetId": 3
