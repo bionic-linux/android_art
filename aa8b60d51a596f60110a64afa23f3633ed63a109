@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "10116099_60078b0b",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-10-08T00:20:39Z",
+      "side": 1,
+      "message": "GcMap only does decoding, the builder builds GcMap to the output array.",
+      "parentUuid": "d0b988d9_bbd28ade",
+      "revId": "aa8b60d51a596f60110a64afa23f3633ed63a109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b988d9_b8553092",
         "filename": "runtime/gc_map.h",
         "patchSetId": 3
