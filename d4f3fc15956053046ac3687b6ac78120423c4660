@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30e904d0_1939bcc5",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-10-08T00:42:57Z",
+      "side": 1,
+      "message": "It\u0027s probably worth clarifying this comment a bit.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
