@@ -22,6 +22,24 @@
       "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b016d4da_b8b1f9da",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2014-10-11T01:15:46Z",
+      "side": 1,
+      "message": "This is average case vs worst case.\n\nAverage case is O(lg(n)) vs O(1).\n\nWorst case is O(lg(n)) vs O(n)\n\nIts a trade off but I think if we do more samples we might see the 99% worst case CI would be better with the O(lg(n)) approach.",
+      "parentUuid": "d038a85e_5622f298",
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
