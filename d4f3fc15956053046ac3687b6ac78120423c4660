@@ -2,6 +2,132 @@
   "comments": [
     {
       "key": {
+        "uuid": "d038a85e_1b66d349",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 27,
+        "startChar": 95,
+        "endLine": 27,
+        "endChar": 96
+      },
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_4ca49314",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "\\n",
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_2cb15756",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 38,
+        "startChar": 63,
+        "endLine": 38,
+        "endChar": 64
+      },
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_5b5c5b71",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "bitmap_bits \u003d\u003d 0",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 18
+      },
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_5b853b61",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "\\n",
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_bb6a470c",
+        "filename": "runtime/gc_map-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T00:34:33Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 45,
+        "startChar": 89,
+        "endLine": 45,
+        "endChar": 90
+      },
+      "revId": "d4f3fc15956053046ac3687b6ac78120423c4660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e904d0_1939bcc5",
         "filename": "runtime/gc_map.h",
         "patchSetId": 5
