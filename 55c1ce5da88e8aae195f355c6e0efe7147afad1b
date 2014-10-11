@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d038a85e_5622f298",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T01:05:02Z",
+      "side": 1,
+      "message": "This is replacing O(1) common case with O(log2(n)), I think your performance analysis shows you\u0027ve slowed everything down. I agree what we have currently is simplistic and has room for performance improvements, that\u0027s part of its virtue. I don\u0027t think is the right strategy.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 3
+      },
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
