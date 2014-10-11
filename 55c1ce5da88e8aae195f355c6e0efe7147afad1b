@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "b016d4da_982d1537",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T02:15:14Z",
+      "side": 1,
+      "message": "The previous logic was different, the case for compiled code more heavily optimized. Ultimately we\u0027re going to want multiple approaches.",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10f960d6_b7ac7081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T02:15:14Z",
+      "side": 1,
+      "message": "Common case O(log(n)) lookups rather than O(1).",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 44
+      },
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d038a85e_76d376e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T02:15:14Z",
+      "side": 1,
+      "message": "The bit encoding is orthogonal to changing the underlying implementation (hash vs binary search) and both schemes would save equally.\nChanging the structure of the code is also orthogonal.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 75
+      },
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d038a85e_5622f298",
         "filename": "runtime/gc_map.h",
         "patchSetId": 6
@@ -37,6 +106,24 @@
       "side": 1,
       "message": "This is average case vs worst case.\n\nAverage case is O(lg(n)) vs O(1).\n\nWorst case is O(lg(n)) vs O(n)\n\nIts a trade off but I think if we do more samples we might see the 99% worst case CI would be better with the O(lg(n)) approach.",
       "parentUuid": "d038a85e_5622f298",
+      "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b016d4da_f838d179",
+        "filename": "runtime/gc_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-11T02:15:14Z",
+      "side": 1,
+      "message": "To get into the worst case behavior for the hash table you have to have a poor hash. I did some measure measurements during the original implementation and collisions were infrequent with the hash we have - ie I haven\u0027t observed worst case performance in our encoding.",
+      "parentUuid": "b016d4da_b8b1f9da",
       "revId": "55c1ce5da88e8aae195f355c6e0efe7147afad1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
