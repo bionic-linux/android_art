@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104ec00c_69014c26",
+        "filename": "compiler/dex/reference_map_calculator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-13T19:26:24Z",
+      "side": 1,
+      "message": "Could you expand the context of this. Its using the verifier\u0027s GC maps and then pruning/expanding the data. Why not have a pass that computes the reference maps from LIR? This would be useful for the comment.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "19fa3ef1aa5af01bb7b61806a50e781f38f68acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0218832_68e06b52",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-13T19:26:24Z",
+      "side": 1,
+      "message": "Is this a TODO or an optimization? Some more information would be useful.",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 72
+      },
+      "revId": "19fa3ef1aa5af01bb7b61806a50e781f38f68acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
