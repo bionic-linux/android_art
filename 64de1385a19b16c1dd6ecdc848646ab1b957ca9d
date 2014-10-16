@@ -22,6 +22,30 @@
       "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06fc874_ccf65f3c",
+        "filename": "runtime/method_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-16T07:50:59Z",
+      "side": 1,
+      "message": "You mean comments?",
+      "parentUuid": "901b9006_0c80d9cd",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
