@@ -94,6 +94,30 @@
       "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "900710cb_3d3c1708",
+        "filename": "runtime/method_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-17T07:52:40Z",
+      "side": 1,
+      "message": "Why do we need a handle when the ShadowFrame holds the method? Previously there were more cached fields in MethodHelper, and so avoiding some computation could be worth while. I just see the shorty now :-/",
+      "parentUuid": "f06a0c65_13a7b649",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
