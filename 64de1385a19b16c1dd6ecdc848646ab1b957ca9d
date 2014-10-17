@@ -46,6 +46,30 @@
       "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0218832_134c718b",
+        "filename": "runtime/method_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-10-17T00:29:13Z",
+      "side": 1,
+      "message": "I think MethodHelper is a thing for helping with a Method (now known as an ArtMethod). GetMethod seems to have a clear meaning, Get isn\u0027t clear. GetMethodIgnoringProxies would be clearer. Why the operator-\u003e is returning GetMethodIgnoringProxies I think isn\u0027t clear.",
+      "parentUuid": "d06fc874_ccf65f3c",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
