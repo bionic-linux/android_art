@@ -118,6 +118,30 @@
       "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908ab09b_33b9c051",
+        "filename": "runtime/method_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2014-10-17T22:45:40Z",
+      "side": 1,
+      "message": "Is the issue that MethodHelper contains a Handle in it and it\u0027s used like a Handle in some interpreter code? Maybe we can pass around Handle instead and allocate and use a MethodHelper on the stack only in a small local scope where it\u0027s actually needed?",
+      "parentUuid": "900710cb_3d3c1708",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 3
+      },
+      "revId": "64de1385a19b16c1dd6ecdc848646ab1b957ca9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
