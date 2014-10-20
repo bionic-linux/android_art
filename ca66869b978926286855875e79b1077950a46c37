@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_41d036d7",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:43:08Z",
+      "side": 1,
+      "message": "Duly noted, thanks. :)",
+      "parentUuid": "309904fa_226faa6c",
+      "range": {
+        "startLine": 1022,
+        "startChar": 51,
+        "endLine": 1022,
+        "endChar": 66
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_6246121a",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
@@ -286,6 +310,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_0079caf1",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:43:08Z",
+      "side": 1,
+      "message": "Yes, this is what I inferred.",
+      "parentUuid": "309904fa_a241fad7",
+      "range": {
+        "startLine": 988,
+        "startChar": 21,
+        "endLine": 988,
+        "endChar": 29
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_82431e07",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -485,6 +533,30 @@
       "side": 1,
       "message": "nice, I\u0027d add a note that that\u0027s the expected behaviour according to the spec.\n\nMore generally if we ever test something that\u0027s implementation specific we should add a note for it explaining why.",
       "parentUuid": "f064ccc9_40dd8296",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 64
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309904fa_c29446d1",
+        "filename": "test/411-optimizing-arith/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:43:08Z",
+      "side": 1,
+      "message": "Alright, will do.  But this does not look like an implementation-specific case to me: I believe all two\u0027s complement implementations exhibit this behavior. :)",
+      "parentUuid": "f064ccc9_e09cd6d0",
       "range": {
         "startLine": 67,
         "startChar": 4,
