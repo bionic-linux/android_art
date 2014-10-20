@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_0070eafb",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1096c0c9_214c0a3a",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "19cb9a5fe4da4f2a16f612097ecd6abbf13ad7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_e08936b6",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Agreed.  I was planning to add support for neg-long (and later neg-float and neg-double) in subsequent CLs.",
       "parentUuid": "f064ccc9_e08936b6",
+      "range": {
+        "startLine": 579,
+        "startChar": 25,
+        "endLine": 579,
+        "endChar": 39
+      },
+      "revId": "19cb9a5fe4da4f2a16f612097ecd6abbf13ad7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1096c0c9_011c6e0c",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:59:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_6250d29e",
       "range": {
         "startLine": 579,
         "startChar": 25,
