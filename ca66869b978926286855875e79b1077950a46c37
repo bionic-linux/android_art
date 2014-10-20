@@ -430,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "309904fa_c2228615",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T18:21:03Z",
+      "side": 1,
+      "message": "Oh right, I forgot to update the LocationBuilder visitor.  This is fixed in PS3.",
+      "parentUuid": "1096c0c9_41fe7641",
+      "range": {
+        "startLine": 988,
+        "startChar": 21,
+        "endLine": 988,
+        "endChar": 29
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_82431e07",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -535,6 +559,30 @@
       "writtenOn": "2014-10-20T16:37:36Z",
       "side": 1,
       "message": "Stack location?",
+      "range": {
+        "startLine": 964,
+        "startChar": 18,
+        "endLine": 964,
+        "endChar": 20
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_605fe667",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T18:21:03Z",
+      "side": 1,
+      "message": "Addressed in in PS3.",
+      "parentUuid": "f064ccc9_60a7e648",
       "range": {
         "startLine": 964,
         "startChar": 18,
