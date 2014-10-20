@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "30474440_75d09a05",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-10-20T17:16:06Z",
+      "side": 1,
+      "message": "I guess it is probably because unary operations with constant operand can be evaluated at compile time. But might be worth adding a comment here.",
+      "parentUuid": "309904fa_22fa4a56",
+      "range": {
+        "startLine": 987,
+        "startChar": 6,
+        "endLine": 987,
+        "endChar": 30
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_409ae201",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
