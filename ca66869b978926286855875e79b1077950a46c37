@@ -350,6 +350,30 @@
       "revId": "ca66869b978926286855875e79b1077950a46c37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_40dd8296",
+        "filename": "test/411-optimizing-arith/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:18:23Z",
+      "side": 1,
+      "message": "The Java Language Specification (for version 7) aligns with this definition: http://docs.oracle.com/javase/specs/jls/se7/html/jls-15.html#jls-15.15.4\n\n\n  For integer values, negation is the same as subtraction\n  from zero.  The Java programming language uses two\u0027s-\n  complement representation for integers, and the range of\n  two\u0027s-complement values is not symmetric, so negation of\n  the maximum negative int or long results in that same\n  maximum negative number. Overflow occurs in this case,\n  but no exception is thrown. For all integer values x,\n  -x equals (~x)+1.",
+      "parentUuid": "309904fa_02338e9a",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 64
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
