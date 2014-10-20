@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1096c0c9_a1d49a00",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-20T16:40:16Z",
+      "side": 1,
+      "message": "else if ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 8
+      },
+      "revId": "19cb9a5fe4da4f2a16f612097ecd6abbf13ad7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_e08936b6",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-20T16:40:16Z",
+      "side": 1,
+      "message": "I don\u0027t think you have code that exercises a long constant, so I\u0027d leave this as unimplemented for now, or implement it as part of this CL.",
+      "range": {
+        "startLine": 579,
+        "startChar": 25,
+        "endLine": 579,
+        "endChar": 39
+      },
+      "revId": "19cb9a5fe4da4f2a16f612097ecd6abbf13ad7c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
