@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "309904fa_22fa4a56",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-10-20T16:51:10Z",
+      "side": 1,
+      "message": "in is Any but you DCHECK that\u0027s not constant. Add a note why is that. Probably because x86 doesn\u0027t have a neg with constants? If so, does it worth doing \u0027-a \u003d 0 - a\u0027? or some other pattern?",
+      "range": {
+        "startLine": 987,
+        "startChar": 6,
+        "endLine": 987,
+        "endChar": 30
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_409ae201",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
@@ -94,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_41ed96c8",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-10-20T16:51:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 963,
+        "startChar": 6,
+        "endLine": 963,
+        "endChar": 12
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_60a7e648",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -133,6 +179,29 @@
         "startChar": 4,
         "endLine": 487,
         "endChar": 7
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_80123ac4",
+        "filename": "test/411-optimizing-arith/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-10-20T16:51:10Z",
+      "side": 1,
+      "message": "is this part of the standard spec?",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 64
       },
       "revId": "ca66869b978926286855875e79b1077950a46c37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
