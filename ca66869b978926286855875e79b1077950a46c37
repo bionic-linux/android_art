@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_41fe7641",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-20T17:59:14Z",
+      "side": 1,
+      "message": "You\u0027re asking for any (line 966) so you might get a constant, register or stack. I think you just got lucky that the test gives you a register.\n\nYou can either just request a register, or add the stack equivalent instruction in assembler_x86.cc.",
+      "parentUuid": "f064ccc9_0079caf1",
+      "range": {
+        "startLine": 988,
+        "startChar": 21,
+        "endLine": 988,
+        "endChar": 29
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_82431e07",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
