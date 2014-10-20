@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_c097d2a9",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:18:58Z",
+      "side": 1,
+      "message": "Good point, will do.",
+      "parentUuid": "30474440_75d09a05",
+      "range": {
+        "startLine": 987,
+        "startChar": 6,
+        "endLine": 987,
+        "endChar": 30
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_409ae201",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
