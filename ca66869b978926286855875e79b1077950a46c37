@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_6088c67d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1096c0c9_41d036d7",
+      "range": {
+        "startLine": 1022,
+        "startChar": 51,
+        "endLine": 1022,
+        "endChar": 66
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_6246121a",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "writtenOn": "2014-10-20T16:37:36Z",
       "side": 1,
       "message": "One line?",
+      "range": {
+        "startLine": 963,
+        "startChar": 51,
+        "endLine": 963,
+        "endChar": 66
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309904fa_028f0eb9",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_6246121a",
       "range": {
         "startLine": 963,
         "startChar": 51,
@@ -239,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_8085da64",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1096c0c9_a1573acb",
+      "range": {
+        "startLine": 987,
+        "startChar": 6,
+        "endLine": 987,
+        "endChar": 30
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_409ae201",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 1
@@ -357,6 +429,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_e1df82e1",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_82431e07",
+      "range": {
+        "startLine": 939,
+        "startChar": 51,
+        "endLine": 939,
+        "endChar": 66
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1096c0c9_41ed96c8",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -368,6 +464,30 @@
       "writtenOn": "2014-10-20T16:51:10Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 963,
+        "startChar": 6,
+        "endLine": 963,
+        "endChar": 12
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1096c0c9_01e54eb2",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1096c0c9_41ed96c8",
       "range": {
         "startLine": 963,
         "startChar": 6,
@@ -557,6 +677,30 @@
       "side": 1,
       "message": "Alright, will do.  But this does not look like an implementation-specific case to me: I believe all two\u0027s complement implementations exhibit this behavior. :)",
       "parentUuid": "f064ccc9_e09cd6d0",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 64
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_e06a160d",
+        "filename": "test/411-optimizing-arith/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-20T17:58:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_c29446d1",
       "range": {
         "startLine": 67,
         "startChar": 4,
