@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "309904fa_253c1408",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_c521b0ca",
+      "range": {
+        "startLine": 986,
+        "startChar": 9,
+        "endLine": 986,
+        "endChar": 17
+      },
+      "revId": "eb6d1a549bcd5fc32915d8592a7cc75ba755d4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_23f098a3",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-21T07:49:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 987,
+        "startChar": 6,
+        "endLine": 987,
+        "endChar": 12
+      },
+      "revId": "eb6d1a549bcd5fc32915d8592a7cc75ba755d4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1096c0c9_041d5cd1",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f064ccc9_23f098a3",
       "range": {
         "startLine": 987,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_24325865",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_e526acdf",
+      "range": {
+        "startLine": 962,
+        "startChar": 18,
+        "endLine": 962,
+        "endChar": 26
+      },
+      "revId": "eb6d1a549bcd5fc32915d8592a7cc75ba755d4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_052c78be",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2014-10-21T07:49:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 963,
+        "startChar": 6,
+        "endLine": 963,
+        "endChar": 12
+      },
+      "revId": "eb6d1a549bcd5fc32915d8592a7cc75ba755d4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309904fa_45392017",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:00:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_052c78be",
       "range": {
         "startLine": 963,
         "startChar": 6,
