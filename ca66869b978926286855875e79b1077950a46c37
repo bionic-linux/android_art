@@ -806,6 +806,30 @@
       "revId": "ca66869b978926286855875e79b1077950a46c37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1096c0c9_e416b0ed",
+        "filename": "test/411-optimizing-arith/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-10-21T11:06:18Z",
+      "side": 1,
+      "message": "My comment about implementation specific was a general one, not for this one. I wasn\u0027t aware that that\u0027s covered by the spec.",
+      "parentUuid": "f064ccc9_e06a160d",
+      "range": {
+        "startLine": 67,
+        "startChar": 4,
+        "endLine": 68,
+        "endChar": 64
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
