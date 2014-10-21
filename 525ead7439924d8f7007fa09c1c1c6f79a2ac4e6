@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_0e2d7b83",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/#/c/111392/4",
+      "parentUuid": "1096c0c9_41a4b614",
+      "range": {
+        "startLine": 986,
+        "startChar": 27,
+        "endLine": 986,
+        "endChar": 30
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_c300bcdb",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2014-10-21T07:43:56Z",
       "side": 1,
       "message": "!in.IsConstant -\u003e in.IsRegister.",
+      "range": {
+        "startLine": 987,
+        "startChar": 17,
+        "endLine": 987,
+        "endChar": 27
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_2e423f37",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/#/c/111392/4",
+      "parentUuid": "f064ccc9_c300bcdb",
       "range": {
         "startLine": 987,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "309904fa_0570f8fb",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/#/c/111392/4",
+      "parentUuid": "f064ccc9_83d08406",
+      "range": {
+        "startLine": 962,
+        "startChar": 9,
+        "endLine": 962,
+        "endChar": 17
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_a3fbc88c",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2014-10-21T07:43:56Z",
       "side": 1,
       "message": "If you want a DCHECK, I\u0027d do a in.IsRegister() DCHECK.",
+      "range": {
+        "startLine": 963,
+        "startChar": 16,
+        "endLine": 963,
+        "endChar": 17
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309904fa_2555f447",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/#/c/111392/4",
+      "parentUuid": "f064ccc9_a3fbc88c",
       "range": {
         "startLine": 963,
         "startChar": 16,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_641540ad",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_4507603d",
+      "range": {
+        "startLine": 38,
+        "startChar": 10,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "309904fa_65045c38",
         "filename": "compiler/optimizing/constant_folding.cc",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2014-10-21T07:43:56Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f064ccc9_aed48f00",
+        "filename": "compiler/optimizing/constant_folding.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_65045c38",
       "range": {
         "startLine": 46,
         "startChar": 10,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f064ccc9_4ec69352",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309904fa_250a5448",
+      "range": {
+        "startLine": 1107,
+        "startChar": 33,
+        "endLine": 1107,
+        "endChar": 47
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1096c0c9_01a2ae0b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2014-10-21T07:43:56Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1140,
+        "startChar": 33,
+        "endLine": 1140,
+        "endChar": 47
+      },
+      "revId": "525ead7439924d8f7007fa09c1c1c6f79a2ac4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "309904fa_e5414c85",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T13:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1096c0c9_01a2ae0b",
       "range": {
         "startLine": 1140,
         "startChar": 33,
