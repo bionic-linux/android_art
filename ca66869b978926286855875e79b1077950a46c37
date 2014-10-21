@@ -666,6 +666,30 @@
     },
     {
       "key": {
+        "uuid": "1096c0c9_e464f091",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-10-21T12:58:07Z",
+      "side": 1,
+      "message": "Having HNot inherit from HUnaryInstruction is on my to-do list.  My first attempt did not work as-is, so I did not investigate further as my initial intention was to implement HNeg.",
+      "parentUuid": "f064ccc9_63ea90b3",
+      "range": {
+        "startLine": 487,
+        "startChar": 4,
+        "endLine": 487,
+        "endChar": 7
+      },
+      "revId": "ca66869b978926286855875e79b1077950a46c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f064ccc9_80123ac4",
         "filename": "test/411-optimizing-arith/src/Main.java",
         "patchSetId": 1
