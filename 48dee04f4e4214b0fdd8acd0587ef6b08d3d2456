@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "351e565a_77066a11",
+        "filename": "compiler/optimizing/codegen_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-10-22T14:59:17Z",
+      "side": 1,
+      "message": "Put comment one line below as well.",
+      "range": {
+        "startLine": 137,
+        "startChar": 5,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "48dee04f4e4214b0fdd8acd0587ef6b08d3d2456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
