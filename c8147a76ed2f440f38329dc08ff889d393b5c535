@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "354c968a_272fb42e",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-10-22T01:49:57Z",
+      "side": 1,
+      "message": "typo: directly",
+      "range": {
+        "startLine": 267,
+        "startChar": 19,
+        "endLine": 267,
+        "endChar": 27
+      },
+      "revId": "c8147a76ed2f440f38329dc08ff889d393b5c535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
