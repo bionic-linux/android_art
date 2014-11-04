@@ -16,6 +16,24 @@
       "revId": "41b7eceabd6ff7636e06741f6a05307820dfa709",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5e59e1c_8c95db4a",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-04T07:43:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ce56a4_748f0887",
+      "revId": "41b7eceabd6ff7636e06741f6a05307820dfa709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
