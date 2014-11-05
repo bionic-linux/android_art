@@ -16,6 +16,47 @@
       "revId": "205f36b43f8de4d7a4d4d1a75f0210b8daa30584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9542a2da_e52ef281",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-05T04:02:55Z",
+      "side": 1,
+      "message": "I can\u0027t see a good reason in the manual either. I was suspecting interworking.",
+      "parentUuid": "b50886ac_c80aaf11",
+      "revId": "205f36b43f8de4d7a4d4d1a75f0210b8daa30584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f533de7c_f11b1297",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-05T04:02:55Z",
+      "side": 1,
+      "message": "ugh, would prefer to keep this in terms of FRAME_SIZE_REFS_... I guess we assert this immediately above",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "205f36b43f8de4d7a4d4d1a75f0210b8daa30584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
