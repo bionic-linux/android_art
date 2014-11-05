@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b50886ac_c80aaf11",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-11-05T02:55:42Z",
+      "side": 1,
+      "message": "wasn\u0027t there something about not popping directly into pc? is that true on any of the processors art supports?\n\ndoesn\u0027t look like it: http://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dui0489e/Babefbce.html\n\nplus we appear to pop pc in places already.",
+      "revId": "205f36b43f8de4d7a4d4d1a75f0210b8daa30584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
