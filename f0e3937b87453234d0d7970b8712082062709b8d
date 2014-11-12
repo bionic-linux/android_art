@@ -45,6 +45,30 @@
       "revId": "f0e3937b87453234d0d7970b8712082062709b8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da88c7e4_b57f3801",
+        "filename": "test/427-bounds/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-11-12T18:20:39Z",
+      "side": 1,
+      "message": "oki, so these test the actual index value. I guess there\u0027s no cleaner way out.",
+      "parentUuid": "ba8dd3f4_34e1e8e1",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 43
+      },
+      "revId": "f0e3937b87453234d0d7970b8712082062709b8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
