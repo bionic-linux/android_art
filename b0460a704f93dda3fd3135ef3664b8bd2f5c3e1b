@@ -1,0 +1,625 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3afba387_325a08f4",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "I\u0027d be tempted to not change this file as all the changes are constants and NULL is the JNI notion of NULL (rather than a C++ thing)",
+      "range": {
+        "startLine": 151,
+        "startChar": 17,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1af89f89_345956d7",
+        "filename": "compiler/llvm/ir_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "UNREACHABLE()",
+      "range": {
+        "startLine": 430,
+        "startChar": 6,
+        "endLine": 430,
+        "endChar": 20
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af19ba1_a236a603",
+        "filename": "compiler/llvm/ir_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "UNREACHABLE()",
+      "range": {
+        "startLine": 461,
+        "startChar": 6,
+        "endLine": 461,
+        "endChar": 20
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3afba387_f247e014",
+        "filename": "compiler/sea_ir/ir/sea.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 95,
+        "startChar": 69,
+        "endLine": 95,
+        "endChar": 76
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af19ba1_e230ae08",
+        "filename": "compiler/sea_ir/ir/sea.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 222,
+        "startChar": 39,
+        "endLine": 222,
+        "endChar": 46
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7af19ba1_4269c2eb",
+        "filename": "compiler/sea_ir/ir/sea.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 227,
+        "startChar": 41,
+        "endLine": 227,
+        "endChar": 48
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_14e434bb",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "s/nullptr/null/g in this file",
+      "range": {
+        "startLine": 700,
+        "startChar": 71,
+        "endLine": 700,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_b5cd4042",
+        "filename": "compiler/utils/arm64/assembler_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "as last file",
+      "range": {
+        "startLine": 147,
+        "startChar": 71,
+        "endLine": 147,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_041a3a8c",
+        "filename": "compiler/utils/assembler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "UNREACHABLE",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 124,
+        "endChar": 21
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_f5d7b8c9",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 470,
+        "startChar": 71,
+        "endLine": 470,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_15e434bb",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 473,
+        "startChar": 5,
+        "endLine": 473,
+        "endChar": 12
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_b4f46066",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 477,
+        "startChar": 71,
+        "endLine": 477,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_55deace6",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr in this file",
+      "range": {
+        "startLine": 241,
+        "startChar": 71,
+        "endLine": 241,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_444b6288",
+        "filename": "compiler/utils/scoped_hashtable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr?",
+      "range": {
+        "startLine": 37,
+        "startChar": 39,
+        "endLine": 37,
+        "endChar": 46
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_d5f1dc74",
+        "filename": "compiler/utils/x86/assembler_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr in this file",
+      "range": {
+        "startLine": 545,
+        "startChar": 71,
+        "endLine": 545,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_f4eed895",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2240,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 2240,
+        "startChar": 35,
+        "endLine": 2240,
+        "endChar": 42
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_55194c1b",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr in this file",
+      "range": {
+        "startLine": 597,
+        "startChar": 71,
+        "endLine": 597,
+        "endChar": 78
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_64405e62",
+        "filename": "disassembler/disassembler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "UNREACHABLE",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_343bf073",
+        "filename": "runtime/arch/arm/context_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 59
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_54306c8b",
+        "filename": "runtime/arch/arm64/context_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 59
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ac2c357_9429242b",
+        "filename": "runtime/arch/mips/context_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 83,
+        "startChar": 56,
+        "endLine": 83,
+        "endChar": 63
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_2469f6ec",
+        "filename": "runtime/arch/x86/context_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_446e02f6",
+        "filename": "runtime/arch/x86_64/context_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "100 char column wrap",
+      "range": {
+        "startLine": 82,
+        "startChar": 99,
+        "endLine": 82,
+        "endChar": 102
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_b5262056",
+        "filename": "runtime/arch/x86_64/context_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 82,
+        "startChar": 63,
+        "endLine": 82,
+        "endChar": 70
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7adfdb23_6473fed8",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 79,
+        "startChar": 58,
+        "endLine": 79,
+        "endChar": 65
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_75680866",
+        "filename": "runtime/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac5b75b_b569c069",
+        "filename": "runtime/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-11-13T17:41:54Z",
+      "side": 1,
+      "message": "-ptr",
+      "range": {
+        "startLine": 71,
+        "startChar": 28,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "b0460a704f93dda3fd3135ef3664b8bd2f5c3e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
