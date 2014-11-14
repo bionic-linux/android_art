@@ -22,6 +22,24 @@
       "revId": "11b0b65629703a28bb0624abf4bd3f3e8b3c5e7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a8a1730_8d6ca17a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1034239
+      },
+      "writtenOn": "2014-11-14T19:09:14Z",
+      "side": 1,
+      "message": "Please see my comment on the vixl patch. Gerrit should handle this correctly.",
+      "parentUuid": "1ae6dfff_c49bf400",
+      "revId": "11b0b65629703a28bb0624abf4bd3f3e8b3c5e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
