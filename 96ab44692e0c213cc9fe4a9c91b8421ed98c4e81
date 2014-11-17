@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aa64fd2_45233e9f",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-11-17T20:10:56Z",
+      "side": 1,
+      "message": "Do we still need this? I was working on a patch that removes the smp_ field from the InstructionSetFeatures class and all its subclasses.",
+      "revId": "96ab44692e0c213cc9fe4a9c91b8421ed98c4e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
