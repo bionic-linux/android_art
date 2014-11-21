@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff5e5d2a_8ad66bcf",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "Sure. I\u0027ll put a comment in a follow-up (I\u0027m trying to figure out a way to pull this out as far up the hierarchy of assembler test classes as I can).\n\nIn short, this is for std::bind, when all you want is partial evaluation.",
+      "parentUuid": "7f526d24_464cf29e",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f526d24_2641f666",
         "filename": "compiler/utils/arm/assembler_arm32_test.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "bf586542_c8146f34",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "Made the most sense. If you select the sparse list for \"standard\" operands, it seemed logical to also pick that list here.",
+      "parentUuid": "7f526d24_2641f666",
+      "range": {
+        "startLine": 169,
+        "startChar": 47,
+        "endLine": 169,
+        "endChar": 89
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f448158_4f23edd4",
         "filename": "compiler/utils/arm/assembler_arm32_test.cc",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2014-11-21T08:46:07Z",
       "side": 1,
       "message": "Explain why.",
+      "range": {
+        "startLine": 170,
+        "startChar": 41,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf586542_a8213b98",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "I\u0027ll put a comment. In short, many instructions don\u0027t allow PC in this role.",
+      "parentUuid": "9f448158_4f23edd4",
       "range": {
         "startLine": 170,
         "startChar": 41,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ff5e5d2a_cacc6345",
+        "filename": "compiler/utils/assembler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "I prefer the increased type safety of enum classes.",
+      "parentUuid": "9f448158_6f1eb188",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f526d24_6647ee7e",
         "filename": "compiler/utils/assembler_test.h",
         "patchSetId": 2
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "9f5d6134_a7d96a01",
+        "filename": "compiler/utils/assembler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "Ah, yes.",
+      "parentUuid": "7f526d24_6647ee7e",
+      "range": {
+        "startLine": 686,
+        "startChar": 0,
+        "endLine": 686,
+        "endChar": 2
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df3a79c4_f1df2865",
         "filename": "compiler/utils/assembler_test.h",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2014-11-21T08:46:07Z",
       "side": 1,
       "message": "How about returning \"\", to avoid the null check?",
+      "range": {
+        "startLine": 748,
+        "startChar": 25,
+        "endLine": 748,
+        "endChar": 42
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff5e5d2a_6ae577b8",
+        "filename": "compiler/utils/assembler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:51:04Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "df3a79c4_f1df2865",
       "range": {
         "startLine": 748,
         "startChar": 25,
