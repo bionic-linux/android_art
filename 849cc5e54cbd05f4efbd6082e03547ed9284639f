@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "9f448158_0f46057f",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-21T09:08:14Z",
+      "side": 1,
+      "message": "OK. Well this looked pretty obvious :-) So I\u0027m not sure you need the comment. At least, you could rephrase it to avoid confusion.",
+      "parentUuid": "bf586542_082cc787",
+      "range": {
+        "startLine": 169,
+        "startChar": 47,
+        "endLine": 169,
+        "endChar": 89
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f448158_4f23edd4",
         "filename": "compiler/utils/arm/assembler_arm32_test.cc",
         "patchSetId": 2
