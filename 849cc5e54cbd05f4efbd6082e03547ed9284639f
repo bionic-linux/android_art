@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7f526d24_a634c6fd",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-21T08:54:21Z",
+      "side": 1,
+      "message": "I wasn\u0027t clear: registers_ is conditionally the sparse set or the full set. So I don\u0027t understand why this will pick the sparse set.",
+      "parentUuid": "bf586542_c8146f34",
+      "range": {
+        "startLine": 169,
+        "startChar": 47,
+        "endLine": 169,
+        "endChar": 89
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f448158_4f23edd4",
         "filename": "compiler/utils/arm/assembler_arm32_test.cc",
         "patchSetId": 2
@@ -201,6 +225,30 @@
       "side": 1,
       "message": "I prefer the increased type safety of enum classes.",
       "parentUuid": "9f448158_6f1eb188",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f448158_ef118173",
+        "filename": "compiler/utils/assembler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-21T08:54:21Z",
+      "side": 1,
+      "message": "So should we move all our enums to enum classes?",
+      "parentUuid": "ff5e5d2a_cacc6345",
       "range": {
         "startLine": 41,
         "startChar": 27,
