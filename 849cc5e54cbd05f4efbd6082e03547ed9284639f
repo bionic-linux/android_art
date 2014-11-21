@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "bf586542_082cc787",
+        "filename": "compiler/utils/arm/assembler_arm32_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:57:31Z",
+      "side": 1,
+      "message": "Sorry, comment isn\u0027t clear. \"This will pick up the sparse set if the option is set.\"",
+      "parentUuid": "7f526d24_a634c6fd",
+      "range": {
+        "startLine": 169,
+        "startChar": 47,
+        "endLine": 169,
+        "endChar": 89
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f448158_4f23edd4",
         "filename": "compiler/utils/arm/assembler_arm32_test.cc",
         "patchSetId": 2
@@ -249,6 +273,30 @@
       "side": 1,
       "message": "So should we move all our enums to enum classes?",
       "parentUuid": "ff5e5d2a_cacc6345",
+      "range": {
+        "startLine": 41,
+        "startChar": 27,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "849cc5e54cbd05f4efbd6082e03547ed9284639f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf586542_e8405332",
+        "filename": "compiler/utils/assembler_test.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-21T08:57:31Z",
+      "side": 1,
+      "message": "Don\u0027t know. In most cases when I introduce small enums for template parameters or so, I now use enum classes. I think as usual we don\u0027t have a general style or plan what to convert to C++11...",
+      "parentUuid": "9f448158_ef118173",
       "range": {
         "startLine": 41,
         "startChar": 27,
