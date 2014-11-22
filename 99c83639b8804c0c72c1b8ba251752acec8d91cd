@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f9ed122_84f44c1b",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-22T06:55:51Z",
+      "side": 1,
+      "message": "Maybe put a comment as to why?",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 25
+      },
+      "revId": "99c83639b8804c0c72c1b8ba251752acec8d91cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
