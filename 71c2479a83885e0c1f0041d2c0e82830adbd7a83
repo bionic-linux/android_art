@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df3a79c4_252d66bd",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-11-24T16:51:24Z",
+      "side": 1,
+      "message": "Not valid for shifts. The shifter is always an int while the shifted value may be a long.",
+      "range": {
+        "startLine": 372,
+        "startChar": 5,
+        "endLine": 372,
+        "endChar": 91
+      },
+      "revId": "71c2479a83885e0c1f0041d2c0e82830adbd7a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3a79c4_05126277",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-11-24T16:51:24Z",
+      "side": 1,
+      "message": "Similar issue as above. You should check with InputAt(0).",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 81
+      },
+      "revId": "71c2479a83885e0c1f0041d2c0e82830adbd7a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3a79c4_2577a6c6",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-11-24T16:51:24Z",
+      "side": 1,
+      "message": "For another CL, but I suggest we use a vector with push, or re-arrange the init as \n{\nopt1,\nopt2,\n...\n}\n\nIt will make experiments easier :)",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 93
+      },
+      "revId": "71c2479a83885e0c1f0041d2c0e82830adbd7a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df3a79c4_057ca2a4",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-11-24T16:51:24Z",
+      "side": 1,
+      "message": "Might be my language skills but I don\u0027t really understand this sentence...",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 65
+      },
+      "revId": "71c2479a83885e0c1f0041d2c0e82830adbd7a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
