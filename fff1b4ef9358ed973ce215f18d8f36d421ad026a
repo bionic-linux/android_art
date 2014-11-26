@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f404975_200464ef",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-26T17:20:51Z",
+      "side": 1,
+      "message": "1? (and if it passes as it is, are we missing some test coverage?)",
+      "range": {
+        "startLine": 1274,
+        "startChar": 44,
+        "endLine": 1274,
+        "endChar": 45
+      },
+      "revId": "fff1b4ef9358ed973ce215f18d8f36d421ad026a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f404975_80f9f891",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-26T17:20:51Z",
+      "side": 1,
+      "message": "Should that be FpuRegisterLocation if the type is double? What about ARM where a double is represented as a pair?",
+      "range": {
+        "startLine": 1274,
+        "startChar": 32,
+        "endLine": 1274,
+        "endChar": 48
+      },
+      "revId": "fff1b4ef9358ed973ce215f18d8f36d421ad026a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
