@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f633129_993dfbb3",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-27T14:37:30Z",
+      "side": 1,
+      "message": "It\u0027s actually the compiler\u0027s instruction set that you need (I think you can use codegen-\u003eGetInstrucitonSet()).",
+      "range": {
+        "startLine": 1280,
+        "startChar": 16,
+        "endLine": 1280,
+        "endChar": 27
+      },
+      "revId": "85b476b21ccec0eb1a66cd5c2b4bb3a1e272b734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
