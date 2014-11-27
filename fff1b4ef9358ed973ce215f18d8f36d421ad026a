@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f633129_16f9ba28",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-27T14:28:52Z",
+      "side": 1,
+      "message": "Thanks!  Yes, Location::As\u003cT\u003e() does not check whether its argument is a core or an FPU register.  Should we introduce Location::AsRegister\u003cT\u003e() and Location::AsFpuRegister\u003cT\u003e?",
+      "parentUuid": "5f404975_200464ef",
+      "range": {
+        "startLine": 1274,
+        "startChar": 44,
+        "endLine": 1274,
+        "endChar": 45
+      },
+      "revId": "fff1b4ef9358ed973ce215f18d8f36d421ad026a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f404975_80f9f891",
         "filename": "compiler/optimizing/register_allocator.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-26T17:20:51Z",
       "side": 1,
       "message": "Should that be FpuRegisterLocation if the type is double? What about ARM where a double is represented as a pair?",
+      "range": {
+        "startLine": 1274,
+        "startChar": 32,
+        "endLine": 1274,
+        "endChar": 48
+      },
+      "revId": "fff1b4ef9358ed973ce215f18d8f36d421ad026a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f448158_fb837a92",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-27T14:28:52Z",
+      "side": 1,
+      "message": "Yes, I\u0027ve changed the location to FpuRegisterLocation in the case of kPrimDouble.\n\nI\u0027m not sure about what we should do for ARM.  I believe this code is not used in the ARM back end (yet), so I\u0027ve just added a DCHECK for the moment.",
+      "parentUuid": "5f404975_80f9f891",
       "range": {
         "startLine": 1274,
         "startChar": 32,
