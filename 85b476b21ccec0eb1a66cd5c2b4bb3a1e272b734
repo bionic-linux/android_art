@@ -22,6 +22,30 @@
       "revId": "85b476b21ccec0eb1a66cd5c2b4bb3a1e272b734",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f17698b_05ea3287",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-27T15:05:22Z",
+      "side": 1,
+      "message": "Of course, thanks.  Done in PS4.",
+      "parentUuid": "1f633129_993dfbb3",
+      "range": {
+        "startLine": 1280,
+        "startChar": 16,
+        "endLine": 1280,
+        "endChar": 27
+      },
+      "revId": "85b476b21ccec0eb1a66cd5c2b4bb3a1e272b734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
