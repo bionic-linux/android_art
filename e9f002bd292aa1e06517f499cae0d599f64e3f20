@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f17698b_cb3789cf",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-28T15:51:25Z",
+      "side": 1,
+      "message": "Is there a particular reason for not inlining ShifterOpereandCanHoldArm32 into Arm32Assembler::ShifterOpereandCanHoldArm32 (whereas ShifterOperand::CanHoldThumb was inlined into Thumb2Assembler::ShifterOperandCanHold)?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "e9f002bd292aa1e06517f499cae0d599f64e3f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f17698b_2bd61d08",
+        "filename": "compiler/utils/arm/assembler_arm32.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-28T15:51:25Z",
+      "side": 1,
+      "message": "Operand",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 22
+      },
+      "revId": "e9f002bd292aa1e06517f499cae0d599f64e3f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
