@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ffcbbd63_a28c1e95",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-28T15:58:12Z",
+      "side": 1,
+      "message": "Yes, I did not want to change existing callers of CanHold in this file (that know they don\u0027t need to pass rd, rn, and opcode).",
+      "parentUuid": "5f17698b_cb3789cf",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "e9f002bd292aa1e06517f499cae0d599f64e3f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f17698b_2bd61d08",
         "filename": "compiler/utils/arm/assembler_arm32.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-11-28T15:51:25Z",
       "side": 1,
       "message": "Operand",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 22
+      },
+      "revId": "e9f002bd292aa1e06517f499cae0d599f64e3f20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffcbbd63_2262ce39",
+        "filename": "compiler/utils/arm/assembler_arm32.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-11-28T15:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f17698b_2bd61d08",
       "range": {
         "startLine": 368,
         "startChar": 14,
