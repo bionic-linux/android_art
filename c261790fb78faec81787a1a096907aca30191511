@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f147587_c7c020b8",
+        "filename": "compiler/optimizing/gvn.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-28T10:47:39Z",
+      "side": 1,
+      "message": "Nit: you can similarly refactor this while-loop as a for-loop.",
+      "range": {
+        "startLine": 188,
+        "startChar": 6,
+        "endLine": 188,
+        "endChar": 32
+      },
+      "revId": "c261790fb78faec81787a1a096907aca30191511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
