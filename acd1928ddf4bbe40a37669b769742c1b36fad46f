@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f17698b_88ef57c3",
+        "filename": "compiler/optimizing/gvn.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-28T10:26:31Z",
+      "side": 1,
+      "message": "Nit:\n\n  predecessors.Size() \u003e 1\n\n?",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "acd1928ddf4bbe40a37669b769742c1b36fad46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f147587_872d8805",
+        "filename": "compiler/optimizing/gvn.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-11-28T10:26:31Z",
+      "side": 1,
+      "message": "Suggestion: turn this `while\u0027 statement into a `for\u0027 one:\n\n  for (ValueSetNode* current \u003d collisions_, previous \u003d nullptr;\n       current !\u003d nullptr; current \u003d current-\u003eGetNext()) {\n    // ...\n  }",
+      "range": {
+        "startLine": 189,
+        "startChar": 6,
+        "endLine": 189,
+        "endChar": 32
+      },
+      "revId": "acd1928ddf4bbe40a37669b769742c1b36fad46f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
