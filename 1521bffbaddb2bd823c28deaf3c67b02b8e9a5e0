@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3f70f517_ea37c3ce",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2014-12-02T14:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8a0930_b089b684",
+      "range": {
+        "startLine": 265,
+        "startChar": 10,
+        "endLine": 265,
+        "endChar": 23
+      },
+      "revId": "1521bffbaddb2bd823c28deaf3c67b02b8e9a5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f70f517_0aa33fbe",
         "filename": "build/Android.common_build.mk",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-12-02T13:40:13Z",
       "side": 1,
       "message": "This line is larger than 100 characters and should be wrapped.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 102
+      },
+      "revId": "1521bffbaddb2bd823c28deaf3c67b02b8e9a5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f70f517_0ad6df07",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2014-12-02T14:17:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f70f517_0aa33fbe",
       "range": {
         "startLine": 275,
         "startChar": 0,
