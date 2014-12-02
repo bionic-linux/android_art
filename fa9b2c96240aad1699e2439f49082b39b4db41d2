@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfba25ec_9b764fc7",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-12-02T17:18:49Z",
+      "side": 1,
+      "message": "add a comment to explain what this means and the intended effect",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 25
+      },
+      "revId": "fa9b2c96240aad1699e2439f49082b39b4db41d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
