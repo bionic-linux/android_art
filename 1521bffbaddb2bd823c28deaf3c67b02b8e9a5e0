@@ -22,6 +22,29 @@
       "revId": "1521bffbaddb2bd823c28deaf3c67b02b8e9a5e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f70f517_0aa33fbe",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-02T13:40:13Z",
+      "side": 1,
+      "message": "This line is larger than 100 characters and should be wrapped.",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 102
+      },
+      "revId": "1521bffbaddb2bd823c28deaf3c67b02b8e9a5e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
