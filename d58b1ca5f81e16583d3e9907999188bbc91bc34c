@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff82dd17_b061c0f9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-02T12:06:14Z",
+      "side": 1,
+      "message": "I think we should now go into the habit of logging failures. So something like LOG(INFO) \u003c\u003c \"Did not compile \u003c\u003c PrettyMethod(...) \u003c\u003c \" because a method call could not be resolved\".",
+      "range": {
+        "startLine": 434,
+        "startChar": 74,
+        "endLine": 434,
+        "endChar": 75
+      },
+      "revId": "d58b1ca5f81e16583d3e9907999188bbc91bc34c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f8a0930_90e2fa5b",
+        "filename": "test/434-invoke-direct/smali/invoke.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-02T12:06:14Z",
+      "side": 1,
+      "message": "I think you can add a copyright with #.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "d58b1ca5f81e16583d3e9907999188bbc91bc34c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f8a0930_b0dff68c",
+        "filename": "test/434-invoke-direct/src/InvokeDirectSuper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-02T12:06:14Z",
+      "side": 1,
+      "message": "Missing copyright.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "d58b1ca5f81e16583d3e9907999188bbc91bc34c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
