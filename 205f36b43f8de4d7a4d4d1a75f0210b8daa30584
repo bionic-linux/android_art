@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "df219932_5f7c43a5",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 1,
+      "message": "Since other parts of the code use this same trick, I think that this should be okay.",
+      "parentUuid": "b50886ac_c80aaf11",
+      "revId": "205f36b43f8de4d7a4d4d1a75f0210b8daa30584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f533de7c_f11b1297",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1

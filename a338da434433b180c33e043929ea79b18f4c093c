@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "1f4ed10c_8fe06555",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "I actually removed all of the unwind directives that are at the end of the functions. I did this because I thought that I couldn\u0027t make this work everywhere, which turns out to be wrong.\n\nI\u0027ve added these back and added others that were missing.",
+      "parentUuid": "f533de7c_b1f02af8",
+      "range": {
+        "startLine": 94,
+        "startChar": 4,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f533de7c_710b824b",
         "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2014-11-05T04:02:55Z",
       "side": 0,
       "message": "removed because?",
+      "range": {
+        "startLine": 129,
+        "startChar": 4,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f69e176_a72c6ac1",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Same as above.",
+      "parentUuid": "f533de7c_710b824b",
       "range": {
         "startLine": 129,
         "startChar": 4,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "9f69e176_47124e79",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Same as above.",
+      "parentUuid": "9542a2da_8540462f",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9542a2da_253dbab1",
         "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
         "patchSetId": 1
@@ -128,6 +200,30 @@
       "writtenOn": "2014-11-05T04:02:55Z",
       "side": 0,
       "message": "removed because?",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 30
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf3dc54e_a91685b3",
+        "filename": "runtime/arch/arm/portable_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Same as above.",
+      "parentUuid": "9542a2da_253dbab1",
       "range": {
         "startLine": 165,
         "startChar": 4,
@@ -163,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "9f69e176_c7b95ef3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Readded.",
+      "parentUuid": "f533de7c_71106271",
+      "range": {
+        "startLine": 1078,
+        "startChar": 0,
+        "endLine": 1079,
+        "endChar": 19
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f533de7c_d12a8ea3",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -174,6 +294,30 @@
       "writtenOn": "2014-11-05T04:02:55Z",
       "side": 0,
       "message": "why removed?",
+      "range": {
+        "startLine": 1081,
+        "startChar": 0,
+        "endLine": 1081,
+        "endChar": 30
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf3dc54e_69babd44",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Readded.",
+      "parentUuid": "f533de7c_d12a8ea3",
       "range": {
         "startLine": 1081,
         "startChar": 0,
@@ -209,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "ff33bd7c_bcb32191",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Readded.",
+      "parentUuid": "15e07212_0a1f8ecd",
+      "range": {
+        "startLine": 1128,
+        "startChar": 0,
+        "endLine": 1130,
+        "endChar": 20
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "156dd243_e2ea83af",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -232,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "ff33bd7c_dcb8656d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Readded.",
+      "parentUuid": "156dd243_e2ea83af",
+      "range": {
+        "startLine": 1466,
+        "startChar": 4,
+        "endLine": 1466,
+        "endChar": 29
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55ff4ab8_a569de19",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -243,6 +435,30 @@
       "writtenOn": "2014-11-05T04:02:55Z",
       "side": 0,
       "message": "why removed?",
+      "range": {
+        "startLine": 1483,
+        "startChar": 4,
+        "endLine": 1483,
+        "endChar": 29
+      },
+      "revId": "a338da434433b180c33e043929ea79b18f4c093c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff33bd7c_7c9ef9f3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-12-04T20:10:55Z",
+      "side": 0,
+      "message": "Readded.",
+      "parentUuid": "55ff4ab8_a569de19",
       "range": {
         "startLine": 1483,
         "startChar": 4,
