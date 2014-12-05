@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfb2795b_3109f054",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-05T08:37:31Z",
+      "side": 1,
+      "message": "Please add a comment why you\u0027re doing this (that is, write the CL comment here as well).",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "efaaf714f6c9656f233c33af05cf65598c1d1785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
