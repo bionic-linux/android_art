@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e497b25c_428d7257",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "Can you remove this, and change the backend to crash if it\u0027s volatile?",
+      "range": {
+        "startLine": 674,
+        "startChar": 12,
+        "endLine": 674,
+        "endChar": 23
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84819619_4779aeb5",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 737,
+        "startChar": 4,
+        "endLine": 737,
+        "endChar": 11
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e497b25c_228a6e41",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "quiet c++ warnings.",
+      "range": {
+        "startLine": 2561,
+        "startChar": 49,
+        "endLine": 2561,
+        "endChar": 50
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84819619_677eb2a0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2574,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "What is this comment for?",
+      "range": {
+        "startLine": 2574,
+        "startChar": 61,
+        "endLine": 2574,
+        "endChar": 69
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84819619_8782c628",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2632,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "Is the store atomic? (same question for other load/store of 64bits values).",
+      "range": {
+        "startLine": 2632,
+        "startChar": 9,
+        "endLine": 2632,
+        "endChar": 22
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44731e24_05033203",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "This does not work with volatile, as the load must be atomic.",
+      "range": {
+        "startLine": 2747,
+        "startChar": 7,
+        "endLine": 2748,
+        "endChar": 89
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44731e24_c5911a5f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "No need to check volatile. Just like we don\u0027t check the field type, they are both is implied by the field offset being the same.",
+      "range": {
+        "startLine": 2127,
+        "startChar": 12,
+        "endLine": 2127,
+        "endChar": 24
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e497b25c_e25a4648",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2143,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-11T09:07:48Z",
+      "side": 1,
+      "message": "Please move this to field_info.",
+      "range": {
+        "startLine": 2143,
+        "startChar": 13,
+        "endLine": 2143,
+        "endChar": 25
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
