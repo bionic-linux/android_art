@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "047cc62c_4b0d8559",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-12T19:01:07Z",
+      "side": 1,
+      "message": "FYI: I have added ARM64 support for volatile and rem in my tree. I will push the patch on Monday after a bit more testing.",
+      "parentUuid": "e497b25c_428d7257",
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84819619_4779aeb5",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 2
