@@ -43,6 +43,24 @@
     },
     {
       "key": {
+        "uuid": "641ca21f_f90c7332",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "Then we wouldn\u0027t be able to compile the boot image for arm64 anymore. Crashing will also break the tests.\n\nI think it\u0027s ok to leave as is till Serban pushes the patch.",
+      "parentUuid": "047cc62c_4b0d8559",
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84819619_4779aeb5",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 2
@@ -77,6 +95,30 @@
       "writtenOn": "2014-12-11T09:07:48Z",
       "side": 1,
       "message": "quiet c++ warnings.",
+      "range": {
+        "startLine": 2561,
+        "startChar": 49,
+        "endLine": 2561,
+        "endChar": 50
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24162a01_174db639",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e497b25c_228a6e41",
       "range": {
         "startLine": 2561,
         "startChar": 49,
@@ -129,6 +171,48 @@
     },
     {
       "key": {
+        "uuid": "24162a01_b7ba0294",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2574,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641ca21f_5699f454",
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4adf2fd_35cf1a3d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2574,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "removed. It was mostly to remember me that I should look into why we need another variant of store store.",
+      "parentUuid": "84819619_677eb2a0",
+      "range": {
+        "startLine": 2574,
+        "startChar": 61,
+        "endLine": 2574,
+        "endChar": 69
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84819619_8782c628",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 2
@@ -140,6 +224,30 @@
       "writtenOn": "2014-12-11T09:07:48Z",
       "side": 1,
       "message": "Is the store atomic? (same question for other load/store of 64bits values).",
+      "range": {
+        "startLine": 2632,
+        "startChar": 9,
+        "endLine": 2632,
+        "endChar": 22
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "641ca21f_1914cf35",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2632,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "it isn\u0027t. Thanks and done!",
+      "parentUuid": "84819619_8782c628",
       "range": {
         "startLine": 2632,
         "startChar": 9,
@@ -222,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "24162a01_97bf0684",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "thanks and done!",
+      "parentUuid": "44731e24_05033203",
+      "range": {
+        "startLine": 2747,
+        "startChar": 7,
+        "endLine": 2748,
+        "endChar": 89
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44731e24_c5911a5f",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -245,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "641ca21f_7921838f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "indeed.",
+      "parentUuid": "44731e24_c5911a5f",
+      "range": {
+        "startLine": 2127,
+        "startChar": 12,
+        "endLine": 2127,
+        "endChar": 24
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e497b25c_e25a4648",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -256,6 +412,30 @@
       "writtenOn": "2014-12-11T09:07:48Z",
       "side": 1,
       "message": "Please move this to field_info.",
+      "range": {
+        "startLine": 2143,
+        "startChar": 13,
+        "endLine": 2143,
+        "endChar": 25
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "641ca21f_591e4757",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2143,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-15T18:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e497b25c_e25a4648",
       "range": {
         "startLine": 2143,
         "startChar": 13,
