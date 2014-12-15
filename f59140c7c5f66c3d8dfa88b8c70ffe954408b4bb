@@ -112,6 +112,23 @@
     },
     {
       "key": {
+        "uuid": "641ca21f_5699f454",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2574,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-15T10:17:28Z",
+      "side": 1,
+      "message": "Typo - barrier (applies to the other backends too).",
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84819619_8782c628",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 2
