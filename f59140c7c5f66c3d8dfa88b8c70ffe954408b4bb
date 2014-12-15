@@ -152,6 +152,29 @@
     },
     {
       "key": {
+        "uuid": "a453fafb_f0a5800f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2677,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-12-15T18:36:57Z",
+      "side": 1,
+      "message": "Should be easy to add support for this - we just need an sfence.",
+      "range": {
+        "startLine": 2677,
+        "startChar": 86,
+        "endLine": 2677,
+        "endChar": 99
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44731e24_05033203",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
@@ -163,6 +186,30 @@
       "writtenOn": "2014-12-11T09:07:48Z",
       "side": 1,
       "message": "This does not work with volatile, as the load must be atomic.",
+      "range": {
+        "startLine": 2747,
+        "startChar": 7,
+        "endLine": 2748,
+        "endChar": 89
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a45e9afb_1ba13f32",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2014-12-15T18:36:57Z",
+      "side": 1,
+      "message": "Interestingly enough, just from a bit of inspection on Quick code, it appears it is doing the same thing.",
+      "parentUuid": "44731e24_05033203",
       "range": {
         "startLine": 2747,
         "startChar": 7,
