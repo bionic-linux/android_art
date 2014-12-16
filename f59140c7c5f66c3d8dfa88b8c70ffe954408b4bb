@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "41215094_555c8c42",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2564,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-16T09:43:09Z",
+      "side": 1,
+      "message": "I have implemented both variants for ARM64 - dmb and acquire-release.",
+      "parentUuid": "2420ea81_47d93006",
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84819619_677eb2a0",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 2
