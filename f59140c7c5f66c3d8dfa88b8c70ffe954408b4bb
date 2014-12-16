@@ -459,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "a1584c42_a82edba6",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2410,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-16T18:00:16Z",
+      "side": 1,
+      "message": "I\u0027ll leave it out for now. I\u0027ll add it when we will actually generate the NTStoreStore barrier.",
+      "parentUuid": "2420ea81_078818b2",
+      "range": {
+        "startLine": 2410,
+        "startChar": 61,
+        "endLine": 2410,
+        "endChar": 99
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44731e24_c5911a5f",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -518,6 +542,30 @@
       "side": 1,
       "message": "Suggestion: if we rely solely on the field offset, shouldn\u0027t we DCHECK somewhere that the `field_info_` fields (and the `is_volatile_` fields) are equal?",
       "parentUuid": "44731e24_c5911a5f",
+      "range": {
+        "startLine": 2127,
+        "startChar": 12,
+        "endLine": 2127,
+        "endChar": 24
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "414f907e_e5dd1675",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-16T18:00:16Z",
+      "side": 1,
+      "message": "I think this is a general comment that applies to the other fields as well but I\u0027m not sure we want to clutter the code with DCHECKS... If you have a strong desire I can do it :)",
+      "parentUuid": "211e1c5a_b7640202",
       "range": {
         "startLine": 2127,
         "startChar": 12,
