@@ -506,6 +506,30 @@
     },
     {
       "key": {
+        "uuid": "211e1c5a_b7640202",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-16T16:28:27Z",
+      "side": 1,
+      "message": "Suggestion: if we rely solely on the field offset, shouldn\u0027t we DCHECK somewhere that the `field_info_` fields (and the `is_volatile_` fields) are equal?",
+      "parentUuid": "44731e24_c5911a5f",
+      "range": {
+        "startLine": 2127,
+        "startChar": 12,
+        "endLine": 2127,
+        "endChar": 24
+      },
+      "revId": "f59140c7c5f66c3d8dfa88b8c70ffe954408b4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e497b25c_e25a4648",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
