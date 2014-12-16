@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a18dacf4_40270ed9",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2701,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-12-16T18:04:14Z",
+      "side": 1,
+      "message": "Does it make more sense to have IsVolatile as a virtual on HInstruction?  This code looks awkward.",
+      "range": {
+        "startLine": 2701,
+        "startChar": 0,
+        "endLine": 2701,
+        "endChar": 54
+      },
+      "revId": "db8907084a6bb5312847054fb64f2a136b3d357f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a18dacf4_e00bc244",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-12-16T18:04:14Z",
+      "side": 1,
+      "message": "Ditto for GetOffset()",
+      "range": {
+        "startLine": 2717,
+        "startChar": 11,
+        "endLine": 2717,
+        "endChar": 17
+      },
+      "revId": "db8907084a6bb5312847054fb64f2a136b3d357f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a18dacf4_0009064c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2791,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2014-12-16T18:04:14Z",
+      "side": 1,
+      "message": "and FieldType?",
+      "range": {
+        "startLine": 2791,
+        "startChar": 18,
+        "endLine": 2791,
+        "endChar": 28
+      },
+      "revId": "db8907084a6bb5312847054fb64f2a136b3d357f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
