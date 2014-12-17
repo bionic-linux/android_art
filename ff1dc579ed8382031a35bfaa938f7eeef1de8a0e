@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "e1cb2464_02cb0a5c",
+        "filename": "compiler/optimizing/code_generator_arm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2014-12-17T11:58:53Z",
+      "side": 1,
+      "message": "I think the use of FieldInfo will solve most of the problems. The reason I did not make them extend a common class is because the type hierarchy would look a bit superficial.",
+      "parentUuid": "c102a041_d1e3c4d6",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 48
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1588471_3acae1ae",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 4
