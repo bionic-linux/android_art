@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a1204cdf_28bc6bdf",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2620,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "but off-course... done :)",
+      "parentUuid": "017758c2_33b588c2",
+      "range": {
+        "startLine": 2618,
+        "startChar": 0,
+        "endLine": 2620,
+        "endChar": 52
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217a9caa_94b9e4eb",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 4
@@ -70,6 +94,30 @@
       "writtenOn": "2014-12-16T22:36:07Z",
       "side": 1,
       "message": "Maybe add a is_wide local above.",
+      "range": {
+        "startLine": 2630,
+        "startChar": 17,
+        "endLine": 2630,
+        "endChar": 93
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cb2464_e2154664",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217a9caa_94b9e4eb",
       "range": {
         "startLine": 2630,
         "startChar": 17,
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "c102a041_91677c06",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "It is mentioned in the reference manual. The mention is for arm but not for thumb.",
+      "parentUuid": "217a9caa_f4acd8aa",
+      "range": {
+        "startLine": 2631,
+        "startChar": 0,
+        "endLine": 2631,
+        "endChar": 64
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217a9caa_b4b660f9",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 4
@@ -116,6 +188,30 @@
       "writtenOn": "2014-12-16T22:36:07Z",
       "side": 1,
       "message": "Pass the FieldInfo?",
+      "range": {
+        "startLine": 2654,
+        "startChar": 33,
+        "endLine": 2654,
+        "endChar": 51
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cb2464_02130a7f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "217a9caa_b4b660f9",
       "range": {
         "startLine": 2654,
         "startChar": 33,
@@ -163,6 +259,24 @@
       "side": 1,
       "message": "I suggest renaming this to AtomicStore - to me volatile implies ordering guarantees, ldrexd and strexd only guarantee atomic updates. The dmb(s) do the ordering.\n\nIt gets even more confusing if you look at this and then at ARM64 load-acquire/store-release which are volatile load/ volatile store since they guarantee memory ordering constrains.",
       "parentUuid": "017758c2_d3b9b4bc",
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1204cdf_686e631e",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "Fair point Serban. Atomic sounds better in this context.",
+      "parentUuid": "e1cb2464_a2989e84",
       "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -308,6 +422,30 @@
     },
     {
       "key": {
+        "uuid": "c102a041_f1640803",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2757,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "1) yep\n2) we should guarantee that they are if not. My understanding is that they are but I will look to actually verify it.",
+      "parentUuid": "e1588471_3acae1ae",
+      "range": {
+        "startLine": 2753,
+        "startChar": 0,
+        "endLine": 2757,
+        "endChar": 58
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217a9caa_54a58cb9",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -355,6 +493,30 @@
     },
     {
       "key": {
+        "uuid": "a1204cdf_e8c37333",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "thanks for the catch. Should be false, or at least in general. If we can prove there\u0027s no side effect in between it\u0027s ok to collapse the two into one but for now let\u0027s just return false.",
+      "parentUuid": "217a9caa_54a58cb9",
+      "range": {
+        "startLine": 2155,
+        "startChar": 44,
+        "endLine": 2155,
+        "endChar": 48
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1d164e3_32a4b0bb",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -366,6 +528,30 @@
       "writtenOn": "2014-12-16T22:36:07Z",
       "side": 1,
       "message": "Why this change? We are not going to merge two HMonitorOperations into one, so it doesn\u0027t make sense to implement this method.",
+      "range": {
+        "startLine": 2696,
+        "startChar": 7,
+        "endLine": 2696,
+        "endChar": 28
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c102a041_d1b0e44f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2696,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-17T16:01:04Z",
+      "side": 1,
+      "message": "My bad, i applied a bad reasoning here.",
+      "parentUuid": "e1d164e3_32a4b0bb",
       "range": {
         "startLine": 2696,
         "startChar": 7,
