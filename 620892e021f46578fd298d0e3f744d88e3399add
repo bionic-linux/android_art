@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c102a041_14d53a00",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2632,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T17:36:57Z",
+      "side": 1,
+      "message": "DCHECK_EQ?",
+      "range": {
+        "startLine": 2632,
+        "startChar": 6,
+        "endLine": 2632,
+        "endChar": 12
+      },
+      "revId": "620892e021f46578fd298d0e3f744d88e3399add",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c102a041_74dac62f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T17:36:57Z",
+      "side": 1,
+      "message": "Likewise",
+      "range": {
+        "startLine": 2748,
+        "startChar": 4,
+        "endLine": 2748,
+        "endChar": 10
+      },
+      "revId": "620892e021f46578fd298d0e3f744d88e3399add",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
