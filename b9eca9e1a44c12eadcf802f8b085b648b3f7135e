@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1cb2464_e28c6696",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2423,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T15:54:09Z",
+      "side": 1,
+      "message": "Nit: line longer than 100 characters.",
+      "range": {
+        "startLine": 2423,
+        "startChar": 0,
+        "endLine": 2423,
+        "endChar": 109
+      },
+      "revId": "b9eca9e1a44c12eadcf802f8b085b648b3f7135e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
