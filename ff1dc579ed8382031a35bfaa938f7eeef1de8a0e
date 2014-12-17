@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a1204cdf_68b023d3",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2579,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-17T11:13:06Z",
+      "side": 1,
+      "message": "Atomic ?",
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1204cdf_48b55fc1",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2590,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-17T11:13:06Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "017758c2_33b588c2",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 4
@@ -111,6 +145,24 @@
         "endLine": 2697,
         "endChar": 29
       },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cb2464_a2989e84",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-17T11:13:06Z",
+      "side": 1,
+      "message": "I suggest renaming this to AtomicStore - to me volatile implies ordering guarantees, ldrexd and strexd only guarantee atomic updates. The dmb(s) do the ordering.\n\nIt gets even more confusing if you look at this and then at ARM64 load-acquire/store-release which are volatile load/ volatile store since they guarantee memory ordering constrains.",
+      "parentUuid": "017758c2_d3b9b4bc",
       "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
