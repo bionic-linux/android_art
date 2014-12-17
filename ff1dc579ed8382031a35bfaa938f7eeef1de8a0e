@@ -177,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "e1cb2464_a2409e83",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T16:08:56Z",
+      "side": 1,
+      "message": "Suggestion: maybe add a comment or a DCHECK in the else branch (and likewise elsewhere)?",
+      "parentUuid": "c102a041_91677c06",
+      "range": {
+        "startLine": 2631,
+        "startChar": 0,
+        "endLine": 2631,
+        "endChar": 64
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217a9caa_b4b660f9",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 4
