@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "e1588471_3acae1ae",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2757,
+      "author": {
+        "id": 1054033
+      },
+      "writtenOn": "2014-12-17T05:44:53Z",
+      "side": 1,
+      "message": "1) Does the quick implementation match? If no, is the quick implementation actually atomic?\n\n2) Are long fields guaranteed to be aligned on 64-bit boundary? Because I am not sure that it will be atomic otherwise in case of cache line split (even for movsd).",
+      "range": {
+        "startLine": 2753,
+        "startChar": 0,
+        "endLine": 2757,
+        "endChar": 58
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217a9caa_54a58cb9",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -128,6 +151,30 @@
       "writtenOn": "2014-12-16T22:36:07Z",
       "side": 1,
       "message": "Probably false for volatile fields? Within a method, can we optimize two loads of a volatile field into one, even if we can prove there is no side effect in between?",
+      "range": {
+        "startLine": 2155,
+        "startChar": 44,
+        "endLine": 2155,
+        "endChar": 48
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "014af898_7bd45f53",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1054033
+      },
+      "writtenOn": "2014-12-17T05:44:53Z",
+      "side": 1,
+      "message": "Good catch. This should be false to express correct semantics. I believe we already should have art unit tests in which there is a volatile get of a terminating condition (I have seen Vmarko refer to this kind of case before).\n\nRegarding your second questions, it makes sense that it should be possible. If there is any synchronization needed, it is up to programmer to set barrier in which case there should be some \"side-effect\" in between.",
+      "parentUuid": "217a9caa_54a58cb9",
       "range": {
         "startLine": 2155,
         "startChar": 44,
