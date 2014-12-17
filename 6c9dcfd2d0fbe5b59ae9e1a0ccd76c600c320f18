@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1204cdf_0bd52100",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2628,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T17:09:42Z",
+      "side": 1,
+      "message": "Nit: \"to\" is duplicate here (BTW, Nicolas said we shouldn\u0027t use acronyms). :-)",
+      "range": {
+        "startLine": 2628,
+        "startChar": 65,
+        "endLine": 2628,
+        "endChar": 71
+      },
+      "revId": "6c9dcfd2d0fbe5b59ae9e1a0ccd76c600c320f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1204cdf_6bdadd2f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2630,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T17:09:42Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this whole comment be in compiler/utils/arm/assembler_arm32.cc instead?",
+      "range": {
+        "startLine": 2629,
+        "startChar": 0,
+        "endLine": 2630,
+        "endChar": 52
+      },
+      "revId": "6c9dcfd2d0fbe5b59ae9e1a0ccd76c600c320f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
