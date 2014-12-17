@@ -169,6 +169,98 @@
     },
     {
       "key": {
+        "uuid": "a1204cdf_086247aa",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2750,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T11:55:26Z",
+      "side": 1,
+      "message": "Maybe pass this value as argument to HandleFieldGet (possibly through FieldInfo)?",
+      "range": {
+        "startLine": 2750,
+        "startChar": 7,
+        "endLine": 2750,
+        "endChar": 18
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c102a041_f1e6c8e8",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2773,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T11:55:26Z",
+      "side": 1,
+      "message": "Likewise",
+      "range": {
+        "startLine": 2773,
+        "startChar": 11,
+        "endLine": 2773,
+        "endChar": 17
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1204cdf_685783d0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2776,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T11:55:26Z",
+      "side": 1,
+      "message": "Likewise",
+      "range": {
+        "startLine": 2776,
+        "startChar": 7,
+        "endLine": 2776,
+        "endChar": 18
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c102a041_d1e3c4d6",
+        "filename": "compiler/optimizing/code_generator_arm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-17T11:55:26Z",
+      "side": 1,
+      "message": "Looks like a good use of superclasses for H{Instance,Static}Field{Get,Set} as well as small refactoring opportunities in nodes.{h,cc}. (Maybe in another CL?)",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 48
+      },
+      "revId": "ff1dc579ed8382031a35bfaa938f7eeef1de8a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1588471_3acae1ae",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 4
