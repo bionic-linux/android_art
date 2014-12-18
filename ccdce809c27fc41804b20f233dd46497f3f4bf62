@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41731024_e589b683",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 2810,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2014-12-18T15:21:03Z",
+      "side": 1,
+      "message": "Nit: isn\u0027t",
+      "range": {
+        "startLine": 2810,
+        "startChar": 43,
+        "endLine": 2810,
+        "endChar": 50
+      },
+      "revId": "ccdce809c27fc41804b20f233dd46497f3f4bf62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
