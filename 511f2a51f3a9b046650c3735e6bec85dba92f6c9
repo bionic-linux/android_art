@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "618d7444_4e8f13bd",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T14:38:09Z",
+      "side": 1,
+      "message": "done. I added some assembly tests.",
+      "parentUuid": "41731024_c5e67ae9",
+      "range": {
+        "startLine": 812,
+        "startChar": 15,
+        "endLine": 812,
+        "endChar": 17
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1204cdf_0b4c0110",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 10
