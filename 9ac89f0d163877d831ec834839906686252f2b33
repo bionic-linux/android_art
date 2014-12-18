@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "618d7444_4e2b931c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2623,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T14:38:42Z",
+      "side": 1,
+      "message": "i added a todo for that.",
+      "parentUuid": "61765414_c63842c0",
+      "revId": "9ac89f0d163877d831ec834839906686252f2b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "618d7444_4ec47321",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 11
@@ -30,6 +48,30 @@
       "writtenOn": "2014-12-18T13:04:48Z",
       "side": 1,
       "message": "-\u003e We could use ldrd and strd, that are atomic with Large Physical Address Extension support. This info...",
+      "range": {
+        "startLine": 2688,
+        "startChar": 17,
+        "endLine": 2688,
+        "endChar": 44
+      },
+      "revId": "9ac89f0d163877d831ec834839906686252f2b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61765414_260d96dd",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T14:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618d7444_4ec47321",
       "range": {
         "startLine": 2688,
         "startChar": 17,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "618d7444_2e364789",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2807,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T14:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618d7444_6edf6f1e",
+      "range": {
+        "startLine": 2807,
+        "startChar": 41,
+        "endLine": 2807,
+        "endChar": 47
+      },
+      "revId": "9ac89f0d163877d831ec834839906686252f2b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "618d7444_6ec92f36",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 11
@@ -76,6 +142,30 @@
       "writtenOn": "2014-12-18T13:04:48Z",
       "side": 1,
       "message": "Add a note that we could ask the register allocator to allocate an fpu register for the input, but that we think it is not worth complicating the register allocator to understand FP \u003c-\u003e core moves.",
+      "range": {
+        "startLine": 2808,
+        "startChar": 0,
+        "endLine": 2808,
+        "endChar": 98
+      },
+      "revId": "9ac89f0d163877d831ec834839906686252f2b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61765414_06089acc",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2808,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T14:38:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "618d7444_6ec92f36",
       "range": {
         "startLine": 2808,
         "startChar": 0,
