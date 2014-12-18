@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c102a041_d41bb20b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "It\u0027s not in this change because we need to pass extra arguments to the code gen. I don\u0027t think it\u0027s that important and pretty rare, so I prefer to follow up with a CL.  I enhanced the comment.",
+      "parentUuid": "a1204cdf_2b5e25c5",
+      "range": {
+        "startLine": 2688,
+        "startChar": 11,
+        "endLine": 2688,
+        "endChar": 15
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c102a041_f4d7d6d1",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2014-12-17T19:01:12Z",
       "side": 1,
       "message": "Add a comment why you need an fpu register, and why it\u0027s good enough.",
+      "range": {
+        "startLine": 2702,
+        "startChar": 33,
+        "endLine": 2702,
+        "endChar": 52
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c102a041_345e7ec5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2702,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c102a041_f4d7d6d1",
       "range": {
         "startLine": 2702,
         "startChar": 33,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a1204cdf_4b01d976",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2803,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1204cdf_6b681d60",
+      "range": {
+        "startLine": 2803,
+        "startChar": 33,
+        "endLine": 2803,
+        "endChar": 52
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1cb2464_25bad894",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
@@ -82,6 +154,30 @@
       "writtenOn": "2014-12-17T19:01:12Z",
       "side": 1,
       "message": "Why this again? You need CanBeMoved to be true for that.",
+      "range": {
+        "startLine": 2190,
+        "startChar": 7,
+        "endLine": 2190,
+        "endChar": 28
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1204cdf_ab05f584",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "I overlooked this when i cleaned the other. Sorry.",
+      "parentUuid": "e1cb2464_25bad894",
       "range": {
         "startLine": 2190,
         "startChar": 7,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a1204cdf_8b02b178",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "Hmm, we can do it but i\u0027m not sure how much value it adds. I think there\u0027s at least a couple more instruction which suffer the same issue. The reason it\u0027s a bit hard to add tests for this is that we don\u0027t have the infrastructure in the assembly tests to verify just some combination of regs (e.g. ldrex is also untested).",
+      "parentUuid": "a1204cdf_2b4745f1",
+      "range": {
+        "startLine": 812,
+        "startChar": 15,
+        "endLine": 812,
+        "endChar": 17
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1204cdf_0b4c0110",
         "filename": "compiler/utils/arm/assembler_arm32.cc",
         "patchSetId": 10
@@ -128,6 +248,30 @@
       "writtenOn": "2014-12-17T19:01:12Z",
       "side": 1,
       "message": "ditto?",
+      "range": {
+        "startLine": 851,
+        "startChar": 15,
+        "endLine": 851,
+        "endChar": 17
+      },
+      "revId": "511f2a51f3a9b046650c3735e6bec85dba92f6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cb2464_454c3c11",
+        "filename": "compiler/utils/arm/assembler_arm32.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1204cdf_0b4c0110",
       "range": {
         "startLine": 851,
         "startChar": 15,

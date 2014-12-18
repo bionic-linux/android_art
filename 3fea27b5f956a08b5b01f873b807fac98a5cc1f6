@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1cb2464_05795430",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2152,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 0,
+      "message": "Yes, I was in volatile mode and forgot about the others.",
+      "parentUuid": "e1cb2464_65c4e021",
+      "range": {
+        "startLine": 2152,
+        "startChar": 0,
+        "endLine": 2152,
+        "endChar": 50
+      },
+      "revId": "3fea27b5f956a08b5b01f873b807fac98a5cc1f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c102a041_14e89a87",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2014-12-17T19:01:12Z",
       "side": 0,
       "message": "Why did you remove this? You just need to return whether the field is volatile.",
+      "range": {
+        "startLine": 2505,
+        "startChar": 0,
+        "endLine": 2505,
+        "endChar": 51
+      },
+      "revId": "3fea27b5f956a08b5b01f873b807fac98a5cc1f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1cb2464_254738f1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 2505,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2014-12-18T10:29:37Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "c102a041_14e89a87",
       "range": {
         "startLine": 2505,
         "startChar": 0,
