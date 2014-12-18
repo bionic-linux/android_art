@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "61765414_c63842c0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 2623,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2014-12-18T11:51:42Z",
+      "side": 1,
+      "message": "I was semi confused by this in the context of memory ordering barriers. Maybe StoreNeedsGCMark() ?",
+      "revId": "9ac89f0d163877d831ec834839906686252f2b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "618d7444_6edf6f1e",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 11
