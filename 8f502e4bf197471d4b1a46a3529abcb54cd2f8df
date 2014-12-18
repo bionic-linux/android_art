@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a3ecb1_f38fca35",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2958,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-12-18T17:31:49Z",
+      "side": 1,
+      "message": "It\u0027s not a big block, but maybe extract a small well-named function...",
+      "range": {
+        "startLine": 2953,
+        "startChar": 8,
+        "endLine": 2958,
+        "endChar": 54
+      },
+      "revId": "8f502e4bf197471d4b1a46a3529abcb54cd2f8df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
