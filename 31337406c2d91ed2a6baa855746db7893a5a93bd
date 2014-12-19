@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a18bec6e_10c4843b",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-12-19T16:57:31Z",
+      "side": 1,
+      "message": "You could remove the bool by using \"!\u003d kInvalidReg\"...",
+      "range": {
+        "startLine": 1567,
+        "startChar": 2,
+        "endLine": 1567,
+        "endChar": 36
+      },
+      "revId": "31337406c2d91ed2a6baa855746db7893a5a93bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
