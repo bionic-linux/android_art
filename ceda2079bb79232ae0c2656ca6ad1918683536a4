@@ -261,6 +261,29 @@
     },
     {
       "key": {
+        "uuid": "a12ccc7b_b199420d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-05T21:58:43Z",
+      "side": 1,
+      "message": "Seems this could benefit from having a \"Copy\" utility that can handle the different types.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 14
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a185ac8b_8926e11e",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
@@ -325,6 +348,29 @@
         "startChar": 59,
         "endLine": 1028,
         "endChar": 62
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_318632a7",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-05T21:58:43Z",
+      "side": 1,
+      "message": "Even older in-order Atoms shouldn\u0027t have a problem here since they had 2 issue ports. Loads used port 0 but register adds could use either port and thus could be issued at same time.",
+      "range": {
+        "startLine": 1096,
+        "startChar": 60,
+        "endLine": 1101,
+        "endChar": 90
       },
       "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
