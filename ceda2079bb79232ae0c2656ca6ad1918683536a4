@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0e1b056c_b91e3754",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-05T22:13:25Z",
+      "side": 1,
+      "message": "I\u0027m splitting this into a recognizer and the actual visitor, so the backends won\u0027t be \"polluted.\" The optimizing compiler will use its own enum.\n\nHowever, recognizing intrinsics isn\u0027t totally trivial, so I\u0027ll reuse the DexFileMethodInliner in the recognizer.",
+      "parentUuid": "a12ccc7b_91f19e43",
+      "range": {
+        "startLine": 330,
+        "startChar": 37,
+        "endLine": 330,
+        "endChar": 57
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_956fd492",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
@@ -308,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "ce3acdc4_b4c06eba",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-05T22:13:25Z",
+      "side": 1,
+      "message": "I\u0027m rewriting this to rely on the register allocator to do the right thing, so in \u003d\u003d out and this is unnecessary.",
+      "parentUuid": "a12ccc7b_b199420d",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 606,
+        "endChar": 14
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a185ac8b_8926e11e",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
@@ -390,6 +438,30 @@
       "writtenOn": "2015-01-05T21:58:43Z",
       "side": 1,
       "message": "Even older in-order Atoms shouldn\u0027t have a problem here since they had 2 issue ports. Loads used port 0 but register adds could use either port and thus could be issued at same time.",
+      "range": {
+        "startLine": 1096,
+        "startChar": 60,
+        "endLine": 1101,
+        "endChar": 90
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce3acdc4_f4b6f659",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-05T22:13:25Z",
+      "side": 1,
+      "message": "I\u0027m rewriting this, relying on the allocator to do the right thing, so out \u003d\u003d obj, and thus this can be moved below to coincide with quick.",
+      "parentUuid": "a12ccc7b_318632a7",
       "range": {
         "startLine": 1096,
         "startChar": 60,
