@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c180e07b_157e64d5",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-05T16:34:27Z",
+      "side": 1,
+      "message": "Pass the dex_pc explicitly then. Other slow paths do this as well.",
+      "parentUuid": "6e2481a4_5606d414",
+      "range": {
+        "startLine": 192,
+        "startChar": 17,
+        "endLine": 192,
+        "endChar": 28
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_75725081",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "It\u0027s actually an interesting question. If you know of the top of your head: if there are free registers, what will the register allocator do? For x86 it would be optimal to have in and out the same in that case, as it avoids a copy...\n\nMaybe another Location type would help (CanBeSameAsFirstInput)?",
       "parentUuid": "a185ac8b_8926e11e",
+      "range": {
+        "startLine": 1028,
+        "startChar": 59,
+        "endLine": 1028,
+        "endChar": 62
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0144b839_d49eb271",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-05T16:34:27Z",
+      "side": 1,
+      "message": "I think I understand the confusion. If the x86 instruction ends up using the same register, you have to say it. You should not do the move yourself.",
+      "parentUuid": "0e0225f8_215d4aec",
       "range": {
         "startLine": 1028,
         "startChar": 59,
