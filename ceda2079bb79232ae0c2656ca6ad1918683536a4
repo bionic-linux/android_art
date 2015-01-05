@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "4ef89d38_e3c3e645",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-05T22:28:14Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "0e1b056c_b91e3754",
+      "range": {
+        "startLine": 330,
+        "startChar": 37,
+        "endLine": 330,
+        "endChar": 57
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_956fd492",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
