@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a12ccc7b_91f19e43",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-05T22:08:14Z",
+      "side": 1,
+      "message": "Agreed with Nicolas and I admit I don\u0027t like polluting all the code generators with this. Shouldn\u0027t it be enough to get the invoke target without going through the intrinsic flags? For example, the inliner in Optimizing does the work without using DexFileMethodInliner.",
+      "parentUuid": "ce156d30_bfd61fd3",
+      "range": {
+        "startLine": 330,
+        "startChar": 37,
+        "endLine": 330,
+        "endChar": 57
+      },
+      "revId": "ceda2079bb79232ae0c2656ca6ad1918683536a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_956fd492",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 12
