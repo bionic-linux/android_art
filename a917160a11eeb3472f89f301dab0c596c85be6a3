@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0144b839_b499260d",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "Just sticking to the style used in the file.",
+      "parentUuid": "0144b839_54d80202",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 2
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0144b839_74d5fec8",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a185ac8b_0fe2d1a8",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a185ac8b_4fc1393d",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 422,
+        "endChar": 9
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0144b839_94e26aaa",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2015-01-05T23:13:35Z",
       "side": 1,
       "message": "HasBitSet(instr, 23) ?",
+      "range": {
+        "startLine": 1350,
+        "startChar": 23,
+        "endLine": 1350,
+        "endChar": 40
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c180e07b_d0b08a86",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "See \u0027W\u0027 below.",
+      "parentUuid": "0144b839_94e26aaa",
       "range": {
         "startLine": 1350,
         "startChar": 23,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0144b839_f419eee9",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0144b839_b4e766b9",
+      "range": {
+        "startLine": 1380,
+        "startChar": 33,
+        "endLine": 1380,
+        "endChar": 35
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a185ac8b_6fcefd6d",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2015-01-05T23:13:35Z",
       "side": 1,
       "message": "Can you use the TR macro?",
+      "range": {
+        "startLine": 1388,
+        "startChar": 24,
+        "endLine": 1388,
+        "endChar": 25
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a185ac8b_4ff93952",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a185ac8b_6fcefd6d",
       "range": {
         "startLine": 1388,
         "startChar": 24,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "a185ac8b_6f06fdbe",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "See \u0027W\u0027 below.",
+      "parentUuid": "a185ac8b_8fcb415b",
+      "range": {
+        "startLine": 1415,
+        "startChar": 25,
+        "endLine": 1415,
+        "endChar": 42
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180e07b_d0fdea7b",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 1
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "0144b839_142f5af7",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "See \u0027W\u0027 below.",
+      "parentUuid": "c180e07b_d0fdea7b",
+      "range": {
+        "startLine": 1416,
+        "startChar": 16,
+        "endLine": 1416,
+        "endChar": 32
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0144b839_d4dcf2f3",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 1
@@ -197,6 +365,30 @@
       "writtenOn": "2015-01-05T23:13:35Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1417,
+        "startChar": 0,
+        "endLine": 1417,
+        "endChar": 42
+      },
+      "revId": "a917160a11eeb3472f89f301dab0c596c85be6a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c180e07b_b094e6d5",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-06T10:55:41Z",
+      "side": 1,
+      "message": "I\u0027d rather stay close to the documentation. For example, it defines \"wback \u003d (W \u003d\u003d \u00271\u0027);\" where wback is a boolean but \u0027W\u0027 is a bit sequence for which we use uint32_t.",
+      "parentUuid": "0144b839_d4dcf2f3",
       "range": {
         "startLine": 1417,
         "startChar": 0,
