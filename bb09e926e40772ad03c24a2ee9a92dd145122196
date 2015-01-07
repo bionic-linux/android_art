@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee587171_3a778174",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-07T21:15:18Z",
+      "side": 1,
+      "message": "Why marked in static category? Is it because you know they are virtual calls on final class and thus can be handled like direct?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee587171_5a86b5f2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2015-01-07T21:15:18Z",
+      "side": 1,
+      "message": "I generally prefer not leaving any code that is commented out. Though I guess since you probably plan on supporting this soon, this is fine.",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
