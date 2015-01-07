@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e630529_939f9cf2",
+        "filename": "compiler/dex/quick/dex_file_method_inliner.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "With preprocessor macros we often violate the 100 char constraint. I\u0027ll try to break anyways.",
+      "parentUuid": "ce02cd41_710bf81b",
+      "range": {
+        "startLine": 296,
+        "startChar": 103,
+        "endLine": 296,
+        "endChar": 105
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae075951_90965454",
         "filename": "compiler/dex/quick/dex_file_method_inliner.cc",
         "patchSetId": 18
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "eefdd173_d21c6406",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "ce02cd41_b1144037",
+      "range": {
+        "startLine": 1126,
+        "startChar": 5,
+        "endLine": 1126,
+        "endChar": 9
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae52f94e_58d23d94",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 18
@@ -82,6 +130,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "Can we have this list be the main list of intrinsics instead? (hence changing the dex method inliner).",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eefdd173_728658fc",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "I wanted to wait with such a refactoring for a follow-up. Things are slightly complicated because the list is extended with opcodes for inlining in Quick...",
+      "parentUuid": "ae52f94e_58d23d94",
       "range": {
         "startLine": 22,
         "startChar": 8,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "eefdd173_528b5402",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Agreed, but the other options aren\u0027t great either:\n\n1) Make it a *public* helper on the CodeGenerator.\n2) Define it in the CodeGenerator header.",
+      "parentUuid": "ae52f94e_b83b99ba",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae075951_d090dc58",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -128,6 +224,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "nit: Do an early return to avoid the indentation.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_b36a9887",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae075951_d090dc58",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "6e6c8115_761590e3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "This is style copied from some other file. I\u0027ll rewrite for yours (which is more Java style, I think).",
+      "parentUuid": "ae52f94e_38d3091c",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 9
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce02cd41_11d8ac34",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -174,6 +318,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "I thought the ins were already at the right place? (see comment line 140).",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 10
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e6c8115_1637fc82",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Comment wasn\u0027t updated. The non-slow-path code can now use general registers.",
+      "parentUuid": "ce02cd41_11d8ac34",
       "range": {
         "startLine": 152,
         "startChar": 4,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "0e630529_335e88ec",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "See above. The intrinsified code can use any registers. I did not find anything in the register allocator forcing out to be the call-out when using kCallOnSlowPath.",
+      "parentUuid": "ae52f94e_58e23de2",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 11
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae075951_300168fc",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -220,6 +412,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "Nit: one argument per line.",
+      "range": {
+        "startLine": 241,
+        "startChar": 56,
+        "endLine": 241,
+        "endChar": 65
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_b351f8d7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae075951_300168fc",
       "range": {
         "startLine": 241,
         "startChar": 56,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "0e630529_535d04eb",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Is that a strong requirement? I prefer it for clarity, and in case we ever want to move over existing enums to enum classes.",
+      "parentUuid": "ae52f94e_98c33547",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce02cd41_51e234e2",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -266,6 +506,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "Location::Any()?",
+      "range": {
+        "startLine": 294,
+        "startChar": 29,
+        "endLine": 294,
+        "endChar": 53
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e6c8115_7612b0c5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "As discussed personally, I\u0027ll make it Any and handle the in-memory case.",
+      "parentUuid": "ce02cd41_51e234e2",
       "range": {
         "startLine": 294,
         "startChar": 29,
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "0e630529_b370d846",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce02cd41_b1c60057",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 16
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce02cd41_11ff0c74",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "6e6c8115_56d21494",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Because then the caller looks nicer \"return GenXYZ\" (and is either inline-able or tail-call optimizable) ...",
+      "parentUuid": "ce02cd41_11ff0c74",
+      "range": {
+        "startLine": 925,
+        "startChar": 3,
+        "endLine": 925,
+        "endChar": 14
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae075951_50434ce1",
         "filename": "compiler/optimizing/intrinsics_x86_64.h",
         "patchSetId": 18
@@ -335,6 +647,24 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "The following declarations should be auto-generated.",
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e630529_33afa827",
+        "filename": "compiler/optimizing/intrinsics_x86_64.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "So you do prefer explicit false return functions for non-implemented intrinsics?",
+      "parentUuid": "ae075951_50434ce1",
       "revId": "07d772ac445054c45ac356410a0e79d191233afa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -369,6 +699,30 @@
       "writtenOn": "2015-01-07T15:47:56Z",
       "side": 1,
       "message": "This is odd... Why would an input\u0027s location be invalid? Unused argument?",
+      "range": {
+        "startLine": 1100,
+        "startChar": 12,
+        "endLine": 1100,
+        "endChar": 39
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eefdd173_9222dc3d",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-07T16:47:08Z",
+      "side": 1,
+      "message": "Yes.\n\nI wasn\u0027t sure whether this is a good approach, as only intrinsics for Unsafe use this at all, so it\u0027s a bit special-purpose...",
+      "parentUuid": "ce02cd41_f1c088bb",
       "range": {
         "startLine": 1100,
         "startChar": 12,
