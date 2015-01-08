@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb4f1df_7ac8f935",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-08T12:22:38Z",
+      "side": 1,
+      "message": "I would drop the extra \"meaning... in overlaps\" and unquote \u0027contains\u0027. (\u0027overlap\u0027 makes me think of partial containment)",
+      "range": {
+        "startLine": 293,
+        "startChar": 66,
+        "endLine": 293,
+        "endChar": 74
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_dad665d4",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-08T12:22:38Z",
+      "side": 1,
+      "message": "Do you want to prefix/suffix this with ARM? I don\u0027t think they will hold for x86.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_aef0776d",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-08T12:22:38Z",
+      "side": 1,
+      "message": "how come nothing went wrong so far because of this?",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_aefb1749",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-08T12:22:38Z",
+      "side": 1,
+      "message": "- why not using \u0026\u0026 ?\n- can you add brackets? (you can keep them on the same line)",
+      "range": {
+        "startLine": 699,
+        "startChar": 8,
+        "endLine": 700,
+        "endChar": 40
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_7a1ab915",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-08T12:22:38Z",
+      "side": 1,
+      "message": "ditto\n\n+ factor out common code",
+      "range": {
+        "startLine": 819,
+        "startChar": 6,
+        "endLine": 821,
+        "endChar": 38
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
