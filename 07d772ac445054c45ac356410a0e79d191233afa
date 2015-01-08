@@ -695,6 +695,24 @@
     },
     {
       "key": {
+        "uuid": "eeb4f1df_baea91ae",
+        "filename": "compiler/optimizing/intrinsics_x86_64.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:31:14Z",
+      "side": 1,
+      "message": "Not sure how this relates to auto-generation...?",
+      "parentUuid": "0e630529_33afa827",
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae075951_b057189a",
         "filename": "compiler/optimizing/intrinsics_x86_64.h",
         "patchSetId": 18
