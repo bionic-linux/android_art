@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_a8115b46",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-08T19:18:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_0e018bfb",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce02cd41_51e234e2",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
@@ -707,6 +731,24 @@
       "side": 1,
       "message": "Not sure how this relates to auto-generation...?",
       "parentUuid": "0e630529_33afa827",
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce872d28_493e214f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-08T19:18:12Z",
+      "side": 1,
+      "message": "If the functions are auto-generated but not implemented (e.g. CAS and some String functions), there will have to be explicit implementations that return false...",
+      "parentUuid": "eeb4f1df_baea91ae",
       "revId": "07d772ac445054c45ac356410a0e79d191233afa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
