@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e8d6144_4ecd53f6",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T13:58:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_7ac8f935",
+      "range": {
+        "startLine": 293,
+        "startChar": 66,
+        "endLine": 293,
+        "endChar": 74
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_dad665d4",
         "filename": "compiler/optimizing/register_allocator.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-08T12:22:38Z",
       "side": 1,
       "message": "Do you want to prefix/suffix this with ARM? I don\u0027t think they will hold for x86.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 61
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_5a2c1537",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T13:58:05Z",
+      "side": 1,
+      "message": "A first implementation for x86 might use the same strategy. So I think I\u0027d prefer keeping the names here.\n\nNote that the abstraction makes sense: for a low, give me a high. It might be that il should be moved to the codegen, so that longs can say \"I don\u0027t care\".",
+      "parentUuid": "eeb4f1df_dad665d4",
       "range": {
         "startLine": 33,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8ea8d591_af22393d",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T13:58:05Z",
+      "side": 1,
+      "message": "Because we use the same registers for floats and doubles on x86_64 and arm64.",
+      "parentUuid": "6e8d6144_aef0776d",
+      "range": {
+        "startLine": 145,
+        "startChar": 19,
+        "endLine": 145,
+        "endChar": 29
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_aefb1749",
         "filename": "compiler/optimizing/register_allocator.cc",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6e8d6144_6e6ccf76",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T13:58:05Z",
+      "side": 1,
+      "message": "You mean \u0027||\u0027 ?\n\nI find it more readable to have one condition for continuing by line. Same for brackets.Note that style guide leaves a lot of freedom for this.",
+      "parentUuid": "6e8d6144_aefb1749",
+      "range": {
+        "startLine": 699,
+        "startChar": 8,
+        "endLine": 700,
+        "endChar": 40
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_7a1ab915",
         "filename": "compiler/optimizing/register_allocator.cc",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2015-01-08T12:22:38Z",
       "side": 1,
       "message": "ditto\n\n+ factor out common code",
+      "range": {
+        "startLine": 819,
+        "startChar": 6,
+        "endLine": 821,
+        "endChar": 38
+      },
+      "revId": "4f04f398f7b4afe23db3def211e59111020dbc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_6f6cd176",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T13:58:05Z",
+      "side": 1,
+      "message": "Ditto. And done.",
+      "parentUuid": "eeb4f1df_7a1ab915",
       "range": {
         "startLine": 819,
         "startChar": 6,
