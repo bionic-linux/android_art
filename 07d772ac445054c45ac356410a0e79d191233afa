@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "6e8d6144_0e018bfb",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T09:54:38Z",
+      "side": 1,
+      "message": "Not a strong style requirement, but a strong consistency requirement. I\u0027ve seen it consistently used without the ::Type.",
+      "parentUuid": "0e630529_535d04eb",
+      "range": {
+        "startLine": 246,
+        "startChar": 20,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "07d772ac445054c45ac356410a0e79d191233afa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce02cd41_51e234e2",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 18
