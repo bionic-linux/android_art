@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8ea8d591_ef87e137",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Maybe personal opinion, but surrounding something that needs to be run with an assertion-like mechanism (that somehow implies it could be disabled) is a bit hairy.\n\nI\u0027d rather do:\n\nif (!intrisic.Dispatch()) {\n  LOG(FATAL)  \u003c\u003c Usefule message.\n}",
+      "range": {
+        "startLine": 1149,
+        "startChar": 4,
+        "endLine": 1149,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ce930363",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1202,
+        "startChar": 4,
+        "endLine": 1202,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee587171_3a778174",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 19
@@ -49,6 +95,444 @@
     },
     {
       "key": {
+        "uuid": "8ea8d591_4f4e2d8d",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I think this is confusing. I\u0027d much prefer have just one list and do a single switch, whether you\u0027re direct or virtual.",
+      "parentUuid": "6e1ac1b5_6667ae93",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ee90bf58",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Why do we have these here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_2e064714",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "We really need to get rid of this.",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_6f53f12f",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a TODO that we need to use something else than InlineMethod.",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_8f673508",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I know you want to refactor things, but this looks so bad. Two enums for intrinsics, really?\n\nWhy do we want another enum? Because the first enum does not properly enumerate all cases. How bad would it be to change the first enum?",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 111,
+        "endChar": 67
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_4e0b931b",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "-\u003e Recognize intrinsics from HInvoke nodes.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_fa908958",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "As said previously, I find it simpler to only have one list.",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_8e149b37",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "MoveOuv-\u003e MoveToReturnRegister",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_cf613df3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "MoveArguments.",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ae115746",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Early return?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ce1ea355",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I don\u0027t understand this sentence.",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_ef5e0134",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ee1b5f62",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Is that guaranteed to be available? Shouldn\u0027t you use locations instead?",
+      "range": {
+        "startLine": 127,
+        "startChar": 89,
+        "endLine": 127,
+        "endChar": 92
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_0e28ab73",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I\u0027d add a DCHECK that out is not in the live registers.",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_da1e6555",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a kIntrinsified constexpr, and use it where you use \u0027true\u0027 in this context.",
+      "range": {
+        "startLine": 151,
+        "startChar": 93,
+        "endLine": 151,
+        "endChar": 97
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_2e2d6784",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I still think this boolean return is a lot of noise and error prone. I\u0027d rather have the caller check if the location summary is set and is intrisified.\n\nSeparation of concerns :)",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 13
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_7a2719a2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "For consistency: CreateIntToIntLocations.",
+      "range": {
+        "startLine": 206,
+        "startChar": 12,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_ba38d1be",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "...PlusTempsLocation.",
+      "range": {
+        "startLine": 266,
+        "startChar": 12,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_4fc9cd89",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Leftover?",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 94
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee587171_5a86b5f2",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -89,6 +573,576 @@
         "startChar": 0,
         "endLine": 296,
         "endChar": 20
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_8fb2d504",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "You have the code in this code review :)\n\nEither delete it, or put a fat comment on what this is about.",
+      "parentUuid": "0e630529_8d3c95e6",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_afaf999f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "...PlusTempLocation",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_fa3249da",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "How can that be? You have asked out to be same as first input.",
+      "range": {
+        "startLine": 384,
+        "startChar": 8,
+        "endLine": 384,
+        "endChar": 60
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_cfbcdddb",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Consistent naming.",
+      "range": {
+        "startLine": 468,
+        "startChar": 12,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_0fa6e5c8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_ced0630a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a DCHECK.",
+      "range": {
+        "startLine": 519,
+        "startChar": 31,
+        "endLine": 519,
+        "endChar": 52
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_eecd1f73",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Consistent naming.",
+      "range": {
+        "startLine": 542,
+        "startChar": 12,
+        "endLine": 542,
+        "endChar": 26
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_5addf523",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "consistent naming",
+      "range": {
+        "startLine": 582,
+        "startChar": 12,
+        "endLine": 582,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_bac37146",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "should be equal -\u003e is equal?\n\nIf you don\u0027t care, why did you ask for them to be equal?",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 23
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_dad0250a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "No, the native instruction does not require this.",
+      "range": {
+        "startLine": 611,
+        "startChar": 30,
+        "endLine": 611,
+        "endChar": 46
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_6fa5b1b8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a kImplicitNullCheck \u003d false in code_generator_x86_64.h, and DCHECK() it here.",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 69
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_3aff6174",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_6ef92f8b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "what kind of worries? Please expand the comment.",
+      "range": {
+        "startLine": 665,
+        "startChar": 34,
+        "endLine": 665,
+        "endChar": 53
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_8f99f588",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Consistent naming.",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_7af9d98a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "what kind?",
+      "range": {
+        "startLine": 728,
+        "startChar": 40,
+        "endLine": 728,
+        "endChar": 47
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_aeea37ae",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "8 -\u003e kX86_64WordSize",
+      "range": {
+        "startLine": 789,
+        "startChar": 71,
+        "endLine": 789,
+        "endChar": 72
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_cee783e5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 32
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_ef90c158",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "consistent naming",
+      "range": {
+        "startLine": 809,
+        "startChar": 12,
+        "endLine": 809,
+        "endChar": 29
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_eee43fe3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "No.",
+      "range": {
+        "startLine": 814,
+        "startChar": 30,
+        "endLine": 814,
+        "endChar": 46
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_2f064914",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Consistent naming.",
+      "range": {
+        "startLine": 844,
+        "startChar": 12,
+        "endLine": 844,
+        "endChar": 42
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_0ea50b94",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Only for object type, right?",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 51
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8d6144_2eaac764",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "instruction -\u003e call.",
+      "range": {
+        "startLine": 563,
+        "startChar": 53,
+        "endLine": 563,
+        "endChar": 64
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_1aa53d94",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "index_in_dex_cache_ ? Since it looks all three invokes need it now, maybe move it to the HInvoke class?",
+      "range": {
+        "startLine": 1678,
+        "startChar": 26,
+        "endLine": 1678,
+        "endChar": 36
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb4f1df_7ab479c3",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a comment why an input could be invalid. And also DCHECK that the instruction of the use is instrisifed?",
+      "range": {
+        "startLine": 1100,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 42
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea8d591_0f28a573",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-08T10:36:18Z",
+      "side": 1,
+      "message": "Add a comment why this change.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 3
       },
       "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
