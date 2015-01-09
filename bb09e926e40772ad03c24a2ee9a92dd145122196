@@ -872,6 +872,30 @@
     },
     {
       "key": {
+        "uuid": "6eaba19e_7e04913f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:45:07Z",
+      "side": 1,
+      "message": "I don\u0027t know. A result return is pretty standard and common. The compiler will throw a fit if you forget it, so I don\u0027t think it\u0027s that error-prone.",
+      "parentUuid": "6e8d6144_2e2d6784",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 13
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_7a2719a2",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
