@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "eec0716a_daf4c5e6",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "It\u0027s fine to just have HInvoke.",
+      "parentUuid": "ee823118_2d2d7984",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ee90bf58",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 19
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "Isn\u0027t it more like MoveFromReturnRegister? This is moving from the native-convention return to the actual out of the intrinsified call.",
       "parentUuid": "6e8d6144_8e149b37",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eb529f8_5c01dd2d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "ae7cb9f1_8851f7d7",
       "range": {
         "startLine": 44,
         "startChar": 12,
@@ -884,6 +932,30 @@
       "side": 1,
       "message": "I don\u0027t know. A result return is pretty standard and common. The compiler will throw a fit if you forget it, so I don\u0027t think it\u0027s that error-prone.",
       "parentUuid": "6e8d6144_2e2d6784",
+      "range": {
+        "startLine": 154,
+        "startChar": 9,
+        "endLine": 154,
+        "endChar": 13
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0eb22512_7b049f3f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "It\u0027s the noise that it\u0027s creating. When reading the code, you need to figure out why there is this return bool. This is overhead we don\u0027t need.",
+      "parentUuid": "6eaba19e_7e04913f",
       "range": {
         "startLine": 154,
         "startChar": 9,
@@ -1472,6 +1544,30 @@
     },
     {
       "key": {
+        "uuid": "2eb529f8_1cfb55d2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "SameAsFirstInput is always suboptimal, as it can lead to a mov to ensure it. If the native instruction doesn\u0027t require it, you should not ask for it.",
+      "parentUuid": "4e733d24_b9b527bf",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 23
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_dad0250a",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -1566,6 +1662,30 @@
     },
     {
       "key": {
+        "uuid": "0eb22512_3bfe17c2",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "Calin\u0027s approach is the first step. The null checks will be removed from the graph, and individual isntructions will have to handle the implicit check themselves.",
+      "parentUuid": "4e733d24_99cceb4a",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 69
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_3aff6174",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -1601,6 +1721,30 @@
       "side": 1,
       "message": "Changed into a TODO. I\u0027m still getting used to locations and their interaction with the allocator. The point here is that for index \u003d constant, we can save an input register and use instructions with immediate form...",
       "parentUuid": "eeb4f1df_3aff6174",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eb529f8_fc1ae996",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "There is a Location::RegisterOrConstant.",
+      "parentUuid": "ce9c8d86_6a0ccb5f",
       "range": {
         "startLine": 639,
         "startChar": 0,
@@ -1836,6 +1980,30 @@
       "side": 1,
       "message": "If we ever move to actual compressed pointers, we\u0027ll have to \"unpack\" here.",
       "parentUuid": "6e8d6144_cee783e5",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 32
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eec0716a_bae91111",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-09T09:28:46Z",
+      "side": 1,
+      "message": "So the TODO is not just for this instruction, right? It\u0027s more a general thing?",
+      "parentUuid": "4e733d24_f9a95f1a",
       "range": {
         "startLine": 802,
         "startChar": 0,
