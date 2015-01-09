@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_88c65757",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_ef87e137",
+      "range": {
+        "startLine": 1149,
+        "startChar": 4,
+        "endLine": 1149,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ce930363",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 19
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1202,
+        "startChar": 4,
+        "endLine": 1202,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_c8d04f0a",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_ce930363",
       "range": {
         "startLine": 1202,
         "startChar": 4,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "ee823118_2d2d7984",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Are you OK with the visitor then only taking HInvoke instead of the actual instruction type? Or do you want inline checks in the switch cases?",
+      "parentUuid": "8ea8d591_4f4e2d8d",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ee90bf58",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 19
@@ -130,6 +202,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Why do we have these here?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce872d28_8989f9ba",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "I wanted to let the compiler hand out warnings if a case is missed. So I have to have all of them. This is the reason for the three defines here - so it\u0027s easy to complete the switch statements without a default case.",
+      "parentUuid": "6e8d6144_ee90bf58",
       "range": {
         "startLine": 61,
         "startChar": 8,
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "ee823118_cdd05d0a",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Agreed for the dex inliner structure. Right now this is the most self-contained change. I thought you\u0027d prefer the abstraction of the type over pushing through the flags...",
+      "parentUuid": "6e8d6144_2e064714",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 30
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_6f53f12f",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 19
@@ -176,6 +296,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Add a TODO that we need to use something else than InlineMethod.",
+      "range": {
+        "startLine": 94,
+        "startChar": 27,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_2891eb30",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_6f53f12f",
       "range": {
         "startLine": 94,
         "startChar": 27,
@@ -211,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_29c80de7",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Quick is using the type of the result register to determine which direction. I actually added the second-level flag (because some other things are already written in that manner), as I thought that was cleaner than actually looking at the instruction. I could just look at the result type instead.",
+      "parentUuid": "8ea8d591_8f673508",
+      "range": {
+        "startLine": 110,
+        "startChar": 14,
+        "endLine": 111,
+        "endChar": 67
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_4e0b931b",
         "filename": "compiler/optimizing/intrinsics.h",
         "patchSetId": 19
@@ -222,6 +390,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "-\u003e Recognize intrinsics from HInvoke nodes.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_0877c773",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_4e0b931b",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -257,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_e8719377",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Loses a little bit of protection. Quick was breaking in a fuzzed apk when things were given the wrong \"kind.\" Just need a decision whether you\u0027re OK pushing HInvoke instead of the actual type.",
+      "parentUuid": "eeb4f1df_fa908958",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_8e149b37",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -268,6 +484,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "MoveOuv-\u003e MoveToReturnRegister",
+      "range": {
+        "startLine": 44,
+        "startChar": 12,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_8851f7d7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Isn\u0027t it more like MoveFromReturnRegister? This is moving from the native-convention return to the actual out of the intrinsified call.",
+      "parentUuid": "6e8d6144_8e149b37",
       "range": {
         "startLine": 44,
         "startChar": 12,
@@ -303,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "ce872d28_cc185f9b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_cf613df3",
+      "range": {
+        "startLine": 90,
+        "startChar": 12,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ae115746",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -314,6 +578,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Early return?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 33
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee823118_ad540996",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_ae115746",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -349,6 +637,30 @@
     },
     {
       "key": {
+        "uuid": "ae7cb9f1_2862cb83",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_ce1ea355",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 48
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_ef5e0134",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -360,6 +672,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 9
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce872d28_2c473b81",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_ef5e0134",
       "range": {
         "startLine": 118,
         "startChar": 2,
@@ -395,6 +731,30 @@
     },
     {
       "key": {
+        "uuid": "ee823118_6d95b1ca",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "We save live registers above and restore below, so it is available. I have to follow our API - the method needs to end up in RDI...",
+      "parentUuid": "6e8d6144_ee1b5f62",
+      "range": {
+        "startLine": 127,
+        "startChar": 89,
+        "endLine": 127,
+        "endChar": 92
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_0e28ab73",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -406,6 +766,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "I\u0027d add a DCHECK that out is not in the live registers.",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 33
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_a886bba5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_0e28ab73",
       "range": {
         "startLine": 136,
         "startChar": 13,
@@ -487,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_c8c04fbc",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_7a2719a2",
+      "range": {
+        "startLine": 206,
+        "startChar": 12,
+        "endLine": 206,
+        "endChar": 23
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_ba38d1be",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -498,6 +906,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "...PlusTempsLocation.",
+      "range": {
+        "startLine": 266,
+        "startChar": 12,
+        "endLine": 266,
+        "endChar": 39
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_28ef2346",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_ba38d1be",
       "range": {
         "startLine": 266,
         "startChar": 12,
@@ -604,6 +1036,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_289ac3d6",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_8fb2d504",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_afaf999f",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -615,6 +1071,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "...PlusTempLocation",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 34
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae7cb9f1_ce3bf707",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_afaf999f",
       "range": {
         "startLine": 327,
         "startChar": 12,
@@ -650,6 +1130,30 @@
     },
     {
       "key": {
+        "uuid": "ce9c8d86_271ddeff",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_fa3249da",
+      "range": {
+        "startLine": 384,
+        "startChar": 8,
+        "endLine": 384,
+        "endChar": 60
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_cfbcdddb",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -661,6 +1165,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Consistent naming.",
+      "range": {
+        "startLine": 468,
+        "startChar": 12,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_590b531b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_cfbcdddb",
       "range": {
         "startLine": 468,
         "startChar": 12,
@@ -690,6 +1218,24 @@
     },
     {
       "key": {
+        "uuid": "aea119bc_a3e8c43a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_0fa6e5c8",
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ced0630a",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -701,6 +1247,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Add a DCHECK.",
+      "range": {
+        "startLine": 519,
+        "startChar": 31,
+        "endLine": 519,
+        "endChar": 52
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea119bc_c37508f1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_ced0630a",
       "range": {
         "startLine": 519,
         "startChar": 31,
@@ -736,6 +1306,30 @@
     },
     {
       "key": {
+        "uuid": "aea119bc_43d8d8a8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_eecd1f73",
+      "range": {
+        "startLine": 542,
+        "startChar": 12,
+        "endLine": 542,
+        "endChar": 26
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_5addf523",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -747,6 +1341,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "consistent naming",
+      "range": {
+        "startLine": 582,
+        "startChar": 12,
+        "endLine": 582,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce9c8d86_c78f52be",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_5addf523",
       "range": {
         "startLine": 582,
         "startChar": 12,
@@ -782,6 +1400,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_b9b527bf",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "From our personal talks I gathered that that would be better for the register allocator. If it\u0027s the input\u0027s last use, this will be optimal, as we\u0027re re-using for output. If it\u0027s not, it\u0027s better to let the register allocator handle the mov before to save the value.\n\nThis code was just made most general, so that it doesn\u0027t need to be changed if/when we allow in and out to be different. I\u0027ll make the comment a bit longer.",
+      "parentUuid": "eeb4f1df_bac37146",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 23
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_dad0250a",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -793,6 +1435,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "No, the native instruction does not require this.",
+      "range": {
+        "startLine": 611,
+        "startChar": 30,
+        "endLine": 611,
+        "endChar": 46
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea119bc_8604ae40",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Again from our talks it seemed to me that this would simplify the work of the register allocator. If the input is used after, the allocator will put down the saving mov, whereas it doesn\u0027t have to do anything if it\u0027s the last use.",
+      "parentUuid": "eeb4f1df_dad0250a",
       "range": {
         "startLine": 611,
         "startChar": 30,
@@ -828,6 +1494,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_99cceb4a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Calin\u0027s approach for implicit NullChecks is actually different then what I thought. So even though he\u0027s implementing this, I\u0027ll plop down the constant. But I\u0027ll explicitly call it kCoalescedImplicitNullchecks.",
+      "parentUuid": "8ea8d591_6fa5b1b8",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 69
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_3aff6174",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -839,6 +1529,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 639,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 21
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce9c8d86_6a0ccb5f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Changed into a TODO. I\u0027m still getting used to locations and their interaction with the allocator. The point here is that for index \u003d constant, we can save an input register and use instructions with immediate form...",
+      "parentUuid": "eeb4f1df_3aff6174",
       "range": {
         "startLine": 639,
         "startChar": 0,
@@ -874,6 +1588,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_f94ebf05",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_6ef92f8b",
+      "range": {
+        "startLine": 665,
+        "startChar": 34,
+        "endLine": 665,
+        "endChar": 53
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_8f99f588",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -885,6 +1623,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Consistent naming.",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_19af1b27",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_8f99f588",
       "range": {
         "startLine": 718,
         "startChar": 12,
@@ -920,6 +1682,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_59b9936b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_7af9d98a",
+      "range": {
+        "startLine": 728,
+        "startChar": 40,
+        "endLine": 728,
+        "endChar": 47
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_aeea37ae",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -931,6 +1717,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "8 -\u003e kX86_64WordSize",
+      "range": {
+        "startLine": 789,
+        "startChar": 71,
+        "endLine": 789,
+        "endChar": 72
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea119bc_e6c37a6a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_aeea37ae",
       "range": {
         "startLine": 789,
         "startChar": 71,
@@ -966,6 +1776,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_f9a95f1a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "If we ever move to actual compressed pointers, we\u0027ll have to \"unpack\" here.",
+      "parentUuid": "6e8d6144_cee783e5",
+      "range": {
+        "startLine": 802,
+        "startChar": 0,
+        "endLine": 802,
+        "endChar": 32
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_ef90c158",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -977,6 +1811,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "consistent naming",
+      "range": {
+        "startLine": 809,
+        "startChar": 12,
+        "endLine": 809,
+        "endChar": 29
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce9c8d86_8a682fda",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_ef90c158",
       "range": {
         "startLine": 809,
         "startChar": 12,
@@ -1012,6 +1870,30 @@
     },
     {
       "key": {
+        "uuid": "aea119bc_e6aa5a8c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "6e8d6144_eee43fe3",
+      "range": {
+        "startLine": 814,
+        "startChar": 30,
+        "endLine": 814,
+        "endChar": 46
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_2f064914",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 19
@@ -1023,6 +1905,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Consistent naming.",
+      "range": {
+        "startLine": 844,
+        "startChar": 12,
+        "endLine": 844,
+        "endChar": 42
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_59fb531d",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_2f064914",
       "range": {
         "startLine": 844,
         "startChar": 12,
@@ -1058,6 +1964,30 @@
     },
     {
       "key": {
+        "uuid": "ce9c8d86_4a94674b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_0ea50b94",
+      "range": {
+        "startLine": 850,
+        "startChar": 0,
+        "endLine": 851,
+        "endChar": 51
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_2eaac764",
         "filename": "compiler/optimizing/locations.h",
         "patchSetId": 19
@@ -1069,6 +1999,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "instruction -\u003e call.",
+      "range": {
+        "startLine": 563,
+        "startChar": 53,
+        "endLine": 563,
+        "endChar": 64
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e733d24_99b6ab59",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8d6144_2eaac764",
       "range": {
         "startLine": 563,
         "startChar": 53,
@@ -1104,6 +2058,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_5a8181d8",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Moved to HInvoke. Named dex_method_index, which is consistent with the rest of ART. (Also made HInvoke constructor protected.)",
+      "parentUuid": "eeb4f1df_1aa53d94",
+      "range": {
+        "startLine": 1678,
+        "startChar": 26,
+        "endLine": 1678,
+        "endChar": 36
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb4f1df_7ab479c3",
         "filename": "compiler/optimizing/register_allocator.cc",
         "patchSetId": 19
@@ -1127,6 +2105,30 @@
     },
     {
       "key": {
+        "uuid": "4e733d24_7a863df3",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb4f1df_7ab479c3",
+      "range": {
+        "startLine": 1100,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 42
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ea8d591_0f28a573",
         "filename": "test/082-inline-execute/src/Main.java",
         "patchSetId": 19
@@ -1138,6 +2140,30 @@
       "writtenOn": "2015-01-08T10:36:18Z",
       "side": 1,
       "message": "Add a comment why this change.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 3
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6eaba19e_7eddb171",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T04:36:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea8d591_0f28a573",
       "range": {
         "startLine": 130,
         "startChar": 0,
