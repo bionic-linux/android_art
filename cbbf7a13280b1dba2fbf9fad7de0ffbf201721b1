@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ef455d2_d2e4a2b8",
+        "filename": "runtime/arch/mips/instruction_set_features_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T17:59:01Z",
+      "side": 0,
+      "message": "Why is this being removed? It\u0027s meant as a bit of a safety measure. You should extend the list, see for example the arm counterpart.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "cbbf7a13280b1dba2fbf9fad7de0ffbf201721b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ebff5dd_9a4c09c3",
+        "filename": "runtime/arch/mips64/instruction_set_features_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T17:59:01Z",
+      "side": 0,
+      "message": "Why is this being removed? It\u0027s meant as a little bit of safety (see the mips comment).",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "cbbf7a13280b1dba2fbf9fad7de0ffbf201721b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
