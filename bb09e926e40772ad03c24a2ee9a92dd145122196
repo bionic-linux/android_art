@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "0ef945d6_696861d9",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T23:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec0716a_daf4c5e6",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 27
+      },
+      "revId": "bb09e926e40772ad03c24a2ee9a92dd145122196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e8d6144_ee90bf58",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 19
