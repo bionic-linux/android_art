@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ecb0596_5355448f",
+        "filename": "runtime/arch/mips/instruction_set_features_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-09T17:20:45Z",
+      "side": 1,
+      "message": "The variant from the board-config for r2 is mips32r2-fp. Maybe we should also parse the fp part?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "a62e68a3886d5c2b74679d4609ae251cfe4065da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
