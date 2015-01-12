@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e1c811f_96a9cc72",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T08:55:01Z",
+      "side": 1,
+      "message": "Why bother?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 13
+      },
+      "revId": "00bd2da6ea009dedafc677229b485923f49ad61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_13c4ac4d",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T08:55:01Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1127,
+        "startChar": 7,
+        "endLine": 1127,
+        "endChar": 13
+      },
+      "revId": "00bd2da6ea009dedafc677229b485923f49ad61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
