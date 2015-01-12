@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0efa25f3_6116f26c",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T17:54:25Z",
+      "side": 1,
+      "message": "Dumping after a segfault. I don\u0027t want to assume too much about how much alternative stack we have, so I wanted to counter the cleaner code...",
+      "parentUuid": "6e1c811f_96a9cc72",
+      "range": {
+        "startLine": 1126,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 13
+      },
+      "revId": "00bd2da6ea009dedafc677229b485923f49ad61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_13c4ac4d",
         "filename": "runtime/utils.cc",
         "patchSetId": 1
