@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "8e07f5ca_3a2c1d04",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "Not to abort: do you mean it fallbacked to doing the call?",
+      "parentUuid": "8eee1533_8294dc4c",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_b317b8b5",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "8e07f5ca_7a269523",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "So I don\u0027t like this \"direct\" terminology. When I say \u0027instance\u0027 I don\u0027t mean virtual, but an instance call (the one where in Java there is no static keyword).",
+      "parentUuid": "0efa25f3_7e9a0d4b",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e07f5ca_5739ec0e",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -366,6 +414,30 @@
       "side": 1,
       "message": "Your binary wouldn\u0027t be correct. String methods are \"sharpened\" to StaticOrDirect. If you do prefer, I can make this a ternary thing...",
       "parentUuid": "8e07f5ca_5739ec0e",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_96b38a8d",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "kStatic and kInstance?",
+      "parentUuid": "8eee1533_c200a4fa",
       "range": {
         "startLine": 24,
         "startChar": 31,
@@ -472,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "6e1c811f_19584f81",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "Indeed, good point. It should be easy to test it btw.",
+      "parentUuid": "4ef09d0f_fd7587f0",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_13294cf4",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -554,6 +650,30 @@
       "side": 1,
       "message": "This is not what that sentence is trying to say. This is trying to say that we expect the parameters still to be in the locations as given by the summary. If an intrinsic modifies them before a slowpath, they need to be restored.",
       "parentUuid": "8e07f5ca_3a041d3f",
+      "range": {
+        "startLine": 117,
+        "startChar": 83,
+        "endLine": 118,
+        "endChar": 67
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_bac2edc6",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "Oh so this comment is about restoring the locations (that is line 146)? I thought it was for line 129.\n\nIf that\u0027s what it is, then I find the comment more confusing than helpful.",
+      "parentUuid": "4ef09d0f_3d908fa9",
       "range": {
         "startLine": 117,
         "startChar": 83,
@@ -718,6 +838,30 @@
       "side": 1,
       "message": "I don\u0027t agree. x86 is special enough that this might become necessary for optimal code. Take for example the case where the inputs are register-allocated, but the output is not. Then x86 can use in-memory operations. I\u0027d prefer to leave in this comment.",
       "parentUuid": "6e1c811f_5991275a",
+      "range": {
+        "startLine": 394,
+        "startChar": 80,
+        "endLine": 394,
+        "endChar": 98
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_facc65fc",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T18:32:12Z",
+      "side": 1,
+      "message": "As discussed, in this case, you could say you want the out as Location::Any.",
+      "parentUuid": "4ef09d0f_7d65f734",
       "range": {
         "startLine": 394,
         "startChar": 80,
