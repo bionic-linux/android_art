@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e130513_73d1a00b",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T08:57:37Z",
+      "side": 1,
+      "message": "I\u0027ve been told style is to not add \u0027virtual\u0027 on classes that won\u0027t be subclassed.",
+      "range": {
+        "startLine": 185,
+        "startChar": 2,
+        "endLine": 185,
+        "endChar": 9
+      },
+      "revId": "4dcfea42e9b6fa1e968ab163f4a9284669606f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
