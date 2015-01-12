@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "aee9192d_3a6531ff",
+        "filename": "runtime/arch/mips/instruction_set_features_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003299
+      },
+      "writtenOn": "2015-01-12T23:22:51Z",
+      "side": 0,
+      "message": "I will take a look. Thanks.",
+      "parentUuid": "8ef455d2_d2e4a2b8",
+      "revId": "cbbf7a13280b1dba2fbf9fad7de0ffbf201721b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ebff5dd_9a4c09c3",
         "filename": "runtime/arch/mips64/instruction_set_features_mips64.cc",
         "patchSetId": 1

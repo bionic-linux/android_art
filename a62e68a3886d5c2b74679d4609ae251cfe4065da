@@ -22,6 +22,24 @@
       "revId": "a62e68a3886d5c2b74679d4609ae251cfe4065da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efd29e9_a562c4a9",
+        "filename": "runtime/arch/mips/instruction_set_features_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003299
+      },
+      "writtenOn": "2015-01-12T23:22:51Z",
+      "side": 1,
+      "message": "Here, we only care if it is r2 or r6. For Android, we require all CPUs to have a FP unit.",
+      "parentUuid": "0ecb0596_5355448f",
+      "revId": "a62e68a3886d5c2b74679d4609ae251cfe4065da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
