@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e07f5ca_17581481",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "I\u0027d drop this. Does the destructor of IntrinsicLocationsBuilder need to be called before going forward?",
+      "range": {
+        "startLine": 1139,
+        "startChar": 2,
+        "endLine": 1139,
+        "endChar": 3
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_375b9881",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Can this be a field in LocationsBuilder?",
+      "range": {
+        "startLine": 1140,
+        "startChar": 4,
+        "endLine": 1140,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_1302ec7b",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "field in code generator?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1153,
+        "endChar": 32
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_f9c8f388",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1203,
+        "startChar": 2,
+        "endLine": 1210,
+        "endChar": 3
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_59bac7dd",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Isn\u0027t this the only place it\u0027s used? I\u0027d drop the macro.",
+      "range": {
+        "startLine": 354,
+        "startChar": 12,
+        "endLine": 354,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_79bd03d4",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Should we make this a DCHECK instead?",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_b317b8b5",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "direct -\u003e instance.",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_5739ec0e",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Could we use an existing enum instead? kStatic and kVirtual?",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_fad2a563",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 102
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_d9a417bf",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Can you DCHECK THAT type is void? Otherwise add a comment.",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_13294cf4",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Can you arrive here after the trg.Isvalid check?",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e07f5ca_3a041d3f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "-\u003e We need to move the parameters to the expected locations.",
+      "range": {
+        "startLine": 117,
+        "startChar": 83,
+        "endLine": 118,
+        "endChar": 67
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_7326c023",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Move that to a constant in calling convention or code_generator_x86_64.h.",
+      "range": {
+        "startLine": 132,
+        "startChar": 89,
+        "endLine": 132,
+        "endChar": 92
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_5323c411",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Make this another DCHECK to avoid the \u0027\u0026\u0026\u0027?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_b3c218c7",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "You can now drop all these returns :-)",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 8
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_5991275a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Then don\u0027t accept it. You shouldn\u0027t do moves in the code generator.",
+      "range": {
+        "startLine": 394,
+        "startChar": 80,
+        "endLine": 394,
+        "endChar": 98
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_f3cc90fc",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "No. If the input isn\u0027t used afterwards, the register allocator can re-use it (I know this isn\u0027t implemented, but it\u0027s easier to assume it is and do it later, compared to changing all the places where we thought we were doing an optimization).",
+      "range": {
+        "startLine": 610,
+        "startChar": 3,
+        "endLine": 611,
+        "endChar": 80
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e1c811f_d90ff724",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Again, you should not ask for same as first input then :)",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 613,
+        "endChar": 27
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e130513_33b72858",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-12T12:40:33Z",
+      "side": 1,
+      "message": "Expand comment.",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 32
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
