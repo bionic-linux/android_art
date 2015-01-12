@@ -308,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "2eab69f1_0c33f712",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T19:38:58Z",
+      "side": 1,
+      "message": "Yes. It puts normal code down (with the expectation that that might fail), which is what this would be doing, too.",
+      "parentUuid": "8e07f5ca_3a2c1d04",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_b317b8b5",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -379,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "4ef09d0f_837b4229",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T19:38:58Z",
+      "side": 1,
+      "message": "The check derived from this is lightweight. It just checks against the instruction type. I guess I\u0027ll change it to check the actual invoke type.",
+      "parentUuid": "8e07f5ca_7a269523",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e07f5ca_5739ec0e",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -438,6 +486,30 @@
       "side": 1,
       "message": "kStatic and kInstance?",
       "parentUuid": "8eee1533_c200a4fa",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2eab69f1_8fe4f9b7",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T19:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e130513_96b38a8d",
       "range": {
         "startLine": 24,
         "startChar": 31,
@@ -568,6 +640,30 @@
     },
     {
       "key": {
+        "uuid": "0efa25f3_ef7b09ab",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T19:38:58Z",
+      "side": 1,
+      "message": "I put down the DCHECK for the time being, and the tests succeed.",
+      "parentUuid": "6e1c811f_19584f81",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_13294cf4",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -674,6 +770,30 @@
       "side": 1,
       "message": "Oh so this comment is about restoring the locations (that is line 146)? I thought it was for line 129.\n\nIf that\u0027s what it is, then I find the comment more confusing than helpful.",
       "parentUuid": "4ef09d0f_3d908fa9",
+      "range": {
+        "startLine": 117,
+        "startChar": 83,
+        "endLine": 118,
+        "endChar": 67
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0efa25f3_8f6245f5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T19:38:58Z",
+      "side": 1,
+      "message": "No, this is for line 129. The point there is: MoveArguments assumes that the parameters are still in the locations given by invoke-\u003eGetLocations() (else how would it know where to copy from...). The code generator must not modify those before the slow-path (or restore them).",
+      "parentUuid": "8e07f5ca_bac2edc6",
       "range": {
         "startLine": 117,
         "startChar": 83,
