@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8eee1533_e2a4c8be",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "No, was just for clean separation. Done.",
+      "parentUuid": "8e07f5ca_17581481",
+      "range": {
+        "startLine": 1139,
+        "startChar": 2,
+        "endLine": 1139,
+        "endChar": 3
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e07f5ca_375b9881",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 22
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "Can this be a field in LocationsBuilder?",
+      "range": {
+        "startLine": 1140,
+        "startChar": 4,
+        "endLine": 1140,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0efa25f3_9e90b92e",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "So the issue with that would be that we\u0027d either have to heap-allocate them or include the intrinsics header in the code generator header. I\u0027m fine with both, but usually try to remove all dependencies where possible.",
+      "parentUuid": "8e07f5ca_375b9881",
       "range": {
         "startLine": 1140,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ef09d0f_5db0fb4a",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "0e130513_1302ec7b",
+      "range": {
+        "startLine": 1153,
+        "startChar": 4,
+        "endLine": 1153,
+        "endChar": 32
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e1c811f_f9c8f388",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 22
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 1203,
+        "startChar": 2,
+        "endLine": 1210,
+        "endChar": 3
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef09d0f_bd7bffe6",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 1210,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1c811f_f9c8f388",
       "range": {
         "startLine": 1203,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8eee1533_2297d052",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1c811f_59bac7dd",
+      "range": {
+        "startLine": 354,
+        "startChar": 12,
+        "endLine": 354,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e1c811f_79bd03d4",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 22
@@ -128,6 +248,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "Should we make this a DCHECK instead?",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eee1533_8294dc4c",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Your choice. This once showed up through fuzzing and crashed Quick, and there it was decided not to abort the compile...",
+      "parentUuid": "6e1c811f_79bd03d4",
       "range": {
         "startLine": 368,
         "startChar": 14,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0efa25f3_7e9a0d4b",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "No, InvokeStaticOrDirect. Rewritten.",
+      "parentUuid": "0e130513_b317b8b5",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e07f5ca_5739ec0e",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -174,6 +342,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "Could we use an existing enum instead? kStatic and kVirtual?",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 35
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eee1533_c200a4fa",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Your binary wouldn\u0027t be correct. String methods are \"sharpened\" to StaticOrDirect. If you do prefer, I can make this a ternary thing...",
+      "parentUuid": "8e07f5ca_5739ec0e",
       "range": {
         "startLine": 24,
         "startChar": 31,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "8eee1533_a205a008",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e07f5ca_fad2a563",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 102
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e1c811f_d9a417bf",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -220,6 +436,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "Can you DCHECK THAT type is void? Otherwise add a comment.",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef09d0f_fd7587f0",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "What happens if the result of a call is unused? Is the allocator (and rest of codegen) smart enough not to use a register?",
+      "parentUuid": "6e1c811f_d9a417bf",
       "range": {
         "startLine": 48,
         "startChar": 22,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "4ef09d0f_dd7a4be0",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e130513_13294cf4",
+      "range": {
+        "startLine": 73,
+        "startChar": 20,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e07f5ca_3a041d3f",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -266,6 +530,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "-\u003e We need to move the parameters to the expected locations.",
+      "range": {
+        "startLine": 117,
+        "startChar": 83,
+        "endLine": 118,
+        "endChar": 67
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef09d0f_3d908fa9",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "This is not what that sentence is trying to say. This is trying to say that we expect the parameters still to be in the locations as given by the summary. If an intrinsic modifies them before a slowpath, they need to be restored.",
+      "parentUuid": "8e07f5ca_3a041d3f",
       "range": {
         "startLine": 117,
         "startChar": 83,
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "0efa25f3_3effe538",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e130513_5323c411",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 92
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_b3c218c7",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -335,6 +647,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "You can now drop all these returns :-)",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 8
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eee1533_821fbc50",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Ugh, I search-and-replaced only half the things... :-)",
+      "parentUuid": "0e130513_b3c218c7",
       "range": {
         "startLine": 196,
         "startChar": 2,
@@ -370,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "4ef09d0f_7d65f734",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "I don\u0027t agree. x86 is special enough that this might become necessary for optimal code. Take for example the case where the inputs are register-allocated, but the output is not. Then x86 can use in-memory operations. I\u0027d prefer to leave in this comment.",
+      "parentUuid": "6e1c811f_5991275a",
+      "range": {
+        "startLine": 394,
+        "startChar": 80,
+        "endLine": 394,
+        "endChar": 98
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_f3cc90fc",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -381,6 +741,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "No. If the input isn\u0027t used afterwards, the register allocator can re-use it (I know this isn\u0027t implemented, but it\u0027s easier to assume it is and do it later, compared to changing all the places where we thought we were doing an optimization).",
+      "range": {
+        "startLine": 610,
+        "startChar": 3,
+        "endLine": 611,
+        "endChar": 80
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ef09d0f_5d62bb2e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e130513_f3cc90fc",
       "range": {
         "startLine": 610,
         "startChar": 3,
@@ -416,6 +800,30 @@
     },
     {
       "key": {
+        "uuid": "0efa25f3_debd2159",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e1c811f_d90ff724",
+      "range": {
+        "startLine": 612,
+        "startChar": 0,
+        "endLine": 613,
+        "endChar": 27
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_33b72858",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -427,6 +835,30 @@
       "writtenOn": "2015-01-12T12:40:33Z",
       "side": 1,
       "message": "Expand comment.",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 32
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8eee1533_a2d76004",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-12T16:41:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e130513_33b72858",
       "range": {
         "startLine": 817,
         "startChar": 0,
