@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec7bdd5_a5ae3e27",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-13T14:32:35Z",
+      "side": 1,
+      "message": "Load() should be similar and call MaybeRecordImplicitNullCheck(instruction, dex_pc) before returning.\n\nCurrently we use Load() for:\n\nVisitArrayGet()\nVisitInstanceFieldGet()\nVisitStaticFieldGet()\n\nI think all of them should have a MaybeRecordImplicitNullCheck() that can be neatly hidden in Load(), LoadAcquire().",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ec145c3_837b3e5e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-13T14:32:35Z",
+      "side": 1,
+      "message": "Why not after the switch:\n\nswitch {\n\n}\n\nMaybeRecordImplicitNullCheck(instruction, dex_pc);\n\nAnyway for kPrimVoid we will die in LOG(FATAL).",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
