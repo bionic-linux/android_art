@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0ec145c3_6309e2ce",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T16:01:55Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good point. We should handle an implicit null check in an array operation.",
+      "parentUuid": "2e99a9f9_a2a57abd",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec145c3_837b3e5e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
