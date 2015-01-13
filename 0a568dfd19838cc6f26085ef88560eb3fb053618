@@ -332,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "4ec7bdd5_0512b249",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T10:55:22Z",
+      "side": 1,
+      "message": "OK, so how can we end up here? The call hasn\u0027t been sharpen?",
+      "parentUuid": "2eab69f1_0c33f712",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_b317b8b5",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -664,6 +688,30 @@
     },
     {
       "key": {
+        "uuid": "0ec145c3_636282f8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T10:55:22Z",
+      "side": 1,
+      "message": "Maybe because a call that we intrinsify is 99% of the time used? What happens if it\u0027s not? (I can see our intrinsics don\u0027t have side effects so could be removed from the graph, but let\u0027s assume it can still be there).",
+      "parentUuid": "0efa25f3_ef7b09ab",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_13294cf4",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 22
@@ -794,6 +842,30 @@
       "side": 1,
       "message": "No, this is for line 129. The point there is: MoveArguments assumes that the parameters are still in the locations given by invoke-\u003eGetLocations() (else how would it know where to copy from...). The code generator must not modify those before the slow-path (or restore them).",
       "parentUuid": "8e07f5ca_bac2edc6",
+      "range": {
+        "startLine": 117,
+        "startChar": 83,
+        "endLine": 118,
+        "endChar": 67
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec7bdd5_c50ffa24",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T10:55:22Z",
+      "side": 1,
+      "message": "I see, thanks for the re-wording!",
+      "parentUuid": "0efa25f3_8f6245f5",
       "range": {
         "startLine": 117,
         "startChar": 83,
