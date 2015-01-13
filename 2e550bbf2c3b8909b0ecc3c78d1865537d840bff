@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2e99a9f9_a2a57abd",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T15:59:56Z",
+      "side": 1,
+      "message": "I don\u0027t know what exactly mingyao\u0027s BCE is doing, but I would assume that removing HBoundsCheck would as a follow-up allow removal of HArrayLength.",
+      "parentUuid": "ce800d7c_41b4b250",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec145c3_837b3e5e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
