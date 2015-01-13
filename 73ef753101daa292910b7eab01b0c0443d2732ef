@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ec145c3_e3c83289",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T11:07:03Z",
+      "side": 1,
+      "message": "Sorry to get back to this, but the Dispatch call could return true/false. It would make this code clearer, and avoid the null check line 1142. And you could just DCHECK(locations-\u003eIsIntrisified()).\n\nCould we have a TryDispatch version?",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1140,
+        "endChar": 29
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ec145c3_c3cd3697",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T11:07:03Z",
+      "side": 1,
+      "message": "Extra \u0027\\\u0027.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec7bdd5_852ce288",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-13T11:07:03Z",
+      "side": 1,
+      "message": "Unexpected void type for valid location \u003c\u003c trg\n\n?",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 43
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
