@@ -356,6 +356,30 @@
     },
     {
       "key": {
+        "uuid": "4e75fd75_3558d081",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T16:20:09Z",
+      "side": 1,
+      "message": "Hopefully we don\u0027t end up here at all. vmarko\u0027s code already has some safety mechanisms put in. I\u0027ll refer to b/16017877 for the issue as exposed before.",
+      "parentUuid": "4ec7bdd5_0512b249",
+      "range": {
+        "startLine": 368,
+        "startChar": 14,
+        "endLine": 368,
+        "endChar": 88
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e130513_b317b8b5",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 22
@@ -700,6 +724,30 @@
       "side": 1,
       "message": "Maybe because a call that we intrinsify is 99% of the time used? What happens if it\u0027s not? (I can see our intrinsics don\u0027t have side effects so could be removed from the graph, but let\u0027s assume it can still be there).",
       "parentUuid": "0efa25f3_ef7b09ab",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "0a568dfd19838cc6f26085ef88560eb3fb053618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_954d24c3",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T16:20:09Z",
+      "side": 1,
+      "message": "Well, the graph isn\u0027t modified yet, so things don\u0027t get removed. And it seems to be rare that somebody isn\u0027t using the result. (Note that Quick has the cut-out for unused results, though, in some intrinsified functions.)",
+      "parentUuid": "0ec145c3_636282f8",
       "range": {
         "startLine": 48,
         "startChar": 22,
