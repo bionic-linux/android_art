@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4ec7bdd5_c5941ad1",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-13T14:45:50Z",
+      "side": 1,
+      "message": "so ArrayGet shouldn\u0027t need anything. The check happens in ArrayLength which will always precede the Get/Set. Or can you think about a case where that\u0027s not true?\n\nSo I preferred to record the implicit null check after we call Load().\n\nYou are right though that I forgot to add the record for the static fields! Thanks! I will also add tests for that.",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec145c3_837b3e5e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
@@ -30,6 +47,24 @@
       "writtenOn": "2015-01-13T14:32:35Z",
       "side": 1,
       "message": "Why not after the switch:\n\nswitch {\n\n}\n\nMaybeRecordImplicitNullCheck(instruction, dex_pc);\n\nAnyway for kPrimVoid we will die in LOG(FATAL).",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce800d7c_01170ab4",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-13T14:45:50Z",
+      "side": 1,
+      "message": "We want to record the pc right after the instruction that throws so we can find the corresponding dex_pc in the maps.",
+      "parentUuid": "0ec145c3_837b3e5e",
       "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
