@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5e79fb_18dea597",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-13T22:08:10Z",
+      "side": 1,
+      "message": "Should this be after the next instruction?  Load from stack isn\u0027t going to fail",
+      "revId": "2755895dbdb97de4626b770a16c92623c5044422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e96a5c9_7b06bfbe",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-13T22:08:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "2755895dbdb97de4626b770a16c92623c5044422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
