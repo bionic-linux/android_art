@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0ec145c3_c319b621",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-13T15:58:32Z",
+      "side": 1,
+      "message": "I see...\n\nCould there be a case where BoundCheckElimination removes the HBoundsCheck() associated with an array access and DeadCodeElimination removes the HArrayLength()  since it has no uses?\n\nI assume that by this point we would have already caught a NULL object.\n\nCurrently this could not happen since we run the passes in the reverse order:\n\n1 - DCE\n2 - BCE",
+      "parentUuid": "4ec7bdd5_c5941ad1",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec145c3_837b3e5e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "We want to record the pc right after the instruction that throws so we can find the corresponding dex_pc in the maps.",
       "parentUuid": "0ec145c3_837b3e5e",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce800d7c_01762af3",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-13T15:58:32Z",
+      "side": 1,
+      "message": "Yes, you are right.",
+      "parentUuid": "ce800d7c_01170ab4",
       "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
