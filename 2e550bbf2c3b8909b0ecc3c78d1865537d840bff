@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "2e99a9f9_e29f826b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T16:03:59Z",
+      "side": 1,
+      "message": "I do believe that Serban is right, though. For anything meaningful you\u0027ll still have at least one HArrayLength left over.\n\nFor safety, it\u0027s better to also do it in the HArrayGet/Set, though, especially since it shouldn\u0027t cost us much (no runtime effect, space minimal once Roland compresses stack maps).",
+      "parentUuid": "0ec145c3_6309e2ce",
+      "revId": "2e550bbf2c3b8909b0ecc3c78d1865537d840bff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ec145c3_837b3e5e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
