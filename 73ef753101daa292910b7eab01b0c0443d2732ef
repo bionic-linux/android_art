@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2e99a9f9_0210ee41",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T16:20:03Z",
+      "side": 1,
+      "message": "Was originally meant to separate the cases. For consistency I would have to put one before StringCharAt, too, but I guess you don\u0027t like it.",
+      "parentUuid": "0ec145c3_c3cd3697",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ec7bdd5_852ce288",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 24
@@ -59,6 +83,30 @@
       "writtenOn": "2015-01-13T11:07:03Z",
       "side": 1,
       "message": "Unexpected void type for valid location \u003c\u003c trg\n\n?",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 43
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e75fd75_1542f48c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-13T16:20:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec7bdd5_852ce288",
       "range": {
         "startLine": 77,
         "startChar": 22,
