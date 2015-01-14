@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ce372dc2_2feb2db6",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T01:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec145c3_03a0ee2d",
+      "range": {
+        "startLine": 1149,
+        "startChar": 12,
+        "endLine": 1149,
+        "endChar": 26
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce800d7c_e44dd48f",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 24
@@ -83,6 +107,30 @@
       "writtenOn": "2015-01-13T17:59:42Z",
       "side": 1,
       "message": "nit: seems reasonable to extract this huge switch in it\u0027s own method.",
+      "range": {
+        "startLine": 87,
+        "startChar": 9,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e3a5daa_022718a2",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T01:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce800d7c_e44dd48f",
       "range": {
         "startLine": 87,
         "startChar": 9,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ce372dc2_eca4c3be",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T01:18:27Z",
+      "side": 1,
+      "message": "With long expressions I find it more readable, but changed anyways.",
+      "parentUuid": "4ec7bdd5_a853b331",
+      "range": {
+        "startLine": 151,
+        "startChar": 14,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce800d7c_648b8448",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 24
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ce372dc2_affe3d74",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T01:18:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce800d7c_648b8448",
+      "range": {
+        "startLine": 293,
+        "startChar": 32,
+        "endLine": 293,
+        "endChar": 45
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce800d7c_04539830",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 24
@@ -152,6 +248,30 @@
       "writtenOn": "2015-01-13T17:59:42Z",
       "side": 1,
       "message": "maybe we should add a GetInvokeType for HInvoke",
+      "range": {
+        "startLine": 385,
+        "startChar": 45,
+        "endLine": 385,
+        "endChar": 67
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e47e93f_db76dfc3",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T01:18:27Z",
+      "side": 1,
+      "message": "Just for this one case, I find it\u0027s superfluous at the moment.",
+      "parentUuid": "ce800d7c_04539830",
       "range": {
         "startLine": 385,
         "startChar": 45,
