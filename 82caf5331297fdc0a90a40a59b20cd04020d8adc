@@ -46,6 +46,30 @@
       "revId": "82caf5331297fdc0a90a40a59b20cd04020d8adc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e44e539_7188b04a",
+        "filename": "runtime/runtime_linux.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T06:28:21Z",
+      "side": 1,
+      "message": "Turns out that SIGRTMIN is actually a call, so it\u0027s not a constexpr. Don\u0027t know if you prefer a \"const int kXYZ \u003d SIGRTMIN + 2\" at the top of HandleUnexpectedSignal. I don\u0027t see a big benefit from it.",
+      "parentUuid": "0e44e539_51301404",
+      "range": {
+        "startLine": 291,
+        "startChar": 25,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "82caf5331297fdc0a90a40a59b20cd04020d8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
