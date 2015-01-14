@@ -22,6 +22,30 @@
       "revId": "c5a3ea7522b59c18daa4325d69703a6f7f743378",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee3231d2_b07140cf",
+        "filename": "runtime/arch/mips/instruction_set_features_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T16:27:41Z",
+      "side": 1,
+      "message": "Having the \"is\" prefix is not very common in our codebase, IMHO (and if it\u0027s there, it is \"is_\"). Just check the two original fields above. So this is just in line with what was there right now.\n\nI\u0027ll put it as a low-priority cleanup.",
+      "parentUuid": "0ec145c3_c640a467",
+      "range": {
+        "startLine": 97,
+        "startChar": 13,
+        "endLine": 97,
+        "endChar": 16
+      },
+      "revId": "c5a3ea7522b59c18daa4325d69703a6f7f743378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
