@@ -70,6 +70,53 @@
       "revId": "82caf5331297fdc0a90a40a59b20cd04020d8adc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce800d7c_64ad4426",
+        "filename": "runtime/runtime_linux.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-14T09:10:47Z",
+      "side": 1,
+      "message": "Any way to avoid duplication lines 291, 328, and 387 would work for me :). A static int helper can help.",
+      "parentUuid": "0e44e539_7188b04a",
+      "range": {
+        "startLine": 291,
+        "startChar": 25,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "82caf5331297fdc0a90a40a59b20cd04020d8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce800d7c_84aa480d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-14T09:10:47Z",
+      "side": 1,
+      "message": "Add a comment here on what this signal does to ART.",
+      "range": {
+        "startLine": 384,
+        "startChar": 51,
+        "endLine": 384,
+        "endChar": 62
+      },
+      "revId": "82caf5331297fdc0a90a40a59b20cd04020d8adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
