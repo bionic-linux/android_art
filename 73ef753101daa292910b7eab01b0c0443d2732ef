@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ce800d7c_6730e604",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-14T11:18:37Z",
+      "side": 1,
+      "message": "you are right! it was more readable. Don\u0027t bother changing it back though :)",
+      "parentUuid": "ce372dc2_eca4c3be",
+      "range": {
+        "startLine": 151,
+        "startChar": 14,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "73ef753101daa292910b7eab01b0c0443d2732ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce800d7c_648b8448",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 24
