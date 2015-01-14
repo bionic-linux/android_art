@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e26419e_af61d980",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-01-14T19:56:40Z",
+      "side": 1,
+      "message": "Fine for now but we might need to come up with a uniform way of printing such attributes and teach Checker about it, otherwise adding new ones could break existing tests.",
+      "range": {
+        "startLine": 167,
+        "startChar": 50,
+        "endLine": 167,
+        "endChar": 58
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e1dc54d_e34cd2c3",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-01-14T19:56:40Z",
+      "side": 1,
+      "message": "Are we assuming there are no ArrayGets on new arrays? I don\u0027t think that\u0027s strictly illegal.",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e1dc54d_23550a91",
+        "filename": "compiler/optimizing/test/ImplicitNullCheckEliminationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-01-14T19:56:40Z",
+      "side": 1,
+      "message": "This is tricky because it doesn\u0027t guarantee that it\u0027s the second call to t.f which changed the attribute. You could verify the control flow but it would be easier to add a data-flow dependency, e.g. by having the first t.f return a value and passing it to the second call.",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e1dc54d_e3bdb258",
+        "filename": "compiler/optimizing/test/ImplicitNullCheckEliminationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-01-14T19:56:40Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
