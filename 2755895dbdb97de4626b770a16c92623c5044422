@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce800d7c_470cc25f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-14T11:08:48Z",
+      "side": 1,
+      "message": "done, It should, thanks!",
+      "parentUuid": "ae5e79fb_18dea597",
+      "revId": "2755895dbdb97de4626b770a16c92623c5044422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e96a5c9_7b06bfbe",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-13T22:08:10Z",
       "side": 1,
       "message": "ditto",
+      "revId": "2755895dbdb97de4626b770a16c92623c5044422",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce800d7c_6719c69c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-14T11:08:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e96a5c9_7b06bfbe",
       "revId": "2755895dbdb97de4626b770a16c92623c5044422",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
