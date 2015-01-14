@@ -22,6 +22,30 @@
       "revId": "ddeb2856128c7f79e40a1465ea3667400bd64b66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe78392_4524dcd6",
+        "filename": "runtime/runtime_linux.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T20:25:33Z",
+      "side": 1,
+      "message": "Oversight, will fix.",
+      "parentUuid": "2e20c981_67062cbf",
+      "range": {
+        "startLine": 292,
+        "startChar": 26,
+        "endLine": 292,
+        "endChar": 38
+      },
+      "revId": "ddeb2856128c7f79e40a1465ea3667400bd64b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
