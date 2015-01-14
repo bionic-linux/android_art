@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ecac1df_ede136de",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T16:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ec145c3_a641286e",
+      "range": {
+        "startLine": 1147,
+        "startChar": 12,
+        "endLine": 1147,
+        "endChar": 32
+      },
+      "revId": "0bfa3d3a60bad13195a31db8d97a66a998886ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce800d7c_e4b8746b",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 25
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-14T09:07:46Z",
       "side": 1,
       "message": "How about \"return res !\u003d nullptr \u0026\u0026 res-\u003eIntrinsified()\" ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 43
+      },
+      "revId": "0bfa3d3a60bad13195a31db8d97a66a998886ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee3231d2_300c705f",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T16:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce800d7c_e4b8746b",
       "range": {
         "startLine": 46,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ee3231d2_5019e49b",
+        "filename": "compiler/optimizing/intrinsics_x86_64.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T16:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce800d7c_04be3854",
+      "range": {
+        "startLine": 46,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "0bfa3d3a60bad13195a31db8d97a66a998886ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ec7bdd5_6bfed5c2",
         "filename": "compiler/optimizing/intrinsics_x86_64.h",
         "patchSetId": 25
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-14T09:07:46Z",
       "side": 1,
       "message": "Just noticed. Why is it there then?",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 41
+      },
+      "revId": "0bfa3d3a60bad13195a31db8d97a66a998886ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ecac1df_4dc7aa54",
+        "filename": "compiler/optimizing/intrinsics_x86_64.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-14T16:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec7bdd5_6bfed5c2",
       "range": {
         "startLine": 49,
         "startChar": 25,
