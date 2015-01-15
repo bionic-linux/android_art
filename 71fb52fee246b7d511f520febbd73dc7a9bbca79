@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb3abfc4_34dc7e27",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-15T22:32:28Z",
+      "side": 1,
+      "message": "Uh, just found this... What is this for?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
