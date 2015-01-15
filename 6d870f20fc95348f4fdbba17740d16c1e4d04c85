@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4c3b8a_27b8d466",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T18:58:07Z",
+      "side": 1,
+      "message": "Macro names should be upper case.",
+      "range": {
+        "startLine": 647,
+        "startChar": 8,
+        "endLine": 647,
+        "endChar": 20
+      },
+      "revId": "6d870f20fc95348f4fdbba17740d16c1e4d04c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb88ffe4_a1ee1e91",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T18:58:07Z",
+      "side": 1,
+      "message": "I think the previous version (without macros) was better (and clearer), as it would skip the remaining tests as soon as one of the operands of the or-list was true.",
+      "range": {
+        "startLine": 657,
+        "startChar": 4,
+        "endLine": 661,
+        "endChar": 26
+      },
+      "revId": "6d870f20fc95348f4fdbba17740d16c1e4d04c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b4c3b8a_0a54bf16",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T18:58:07Z",
+      "side": 1,
+      "message": "Use an std::multimap instead?",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 47
+      },
+      "revId": "6d870f20fc95348f4fdbba17740d16c1e4d04c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b49377c_66293077",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T18:58:07Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you initialize `null_check_\u0027 to `nullptr\u0027 as a safety precaution? (Likewise for other classes below.)",
+      "range": {
+        "startLine": 1617,
+        "startChar": 2,
+        "endLine": 1627,
+        "endChar": 3
+      },
+      "revId": "6d870f20fc95348f4fdbba17740d16c1e4d04c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
