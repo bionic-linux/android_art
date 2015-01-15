@@ -22,6 +22,30 @@
       "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b7777c2_d67f6295",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-15T22:41:44Z",
+      "side": 1,
+      "message": "This is the standard for lists. The linter will complain if you don\u0027t put the #ifndef #define part at the top. But if you want to include the file multiple times, this is how we do it in our codebase. Compare for dex instructions, for example.",
+      "parentUuid": "cb3abfc4_34dc7e27",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
