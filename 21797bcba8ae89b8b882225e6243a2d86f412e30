@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "eb106340_3a234199",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Pass an explicit (null/invalid) constant (e.g. `dummy_pc\u0027) here, instead of 0? (Likewise in other places/tests.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 73,
+        "endLine": 62,
+        "endChar": 74
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b0217f8_64d7e007",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Maybe turn `need_nc\u0027 into an argument of `CodeGenerator::MaybeRecordImplicitNullCheck\u0027 and have the caller (i.e. `instr\u0027) pass `instr-\u003eAsFoo()-\u003eNeedsImplicitNullCheck()\u0027 as value for this argument? Or implement this as a virtual method in the HInstruction class hierarchy?",
+      "range": {
+        "startLine": 647,
+        "startChar": 4,
+        "endLine": 652,
+        "endChar": 82
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf88f38_71d7a007",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Unlike the code in `InstructionCodeGeneratorARM::HandleFieldSet\u0027, this condition does not test whether `field_type\u0027 is also different from `Primitive::kPrimLong. Is this intended? If so, a comment might be useful.",
+      "range": {
+        "startLine": 2830,
+        "startChar": 6,
+        "endLine": 2830,
+        "endChar": 42
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae2cb97b_d7e3065d",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Deduce `type\u0027 from `instruction\u0027  and remove it from this method\u0027s arguments?",
+      "range": {
+        "startLine": 1001,
+        "startChar": 53,
+        "endLine": 1001,
+        "endChar": 57
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e26419e_af61d980",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 8
@@ -25,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "2b051bfe_424976b0",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Maybe factor this redundant action in a method (template) of the visitor?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 82
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1dc54d_e34cd2c3",
         "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
         "patchSetId": 8
@@ -41,6 +156,76 @@
         "startChar": 6,
         "endLine": 83,
         "endChar": 40
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b051bfe_05801823",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "If so, I suggest adding a test for this case.",
+      "parentUuid": "0e1dc54d_e34cd2c3",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b2473a4_d6654401",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Use an ArenaBitVector?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 25
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab0aeb11_187be5ac",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "Nit: Add a trailing underscore to this attribute\u0027s name.",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 41
       },
       "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -87,6 +272,29 @@
         "startChar": 20,
         "endLine": 55,
         "endChar": 35
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b216f94_d5d89c82",
+        "filename": "test/439-npe/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T04:57:37Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
       },
       "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
