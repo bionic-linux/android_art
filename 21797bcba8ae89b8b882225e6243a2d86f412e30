@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "cb88ffe4_2149aeb1",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-15T18:59:34Z",
+      "side": 1,
+      "message": "OK, thanks. I didn\u0027t see your comment though; did I miss it?",
+      "parentUuid": "0b1bf76b_b6e52639",
+      "range": {
+        "startLine": 2830,
+        "startChar": 6,
+        "endLine": 2830,
+        "endChar": 42
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae2cb97b_d7e3065d",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 8
