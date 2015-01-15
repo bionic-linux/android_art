@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb3abfc4_f40dd65c",
+        "filename": "compiler/optimizing/bounds_check_elimination_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "oboslete",
+      "parentUuid": "eb106340_3a234199",
+      "range": {
+        "startLine": 62,
+        "startChar": 73,
+        "endLine": 62,
+        "endChar": 74
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b0217f8_64d7e007",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-15T04:57:37Z",
       "side": 1,
       "message": "Maybe turn `need_nc\u0027 into an argument of `CodeGenerator::MaybeRecordImplicitNullCheck\u0027 and have the caller (i.e. `instr\u0027) pass `instr-\u003eAsFoo()-\u003eNeedsImplicitNullCheck()\u0027 as value for this argument? Or implement this as a virtual method in the HInstruction class hierarchy?",
+      "range": {
+        "startLine": 647,
+        "startChar": 4,
+        "endLine": 652,
+        "endChar": 82
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb3abfc4_74432676",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "I wanted to avoid doing that. MaybeRecordImplicitNullCheck is called in a lot of places. Having a check on the instruction type here:\n- eliminates the need to add extra parameters to a number of functions\n- helps writing less code in the actual code generators.\n\nI agree that\u0027s not the nicest things but is very convenient.",
+      "parentUuid": "0b0217f8_64d7e007",
       "range": {
         "startLine": 647,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b1bf76b_b6e52639",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2830,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "Only doubles. I added a comment.",
+      "parentUuid": "4bf88f38_71d7a007",
+      "range": {
+        "startLine": 2830,
+        "startChar": 6,
+        "endLine": 2830,
+        "endChar": 42
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae2cb97b_d7e3065d",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-15T04:57:37Z",
       "side": 1,
       "message": "Deduce `type\u0027 from `instruction\u0027  and remove it from this method\u0027s arguments?",
+      "range": {
+        "startLine": 1001,
+        "startChar": 53,
+        "endLine": 1001,
+        "endChar": 57
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb3abfc4_343d9ee0",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae2cb97b_d7e3065d",
       "range": {
         "startLine": 1001,
         "startChar": 53,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0b1bf76b_b33c1801",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "yea, I agree we should find a strategy for these.",
+      "parentUuid": "6e26419e_af61d980",
+      "range": {
+        "startLine": 167,
+        "startChar": 50,
+        "endLine": 167,
+        "endChar": 58
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b051bfe_424976b0",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2015-01-15T04:57:37Z",
       "side": 1,
       "message": "Maybe factor this redundant action in a method (template) of the visitor?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 82
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b1efb59_57cdaec5",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b051bfe_424976b0",
       "range": {
         "startLine": 171,
         "startChar": 4,
@@ -175,6 +319,30 @@
       "side": 1,
       "message": "If so, I suggest adding a test for this case.",
       "parentUuid": "0e1dc54d_e34cd2c3",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb3abfc4_14429a6e",
+        "filename": "compiler/optimizing/implicit_null_check_elimination.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "2b051bfe_05801823",
       "range": {
         "startLine": 83,
         "startChar": 6,
@@ -256,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "0b1bf76b_56f6d2ef",
+        "filename": "compiler/optimizing/test/ImplicitNullCheckEliminationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "We don\u0027t re-order function calls so we should be ok. Is there a particular case where you think this might happen?",
+      "parentUuid": "0e1dc54d_23550a91",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1dc54d_e3bdb258",
         "filename": "compiler/optimizing/test/ImplicitNullCheckEliminationTest.java",
         "patchSetId": 8
@@ -279,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "0b1bf76b_f604be42",
+        "filename": "compiler/optimizing/test/ImplicitNullCheckEliminationTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "0e1dc54d_e3bdb258",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b216f94_d5d89c82",
         "filename": "test/439-npe/src/Main.java",
         "patchSetId": 8
@@ -290,6 +506,30 @@
       "writtenOn": "2015-01-15T04:57:37Z",
       "side": 1,
       "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "21797bcba8ae89b8b882225e6243a2d86f412e30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b1bf76b_b6fe46bf",
+        "filename": "test/439-npe/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-15T17:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b216f94_d5d89c82",
       "range": {
         "startLine": 2,
         "startChar": 17,
