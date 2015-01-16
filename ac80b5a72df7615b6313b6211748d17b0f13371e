@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_2d0f6d27",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "only one empty line",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_51be14d8",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -30,6 +47,23 @@
       "writtenOn": "2015-01-16T10:10:47Z",
       "side": 1,
       "message": "In some other places you use\n  FPRegister fp_out \u003d is64bit ? DRegisterFrom(out) : SRegisterFrom(out);\nBoth are fine I think, but it would be nice to have the same everywhere if it works.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_0d239198",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "No need for ARM64. We do not need the extra temp register that X86 needs here.",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +87,40 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_4dd2f918",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "CreateIntToIntLocations()",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_510054f8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "CreateIntToIntLocations()",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b940fff_20d20466",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -70,6 +138,125 @@
         "endLine": 282,
         "endChar": 1
       },
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_0f0aa516",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "No temp here. Rename to CreateFPFPtoFP() ?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_adccbd75",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "#define ___  GetAssembler() ?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_2dfa0d80",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "kNoOverlap",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_edeba5b1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "No temps needed here - see my comments below.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_f13948c1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "reuse out, as Alex suggested.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_2f28c96f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "no need for a second temp, use out reg as well.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_ef108143",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "is_double ?  ... : ...                  \n\nAlex has a similar comment above.",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -110,6 +297,58 @@
     },
     {
       "key": {
+        "uuid": "8be0c7b0_af1a795d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "Alex: FYI, this comes from:\n\nbool Arm64Mir2Lir::GenInlinedRound(CallInfo* info, bool is_double)  in quick/arm64/fp_arm64.cc\n\nI remember there are some corner cases that Fcvt does not handle, but I might be wrong. It is worth trying it out. I should have added the corner case tests in 2eba1fa7 .",
+      "parentUuid": "4bc24f1f_0dc87184",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_ade59ddf",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "We do not need the extra 2 temps, but please note that we cannot use CreateFloatToFloat() since we use the out register as a temp.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_4da43999",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8be0c7b0_6fc3316d",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -121,6 +360,41 @@
       "writtenOn": "2015-01-16T10:10:47Z",
       "side": 1,
       "message": "I find the helper useful when the type is not statically known. Otherwise I find using the masm directly more clear. What about\n  __ Ldrb(WRegisterFrom(...), MemOperand(...));\nhere?\n\nOther occurrences below for Load and Store.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_b133c0df",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "Maybe even simpler:\n\n__ Ldrb(WRegisterFrom(), HeapOperandFrom(location, 0));",
+      "parentUuid": "8be0c7b0_6fc3316d",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_6da9f56d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "see Alex\u0027s comment above.",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -144,6 +418,74 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_2db3eddd",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_ef3961c1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "ditto for the Poke family.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_cdb7c9c6",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "As mentioned for the peek/poke I would find it easier to read if we use VIXL masm directly",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_8dc1c130",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "I suggest using a WRegisterFrom()  - the base is a heap object isnt\u0027t it?\n\nI think it is safer to catch a misuse of a heap address in the HeapOperand() DCHECKs, rather than using it as an XRegister. \n\nAlso, if we get the heap uses right we can easily experiment with other heap addressing modes - shifted refs might be easily abstracted in the helper.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8be0c7b0_afb839e3",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -161,6 +503,40 @@
     },
     {
       "key": {
+        "uuid": "8be0c7b0_4fd2ed18",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "And using Heap operand here.\n\nAgain, since we know already what we load here the code is more readable if we \n\nLdr(trg, HeapOperand(base, offset))",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_91cf9c6a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "This is a Ldar() - Load Acquire. \n\nIn the codegen we use:\n if (kUseAcquireRelease) {\n    Acquire-Release varinat\n } else\n   DMB variant\n }\n\nAnd for the optimizing compiler we always prefer Load-Acquire over DMB variant (at least for now). If you do not have the bandwith to add the Ldar variant please add a // TODO: Add Load-Acquire variant.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_91bb1ce0",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -172,6 +548,40 @@
       "writtenOn": "2015-01-16T10:10:47Z",
       "side": 1,
       "message": "Opportunities for load-acquire store-release?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_ed9de541",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "WReg",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_0fdce526",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T11:30:16Z",
+      "side": 1,
+      "message": "HeapOperand()\n\nSame as my comment above  - this is also a store-release",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
