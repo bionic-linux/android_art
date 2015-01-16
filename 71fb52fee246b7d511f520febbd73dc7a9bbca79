@@ -94,6 +94,30 @@
       "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bcfdb48_db59bf86",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:50:58Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s true - I mean it\u0027s a general define. My guess is it was made for locality - whenever you have a list you keep this local and undefine right after use.\n\nAnyways, I copied that from dex_instruction.h (and now the Quick entrypoints are written in the same way). If you prefer to do it differently in the optimizing compiler I can do that...",
+      "parentUuid": "abdbcb04_6af1dbf5",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
