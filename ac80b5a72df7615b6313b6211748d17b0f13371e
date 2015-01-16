@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bcfdb48_bb91535d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Last I talked with Nicolas this was his preferred way...",
+      "parentUuid": "4bc24f1f_cd6829da",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_2d0f6d27",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "only one empty line",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bcfdb48_1b0ae716",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "There once was a time when I tried to separate the different intrinsics. Obviously it\u0027s not consistent. Done.",
+      "parentUuid": "4bc24f1f_2d0f6d27",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "abdbcb04_9f1d5f5a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Yeah, left-over.",
+      "parentUuid": "cbd63fdb_51be14d8",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_0d239198",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "No need for ARM64. We do not need the extra temp register that X86 needs here.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abdbcb04_bf1aa35d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Forgot to clean that one up.",
+      "parentUuid": "4bc24f1f_0d239198",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2bcfdb48_1b23c798",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Sorry, still used to the Quick way, where aliases were not explicitly exposed. In that case pl *is* the right thing to do (and no, it\u0027s not for unsigned, pl \u003d plus \u003d \u003e\u003d 0).",
+      "parentUuid": "4bc24f1f_8d6221f6",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_4dd2f918",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "abdbcb04_1f23af98",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_4dd2f918",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_510054f8",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "CreateIntToIntLocations()",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bcfdb48_3b280370",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_510054f8",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -144,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "6bc55323_e2696e94",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "I am thinking about some generalized, likely templatized helpers. I don\u0027t really want this to be backend-specific, which means it\u0027s a bit more complicated than you think (x86...).\n\nBut right now I don\u0027t think it would help readability to do what you suggest.",
+      "parentUuid": "4b940fff_20d20466",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 1
+      },
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8be0c7b0_0f0aa516",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "abdbcb04_9f36bfd0",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be0c7b0_0f0aa516",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_adccbd75",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -172,6 +340,47 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "#define ___  GetAssembler() ?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bcfdb48_9bcfb76a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Definitely not, I don\u0027t want to undef. This was laziness. The right way is a local.",
+      "parentUuid": "4bc24f1f_adccbd75",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abdbcb04_1ff5ef90",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "This is actually the wrong name.",
+      "range": {
+        "startLine": 440,
+        "startChar": 12,
+        "endLine": 440,
+        "endChar": 44
+      },
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -212,6 +421,24 @@
     },
     {
       "key": {
+        "uuid": "abdbcb04_7f051b07",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "It was a certain Serban Constantinescu who git blame mentions for the Quick code. :-)",
+      "parentUuid": "4bc24f1f_edeba5b1",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_f13948c1",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -229,6 +456,24 @@
     },
     {
       "key": {
+        "uuid": "2bcfdb48_9bc1f730",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Can\u0027t. Out is GPR...",
+      "parentUuid": "cbd63fdb_f13948c1",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8be0c7b0_2f28c96f",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -240,6 +485,24 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "no need for a second temp, use out reg as well.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_425e42e9",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "That is correct.",
+      "parentUuid": "8be0c7b0_2f28c96f",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -274,6 +537,24 @@
       "writtenOn": "2015-01-16T10:10:47Z",
       "side": 1,
       "message": "We can use out_reg instead of temp2_reg in the Fadd.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_c249d22d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "No. Out is GPR.",
+      "parentUuid": "4bc24f1f_4dbe79d8",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -368,6 +649,24 @@
     },
     {
       "key": {
+        "uuid": "abdbcb04_9fe8ffb6",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "See above. It should have been FPtoInt(PlusTemp) all along...",
+      "parentUuid": "4bc24f1f_ade59ddf",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_4da43999",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -414,6 +713,24 @@
       "side": 1,
       "message": "Maybe even simpler:\n\n__ Ldrb(WRegisterFrom(), HeapOperandFrom(location, 0));",
       "parentUuid": "8be0c7b0_6fc3316d",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_c2d232e0",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "This was mostly to abstract which kind of Load is necessary. Personally I prefer that, but it\u0027s your backend. It\u0027s currently OK as the Memory API does not expose a peekObject. But if we ever have packed heaps (as you allude to below), this will suddenly get messy. And you already made a mistake, it should be ldrsb...\n\nHeapOperand won\u0027t work. The address is a long, so should be in an X register.",
+      "parentUuid": "cbd63fdb_b133c0df",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -522,6 +839,24 @@
     },
     {
       "key": {
+        "uuid": "6bc55323_829c2afa",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree. This should be an *unpacked* pointer. In managed code, this should always be the native pointer, no matter what. The packing/unpacking happens at load/store time.",
+      "parentUuid": "4bc24f1f_8dc1c130",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8be0c7b0_afb839e3",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -556,6 +891,24 @@
     },
     {
       "key": {
+        "uuid": "2bcfdb48_fb235b42",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be0c7b0_4fd2ed18",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_91cf9c6a",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -567,6 +920,24 @@
       "writtenOn": "2015-01-16T11:30:16Z",
       "side": 1,
       "message": "This is a Ldar() - Load Acquire. \n\nIn the codegen we use:\n if (kUseAcquireRelease) {\n    Acquire-Release varinat\n } else\n   DMB variant\n }\n\nAnd for the optimizing compiler we always prefer Load-Acquire over DMB variant (at least for now). If you do not have the bandwith to add the Ldar variant please add a // TODO: Add Load-Acquire variant.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bcfdb48_bb1dd300",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-16T17:25:47Z",
+      "side": 1,
+      "message": "Was just a straightforward translation. This will come in another PS.",
+      "parentUuid": "cbd63fdb_91cf9c6a",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
