@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd63fdb_74f6a6f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-16T18:48:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b928710_c886e33e",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 16
+      },
+      "revId": "90e2118a90ba8328fd35a8bd84edb08fac763637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b928710_a8891f4f",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_d07f6295",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-16T18:48:48Z",
+      "side": 1,
+      "message": "yes, should be GetNext(). Thanks.",
+      "parentUuid": "8b928710_a8891f4f",
+      "range": {
+        "startLine": 645,
+        "startChar": 49,
+        "endLine": 645,
+        "endChar": 62
+      },
+      "revId": "90e2118a90ba8328fd35a8bd84edb08fac763637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b971303_478c0419",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2015-01-16T18:06:55Z",
       "side": 1,
       "message": "Nit: Indent these lines by four columns.",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 46
+      },
+      "revId": "90e2118a90ba8328fd35a8bd84edb08fac763637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_7154784a",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-16T18:48:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b971303_478c0419",
       "range": {
         "startLine": 649,
         "startChar": 0,
