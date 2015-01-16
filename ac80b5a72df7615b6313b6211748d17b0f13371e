@@ -333,6 +333,24 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_0db87166",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-16T14:15:09Z",
+      "side": 1,
+      "message": "Does not work:\n\nAssert.assertEquals(Math.round(-0.0d), (long)+0.0);",
+      "parentUuid": "4bc24f1f_cd6fc967",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_ade59ddf",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
