@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc24f1f_cd6829da",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "We can take care of that in a separate commit.\nShould we start creating architecture specific directories to help sort files, or should we stick with only using an architecture suffix in the filename?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_51be14d8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "In some other places you use\n  FPRegister fp_out \u003d is64bit ? DRegisterFrom(out) : SRegisterFrom(out);\nBoth are fine I think, but it would be nice to have the same everywhere if it works.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_8d6221f6",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "Cneg is clearer, and pl is for unsigned comparisons, so:\n\n__ Cmp(in_reg, 0);\n__ Cneg(out_reg, in_reg, lt);",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_4dbe79d8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "We can use out_reg instead of temp2_reg in the Fadd.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_0dc87184",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "Doesn\u0027t Fcvt work here (without the Fadd 0.5)? I think we assume the system rounding mode is \u0027round to nearest\u0027.\n\nFor double -\u003e int, it should be fine since any int can be represented exactly by a double. For others we need to check the expectations in the corner cases.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_6fc3316d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "I find the helper useful when the type is not statically known. Otherwise I find using the masm directly more clear. What about\n  __ Ldrb(WRegisterFrom(...), MemOperand(...));\nhere?\n\nOther occurrences below for Load and Store.",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_d1b1a403",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "Same?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be0c7b0_afb839e3",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "If the offset is already a \u0027long\u0027 you can use:\n  MemOperand(base, offset)",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_91bb1ce0",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T10:10:47Z",
+      "side": 1,
+      "message": "Opportunities for load-acquire store-release?",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
