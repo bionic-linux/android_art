@@ -315,6 +315,24 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_cd6fc967",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-16T13:55:51Z",
+      "side": 1,
+      "message": "Looks like Fcvt is only FP to FP. I meant Fmov for FP to int.",
+      "parentUuid": "8be0c7b0_af1a795d",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_ade59ddf",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
