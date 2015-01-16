@@ -70,6 +70,30 @@
       "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abdbcb04_6af1dbf5",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-01-16T17:46:06Z",
+      "side": 1,
+      "message": "Can\u0027t I use INTRINSICS_LIST(foo) and then later INTRINSICS_LIST(bar) without including the header multiple times?",
+      "parentUuid": "4bc24f1f_0d3dd1df",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
