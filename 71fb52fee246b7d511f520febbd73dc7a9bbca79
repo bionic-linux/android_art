@@ -46,6 +46,30 @@
       "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_0d3dd1df",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-16T08:44:37Z",
+      "side": 1,
+      "message": "Why would you want to include it multiple times? It\u0027s just a macro.\n\nWhere is it stated that it\u0027s a standard for lists?",
+      "parentUuid": "0b7777c2_d67f6295",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
