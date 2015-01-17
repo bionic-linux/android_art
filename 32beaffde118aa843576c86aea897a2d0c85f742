@@ -22,6 +22,30 @@
       "revId": "32beaffde118aa843576c86aea897a2d0c85f742",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bc55323_d860e227",
+        "filename": "tools/checker.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-01-17T00:06:07Z",
+      "side": 1,
+      "message": "Added in https://android-review.googlesource.com/#/c/123770/",
+      "parentUuid": "4bc24f1f_cd0d895d",
+      "range": {
+        "startLine": 726,
+        "startChar": 4,
+        "endLine": 726,
+        "endChar": 18
+      },
+      "revId": "32beaffde118aa843576c86aea897a2d0c85f742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
