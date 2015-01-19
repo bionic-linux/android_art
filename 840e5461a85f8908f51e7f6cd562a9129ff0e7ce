@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbd63fdb_b7973020",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_1df0b320",
+      "range": {
+        "startLine": 816,
+        "startChar": 49,
+        "endLine": 816,
+        "endChar": 63
+      },
+      "revId": "840e5461a85f8908f51e7f6cd562a9129ff0e7ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_b30420b7",
         "filename": "compiler/optimizing/ssa_liveness_analysis.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-19T16:22:17Z",
       "side": 1,
       "message": "Maybe replace with `IsLowInterval()\u0027?",
+      "range": {
+        "startLine": 533,
+        "startChar": 11,
+        "endLine": 533,
+        "endChar": 79
+      },
+      "revId": "840e5461a85f8908f51e7f6cd562a9129ff0e7ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_c0366003",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T17:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_b30420b7",
       "range": {
         "startLine": 533,
         "startChar": 11,
