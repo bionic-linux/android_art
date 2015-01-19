@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd63fdb_b423ae11",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-19T12:09:56Z",
+      "side": 1,
+      "message": "Maybe\n   if (mem_op.IsImmediateOffset()) {\n?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_34d1fe8f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-19T12:09:56Z",
+      "side": 1,
+      "message": "Change to\n    DCHECK(mem_op.IsRegisterOffset();\n?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_74c786d9",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-19T12:09:56Z",
+      "side": 1,
+      "message": "What about using only one line?\n    __ Add(temp_base, src.base(), OperandFromMemOperand(src));\n?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_b0ae56f0",
+        "filename": "compiler/optimizing/intrinsics_arm64.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-19T12:09:56Z",
+      "side": 1,
+      "message": "In the codegen we have GetAssembler() and GetVIXLAssembler(). Should we name this one GetVIXLAssembler() for coherency, or do you prefer this one to stay in line with other archs?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
