@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc24f1f_d0a1a235",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Don\u0027t bother this check, it\u0027s ok to leave an implicit/explicit.",
+      "range": {
+        "startLine": 644,
+        "startChar": 56,
+        "endLine": 644,
+        "endChar": 90
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_d30d2c5d",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "As discussed, this can be problematic for array accesses we don\u0027t know the offset. I think we should limit ourselves to the first page, and have a virtual HInstruction::CanDoImplicitNullCheck check that we are within that limit.",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 48
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_90ab1a12",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Early return?",
+      "range": {
+        "startLine": 670,
+        "startChar": 2,
+        "endLine": 670,
+        "endChar": 50
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_544fe2b8",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "How about adding a CanDoImplicitNullCheck() on HInstruction?",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 83
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_b0a89615",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "We should avoid this duality with line 643. How about add HInstruciton::GetBefore(After)WhenDisregardMoves? And refactor HCondition::IsBeforeWhenDisregardMoves ?",
+      "range": {
+        "startLine": 681,
+        "startChar": 3,
+        "endLine": 684,
+        "endChar": 5
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_731f9886",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2613,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2613,
+        "endChar": 71
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_132414d6",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2732,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Add a comment that these cases have been handled in the switch.",
+      "range": {
+        "startLine": 2732,
+        "startChar": 0,
+        "endLine": 2732,
+        "endChar": 83
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_d442f28c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2844,
+        "startChar": 0,
+        "endLine": 2844,
+        "endChar": 45
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_1d38b36f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Why not moving all of this at the end of the method (like you did for FieldSet)?",
+      "range": {
+        "startLine": 3141,
+        "startChar": 0,
+        "endLine": 3147,
+        "endChar": 9
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_943c6a01",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 2782,
+        "startChar": 0,
+        "endLine": 2782,
+        "endChar": 43
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_9d232344",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 2892,
+        "startChar": 20,
+        "endLine": 2892,
+        "endChar": 29
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_fd206738",
+        "filename": "test/439-npe/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-19T13:51:18Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
