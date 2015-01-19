@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "eb586371_602946ac",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "This was more in line with the style of the other helpers, and gives better error reporting (don\u0027t have to look at a trace to figure out what is actually wrong), but I\u0027ll change it for tighter code.",
+      "parentUuid": "4b408f75_3d0acfc8",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b408f75_fd798730",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -104,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "ab52eb4e_bb0d535e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Your choice. I\u0027m not up to speed about how many registers are reserved by VIXL...",
+      "parentUuid": "cbd63fdb_f43ff6f3",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_133df4df",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -115,6 +151,24 @@
       "writtenOn": "2015-01-19T16:44:27Z",
       "side": 1,
       "message": "Both variants can be encoded in the immediate field.\n\nAnyway a misuse will be caught in a debug version of ART. libvixld asserts when it tries to use a temp register and none is available.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b57e740_fa306506",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Vixl has this with double and float signature. Should I not make it obvious here (Quick says the encoding is the same and relies and this, though)? (It\u0027s somewhat contradicting with the \"we don\u0027t want to allow encodings for stuff that has aliases\")",
+      "parentUuid": "4bc24f1f_133df4df",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -138,6 +192,24 @@
     },
     {
       "key": {
+        "uuid": "eb586371_c00db25d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll change all the occurrences of object pointers.",
+      "parentUuid": "4bc24f1f_338590e6",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_d3b76cc6",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -155,6 +227,24 @@
     },
     {
       "key": {
+        "uuid": "8b57e740_da2da1ae",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Stale comment, after I added code to LoadAcquire...",
+      "parentUuid": "4bc24f1f_d3b76cc6",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_338cb018",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -166,6 +256,24 @@
       "writtenOn": "2015-01-19T16:44:27Z",
       "side": 1,
       "message": "kUseAcquireRelease variant ?\n\nI need to understand what is_ordered guarantees. We might need to enforce ordering through a DMB even for a acquire-release variant.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb586371_e0143666",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Variant will be added. As ordered is weaker than volatile, I think it\u0027s easiest just to use the volatile code...",
+      "parentUuid": "4bc24f1f_338cb018",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -325,6 +433,24 @@
     },
     {
       "key": {
+        "uuid": "ab52eb4e_3b430377",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Micro-optimizations once stuff is done. Premature ...  ;-)",
+      "parentUuid": "4bc24f1f_13b89466",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_b0ae56f0",
         "filename": "compiler/optimizing/intrinsics_arm64.h",
         "patchSetId": 5
@@ -336,6 +462,24 @@
       "writtenOn": "2015-01-19T12:09:56Z",
       "side": 1,
       "message": "In the codegen we have GetAssembler() and GetVIXLAssembler(). Should we name this one GetVIXLAssembler() for coherency, or do you prefer this one to stay in line with other archs?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b57e740_3a6c9df7",
+        "filename": "compiler/optimizing/intrinsics_arm64.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-19T19:36:40Z",
+      "side": 1,
+      "message": "Coherency is not a must. Will change.",
+      "parentUuid": "4bc24f1f_b0ae56f0",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
