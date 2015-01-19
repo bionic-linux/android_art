@@ -53,6 +53,278 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_3d0acfc8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "XRegisterFrom() DCHECKs this.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_fd798730",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "No temp needed from the register allocator - see my comment below.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_f43ff6f3",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "I suggest we get this temp from VIXL (d/s31). Also we can rename this to temp (instead of temp1).\n\neg:\n\nUseScratchRegisterScope temps(GetVIXLAssembler());\nFPRegister temp \u003d AcquireSameSizeAs(in_reg);\n\n\nThis way we will reuse VIXL\u0027s FP temp - D/S 31, instead of using asking the register allocator for a temp.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_133df4df",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Both variants can be encoded in the immediate field.\n\nAnyway a misuse will be caught in a debug version of ART. libvixld asserts when it tries to use a temp register and none is available.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_338590e6",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Should this be a WRegister for kPrinNot too? (I guess that this should be the case if we decide to use 32bit regs \"in flight\").",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_d3b76cc6",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "This is the register that we use in LoadAcquire() - temp_base ?\n\nWe get that one from a different register poll (VIXL temps - IP0, IP1).",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_338cb018",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "kUseAcquireRelease variant ?\n\nI need to understand what is_ordered guarantees. We might need to enforce ordering through a DMB even for a acquire-release variant.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_17239c98",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Add a comment ? // Unused this* ?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_00ffa8bd",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "No need for temps here - see my comment below.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_a0019431",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Here we can use VIXLs temps IP1, IP0. This should be perfectly safe and should put less pressure on the Optimizing Compiler register allocator. \n\nUseScratchRegisterScope temps(GetVIXLAssembler());\nRegister tmp_ptr \u003d temps.AcquireX();\nRegister tmp_value \u003d temps.AcquireSameSizeAs(value);",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_37282070",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "no need. value is a W for kPrimNot, not like in Quick where it is X.",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_5da35b0e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_d73c34b4",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Operand(offset) ?\n\nOne of the Operand constructors:\n Operand(Register reg, Shift shift \u003d LSL, unsigned shift_amount \u003d 0);",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_80ebb805",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "tmp_value ?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_57a4c498",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "value?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_13b89466",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T16:44:27Z",
+      "side": 1,
+      "message": "Cbnz(tmp_32, \u0026loop_head);\n\nGblame me :-).",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_b0ae56f0",
         "filename": "compiler/optimizing/intrinsics_arm64.h",
         "patchSetId": 5
