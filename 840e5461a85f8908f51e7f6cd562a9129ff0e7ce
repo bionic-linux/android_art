@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b408f75_1df0b320",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-19T16:22:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `const_to_move-\u003eDebugName()\u0027?",
+      "range": {
+        "startLine": 816,
+        "startChar": 49,
+        "endLine": 816,
+        "endChar": 63
+      },
+      "revId": "840e5461a85f8908f51e7f6cd562a9129ff0e7ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_b30420b7",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-19T16:22:17Z",
+      "side": 1,
+      "message": "Maybe replace with `IsLowInterval()\u0027?",
+      "range": {
+        "startLine": 533,
+        "startChar": 11,
+        "endLine": 533,
+        "endChar": 79
+      },
+      "revId": "840e5461a85f8908f51e7f6cd562a9129ff0e7ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
