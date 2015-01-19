@@ -439,6 +439,24 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_10cc0af9",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T11:27:17Z",
+      "side": 1,
+      "message": "That explains it :-).",
+      "parentUuid": "abdbcb04_7f051b07",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_f13948c1",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -468,6 +486,24 @@
       "side": 1,
       "message": "Can\u0027t. Out is GPR...",
       "parentUuid": "cbd63fdb_f13948c1",
+      "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_5497e2d7",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-19T11:27:17Z",
+      "side": 1,
+      "message": "Yes, you are right.",
+      "parentUuid": "2bcfdb48_9bc1f730",
       "revId": "ac80b5a72df7615b6313b6211748d17b0f13371e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
