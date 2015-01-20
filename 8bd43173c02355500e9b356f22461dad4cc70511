@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bf1d3a1_6eccaffa",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_b423ae11",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_34d1fe8f",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "6bf1d3a1_4ed1f38e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_34d1fe8f",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_74c786d9",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2015-01-19T12:09:56Z",
       "side": 1,
       "message": "What about using only one line?\n    __ Add(temp_base, src.base(), OperandFromMemOperand(src));\n?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6c7315_3cb81999",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_74c786d9",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -152,6 +206,24 @@
       "side": 1,
       "message": "See code_generator_arm64.h. Currently we block 2 GP regs and 1 FP reg.\n\nconst vixl::CPURegList vixl_reserved_core_registers(vixl::ip0, vixl::ip1);\nconst vixl::CPURegList vixl_reserved_fp_registers(vixl::d31);\n\nThis will enable the VIXL MacroAssembler handle any sort of immediate field for most of the instructions. \n\nIn both cases mentioned here it is safe to use the VIXL blocked registers. The instructions generated inside the scope do not need any extra temp registers.\n\nIn the cases where we get this wrong we should hit the VIXL_CHECK() in:\nCPURegister UseScratchRegisterScope::AcquireNextAvailable(CPURegList* available) {}",
       "parentUuid": "ab52eb4e_bb0d535e",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb5d5f61_ff305706",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_60e02ca2",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -316,6 +388,24 @@
     },
     {
       "key": {
+        "uuid": "6b6c7315_1c1efdd1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb586371_e0143666",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_17239c98",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -327,6 +417,24 @@
       "writtenOn": "2015-01-19T16:44:27Z",
       "side": 1,
       "message": "Add a comment ? // Unused this* ?",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6c7315_fcbfc12a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_17239c98",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -361,6 +469,24 @@
       "writtenOn": "2015-01-19T16:44:27Z",
       "side": 1,
       "message": "Here we can use VIXLs temps IP1, IP0. This should be perfectly safe and should put less pressure on the Optimizing Compiler register allocator. \n\nUseScratchRegisterScope temps(GetVIXLAssembler());\nRegister tmp_ptr \u003d temps.AcquireX();\nRegister tmp_value \u003d temps.AcquireSameSizeAs(value);",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b1ab3b5_260016f8",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Not super-happy with all the (hidden) interactions. E.g., when writing this code, it is *not* obvious that MarkGCCard also wants temps. So this only works when moving the temp registers down...",
+      "parentUuid": "4b408f75_a0019431",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -516,6 +642,24 @@
       "side": 1,
       "message": "Coherency is not a must. Will change.",
       "parentUuid": "4bc24f1f_b0ae56f0",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb5d5f61_5f2983ab",
+        "filename": "compiler/optimizing/intrinsics_arm64.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-20T22:57:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b57e740_3a6c9df7",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
