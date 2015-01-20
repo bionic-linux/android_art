@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_2048e48d",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_d0a1a235",
+      "range": {
+        "startLine": 644,
+        "startChar": 56,
+        "endLine": 644,
+        "endChar": 90
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_d30d2c5d",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 13
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "cbd63fdb_57760479",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_90ab1a12",
+      "range": {
+        "startLine": 670,
+        "startChar": 2,
+        "endLine": 670,
+        "endChar": 50
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_544fe2b8",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 13
@@ -82,6 +130,30 @@
       "writtenOn": "2015-01-19T13:51:18Z",
       "side": 1,
       "message": "How about adding a CanDoImplicitNullCheck() on HInstruction?",
+      "range": {
+        "startLine": 671,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 83
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_803d78e2",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_544fe2b8",
       "range": {
         "startLine": 671,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_739c78f9",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Seeing that HCondition does the same convinced me :)",
+      "parentUuid": "4bc24f1f_b0a89615",
+      "range": {
+        "startLine": 681,
+        "startChar": 3,
+        "endLine": 684,
+        "endChar": 5
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_731f9886",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 13
@@ -128,6 +224,30 @@
       "writtenOn": "2015-01-19T13:51:18Z",
       "side": 1,
       "message": "Why this change?",
+      "range": {
+        "startLine": 2613,
+        "startChar": 0,
+        "endLine": 2613,
+        "endChar": 71
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_139174e0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2613,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "sorry, leftover from a previous design.",
+      "parentUuid": "4bc24f1f_731f9886",
       "range": {
         "startLine": 2613,
         "startChar": 0,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_938484a0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2732,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_132414d6",
+      "range": {
+        "startLine": 2732,
+        "startChar": 0,
+        "endLine": 2732,
+        "endChar": 83
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_d442f28c",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 13
@@ -174,6 +318,30 @@
       "writtenOn": "2015-01-19T13:51:18Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 2844,
+        "startChar": 0,
+        "endLine": 2844,
+        "endChar": 45
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_6042ec6f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_d442f28c",
       "range": {
         "startLine": 2844,
         "startChar": 0,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_00316808",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "I wanted to avoid complicated conditions since this also depends on eends_runtime_call.\n\nI refactored it to have less duplication.",
+      "parentUuid": "4b408f75_1d38b36f",
+      "range": {
+        "startLine": 3141,
+        "startChar": 0,
+        "endLine": 3147,
+        "endChar": 9
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbd63fdb_943c6a01",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 13
@@ -220,6 +412,30 @@
       "writtenOn": "2015-01-19T13:51:18Z",
       "side": 1,
       "message": "Add a comment.",
+      "range": {
+        "startLine": 2782,
+        "startChar": 0,
+        "endLine": 2782,
+        "endChar": 43
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbd63fdb_d7699494",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbd63fdb_943c6a01",
       "range": {
         "startLine": 2782,
         "startChar": 0,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_73f55829",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2892,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_9d232344",
+      "range": {
+        "startLine": 2892,
+        "startChar": 20,
+        "endLine": 2892,
+        "endChar": 29
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b408f75_fd206738",
         "filename": "test/439-npe/src/Main.java",
         "patchSetId": 13
@@ -266,6 +506,30 @@
       "writtenOn": "2015-01-19T13:51:18Z",
       "side": 1,
       "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a5260fbc1d13f07642dff65f2967170efddbade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_b30ae08f",
+        "filename": "test/439-npe/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-20T12:30:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_fd206738",
       "range": {
         "startLine": 2,
         "startChar": 17,
