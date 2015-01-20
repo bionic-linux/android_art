@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_60e02ca2",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-20T10:58:01Z",
+      "side": 1,
+      "message": "See code_generator_arm64.h. Currently we block 2 GP regs and 1 FP reg.\n\nconst vixl::CPURegList vixl_reserved_core_registers(vixl::ip0, vixl::ip1);\nconst vixl::CPURegList vixl_reserved_fp_registers(vixl::d31);\n\nThis will enable the VIXL MacroAssembler handle any sort of immediate field for most of the instructions. \n\nIn both cases mentioned here it is safe to use the VIXL blocked registers. The instructions generated inside the scope do not need any extra temp registers.\n\nIn the cases where we get this wrong we should hit the VIXL_CHECK() in:\nCPURegister UseScratchRegisterScope::AcquireNextAvailable(CPURegList* available) {}",
+      "parentUuid": "ab52eb4e_bb0d535e",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_133df4df",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 5
@@ -169,6 +187,24 @@
       "side": 1,
       "message": "Vixl has this with double and float signature. Should I not make it obvious here (Quick says the encoding is the same and relies and this, though)? (It\u0027s somewhat contradicting with the \"we don\u0027t want to allow encodings for stuff that has aliases\")",
       "parentUuid": "4bc24f1f_133df4df",
+      "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_961d525a",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-20T10:58:01Z",
+      "side": 1,
+      "message": "I would leave it as it is.\n\nI have mentioned the fact that they can be encoded in the immediate field since otherwise the macro assembler would place it in the literal pool. \n\nOther instructions like Fcmp() would use the extra FP temp - D/S31 if the immediate field cannot be encoded in the instruction stream.",
+      "parentUuid": "8b57e740_fa306506",
       "revId": "8bd43173c02355500e9b356f22461dad4cc70511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
