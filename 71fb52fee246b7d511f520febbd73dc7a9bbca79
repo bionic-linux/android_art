@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b0c4779_32be8ed7",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T14:10:58Z",
+      "side": 1,
+      "message": "why is this kVirtual? it\u0027s a private method and should be kDirect.\n\nI also double check what code gets generated when invoked and it\u0027s a direct call:\n\n: java.lang.Object java.lang.ref.Reference.get() (dex_method_idx\u003d3754)\n    DEX CODE:\n      0x0000: invoke-direct {v1}, java.lang.Object java.lang.ref.Reference.getReferent() // method@3755\n      0x0003: move-result-object v0\n      0x0004: return-object v0",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb3abfc4_34dc7e27",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 27
