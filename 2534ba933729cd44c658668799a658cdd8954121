@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_86ae3075",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_e1cbae2e",
+      "range": {
+        "startLine": 641,
+        "startChar": 20,
+        "endLine": 641,
+        "endChar": 51
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_21c21618",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "Indentation is off.",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 645,
+        "endChar": 94
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_217776fb",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_21c21618",
       "range": {
         "startLine": 642,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_66b324dd",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "seems rather unnecessary but ok.",
+      "parentUuid": "4b408f75_66d7a455",
+      "range": {
+        "startLine": 656,
+        "startChar": 2,
+        "endLine": 656,
+        "endChar": 87
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b408f75_c6db187d",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 14
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "in switch -\u003e in the switch ?",
+      "range": {
+        "startLine": 2731,
+        "startChar": 35,
+        "endLine": 2731,
+        "endChar": 44
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_417c02db",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2731,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_c6db187d",
       "range": {
         "startLine": 2731,
         "startChar": 35,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_e1908eac",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0c4779_0fa9a56e",
+      "range": {
+        "startLine": 2844,
+        "startChar": 25,
+        "endLine": 2844,
+        "endChar": 34
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_01c91a36",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 14
@@ -128,6 +248,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "ditto?",
+      "range": {
+        "startLine": 3204,
+        "startChar": 34,
+        "endLine": 3204,
+        "endChar": 43
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_c6b798c6",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3204,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_01c91a36",
       "range": {
         "startLine": 3204,
         "startChar": 34,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "4b408f75_a6b40cc3",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2782,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc24f1f_c1d232e0",
+      "range": {
+        "startLine": 2782,
+        "startChar": 23,
+        "endLine": 2782,
+        "endChar": 32
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0c4779_4fb3addc",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 14
@@ -174,6 +342,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 2893,
+        "startChar": 23,
+        "endLine": 2893,
+        "endChar": 33
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_06c22033",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 2893,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0c4779_4fb3addc",
       "range": {
         "startLine": 2893,
         "startChar": 23,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "4bc24f1f_1c2421d6",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "It\u0027s just that we will probably forget about it when we add extra optimizations and this is on the safe side.\n\nI kept the code around and added a TODO. I could dcheck but that seems unnecessary.",
+      "parentUuid": "4b408f75_46f1c8f5",
+      "range": {
+        "startLine": 685,
+        "startChar": 16,
+        "endLine": 685,
+        "endChar": 38
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bc24f1f_61e1fea7",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 14
@@ -220,6 +436,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 689,
+        "startChar": 16,
+        "endLine": 689,
+        "endChar": 38
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_060860c8",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "4bc24f1f_61e1fea7",
       "range": {
         "startLine": 689,
         "startChar": 16,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "8b0c4779_0f824568",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 2197,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b408f75_86ebd005",
+      "range": {
+        "startLine": 2197,
+        "startChar": 0,
+        "endLine": 2197,
+        "endChar": 63
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0c4779_afb7b9c6",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 14
@@ -266,6 +530,30 @@
       "writtenOn": "2015-01-21T08:46:36Z",
       "side": 1,
       "message": "ditto?",
+      "range": {
+        "startLine": 2229,
+        "startChar": 49,
+        "endLine": 2229,
+        "endChar": 62
+      },
+      "revId": "2534ba933729cd44c658668799a658cdd8954121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b0c4779_6f7791fa",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 2229,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b0c4779_afb7b9c6",
       "range": {
         "startLine": 2229,
         "startChar": 49,
