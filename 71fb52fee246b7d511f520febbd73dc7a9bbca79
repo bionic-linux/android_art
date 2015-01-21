@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6bc8f375_f61a605e",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-21T16:13:45Z",
+      "side": 1,
+      "message": "You\u0027re right.",
+      "parentUuid": "8b0c4779_32be8ed7",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb3abfc4_34dc7e27",
         "filename": "compiler/optimizing/intrinsics_list.h",
         "patchSetId": 27
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "So it\u0027s only to protect against a macro name clash, right?",
       "parentUuid": "2bcfdb48_db59bf86",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 80
+      },
+      "revId": "71fb52fee246b7d511f520febbd73dc7a9bbca79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc5ef5b_f51a585e",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-21T16:13:45Z",
+      "side": 1,
+      "message": "I think so.",
+      "parentUuid": "4bc24f1f_a1b12652",
       "range": {
         "startLine": 87,
         "startChar": 0,
