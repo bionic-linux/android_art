@@ -22,6 +22,30 @@
       "revId": "3997549f0d9dab182d22a560efd43b85c829aee3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_86b8f068",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-01-21T12:42:31Z",
+      "side": 1,
+      "message": "I removed this and kept only the todo.",
+      "parentUuid": "8b0c4779_4f4e0dbb",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 6
+      },
+      "revId": "3997549f0d9dab182d22a560efd43b85c829aee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
