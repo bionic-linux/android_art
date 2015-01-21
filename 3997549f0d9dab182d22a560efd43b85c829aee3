@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b0c4779_4f4e0dbb",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-01-21T12:38:25Z",
+      "side": 1,
+      "message": "What about enclosing this code in an `if\u0027 statement, so that it is still checked by the compiler (and you no longer need to tag arguments as unused)? E.g. something like:\n\n  const kEnableArrayImplicitNullCheck \u003d false;  // Maybe placed somewhere else.\n  if (kEnableArrayImplicitNullCheck) {\n    // ...\n  }",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 6
+      },
+      "revId": "3997549f0d9dab182d22a560efd43b85c829aee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
