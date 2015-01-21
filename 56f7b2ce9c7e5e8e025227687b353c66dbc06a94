@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b408f75_867630c4",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "Didn\u0027t we agree on using Primitive::kPrimInt for consistency?",
+      "range": {
+        "startLine": 216,
+        "startChar": 13,
+        "endLine": 216,
+        "endChar": 30
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_a1204637",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "Yes please :)\n\nAdd a Arm64CodeGenHelperClass ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 47
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b0c4779_8f4f5533",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "Not related to the static_assert below? Should you move it to line 45 or 39?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 68
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_c11d5200",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "My bad for calling this GetArena on the graph, but we should really call it GetAllocator.",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 102,
+        "endChar": 53
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_667b24ac",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "Add a named constexpr for this?",
+      "range": {
+        "startLine": 190,
+        "startChar": 77,
+        "endLine": 190,
+        "endChar": 79
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b0c4779_ef4c2140",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 17
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_21669698",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "I\u0027d drop it, too verbose.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 7
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bc24f1f_416ba25d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "extra line",
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b408f75_6654c418",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-21T10:02:36Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1038,
+        "startChar": 0,
+        "endLine": 1094,
+        "endChar": 16
+      },
+      "revId": "56f7b2ce9c7e5e8e025227687b353c66dbc06a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
