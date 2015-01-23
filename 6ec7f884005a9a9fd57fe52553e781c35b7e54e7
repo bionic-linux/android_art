@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb871f28_2c1e5bd2",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-23T08:58:42Z",
+      "side": 1,
+      "message": "2015?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb871f28_4c138fc9",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-23T08:58:42Z",
+      "side": 1,
+      "message": "What goes wrong if you remove this? They just clutter readability...",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abbaebeb_7bcc9b47",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-23T08:58:42Z",
+      "side": 1,
+      "message": "Thanks :-)",
+      "range": {
+        "startLine": 216,
+        "startChar": 24,
+        "endLine": 216,
+        "endChar": 32
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b8a4f30_50fa5219",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-23T08:58:42Z",
+      "side": 1,
+      "message": "constexpr?",
+      "range": {
+        "startLine": 149,
+        "startChar": 77,
+        "endLine": 149,
+        "endChar": 79
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
