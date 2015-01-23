@@ -259,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "eb6a2365_ea04670d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-23T18:13:48Z",
+      "side": 1,
+      "message": "Well const then. Anything along the lines:\n\nstatic const WRegister kArtMethod \u003d w0.",
+      "parentUuid": "6b5e33d1_e6bc9e8e",
+      "range": {
+        "startLine": 149,
+        "startChar": 77,
+        "endLine": 149,
+        "endChar": 79
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b8a4f30_13a7f4c6",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 9
