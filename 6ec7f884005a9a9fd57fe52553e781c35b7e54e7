@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b5e33d1_06ef7a8f",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Once this gets rebased over Calin\u0027s changes some of the intrinsics will have to change...",
+      "parentUuid": "abbaebeb_fb7c2bdf",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb871f28_2c1e5bd2",
         "filename": "compiler/optimizing/common_arm64.h",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2015-01-23T08:58:42Z",
       "side": 1,
       "message": "2015?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab64ab9a_2b928561",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb871f28_2c1e5bd2",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "6b5e33d1_c65e42ea",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "You need to make the functions inlined. GCC/Clang otherwise decide in some cases *not* to inline, and you get duplicate definitions from the two .cc files. (The other option would be a .cc file for common, but the functions are small enough that it seems they should be inlined.)\n\nOne must put inline there. Otherwise you get the warning that the function might not be inlineable.",
+      "parentUuid": "abbaebeb_db816765",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abbaebeb_7bcc9b47",
         "filename": "compiler/optimizing/intrinsics.cc",
         "patchSetId": 9
@@ -128,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "8b69a776_aaa50fbb",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Only this file ever uses this - besides Memory.java there is nothing that requires absolute addressing. Maybe I shouldn\u0027t even define this at all.",
+      "parentUuid": "abbaebeb_9b7befe3",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b8a4f30_50fa5219",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 9
@@ -139,6 +223,30 @@
       "writtenOn": "2015-01-23T08:58:42Z",
       "side": 1,
       "message": "constexpr?",
+      "range": {
+        "startLine": 149,
+        "startChar": 77,
+        "endLine": 149,
+        "endChar": 79
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b5e33d1_e6bc9e8e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "As mentioned before, can\u0027t. VIXL doesn\u0027t define registers as constexpr, but as const...",
+      "parentUuid": "4b8a4f30_50fa5219",
       "range": {
         "startLine": 149,
         "startChar": 77,
@@ -168,6 +276,24 @@
     },
     {
       "key": {
+        "uuid": "ab64ab9a_0b1ea154",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Thanks, forgot that cleanup...",
+      "parentUuid": "4b8a4f30_13a7f4c6",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b8a4f30_f3b8a8e4",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 9
@@ -179,6 +305,24 @@
       "writtenOn": "2015-01-23T12:15:35Z",
       "side": 1,
       "message": "No need, you use VIXL temps for Cas.",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b5e33d1_46cc9247",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8a4f30_f3b8a8e4",
       "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -219,6 +363,24 @@
     },
     {
       "key": {
+        "uuid": "8b69a776_ea04670d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b8a4f30_33acf0a6",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abbaebeb_5b8e7790",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 9
@@ -242,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "8b69a776_8a092b24",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abbaebeb_5b8e7790",
+      "range": {
+        "startLine": 918,
+        "startChar": 2,
+        "endLine": 918,
+        "endChar": 46
+      },
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb871f28_0f298977",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 9
@@ -253,6 +439,24 @@
       "writtenOn": "2015-01-23T12:15:35Z",
       "side": 1,
       "message": "ditto",
+      "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b5e33d1_06d69ad5",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-23T18:11:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb871f28_0f298977",
       "revId": "6ec7f884005a9a9fd57fe52553e781c35b7e54e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
