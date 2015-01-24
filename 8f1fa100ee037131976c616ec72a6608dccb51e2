@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bab5bf1_ccef2f10",
+        "filename": "test/132-daemon-locks-shutdown/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-24T13:47:26Z",
+      "side": 1,
+      "message": "I\u0027m always surprised about this style. Any reason not to use while (true) ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "8f1fa100ee037131976c616ec72a6608dccb51e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
