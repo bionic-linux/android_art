@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bab5bf1_8c60877d",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-26T09:21:27Z",
+      "side": 1,
+      "message": "Following up on the previous comments, couldn\u0027t we just use `static` and leave the compiler to decide whether the methods should be inlined or not?\nI agree most of them will likely be inlined, but I don\u0027t think we should force inlining unless we have a good reason to (profiling?).",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb69dfa3_19530be1",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-26T09:21:27Z",
+      "side": 1,
+      "message": "I was planning to move Is64BitType(), IsIntegralType(), and IsFPType() (renamed as IFloatingPointType()) to runtime/primitive.h. Would it make sense to do it as part of this commit?",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb69dfa3_3950cfd1",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-26T09:21:27Z",
+      "side": 1,
+      "message": "What about:\nDCHECK(type !\u003d Primitive::kPrimVoid);\nif (IsFPType(type)) {\n  __ Fmov(...);\n} else {\n  __ Mov(...);\n}\nor something similar?",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_2c707346",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-26T09:21:27Z",
+      "side": 1,
+      "message": "This `if` is not required. VIXL can take care of this.\nUse:\n    __ Mov(trg_reg, res_reg, kDiscardForSameWReg);",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_0c6db76e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-26T09:21:27Z",
+      "side": 1,
+      "message": "You can simply discard the `if`.",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
