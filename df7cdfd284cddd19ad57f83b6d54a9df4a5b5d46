@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab53cbfb_90f0b4f4",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-26T16:25:41Z",
+      "side": 1,
+      "message": "Making them only static has the problem that not all are used in the intrinsics, so they are flagged as unused. I\u0027d rather not mark them with ATTRIBUTE_UNUSED. Two solutions: mark them static inline, or break up the file and move the unused ones directly into the code generator. Personally I thought it was better to have them all in one place. Opinions?",
+      "parentUuid": "2bab5bf1_8c60877d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_19530be1",
         "filename": "compiler/optimizing/common_arm64.h",
         "patchSetId": 10
@@ -36,6 +60,24 @@
       "writtenOn": "2015-01-26T09:21:27Z",
       "side": 1,
       "message": "I was planning to move Is64BitType(), IsIntegralType(), and IsFPType() (renamed as IFloatingPointType()) to runtime/primitive.h. Would it make sense to do it as part of this commit?",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb49434e_d27fa446",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-26T16:25:41Z",
+      "side": 1,
+      "message": "Follow-up, I prefer this one to only touch the compiler...",
+      "parentUuid": "cb69dfa3_19530be1",
       "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "eb49434e_326710c2",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-26T16:25:41Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "cb69dfa3_3950cfd1",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_2c707346",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 10
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "eb49434e_f284a8eb",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-26T16:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bab5bf1_2c707346",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_0c6db76e",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 10
@@ -87,6 +165,24 @@
       "writtenOn": "2015-01-26T09:21:27Z",
       "side": 1,
       "message": "You can simply discard the `if`.",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab53cbfb_50ff2cbc",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-26T16:25:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bab5bf1_0c6db76e",
       "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
