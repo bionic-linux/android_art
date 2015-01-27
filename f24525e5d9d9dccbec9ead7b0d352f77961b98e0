@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abd02b89_319bb280",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Is it not safe to ignore\n  mov w0, w0\n?\nIf it is safe, we need to add `kDiscardForSameWReg` as the last parameter of the move.\n\nNote that executing the \u0027mov w0, w0\u0027 instruction has the side effect of clearing the top 32 bits of x0. I think it should be safe.",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_157db69c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Just a note: at some point we will want to optimise this to use LDP and STP (load pair and store pair).",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb69dfa3_c2819865",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Here and in other places: what about `kNoOutputOverlap`?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_f54e2a89",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Was that a comment for x86? If so remove.",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_d5532e2f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Here and in other places: why \u0027size\u0027 and not \u0027type\u0027?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_35b27208",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "I\u0027m fine if it stays like this, but as a note, in VIXL we generally shorten MacroAssembler to masm. Assembler refers to a parent class of the MacroAssembler. The Assembler can only generate \u0027real\u0027 instructions, while the MacroAssembler takes care of a lot of things for the user (eg. constants that don\u0027t fit in immediate fields, or optimising away mov x1, x1).",
+      "range": {
+        "startLine": 315,
+        "startChar": 86,
+        "endLine": 315,
+        "endChar": 95
+      },
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb69dfa3_623d2cfb",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "This function generates code for a compare exchange, isn\u0027t it?\nCan we use LDXR and STXR in the loop, and have a DMB before loop_head and after exit_loop?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_f522aa92",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Here and below: HeapOperand() ?\nYou could even pass thee offsets without calling the Int32Value() member.",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_153ad6b5",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T15:22:41Z",
+      "side": 1,
+      "message": "Should there be a \u0027LOG(FATAL)\u0027?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
