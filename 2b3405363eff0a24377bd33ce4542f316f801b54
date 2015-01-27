@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "cb69dfa3_8d1ef1f9",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-01-27T19:47:34Z",
+      "side": 1,
+      "message": "Readability, if nothing else. If you can see we\u0027re using only those registers that we\u0027re explicitly saving, you don\u0027t need to look anywhere else (such as ABI documentation) to determine it\u0027s OK.",
+      "parentUuid": "2b47db3f_f231008d",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 45
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_ed092d23",
         "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
         "patchSetId": 2
