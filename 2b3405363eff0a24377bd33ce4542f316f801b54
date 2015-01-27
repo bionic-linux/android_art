@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b47db3f_d22c0438",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-27T18:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb69dfa3_8d3431c9",
+      "range": {
+        "startLine": 357,
+        "startChar": 10,
+        "endLine": 357,
+        "endChar": 14
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abd02b89_71852a9a",
         "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-01-27T16:45:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 388,
+        "startChar": 10,
+        "endLine": 388,
+        "endChar": 14
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1705dffd_9f54770a",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-27T18:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abd02b89_71852a9a",
       "range": {
         "startLine": 388,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b47db3f_f231008d",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-27T18:05:10Z",
+      "side": 1,
+      "message": "Done.  Not sure why %al shouldn\u0027t be touched, but no longer touching it.",
+      "parentUuid": "cb69dfa3_cd04690e",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 45
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_ed092d23",
         "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-01-27T16:45:29Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 45
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f82338_e073dccd",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-01-27T18:05:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb69dfa3_ed092d23",
       "range": {
         "startLine": 523,
         "startChar": 0,
