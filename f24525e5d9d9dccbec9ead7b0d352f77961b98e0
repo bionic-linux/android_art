@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "d7e7c792_97dd761f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T16:11:10Z",
+      "side": 1,
+      "message": "That should be transparent and in the move resolver, not here, though.",
+      "parentUuid": "2bab5bf1_157db69c",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_c2819865",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
@@ -47,6 +65,24 @@
       "writtenOn": "2015-01-27T15:22:41Z",
       "side": 1,
       "message": "Here and in other places: what about `kNoOutputOverlap`?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e7c792_b7407a23",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T16:11:10Z",
+      "side": 1,
+      "message": "Once somebody can tell me what that would actually change, maybe. Right now I don\u0027t see any use, and can\u0027t really say whether I want to force it.",
+      "parentUuid": "cb69dfa3_c2819865",
       "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -127,6 +163,24 @@
     },
     {
       "key": {
+        "uuid": "b7ec137b_1644ca88",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T16:11:10Z",
+      "side": 1,
+      "message": "That\u0027s counter to what happened in Quick. There we started with the purely exclusive loads, but went to acquire-release. Note that a certain S. Constantinescu was the one to suggest and implement that...",
+      "parentUuid": "cb69dfa3_623d2cfb",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_f522aa92",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
@@ -155,6 +209,24 @@
       "writtenOn": "2015-01-27T15:22:41Z",
       "side": 1,
       "message": "Should there be a \u0027LOG(FATAL)\u0027?",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57fbd733_c48fd28c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T16:11:10Z",
+      "side": 1,
+      "message": "No. Otherwise the compiler will abort every time you hit one. Which is pretty much guaranteed.",
+      "parentUuid": "2bab5bf1_153ad6b5",
       "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
