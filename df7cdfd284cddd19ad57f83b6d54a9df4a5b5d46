@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "abd02b89_5160e6ed",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T14:08:12Z",
+      "side": 1,
+      "message": "I agree we should have them all in one place. My grudge is against the \"ALWAYS_INLINE\".\nDoes \"inline\" alone work? It is fine better the compiler is free to ignore it. Maybe a comment at the top of the file to explain the use of the keyword can help for future reference.\nI\u0027m also fine with \"static inline\" if required.",
+      "parentUuid": "ab53cbfb_90f0b4f4",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_19530be1",
         "filename": "compiler/optimizing/common_arm64.h",
         "patchSetId": 10
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Follow-up, I prefer this one to only touch the compiler...",
       "parentUuid": "cb69dfa3_19530be1",
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd02b89_11666e0c",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-01-27T14:08:12Z",
+      "side": 1,
+      "message": "Ok.",
+      "parentUuid": "eb49434e_d27fa446",
       "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
