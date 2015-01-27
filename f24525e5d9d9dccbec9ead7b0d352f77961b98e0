@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cb69dfa3_0d7bc1ac",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-27T16:57:46Z",
+      "side": 1,
+      "message": "Move this to code_generator_arm64.h?\nWe already define:\n48 const vixl::Register tr \u003d vixl::x18;        // Thread Register \n\nAnd we can make use of this in code_generator_arm64.cc too.\n\nSorry for this I have missed it in my previous comments. I can include this as part of one of my patches.",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abd02b89_319bb280",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
@@ -210,6 +227,24 @@
       "writtenOn": "2015-01-27T16:11:10Z",
       "side": 1,
       "message": "That\u0027s counter to what happened in Quick. There we started with the purely exclusive loads, but went to acquire-release. Note that a certain S. Constantinescu was the one to suggest and implement that...",
+      "parentUuid": "cb69dfa3_623d2cfb",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abd02b89_51710677",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-27T16:57:46Z",
+      "side": 1,
+      "message": "This is what Quick does now. Since I expect the default case to be one where the exclusive store succeeds (no retry) - this variant should, at least in theory, be faster.\n\nWe can however have a !kUseAcquireRelease variant that is implemented as you suggested.",
       "parentUuid": "cb69dfa3_623d2cfb",
       "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
