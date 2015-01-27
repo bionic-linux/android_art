@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "970aaf12_f81f1100",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T19:34:11Z",
+      "side": 1,
+      "message": "I agree with Mark. Touching al is fine. This is native-\u003equick, so nothing\u0027s in eax on entry anyways, and ax variants usually mean tighter encodings than other registers.",
+      "parentUuid": "2b47db3f_f231008d",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 45
+      },
+      "revId": "2b3405363eff0a24377bd33ce4542f316f801b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_ed092d23",
         "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
         "patchSetId": 2
