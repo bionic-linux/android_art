@@ -252,6 +252,24 @@
     },
     {
       "key": {
+        "uuid": "abd02b89_d1d0568e",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-27T17:03:06Z",
+      "side": 1,
+      "message": "For now it is fine like this. Please note that for the Optimizing compiler we prefer Load-Acquire Store-Release over the DMB variants, wherever the two can be replaced.\n\nFor Nicolas, Andreas - we expect newer CPUs to have a faster implementation for this semantic.",
+      "parentUuid": "abd02b89_51710677",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_f522aa92",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
