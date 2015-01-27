@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d7e7c792_77e2f2de",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-27T16:10:56Z",
+      "side": 1,
+      "message": "I made it static inline, which works.",
+      "parentUuid": "abd02b89_5160e6ed",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 20
+      },
+      "revId": "df7cdfd284cddd19ad57f83b6d54a9df4a5b5d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_19530be1",
         "filename": "compiler/optimizing/common_arm64.h",
         "patchSetId": 10
