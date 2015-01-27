@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "abd02b89_11014e78",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-27T16:49:11Z",
+      "side": 1,
+      "message": "Agreed with Andreas.",
+      "parentUuid": "d7e7c792_97dd761f",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb69dfa3_c2819865",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
@@ -83,6 +101,24 @@
       "side": 1,
       "message": "Once somebody can tell me what that would actually change, maybe. Right now I don\u0027t see any use, and can\u0027t really say whether I want to force it.",
       "parentUuid": "cb69dfa3_c2819865",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bab5bf1_757a3a26",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-27T16:49:11Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m currently implementing it. It currently has no effect on the register allocator. Once it does, it means the output can share the same register with an input.",
+      "parentUuid": "d7e7c792_b7407a23",
       "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
