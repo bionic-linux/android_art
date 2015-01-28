@@ -306,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "578037c4_96f1ec9f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1030338
+      },
+      "writtenOn": "2015-01-28T11:52:53Z",
+      "side": 1,
+      "message": "A global field must be \"volatile\" in Java (\"Volatile fields are special fields which are used for communicating state between threads.\")\n\nThus every A() and B() will have the Acquire-Release semantics (as implemented in the Optimizing compiler). Therefore in this case both variants are syntactically equivalent and in theory the faster is the one implemented here (due to the stronger semantics ordering for the DMB variant).\n\nWhat I am not sure is if we need to ensure both atomicity and ordering for Unsafe.cmpxchg(). For now we do so we should be safe. Hans probably knows whether we can downgrade this to only ensuring atomicity (no Acquire-Release semantics and no DMBs for ARM). I assume we can\u0027t.",
+      "parentUuid": "f79dab26_1bfe5b74",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_f522aa92",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
