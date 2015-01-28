@@ -324,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "578037c4_d6f1a470",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1065463
+      },
+      "writtenOn": "2015-01-28T14:59:01Z",
+      "side": 1,
+      "message": "Ok, so if the cmpxchg is to a global (volatile) field then just using the LDAXR+STLXR variant is sufficient for SC providing that your acquire/release semantics are implemented everywhere using LDA[X]R and STL[X]R rather than DMB.\n\nIf the cmpxchg is to a non-volatile field, then I suspect that doesn\u0027t require inter-thread ordering guarantees (i.e. you can just use LDXR+STXR), but I\u0027m not familiar enough with the JMM and its data-race semantics to say for sure :)",
+      "parentUuid": "578037c4_96f1ec9f",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_f522aa92",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
