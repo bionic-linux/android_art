@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d72fc7b3_e554500b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "578037c4_56eef414",
+      "range": {
+        "startLine": 1836,
+        "startChar": 44,
+        "endLine": 1836,
+        "endChar": 46
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f79dab26_1b1f3b8d",
         "filename": "compiler/optimizing/code_generator_arm64.h",
         "patchSetId": 13
@@ -59,6 +83,30 @@
       "writtenOn": "2015-01-28T08:43:00Z",
       "side": 1,
       "message": "Since this only applies to intrinsics, could you move it to intrinsics_arm64.cc?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97db8f05_7004708d",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79dab26_1b1f3b8d",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d72fc7b3_85bbc4f2",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79dab26_3b2477de",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f79dab26_fb05af35",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 13
@@ -105,6 +177,30 @@
       "writtenOn": "2015-01-28T08:43:00Z",
       "side": 1,
       "message": "Nit: new line (here and other places below).",
+      "range": {
+        "startLine": 348,
+        "startChar": 54,
+        "endLine": 348,
+        "endChar": 67
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d72fc7b3_45dd3c1c",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f79dab26_fb05af35",
       "range": {
         "startLine": 348,
         "startChar": 54,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "57ae7766_6c0a4fcc",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97662f11_382489de",
+      "range": {
+        "startLine": 919,
+        "startChar": 1,
+        "endLine": 919,
+        "endChar": 30
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97662f11_d808ed50",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 13
@@ -151,6 +271,30 @@
       "writtenOn": "2015-01-28T08:43:00Z",
       "side": 1,
       "message": "Should the method be renamed then?",
+      "range": {
+        "startLine": 832,
+        "startChar": 57,
+        "endLine": 832,
+        "endChar": 75
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ae7766_ef463141",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 1,
+      "message": "I was trying to follow the signature when naming these. I know it doesn\u0027t fit here, but I thought it\u0027s good enough. As it\u0027s the same in x86, I\u0027ll leave it for cleanup later if you wish.",
+      "parentUuid": "97662f11_d808ed50",
       "range": {
         "startLine": 832,
         "startChar": 57,

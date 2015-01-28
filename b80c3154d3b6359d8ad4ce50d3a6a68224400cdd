@@ -22,6 +22,30 @@
       "revId": "b80c3154d3b6359d8ad4ce50d3a6a68224400cdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ae7766_0f306de4",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-01-28T23:35:44Z",
+      "side": 0,
+      "message": "Object is distinguished now. Now when we go to compressed heaps one should do a search for kPrimNot...",
+      "parentUuid": "578037c4_16e87c03",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 53
+      },
+      "revId": "b80c3154d3b6359d8ad4ce50d3a6a68224400cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
