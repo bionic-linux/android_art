@@ -288,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "f79dab26_1bfe5b74",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1065463
+      },
+      "writtenOn": "2015-01-28T11:15:02Z",
+      "side": 1,
+      "message": "You\u0027re missing a subtlety here in that DMB; LDXR; ...; STXR; DMB has stronger ordering guarantees than the corresponding LDAXR; ...; STLXR sequence.\n\nFor example, if A() and B() consist of standard LDR/STR instructions then:\n\nA()\nDMB\nLDXR\n...\nSTXR\nDMB\nB()\n\nRequires A() to be globally observed before B(). However:\n\nA()\nLDAXR\n...\nSTLXR\nB()\n\nPermits B() to be observed before A().\n\nSo the question really is: what memory ordering semantics do you require for your cmpxchg? If you define that, then we can come up with an optimal instruction sequence.",
+      "parentUuid": "abd02b89_d1d0568e",
+      "revId": "f24525e5d9d9dccbec9ead7b0d352f77961b98e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bab5bf1_f522aa92",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 12
