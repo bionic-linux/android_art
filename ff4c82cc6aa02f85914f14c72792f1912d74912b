@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97662f11_781a019e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "Thank you.",
+      "range": {
+        "startLine": 456,
+        "startChar": 9,
+        "endLine": 456,
+        "endChar": 27
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "578037c4_56eef414",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "kArtMethodRegister",
+      "range": {
+        "startLine": 1836,
+        "startChar": 44,
+        "endLine": 1836,
+        "endChar": 46
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79dab26_1b1f3b8d",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "Since this only applies to intrinsics, could you move it to intrinsics_arm64.cc?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79dab26_3b2477de",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "I would put that in locations.h, as other arch intrinsics will need it.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79dab26_fb05af35",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "Nit: new line (here and other places below).",
+      "range": {
+        "startLine": 348,
+        "startChar": 54,
+        "endLine": 348,
+        "endChar": 67
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97662f11_382489de",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to apply.",
+      "range": {
+        "startLine": 919,
+        "startChar": 1,
+        "endLine": 919,
+        "endChar": 30
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97662f11_d808ed50",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "Should the method be renamed then?",
+      "range": {
+        "startLine": 832,
+        "startChar": 57,
+        "endLine": 832,
+        "endChar": 75
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f79dab26_bb0f2754",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-01-28T08:43:00Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 884,
+        "startChar": 56,
+        "endLine": 884,
+        "endChar": 75
+      },
+      "revId": "ff4c82cc6aa02f85914f14c72792f1912d74912b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
