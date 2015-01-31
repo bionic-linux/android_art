@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7790db99_958b8405",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-01-31T00:52:57Z",
+      "side": 1,
+      "message": "DCHECK_EQ",
+      "range": {
+        "startLine": 961,
+        "startChar": 6,
+        "endLine": 961,
+        "endChar": 12
+      },
+      "revId": "45ad1b05be4397d7b4356e56b3bed305eb047ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "177f9f22_ec96cb2e",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-01-31T00:52:57Z",
+      "side": 1,
+      "message": "Worth adding a enum operator \u003c\u003c for RegionType?",
+      "revId": "45ad1b05be4397d7b4356e56b3bed305eb047ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_b5b9e8cb",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-01-31T00:52:57Z",
+      "side": 1,
+      "message": "How about using enum classes with a specified size:\n\nenum class RegionState : uint8_t {...",
+      "revId": "45ad1b05be4397d7b4356e56b3bed305eb047ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7790db99_55bf5cad",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-01-31T00:52:57Z",
+      "side": 1,
+      "message": "And here.",
+      "revId": "45ad1b05be4397d7b4356e56b3bed305eb047ca3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
