@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "9c665411_1882e5e1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T16:24:16Z",
+      "side": 1,
+      "message": "With the same check: Runtime::Current()-\u003eIsTransactionAborted(). I prefer keeping that here for consistency though.",
+      "parentUuid": "bc7158c9_393c8ff0",
+      "range": {
+        "startLine": 4224,
+        "startChar": 6,
+        "endLine": 4225,
+        "endChar": 42
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b737b3c2_294b2dec",
         "filename": "runtime/transaction.h",
         "patchSetId": 1
