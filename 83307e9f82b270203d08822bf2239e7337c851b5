@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c7d68a0_956fa460",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-04T19:07:44Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 1456,
+        "startChar": 100,
+        "endLine": 1456,
+        "endChar": 101
+      },
+      "revId": "83307e9f82b270203d08822bf2239e7337c851b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
