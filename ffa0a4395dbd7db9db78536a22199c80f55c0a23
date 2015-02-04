@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "bc7158c9_393c8ff0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-04T15:49:30Z",
+      "side": 1,
+      "message": "How would you detect this case in the compiler driver? I think the LOG would have to be here, but it was just a suggestion.",
+      "parentUuid": "7c928013_bfaab795",
+      "range": {
+        "startLine": 4224,
+        "startChar": 6,
+        "endLine": 4225,
+        "endChar": 42
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b737b3c2_294b2dec",
         "filename": "runtime/transaction.h",
         "patchSetId": 1
