@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "1ca1845e_3f60e39a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T18:27:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand: are you saying we should get here with a pending exception if the transaction aborted? Even if it has been caught and cleared during class initialization?\n\nThis case matches the CatchNativeCallAbortClass class from test/Transaction/Transaction.java (tested by transaction_test) where we catch Throwable, thus the thrown java.lang.InternalError.",
+      "parentUuid": "9c8d74f5_468726f1",
+      "range": {
+        "startLine": 4224,
+        "startChar": 6,
+        "endLine": 4225,
+        "endChar": 42
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b737b3c2_294b2dec",
         "filename": "runtime/transaction.h",
         "patchSetId": 1
