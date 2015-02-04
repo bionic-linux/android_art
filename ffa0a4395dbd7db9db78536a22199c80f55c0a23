@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c928013_9f11f37c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T09:58:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17479f3f_2cac1305",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17479f3f_8c68a710",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-03T18:42:40Z",
       "side": 1,
       "message": "Be more specific (what code). Maybe: \"class initializer code\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 27
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c1ee459_9a55ad08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T09:58:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17479f3f_8c68a710",
       "range": {
         "startLine": 12,
         "startChar": 19,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dc836cc3_02cd8a64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T09:58:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17479f3f_cc72affe",
+      "range": {
+        "startLine": 13,
+        "startChar": 48,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17479f3f_cfd0e154",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-02-03T18:42:40Z",
       "side": 1,
       "message": "Maybe we should consider a LOG(WARNING) for this case. I really hate that there\u0027s code out there doing this.",
+      "range": {
+        "startLine": 4224,
+        "startChar": 6,
+        "endLine": 4225,
+        "endChar": 42
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c928013_bfaab795",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4225,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T09:58:54Z",
+      "side": 1,
+      "message": "I found it more consistent to leave the class initializer with a pending exception if the transaction was aborted. However it\u0027s not mandatory to do that. We could move that check up to the compiler driver when we return from the class initialization.\n\nWould you prefer doing that?",
+      "parentUuid": "17479f3f_cfd0e154",
       "range": {
         "startLine": 4224,
         "startChar": 6,
@@ -128,6 +224,30 @@
       "writtenOn": "2015-02-03T18:42:40Z",
       "side": 1,
       "message": "I like that naming, it\u0027s better.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 17
+      },
+      "revId": "ffa0a4395dbd7db9db78536a22199c80f55c0a23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c1ee459_9aaa4d96",
+        "filename": "runtime/transaction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-02-04T09:58:54Z",
+      "side": 1,
+      "message": "Yes, I found it ambiguous when getting back into that code.",
+      "parentUuid": "b737b3c2_696e0566",
       "range": {
         "startLine": 91,
         "startChar": 2,
