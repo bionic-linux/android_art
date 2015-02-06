@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c69a073_87fe0671",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-06T17:07:35Z",
+      "side": 1,
+      "message": "Could you create a method for this and all of the other CodeGenXXX::GenerateFrameYYY methods? Something like HasEmptyFrame()",
+      "range": {
+        "startLine": 480,
+        "startChar": 6,
+        "endLine": 480,
+        "endChar": 37
+      },
+      "revId": "e99397347d9f3a1f8af918dd274f3134f328d8cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5ba8e2_e5e016d8",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-06T17:07:35Z",
+      "side": 1,
+      "message": "As discussed, would be nice to move this elsewhere.",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 70
+      },
+      "revId": "e99397347d9f3a1f8af918dd274f3134f328d8cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
