@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c47c43f_ccd54f74",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-02-06T23:52:26Z",
+      "side": 0,
+      "message": "Sorry, I was trying to mimic the logic that ensures that collector type is never kCollectorTypeNone, although I guess that might not be necessary since XGcOption defaults to the right thing (instead of kCollectorTypeNone, which it did before).\n\nOther than this being redundant, what was the issue here?",
+      "revId": "076018addcb0f27d1a4ed9d1967a28bd5fb21230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
