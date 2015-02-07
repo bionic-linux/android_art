@@ -34,6 +34,24 @@
       "revId": "076018addcb0f27d1a4ed9d1967a28bd5fb21230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc6958a4_dcb981fb",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-02-07T02:02:35Z",
+      "side": 0,
+      "message": "Thanks for finding this. I fixed it in https://android-review.googlesource.com/#/c/129931/1 (works with or without these lines of code deleted)",
+      "parentUuid": "71f62b4b_bf873726",
+      "revId": "076018addcb0f27d1a4ed9d1967a28bd5fb21230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
