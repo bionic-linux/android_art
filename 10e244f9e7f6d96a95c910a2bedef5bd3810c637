@@ -22,6 +22,30 @@
       "revId": "10e244f9e7f6d96a95c910a2bedef5bd3810c637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11fb2f87_ec770b1f",
+        "filename": "test/444-checker-nce/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-02-09T18:00:36Z",
+      "side": 1,
+      "message": "yep and thanks.",
+      "parentUuid": "11fb2f87_ccc32f28",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "10e244f9e7f6d96a95c910a2bedef5bd3810c637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
