@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb9d8a9_c7c6be1e",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-02-13T21:37:01Z",
+      "side": 1,
+      "message": "\"for a DexFile or OatFile location\"? and then discuss the new subtle leading / stripping behavior?",
+      "range": {
+        "startLine": 492,
+        "startChar": 42,
+        "endLine": 492,
+        "endChar": 66
+      },
+      "revId": "073866207ad1661ede110f105e4b1ea9bcedaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abbf508b_0f22a948",
+        "filename": "runtime/utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-02-13T21:37:01Z",
+      "side": 1,
+      "message": "need cases for without leading / now as well.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 43
+      },
+      "revId": "073866207ad1661ede110f105e4b1ea9bcedaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
