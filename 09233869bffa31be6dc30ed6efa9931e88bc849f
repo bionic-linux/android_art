@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bab6058_480bbf23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-13T23:17:39Z",
+      "side": 1,
+      "message": "I put that there. The code is:\n\n intptr_t limit \u003d static_cast\u003cintptr_t\u003e(1) \u003c\u003c (N - 1);\n return (-limit \u003c\u003d value) \u0026\u0026 (value \u003c limit);\n\nFor my reading, when intptr_t is 32b, this won\u0027t work. limit will be MIN_VALUE, right?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "09233869bffa31be6dc30ed6efa9931e88bc849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
