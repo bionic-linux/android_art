@@ -22,6 +22,30 @@
       "revId": "09233869bffa31be6dc30ed6efa9931e88bc849f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b571842_972824a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-14T02:11:26Z",
+      "side": 1,
+      "message": "Sounds right",
+      "parentUuid": "2bab6058_480bbf23",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "09233869bffa31be6dc30ed6efa9931e88bc849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
