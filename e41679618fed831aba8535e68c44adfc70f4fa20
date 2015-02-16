@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be93ccf_7c21d911",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-16T16:43:03Z",
+      "side": 1,
+      "message": "Did you mean Size()-1 ?",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 65
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab9e706a_11ea8cfb",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-16T16:43:03Z",
+      "side": 1,
+      "message": "Could you rename this to sth like \"next_block_index\"? Just \"index\" seems ambiguous.",
+      "range": {
+        "startLine": 352,
+        "startChar": 9,
+        "endLine": 352,
+        "endChar": 14
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0be93ccf_1c9ff5d2",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-16T16:43:03Z",
+      "side": 1,
+      "message": "++index could be out of bounds?",
+      "range": {
+        "startLine": 361,
+        "startChar": 64,
+        "endLine": 361,
+        "endChar": 71
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0be93ccf_3ca4b11c",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-16T16:43:03Z",
+      "side": 1,
+      "message": "You call Get on the same index twice. Use a temp?",
+      "range": {
+        "startLine": 362,
+        "startChar": 17,
+        "endLine": 362,
+        "endChar": 41
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
