@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ba36cb2_d0f71cdd",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-16T19:06:41Z",
+      "side": 1,
+      "message": "Yes :) It works because the last block is HExit, and it never calls GoesToNextBlock. I added a DCHECK instead.",
+      "parentUuid": "0be93ccf_7c21d911",
+      "range": {
+        "startLine": 350,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 65
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab9e706a_11ea8cfb",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-02-16T16:43:03Z",
       "side": 1,
       "message": "Could you rename this to sth like \"next_block_index\"? Just \"index\" seems ambiguous.",
+      "range": {
+        "startLine": 352,
+        "startChar": 9,
+        "endLine": 352,
+        "endChar": 14
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab9e706a_b17700b7",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-16T19:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab9e706a_11ea8cfb",
       "range": {
         "startLine": 352,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ab9e706a_114e0c84",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-16T19:06:41Z",
+      "side": 1,
+      "message": "Yes, same HExit situation. Added DCHECK instead.",
+      "parentUuid": "0be93ccf_1c9ff5d2",
+      "range": {
+        "startLine": 361,
+        "startChar": 64,
+        "endLine": 361,
+        "endChar": 71
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0be93ccf_3ca4b11c",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-02-16T16:43:03Z",
       "side": 1,
       "message": "You call Get on the same index twice. Use a temp?",
+      "range": {
+        "startLine": 362,
+        "startChar": 17,
+        "endLine": 362,
+        "endChar": 41
+      },
+      "revId": "e41679618fed831aba8535e68c44adfc70f4fa20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ba36cb2_1011a483",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-16T19:06:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be93ccf_3ca4b11c",
       "range": {
         "startLine": 362,
         "startChar": 17,
