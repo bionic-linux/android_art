@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb398fa_3def570c",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-17T16:45:40Z",
+      "side": 1,
+      "message": "Isn\u0027t that bad design?",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 3
+      },
+      "revId": "c0572a451944f78397619dec34a38c36c11e9d2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
