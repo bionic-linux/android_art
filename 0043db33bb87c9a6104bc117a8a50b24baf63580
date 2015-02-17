@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b7c4cf2_283d6bec",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-17T10:20:13Z",
+      "side": 1,
+      "message": "this is never used.",
+      "range": {
+        "startLine": 350,
+        "startChar": 23,
+        "endLine": 350,
+        "endChar": 47
+      },
+      "revId": "0043db33bb87c9a6104bc117a8a50b24baf63580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b7c4cf2_0838a7fb",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-02-17T10:20:13Z",
+      "side": 1,
+      "message": "This is now used only in the DCHECK, but I guess it\u0027s worth keeping it.",
+      "range": {
+        "startLine": 364,
+        "startChar": 49,
+        "endLine": 364,
+        "endChar": 56
+      },
+      "revId": "0043db33bb87c9a6104bc117a8a50b24baf63580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
