@@ -46,6 +46,30 @@
       "revId": "c0572a451944f78397619dec34a38c36c11e9d2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abc5907a_d99a9358",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-02-17T18:14:34Z",
+      "side": 1,
+      "message": "I don\u0027t care about it really. Just makes it look like Quick. :-)\n\nThere are a lot of virtuals already, and I think it\u0027s only one or two calls per compiled method, so I think the overhead of a virtual call is pretty minimal.",
+      "parentUuid": "8b7c4cf2_6bd2fd5e",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 311,
+        "endChar": 3
+      },
+      "revId": "c0572a451944f78397619dec34a38c36c11e9d2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
