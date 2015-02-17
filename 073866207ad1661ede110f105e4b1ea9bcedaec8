@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bb5bcf7_df6b9fd5",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-02-17T18:42:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.\n\nMy understanding of what the function does is this: given a dex location and the path of a dalvik cache directory, return the path to what the oat file should be named. This is done by turning the dex location into a file name (replacing \u0027/\u0027 with \u0027@\u0027 to get a valid filename), and adding \u0027@classes.dex\u0027. Does it do something different for the boot image?\n\nAfter thinking some more, there is an ambiguity about what should happen if the dex location isn\u0027t absolute. Two sensible options are:\n 1. Turn a relative dex location into an absolute dex location and form the oat file name from that.\n 2. Treat a relative dex location as a separate dex location from the dex location corresponding to the absolute path of the relative dex location.\n\nI had only thought of (2), not (1) when I posted this change. It seems a shame to add the work and complexity of (1) given that nobody uses relative dex locations. I\u0027ll have to think more about what I want to do here.\n\nThoughts?",
+      "parentUuid": "6bb9d8a9_c7c6be1e",
+      "range": {
+        "startLine": 492,
+        "startChar": 42,
+        "endLine": 492,
+        "endChar": 66
+      },
+      "revId": "073866207ad1661ede110f105e4b1ea9bcedaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abbf508b_0f22a948",
         "filename": "runtime/utils_test.cc",
         "patchSetId": 1
