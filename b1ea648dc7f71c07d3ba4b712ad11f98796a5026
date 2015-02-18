@@ -70,6 +70,98 @@
       "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ba1740b_ce9a8386",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T14:31:08Z",
+      "side": 1,
+      "message": "Nit: Avoid the question mark, as it looks like a TODO. I\u0027d change it to something like \"We can use leaq only if the constant can fit in an immediate\".",
+      "range": {
+        "startLine": 1866,
+        "startChar": 10,
+        "endLine": 1866,
+        "endChar": 62
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbc7832_0f1c8566",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T14:31:08Z",
+      "side": 1,
+      "message": "Nit: Instruction*",
+      "range": {
+        "startLine": 1867,
+        "startChar": 6,
+        "endLine": 1867,
+        "endChar": 20
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ba1740b_2e906763",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T14:31:08Z",
+      "side": 1,
+      "message": "Could that be IsInt\u003c32\u003e ?",
+      "range": {
+        "startLine": 1871,
+        "startChar": 12,
+        "endLine": 1871,
+        "endChar": 48
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bbc7832_8f36b5dd",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T14:31:08Z",
+      "side": 1,
+      "message": "Low32Bits (to be on the safe side)",
+      "range": {
+        "startLine": 1939,
+        "startChar": 30,
+        "endLine": 1939,
+        "endChar": 35
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
