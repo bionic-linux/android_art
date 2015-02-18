@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0babfcf0_4c3dffb4",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-02-18T16:37:08Z",
+      "side": 1,
+      "message": "How did relative dex locations work in dalvik?\nWas \"/foo/bar/sludge.jar\" considered the same as \"../bar/sludge.jar\" when the current working directory was \"/foo/cat/\"? Or were they considered distinct dex locations?",
+      "parentUuid": "8b644c9b_0e7b0f55",
+      "range": {
+        "startLine": 492,
+        "startChar": 42,
+        "endLine": 492,
+        "endChar": 66
+      },
+      "revId": "073866207ad1661ede110f105e4b1ea9bcedaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abbf508b_0f22a948",
         "filename": "runtime/utils_test.cc",
         "patchSetId": 1
