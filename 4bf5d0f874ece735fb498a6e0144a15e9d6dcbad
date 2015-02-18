@@ -16,6 +16,24 @@
       "revId": "4bf5d0f874ece735fb498a6e0144a15e9d6dcbad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b5ed4d0_668d0e49",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T09:54:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b69d873_e70fc22c",
+      "revId": "4bf5d0f874ece735fb498a6e0144a15e9d6dcbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
