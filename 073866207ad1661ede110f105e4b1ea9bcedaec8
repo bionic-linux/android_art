@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8b644c9b_0e7b0f55",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-02-18T08:38:25Z",
+      "side": 1,
+      "message": "the first half of the comment is just a nit about adding \"location\" to make it clear it is not a file path.\n\nprobably cache_location should be renamed to cache_directory to conversely make it clear it is expected to be a real path.\n\nthe second part about stripping leading / characters is because that seems to be part of the functional change to behavior in utils.cc\n\nas far as relative dex locations, they used to work with dalvik. in fact i think there was some grossness that the art/tools/art script needs fully qualified instead of relative paths (and the old dalvik script did not). it is something we have lived without for a while, but it would make life easier to not have the limitation.",
+      "parentUuid": "0bb5bcf7_df6b9fd5",
+      "range": {
+        "startLine": 492,
+        "startChar": 42,
+        "endLine": 492,
+        "endChar": 66
+      },
+      "revId": "073866207ad1661ede110f105e4b1ea9bcedaec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abbf508b_0f22a948",
         "filename": "runtime/utils_test.cc",
         "patchSetId": 1
