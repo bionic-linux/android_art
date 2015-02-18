@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4bf3341b_fe0aa1cc",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-18T15:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ba1740b_ce9a8386",
+      "range": {
+        "startLine": 1866,
+        "startChar": 10,
+        "endLine": 1866,
+        "endChar": 62
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbc7832_0f1c8566",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2015-02-18T14:31:08Z",
       "side": 1,
       "message": "Nit: Instruction*",
+      "range": {
+        "startLine": 1867,
+        "startChar": 6,
+        "endLine": 1867,
+        "endChar": 20
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbad64fe_72e1b81f",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1867,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-18T15:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bbc7832_0f1c8566",
       "range": {
         "startLine": 1867,
         "startChar": 6,
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4b1c141f_b67cc851",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-18T15:02:55Z",
+      "side": 1,
+      "message": "Not until https://android-review.googlesource.com/132963 is merged.  The old code fails on 32 bit hosts.",
+      "parentUuid": "4ba1740b_2e906763",
+      "range": {
+        "startLine": 1871,
+        "startChar": 12,
+        "endLine": 1871,
+        "endChar": 48
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bbc7832_8f36b5dd",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 2
@@ -153,6 +225,30 @@
       "writtenOn": "2015-02-18T14:31:08Z",
       "side": 1,
       "message": "Low32Bits (to be on the safe side)",
+      "range": {
+        "startLine": 1939,
+        "startChar": 30,
+        "endLine": 1939,
+        "endChar": 35
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf3341b_de0fe5da",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-18T15:02:55Z",
+      "side": 1,
+      "message": "Bit of overkill.  C/C++ definition assures that the semantics are correct. In fact Low32 returns a uint32_t, which isn\u0027t any better in some sense.\n\nWill change anyways.",
+      "parentUuid": "6bbc7832_8f36b5dd",
       "range": {
         "startLine": 1939,
         "startChar": 30,
