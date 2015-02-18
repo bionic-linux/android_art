@@ -22,6 +22,30 @@
       "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b1c141f_969a6c57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-02-18T13:12:18Z",
+      "side": 1,
+      "message": "Isn\u0027t that what kOutputOverlap means?  Descriptions would be helpful",
+      "parentUuid": "6b69d873_87312618",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
