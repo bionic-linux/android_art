@@ -46,6 +46,30 @@
       "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ba1740b_8eb99bfa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-18T14:16:11Z",
+      "side": 1,
+      "message": "OK, I think you just helped me understand why it\u0027s confusing :-). By overlapping, this code means the liveness overlaps. I agree it\u0027s not ideal.",
+      "parentUuid": "4b1c141f_969a6c57",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "b1ea648dc7f71c07d3ba4b712ad11f98796a5026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
