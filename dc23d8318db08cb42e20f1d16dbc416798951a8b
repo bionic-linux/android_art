@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68dabe34_ff24ffa9",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-02-20T11:19:40Z",
+      "side": 1,
+      "message": "\"thus should be preserved, hence they are not considered as single gotos\"?",
+      "revId": "dc23d8318db08cb42e20f1d16dbc416798951a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
