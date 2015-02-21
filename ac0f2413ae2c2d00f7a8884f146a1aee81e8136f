@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "085862e4_64018a2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-21T14:47:24Z",
+      "side": 1,
+      "message": "Out of curiosity: did you measure general performance increase, or was there a set of benchmarks/apps where it was noticeable?",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "ac0f2413ae2c2d00f7a8884f146a1aee81e8136f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
