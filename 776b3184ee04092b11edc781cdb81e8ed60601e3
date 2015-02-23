@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8c06ec1_83917eee",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-02-23T16:04:22Z",
+      "side": 1,
+      "message": "because we know...\n\n\"now\" expires quickly :)",
+      "range": {
+        "startLine": 1570,
+        "startChar": 32,
+        "endLine": 1570,
+        "endChar": 40
+      },
+      "revId": "776b3184ee04092b11edc781cdb81e8ed60601e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
