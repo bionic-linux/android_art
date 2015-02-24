@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45d9656e_eec0df89",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-24T21:51:14Z",
+      "side": 1,
+      "message": "vloantisg -\u003e our volantis bots.",
+      "range": {
+        "startLine": 65,
+        "startChar": 61,
+        "endLine": 65,
+        "endChar": 70
+      },
+      "revId": "3d7e0c80cf84a8485b2c73c3af593dc602bce3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5c5c17a_190ecb5e",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-02-24T21:51:14Z",
+      "side": 1,
+      "message": "If it also fails on hammerhead, maybe move this to its own section?",
+      "range": {
+        "startLine": 68,
+        "startChar": 11,
+        "endLine": 68,
+        "endChar": 72
+      },
+      "revId": "3d7e0c80cf84a8485b2c73c3af593dc602bce3e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
