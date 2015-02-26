@@ -507,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "c2e54b1d_d2a0240e",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:51:23Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "02a8435a_84f686e0",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82b433b1_68300392",
         "filename": "runtime/gc/accounting/mod_union_table.cc",
         "patchSetId": 2
@@ -836,6 +860,30 @@
     },
     {
       "key": {
+        "uuid": "a2ea17ed_51ad54fd",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:51:23Z",
+      "side": 1,
+      "message": "Can you mention this in the comment?",
+      "parentUuid": "626bbfdd_b778a853",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c22f0bb4_e23ba6bd",
         "filename": "runtime/gc/accounting/mod_union_table_test.cc",
         "patchSetId": 2
@@ -871,6 +919,30 @@
       "side": 1,
       "message": "The card cache implementation doesn\u0027t really support a target space currently, just 2 avoid spaces, which are usually the source space and the image space. Should I change this, ideas?",
       "parentUuid": "c22f0bb4_e23ba6bd",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82efd3fe_90b4d47c",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:51:23Z",
+      "side": 1,
+      "message": "I guess you mean the reference cache implementation rather than the card cache one. OK.",
+      "parentUuid": "e2cb2f3b_ab22699c",
       "range": {
         "startLine": 139,
         "startChar": 17,
@@ -1012,6 +1084,30 @@
       "side": 1,
       "message": "I was under the impression that we couldn\u0027t factor the main logic since we can only call the EXPECT_ functions within the main test body? One option is to use CHECK but I don\u0027t like this since CHECK failures often deadlock and print a bunch of lock violations.",
       "parentUuid": "82399303_40a6ce5a",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2ea17ed_f4d9d632",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:51:23Z",
+      "side": 1,
+      "message": "OK though I see some EXPECT_ function calls that are not in the main test function in space_test.h.",
+      "parentUuid": "02668336_9464a485",
       "range": {
         "startLine": 225,
         "startChar": 0,
