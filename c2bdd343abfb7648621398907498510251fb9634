@@ -884,6 +884,30 @@
     },
     {
       "key": {
+        "uuid": "025123a8_5c069d4a",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T22:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2ea17ed_51ad54fd",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c22f0bb4_e23ba6bd",
         "filename": "runtime/gc/accounting/mod_union_table_test.cc",
         "patchSetId": 2
@@ -1108,6 +1132,30 @@
       "side": 1,
       "message": "OK though I see some EXPECT_ function calls that are not in the main test function in space_test.h.",
       "parentUuid": "02668336_9464a485",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4275db3c_2ef4c7d6",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T22:56:09Z",
+      "side": 1,
+      "message": "I think last time I had tried a static function or something, it works now.",
+      "parentUuid": "a2ea17ed_f4d9d632",
       "range": {
         "startLine": 225,
         "startChar": 0,
