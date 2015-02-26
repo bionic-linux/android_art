@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2ea17ed_f44c368d",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:52:06Z",
+      "side": 1,
+      "message": "zygote -\u003e image?",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 46
+      },
+      "revId": "b544f993cfed3e9c6509954c5987983bfde290b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2ea17ed_7493a670",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T20:52:06Z",
+      "side": 1,
+      "message": "I see this is just to avoid a null check on immune_space. Can you say it in the comment?",
+      "range": {
+        "startLine": 407,
+        "startChar": 2,
+        "endLine": 407,
+        "endChar": 78
+      },
+      "revId": "b544f993cfed3e9c6509954c5987983bfde290b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
