@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a25db761_b9c39f10",
+        "filename": "runtime/gc/accounting/bitmap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "There is already a comment for that in bitmap.h, I think doing it in another CL is better.",
+      "parentUuid": "2240e774_dd3bebbd",
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2496fa5_fb286fa7",
         "filename": "runtime/gc/accounting/bitmap.cc",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "Should this be better rounded by kBitsPerBitmapWord? Maybe,\n\nRoundUp((RoundUp(num_bits, kBitsPerBitmapWord) / kBitsPerBitmapWord) * sizeof(uintptr_t), kPageSize)\n\nthough it may not matter as kPageSize is a multiple of sizeof(uintptr_t)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 67
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "426cfb14_d6b0e405",
+        "filename": "runtime/gc/accounting/bitmap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2496fa5_fb286fa7",
       "range": {
         "startLine": 39,
         "startChar": 55,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a25db761_59d883f2",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Most of the stuff is already tested in space_bitmap_test, I just need to move most of the logic to bitmap_test in another CL, is that OK?",
+      "parentUuid": "2240e774_7d99f78e",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2240e774_fd2867a7",
         "filename": "runtime/gc/accounting/bitmap.h",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "marked -\u003e set?",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 53
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c258eb71_da792510",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2240e774_fd2867a7",
       "range": {
         "startLine": 72,
         "startChar": 47,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "c258eb71_3af82119",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42431b81_fe2ea101",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42431b81_7e257152",
         "filename": "runtime/gc/accounting/bitmap.h",
         "patchSetId": 2
@@ -122,6 +236,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "Does this mean \"One bit per..\" ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 8
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a25db761_5911a3fe",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42431b81_7e257152",
       "range": {
         "startLine": 128,
         "startChar": 3,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "426cfb14_56e85400",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42431b81_5e3cf55a",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2240e774_1dc55398",
         "filename": "runtime/gc/accounting/bitmap.h",
         "patchSetId": 2
@@ -168,6 +330,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "This should be in reverse?",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2496fa5_7b373f7a",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2240e774_1dc55398",
       "range": {
         "startLine": 152,
         "startChar": 5,
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "e2496fa5_5b3c035b",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Yes, for the card table, there can be multiple objects on the same card.",
+      "parentUuid": "42431b81_1e070dca",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42431b81_3ef80919",
         "filename": "runtime/gc/accounting/bitmap.h",
         "patchSetId": 2
@@ -214,6 +424,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "marked -\u003e set?",
+      "range": {
+        "startLine": 174,
+        "startChar": 47,
+        "endLine": 174,
+        "endChar": 53
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2269c706_35c03088",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42431b81_3ef80919",
       "range": {
         "startLine": 174,
         "startChar": 47,
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "e2624f23_33c04888",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a8435a_84f686e0",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82b433b1_68300392",
         "filename": "runtime/gc/accounting/mod_union_table.cc",
         "patchSetId": 2
@@ -260,6 +518,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "When could space be nullptr?",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2624f23_1340ac5e",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "If we don\u0027t have an image. Moved the logic into heap however.",
+      "parentUuid": "82b433b1_68300392",
       "range": {
         "startLine": 352,
         "startChar": 6,
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "02668336_34083027",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62b9ffa9_a7570a10",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 83
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42aebb66_66eeee11",
         "filename": "runtime/gc/accounting/mod_union_table.cc",
         "patchSetId": 2
@@ -306,6 +612,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "I thought there\u0027s a bit per card and there shouldn\u0027t be more than one bit to be visited by VisitMarkedRange here unlike what the name would normally suggest. Maybe it\u0027s equivalent, but maybe would it be clearer if we rewrite this to just check the bit rather than calling VisitMarkedRange() and call scan_visitor directly if it\u0027s set?",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 376,
+        "endChar": 65
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02668336_74fd886f",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "This is a space bitmap, which doesn\u0027t use bit indexes, but addresses, in the visit function. I\u0027ll try to clean this up by fixing the name in the cleanup CL.",
+      "parentUuid": "42aebb66_66eeee11",
       "range": {
         "startLine": 376,
         "startChar": 4,
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "02668336_94f304a2",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Yes, this is an optimization since there can\u0027t be any objects past the end of the space. I suppose it doesn\u0027t matter currently since we never have any mod-union tables on spaces which are growing.",
+      "parentUuid": "22ab8758_453dea58",
+      "range": {
+        "startLine": 420,
+        "startChar": 55,
+        "endLine": 420,
+        "endChar": 68
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a40f89_a33b7abe",
         "filename": "runtime/gc/accounting/mod_union_table.cc",
         "patchSetId": 2
@@ -352,6 +706,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 431,
+        "startChar": 55,
+        "endLine": 431,
+        "endChar": 68
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02668336_b4bf20a6",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a40f89_a33b7abe",
       "range": {
         "startLine": 431,
         "startChar": 55,
@@ -387,6 +765,30 @@
     },
     {
       "key": {
+        "uuid": "426cfb14_7612b056",
+        "filename": "runtime/gc/accounting/mod_union_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2baab9b_aac6ef3c",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 23
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02a8435a_e4a5fa90",
         "filename": "runtime/gc/accounting/mod_union_table_test.cc",
         "patchSetId": 2
@@ -398,6 +800,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "Why?\n\nThe java_lang_object_array_ field does not look set up per space or per mod union table type. We may not be using the class that\u0027s in the same as the object array we\u0027re going to allocate in AllocObjectArray() unlike what the comment suggests?",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "626bbfdd_b778a853",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Since the test doesn\u0027t have an image, the class of the object array keeps cards live inside the card cache mod-union table and causes the check\n\nASSERT_FALSE(table-\u003eContainsCardFor(reinterpret_cast\u003cuintptr_t\u003e(obj3))) \u003c\u003c type;\n\nto fail since the class ends up keeping the card dirty.",
+      "parentUuid": "02a8435a_e4a5fa90",
       "range": {
         "startLine": 60,
         "startChar": 9,
@@ -433,6 +859,30 @@
     },
     {
       "key": {
+        "uuid": "e2cb2f3b_ab22699c",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "The card cache implementation doesn\u0027t really support a target space currently, just 2 avoid spaces, which are usually the source space and the image space. Should I change this, ideas?",
+      "parentUuid": "c22f0bb4_e23ba6bd",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a234d707_e1c6063e",
         "filename": "runtime/gc/accounting/mod_union_table_test.cc",
         "patchSetId": 2
@@ -444,6 +894,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "I thought so far ContainsCard() expects a card size aligned address only. Can you add a comment to ContainsCard() to clarify. Maybe rename it to ContainsCardFor?",
+      "range": {
+        "startLine": 198,
+        "startChar": 23,
+        "endLine": 198,
+        "endChar": 69
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02668336_94c02405",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a234d707_e1c6063e",
       "range": {
         "startLine": 198,
         "startChar": 23,
@@ -479,6 +953,30 @@
     },
     {
       "key": {
+        "uuid": "e2624f23_330208ba",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "No, but I\u0027ll do it anyways.",
+      "parentUuid": "a234d707_2183ceed",
+      "range": {
+        "startLine": 215,
+        "startChar": 43,
+        "endLine": 215,
+        "endChar": 55
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82399303_40a6ce5a",
         "filename": "runtime/gc/accounting/mod_union_table_test.cc",
         "patchSetId": 2
@@ -490,6 +988,30 @@
       "writtenOn": "2015-02-26T01:32:42Z",
       "side": 1,
       "message": "Would it make sense to split this MainTest for each mod union type and factor out the main test logic into a function? Would it avoid this cleanup work?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02668336_9464a485",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-02-26T02:17:45Z",
+      "side": 1,
+      "message": "I was under the impression that we couldn\u0027t factor the main logic since we can only call the EXPECT_ functions within the main test body? One option is to use CHECK but I don\u0027t like this since CHECK failures often deadlock and print a bunch of lock violations.",
+      "parentUuid": "82399303_40a6ce5a",
       "range": {
         "startLine": 225,
         "startChar": 0,
