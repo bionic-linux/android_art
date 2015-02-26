@@ -1,0 +1,504 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2240e774_dd3bebbd",
+        "filename": "runtime/gc/accounting/bitmap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Since it looks like a fair amount of copy-and-paste of code from space_bitmap-inl.h, it seems desirable to de-duplicate the code. Do you want to do it in this CL?",
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2496fa5_fb286fa7",
+        "filename": "runtime/gc/accounting/bitmap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Should this be better rounded by kBitsPerBitmapWord? Maybe,\n\nRoundUp((RoundUp(num_bits, kBitsPerBitmapWord) / kBitsPerBitmapWord) * sizeof(uintptr_t), kPageSize)\n\nthough it may not matter as kPageSize is a multiple of sizeof(uintptr_t)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 55,
+        "endLine": 39,
+        "endChar": 67
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2240e774_7d99f78e",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Add a test for Bitmap?",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 12
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2240e774_fd2867a7",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "marked -\u003e set?",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 53
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42431b81_fe2ea101",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Should this comment be updated? heap_end_ does not appear in this class.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42431b81_7e257152",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Does this mean \"One bit per..\" ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 128,
+        "endChar": 8
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42431b81_5e3cf55a",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "How about putting DCHECK_EQ(BitIndexFromAddr(AddrFromBitIndex(bit_index)), bit_index) here?",
+      "range": {
+        "startLine": 149,
+        "startChar": 4,
+        "endLine": 149,
+        "endChar": 10
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2240e774_1dc55398",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "This should be in reverse?",
+      "range": {
+        "startLine": 152,
+        "startChar": 5,
+        "endLine": 152,
+        "endChar": 52
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42431b81_1e070dca",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "I see that addr does not have to be aligned.",
+      "range": {
+        "startLine": 170,
+        "startChar": 21,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42431b81_3ef80919",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "marked -\u003e set?",
+      "range": {
+        "startLine": 174,
+        "startChar": 47,
+        "endLine": 174,
+        "endChar": 53
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a8435a_84f686e0",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "This is a side question: ModUnionClearCardSetVisitor ModUnionClearCardBitmapVisitor and ModUnionClearCardVisitor do not \"clear card\" (as in, overwrite kCardDirty with kCardClean). They instead set the corresponding entry in the mod union table for each dirty card. Are there better names?",
+      "range": {
+        "startLine": 61,
+        "startChar": 6,
+        "endLine": 61,
+        "endChar": 36
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82b433b1_68300392",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "When could space be nullptr?",
+      "range": {
+        "startLine": 352,
+        "startChar": 6,
+        "endLine": 352,
+        "endChar": 22
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62b9ffa9_a7570a10",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "I remember that the image space\u0027s limit isn\u0027t necessarily aligned by the card size. Is this handling that case?\n\nIs it worth asserting that if it\u0027s not aligned, it should be the image space? While the image space has the oat file (has no objects in it) right after it and is fine, I\u0027d worry a hypothetical case where a space\u0027s limit isn\u0027t aligned and the card at the end may be \"shared\" between the this space\u0027s end and the beginning of the next space.",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 83
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42aebb66_66eeee11",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "I thought there\u0027s a bit per card and there shouldn\u0027t be more than one bit to be visited by VisitMarkedRange here unlike what the name would normally suggest. Maybe it\u0027s equivalent, but maybe would it be clearer if we rewrite this to just check the bit rather than calling VisitMarkedRange() and call scan_visitor directly if it\u0027s set?",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 376,
+        "endChar": 65
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ab8758_453dea58",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Is it ok not to cover up to the Limit()?",
+      "range": {
+        "startLine": 420,
+        "startChar": 55,
+        "endLine": 420,
+        "endChar": 68
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2a40f89_a33b7abe",
+        "filename": "runtime/gc/accounting/mod_union_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 431,
+        "startChar": 55,
+        "endLine": 431,
+        "endChar": 68
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2baab9b_aac6ef3c",
+        "filename": "runtime/gc/accounting/mod_union_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "array -\u003e bitmap?",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 23
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02a8435a_e4a5fa90",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Why?\n\nThe java_lang_object_array_ field does not look set up per space or per mod union table type. We may not be using the class that\u0027s in the same as the object array we\u0027re going to allocate in AllocObjectArray() unlike what the comment suggests?",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c22f0bb4_e23ba6bd",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Why subclass ModUnionTableReferenceCache and added the target space field to it for the kTableTypeReferenceCache case, but not for the kTableTypeCardCache case?",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a234d707_e1c6063e",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "I thought so far ContainsCard() expects a card size aligned address only. Can you add a comment to ContainsCard() to clarify. Maybe rename it to ContainsCardFor?",
+      "range": {
+        "startLine": 198,
+        "startChar": 23,
+        "endLine": 198,
+        "endChar": 69
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a234d707_2183ceed",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Do we need to align up the end address?",
+      "range": {
+        "startLine": 215,
+        "startChar": 43,
+        "endLine": 215,
+        "endChar": 55
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82399303_40a6ce5a",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-02-26T01:32:42Z",
+      "side": 1,
+      "message": "Would it make sense to split this MainTest for each mod union type and factor out the main test logic into a function? Would it avoid this cleanup work?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "c2bdd343abfb7648621398907498510251fb9634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
