@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c00617_4d7af97a",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-02T14:34:17Z",
+      "side": 1,
+      "message": "Looks like this will never be hit. Do you need to check something else in the location builder?",
+      "range": {
+        "startLine": 1938,
+        "startChar": 0,
+        "endLine": 1939,
+        "endChar": 94
+      },
+      "revId": "bea5fe3451dba4c523c8d8e970a03b38a7a563a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
