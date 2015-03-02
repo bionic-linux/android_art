@@ -22,6 +22,30 @@
       "revId": "bea5fe3451dba4c523c8d8e970a03b38a7a563a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924d6688_08b2874d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1939,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-03-02T14:43:35Z",
+      "side": 1,
+      "message": "You are right.  The \u0027same as first\u0027 is wrong above.  Should be RequiresRegister.  Copied incorrect from x86.",
+      "parentUuid": "92c00617_4d7af97a",
+      "range": {
+        "startLine": 1938,
+        "startChar": 0,
+        "endLine": 1939,
+        "endChar": 94
+      },
+      "revId": "bea5fe3451dba4c523c8d8e970a03b38a7a563a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
