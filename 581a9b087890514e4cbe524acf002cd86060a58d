@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c94e5c0_3b0517c7",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "AbortTransaction is reserved for compilation time only so you need to test whether you are running inside a transaction. If it\u0027s not the case, you may want to LOG(FATAL).",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb06509_3e6165be",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "We must abort the active transaction if the class is finalizable. We do that in the interpreter for NEW_INSTANCE (runtime/interpreter/interpreter_switch_impl.cc, line 447)",
+      "range": {
+        "startLine": 143,
+        "startChar": 48,
+        "endLine": 143,
+        "endChar": 72
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "610022f0_7b93ff57",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "You need to clear the pending exception before throwing the InternalError, otherwise you\u0027ll fail a check in Thread::ThrowNewException.\n\nWe could set the pending exception as the cause of the InternalError for more context.\n\nBTW, you could also write the following:\n\n  AbortTransaction(self, \"Failed in Class.newInstance for \u0027%s\u0027 with %s\",\n                                         PrettyClass(h_klass.Get()).c_str(),\n                                         PrettyTypeOf(self-\u003eGetException()).c_str()",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 79
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1246ea6_56fa5446",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "Should we abort the transaction if a transaction is active?",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 69
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a11f7a53_f555d8d7",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "long line",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 113
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e10df22c_b75f68f4",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "UnstartedJNIVMStackGetStackClass2",
+      "range": {
+        "startLine": 386,
+        "startChar": 12,
+        "endLine": 386,
+        "endChar": 45
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a11f7a53_35459023",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-11T14:08:17Z",
+      "side": 1,
+      "message": "You need to test if there is an active transaction. If not, LOG(FATAL)?",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 20
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
