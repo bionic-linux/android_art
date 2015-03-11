@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "813356f4_ac24a3df",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "Refactor only...",
+      "parentUuid": "5c94e5c0_3b0517c7",
+      "range": {
+        "startLine": 55,
+        "startChar": 6,
+        "endLine": 55,
+        "endChar": 22
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb06509_3e6165be",
         "filename": "runtime/interpreter/unstarted_runtime.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-11T14:08:17Z",
       "side": 1,
       "message": "We must abort the active transaction if the class is finalizable. We do that in the interpreter for NEW_INSTANCE (runtime/interpreter/interpreter_switch_impl.cc, line 447)",
+      "range": {
+        "startLine": 143,
+        "startChar": 48,
+        "endLine": 143,
+        "endChar": 72
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "813356f4_6c37db18",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "That is correct and a follow-up. Note that this was requested to only be a refactor...",
+      "parentUuid": "5cb06509_3e6165be",
       "range": {
         "startLine": 143,
         "startChar": 48,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a124daad_6d0eb56a",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "Please see the transaction.cc change. I changed it there to ThrowNewWrappedException exactly to retain the cause...",
+      "parentUuid": "610022f0_7b93ff57",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 160,
+        "endChar": 79
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1246ea6_56fa5446",
         "filename": "runtime/interpreter/unstarted_runtime.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-03-11T14:08:17Z",
       "side": 1,
       "message": "Should we abort the transaction if a transaction is active?",
+      "range": {
+        "startLine": 188,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 69
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "813356f4_4c3c1ff9",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "Probably. Again, it\u0027s a refactor only...",
+      "parentUuid": "c1246ea6_56fa5446",
       "range": {
         "startLine": 188,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a124daad_2d18ada6",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "We had long lines for names before, and personally I dislike split string literals, especially when there are no spaces. I\u0027ll see what doesn\u0027t look horrible.",
+      "parentUuid": "a11f7a53_f555d8d7",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 113
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e10df22c_b75f68f4",
         "filename": "runtime/interpreter/unstarted_runtime.cc",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "c129ce86_ae0b7751",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e10df22c_b75f68f4",
+      "range": {
+        "startLine": 386,
+        "startChar": 12,
+        "endLine": 386,
+        "endChar": 45
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11f7a53_35459023",
         "filename": "runtime/interpreter/unstarted_runtime.cc",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2015-03-11T14:08:17Z",
       "side": 1,
       "message": "You need to test if there is an active transaction. If not, LOG(FATAL)?",
+      "range": {
+        "startLine": 471,
+        "startChar": 4,
+        "endLine": 471,
+        "endChar": 20
+      },
+      "revId": "581a9b087890514e4cbe524acf002cd86060a58d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a124daad_0d1df196",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-03-11T14:53:18Z",
+      "side": 1,
+      "message": "This is the original code. Again: refactor only...",
+      "parentUuid": "a11f7a53_35459023",
       "range": {
         "startLine": 471,
         "startChar": 4,
