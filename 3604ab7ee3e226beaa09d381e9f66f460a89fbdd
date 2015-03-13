@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e12fb26e_27f6fade",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:48:26Z",
+      "side": 1,
+      "message": "Can\u0027t you remove that code now? You comment about \u0027this\u0027 few lines below makes me think you don\u0027t need it anymore.",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 137,
+        "endChar": 19
+      },
+      "revId": "3604ab7ee3e226beaa09d381e9f66f460a89fbdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
