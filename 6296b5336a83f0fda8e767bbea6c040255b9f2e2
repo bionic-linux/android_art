@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1ec123e_027c4ce6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:26:50Z",
+      "side": 1,
+      "message": "Please explain why you need to change that behavior.",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6142e231_cbb37500",
+        "filename": "runtime/monitor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:26:50Z",
+      "side": 1,
+      "message": "You should keep the message about the context.",
+      "range": {
+        "startLine": 1048,
+        "startChar": 4,
+        "endLine": 1048,
+        "endChar": 18
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1ec123e_e287a860",
+        "filename": "runtime/quick_exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:26:50Z",
+      "side": 1,
+      "message": "Why changing the behavior here (and below)? We used to abort with a CHECK if we couldn\u0027t read the vreg.\n\nAnd shouldn\u0027t we LOG(WARNING) we couldn\u0027t access this vreg? It\u0027s useful for debugging at least, maybe by changing a kEnableXXX to true to enable it.",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6142e231_6ba521b1",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:26:50Z",
+      "side": 1,
+      "message": "Missing CHECK it returned true",
+      "range": {
+        "startLine": 147,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
