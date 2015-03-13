@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1ec123e_e2804844",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-13T09:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1ec123e_027c4ce6",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6142e231_cbb37500",
         "filename": "runtime/monitor.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-13T09:26:50Z",
       "side": 1,
       "message": "You should keep the message about the context.",
+      "range": {
+        "startLine": 1048,
+        "startChar": 4,
+        "endLine": 1048,
+        "endChar": 18
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e12fb26e_e7e30221",
+        "filename": "runtime/monitor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-13T09:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6142e231_cbb37500",
       "range": {
         "startLine": 1048,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6142e231_ab970941",
+        "filename": "runtime/quick_exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-13T09:35:12Z",
+      "side": 1,
+      "message": "We should not abort, it is OK to not have a value there since the register may not be initialized or dead. I added a comment next to the dead value constants.",
+      "parentUuid": "e1ec123e_e287a860",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 48
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6142e231_6ba521b1",
         "filename": "runtime/stack.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-03-13T09:26:50Z",
       "side": 1,
       "message": "Missing CHECK it returned true",
+      "range": {
+        "startLine": 147,
+        "startChar": 6,
+        "endLine": 147,
+        "endChar": 13
+      },
+      "revId": "6296b5336a83f0fda8e767bbea6c040255b9f2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1ec123e_4266545a",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-13T09:35:12Z",
+      "side": 1,
+      "message": "Done. But note that this is because both compilers guarantee \u0027this\u0027 remains live throughout the object. As soon as we become more aggressive, we will need to change this method to also return a success state.",
+      "parentUuid": "6142e231_6ba521b1",
       "range": {
         "startLine": 147,
         "startChar": 6,
