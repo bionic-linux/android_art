@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1ec123e_e259688c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-13T09:50:57Z",
+      "side": 1,
+      "message": "You should make it explicit it\u0027s only for Optimizing compiler. Quick compiler keeps inlining even with that flag.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "4d215b869266038a1496d9fc876e58f28dd3f670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
