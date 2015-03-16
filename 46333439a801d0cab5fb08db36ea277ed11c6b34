@@ -22,6 +22,30 @@
       "revId": "46333439a801d0cab5fb08db36ea277ed11c6b34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c62484a6_d9d8d71d",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-16T14:20:18Z",
+      "side": 1,
+      "message": "everywhere",
+      "parentUuid": "a61f9053_b81635fd",
+      "range": {
+        "startLine": 117,
+        "startChar": 22,
+        "endLine": 117,
+        "endChar": 24
+      },
+      "revId": "46333439a801d0cab5fb08db36ea277ed11c6b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
