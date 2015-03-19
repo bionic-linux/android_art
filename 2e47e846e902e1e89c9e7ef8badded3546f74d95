@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "66259842_73dce0e7",
+        "filename": "Blueprints",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T22:00:42Z",
+      "side": 1,
+      "message": "I added this to the list of flags that the global clang makefiles filter out",
+      "parentUuid": "46825452_72f398ec",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "2e47e846e902e1e89c9e7ef8badded3546f74d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06177cd9_0cb227fc",
         "filename": "runtime/Blueprints",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "writtenOn": "2015-03-19T21:40:28Z",
       "side": 1,
       "message": "Is this actually in the same scope as the previous file?",
+      "range": {
+        "startLine": 112,
+        "startChar": 21,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "2e47e846e902e1e89c9e7ef8badded3546f74d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "068cdc85_1007a449",
+        "filename": "runtime/Blueprints",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T22:00:42Z",
+      "side": 1,
+      "message": "Yes, variables are inherited by subdirs",
+      "parentUuid": "06177cd9_0cb227fc",
       "range": {
         "startLine": 112,
         "startChar": 21,
@@ -152,6 +200,24 @@
       "writtenOn": "2015-03-19T21:40:28Z",
       "side": 1,
       "message": "Extra line here.",
+      "revId": "2e47e846e902e1e89c9e7ef8badded3546f74d95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66259842_b33ef86c",
+        "filename": "runtime/Blueprints",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T22:00:42Z",
+      "side": 1,
+      "message": "That was intentional, bpfmt -s will sort continuous runs of strings in a list.  A comment would be helpful.",
+      "parentUuid": "06177cd9_4c0edf35",
       "revId": "2e47e846e902e1e89c9e7ef8badded3546f74d95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
