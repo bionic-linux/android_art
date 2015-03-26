@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23147232_4d787941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-03-26T18:42:48Z",
+      "side": 1,
+      "message": "don\u0027t",
+      "range": {
+        "startLine": 11,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "92d138bb2fad0435d03022b34bba2670fe5e8b59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
