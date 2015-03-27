@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83cfde46_ace4c3a8",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2646,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-03-27T11:20:04Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 2646,
+        "startChar": 44,
+        "endLine": 2646,
+        "endChar": 70
+      },
+      "revId": "d4669298866113921fbd80a2fac26baa223809d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
