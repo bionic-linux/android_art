@@ -22,6 +22,30 @@
       "revId": "f2aa4851c03d4de5a2366d4eecde6800e05bb962",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c55625_546e0480",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1064859
+      },
+      "writtenOn": "2015-03-30T09:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83cfde46_d2920425",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 165
+      },
+      "revId": "f2aa4851c03d4de5a2366d4eecde6800e05bb962",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
