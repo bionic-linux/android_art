@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e3d89a3c_99f22b69",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-01T11:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c8f677_b0f628dc",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 40
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3c8f677_30e3f820",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a3da2233_40ab50d5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-01T11:40:26Z",
+      "side": 1,
+      "message": "Changed to InvokeOutOfLineIntrinsic",
+      "parentUuid": "c3c8f677_30e3f820",
+      "range": {
+        "startLine": 623,
+        "startChar": 12,
+        "endLine": 623,
+        "endChar": 25
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63bd8ac9_28f2afb5",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2015-04-01T03:09:28Z",
       "side": 1,
       "message": "SSE?",
+      "range": {
+        "startLine": 638,
+        "startChar": 18,
+        "endLine": 638,
+        "endChar": 20
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3da2233_20a64410",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-01T11:40:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bd8ac9_28f2afb5",
       "range": {
         "startLine": 638,
         "startChar": 18,
