@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "439a4679_010dd436",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-01T03:09:28Z",
+      "side": 1,
+      "message": "See x86-64",
+      "range": {
+        "startLine": 728,
+        "startChar": 12,
+        "endLine": 728,
+        "endChar": 25
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c8f677_b0f628dc",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1340,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-01T03:09:28Z",
+      "side": 1,
+      "message": "Please put a comment at the float implementation why it doesn\u0027t apply to double, also.",
+      "range": {
+        "startLine": 1340,
+        "startChar": 0,
+        "endLine": 1340,
+        "endChar": 40
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c8f677_30e3f820",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-01T03:09:28Z",
+      "side": 1,
+      "message": "That\u0027s badly named. You\u0027re not calling the intrinsic...",
+      "range": {
+        "startLine": 623,
+        "startChar": 12,
+        "endLine": 623,
+        "endChar": 25
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63bd8ac9_28f2afb5",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-01T03:09:28Z",
+      "side": 1,
+      "message": "SSE?",
+      "range": {
+        "startLine": 638,
+        "startChar": 18,
+        "endLine": 638,
+        "endChar": 20
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c8f677_50e874f8",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-01T03:09:28Z",
+      "side": 1,
+      "message": "SSE?",
+      "range": {
+        "startLine": 657,
+        "startChar": 15,
+        "endLine": 657,
+        "endChar": 17
+      },
+      "revId": "81fffd6bc5b7d34b3df0db87542b2eb2d19f360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
