@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a3d4e237_705bae59",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-04-02T16:23:38Z",
+      "side": 1,
+      "message": "Ok, thought it was a typo.",
+      "parentUuid": "83e35e1e_0f79e9c0",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_8cba87d0",
         "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
         "patchSetId": 1
