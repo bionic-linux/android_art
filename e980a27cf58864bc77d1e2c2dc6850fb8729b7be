@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83e35e1e_0f79e9c0",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-02T16:22:35Z",
+      "side": 1,
+      "message": "Duly noted, but I think this style (two spaces after a full stop) is allowed in comments.",
+      "parentUuid": "83e35e1e_8f6cb903",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_8cba87d0",
         "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-02T16:09:57Z",
       "side": 1,
       "message": "I heard about that - apparently it may create a black hole that consumes your children.",
+      "range": {
+        "startLine": 304,
+        "startChar": 5,
+        "endLine": 304,
+        "endChar": 18
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83e35e1e_4f58115b",
+        "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-02T16:22:35Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ve heard about that too – I\u0027m pretty sure Douglas Adams emitted a warning about this, by the way.  Luckily, using R42 is known to solve any issue, whatever the encoding (or even the architecture!).",
+      "parentUuid": "2312b2d8_8cba87d0",
       "range": {
         "startLine": 304,
         "startChar": 5,
