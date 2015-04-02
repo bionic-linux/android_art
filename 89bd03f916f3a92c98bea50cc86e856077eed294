@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bdfae6_63ce2dde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-02T16:37:54Z",
+      "side": 1,
+      "message": "It should not create the symlink in general, only for exactly one oat file - the boot.oat. Where did you see other symlinks (that sounds like a bug)?\n\nI do not like you conflating the cases of input-oat-fd and input-oat-gz-fd...",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "89bd03f916f3a92c98bea50cc86e856077eed294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
