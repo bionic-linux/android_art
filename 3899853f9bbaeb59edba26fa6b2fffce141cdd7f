@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d4e237_2d7cadb0",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-02T08:05:44Z",
+      "side": 1,
+      "message": "You need to update the names of test directories as well!",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 42
+      },
+      "revId": "3899853f9bbaeb59edba26fa6b2fffce141cdd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_695bc559",
+        "filename": "test/run-test",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-02T08:05:44Z",
+      "side": 1,
+      "message": "BTW, long line. :)",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 117
+      },
+      "revId": "3899853f9bbaeb59edba26fa6b2fffce141cdd7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
