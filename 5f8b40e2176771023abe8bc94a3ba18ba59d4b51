@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83e35e1e_8f7dd96a",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-02T19:08:03Z",
+      "side": 1,
+      "message": "We can have ((patch_offset+4)%8)\u003d\u003d4 where patch_offset+4 is the address of the \"LDR \u003cXt\u003e, \u003clabel\u003e\" and then the displacement should also satisfy (displacement%8) \u003d\u003d 4 to have the final address aligned.",
+      "range": {
+        "startLine": 261,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 82
+      },
+      "revId": "5f8b40e2176771023abe8bc94a3ba18ba59d4b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
