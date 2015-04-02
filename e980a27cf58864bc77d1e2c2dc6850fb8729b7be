@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "83e35e1e_4f9db169",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-02T18:02:50Z",
+      "side": 1,
+      "message": "if you\u0027re doing this sort of clean up please mention in a comment which of the encodings are you using for each of the affected functions (just for the modified ones, no need to got through all)",
+      "range": {
+        "startLine": 375,
+        "startChar": 22,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_8f6cb903",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
