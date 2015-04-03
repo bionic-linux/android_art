@@ -22,6 +22,30 @@
       "revId": "89bd03f916f3a92c98bea50cc86e856077eed294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2312b2d8_2c65db8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1037563
+      },
+      "writtenOn": "2015-04-03T06:04:21Z",
+      "side": 1,
+      "message": "This patch just tries to prevent some errors.\nWho knows what build settings are used by others.\nIs it impossible to compile apks with --compile-pic?\n\nAny suggestions to not conflate? I thought that having input-oat-gz-fd we can just unzip it to swap-fd then set input-oat-fd\u003dswap-fd as if it was specified by user. I propose to discuss it in the gzip patch (ae0ec6ad7152f12cc116c175aa4c6ff7952bc21c).",
+      "parentUuid": "e3bdfae6_63ce2dde",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "89bd03f916f3a92c98bea50cc86e856077eed294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
