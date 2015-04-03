@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "83cefea1_dbe284c9",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-04-03T07:34:25Z",
+      "side": 1,
+      "message": "I used to be a two space believer.  But I\u0027ve stoped.  \"Why you should never, ever use two spaces after a period.  \"\nhttp://www.slate.com/articles/technology/technology/2011/01/space_invaders.html",
+      "parentUuid": "a3d4e237_705bae59",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_8cba87d0",
         "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
         "patchSetId": 1
