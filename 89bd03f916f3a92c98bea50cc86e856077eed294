@@ -46,6 +46,30 @@
       "revId": "89bd03f916f3a92c98bea50cc86e856077eed294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63de6a5c_26071ea0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-03T06:29:00Z",
+      "side": 1,
+      "message": "No, the usage part is fine. I meant your message conflates those things.\n\nThe problem is that we seem to be creating a symlink when we don\u0027t need to. The *right* solution is to fix image_space, and remove all the symlinking. Using the symlink was a quick fix for the boot.oat, but should be done the proper way (not just replacing \".art\" with \".oat\"). Apps should already *not* require symlinks - if they do, that\u0027s a bug.\n\nOnce that issue is resolved, I think it would be fine to do as you say (if we decide to do that, I know there\u0027s a comment on using a swap file...)",
+      "parentUuid": "2312b2d8_2c65db8c",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "89bd03f916f3a92c98bea50cc86e856077eed294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
