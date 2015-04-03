@@ -22,6 +22,30 @@
       "revId": "ae0ec6ad7152f12cc116c175aa4c6ff7952bc21c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d4e237_f0f2fe6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1037563
+      },
+      "writtenOn": "2015-04-03T07:32:39Z",
+      "side": 1,
+      "message": "Agree, but ElfFile needs a big change. Could it be done later? It seems using swap file is quite close to what is done in dex2oat. At least I do not see any new problems in this way.",
+      "parentUuid": "63de6a5c_faf1b5b1",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 30
+      },
+      "revId": "ae0ec6ad7152f12cc116c175aa4c6ff7952bc21c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
