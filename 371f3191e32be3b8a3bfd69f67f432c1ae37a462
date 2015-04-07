@@ -22,6 +22,30 @@
       "revId": "371f3191e32be3b8a3bfd69f67f432c1ae37a462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "837fde20_2c629385",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-07T17:17:05Z",
+      "side": 1,
+      "message": "+1 :)",
+      "parentUuid": "637aea34_4b6b4563",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 103
+      },
+      "revId": "371f3191e32be3b8a3bfd69f67f432c1ae37a462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
