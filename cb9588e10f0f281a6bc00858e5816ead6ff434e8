@@ -48,6 +48,98 @@
     },
     {
       "key": {
+        "uuid": "837fde20_ef0c7d72",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Add 2 spaces. (We\u0027ve got non-standard indentation in this file. Let\u0027s stick to it for now.)",
+      "range": {
+        "startLine": 1915,
+        "startChar": 2,
+        "endLine": 1915,
+        "endChar": 28
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "637aea34_4b510568",
+        "filename": "compiler/dex/quick/quick_cfi_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Please use the other constructor so that you don\u0027t need the setters.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "837fde20_0f06a94d",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Why is this before the \"str r0, [sp, #0]\"? The first instruction of the exit sequence is \"add sp, sp, 44\". (Same for other architectures below.)",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "637aea34_4ecef3af",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Why is this after the padding \"lsls r0, r0, #0\"? (Same below wherever there\u0027s padding.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63258a42_e8bb1757",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -64,6 +156,29 @@
         "startChar": 18,
         "endLine": 94,
         "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3706250_d0ab6285",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Promoted ArtMethod*? I\u0027m in the process of cleaning that up. This may soon disappear.",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 28
       },
       "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -180,6 +295,40 @@
         "endLine": 156,
         "endChar": 3
       },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3706250_706f0ef6",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Keep const, remove setter.",
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "837fde20_af167580",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-07T20:57:46Z",
+      "side": 1,
+      "message": "Keep const, remove setter.",
       "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
