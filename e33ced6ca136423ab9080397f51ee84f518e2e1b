@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32b0216_d86391c6",
+        "filename": "compiler/dex/quick/arm/call_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-07T15:46:17Z",
+      "side": 1,
+      "message": "Short comment missing. I assume it\u0027s here for simplicity, but there could have been other schemes to do this more lazily...",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 497,
+        "endChar": 3
+      },
+      "revId": "e33ced6ca136423ab9080397f51ee84f518e2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a32b0216_782cbd90",
+        "filename": "compiler/dex/quick/arm/utility_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-07T15:46:17Z",
+      "side": 1,
+      "message": "Seems a comment that doesn\u0027t work anymore?",
+      "range": {
+        "startLine": 1314,
+        "startChar": 34,
+        "endLine": 1314,
+        "endChar": 61
+      },
+      "revId": "e33ced6ca136423ab9080397f51ee84f518e2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
