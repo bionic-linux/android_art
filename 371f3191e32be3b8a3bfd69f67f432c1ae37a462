@@ -46,6 +46,30 @@
       "revId": "371f3191e32be3b8a3bfd69f67f432c1ae37a462",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3706250_ad8d1d84",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-04-07T17:23:37Z",
+      "side": 1,
+      "message": "Oopsie daisy",
+      "parentUuid": "837fde20_2c629385",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 103
+      },
+      "revId": "371f3191e32be3b8a3bfd69f67f432c1ae37a462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
