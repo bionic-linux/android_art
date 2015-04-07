@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "a3706250_4d891925",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-07T14:35:42Z",
+      "side": 1,
+      "message": "I\u0027ve precisely used double spacing for consistency reasons in this very file, where it appears to be the norm:\n\n  $ git grep -c \u0027\\. \\b\u0027 compiler/utils/arm/assembler_thumb2.cc\n  $ git grep -c \u0027\\.  \\b\u0027 compiler/utils/arm/assembler_thumb2.cc\n  compiler/utils/arm/assembler_thumb2.cc:13\n\n(It doesn\u0027t contain any occurrence of single spacing after a period!). :)",
+      "parentUuid": "2337126d_a4e22cc8",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_8cba87d0",
         "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
         "patchSetId": 1
