@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "634caa14_1b933bd9",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-07T12:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83e35e1e_4f9db169",
+      "range": {
+        "startLine": 375,
+        "startChar": 22,
+        "endLine": 375,
+        "endChar": 26
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83e35e1e_8f6cb903",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I used to be a two space believer.  But I\u0027ve stoped.  \"Why you should never, ever use two spaces after a period.  \"\nhttp://www.slate.com/articles/technology/technology/2011/01/space_invaders.html",
       "parentUuid": "a3d4e237_705bae59",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2337126d_4479e0bf",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-07T12:56:08Z",
+      "side": 1,
+      "message": "Well, not everybody agrees: http://widespacer.blogspot.co.uk/2014/01/that-slate-article.html :)",
+      "parentUuid": "83cefea1_dbe284c9",
       "range": {
         "startLine": 2631,
         "startChar": 57,
