@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "2337126d_a4e22cc8",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2631,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-07T13:05:18Z",
+      "side": 1,
+      "message": "I\u0027d push for consistency and as far as I can see the usual style in our codebase is with single space.",
+      "parentUuid": "2337126d_4479e0bf",
+      "range": {
+        "startLine": 2631,
+        "startChar": 57,
+        "endLine": 2631,
+        "endChar": 58
+      },
+      "revId": "e980a27cf58864bc77d1e2c2dc6850fb8729b7be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2312b2d8_8cba87d0",
         "filename": "compiler/utils/arm/assembler_thumb2_test.cc",
         "patchSetId": 1
