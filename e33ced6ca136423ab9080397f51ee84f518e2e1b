@@ -93,6 +93,30 @@
       "revId": "e33ced6ca136423ab9080397f51ee84f518e2e1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "832a7e12_fd451b06",
+        "filename": "compiler/dex/quick/arm/utility_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-07T17:03:44Z",
+      "side": 1,
+      "message": "I had assumed the comment came from somewhere else. Code generators is pretty ambiguous, my reading was \"backend,\" which IMHO is the more natural interpretation. Please clarify the comment.",
+      "parentUuid": "a3706250_eda9e505",
+      "range": {
+        "startLine": 1314,
+        "startChar": 34,
+        "endLine": 1314,
+        "endChar": 61
+      },
+      "revId": "e33ced6ca136423ab9080397f51ee84f518e2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
