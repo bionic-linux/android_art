@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63258a42_1c69f4a4",
+        "filename": "compiler/utils/arm/managed_register_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-07T20:44:02Z",
+      "side": 1,
+      "message": "ALWAYS_INLINE, or trust the compiler. inline is mostly meaningless.",
+      "range": {
+        "startLine": 263,
+        "startChar": 6,
+        "endLine": 263,
+        "endChar": 12
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
