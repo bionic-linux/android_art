@@ -16,6 +16,24 @@
       "revId": "3c3575c30c0eb68bd1926271a000197c11a89553",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_bff813fd",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T15:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "430966dc_e0ce765e",
+      "revId": "3c3575c30c0eb68bd1926271a000197c11a89553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
