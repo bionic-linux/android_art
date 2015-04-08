@@ -22,6 +22,29 @@
       "revId": "5f8b40e2176771023abe8bc94a3ba18ba59d4b51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_be5c9984",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1037505
+      },
+      "writtenOn": "2015-04-08T12:56:41Z",
+      "side": 1,
+      "message": "I agree, the 64-bit pc-relative ldr case is just plain wrong.",
+      "range": {
+        "startLine": 261,
+        "startChar": 36,
+        "endLine": 261,
+        "endChar": 81
+      },
+      "revId": "5f8b40e2176771023abe8bc94a3ba18ba59d4b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
