@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_5aee3500",
+        "filename": "compiler/utils/arm/managed_register_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f82afb_bb2ae7f8",
+      "range": {
+        "startLine": 263,
+        "startChar": 6,
+        "endLine": 263,
+        "endChar": 12
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ec1a3e_3f3fe739",
         "filename": "compiler/utils/arm64/managed_register_arm64.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2015-04-08T03:47:41Z",
       "side": 1,
       "message": "Can they go into the .cc file? I don\u0027t see any other users.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_1cf4b5d2",
+        "filename": "compiler/utils/arm64/managed_register_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ec1a3e_3f3fe739",
       "range": {
         "startLine": 215,
         "startChar": 0,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_ba07914e",
+        "filename": "compiler/utils/mips/managed_register_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3eea234_202224cf",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f82afb_3bc417be",
         "filename": "compiler/utils/mips64/managed_register_mips64.h",
         "patchSetId": 1
@@ -130,6 +202,30 @@
       "writtenOn": "2015-04-08T03:49:20Z",
       "side": 1,
       "message": "cc file?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_7cf179e2",
+        "filename": "compiler/utils/mips64/managed_register_mips64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63f82afb_3bc417be",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "83fd1eeb_5cee3d00",
+        "filename": "compiler/utils/x86/managed_register_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ec1a3e_7f396f51",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3ec1a3e_bfcf77dd",
         "filename": "compiler/utils/x86_64/managed_register_x86_64.h",
         "patchSetId": 1
@@ -176,6 +296,30 @@
       "writtenOn": "2015-04-08T03:49:20Z",
       "side": 1,
       "message": "cc file?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_1ef4add2",
+        "filename": "compiler/utils/x86_64/managed_register_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T04:28:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3ec1a3e_bfcf77dd",
       "range": {
         "startLine": 200,
         "startChar": 0,
