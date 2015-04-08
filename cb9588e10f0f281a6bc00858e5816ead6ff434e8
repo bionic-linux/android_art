@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83fd1eeb_dcc88da5",
+        "filename": "compiler/cfi_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "What is the proper way?  Streams?  Google style say not to use those, but I have seen them around...",
+      "parentUuid": "a32b0216_eae8ebab",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63258a42_68c4e7be",
         "filename": "compiler/dex/quick/arm64/call_arm64.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-07T20:37:58Z",
       "side": 1,
       "message": "If this is for what I think you want it to do, then use ALWAYS_INLINE.",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 13
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430966dc_9abe0df6",
+        "filename": "compiler/dex/quick/arm64/call_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63258a42_68c4e7be",
       "range": {
         "startLine": 285,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c3f39619_1ecb0d9f",
+        "filename": "compiler/dex/quick/mir_to_lir.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "837fde20_ef0c7d72",
+      "range": {
+        "startLine": 1915,
+        "startChar": 2,
+        "endLine": 1915,
+        "endChar": 28
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "637aea34_4b510568",
         "filename": "compiler/dex/quick/quick_cfi_test.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-07T20:57:46Z",
       "side": 1,
       "message": "Please use the other constructor so that you don\u0027t need the setters.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 50
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_7cd85972",
+        "filename": "compiler/dex/quick/quick_cfi_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "637aea34_4b510568",
       "range": {
         "startLine": 51,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c3f39619_fec3c187",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Good question. If you think about it, the precise location of remember_state does not matter - it will have the same effect either way.\nSo I did not bother advancing the address before it, saving  about one byte of data.\nIn retrospect, the saving might not be worth lost clarity.\nI will keep it as is, but change if I am forced to regenerate outputs at some point.",
+      "parentUuid": "837fde20_0f06a94d",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "637aea34_4ecef3af",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-04-07T20:57:46Z",
       "side": 1,
       "message": "Why is this after the padding \"lsls r0, r0, #0\"? (Same below wherever there\u0027s padding.)",
+      "range": {
+        "startLine": 31,
+        "startChar": 15,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_3cced1ae",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "https://xkcd.com/859/\nTechnically speaking, I could omit this altogether.  Anything past the return is irrelevant.\nHowever, I just put any \"tailing\" CFI at the end of code anyway.  One reason is to just visually balance the pushes and pops, and I plan storage optimizations in the future where proper balancing will be important.\nThe reason is it past the padding is that it does not below to any assembly instruction... so end of method will do.",
+      "parentUuid": "637aea34_4ecef3af",
       "range": {
         "startLine": 31,
         "startChar": 15,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_fac3c987",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "It is actually from our assembler - it always puts space between opcode and args for simplicity of code.\n\nHowever, I should have really learned to configure my editor to trim whitespace by now.",
+      "parentUuid": "63258a42_e8bb1757",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3706250_d0ab6285",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2015-04-07T20:57:46Z",
       "side": 1,
       "message": "Promoted ArtMethod*? I\u0027m in the process of cleaning that up. This may soon disappear.",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_dec885a5",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Good to know.  If it disappears, I will update the expected.\n\nHow do you plan to handle method identification?  Methods are deduped, so you can not determine the method just from pc alone.  So backtraces might be \"wrong\" and lldb stepping/breakpoints might not reliably work.  I assumed you used ArtMethod* for this.  It is really bugging me.  I suppose not deduplicating is not an option? :-(",
+      "parentUuid": "a3706250_d0ab6285",
       "range": {
         "startLine": 123,
         "startChar": 15,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "83fd1eeb_1ccb159f",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32b0216_4aa79fb4",
+      "range": {
+        "startLine": 135,
+        "startChar": 18,
+        "endLine": 135,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a32b0216_ea946b46",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_dac885a5",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32b0216_ea946b46",
+      "range": {
+        "startLine": 174,
+        "startChar": 18,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "832a7e12_b1402766",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -243,6 +483,30 @@
       "writtenOn": "2015-04-07T20:37:58Z",
       "side": 1,
       "message": "Whitespace.",
+      "range": {
+        "startLine": 212,
+        "startChar": 18,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430966dc_3acee1ae",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "832a7e12_b1402766",
       "range": {
         "startLine": 212,
         "startChar": 18,
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_7ad85972",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32b0216_8aea971c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3706250_706f0ef6",
         "filename": "compiler/driver/compiler_options.h",
         "patchSetId": 1
@@ -318,6 +606,24 @@
     },
     {
       "key": {
+        "uuid": "c3f39619_3ecec9ae",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3706250_706f0ef6",
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "837fde20_af167580",
         "filename": "compiler/driver/compiler_options.h",
         "patchSetId": 1
@@ -329,6 +635,24 @@
       "writtenOn": "2015-04-07T20:57:46Z",
       "side": 1,
       "message": "Keep const, remove setter.",
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430966dc_1acb1d9f",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "837fde20_af167580",
       "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
