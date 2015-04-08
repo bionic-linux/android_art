@@ -70,6 +70,29 @@
       "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_3f3fe739",
+        "filename": "compiler/utils/arm64/managed_register_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:47:41Z",
+      "side": 1,
+      "message": "Can they go into the .cc file? I don\u0027t see any other users.",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
