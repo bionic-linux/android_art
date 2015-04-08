@@ -22,6 +22,30 @@
       "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_7ed85172",
+        "filename": "compiler/utils/arm/managed_register_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:39:02Z",
+      "side": 1,
+      "message": "I see inline used 12 lines below, and in a lot of other places.\nI somewhat trust the compiler.  I believe I added it in this case to silence warning about unused static method.",
+      "parentUuid": "63258a42_1c69f4a4",
+      "range": {
+        "startLine": 263,
+        "startChar": 6,
+        "endLine": 263,
+        "endChar": 12
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
