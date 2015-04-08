@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_9ae72d2a",
+        "filename": "compiler/dex/quick/arm64/call_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:59:48Z",
+      "side": 1,
+      "message": "Sorry!!!",
+      "parentUuid": "63f82afb_1baddb14",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 13
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "837fde20_ef0c7d72",
         "filename": "compiler/dex/quick/mir_to_lir.h",
         "patchSetId": 1
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "Can you explain though why the ret on line 67 does *not* have the whitespace? It sounds like the x86 disassembler should be fixed. Any takers? :-)",
       "parentUuid": "430966dc_fac3c987",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_dce1ad15",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T03:59:48Z",
+      "side": 1,
+      "message": "They are all different disassemblers so there are some formatting differences.",
+      "parentUuid": "e3ec1a3e_ff0bbfa6",
       "range": {
         "startLine": 94,
         "startChar": 18,
