@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83fd1eeb_5cd47de5",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "What\u0027s this? A static method with shorty \"(IF)I\" does not get any arguments in r2 and r3! (And similar for other architectures.)",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_decec55e",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "Missing .cfi_def_cfa_offset: 28",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fd1eeb_1ca79587",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "Missing .cfi_def_cfa_offset: 12 (and .cfi_def_cfa_offset for every pop below).",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_bee819ab",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "Missing .cfi_def_cfa_offset: 48 (and .cfi_def_cfa_offset for every pop below).",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_be95b91a",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "Missing cfi_.AdjustCFAOffset(-4) corresponding to the missing .cfi_def_cfa_offset in the test file.",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430966dc_dae7e5d6",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T09:44:29Z",
+      "side": 1,
+      "message": "Missing cfi_.AdjustCFAOffset(-8) corresponding to the missing .cfi_def_cfa_offset in the test file.",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
