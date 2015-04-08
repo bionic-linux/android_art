@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "430966dc_e0ce765e",
+        "filename": "compiler/utils/arm/assembler_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T15:14:48Z",
+      "side": 1,
+      "message": "Missing cfi_.AdjustCFAOffset(...), see also \"Missing .cfi_def_cfa_offset: 28\" comment on \"vpop.f32 {s16-s31}\" in PS2.",
+      "revId": "3c3575c30c0eb68bd1926271a000197c11a89553",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
