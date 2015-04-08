@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "430966dc_9d61e738",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T14:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83fd1eeb_1ca79587",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3f39619_bee819ab",
         "filename": "compiler/jni/jni_cfi_test_expected.inc",
         "patchSetId": 2
@@ -118,6 +136,24 @@
       "writtenOn": "2015-04-08T09:44:29Z",
       "side": 1,
       "message": "Missing .cfi_def_cfa_offset: 48 (and .cfi_def_cfa_offset for every pop below).",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430966dc_fd562362",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T14:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f39619_bee819ab",
       "revId": "85597dae02b0f8997478c875eef6189825f8a867",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -141,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "83fd1eeb_9f5b97db",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T14:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f39619_be95b91a",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "430966dc_dae7e5d6",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 2
@@ -152,6 +206,24 @@
       "writtenOn": "2015-04-08T09:44:29Z",
       "side": 1,
       "message": "Missing cfi_.AdjustCFAOffset(-8) corresponding to the missing .cfi_def_cfa_offset in the test file.",
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3f39619_81169cfd",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2261,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-08T14:41:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "430966dc_dae7e5d6",
       "revId": "85597dae02b0f8997478c875eef6189825f8a867",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
