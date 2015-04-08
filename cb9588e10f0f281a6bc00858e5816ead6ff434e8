@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "63f82afb_1baddb14",
+        "filename": "compiler/dex/quick/arm64/call_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:42:19Z",
+      "side": 1,
+      "message": "Please also fix the other files, I was just too lazy to mark all the other occurrences.",
+      "parentUuid": "430966dc_9abe0df6",
+      "range": {
+        "startLine": 285,
+        "startChar": 7,
+        "endLine": 285,
+        "endChar": 13
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "837fde20_ef0c7d72",
         "filename": "compiler/dex/quick/mir_to_lir.h",
         "patchSetId": 1
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "e3ec1a3e_ff0bbfa6",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:42:19Z",
+      "side": 1,
+      "message": "Can you explain though why the ret on line 67 does *not* have the whitespace? It sounds like the x86 disassembler should be fixed. Any takers? :-)",
+      "parentUuid": "430966dc_fac3c987",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 19
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3706250_d0ab6285",
         "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
         "patchSetId": 1
@@ -366,6 +414,30 @@
       "side": 1,
       "message": "Good to know.  If it disappears, I will update the expected.\n\nHow do you plan to handle method identification?  Methods are deduped, so you can not determine the method just from pc alone.  So backtraces might be \"wrong\" and lldb stepping/breakpoints might not reliably work.  I assumed you used ArtMethod* for this.  It is really bugging me.  I suppose not deduplicating is not an option? :-(",
       "parentUuid": "a3706250_d0ab6285",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 28
+      },
+      "revId": "cb9588e10f0f281a6bc00858e5816ead6ff434e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_3f16c7d1",
+        "filename": "compiler/dex/quick/quick_cfi_test_expected.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:42:19Z",
+      "side": 1,
+      "message": "By the default we\u0027re not gonna emit CFI, anyways. I\u0027m tending towards hiding it behind \"debuggable,\" i.e., the app needs to have android:debuggable\u003dtrue. The optimizing compiler already states that if an app is not debuggable, everything is best-effort. It seems perfectly reasonable to turn off deduplication for a compile that\u0027s requested to be debuggable.\n\n(This ignores the boot-image question, though, just like the optimizing compiler...)",
+      "parentUuid": "c3f39619_dec885a5",
       "range": {
         "startLine": 123,
         "startChar": 15,
