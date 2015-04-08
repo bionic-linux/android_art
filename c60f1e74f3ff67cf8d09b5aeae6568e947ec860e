@@ -93,6 +93,98 @@
       "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3eea234_202224cf",
+        "filename": "compiler/utils/mips/managed_register_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:49:20Z",
+      "side": 1,
+      "message": "cc file?",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f82afb_3bc417be",
+        "filename": "compiler/utils/mips64/managed_register_mips64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:49:20Z",
+      "side": 1,
+      "message": "cc file?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_7f396f51",
+        "filename": "compiler/utils/x86/managed_register_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:49:20Z",
+      "side": 1,
+      "message": "cc file?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ec1a3e_bfcf77dd",
+        "filename": "compiler/utils/x86_64/managed_register_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-08T03:49:20Z",
+      "side": 1,
+      "message": "cc file?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 1
+      },
+      "revId": "c60f1e74f3ff67cf8d09b5aeae6568e947ec860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
