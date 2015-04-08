@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "430966dc_dd935f59",
+        "filename": "compiler/jni/jni_cfi_test_expected.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-08T13:02:32Z",
+      "side": 1,
+      "message": "Oh, right. No parentheses and the return type comes first.",
+      "parentUuid": "430966dc_bdab0b86",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "85597dae02b0f8997478c875eef6189825f8a867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3f39619_decec55e",
         "filename": "compiler/jni/jni_cfi_test_expected.inc",
         "patchSetId": 2
