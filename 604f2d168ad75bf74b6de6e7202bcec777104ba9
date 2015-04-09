@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38a229d_dd67cb1f",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-09T18:46:49Z",
+      "side": 1,
+      "message": "\u0026\u0026",
+      "range": {
+        "startLine": 560,
+        "startChar": 70,
+        "endLine": 560,
+        "endChar": 71
+      },
+      "revId": "604f2d168ad75bf74b6de6e7202bcec777104ba9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
