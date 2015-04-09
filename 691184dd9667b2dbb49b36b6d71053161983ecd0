@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "234d525a_f4a49685",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-09T20:22:52Z",
+      "side": 1,
+      "message": "Looks like this could go into a separate function. For Clang, we could force to not inline.",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 3
+      },
+      "revId": "691184dd9667b2dbb49b36b6d71053161983ecd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
