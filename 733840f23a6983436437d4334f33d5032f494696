@@ -22,6 +22,30 @@
       "revId": "733840f23a6983436437d4334f33d5032f494696",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3617abc_7ab155c1",
+        "filename": "tools/dexfuzz/src/dexfuzz/executors/Device.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-10T13:44:33Z",
+      "side": 1,
+      "message": "I think the name is not great for this class. This is a generic class that setups the execution environment (be it host or device).\n\nThings could be refactored a bit around here imo.",
+      "parentUuid": "6394aac1_fef1dd66",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 49
+      },
+      "revId": "733840f23a6983436437d4334f33d5032f494696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
