@@ -1,0 +1,527 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f4e242_ff037fc6",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Debug?",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_c4e6b0b2",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 40
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_a4e3aca0",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_84f0a862",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 6,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_65ffe0e3",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "!profiles_dir.empty() ?",
+      "range": {
+        "startLine": 173,
+        "startChar": 10,
+        "endLine": 173,
+        "endChar": 28
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_44eaa074",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Debug? Unless you need it for debugging in which case you may want a VLOG kind or protect with a flag.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_25f9d8fb",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 42
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_45af3ce4",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Move inside the if?",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 53
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_05b9342a",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 40
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_e23e488a",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Please add comment why you need NO_THREAD_SAFETY_ANALYSIS and what should be the right annotation(s).",
+      "range": {
+        "startLine": 838,
+        "startChar": 54,
+        "endLine": 838,
+        "endChar": 79
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_45861c6c",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 867,
+        "startChar": 60,
+        "endLine": 867,
+        "endChar": 85
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_258b1874",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Worth a \"static constexpr ...\" with a brief description.",
+      "range": {
+        "startLine": 928,
+        "startChar": 20,
+        "endLine": 928,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_e59c10b8",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "So it should be EXCLUSIVE_LOCK_REQUIRED(streaming_lock_).",
+      "range": {
+        "startLine": 949,
+        "startChar": 8,
+        "endLine": 949,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_e40bf4d6",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 960,
+        "startChar": 8,
+        "endLine": 960,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_a238409c",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 973,
+        "startChar": 4,
+        "endLine": 973,
+        "endChar": 14
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_224d504e",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(Locks::trace_lock_, Locks::thread_list_lock_)",
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_a5bf280c",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(Locks::trace_lock_)",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_c2e6a4b2",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Add a description, especially w.r.t Stop",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ebda64_a415ecf0",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(Locks::trace_lock_)",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 41
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_657c80e6",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "LOCKS_EXCLUDED(Locks::trace_lock_)",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 29
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_a26160ba",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f4e242_62ceb836",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Can we factorize with GetDalvikCacheOrDie so we do not duplicate code? I think having a GetDalvikCacheImpl with a \"bool abort\" flag indicating we must PLOG(FATAL) should be fine.",
+      "range": {
+        "startLine": 1443,
+        "startChar": 12,
+        "endLine": 1443,
+        "endChar": 26
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50e84e65_056b741e",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-13T16:03:37Z",
+      "side": 1,
+      "message": "Thanks",
+      "range": {
+        "startLine": 1481,
+        "startChar": 8,
+        "endLine": 1481,
+        "endChar": 21
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
