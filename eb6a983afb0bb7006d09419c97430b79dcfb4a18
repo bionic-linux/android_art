@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_5cce0936",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Yeah, all the debug logging needs to go...",
+      "parentUuid": "f0f4e242_ff037fc6",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 45
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ebda64_c4e6b0b2",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 40
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_d74e56c8",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebda64_c4e6b0b2",
       "range": {
         "startLine": 147,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_5c728962",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebda64_a4e3aca0",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ebda64_84f0a862",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 172,
+        "startChar": 6,
+        "endLine": 172,
+        "endChar": 53
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_fc801595",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebda64_84f0a862",
       "range": {
         "startLine": 172,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_dc7d592f",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_65ffe0e3",
+      "range": {
+        "startLine": 173,
+        "startChar": 10,
+        "endLine": 173,
+        "endChar": 28
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ebda64_44eaa074",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "Debug? Unless you need it for debugging in which case you may want a VLOG kind or protect with a flag.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_bc8a8db1",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebda64_44eaa074",
       "range": {
         "startLine": 183,
         "startChar": 8,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_7c5425aa",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_25f9d8fb",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 42
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e84e65_45af3ce4",
         "filename": "runtime/trace.cc",
         "patchSetId": 8
@@ -174,6 +342,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "Move inside the if?",
+      "range": {
+        "startLine": 516,
+        "startChar": 2,
+        "endLine": 516,
+        "endChar": 53
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_0226dae4",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_45af3ce4",
       "range": {
         "startLine": 516,
         "startChar": 2,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d0299e86_e222aece",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_05b9342a",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 40
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f4e242_e23e488a",
         "filename": "runtime/trace.cc",
         "patchSetId": 8
@@ -220,6 +436,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "Please add comment why you need NO_THREAD_SAFETY_ANALYSIS and what should be the right annotation(s).",
+      "range": {
+        "startLine": 838,
+        "startChar": 54,
+        "endLine": 838,
+        "endChar": 79
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_07ff0aa9",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Changed LogMethodEvent so it exposes the mutator lock.",
+      "parentUuid": "f0f4e242_e23e488a",
       "range": {
         "startLine": 838,
         "startChar": 54,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "d0299e86_42e4e2d5",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "50e84e65_45861c6c",
+      "range": {
+        "startLine": 867,
+        "startChar": 60,
+        "endLine": 867,
+        "endChar": 85
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e84e65_258b1874",
         "filename": "runtime/trace.cc",
         "patchSetId": 8
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_a07702cb",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_258b1874",
+      "range": {
+        "startLine": 928,
+        "startChar": 20,
+        "endLine": 928,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e84e65_e59c10b8",
         "filename": "runtime/trace.cc",
         "patchSetId": 8
@@ -289,6 +577,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "So it should be EXCLUSIVE_LOCK_REQUIRED(streaming_lock_).",
+      "range": {
+        "startLine": 949,
+        "startChar": 8,
+        "endLine": 949,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_b59982c6",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "I wanted to avoid exposing the innards. Problem is you can\u0027t write an expression for this for non-members. Do you strongly prefer the annotation? Then I\u0027ll move it into Trace proper.",
+      "parentUuid": "50e84e65_e59c10b8",
       "range": {
         "startLine": 949,
         "startChar": 8,
@@ -364,6 +676,24 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_f53b8a49",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f4e242_224d504e",
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50e84e65_a5bf280c",
         "filename": "runtime/trace.h",
         "patchSetId": 8
@@ -375,6 +705,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "LOCKS_EXCLUDED(Locks::trace_lock_)",
+      "range": {
+        "startLine": 80,
+        "startChar": 22,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_d5388e4f",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_a5bf280c",
       "range": {
         "startLine": 80,
         "startChar": 22,
@@ -410,6 +764,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_3cc9fdfa",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f4e242_c2e6a4b2",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 19
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ebda64_a415ecf0",
         "filename": "runtime/trace.h",
         "patchSetId": 8
@@ -421,6 +799,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "LOCKS_EXCLUDED(Locks::trace_lock_)",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 41
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_f5c6eac7",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ebda64_a415ecf0",
       "range": {
         "startLine": 132,
         "startChar": 40,
@@ -456,6 +858,30 @@
     },
     {
       "key": {
+        "uuid": "b0242aae_3c0b3dad",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e84e65_657c80e6",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 29
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f4e242_a26160ba",
         "filename": "runtime/trace.h",
         "patchSetId": 8
@@ -479,6 +905,30 @@
     },
     {
       "key": {
+        "uuid": "d0299e86_6210fe84",
+        "filename": "runtime/trace.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f4e242_a26160ba",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 136,
+        "endChar": 10
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f4e242_62ceb836",
         "filename": "runtime/utils.cc",
         "patchSetId": 8
@@ -490,6 +940,30 @@
       "writtenOn": "2015-04-13T16:03:37Z",
       "side": 1,
       "message": "Can we factorize with GetDalvikCacheOrDie so we do not duplicate code? I think having a GetDalvikCacheImpl with a \"bool abort\" flag indicating we must PLOG(FATAL) should be fine.",
+      "range": {
+        "startLine": 1443,
+        "startChar": 12,
+        "endLine": 1443,
+        "endChar": 26
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_80c3e63b",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T03:08:58Z",
+      "side": 1,
+      "message": "That will look ugly, because ...OrDie is strange: In case you are not create_if_absent, it won\u0027t actually abort on a missing directory.\n\nI felt the callers need to be inspected, and then there can be a big cleanup.\n\nI\u0027ll try my best...",
+      "parentUuid": "f0f4e242_62ceb836",
       "range": {
         "startLine": 1443,
         "startChar": 12,
