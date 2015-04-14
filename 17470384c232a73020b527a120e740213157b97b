@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709c722a_3bef9784",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:34:52Z",
+      "side": 1,
+      "message": "such a long name :)... (i know this is carried over)",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0926a12_c038009e",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:34:52Z",
+      "side": 1,
+      "message": "I don\u0027t understand this condition.",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a1e660_1fb967dc",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:34:52Z",
+      "side": 1,
+      "message": "bit_set.size()",
+      "range": {
+        "startLine": 656,
+        "startChar": 29,
+        "endLine": 656,
+        "endChar": 34
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0926a12_00da68ea",
+        "filename": "runtime/trace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:34:52Z",
+      "side": 1,
+      "message": "could you add a short doc comment?",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a1e660_9f51f735",
+        "filename": "runtime/trace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:34:52Z",
+      "side": 1,
+      "message": "This comment seems misplaced.",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 20
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
