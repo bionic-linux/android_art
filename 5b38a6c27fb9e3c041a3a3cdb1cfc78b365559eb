@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0926a12_a064d4ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-14T15:04:11Z",
+      "side": 1,
+      "message": "I don\u0027t have numbers, but the test case added to test/422-type-conversion/src/Main.java, which passes on x86 (thanks to https://android-review.googlesource.com/#/c/146692/), x86-64 and ARM64, now also passes on ARM with this change.",
+      "parentUuid": "709c722a_fe8cbd09",
+      "range": {
+        "startLine": 11,
+        "startChar": 45,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "5b38a6c27fb9e3c041a3a3cdb1cfc78b365559eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a1e660_9f08175c",
         "filename": "test/422-type-conversion/src/Main.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-14T14:42:56Z",
       "side": 1,
       "message": "why did you comment this?",
+      "range": {
+        "startLine": 345,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 91
+      },
+      "revId": "5b38a6c27fb9e3c041a3a3cdb1cfc78b365559eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "709c722a_9e6499cb",
+        "filename": "test/422-type-conversion/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-14T15:04:11Z",
+      "side": 1,
+      "message": "This was experimental code intended for another CL, sorry.  Removed.",
+      "parentUuid": "90a1e660_9f08175c",
       "range": {
         "startLine": 345,
         "startChar": 3,
