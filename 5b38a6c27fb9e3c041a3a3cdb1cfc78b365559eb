@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "709c722a_5e54d1a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T15:43:12Z",
+      "side": 1,
+      "message": "Oki, I see the context now. Does the precision gain worth going to runtime? My intuition says that no.\n\nAlso, should we be more tolerant in the tests maybe? What if we update the code to even more precise results? The current way of testing doesn\u0027t seem right in this new light.",
+      "parentUuid": "b0926a12_a064d4ca",
+      "range": {
+        "startLine": 11,
+        "startChar": 45,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "5b38a6c27fb9e3c041a3a3cdb1cfc78b365559eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a1e660_9f08175c",
         "filename": "test/422-type-conversion/src/Main.java",
         "patchSetId": 1
