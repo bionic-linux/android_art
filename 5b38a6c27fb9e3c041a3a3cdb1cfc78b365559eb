@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709c722a_fe8cbd09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T14:42:56Z",
+      "side": 1,
+      "message": "do we have numbers here? are we actually seeing precision issues because of this? I\u0027d assume that\u0027s not relevant.",
+      "range": {
+        "startLine": 11,
+        "startChar": 45,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "5b38a6c27fb9e3c041a3a3cdb1cfc78b365559eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90a1e660_9f08175c",
+        "filename": "test/422-type-conversion/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-14T14:42:56Z",
+      "side": 1,
+      "message": "why did you comment this?",
+      "range": {
+        "startLine": 345,
+        "startChar": 3,
+        "endLine": 345,
+        "endChar": 91
+      },
+      "revId": "5b38a6c27fb9e3c041a3a3cdb1cfc78b365559eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
