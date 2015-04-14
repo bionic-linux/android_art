@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0242aae_05f7e6a2",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-04-14T21:39:01Z",
+      "side": 1,
+      "message": "it did LOG(FATAL) before, right?\n\nspecificially:\n\nLOG(FATAL) \u003c\u003c \"Failed to find dalvik-cache directory \" \u003c\u003c dalvik_cache;\n\nso it seems like it should do that if abort_on_error?",
+      "range": {
+        "startLine": 1452,
+        "startChar": 6,
+        "endLine": 1452,
+        "endChar": 96
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_289406bb",
+        "filename": "runtime/utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2015-04-14T21:39:01Z",
+      "side": 1,
+      "message": "sanity tests?",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 77
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
