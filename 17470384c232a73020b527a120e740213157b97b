@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_242318d5",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T16:50:43Z",
+      "side": 1,
+      "message": "Long, but descriptive. :-)",
+      "parentUuid": "709c722a_3bef9784",
+      "range": {
+        "startLine": 55,
+        "startChar": 22,
+        "endLine": 55,
+        "endChar": 68
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0926a12_c038009e",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-14T15:34:52Z",
       "side": 1,
       "message": "I don\u0027t understand this condition.",
+      "range": {
+        "startLine": 167,
+        "startChar": 6,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_7ac892a5",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T16:50:43Z",
+      "side": 1,
+      "message": "GetDalvikCache returns \"\" as an error return.",
+      "parentUuid": "b0926a12_c038009e",
       "range": {
         "startLine": 167,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_646c8006",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T16:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a1e660_1fb967dc",
+      "range": {
+        "startLine": 656,
+        "startChar": 29,
+        "endLine": 656,
+        "endChar": 34
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0926a12_00da68ea",
         "filename": "runtime/trace.h",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_447184d8",
+        "filename": "runtime/trace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T16:50:43Z",
+      "side": 1,
+      "message": "I feel like that\u0027s half your fault, as it\u0027s your sampling profiler. :-)\n\nDone.",
+      "parentUuid": "b0926a12_00da68ea",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 18
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a1e660_9f51f735",
         "filename": "runtime/trace.h",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2015-04-14T15:34:52Z",
       "side": 1,
       "message": "This comment seems misplaced.",
+      "range": {
+        "startLine": 210,
+        "startChar": 2,
+        "endLine": 210,
+        "endChar": 20
+      },
+      "revId": "17470384c232a73020b527a120e740213157b97b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_5aff16a8",
+        "filename": "runtime/trace.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-14T16:50:43Z",
+      "side": 1,
+      "message": "Well, it was meant to be \"streaming mode information.\"",
+      "parentUuid": "90a1e660_9f51f735",
       "range": {
         "startLine": 210,
         "startChar": 2,
