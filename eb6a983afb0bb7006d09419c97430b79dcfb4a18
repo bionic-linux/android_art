@@ -613,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "90a1e660_3c6c7105",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-04-14T06:40:15Z",
+      "side": 1,
+      "message": "I\u0027d prefer, I find it clearer especially if someone else needs to touch the code in the future.\n\nHowever, since you Mutex is in a std::unique_ptr, I don\u0027t know if the compiler knows about it.",
+      "parentUuid": "9033a6f4_b59982c6",
+      "range": {
+        "startLine": 949,
+        "startChar": 8,
+        "endLine": 949,
+        "endChar": 22
+      },
+      "revId": "eb6a983afb0bb7006d09419c97430b79dcfb4a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ebda64_e40bf4d6",
         "filename": "runtime/trace.cc",
         "patchSetId": 8
