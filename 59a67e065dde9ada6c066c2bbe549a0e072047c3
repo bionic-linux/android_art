@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506daeeb_9d834706",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-14T16:23:29Z",
+      "side": 1,
+      "message": "overwrite",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 62
+      },
+      "revId": "59a67e065dde9ada6c066c2bbe549a0e072047c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
