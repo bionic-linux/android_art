@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "709c722a_2f151174",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-15T17:58:00Z",
+      "side": 1,
+      "message": "nit: input_index sounds better to me",
+      "range": {
+        "startLine": 372,
+        "startChar": 69,
+        "endLine": 372,
+        "endChar": 77
+      },
+      "revId": "712e9b8efaf0cea9c42b2ae5180da3c5198eaf39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
