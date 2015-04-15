@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9033a6f4_2f7e482b",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-15T00:53:35Z",
+      "side": 1,
+      "message": "No. Please look at the original code. All aborts are predicated on create_if_absent. Somebody might have screwed up braces once, but as-is...\n\nThis is actually not semantics-preserving, though. I would need to return dalvik_cache instead.\n\nThat\u0027s why I did not want to refactor before and only tried for Seb.",
+      "parentUuid": "b0242aae_05f7e6a2",
+      "range": {
+        "startLine": 1452,
+        "startChar": 6,
+        "endLine": 1452,
+        "endChar": 96
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9033a6f4_289406bb",
         "filename": "runtime/utils.h",
         "patchSetId": 10
