@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "709c722a_e49990f7",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-04-15T15:31:58Z",
+      "side": 1,
+      "message": "why the change from std::unique_ptr?\n\ndon\u0027t you have to release it now?",
+      "range": {
+        "startLine": 630,
+        "startChar": 4,
+        "endLine": 630,
+        "endChar": 47
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0242aae_05f7e6a2",
         "filename": "runtime/utils.cc",
         "patchSetId": 10
