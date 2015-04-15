@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "709c722a_a1e61ab1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-15T08:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0926a12_20dd2495",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "59a67e065dde9ada6c066c2bbe549a0e072047c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "709c722a_fe383d4f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "709c722a_c1e326a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-15T08:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "709c722a_fe383d4f",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 3
+      },
+      "revId": "59a67e065dde9ada6c066c2bbe549a0e072047c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0926a12_20f44403",
         "filename": "compiler/optimizing/locations.h",
         "patchSetId": 1
@@ -106,6 +154,30 @@
       "writtenOn": "2015-04-14T16:28:39Z",
       "side": 1,
       "message": "Personal preference: maybe move this precondition at the top of the method, as it checks its argument?",
+      "range": {
+        "startLine": 504,
+        "startChar": 4,
+        "endLine": 504,
+        "endChar": 38
+      },
+      "revId": "59a67e065dde9ada6c066c2bbe549a0e072047c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0926a12_43271a32",
+        "filename": "compiler/optimizing/locations.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-15T08:37:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0926a12_20f44403",
       "range": {
         "startLine": 504,
         "startChar": 4,
