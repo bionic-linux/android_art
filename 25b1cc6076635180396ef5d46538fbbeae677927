@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "907ac6a8_3a76b984",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-15T16:25:54Z",
+      "side": 1,
+      "message": "Mutexes aren\u0027t small, so I prefer the pointer. I just forgot the delete in the destructor. New CL is on the way anyways for Brian\u0027s requests.",
+      "parentUuid": "709c722a_24dd3895",
+      "range": {
+        "startLine": 630,
+        "startChar": 4,
+        "endLine": 630,
+        "endChar": 47
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0242aae_05f7e6a2",
         "filename": "runtime/utils.cc",
         "patchSetId": 10
