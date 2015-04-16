@@ -22,6 +22,30 @@
       "revId": "09a18803f4ebde4bb42968e6b80943add43e1ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "907ac6a8_ac8cc98d",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2015-04-16T16:45:18Z",
+      "side": 1,
+      "message": "+1, it seems odd to be using stdatomic.h here given that ART\u0027s atomic is built on C++11\u0027s atomic. I can imagine the source of this barrier was Dalvik.",
+      "parentUuid": "506daeeb_6ec9d72b",
+      "range": {
+        "startLine": 605,
+        "startChar": 10,
+        "endLine": 605,
+        "endChar": 52
+      },
+      "revId": "09a18803f4ebde4bb42968e6b80943add43e1ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
