@@ -70,6 +70,30 @@
       "revId": "09a18803f4ebde4bb42968e6b80943add43e1ac7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0299e86_9976a082",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2015-04-16T17:59:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907ac6a8_4fdba716",
+      "range": {
+        "startLine": 605,
+        "startChar": 10,
+        "endLine": 605,
+        "endChar": 52
+      },
+      "revId": "09a18803f4ebde4bb42968e6b80943add43e1ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
