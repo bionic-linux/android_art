@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "907ac6a8_29a3cbad",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-16T05:18:25Z",
+      "side": 1,
+      "message": "Is there a reason to add a segment for this? If I compare against what Clang \u0026 GCC produce, both eh_frame and eh_frame_hdr are covered by a general load (note: eh_frame_hdr is also inside a LOAD). Then the alignment isn\u0027t an issue.\n\nIf we want to keep things separated (which would be understandable), it seems that we\u0027ll have to align eh_frame.\n\nHere\u0027s for comparison libart.so from the host:\n\nElf file type is DYN (Shared object file)\nEntry point 0x0\nThere are 8 program headers, starting at offset 52\n\nProgram Headers:\n  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align\n  PHDR           0x000034 0x00000034 0x00000034 0x00100 0x00100 R   0x4\n  LOAD           0x000000 0x00000000 0x00000000 0x531a68 0x531a68 R E 0x1000\n  LOAD           0x532330 0x00533330 0x00533330 0x07ac0 0x098a0 RW  0x1000\n  DYNAMIC        0x538030 0x00539030 0x00539030 0x00158 0x00158 RW  0x4\n  NOTE           0x000134 0x00000134 0x00000134 0x00024 0x00024 R   0x4\n  GNU_EH_FRAME   0x531494 0x00531494 0x00531494 0x005d4 0x005d4 R   0x4\n  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0\n  GNU_RELRO      0x532330 0x00533330 0x00533330 0x06cd0 0x06cd0 RW  0x10\n\n Section to Segment mapping:\n  Segment Sections...\n   00     \n   01     .note.gnu.build-id .dynsym .dynstr .gnu.hash .gnu.version .gnu.version_d .gnu.version_r .rel.dyn .rel.plt .init .plt .text .fini .rodata .eh_frame .eh_frame_hdr \n   02     .data.rel.ro.local .ctors .dtors .jcr .data.rel.ro .init_array .dynamic .got .got.plt .data .bss \n   03     .dynamic \n   04     .note.gnu.build-id \n   05     .eh_frame_hdr \n   06     \n   07     .data.rel.ro.local .ctors .dtors .jcr .data.rel.ro .init_array .dynamic .got",
+      "range": {
+        "startLine": 1068,
+        "startChar": 4,
+        "endLine": 1077,
+        "endChar": 5
+      },
+      "revId": "6ca20dce2cf69b5fda5136aaf4cb0b6297274f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
