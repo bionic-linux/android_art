@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d080bec6_4712b155",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-16T04:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907ac6a8_3a76b984",
+      "range": {
+        "startLine": 630,
+        "startChar": 4,
+        "endLine": 630,
+        "endChar": 47
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0242aae_05f7e6a2",
         "filename": "runtime/utils.cc",
         "patchSetId": 10
@@ -131,6 +155,30 @@
       "writtenOn": "2015-04-14T21:39:01Z",
       "side": 1,
       "message": "sanity tests?",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 77
+      },
+      "revId": "25b1cc6076635180396ef5d46538fbbeae677927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_6717ad44",
+        "filename": "runtime/utils.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-16T04:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9033a6f4_289406bb",
       "range": {
         "startLine": 516,
         "startChar": 0,
