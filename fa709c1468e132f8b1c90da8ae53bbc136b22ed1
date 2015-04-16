@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d080bec6_d0bd24a5",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-16T05:00:04Z",
+      "side": 1,
+      "message": "relative",
+      "range": {
+        "startLine": 165,
+        "startChar": 34,
+        "endLine": 165,
+        "endChar": 41
+      },
+      "revId": "fa709c1468e132f8b1c90da8ae53bbc136b22ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
