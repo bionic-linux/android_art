@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "907ac6a8_3c68dc67",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-04-16T23:27:14Z",
+      "side": 1,
+      "message": "If possible, I\u0027d avoid a branch.\n\nwould\n\nreturn ((1U \u003c\u003c remain) - 1) \u003c\u003c ((kBitsPerVec - remain) \u0026 0x1F);\n\nwork?\n\nIf not, how about \n\nif (UNLIKELY(remain \u003d\u003d 0)) {\n  return 0;\n}\n\n?",
+      "range": {
+        "startLine": 1053,
+        "startChar": 2,
+        "endLine": 1053,
+        "endChar": 56
+      },
+      "revId": "7a578517e86e4d1235028b8566b0e6175c887a8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
