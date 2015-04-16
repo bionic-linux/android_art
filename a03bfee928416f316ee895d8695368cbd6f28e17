@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d080bec6_319d77b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-04-16T01:08:48Z",
+      "side": 1,
+      "message": "you might want a clearer checkin comment. something like \"Remove transitive dependency on \u003ccutils/atomic.h\u003e.\"?",
+      "revId": "a03bfee928416f316ee895d8695368cbd6f28e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
