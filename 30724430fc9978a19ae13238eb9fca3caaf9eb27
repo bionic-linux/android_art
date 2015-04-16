@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0926a12_acd60b43",
+        "filename": "compiler/optimizing/graph_checker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-16T10:07:51Z",
+      "side": 1,
+      "message": "VisitBooleanInput -\u003e HandleBooleanInput (this is not a visitor function).",
+      "range": {
+        "startLine": 113,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 24
+      },
+      "revId": "30724430fc9978a19ae13238eb9fca3caaf9eb27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
