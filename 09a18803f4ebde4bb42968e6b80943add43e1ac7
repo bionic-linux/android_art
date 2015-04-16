@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506daeeb_6ec9d72b",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-04-16T04:35:56Z",
+      "side": 1,
+      "message": "Aside that shouldn\u0027t hold up this CL, but:\n\nDoes anyone understand why this fence is here?  Could we add a comment?\n\nThis seems plenty subtle enough to warrant a comment.",
+      "range": {
+        "startLine": 605,
+        "startChar": 10,
+        "endLine": 605,
+        "endChar": 52
+      },
+      "revId": "09a18803f4ebde4bb42968e6b80943add43e1ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
