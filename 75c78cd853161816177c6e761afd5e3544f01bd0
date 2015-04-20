@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7048f2a0_7e672d23",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-20T14:29:08Z",
+      "side": 1,
+      "message": "Please add a reference to the bug here.",
+      "range": {
+        "startLine": 339,
+        "startChar": 34,
+        "endLine": 339,
+        "endChar": 71
+      },
+      "revId": "75c78cd853161816177c6e761afd5e3544f01bd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
