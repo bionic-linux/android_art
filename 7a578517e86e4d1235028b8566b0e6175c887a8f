@@ -22,6 +22,30 @@
       "revId": "7a578517e86e4d1235028b8566b0e6175c887a8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06c3e17_2c09fc5e",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-04-20T19:15:16Z",
+      "side": 1,
+      "message": "Actually, since we know that remain \u003c kBitsPerVec, I guess something like:\nstatic_cast\u003cuint32_t\u003e(-2) \u003c\u003c (kBitsPerVec - remain - 1) should work.",
+      "parentUuid": "907ac6a8_3c68dc67",
+      "range": {
+        "startLine": 1053,
+        "startChar": 2,
+        "endLine": 1053,
+        "endChar": 56
+      },
+      "revId": "7a578517e86e4d1235028b8566b0e6175c887a8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
