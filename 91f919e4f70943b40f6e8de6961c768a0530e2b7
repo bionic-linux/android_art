@@ -70,6 +70,30 @@
       "revId": "91f919e4f70943b40f6e8de6961c768a0530e2b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103a56f6_00c326a7",
+        "filename": "test/422-type-conversion/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-20T12:58:09Z",
+      "side": 1,
+      "message": "Done in PS7.",
+      "parentUuid": "103a56f6_607b1275",
+      "range": {
+        "startLine": 328,
+        "startChar": 45,
+        "endLine": 328,
+        "endChar": 55
+      },
+      "revId": "91f919e4f70943b40f6e8de6961c768a0530e2b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
