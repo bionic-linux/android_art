@@ -22,6 +22,30 @@
       "revId": "91f919e4f70943b40f6e8de6961c768a0530e2b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7048f2a0_fb250fa7",
+        "filename": "test/422-type-conversion/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-20T08:46:52Z",
+      "side": 1,
+      "message": "Roland, can you make a standalone test for these precision ones, and mark it fail in the Makefiles for arm?",
+      "parentUuid": "709c722a_c1d32652",
+      "range": {
+        "startLine": 328,
+        "startChar": 45,
+        "endLine": 328,
+        "endChar": 55
+      },
+      "revId": "91f919e4f70943b40f6e8de6961c768a0530e2b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
