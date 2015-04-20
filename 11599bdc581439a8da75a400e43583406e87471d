@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f19ea3_ceea03ee",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-20T21:39:44Z",
+      "side": 1,
+      "message": "Are there 2 tables to omit? If so, add a comment.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 68
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
