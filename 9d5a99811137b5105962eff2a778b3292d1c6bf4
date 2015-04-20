@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10089662_1006e4a3",
+        "filename": "test/477-long-to-float-conversion-precision/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-20T13:10:18Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "9d5a99811137b5105962eff2a778b3292d1c6bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7048f2a0_7b81ff48",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-20T13:10:18Z",
+      "side": 1,
+      "message": "Please file a bug for this to explain why we don\u0027t pass it.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 71
+      },
+      "revId": "9d5a99811137b5105962eff2a778b3292d1c6bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10089662_10d8a4a4",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-20T13:10:18Z",
+      "side": 1,
+      "message": "Could you check TARGET_ARCH?",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 56
+      },
+      "revId": "9d5a99811137b5105962eff2a778b3292d1c6bf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
