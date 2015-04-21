@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "d01a7eb3_771aafa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "Should then (also) be as \"Bug: 20125400\" above the Change-Id line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_9715ab76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "Formatting.",
+      "range": {
+        "startLine": 12,
+        "startChar": 61,
+        "endLine": 14,
+        "endChar": 1
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_b7fb87b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "Article missing.",
+      "range": {
+        "startLine": 16,
+        "startChar": 21,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_d72563d9",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "I think this *might* need an update. Is it conceivable that the eh_frame won\u0027t be of a size that is eh_frame_hdr-aligned? In that case I forgot a RoundUp here.",
+      "range": {
+        "startLine": 1075,
+        "startChar": 15,
+        "endLine": 1076,
+        "endChar": 52
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f19ea3_ceea03ee",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 9
@@ -42,6 +134,53 @@
         "startChar": 0,
         "endLine": 183,
         "endChar": 68
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02302ea_44625f14",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "Can you draw an ASCII table to illustrate the section layout, maybe?",
+      "parentUuid": "d0f19ea3_f1ac029d",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 68
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_575df355",
+        "filename": "compiler/elf_writer_quick.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T15:47:21Z",
+      "side": 1,
+      "message": "Maybe put a comment about debug_info here, so it\u0027s clear why there may be unaligned accesses. An alternative is to remove this here and actually use it at the call-site for the parameter given to AddressType.",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 75
       },
       "revId": "11599bdc581439a8da75a400e43583406e87471d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
