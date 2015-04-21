@@ -140,6 +140,30 @@
       "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f6329f_ced4c3e5",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-21T17:33:08Z",
+      "side": 1,
+      "message": "We already have something similar, the rodata_builder_ using the CodeOutput and providing its own offset to it. You need to provide other offsets as well but that shouldn\u0027t be such a problem.",
+      "parentUuid": "102176e2_2bc9052d",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 5
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
