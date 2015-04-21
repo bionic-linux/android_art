@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70f6329f_ee253fa7",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T17:00:28Z",
+      "side": 1,
+      "message": "Moving them to the front matches what GCC \u0026 Clang does and it makes it part of the main LOAD_R section which does not force us to allocate extra memory page for them.  But neither is strictly necessary.\n\nThe main reason is that I need to patch the pointers in eh_frame.  That can only happen when I know the final offset of .eh_frame and .text.  If I were to do the eh_frame layout in Write(), I would also need to teach Write how to do the patching, or do the patching after the file is written out to disk which sounds even more nasty.  Making .eh_frame part of Init() seemed like best solution.",
+      "parentUuid": "d01a7eb3_77d8eff3",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 46
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302afabf_3247b111",
         "filename": "compiler/elf_builder.h",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d0f19ea3_b141da19",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T17:00:28Z",
+      "side": 1,
+      "message": "DCHECK that if eh_frame and eh_frame_hdr is present than it also has SHD_ALLOC flag?",
+      "parentUuid": "302afabf_3247b111",
+      "range": {
+        "startLine": 840,
+        "startChar": 8,
+        "endLine": 840,
+        "endChar": 55
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0f19ea3_51a4f684",
         "filename": "compiler/elf_builder.h",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2015-04-21T16:25:22Z",
       "side": 1,
       "message": "I don\u0027t like relying on the other_builders_ in Init(). Maybe we should move the rest of Init() to Write(), considering that the split is rather arbitrary.",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 5
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102176e2_2bc9052d",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T17:00:28Z",
+      "side": 1,
+      "message": "I have a big local change which changes how the code is split into two functions:\n Finish() which does wast majority of the work - including deciding where all sections will be stored and generating file pieces.\n Write() which just does the final WriteOutFile(pieces).\n\nThe intention behind still having two functions is that just before calling Write(), I can patch pointers from .eh_frame to .text to be relative (I need to know the section offsets for that).",
+      "parentUuid": "d0f19ea3_51a4f684",
       "range": {
         "startLine": 839,
         "startChar": 0,
