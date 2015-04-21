@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d0f19ea3_11726e61",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T19:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f6329f_ee253fa7",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 46
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302afabf_3247b111",
         "filename": "compiler/elf_builder.h",
         "patchSetId": 10
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "DCHECK that if eh_frame and eh_frame_hdr is present than it also has SHD_ALLOC flag?",
       "parentUuid": "302afabf_3247b111",
+      "range": {
+        "startLine": 840,
+        "startChar": 8,
+        "endLine": 840,
+        "endChar": 55
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f6329f_6ed30fd9",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T19:08:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f19ea3_b141da19",
       "range": {
         "startLine": 840,
         "startChar": 8,
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "We already have something similar, the rodata_builder_ using the CodeOutput and providing its own offset to it. You need to provide other offsets as well but that shouldn\u0027t be such a problem.",
       "parentUuid": "102176e2_2bc9052d",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 5
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102176e2_4ba55928",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T19:08:52Z",
+      "side": 1,
+      "message": "I assume that only works because rodata_builder_ somehow knows its size ahead of time so the layout (Init()) and write stages can be separated.  I know that CodeOutput introduces laziness, but I have not needed to learn the details yet.\n\nI presume I could do memcopy + patching in ElfFilePiece::Write for .eh_frame to achieve similar effect.  I would have to extend the RawSection interface to somehow enable that.  It feels like an overkill.  Unless I could merge Init() and Write() methods into one.  That would be nice, but that is a refactoring I would not like to include in this CL anyway.",
+      "parentUuid": "70f6329f_ced4c3e5",
       "range": {
         "startLine": 839,
         "startChar": 0,
