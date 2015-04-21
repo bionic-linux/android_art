@@ -45,6 +45,29 @@
       "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f19ea3_51a4f684",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-04-21T16:25:22Z",
+      "side": 1,
+      "message": "I don\u0027t like relying on the other_builders_ in Init(). Maybe we should move the rest of Init() to Write(), considering that the split is rather arbitrary.",
+      "range": {
+        "startLine": 839,
+        "startChar": 0,
+        "endLine": 850,
+        "endChar": 5
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
