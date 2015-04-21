@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "302afabf_ab016808",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-21T19:16:25Z",
+      "side": 1,
+      "message": "I meant *in the file*. It is an extra step to find the original CL that introduced that and read through Gerrit comments...",
+      "parentUuid": "d0f19ea3_11726e61",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 46
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302afabf_3247b111",
         "filename": "compiler/elf_builder.h",
         "patchSetId": 10
