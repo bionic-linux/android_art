@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "70f6329f_cee323a0",
+        "filename": "compiler/elf_builder.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T19:27:28Z",
+      "side": 1,
+      "message": "The latest CL added paraphrased comment at the point where .eh_layout is decided (this file, line 840)",
+      "parentUuid": "302afabf_ab016808",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 46
+      },
+      "revId": "dd0983f25ba4fed8c690a9680f905d056819a5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "302afabf_3247b111",
         "filename": "compiler/elf_builder.h",
         "patchSetId": 10
