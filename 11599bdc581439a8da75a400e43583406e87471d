@@ -22,6 +22,30 @@
       "revId": "11599bdc581439a8da75a400e43583406e87471d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f19ea3_f1ac029d",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-04-21T15:22:54Z",
+      "side": 1,
+      "message": "There is just one binary search table. (with two header fields describing it)",
+      "parentUuid": "d0f19ea3_ceea03ee",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 68
+      },
+      "revId": "11599bdc581439a8da75a400e43583406e87471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
