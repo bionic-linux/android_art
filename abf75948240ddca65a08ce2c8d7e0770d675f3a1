@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0718a1d_c8c20fa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-22T14:22:02Z",
+      "side": 1,
+      "message": "wrappers",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "abf75948240ddca65a08ce2c8d7e0770d675f3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
