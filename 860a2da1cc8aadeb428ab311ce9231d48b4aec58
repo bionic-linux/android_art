@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10a416b9_ec9fcf33",
+        "filename": "runtime/gc/allocator/rosalloc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-24T15:39:58Z",
+      "side": 1,
+      "message": "Why no lock annotations?",
+      "range": {
+        "startLine": 621,
+        "startChar": 2,
+        "endLine": 622,
+        "endChar": 53
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
