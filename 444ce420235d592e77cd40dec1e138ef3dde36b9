@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d0d99e70_628d1e03",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-25T23:46:13Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s vestigial now. I had tried to initialize the needed ones explicitly, but I turned around half-way down the road because I got tired of adding more and more. :-)\n\nDone",
+      "parentUuid": "f00b02a7_877b863c",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0fd0ac2_e51a3627",
         "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b0d42a38_bc856d5f",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-25T23:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fd0ac2_e51a3627",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00b02a7_6781b297",
         "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2015-04-25T23:38:13Z",
       "side": 1,
       "message": "ditto",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_7815d5c0",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-25T23:46:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00b02a7_6781b297",
       "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
