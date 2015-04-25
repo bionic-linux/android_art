@@ -22,6 +22,30 @@
       "revId": "45748b3589290e11906297d29cd1c46dd5567ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_224f1694",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-04-25T19:44:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500f6eb1_8ac70b95",
+      "range": {
+        "startLine": 118,
+        "startChar": 60,
+        "endLine": 118,
+        "endChar": 80
+      },
+      "revId": "45748b3589290e11906297d29cd1c46dd5567ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
