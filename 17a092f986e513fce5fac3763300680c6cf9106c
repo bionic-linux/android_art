@@ -16,6 +16,23 @@
       "revId": "17a092f986e513fce5fac3763300680c6cf9106c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90e3a61e_2c09535f",
+        "filename": "test/090-loop-formation/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-04-25T22:39:53Z",
+      "side": 1,
+      "message": "Maybe add the rationale for this test here as well?",
+      "revId": "17a092f986e513fce5fac3763300680c6cf9106c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
