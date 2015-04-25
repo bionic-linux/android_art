@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0027e8c_8675ca78",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1015518
+      },
+      "writtenOn": "2015-04-25T09:44:28Z",
+      "side": 1,
+      "message": "Actually, this is right for good modularity. The revoke function is just doing the revoke work itself. If lock is required (bulk_free_lock_ currently or whatever in the future), then use the standalone wrapper is better to understand and also consider the future\u0027s design. It\u0027s something like WaitForGcToComplete and WaitForGcToCompleteLocked in heap.cc. \nIn addition, personally it may be not good design to make the revoke work and reclaim work (no matter whatever garbage collector) concurrent, because both will update run metadata, including thread local or not and run bitmaps. If they are concurrent, then the synchronization overhead is improved accordingly. It doesn\u0027t seem to bring any side effect to make the revoke work and reclaim work sequential in my opinion. Thanks.",
+      "parentUuid": "d0d99e70_1106ae4d",
+      "range": {
+        "startLine": 1666,
+        "startChar": 0,
+        "endLine": 1668,
+        "endChar": 43
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0d42a38_907bba3c",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f00b02a7_87d14601",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1015518
+      },
+      "writtenOn": "2015-04-25T09:44:28Z",
+      "side": 1,
+      "message": "My personal understanding is that with thread local runs introduced, ensure that the synchronization is reduced significantly and finally boost allocate rate which is what we spent lots of effort pursuing. Yes. I totally agree with you to follow the unified and consistent locking conventions for both scalability and maintenance. For example, RevokeRun and RefillRun may be required to add thread safety annotations. Thanks.",
+      "parentUuid": "b0d42a38_907bba3c",
+      "range": {
+        "startLine": 1690,
+        "startChar": 0,
+        "endLine": 1691,
+        "endChar": 52
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0d99e70_7158525b",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2015-04-25T00:35:58Z",
       "side": 1,
       "message": "Similarly, this is too much of a hardcoding to the existing uses cases and MarkSweep and not necessarily true in the future.",
+      "range": {
+        "startLine": 1754,
+        "startChar": 0,
+        "endLine": 1756,
+        "endChar": 65
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_2619762d",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1015518
+      },
+      "writtenOn": "2015-04-25T09:44:28Z",
+      "side": 1,
+      "message": "Hi Yamauchi, thanks for your comments. My personal opinion is that the error is what we really want to expose here if any. The thread local run is lock free. The thread is about to exit. There is no thread local runs for this thread at this step. Thanks.",
+      "parentUuid": "d0d99e70_7158525b",
       "range": {
         "startLine": 1754,
         "startChar": 0,
@@ -105,6 +177,30 @@
       "writtenOn": "2015-04-24T15:41:31Z",
       "side": 1,
       "message": "That\u0027s a horrible design.",
+      "range": {
+        "startLine": 1271,
+        "startChar": 4,
+        "endLine": 1272,
+        "endChar": 72
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0027e8c_867a6a6f",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1272,
+      "author": {
+        "id": 1015518
+      },
+      "writtenOn": "2015-04-25T09:44:28Z",
+      "side": 1,
+      "message": "Sorry. I made a mistake. The first revoke should be removed. Thanks.",
+      "parentUuid": "309d9a70_28b0e86b",
       "range": {
         "startLine": 1271,
         "startChar": 4,
