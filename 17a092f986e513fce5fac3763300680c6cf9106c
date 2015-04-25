@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_b8769d52",
+        "filename": "test/090-loop-formation/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-04-25T22:37:12Z",
+      "side": 1,
+      "message": "Is this vertical white space really necessary?",
+      "revId": "17a092f986e513fce5fac3763300680c6cf9106c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
