@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00b02a7_877b863c",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-25T23:38:13Z",
+      "side": 1,
+      "message": "not really necessary if you just called memset",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0fd0ac2_e51a3627",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-25T23:38:13Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00b02a7_6781b297",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-04-25T23:38:13Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "444ce420235d592e77cd40dec1e138ef3dde36b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
