@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "500f6eb1_8ac70b95",
+        "filename": "compiler/dex/quick/x86/quick_assemble_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1033066
+      },
+      "writtenOn": "2015-04-25T09:20:50Z",
+      "side": 1,
+      "message": "The opcode should be another parameter to TestVectorFn() even if the generating function don\u0027t actually look at it.",
+      "range": {
+        "startLine": 118,
+        "startChar": 60,
+        "endLine": 118,
+        "endChar": 80
+      },
+      "revId": "45748b3589290e11906297d29cd1c46dd5567ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
