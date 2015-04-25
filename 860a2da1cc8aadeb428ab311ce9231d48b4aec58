@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0d99e70_1106ae4d",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-04-25T00:35:58Z",
+      "side": 1,
+      "message": "This seems too much of a hardcoding to the existing uses cases and MarkSweep and not necessarily true in the future. I find this error-prone and not a good design from a modularity point of view.",
+      "range": {
+        "startLine": 1666,
+        "startChar": 0,
+        "endLine": 1668,
+        "endChar": 43
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_907bba3c",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1691,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-04-25T00:35:58Z",
+      "side": 1,
+      "message": "I believe this move violates the existing locking conventions.\n\nIt\u0027s unfortunate that we don\u0027t have more thread safety annotations.\n\nThere may be *some* unnecessary locking in certain cases, but I\u0027d rather follow the basic/static locking conventions unless there\u0027s a strong reason not to. \n\nOtherwise, we\u0027d end up with a locking/thread safety mess, which makes reasoning/maintenance hard.",
+      "range": {
+        "startLine": 1690,
+        "startChar": 0,
+        "endLine": 1691,
+        "endChar": 52
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0d99e70_7158525b",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1756,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-04-25T00:35:58Z",
+      "side": 1,
+      "message": "Similarly, this is too much of a hardcoding to the existing uses cases and MarkSweep and not necessarily true in the future.",
+      "range": {
+        "startLine": 1754,
+        "startChar": 0,
+        "endLine": 1756,
+        "endChar": 65
+      },
+      "revId": "860a2da1cc8aadeb428ab311ce9231d48b4aec58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a416b9_ec9fcf33",
         "filename": "runtime/gc/allocator/rosalloc.h",
         "patchSetId": 1
