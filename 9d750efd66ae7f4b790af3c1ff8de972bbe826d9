@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "500f6eb1_ea6687d7",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-27T08:26:55Z",
+      "side": 1,
+      "message": "Mssing \u0026",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 37
+      },
+      "revId": "9d750efd66ae7f4b790af3c1ff8de972bbe826d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90e3a61e_4c025f0d",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-27T08:26:55Z",
+      "side": 1,
+      "message": "iff -\u003e if and only if",
+      "range": {
+        "startLine": 306,
+        "startChar": 11,
+        "endLine": 306,
+        "endChar": 14
+      },
+      "revId": "9d750efd66ae7f4b790af3c1ff8de972bbe826d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30375a6d_81011ac1",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-27T08:26:55Z",
+      "side": 1,
+      "message": "One line? (you could also drop the LIKELY).",
+      "range": {
+        "startLine": 1221,
+        "startChar": 0,
+        "endLine": 1222,
+        "endChar": 60
+      },
+      "revId": "9d750efd66ae7f4b790af3c1ff8de972bbe826d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30375a6d_e11a6627",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-04-27T08:26:55Z",
+      "side": 1,
+      "message": "Add a DCHECK that loop_body_successor is in the loop?",
+      "range": {
+        "startLine": 1225,
+        "startChar": 0,
+        "endLine": 1225,
+        "endChar": 65
+      },
+      "revId": "9d750efd66ae7f4b790af3c1ff8de972bbe826d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
