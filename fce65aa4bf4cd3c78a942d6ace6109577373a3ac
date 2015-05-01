@@ -1,0 +1,704 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c486d3_c4fffe76",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "mothods_offset_begin",
+      "range": {
+        "startLine": 1058,
+        "startChar": 7,
+        "endLine": 1058,
+        "endChar": 20
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_c3fff676",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Move to the kBinArtField line. Add comment for kBinArtMethod.",
+      "range": {
+        "startLine": 132,
+        "startChar": 40,
+        "endLine": 132,
+        "endChar": 73
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_82231aa1",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "// Image addresses. including native data like ArtMethods, are 32-bit.",
+      "range": {
+        "startLine": 876,
+        "startChar": 4,
+        "endLine": 876,
+        "endChar": 28
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_64260ab4",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "kArmPointerSize",
+      "range": {
+        "startLine": 1320,
+        "startChar": 63,
+        "endLine": 1320,
+        "endChar": 79
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_44230ea2",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1931,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "kArm64PointerSize",
+      "range": {
+        "startLine": 1931,
+        "startChar": 38,
+        "endLine": 1931,
+        "endChar": 54
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_84c7c646",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "kX86PointerSize",
+      "range": {
+        "startLine": 1279,
+        "startChar": 63,
+        "endLine": 1279,
+        "endChar": 79
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_a4c2c236",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "kX86_64PointerSize",
+      "range": {
+        "startLine": 1379,
+        "startChar": 61,
+        "endLine": 1379,
+        "endChar": 77
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_a2949e1a",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Not needed anymore.",
+      "range": {
+        "startLine": 272,
+        "startChar": 6,
+        "endLine": 272,
+        "endChar": 49
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_e39e7238",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 419,
+        "startChar": 6,
+        "endLine": 419,
+        "endChar": 49
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_84998654",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 423,
+        "startChar": 52,
+        "endLine": 423,
+        "endChar": 95
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_0358ee10",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "I would drop this comment (and below). The idea doesn\u0027t mix well with native ArtMethod.",
+      "range": {
+        "startLine": 2200,
+        "startChar": 4,
+        "endLine": 2200,
+        "endChar": 44
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_82395aa2",
+        "filename": "runtime/class_linker_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 396,
+        "startChar": 7,
+        "endLine": 396,
+        "endChar": 17
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_a2c81e2a",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Good catch! (I guess our exception messages were a bit odd.)",
+      "range": {
+        "startLine": 208,
+        "startChar": 49,
+        "endLine": 208,
+        "endChar": 68
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_0458f610",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2846,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "1",
+      "range": {
+        "startLine": 2846,
+        "startChar": 19,
+        "endLine": 2846,
+        "endChar": 20
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_63e722af",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3879,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "3",
+      "range": {
+        "startLine": 3879,
+        "startChar": 19,
+        "endLine": 3879,
+        "endChar": 20
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_c2f44257",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Add another \"*\" for consistency with refs_only_sp.",
+      "range": {
+        "startLine": 47,
+        "startChar": 6,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_e2e94680",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 78
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_6319e22c",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "You don\u0027t need a loop to find the method index. Just divide the offset from GetVirtualMethods() by ArtMethod::ObjectSize(pointer_size).",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_44394e9f",
+        "filename": "runtime/entrypoints/entrypoint_utils.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation (here, twice below and once above from the ArtField change)",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 80
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_83aa1efb",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90c486d3_24689268",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "Unsigned: 0xFFFFFFFFu",
+      "range": {
+        "startLine": 202,
+        "startChar": 36,
+        "endLine": 202,
+        "endChar": 46
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_62bd3644",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "ams?",
+      "range": {
+        "startLine": 570,
+        "startChar": 42,
+        "endLine": 570,
+        "endChar": 45
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "304d9a5a_f1c74893",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "CHECK(), we\u0027re already in an kIsDebugBuild block.",
+      "range": {
+        "startLine": 1616,
+        "startChar": 6,
+        "endLine": 1616,
+        "endChar": 12
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "304d9a5a_91b8bc0c",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_c326d634",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_82ba3a4b",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 2435,
+        "startChar": 0,
+        "endLine": 2437,
+        "endChar": 76
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_233c0a42",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 2460,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 71
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "304d9a5a_b1bdc0fb",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3236,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 3234,
+        "startChar": 0,
+        "endLine": 3236,
+        "endChar": 92
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_03390e52",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3436,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 3435,
+        "startChar": 0,
+        "endLine": 3436,
+        "endChar": 78
+      },
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70bf1233_63360262",
+        "filename": "test/080-oom-throw/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "tws",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_a2a57e2d",
+        "filename": "test/080-oom-throw/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "tws",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507cce56_c2aa82fc",
+        "filename": "test/080-oom-throw/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 1,
+      "message": "tws",
+      "revId": "fce65aa4bf4cd3c78a942d6ace6109577373a3ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

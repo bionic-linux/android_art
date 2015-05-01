@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90c486d3_2481b298",
+        "filename": "runtime/image.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-01T18:17:18Z",
+      "side": 0,
+      "message": "What was the default imt and why don\u0027t we need it anymore?",
+      "revId": "295dda5066dfeb5bed88a4a484268f94b060c7fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
