@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d078be71_3fb6eb39",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T19:58:59Z",
+      "side": 1,
+      "message": "I\u0027m going to change this stuff to INTERNAL_FATAL, can you do this for your CL too?",
+      "revId": "5408a497c31e57dcfe4b6c7fff152a58f6ee8e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
