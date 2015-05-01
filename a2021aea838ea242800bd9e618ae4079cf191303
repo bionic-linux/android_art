@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90fd66eb_0e674dd5",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0598aea_4b52596c",
+      "range": {
+        "startLine": 545,
+        "startChar": 4,
+        "endLine": 545,
+        "endChar": 11
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "705392ca_699721c2",
         "filename": "runtime/check_jni.cc",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "90fd66eb_f743d772",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2534,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0598aea_2eeb6bf4",
+      "range": {
+        "startLine": 2532,
+        "startChar": 0,
+        "endLine": 2534,
+        "endChar": 6
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "705392ca_29336971",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2015-04-30T20:22:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 3792,
+        "startChar": 2,
+        "endLine": 3792,
+        "endChar": 96
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_dc1ceb6b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3792,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705392ca_29336971",
       "range": {
         "startLine": 3792,
         "startChar": 2,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "70f8f2fa_938a621c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4642,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7011d208_13a66c8b",
+      "range": {
+        "startLine": 4642,
+        "startChar": 44,
+        "endLine": 4642,
+        "endChar": 55
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0598aea_8e2b7faf",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "300cbaed_1c178344",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4670,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0598aea_8e2b7faf",
+      "range": {
+        "startLine": 4670,
+        "startChar": 6,
+        "endLine": 4670,
+        "endChar": 29
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0598aea_ae30bb17",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2015-04-30T20:22:12Z",
       "side": 1,
       "message": "I\u0027m not a big fan of the post-increment operator. I\u0027d prefer \"++out\" on its own later.",
+      "range": {
+        "startLine": 4685,
+        "startChar": 8,
+        "endLine": 4685,
+        "endChar": 15
+      },
+      "revId": "a2021aea838ea242800bd9e618ae4079cf191303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_bc2657b0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4685,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-01T01:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0598aea_ae30bb17",
       "range": {
         "startLine": 4685,
         "startChar": 8,
