@@ -16,6 +16,24 @@
       "revId": "295dda5066dfeb5bed88a4a484268f94b060c7fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d078be71_e0520bed",
+        "filename": "runtime/image.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-05T00:46:46Z",
+      "side": 0,
+      "message": "It used to be shared between classes but was no longer needed with the introduction of embedded IMT.",
+      "parentUuid": "90c486d3_2481b298",
+      "revId": "295dda5066dfeb5bed88a4a484268f94b060c7fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
