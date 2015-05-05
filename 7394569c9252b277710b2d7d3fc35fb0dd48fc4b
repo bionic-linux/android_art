@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0218a87_39c457be",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2847,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2015-05-05T18:23:01Z",
+      "side": 1,
+      "message": "a shift-left of 1 can also be handled specially:\n\nadd low, low\nadc high, high\n\nbut perhaps adding a long to itself should be the canonical long-shift-left by constant 1. There are also cases where you can use LEA for constants 2 and 3, I believe this was the advice in the P4 era when I wrote this before:\n\nhttp://git.codehaus.org/gitweb.cgi?p\u003dmrp.git;a\u003dblob;f\u003drvm/src/org/jikesrvm/compilers/opt/lir2mir/ia32/BURS_Helpers.java#l1976",
+      "range": {
+        "startLine": 2845,
+        "startChar": 0,
+        "endLine": 2847,
+        "endChar": 35
+      },
+      "revId": "7394569c9252b277710b2d7d3fc35fb0dd48fc4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
