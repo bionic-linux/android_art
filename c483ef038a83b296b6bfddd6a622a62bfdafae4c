@@ -486,6 +486,30 @@
     },
     {
       "key": {
+        "uuid": "cd290587_71ae929a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T13:55:45Z",
+      "side": 1,
+      "message": "We don\u0027t generate code for other instruction types too (such as art::HPhi, art::HParallelMove or art::HBoundType) and they are still part of FOR_EACH_CONCRETE_INSTRUCTION (here concrete means non-abstract, i.e., not being a leaf class within the HInstruction hierarchy).",
+      "parentUuid": "2d62a1ee_898679ad",
+      "range": {
+        "startLine": 829,
+        "startChar": 2,
+        "endLine": 829,
+        "endChar": 29
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_83c7be46",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -543,6 +567,30 @@
       "writtenOn": "2015-05-06T13:07:21Z",
       "side": 1,
       "message": "could you also update fix this to \"can_read_literals\"",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 52
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad24d1ad_901d7a91",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T13:55:45Z",
+      "side": 1,
+      "message": "FYI, it is also done in https://android-review.googlesource.com/#/c/132663/ :)",
+      "parentUuid": "2d62a1ee_a9625d85",
       "range": {
         "startLine": 357,
         "startChar": 36,
