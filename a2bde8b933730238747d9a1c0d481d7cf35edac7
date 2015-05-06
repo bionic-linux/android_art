@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad24d1ad_3066c628",
+        "filename": "test/431-optimizing-arith-shifts/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T14:04:54Z",
+      "side": 1,
+      "message": "Only",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "a2bde8b933730238747d9a1c0d481d7cf35edac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd290587_31912a51",
+        "filename": "test/431-optimizing-arith-shifts/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T14:04:54Z",
+      "side": 1,
+      "message": "Exercise?",
+      "range": {
+        "startLine": 101,
+        "startChar": 7,
+        "endLine": 101,
+        "endChar": 13
+      },
+      "revId": "a2bde8b933730238747d9a1c0d481d7cf35edac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d62a1ee_ac070b4b",
+        "filename": "test/431-optimizing-arith-shifts/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T14:04:54Z",
+      "side": 1,
+      "message": "handled?",
+      "range": {
+        "startLine": 101,
+        "startChar": 33,
+        "endLine": 101,
+        "endChar": 41
+      },
+      "revId": "a2bde8b933730238747d9a1c0d481d7cf35edac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
