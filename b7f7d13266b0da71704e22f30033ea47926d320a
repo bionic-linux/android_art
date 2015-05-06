@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d39c1d0_f1696824",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-06T13:50:11Z",
+      "side": 1,
+      "message": "Done.  I tried to fix just this before, but the upload failed for some obscure Gerritt reason.",
+      "parentUuid": "cd290587_5161560e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "b7f7d13266b0da71704e22f30033ea47926d320a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad24d1ad_90eb3af1",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-06T13:43:51Z",
       "side": 1,
       "message": "Please replace with\n\n  ADD dst, src, src\n\nto be consistent with other comments.",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 19
+      },
+      "revId": "b7f7d13266b0da71704e22f30033ea47926d320a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d39c1d0_11850c56",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-06T13:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad24d1ad_90eb3af1",
       "range": {
         "startLine": 152,
         "startChar": 12,
