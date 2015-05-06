@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad24d1ad_cd000906",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-06T09:32:12Z",
+      "side": 1,
+      "message": "virtual_methods !\u003d nullptr",
+      "range": {
+        "startLine": 1152,
+        "startChar": 6,
+        "endLine": 1152,
+        "endChar": 21
+      },
+      "revId": "e6d8374ab47ea28dbf52e77f5a441fa8ec4ccf40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd290587_eede1f06",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-06T09:32:12Z",
+      "side": 1,
+      "message": "Since Runtime::GetResolutionMethod() cannot be fully optimized away and you\u0027re using this only for DCHECK()s, it would be preferable to make it conditional on kIsDebugBuild.",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 55
+      },
+      "revId": "e6d8374ab47ea28dbf52e77f5a441fa8ec4ccf40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d62a1ee_a926ddb1",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-06T09:32:12Z",
+      "side": 1,
+      "message": "I\u0027d prefer this to be conditional on kIsDebugBuild. (Can a GcRoot\u003c\u003e::Read() be fully optimized away?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "e6d8374ab47ea28dbf52e77f5a441fa8ec4ccf40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
