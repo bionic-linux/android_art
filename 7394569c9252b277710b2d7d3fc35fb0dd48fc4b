@@ -22,6 +22,30 @@
       "revId": "7394569c9252b277710b2d7d3fc35fb0dd48fc4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd290587_4e6bf39f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2847,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-06T09:33:27Z",
+      "side": 1,
+      "message": "Thanks Ian; Mark is addressing the case of special immediate values in left shifts on x86 here: https://android-review.googlesource.com/#/c/149490/.",
+      "parentUuid": "b0218a87_39c457be",
+      "range": {
+        "startLine": 2845,
+        "startChar": 0,
+        "endLine": 2847,
+        "endChar": 35
+      },
+      "revId": "7394569c9252b277710b2d7d3fc35fb0dd48fc4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
