@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd1ae5b3_e0709e05",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-13T18:37:06Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "0d3a3df6_436c1888",
+      "range": {
+        "startLine": 175,
+        "startChar": 41,
+        "endLine": 175,
+        "endChar": 67
+      },
+      "revId": "64ddd903c70751b1d6548ee3bedd712023924c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d531d56_9b97afc2",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-12T20:28:28Z",
       "side": 1,
       "message": "SIZE? And why is it typed as void*?",
+      "range": {
+        "startLine": 1378,
+        "startChar": 17,
+        "endLine": 1378,
+        "endChar": 22
+      },
+      "revId": "64ddd903c70751b1d6548ee3bedd712023924c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15b184_f176b3cf",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-13T18:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d531d56_9b97afc2",
       "range": {
         "startLine": 1378,
         "startChar": 17,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "cd1ae5b3_40a41209",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4362,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-13T18:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d5c6163_fcfea52f",
+      "revId": "64ddd903c70751b1d6548ee3bedd712023924c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d3a3df6_038a10b2",
         "filename": "runtime/image.cc",
         "patchSetId": 7
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "ad15b184_b1db9b14",
+        "filename": "runtime/image.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-13T18:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d3a3df6_038a10b2",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 3
+      },
+      "revId": "64ddd903c70751b1d6548ee3bedd712023924c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d531d56_1b055f98",
         "filename": "runtime/image.h",
         "patchSetId": 7
@@ -99,6 +189,30 @@
       "writtenOn": "2015-05-12T20:28:28Z",
       "side": 1,
       "message": "explicit (can be called with a single argument)",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 54
+      },
+      "revId": "64ddd903c70751b1d6548ee3bedd712023924c96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ae5b3_408d3287",
+        "filename": "runtime/image.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-13T18:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d531d56_1b055f98",
       "range": {
         "startLine": 30,
         "startChar": 2,
