@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd8d8546_dffac4b4",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-14T22:03:13Z",
+      "side": 1,
+      "message": "If we are going to do this, we don\u0027t want to also add 12-16 bytes for arrays or something?",
+      "range": {
+        "startLine": 989,
+        "startChar": 13,
+        "endLine": 989,
+        "endChar": 14
+      },
+      "revId": "0ce43539b3bbade7d95482c4da0126a54d5bcba9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
