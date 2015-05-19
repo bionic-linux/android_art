@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d179dd9_3b05e341",
+        "filename": "compiler/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d62a1ee_0929693c",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 50
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_6352823a",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "add4d137_cdabe9fe",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507cce56_e2b866db",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 174,
+        "endChar": 22
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_23052a14",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Please place this on a single line.",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 65
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "add4d137_ada09d1b",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bf1233_23052a14",
       "range": {
         "startLine": 212,
         "startChar": 2,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "add4d137_4dc379b9",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd290587_6e6c6f88",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 52
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd290587_ee9a9fe9",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 2
@@ -128,6 +224,30 @@
       "writtenOn": "2015-05-06T13:07:21Z",
       "side": 1,
       "message": "how about we use the same pattern as with HOptimization? It will be less code",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "add4d137_0de6915a",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd290587_ee9a9fe9",
       "range": {
         "startLine": 102,
         "startChar": 2,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "cdd4a530_79802395",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "To me \u0027visualizer_enabled\u0027 matches better with \u0027is_leaf\u0027, in that it indicates a status. \u0027enable_visualizer\u0027 uses a verb, so indicates an action.",
+      "parentUuid": "507cce56_8206ba4b",
+      "range": {
+        "startLine": 141,
+        "startChar": 36,
+        "endLine": 141,
+        "endChar": 54
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90c486d3_c416de46",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 2
@@ -174,6 +318,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Maybe return a reference instead?",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 164,
+        "endChar": 26
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_37d658ed",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c486d3_c416de46",
       "range": {
         "startLine": 164,
         "startChar": 10,
@@ -232,6 +400,54 @@
     },
     {
       "key": {
+        "uuid": "ed19690f_57142cc6",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Using lifetime positions for the indices does not work well with the dummy HDisassemblyinstructions (without a lifetime position)  that are added in the graph later.\n\nI have extracted that data structure into the visualizer.\nIt requires quite a bit of refactoring. In particular the codegen now has a HGraphVisualizer member, whereas it used to be locally allocated. To do that more info needs to be passed through the codegen constructor.\nI think the code that passes information around to print the graph would benefit from a look to see if it can be simplified. I added that to my TODO list.",
+      "parentUuid": "2d62a1ee_c90a31d3",
+      "range": {
+        "startLine": 484,
+        "startChar": 0,
+        "endLine": 484,
+        "endChar": 85
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_585a1d0c",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bf1233_03558e20",
+      "range": {
+        "startLine": 484,
+        "startChar": 32,
+        "endLine": 484,
+        "endChar": 57
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd290587_d1c8a6a4",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 2
@@ -243,6 +459,30 @@
       "writtenOn": "2015-05-06T13:07:21Z",
       "side": 1,
       "message": "move to ctor.",
+      "range": {
+        "startLine": 485,
+        "startChar": 29,
+        "endLine": 485,
+        "endChar": 34
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdd4a530_b9759b4a",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd290587_d1c8a6a4",
       "range": {
         "startLine": 485,
         "startChar": 29,
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "adcf719d_d847310f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c486d3_242c1294",
+      "range": {
+        "startLine": 305,
+        "startChar": 56,
+        "endLine": 305,
+        "endChar": 71
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507cce56_e2cce66c",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 2
@@ -289,6 +553,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Why not initializing `disassembler_\u0027 in the constructor\u0027s initialization list?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 94
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "add4d137_0d9211d1",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done.\nIn a previous step, there was more logic in the ctor\u0027s body.",
+      "parentUuid": "507cce56_e2cce66c",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -347,6 +635,30 @@
     },
     {
       "key": {
+        "uuid": "add4d137_cdd6497a",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507cce56_42b4b2c0",
+      "range": {
+        "startLine": 277,
+        "startChar": 30,
+        "endLine": 277,
+        "endChar": 56
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507cce56_62c1b62d",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 2
@@ -358,6 +670,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Group theses lines together to initialize `it\u0027 directly.",
+      "range": {
+        "startLine": 280,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 63
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdd4a530_b93c7b74",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507cce56_62c1b62d",
       "range": {
         "startLine": 280,
         "startChar": 6,
@@ -393,6 +729,30 @@
     },
     {
       "key": {
+        "uuid": "adcf719d_18b92957",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd290587_ee13bfdd",
+      "range": {
+        "startLine": 376,
+        "startChar": 32,
+        "endLine": 376,
+        "endChar": 39
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d62a1ee_097ba93c",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 2
@@ -416,6 +776,30 @@
     },
     {
       "key": {
+        "uuid": "cdd4a530_59344789",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d62a1ee_097ba93c",
+      "range": {
+        "startLine": 378,
+        "startChar": 28,
+        "endLine": 378,
+        "endChar": 33
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_a3c2ba36",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 2
@@ -427,6 +811,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Maybe remove, as `printer\u0027 dies at the end of the block?",
+      "range": {
+        "startLine": 412,
+        "startChar": 4,
+        "endLine": 412,
+        "endChar": 39
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "add4d137_8de0414b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bf1233_a3c2ba36",
       "range": {
         "startLine": 412,
         "startChar": 4,
@@ -510,6 +918,30 @@
     },
     {
       "key": {
+        "uuid": "adcf719d_f8a66d38",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "The goal wasn\u0027t to avoid additional visitors; I find this does not belong in the concrete instructions.\nMore than whether the IR generates code or not, I saw concrete instructions as \u0027instructions that can appear in the graph\u0027. This new \u0027Disassembly\u0027 IR does not appear in the graph during the normal compilation. We onlyadd it after everything else (codegen in particular) is done with the graph.\n\nLet me know if you prefer having it as a concrete instruction.",
+      "parentUuid": "cd290587_71ae929a",
+      "range": {
+        "startLine": 829,
+        "startChar": 2,
+        "endLine": 829,
+        "endChar": 29
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_83c7be46",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -533,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "cdd4a530_192ecf39",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3795,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70bf1233_83c7be46",
+      "range": {
+        "startLine": 3795,
+        "startChar": 3,
+        "endLine": 3795,
+        "endChar": 79
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "507cce56_02e9caad",
         "filename": "disassembler/disassembler.h",
         "patchSetId": 2
@@ -544,6 +1000,30 @@
       "writtenOn": "2015-05-01T13:45:30Z",
       "side": 1,
       "message": "Please update the documentation.  BTW, we might want to ensure that `options\u0027 is not null at the beginning of art::Disassembler::Create.",
+      "range": {
+        "startLine": 53,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 17
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adcf719d_182ec939",
+        "filename": "disassembler/disassembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Updated the doc and added a DCHECK.",
+      "parentUuid": "507cce56_02e9caad",
       "range": {
         "startLine": 53,
         "startChar": 34,
@@ -590,6 +1070,30 @@
       "writtenOn": "2015-05-06T13:55:45Z",
       "side": 1,
       "message": "FYI, it is also done in https://android-review.googlesource.com/#/c/132663/ :)",
+      "parentUuid": "2d62a1ee_a9625d85",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 52
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdd4a530_79dca3e5",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-19T14:02:10Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "2d62a1ee_a9625d85",
       "range": {
         "startLine": 357,
