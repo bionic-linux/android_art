@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d20e12c_bc848d5a",
+        "filename": "runtime/native/byte_swap_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "Strange to have an \u003cx\u003e-inl.h file without the \u003cx\u003e.h file.",
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_1c37b95e",
+        "filename": "runtime/native/byte_swap_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "Btw, thumb2, arm and arm64 has REV16.",
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_7ec909a6",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "constexpr size_t kAlignment",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_3c715d08",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "kNumElements",
+      "range": {
+        "startLine": 30,
+        "startChar": 28,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_7c67d550",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "SwapAlignTest",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_bec6c198",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "I\u0027d prefer another template parameter, typename InitFunc. (Avoid std::function\u003c\u003e even in tests so that people don\u0027t get used to it. It allocates memory with the default operator new.)",
+      "range": {
+        "startLine": 32,
+        "startChar": 21,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_1ed6cd45",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "Looks more like dst_unaligned. And dst_align -\u003e dst_offset.",
+      "range": {
+        "startLine": 48,
+        "startChar": 7,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_9c58a98d",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "MemoryPeekTest",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_bc5d6d7c",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-19T20:00:42Z",
+      "side": 1,
+      "message": "MemoryPokeTest",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
