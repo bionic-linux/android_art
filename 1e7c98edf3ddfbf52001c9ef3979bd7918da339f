@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d179dd9_2164d4c9",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "Initialize description_ through the constructor\u0027s initialization list (likewise for other slow path classes).",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 42
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_a1d1c4d2",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "I suggest\n* adding and `ART_\u0027 prefix, and\n* handling this similarly to NDEBUG (from runtime/globals.h) is:\n\n  #if defined(ART_CFG_DUMP_DISASSEMBLY)\n  static constexpr bool kCfgDumpDisassembly \u003d false;\n  #else\n  static constexpr bool kCfgDumpDisassembly \u003d true;\n  #endif\n\nand use `kCfgDumpDisassembly\u0027 instead of `{ART_,}CFG_DUMP_DISASSEMBLY\u0027 (e.g., C++ `if\u0027 instead of preprocessor `#ifdef\u0027) so that the code would be inspected by the compiler in all configurations.",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_41e308a3",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 102
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_213db48b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "How about moving these new attributes into a struct (e.g. HGraphVisualizerDisassembler) and have a unique_ptr\u003cHGraphVisualizerDisassembler\u003e here instead?  This pointer would be null when kCfgDumpDisassembly is false.",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 6
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_015430d8",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "The trailing `_\u0027 is not required for struct member names.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 16
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_20185027",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 67,
+        "startChar": 77,
+        "endLine": 67,
+        "endChar": 79
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
