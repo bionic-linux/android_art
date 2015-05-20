@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed19690f_7d9eefae",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-05-20T11:04:42Z",
+      "side": 1,
+      "message": "I would print \"true\" or \"false\". It would be more readable when looking at the graph.",
+      "range": {
+        "startLine": 257,
+        "startChar": 50,
+        "endLine": 257,
+        "endChar": 79
+      },
+      "revId": "4751e15f18d61ef61737233f14ac899d9ece37bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
