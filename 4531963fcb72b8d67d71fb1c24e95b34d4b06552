@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d20e12c_1f3d6b8b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-05-20T10:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed19690f_1dd9f31b",
+      "range": {
+        "startLine": 257,
+        "startChar": 26,
+        "endLine": 257,
+        "endChar": 37
+      },
+      "revId": "4531963fcb72b8d67d71fb1c24e95b34d4b06552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d20e12c_df44d37e",
         "filename": "test/486-checker-instanceof-checkcast-mustdonullcheck/src/Main.java",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2015-05-20T07:28:26Z",
       "side": 1,
       "message": "Missing copyright.",
+      "revId": "4531963fcb72b8d67d71fb1c24e95b34d4b06552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_1dd01378",
+        "filename": "test/486-checker-instanceof-checkcast-mustdonullcheck/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-05-20T10:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d20e12c_df44d37e",
       "revId": "4531963fcb72b8d67d71fb1c24e95b34d4b06552",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
