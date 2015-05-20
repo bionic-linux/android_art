@@ -942,6 +942,30 @@
     },
     {
       "key": {
+        "uuid": "2d20e12c_c231581d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-20T15:23:58Z",
+      "side": 1,
+      "message": "Thanks for the explanation; I think this is fine as-is.",
+      "parentUuid": "adcf719d_f8a66d38",
+      "range": {
+        "startLine": 829,
+        "startChar": 2,
+        "endLine": 829,
+        "endChar": 29
+      },
+      "revId": "c483ef038a83b296b6bfddd6a622a62bfdafae4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70bf1233_83c7be46",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
