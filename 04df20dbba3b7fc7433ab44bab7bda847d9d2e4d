@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d20e12c_dfc7f317",
+        "filename": "test/486-checker-instanceof-checkcast-mustdonullcheck/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-05-20T10:42:34Z",
+      "side": 1,
+      "message": "Probably safer if you also add InstanceOf and CheckCast in the CHECK lines, here and below.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 38
+      },
+      "revId": "04df20dbba3b7fc7433ab44bab7bda847d9d2e4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
