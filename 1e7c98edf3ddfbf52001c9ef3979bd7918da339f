@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d179dd9_016bd0a0",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-05-20T16:20:33Z",
+      "side": 1,
+      "message": "Fits on one line",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_e1657ccd",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-05-20T16:20:33Z",
+      "side": 1,
+      "message": "static_cast",
+      "range": {
+        "startLine": 160,
+        "startChar": 22,
+        "endLine": 160,
+        "endChar": 24
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d179dd9_2164d4c9",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
