@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0d179dd9_011e7061",
+        "filename": "runtime/native/byte_swap_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": "Trivial inline methods usually go to .h and larger inline methods typically go to the -inl.h, though I often distinguish also on how many dependencies it pulls in. (And we currently have quite a mess in mirror classes pulling in way too much by including -inl.h from .h headers.)\n\nThe thing is, we usually have a class and its definition always goes to .h, not -inl.h. But there are only free functions here, so this is a pretty unusual case to start with.",
+      "parentUuid": "0d179dd9_debdb54a",
+      "revId": "4fa40c93c13e97ae9a97956f766d5df509c3af2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d20e12c_1c37b95e",
         "filename": "runtime/native/byte_swap_utils-inl.h",
         "patchSetId": 1
