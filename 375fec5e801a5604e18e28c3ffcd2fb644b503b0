@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d20e12c_ff7af7e8",
+        "filename": "runtime/native/byte_swap_utils_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": "Rename: kOffset. Also static_assert(kOffset \u003c sizeof(T), \"Unexpected offset\");",
+      "range": {
+        "startLine": 21,
+        "startChar": 28,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "375fec5e801a5604e18e28c3ffcd2fb644b503b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_01b3d0ff",
+        "filename": "runtime/native/byte_swap_utils_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": "SwapBenchmark",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "375fec5e801a5604e18e28c3ffcd2fb644b503b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_1f748bf7",
+        "filename": "runtime/native/byte_swap_utils_benchmark.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": "Unnecessary: then-block works also for the else case. (And don\u0027t use implicit conversion to bool.)",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 14
+      },
+      "revId": "375fec5e801a5604e18e28c3ffcd2fb644b503b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_a0122054",
+        "filename": "runtime/native/byte_swap_utils_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": "Is this necessary? I think it should be deduced and we can keep the previous style with inline lambda.",
+      "range": {
+        "startLine": 69,
+        "startChar": 27,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "375fec5e801a5604e18e28c3ffcd2fb644b503b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d179dd9_21acd498",
+        "filename": "runtime/native/libcore_io_Memory.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-20T14:09:42Z",
+      "side": 1,
+      "message": ",jboolean",
+      "range": {
+        "startLine": 236,
+        "startChar": 63,
+        "endLine": 236,
+        "endChar": 64
+      },
+      "revId": "375fec5e801a5604e18e28c3ffcd2fb644b503b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
