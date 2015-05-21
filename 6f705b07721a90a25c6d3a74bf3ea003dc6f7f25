@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed19690f_a64eb818",
+        "filename": "runtime/native/java_lang_VMClassLoader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-21T16:25:17Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 65,
+        "startChar": 69,
+        "endLine": 65,
+        "endChar": 73
+      },
+      "revId": "6f705b07721a90a25c6d3a74bf3ea003dc6f7f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
