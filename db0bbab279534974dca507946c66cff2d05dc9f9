@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed19690f_cbf975fc",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-21T11:12:55Z",
+      "side": 1,
+      "message": "Is this cast really needed?",
+      "range": {
+        "startLine": 533,
+        "startChar": 6,
+        "endLine": 533,
+        "endChar": 30
+      },
+      "revId": "db0bbab279534974dca507946c66cff2d05dc9f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed19690f_4bbfa50b",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2761,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-21T11:12:55Z",
+      "side": 1,
+      "message": "Why is this implemented differently from Thumb2Assembler::CompareAndBranchIfNonZero?",
+      "range": {
+        "startLine": 2759,
+        "startChar": 0,
+        "endLine": 2761,
+        "endChar": 1
+      },
+      "revId": "db0bbab279534974dca507946c66cff2d05dc9f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
