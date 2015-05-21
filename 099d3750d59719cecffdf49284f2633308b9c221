@@ -22,6 +22,30 @@
       "revId": "099d3750d59719cecffdf49284f2633308b9c221",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_cdbc29cd",
+        "filename": "compiler/utils/arm/assembler_thumb2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-05-21T11:17:45Z",
+      "side": 0,
+      "message": "Yeah, I should have kept it. Will do in another CL.",
+      "parentUuid": "2d20e12c_cd43c971",
+      "range": {
+        "startLine": 573,
+        "startChar": 10,
+        "endLine": 573,
+        "endChar": 51
+      },
+      "revId": "099d3750d59719cecffdf49284f2633308b9c221",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
