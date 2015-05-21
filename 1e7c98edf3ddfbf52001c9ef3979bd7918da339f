@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0d179dd9_471eb88c",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-21T14:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d179dd9_a1d1c4d2",
+      "range": {
+        "startLine": 30,
+        "startChar": 7,
+        "endLine": 30,
+        "endChar": 27
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d179dd9_41e308a3",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 3
@@ -224,6 +248,30 @@
       "writtenOn": "2015-05-20T15:23:58Z",
       "side": 1,
       "message": "How about moving these new attributes into a struct (e.g. HGraphVisualizerDisassembler) and have a unique_ptr\u003cHGraphVisualizerDisassembler\u003e here instead?  This pointer would be null when kCfgDumpDisassembly is false.",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 6
+      },
+      "revId": "1e7c98edf3ddfbf52001c9ef3979bd7918da339f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d20e12c_cdcc290b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-05-21T14:37:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d179dd9_213db48b",
       "range": {
         "startLine": 472,
         "startChar": 0,
