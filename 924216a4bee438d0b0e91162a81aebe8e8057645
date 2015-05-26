@@ -1505,6 +1505,30 @@
     },
     {
       "key": {
+        "uuid": "cdf3c519_c859e0e2",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T20:59:04Z",
+      "side": 1,
+      "message": "Oh, I missed the fact that previously the last element of method_trace_ was a reference to the dex_pc_trace_. If it\u0027s necessary to have a single mirror object hold all the data, then this inevitably has to be messy. In that case I\u0027m OK with this implementation.",
+      "parentUuid": "8d99cdfb_9cfaa5f1",
+      "range": {
+        "startLine": 1619,
+        "startChar": 0,
+        "endLine": 1621,
+        "endChar": 27
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8889a6_05447678",
         "filename": "test/001-HelloWorld/src/Main.java",
         "patchSetId": 13
