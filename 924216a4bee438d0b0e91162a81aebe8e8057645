@@ -1,0 +1,762 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed8889a6_056b96ee",
+        "filename": "compiler/dex/mir_graph.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Magic number 999999?",
+      "range": {
+        "startLine": 123,
+        "startChar": 19,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_f384905b",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Instead of this, we should DCHECK(reg_location_ \u003d\u003d nullptr) for kCompilerTempSpecialMethodPtr.",
+      "range": {
+        "startLine": 409,
+        "startChar": 4,
+        "endLine": 409,
+        "endChar": 43
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_d8c7f517",
+        "filename": "compiler/dex/quick/arm64/target_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "UNWIDE(p-\u003eopcode)",
+      "range": {
+        "startLine": 861,
+        "startChar": 20,
+        "endLine": 861,
+        "endChar": 40
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_784a21b3",
+        "filename": "compiler/dex/quick/codegen_util.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1301,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 1301,
+        "startChar": 44,
+        "endLine": 1301,
+        "endChar": 53
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_934d54cc",
+        "filename": "compiler/dex/type_inference.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "The name doesn\u0027t match the result, the function returns kFlagRef. Maybe we should explicitly name this ArtMethodType.",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 34
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_13b81ed7",
+        "filename": "compiler/dex/vreg_analysis.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "It is unnecessary to eagerly set this, it will be overwritten by the TypeInference anyway.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_f38bf06f",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove the TODO, the analysis is done.",
+      "range": {
+        "startLine": 850,
+        "startChar": 6,
+        "endLine": 850,
+        "endChar": 65
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_b3e5ea25",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Avoid non-const references.",
+      "range": {
+        "startLine": 984,
+        "startChar": 2,
+        "endLine": 984,
+        "endChar": 7
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_b39178a4",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "bin_slot_previous_sizes_[kBinArtField]",
+      "range": {
+        "startLine": 990,
+        "startChar": 41,
+        "endLine": 990,
+        "endChar": 68
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_45fbdeb9",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "bin_slot_previous_sizes_[kBinArtMethodClean]",
+      "range": {
+        "startLine": 996,
+        "startChar": 41,
+        "endLine": 996,
+        "endChar": 74
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_f3d650c7",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 1004,
+        "startChar": 19,
+        "endLine": 1004,
+        "endChar": 29
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_53b8dc25",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove or enable (and fix typo: \"specia\"-\u003e\"special\").",
+      "range": {
+        "startLine": 1342,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 6
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_d3f06c65",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "or 64-",
+      "range": {
+        "startLine": 199,
+        "startChar": 62,
+        "endLine": 199,
+        "endChar": 68
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_6e825304",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Follow-up CL?",
+      "range": {
+        "startLine": 278,
+        "startChar": 7,
+        "endLine": 278,
+        "endChar": 76
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_42af540f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_4e8b0f21",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_05a3967f",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Enable.",
+      "range": {
+        "startLine": 635,
+        "startChar": 2,
+        "endLine": 635,
+        "endChar": 76
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_2e2a1b78",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_b3816ad6",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1442,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "static_assert",
+      "range": {
+        "startLine": 1442,
+        "startChar": 6,
+        "endLine": 1442,
+        "endChar": 14
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_782ea13a",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1524,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "first",
+      "range": {
+        "startLine": 1524,
+        "startChar": 37,
+        "endLine": 1524,
+        "endChar": 42
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_f328103b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Follow-up CL?",
+      "range": {
+        "startLine": 1527,
+        "startChar": 13,
+        "endLine": 1527,
+        "endChar": 31
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_4e04af18",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 480,
+        "startChar": 2,
+        "endLine": 480,
+        "endChar": 31
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_4eccafb7",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "DCHECK here and many times below.",
+      "range": {
+        "startLine": 320,
+        "startChar": 2,
+        "endLine": 320,
+        "endChar": 7
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_ceb71f1a",
+        "filename": "runtime/asm_support.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Is this really 8 even on 32-bit architectures?",
+      "range": {
+        "startLine": 72,
+        "startChar": 51,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_a5ad8a9d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 1192,
+        "startChar": 10,
+        "endLine": 1192,
+        "endChar": 11
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_73afe25d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4658,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "You can use this allocator also for miranda_methods and move_table.",
+      "range": {
+        "startLine": 4658,
+        "startChar": 23,
+        "endLine": 4658,
+        "endChar": 32
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_d8fa55f2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4767,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 4767,
+        "startChar": 14,
+        "endLine": 4767,
+        "endChar": 74
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_d354ecac",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of the GetDeclaringClass() here?",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 27
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_0e911751",
+        "filename": "runtime/fault_handler.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "TODO?",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 40
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_13e5bed2",
+        "filename": "runtime/gc/accounting/mod_union_table_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Why are we not comparing oss.str() and oss2.str() anymore?",
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_73340058",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "pointer_size",
+      "range": {
+        "startLine": 884,
+        "startChar": 77,
+        "endLine": 884,
+        "endChar": 79
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d0c61ed_339e08ae",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Why not \"ArtMethod* (\u0026methods)[kImtSize]\"?",
+      "range": {
+        "startLine": 804,
+        "startChar": 41,
+        "endLine": 804,
+        "endChar": 60
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_38ec193a",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "I don\u0027t like mixing the method pointers with dex pcs in the same array.",
+      "range": {
+        "startLine": 1619,
+        "startChar": 0,
+        "endLine": 1621,
+        "endChar": 27
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_05447678",
+        "filename": "test/001-HelloWorld/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-26T13:08:21Z",
+      "side": 1,
+      "message": "Why is this in the HelloWorld? If you want a test with this GC, create another test.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
