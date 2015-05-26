@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed8889a6_226a5019",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-26T11:13:16Z",
+      "side": 1,
+      "message": "available",
+      "range": {
+        "startLine": 465,
+        "startChar": 26,
+        "endLine": 465,
+        "endChar": 34
+      },
+      "revId": "2d078d5d4232475866435b5a17e9a86f17d56f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdf3c519_38509961",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-26T11:13:16Z",
+      "side": 1,
+      "message": "load_class",
+      "range": {
+        "startLine": 315,
+        "startChar": 34,
+        "endLine": 315,
+        "endChar": 43
+      },
+      "revId": "2d078d5d4232475866435b5a17e9a86f17d56f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_25f5face",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-26T11:13:16Z",
+      "side": 1,
+      "message": "Why this change?  The original code seemed to fit on a 100-character line.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 67
+      },
+      "revId": "2d078d5d4232475866435b5a17e9a86f17d56f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
