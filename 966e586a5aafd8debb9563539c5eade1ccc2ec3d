@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd782572_16a2fca9",
+        "filename": "compiler/dex/vreg_analysis.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Please avoid the non-const reference. (Revert to the original code?)",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd782572_9618cc77",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3282,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Unused.",
+      "range": {
+        "startLine": 3282,
+        "startChar": 4,
+        "endLine": 3282,
+        "endChar": 34
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd782572_16df5c03",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Actually, it should have an extra const: \"ArtMethod* const (\u0026methods)[kImtSize]\".",
+      "range": {
+        "startLine": 804,
+        "startChar": 41,
+        "endLine": 804,
+        "endChar": 72
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_f4f9fe94",
+        "filename": "runtime/utils.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Use the new class IterationRange\u003c\u003e from runtime/base/iteration_range.h instead.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed6169bc_57ff0c2c",
+        "filename": "runtime/utils.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Rename to MakeIterationRange() and move to runtime/base/iteration_range.h .",
+      "range": {
+        "startLine": 347,
+        "startChar": 37,
+        "endLine": 347,
+        "endChar": 53
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
