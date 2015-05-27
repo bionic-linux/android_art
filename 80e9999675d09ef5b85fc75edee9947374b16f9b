@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed6169bc_9da38301",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-05-27T17:20:37Z",
+      "side": 1,
+      "message": "How about adding StackMap::Dump(CodeInfo, uint32_t numbeR_of_dex_registers), and calling it here? Then you don\u0027t need this stack map index.",
+      "range": {
+        "startLine": 1346,
+        "startChar": 0,
+        "endLine": 1350,
+        "endChar": 5
+      },
+      "revId": "80e9999675d09ef5b85fc75edee9947374b16f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
