@@ -2410,6 +2410,30 @@
     },
     {
       "key": {
+        "uuid": "cd3d85a0_75ac179a",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Some cases still need handling i.e. 32 bit dex2oat for 64 bit target. I changed it to RoundUp in latest PS which is much cleaner.",
+      "parentUuid": "cd782572_ffe9d3ad",
+      "range": {
+        "startLine": 529,
+        "startChar": 7,
+        "endLine": 529,
+        "endChar": 45
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_25298708",
         "filename": "runtime/art_method.h",
         "patchSetId": 13
@@ -2914,6 +2938,30 @@
       "side": 1,
       "message": "Native allocations abort on failure. (Though, the abort can be either abort() from ::operator new, or Runtime::Abort() from a failed CHECK() or even an uncaught std::bad_alloc (host only?).)",
       "parentUuid": "6d9499c1_c47c4f70",
+      "range": {
+        "startLine": 3281,
+        "startChar": 12,
+        "endLine": 3281,
+        "endChar": 39
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_e1093065",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3281,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "I\u0027m leaving these here in case we want to bound linear alloc and throw OOM if it gets too full or something. It can\u0027t return null currently.",
+      "parentUuid": "ed8889a6_9450b231",
       "range": {
         "startLine": 3281,
         "startChar": 12,
