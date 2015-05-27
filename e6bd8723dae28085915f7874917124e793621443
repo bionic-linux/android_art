@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5f9dfa_dee94e2b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-27T15:11:01Z",
+      "side": 1,
+      "message": "This is a pretty ambiguous name. Are you saying that Quick\u0027s methods are not optimized? :-)",
+      "range": {
+        "startLine": 1306,
+        "startChar": 14,
+        "endLine": 1306,
+        "endChar": 31
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d5f9dfa_de9b0ebb",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-27T15:11:01Z",
+      "side": 1,
+      "message": "This, plus the call to DumpMappingAtOffset below, indicates you could consider making the choice between Quick and non-Quick in DumpMappingAtOffset.",
+      "range": {
+        "startLine": 1372,
+        "startChar": 10,
+        "endLine": 1376,
+        "endChar": 11
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d5f9dfa_fecd32e1",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-27T15:11:01Z",
+      "side": 1,
+      "message": "Remove t.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 40,
+        "endLine": 1053,
+        "endChar": 41
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
