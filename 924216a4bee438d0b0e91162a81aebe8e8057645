@@ -2386,6 +2386,30 @@
     },
     {
       "key": {
+        "uuid": "cd782572_ffe9d3ad",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T20:01:36Z",
+      "side": 1,
+      "message": "But since you removed MANAGED, i.e. PACKED(4), the compiler should add this padding for us.",
+      "parentUuid": "ad73f192_58d9011b",
+      "range": {
+        "startLine": 529,
+        "startChar": 7,
+        "endLine": 529,
+        "endChar": 45
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_25298708",
         "filename": "runtime/art_method.h",
         "patchSetId": 13
