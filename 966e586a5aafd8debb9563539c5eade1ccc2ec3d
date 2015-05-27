@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd782572_9c754dfd",
+        "filename": "compiler/dex/vreg_analysis.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd782572_16a2fca9",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 41
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd782572_9618cc77",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-27T11:08:48Z",
       "side": 1,
       "message": "Unused.",
+      "range": {
+        "startLine": 3282,
+        "startChar": 4,
+        "endLine": 3282,
+        "endChar": 34
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_016b7ca0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3282,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd782572_9618cc77",
       "range": {
         "startLine": 3282,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ad73f192_dec7b9e5",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd782572_16df5c03",
+      "range": {
+        "startLine": 804,
+        "startChar": 41,
+        "endLine": 804,
+        "endChar": 72
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8889a6_f4f9fe94",
         "filename": "runtime/utils.h",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0d5f9dfa_001fdf87",
+        "filename": "runtime/utils.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed8889a6_f4f9fe94",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 18
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed6169bc_57ff0c2c",
         "filename": "runtime/utils.h",
         "patchSetId": 14
@@ -105,6 +201,30 @@
       "writtenOn": "2015-05-27T11:08:48Z",
       "side": 1,
       "message": "Rename to MakeIterationRange() and move to runtime/base/iteration_range.h .",
+      "range": {
+        "startLine": 347,
+        "startChar": 37,
+        "endLine": 347,
+        "endChar": 53
+      },
+      "revId": "966e586a5aafd8debb9563539c5eade1ccc2ec3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d9499c1_2166b827",
+        "filename": "runtime/utils.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-27T21:58:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed6169bc_57ff0c2c",
       "range": {
         "startLine": 347,
         "startChar": 37,
