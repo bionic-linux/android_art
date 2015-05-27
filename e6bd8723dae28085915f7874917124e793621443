@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ed8889a6_2b44e478",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "Not at all. :)  Renamed to `IsMethodGeneratedByOptimizingCompiler\u0027 in PS2.",
+      "parentUuid": "0d5f9dfa_dee94e2b",
+      "range": {
+        "startLine": 1306,
+        "startChar": 14,
+        "endLine": 1306,
+        "endChar": 31
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8889a6_2bc78497",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-27T16:05:44Z",
       "side": 1,
       "message": "Brace-enclosed and on it\u0027s own line, please.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 34,
+        "endLine": 1325,
+        "endChar": 41
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed6169bc_bdf5a753",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed8889a6_2bc78497",
       "range": {
         "startLine": 1325,
         "startChar": 34,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cd782572_fc95613c",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5f9dfa_de9b0ebb",
+      "range": {
+        "startLine": 1372,
+        "startChar": 10,
+        "endLine": 1376,
+        "endChar": 11
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5f9dfa_fecd32e1",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-27T15:11:01Z",
       "side": 1,
       "message": "Remove t.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 40,
+        "endLine": 1053,
+        "endChar": 41
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd782572_1c8bfd21",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5f9dfa_fecd32e1",
       "range": {
         "startLine": 1053,
         "startChar": 40,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cd782572_5c857509",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "Thanks for the suggestion Vladimir.  I\u0027ll address this (inherited) TODO in another CL.",
+      "parentUuid": "ed8889a6_48c68eca",
+      "range": {
+        "startLine": 1056,
+        "startChar": 4,
+        "endLine": 1056,
+        "endChar": 75
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed8889a6_88c256a2",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-27T16:05:44Z",
       "side": 1,
       "message": "I prefer the explicit static_cast\u003csize_t\u003e(-1).",
+      "range": {
+        "startLine": 1078,
+        "startChar": 51,
+        "endLine": 1078,
+        "endChar": 53
+      },
+      "revId": "e6bd8723dae28085915f7874917124e793621443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed6169bc_fdef1f7f",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-27T16:57:28Z",
+      "side": 1,
+      "message": "I used a constant to stick to the style used in this file.",
+      "parentUuid": "ed8889a6_88c256a2",
       "range": {
         "startLine": 1078,
         "startChar": 51,
