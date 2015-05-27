@@ -422,6 +422,30 @@
     },
     {
       "key": {
+        "uuid": "ed6169bc_378e1800",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Or, going the other way, change IsFastInvoke() parameters to plain pointers to make it easier to conclude that we don\u0027t need a handle.",
+      "parentUuid": "8d99cdfb_e576ac8c",
+      "range": {
+        "startLine": 1479,
+        "startChar": 2,
+        "endLine": 1479,
+        "endChar": 31
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_82596c60",
         "filename": "compiler/driver/compiler_driver_test.cc",
         "patchSetId": 13
@@ -2050,6 +2074,30 @@
       "writtenOn": "2015-05-27T01:05:31Z",
       "side": 1,
       "message": "ArtMethod arrays are no longer allocated in the heap. So, this isn\u0027t right?",
+      "range": {
+        "startLine": 3281,
+        "startChar": 12,
+        "endLine": 3281,
+        "endChar": 39
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_9450b231",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3281,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-27T11:08:48Z",
+      "side": 1,
+      "message": "Native allocations abort on failure. (Though, the abort can be either abort() from ::operator new, or Runtime::Abort() from a failed CHECK() or even an uncaught std::bad_alloc (host only?).)",
+      "parentUuid": "6d9499c1_c47c4f70",
       "range": {
         "startLine": 3281,
         "startChar": 12,
