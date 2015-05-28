@@ -52,6 +52,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_5559ca5c",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-28T18:05:31Z",
+      "side": 1,
+      "message": "This is surprising then, as we do test on the player, which should enable sse4.1...",
+      "parentUuid": "6d1bb95b_152d92c1",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
