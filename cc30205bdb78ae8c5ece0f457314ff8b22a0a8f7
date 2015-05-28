@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d470d3e_95efc6cb",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1072549
+      },
+      "writtenOn": "2015-05-28T15:33:48Z",
+      "side": 1,
+      "message": "If you are re-factoring this what about adding oat_method.GetCodeOffset() to GetNativePcOffset() ? \n\nIMHO, this should make it easier to associate a native pc to the stack map\u0027s native_pc_offset since there would be no need to add the method\u0027s code_offset.\n\nI have a patch in my tree that does this. I was planning to push it together with the slowpath sharing work.",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 72
+      },
+      "revId": "cc30205bdb78ae8c5ece0f457314ff8b22a0a8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
