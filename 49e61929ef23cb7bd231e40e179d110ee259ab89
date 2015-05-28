@@ -16,6 +16,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_3d37d290",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-28T16:58:09Z",
+      "side": 1,
+      "message": "That sounds like a better regression test is necessary.",
+      "parentUuid": "0d54fde2_da7a52e9",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
