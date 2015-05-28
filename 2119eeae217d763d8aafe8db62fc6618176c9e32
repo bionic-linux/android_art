@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d54fde2_ab054243",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-05-28T18:50:40Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "range": {
+        "startLine": 1118,
+        "startChar": 7,
+        "endLine": 1118,
+        "endChar": 18
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
