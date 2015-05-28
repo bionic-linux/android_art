@@ -34,6 +34,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_152d92c1",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-28T18:01:31Z",
+      "side": 1,
+      "message": "There is a test that actually tests this.  Unfortunately, this particular code only runs if sse4.1 is set as a feature, and that is not true by default.  I will post a (tested) fix for this, but I am not sure how to test this in general.",
+      "parentUuid": "ed56c9ec_3d37d290",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
