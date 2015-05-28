@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_9b88d6f2",
+        "filename": "runtime/arch/mips64/quick_entrypoints_mips64.S",
+        "patchSetId": 15
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_2f7de52c",
+      "range": {
+        "startLine": 644,
+        "startChar": 39,
+        "endLine": 644,
+        "endChar": 40
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d42d931_6ebfef0b",
         "filename": "runtime/arch/mips64/quick_entrypoints_mips64.S",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-28T13:10:22Z",
       "side": 1,
       "message": "8",
+      "range": {
+        "startLine": 747,
+        "startChar": 39,
+        "endLine": 747,
+        "endChar": 40
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_ad5b9a61",
+        "filename": "runtime/arch/mips64/quick_entrypoints_mips64.S",
+        "patchSetId": 15
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42d931_6ebfef0b",
       "range": {
         "startLine": 747,
         "startChar": 39,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_3d0512cd",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_92b7dc1a",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 77
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d42d931_51e9f428",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 15
@@ -82,6 +154,30 @@
       "writtenOn": "2015-05-28T13:10:22Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 829,
+        "startChar": 57,
+        "endLine": 829,
+        "endChar": 58
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_3b1442c6",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42d931_51e9f428",
       "range": {
         "startLine": 829,
         "startChar": 57,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_1dcdae04",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42d931_d1ade4ea",
+      "range": {
+        "startLine": 850,
+        "startChar": 12,
+        "endLine": 850,
+        "endChar": 13
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3851b1_d3ea4c72",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 15
@@ -128,6 +248,30 @@
       "writtenOn": "2015-05-28T13:10:22Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 855,
+        "startChar": 65,
+        "endLine": 855,
+        "endChar": 66
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_5b11fed4",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3851b1_d3ea4c72",
       "range": {
         "startLine": 855,
         "startChar": 65,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_9dfc3e38",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_522734af",
+      "range": {
+        "startLine": 1088,
+        "startChar": 60,
+        "endLine": 1088,
+        "endChar": 61
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3851b1_733a7895",
         "filename": "runtime/stack.cc",
         "patchSetId": 15
@@ -174,6 +342,30 @@
       "writtenOn": "2015-05-28T13:10:22Z",
       "side": 1,
       "message": "CHECK (guarded by kIsDebugBuild)",
+      "range": {
+        "startLine": 893,
+        "startChar": 6,
+        "endLine": 893,
+        "endChar": 15
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_1d0f6eb6",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-28T17:06:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3851b1_733a7895",
       "range": {
         "startLine": 893,
         "startChar": 6,
