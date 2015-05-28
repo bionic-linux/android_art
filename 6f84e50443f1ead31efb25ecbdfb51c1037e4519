@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d1bb95b_e9abbffd",
+        "filename": "compiler/dex/mir_method_info.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-28T19:59:01Z",
+      "side": 0,
+      "message": "Why was this removed?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 0
+      },
+      "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_2a0a25a7",
+        "filename": "compiler/dex/vreg_analysis.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-28T19:59:01Z",
+      "side": 0,
+      "message": "Why was this touched?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
