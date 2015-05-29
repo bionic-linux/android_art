@@ -243,6 +243,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_9cd99b1e",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T15:48:01Z",
+      "side": 1,
+      "message": "Issue 1: we officially still have a Pentium 4 as minimum build requirements (and that won\u0027t change).\n\nIssue 2: technically we should be testing both SSE4.1 on and off (just as we should test all instruction-set features for the other architectures) - alas, that\u0027s out of scope.\n\n\nWe could add a simple parsing of /proc/cpuinfo and add the -Xcompiler-option when generating the test targets, if we want to go with the option of not testing SSE4.1 off.",
+      "parentUuid": "8d470d3e_b3b7771a",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
