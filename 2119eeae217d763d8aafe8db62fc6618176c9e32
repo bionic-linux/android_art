@@ -679,6 +679,75 @@
       "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_8b407715",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:41:56Z",
+      "side": 1,
+      "message": "Could be made a constexpr.",
+      "range": {
+        "startLine": 301,
+        "startChar": 6,
+        "endLine": 301,
+        "endChar": 64
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_0c5ddff8",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:41:56Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 559,
+        "startChar": 76,
+        "endLine": 559,
+        "endChar": 85
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_6b0ef3e9",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:41:56Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be IsDeoptimizedMethod?",
+      "range": {
+        "startLine": 692,
+        "startChar": 22,
+        "endLine": 692,
+        "endChar": 43
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
