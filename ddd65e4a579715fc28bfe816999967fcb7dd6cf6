@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d42d931_b4320122",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-29T16:09:48Z",
+      "side": 1,
+      "message": "Long line.",
+      "range": {
+        "startLine": 4469,
+        "startChar": 0,
+        "endLine": 4469,
+        "endChar": 101
+      },
+      "revId": "ddd65e4a579715fc28bfe816999967fcb7dd6cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
