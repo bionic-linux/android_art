@@ -22,6 +22,30 @@
       "revId": "3e4fb0e87191bdb2d951b5f0c4382098f664a20b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_34cc51b7",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-05-29T15:48:42Z",
+      "side": 1,
+      "message": "As discussed offline. please check that the bitvector implementation stores the bits in the expected order.\n\nWe should explicitly document this if you wanna go forward with this assumption.",
+      "parentUuid": "d9fb8c32_873aecf7",
+      "range": {
+        "startLine": 674,
+        "startChar": 4,
+        "endLine": 674,
+        "endChar": 68
+      },
+      "revId": "3e4fb0e87191bdb2d951b5f0c4382098f664a20b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
