@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed56c9ec_34243f66",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "Copyright missing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_b4182f29",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "IMHO those names aren\u0027t very good. The original valgrind ones at least had valgrind in the name, so the intent was very clear. MAKE_MEM_NOACCESS could just as well be a certain mmap protection scheme...\n\nPlease add a prefix",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_5736d4a3",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "No, please don\u0027t use untyped macros, this is C++11.\n\nPlease make this a proper constexpr bool (there\u0027s no reason below to use the RUNNING_ON_VALGRIND macro, all usages of these flags should already be protected by RUNNING_ON_MEMORY_TOOL).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_f442b700",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "We\u0027re averse to #ifdefs in the code. Please consider a constexpr bool hiding the ifdef away.\n\n(Also, is there a particular reason to only do this for ASAN?)",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_76409614",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "Please don\u0027t add spurious non-related newlines.",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 0
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_771af02d",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "?\n\nWe don\u0027t like to leave such comments in the code.",
+      "range": {
+        "startLine": 467,
+        "startChar": 4,
+        "endLine": 467,
+        "endChar": 54
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_b63afe91",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "Is there a problem with unconditionally doing this? I would think Valgrind would not care...",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_16d2ead5",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_b70f58e4",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "As above.",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_973c5c86",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:37:41Z",
+      "side": 1,
+      "message": "As above.",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
