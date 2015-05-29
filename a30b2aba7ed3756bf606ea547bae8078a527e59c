@@ -94,6 +94,54 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_a528f601",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T19:59:52Z",
+      "side": 1,
+      "message": "In case of Valgrind, this is a runtime condition. It\u0027s probably not a good idea for it to be a constexpr bool in one #if branch, and something else (like a macro or an inline function) on the other.",
+      "parentUuid": "b9f6d849_5736d4a3",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_05d1c27c",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T19:59:52Z",
+      "side": 1,
+      "message": "Potentially, yes, if when add MemorySanitizer to the mix.",
+      "parentUuid": "6d42d931_f422c922",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
