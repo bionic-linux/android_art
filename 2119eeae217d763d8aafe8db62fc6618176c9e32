@@ -871,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_141f3b16",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:20:01Z",
+      "side": 1,
+      "message": "Yeah, looking at LogMessage, this should be a separate cleanup and is fine the way it is now.",
+      "parentUuid": "ed56c9ec_d9e6cc59",
+      "range": {
+        "startLine": 559,
+        "startChar": 76,
+        "endLine": 559,
+        "endChar": 85
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_6b0ef3e9",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 16
