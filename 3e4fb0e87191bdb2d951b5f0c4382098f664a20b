@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9fb8c32_873aecf7",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-05-29T15:45:14Z",
+      "side": 1,
+      "message": "Could we have this as a service of art::MemoryRegion?",
+      "range": {
+        "startLine": 674,
+        "startChar": 4,
+        "endLine": 674,
+        "endChar": 68
+      },
+      "revId": "3e4fb0e87191bdb2d951b5f0c4382098f664a20b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
