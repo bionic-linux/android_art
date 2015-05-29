@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_37f5179a",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "ASan is a compile-time choice. Valgrind is not: you can run the same binary with or without Valgrind, and RUNNING_ON_VALGRIND will evaluate either to 1 or 0.\n\nASan and Valgrind are incompatible, so we can make RUNNING_ON_VALGRIND a 0 constant in ASan builds.",
+      "parentUuid": "ed56c9ec_370fd768",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
@@ -331,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_3f9ede38",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "This should not be ASan-specific. These bins are simply free space in the heap, from the end of one allocation to the beginning of another. They are guaranteed to contain redzones. Again, not sure why Valgrind does not catch it.",
+      "parentUuid": "8d470d3e_13d12b00",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_53b3b3da",
         "filename": "runtime/gc/space/dlmalloc_space.cc",
         "patchSetId": 3
@@ -342,6 +390,30 @@
       "writtenOn": "2015-05-29T14:27:41Z",
       "side": 1,
       "message": "Includes are sorted, this should go to line 23",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_9edebc50",
+        "filename": "runtime/gc/space/dlmalloc_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_53b3b3da",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -371,6 +443,24 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_54eb7976",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fb8c32_e4464ed1",
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_73c0af2b",
         "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
         "patchSetId": 3
@@ -394,6 +484,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_1f82fad8",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_73c0af2b",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d42d931_007b943c",
         "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
         "patchSetId": 3
@@ -405,6 +519,24 @@
       "writtenOn": "2015-05-29T14:27:41Z",
       "side": 1,
       "message": "Remove empty line (see above)",
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_74f07d60",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42d931_007b943c",
       "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -481,6 +613,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_df8872f3",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_76409614",
+      "range": {
+        "startLine": 460,
+        "startChar": 0,
+        "endLine": 460,
+        "endChar": 0
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f6d849_771af02d",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 3
@@ -492,6 +648,30 @@
       "writtenOn": "2015-05-29T03:37:41Z",
       "side": 1,
       "message": "?\n\nWe don\u0027t like to leave such comments in the code.",
+      "range": {
+        "startLine": 467,
+        "startChar": 4,
+        "endLine": 467,
+        "endChar": 54
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_ff6536cd",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f6d849_771af02d",
       "range": {
         "startLine": 467,
         "startChar": 4,
@@ -527,6 +707,30 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_fe1c909d",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done. It could be a performance issue for Valgrind, but probably not.",
+      "parentUuid": "0d54fde2_b63afe91",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_16d2ead5",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 3
@@ -538,6 +742,30 @@
       "writtenOn": "2015-05-29T03:37:41Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_df6152bb",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_16d2ead5",
       "range": {
         "startLine": 495,
         "startChar": 0,
@@ -573,6 +801,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_5f4e424a",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f6d849_b70f58e4",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 584,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9f6d849_973c5c86",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 3
@@ -596,6 +848,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_9f40aa15",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f6d849_973c5c86",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 772,
+        "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_f3e49fd8",
         "filename": "runtime/mem_map.h",
         "patchSetId": 3
@@ -607,6 +883,30 @@
       "writtenOn": "2015-05-29T14:27:41Z",
       "side": 1,
       "message": "const size_t",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 8
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_3e14487c",
+        "filename": "runtime/mem_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:31:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_f3e49fd8",
       "range": {
         "startLine": 172,
         "startChar": 2,
