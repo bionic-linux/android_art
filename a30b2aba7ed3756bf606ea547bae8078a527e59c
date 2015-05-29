@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_36f0ce5f",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:40:51Z",
+      "side": 1,
+      "message": "This file isn\u0027t named sanitizer.h (even though I think this is a better name than memory_tool). The linter should actually break your build...",
+      "range": {
+        "startLine": 33,
+        "startChar": 28,
+        "endLine": 33,
+        "endChar": 39
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed56c9ec_f442b700",
         "filename": "runtime/gc/allocator/rosalloc.cc",
         "patchSetId": 3
