@@ -189,6 +189,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_00963448",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-05-29T12:38:42Z",
+      "side": 1,
+      "message": "The problem is that we can\u0027t maintain something we\u0027re not testing. It\u0027s great if you have internal testing, but others might risk breaking it, and being notified in a few days when your tests kick in.\n\nSo yeah, for those sorts of things, I\u0027d prefer not having to maintain the code. Or highly prioritizing a way for testing it.",
+      "parentUuid": "190b6419_7888a12a",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
