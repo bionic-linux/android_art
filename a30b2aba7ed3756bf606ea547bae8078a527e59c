@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_61eea1b3",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:56:08Z",
+      "side": 1,
+      "message": "Ah, ok, I can do that. I actually meant the redzone flag to be used independently of the others, but this works, too.",
+      "parentUuid": "ed56c9ec_d7b20bc5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "The point Seb is making:\n\nDon\u0027t put the macros in this way. Any such thing should be protected with the flag signaling whether sanitizing is active.\n\n if (running_on_mem_tool_) {\n   MAKE_MEM_UNDEFINED(...);\n }\n\nThat is what allows some of the flags to be clean constexpr, instead of the macro hell. We\u0027re happy to trade the one-branch overhead in a non-hot path for this.",
       "parentUuid": "0d54fde2_3f9ede38",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_429e6939",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T21:56:08Z",
+      "side": 1,
+      "message": "Ok, I can do this.\nDo you want all other uses of MAKE_MEM_* to be wrapped this way? I don\u0027t see how it helps anything, with MAKE_MEM_* macros not depending on any constexpr variables at all.",
+      "parentUuid": "0d54fde2_62e0cd12",
       "range": {
         "startLine": 2066,
         "startChar": 4,
