@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_898b2bee",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 15
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Rebased over ngeoffray change where we read the method inside the trampoline.",
+      "parentUuid": "0d54fde2_edea0272",
+      "range": {
+        "startLine": 1425,
+        "startChar": 4,
+        "endLine": 1425,
+        "endChar": 19
+      },
+      "revId": "282c6180d40d0a93dcd531e50a05a9a4098bf1c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_2f7de52c",
         "filename": "runtime/arch/mips64/quick_entrypoints_mips64.S",
         "patchSetId": 15
