@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "6d42d931_f422c922",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-05-29T19:35:37Z",
+      "side": 1,
+      "message": "Does this mean that these could have independently different values in the future?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
@@ -231,6 +254,30 @@
       "writtenOn": "2015-05-29T14:27:41Z",
       "side": 1,
       "message": "That definitely needs to be a \u0027constexpr bool\u0027 flag.",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_9a8c2d8a",
+        "filename": "runtime/gc/space/rosalloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-05-29T19:35:37Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8d470d3e_b3ea17a3",
       "range": {
         "startLine": 37,
         "startChar": 19,
