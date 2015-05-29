@@ -636,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_d9340c5a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f6d849_7197a09c",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 6
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_0b380700",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 16
@@ -647,6 +671,30 @@
       "writtenOn": "2015-05-29T01:23:34Z",
       "side": 1,
       "message": "Stale comment?",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 37
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_39dc3897",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_0b380700",
       "range": {
         "startLine": 416,
         "startChar": 1,
@@ -682,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_99c364b8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4690,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "I\u0027ll change it to auto**",
+      "parentUuid": "b9f6d849_4cabe791",
+      "range": {
+        "startLine": 4690,
+        "startChar": 10,
+        "endLine": 4690,
+        "endChar": 16
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_8b407715",
         "filename": "runtime/entrypoints/entrypoint_utils.cc",
         "patchSetId": 16
@@ -693,6 +765,30 @@
       "writtenOn": "2015-05-29T01:41:56Z",
       "side": 1,
       "message": "Could be made a constexpr.",
+      "range": {
+        "startLine": 301,
+        "startChar": 6,
+        "endLine": 301,
+        "endChar": 64
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_6c68e36d",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "I don\u0027t think OFFSETOF_MEMBER is constexpr friendly.",
+      "parentUuid": "0d54fde2_8b407715",
       "range": {
         "startLine": 301,
         "startChar": 6,
@@ -728,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_d9e6cc59",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "Another CL.",
+      "parentUuid": "b9f6d849_0c5ddff8",
+      "range": {
+        "startLine": 559,
+        "startChar": 76,
+        "endLine": 559,
+        "endChar": 85
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_6b0ef3e9",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 16
@@ -739,6 +859,30 @@
       "writtenOn": "2015-05-29T01:41:56Z",
       "side": 1,
       "message": "Shouldn\u0027t that be IsDeoptimizedMethod?",
+      "range": {
+        "startLine": 692,
+        "startChar": 22,
+        "endLine": 692,
+        "endChar": 43
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_ac7dcb2b",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:52:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_6b0ef3e9",
       "range": {
         "startLine": 692,
         "startChar": 22,
