@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_370fd768",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T21:25:06Z",
+      "side": 1,
+      "message": "I don\u0027t see how it\u0027s a runtime option - the way you\u0027re doing it right now, it obviously is not: when you\u0027re running on valgrind, you add redzones.\n\nThis should be constexpr true, and any use of ADDS_REDZONES should be protected by RUNNING_ON_MEMORY_TOOL (or a cached flag) anyways.",
+      "parentUuid": "ed56c9ec_a528f601",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
@@ -224,6 +248,54 @@
       "side": 1,
       "message": "Exactly. RosAllocSpace::Clear re-creates RosAlloc in the same mapping, and then the memset at \"Clear the first page since it is not madvised due to the magic number\" trips on the leftover redzones from the previous instance of RosAlloc.",
       "parentUuid": "b91fb853_442058a3",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_7e5520ca",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T21:25:06Z",
+      "side": 1,
+      "message": "The comment is out-dated, as you noticed. My bad.",
+      "parentUuid": "b91fb853_442058a3",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_17b81309",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T21:25:06Z",
+      "side": 1,
+      "message": "But is there a reason to not be consistent and make it undefined when running under any sanitizer?",
+      "parentUuid": "0d54fde2_bf53ae3c",
       "range": {
         "startLine": 114,
         "startChar": 0,
