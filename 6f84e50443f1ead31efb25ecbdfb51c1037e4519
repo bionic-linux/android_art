@@ -116,6 +116,30 @@
       "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_e60f7435",
+        "filename": "compiler/jni/jni_compiler_test.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T01:00:04Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "0d54fde2_0561d60f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
