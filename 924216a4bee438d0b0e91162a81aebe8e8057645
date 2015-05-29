@@ -965,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_b892f3ce",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9499c1_0442bcfe",
+      "range": {
+        "startLine": 1085,
+        "startChar": 32,
+        "endLine": 1085,
+        "endChar": 37
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d99cdfb_03246d65",
         "filename": "compiler/image_writer.cc",
         "patchSetId": 13
@@ -999,6 +1023,54 @@
       "writtenOn": "2015-05-28T18:32:54Z",
       "side": 1,
       "message": "Is this ok?",
+      "parentUuid": "8d99cdfb_03246d65",
+      "range": {
+        "startLine": 1105,
+        "startChar": 10,
+        "endLine": 1105,
+        "endChar": 11
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_27498042",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_8dbdf6a4",
+      "range": {
+        "startLine": 1105,
+        "startChar": 10,
+        "endLine": 1105,
+        "endChar": 11
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_07547cd8",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "8d99cdfb_03246d65",
       "range": {
         "startLine": 1105,
@@ -1094,6 +1166,54 @@
       "side": 1,
       "message": "Is this ok?",
       "parentUuid": "6d9499c1_ea13d78f",
+      "range": {
+        "startLine": 1367,
+        "startChar": 0,
+        "endLine": 1368,
+        "endChar": 91
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_c73a7493",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9499c1_ea13d78f",
+      "range": {
+        "startLine": 1367,
+        "startChar": 0,
+        "endLine": 1368,
+        "endChar": 91
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_2b96b248",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_2ddfaa03",
       "range": {
         "startLine": 1367,
         "startChar": 0,
@@ -1882,6 +2002,30 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_09701b88",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1757,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_2d5a4a0b",
+      "range": {
+        "startLine": 1757,
+        "startChar": 68,
+        "endLine": 1757,
+        "endChar": 85
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_2fb84809",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 13
@@ -2601,6 +2745,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_6bc99aa6",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "If we could prevent races between class root marking and CopyFrom it would probably be OK, but I guess that since we don\u0027t have this guarantee, I\u0027ll change it to use GcRoot::Read to prevent races where we might miss marking the roots of a method.",
+      "parentUuid": "ed56c9ec_24133e5b",
+      "range": {
+        "startLine": 543,
+        "startChar": 4,
+        "endLine": 543,
+        "endChar": 10
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf3c519_48ecb03a",
         "filename": "runtime/art_method.h",
         "patchSetId": 13
@@ -2860,6 +3028,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_6a5a6d0c",
+        "filename": "runtime/base/arena_allocator.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1bb95b_9585020d",
+      "range": {
+        "startLine": 240,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 10
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5f9dfa_b3e6a8b1",
         "filename": "runtime/base/arena_allocator.h",
         "patchSetId": 13
@@ -3048,6 +3240,54 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_8b85de0c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1bb95b_552d4a8e",
+      "range": {
+        "startLine": 2338,
+        "startChar": 8,
+        "endLine": 2338,
+        "endChar": 29
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_67dc68e6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2338,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d9499c1_a4a9038b",
+      "range": {
+        "startLine": 2338,
+        "startChar": 8,
+        "endLine": 2338,
+        "endChar": 29
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_c82ee238",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 13
@@ -3082,6 +3322,54 @@
       "writtenOn": "2015-05-28T18:32:54Z",
       "side": 1,
       "message": "Related to the read barrier ArtMethod::CopyFrom() comment.",
+      "parentUuid": "4d0995dc_c82ee238",
+      "range": {
+        "startLine": 2640,
+        "startChar": 4,
+        "endLine": 2640,
+        "endChar": 86
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_071f1c16",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "0d54fde2_308b7d22",
+      "range": {
+        "startLine": 2640,
+        "startChar": 4,
+        "endLine": 2640,
+        "endChar": 86
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_87022cc3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 2640,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Its an array of pointers, I don\u0027t see how there can be a read barrier here.",
       "parentUuid": "4d0995dc_c82ee238",
       "range": {
         "startLine": 2640,
@@ -3190,6 +3478,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_0b13ae5a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3281,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1bb95b_75a5e67e",
+      "range": {
+        "startLine": 3281,
+        "startChar": 12,
+        "endLine": 3281,
+        "endChar": 39
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d9499c1_e46a2b9b",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 13
@@ -3224,6 +3536,54 @@
       "writtenOn": "2015-05-28T18:32:54Z",
       "side": 1,
       "message": "Same.",
+      "parentUuid": "6d9499c1_e46a2b9b",
+      "range": {
+        "startLine": 3297,
+        "startChar": 10,
+        "endLine": 3297,
+        "endChar": 35
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_eb2d8a13",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3297,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_5001e106",
+      "range": {
+        "startLine": 3297,
+        "startChar": 10,
+        "endLine": 3297,
+        "endChar": 35
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_cb28c606",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3297,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "6d9499c1_e46a2b9b",
       "range": {
         "startLine": 3297,
@@ -3284,6 +3644,54 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_6b9efaae",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3921,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "0d54fde2_d01dd165",
+      "range": {
+        "startLine": 3921,
+        "startChar": 2,
+        "endLine": 3921,
+        "endChar": 84
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_c96b636f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3921,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "No, array of pointers.",
+      "parentUuid": "4d0995dc_a880ce95",
+      "range": {
+        "startLine": 3921,
+        "startChar": 2,
+        "endLine": 3921,
+        "endChar": 84
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5f9dfa_68008f70",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 13
@@ -3319,6 +3727,54 @@
       "side": 1,
       "message": "I think this concern isn\u0027t limited to this function. Whenever we create/copy new ArtMethod, the same concern applies.",
       "parentUuid": "0d5f9dfa_68008f70",
+      "range": {
+        "startLine": 4539,
+        "startChar": 18,
+        "endLine": 4539,
+        "endChar": 38
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_6b50ba62",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4539,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "I think its OK with the updated ArtMethod::CopyFrom, I\u0027ll try to add reasoning.",
+      "parentUuid": "0d5f9dfa_68008f70",
+      "range": {
+        "startLine": 4539,
+        "startChar": 18,
+        "endLine": 4539,
+        "endChar": 38
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_ab4aa2af",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4539,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_64370690",
       "range": {
         "startLine": 4539,
         "startChar": 18,
@@ -3389,6 +3845,30 @@
       "writtenOn": "2015-05-27T01:05:31Z",
       "side": 1,
       "message": "Can this be ArtMethod*?",
+      "range": {
+        "startLine": 4713,
+        "startChar": 6,
+        "endLine": 4713,
+        "endChar": 15
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_a9346758",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4713,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0995dc_c577ebca",
       "range": {
         "startLine": 4713,
         "startChar": 6,
@@ -3483,6 +3963,54 @@
       "side": 1,
       "message": "Same read barrier in copy of ArtMethod/GcRoot concern.",
       "parentUuid": "0d5f9dfa_bd7027d8",
+      "range": {
+        "startLine": 4816,
+        "startChar": 82,
+        "endLine": 4816,
+        "endChar": 89
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_9527b2ae",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4816,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Added comment, also fixed the logic above to have NoThreadSuspension assert.",
+      "parentUuid": "0d5f9dfa_bd7027d8",
+      "range": {
+        "startLine": 4816,
+        "startChar": 82,
+        "endLine": 4816,
+        "endChar": 89
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1bb95b_443d9a3c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4816,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_a48aceb0",
       "range": {
         "startLine": 4816,
         "startChar": 82,
@@ -4165,6 +4693,30 @@
     },
     {
       "key": {
+        "uuid": "6d1bb95b_7e8bfe20",
+        "filename": "runtime/linear_alloc.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_90fc2938",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 26
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_08c3badd",
         "filename": "runtime/mirror/abstract_method.h",
         "patchSetId": 13
@@ -4741,6 +5293,30 @@
       "side": 1,
       "message": "Is it still OK to do pointer size logic?\n\nUpdate the comment?",
       "parentUuid": "6d9499c1_30660428",
+      "range": {
+        "startLine": 964,
+        "startChar": 69,
+        "endLine": 964,
+        "endChar": 90
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_cbad269d",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-29T00:25:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_07e63c30",
       "range": {
         "startLine": 964,
         "startChar": 69,
