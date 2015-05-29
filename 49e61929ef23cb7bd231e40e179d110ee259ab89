@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "190b6419_b89e396a",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4022,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-29T12:10:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fb8c32_8182dcd8",
+      "range": {
+        "startLine": 4015,
+        "startChar": 0,
+        "endLine": 4022,
+        "endChar": 9
+      },
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_da7a52e9",
         "filename": "compiler/optimizing/intrinsics_x86_64.cc",
         "patchSetId": 1
@@ -108,6 +132,24 @@
       "side": 1,
       "message": "The player is x86. This code is for x86_64.\n\nI think we should just drop sse4.1 here. We can\u0027t easily test it right now until we have a x86_64 device.",
       "parentUuid": "6d1bb95b_5559ca5c",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3914a832_19f3eb9a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-29T12:10:01Z",
+      "side": 1,
+      "message": "I would prefer to keep it, as it is useful on some Intel devices, and is tested in-house.",
+      "parentUuid": "d9fb8c32_a1b5d8ba",
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
