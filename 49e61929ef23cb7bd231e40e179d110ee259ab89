@@ -171,6 +171,24 @@
       "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "190b6419_7888a12a",
+        "filename": "compiler/optimizing/intrinsics_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-05-29T12:25:14Z",
+      "side": 1,
+      "message": "The bug was when I transferred the code to AOSP, and lost a line from a working version. \n\nWould you still prefer that I remove this section?",
+      "parentUuid": "6d42d931_c0b26cfa",
+      "revId": "49e61929ef23cb7bd231e40e179d110ee259ab89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
