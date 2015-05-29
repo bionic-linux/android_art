@@ -469,6 +469,75 @@
       "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_e39203d0",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T00:41:58Z",
+      "side": 1,
+      "message": "Nicolas likes 1-on-a-line, please change back.",
+      "range": {
+        "startLine": 151,
+        "startChar": 33,
+        "endLine": 152,
+        "endChar": 87
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_1ebd9af8",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T00:41:58Z",
+      "side": 1,
+      "message": "This needs an explanation (it is not obvious from just looking at the assembler...)",
+      "range": {
+        "startLine": 439,
+        "startChar": 23,
+        "endLine": 439,
+        "endChar": 44
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_a837015c",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T00:41:58Z",
+      "side": 1,
+      "message": "-\u003eAsClass() ?",
+      "range": {
+        "startLine": 568,
+        "startChar": 18,
+        "endLine": 568,
+        "endChar": 43
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
