@@ -117,6 +117,132 @@
     },
     {
       "key": {
+        "uuid": "8d470d3e_13d12b00",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Guard with ADDRESS_SANITIZER (or the corresponding constexpr flag) ?",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d470d3e_53b3b3da",
+        "filename": "runtime/gc/space/dlmalloc_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Includes are sorted, this should go to line 23",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_e4464ed1",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Remove empty line. We used to add such line when including header outisde of the project (\u003cinclude\u003e)",
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d470d3e_73c0af2b",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Includes are sorted, please move that up.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_007b943c",
+        "filename": "runtime/gc/space/memory_tool_malloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Remove empty line (see above)",
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d470d3e_b3ea17a3",
+        "filename": "runtime/gc/space/rosalloc_space-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "That definitely needs to be a \u0027constexpr bool\u0027 flag.",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_76409614",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 3
@@ -248,6 +374,75 @@
         "startChar": 0,
         "endLine": 772,
         "endChar": 6
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d470d3e_f3e49fd8",
+        "filename": "runtime/mem_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "const size_t",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 8
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_04d13a73",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "IMO, it should have been named IsRunningOnMemoryTool in the first place. Since you rename it, you can also add the \"Is\" prefix.",
+      "range": {
+        "startLine": 532,
+        "startChar": 7,
+        "endLine": 532,
+        "endChar": 26
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_e4cd2ed7",
+        "filename": "runtime/utils_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-05-29T14:27:41Z",
+      "side": 1,
+      "message": "Move to the top of includes",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 29
       },
       "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
