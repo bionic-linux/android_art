@@ -610,6 +610,75 @@
       "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_7197a09c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:23:34Z",
+      "side": 1,
+      "message": "Really?",
+      "range": {
+        "startLine": 289,
+        "startChar": 2,
+        "endLine": 289,
+        "endChar": 6
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_0b380700",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:23:34Z",
+      "side": 1,
+      "message": "Stale comment?",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 417,
+        "endChar": 37
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f6d849_4cabe791",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 4690,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T01:23:34Z",
+      "side": 1,
+      "message": "WTF?!?!",
+      "range": {
+        "startLine": 4690,
+        "startChar": 10,
+        "endLine": 4690,
+        "endChar": 16
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
