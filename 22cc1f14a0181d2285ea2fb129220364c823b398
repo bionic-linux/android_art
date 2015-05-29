@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9fb8c32_a4296615",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-05-29T14:23:55Z",
+      "side": 1,
+      "message": "Or enforce it with a\n\n    static_assert(alignof(PtrSizedFields) \u003d\u003d 4,\n                  \"4-byte alignment required for correct ptr_sized_fields_ \"\n                  \"offset calculation when cross-compiling.\")",
+      "parentUuid": "d9fb8c32_814adcf9",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 18
+      },
+      "revId": "22cc1f14a0181d2285ea2fb129220364c823b398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_813a2892",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 17
