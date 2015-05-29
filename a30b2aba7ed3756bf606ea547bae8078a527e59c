@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_d7b20bc5",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T21:39:08Z",
+      "side": 1,
+      "message": "But any of the code paths doing the protection are protected by the RUNNING_ON_VALGRIND/MEMORY_TOOL path (if they\u0027re not, it\u0027s a bug). So the redzone flag is totally independent (you shouldn\u0027t even be looking at the flag if you\u0027re not running under valgrind/asan).",
+      "parentUuid": "ed56c9ec_37f5179a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 36
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_36f0ce5f",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 3
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "This should not be ASan-specific. These bins are simply free space in the heap, from the end of one allocation to the beginning of another. They are guaranteed to contain redzones. Again, not sure why Valgrind does not catch it.",
       "parentUuid": "8d470d3e_13d12b00",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_62e0cd12",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T21:39:08Z",
+      "side": 1,
+      "message": "The point Seb is making:\n\nDon\u0027t put the macros in this way. Any such thing should be protected with the flag signaling whether sanitizing is active.\n\n if (running_on_mem_tool_) {\n   MAKE_MEM_UNDEFINED(...);\n }\n\nThat is what allows some of the flags to be clean constexpr, instead of the macro hell. We\u0027re happy to trade the one-branch overhead in a non-hot path for this.",
+      "parentUuid": "0d54fde2_3f9ede38",
       "range": {
         "startLine": 2066,
         "startChar": 4,
