@@ -212,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_bf53ae3c",
+        "filename": "runtime/gc/allocator/rosalloc.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-05-29T20:55:41Z",
+      "side": 1,
+      "message": "Exactly. RosAllocSpace::Clear re-creates RosAlloc in the same mapping, and then the memset at \"Clear the first page since it is not madvised due to the magic number\" trips on the leftover redzones from the previous instance of RosAlloc.",
+      "parentUuid": "b91fb853_442058a3",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_13d12b00",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 3
