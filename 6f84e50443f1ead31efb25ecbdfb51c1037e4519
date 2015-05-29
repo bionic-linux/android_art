@@ -187,6 +187,52 @@
       "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_56a8f257",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:09:31Z",
+      "side": 0,
+      "message": "No reason to reformat this.",
+      "range": {
+        "startLine": 210,
+        "startChar": 54,
+        "endLine": 220,
+        "endChar": 61
+      },
+      "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_b43d8f8d",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-29T03:09:31Z",
+      "side": 0,
+      "message": "No reason to reformat this.",
+      "range": {
+        "startLine": 258,
+        "startChar": 54,
+        "endLine": 268,
+        "endChar": 59
+      },
+      "revId": "6f84e50443f1ead31efb25ecbdfb51c1037e4519",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
