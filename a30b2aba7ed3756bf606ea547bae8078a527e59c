@@ -475,6 +475,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_e38af1b1",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-30T00:05:06Z",
+      "side": 1,
+      "message": "I guess it isn\u0027t totally hazardous, though I don\u0027t know what the valgrind macro does (sometimes explicitly seeing that there\u0027s a branch involved is nice). Seb?",
+      "parentUuid": "0d54fde2_429e6939",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_53b3b3da",
         "filename": "runtime/gc/space/dlmalloc_space.cc",
         "patchSetId": 3
