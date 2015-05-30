@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_b29be950",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9fb8c32_814adcf9",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 18
+      },
+      "revId": "22cc1f14a0181d2285ea2fb129220364c823b398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_813a2892",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 17
@@ -60,6 +84,30 @@
       "writtenOn": "2015-05-29T10:44:13Z",
       "side": 1,
       "message": "in case",
+      "range": {
+        "startLine": 1251,
+        "startChar": 54,
+        "endLine": 1251,
+        "endChar": 60
+      },
+      "revId": "22cc1f14a0181d2285ea2fb129220364c823b398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed56c9ec_281a1627",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d470d3e_813a2892",
       "range": {
         "startLine": 1251,
         "startChar": 54,
