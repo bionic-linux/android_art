@@ -4047,6 +4047,30 @@
     },
     {
       "key": {
+        "uuid": "ed56c9ec_68241e67",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4816,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Added more comments.",
+      "parentUuid": "ed56c9ec_14ce56dd",
+      "range": {
+        "startLine": 4816,
+        "startChar": 82,
+        "endLine": 4816,
+        "endChar": 89
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d0995dc_28331e29",
         "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
         "patchSetId": 13
@@ -5365,6 +5389,30 @@
       "side": 1,
       "message": "Remove \"since this is the slow path\" as there\u0027s no fast path?",
       "parentUuid": "0d54fde2_cbad269d",
+      "range": {
+        "startLine": 964,
+        "startChar": 69,
+        "endLine": 964,
+        "endChar": 90
+      },
+      "revId": "924216a4bee438d0b0e91162a81aebe8e8057645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b91fb853_388c658c",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_37852856",
       "range": {
         "startLine": 964,
         "startChar": 69,
