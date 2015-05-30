@@ -777,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_f233a1fc",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed56c9ec_d48853f3",
+      "range": {
+        "startLine": 360,
+        "startChar": 6,
+        "endLine": 360,
+        "endChar": 49
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_8b407715",
         "filename": "runtime/entrypoints/entrypoint_utils.cc",
         "patchSetId": 16
@@ -959,6 +983,24 @@
     },
     {
       "key": {
+        "uuid": "0d54fde2_3da1861f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "A++++ API",
+      "parentUuid": "b9f6d849_eca1932d",
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d54fde2_16e58ad2",
         "filename": "runtime/oat_file.h",
         "patchSetId": 16
@@ -970,6 +1012,30 @@
       "writtenOn": "2015-05-29T03:09:31Z",
       "side": 1,
       "message": "No longer necessary?",
+      "range": {
+        "startLine": 101,
+        "startChar": 45,
+        "endLine": 101,
+        "endChar": 88
+      },
+      "revId": "2119eeae217d763d8aafe8db62fc6618176c9e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d54fde2_bd9576ba",
+        "filename": "runtime/oat_file.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-05-30T01:43:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d54fde2_16e58ad2",
       "range": {
         "startLine": 101,
         "startChar": 45,
