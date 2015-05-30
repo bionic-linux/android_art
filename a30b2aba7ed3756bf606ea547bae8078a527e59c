@@ -499,6 +499,30 @@
     },
     {
       "key": {
+        "uuid": "b91fb853_a631662c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-05-30T01:15:21Z",
+      "side": 1,
+      "message": "Evgeniy: Valgrind\u0027s is a piece of inline assembly that does nothing, but is\nspecific enough so that the dynamic translator can recognize it.\n\nThe macro isn\u0027t checking first whether Valgrind is actually active? Then I think it\u0027s basically settled: please protect all these points with the flag running_on_... to avoid the overhead when we know it\u0027s off.",
+      "parentUuid": "ed56c9ec_e38af1b1",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_53b3b3da",
         "filename": "runtime/gc/space/dlmalloc_space.cc",
         "patchSetId": 3
