@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9fb8c32_e8705cd3",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-01T12:59:10Z",
+      "side": 1,
+      "message": "dcheck sizes please. FillWith is to generic and here we actually expect equal sizes.",
+      "range": {
+        "startLine": 673,
+        "startChar": 23,
+        "endLine": 673,
+        "endChar": 31
+      },
+      "revId": "572d278e195b12562d7d5c32f27b73655a4d2e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
