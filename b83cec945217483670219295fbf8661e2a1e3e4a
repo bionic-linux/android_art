@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9fb8c32_dbd44c34",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-01T15:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d42d931_9ea99c8b",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 18
+      },
+      "revId": "b83cec945217483670219295fbf8661e2a1e3e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7919c071_621468cf",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-01T15:22:23Z",
       "side": 1,
       "message": "Maybe introduce a typedef for this pointer-to-function type?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 70
+      },
+      "revId": "b83cec945217483670219295fbf8661e2a1e3e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_9b2c84d4",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-01T15:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7919c071_621468cf",
       "range": {
         "startLine": 145,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d9fb8c32_7b31b829",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-01T15:37:04Z",
+      "side": 1,
+      "message": "Changed to 0. I copy-pasted an existing block!",
+      "parentUuid": "d9fb8c32_6819ec05",
+      "range": {
+        "startLine": 472,
+        "startChar": 25,
+        "endLine": 472,
+        "endChar": 27
+      },
+      "revId": "b83cec945217483670219295fbf8661e2a1e3e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7919c071_623b485d",
         "filename": "compiler/optimizing/optimizing_compiler.cc",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-01T15:22:23Z",
       "side": 1,
       "message": "Nit: long line.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 121
+      },
+      "revId": "b83cec945217483670219295fbf8661e2a1e3e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_1ed76cc5",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-01T15:37:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7919c071_623b485d",
       "range": {
         "startLine": 217,
         "startChar": 0,
