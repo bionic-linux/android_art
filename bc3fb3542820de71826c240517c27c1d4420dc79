@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d42d931_2d3de43d",
+        "filename": "test/477-long-to-float-conversion-precision/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2015-06-01T03:52:16Z",
+      "side": 1,
+      "message": "Does this comment still valid with this CL?",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "bc3fb3542820de71826c240517c27c1d4420dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
