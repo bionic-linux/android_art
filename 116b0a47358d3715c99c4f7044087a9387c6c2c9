@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f990500b_3f62270c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4995,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-01T22:14:49Z",
+      "side": 1,
+      "message": "I think that should move up, it\u0027s better kept with the original copy IMHO.",
+      "range": {
+        "startLine": 4993,
+        "startChar": 6,
+        "endLine": 4995,
+        "endChar": 60
+      },
+      "revId": "116b0a47358d3715c99c4f7044087a9387c6c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198e04f0_80d2f6f9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-01T22:14:49Z",
+      "side": 1,
+      "message": "This should be moved up, as you\u0027re already using old_vtable_count \u003d\u003d new_vtable_count.",
+      "range": {
+        "startLine": 5014,
+        "startChar": 4,
+        "endLine": 5014,
+        "endChar": 49
+      },
+      "revId": "116b0a47358d3715c99c4f7044087a9387c6c2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
