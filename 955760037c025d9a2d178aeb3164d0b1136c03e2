@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d42d931_de9b2470",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "This probably belongs to Android.executable.mk",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_6da699cb",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Make this an argument of CompileInternal, it\u0027s not used anywhere else.",
+      "range": {
+        "startLine": 494,
+        "startChar": 37,
+        "endLine": 494,
+        "endChar": 72
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_ed91895b",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "This is ugly. Either include graph_visualizer.h here or move the class declaration to this file.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_5b26fcf1",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Redundant",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_0d2045d0",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Only used in this function, make local var",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_fb4a6875",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "This is specific to the place you\u0027re printing from, move it to the Printer::PrintInstruction function.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 24
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_7b58985b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "std::unique_ptr",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 30
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_7e187028",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Use the Start/EndTag, PrintInt/Property/... functions as Run and VisitBasicBlock. Here and everywhere else.",
+      "range": {
+        "startLine": 469,
+        "startChar": 4,
+        "endLine": 473,
+        "endChar": 32
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_82b1c485",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "You\u0027ll have to do this differently - the graph might not have an exit block. This actually crashes during test 480 because the exit block is removed by DCE as unreachable.",
+      "range": {
+        "startLine": 515,
+        "startChar": 32,
+        "endLine": 515,
+        "endChar": 72
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_1e7bec3c",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 520,
+        "startChar": 42,
+        "endLine": 520,
+        "endChar": 44
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_6d58d95b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Nit: just refer to `disassembler_`, no need to add a public method.",
+      "range": {
+        "startLine": 582,
+        "startChar": 2,
+        "endLine": 582,
+        "endChar": 87
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_de1ec418",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "std::unique_ptr",
+      "range": {
+        "startLine": 594,
+        "startChar": 2,
+        "endLine": 594,
+        "endChar": 46
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_3bdd7052",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Redundant",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_3b14507c",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "You could move declaration of HGraphVisualizer at the bottom and then you wouldn\u0027t need these forward declarations.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_dbeb2cec",
+        "filename": "compiler/optimizing/graph_visualizer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_6d3fb9e9",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Move to PassInfoPrinter and use its visualizer instance.",
+      "range": {
+        "startLine": 217,
+        "startChar": 7,
+        "endLine": 217,
+        "endChar": 31
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_5e66549d",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "Move to PassInfoPrinter",
+      "range": {
+        "startLine": 538,
+        "startChar": 2,
+        "endLine": 540,
+        "endChar": 85
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_02a5b439",
+        "filename": "disassembler/disassembler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T16:05:51Z",
+      "side": 1,
+      "message": "I think we should stick to C convention here and rename this to \u0027create_dissassembler\u0027",
+      "range": {
+        "startLine": 88,
+        "startChar": 14,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
