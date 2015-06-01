@@ -22,6 +22,30 @@
       "revId": "a6d7af62b28775557684930d6f6a6676972c905f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_658c758d",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T11:48:13Z",
+      "side": 1,
+      "message": "Sry, this was just for debug. Removed in PS4",
+      "parentUuid": "6d42d931_e3cccd3c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "a6d7af62b28775557684930d6f6a6676972c905f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
