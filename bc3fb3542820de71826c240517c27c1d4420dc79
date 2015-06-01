@@ -46,6 +46,30 @@
       "revId": "bc3fb3542820de71826c240517c27c1d4420dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb8c32_85f3016b",
+        "filename": "test/477-long-to-float-conversion-precision/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2015-06-01T10:47:52Z",
+      "side": 1,
+      "message": "To me it is confusing comment but it is ok to me if you see the sense in it.",
+      "parentUuid": "6d42d931_e82d8a13",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "bc3fb3542820de71826c240517c27c1d4420dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
