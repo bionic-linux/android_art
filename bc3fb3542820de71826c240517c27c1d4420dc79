@@ -22,6 +22,30 @@
       "revId": "bc3fb3542820de71826c240517c27c1d4420dc79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_e82d8a13",
+        "filename": "test/477-long-to-float-conversion-precision/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-01T10:26:38Z",
+      "side": 1,
+      "message": "I think this comment helps to understand the history and the purpose of this non-regression test.  I can remove it if you think it\u0027s irrelevant or useless.",
+      "parentUuid": "6d42d931_2d3de43d",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 70
+      },
+      "revId": "bc3fb3542820de71826c240517c27c1d4420dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
