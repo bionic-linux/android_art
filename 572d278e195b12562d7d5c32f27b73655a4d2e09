@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7919c071_0267f41b",
+        "filename": "runtime/memory_region.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T13:16:06Z",
+      "side": 1,
+      "message": "I can check that the highest set bit is within the bounds. BitVector does not remember its true size.",
+      "parentUuid": "d9fb8c32_a8a134b3",
+      "range": {
+        "startLine": 152,
+        "startChar": 49,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "572d278e195b12562d7d5c32f27b73655a4d2e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9fb8c32_e8705cd3",
         "filename": "runtime/stack_map.h",
         "patchSetId": 5
