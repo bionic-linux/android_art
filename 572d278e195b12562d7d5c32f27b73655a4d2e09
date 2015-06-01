@@ -141,6 +141,30 @@
       "revId": "572d278e195b12562d7d5c32f27b73655a4d2e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7919c071_2239d001",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T13:21:39Z",
+      "side": 1,
+      "message": "If that\u0027s the issue, we could move this back to BitVector, so that the implementation details are hidden in the class.",
+      "parentUuid": "6d42d931_4369216b",
+      "range": {
+        "startLine": 673,
+        "startChar": 23,
+        "endLine": 673,
+        "endChar": 31
+      },
+      "revId": "572d278e195b12562d7d5c32f27b73655a4d2e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
