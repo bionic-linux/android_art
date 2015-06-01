@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9fb8c32_c5c5899c",
+        "filename": "runtime/memory_region.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-01T11:44:16Z",
+      "side": 1,
+      "message": "Please add comments around this. Also consider moving it to BitVector?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "e0ddb66b77d9c516c57aa0cbcb309fcbe26feaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
