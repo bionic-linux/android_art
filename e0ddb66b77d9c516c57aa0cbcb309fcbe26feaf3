@@ -46,6 +46,30 @@
       "revId": "e0ddb66b77d9c516c57aa0cbcb309fcbe26feaf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d42d931_03d2b9d5",
+        "filename": "runtime/memory_region.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-01T11:48:13Z",
+      "side": 1,
+      "message": "Will add comments. \n\nWe talked about the placement with Roland and this seems to be the better option. The reason being that while it is common to use BitVector when already using MemRegion, it\u0027s not as common the other way round.",
+      "parentUuid": "d9fb8c32_c5c5899c",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 5
+      },
+      "revId": "e0ddb66b77d9c516c57aa0cbcb309fcbe26feaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
