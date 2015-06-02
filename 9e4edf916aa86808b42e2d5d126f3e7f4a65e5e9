@@ -46,6 +46,30 @@
       "revId": "9e4edf916aa86808b42e2d5d126f3e7f4a65e5e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ae2c65_29b0c9fb",
+        "filename": "runtime/base/bit_vector_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-02T11:23:47Z",
+      "side": 1,
+      "message": "This was not obvious to me; thanks for the explanation!  It\u0027s definitely worth adding a comment. :)",
+      "parentUuid": "99a8345d_87ebe8ec",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 67
+      },
+      "revId": "9e4edf916aa86808b42e2d5d126f3e7f4a65e5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
