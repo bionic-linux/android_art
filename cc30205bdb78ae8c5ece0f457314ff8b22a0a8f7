@@ -70,6 +70,30 @@
       "revId": "cc30205bdb78ae8c5ece0f457314ff8b22a0a8f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a8345d_24ba322f",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-02T11:09:50Z",
+      "side": 1,
+      "message": "I have changed art::StackMap::Dump in PS5 so that it now shows the relative PC offset *and* the (absolute) native PC.  The output looks like this now:\n\n  [..]\n  0x00aa71d8:         64FF1510010000               call fs:[0x110]  ; pAllocObject\n    StackMap [native_pc\u003d0xaa71df] (dex_pc\u003d0x4, native_pc_offset\u003d0x63, dex_register_map_offset\u003d0x0, inline_info_offset\u003d0xffffffff, register_mask\u003d0x40, stack_mask\u003d0b000000100000000000000000)\n      v3: in register (6)   [entry 0]\n  0x00aa71df:               8944240C               mov [esp + 12], eax\n  […]",
+      "parentUuid": "b9a97860_e55ad6c7",
+      "range": {
+        "startLine": 289,
+        "startChar": 44,
+        "endLine": 289,
+        "endChar": 72
+      },
+      "revId": "cc30205bdb78ae8c5ece0f457314ff8b22a0a8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
