@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "b97b38ac_17e5cfc8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4977,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-02T23:04:59Z",
+      "side": 1,
+      "message": "Just for my understanding, is there some unwritten style guide that says we can\u0027t use\n\n  ArtMethod\u0026 out_method \u003d *out;\n\ninstead?\n\nThis would\u0027ve prevented all the \u0027wtf?\u0027 moments people seem to be having with \u0027\u0026*out\u0027 which seems intuitively redundant ( e.g. if \u0027out\u0027 was a regular pointer).\n\n(I checked the google3 style guide and it doesn\u0027t seem to ban using lvalue references in this fashion).",
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a97860_45696aa1",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -42,6 +59,69 @@
         "endLine": 5011,
         "endChar": 46
       },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d23ce8_fe5ca6fe",
+        "filename": "runtime/stride_iterator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-02T23:04:59Z",
+      "side": 1,
+      "message": "This can be a regular output iterator if the code uses std::advance instead of +\u003d for operator++.\n\nAs an aside, it doesn\u0027t seem like this iterator actually implements everything to be considered a random access iterator (addition, subtraction, reversing, ...) - see here http://en.cppreference.com/w/cpp/concept/RandomAccessIterator",
+      "range": {
+        "startLine": 25,
+        "startChar": 44,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_7460c12d",
+        "filename": "runtime/stride_iterator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-02T23:04:59Z",
+      "side": 1,
+      "message": "This kind of interface design makes it very tempting to break strict aliasing rules.\n\nFor example:\n   \n  float x[] \u003d {...};\n  auto x \u003d StrideIterator\u003cint\u003e(x, 1);\n\n  int y \u003d *x;  // breaks strict aliasing\n\nBased on the use case this should probably do this instead:\n\n  StrideIterator(T* ptr, size_t byte_stride) {\n    .....\n    DCHECK(byte_stride \u003e\u003d sizeof(T)); \n    // don\u0027t read into the middle of the type which would be UB\n  }\n\n  StrideIterator\u0026 operator++() {    \n    reinterpret_cast\u003cuint8_t*\u003e(ptr_) +\u003d byte_stride_;\n    return *this;\n  }\n  \n  T* ptr_;\n  size_t byte_stride_;",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_34832956",
+        "filename": "runtime/stride_iterator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-02T23:04:59Z",
+      "side": 1,
+      "message": "Why not StrideIterator\u0026 ?",
       "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
