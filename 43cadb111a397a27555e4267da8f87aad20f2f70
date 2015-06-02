@@ -22,6 +22,30 @@
       "revId": "43cadb111a397a27555e4267da8f87aad20f2f70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ae2c65_0c4abb29",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-02T16:40:59Z",
+      "side": 1,
+      "message": "Good catch!  Thanks. :)  Done in PS7.",
+      "parentUuid": "d9ae2c65_0c7cfb69",
+      "range": {
+        "startLine": 900,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 40
+      },
+      "revId": "43cadb111a397a27555e4267da8f87aad20f2f70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
