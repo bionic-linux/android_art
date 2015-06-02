@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39d588cf_28dbcde6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4809,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-02T23:12:09Z",
+      "side": 1,
+      "message": "I think its cleaner to not have ref here otherwise it isn\u0027t clear that it is modifying a dereferenced value when do imt_ref \u003d x.",
+      "parentUuid": "99a8345d_84ca063c",
+      "range": {
+        "startLine": 4809,
+        "startChar": 10,
+        "endLine": 4809,
+        "endChar": 16
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97b38ac_17e5cfc8",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "59d23ce8_6036d0a4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4977,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-02T23:12:09Z",
+      "side": 1,
+      "message": "I suppose it is only not allowed for function arguments. Either way, I don\u0027t think it matters much.",
+      "parentUuid": "b97b38ac_17e5cfc8",
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a97860_45696aa1",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2015-06-02T07:57:54Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 5011,
+        "startChar": 44,
+        "endLine": 5011,
+        "endChar": 46
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97b38ac_5772675e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5011,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-02T23:12:09Z",
+      "side": 1,
+      "message": "Common for iterators.",
+      "parentUuid": "b9a97860_45696aa1",
       "range": {
         "startLine": 5011,
         "startChar": 44,
@@ -99,6 +165,30 @@
       "writtenOn": "2015-06-02T23:04:59Z",
       "side": 1,
       "message": "This kind of interface design makes it very tempting to break strict aliasing rules.\n\nFor example:\n   \n  float x[] \u003d {...};\n  auto x \u003d StrideIterator\u003cint\u003e(x, 1);\n\n  int y \u003d *x;  // breaks strict aliasing\n\nBased on the use case this should probably do this instead:\n\n  StrideIterator(T* ptr, size_t byte_stride) {\n    .....\n    DCHECK(byte_stride \u003e\u003d sizeof(T)); \n    // don\u0027t read into the middle of the type which would be UB\n  }\n\n  StrideIterator\u0026 operator++() {    \n    reinterpret_cast\u003cuint8_t*\u003e(ptr_) +\u003d byte_stride_;\n    return *this;\n  }\n  \n  T* ptr_;\n  size_t byte_stride_;",
+      "range": {
+        "startLine": 32,
+        "startChar": 17,
+        "endLine": 32,
+        "endChar": 26
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d588cf_c81a412c",
+        "filename": "runtime/stride_iterator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-02T23:12:09Z",
+      "side": 1,
+      "message": "Maybe clean this up one day.",
+      "parentUuid": "b97b38ac_7460c12d",
       "range": {
         "startLine": 32,
         "startChar": 17,
