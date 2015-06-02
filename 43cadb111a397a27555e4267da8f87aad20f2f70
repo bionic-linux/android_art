@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9ae2c65_0c7cfb69",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-02T16:18:08Z",
+      "side": 1,
+      "message": "Do you need this, or isn\u0027t that covered by line 901 and 1466?",
+      "range": {
+        "startLine": 900,
+        "startChar": 0,
+        "endLine": 900,
+        "endChar": 40
+      },
+      "revId": "43cadb111a397a27555e4267da8f87aad20f2f70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
