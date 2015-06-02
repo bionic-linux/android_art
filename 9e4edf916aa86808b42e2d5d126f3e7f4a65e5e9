@@ -22,6 +22,30 @@
       "revId": "9e4edf916aa86808b42e2d5d126f3e7f4a65e5e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99a8345d_87ebe8ec",
+        "filename": "runtime/base/bit_vector_test.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-02T11:14:54Z",
+      "side": 1,
+      "message": "Ok, let me rephrase the comment. The point is that BitVector allocates storage in 4-byte chunks, so setting bit 33 forces it over the edge to an 8-byte storage. However, copying to a 5-byte buffer should still work because it fits. That\u0027s what\u0027s being tested here.",
+      "parentUuid": "99a8345d_c4a55e03",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 67
+      },
+      "revId": "9e4edf916aa86808b42e2d5d126f3e7f4a65e5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
