@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d9ae2c65_602c8ed3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4809,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-03T08:29:30Z",
+      "side": 1,
+      "message": "out_imt is an array of ArtMethod. So you can replace auto with ArtMethod.\n\nAlso, I actually don\u0027t think the array computation that we might think we\u0027re saving is worth the hassle. Which leads me to finding the code below more understandable than using auto**:\n\nArtMethod* existing \u003d out_imt[imt_index];\nif (existing \u003d\u003d unimplemted_method) {\n  out_imt[imt_index] \u003d method;\n} else if (existing !\u003d conflict_method) {\n  out_imt[imt_index] \u003d conflict_method;\n}",
+      "parentUuid": "39d588cf_28dbcde6",
+      "range": {
+        "startLine": 4809,
+        "startChar": 10,
+        "endLine": 4809,
+        "endChar": 16
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b97b38ac_17e5cfc8",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -119,6 +143,30 @@
       "side": 1,
       "message": "Common for iterators.",
       "parentUuid": "b9a97860_45696aa1",
+      "range": {
+        "startLine": 5011,
+        "startChar": 44,
+        "endLine": 5011,
+        "endChar": 46
+      },
+      "revId": "cf3b1a3fb0c37ffa596dfae62f86b46a4d521c41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ae2c65_c0ff82a1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5011,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-03T08:29:30Z",
+      "side": 1,
+      "message": "Common where? We have 4 instances in runtime/ and 3 in compiler/. (I include the crazy \u0026**this).\n\nSurely, we have worked around it in other places.",
+      "parentUuid": "b97b38ac_5772675e",
       "range": {
         "startLine": 5011,
         "startChar": 44,
