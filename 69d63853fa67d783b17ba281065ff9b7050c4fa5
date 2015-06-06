@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79c9c09b_53c8a495",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3383,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-06T14:00:27Z",
+      "side": 1,
+      "message": "Is that actually stated in any specification? Or are we adding it mostly because we can?",
+      "range": {
+        "startLine": 3380,
+        "startChar": 0,
+        "endLine": 3383,
+        "endChar": 22
+      },
+      "revId": "69d63853fa67d783b17ba281065ff9b7050c4fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cfb89d_3503d042",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-06T14:00:27Z",
+      "side": 1,
+      "message": "Replace.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 49
+      },
+      "revId": "69d63853fa67d783b17ba281065ff9b7050c4fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
