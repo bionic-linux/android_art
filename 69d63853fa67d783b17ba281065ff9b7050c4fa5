@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "399bc88e_0a2c1fd1",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3383,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-07T21:42:20Z",
+      "side": 1,
+      "message": "Take a guess. The rest of the dex spec talks about register pairs for longs, but not the invoke spec (because it doesn\u0027t really talk about parameters).\n\nWe don\u0027t expect non-contiguous register pairs anywhere. The verifier didn\u0027t, the compilers didn\u0027t (though it\u0027s only DCHECKs in Quick testing for it).",
+      "parentUuid": "79c9c09b_53c8a495",
+      "range": {
+        "startLine": 3380,
+        "startChar": 0,
+        "endLine": 3383,
+        "endChar": 22
+      },
+      "revId": "69d63853fa67d783b17ba281065ff9b7050c4fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cfb89d_3503d042",
         "filename": "test/800-smali/smali/b_17410612.smali",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-06T14:00:27Z",
       "side": 1,
       "message": "Replace.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 49
+      },
+      "revId": "69d63853fa67d783b17ba281065ff9b7050c4fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ab8c9c_4767c4c8",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-07T21:42:20Z",
+      "side": 1,
+      "message": "Ugh, I had to redo the file during development and obviously forgot to fix this the second time around.",
+      "parentUuid": "b9cfb89d_3503d042",
       "range": {
         "startLine": 3,
         "startChar": 0,
