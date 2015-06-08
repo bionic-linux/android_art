@@ -22,6 +22,30 @@
       "revId": "4b6b842d7d0f97b28f4dff7aec322385705f5cd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79c9c09b_36fcf635",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-08T17:46:23Z",
+      "side": 1,
+      "message": "Yes.\nFor reference at least in the chain:\nHGraphVisualizerPrinter(... const CodeGenerator\u0026 codegen)\ncodegen.GetAssemblerCodeBaseAddress()\ncodegen.GetAssembler()",
+      "parentUuid": "6d42d931_5e9814f1",
+      "range": {
+        "startLine": 172,
+        "startChar": 2,
+        "endLine": 172,
+        "endChar": 52
+      },
+      "revId": "4b6b842d7d0f97b28f4dff7aec322385705f5cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
