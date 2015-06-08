@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9cfb89d_5593ec2b",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-08T08:02:48Z",
+      "side": 1,
+      "message": "This could fail because v2 is not initialized (not sure if we require dex registers to be initialized before use though...). Maybe safe to initialize it still?",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
