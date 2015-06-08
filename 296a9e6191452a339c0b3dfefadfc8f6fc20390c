@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "796b8031_42d277fc",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3380,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-08T20:53:01Z",
+      "side": 1,
+      "message": "Maybe make it a bit more explicit in the comments that it\u0027s for the non-range invokes only (even though it should be obvious from 3384)",
+      "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cfb89d_5593ec2b",
         "filename": "test/800-smali/smali/b_17410612.smali",
         "patchSetId": 3
