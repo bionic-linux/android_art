@@ -70,6 +70,30 @@
       "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "399bc88e_f019ee38",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-08T15:35:34Z",
+      "side": 1,
+      "message": "Yes, there\u0027s a middle ground, though it isn\u0027t super feasible because we do have the assumption everywhere except the interpreter...\n\nThis code would have passed the verifier (and the compilers in non-debug) before (it\u0027s exactly the fuzzed code). So I just extracted that.\n\nAbout half a year ago we discussed the pair thing in different settings (where fuzzing exposed int+int !\u003d long), and everyone agreed that pairs are expected. So while you\u0027re right that the spec isn\u0027t telling you about it, and the interpreter just works, this seemed the right way to go.\n\nLet\u0027s see how many apps this will break...",
+      "parentUuid": "99ce74a2_f73b1a8c",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
