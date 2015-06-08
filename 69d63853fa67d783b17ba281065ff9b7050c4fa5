@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "79c9c09b_b3337822",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3383,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-08T08:02:48Z",
+      "side": 1,
+      "message": "As you noted, optimizing did :-) Could you remove the code that checks in optimizing?",
+      "parentUuid": "399bc88e_0a2c1fd1",
+      "range": {
+        "startLine": 3380,
+        "startChar": 0,
+        "endLine": 3383,
+        "endChar": 22
+      },
+      "revId": "69d63853fa67d783b17ba281065ff9b7050c4fa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9cfb89d_3503d042",
         "filename": "test/800-smali/smali/b_17410612.smali",
         "patchSetId": 2
