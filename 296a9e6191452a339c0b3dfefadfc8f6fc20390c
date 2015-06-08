@@ -46,6 +46,30 @@
       "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ce74a2_f73b1a8c",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-08T15:30:07Z",
+      "side": 1,
+      "message": "Ah! But then the long is formed of int and reference, which is clearly bogus :-) whereas int + int could be fine with the interpreter....",
+      "parentUuid": "796b8031_52ab2a91",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "296a9e6191452a339c0b3dfefadfc8f6fc20390c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
