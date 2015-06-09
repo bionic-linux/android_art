@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99ce74a2_bad6a9ec",
+        "filename": "test/800-smali/smali/b_17410612.smali",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-09T08:25:11Z",
+      "side": 1,
+      "message": "I still think you should make this second register an int. Somewhat in theory we could allow non-consecutive dex registers of type integer. But definitely not int+ptr.",
+      "range": {
+        "startLine": 11,
+        "startChar": 23,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "25631e3608366971c7cbc7733dbd479a15722724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
