@@ -22,6 +22,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99fcb4c6_e7047c4f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-09T23:14:54Z",
+      "side": 1,
+      "message": "I was looking through some optimizing code and trying to understand when the right time to place braces is so I can document the correct style usage. \n\nI am guessing if there\u0027s \u003d\u003d or !\u003d AND ((more than 1 operand to \u0026\u0026 or ||) or it\u0027s used by an assignment \u003d operator  ) , it\u0027s good?\n\n  x \u003d (a \u003d\u003d b)\n  x \u003d (a !\u003d b)\n  (a \u003d\u003d b) || (c \u003d\u003d d)\n  (a \u003d\u003d b) \u0026\u0026 (c \u003d\u003d d)\n\nAre there any other examples I missed?\n\n(I\u0027m also not sure I understand the rationale, it\u0027s quite common knowledge \u003d\u003d/!\u003d operator precedence is fairly low, and \u003d is even lower. Perhaps there are much better examples than the ones I have here?)",
+      "parentUuid": "99ce74a2_1d7477f3",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
