@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99ce74a2_1d7477f3",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-09T17:37:05Z",
+      "side": 1,
+      "message": "Nit: put braces around this expression",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
