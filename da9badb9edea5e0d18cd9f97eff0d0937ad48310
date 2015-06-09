@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d9cc70_d086ce1a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-09T18:46:55Z",
+      "side": 1,
+      "message": "Please remember to keep these redundant braces contained in the optimizing compiler.",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 36
+      },
+      "revId": "da9badb9edea5e0d18cd9f97eff0d0937ad48310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
