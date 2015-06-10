@@ -46,6 +46,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5934fc65_c5340c6b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-06-10T00:07:47Z",
+      "side": 1,
+      "message": "I think adding parens in conditionals should be only to disambiguate \u0026\u0026 vs || e.g:\nif (allocator \u003d\u003d kAllocatorTypeTLAB || allocator \u003d\u003d kAllocatorTypeRegionTLAB)\n\nvs\nif ((allocator \u003d\u003d kAllocatorTypeTLAB || allocator \u003d\u003d kAllocatorTypeRegionTLAB) \u0026\u0026\n      byte_count \u003c\u003d self-\u003eTlabSize())",
+      "parentUuid": "99fcb4c6_e7047c4f",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
