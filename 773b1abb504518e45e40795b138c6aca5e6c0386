@@ -70,6 +70,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59823c52_32e990f4",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-10T21:15:37Z",
+      "side": 1,
+      "message": "There\u0027s a few reasons I am now using that style and suggested it to Andreas. It actually started as a request from colleagues in reviews, and I was also unsure why. But after doing it for a while, it became kind of obvious:\n- In compiler land, everyone must have written a parser with precedence rules. You do it once, and then first thing you want is to forget it. Why paying the mental overhead of remembering the precedence, when we can just put parenthesis?\n- It\u0027s just too easy to be bitten by it.\n- When debugging or refactoring code, I don\u0027t want to have to think whether an expression without parenthesis has the right precedence rules, but just focus on the logic of the code.\n- We\u0027re not state machines. Parenthesis help not having to be one.\n- When it comes to documenting style, I think it\u0027s much simpler to not have special cases. In \"Put parenthesis around expressions except when....\", the \"when\" is just mental overhead. \n- Most importantly, if adding them helps my co-workers, I don\u0027t see any reason not to put them. To be honest, I\u0027m not sure what would be a counter-argument to their request.\n\nIf anything, the last bit is the take away. What matters is your co-workers.",
+      "parentUuid": "99fcb4c6_e7047c4f",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
