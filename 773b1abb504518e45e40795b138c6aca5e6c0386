@@ -142,6 +142,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92b3816_297115d6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-10T23:19:29Z",
+      "side": 1,
+      "message": "Thanks for the explanation. I just have one clarifying question:\n\nI don\u0027t understand\n\n \u003e When it comes to documenting style, I think it\u0027s much simpler to not have special cases. In \"Put parenthesis around expressions except when....\", the \"when\" is just mental overhead.\n\nIsn\u0027t there an exception for the + here since I thought you wanted\n\n  (args[i] + 1 \u003d\u003d args[i + 1]) // choice A\n\nand NOT\n\n  ((args[i] + 1) \u003d\u003d args[i + 1]) // choice B\n\n?\n\nDid I misunderstand, and choice (B) is the preferred one?\n\nRegardless of the choice, there has to be some rule when to place (), for example for any subexpression that isn\u0027t just a series of method calls. And presumably we never want to add extra parens , i.e. ((expr)) is always redundant to (expr).\n\nI just want to be sure I\u0027m documenting the rule correctly.",
+      "parentUuid": "59823c52_32e990f4",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
