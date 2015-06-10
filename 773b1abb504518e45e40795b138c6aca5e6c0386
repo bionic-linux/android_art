@@ -118,6 +118,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59823c52_b2134095",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-10T21:23:36Z",
+      "side": 1,
+      "message": "Are you saying the code in eg this file looks like lisp for you?",
+      "parentUuid": "992af412_54f8acf4",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
