@@ -22,6 +22,30 @@
       "revId": "461d72a0be54129882f0c43ee8b50091366f1ede",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e07c3c_e58050d1",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-11T15:28:08Z",
+      "side": 1,
+      "message": "I don\u0027t think it works that way. DEX2OAT is set by the build environment, and you switch it with USE_DEX2OAT_DEBUG, which you explicitly set to false on your build bot...",
+      "parentUuid": "f98e907f_af2439b7",
+      "range": {
+        "startLine": 116,
+        "startChar": 66,
+        "endLine": 116,
+        "endChar": 87
+      },
+      "revId": "461d72a0be54129882f0c43ee8b50091366f1ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
