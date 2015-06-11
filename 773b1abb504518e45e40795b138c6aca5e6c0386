@@ -166,6 +166,30 @@
       "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f98e907f_4f7cad98",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-11T08:31:39Z",
+      "side": 1,
+      "message": "I would probably go with choice B, but Andreas wrote the orginal expression without any parenthesis. One step at a time :-)\n\nNot sure about why you\u0027re bringing up ((expr))? Hopefully my comments did not lead you to think I\u0027d prefer that.",
+      "parentUuid": "b92b3816_297115d6",
+      "range": {
+        "startLine": 753,
+        "startChar": 35,
+        "endLine": 753,
+        "endChar": 61
+      },
+      "revId": "773b1abb504518e45e40795b138c6aca5e6c0386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
