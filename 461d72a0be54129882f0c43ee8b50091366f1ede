@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f98e907f_af2439b7",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-11T08:39:05Z",
+      "side": 1,
+      "message": "Instead of doing this (which is kind of deviating from what we would do for boot.oat), you should just say that the cfi-test in ndebug (so using dex2oat and not dex2oad) is supposed to fail. See how we do this in art/test/Android.run-test.mk",
+      "range": {
+        "startLine": 116,
+        "startChar": 66,
+        "endLine": 116,
+        "endChar": 87
+      },
+      "revId": "461d72a0be54129882f0c43ee8b50091366f1ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
