@@ -46,6 +46,30 @@
       "revId": "461d72a0be54129882f0c43ee8b50091366f1ede",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "198c4486_936cfe81",
+        "filename": "build/Android.oat.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-11T16:00:14Z",
+      "side": 1,
+      "message": "Ah indeed. But then we could check USE_DEX2OAT_DEBUG to know whether we need to disable the test.",
+      "parentUuid": "59e07c3c_e58050d1",
+      "range": {
+        "startLine": 116,
+        "startChar": 66,
+        "endLine": 116,
+        "endChar": 87
+      },
+      "revId": "461d72a0be54129882f0c43ee8b50091366f1ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
