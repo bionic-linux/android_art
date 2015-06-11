@@ -46,6 +46,30 @@
       "revId": "020c543382a44400576ac41686a366695316feed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59823c52_95edc6b6",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-11T16:00:56Z",
+      "side": 1,
+      "message": "OK, thanks.",
+      "parentUuid": "59e07c3c_656440c3",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 75
+      },
+      "revId": "020c543382a44400576ac41686a366695316feed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
