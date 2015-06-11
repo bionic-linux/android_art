@@ -22,6 +22,30 @@
       "revId": "020c543382a44400576ac41686a366695316feed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59e07c3c_656440c3",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-11T15:44:00Z",
+      "side": 1,
+      "message": "The goal was to get this output, and the logcat on your build bot is too short for that. printf goes to the invocation shell and is visible in the other log...",
+      "parentUuid": "198c4486_90edd4b6",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 75
+      },
+      "revId": "020c543382a44400576ac41686a366695316feed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
