@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79bf0033_c6c54480",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T14:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_e38b1274",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_84d24844",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2015-06-15T14:22:51Z",
       "side": 1,
       "message": "Please add \"Bug: 21746693\" for tracking.",
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_b857752a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T14:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_84d24844",
       "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "397f484e_0414787b",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T14:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_03510e5b",
+      "range": {
+        "startLine": 63,
+        "startChar": 10,
+        "endLine": 63,
+        "endChar": 12
+      },
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bf0033_c39096a3",
         "filename": "tools/run-libcore-tests.sh",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2015-06-15T13:48:32Z",
       "side": 1,
       "message": "is the image cached after that, or is it re-created every time?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_86bb4c14",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T14:36:40Z",
+      "side": 1,
+      "message": "It\u0027s recreated every time you invoke vogar. So only once for a run of this script.",
+      "parentUuid": "79bf0033_c39096a3",
       "range": {
         "startLine": 73,
         "startChar": 4,
