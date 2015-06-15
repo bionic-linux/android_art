@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "397f484e_2195ee47",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T07:41:52Z",
+      "side": 1,
+      "message": "Could you move this to the header file?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_01b0eafb",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T07:41:52Z",
+      "side": 1,
+      "message": "Do you need this as a field? Could you just stack allocate it in the Run method?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_832a1e85",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T07:41:52Z",
+      "side": 1,
+      "message": "How about moving all of this to the RTPVisitor, and have this class only handle the fixed point calculation?",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_9b870b1a",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T07:41:52Z",
+      "side": 1,
+      "message": "Isn\u0027t that already in the HOptimization?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
