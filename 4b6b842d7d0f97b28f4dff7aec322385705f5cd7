@@ -46,6 +46,29 @@
       "revId": "4b6b842d7d0f97b28f4dff7aec322385705f5cd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_789cfd71",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-15T15:41:44Z",
+      "side": 1,
+      "message": "Nit: The C header (dlfcn.h) should be included before the C++ ones (cctype, sstream).",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "4b6b842d7d0f97b28f4dff7aec322385705f5cd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
