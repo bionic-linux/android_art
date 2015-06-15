@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bf0033_4664b4c2",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T19:47:04Z",
+      "side": 1,
+      "message": "Consider sharing this code with the one above. It\u0027s a bit unfortunate both methods had the bug.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 49
+      },
+      "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_065abc00",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T19:47:04Z",
+      "side": 1,
+      "message": "I don\u0027t understand, I thought we were not initializing app classes in dex2oat.",
+      "range": {
+        "startLine": 1009,
+        "startChar": 7,
+        "endLine": 1009,
+        "endChar": 46
+      },
+      "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
