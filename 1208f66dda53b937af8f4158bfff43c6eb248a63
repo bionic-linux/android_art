@@ -16,6 +16,24 @@
       "revId": "1208f66dda53b937af8f4158bfff43c6eb248a63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_2377ea4d",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-06-15T11:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9733893_b5b5c070",
+      "revId": "1208f66dda53b937af8f4158bfff43c6eb248a63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
