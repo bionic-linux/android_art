@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "397f484e_01870a18",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-15T08:31:31Z",
+      "side": 1,
+      "message": "Did you need to change this at all? I don\u0027t see how this code is different from before. \n\nActually the original condition on line 199 seems completely redundant too, as the code cannot be reached otherwise.",
+      "range": {
+        "startLine": 187,
+        "startChar": 20,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "8d087da552fe183fef9148c3f131afe21c884a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_db819305",
+        "filename": "test/498-type-propagation/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-15T08:31:31Z",
+      "side": 1,
+      "message": "Why not just leave the output empty as we do elsewhere?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "8d087da552fe183fef9148c3f131afe21c884a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
