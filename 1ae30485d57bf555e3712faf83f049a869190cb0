@@ -22,6 +22,30 @@
       "revId": "1ae30485d57bf555e3712faf83f049a869190cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_75b6c8c6",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T08:49:49Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "79bf0033_e3edd2b5",
+      "range": {
+        "startLine": 200,
+        "startChar": 6,
+        "endLine": 200,
+        "endChar": 35
+      },
+      "revId": "1ae30485d57bf555e3712faf83f049a869190cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
