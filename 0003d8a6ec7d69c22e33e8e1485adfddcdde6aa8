@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bf0033_e38b1274",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-15T13:48:32Z",
+      "side": 1,
+      "message": "running",
+      "range": {
+        "startLine": 7,
+        "startChar": 36,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_c39096a3",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-15T13:48:32Z",
+      "side": 1,
+      "message": "is the image cached after that, or is it re-created every time?",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "0003d8a6ec7d69c22e33e8e1485adfddcdde6aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
