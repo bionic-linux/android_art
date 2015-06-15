@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b9733893_1502f4c6",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-06-15T10:12:42Z",
+      "side": 1,
+      "message": "No, I need this definition so that the compiler can allocate the member variable.\n\nI need the member variable because I need to initialize it from the ctor.",
+      "parentUuid": "397f484e_a1873e19",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_01b0eafb",
         "filename": "compiler/optimizing/reference_type_propagation.h",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2015-06-15T07:41:52Z",
       "side": 1,
       "message": "Do you need this as a field? Could you just stack allocate it in the Run method?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_db72738e",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-06-15T10:12:42Z",
+      "side": 1,
+      "message": "Yes I need to initialize it with the handles from the ctor. So, whatever I do, I have to store one or the other.",
+      "parentUuid": "397f484e_01b0eafb",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_9b4f0b3b",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-06-15T10:12:42Z",
+      "side": 1,
+      "message": "Why not",
+      "parentUuid": "79bf0033_832a1e85",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 52
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_9b870b1a",
         "filename": "compiler/optimizing/reference_type_propagation.h",
         "patchSetId": 1
@@ -106,6 +178,30 @@
       "writtenOn": "2015-06-15T07:41:52Z",
       "side": 1,
       "message": "Isn\u0027t that already in the HOptimization?",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "23bd7da0329ffaf2b14c6ae90d18420e411832c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_a1681ea0",
+        "filename": "compiler/optimizing/reference_type_propagation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1068522
+      },
+      "writtenOn": "2015-06-15T10:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799460c1_9b870b1a",
       "range": {
         "startLine": 83,
         "startChar": 0,
