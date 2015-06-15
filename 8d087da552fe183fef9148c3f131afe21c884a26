@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9733893_959a844c",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T08:36:58Z",
+      "side": 1,
+      "message": "I could leave it as is, but here I\u0027m adding one extra DCHECK: the code before was not doing anything if the input was not an int constant (which was the reason for the bug). Because this code is now run after reundant phi elimination, we know we can only get an int constant, which is why I added the DCHECK line 203.",
+      "parentUuid": "397f484e_01870a18",
+      "range": {
+        "startLine": 187,
+        "startChar": 20,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "8d087da552fe183fef9148c3f131afe21c884a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_db819305",
         "filename": "test/498-type-propagation/src/Main.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-15T08:31:31Z",
       "side": 1,
       "message": "Why not just leave the output empty as we do elsewhere?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "8d087da552fe183fef9148c3f131afe21c884a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_e3d672ed",
+        "filename": "test/498-type-propagation/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T08:36:58Z",
+      "side": 1,
+      "message": "This test was sort of copy/pasted from another, where I think the println was expsoing a bug in our test infrastructure. I\u0027ll remove it.",
+      "parentUuid": "799460c1_db819305",
       "range": {
         "startLine": 21,
         "startChar": 0,
