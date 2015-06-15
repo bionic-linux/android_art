@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79bf0033_23d1aa74",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "We should also check with Vladimir how this is going to be affected by the relocation he is doing.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 46
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_e1b4e643",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Why doing this?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 25
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_d5823c50",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Why can\u0027t you use the field?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 70
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_03ce2ed2",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 143,
+        "startChar": 51,
+        "endLine": 143,
+        "endChar": 95
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_a1aadedd",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "GetDisassemblyInfo",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 39
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_c1afe2ec",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Why are we not using the field?",
+      "range": {
+        "startLine": 462,
+        "startChar": 23,
+        "endLine": 462,
+        "endChar": 58
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_356a9013",
+        "filename": "compiler/optimizing/code_generator_arm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Consider moving all the slow paths changes in another CL. It would make this CL a lot shorter.",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_5bf2e313",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "I think there is some expcataion we could run dex2oat on the mac. We should have helpers for doing that already.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 95
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_63dba294",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Nit: move this one up?",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_41bcb227",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Nit: \u0027?\u0027 and \u0027:\u0027 at the beginning of each line.",
+      "range": {
+        "startLine": 162,
+        "startChar": 45,
+        "endLine": 162,
+        "endChar": 46
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_61c9b6b8",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Does that work in c1visualizer? I thought it was unhappy about it.",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 510,
+        "endChar": 17
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_bbaf67ed",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-15T13:18:29Z",
+      "side": 1,
+      "message": "Can\u0027t you just pass it to the CodeGenerator constructor instead? Also, won\u0027t that record unconditionnally the dump info?",
+      "range": {
+        "startLine": 424,
+        "startChar": 40,
+        "endLine": 424,
+        "endChar": 87
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
