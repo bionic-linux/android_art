@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99ce74a2_68accb75",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "The include is needed by the library. Moved to compiler/Android.mk.",
+      "parentUuid": "6d42d931_de9b2470",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "955760037c025d9a2d178aeb3164d0b1136c03e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7919c071_6da699cb",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 7
