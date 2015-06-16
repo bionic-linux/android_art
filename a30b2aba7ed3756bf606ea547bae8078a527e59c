@@ -523,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "f9d3f093_1064aa13",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-06-16T22:28:06Z",
+      "side": 1,
+      "message": "Done on 2 occasions. Did not do this in mem_map.cc because there is no running_on_ flag there, and I guess it\u0027s not really performance critical.",
+      "parentUuid": "b91fb853_a631662c",
+      "range": {
+        "startLine": 2066,
+        "startChar": 4,
+        "endLine": 2066,
+        "endChar": 47
+      },
+      "revId": "a30b2aba7ed3756bf606ea547bae8078a527e59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d470d3e_53b3b3da",
         "filename": "runtime/gc/space/dlmalloc_space.cc",
         "patchSetId": 3
