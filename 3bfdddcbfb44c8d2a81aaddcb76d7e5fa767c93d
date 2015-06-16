@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_de826150",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T10:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_c65ee46d",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 7
+      },
+      "revId": "3bfdddcbfb44c8d2a81aaddcb76d7e5fa767c93d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_be96759d",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "397f484e_e4823450",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T10:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799460c1_be96759d",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 492,
+        "endChar": 70
+      },
+      "revId": "3bfdddcbfb44c8d2a81aaddcb76d7e5fa767c93d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_24bfbc1e",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2015-06-16T10:25:28Z",
       "side": 1,
       "message": "Nit: extra space.",
+      "range": {
+        "startLine": 164,
+        "startChar": 24,
+        "endLine": 164,
+        "endChar": 25
+      },
+      "revId": "3bfdddcbfb44c8d2a81aaddcb76d7e5fa767c93d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_89bb5d14",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T10:36:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_24bfbc1e",
       "range": {
         "startLine": 164,
         "startChar": 24,
