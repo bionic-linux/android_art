@@ -22,6 +22,30 @@
       "revId": "0c1a078d1ee64d509dd8fe1b936d95bf656fd409",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_e7aa368d",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-16T12:33:45Z",
+      "side": 1,
+      "message": "Right. We shouldn\u0027t trust the app class initialization because the app can use a different class loader and all bets are off before the class is even loaded.",
+      "parentUuid": "799460c1_21f24ae5",
+      "range": {
+        "startLine": 1016,
+        "startChar": 4,
+        "endLine": 1017,
+        "endChar": 26
+      },
+      "revId": "0c1a078d1ee64d509dd8fe1b936d95bf656fd409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
