@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_fe61dd07",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "I only added this for sanity, to cover for example:\n    CompileInternal(disasm_info)\n    delete disasm_info\n    CompileInternal(\u003cdisasm_info \u003d nullptr\u003e)",
+      "parentUuid": "397f484e_e1b4e643",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 25
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9733893_d5823c50",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 9
@@ -165,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_5e48117d",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Changed to `GetDisassemblyInformation` to be consistent with the other getter in this patch.",
+      "parentUuid": "397f484e_a1aadedd",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 39
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_c1afe2ec",
         "filename": "compiler/optimizing/code_generator.h",
         "patchSetId": 9
@@ -176,6 +224,30 @@
       "writtenOn": "2015-06-15T13:18:29Z",
       "side": 1,
       "message": "Why are we not using the field?",
+      "range": {
+        "startLine": 462,
+        "startChar": 23,
+        "endLine": 462,
+        "endChar": 58
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_46e954f3",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "See previous comments.",
+      "parentUuid": "397f484e_c1afe2ec",
       "range": {
         "startLine": 462,
         "startChar": 23,
@@ -211,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_3e642514",
+        "filename": "compiler/optimizing/code_generator_arm.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Sounds good. Done.",
+      "parentUuid": "b9733893_356a9013",
+      "range": {
+        "startLine": 122,
+        "startChar": 27,
+        "endLine": 122,
+        "endChar": 32
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_243a5cd6",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 9
@@ -222,6 +318,30 @@
       "writtenOn": "2015-06-15T15:41:44Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_c4b53070",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_243a5cd6",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -257,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "79bf0033_66dbb094",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "I could not find an obious helper.\nI followed art/runtime/jit/jit.cc:80 Jit::LoadCompiler().\nThere seem to be a more complex use of dlopen in art/runtime/oat_file.cc:234 in OatFile::Dlopen(). The osx code seems to fall back to some default.",
+      "parentUuid": "799460c1_5bf2e313",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 95
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bf0033_63dba294",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 9
@@ -280,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_9e39b907",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_63dba294",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_41bcb227",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 9
@@ -291,6 +459,30 @@
       "writtenOn": "2015-06-15T13:18:29Z",
       "side": 1,
       "message": "Nit: \u0027?\u0027 and \u0027:\u0027 at the beginning of each line.",
+      "range": {
+        "startLine": 162,
+        "startChar": 45,
+        "endLine": 162,
+        "endChar": 46
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9733893_587101d5",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_41bcb227",
       "range": {
         "startLine": 162,
         "startChar": 45,
@@ -343,6 +535,48 @@
     },
     {
       "key": {
+        "uuid": "195444e3_9004344f",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_66e290c2",
+      "range": {
+        "startLine": 497,
+        "startChar": 31,
+        "endLine": 497,
+        "endChar": 41
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_04c0f8bd",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799460c1_7ee22d99",
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_5ee5719e",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 9
@@ -354,6 +588,30 @@
       "writtenOn": "2015-06-15T17:44:32Z",
       "side": 1,
       "message": "std::endl",
+      "range": {
+        "startLine": 500,
+        "startChar": 40,
+        "endLine": 500,
+        "endChar": 44
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_e4ba345f",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799460c1_5ee5719e",
       "range": {
         "startLine": 500,
         "startChar": 40,
@@ -389,6 +647,30 @@
     },
     {
       "key": {
+        "uuid": "397f484e_24233c38",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "I have tested it and it works fine.\nWhen opening the graph tab for a pass, having an unlinked block causes c1 to display all blocks overlapping by default. Clicking on any of the graph layout buttons spreads the blocks nicely.",
+      "parentUuid": "397f484e_61c9b6b8",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 510,
+        "endChar": 17
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_a4c66c0c",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 9
@@ -400,6 +682,24 @@
       "writtenOn": "2015-06-15T17:44:32Z",
       "side": 1,
       "message": "add new line",
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_e62fa013",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_a4c66c0c",
       "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -429,6 +729,30 @@
     },
     {
       "key": {
+        "uuid": "799460c1_3e20a528",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9733893_7864fdc2",
+      "range": {
+        "startLine": 518,
+        "startChar": 47,
+        "endLine": 518,
+        "endChar": 48
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_bbaf67ed",
         "filename": "compiler/optimizing/optimizing_compiler.cc",
         "patchSetId": 9
@@ -440,6 +764,30 @@
       "writtenOn": "2015-06-15T13:18:29Z",
       "side": 1,
       "message": "Can\u0027t you just pass it to the CodeGenerator constructor instead? Also, won\u0027t that record unconditionnally the dump info?",
+      "range": {
+        "startLine": 424,
+        "startChar": 40,
+        "endLine": 424,
+        "endChar": 87
+      },
+      "revId": "9468be294f9ab40be5a80faa87ebe892a88b43d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_c6dc2458",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-16T09:22:31Z",
+      "side": 1,
+      "message": "Yes this was wrongly unconditionally recording. Fixed.\nSee comments in code_generator.h on why we are not using the field.",
+      "parentUuid": "799460c1_bbaf67ed",
       "range": {
         "startLine": 424,
         "startChar": 40,
