@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79bf0033_c9027577",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-16T19:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_492a050a",
+      "range": {
+        "startLine": 412,
+        "startChar": 36,
+        "endLine": 412,
+        "endChar": 56
+      },
+      "revId": "d65e76cc264e45f589b5290bcd55e2d65a78af40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "799460c1_8155de96",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-16T17:40:24Z",
       "side": 1,
       "message": "This is failing for codegen_test.",
+      "range": {
+        "startLine": 415,
+        "startChar": 4,
+        "endLine": 415,
+        "endChar": 61
+      },
+      "revId": "d65e76cc264e45f589b5290bcd55e2d65a78af40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_87c6caa5",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-16T19:36:51Z",
+      "side": 1,
+      "message": "Besides the condition here being reversed, there\u0027s a problem with GetLabelOf() using FirstNonEmptyBlock(), so I will need to access the labels directly.",
+      "parentUuid": "799460c1_8155de96",
       "range": {
         "startLine": 415,
         "startChar": 4,
