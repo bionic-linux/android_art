@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "195444e3_d01f9c61",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-16T10:31:16Z",
+      "side": 1,
+      "message": "Nit: extra space.",
+      "range": {
+        "startLine": 94,
+        "startChar": 45,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "c0e42766fbc29590e14aceacca1b3d6aefcde8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
