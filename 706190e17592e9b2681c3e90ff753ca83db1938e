@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799460c1_01146e7b",
+        "filename": "compiler/dex/quick/codegen_util.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2015-06-16T12:17:40Z",
+      "side": 1,
+      "message": "Too long line, please split.",
+      "range": {
+        "startLine": 1373,
+        "startChar": 69,
+        "endLine": 1373,
+        "endChar": 70
+      },
+      "revId": "706190e17592e9b2681c3e90ff753ca83db1938e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
