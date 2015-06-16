@@ -46,6 +46,30 @@
       "revId": "0c1a078d1ee64d509dd8fe1b936d95bf656fd409",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_611a92a1",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-06-16T12:47:12Z",
+      "side": 1,
+      "message": "OK, so this is more a class-loading issue in fact. The same kind of issue Nicolas is facing with inlining.\n\nIt\u0027d be nice to add that in the comment above, something like \"If an app class is loaded in different class loaders, we cannot be sure the class is really initialized at runtime\".",
+      "parentUuid": "397f484e_e7aa368d",
+      "range": {
+        "startLine": 1016,
+        "startChar": 4,
+        "endLine": 1017,
+        "endChar": 26
+      },
+      "revId": "0c1a078d1ee64d509dd8fe1b936d95bf656fd409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
