@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799460c1_21f24ae5",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-06-16T12:13:05Z",
+      "side": 1,
+      "message": "IIUC, you no longer trust app class initialization, right? So calling a static method of an app class from another app class will always have to do that check?\n\nIsn\u0027t the issue in the app class initialization itself (InitializeClass function) ? I mean we would incorrectly initialize an app class (changing its status to kStatusInitialized) at compilation time while it won\u0027t be at runtime?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 4,
+        "endLine": 1017,
+        "endChar": 26
+      },
+      "revId": "0c1a078d1ee64d509dd8fe1b936d95bf656fd409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
