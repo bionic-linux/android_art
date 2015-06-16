@@ -45,6 +45,76 @@
       "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_7eaced23",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-06-16T07:17:22Z",
+      "side": 1,
+      "message": "We do initialize app classes when they don\u0027t have a \u003cclinit\u003e method (think about a class without any static fields for instance) and their super class can also be initialized in the same way. This way, the status becomes kStatusInitialized.\n\nWhat I don\u0027t understand here is why can\u0027t we assume it is initialized then? Does the compiled code expect more from an initialized class that may not be true at runtime?",
+      "parentUuid": "79bf0033_065abc00",
+      "range": {
+        "startLine": 1009,
+        "startChar": 7,
+        "endLine": 1009,
+        "endChar": 46
+      },
+      "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "799460c1_5eaf3119",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-06-16T07:17:22Z",
+      "side": 1,
+      "message": "IsImageClass(descriptor)",
+      "range": {
+        "startLine": 1017,
+        "startChar": 9,
+        "endLine": 1017,
+        "endChar": 66
+      },
+      "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_2477bc4d",
+        "filename": "compiler/driver/compiler_driver.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-06-16T07:17:22Z",
+      "side": 1,
+      "message": "Why not private? This is only used by CompilerDriver methods.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 50
+      },
+      "revId": "30bd341bd8ee504f85152ed76506ccdb04fb5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
