@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "195444e3_b39ce2f0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-17T08:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397f484e_8ad24f44",
+      "range": {
+        "startLine": 415,
+        "startChar": 25,
+        "endLine": 415,
+        "endChar": 77
+      },
+      "revId": "bcd5dfaa36f814c4fe172c8c2c875ccd7dd1bf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397f484e_aadd5356",
         "filename": "compiler/utils/arm/assembler_arm.h",
         "patchSetId": 4
