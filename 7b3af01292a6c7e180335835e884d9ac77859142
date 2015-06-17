@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fef4b642_bf01773a",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T21:12:12Z",
+      "side": 1,
+      "message": "CanAssumeClassIsInitializedAndLoaded?\n\nWe could introduce a somewhat similar:\nCanAssumeClassIsInitializedOnceLoaded",
+      "range": {
+        "startLine": 236,
+        "startChar": 28,
+        "endLine": 236,
+        "endChar": 55
+      },
+      "revId": "7b3af01292a6c7e180335835e884d9ac77859142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e114241_7a2d39cd",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T21:12:12Z",
+      "side": 1,
+      "message": "Why would you need this check? It looks bogus if the caller passes a null referrer.",
+      "range": {
+        "startLine": 253,
+        "startChar": 10,
+        "endLine": 253,
+        "endChar": 35
+      },
+      "revId": "7b3af01292a6c7e180335835e884d9ac77859142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e057a00_3cd9f165",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1000,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T21:12:12Z",
+      "side": 1,
+      "message": "Maybe add a comment that having a klass object, implies it has been loaded.",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 1000,
+        "endChar": 16
+      },
+      "revId": "7b3af01292a6c7e180335835e884d9ac77859142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
