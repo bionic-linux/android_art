@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "397f484e_6ac98bb8",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T14:52:00Z",
+      "side": 1,
+      "message": "Are you not interested in the disassembly for baseline?",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 37
+      },
+      "revId": "9d77a57edfebcb5f0bf08fbd3d8b696a9e1ad18c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
