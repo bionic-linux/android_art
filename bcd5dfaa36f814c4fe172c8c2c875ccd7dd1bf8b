@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "397f484e_8ad24f44",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T08:01:36Z",
+      "side": 1,
+      "message": "Please add a comment why you\u0027re not using GetLabelOf.",
+      "range": {
+        "startLine": 415,
+        "startChar": 25,
+        "endLine": 415,
+        "endChar": 77
+      },
+      "revId": "bcd5dfaa36f814c4fe172c8c2c875ccd7dd1bf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_aadd5356",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T08:01:36Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused. Why isn\u0027t this adjustment done automatically when we realize we need to, eg, expand a 2 byte branch to 6 bytes.",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 3
+      },
+      "revId": "bcd5dfaa36f814c4fe172c8c2c875ccd7dd1bf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
