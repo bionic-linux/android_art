@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3968289e_62d52c2d",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-06-17T01:51:36Z",
+      "side": 1,
+      "message": "Is the line too long now?",
+      "range": {
+        "startLine": 300,
+        "startChar": 100,
+        "endLine": 300,
+        "endChar": 102
+      },
+      "revId": "373519d8be77ba3d265bcb50dac945f9a1dc51ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
