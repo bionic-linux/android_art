@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799460c1_819ddeb7",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-17T08:54:23Z",
+      "side": 1,
+      "message": "Maybe swap these lines?  Or remove the \"0x\" prefix?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 66
+      },
+      "revId": "5f10d95e9576fe77b5e285682b973a3a7bfe4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
