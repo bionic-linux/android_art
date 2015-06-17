@@ -22,6 +22,30 @@
       "revId": "5f10d95e9576fe77b5e285682b973a3a7bfe4cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "397f484e_4a1da796",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-17T09:01:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "799460c1_819ddeb7",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 66
+      },
+      "revId": "5f10d95e9576fe77b5e285682b973a3a7bfe4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
