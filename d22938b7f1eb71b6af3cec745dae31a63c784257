@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3968289e_c2e27815",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-06-17T01:51:36Z",
+      "side": 1,
+      "message": "I think I understand the code better now.",
+      "parentUuid": "f95690ec_ded6c9ed",
+      "range": {
+        "startLine": 298,
+        "startChar": 8,
+        "endLine": 298,
+        "endChar": 11
+      },
+      "revId": "d22938b7f1eb71b6af3cec745dae31a63c784257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b99c18d9_f90d8240",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 2
