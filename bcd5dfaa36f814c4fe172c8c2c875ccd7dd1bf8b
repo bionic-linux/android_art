@@ -45,6 +45,30 @@
       "revId": "bcd5dfaa36f814c4fe172c8c2c875ccd7dd1bf8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_8c3ecbea",
+        "filename": "compiler/utils/arm/assembler_arm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-17T08:38:38Z",
+      "side": 1,
+      "message": "The assembler doesn\u0027t know the lifetime of the Label. By the time we get to FinalizeCode(), some labels will still exist but others will have been destroyed.",
+      "parentUuid": "397f484e_aadd5356",
+      "range": {
+        "startLine": 575,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 3
+      },
+      "revId": "bcd5dfaa36f814c4fe172c8c2c875ccd7dd1bf8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
