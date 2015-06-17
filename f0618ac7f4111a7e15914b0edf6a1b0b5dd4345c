@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "799460c1_e41eb01e",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-17T14:31:03Z",
+      "side": 1,
+      "message": "What about making this method abstract to force concrete subclasses to provide their own implementation?",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 71
+      },
+      "revId": "f0618ac7f4111a7e15914b0edf6a1b0b5dd4345c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "195444e3_f6ec9889",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-17T14:31:03Z",
+      "side": 1,
+      "message": "Missing GetDescription() implementation for this class.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 31
+      },
+      "revId": "f0618ac7f4111a7e15914b0edf6a1b0b5dd4345c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
