@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79bf0033_8c67eb9c",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-17T11:45:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bf0033_09be4db0",
+      "range": {
+        "startLine": 996,
+        "startChar": 0,
+        "endLine": 996,
+        "endChar": 72
+      },
+      "revId": "069231f0e61dd84a0d7c9629661d3241294b9c97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79bf0033_a9cc595f",
         "filename": "compiler/driver/compiler_driver.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-16T14:21:56Z",
       "side": 1,
       "message": "Not sure I understand why you mention class unloading? If a klass has been loaded by a class loader, it will be initialized once, and live until the class loader dies.",
+      "range": {
+        "startLine": 1002,
+        "startChar": 7,
+        "endLine": 1002,
+        "endChar": 30
+      },
+      "revId": "069231f0e61dd84a0d7c9629661d3241294b9c97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79bf0033_0cbe5bb0",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-17T11:45:45Z",
+      "side": 1,
+      "message": "Comment removed as discussed offline.",
+      "parentUuid": "79bf0033_a9cc595f",
       "range": {
         "startLine": 1002,
         "startChar": 7,
