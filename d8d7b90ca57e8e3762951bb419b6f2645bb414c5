@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ed222e8_b5e08a90",
+        "filename": "compiler/dex/mir_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-06-19T13:59:33Z",
+      "side": 0,
+      "message": "Looks like I deleted a bit too much.",
+      "range": {
+        "startLine": 989,
+        "startChar": 12,
+        "endLine": 989,
+        "endChar": 87
+      },
+      "revId": "d8d7b90ca57e8e3762951bb419b6f2645bb414c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
