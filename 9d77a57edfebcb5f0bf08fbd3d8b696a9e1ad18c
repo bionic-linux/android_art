@@ -22,6 +22,30 @@
       "revId": "9d77a57edfebcb5f0bf08fbd3d8b696a9e1ad18c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "195444e3_96b0ac81",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-06-19T09:52:35Z",
+      "side": 1,
+      "message": "Fixed and tested.",
+      "parentUuid": "397f484e_6ac98bb8",
+      "range": {
+        "startLine": 467,
+        "startChar": 28,
+        "endLine": 467,
+        "endChar": 37
+      },
+      "revId": "9d77a57edfebcb5f0bf08fbd3d8b696a9e1ad18c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
