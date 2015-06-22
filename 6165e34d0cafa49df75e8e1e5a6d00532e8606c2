@@ -1,0 +1,682 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9efbba85_cc45ef65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Maybe add that as a consequence these blocks won\u0027t be considered by the various optimization passes (and that\u0027s okay)?",
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_9cad8922",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "The role of this method is not clear to me: does it say whether a block ends with a HTryBoundary instruction?  or that the bock only contains such an instruction?",
+      "range": {
+        "startLine": 262,
+        "startChar": 12,
+        "endLine": 262,
+        "endChar": 31
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_b7b40abf",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Likewise, dex_pc_end?",
+      "range": {
+        "startLine": 269,
+        "startChar": 90,
+        "endLine": 269,
+        "endChar": 96
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_97b78ec3",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Nit: dex_pc_start?",
+      "range": {
+        "startLine": 269,
+        "startChar": 71,
+        "endLine": 269,
+        "endChar": 79
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_5c9931fe",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "dex_pc?",
+      "range": {
+        "startLine": 270,
+        "startChar": 11,
+        "endLine": 270,
+        "endChar": 13
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_7788e2f8",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "neighboring? :)",
+      "range": {
+        "startLine": 332,
+        "startChar": 68,
+        "endLine": 332,
+        "endChar": 80
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_b5172276",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 101
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_75577a2d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "it\u0027s?",
+      "range": {
+        "startLine": 340,
+        "startChar": 43,
+        "endLine": 340,
+        "endChar": 46
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_9c86e998",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Maybe introduce a HTryBoundary ctor taking care of performing\n\n  try_boundary-\u003eSetIsTryEntry();\n\n?",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 40
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_d796761d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 367,
+        "startChar": 67,
+        "endLine": 367,
+        "endChar": 79
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_ec76ebb6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_0c037717",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Nit: Instead of casting branch_targets_.Size() down to an int32_t, what about casting index up to a size_t?",
+      "range": {
+        "startLine": 557,
+        "startChar": 12,
+        "endLine": 557,
+        "endChar": 63
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_ad44dd1b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Maybe rename as `latest_move_result_cursor_`?",
+      "range": {
+        "startLine": 2243,
+        "startChar": 10,
+        "endLine": 2243,
+        "endChar": 24
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_75321a32",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Document this member.",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 31
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_ed3ee595",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Does the \"X\" stand for \"exception\"?  If so, the latter should probably be used instead.",
+      "range": {
+        "startLine": 247,
+        "startChar": 9,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_9c2b490c",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 13
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_cd3b29a4",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Likewise?",
+      "range": {
+        "startLine": 265,
+        "startChar": 16,
+        "endLine": 265,
+        "endChar": 17
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_ec1b8b78",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "This seems to be a recurring pattern:\n\n  ostr \u003c\u003c std::boolalpha \u003c\u003c something() \u003c\u003c std::noboolalpha;\n\nFactor it?",
+      "range": {
+        "startLine": 383,
+        "startChar": 40,
+        "endLine": 385,
+        "endChar": 57
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_b762cab6",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Update the documentation to mention HTryBoundary as well? And/or maybe update the name of this method (IsSingleGotoOrTryBoundary)?",
+      "range": {
+        "startLine": 1041,
+        "startChar": 5,
+        "endLine": 1041,
+        "endChar": 30
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_97654ec3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Predecessors?",
+      "range": {
+        "startLine": 697,
+        "startChar": 21,
+        "endLine": 697,
+        "endChar": 32
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_4c261fc2",
+        "filename": "compiler/utils/growable_array.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Maybe add\n\n  DCHECK_LT(start_from, Size());\n\n?",
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_dc4a21d6",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Nit: Minus1? (Likewise for other constants.)",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 15
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_6cd67bf1",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Isn\u0027t the loop missing from this method?",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 696,
+        "endChar": 13
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_d593ce63",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Is this really needed?",
+      "range": {
+        "startLine": 744,
+        "startChar": 4,
+        "endLine": 744,
+        "endChar": 13
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_5cdcd18f",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 805,
+        "startChar": 4,
+        "endLine": 805,
+        "endChar": 13
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_b73baaa4",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "a MOVE_RESULT instruction?",
+      "range": {
+        "startLine": 809,
+        "startChar": 12,
+        "endLine": 809,
+        "endChar": 35
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_6de95577",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 835,
+        "startChar": 12,
+        "endLine": 835,
+        "endChar": 35
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_4cdbbf15",
+        "filename": "test/510-checker-try-catch/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "2015",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_acbfc3ab",
+        "filename": "test/510-checker-try-catch/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_77cb0216",
+        "filename": "test/510-checker-try-catch/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-22T15:39:33Z",
+      "side": 1,
+      "message": "Nit: remove space?",
+      "range": {
+        "startLine": 22,
+        "startChar": 42,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
