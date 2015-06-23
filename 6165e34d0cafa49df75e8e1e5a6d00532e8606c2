@@ -318,6 +318,29 @@
     },
     {
       "key": {
+        "uuid": "7e7526b8_2731c27a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T10:09:30Z",
+      "side": 1,
+      "message": "Can all of this happen for a try boundary?",
+      "range": {
+        "startLine": 966,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 3
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beecfece_ed3ee595",
         "filename": "compiler/optimizing/graph_visualizer.cc",
         "patchSetId": 6
@@ -329,6 +352,30 @@
       "writtenOn": "2015-06-22T15:39:33Z",
       "side": 1,
       "message": "Does the \"X\" stand for \"exception\"?  If so, the latter should probably be used instead.",
+      "range": {
+        "startLine": 247,
+        "startChar": 9,
+        "endLine": 247,
+        "endChar": 10
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_47363e74",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T10:09:30Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "beecfece_ed3ee595",
       "range": {
         "startLine": 247,
         "startChar": 9,
@@ -433,6 +480,29 @@
     },
     {
       "key": {
+        "uuid": "9efbba85_0caff7ee",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T10:09:30Z",
+      "side": 1,
+      "message": "Should HTryBoundary be a subclass of HGoto?",
+      "range": {
+        "startLine": 1047,
+        "startChar": 0,
+        "endLine": 1047,
+        "endChar": 85
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec53225_97654ec3",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -449,6 +519,29 @@
         "startChar": 21,
         "endLine": 697,
         "endChar": 32
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_42616206",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T10:09:30Z",
+      "side": 1,
+      "message": "Why not an enum like HMonitorOperation? Also I think you should be able to know at build time whether this wil lbe exit or entry.",
+      "range": {
+        "startLine": 1931,
+        "startChar": 0,
+        "endLine": 1932,
+        "endChar": 16
       },
       "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -489,6 +582,29 @@
         "startChar": 13,
         "endLine": 26,
         "endChar": 15
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_6cb4bb43",
+        "filename": "test/510-checker-try-catch/smali/Builder.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T10:09:30Z",
+      "side": 1,
+      "message": "indentation? (here and below)",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 33
       },
       "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
