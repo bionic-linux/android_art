@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e7526b8_e7a66a0f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T11:37:53Z",
+      "side": 1,
+      "message": "Nit: maybe encapsulate this in a method of HBasicBlock (and use it inside HBasicBlock::IsSingleGoto too)?",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 84
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
