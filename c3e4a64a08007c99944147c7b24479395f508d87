@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beecfece_d0458265",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Please add a comment why this may not be true.",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 60
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_c2179c75",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "I guess this is to create the blocks with HTryBoundary instructions? Please add a comment.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 3
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_8257642c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "try_boundary \u003d nullptr;",
+      "range": {
+        "startLine": 322,
+        "startChar": 22,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_70aace8d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Nit: one per line.",
+      "range": {
+        "startLine": 330,
+        "startChar": 41,
+        "endLine": 330,
+        "endChar": 59
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_0263540f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Why hasn\u0027t it been split? The builder updates the block at each instruction. Why don\u0027t we have a new block for the start of a try item?",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 23
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_425082d9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Add a DCHECK that the try_boundary is not null?",
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_50afd29b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Same question about why hasn\u0027t it been split yet?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 55
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_b0939664",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Update to FindOrCreateBlockStartingAt?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 51
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_a2e3669c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "ditto?",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 58
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_c2e0f291",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 53
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecfece_90901a59",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 58
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_2f3bc5fd",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "dex_pc.",
+      "range": {
+        "startLine": 555,
+        "startChar": 64,
+        "endLine": 555,
+        "endChar": 69
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9efbba85_6f35cd06",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Should you DCHECK that the try boundary is an exit?\n\nAlso is it just to simplify the builder that now returns don\u0027t necessarily jump to the exit block? So now we can have:\nHReturn\nHThrow\nHTryBoundary\n\nthat can jump to the exit block. Could we avoid the HTryBoundary case?",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1002,
+        "endChar": 3
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_423aacf6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "Maybe remove these then?",
+      "range": {
+        "startLine": 1954,
+        "startChar": 0,
+        "endLine": 1957,
+        "endChar": 42
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
