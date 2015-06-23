@@ -907,6 +907,30 @@
     },
     {
       "key": {
+        "uuid": "7e7526b8_877d36e1",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T11:37:53Z",
+      "side": 1,
+      "message": "Yeah, a function seems great (I don\u0027t see a way to override/overload this operator\u003c\u003c).",
+      "parentUuid": "7e7526b8_4704fe83",
+      "range": {
+        "startLine": 383,
+        "startChar": 40,
+        "endLine": 385,
+        "endChar": 57
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec53225_b762cab6",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 6
@@ -1012,6 +1036,30 @@
       "side": 1,
       "message": "Um, the point is to find out whether `idx` is the first occurrence of `predecessor` in `predecessors_`. I\u0027ve added a comment",
       "parentUuid": "dec53225_97654ec3",
+      "range": {
+        "startLine": 697,
+        "startChar": 21,
+        "endLine": 697,
+        "endChar": 32
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_27822252",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T11:37:53Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "beecfece_6d82f552",
       "range": {
         "startLine": 697,
         "startChar": 21,
