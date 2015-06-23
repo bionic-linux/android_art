@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e7526b8_02f034da",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-23T13:42:53Z",
+      "side": 1,
+      "message": "if and only if (not everyone has gone through Cambridge)\n\nAlternatively \"Returns whether\"",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 19
+      },
+      "revId": "b675b1cc71388c0b98e92492cc22eefe1e25da3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
