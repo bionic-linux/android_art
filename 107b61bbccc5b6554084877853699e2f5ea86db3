@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e149a89_871e28ea",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-06-23T18:53:28Z",
+      "side": 1,
+      "message": "Why is this 8? This seems pretty arbitrary, I\u0027m guessing its the optimal # that was tuned?",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "107b61bbccc5b6554084877853699e2f5ea86db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
