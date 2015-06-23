@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dec53225_57612631",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2691,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T08:44:54Z",
+      "side": 1,
+      "message": "I know this is not par of this CL per se, but maybe use `kRegisterSize * kBitsPerByte` (or an alias of it) here?",
+      "range": {
+        "startLine": 2691,
+        "startChar": 41,
+        "endLine": 2691,
+        "endChar": 43
+      },
+      "revId": "4418109b37b72c20a6871ea13e7b867e1712b974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_554b5efe",
+        "filename": "test/514-shifts/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T08:44:54Z",
+      "side": 1,
+      "message": "Maybe introduce assert{Int,Long}Equals helpers?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "4418109b37b72c20a6871ea13e7b867e1712b974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_d754364f",
+        "filename": "test/514-shifts/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-06-23T08:44:54Z",
+      "side": 1,
+      "message": "Because this is recurring in all the test cases, maybe turn this into an `invariant()` routine?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "4418109b37b72c20a6871ea13e7b867e1712b974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
