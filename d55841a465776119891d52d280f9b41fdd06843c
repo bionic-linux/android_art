@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "beecfece_3052063e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "Could you also add this comment somewhere in the builder? It\u0027s great to have it here, but usually we read the code and less the commit messages. Having this explanations there will make things easier to follow.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_47871e61",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "I don\u0027t really understand this remark.",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 28
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7526b8_e7a66a0f",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 8
@@ -18,6 +64,121 @@
         "startChar": 25,
         "endLine": 268,
         "endChar": 84
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_f5512a5c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "initialize to nullptr for clarity.",
+      "range": {
+        "startLine": 332,
+        "startChar": 22,
+        "endLine": 332,
+        "endChar": 34
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_47607e2b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "why 0? document the dcheck.",
+      "range": {
+        "startLine": 339,
+        "startChar": 76,
+        "endLine": 339,
+        "endChar": 77
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_b572c208",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "`index` for this methods is misleading. I thought of it in terms of block ids but is actually a pc. I\u0027ve seen some other uses of `idx` as an address. Please document and fix even if it\u0027s not you who started the trend.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_62dfa84d",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "i know they behave the same, but I wonder if there will be cases where we  actually want different stuff from Goto and TryBoundary... if so, IsSingleGoto will be misleading.",
+      "range": {
+        "startLine": 1053,
+        "startChar": 69,
+        "endLine": 1053,
+        "endChar": 82
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_60b6da2f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "What is \"Normal\"? Document.",
+      "range": {
+        "startLine": 1916,
+        "startChar": 15,
+        "endLine": 1916,
+        "endChar": 37
       },
       "revId": "d55841a465776119891d52d280f9b41fdd06843c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
