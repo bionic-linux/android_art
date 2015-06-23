@@ -1001,6 +1001,30 @@
     },
     {
       "key": {
+        "uuid": "7e7526b8_82e44423",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-23T12:47:55Z",
+      "side": 1,
+      "message": "oki, so i was not the only one thinking this. see my other comment from PS8. I\u0027d make it a subclass.",
+      "parentUuid": "beecfece_8d51215e",
+      "range": {
+        "startLine": 1047,
+        "startChar": 0,
+        "endLine": 1047,
+        "endChar": 85
+      },
+      "revId": "6165e34d0cafa49df75e8e1e5a6d00532e8606c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec53225_97654ec3",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
