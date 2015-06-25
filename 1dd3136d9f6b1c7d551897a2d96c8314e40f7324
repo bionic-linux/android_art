@@ -22,6 +22,30 @@
       "revId": "1dd3136d9f6b1c7d551897a2d96c8314e40f7324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_d426f2c2",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 0,
+      "message": "Oh, because this is used in multiple places, once with Goto and once with TryBoundary. I\u0027d love to add a template with the instruction type to be inserted but I\u0027d need a nodes-inl.h for that. Maybe it\u0027s time to start one",
+      "parentUuid": "3e856e59_11800c94",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 50
+      },
+      "revId": "1dd3136d9f6b1c7d551897a2d96c8314e40f7324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

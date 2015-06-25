@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_b992ffab",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Not sure, it\u0027s always used to test for being outside, so the function itself might look a bit nicer but the code that uses it will be full of negations.",
+      "parentUuid": "fe8e767f_d2fda280",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e856e59_f166a8a1",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-25T14:15:29Z",
       "side": 1,
       "message": "nit:\nthis should be CreateIfDoesntExist or just Create. `Find` doesn\u0027t make sense here. \n\nsame below.",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 31
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_599e43b2",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "I named it after use on line 302. CreateBlockStartingAtIfDoesntExist sounds a little verbose to me...",
+      "parentUuid": "3e856e59_f166a8a1",
       "range": {
         "startLine": 285,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "3e856e59_f408d662",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Yep, too bad blocks don\u0027t keep that info",
+      "parentUuid": "3e856e59_916b9c68",
+      "range": {
+        "startLine": 323,
+        "startChar": 62,
+        "endLine": 323,
+        "endChar": 70
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e856e59_b4dd6e52",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 11
@@ -105,6 +177,30 @@
       "writtenOn": "2015-06-25T14:15:29Z",
       "side": 1,
       "message": "this is the block corresponding to the try code, right? Not the handler. Could you name it accordingly?",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 24
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe8e767f_b281fed5",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e856e59_b4dd6e52",
       "range": {
         "startLine": 324,
         "startChar": 19,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_d9b89337",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6e4e7b_8c0dc771",
+      "range": {
+        "startLine": 329,
+        "startChar": 6,
+        "endLine": 329,
+        "endChar": 68
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e6e4e7b_ac120b91",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 11
@@ -151,6 +271,30 @@
       "writtenOn": "2015-06-25T13:46:47Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 66
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_94262af0",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6e4e7b_ac120b91",
       "range": {
         "startLine": 371,
         "startChar": 0,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_5cff51a1",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e856e59_1176ccff",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 37
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e6e4e7b_0c02373e",
         "filename": "compiler/optimizing/graph_checker.cc",
         "patchSetId": 11
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "3e6e4e7b_4c7d8f92",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Simplified",
+      "parentUuid": "3e6e4e7b_0c02373e",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e856e59_7152b862",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 11
@@ -220,6 +412,30 @@
       "writtenOn": "2015-06-25T13:46:47Z",
       "side": 1,
       "message": "Add a comment why you need the null check.",
+      "range": {
+        "startLine": 467,
+        "startChar": 9,
+        "endLine": 467,
+        "endChar": 51
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_3cf37deb",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Functions used before SSA is built have to do this because a block might not have any. Plus we do it in other places too.",
+      "parentUuid": "3e856e59_7152b862",
       "range": {
         "startLine": 467,
         "startChar": 9,
@@ -278,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_b9603f30",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "The grammar nazi in me struggles with that. It\u0027s either an \"exception handler\" or a \"catch block\". \"Catch handler\" doesn\u0027t make sense to me.",
+      "parentUuid": "fe8e767f_d22602c3",
+      "range": {
+        "startLine": 729,
+        "startChar": 52,
+        "endLine": 729,
+        "endChar": 69
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e0c8eed_d91c13f7",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 11
@@ -289,6 +529,30 @@
       "writtenOn": "2015-06-25T13:46:47Z",
       "side": 1,
       "message": "and/or ?",
+      "range": {
+        "startLine": 1940,
+        "startChar": 50,
+        "endLine": 1940,
+        "endChar": 52
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_0c7797b4",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done. good point",
+      "parentUuid": "3e0c8eed_d91c13f7",
       "range": {
         "startLine": 1940,
         "startChar": 50,
@@ -324,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "fe8e767f_323c2e9c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e6e4e7b_09878996",
+      "range": {
+        "startLine": 1986,
+        "startChar": 7,
+        "endLine": 1986,
+        "endChar": 20
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e856e59_51769452",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 11
@@ -335,6 +623,30 @@
       "writtenOn": "2015-06-25T14:15:29Z",
       "side": 1,
       "message": "This only needs Is* methods. Remove from friends and make Is methods public.",
+      "range": {
+        "startLine": 1991,
+        "startChar": 9,
+        "endLine": 1991,
+        "endChar": 32
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_ec024312",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T15:44:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e856e59_51769452",
       "range": {
         "startLine": 1991,
         "startChar": 9,
