@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e856e59_11800c94",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 0,
+      "message": "could you remind me why it\u0027s ok to leave this block empty?",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 50
+      },
+      "revId": "1dd3136d9f6b1c7d551897a2d96c8314e40f7324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

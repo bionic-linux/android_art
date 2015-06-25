@@ -25,6 +25,98 @@
     },
     {
       "key": {
+        "uuid": "3e856e59_f166a8a1",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "nit:\nthis should be CreateIfDoesntExist or just Create. `Find` doesn\u0027t make sense here. \n\nsame below.",
+      "range": {
+        "startLine": 285,
+        "startChar": 4,
+        "endLine": 285,
+        "endChar": 31
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_8c34e70b",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "if only there was a way to easily embed images into text files... this function could be so easily documented with a few flow images...",
+      "range": {
+        "startLine": 309,
+        "startChar": 20,
+        "endLine": 309,
+        "endChar": 43
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_916b9c68",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "you can make this more efficient and \u0027jump\u0027 to the block end_pc, right?",
+      "range": {
+        "startLine": 323,
+        "startChar": 62,
+        "endLine": 323,
+        "endChar": 70
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_b4dd6e52",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "this is the block corresponding to the try code, right? Not the handler. Could you name it accordingly?",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 24
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e6e4e7b_8c0dc771",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 11
@@ -202,6 +294,52 @@
         "startChar": 50,
         "endLine": 1940,
         "endChar": 52
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_09878996",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "Add a comment that only the Builder should use Set* methods.",
+      "range": {
+        "startLine": 1986,
+        "startChar": 7,
+        "endLine": 1986,
+        "endChar": 20
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_51769452",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1991,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "This only needs Is* methods. Remove from friends and make Is methods public.",
+      "range": {
+        "startLine": 1991,
+        "startChar": 9,
+        "endLine": 1991,
+        "endChar": 32
       },
       "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
