@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3e6e4e7b_c93c1186",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beecfece_d0458265",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 60
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7526b8_c2179c75",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "I guess this is to create the blocks with HTryBoundary instructions? Please add a comment.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 3
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_39e9cfa6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7526b8_c2179c75",
       "range": {
         "startLine": 277,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_19e68bd6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7526b8_8257642c",
+      "range": {
+        "startLine": 322,
+        "startChar": 22,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beecfece_70aace8d",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "Nit: one per line.",
+      "range": {
+        "startLine": 330,
+        "startChar": 41,
+        "endLine": 330,
+        "endChar": 59
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_79e347c6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beecfece_70aace8d",
       "range": {
         "startLine": 330,
         "startChar": 41,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3e856e59_11fd6c31",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "I don\u0027t follow entirely but it\u0027s obvious that the comment is confusing, so let me rephrase. This branch covers two situations:\n1) `block` is in a try block, `predecessor` isn\u0027t\n2) they\u0027re each in a different try block and we managed to hit `block` first. When we later iterate over `predecessor`, it will see that this edge has been split by the try block on the other side and it will not split it again.\n\nComment updated, lemme know if it makes more sense now.",
+      "parentUuid": "7e7526b8_0263540f",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 23
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec53225_425082d9",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "fe8e767f_2f84c98e",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec53225_425082d9",
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beecfece_50afd29b",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -145,6 +283,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "Same question about why hasn\u0027t it been split yet?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 55
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_d9a89365",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "beecfece_50afd29b",
       "range": {
         "startLine": 371,
         "startChar": 0,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "3e856e59_911ddc23",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beecfece_b0939664",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 487,
+        "endChar": 51
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dec53225_a2e3669c",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -191,6 +377,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "ditto?",
+      "range": {
+        "startLine": 500,
+        "startChar": 0,
+        "endLine": 500,
+        "endChar": 58
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe8e767f_2f292913",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec53225_a2e3669c",
       "range": {
         "startLine": 500,
         "startChar": 0,
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "fe8e767f_cf365d75",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dec53225_c2e0f291",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 53
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beecfece_90901a59",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 10
@@ -237,6 +471,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 58
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_39aeef6e",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beecfece_90901a59",
       "range": {
         "startLine": 537,
         "startChar": 0,
@@ -272,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "fe8e767f_ef3b215a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efbba85_2f3bc5fd",
+      "range": {
+        "startLine": 555,
+        "startChar": 64,
+        "endLine": 555,
+        "endChar": 69
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9efbba85_6f35cd06",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 10
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_79b867b2",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "As discussed, having a TryBoundary between a Throw and Exit makes sense and should be allowed. On the other hand, inserting it between Return and Exit is pretty awkward. I\u0027ve now modified the algorithm to move the Return outside the try block and added a check into GraphChecker.",
+      "parentUuid": "9efbba85_6f35cd06",
+      "range": {
+        "startLine": 1000,
+        "startChar": 0,
+        "endLine": 1002,
+        "endChar": 3
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7526b8_423aacf6",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 10
@@ -306,6 +612,30 @@
       "writtenOn": "2015-06-23T13:42:53Z",
       "side": 1,
       "message": "Maybe remove these then?",
+      "range": {
+        "startLine": 1954,
+        "startChar": 0,
+        "endLine": 1957,
+        "endChar": 42
+      },
+      "revId": "c3e4a64a08007c99944147c7b24479395f508d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_89b9396c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "The code looks pretty weird without them, I\u0027d leave them there.",
+      "parentUuid": "7e7526b8_423aacf6",
       "range": {
         "startLine": 1954,
         "startChar": 0,
