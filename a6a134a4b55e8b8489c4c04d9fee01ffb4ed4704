@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe8e767f_d2fda280",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Would it read better if it was the opposite IsBlockInPcRange?",
+      "range": {
+        "startLine": 262,
+        "startChar": 20,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_8c0dc771",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Please put a high-level comment before this loop.",
+      "range": {
+        "startLine": 329,
+        "startChar": 6,
+        "endLine": 329,
+        "endChar": 68
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_ac120b91",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 66
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_1176ccff",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Explain why you are doing this at the very end.",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 37
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6e4e7b_0c02373e",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "I can\u0027t parse this.",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e856e59_7152b862",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Add a comment why you need the null check.",
+      "range": {
+        "startLine": 467,
+        "startChar": 9,
+        "endLine": 467,
+        "endChar": 51
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_59292312",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Ditto: why this check?",
+      "range": {
+        "startLine": 1093,
+        "startChar": 9,
+        "endLine": 1093,
+        "endChar": 43
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe8e767f_d22602c3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "Would CatchHandler be less confusing?",
+      "range": {
+        "startLine": 729,
+        "startChar": 52,
+        "endLine": 729,
+        "endChar": 69
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e0c8eed_d91c13f7",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1940,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-25T13:46:47Z",
+      "side": 1,
+      "message": "and/or ?",
+      "range": {
+        "startLine": 1940,
+        "startChar": 50,
+        "endLine": 1940,
+        "endChar": 52
+      },
+      "revId": "a6a134a4b55e8b8489c4c04d9fee01ffb4ed4704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
