@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3e0c8eed_996c5bb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-25T14:15:29Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "beecfece_1040aa58",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7526b8_47871e61",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 8
