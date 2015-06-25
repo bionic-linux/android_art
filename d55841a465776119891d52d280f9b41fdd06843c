@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "beecfece_1040aa58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "The splitting is documented in builder.cc:310. The high-level overview doesn\u0027t really belong there and I\u0027ll add those comments to SsaBuilder in the next CL. Sound good?",
+      "parentUuid": "beecfece_3052063e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 26
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7526b8_47871e61",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-23T12:47:55Z",
       "side": 1,
       "message": "I don\u0027t really understand this remark.",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 28
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7526b8_422cecce",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "7e7526b8_47871e61",
       "range": {
         "startLine": 264,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7e7526b8_e7542a4f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "I\u0027m just realizing that this and the change to IsSingleGoto really isn\u0027t very clean. So what i did is:\n- HBasicBlock::IsSingleGoto returns whether there is just one instruction and that is a Goto (this is the behaviour expected in BooleanSimplifier)\n- HBasicBlock::IsSingleTryBoundary does the same for TryBoundary (used here)\n- HBasicBlock::IsSingleJump returns true if emitting the block doesn\u0027t generate nothing but a Goto or a TryBoundary (this is the behaviour of IsSingleGoto expected in codegen)",
+      "parentUuid": "7e7526b8_e7a66a0f",
+      "range": {
+        "startLine": 268,
+        "startChar": 25,
+        "endLine": 268,
+        "endChar": 84
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ecf3a47_f5512a5c",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-23T12:47:55Z",
       "side": 1,
       "message": "initialize to nullptr for clarity.",
+      "range": {
+        "startLine": 332,
+        "startChar": 22,
+        "endLine": 332,
+        "endChar": 34
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ecf3a47_c06c6efd",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ecf3a47_f5512a5c",
       "range": {
         "startLine": 332,
         "startChar": 22,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7e7526b8_225c504d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Because `predecessor` is a block that splits an edge, hence has just one predecessor and one (non-exceptional flow) successor. I\u0027ve expanded the comment above and created a HBasicBlock::GetSinglePredecessor function which DCHECKs that there is just one, so hopefully that makes the whole thing a tad more self-explanatory.",
+      "parentUuid": "7e7526b8_47607e2b",
+      "range": {
+        "startLine": 339,
+        "startChar": 76,
+        "endLine": 339,
+        "endChar": 77
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ecf3a47_b572c208",
         "filename": "compiler/optimizing/builder.h",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2015-06-23T12:47:55Z",
       "side": 1,
       "message": "`index` for this methods is misleading. I thought of it in terms of block ids but is actually a pc. I\u0027ve seen some other uses of `idx` as an address. Please document and fix even if it\u0027s not you who started the trend.",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 58
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_62681e9e",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ecf3a47_b572c208",
       "range": {
         "startLine": 97,
         "startChar": 2,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "dec53225_e2440e1d",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "PS11 creates different methods for the different use cases.",
+      "parentUuid": "7e7526b8_62dfa84d",
+      "range": {
+        "startLine": 1053,
+        "startChar": 69,
+        "endLine": 1053,
+        "endChar": 82
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ecf3a47_60b6da2f",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 8
@@ -174,6 +342,30 @@
       "writtenOn": "2015-06-23T12:47:55Z",
       "side": 1,
       "message": "What is \"Normal\"? Document.",
+      "range": {
+        "startLine": 1916,
+        "startChar": 15,
+        "endLine": 1916,
+        "endChar": 37
+      },
+      "revId": "d55841a465776119891d52d280f9b41fdd06843c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec53225_e202cec6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1916,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-06-25T11:25:08Z",
+      "side": 1,
+      "message": "Added a ton of comments.",
+      "parentUuid": "9ecf3a47_60b6da2f",
       "range": {
         "startLine": 1916,
         "startChar": 15,
