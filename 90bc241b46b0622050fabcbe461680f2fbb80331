@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe8836a6_3fd7c7b9",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-06-26T09:50:46Z",
+      "side": 1,
+      "message": "Please add a comment why you\u0027re not using HInstruction::IsZero.",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 1
+      },
+      "revId": "90bc241b46b0622050fabcbe461680f2fbb80331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
