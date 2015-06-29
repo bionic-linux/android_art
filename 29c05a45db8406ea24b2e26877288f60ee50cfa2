@@ -22,6 +22,145 @@
       "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5384ddcb_1c940d48",
+        "filename": "runtime/base/arena_allocator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "(Ignore for now, maybe a follow-up some day)",
+      "parentUuid": "5384ddcb_f1e952a9",
+      "range": {
+        "startLine": 220,
+        "startChar": 15,
+        "endLine": 220,
+        "endChar": 37
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f390710b_48288ebe",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 2093,
+        "startChar": 2,
+        "endLine": 2093,
+        "endChar": 6
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c958c_8edf9c83",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "Fits on the same line.",
+      "range": {
+        "startLine": 2204,
+        "startChar": 52,
+        "endLine": 2205,
+        "endChar": 75
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f390710b_8851b637",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "Naming?",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5384ddcb_bc45e167",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "Looks like it fits on the last line?",
+      "range": {
+        "startLine": 479,
+        "startChar": 6,
+        "endLine": 479,
+        "endChar": 32
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f390710b_28942a48",
+        "filename": "runtime/thread.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T17:21:27Z",
+      "side": 1,
+      "message": "Yuck, another dependency.\n\nkStackOverflowProtectedSize seems to only be used in thread.cc. If that\u0027s really the case, move to the include and the constexpr there.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
