@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5384ddcb_f1e952a9",
+        "filename": "runtime/base/arena_allocator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-06-29T16:01:13Z",
+      "side": 1,
+      "message": "Should we cache this in ArenaPool?",
+      "range": {
+        "startLine": 220,
+        "startChar": 15,
+        "endLine": 220,
+        "endChar": 37
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
