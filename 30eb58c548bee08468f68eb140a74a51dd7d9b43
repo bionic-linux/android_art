@@ -22,6 +22,30 @@
       "revId": "30eb58c548bee08468f68eb140a74a51dd7d9b43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ae0d65_a6114608",
+        "filename": "test/519-bound-load-class/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-06-29T11:43:13Z",
+      "side": 1,
+      "message": "indeed. thanks for spotting.",
+      "parentUuid": "b367d930_55896c2c",
+      "range": {
+        "startLine": 19,
+        "startChar": 15,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "30eb58c548bee08468f68eb140a74a51dd7d9b43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
