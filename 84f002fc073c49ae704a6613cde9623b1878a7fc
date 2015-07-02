@@ -45,6 +45,54 @@
       "revId": "84f002fc073c49ae704a6613cde9623b1878a7fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d1858c_a8a29bb6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-02T10:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b317d9fa_3538b0da",
+      "range": {
+        "startLine": 7,
+        "startChar": 29,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "84f002fc073c49ae704a6613cde9623b1878a7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "931655ff_542f2c92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-02T10:12:54Z",
+      "side": 1,
+      "message": "I added that because I believe it used to work before the native ArtMethod change; removed.",
+      "parentUuid": "93abb5ef_0c949747",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "84f002fc073c49ae704a6613cde9623b1878a7fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
