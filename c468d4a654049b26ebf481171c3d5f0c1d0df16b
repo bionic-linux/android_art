@@ -22,6 +22,30 @@
       "revId": "c468d4a654049b26ebf481171c3d5f0c1d0df16b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93abb5ef_8f1199df",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-03T14:08:49Z",
+      "side": 1,
+      "message": "This follows the VIXL prototype of `MemOperand`. The default arguments mean \u0027no shifting\u0027, so this is helpful when we don\u0027t want to shift. If you prefer I can remove the defaults and restore them only when/if we need them.",
+      "parentUuid": "b317d9fa_d8b7f141",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 71
+      },
+      "revId": "c468d4a654049b26ebf481171c3d5f0c1d0df16b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
