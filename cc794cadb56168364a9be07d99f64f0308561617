@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93abb5ef_528bd4f2",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-06T12:25:59Z",
+      "side": 1,
+      "message": "I like the idea of the `DependsOn(se)` and `Changes(se)` methods. With that I agree that the define wouldn\u0027t be necessary as it should require much less code. In this patch I was trying to preserve the existing API while making further addition of effects easy.\n\nI\u0027ll try to implement something.",
+      "parentUuid": "13b8a53c_f66ab866",
+      "range": {
+        "startLine": 1230,
+        "startChar": 8,
+        "endLine": 1230,
+        "endChar": 34
+      },
+      "revId": "cc794cadb56168364a9be07d99f64f0308561617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "931655ff_ba0ca9c9",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 1
