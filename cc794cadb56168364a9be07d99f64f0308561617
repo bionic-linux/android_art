@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "13b8a53c_f66ab866",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-06T11:12:07Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of the #define approach. It obscures the code imo and makes it harder to read. How about having some simpler flag/enum approach with functions like DependsOn(effect), Chages(effect) etc..",
+      "range": {
+        "startLine": 1230,
+        "startChar": 8,
+        "endLine": 1230,
+        "endChar": 34
+      },
+      "revId": "cc794cadb56168364a9be07d99f64f0308561617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "931655ff_ba0ca9c9",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 1
