@@ -46,6 +46,30 @@
       "revId": "cc794cadb56168364a9be07d99f64f0308561617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d1858c_4e12070d",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3041,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-06T09:24:37Z",
+      "side": 1,
+      "message": "I see. Could you add a DCHECK in some shared part then that a kCallOnSlowPath/kCall must have a change GC flag?",
+      "parentUuid": "13d1858c_2e0b53df",
+      "range": {
+        "startLine": 3041,
+        "startChar": 4,
+        "endLine": 3041,
+        "endChar": 51
+      },
+      "revId": "cc794cadb56168364a9be07d99f64f0308561617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
