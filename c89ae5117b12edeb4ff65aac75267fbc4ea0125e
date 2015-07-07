@@ -22,6 +22,30 @@
       "revId": "c89ae5117b12edeb4ff65aac75267fbc4ea0125e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_53d396fe",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-07-07T19:28:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d829ca86_b1787aa0",
+      "range": {
+        "startLine": 790,
+        "startChar": 7,
+        "endLine": 790,
+        "endChar": 60
+      },
+      "revId": "c89ae5117b12edeb4ff65aac75267fbc4ea0125e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
