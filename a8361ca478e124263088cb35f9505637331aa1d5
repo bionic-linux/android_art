@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1840c241_b332c2f7",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3998,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-07T19:09:57Z",
+      "side": 1,
+      "message": "not sure if it\u0027s worth making this virtual just for the debug check... let me know what you think.",
+      "range": {
+        "startLine": 3998,
+        "startChar": 2,
+        "endLine": 3998,
+        "endChar": 59
+      },
+      "revId": "a8361ca478e124263088cb35f9505637331aa1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_5101560e",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-07T19:09:57Z",
+      "side": 1,
+      "message": "I\u0027ll do it in another CL as it requires the checker to be aware of what pass just ran.",
+      "range": {
+        "startLine": 100,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "a8361ca478e124263088cb35f9505637331aa1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
