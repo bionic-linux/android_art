@@ -2,6 +2,155 @@
   "comments": [
     {
       "key": {
+        "uuid": "1840c241_b05638a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "Nit: optimizations :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_9ff7d350",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "What about:\n\n  enum SideEffect {\n    kUnspecified,\n    kGC,\n\n    kLastSideEffect \u003d kGC\n  };\n\n  static constexpr size_t kNumberOfSideEffects \u003d kGC + 1;\n\nso that the enum contains only \"valid\" values?",
+      "range": {
+        "startLine": 1157,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 4
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_7f164f09",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1205,
+        "startChar": 42,
+        "endLine": 1205,
+        "endChar": 43
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_6e3fcf77",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 1236,
+        "startChar": 39,
+        "endLine": 1236,
+        "endChar": 40
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f28255_4333b821",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "Maybe add\n\n  DCHECK_EQ(POPCOUNT(se), 1);\n\n?",
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8fb8a32_1e250d6e",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "Ditto?",
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_ff001fc2",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-07T13:20:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t \u0027Changes\u0027 and \u0027DependsOn\u0027 be swapped in this diagram?",
+      "range": {
+        "startLine": 1250,
+        "startChar": 25,
+        "endLine": 1250,
+        "endChar": 56
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1840c241_7081f0d7",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
