@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d829ca86_311fea62",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Maybe IsValidHandle, to not confuse it with the other IsValid?",
+      "range": {
+        "startLine": 1358,
+        "startChar": 14,
+        "endLine": 1358,
+        "endChar": 21
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_d3be66ad",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Is it really worth it? What callers can we have that shouldn\u0027t acquire the lock?",
+      "range": {
+        "startLine": 1413,
+        "startChar": 0,
+        "endLine": 1415,
+        "endChar": 17
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_f3c16a25",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3743,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "This doesn\u0027t sound right. Why do you need it?",
+      "range": {
+        "startLine": 3743,
+        "startChar": 25,
+        "endLine": 3743,
+        "endChar": 47
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_a26a80df",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4002,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Yeah, the virtual just for the DCHECK is maybe too much. I\u0027d put this logic in just one SetReferenceTypeInfo method:\n\n\nif (kIsDebugBuild \u0026\u0026 IsBoundType()) { ... }",
+      "range": {
+        "startLine": 3996,
+        "startChar": 2,
+        "endLine": 4002,
+        "endChar": 3
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_b3cbe241",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Please add a comment about this special case. Could you DCHECK something on the given klass?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 76
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_1124eeb8",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Isn\u0027t the TODO really about parsing the signature of the current method to know the actual types of the parameters?",
+      "range": {
+        "startLine": 297,
+        "startChar": 7,
+        "endLine": 297,
+        "endChar": 11
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_8239bc03",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Nit: parens.\n\nAlso, please add a TODO with the reference about the bug of why we are doing a null check.",
+      "range": {
+        "startLine": 313,
+        "startChar": 25,
+        "endLine": 313,
+        "endChar": 41
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_f13842db",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Instead of having them be invalid, could we have them be java.lang.Object instead? Would that make it simpler? Or is the non valid type (pretty much the bottom type), helping the algorithm?",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 41
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f28255_23343467",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Not really parent, more \"object\", or \"array\".",
+      "range": {
+        "startLine": 417,
+        "startChar": 16,
+        "endLine": 417,
+        "endChar": 22
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_4233b421",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T21:23:48Z",
+      "side": 1,
+      "message": "Please add a comment why you need to add to the worklist in that case, but not if UpdateArrayGet returns true.",
+      "range": {
+        "startLine": 482,
+        "startChar": 4,
+        "endLine": 482,
+        "endChar": 26
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
