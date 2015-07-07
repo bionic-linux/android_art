@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d829ca86_b1787aa0",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T18:38:27Z",
+      "side": 1,
+      "message": "Please also explain why you\u0027re doing a \u003e\u003d size check then (and not a 0xFFFFFFFF check).",
+      "range": {
+        "startLine": 790,
+        "startChar": 7,
+        "endLine": 790,
+        "endChar": 60
+      },
+      "revId": "c89ae5117b12edeb4ff65aac75267fbc4ea0125e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
