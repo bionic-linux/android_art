@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1840c241_7081f0d7",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T10:51:12Z",
+      "side": 1,
+      "message": "It\u0027d be great if you could keep that const.",
+      "range": {
+        "startLine": 1737,
+        "startChar": 0,
+        "endLine": 1737,
+        "endChar": 28
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8fb8a32_1edd0d07",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3278,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T10:51:12Z",
+      "side": 1,
+      "message": "You could put the tests in a helper with a name that explains the intent.",
+      "range": {
+        "startLine": 3273,
+        "startChar": 0,
+        "endLine": 3278,
+        "endChar": 5
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_ffea5f9b",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3864,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-07T10:51:12Z",
+      "side": 1,
+      "message": "Already specified?",
+      "range": {
+        "startLine": 3864,
+        "startChar": 0,
+        "endLine": 3864,
+        "endChar": 44
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
