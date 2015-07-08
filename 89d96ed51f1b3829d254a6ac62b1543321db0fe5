@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "18f28255_46a2a688",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3743,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-08T12:00:18Z",
+      "side": 1,
+      "message": "But we shouldn\u0027t compile unresolved HLoadClass right now, are we?",
+      "parentUuid": "18f28255_a616124f",
+      "range": {
+        "startLine": 3743,
+        "startChar": 25,
+        "endLine": 3743,
+        "endChar": 47
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_a26a80df",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 5
