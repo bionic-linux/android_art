@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8f4ce42_c2fa2438",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d829ca86_311fea62",
+      "range": {
+        "startLine": 1358,
+        "startChar": 14,
+        "endLine": 1358,
+        "endChar": 21
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1840c241_d3be66ad",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-07T21:23:48Z",
       "side": 1,
       "message": "Is it really worth it? What callers can we have that shouldn\u0027t acquire the lock?",
+      "range": {
+        "startLine": 1413,
+        "startChar": 0,
+        "endLine": 1415,
+        "endChar": 17
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f28255_06393edd",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1415,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Probably not. I had much more unguarded DCHECK before the final CL and it kinda made sense. Now only the visits in NullCheck and ArrrayGet are unguarded. So I removed this and added the lock.",
+      "parentUuid": "1840c241_d3be66ad",
       "range": {
         "startLine": 1413,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "18f28255_a616124f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3743,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "For unresolved types.\nPrevious we would use Top, now we use Object.",
+      "parentUuid": "1840c241_f3c16a25",
+      "range": {
+        "startLine": 3743,
+        "startChar": 25,
+        "endLine": 3743,
+        "endChar": 47
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_a26a80df",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-07-07T21:23:48Z",
       "side": 1,
       "message": "Yeah, the virtual just for the DCHECK is maybe too much. I\u0027d put this logic in just one SetReferenceTypeInfo method:\n\n\nif (kIsDebugBuild \u0026\u0026 IsBoundType()) { ... }",
+      "range": {
+        "startLine": 3996,
+        "startChar": 2,
+        "endLine": 4002,
+        "endChar": 3
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_91857e90",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4002,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f4ce42_a26a80df",
       "range": {
         "startLine": 3996,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d829ca86_b1887aa6",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1840c241_b3cbe241",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 76
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d829ca86_1124eeb8",
         "filename": "compiler/optimizing/reference_type_propagation.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-07-07T21:23:48Z",
       "side": 1,
       "message": "Isn\u0027t the TODO really about parsing the signature of the current method to know the actual types of the parameters?",
+      "range": {
+        "startLine": 297,
+        "startChar": 7,
+        "endLine": 297,
+        "endChar": 11
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_d34546c9",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "yes. this comment was misplaced. it was meant to be in ArrayGet/ArraySet. They can be used to bound the input object to an array type in their context (in case it was merged to Object).",
+      "parentUuid": "d829ca86_1124eeb8",
       "range": {
         "startLine": 297,
         "startChar": 7,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "f8f4ce42_0247ec22",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f4ce42_8239bc03",
+      "range": {
+        "startLine": 313,
+        "startChar": 25,
+        "endLine": 313,
+        "endChar": 41
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d829ca86_f13842db",
         "filename": "compiler/optimizing/reference_type_propagation.cc",
         "patchSetId": 5
@@ -174,6 +342,30 @@
       "writtenOn": "2015-07-07T21:23:48Z",
       "side": 1,
       "message": "Instead of having them be invalid, could we have them be java.lang.Object instead? Would that make it simpler? Or is the non valid type (pretty much the bottom type), helping the algorithm?",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 41
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_826adc96",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Yes, it\u0027s helping the precision. If we go directly to Object we will miss the opportunity to have a precise type.",
+      "parentUuid": "d829ca86_f13842db",
       "range": {
         "startLine": 352,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1840c241_73357a66",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Ok, it\u0027s a parent in the data flow graph. I don\u0027t mind changing it.",
+      "parentUuid": "18f28255_23343467",
+      "range": {
+        "startLine": 417,
+        "startChar": 16,
+        "endLine": 417,
+        "endChar": 22
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_4233b421",
         "filename": "compiler/optimizing/reference_type_propagation.cc",
         "patchSetId": 5
@@ -220,6 +436,30 @@
       "writtenOn": "2015-07-07T21:23:48Z",
       "side": 1,
       "message": "Please add a comment why you need to add to the worklist in that case, but not if UpdateArrayGet returns true.",
+      "range": {
+        "startLine": 482,
+        "startChar": 4,
+        "endLine": 482,
+        "endChar": 26
+      },
+      "revId": "89d96ed51f1b3829d254a6ac62b1543321db0fe5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_c267c4ca",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-07-08T11:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f4ce42_4233b421",
       "range": {
         "startLine": 482,
         "startChar": 4,
