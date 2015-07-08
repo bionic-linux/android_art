@@ -140,6 +140,30 @@
       "revId": "1b3384e64eedf02aa7a35950e063e2687da5468d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_f16de22c",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-08T13:15:42Z",
+      "side": 1,
+      "message": "I see, thanks.",
+      "parentUuid": "f8f4ce42_a229603e",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 26
+      },
+      "revId": "1b3384e64eedf02aa7a35950e063e2687da5468d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
