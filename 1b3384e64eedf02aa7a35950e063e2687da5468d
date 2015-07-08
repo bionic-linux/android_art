@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d829ca86_11ed0e3d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-08T12:00:18Z",
+      "side": 1,
+      "message": "HasValidHandle -\u003e IsValidHandle",
+      "range": {
+        "startLine": 1358,
+        "startChar": 14,
+        "endLine": 1358,
+        "endChar": 28
+      },
+      "revId": "1b3384e64eedf02aa7a35950e063e2687da5468d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8fb8a32_81de5c85",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1364,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-08T12:00:18Z",
+      "side": 1,
+      "message": "I\u0027d keep this IsValid (again, to not confuse with the other method).",
+      "range": {
+        "startLine": 1362,
+        "startChar": 1,
+        "endLine": 1364,
+        "endChar": 3
+      },
+      "revId": "1b3384e64eedf02aa7a35950e063e2687da5468d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_d36ae612",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-08T12:00:18Z",
+      "side": 1,
+      "message": "But if the phi goes from String[] to Object[] don\u0027t we have a problem? the array get will be typed as string, and then not put in the work list.",
+      "range": {
+        "startLine": 501,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 26
+      },
+      "revId": "1b3384e64eedf02aa7a35950e063e2687da5468d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
