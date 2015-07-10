@@ -22,6 +22,30 @@
       "revId": "2f0aa35c0cc278675a148e5462df17a7c742ce96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78753eb8_197bcb71",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-10T22:28:58Z",
+      "side": 1,
+      "message": "There is no change for StrictMode, maybe other callers of countInstancesOfClass.",
+      "parentUuid": "58d23ae8_1bd74733",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 49
+      },
+      "revId": "2f0aa35c0cc278675a148e5462df17a7c742ce96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
