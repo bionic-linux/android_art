@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18f28255_4684e65e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Aargh, again!\nFixed.",
+      "parentUuid": "1840c241_b05638a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_9ff7d350",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-07T13:20:34Z",
       "side": 1,
       "message": "What about:\n\n  enum SideEffect {\n    kUnspecified,\n    kGC,\n\n    kLastSideEffect \u003d kGC\n  };\n\n  static constexpr size_t kNumberOfSideEffects \u003d kGC + 1;\n\nso that the enum contains only \"valid\" values?",
+      "range": {
+        "startLine": 1157,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 4
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_96f7ac50",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "f8f4ce42_9ff7d350",
       "range": {
         "startLine": 1157,
         "startChar": 0,
@@ -71,6 +119,53 @@
     },
     {
       "key": {
+        "uuid": "f8f4ce42_a59cca6f",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f4ce42_7f164f09",
+      "range": {
+        "startLine": 1205,
+        "startChar": 42,
+        "endLine": 1205,
+        "endChar": 43
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "782e1e92_ab136910",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Fixed. (Leftover from previous implementation.)",
+      "range": {
+        "startLine": 1206,
+        "startChar": 30,
+        "endLine": 1206,
+        "endChar": 32
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d829ca86_6e3fcf77",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -82,6 +177,30 @@
       "writtenOn": "2015-07-07T13:20:34Z",
       "side": 1,
       "message": "const",
+      "range": {
+        "startLine": 1236,
+        "startChar": 39,
+        "endLine": 1236,
+        "endChar": 40
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f28255_e66ada12",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d829ca86_6e3fcf77",
       "range": {
         "startLine": 1236,
         "startChar": 39,
@@ -111,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "18f28255_c677d6f8",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "`se` is the bit index, so popcount is not appropriate.\nI added a `static_assert` near the definition of `flags_`.",
+      "parentUuid": "18f28255_4333b821",
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8fb8a32_1e250d6e",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -128,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "782e1e92_cb2fd542",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "d8fb8a32_1e250d6e",
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_ff001fc2",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -139,6 +294,30 @@
       "writtenOn": "2015-07-07T13:20:34Z",
       "side": 1,
       "message": "Shouldn\u0027t \u0027Changes\u0027 and \u0027DependsOn\u0027 be swapped in this diagram?",
+      "range": {
+        "startLine": 1250,
+        "startChar": 25,
+        "endLine": 1250,
+        "endChar": 56
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1867e20f_989ef5af",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "They should. Fixed.",
+      "parentUuid": "f8f4ce42_ff001fc2",
       "range": {
         "startLine": 1250,
         "startChar": 25,
@@ -174,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "1867e20f_185d0570",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Done. Using helpers, it becomes easier to specify the side effects in the initializer list.",
+      "parentUuid": "1840c241_7081f0d7",
+      "range": {
+        "startLine": 1737,
+        "startChar": 0,
+        "endLine": 1737,
+        "endChar": 28
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8fb8a32_1edd0d07",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -197,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "1840c241_44062e29",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3278,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Yes!\nUsing helpers also helps to make `flags_` const.",
+      "parentUuid": "d8fb8a32_1edd0d07",
+      "range": {
+        "startLine": 3273,
+        "startChar": 0,
+        "endLine": 3278,
+        "endChar": 5
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f4ce42_ffea5f9b",
         "filename": "compiler/optimizing/nodes_common.h",
         "patchSetId": 3
@@ -208,6 +435,30 @@
       "writtenOn": "2015-07-07T10:51:12Z",
       "side": 1,
       "message": "Already specified?",
+      "range": {
+        "startLine": 3864,
+        "startChar": 0,
+        "endLine": 3864,
+        "endChar": 44
+      },
+      "revId": "02b6a99c4121caa26bdc4d091825a15a6fbc78a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "782e1e92_f10f2037",
+        "filename": "compiler/optimizing/nodes_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3864,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-10T10:02:49Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "f8f4ce42_ffea5f9b",
       "range": {
         "startLine": 3864,
         "startChar": 0,
