@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "987af2a8_a67aa8e4",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:37:40Z",
+      "side": 1,
+      "message": "Ah right, that other change is actually ASan being incompatible with implicit_so_checks_. So I\u0027ll just change the condition to !RUNNING_ON_MEMORY_TOOL and remove RUNNING_ON_VALGRIND.\n\nhttps://android-review.googlesource.com/#/c/159078",
+      "parentUuid": "78753eb8_020d943e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_48288ebe",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 9
