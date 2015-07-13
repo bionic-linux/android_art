@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "78753eb8_020d943e",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-07-13T18:31:04Z",
+      "side": 1,
+      "message": "So you assume you\u0027ll never run an asan build under valgrind? Which memory tools sanitizes the memory tool?!?! ;-)\n\nYes, please move to constexpr.",
+      "parentUuid": "132185e2_ebc6cda9",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_48288ebe",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 9
@@ -202,6 +226,30 @@
       "side": 1,
       "message": "Oh, do you use 100-character lines?",
       "parentUuid": "934c958c_8edf9c83",
+      "range": {
+        "startLine": 2204,
+        "startChar": 52,
+        "endLine": 2205,
+        "endChar": 75
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78753eb8_420b8c2d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-07-13T18:31:04Z",
+      "side": 1,
+      "message": "Yes, ART style guide is 100 characters. See the helpful dashed line in Gerrit. :-)",
+      "parentUuid": "73f6419f_71adb0a6",
       "range": {
         "startLine": 2204,
         "startChar": 52,
