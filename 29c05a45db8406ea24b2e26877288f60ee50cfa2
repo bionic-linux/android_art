@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "332a09c0_6f2e651d",
+        "filename": "runtime/base/arena_allocator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "5384ddcb_1c940d48",
+      "range": {
+        "startLine": 220,
+        "startChar": 15,
+        "endLine": 220,
+        "endChar": 37
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_a8027a11",
         "filename": "runtime/base/memory_tool.h",
         "patchSetId": 9
@@ -60,6 +84,30 @@
       "writtenOn": "2015-06-29T17:24:08Z",
       "side": 1,
       "message": "Is this still necessary?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_ebc6cda9",
+        "filename": "runtime/base/memory_tool.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "For implicit_so_checks_ in runtime.cc.\nThis looks like something specific to Valgrind, at least sanitizers don\u0027t have that problem.\nWe could change it to a constexpr, such that the check would look like\nimplicit_so_checks_ \u003d !(RUNNING_ON_MEMORY_TOOL \u0026\u0026 kMemoryToolIsValgrind)",
+      "parentUuid": "f390710b_a8027a11",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "332a09c0_2ffd8d7f",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f390710b_48288ebe",
+      "range": {
+        "startLine": 2093,
+        "startChar": 2,
+        "endLine": 2093,
+        "endChar": 6
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934c958c_8edf9c83",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 9
@@ -106,6 +178,30 @@
       "writtenOn": "2015-06-29T17:21:27Z",
       "side": 1,
       "message": "Fits on the same line.",
+      "range": {
+        "startLine": 2204,
+        "startChar": 52,
+        "endLine": 2205,
+        "endChar": 75
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_71adb0a6",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "Oh, do you use 100-character lines?",
+      "parentUuid": "934c958c_8edf9c83",
       "range": {
         "startLine": 2204,
         "startChar": 52,
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "73f6419f_f1a080ab",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f390710b_8851b637",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5384ddcb_bc45e167",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 9
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "132185e2_6b42dde3",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5384ddcb_bc45e167",
+      "range": {
+        "startLine": 479,
+        "startChar": 6,
+        "endLine": 479,
+        "endChar": 32
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f390710b_28942a48",
         "filename": "runtime/thread.h",
         "patchSetId": 9
@@ -175,6 +319,30 @@
       "writtenOn": "2015-06-29T17:21:27Z",
       "side": 1,
       "message": "Yuck, another dependency.\n\nkStackOverflowProtectedSize seems to only be used in thread.cc. If that\u0027s really the case, move to the include and the constexpr there.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "29c05a45db8406ea24b2e26877288f60ee50cfa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_2fc58d04",
+        "filename": "runtime/thread.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-07-13T18:27:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f390710b_28942a48",
       "range": {
         "startLine": 32,
         "startChar": 0,
