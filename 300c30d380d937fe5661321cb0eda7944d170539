@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98975254_4749ad06",
+        "filename": "test/140-field-packing/src/GapOrder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-07-14T23:49:35Z",
+      "side": 1,
+      "message": "That\u0027s not really necessary, auto-unboxing would do this for you.",
+      "range": {
+        "startLine": 57,
+        "startChar": 50,
+        "endLine": 57,
+        "endChar": 60
+      },
+      "revId": "300c30d380d937fe5661321cb0eda7944d170539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
