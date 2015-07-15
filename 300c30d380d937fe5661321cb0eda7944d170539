@@ -22,6 +22,30 @@
       "revId": "300c30d380d937fe5661321cb0eda7944d170539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f7fee1_06767cb4",
+        "filename": "test/140-field-packing/src/GapOrder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-07-15T15:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98975254_4749ad06",
+      "range": {
+        "startLine": 57,
+        "startChar": 50,
+        "endLine": 57,
+        "endChar": 60
+      },
+      "revId": "300c30d380d937fe5661321cb0eda7944d170539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
