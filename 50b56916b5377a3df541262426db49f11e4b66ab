@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "985112ab_1ccc9558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Nit: optimizations :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "985112ab_5c7f7d8a",
         "filename": "compiler/optimizing/locations.cc",
         "patchSetId": 6
@@ -18,6 +41,29 @@
         "startChar": 22,
         "endLine": 34,
         "endChar": 29
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_fcfbe96f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "kBitsPerByte",
+      "range": {
+        "startLine": 1264,
+        "startChar": 60,
+        "endLine": 1264,
+        "endChar": 61
       },
       "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -94,6 +140,167 @@
     },
     {
       "key": {
+        "uuid": "d8470aeb_3e3069ef",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "What about making this static member function of art::HTypeConversion?",
+      "range": {
+        "startLine": 3357,
+        "startChar": 19,
+        "endLine": 3357,
+        "endChar": 44
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_7ce839a3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 3357,
+        "startChar": 0,
+        "endLine": 3357,
+        "endChar": 103
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_c5fbba70",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3360,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Could we use art::HGraph::GetInstructionSet here?",
+      "range": {
+        "startLine": 3358,
+        "startChar": 63,
+        "endLine": 3360,
+        "endChar": 22
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f0c2db_d0fb7c70",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3366,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 3366,
+        "startChar": 2,
+        "endLine": 3366,
+        "endChar": 4
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_fc9c4946",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3649,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "What about making this static member function of art::HArraySet?",
+      "range": {
+        "startLine": 3649,
+        "startChar": 19,
+        "endLine": 3649,
+        "endChar": 38
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_3ce2b1c3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3652,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Add parentheses.",
+      "range": {
+        "startLine": 3652,
+        "startChar": 26,
+        "endLine": 3652,
+        "endChar": 59
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_85f5c27d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3653,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Maybe use `?:\u0027 instead of `if\u0027?",
+      "range": {
+        "startLine": 3653,
+        "startChar": 2,
+        "endLine": 3653,
+        "endChar": 23
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8470aeb_7e935163",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -110,6 +317,29 @@
         "startChar": 29,
         "endLine": 4176,
         "endChar": 53
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_9ca18585",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-15T10:31:21Z",
+      "side": 1,
+      "message": "Long line.",
+      "range": {
+        "startLine": 4238,
+        "startChar": 0,
+        "endLine": 4238,
+        "endChar": 125
       },
       "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
