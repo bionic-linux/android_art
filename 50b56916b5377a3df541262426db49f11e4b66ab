@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "98fcb2c6_a4ab2292",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-07-15T10:32:07Z",
+      "side": 1,
+      "message": "Argh. This will conflict badly with my type-based improvement in CL https://android-review.googlesource.com/#/c/159329/\n\nHowever, the good news is that we have sufficient bits left in that solution to add the GC as well.",
+      "range": {
+        "startLine": 1163,
+        "startChar": 20,
+        "endLine": 1163,
+        "endChar": 26
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "985112ab_fcfbe96f",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
