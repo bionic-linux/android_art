@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3837466d_c733b27f",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-07-15T23:03:00Z",
+      "side": 1,
+      "message": "Any reason why not just \"vios \u003c\u003c std::flush\" ? The extra * just seems to add noise.",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f7fee1_a9c2c727",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-07-15T23:03:00Z",
+      "side": 1,
+      "message": "Why is this using a forwarding reference?\n\nNone of the built-in operator\u003c\u003c in basic_ostream are using that.\n\n  const T\u0026 rhs  \n\nshould be sufficient, isn\u0027t it?\n\nI am not sure I understand the value in ever having operator\u003c\u003c parameter get moved-from, like that would somehow make printing faster (which is a read-only operation)?",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
