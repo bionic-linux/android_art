@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "985112ab_5c7f7d8a",
+        "filename": "compiler/optimizing/locations.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-15T09:57:09Z",
+      "side": 1,
+      "message": "Actually we need to refine that to non-fatal slow paths.",
+      "range": {
+        "startLine": 34,
+        "startChar": 22,
+        "endLine": 34,
+        "endChar": 29
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_65108657",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-15T09:57:09Z",
+      "side": 1,
+      "message": "I don\u0027t think we make the deoptimize a terminating instruction, so this should be kept to None.",
+      "range": {
+        "startLine": 2055,
+        "startChar": 42,
+        "endLine": 2055,
+        "endChar": 51
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8470aeb_5e969554",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-15T09:57:09Z",
+      "side": 1,
+      "message": "Since this is ARM dependent again, maybe we could abstract that away, eg a method ArchNeedsRuntimeCallFor...",
+      "range": {
+        "startLine": 3103,
+        "startChar": 51,
+        "endLine": 3103,
+        "endChar": 75
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f0c2db_507c2c94",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3160,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-15T09:57:09Z",
+      "side": 1,
+      "message": "not on the check, right? You could still move that to none.",
+      "range": {
+        "startLine": 3160,
+        "startChar": 0,
+        "endLine": 3160,
+        "endChar": 96
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8470aeb_7e935163",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4176,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-07-15T09:57:09Z",
+      "side": 1,
+      "message": "only if it\u0027s not final?",
+      "range": {
+        "startLine": 4176,
+        "startChar": 29,
+        "endLine": 4176,
+        "endChar": 53
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
