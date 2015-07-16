@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b8fdf6c1_cb5749d1",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-16T13:03:47Z",
+      "side": 1,
+      "message": "I would prefer a reference too, but the C++ style guide prevents us from using non-const references.",
+      "parentUuid": "18f0c2db_d6337431",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f7fee1_a9c2c727",
         "filename": "runtime/indenter.h",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "The intent of this operator is to forward parameters, so I would be suspicious if I saw \"const T\u0026\" here.",
       "parentUuid": "78f7fee1_a9c2c727",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_eb5205e3",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-16T13:03:47Z",
+      "side": 1,
+      "message": "Exactly; std::forward is the generic way of forwarding arguments.",
+      "parentUuid": "b8fdf6c1_a8b1b352",
       "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
