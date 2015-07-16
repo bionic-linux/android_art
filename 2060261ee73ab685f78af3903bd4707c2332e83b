@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18f0c2db_d6337431",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-07-16T09:04:20Z",
+      "side": 1,
+      "message": "Do you want to change the parameter type to a reference?",
+      "parentUuid": "3837466d_c733b27f",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f7fee1_a9c2c727",
         "filename": "runtime/indenter.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-07-15T23:03:00Z",
       "side": 1,
       "message": "Why is this using a forwarding reference?\n\nNone of the built-in operator\u003c\u003c in basic_ostream are using that.\n\n  const T\u0026 rhs  \n\nshould be sufficient, isn\u0027t it?\n\nI am not sure I understand the value in ever having operator\u003c\u003c parameter get moved-from, like that would somehow make printing faster (which is a read-only operation)?",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_a8b1b352",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-07-16T09:04:20Z",
+      "side": 1,
+      "message": "The intent of this operator is to forward parameters, so I would be suspicious if I saw \"const T\u0026\" here.",
+      "parentUuid": "78f7fee1_a9c2c727",
       "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
