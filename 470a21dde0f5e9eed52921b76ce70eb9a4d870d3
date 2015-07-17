@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8754a3f_98717a58",
+        "filename": "runtime/gc/weak_root_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "787a9e34_7fd597ac",
+      "range": {
+        "startLine": 26,
+        "startChar": 25,
+        "endLine": 28,
+        "endChar": 96
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "586b1a6a_3e9c01b6",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-17T21:31:14Z",
       "side": 1,
       "message": "Shouldn\u0027t you be testing that the other mutex is actually the mutator lock. It\u0027s a debug build, so you don\u0027t have to trust lock annotations... :-)",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 89
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "987f5221_bba6b398",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586b1a6a_3e9c01b6",
       "range": {
         "startLine": 237,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b8709650_47b332d5",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188c4286_cab087fe",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 5
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38858659_850d9240",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-07-17T21:31:14Z",
       "side": 1,
       "message": "This would be more readable if it was refactored into a small helper function, WaitAccessible or so.",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 261,
+        "endChar": 5
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386e667b_bd6eb777",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38858659_850d9240",
       "range": {
         "startLine": 245,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f88e8e7f_643990dd",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8709650_1cd26146",
+      "range": {
+        "startLine": 264,
+        "startChar": 6,
+        "endLine": 264,
+        "endChar": 23
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "386e667b_dddccb57",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2015-07-17T21:31:14Z",
       "side": 1,
       "message": "I understand why there\u0027s no EnsureNoWeakRootStateChange, as that\u0027s covered by holding the mutator lock at this point. But could you add a comment towards this? (Maybe even add an AssertHeld in debug mode?)",
+      "range": {
+        "startLine": 266,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 53
+      },
+      "revId": "470a21dde0f5e9eed52921b76ce70eb9a4d870d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38858659_c5339a7f",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-17T22:34:32Z",
+      "side": 1,
+      "message": "Added assert.",
+      "parentUuid": "386e667b_dddccb57",
       "range": {
         "startLine": 266,
         "startChar": 2,
