@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b8fdf6c1_05b312d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_1ccc9558",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "985112ab_5c7f7d8a",
         "filename": "compiler/optimizing/locations.cc",
         "patchSetId": 6
@@ -142,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "b8fdf6c1_e580f6d6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_fcfbe96f",
+      "range": {
+        "startLine": 1264,
+        "startChar": 60,
+        "endLine": 1264,
+        "endChar": 61
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8fdf6c1_65108657",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -153,6 +201,30 @@
       "writtenOn": "2015-07-15T09:57:09Z",
       "side": 1,
       "message": "I don\u0027t think we make the deoptimize a terminating instruction, so this should be kept to None.",
+      "range": {
+        "startLine": 2055,
+        "startChar": 42,
+        "endLine": 2055,
+        "endChar": 51
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_853dc27c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2055,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done. What do you mean by \u0027terminating instruction\u0027?",
+      "parentUuid": "b8fdf6c1_65108657",
       "range": {
         "startLine": 2055,
         "startChar": 42,
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d8470aeb_3ef8693e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done here and for other occurrences.",
+      "parentUuid": "d8470aeb_5e969554",
+      "range": {
+        "startLine": 3103,
+        "startChar": 51,
+        "endLine": 3103,
+        "endChar": 75
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18f0c2db_507c2c94",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -199,6 +295,30 @@
       "writtenOn": "2015-07-15T09:57:09Z",
       "side": 1,
       "message": "not on the check, right? You could still move that to none.",
+      "range": {
+        "startLine": 3160,
+        "startChar": 0,
+        "endLine": 3160,
+        "endChar": 96
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f0c2db_5030aca1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3160,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "18f0c2db_507c2c94",
       "range": {
         "startLine": 3160,
         "startChar": 0,
@@ -257,6 +377,54 @@
     },
     {
       "key": {
+        "uuid": "d8470aeb_de15c5fb",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_7ce839a3",
+      "range": {
+        "startLine": 3357,
+        "startChar": 0,
+        "endLine": 3357,
+        "endChar": 103
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "985112ab_bc3d617c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3357,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8470aeb_3e3069ef",
+      "range": {
+        "startLine": 3357,
+        "startChar": 19,
+        "endLine": 3357,
+        "endChar": 44
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8fdf6c1_c5fbba70",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -268,6 +436,30 @@
       "writtenOn": "2015-07-15T10:31:21Z",
       "side": 1,
       "message": "Could we use art::HGraph::GetInstructionSet here?",
+      "range": {
+        "startLine": 3358,
+        "startChar": 63,
+        "endLine": 3360,
+        "endChar": 22
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8ba0e36_6f68b19a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3360,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "As discussed, for now let\u0027s be conservative and we can optimise that later.\nThe reworked code should be clearer though.",
+      "parentUuid": "b8fdf6c1_c5fbba70",
       "range": {
         "startLine": 3358,
         "startChar": 63,
@@ -303,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "985112ab_1c1495f7",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3366,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f0c2db_d0fb7c70",
+      "range": {
+        "startLine": 3366,
+        "startChar": 2,
+        "endLine": 3366,
+        "endChar": 4
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "985112ab_fc9c4946",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -314,6 +530,30 @@
       "writtenOn": "2015-07-15T10:31:21Z",
       "side": 1,
       "message": "What about making this static member function of art::HArraySet?",
+      "range": {
+        "startLine": 3649,
+        "startChar": 19,
+        "endLine": 3649,
+        "endChar": 38
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_45710a55",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3649,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_fc9c4946",
       "range": {
         "startLine": 3649,
         "startChar": 19,
@@ -349,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "d8470aeb_fe1a0129",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3652,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_3ce2b1c3",
+      "range": {
+        "startLine": 3652,
+        "startChar": 26,
+        "endLine": 3652,
+        "endChar": 59
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8fdf6c1_85f5c27d",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -360,6 +624,30 @@
       "writtenOn": "2015-07-15T10:31:21Z",
       "side": 1,
       "message": "Maybe use `?:\u0027 instead of `if\u0027?",
+      "range": {
+        "startLine": 3653,
+        "startChar": 2,
+        "endLine": 3653,
+        "endChar": 23
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f0c2db_302d284a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3653,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8fdf6c1_85f5c27d",
       "range": {
         "startLine": 3653,
         "startChar": 2,
@@ -395,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "18f0c2db_f05fa0c0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4176,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "There is a slow path in the codegen unconditionally.\nIs there a situation where we don\u0027t need a safepoint?",
+      "parentUuid": "d8470aeb_7e935163",
+      "range": {
+        "startLine": 4176,
+        "startChar": 29,
+        "endLine": 4176,
+        "endChar": 53
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "985112ab_9ca18585",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -406,6 +718,30 @@
       "writtenOn": "2015-07-15T10:31:21Z",
       "side": 1,
       "message": "Long line.",
+      "range": {
+        "startLine": 4238,
+        "startChar": 0,
+        "endLine": 4238,
+        "endChar": 125
+      },
+      "revId": "50b56916b5377a3df541262426db49f11e4b66ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8fdf6c1_257e0e25",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-07-17T16:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985112ab_9ca18585",
       "range": {
         "startLine": 4238,
         "startChar": 0,
