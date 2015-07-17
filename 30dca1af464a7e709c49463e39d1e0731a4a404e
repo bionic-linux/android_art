@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "987f5221_cfb18184",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1073545
+      },
+      "writtenOn": "2015-07-17T01:09:03Z",
+      "side": 1,
+      "message": "intern_table_lock_?",
+      "range": {
+        "startLine": 257,
+        "startChar": 81,
+        "endLine": 257,
+        "endChar": 93
+      },
+      "revId": "30dca1af464a7e709c49463e39d1e0731a4a404e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8709650_3330b0ef",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1073545
+      },
+      "writtenOn": "2015-07-17T01:09:03Z",
+      "side": 1,
+      "message": "not in the patch.",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 30
+      },
+      "revId": "30dca1af464a7e709c49463e39d1e0731a4a404e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58823a52_151476f7",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1073545
+      },
+      "writtenOn": "2015-07-17T01:09:03Z",
+      "side": 1,
+      "message": "Probably not need to use Atomic, if it is guarded by intern_table_lock_.",
+      "range": {
+        "startLine": 254,
+        "startChar": 2,
+        "endLine": 254,
+        "endChar": 27
+      },
+      "revId": "30dca1af464a7e709c49463e39d1e0731a4a404e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
