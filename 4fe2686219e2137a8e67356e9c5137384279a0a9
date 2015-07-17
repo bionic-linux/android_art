@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "386e667b_dd3e0b7a",
+        "filename": "runtime/verifier/verify_mode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-07-17T22:22:42Z",
+      "side": 1,
+      "message": "Newline before is common.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "4fe2686219e2137a8e67356e9c5137384279a0a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8709650_a7f0d68d",
+        "filename": "test/run-test",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-07-17T22:22:42Z",
+      "side": 1,
+      "message": "\"Regular\"? (What does regular mean?) \"off\" seems more in line and just as expressive. Just disambiguate what regular means.",
+      "range": {
+        "startLine": 521,
+        "startChar": 70,
+        "endLine": 521,
+        "endChar": 77
+      },
+      "revId": "4fe2686219e2137a8e67356e9c5137384279a0a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
