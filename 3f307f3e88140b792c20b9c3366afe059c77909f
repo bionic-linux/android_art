@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad7a16a8_e845dbca",
+        "filename": "compiler/optimizing/licm_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-07-22T18:23:47Z",
+      "side": 1,
+      "message": "Isn\u0027t CHECK_EQ supposed to be used for runtime code? I thought gtest code is supposed to use either ASSERT_EQ or EXPECT_EQ",
+      "revId": "3f307f3e88140b792c20b9c3366afe059c77909f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
