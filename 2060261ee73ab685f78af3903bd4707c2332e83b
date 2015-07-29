@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "0d8962a8_ff9abff5",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-29T17:04:46Z",
+      "side": 1,
+      "message": "Fair enough; I turned the pointers into references.  This is admittedly better. :)",
+      "parentUuid": "d8d9ca70_71a6124b",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f7fee1_a9c2c727",
         "filename": "runtime/indenter.h",
         "patchSetId": 1
@@ -138,6 +156,24 @@
       "side": 1,
       "message": "Yes, but forwarding it into what?\n\nIt seems like it\u0027s forwarding into std::ostream\u0026\n\nand the std::ostream\u0026 interface doesn\u0027t have any overloads of operator\u003c\u003c that take an rvalue reference (I suppose someone could write a free function that did it, but I can\u0027t fathom why).\n\nThe practical downside is that the user of the API no longer knows if the parameter will be treated as const or not. Perfect forwarding can resolve to a \"Lvalue\u0026\" type, which means it could end up being mutated by the callee.\n\nIMHO iostreams should not be mutating the data they consume, so it doesn\u0027t seem clear why we\u0027d ever want the parameters to be non-const.\n\n---------\nAside:\n\na const lvalue\u0026 works for everything as the \"in\" argument, it just can\u0027t be moved-from in the definition\n\n   void foo(const T\u0026 x)\n  \n   T y;\n   foo(y) // ok\n   T\u0026 z \u003d y;\n   foo(z) // ok\n   const T\u0026 w \u003d y;\n   foo(w) \u003d ok\n   T\u0026\u0026 r \u003d std::move(y);\n   foo(r) // ok\n   foo(T{}); // ok\n\nand so on.\n\nIt\u0027s possible I may have missed a best practice regarding perfect forwarding on iostreams?\n\nTo me perfect forwarding makes more sense when forwarding into a templated type or into a type having the full range of parameter overloads (that include an rvalue reference).",
       "parentUuid": "b8fdf6c1_eb5205e3",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8faeab_21524835",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-07-29T17:04:46Z",
+      "side": 1,
+      "message": "To me, the API lies in the recipients of the forwarder (which could be free to implement move semantics), not the forwarder itself, which follows a canonical modern C++ idiom.\n\nI\u0027ve changed this to use a const l-value reference, as in practice we always delegate to operator\u003c\u003c whose second operand is a const l-value reference.",
+      "parentUuid": "98fcb2c6_67576c50",
       "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
