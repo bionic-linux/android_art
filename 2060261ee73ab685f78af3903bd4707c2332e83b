@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "4aeb4063_041db89b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-07-29T18:13:56Z",
+      "side": 1,
+      "message": "Looks prettier now :). Thanks",
+      "parentUuid": "0d8962a8_ff9abff5",
+      "revId": "2060261ee73ab685f78af3903bd4707c2332e83b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f7fee1_a9c2c727",
         "filename": "runtime/indenter.h",
         "patchSetId": 1
