@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d7fda4c_a7b2ee32",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-07-30T10:20:13Z",
+      "side": 1,
+      "message": "I\u0027m not very happy about the \"T\u0026\u0026\" -\u003e \"const T\u0026\" change.",
+      "range": {
+        "startLine": 124,
+        "startChar": 27,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "00e039b6bc281e3c3115526decb86eef6d00f08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
