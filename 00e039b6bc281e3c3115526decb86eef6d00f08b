@@ -22,6 +22,30 @@
       "revId": "00e039b6bc281e3c3115526decb86eef6d00f08b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad72168f_1dd777bd",
+        "filename": "runtime/indenter.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-07-30T17:54:25Z",
+      "side": 1,
+      "message": "TL; DR - I do weakly prefer this \"const T\u0026\" but I don\u0027t feel strongly about it.\n\n--\n\nI am however more curious about why using T\u0026\u0026 instead of const T\u0026 would be more appropriate when forwarding to an ostream (that itself doesn\u0027t have any T\u0026 operators, and thus doesn\u0027t make a semantical difference)?\n\nI am all for taking advantage of T\u0026\u0026 and std::forward since it\u0027s one of the better features added in C++11 -- and just like auto I\u0027m not sure if it\u0027s something we should use everywhere just because we can?\n\nIt seems like we should keep a careful balance of not scaring away the other developers who are less amenable to embracing the new C++11 functionality, doesn\u0027t it?",
+      "parentUuid": "4d7fda4c_a7b2ee32",
+      "range": {
+        "startLine": 124,
+        "startChar": 27,
+        "endLine": 124,
+        "endChar": 39
+      },
+      "revId": "00e039b6bc281e3c3115526decb86eef6d00f08b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
