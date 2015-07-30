@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d9472c2_bea3d584",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-30T06:10:50Z",
+      "side": 1,
+      "message": "How hard is it to move that into native?",
+      "range": {
+        "startLine": 1221,
+        "startChar": 2,
+        "endLine": 1221,
+        "endChar": 35
+      },
+      "revId": "c2cf72c1d080211e5287b7efeab1381c7eb7e981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d657ec3_dd4dff45",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-30T06:10:50Z",
+      "side": 1,
+      "message": "Maybe faster to check dex cache strings instead of allocating?",
+      "range": {
+        "startLine": 1238,
+        "startChar": 48,
+        "endLine": 1238,
+        "endChar": 69
+      },
+      "revId": "c2cf72c1d080211e5287b7efeab1381c7eb7e981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8962a8_02b46ceb",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-30T06:10:50Z",
+      "side": 1,
+      "message": "Need handles around value_object, method_return, method_object, and maybe other places.",
+      "range": {
+        "startLine": 1262,
+        "startChar": 56,
+        "endLine": 1262,
+        "endChar": 67
+      },
+      "revId": "c2cf72c1d080211e5287b7efeab1381c7eb7e981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd73ca92_38960558",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-07-30T06:10:50Z",
+      "side": 1,
+      "message": "Is this also hard to move into native?",
+      "range": {
+        "startLine": 1278,
+        "startChar": 2,
+        "endLine": 1278,
+        "endChar": 32
+      },
+      "revId": "c2cf72c1d080211e5287b7efeab1381c7eb7e981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
