@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca157084_4eda875e",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-04T03:19:32Z",
+      "side": 1,
+      "message": "nit: 4 space indent.",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 27
+      },
+      "revId": "51d135f71a8aeb6409dc8ca91585c77f3d66dfc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
