@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa14bc88_1ffef4a2",
+        "filename": "runtime/gc/collector/mark_sweep.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Yes, not sure why it was a WriterMutexLock before.",
+      "parentUuid": "0ad9483e_020b0cdc",
+      "range": {
+        "startLine": 1009,
+        "startChar": 2,
+        "endLine": 1009,
+        "endChar": 17
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_a7c50e85",
         "filename": "runtime/gc/weak_root_state.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-04T00:28:19Z",
       "side": 1,
       "message": "This looks unused. What is this for? Clarify in the comment?",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aae91cd1_4b81b150",
+        "filename": "runtime/gc/weak_root_state.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "It is currently unused but I was planning on using it later. I\u0027ll add a comment.",
+      "parentUuid": "4acfc072_a7c50e85",
       "range": {
         "startLine": 31,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cadad034_b71c58a1",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Deleted",
+      "parentUuid": "ca157084_08b9a766",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eadf9421_a4b186ce",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-04T00:28:19Z",
       "side": 1,
       "message": "Comment what the value of this flag implies?\n\nIf false, we can only hold the mutator lock at the entry?\n\nIf true, we can hold other locks in addition to the mutator lock and we shouldn\u0027t be running GC?",
+      "range": {
+        "startLine": 242,
+        "startChar": 76,
+        "endLine": 242,
+        "endChar": 89
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6acc847d_5cb97565",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eadf9421_a4b186ce",
       "range": {
         "startLine": 242,
         "startChar": 76,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0ad9483e_7991e7a9",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acc847d_a546e8d5",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 26
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4acfc072_47ffe273",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2015-08-04T00:28:19Z",
       "side": 1,
       "message": "We can reduce this to\n\nCHECK_EQ(weak_root_state_, gc::kWeakRootStateNormal)\n\n?",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 79
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca157084_bf9a4742",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4acfc072_47ffe273",
       "range": {
         "startLine": 269,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "aa14bc88_ff3f988b",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aae91cd1_bf45131c",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 54
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa14bc88_19a9f794",
         "filename": "runtime/intern_table.h",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2015-08-04T00:28:19Z",
       "side": 1,
       "message": "Add \"Strong\" in the name?\nSay that we can hold a lock while calling this in the comment or imply that with a name suffix?",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 35
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4acfc072_f64c2696",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa14bc88_19a9f794",
       "range": {
         "startLine": 64,
         "startChar": 18,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "2ad60c0d_af6fa51d",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2740,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cadad034_40a2702b",
+      "range": {
+        "startLine": 2740,
+        "startChar": 0,
+        "endLine": 2740,
+        "endChar": 48
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ad9483e_e5cf129f",
         "filename": "runtime/thread_state.h",
         "patchSetId": 3
@@ -220,6 +436,30 @@
       "writtenOn": "2015-08-04T00:28:19Z",
       "side": 1,
       "message": "Is kWaitingWeakGcRootRead better as we aren\u0027t necessarily in a GC context here?",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "14c3bf91b2ec434295ec84d6446f495fb7de6d5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0ff877_f7eea827",
+        "filename": "runtime/thread_state.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-04T22:21:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad9483e_e5cf129f",
       "range": {
         "startLine": 46,
         "startChar": 2,
