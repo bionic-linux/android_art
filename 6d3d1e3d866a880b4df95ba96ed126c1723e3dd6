@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4acfc072_e7a1d6a9",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-04T00:28:19Z",
+      "side": 0,
+      "message": "What happened to the thread-local flag check when kUseReadBarrier is true? This is important for avoiding race conditions. Please get it back.",
+      "range": {
+        "startLine": 248,
+        "startChar": 19,
+        "endLine": 249,
+        "endChar": 72
+      },
+      "revId": "6d3d1e3d866a880b4df95ba96ed126c1723e3dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
