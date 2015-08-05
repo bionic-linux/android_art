@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa14bc88_164a5a77",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2128,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-05T01:13:12Z",
+      "side": 1,
+      "message": "That\u0027s for HSuspendCheck. You shouldn\u0027t need it for the goto.",
+      "range": {
+        "startLine": 2125,
+        "startChar": 0,
+        "endLine": 2128,
+        "endChar": 3
+      },
+      "revId": "45eaabb62dc14310944e36f6a480a00f409dd77f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
