@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadf9421_198b7ca5",
+        "filename": "compiler/optimizing/null_propagation.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-05T01:43:05Z",
+      "side": 1,
+      "message": "You probably want to do this after the invokeStaticOrDirect check.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "18a40b1457795c9a4ebe26f945d720f93a449fdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
