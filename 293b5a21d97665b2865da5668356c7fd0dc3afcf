@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa14bc88_76dbce64",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-05T00:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad60c0d_75d56a2e",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 5
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6acc847d_290b8edc",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cadad034_1277daf7",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-05T00:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6acc847d_290b8edc",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 272,
+        "endChar": 55
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cadad034_52b96265",
         "filename": "runtime/intern_table.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-08-05T00:40:06Z",
       "side": 1,
       "message": "Just passing hold_locks \u003d true when holding other locks doesn\u0027t make it safe to call this function if GC may be running. We also require GC won\u0027t happen, which is true in the image writer. \n\nWorth clarifying this point?",
+      "range": {
+        "startLine": 190,
+        "startChar": 64,
+        "endLine": 190,
+        "endChar": 65
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadad034_725f3e6f",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-05T00:44:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cadad034_52b96265",
       "range": {
         "startLine": 190,
         "startChar": 64,
