@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ad60c0d_75d56a2e",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-05T00:40:06Z",
+      "side": 1,
+      "message": "It occurs to me that this won\u0027t fail but isn\u0027t effective as a check with the CC collector as it doesn\u0027t use DisallowNewSystemWeaks/AllowNewSystemWeaks and weak_root_state_ stays gc::kWeakRootStateNormal all the time.\n\nHow about something like\n\nif (!kUseReadBarrier) {\n  CHECK_EQ(weak_root_state_, gc::kWeakRootStateNormal);\n} else {\n  CHECK(self-\u003eGetWeakRefAccessEnabled())\n}\n\n?",
+      "range": {
+        "startLine": 252,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 5
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6acc847d_290b8edc",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-05T00:40:06Z",
+      "side": 1,
+      "message": "Same.\n\nif (!kUseReadBarrier) {\n  CHECK_EQ(weak_root_state_, gc::kWeakRootStateNormal);\n} else {\n  CHECK(self-\u003eGetWeakRefAccessEnabled())\n}\n\n?",
+      "range": {
+        "startLine": 272,
+        "startChar": 2,
+        "endLine": 272,
+        "endChar": 55
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cadad034_52b96265",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-05T00:40:06Z",
+      "side": 1,
+      "message": "Just passing hold_locks \u003d true when holding other locks doesn\u0027t make it safe to call this function if GC may be running. We also require GC won\u0027t happen, which is true in the image writer. \n\nWorth clarifying this point?",
+      "range": {
+        "startLine": 190,
+        "startChar": 64,
+        "endLine": 190,
+        "endChar": 65
+      },
+      "revId": "293b5a21d97665b2865da5668356c7fd0dc3afcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
