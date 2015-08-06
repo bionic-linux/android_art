@@ -93,6 +93,30 @@
       "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9b89e_c8863b21",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-06T22:34:43Z",
+      "side": 1,
+      "message": "I was pointing exactly that out. It means that you reject *valid* dex files, and technically we should be going the opposite direction, removing all those \"failure points\" from the runtime.",
+      "parentUuid": "8ac9b89e_6895e74a",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 25
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
