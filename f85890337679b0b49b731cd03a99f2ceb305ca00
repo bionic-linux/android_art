@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0abea8e2_bd1c6772",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-06T01:24:09Z",
+      "side": 1,
+      "message": "I think there is a race here with two threads could be executing this statement at teh same time when next_method_id_ \u003d\u003d kMaxMethodID - 1.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 67
+      },
+      "revId": "f85890337679b0b49b731cd03a99f2ceb305ca00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a09e4dc_faad89a0",
+        "filename": "runtime/jit/jit_instrumentation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-06T01:24:09Z",
+      "side": 1,
+      "message": "Change name to AddSample?",
+      "range": {
+        "startLine": 49,
+        "startChar": 7,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "f85890337679b0b49b731cd03a99f2ceb305ca00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9b89e_59d323d1",
+        "filename": "runtime/jit/jit_instrumentation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-06T01:24:09Z",
+      "side": 1,
+      "message": "We can probably use uint32_t instead of size_t to reduce memory usage on 64 bit devices.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 15
+      },
+      "revId": "f85890337679b0b49b731cd03a99f2ceb305ca00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9b89e_79d6dfc2",
+        "filename": "runtime/jit/jit_instrumentation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-06T01:24:09Z",
+      "side": 1,
+      "message": "Dynamically alloacte this using a mem map or arena to save memory by not having as many dirty pages?",
+      "range": {
+        "startLine": 59,
+        "startChar": 17,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "f85890337679b0b49b731cd03a99f2ceb305ca00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
