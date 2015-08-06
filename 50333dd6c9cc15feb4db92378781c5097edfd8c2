@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa1540d_17af7e66",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-06T22:16:22Z",
+      "side": 1,
+      "message": "Does all of this code have to be here? I think it would be nicer to \"un-inline\" the \"Set\" part and have that in the .cc file...",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaa1540d_77bc02a2",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-06T22:16:22Z",
+      "side": 1,
+      "message": "I think bdc will have to see and agree on this. Technically, it doesn\u0027t matter that you wouldn\u0027t be able to dispatch on it because of the invoke-xxx limitation, but you can still perfectly fine describe it in a valid dex file (and multiple dex files and inheritance make this not too hard to actually workable).\n\n(Though I understand that GetMethodIndex already returned uint16_t [we really need to get Wconversion going] ...)",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 25
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
