@@ -45,6 +45,30 @@
       "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a0c20ee_ede94d74",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-06T22:18:29Z",
+      "side": 1,
+      "message": "Also: if you do touch this, clean up all the call-sites of the setter, adding DCHECKs.",
+      "parentUuid": "eaa1540d_77bc02a2",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 25
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
