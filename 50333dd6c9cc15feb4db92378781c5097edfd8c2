@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67111f42_1d74f741",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1073545
+      },
+      "writtenOn": "2015-08-07T04:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa1540d_17af7e66",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 1
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaa1540d_77bc02a2",
         "filename": "runtime/art_method.h",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "I was pointing exactly that out. It means that you reject *valid* dex files, and technically we should be going the opposite direction, removing all those \"failure points\" from the runtime.",
       "parentUuid": "8ac9b89e_6895e74a",
+      "range": {
+        "startLine": 550,
+        "startChar": 2,
+        "endLine": 550,
+        "endChar": 25
+      },
+      "revId": "50333dd6c9cc15feb4db92378781c5097edfd8c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7f64b4b_43bbba0d",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1073545
+      },
+      "writtenOn": "2015-08-07T04:38:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0c20ee_ede94d74",
       "range": {
         "startLine": 550,
         "startChar": 2,
