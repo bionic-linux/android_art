@@ -22,6 +22,30 @@
       "revId": "45eaabb62dc14310944e36f6a480a00f409dd77f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27400742_50082c67",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2128,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-07T14:04:26Z",
+      "side": 1,
+      "message": "From what I read the goto can go through the suspend check slow path (eg. on loop back-edges) and trigger GC.",
+      "parentUuid": "aa14bc88_164a5a77",
+      "range": {
+        "startLine": 2125,
+        "startChar": 0,
+        "endLine": 2128,
+        "endChar": 3
+      },
+      "revId": "45eaabb62dc14310944e36f6a480a00f409dd77f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
