@@ -46,6 +46,30 @@
       "revId": "45eaabb62dc14310944e36f6a480a00f409dd77f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7242fa6_993a5f4b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2128,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-07T15:27:33Z",
+      "side": 1,
+      "message": "That\u0027s an implementation detail of the codegen. The HSuspendCheck instruction at the beginning of the loop should be enough.",
+      "parentUuid": "27400742_50082c67",
+      "range": {
+        "startLine": 2125,
+        "startChar": 0,
+        "endLine": 2128,
+        "endChar": 3
+      },
+      "revId": "45eaabb62dc14310944e36f6a480a00f409dd77f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
