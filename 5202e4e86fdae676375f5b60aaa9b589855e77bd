@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6782ff52_12280c36",
+        "filename": "compiler/optimizing/code_generator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-10T16:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87c9b39e_b635a601",
+      "range": {
+        "startLine": 295,
+        "startChar": 29,
+        "endLine": 296,
+        "endChar": 54
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e97bf9_3183f0a8",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-10T15:49:50Z",
       "side": 1,
       "message": "Can you move this to the Validate too?",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 29
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "271727da_98fbd5ed",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-10T16:10:50Z",
+      "side": 1,
+      "message": "The arm backend has the extra `CanCall()`. Is it ok to generalise it to other archs?",
+      "parentUuid": "47e97bf9_3183f0a8",
       "range": {
         "startLine": 960,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a72a3712_34b2d07c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2742,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-10T16:10:50Z",
+      "side": 1,
+      "message": "MIPS64 uses a runtime call. Add a comment. This will go away in an incoming patch listing GC-safe entrypoints.",
+      "parentUuid": "07bea3e2_d706dc92",
+      "range": {
+        "startLine": 2740,
+        "startChar": 0,
+        "endLine": 2742,
+        "endChar": 3
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87c9b39e_96074a25",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a72a3712_74a84810",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4593,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-10T16:10:50Z",
+      "side": 1,
+      "message": "Done.\nFixed in other places in the patch.",
+      "parentUuid": "87c9b39e_96074a25",
+      "range": {
+        "startLine": 4593,
+        "startChar": 0,
+        "endLine": 4593,
+        "endChar": 10
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47c41b7d_b997dfcb",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 9
@@ -105,6 +201,30 @@
       "writtenOn": "2015-08-10T15:49:50Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 4615,
+        "startChar": 8,
+        "endLine": 4615,
+        "endChar": 19
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7750f3f_ee3ebf75",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4615,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-10T16:10:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47c41b7d_b997dfcb",
       "range": {
         "startLine": 4615,
         "startChar": 8,
