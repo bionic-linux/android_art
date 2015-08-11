@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64e83d66_c5e6ac23",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-11T22:50:33Z",
+      "side": 1,
+      "message": "FindArrayClass can cause thread suspension, so you need to guard klass in a handle. Also below.",
+      "range": {
+        "startLine": 1354,
+        "startChar": 44,
+        "endLine": 1354,
+        "endChar": 58
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64111d42_9a2b6d81",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-11T22:50:33Z",
+      "side": 1,
+      "message": "You need to put this in handle or else it can get freed in ProcessEncodedAnnotation below.",
+      "range": {
+        "startLine": 1508,
+        "startChar": 39,
+        "endLine": 1508,
+        "endChar": 45
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44141933_59fde377",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-11T22:50:33Z",
+      "side": 1,
+      "message": "klass needs to be in a handle",
+      "range": {
+        "startLine": 1522,
+        "startChar": 62,
+        "endLine": 1522,
+        "endChar": 67
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "871b735a_e92831bc",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-11T22:50:33Z",
+      "side": 1,
+      "message": "Needs to be in a handle when you allocate it.",
+      "range": {
+        "startLine": 1564,
+        "startChar": 39,
+        "endLine": 1564,
+        "endChar": 52
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64111d42_1af2bd90",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-11T22:50:33Z",
+      "side": 1,
+      "message": "If this isn\u0027t called from compilers you can probably just pass in sizeof(void*).",
+      "range": {
+        "startLine": 1612,
+        "startChar": 91,
+        "endLine": 1612,
+        "endChar": 103
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
