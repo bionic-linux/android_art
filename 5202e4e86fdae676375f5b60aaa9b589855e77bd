@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a747973d_ec4a0bfe",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-11T21:23:01Z",
+      "side": 1,
+      "message": "Yes, I think you should be able to generalise it. Could you try?",
+      "parentUuid": "271727da_98fbd5ed",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 29
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e33b4a_e13a06f0",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 9
