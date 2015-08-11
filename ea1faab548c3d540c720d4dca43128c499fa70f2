@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27eac720_c0f89e8d",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-11T13:22:24Z",
+      "side": 1,
+      "message": "Nit: put on a single line.",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 68
+      },
+      "revId": "ea1faab548c3d540c720d4dca43128c499fa70f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
