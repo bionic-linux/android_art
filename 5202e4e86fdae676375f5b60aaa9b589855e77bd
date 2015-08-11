@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "271727da_7b603baf",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-08-11T12:47:17Z",
+      "side": 1,
+      "message": "Thanks. I will take a closer look to refresh my memory on this. I don\u0027t see why GVN would care how we order the bits internally.",
+      "parentUuid": "27eac720_409bee7f",
+      "range": {
+        "startLine": 1235,
+        "startChar": 10,
+        "endLine": 1235,
+        "endChar": 55
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07bea3e2_d706dc92",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 9
