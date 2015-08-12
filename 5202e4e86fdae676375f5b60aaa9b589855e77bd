@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "24400542_300c8879",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-12T10:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a747973d_ec4a0bfe",
+      "range": {
+        "startLine": 960,
+        "startChar": 0,
+        "endLine": 963,
+        "endChar": 29
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47e33b4a_e13a06f0",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 9
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Can we add a comment on this then? Without knowing this the order seems a bit weird.",
       "parentUuid": "c72bab15_78e91df3",
+      "range": {
+        "startLine": 1235,
+        "startChar": 10,
+        "endLine": 1235,
+        "endChar": 55
+      },
+      "revId": "5202e4e86fdae676375f5b60aaa9b589855e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "045ce134_87cae68f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-08-12T10:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7750f3f_6e708ffd",
       "range": {
         "startLine": 1235,
         "startChar": 10,
