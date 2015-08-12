@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4f6494b_6642446a",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1354,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-12T18:43:49Z",
+      "side": 1,
+      "message": "I think it might be easier to (almost) always use a handle when declaring a local variable of a mirror type than ensuring that there\u0027s no chance of thread suspension, unless there\u0027s a good reason not to.",
+      "parentUuid": "64e83d66_c5e6ac23",
+      "range": {
+        "startLine": 1354,
+        "startChar": 44,
+        "endLine": 1354,
+        "endChar": 58
+      },
+      "revId": "8e24c75619567a638be2be9b8ffd0de92209f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64111d42_9a2b6d81",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 2
