@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04b861a5_474dee16",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-08-13T19:39:45Z",
+      "side": 1,
+      "message": "use testl instead",
+      "range": {
+        "startLine": 986,
+        "startChar": 5,
+        "endLine": 986,
+        "endChar": 9
+      },
+      "revId": "82a99a92d881d2dbc5797a82f072f8f8d3dfb4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_e012825f",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-08-13T19:39:45Z",
+      "side": 1,
+      "message": "tstl, or implement jecxz",
+      "range": {
+        "startLine": 1007,
+        "startChar": 5,
+        "endLine": 1007,
+        "endChar": 9
+      },
+      "revId": "82a99a92d881d2dbc5797a82f072f8f8d3dfb4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_44e96e76",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-08-13T19:39:45Z",
+      "side": 1,
+      "message": "xorl",
+      "range": {
+        "startLine": 1035,
+        "startChar": 5,
+        "endLine": 1035,
+        "endChar": 9
+      },
+      "revId": "82a99a92d881d2dbc5797a82f072f8f8d3dfb4f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
