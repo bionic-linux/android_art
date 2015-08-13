@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "243ac5f6_20fd8a79",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "This code is almost identical to the code below for PatchOat::PatchOatHeader. Rather than duplicate the code, factor out the common function for getting the OatHeader for an elf file.",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_c461deb5",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "Odd line break",
+      "range": {
+        "startLine": 207,
+        "startChar": 86,
+        "endLine": 208,
+        "endChar": 31
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_4585eae7",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "odd line break.",
+      "range": {
+        "startLine": 208,
+        "startChar": 96,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c43e49ec_fd7b47de",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "Are these whitespace changes intentional?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 1
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_7e89f130",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "At this point in the code, match_delta is always false, right?",
+      "range": {
+        "startLine": 1176,
+        "startChar": 26,
+        "endLine": 1176,
+        "endChar": 37
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_dacac590",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "(match_delta set to true first here)",
+      "range": {
+        "startLine": 1231,
+        "startChar": 4,
+        "endLine": 1231,
+        "endChar": 25
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_a67866e3",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "What is the meaning of \u0027delta\u0027 if \u0027match_delta\u0027 is true?\n\nIn the case where match_delta is true, is there any way you can calculate the desired delta and pass that via \u0027delta\u0027 instead of having two different arguments that specify the delta? That would make the code easier to understand.",
+      "range": {
+        "startLine": 45,
+        "startChar": 34,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_3da65bca",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-13T21:45:25Z",
+      "side": 1,
+      "message": "Is this change in whitespace intentional?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
