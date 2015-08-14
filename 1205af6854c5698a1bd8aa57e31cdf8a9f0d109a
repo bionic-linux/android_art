@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4fb1585_ac0b432f",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "Could you use ElfFile::GetSectionOffsetAndSize to get the value of rodata_sec-\u003esh_offset, and avoid the templates that way?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8448d1a1_a1bcfa21",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "Is this extra text intended?",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 60
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_8e3e9f3f",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "Should this be called ReadOatPatchDelta instead of ReadOatBaseDelta? I often get confused between the \"patch delta\" and the \"base offset\".",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_ed187d02",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "This should be updated.",
+      "range": {
+        "startLine": 890,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 44
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c43e49ec_e6157471",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "What if the match_delta is set and the current delta is not alligned to a page size? Should this check come after adjusting base_delta given the current delta?",
+      "range": {
+        "startLine": 1227,
+        "startChar": 0,
+        "endLine": 1229,
+        "endChar": 3
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_b21ba8a4",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "This is hard for me to make sense of. Maybe a change in variable names would help:\n\n\"current_delta\" for the current delta of the oat file.\n\"target_delta\" for the desired final delta of the oat file.\n\"delta\" for the change needed to get from current_delta to target delta. Then the following is clear (to me):\n  delta \u003d target_delta - current_delta;",
+      "range": {
+        "startLine": 1347,
+        "startChar": 4,
+        "endLine": 1347,
+        "endChar": 32
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8448d1a1_e178c2e4",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "Do you need the \"\u0026\u0026 ret\" at the end? If ret is false to start with, FinishFile already returns false.",
+      "range": {
+        "startLine": 1376,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 51
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b861a5_b0c65ead",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 1383,
+        "startChar": 43,
+        "endLine": 1383,
+        "endChar": 51
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8448d1a1_4167f645",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T16:04:20Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 45,
+        "endLine": 1387,
+        "endChar": 52
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
