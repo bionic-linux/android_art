@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c43e49ec_66cfa426",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4fb1585_ac0b432f",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 1
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8448d1a1_a1bcfa21",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-14T16:04:20Z",
       "side": 1,
       "message": "Is this extra text intended?",
+      "range": {
+        "startLine": 115,
+        "startChar": 34,
+        "endLine": 115,
+        "endChar": 60
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_06a33efc",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8448d1a1_a1bcfa21",
       "range": {
         "startLine": 115,
         "startChar": 34,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e4aeed64_2f8449e9",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a9e95f_8e3e9f3f",
+      "range": {
+        "startLine": 116,
+        "startChar": 12,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4a8755c_ed187d02",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-14T16:04:20Z",
       "side": 1,
       "message": "This should be updated.",
+      "range": {
+        "startLine": 890,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 44
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8448d1a1_c4e674d5",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a8755c_ed187d02",
       "range": {
         "startLine": 890,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a4a8755c_987105d3",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "That is a problem with the image. We should put a check in but I don\u0027t think its appropriate for a Usage message.",
+      "parentUuid": "c43e49ec_e6157471",
+      "range": {
+        "startLine": 1227,
+        "startChar": 0,
+        "endLine": 1229,
+        "endChar": 3
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4434d7f_b21ba8a4",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-08-14T16:04:20Z",
       "side": 1,
       "message": "This is hard for me to make sense of. Maybe a change in variable names would help:\n\n\"current_delta\" for the current delta of the oat file.\n\"target_delta\" for the desired final delta of the oat file.\n\"delta\" for the change needed to get from current_delta to target delta. Then the following is clear (to me):\n  delta \u003d target_delta - current_delta;",
+      "range": {
+        "startLine": 1347,
+        "startChar": 4,
+        "endLine": 1347,
+        "endChar": 32
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b861a5_3b07af28",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Added a comment to clarify. The thing is base delta is checked everywhere. This is just a single weird case.",
+      "parentUuid": "e4434d7f_b21ba8a4",
       "range": {
         "startLine": 1347,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c4a9e95f_f9311ff2",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8448d1a1_e178c2e4",
+      "range": {
+        "startLine": 1376,
+        "startChar": 0,
+        "endLine": 1377,
+        "endChar": 51
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04b861a5_b0c65ead",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 5
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e4434d7f_92994c02",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04b861a5_b0c65ead",
+      "range": {
+        "startLine": 1383,
+        "startChar": 43,
+        "endLine": 1383,
+        "endChar": 51
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8448d1a1_4167f645",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 5
@@ -197,6 +389,30 @@
       "writtenOn": "2015-08-14T16:04:20Z",
       "side": 1,
       "message": "and here.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 45,
+        "endLine": 1387,
+        "endChar": 52
+      },
+      "revId": "1205af6854c5698a1bd8aa57e31cdf8a9f0d109a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_83c0e4c7",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T17:50:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8448d1a1_4167f645",
       "range": {
         "startLine": 1387,
         "startChar": 45,
