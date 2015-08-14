@@ -22,6 +22,30 @@
       "revId": "c2968fca79e88ff09df3a7ceafaaf1ed920d3b1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_c977a946",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T19:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8448d1a1_0fe195ba",
+      "range": {
+        "startLine": 881,
+        "startChar": 57,
+        "endLine": 881,
+        "endChar": 58
+      },
+      "revId": "c2968fca79e88ff09df3a7ceafaaf1ed920d3b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
