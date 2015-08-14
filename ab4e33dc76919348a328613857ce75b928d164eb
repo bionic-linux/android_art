@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64591d73_9dacc774",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "Replaced it with PatchOat::GetOatHeader.\n\nCannot refactor PatchOatHeader since that needs to get a non-const pointer.",
+      "parentUuid": "243ac5f6_20fd8a79",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4a8755c_c461deb5",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-13T21:45:25Z",
       "side": 1,
       "message": "Odd line break",
+      "range": {
+        "startLine": 207,
+        "startChar": 86,
+        "endLine": 208,
+        "endChar": 31
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04b861a5_2ac51fd6",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a8755c_c461deb5",
       "range": {
         "startLine": 207,
         "startChar": 86,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "04b861a5_caa9e314",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a9e95f_4585eae7",
+      "range": {
+        "startLine": 208,
+        "startChar": 96,
+        "endLine": 209,
+        "endChar": 46
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c43e49ec_fd7b47de",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-13T21:45:25Z",
       "side": 1,
       "message": "Are these whitespace changes intentional?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 1
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a8755c_872e8891",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "No. Done",
+      "parentUuid": "c43e49ec_fd7b47de",
       "range": {
         "startLine": 313,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c4a9e95f_c8afaf67",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1176,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "good catch. I totally missed this.",
+      "parentUuid": "e4434d7f_7e89f130",
+      "range": {
+        "startLine": 1176,
+        "startChar": 26,
+        "endLine": 1176,
+        "endChar": 37
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64591d73_dacac590",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2015-08-13T21:45:25Z",
       "side": 1,
       "message": "(match_delta set to true first here)",
+      "range": {
+        "startLine": 1231,
+        "startChar": 4,
+        "endLine": 1231,
+        "endChar": 25
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64591d73_1d73978f",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64591d73_dacac590",
       "range": {
         "startLine": 1231,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e4434d7f_816e1c75",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "Yes. done.",
+      "parentUuid": "e4aeed64_a67866e3",
+      "range": {
+        "startLine": 45,
+        "startChar": 34,
+        "endLine": 45,
+        "endChar": 63
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64591d73_3da65bca",
         "filename": "patchoat/patchoat.h",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2015-08-13T21:45:25Z",
       "side": 1,
       "message": "Is this change in whitespace intentional?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 63
+      },
+      "revId": "ab4e33dc76919348a328613857ce75b928d164eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_c105c4ce",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-08-14T00:53:01Z",
+      "side": 1,
+      "message": "no. Fixed.",
+      "parentUuid": "64591d73_3da65bca",
       "range": {
         "startLine": 51,
         "startChar": 0,
