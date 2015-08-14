@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8448d1a1_0fe195ba",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-08-14T19:17:20Z",
+      "side": 1,
+      "message": "Extra \u0027d\u0027.\n\nPerhaps: \"Relocate the oat file to match the patch delta of the given image file\"?",
+      "range": {
+        "startLine": 881,
+        "startChar": 57,
+        "endLine": 881,
+        "endChar": 58
+      },
+      "revId": "c2968fca79e88ff09df3a7ceafaaf1ed920d3b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
