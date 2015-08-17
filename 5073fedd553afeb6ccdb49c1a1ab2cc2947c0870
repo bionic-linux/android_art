@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "a4a8755c_e40baf2e",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-17T17:55:01Z",
+      "side": 1,
+      "message": "I\u0027d rather scope the variable, otherwise there\u0027s still a point for error (which in fact I had in a first try).",
+      "parentUuid": "04a781c0_6f077127",
+      "range": {
+        "startLine": 1590,
+        "startChar": 0,
+        "endLine": 1591,
+        "endChar": 51
+      },
+      "revId": "5073fedd553afeb6ccdb49c1a1ab2cc2947c0870",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "247d65ed_c815af4a",
         "filename": "runtime/utils.cc",
         "patchSetId": 3
@@ -128,6 +152,30 @@
       "writtenOn": "2015-08-17T16:52:22Z",
       "side": 1,
       "message": "do a proper cast?",
+      "range": {
+        "startLine": 1663,
+        "startChar": 30,
+        "endLine": 1663,
+        "endChar": 37
+      },
+      "revId": "5073fedd553afeb6ccdb49c1a1ab2cc2947c0870",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_fef3365e",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1663,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-17T17:55:01Z",
+      "side": 1,
+      "message": "Yuck. That\u0027s copy-paste from the verifier, which means I need to clean up there first...",
+      "parentUuid": "4486d92e_8982d90b",
       "range": {
         "startLine": 1663,
         "startChar": 30,
@@ -186,6 +234,30 @@
     },
     {
       "key": {
+        "uuid": "e4aeed64_9bd7bf69",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1718,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-17T17:55:01Z",
+      "side": 1,
+      "message": "Seen both in our codebase. Will change.",
+      "parentUuid": "e4c8ad77_769e50e9",
+      "range": {
+        "startLine": 1718,
+        "startChar": 0,
+        "endLine": 1718,
+        "endChar": 16
+      },
+      "revId": "5073fedd553afeb6ccdb49c1a1ab2cc2947c0870",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24a485b9_70075027",
         "filename": "runtime/utils.cc",
         "patchSetId": 3
@@ -197,6 +269,30 @@
       "writtenOn": "2015-08-17T16:52:22Z",
       "side": 1,
       "message": "I can\u0027t parse this.",
+      "range": {
+        "startLine": 1742,
+        "startChar": 24,
+        "endLine": 1742,
+        "endChar": 43
+      },
+      "revId": "5073fedd553afeb6ccdb49c1a1ab2cc2947c0870",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aeed64_dbcd37dd",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-17T17:55:01Z",
+      "side": 1,
+      "message": "Will rephrase in a cleanup. Simply stating that the instruction update isn\u0027t part of the for-loop update (and in the loop body instead), because there\u0027s actual work to do between the dex_pc and the inst update.",
+      "parentUuid": "24a485b9_70075027",
       "range": {
         "startLine": 1742,
         "startChar": 24,
