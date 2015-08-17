@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84bd31cc_13ca8c48",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-17T16:57:31Z",
+      "side": 1,
+      "message": "A DCHECK could do as well as a comment.",
+      "range": {
+        "startLine": 596,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 54
+      },
+      "revId": "a22847acc7e2caf8bcd4ade826c627c844bef733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4486d92e_c97cd192",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-17T16:57:31Z",
+      "side": 1,
+      "message": "else if?",
+      "range": {
+        "startLine": 608,
+        "startChar": 0,
+        "endLine": 609,
+        "endChar": 6
+      },
+      "revId": "a22847acc7e2caf8bcd4ade826c627c844bef733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24a485b9_900bd42f",
+        "filename": "compiler/dex/quick/arm/int_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-17T16:57:31Z",
+      "side": 1,
+      "message": "I guess this is tested through the new test case? Maybe add a comment in the commit message that you\u0027re adding this optimization?",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 12
+      },
+      "revId": "a22847acc7e2caf8bcd4ade826c627c844bef733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247d65ed_682043a2",
+        "filename": "runtime/base/bit_utils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-17T16:57:31Z",
+      "side": 1,
+      "message": "Please avoid double negative.",
+      "range": {
+        "startLine": 45,
+        "startChar": 55,
+        "endLine": 45,
+        "endChar": 80
+      },
+      "revId": "a22847acc7e2caf8bcd4ade826c627c844bef733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
