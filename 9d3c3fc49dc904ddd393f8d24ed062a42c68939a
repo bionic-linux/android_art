@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4a9e95f_d3d43766",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-18T20:56:34Z",
+      "side": 1,
+      "message": "This may throw OOME as well, except less likely. Maybe we need a way to print characters without causing any allocations at all.",
+      "range": {
+        "startLine": 460,
+        "startChar": 20,
+        "endLine": 460,
+        "endChar": 59
+      },
+      "revId": "9d3c3fc49dc904ddd393f8d24ed062a42c68939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
