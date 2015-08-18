@@ -22,6 +22,30 @@
       "revId": "9d3c3fc49dc904ddd393f8d24ed062a42c68939a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4434d7f_95ac88f9",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-18T20:58:45Z",
+      "side": 1,
+      "message": "I decided not to comment on this, as it should be a lot less likely, considering it\u0027s a literal and so one successful execution of this will have allocated the shared string...",
+      "parentUuid": "c4a9e95f_d3d43766",
+      "range": {
+        "startLine": 460,
+        "startChar": 20,
+        "endLine": 460,
+        "endChar": 59
+      },
+      "revId": "9d3c3fc49dc904ddd393f8d24ed062a42c68939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
