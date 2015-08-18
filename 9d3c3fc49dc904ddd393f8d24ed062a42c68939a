@@ -46,6 +46,30 @@
       "revId": "9d3c3fc49dc904ddd393f8d24ed062a42c68939a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "243ac5f6_a01cef28",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-18T21:06:58Z",
+      "side": 1,
+      "message": "I agree it\u0027s less likely. But in addition to the allocation of the string literal, there\u0027s allocations inside the println() call.",
+      "parentUuid": "e4434d7f_95ac88f9",
+      "range": {
+        "startLine": 460,
+        "startChar": 20,
+        "endLine": 460,
+        "endChar": 59
+      },
+      "revId": "9d3c3fc49dc904ddd393f8d24ed062a42c68939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
