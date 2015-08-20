@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_520694da",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5531,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_74806004",
+      "range": {
+        "startLine": 5531,
+        "startChar": 72,
+        "endLine": 5531,
+        "endChar": 90
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_d4bfd278",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "AssertPendingException",
+      "range": {
+        "startLine": 5543,
+        "startChar": 4,
+        "endLine": 5543,
+        "endChar": 52
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_bb8c8f89",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5543,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_d4bfd278",
       "range": {
         "startLine": 5543,
         "startChar": 4,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_12100c08",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5547,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_f4c4560d",
+      "range": {
+        "startLine": 5547,
+        "startChar": 4,
+        "endLine": 5547,
+        "endChar": 14
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_5483e411",
         "filename": "runtime/class_linker.h",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "Should be on a new line",
+      "range": {
+        "startLine": 232,
+        "startChar": 61,
+        "endLine": 232,
+        "endChar": 80
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_7c802d04",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_5483e411",
       "range": {
         "startLine": 232,
         "startChar": 61,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "048f817d_b88d5d3e",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84253145_b9d8171c",
+      "range": {
+        "startLine": 235,
+        "startChar": 44,
+        "endLine": 235,
+        "endChar": 52
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_70a70e41",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -151,6 +271,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "Remove",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_18e7c920",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_70a70e41",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "248c8586_a4fc5ae4",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84253145_99a51b8d",
+      "range": {
+        "startLine": 1066,
+        "startChar": 4,
+        "endLine": 1068,
+        "endChar": 5
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a42a3512_5ab0d5c6",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -197,6 +365,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "Move outside loop",
+      "range": {
+        "startLine": 1093,
+        "startChar": 4,
+        "endLine": 1095,
+        "endChar": 5
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e430ad80_eaaf8fca",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42a3512_5ab0d5c6",
       "range": {
         "startLine": 1093,
         "startChar": 4,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_17f79c4e",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42ba915_786fdd1f",
+      "range": {
+        "startLine": 1133,
+        "startChar": 46,
+        "endLine": 1134,
+        "endChar": 85
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_f468d66c",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -243,6 +459,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "( seems unnecessary here.",
+      "range": {
+        "startLine": 1165,
+        "startChar": 9,
+        "endLine": 1165,
+        "endChar": 10
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_7ec10577",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_f468d66c",
       "range": {
         "startLine": 1165,
         "startChar": 9,
@@ -278,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "e430ad80_aa0bd761",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "I removed it if you think LOG(ERROR) is too spammy.",
+      "parentUuid": "c42ba915_f86bed0d",
+      "range": {
+        "startLine": 1353,
+        "startChar": 4,
+        "endLine": 1353,
+        "endChar": 14
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_d4e83276",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -289,6 +553,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "We could allocate this later (right before the null checks.",
+      "range": {
+        "startLine": 1357,
+        "startChar": 2,
+        "endLine": 1358,
+        "endChar": 82
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_57d444b6",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_d4e83276",
       "range": {
         "startLine": 1357,
         "startChar": 2,
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "a47f9520_d2636490",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42a3512_fa168109",
+      "range": {
+        "startLine": 1399,
+        "startChar": 2,
+        "endLine": 1399,
+        "endChar": 35
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_dc0705a8",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -335,6 +647,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "Supposed to be \": {\" I think.",
+      "range": {
+        "startLine": 1616,
+        "startChar": 4,
+        "endLine": 1616,
+        "endChar": 5
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_78f375db",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e430ad80_dc0705a8",
       "range": {
         "startLine": 1616,
         "startChar": 4,
@@ -370,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "e430ad80_9f873f67",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048f817d_35cbb897",
+      "range": {
+        "startLine": 1633,
+        "startChar": 4,
+        "endLine": 1633,
+        "endChar": 5
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_14c8fc48",
         "filename": "runtime/dex_file.cc",
         "patchSetId": 4
@@ -381,6 +741,30 @@
       "writtenOn": "2015-08-20T19:58:50Z",
       "side": 1,
       "message": "I think we try to avoid reading value from operators with side effects.",
+      "range": {
+        "startLine": 1908,
+        "startChar": 9,
+        "endLine": 1908,
+        "endChar": 15
+      },
+      "revId": "72f31aa984009808ec1fd43cab860681942137bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_f7fc527e",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-20T23:09:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_14c8fc48",
       "range": {
         "startLine": 1908,
         "startChar": 9,
