@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64e03d3d_2597d853",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3303,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-21T16:58:07Z",
+      "side": 1,
+      "message": "style says this should be at the end of the line.",
+      "range": {
+        "startLine": 3303,
+        "startChar": 8,
+        "endLine": 3303,
+        "endChar": 10
+      },
+      "revId": "9229f43e942824936dba3bb08d2e352d1212c5cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
