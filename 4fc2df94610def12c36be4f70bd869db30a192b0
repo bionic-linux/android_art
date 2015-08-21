@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4700952_fc167509",
+        "filename": "compiler/dex/quick/mips/call_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-21T19:58:47Z",
+      "side": 1,
+      "message": "Not really sure I like this. Don\u0027t see a strong reason why the GetCachePointerOffset had to be protected and not public in Mir2Lir, so don\u0027t see why this was strongly necessary.",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 17
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_682f0741",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4574,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-08-21T19:58:47Z",
+      "side": 1,
+      "message": "Long line.",
+      "range": {
+        "startLine": 4574,
+        "startChar": 100,
+        "endLine": 4574,
+        "endChar": 110
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
