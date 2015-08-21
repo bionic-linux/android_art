@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0468616f_273cfa45",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-21T22:33:55Z",
+      "side": 1,
+      "message": "Please add comments: What\u0027s an ambiguous method?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "18882de86f7a8ef4d10f0c573f34861cfffd024a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
