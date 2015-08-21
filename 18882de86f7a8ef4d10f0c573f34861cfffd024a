@@ -22,6 +22,30 @@
       "revId": "18882de86f7a8ef4d10f0c573f34861cfffd024a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_9e42dac3",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2015-08-21T23:29:30Z",
+      "side": 1,
+      "message": "How about renaming it to ResolveMethodWithoutInvokeType?",
+      "parentUuid": "0468616f_273cfa45",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "18882de86f7a8ef4d10f0c573f34861cfffd024a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
