@@ -45,6 +45,75 @@
       "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_4fc7b1aa",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-21T21:18:36Z",
+      "side": 1,
+      "message": "Maybe we want to use the same type of scanning logic as ClassLoaders? I.e. use a class_flags bit for dex cache and only visit the dex cache GcRoots when it gets scanned.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 18,
+        "endLine": 1325,
+        "endChar": 36
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_e6026281",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-21T21:18:36Z",
+      "side": 1,
+      "message": "VisitRootIfNonNull",
+      "range": {
+        "startLine": 1333,
+        "startChar": 17,
+        "endLine": 1333,
+        "endChar": 26
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_1b8a5cf8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-21T21:18:36Z",
+      "side": 1,
+      "message": "VisitRootIfNonNull",
+      "range": {
+        "startLine": 1339,
+        "startChar": 24,
+        "endLine": 1339,
+        "endChar": 33
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
