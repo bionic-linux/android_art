@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ad9483e_d9a4b33c",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-24T21:38:17Z",
+      "side": 1,
+      "message": "This should be GcRoot\u003cString\u003e* like the previous line?",
+      "range": {
+        "startLine": 186,
+        "startChar": 35,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "efaaf010f442bccd5dca3d2eee5c3f4dcf248f63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
