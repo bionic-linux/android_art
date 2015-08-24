@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c459e9e9_48681fe8",
+        "filename": "compiler/dex/quick/mips/call_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-24T15:55:43Z",
+      "side": 1,
+      "message": "All other architectures already do this for other reasons, so this also adds consistency.",
+      "parentUuid": "c4700952_fc167509",
+      "range": {
+        "startLine": 418,
+        "startChar": 4,
+        "endLine": 418,
+        "endChar": 17
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84253145_682f0741",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-21T19:58:47Z",
       "side": 1,
       "message": "Long line.",
+      "range": {
+        "startLine": 4574,
+        "startChar": 100,
+        "endLine": 4574,
+        "endChar": 110
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c459e9e9_a862f308",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 4574,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-24T15:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84253145_682f0741",
       "range": {
         "startLine": 4574,
         "startChar": 100,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a45875e6_e706dc5b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-24T15:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c42ba915_4fc7b1aa",
+      "range": {
+        "startLine": 1325,
+        "startChar": 18,
+        "endLine": 1325,
+        "endChar": 36
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_e6026281",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a45875e6_a49302b0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-24T15:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47f9520_e6026281",
+      "range": {
+        "startLine": 1333,
+        "startChar": 17,
+        "endLine": 1333,
+        "endChar": 26
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a42a3512_1b8a5cf8",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2015-08-21T21:18:36Z",
       "side": 1,
       "message": "VisitRootIfNonNull",
+      "range": {
+        "startLine": 1339,
+        "startChar": 24,
+        "endLine": 1339,
+        "endChar": 33
+      },
+      "revId": "4fc2df94610def12c36be4f70bd869db30a192b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845371c9_e62fc0c1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-24T15:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42a3512_1b8a5cf8",
       "range": {
         "startLine": 1339,
         "startChar": 24,
