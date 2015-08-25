@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_ee39d68b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T18:09:22Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "0468616f_8a012b15",
+      "range": {
+        "startLine": 4238,
+        "startChar": 7,
+        "endLine": 4238,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_e28c8b8a",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 7
@@ -519,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "c42ba915_4316a556",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T18:09:22Z",
+      "side": 1,
+      "message": "(as a reminder) Mathieu, any comments?",
+      "parentUuid": "44e3394a_6790c620",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 26
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_906f0d1f",
         "filename": "runtime/art_method.h",
         "patchSetId": 7
@@ -554,6 +602,30 @@
       "side": 1,
       "message": "We would need friend class ImageWriter and PatchOat.",
       "parentUuid": "4485f957_906f0d1f",
+      "range": {
+        "startLine": 523,
+        "startChar": 39,
+        "endLine": 523,
+        "endChar": 63
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_65cac8b4",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T18:09:22Z",
+      "side": 1,
+      "message": "I guess this depends on whether we need to do a card mark. If so, I think it\u0027d make sense to try to minimize exposing GcRoot to avoid accidental write without card marking.\n\nMathieu?",
+      "parentUuid": "c459e9e9_48457fcb",
       "range": {
         "startLine": 523,
         "startChar": 39,
@@ -933,6 +1005,29 @@
         "startChar": 2,
         "endLine": 132,
         "endChar": 35
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_432f858e",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T18:09:22Z",
+      "side": 1,
+      "message": "This is a comment only issue, but this should be GcRoot\u003cString\u003e*?",
+      "range": {
+        "startLine": 191,
+        "startChar": 35,
+        "endLine": 191,
+        "endChar": 42
       },
       "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
