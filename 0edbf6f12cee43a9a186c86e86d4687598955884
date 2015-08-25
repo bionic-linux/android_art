@@ -1,0 +1,510 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "248c8586_eb878365",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "I think we don\u0027t need unpoisoning any more as the resolved type array is no longer an object array.\n\nDo you mind leaving a comment that we will need a read barrier there?\n\nSimilarly for the other architectures.",
+      "range": {
+        "startLine": 4238,
+        "startChar": 7,
+        "endLine": 4238,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e430ad80_e28c8b8a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4299,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Similarly, this should be removed.\n\nDo you mind leaving a comment that we will need a read barrier there?\n\nSimilarly for the other architectures.",
+      "range": {
+        "startLine": 4299,
+        "startChar": 5,
+        "endLine": 4299,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_27170508",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "No unpoisoning necessary?",
+      "range": {
+        "startLine": 2627,
+        "startChar": 20,
+        "endLine": 2627,
+        "endChar": 46
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_d0ba7527",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "No unpoisoning necessary?",
+      "range": {
+        "startLine": 2688,
+        "startChar": 18,
+        "endLine": 2688,
+        "endChar": 44
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_90bdcd1e",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4725,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 4725,
+        "startChar": 7,
+        "endLine": 4725,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_9d75e43f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4784,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 4784,
+        "startChar": 5,
+        "endLine": 4784,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_dc2a8f02",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 4557,
+        "startChar": 7,
+        "endLine": 4557,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_16d9ca69",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4607,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 4607,
+        "startChar": 5,
+        "endLine": 4607,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_70f70900",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_cbf4fffb",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_3c08739e",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Should this visit the roots in the (now native) dex cache resolved types array pointed to by this method?\n\nIf there can be a case where a DexCache becomes unreachable from GC but an ArtMethod is reachable and points to the resolved types array, GC would need to visit them to update them?\n\nMathieu, any views?",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 26
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_906f0d1f",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Can this be private? If we need to do card mark when we write to the resolved type array, avoiding exposing the GcRoot* unnecessarily would allow us to minimize the locations we\u0027d need to insert the card mark code.",
+      "range": {
+        "startLine": 523,
+        "startChar": 39,
+        "endLine": 523,
+        "endChar": 63
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_4f690498",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "ArtMethod*?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 8
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_ddd84c1d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 5392,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Does this need a card mark for the mod union tables, Mathieu?",
+      "range": {
+        "startLine": 5392,
+        "startChar": 13,
+        "endLine": 5392,
+        "endChar": 30
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_804593ce",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 5417,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Does this need a card mark for the mod union tables, Mathieu?",
+      "range": {
+        "startLine": 5417,
+        "startChar": 17,
+        "endLine": 5417,
+        "endChar": 32
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_66ce50a8",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Like DexCache::GetStrings(), can this be private if we add GetDexCacheString(idx)?",
+      "range": {
+        "startLine": 1088,
+        "startChar": 18,
+        "endLine": 1088,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_9c996750",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Does this need to do a card mark for the mod union table, Mathieu?",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_cd1184e2",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Does this need to do a card mark for the mod union table, Mathieu?",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_702f0941",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "auto* -\u003e ArtField*?",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a42a3512_c0462bfb",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "auto* -\u003e ArtMethod*?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84253145_86fdaf2f",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Can this be private? If we need to do a card mark on a write to the GcRoot array, putting the card mark code in SetResolvedString() as opposed to a caller and hiding GetString() would be cleaner, I think.",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_1c6ed7a8",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-08-25T01:20:51Z",
+      "side": 1,
+      "message": "Similarly, can this be private?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
