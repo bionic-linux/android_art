@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0468616f_8a012b15",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4238,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_eb878365",
+      "range": {
+        "startLine": 4238,
+        "startChar": 7,
+        "endLine": 4238,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e430ad80_e28c8b8a",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Similarly, this should be removed.\n\nDo you mind leaving a comment that we will need a read barrier there?\n\nSimilarly for the other architectures.",
+      "range": {
+        "startLine": 4299,
+        "startChar": 5,
+        "endLine": 4299,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "845371c9_c63ac482",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4299,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e430ad80_e28c8b8a",
       "range": {
         "startLine": 4299,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "847a9131_aed8b71b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2627,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048f817d_27170508",
+      "range": {
+        "startLine": 2627,
+        "startChar": 20,
+        "endLine": 2627,
+        "endChar": 46
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_d0ba7527",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "No unpoisoning necessary?",
+      "range": {
+        "startLine": 2688,
+        "startChar": 18,
+        "endLine": 2688,
+        "endChar": 44
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24656596_ebb0ed4b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2688,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_d0ba7527",
       "range": {
         "startLine": 2688,
         "startChar": 18,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a45875e6_a71f8462",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4725,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_90bdcd1e",
+      "range": {
+        "startLine": 4725,
+        "startChar": 7,
+        "endLine": 4725,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47f9520_9d75e43f",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 4784,
+        "startChar": 5,
+        "endLine": 4784,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24656596_8bb5b13a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4784,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a47f9520_9d75e43f",
       "range": {
         "startLine": 4784,
         "startChar": 5,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "44e3394a_e78336e1",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4750d3f_dc2a8f02",
+      "range": {
+        "startLine": 4557,
+        "startChar": 7,
+        "endLine": 4557,
+        "endChar": 33
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_16d9ca69",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 7
@@ -174,6 +342,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 4607,
+        "startChar": 5,
+        "endLine": 4607,
+        "endChar": 31
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e3394a_4799424d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4607,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_16d9ca69",
       "range": {
         "startLine": 4607,
         "startChar": 5,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "446ed97b_4cfd8f2c",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_70f70900",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_cbf4fffb",
         "filename": "runtime/art_method-inl.h",
         "patchSetId": 7
@@ -220,6 +436,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24656596_abbaf525",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248c8586_cbf4fffb",
       "range": {
         "startLine": 152,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "44e3394a_6790c620",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "For normal methods, the dex cache is reachable through the declaring class. But what should we do for proxy methods?",
+      "parentUuid": "e4750d3f_3c08739e",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 26
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_906f0d1f",
         "filename": "runtime/art_method.h",
         "patchSetId": 7
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "c459e9e9_48457fcb",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "We would need friend class ImageWriter and PatchOat.",
+      "parentUuid": "4485f957_906f0d1f",
+      "range": {
+        "startLine": 523,
+        "startChar": 39,
+        "endLine": 523,
+        "endChar": 63
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_4f690498",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 7
@@ -289,6 +577,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "ArtMethod*?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 8
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0468616f_aa066f28",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_4f690498",
       "range": {
         "startLine": 1065,
         "startChar": 4,
@@ -370,6 +682,30 @@
     },
     {
       "key": {
+        "uuid": "a45875e6_072f788f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "We would need friend class ImageWriter and PatchOat.",
+      "parentUuid": "a42a3512_66ce50a8",
+      "range": {
+        "startLine": 1088,
+        "startChar": 18,
+        "endLine": 1088,
+        "endChar": 36
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_9c996750",
         "filename": "runtime/mirror/dex_cache-inl.h",
         "patchSetId": 7
@@ -439,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "0468616f_6a095736",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4485f957_702f0941",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a42a3512_c0462bfb",
         "filename": "runtime/mirror/dex_cache-inl.h",
         "patchSetId": 7
@@ -450,6 +810,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "auto* -\u003e ArtMethod*?",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e45eedce_6932c1f8",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a42a3512_c0462bfb",
       "range": {
         "startLine": 79,
         "startChar": 2,
@@ -485,6 +869,30 @@
     },
     {
       "key": {
+        "uuid": "64e03d3d_e5ba1027",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "We would need friend class ImageWriter and PatchOat.",
+      "parentUuid": "84253145_86fdaf2f",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 128,
+        "endChar": 30
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4750d3f_1c6ed7a8",
         "filename": "runtime/mirror/dex_cache.h",
         "patchSetId": 7
@@ -496,6 +904,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Similarly, can this be private?",
+      "range": {
+        "startLine": 132,
+        "startChar": 2,
+        "endLine": 132,
+        "endChar": 35
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64e03d3d_45c01c95",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-25T09:51:49Z",
+      "side": 1,
+      "message": "We would need friend class ImageWriter and PatchOat.",
+      "parentUuid": "e4750d3f_1c6ed7a8",
       "range": {
         "startLine": 132,
         "startChar": 2,
