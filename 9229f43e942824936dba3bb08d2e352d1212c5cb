@@ -22,6 +22,30 @@
       "revId": "9229f43e942824936dba3bb08d2e352d1212c5cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e3394a_67d5665f",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3303,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-25T17:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e03d3d_2597d853",
+      "range": {
+        "startLine": 3303,
+        "startChar": 8,
+        "endLine": 3303,
+        "endChar": 10
+      },
+      "revId": "9229f43e942824936dba3bb08d2e352d1212c5cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
