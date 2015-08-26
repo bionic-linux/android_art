@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e430ad80_18b6d777",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-26T01:14:55Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be able to deadlock since it is not allowed to do an allocation while having an open JNI critical region right?",
+      "range": {
+        "startLine": 778,
+        "startChar": 11,
+        "endLine": 778,
+        "endChar": 37
+      },
+      "revId": "a137ac87f4cc2e70d3c6ab98ee809b36f75720f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_71cb7c96",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-08-26T01:14:55Z",
+      "side": 1,
+      "message": "Can maybe replace this with __FUNCTION__ for maintainability.",
+      "range": {
+        "startLine": 794,
+        "startChar": 20,
+        "endLine": 794,
+        "endChar": 46
+      },
+      "revId": "a137ac87f4cc2e70d3c6ab98ee809b36f75720f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
