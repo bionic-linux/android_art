@@ -22,6 +22,30 @@
       "revId": "56823bf81a1260c8282e27277d960a23e8c961f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c459e9e9_0bca21b3",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2015-08-27T08:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4700952_bbbb09b9",
+      "range": {
+        "startLine": 54,
+        "startChar": 84,
+        "endLine": 54,
+        "endChar": 86
+      },
+      "revId": "56823bf81a1260c8282e27277d960a23e8c961f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
