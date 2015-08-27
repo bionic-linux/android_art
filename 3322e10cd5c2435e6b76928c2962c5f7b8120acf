@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e45eedce_6c488f33",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-27T13:34:43Z",
+      "side": 1,
+      "message": "Readability: I find it _very_ confusing that EmitI21() accepts input that isn\u0027t 21-bit.\n\nMaybe you want a signed 21-bit value? Then why is the argument uint32_t? It should be int32_t, CHECK(IsInt\u003c21\u003e(imm21)) \u003c\u003c imm21 and the \"\u0026 const\" needs to remain.",
+      "parentUuid": "4485f957_0802097f",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44e3394a_4af787ff",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
