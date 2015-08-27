@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "4485f957_0802097f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Such checks may require introducing \"\u0026 constant\" on the caller site, if not already there. And the caller is quite aware of the cases when the immediate/offset field is not 8, 16, 32 or 64 bits. I\u0027m not sure there\u0027s a value in introducing checks and moving \"\u0026 const\" to the callers.",
+      "parentUuid": "44e3394a_0afd7fdf",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44e3394a_4af787ff",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -867,6 +885,24 @@
     },
     {
       "key": {
+        "uuid": "4485f957_a8f73dfe",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Not really. When the FPU is 32-bit, 64-bit doubles can be accessed as 32-bit halves using mtc1/mfc1, those halves are both even- and odd-numbered registers.",
+      "parentUuid": "e48fcdab_fee721a0",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "845371c9_c90735a8",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -1388,6 +1424,30 @@
     },
     {
       "key": {
+        "uuid": "248c8586_00f892ec",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Sub-optimal in what sense? It\u0027s debugging/testing code path that must be optimized out since the caller uses the default implicit value of max_short_distance \u003d UINT32_MAX. If the caller provides a different value explicitly, this code will be compiled and will have effect.",
+      "parentUuid": "c473a992_b506a05a",
+      "range": {
+        "startLine": 1129,
+        "startChar": 2,
+        "endLine": 1130,
+        "endChar": 71
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e478ad71_f662e009",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -1457,6 +1517,30 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_9216237b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "It was copied from ARM at the time.",
+      "parentUuid": "24656596_91d39e01",
+      "range": {
+        "startLine": 1162,
+        "startChar": 4,
+        "endLine": 1162,
+        "endChar": 19
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e478ad71_963c4cef",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -1491,6 +1575,24 @@
       "writtenOn": "2015-08-27T12:16:38Z",
       "side": 1,
       "message": "Please try to factor common parts of Buncond, Bcond and Call below.",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_cac07497",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Yet another helper or two for functions of this size? Or do you envision something else?",
+      "parentUuid": "c473a992_f510188e",
       "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1577,6 +1679,30 @@
       "writtenOn": "2015-08-27T12:16:38Z",
       "side": 1,
       "message": "This has a quadratic complexity.  Could this be achieved more efficiently?",
+      "range": {
+        "startLine": 1306,
+        "startChar": 2,
+        "endLine": 1321,
+        "endChar": 20
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_eabd381d",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Is this not an NP-complete problem?\nFurther, the entire Android has been successfully built and booted only using short branches (+/-128KB range of jumps).",
+      "parentUuid": "64e03d3d_6be4111a",
       "range": {
         "startLine": 1306,
         "startChar": 2,
@@ -2318,6 +2444,30 @@
     },
     {
       "key": {
+        "uuid": "048f817d_8aca6cb1",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "StoreImmediateToThread32. AFAIR, it exists/existed in implementations for other architectures, but I couldn\u0027t find any caller.",
+      "parentUuid": "c459e9e9_2e160b7d",
+      "range": {
+        "startLine": 1876,
+        "startChar": 5,
+        "endLine": 1876,
+        "endChar": 64
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446ed97b_6fa72541",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -2651,6 +2801,30 @@
     },
     {
       "key": {
+        "uuid": "849451c2_af7d61db",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Misplaced comment or could you elaborate?",
+      "parentUuid": "e478ad71_76cb3096",
+      "range": {
+        "startLine": 441,
+        "startChar": 11,
+        "endLine": 441,
+        "endChar": 21
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45eedce_4c0cb347",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
@@ -2731,6 +2905,30 @@
     },
     {
       "key": {
+        "uuid": "e4750d3f_12631310",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "~ is what I opted to use instead of ≈, which isn\u0027t ASCII. It means approximate (not the entire 4GB range end to end is supported, it can be around, AFAIR, 2GB-64KB on one side due to sign extension peculiarities). Use a word instead?",
+      "parentUuid": "e478ad71_b6ddc856",
+      "range": {
+        "startLine": 506,
+        "startChar": 54,
+        "endLine": 506,
+        "endChar": 55
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446ed97b_afe75da1",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
@@ -2777,6 +2975,30 @@
     },
     {
       "key": {
+        "uuid": "046221c0_17be74aa",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Tried to save space. Suggestions?",
+      "parentUuid": "e45eedce_cc20a3a7",
+      "range": {
+        "startLine": 547,
+        "startChar": 4,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c459e9e9_0ee78f20",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
@@ -2811,6 +3033,30 @@
       "writtenOn": "2015-08-27T12:16:38Z",
       "side": 1,
       "message": "What is the purpose of this?",
+      "range": {
+        "startLine": 550,
+        "startChar": 31,
+        "endLine": 550,
+        "endChar": 34
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4750d3f_b268ffe8",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-08-27T13:19:48Z",
+      "side": 1,
+      "message": "Tried to save space. Suggestions?",
+      "parentUuid": "446ed97b_6ffac537",
       "range": {
         "startLine": 550,
         "startChar": 31,
