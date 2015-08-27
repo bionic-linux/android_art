@@ -53,6 +53,47 @@
     },
     {
       "key": {
+        "uuid": "44e3394a_0afd7fdf",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-27T12:21:36Z",
+      "side": 1,
+      "message": "CHECK(IsUint\u003c21\u003e(imm21)) \u003c\u003c imm21",
+      "parentUuid": "44e3394a_0a99ffff",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e3394a_4af787ff",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-08-27T12:21:36Z",
+      "side": 1,
+      "message": "You don\u0027t need this once you add the suggested CHECK() above.",
+      "range": {
+        "startLine": 98,
+        "startChar": 28,
+        "endLine": 98,
+        "endChar": 39
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e03d3d_0888eb74",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
