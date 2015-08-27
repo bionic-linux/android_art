@@ -1456,6 +1456,75 @@
     },
     {
       "key": {
+        "uuid": "c459e9e9_ae62fb08",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-27T12:21:28Z",
+      "side": 1,
+      "message": "Use emplace_back.",
+      "range": {
+        "startLine": 1236,
+        "startChar": 12,
+        "endLine": 1236,
+        "endChar": 21
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e478ad71_96a52cbf",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-27T12:21:28Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 1262,
+        "startChar": 12,
+        "endLine": 1262,
+        "endChar": 21
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e3394a_ea013b7b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-27T12:21:28Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 1284,
+        "startChar": 12,
+        "endLine": 1284,
+        "endChar": 21
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64e03d3d_6be4111a",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -2775,6 +2844,52 @@
         "startChar": 11,
         "endLine": 576,
         "endChar": 20
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e3394a_8af18f0b",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-27T12:21:28Z",
+      "side": 1,
+      "message": "Replace with\n\n  std::vector\u003cMipsExceptionSlowPath\u003e \n\nand remove dynamic allocation and deallocation.",
+      "range": {
+        "startLine": 596,
+        "startChar": 2,
+        "endLine": 596,
+        "endChar": 37
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e45eedce_6c964f20",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-08-27T12:21:28Z",
+      "side": 1,
+      "message": "Replace with\n\n  std::vector\u003cBranch\u003e\n\nand remove dynamic allocation and deallocation.",
+      "range": {
+        "startLine": 598,
+        "startChar": 2,
+        "endLine": 598,
+        "endChar": 22
       },
       "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
