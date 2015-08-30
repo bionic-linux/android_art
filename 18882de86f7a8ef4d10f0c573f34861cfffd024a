@@ -46,6 +46,30 @@
       "revId": "18882de86f7a8ef4d10f0c573f34861cfffd024a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "841b715a_43e7661f",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-30T16:31:27Z",
+      "side": 1,
+      "message": "SGTM, thanks Jeff.",
+      "parentUuid": "a42a3512_9e42dac3",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 60
+      },
+      "revId": "18882de86f7a8ef4d10f0c573f34861cfffd024a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
