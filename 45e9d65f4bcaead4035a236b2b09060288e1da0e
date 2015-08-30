@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "845371c9_ac1687d6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-30T16:41:14Z",
+      "side": 1,
+      "message": "How about just calling a method HandleStringInit?",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 54
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "444df958_11b04cc6",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-30T16:41:14Z",
+      "side": 1,
+      "message": "indentation is off",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 50
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "444df958_31ad506f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-30T16:41:14Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1163,
+        "startChar": 20,
+        "endLine": 1163,
+        "endChar": 22
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24656596_dcbfed78",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2479,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-08-30T16:41:14Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to belong to this CL.",
+      "range": {
+        "startLine": 2479,
+        "startChar": 8,
+        "endLine": 2479,
+        "endChar": 56
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
