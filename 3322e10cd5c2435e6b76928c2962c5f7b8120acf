@@ -3279,6 +3279,30 @@
     },
     {
       "key": {
+        "uuid": "4485f957_8ba34efb",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1342,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-08-30T02:29:00Z",
+      "side": 1,
+      "message": "That looks like an infinite loop. And it confused Pavle.",
+      "parentUuid": "e478ad71_d636c40c",
+      "range": {
+        "startLine": 1334,
+        "startChar": 4,
+        "endLine": 1342,
+        "endChar": 3
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c473a992_952a84b3",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -4416,6 +4440,30 @@
       "writtenOn": "2015-08-27T12:16:38Z",
       "side": 1,
       "message": "Are we allowed to clobber T8?",
+      "range": {
+        "startLine": 1648,
+        "startChar": 6,
+        "endLine": 1648,
+        "endChar": 31
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_3654fb29",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-08-30T02:29:00Z",
+      "side": 1,
+      "message": "We reviewed this, and while this isn\u0027t very nice, we can clobber T8 around here.",
+      "parentUuid": "c473a992_351c509c",
       "range": {
         "startLine": 1648,
         "startChar": 6,
