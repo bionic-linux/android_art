@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "845371c9_8c2aab01",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-08-31T10:39:51Z",
+      "side": 1,
+      "message": "Must have missed it. Removed.",
+      "parentUuid": "c4700952_ba1f7a91",
+      "range": {
+        "startLine": 107,
+        "startChar": 76,
+        "endLine": 107,
+        "endChar": 88
+      },
+      "revId": "093e3294e9d7c086e3e3dca543675097b4b79b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248c8586_725122e0",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-30T02:29:00Z",
       "side": 1,
       "message": "Forgotten?",
+      "range": {
+        "startLine": 499,
+        "startChar": 13,
+        "endLine": 499,
+        "endChar": 53
+      },
+      "revId": "093e3294e9d7c086e3e3dca543675097b4b79b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "446ed97b_12f7b24e",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-08-31T10:39:51Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "248c8586_725122e0",
       "range": {
         "startLine": 499,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "04e86264_c2cc62a3",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-08-31T10:39:51Z",
+      "side": 1,
+      "message": "Fixed. Reversed should be right.",
+      "parentUuid": "048f817d_7a126919",
+      "range": {
+        "startLine": 507,
+        "startChar": 14,
+        "endLine": 507,
+        "endChar": 48
+      },
+      "revId": "093e3294e9d7c086e3e3dca543675097b4b79b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "849451c2_9355274b",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e478ad71_56555447",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-08-31T10:39:51Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "849451c2_9355274b",
+      "range": {
+        "startLine": 945,
+        "startChar": 8,
+        "endLine": 945,
+        "endChar": 10
+      },
+      "revId": "093e3294e9d7c086e3e3dca543675097b4b79b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4700952_7a1912ab",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2015-08-30T02:29:00Z",
       "side": 1,
       "message": "Wrong condition in if (and size_t was good enough). Imagine what will happen when the loop body is entered when j \u003d\u003d 0. i becomes -1 and is used as a vector/array index.",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1363,
+        "endChar": 36
+      },
+      "revId": "093e3294e9d7c086e3e3dca543675097b4b79b10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e45eedce_2fa129aa",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-08-31T10:39:51Z",
+      "side": 1,
+      "message": "I couldn\u0027t use size_t because then the \u003e\u003d comparison makes no sense (on an unsigned type). I\u0027ve fixed it by removing the post-decrement from the for loop. Since branch_count is checked to be greater than 0, we are safe to decrement i at least once.",
+      "parentUuid": "c4700952_7a1912ab",
       "range": {
         "startLine": 1361,
         "startChar": 0,
