@@ -567,6 +567,30 @@
     },
     {
       "key": {
+        "uuid": "a4deb6f4_af935948",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-01T12:46:09Z",
+      "side": 1,
+      "message": "I\u0027ve implemented something in PS12. Please have a look.",
+      "parentUuid": "c42ba915_4316a556",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 26
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4485f957_906f0d1f",
         "filename": "runtime/art_method.h",
         "patchSetId": 7
@@ -801,6 +825,30 @@
     },
     {
       "key": {
+        "uuid": "8480d2c5_76377018",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-01T12:46:09Z",
+      "side": 1,
+      "message": "Added marking in PS12.",
+      "parentUuid": "e4750d3f_9c996750",
+      "range": {
+        "startLine": 42,
+        "startChar": 22,
+        "endLine": 42,
+        "endChar": 39
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42ba915_cd1184e2",
         "filename": "runtime/mirror/dex_cache-inl.h",
         "patchSetId": 7
@@ -812,6 +860,30 @@
       "writtenOn": "2015-08-25T01:20:51Z",
       "side": 1,
       "message": "Does this need to do a card mark for the mod union table, Mathieu?",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "0edbf6f12cee43a9a186c86e86d4687598955884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447a5aab_54802ce9",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-01T12:46:09Z",
+      "side": 1,
+      "message": "Added marking in PS12.",
+      "parentUuid": "c42ba915_cd1184e2",
       "range": {
         "startLine": 53,
         "startChar": 22,
