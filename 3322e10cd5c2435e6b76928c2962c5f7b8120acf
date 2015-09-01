@@ -2375,6 +2375,30 @@
     },
     {
       "key": {
+        "uuid": "e4d42ed5_d117647f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Thanks.  (This is more consistent with previous methods.)",
+      "parentUuid": "e48fcdab_81cb1c95",
+      "range": {
+        "startLine": 782,
+        "startChar": 78,
+        "endLine": 782,
+        "endChar": 82
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45eedce_0ce1dbba",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -2774,6 +2798,30 @@
     },
     {
       "key": {
+        "uuid": "64c03e16_adc91d91",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "I meant, will we ever use this routine with a  `max_short_distance` value other than std::numeric_limits\u003cuint32_t\u003e::max()?",
+      "parentUuid": "248c8586_00f892ec",
+      "range": {
+        "startLine": 1129,
+        "startChar": 2,
+        "endLine": 1130,
+        "endChar": 71
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e478ad71_f662e009",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -2997,6 +3045,24 @@
     },
     {
       "key": {
+        "uuid": "447a5aab_7402084b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Yes, we could factor the body of these routines in a new helper function, so as to minimize code duplication and maintenance.",
+      "parentUuid": "048f817d_cac07497",
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c459e9e9_ae62fb08",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -3173,6 +3239,30 @@
       "side": 1,
       "message": "Is this not an NP-complete problem?\nFurther, the entire Android has been successfully built and booted only using short branches (+/-128KB range of jumps).",
       "parentUuid": "64e03d3d_6be4111a",
+      "range": {
+        "startLine": 1306,
+        "startChar": 2,
+        "endLine": 1321,
+        "endChar": 20
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_f2e6281d",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Fair enough.  I was thinking about something similar to the fixup generation code in compiler/utils/arm/assembler_thumb2.cc, which uses a list of dependencies.",
+      "parentUuid": "048f817d_eabd381d",
       "range": {
         "startLine": 1306,
         "startChar": 2,
@@ -4476,6 +4566,30 @@
     },
     {
       "key": {
+        "uuid": "a46956e6_b7f748c1",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Please add a comment about this then.",
+      "parentUuid": "c42ba915_3654fb29",
+      "range": {
+        "startLine": 1648,
+        "startChar": 6,
+        "endLine": 1648,
+        "endChar": 31
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "845371c9_a901997b",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
@@ -4616,6 +4730,30 @@
       "side": 1,
       "message": "StoreImmediateToThread32. AFAIR, it exists/existed in implementations for other architectures, but I couldn\u0027t find any caller.",
       "parentUuid": "c459e9e9_2e160b7d",
+      "range": {
+        "startLine": 1876,
+        "startChar": 5,
+        "endLine": 1876,
+        "endChar": 64
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_57d6ec31",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Thanks for the explanation.  Feel free to remove this method.  If you decide to keep it, please remove the comment from line 1876.",
+      "parentUuid": "048f817d_8aca6cb1",
       "range": {
         "startLine": 1876,
         "startChar": 5,
@@ -5309,6 +5447,30 @@
     },
     {
       "key": {
+        "uuid": "84c53226_2ed52721",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Thanks, this is better now.  Comments placed after enum values are OK when they\u0027re short; but for longer comments, placing them before is more legible.",
+      "parentUuid": "c459e9e9_ce9e57ea",
+      "range": {
+        "startLine": 441,
+        "startChar": 11,
+        "endLine": 441,
+        "endChar": 21
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e45eedce_4c0cb347",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
@@ -5473,6 +5635,30 @@
     },
     {
       "key": {
+        "uuid": "a46956e6_37d57821",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "I understood what `~` meant. :)  What I was missing was the reason why this was an approximate, and not an exact offset.  Could you please add this explanation in the comment?  Thanks!",
+      "parentUuid": "e4750d3f_12631310",
+      "range": {
+        "startLine": 506,
+        "startChar": 54,
+        "endLine": 506,
+        "endChar": 55
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446ed97b_afe75da1",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
@@ -5555,6 +5741,30 @@
       "side": 1,
       "message": "Tried to save space. Suggestions?",
       "parentUuid": "e45eedce_cc20a3a7",
+      "range": {
+        "startLine": 547,
+        "startChar": 4,
+        "endLine": 547,
+        "endChar": 25
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c03e16_0dd07130",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "I think we should not compromise type safety to save memory.  Also, if we actually save space here (i.e., if the compiler does not add padding), there\u0027s probably a run-time penalty for reading and writing non-aligned fields.",
+      "parentUuid": "046221c0_17be74aa",
       "range": {
         "startLine": 547,
         "startChar": 4,
