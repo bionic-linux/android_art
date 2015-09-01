@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46956e6_d7f0bccd",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "\u003c\u003c cond",
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447a5aab_d4175c7f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "\u003c\u003c cond",
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447a5aab_342330e9",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Please replace with\n\n  CHECK_NE(condition, kUncond);\n\nand add `utils/mips/assembler_mips.h` to `LIBART_COMPILER_ENUM_OPERATOR_OUT_HEADER_FILES_mips` in compiler/Android.mk to generate an operator\u003c\u003c for `MipsAssembler::BranchCondition`.",
+      "range": {
+        "startLine": 896,
+        "startChar": 2,
+        "endLine": 896,
+        "endChar": 30
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4deb6f4_af0ef966",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "\u003c\u003c cond",
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_f7edc0f2",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "I was thinking about this instead:\n\n  branches_.emplace_back(IsR6(), buffer_.Size(), target);\n\nand turning `branches_` into an `std::vector\u003cBranch\u003e` (and likewise in other methods below).",
+      "range": {
+        "startLine": 1262,
+        "startChar": 0,
+        "endLine": 1263,
+        "endChar": 33
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_97fa44aa",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Use CHECK_EQ, here and below.",
+      "range": {
+        "startLine": 1402,
+        "startChar": 6,
+        "endLine": 1402,
+        "endChar": 64
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_f2edc8f2",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Please introduce a Push method to factor this pattern.",
+      "range": {
+        "startLine": 1440,
+        "startChar": 0,
+        "endLine": 1441,
+        "endChar": 20
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "447a5aab_f414d87c",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Please introduce a Pop method to factor the Lw + DecreaseFrameSize pattern.",
+      "range": {
+        "startLine": 1447,
+        "startChar": 6,
+        "endLine": 1447,
+        "endChar": 20
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dbaa04_9011d48b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2211,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T10:44:09Z",
+      "side": 1,
+      "message": "Likewise, replace with:\n\n  exception_blocks_.emplace_back(scratch, stack_adjust);\n\nand turn `exception_blocks_` into an `std::vector\u003cMipsExceptionSlowPath\u003e`.",
+      "range": {
+        "startLine": 2210,
+        "startChar": 0,
+        "endLine": 2211,
+        "endChar": 39
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
