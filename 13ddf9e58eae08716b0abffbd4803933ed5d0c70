@@ -211,6 +211,30 @@
       "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4deb6f4_cf7d7d7e",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-01T15:51:26Z",
+      "side": 1,
+      "message": "Yes, exactly.",
+      "parentUuid": "a46956e6_9777a49a",
+      "range": {
+        "startLine": 601,
+        "startChar": 2,
+        "endLine": 603,
+        "endChar": 33
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
