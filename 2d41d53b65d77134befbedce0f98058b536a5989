@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4072a51_19328fbf",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "renamed into IsIntAndGet()\n(it takes away some of the conciseness of the code, but since you asked :-)",
+      "parentUuid": "a40a365b_aff21962",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_80b3cb43",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "Why not also handle long?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_eff9c1ef",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Okay then :-)",
+      "parentUuid": "e486eed4_80b3cb43",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -202,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "8497f201_687f8ca7",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "See comment above",
+      "parentUuid": "0484e2ca_a23293bd",
+      "range": {
+        "startLine": 267,
+        "startChar": 30,
+        "endLine": 267,
+        "endChar": 39
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84f1b2a4_cec323be",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
@@ -248,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_741e6aa1",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "We do down now. Added more comments.",
+      "parentUuid": "a40a365b_8fef557a",
+      "range": {
+        "startLine": 274,
+        "startChar": 30,
+        "endLine": 274,
+        "endChar": 36
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84529221_3205a5d7",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
@@ -259,6 +343,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "Not sure what I understand what this is supposed to be doing, would it make sense to add more comments?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_0874c8c6",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Okay, more comments, better name",
+      "parentUuid": "84529221_3205a5d7",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -282,6 +384,24 @@
     },
     {
       "key": {
+        "uuid": "c4072a51_593c1792",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "We talked on this earlier\n\nI like the\n\nif() {\n\n}\nreturn fail value\n\npattern, unless it really really gives bad indentation.",
+      "parentUuid": "64ecbece_50d51220",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_2245230d",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
@@ -293,6 +413,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "see 309",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_4e076259",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0484e2ca_2245230d",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -316,6 +454,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_e33c21f8",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Ah, you know that in C this was a bit portability issue. I once debugged someone\u0027s chess engine that run fine on x86 but not on ARM. \n\nEven if you are right, however, does it matter much?",
+      "parentUuid": "0484e2ca_a2805381",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ecbece_6d8b1556",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
@@ -327,6 +483,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "What happened to None and Monotonic?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_bde158ba",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "I don\u0027t need None anymore.\n\nI still plan to implement Monotonic at one point, but maybe only if we need it. I don\u0027t want to get carried away (too much) getting it academically sound without having direct applications in our code.\n\n(but expect it at some point, I cannot help myself)",
+      "parentUuid": "64ecbece_6d8b1556",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -350,6 +524,24 @@
     },
     {
       "key": {
+        "uuid": "64ecbece_b044363b",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40a365b_2fdf49cf",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_52db6206",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
@@ -361,6 +553,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "Does this need any DCHECKs for null f, or is null ok?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_34f112d0",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_52db6206",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -384,6 +594,24 @@
     },
     {
       "key": {
+        "uuid": "64ecbece_90413a2b",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40a365b_6fe95178",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a40a365b_4fee0d82",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
@@ -401,6 +629,24 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_d26c528e",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40a365b_4fee0d82",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_c2131721",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
@@ -412,6 +658,24 @@
       "writtenOn": "2015-09-02T19:00:00Z",
       "side": 1,
       "message": "What does a period mean?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_d4f75ec0",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:06:52Z",
+      "side": 1,
+      "message": "Renamed the method to be more clear.",
+      "parentUuid": "0484e2ca_c2131721",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
