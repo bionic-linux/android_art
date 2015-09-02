@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "84f1b2a4_0e0b6bef",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T18:26:52Z",
+      "side": 1,
+      "message": "Also, e.g. graph visualizer code (one that uses similar map) does exactly the same:\n\n   instruction_intervals_(std::less\u003cconst HInstruction*\u003e(), allocator-\u003eAdapter())",
+      "parentUuid": "84f1b2a4_0e888be8",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_74ec66ca",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
