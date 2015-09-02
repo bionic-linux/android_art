@@ -46,6 +46,30 @@
       "revId": "d8e38f45378cd92a82fb4e78ef8b42d82cda4d0b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4618eea_f5edc3f2",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T16:34:45Z",
+      "side": 1,
+      "message": "Nope, this would be removed in the next PS. The device boots in an eng build, and I see lots of instances of this message, so I think it works...",
+      "parentUuid": "a455d63a_b7f0c8cc",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 53
+      },
+      "revId": "d8e38f45378cd92a82fb4e78ef8b42d82cda4d0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
