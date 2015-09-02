@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4dbaa04_7329dac8",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "What about returning a (non-null) pointer pointing to the integer constant if `instruction` is a HIntConstant, and a null pointer otherwise?",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dbaa04_131e4ea0",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "Nit: move this to a local variable; or better (IMHO), turn this `if/else if` into a switch?",
+      "range": {
+        "startLine": 263,
+        "startChar": 8,
+        "endLine": 263,
+        "endChar": 35
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_51e5b44c",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "Could you add a comment about why the last SCC is not processed?",
+      "range": {
+        "startLine": 265,
+        "startChar": 29,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dbaa04_332352e9",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 115
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_510cd4b6",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "For safety reasons, use a default value outside the [0,31) range? (E.g. -1.)",
+      "range": {
+        "startLine": 349,
+        "startChar": 20,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_7111d8cd",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "\"Potential side effect in HIR.\"?  (The constant could already be in the graph.)",
+      "range": {
+        "startLine": 351,
+        "startChar": 72,
+        "endLine": 351,
+        "endChar": 91
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_f377f098",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "yield?",
+      "range": {
+        "startLine": 359,
+        "startChar": 87,
+        "endLine": 359,
+        "endChar": 93
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_914b1cf1",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "This `inline` keyword is superfluous here, as this method is defined in the class\u0027 body (likewise for other methods below).",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_77ce90f0",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "It would be nice to document these members (otherwise, their role has to be inferred from compiler/optimizing/induction_var_analysis.cc…).",
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8480d2c5_365338df",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "Thanks for using `HInstruction*` instead of bare `int` values!",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 28
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247566b9_b39af8d4",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "I preferred when you were displaying the instruction name; what made you change your mind?",
+      "range": {
+        "startLine": 232,
+        "startChar": 18,
+        "endLine": 232,
+        "endChar": 19
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dbaa04_f3ccea4b",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T15:38:03Z",
+      "side": 1,
+      "message": "For better readability, maybe use basic regexps here, so that you can match an opening parenthesis with `(` instead of `\\\\(` (and likewise for `)` and `+`).",
+      "range": {
+        "startLine": 544,
+        "startChar": 16,
+        "endLine": 544,
+        "endChar": 19
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
