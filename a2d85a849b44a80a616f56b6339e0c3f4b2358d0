@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_3f857790",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "I like the idiom\n\nif (IsInt(instruction, \u0026val) \u0026\u0026 val \u003d\u003d 10\n\nwith a pointer this would read a bit more obscure at the client\n\nint *ptr \u003d IsInt(instruction);\nif (ptr !\u003d nullptr \u0026\u0026 *ptr \u003d\u003d 10)",
+      "parentUuid": "c4dbaa04_7329dac8",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_131e4ea0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "Nit: move this to a local variable; or better (IMHO), turn this `if/else if` into a switch?",
+      "range": {
+        "startLine": 263,
+        "startChar": 8,
+        "endLine": 263,
+        "endChar": 35
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_4d009cc7",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dbaa04_131e4ea0",
       "range": {
         "startLine": 263,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e4618eea_95d6872f",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Ah, yes, the last stmt is named phi. Added a comment to make that clear in both cases.",
+      "parentUuid": "e4d42ed5_51e5b44c",
+      "range": {
+        "startLine": 265,
+        "startChar": 29,
+        "endLine": 265,
+        "endChar": 37
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_332352e9",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "Nit: long line.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 115
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4618eea_75db1359",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dbaa04_332352e9",
       "range": {
         "startLine": 279,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_ff8ebfb2",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d42ed5_510cd4b6",
+      "range": {
+        "startLine": 349,
+        "startChar": 20,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_7111d8cd",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "\"Potential side effect in HIR.\"?  (The constant could already be in the graph.)",
+      "range": {
+        "startLine": 351,
+        "startChar": 72,
+        "endLine": 351,
+        "endChar": 91
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_45b95901",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Yes, you are right. Added comment.",
+      "parentUuid": "e4d42ed5_7111d8cd",
       "range": {
         "startLine": 351,
         "startChar": 72,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e4618eea_15ea97e3",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Transfer over X yields Y\n(singular subject)?",
+      "parentUuid": "2461e61f_f377f098",
+      "range": {
+        "startLine": 359,
+        "startChar": 87,
+        "endLine": 359,
+        "endChar": 93
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_914b1cf1",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 5
@@ -174,6 +342,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "This `inline` keyword is superfluous here, as this method is defined in the class\u0027 body (likewise for other methods below).",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_0d8ff4b0",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "okay, removed in all cases",
+      "parentUuid": "e4d42ed5_914b1cf1",
       "range": {
         "startLine": 98,
         "startChar": 2,
@@ -203,6 +395,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_ed95f0bd",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Yes, you are right. Added comments back.",
+      "parentUuid": "a46956e6_77ce90f0",
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8480d2c5_365338df",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 5
@@ -214,6 +424,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "Thanks for using `HInstruction*` instead of bare `int` values!",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 28
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_9c8352ce",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Yes, it reads a lot better, and the cc code is more intuitive too now. Thank you!",
+      "parentUuid": "8480d2c5_365338df",
       "range": {
         "startLine": 154,
         "startChar": 15,
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "6424bead_39eeaa81",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Actually, it was your earlier comment (in the previous CL) on displaying the constant value instead :-) I actually liked that suggestion since it reads so much better now then with the less intuitive link back to instruction IDs.",
+      "parentUuid": "247566b9_b39af8d4",
+      "range": {
+        "startLine": 232,
+        "startChar": 18,
+        "endLine": 232,
+        "endChar": 19
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_f3ccea4b",
         "filename": "compiler/optimizing/induction_var_analysis_test.cc",
         "patchSetId": 5
@@ -260,6 +518,30 @@
       "writtenOn": "2015-09-02T15:38:03Z",
       "side": 1,
       "message": "For better readability, maybe use basic regexps here, so that you can match an opening parenthesis with `(` instead of `\\\\(` (and likewise for `)` and `+`).",
+      "range": {
+        "startLine": 544,
+        "startChar": 16,
+        "endLine": 544,
+        "endChar": 19
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_5f05a4d5",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T16:35:44Z",
+      "side": 1,
+      "message": "Can you please point me to an example of basic regexp so I can try it out?",
+      "parentUuid": "c4dbaa04_f3ccea4b",
       "range": {
         "startLine": 544,
         "startChar": 16,
