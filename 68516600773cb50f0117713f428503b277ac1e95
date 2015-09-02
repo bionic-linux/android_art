@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46956e6_776770ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T09:53:38Z",
+      "side": 1,
+      "message": "included?",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "68516600773cb50f0117713f428503b277ac1e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_124e4c36",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T09:53:38Z",
+      "side": 1,
+      "message": "Hoist this in a variable `e`?",
+      "range": {
+        "startLine": 417,
+        "startChar": 43,
+        "endLine": 417,
+        "endChar": 80
+      },
+      "revId": "68516600773cb50f0117713f428503b277ac1e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_4e2d135e",
+        "filename": "compiler/optimizing/intrinsics.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-02T09:53:38Z",
+      "side": 1,
+      "message": "GetCurrentMethodInputIndex()",
+      "range": {
+        "startLine": 421,
+        "startChar": 62,
+        "endLine": 421,
+        "endChar": 84
+      },
+      "revId": "68516600773cb50f0117713f428503b277ac1e95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
