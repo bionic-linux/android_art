@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "247566b9_530cc4b6",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-02T18:04:49Z",
+      "side": 1,
+      "message": "Pointer comparison? Please avoid, it will cause non deterministic runs.",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_74ec66ca",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-02T18:04:49Z",
+      "side": 1,
+      "message": ", -\u003e .",
+      "range": {
+        "startLine": 150,
+        "startChar": 75,
+        "endLine": 150,
+        "endChar": 76
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
