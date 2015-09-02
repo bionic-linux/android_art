@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "84f1b2a4_0e888be8",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T18:11:58Z",
+      "side": 1,
+      "message": "Well, this is a mapping of instructions to induction information. There is no point in keeping these ordered at all and, in fact, it adds runtime (O(log n) vz O(1) per insertion).\n\nCan you enlighten me on: how do you use the order during debugging, and, what do you suggest I use for comparisons here then (I could order on GetId(), but then we are more or less back where I started)....",
+      "parentUuid": "84c53226_2e0be79d",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_74ec66ca",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
