@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "a40a365b_aff21962",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "nit: wouldn\u0027t expect an \"IsXXX\" named function to have any side-effects, perhaps \"MaybeGetInt\" instead?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_80b3cb43",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Why not also handle long?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "247566b9_530cc4b6",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
@@ -115,6 +149,245 @@
         "endLine": 78,
         "endChar": 34
       },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_a23293bd",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Why size -1?",
+      "range": {
+        "startLine": 267,
+        "startChar": 30,
+        "endLine": 267,
+        "endChar": 39
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84f1b2a4_cec323be",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Why \u003d2?",
+      "range": {
+        "startLine": 274,
+        "startChar": 21,
+        "endLine": 274,
+        "endChar": 26
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_8fef557a",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Why \u003d size?",
+      "range": {
+        "startLine": 274,
+        "startChar": 30,
+        "endLine": 274,
+        "endChar": 36
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_3205a5d7",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Not sure what I understand what this is supposed to be doing, would it make sense to add more comments?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ecbece_50d51220",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "nit: less indentation on the whole function if we return nullptr right away when either a or b is null (since it looks like none of the other code falls-through)",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_2245230d",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "see 309",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_a2805381",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Not sure if this is right?  According to JLS bit shifting should use 0x1f mask , so the original constant value range shouldn\u0027t matter because once its masked with 0x1f it will always be in range of [0,31]\n\nSee JLS 15.19 or this StackOverflow post\nhttp://stackoverflow.com/a/10516830",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ecbece_6d8b1556",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "What happened to None and Monotonic?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_2fdf49cf",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Does this need any DCHECKs for null a/b or is null ok?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_52db6206",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Does this need any DCHECKs for null f, or is null ok?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_6fe95178",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "Does this need any DCHECKs for null a/b, or is null ok?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_4fee0d82",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "What does first mean?",
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_c2131721",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-02T19:00:00Z",
+      "side": 1,
+      "message": "What does a period mean?",
       "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
