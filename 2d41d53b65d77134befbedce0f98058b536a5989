@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_72245ef2",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T18:06:49Z",
+      "side": 1,
+      "message": "Well, ideally I would like to have a hash map, and not keep any order. Do we have any plans to support these with the Arena wrapper. E.g. ArenaSafeHashMap?",
+      "parentUuid": "247566b9_530cc4b6",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_74ec66ca",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-02T18:04:49Z",
       "side": 1,
       "message": ", -\u003e .",
+      "range": {
+        "startLine": 150,
+        "startChar": 75,
+        "endLine": 150,
+        "endChar": 76
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ecbece_eda0a561",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T18:06:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d42ed5_74ec66ca",
       "range": {
         "startLine": 150,
         "startChar": 75,
