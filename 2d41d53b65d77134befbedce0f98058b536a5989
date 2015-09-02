@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_d4e07e00",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-02T20:00:40Z",
+      "side": 1,
+      "message": "One more comment on this after talking with Andreas what you may have meant. Note that nothing in my code relies on the order of the map, I just do lookup/inserts, never iteration in order. So the only non-determinism may be in how the data appears in memory, not something that should matter much, unless you are a very hard core debugger :-)",
+      "parentUuid": "84f1b2a4_0e0b6bef",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_a23293bd",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
