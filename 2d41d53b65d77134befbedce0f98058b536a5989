@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "84c53226_2e0be79d",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-02T18:08:32Z",
+      "side": 1,
+      "message": "Why ideally?\n\nWe really want to have the order be the same across runs. It makes debugging much simpler.",
+      "parentUuid": "6492fe15_72245ef2",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_74ec66ca",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 6
