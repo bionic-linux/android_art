@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6492fe15_46088330",
+        "filename": "runtime/base/stack_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "This won\u0027t work. :-(\n\nHowever, for you the default parameter for MakeInstance would work, as you have the templated type. Lucky you...",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_be139066",
+        "filename": "runtime/lambda/art_lambda_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "Why not in an initializer list?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_e622ef7e",
+        "filename": "runtime/lambda/art_lambda_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "Remove s.",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40a365b_f2c6c6cf",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "Vertical whitespace?",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4072a51_848bb654",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "Personally I dislike this. What does the style guide say?",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64ecbece_56698abe",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "LOG(FATAL) instead. Same below.",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 18
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4072a51_e4a442ed",
+        "filename": "runtime/lambda/closure.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "Technically java/lang/Object",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_beeab01c",
+        "filename": "runtime/lambda/closure_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "UNIMPLEMENTED(FATAL) is more intention-revealing...",
+      "range": {
+        "startLine": 33,
+        "startChar": 58,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4072a51_6467b25c",
+        "filename": "runtime/lambda/closure_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-02T23:15:34Z",
+      "side": 1,
+      "message": "DCHECK_EQ, or probably !shorty.IsObject()",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
