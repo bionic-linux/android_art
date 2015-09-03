@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_8ee1cdba",
+        "filename": "runtime/base/stack_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m just going to omit this file from this CL, there is no test for it anyway because I didn\u0027t end up needing it. Sorry for adding it to the review.\n\nFWIW this templated version is not very useful either because the size should be dynamic. If the size is static then using alloca is fairly pointless.\n\nI\u0027ve been some deep thought how to cleanly and reusably handle dynamically-sized structs/classes and alloca and I will post something in later CLs.",
+      "parentUuid": "6492fe15_1c8acc0e",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_be139066",
         "filename": "runtime/lambda/art_lambda_method.cc",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "writtenOn": "2015-09-02T23:15:34Z",
       "side": 1,
       "message": "Why not in an initializer list?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_dc9a24d6",
+        "filename": "runtime/lambda/art_lambda_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "Doesn\u0027t really matter to me, would you rather?\n\nThis is not part of the style right now so we should add that if you want this to always be part of the [member] initializer list.",
+      "parentUuid": "e486eed4_be139066",
       "range": {
         "startLine": 33,
         "startChar": 2,
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_cf2a5c41",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "Do you always want a blank line in between function definitions/declarations *even if* there\u0027s a comment in between?\n\nThis is not part of the style right now so we should add that.",
+      "parentUuid": "a40a365b_f2c6c6cf",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8480d2c5_b9017b10",
         "filename": "runtime/lambda/art_lambda_method.h",
         "patchSetId": 2
@@ -188,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "64159e82_4b2399e7",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "NumberOfCapturedVariables ?",
+      "parentUuid": "8480d2c5_b9017b10",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_b4df2e76",
         "filename": "runtime/lambda/art_lambda_method.h",
         "patchSetId": 2
@@ -199,6 +295,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "Explain why.",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 85
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_4f4e4c37",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "to avoid the extra indirect load? it\u0027s on line 95",
+      "parentUuid": "e4d42ed5_b4df2e76",
       "range": {
         "startLine": 94,
         "startChar": 5,
@@ -245,6 +365,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "isn\u0027t that the definition of shorty?",
+      "range": {
+        "startLine": 102,
+        "startChar": 50,
+        "endLine": 102,
+        "endChar": 88
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_0e94bd01",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "Yes it is, that\u0027s why it says \"e.g.\" as a quick example to remind them what a shorty is.\n\nWould you rather I not have an example here (I personally get lost when there\u0027s specially formatted strings without examples of how they look like)?",
+      "parentUuid": "247566b9_d68c422d",
       "range": {
         "startLine": 102,
         "startChar": 50,
@@ -314,6 +458,30 @@
       "writtenOn": "2015-09-02T23:15:34Z",
       "side": 1,
       "message": "Personally I dislike this. What does the style guide say?",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_879addab",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "This ends up generating pretty tight code, when I was debugging even in O2 most of these [unused] variables (and branches) were optimized out.\n\nThat being said, can you elaborate on what exactly you dislike so I can see how to fix it?",
+      "parentUuid": "c4072a51_848bb654",
       "range": {
         "startLine": 78,
         "startChar": 6,
@@ -418,6 +586,30 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_dc31c485",
+        "filename": "runtime/lambda/closure.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "This was just referring to an arbitrary object, not to the specific one. Fix or leave it?",
+      "parentUuid": "c4072a51_e4a442ed",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_beeab01c",
         "filename": "runtime/lambda/closure_builder.cc",
         "patchSetId": 2
@@ -475,6 +667,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "Why do we need this when we have PrimitiveType?",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_2e453936",
+        "filename": "runtime/lambda/shorty_field_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:10:03Z",
+      "side": 1,
+      "message": "TL;DR I wanted to keep the CL shorter to make it easier for reviewers\n\n--\nI need to refactor these together later (as on line 37)\n\nRight now the PrimitiveType assumes everything not a primitive is an object, and I just didn\u0027t want this CL to also have to refactor every other piece of art code where PrimitiveType was used because this is just the infrastructure side of the closures.\n\nAs for the rest of the functionality here, it\u0027s helpful to have it be part of the class instead of the rest of art code hardcoding the logic on what the traits of a type are.",
+      "parentUuid": "a4deb6f4_52c932e5",
       "range": {
         "startLine": 44,
         "startChar": 7,
