@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e486eed4_efcde0bc",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:32:59Z",
+      "side": 1,
+      "message": "minor: you were also mentioning wanting to support smaller types like bytes and short yesterday (offline)\n\nNot sure if we care enough since most arithmetic is done on int/long followed by a truncation to a smaller type (does this induction analysis support truncation yet?)",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_8202cb47",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:32:59Z",
+      "side": 1,
+      "message": "minor: Would be great to have some comments here on what is 0 and 31 and why it\u0027s \u003c31 instead of \u003c\u003d31",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "240f267a_e69d60d0",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T18:32:59Z",
+      "side": 1,
+      "message": "see 381",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
