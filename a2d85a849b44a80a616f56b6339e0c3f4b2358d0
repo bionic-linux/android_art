@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_c3af9e5f",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T16:32:55Z",
+      "side": 1,
+      "message": "I like having one \"fail\" value at the end, but yes, we all developer our own styles over the years :\u003d)",
+      "parentUuid": "2461e61f_93ef9c7a",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_131e4ea0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 5
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "Nit: I would an article before the subject(s) then (\"an invariant, linear, wrap-around, or periodic input yields (…)\").",
       "parentUuid": "e4618eea_15ea97e3",
+      "range": {
+        "startLine": 359,
+        "startChar": 87,
+        "endLine": 359,
+        "endChar": 93
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_a3dca201",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T16:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247566b9_53e5a44c",
       "range": {
         "startLine": 359,
         "startChar": 87,
