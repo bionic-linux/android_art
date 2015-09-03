@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_7f1742dd",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-03T21:01:40Z",
+      "side": 1,
+      "message": "Well that sort of explains why it\u0027s \u003c31 and not \u003c\u003d31 but only because you already explained that to me offline. It might just need to be a bit more explicit.\n\nFor example a slightly more verbose explanation would be more enlightening:\n\n   // The restriction on the shift factor (using the range [0,31) instead of [0,31]) \n   // is to avoid generating a negative constant (i.e. x \u003c\u003c 31 is the same as x * negative_value).\n\nAnd it also doesn\u0027t address why it\u0027s 0 and 31 and not 12345 and 78910.\n\n   // Don\u0027t handle any values outside of [0,31) because they are unlikely\n   // to occur as a constant in typical code.",
+      "parentUuid": "e486eed4_cf6fbbc5",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240f267a_e69d60d0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 9
