@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a455d63a_774e3037",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T12:09:04Z",
+      "side": 1,
+      "message": "Nit: also mention that you renamed kArenaAllocSuccessor as kArenaAllocSuccessors?",
+      "revId": "1d529d330bf25d6d78b90363bcd012c2511c4e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8480d2c5_395a4b6b",
         "filename": "compiler/optimizing/graph_checker.cc",
         "patchSetId": 2
