@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_6faa2fef",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T21:04:26Z",
+      "side": 1,
+      "message": "Ah, okay. We decided to move that into the instruction simplifier, which is why I did not comment on that further. I added a comment on that as well.",
+      "parentUuid": "6492fe15_7f1742dd",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240f267a_e69d60d0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 9
