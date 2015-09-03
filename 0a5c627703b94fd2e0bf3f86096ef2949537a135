@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_1c8acc0e",
+        "filename": "runtime/base/stack_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-03T15:54:27Z",
+      "side": 1,
+      "message": "This has nothing to do with relying on luck. He\u0027s in the lucky position that the type completely defines the storage size, and then the default parameter will work (we both verified that). I was just jealous, as the same is not possible for dynamically sized things like ShadowFrames.",
+      "parentUuid": "a455d63a_d79a9cd5",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_be139066",
         "filename": "runtime/lambda/art_lambda_method.cc",
         "patchSetId": 2
