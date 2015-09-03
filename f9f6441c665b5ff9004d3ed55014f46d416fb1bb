@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4deb6f4_f2ef0679",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T11:51:24Z",
+      "side": 0,
+      "message": "Keep this check?",
+      "range": {
+        "startLine": 1363,
+        "startChar": 11,
+        "endLine": 1363,
+        "endChar": 12
+      },
+      "revId": "f9f6441c665b5ff9004d3ed55014f46d416fb1bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_151e36a0",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T11:51:24Z",
+      "side": 0,
+      "message": "ditto",
+      "range": {
+        "startLine": 1365,
+        "startChar": 2,
+        "endLine": 1365,
+        "endChar": 11
+      },
+      "revId": "f9f6441c665b5ff9004d3ed55014f46d416fb1bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_91fa3eaa",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T11:51:24Z",
+      "side": 0,
+      "message": "Why removing this (and other checks below)?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 56
+      },
+      "revId": "f9f6441c665b5ff9004d3ed55014f46d416fb1bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

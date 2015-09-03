@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8480d2c5_395a4b6b",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T11:51:24Z",
+      "side": 1,
+      "message": "I\u0027d rather keep a helper for this, the successors.begin() + skip is voodoo stl I\u0027d prefer avoiding. How about HBasicBlock::HasSuccessor(HBasicBlock* handler, bool starting_at)",
+      "range": {
+        "startLine": 174,
+        "startChar": 3,
+        "endLine": 176,
+        "endChar": 91
+      },
+      "revId": "1d529d330bf25d6d78b90363bcd012c2511c4e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
