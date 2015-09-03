@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_d46f5580",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T16:17:00Z",
+      "side": 1,
+      "message": "Okay, but then we are good, since this code visits everything in the same order, every time (viz. I never use map iterators). \n\nI still would like to make the case on having hash maps in the arena format, will bring that up in my first 1:1 with you :-)",
+      "parentUuid": "a455d63a_f79880f8",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_a23293bd",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
