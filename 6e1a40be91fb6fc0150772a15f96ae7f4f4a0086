@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_9cec9ccb",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T16:17:00Z",
+      "side": 1,
+      "message": "You are right, I knew you would say that (I tried to avoid it by adding one at the time but you are too smart for that).\n\nIf this grows more, we make it a vistor, okay?",
+      "parentUuid": "2461e61f_53c22490",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 45
+      },
+      "revId": "6e1a40be91fb6fc0150772a15f96ae7f4f4a0086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "247566b9_f6edbef2",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-03T11:52:29Z",
       "side": 1,
       "message": "I agree with Igor here; I think `value` should be masked with `kMaxIntShiftValue` and the range checking test on `value` removed.",
+      "range": {
+        "startLine": 378,
+        "startChar": 38,
+        "endLine": 378,
+        "endChar": 62
+      },
+      "revId": "6e1a40be91fb6fc0150772a15f96ae7f4f4a0086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64159e82_e84ecb58",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T16:17:00Z",
+      "side": 1,
+      "message": "Well, please note that I don\u0027t do the 31 case (since that would yield a negative multiplier constant; although semantically correct in wrap-around arithmetic, it would confuse the induction a bit).\n\nHow about this compromise: we perform the masking in the instructions simplifier on constants. That way, there is a central place with this knowledge, and all later phases don\u0027t have to jump through the hoops?",
+      "parentUuid": "247566b9_f6edbef2",
       "range": {
         "startLine": 378,
         "startChar": 38,
