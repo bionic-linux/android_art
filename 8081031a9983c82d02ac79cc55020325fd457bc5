@@ -1,0 +1,418 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04d222e7_15a396a1",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "pointer_size? (for consistency)",
+      "range": {
+        "startLine": 848,
+        "startChar": 67,
+        "endLine": 848,
+        "endChar": 75
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_b193ba48",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Nit: Move all this to its new line?",
+      "range": {
+        "startLine": 329,
+        "startChar": 46,
+        "endLine": 330,
+        "endChar": 58
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_b593aa48",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "ArtMethod*?",
+      "range": {
+        "startLine": 595,
+        "startChar": 4,
+        "endLine": 595,
+        "endChar": 8
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8480d2c5_d97317df",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "ArtMethod?",
+      "range": {
+        "startLine": 597,
+        "startChar": 6,
+        "endLine": 597,
+        "endChar": 10
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_718552f8",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "The code below does not do any clearing, so I don\u0027t think this comment is really helpful in this context.",
+      "range": {
+        "startLine": 1373,
+        "startChar": 0,
+        "endLine": 1374,
+        "endChar": 78
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_16b41a0a",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "GcRoot\u003cmirror::String\u003e for consistency with line 1393",
+      "range": {
+        "startLine": 1381,
+        "startChar": 4,
+        "endLine": 1381,
+        "endChar": 8
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8480d2c5_59e707e7",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "ArtField** for consistency.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 4,
+        "endLine": 1419,
+        "endChar": 8
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_1a8df9f8",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Reloc -\u003e Relocation?",
+      "range": {
+        "startLine": 197,
+        "startChar": 7,
+        "endLine": 197,
+        "endChar": 28
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_343d7e56",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Maybe if (kNeedsReadBarrier) UNIMPLEMENTED ?\n\n(here and other places)",
+      "range": {
+        "startLine": 4236,
+        "startChar": 4,
+        "endLine": 4236,
+        "endChar": 46
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04d222e7_157ab6b7",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Same comment: where\u0027s the clearing?",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 80
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8480d2c5_19f18fa1",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "ArtMethod?",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8480d2c5_d9fa377d",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "ArtMethod*?",
+      "range": {
+        "startLine": 495,
+        "startChar": 2,
+        "endLine": 495,
+        "endChar": 6
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_b6c2866c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "nit: one per line?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1066,
+        "endChar": 32
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_944b0af1",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Does that still hold with class unloading?",
+      "range": {
+        "startLine": 1505,
+        "startChar": 46,
+        "endLine": 1505,
+        "endChar": 76
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_71131268",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "\u003d\u003d 8u?",
+      "range": {
+        "startLine": 1507,
+        "startChar": 8,
+        "endLine": 1507,
+        "endChar": 26
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84c53226_310d8a40",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "How about a ClassLinker::IsCrossCompiling or in some other class?",
+      "range": {
+        "startLine": 1508,
+        "startChar": 14,
+        "endLine": 1508,
+        "endChar": 29
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_96bf8ae4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Why don\u0027t we always use the LinearAlloc then, instead of doing calloc when not cross-compiling?",
+      "range": {
+        "startLine": 1508,
+        "startChar": 0,
+        "endLine": 1510,
+        "endChar": 63
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_d6c90291",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:29:55Z",
+      "side": 1,
+      "message": "Is that a TODO that needs to be fixed before submitting?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 38
+      },
+      "revId": "8081031a9983c82d02ac79cc55020325fd457bc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
