@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "8480d2c5_f9bff3e2",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2211,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T08:50:32Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right, I forgot about this.  Yes, making those classes movable sounds good.",
+      "parentUuid": "e486eed4_d46d15fa",
+      "range": {
+        "startLine": 2210,
+        "startChar": 0,
+        "endLine": 2211,
+        "endChar": 39
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46956e6_9777a49a",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 6
