@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8497f201_20a9905e",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T20:29:13Z",
+      "side": 1,
+      "message": "This is one of those \"as needed\" things on my own wishlist. I have written induction variable recognizer that also dealt with narrowing and widening type conversions (provided one can prove that it remains within the valid range).\n\nBut that seems a lot of work for very little gains at the moment.",
+      "parentUuid": "e486eed4_efcde0bc",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "644d9e85_8202cb47",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_cf6fbbc5",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T20:29:13Z",
+      "side": 1,
+      "message": "L379? not enough?",
+      "parentUuid": "644d9e85_8202cb47",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "240f267a_e69d60d0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 9
@@ -47,6 +83,24 @@
       "writtenOn": "2015-09-03T18:32:59Z",
       "side": 1,
       "message": "see 381",
+      "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8497f201_e0b2c8c9",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-03T20:29:13Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "240f267a_e69d60d0",
       "revId": "bcf90a8207bf7198cc1b70a021d7b18fe8aa347a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
