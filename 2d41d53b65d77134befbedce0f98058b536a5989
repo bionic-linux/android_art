@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "a455d63a_f79880f8",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T13:15:48Z",
+      "side": 1,
+      "message": "Rest assured, I\u0027m not :) But by experience, those little things tend to matter, like one run you\u0027re processing two instructions in one order, and the other run it\u0027s a different order. We can\u0027t assume our algorithms are, eg, reflexive.",
+      "parentUuid": "84529221_d4e07e00",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "2d41d53b65d77134befbedce0f98058b536a5989",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0484e2ca_a23293bd",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 6
