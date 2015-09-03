@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "644d9e85_e4bf4fe3",
+        "filename": "runtime/native/java_lang_DexCache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-03T00:26:47Z",
+      "side": 1,
+      "message": "These really shouldn\u0027t occur, maybe a CHECK or DCHECK would be better.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "a3c05a351bbcabf3f8a9ce414623cef5e429d102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
