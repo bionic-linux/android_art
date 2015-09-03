@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4dbaa04_b3318286",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-03T11:54:58Z",
+      "side": 0,
+      "message": "You don\u0027t like delegating the responsibility to GetSingleSuccessor()?",
+      "parentUuid": "a4deb6f4_f2ef0679",
+      "range": {
+        "startLine": 1363,
+        "startChar": 11,
+        "endLine": 1363,
+        "endChar": 12
+      },
+      "revId": "f9f6441c665b5ff9004d3ed55014f46d416fb1bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04d222e7_151e36a0",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-03T11:51:24Z",
       "side": 0,
       "message": "Why removing this (and other checks below)?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 56
+      },
+      "revId": "f9f6441c665b5ff9004d3ed55014f46d416fb1bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_b3c618a1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-03T11:54:58Z",
+      "side": 0,
+      "message": "The check is now in GetSuccessorIndexOf() - it will never return static_cast\u003csize_t\u003e(-1).",
+      "parentUuid": "84c53226_91fa3eaa",
       "range": {
         "startLine": 717,
         "startChar": 0,
