@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2461e61f_b6e9e6f0",
+        "filename": "runtime/base/stack_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "No, really? :-)",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_46088330",
         "filename": "runtime/base/stack_allocator.h",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2015-09-02T23:15:34Z",
       "side": 1,
       "message": "This won\u0027t work. :-(\n\nHowever, for you the default parameter for MakeInstance would work, as you have the templated type. Lucky you...",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a455d63a_d79a9cd5",
+        "filename": "runtime/base/stack_allocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "Do we want to rely on luck?",
+      "parentUuid": "6492fe15_46088330",
       "range": {
         "startLine": 41,
         "startChar": 2,
@@ -94,6 +141,144 @@
     },
     {
       "key": {
+        "uuid": "8480d2c5_b9017b10",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "NumberOf",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_b4df2e76",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "Explain why.",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 85
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4dbaa04_93a79ef0",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "variables",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247566b9_d68c422d",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "isn\u0027t that the definition of shorty?",
+      "range": {
+        "startLine": 102,
+        "startChar": 50,
+        "endLine": 102,
+        "endChar": 88
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_540cc2b6",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "who needs?",
+      "range": {
+        "startLine": 104,
+        "startChar": 51,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_7a6f55c7",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "nit: drop?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4072a51_848bb654",
         "filename": "runtime/lambda/closure.cc",
         "patchSetId": 2
@@ -117,6 +302,29 @@
     },
     {
       "key": {
+        "uuid": "247566b9_f6893e1a",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ecbece_56698abe",
         "filename": "runtime/lambda/closure.cc",
         "patchSetId": 2
@@ -133,6 +341,29 @@
         "startChar": 6,
         "endLine": 191,
         "endChar": 18
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4deb6f4_926f9a81",
+        "filename": "runtime/lambda/closure.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "NumberOf",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 35
       },
       "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -202,6 +433,29 @@
         "startChar": 33,
         "endLine": 153,
         "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4deb6f4_52c932e5",
+        "filename": "runtime/lambda/shorty_field_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-03T14:57:09Z",
+      "side": 1,
+      "message": "Why do we need this when we have PrimitiveType?",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 22
       },
       "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
