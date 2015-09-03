@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2461e61f_53c22490",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T11:52:29Z",
+      "side": 1,
+      "message": "Hum… If this continues to grow, we should think about introducing a visitor for real. :)",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 45
+      },
+      "revId": "6e1a40be91fb6fc0150772a15f96ae7f4f4a0086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247566b9_f6edbef2",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T11:52:29Z",
+      "side": 1,
+      "message": "I agree with Igor here; I think `value` should be masked with `kMaxIntShiftValue` and the range checking test on `value` removed.",
+      "range": {
+        "startLine": 378,
+        "startChar": 38,
+        "endLine": 378,
+        "endChar": 62
+      },
+      "revId": "6e1a40be91fb6fc0150772a15f96ae7f4f4a0086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
