@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2461e61f_93ef9c7a",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T11:42:01Z",
+      "side": 1,
+      "message": "Actually, I\u0027m more used to the second idiom (using a pointer to represent the \"0 or 1\" arity).  But it\u0027s your call. :-)",
+      "parentUuid": "644d9e85_3f857790",
+      "range": {
+        "startLine": 48,
+        "startChar": 45,
+        "endLine": 48,
+        "endChar": 59
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_131e4ea0",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 5
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "Transfer over X yields Y\n(singular subject)?",
       "parentUuid": "2461e61f_f377f098",
+      "range": {
+        "startLine": 359,
+        "startChar": 87,
+        "endLine": 359,
+        "endChar": 93
+      },
+      "revId": "a2d85a849b44a80a616f56b6339e0c3f4b2358d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247566b9_53e5a44c",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-03T11:42:01Z",
+      "side": 1,
+      "message": "Nit: I would an article before the subject(s) then (\"an invariant, linear, wrap-around, or periodic input yields (…)\").",
+      "parentUuid": "e4618eea_15ea97e3",
       "range": {
         "startLine": 359,
         "startChar": 87,
