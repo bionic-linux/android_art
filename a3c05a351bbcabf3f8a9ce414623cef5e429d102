@@ -22,6 +22,30 @@
       "revId": "a3c05a351bbcabf3f8a9ce414623cef5e429d102",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4d42ed5_542da25d",
+        "filename": "runtime/native/java_lang_DexCache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-03T10:54:02Z",
+      "side": 1,
+      "message": "I\u0027ll go with CHECK(). I want to catch messed up runtime internals even in release mode.",
+      "parentUuid": "644d9e85_e4bf4fe3",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "a3c05a351bbcabf3f8a9ce414623cef5e429d102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
