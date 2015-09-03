@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_d46d15fa",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2211,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-09-03T04:38:54Z",
+      "side": 1,
+      "message": "As I understand it, MipsExceptionSlowPath must be either copiable or movable for this transformation to work. However, at the moment MipsExceptionSlowPath is not copiable/movable and nor is MipsLabel that is contained inside of it (MipsLabel derives from Label, which isn\u0027t copiable/movable either). Would you like us to make all three of these classes movable, i.e. include move constructors in all of them?",
+      "parentUuid": "c4dbaa04_9011d48b",
+      "range": {
+        "startLine": 2210,
+        "startChar": 0,
+        "endLine": 2211,
+        "endChar": 39
+      },
+      "revId": "13ddf9e58eae08716b0abffbd4803933ed5d0c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46956e6_9777a49a",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 6
