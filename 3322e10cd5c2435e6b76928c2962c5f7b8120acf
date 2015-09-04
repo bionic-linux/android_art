@@ -2846,6 +2846,30 @@
     },
     {
       "key": {
+        "uuid": "2461e61f_36b5d6b8",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-04T08:17:04Z",
+      "side": 1,
+      "message": "Right.  So it might be worth mentioning in a comment that as `max_short_distance` is expected to be `std::numeric_limits\u003cuint32_t\u003e::max()` in most cases, this code path will be seldom used.\n\nI would also add UNLIKELY() around the condition.",
+      "parentUuid": "44141a88_f39d1ad0",
+      "range": {
+        "startLine": 1129,
+        "startChar": 2,
+        "endLine": 1130,
+        "endChar": 71
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e478ad71_f662e009",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
