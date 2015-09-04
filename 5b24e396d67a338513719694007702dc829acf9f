@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "6492fe15_eb6dcff9",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:59:27Z",
+      "side": 1,
+      "message": "Okay, I added a DCHECK in the two branches, it does not look too bad, and you are right this will remind me to reconsider when adding more cases in case I forget again :-)",
+      "parentUuid": "64159e82_64315f20",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_e4965e3a",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 10
