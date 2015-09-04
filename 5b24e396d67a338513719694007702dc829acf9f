@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44141a88_ae717820",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "Yes, I have to study the impact on the classification a bit more before I can feel good about handling those. For now, this is robust.",
+      "parentUuid": "644d9e85_138aae0e",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_70c21191",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 10
@@ -30,6 +48,24 @@
       "writtenOn": "2015-09-04T23:30:35Z",
       "side": 1,
       "message": "Can you add a comment about the order? If it affects the outcome, or just for better efficiency.",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_24452636",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_70c21191",
       "revId": "5b24e396d67a338513719694007702dc829acf9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e486eed4_44294a64",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "Ah, I do that for phis inside the loop. But for this classification I feel a little better keeping the L230 test (for now). I will give that multi edge some thought later.",
+      "parentUuid": "644d9e85_1394ee01",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04cce27b_9f676c5b",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 10
@@ -64,6 +118,24 @@
       "writtenOn": "2015-09-04T23:30:35Z",
       "side": 1,
       "message": "Can you do some kind of assertion that it\u0027s only for periodic here? I\u0027m a little worried that some other induction class (in the future) may not fit this calculation here.",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64159e82_64315f20",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "Actually, it is periodic or wrap-around and the quickest way is to test !\u003d linear. I am afraid adding more DCHECKS may make this a bit less readable.\n\nBut I shared your concern earlier which is why I added the comments above.",
+      "parentUuid": "04cce27b_9f676c5b",
       "revId": "5b24e396d67a338513719694007702dc829acf9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "644d9e85_b63868b9",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "e486eed4_e4965e3a",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64159e82_11fd4f33",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 10
@@ -98,6 +188,24 @@
       "writtenOn": "2015-09-04T23:30:35Z",
       "side": 1,
       "message": "Can you add an assert for kNeg, a is nullptr?",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44141a88_4eb3a444",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-04T23:56:49Z",
+      "side": 1,
+      "message": "That would be at L104. Good idea. I also check that is not nullptr for the others.",
+      "parentUuid": "64159e82_11fd4f33",
       "revId": "5b24e396d67a338513719694007702dc829acf9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
