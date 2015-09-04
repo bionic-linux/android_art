@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_71c4312b",
+        "filename": "runtime/lambda/art_lambda_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_dc9a24d6",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6492fe15_e622ef7e",
         "filename": "runtime/lambda/art_lambda_method.cc",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "writtenOn": "2015-09-02T23:15:34Z",
       "side": 1,
       "message": "Remove s.",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84529221_31a6b98e",
+        "filename": "runtime/lambda/art_lambda_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_e622ef7e",
       "range": {
         "startLine": 43,
         "startChar": 29,
@@ -284,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "8497f201_e1040a22",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64159e82_4b2399e7",
+      "range": {
+        "startLine": 89,
+        "startChar": 9,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4d42ed5_b4df2e76",
         "filename": "runtime/lambda/art_lambda_method.h",
         "patchSetId": 2
@@ -342,6 +414,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "variables",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64159e82_3954b7c7",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4dbaa04_93a79ef0",
       "range": {
         "startLine": 100,
         "startChar": 42,
@@ -424,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "8497f201_6108fa30",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4d42ed5_540cc2b6",
+      "range": {
+        "startLine": 104,
+        "startChar": 51,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46956e6_7a6f55c7",
         "filename": "runtime/lambda/closure.cc",
         "patchSetId": 2
@@ -435,6 +555,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "nit: drop?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 28
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_38bea8eb",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "(Done)\n\nPersonally I thought you would\u0027ve preferred this since it\u0027s more explicit. After all with a function call like \"GetUnsafeAtOffset\" it could return pretty much anything.",
+      "parentUuid": "a46956e6_7a6f55c7",
       "range": {
         "startLine": 40,
         "startChar": 5,
@@ -517,6 +661,30 @@
     },
     {
       "key": {
+        "uuid": "04cce27b_7cf1d9a0",
+        "filename": "runtime/lambda/closure.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "247566b9_f6893e1a",
+      "range": {
+        "startLine": 140,
+        "startChar": 9,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ecbece_56698abe",
         "filename": "runtime/lambda/closure.cc",
         "patchSetId": 2
@@ -551,6 +719,30 @@
       "writtenOn": "2015-09-03T14:57:09Z",
       "side": 1,
       "message": "NumberOf",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_bd528a73",
+        "filename": "runtime/lambda/closure.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4deb6f4_926f9a81",
       "range": {
         "startLine": 53,
         "startChar": 9,
@@ -610,6 +802,30 @@
     },
     {
       "key": {
+        "uuid": "04cce27b_3ce751e8",
+        "filename": "runtime/lambda/closure.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6492fe15_dc31c485",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 56,
+        "endChar": 18
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e486eed4_beeab01c",
         "filename": "runtime/lambda/closure_builder.cc",
         "patchSetId": 2
@@ -633,6 +849,30 @@
     },
     {
       "key": {
+        "uuid": "84529221_d16ac5b6",
+        "filename": "runtime/lambda/closure_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e486eed4_beeab01c",
+      "range": {
+        "startLine": 33,
+        "startChar": 58,
+        "endLine": 33,
+        "endChar": 72
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4072a51_6467b25c",
         "filename": "runtime/lambda/closure_builder.cc",
         "patchSetId": 2
@@ -644,6 +884,30 @@
       "writtenOn": "2015-09-02T23:15:34Z",
       "side": 1,
       "message": "DCHECK_EQ, or probably !shorty.IsObject()",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cce27b_1c028d13",
+        "filename": "runtime/lambda/closure_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-04T00:29:27Z",
+      "side": 1,
+      "message": "changed as per 33",
+      "parentUuid": "c4072a51_6467b25c",
       "range": {
         "startLine": 153,
         "startChar": 33,
