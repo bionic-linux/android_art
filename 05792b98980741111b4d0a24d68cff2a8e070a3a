@@ -22,6 +22,30 @@
       "revId": "05792b98980741111b4d0a24d68cff2a8e070a3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46956e6_ba272d77",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-04T10:33:26Z",
+      "side": 1,
+      "message": "I\u0027ll leave this as is.",
+      "parentUuid": "a4deb6f4_32990eb6",
+      "range": {
+        "startLine": 1376,
+        "startChar": 70,
+        "endLine": 1378,
+        "endChar": 83
+      },
+      "revId": "05792b98980741111b4d0a24d68cff2a8e070a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
