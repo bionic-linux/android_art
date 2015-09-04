@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4deb6f4_32990eb6",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-04T09:01:25Z",
+      "side": 1,
+      "message": "Oh I see. I guess you can just say \"clearing the top ... through the static_cast\".",
+      "range": {
+        "startLine": 1376,
+        "startChar": 70,
+        "endLine": 1378,
+        "endChar": 83
+      },
+      "revId": "05792b98980741111b4d0a24d68cff2a8e070a3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
