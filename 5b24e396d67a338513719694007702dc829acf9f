@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "644d9e85_138aae0e",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Nicolas had a comment before about multiple back edges cases. Do you plan to handle it?",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_70c21191",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Can you add a comment about the order? If it affects the outcome, or just for better efficiency.",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_1394ee01",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Same, multiple back edge support? Maybe just make sure input 1 .. (size-1) are the same value before continuing?",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cce27b_9f676c5b",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Can you do some kind of assertion that it\u0027s only for periodic here? I\u0027m a little worried that some other induction class (in the future) may not fit this calculation here.",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e486eed4_e4965e3a",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64159e82_11fd4f33",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-04T23:30:35Z",
+      "side": 1,
+      "message": "Can you add an assert for kNeg, a is nullptr?",
+      "revId": "5b24e396d67a338513719694007702dc829acf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
