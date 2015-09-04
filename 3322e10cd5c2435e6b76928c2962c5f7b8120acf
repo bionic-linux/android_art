@@ -2822,6 +2822,30 @@
     },
     {
       "key": {
+        "uuid": "44141a88_f39d1ad0",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-09-04T02:32:52Z",
+      "side": 1,
+      "message": "Not in the normal course of operation. max_short_distance and this if can be removed.",
+      "parentUuid": "64c03e16_adc91d91",
+      "range": {
+        "startLine": 1129,
+        "startChar": 2,
+        "endLine": 1130,
+        "endChar": 71
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e478ad71_f662e009",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 2
