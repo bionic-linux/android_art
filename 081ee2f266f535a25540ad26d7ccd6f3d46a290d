@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4ae4a93_780d613f",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-07T14:01:14Z",
+      "side": 1,
+      "message": "Please use a more revealing name and add documentation. *New* will not be so *new* anymore after a few weeks.",
+      "range": {
+        "startLine": 490,
+        "startChar": 61,
+        "endLine": 490,
+        "endChar": 83
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4deb6f4_f5413029",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 1
