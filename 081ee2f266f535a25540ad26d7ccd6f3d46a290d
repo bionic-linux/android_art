@@ -308,6 +308,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0484e2ca_974ea534",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T17:40:19Z",
+      "side": 1,
+      "message": "Put in the meanwhile, it adds to the memory footprint during analysis. Since we will pass induction_ mapping to next phases, having hundred  \"100 * i + x\" will take a lot less bytes than the same hundred \"(100 * 1) * i + (x + 0)\". So if you only care about the eventually generated code, then yes, but I guess we also care about how much memory the optimizing compiler itself uses, right?",
+      "parentUuid": "a455d63a_fa418500",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
