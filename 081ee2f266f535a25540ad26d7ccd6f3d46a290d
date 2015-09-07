@@ -260,6 +260,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "644d9e85_795b0120",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T17:31:01Z",
+      "side": 1,
+      "message": "No, this is the internal representation of normalized induction expressions. E.g. range analysis, but also loop optimization use these nodes to determine how the induction is formed.\n\nI have a CL ready that does range analysis, and uses this in BCE. I can put that out as a WIP to give you a better idea on how this works. But in essence, the induction_ mapping is what is needed by later phases.",
+      "parentUuid": "a455d63a_9a44c912",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
