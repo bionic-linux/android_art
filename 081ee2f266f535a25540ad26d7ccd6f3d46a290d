@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "64159e82_679961b5",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T17:25:13Z",
+      "side": 1,
+      "message": "Ah, I see, I can rename them in Create if that is the common nomenclature. I also like it when teams use one style consistently, so we all read code easier.",
+      "parentUuid": "e4d42ed5_1a5bc120",
+      "range": {
+        "startLine": 490,
+        "startChar": 61,
+        "endLine": 490,
+        "endChar": 83
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4deb6f4_f5413029",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "My point is that you can rely on HIR simplification, as we are already doing it. The fewer code the better :)",
       "parentUuid": "240f267a_2c375219",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_ce37c116",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T17:25:13Z",
+      "side": 1,
+      "message": "I fully agree with that, which is why I did not have this earlier. But while working with it a bit, it seems a bit of a waste to have all those nodes in memory for nothing (also it makes debugging output easier to read, but that would not be my sole reason).",
+      "parentUuid": "24bd66ca_535b241f",
       "range": {
         "startLine": 496,
         "startChar": 0,
