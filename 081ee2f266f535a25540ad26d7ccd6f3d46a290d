@@ -404,6 +404,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04cce27b_7db5504e",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T20:12:28Z",
+      "side": 1,
+      "message": "Any  \n\nfor (int i \u003d 0; i \u003c 100; i++) {\n  \n}\n\nin Java will already represent the phi node a 1 * i + 0\n(since 0 is the first value, and the stride is 1)\nand the add node\ni_2 \u003d i_1 + 1\n\nas 1 * i + (0 + 1)\n(since it transfers the first representation over the + 1, so we add the 0 value).\n\nIf we need to special cases the transfer operations, we would get horrible convoluted code. But by adding just a few basic rules to the CreateXX() method we avoid the most common cases.\n\nNote that I am generally fully in agreement with you, we should not have two simplifiers if one suffices (for all the good software engineering reasons).\n\nIt is just that a few lines of code at a very well-defined place will save a substantial amount of runtime internal representation, so I thought this would be worthwhile.",
+      "parentUuid": "a4deb6f4_f5aa90b9",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
