@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4deb6f4_f5413029",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T09:14:50Z",
+      "side": 1,
+      "message": "Perform some light-weight....",
+      "range": {
+        "startLine": 493,
+        "startChar": 5,
+        "endLine": 493,
+        "endChar": 52
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4deb6f4_b54ba847",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T09:14:50Z",
+      "side": 1,
+      "message": "Do you actually see this in practice? I\u0027d assume other optimization phases would take care of it already.",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
