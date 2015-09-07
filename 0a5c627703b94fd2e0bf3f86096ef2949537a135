@@ -403,6 +403,30 @@
     },
     {
       "key": {
+        "uuid": "e4d42ed5_bac95591",
+        "filename": "runtime/lambda/art_lambda_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T09:11:11Z",
+      "side": 1,
+      "message": "Ah, yes, missed it.",
+      "parentUuid": "e486eed4_4f4e4c37",
+      "range": {
+        "startLine": 94,
+        "startChar": 5,
+        "endLine": 94,
+        "endChar": 85
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4dbaa04_93a79ef0",
         "filename": "runtime/lambda/art_lambda_method.h",
         "patchSetId": 2
@@ -955,6 +979,30 @@
       "side": 1,
       "message": "TL;DR I wanted to keep the CL shorter to make it easier for reviewers\n\n--\nI need to refactor these together later (as on line 37)\n\nRight now the PrimitiveType assumes everything not a primitive is an object, and I just didn\u0027t want this CL to also have to refactor every other piece of art code where PrimitiveType was used because this is just the infrastructure side of the closures.\n\nAs for the rest of the functionality here, it\u0027s helpful to have it be part of the class instead of the rest of art code hardcoding the logic on what the traits of a type are.",
       "parentUuid": "a4deb6f4_52c932e5",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24bd66ca_d3cc94a3",
+        "filename": "runtime/lambda/shorty_field_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T09:11:11Z",
+      "side": 1,
+      "message": "I understand it might be easier to introduce a new thing, but we will pay the price for it when refactoring two things that prove to work. I hope you prove me wrong when I say these refactorings get lost once we have a working system...",
+      "parentUuid": "84529221_2e453936",
       "range": {
         "startLine": 44,
         "startChar": 7,
