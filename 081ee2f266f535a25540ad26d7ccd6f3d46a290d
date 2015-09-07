@@ -356,6 +356,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6492fe15_4e43b179",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-07T17:53:01Z",
+      "side": 1,
+      "message": "Even if the incoming HIR is fully optimized (and it usually is), just by the nature of analysis, those + 0 and * 1 nodes are generated (otherwise I would have to simplify during analysis, making it even less desirable code).\n\nLook at the tests, not a +0 or *1 in the incoming input. Yet, the analysis by its mechanical nature, generates a lot of those in the internal representation.",
+      "parentUuid": "2461e61f_39b5c7b8",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
