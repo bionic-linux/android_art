@@ -332,6 +332,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2461e61f_39b5c7b8",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T17:45:08Z",
+      "side": 1,
+      "message": "Let\u0027s chat offline, this conversation is ending up like a dialogue of the deaf :-)\n\nI\u0027m not talking about the generated code. I\u0027m taking about whether this induction pass will ever see, eg (1 * a) in the HIR.",
+      "parentUuid": "0484e2ca_974ea534",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
