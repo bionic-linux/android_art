@@ -236,6 +236,30 @@
       "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a455d63a_9a44c912",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-07T17:27:13Z",
+      "side": 1,
+      "message": "But won\u0027t that memory only be there under your test? \n\nRealistically, in production, after we run the simplifier pass, you won\u0027t have those nodes, right?",
+      "parentUuid": "6492fe15_ce37c116",
+      "range": {
+        "startLine": 496,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "081ee2f266f535a25540ad26d7ccd6f3d46a290d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
