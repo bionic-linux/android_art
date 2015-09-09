@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c43d6a4e_c0895ead",
+        "filename": "compiler/optimizing/constant_folding.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-09T16:17:53Z",
+      "side": 1,
+      "message": "One per line",
+      "range": {
+        "startLine": 35,
+        "startChar": 28,
+        "endLine": 36,
+        "endChar": 71
+      },
+      "revId": "e9a044b968fb84c40975ff5c2a3d0460241a2dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24f726e3_034c2e5e",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-09T16:17:53Z",
+      "side": 1,
+      "message": "Why this one?",
+      "range": {
+        "startLine": 726,
+        "startChar": 0,
+        "endLine": 726,
+        "endChar": 72
+      },
+      "revId": "e9a044b968fb84c40975ff5c2a3d0460241a2dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
