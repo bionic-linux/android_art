@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64cf5e9f_b7911b17",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "While this is technically correct, I believe we want something more readable. See, for example, std::ostream\u0026 operator\u003c\u003c(std::ostream\u0026 os, const DRegister\u0026 rhs) at the beginning of this file. We want something similar for type BranchCondition and it should print readable conditions, e.g. \"kCondLT\" and so on.",
+      "range": {
+        "startLine": 563,
+        "startChar": 54,
+        "endLine": 563,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "244c8613_aaa2ef9a",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 619,
+        "startChar": 54,
+        "endLine": 619,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_6eba9346",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Use a named constant. We must have one already, kMipsWordSize.",
+      "range": {
+        "startLine": 742,
+        "startChar": 20,
+        "endLine": 742,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04c1426c_01ec09c8",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 748,
+        "startChar": 20,
+        "endLine": 748,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4bdd6e7_a0a9db60",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 754,
+        "startChar": 20,
+        "endLine": 754,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4c34e74_4ec7cfcc",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 997,
+        "startChar": 54,
+        "endLine": 997,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a40b16a8_6a2cd776",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Unless I\u0027m missing something, this method should\u0027ve stayed const.",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 60
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_23e03436",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1433,
+        "startChar": 24,
+        "endLine": 1433,
+        "endChar": 25
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_030c18b5",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1446,
+        "startChar": 24,
+        "endLine": 1446,
+        "endChar": 25
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84d9b271_94c16c8d",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-10T09:45:49Z",
+      "side": 1,
+      "message": "First, I\u0027m not quite sure we need both of these. This used to work with just one (non-const).\n\nSecondly, there\u0027s too much casting here, IMO.\n\nRoland, what do you think?",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 3
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
