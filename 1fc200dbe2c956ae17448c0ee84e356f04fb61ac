@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "e41fceee_d95393df",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "I can fix this easily, but it trips the same cast requirement as above. Only twice.\n\nCHECK_NE(static_cast\u003cint\u003e(condition), static_cast\u003cint\u003e(kUncond));\n\nI\u0027ll see if I can find a prettier way to write this (and I\u0027ll include it in the next patch-set).",
+      "range": {
+        "startLine": 912,
+        "startChar": 2,
+        "endLine": 912,
+        "endChar": 30
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c34e74_4ec7cfcc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -133,6 +156,52 @@
         "startChar": 54,
         "endLine": 997,
         "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e41fceee_f958d7fd",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "I\u0027ve added UNLIKELY branch prediction as per your request.",
+      "range": {
+        "startLine": 1174,
+        "startChar": 6,
+        "endLine": 1174,
+        "endChar": 14
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4164adc_b85259d8",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "Removed nullptr return, since we return a reference.",
+      "range": {
+        "startLine": 1204,
+        "startChar": 2,
+        "endLine": 1204,
+        "endChar": 40
       },
       "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -163,6 +232,121 @@
     },
     {
       "key": {
+        "uuid": "c4164adc_5848dd26",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "Refactoring here.",
+      "range": {
+        "startLine": 1296,
+        "startChar": 2,
+        "endLine": 1296,
+        "endChar": 31
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e436ee6e_414c725f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1306,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 1306,
+        "startChar": 2,
+        "endLine": 1306,
+        "endChar": 31
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a44076d4_3f238785",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "And here.",
+      "range": {
+        "startLine": 1312,
+        "startChar": 2,
+        "endLine": 1312,
+        "endChar": 31
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6442fedf_9dff4327",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "Note: I will change all CHECKs together with the above CHECK issue in the next patch-set.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 5,
+        "endLine": 1387,
+        "endChar": 64
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e436ee6e_e137c6c6",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "Refactored push.",
+      "range": {
+        "startLine": 1425,
+        "startChar": 6,
+        "endLine": 1425,
+        "endChar": 15
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cedaa4_23e03436",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -179,6 +363,29 @@
         "startChar": 24,
         "endLine": 1433,
         "endChar": 25
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e436ee6e_013d0aa7",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-10T10:25:33Z",
+      "side": 1,
+      "message": "Refactored push.",
+      "range": {
+        "startLine": 1438,
+        "startChar": 6,
+        "endLine": 1438,
+        "endChar": 15
       },
       "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
