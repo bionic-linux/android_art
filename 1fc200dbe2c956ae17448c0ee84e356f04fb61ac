@@ -209,6 +209,52 @@
     },
     {
       "key": {
+        "uuid": "e436ee6e_612c1677",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-10T10:11:44Z",
+      "side": 1,
+      "message": "Naming convention: length, instr_offset, pc_org, offset_size, offset_shift.",
+      "range": {
+        "startLine": 455,
+        "startChar": 15,
+        "endLine": 455,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c43d6a4e_c00abe98",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-10T10:11:44Z",
+      "side": 1,
+      "message": "Why did you make the above code public between PS2 and PS3?",
+      "range": {
+        "startLine": 570,
+        "startChar": 1,
+        "endLine": 570,
+        "endChar": 8
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d9b271_94c16c8d",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 7
@@ -220,6 +266,30 @@
       "writtenOn": "2015-09-10T09:45:49Z",
       "side": 1,
       "message": "First, I\u0027m not quite sure we need both of these. This used to work with just one (non-const).\n\nSecondly, there\u0027s too much casting here, IMO.\n\nRoland, what do you think?",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 3
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e436ee6e_a131bed3",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-10T10:11:44Z",
+      "side": 1,
+      "message": "You would save one cast if you implemented the const version in terms of the non-const.",
+      "parentUuid": "84d9b271_94c16c8d",
       "range": {
         "startLine": 585,
         "startChar": 0,
