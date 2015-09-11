@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "64cf5e9f_66498ef7",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-11T05:26:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we use this, ever.",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64cf5e9f_b7911b17",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -497,6 +520,30 @@
       "side": 1,
       "message": "You would save one cast if you implemented the const version in terms of the non-const.",
       "parentUuid": "84d9b271_94c16c8d",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 3
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44cedaa4_3e6ba6e6",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-11T05:26:56Z",
+      "side": 1,
+      "message": "Is the static_cast\u003cconst...\u003e actually necessary?\n\nAnd is duplication of a one-liner really that bad? const_cast is really ugly, no matter where you put it. I\u0027d rather see the logic of getting the vector element duplicated than the const_cast...",
+      "parentUuid": "e436ee6e_a131bed3",
       "range": {
         "startLine": 585,
         "startChar": 0,
