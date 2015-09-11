@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "44cedaa4_def032a0",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-11T05:34:10Z",
+      "side": 1,
+      "message": "You can remove this. Instead, add constants_mips.h in Android.mk to the files being processed by the generate-operator-out script, and just declare the operator there.\n\nSimilarly, as you have already included assembler_mips.h there, just add the declaration for \u003c\u003c for the condition enum.\n\n(Compare to constants_arm.h)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64cf5e9f_b7911b17",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
