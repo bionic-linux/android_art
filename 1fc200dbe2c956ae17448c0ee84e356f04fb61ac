@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "04c1426c_d5bdabee",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-11T05:28:33Z",
+      "side": 1,
+      "message": "As Alexey noted above, you\u0027re only missing the operator\u003c\u003c (as the CHECK will try to print the values on fail). As soon as that\u0027s there, CHECK_NE(condition, kUncond) should work, I believe.",
+      "parentUuid": "e41fceee_d95393df",
+      "range": {
+        "startLine": 912,
+        "startChar": 2,
+        "endLine": 912,
+        "endChar": 30
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c34e74_4ec7cfcc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
