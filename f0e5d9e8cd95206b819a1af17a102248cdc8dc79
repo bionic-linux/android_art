@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "a46156bd_1d5cd38b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-14T09:05:40Z",
+      "side": 1,
+      "message": "This is an offset field of a branch instruction and it encodes the distance to jump. The distance is effectively expressed as a number of instructions. Just because this happens to be 8 (let\u0027s count: 2 for push, 1 for nal, 1 for lui, 1 for ori, 1 for addu, 1 for lw, 1 for jr), doesn\u0027t mean it has to be changed to twice the machine word size.",
+      "range": {
+        "startLine": 1444,
+        "startChar": 64,
+        "endLine": 1444,
+        "endChar": 83
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44725a92_bd4203d8",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-14T09:05:40Z",
+      "side": 1,
+      "message": "There are more 4\u0027s, e.g. here.",
+      "range": {
+        "startLine": 2031,
+        "startChar": 79,
+        "endLine": 2031,
+        "endChar": 80
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9ea475e_21242eef",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 8
