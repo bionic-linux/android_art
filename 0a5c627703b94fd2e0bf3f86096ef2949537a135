@@ -1012,6 +1012,30 @@
       "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9420f4a_32a24e9e",
+        "filename": "runtime/lambda/shorty_field_type.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-14T18:27:57Z",
+      "side": 1,
+      "message": "I\u0027m going to need to put together a spreadsheet of technical debt and refactoring [as a result of java 8 language support], I can add items like this to it. Then when there\u0027s time to do debt removal we have something concrete to look at so we don\u0027t forget about it.\n\nIf you have some other ideas how to handle it, it would be good to hear it as well. \n\nThe way I see it, we have this challenge of making code reviews go easy and smoothly for the reviewers, vs maintaining a clean code base. FWIW usually the approach for that is to create dependent multiple CLs that can be easily reviewed one after the other.\n\nSo I can fix this right away in an upcoming CL or just leave it until a later cleanup. I know I will need to use this in the new verifier code at some point, so it\u0027s possible the interface to this new type might change further.",
+      "parentUuid": "24bd66ca_d3cc94a3",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "0a5c627703b94fd2e0bf3f86096ef2949537a135",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
