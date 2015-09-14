@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6442fedf_e0233ce9",
+        "filename": "compiler/utils/assembler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Then we will use this, never! :)",
+      "parentUuid": "64cf5e9f_66498ef7",
+      "range": {
+        "startLine": 85,
+        "startChar": 21,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44cedaa4_def032a0",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-11T05:34:10Z",
       "side": 1,
       "message": "You can remove this. Instead, add constants_mips.h in Android.mk to the files being processed by the generate-operator-out script, and just declare the operator there.\n\nSimilarly, as you have already included assembler_mips.h there, just add the declaration for \u003c\u003c for the condition enum.\n\n(Compare to constants_arm.h)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6442fedf_40f8f0b1",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "I tried that, and when I do, the script just gets confused on D0 \u003d 0 in the enum and it halts the compilation. Also it seems that the operator\u003c\u003c is explicitly defined in assembler_arm.cc as well - seems to me that it\u0027s the same reason.",
+      "parentUuid": "44cedaa4_def032a0",
       "range": {
         "startLine": 29,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "09e87b64_82d77a2d",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed. Now using auto-generated operator\u003c\u003c.",
+      "parentUuid": "64cf5e9f_b7911b17",
+      "range": {
+        "startLine": 563,
+        "startChar": 54,
+        "endLine": 563,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "244c8613_aaa2ef9a",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2015-09-10T09:45:49Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 619,
+        "startChar": 54,
+        "endLine": 619,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e87b64_62dc764f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "244c8613_aaa2ef9a",
       "range": {
         "startLine": 619,
         "startChar": 54,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a9f4cf41_ffc13f6b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "e4c34e74_6eba9346",
+      "range": {
+        "startLine": 742,
+        "startChar": 20,
+        "endLine": 742,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04c1426c_01ec09c8",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "490513fd_1cbd15ed",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "04c1426c_01ec09c8",
+      "range": {
+        "startLine": 748,
+        "startChar": 20,
+        "endLine": 748,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4bdd6e7_a0a9db60",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -151,6 +295,30 @@
       "writtenOn": "2015-09-10T09:45:49Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 754,
+        "startChar": 20,
+        "endLine": 754,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44209a82_44692e04",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "a4bdd6e7_a0a9db60",
       "range": {
         "startLine": 754,
         "startChar": 20,
@@ -210,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "a44076d4_9f61734a",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "04c1426c_d5bdabee",
+      "range": {
+        "startLine": 912,
+        "startChar": 2,
+        "endLine": 912,
+        "endChar": 30
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4c34e74_4ec7cfcc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -221,6 +413,30 @@
       "writtenOn": "2015-09-10T09:45:49Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 997,
+        "startChar": 54,
+        "endLine": 997,
+        "endChar": 76
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64211e85_85d5e225",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "e4c34e74_4ec7cfcc",
       "range": {
         "startLine": 997,
         "startChar": 54,
@@ -290,6 +506,30 @@
       "writtenOn": "2015-09-10T09:45:49Z",
       "side": 1,
       "message": "Unless I\u0027m missing something, this method should\u0027ve stayed const.",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 60
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490513fd_fcc1496b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Added back const.",
+      "parentUuid": "a40b16a8_6a2cd776",
       "range": {
         "startLine": 1239,
         "startChar": 0,
@@ -440,6 +680,30 @@
     },
     {
       "key": {
+        "uuid": "691f3755_d5be5ce7",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "44cedaa4_23e03436",
+      "range": {
+        "startLine": 1433,
+        "startChar": 24,
+        "endLine": 1433,
+        "endChar": 25
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e436ee6e_013d0aa7",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -486,6 +750,30 @@
     },
     {
       "key": {
+        "uuid": "09e87b64_42d17235",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "44cedaa4_030c18b5",
+      "range": {
+        "startLine": 1446,
+        "startChar": 24,
+        "endLine": 1446,
+        "endChar": 25
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e436ee6e_612c1677",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 7
@@ -497,6 +785,30 @@
       "writtenOn": "2015-09-10T10:11:44Z",
       "side": 1,
       "message": "Naming convention: length, instr_offset, pc_org, offset_size, offset_shift.",
+      "range": {
+        "startLine": 455,
+        "startChar": 15,
+        "endLine": 455,
+        "endChar": 21
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_612a36bf",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "e436ee6e_612c1677",
       "range": {
         "startLine": 455,
         "startChar": 15,
@@ -591,6 +903,30 @@
       "side": 1,
       "message": "Is the static_cast\u003cconst...\u003e actually necessary?\n\nAnd is duplication of a one-liner really that bad? const_cast is really ugly, no matter where you put it. I\u0027d rather see the logic of getting the vector element duplicated than the const_cast...",
       "parentUuid": "e436ee6e_a131bed3",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 3
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89fb8b33_9ee11d06",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Removed the cast, switched to a duplicate const method.",
+      "parentUuid": "44cedaa4_3e6ba6e6",
       "range": {
         "startLine": 585,
         "startChar": 0,
