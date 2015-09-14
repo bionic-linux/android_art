@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44725a92_684c2b09",
+        "filename": "runtime/lambda/closure_builder.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-14T18:27:57Z",
+      "side": 1,
+      "message": "@yamauchi, sorry about this, I would\u0027ve thought the compiler would be smart enough not to complain about requiring noreturn on the whole function due to an unreachable inside of a branch (even if it *is* a constexpr branch)",
+      "revId": "fc1ccd740b7c8e96dfac675cfc580122cd1b40a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
