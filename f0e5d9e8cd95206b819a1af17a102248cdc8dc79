@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09e87b64_22d66e2f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Added by accident. I will clean up this line in the next patch-set.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_21242eef",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-14T07:08:47Z",
+      "side": 1,
+      "message": "Fixed, we use proper encapsulation for the Branch class and the operator\u003c\u003c methods (for printing enums) are set to be friends.",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 8
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
