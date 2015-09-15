@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a46156bd_11267c4f",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-15T10:07:52Z",
+      "side": 1,
+      "message": "I can see a few more 4u\u0027s and 8u\u0027s.",
+      "parentUuid": "09e87b64_c226a295",
+      "range": {
+        "startLine": 2031,
+        "startChar": 79,
+        "endLine": 2031,
+        "endChar": 80
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9ea475e_21242eef",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 8
