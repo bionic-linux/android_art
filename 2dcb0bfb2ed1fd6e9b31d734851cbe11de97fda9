@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c93f43b4_1332ae26",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-15T16:58:49Z",
+      "side": 1,
+      "message": "This is a non trivial operation. Cache the value.",
+      "range": {
+        "startLine": 1586,
+        "startChar": 7,
+        "endLine": 1586,
+        "endChar": 26
+      },
+      "revId": "2dcb0bfb2ed1fd6e9b31d734851cbe11de97fda9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9420f4a_e9be19e7",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
