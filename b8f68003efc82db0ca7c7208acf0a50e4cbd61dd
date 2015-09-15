@@ -93,6 +93,30 @@
       "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_538abc0f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:38:35Z",
+      "side": 1,
+      "message": "It would make one ternary:\n\n Register target \u003d ... ? obj : out;\n\nand then the branches can be unified.",
+      "parentUuid": "09e87b64_e2b8864c",
+      "range": {
+        "startLine": 4399,
+        "startChar": 33,
+        "endLine": 4399,
+        "endChar": 36
+      },
+      "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
