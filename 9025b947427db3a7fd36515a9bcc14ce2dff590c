@@ -22,6 +22,30 @@
       "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e87b64_c2c582c6",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4472,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T16:34:19Z",
+      "side": 1,
+      "message": "Structure? I assume you mean implementation?\n\nAn array can be exactly of Interface[], whereas an Object cannot be of class Interface. Therefore, the array check can do a cheap class comparison check and then go to slow path if it fails. For regular objects, we know the class comparison will fail against an interface.",
+      "parentUuid": "648afea0_c9de24d1",
+      "range": {
+        "startLine": 4450,
+        "startChar": 4,
+        "endLine": 4472,
+        "endChar": 5
+      },
+      "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
