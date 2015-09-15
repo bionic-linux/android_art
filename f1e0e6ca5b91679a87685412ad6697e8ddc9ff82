@@ -1,0 +1,366 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44209a82_a76664af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "check-cast and instance-of",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_84ae68b9",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "This is wrong from code size perspective. We can emit a loop that goes back to the LoadFromOffset() above, instead of repeating the LoadFromOffset()+Unpoison()+CompareAndBranchIfZero() in the kClassHierarchyCheck path.\n\nSame for check-cast and other architectures.",
+      "range": {
+        "startLine": 4422,
+        "startChar": 6,
+        "endLine": 4422,
+        "endChar": 26
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_55124cd5",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4432,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "This is backward branch, so it\u0027s never CBNZ. We could use \"CBZ zero; B loop\" which would make smaller code but it could negatively impact performance.",
+      "range": {
+        "startLine": 4432,
+        "startChar": 6,
+        "endLine": 4432,
+        "endChar": 47
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89fb8b33_9ecc7dc0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4433,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "\"out\" is null i.e. 0, so we could jump straight to \"done\".",
+      "range": {
+        "startLine": 4433,
+        "startChar": 6,
+        "endLine": 4433,
+        "endChar": 18
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490513fd_bccf41b4",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4443,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Jump to \"done\". If out is null, i.e. 0, we don\u0027t need to reload the 0.",
+      "range": {
+        "startLine": 4443,
+        "startChar": 6,
+        "endLine": 4443,
+        "endChar": 44
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_7e33ed2d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4446,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "What about\n\n  static_assert(Primitive::kPrimNot \u003d\u003d 0, \"...\");\n  __ CompareAndBranchIfNotZero(out, \u0026zero);",
+      "range": {
+        "startLine": 4445,
+        "startChar": 0,
+        "endLine": 4446,
+        "endChar": 22
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_d5fd3cdc",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4469,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Use zero.IsLinked() just as you do for arm64.",
+      "range": {
+        "startLine": 4469,
+        "startChar": 10,
+        "endLine": 4469,
+        "endChar": 26
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490513fd_9ccc85c0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4476,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4476,
+        "startChar": 6,
+        "endLine": 4476,
+        "endChar": 22
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_c4cb5087",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4481,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 4481,
+        "startChar": 6,
+        "endLine": 4481,
+        "endChar": 22
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_5e383106",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4597,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "kPrimNot \u003d\u003d 0 as above.",
+      "range": {
+        "startLine": 4596,
+        "startChar": 0,
+        "endLine": 4597,
+        "endChar": 43
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_b5fac0e0",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2311,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "LDR and CBNZ do not set flags. Assuming that reference unpoisoning doesn\u0027t modify flags, this could be replaced with CSET. This is especially helpful if we didn\u0027t do the null check - we can also avoid the branch below; though \"success\" would be a misnomer as the kAbstractClassCheck would need to branch to it (unless rewritten separately as suggested for arm).",
+      "range": {
+        "startLine": 2309,
+        "startChar": 0,
+        "endLine": 2311,
+        "endChar": 21
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_95f7c4fa",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Go straight to \"done\".",
+      "range": {
+        "startLine": 2319,
+        "startChar": 19,
+        "endLine": 2319,
+        "endChar": 23
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_de432179",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "kPrimNot \u003d\u003d 0, so there is the option of using CBZ. There\u0027s also the possibility of using CSEL.",
+      "range": {
+        "startLine": 2321,
+        "startChar": 0,
+        "endLine": 2323,
+        "endChar": 21
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44209a82_c7a9a0fa",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2335,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Only if we did the null check.",
+      "range": {
+        "startLine": 2335,
+        "startChar": 6,
+        "endLine": 2335,
+        "endChar": 18
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93f43b4_b39f621e",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5058,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Why not\n\n  __ cmpw(Address(out, primitive_offset), Immediate(Primitive::kPrimNot));\n\n? Same for check-cast and x86-64.",
+      "range": {
+        "startLine": 5057,
+        "startChar": 0,
+        "endLine": 5058,
+        "endChar": 51
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490513fd_7c0d39b1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4738,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-15T20:10:40Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
