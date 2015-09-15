@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c93f43b4_305da8da",
+        "filename": "test/530-checker-regression-reftype-final/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T10:50:17Z",
+      "side": 1,
+      "message": "add (RTP)",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "506098ba63fad793deb315628417d90b3158f550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9f4cf41_5f0cab04",
+        "filename": "test/530-checker-regression-reftype-final/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T10:50:17Z",
+      "side": 1,
+      "message": "expectTrue",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "506098ba63fad793deb315628417d90b3158f550",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
