@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46156bd_917c4cf7",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4398,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:29:44Z",
+      "side": 1,
+      "message": "indent",
+      "range": {
+        "startLine": 4398,
+        "startChar": 2,
+        "endLine": 4398,
+        "endChar": 4
+      },
+      "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_d16c0444",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:29:44Z",
+      "side": 1,
+      "message": "Would look simpler if you made a temporary for this assigned by a ternary.",
+      "range": {
+        "startLine": 4399,
+        "startChar": 33,
+        "endLine": 4399,
+        "endChar": 36
+      },
+      "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
