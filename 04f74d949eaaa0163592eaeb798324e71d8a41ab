@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09e87b64_c24c620a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4421,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T17:01:16Z",
+      "side": 1,
+      "message": "What do you mean not trivial? The FALLTHROUGH_INTENDED looks pretty explicit :-)",
+      "parentUuid": "64211e85_05001275",
+      "range": {
+        "startLine": 4421,
+        "startChar": 6,
+        "endLine": 4421,
+        "endChar": 26
+      },
+      "revId": "04f74d949eaaa0163592eaeb798324e71d8a41ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46156bd_ac4ad799",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 4
