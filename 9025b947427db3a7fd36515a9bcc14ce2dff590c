@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "648afea0_c9de24d1",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4472,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:31:05Z",
+      "side": 1,
+      "message": "I\u0027m curious. Why the difference in structure between those cases?",
+      "range": {
+        "startLine": 4450,
+        "startChar": 4,
+        "endLine": 4472,
+        "endChar": 5
+      },
+      "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
