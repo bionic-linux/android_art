@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "691f3755_75e42853",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T17:01:16Z",
+      "side": 1,
+      "message": "Not sure I want to cache a mirror::Class or a handle in HGraphBuilder. But it will be addressed with the TODO line 1584.",
+      "parentUuid": "c93f43b4_1332ae26",
+      "range": {
+        "startLine": 1586,
+        "startChar": 7,
+        "endLine": 1586,
+        "endChar": 26
+      },
+      "revId": "2dcb0bfb2ed1fd6e9b31d734851cbe11de97fda9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9420f4a_e9be19e7",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
