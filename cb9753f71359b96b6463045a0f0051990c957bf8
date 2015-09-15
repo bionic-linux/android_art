@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9ea475e_414f3231",
+        "filename": "runtime/gc/reference_queue.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T09:17:58Z",
+      "side": 1,
+      "message": "by mutator -\u003e  by a mutator",
+      "range": {
+        "startLine": 118,
+        "startChar": 52,
+        "endLine": 118,
+        "endChar": 62
+      },
+      "revId": "cb9753f71359b96b6463045a0f0051990c957bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_db4fb3fc",
+        "filename": "runtime/gc/reference_queue.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T09:17:58Z",
+      "side": 1,
+      "message": "Could you do } else { // check read barriers are enabled ?",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "cb9753f71359b96b6463045a0f0051990c957bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
