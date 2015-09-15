@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8478d270_004e2735",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:48:20Z",
+      "side": 1,
+      "message": "(Would be irrelevant if our assemblers would remove useless jumps...)",
+      "parentUuid": "0465c2c3_441aef3a",
+      "range": {
+        "startLine": 4394,
+        "startChar": 2,
+        "endLine": 4396,
+        "endChar": 3
+      },
+      "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e467cecb_f37910c4",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
