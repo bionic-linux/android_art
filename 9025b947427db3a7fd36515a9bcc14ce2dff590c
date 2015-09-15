@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0465c2c3_441aef3a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4396,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:46:43Z",
+      "side": 1,
+      "message": "How about initializing output to zero? Then this becomes a jump to done, and quite a bit of the rest becomes simpler (no branch-overs to zero or done).",
+      "range": {
+        "startLine": 4394,
+        "startChar": 2,
+        "endLine": 4396,
+        "endChar": 3
+      },
+      "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_f37910c4",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 4458,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-15T16:46:43Z",
+      "side": 1,
+      "message": "Same optimization as below (skip if zero not used, which should be true here?)",
+      "range": {
+        "startLine": 4458,
+        "startChar": 6,
+        "endLine": 4458,
+        "endChar": 18
+      },
+      "revId": "9025b947427db3a7fd36515a9bcc14ce2dff590c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "648afea0_c9de24d1",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
