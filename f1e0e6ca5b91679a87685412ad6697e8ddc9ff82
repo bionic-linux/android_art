@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "44725a92_c6536478",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "if you break initialization, it becomes one per line",
+      "range": {
+        "startLine": 275,
+        "startChar": 35,
+        "endLine": 275,
+        "endChar": 44
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9ea475e_84ae68b9",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 6
@@ -209,6 +232,29 @@
     },
     {
       "key": {
+        "uuid": "e467cecb_8e7c27f7",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4533,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "const on all these locals",
+      "range": {
+        "startLine": 4533,
+        "startChar": 66,
+        "endLine": 4533,
+        "endChar": 69
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2900dfee_5e383106",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 6
@@ -225,6 +271,29 @@
         "startChar": 0,
         "endLine": 4597,
         "endChar": 43
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_ae672b5d",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "one per line",
+      "range": {
+        "startLine": 413,
+        "startChar": 21,
+        "endLine": 413,
+        "endChar": 32
       },
       "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -324,6 +393,63 @@
     },
     {
       "key": {
+        "uuid": "a46156bd_8326c192",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2410,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 2410,
+        "startChar": 66,
+        "endLine": 2410,
+        "endChar": 69
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_a323c582",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "one per line",
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "848ff2ac_48977008",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4987,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "const",
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c93f43b4_b39f621e",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 6
@@ -347,6 +473,23 @@
     },
     {
       "key": {
+        "uuid": "c45e4afd_44758b0a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4695,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "document the enum for the first time reader?",
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "490513fd_7c0d39b1",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -358,6 +501,29 @@
       "writtenOn": "2015-09-15T20:10:40Z",
       "side": 1,
       "message": "Line too long.",
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8478d270_36c7ed9f",
+        "filename": "test/530-instanceof-checkcast/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-15T21:46:46Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 35,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 27
+      },
       "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
