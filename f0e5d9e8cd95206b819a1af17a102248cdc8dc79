@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "09e87b64_e229a665",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-15T09:57:58Z",
+      "side": 1,
+      "message": "Fixed, added a comment for clarification.",
+      "parentUuid": "a46156bd_1d5cd38b",
+      "range": {
+        "startLine": 1444,
+        "startChar": 64,
+        "endLine": 1444,
+        "endChar": 83
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44725a92_bd4203d8",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 8
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-14T09:05:40Z",
       "side": 1,
       "message": "There are more 4\u0027s, e.g. here.",
+      "range": {
+        "startLine": 2031,
+        "startChar": 79,
+        "endLine": 2031,
+        "endChar": 80
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e87b64_c226a295",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-09-15T09:57:58Z",
+      "side": 1,
+      "message": "No more 4\u0027s.",
+      "parentUuid": "44725a92_bd4203d8",
       "range": {
         "startLine": 2031,
         "startChar": 79,
