@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "691f3755_355d90da",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-15T15:54:09Z",
+      "side": 1,
+      "message": "Done, not necessary much better:P",
+      "parentUuid": "845371c9_ac1687d6",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 54
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "444df958_11b04cc6",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-08-30T16:41:14Z",
       "side": 1,
       "message": "indentation is off",
+      "range": {
+        "startLine": 843,
+        "startChar": 0,
+        "endLine": 843,
+        "endChar": 50
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93f43b4_b04cf808",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-15T15:54:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444df958_11b04cc6",
       "range": {
         "startLine": 843,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "64211e85_4535aa70",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-15T15:54:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "444df958_31ad506f",
+      "range": {
+        "startLine": 1163,
+        "startChar": 20,
+        "endLine": 1163,
+        "endChar": 22
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24656596_dcbfed78",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-08-30T16:41:14Z",
       "side": 1,
       "message": "This doesn\u0027t seem to belong to this CL.",
+      "range": {
+        "startLine": 2479,
+        "startChar": 8,
+        "endLine": 2479,
+        "endChar": 56
+      },
+      "revId": "45e9d65f4bcaead4035a236b2b09060288e1da0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9f4cf41_5f682b7c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2479,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-15T15:54:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24656596_dcbfed78",
       "range": {
         "startLine": 2479,
         "startChar": 8,
