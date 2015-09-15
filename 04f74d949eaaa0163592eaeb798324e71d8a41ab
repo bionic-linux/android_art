@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46156bd_ac4ad799",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4989,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-15T16:54:00Z",
+      "side": 1,
+      "message": "You should use NearLabel for these, to generate shorter jumps.",
+      "range": {
+        "startLine": 4989,
+        "startChar": 2,
+        "endLine": 4989,
+        "endChar": 7
+      },
+      "revId": "04f74d949eaaa0163592eaeb798324e71d8a41ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9420f4a_2932e126",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5162,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-15T16:54:00Z",
+      "side": 1,
+      "message": "NearLabel",
+      "range": {
+        "startLine": 5162,
+        "startChar": 2,
+        "endLine": 5162,
+        "endChar": 7
+      },
+      "revId": "04f74d949eaaa0163592eaeb798324e71d8a41ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_130da43f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5202,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-15T16:54:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 5202,
+        "startChar": 6,
+        "endLine": 5202,
+        "endChar": 11
+      },
+      "revId": "04f74d949eaaa0163592eaeb798324e71d8a41ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e467cecb_3322a8b3",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4717,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-15T16:54:00Z",
+      "side": 1,
+      "message": "Label -\u003e NearLabel for all this new code.",
+      "range": {
+        "startLine": 4717,
+        "startChar": 2,
+        "endLine": 4717,
+        "endChar": 7
+      },
+      "revId": "04f74d949eaaa0163592eaeb798324e71d8a41ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
