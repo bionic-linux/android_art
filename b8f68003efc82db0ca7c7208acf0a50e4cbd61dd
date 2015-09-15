@@ -117,6 +117,30 @@
       "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_a1a5dee9",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4399,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-15T16:51:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e467cecb_538abc0f",
+      "range": {
+        "startLine": 4399,
+        "startChar": 33,
+        "endLine": 4399,
+        "endChar": 36
+      },
+      "revId": "b8f68003efc82db0ca7c7208acf0a50e4cbd61dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
