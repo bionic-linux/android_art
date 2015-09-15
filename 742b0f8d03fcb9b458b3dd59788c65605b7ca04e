@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "648afea0_491854b1",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-15T10:07:52Z",
+      "side": 1,
+      "message": "So, now you\u0027re using offset + kMipsWordSizeOffset here but in pretty much the same situation at the end of the function you\u0027re using offset + kMipsWordSize. This is odd. Couldn\u0027t the same named constant be used in such cases?",
+      "range": {
+        "startLine": 795,
+        "startChar": 48,
+        "endLine": 795,
+        "endChar": 67
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
