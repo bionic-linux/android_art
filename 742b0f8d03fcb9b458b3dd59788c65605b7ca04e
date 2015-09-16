@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2900dfee_decd6146",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T11:03:09Z",
+      "side": 1,
+      "message": "I\u0027d go for solution #3 + a small comment about this to explain the static_cast.",
+      "parentUuid": "8478d270_67f0cd5b",
+      "range": {
+        "startLine": 795,
+        "startChar": 48,
+        "endLine": 795,
+        "endChar": 67
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "490513fd_7fae4bbc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 9
