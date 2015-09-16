@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "691f3755_d8ec51f7",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Thanks for adding this explanation.",
+      "parentUuid": "09e87b64_e229a665",
+      "range": {
+        "startLine": 1444,
+        "startChar": 64,
+        "endLine": 1444,
+        "endChar": 83
+      },
+      "revId": "f0e5d9e8cd95206b819a1af17a102248cdc8dc79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44725a92_bd4203d8",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 8
