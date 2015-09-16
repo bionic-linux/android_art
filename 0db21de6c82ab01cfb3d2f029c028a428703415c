@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a46156bd_19677e5c",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1990,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-16T12:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8478d270_c7ae01bb",
+      "range": {
+        "startLine": 1990,
+        "startChar": 4,
+        "endLine": 1990,
+        "endChar": 15
+      },
+      "revId": "0db21de6c82ab01cfb3d2f029c028a428703415c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "648afea0_b5e04b38",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-16T02:45:03Z",
       "side": 1,
       "message": "Capitalize.",
+      "range": {
+        "startLine": 2006,
+        "startChar": 5,
+        "endLine": 2006,
+        "endChar": 6
+      },
+      "revId": "0db21de6c82ab01cfb3d2f029c028a428703415c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c45e4afd_732250b4",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2006,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-16T12:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "648afea0_b5e04b38",
       "range": {
         "startLine": 2006,
         "startChar": 5,
