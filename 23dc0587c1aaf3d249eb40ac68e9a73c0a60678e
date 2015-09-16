@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c93f43b4_f3bbaa46",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T15:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2900dfee_7e252dee",
+      "revId": "23dc0587c1aaf3d249eb40ac68e9a73c0a60678e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09e87b64_22f30e1c",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c93f43b4_d3b8a64c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4695,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T15:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09e87b64_22f30e1c",
+      "range": {
+        "startLine": 4695,
+        "startChar": 11,
+        "endLine": 4695,
+        "endChar": 24
+      },
+      "revId": "23dc0587c1aaf3d249eb40ac68e9a73c0a60678e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "691f3755_35eeb031",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2015-09-15T17:13:13Z",
       "side": 1,
       "message": "long line",
+      "range": {
+        "startLine": 4738,
+        "startChar": 99,
+        "endLine": 4738,
+        "endChar": 106
+      },
+      "revId": "23dc0587c1aaf3d249eb40ac68e9a73c0a60678e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64211e85_48977f36",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4738,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T15:36:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "691f3755_35eeb031",
       "range": {
         "startLine": 4738,
         "startChar": 99,
