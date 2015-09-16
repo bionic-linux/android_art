@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09e87b64_05fa547c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T16:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44725a92_f06d6b88",
+      "range": {
+        "startLine": 288,
+        "startChar": 41,
+        "endLine": 288,
+        "endChar": 50
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6473de94_f779f3c3",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a9f4cf41_a200400c",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T16:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6473de94_f779f3c3",
+      "range": {
+        "startLine": 428,
+        "startChar": 41,
+        "endLine": 428,
+        "endChar": 50
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0465c2c3_ab02b611",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2015-09-16T15:45:17Z",
       "side": 1,
       "message": "overwrites?",
+      "range": {
+        "startLine": 304,
+        "startChar": 41,
+        "endLine": 304,
+        "endChar": 50
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_445aa01b",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T16:00:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0465c2c3_ab02b611",
       "range": {
         "startLine": 304,
         "startChar": 41,
