@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "64211e85_28940302",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 4422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-16T16:24:43Z",
+      "side": 1,
+      "message": "The LoadFromOffset at line 4419 above.",
+      "parentUuid": "e9ea475e_840f883a",
+      "range": {
+        "startLine": 4422,
+        "startChar": 6,
+        "endLine": 4422,
+        "endChar": 26
+      },
+      "revId": "f1e0e6ca5b91679a87685412ad6697e8ddc9ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "691f3755_55124cd5",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 6
