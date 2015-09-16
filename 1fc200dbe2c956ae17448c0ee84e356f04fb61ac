@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "c93f43b4_133bce9a",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Thanks, this is much better.",
+      "parentUuid": "c4164adc_b85259d8",
+      "range": {
+        "startLine": 1204,
+        "startChar": 2,
+        "endLine": 1204,
+        "endChar": 40
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a40b16a8_6a2cd776",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 7
@@ -553,6 +577,30 @@
       "writtenOn": "2015-09-10T10:25:33Z",
       "side": 1,
       "message": "Refactoring here.",
+      "range": {
+        "startLine": 1296,
+        "startChar": 2,
+        "endLine": 1296,
+        "endChar": 31
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_be1cd572",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Good!",
+      "parentUuid": "c4164adc_5848dd26",
       "range": {
         "startLine": 1296,
         "startChar": 2,
@@ -645,6 +693,30 @@
       "writtenOn": "2015-09-10T10:25:33Z",
       "side": 1,
       "message": "Refactored push.",
+      "range": {
+        "startLine": 1425,
+        "startChar": 6,
+        "endLine": 1425,
+        "endChar": 15
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_f8ef0de9",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1425,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "e436ee6e_e137c6c6",
       "range": {
         "startLine": 1425,
         "startChar": 6,
@@ -927,6 +999,30 @@
       "side": 1,
       "message": "Removed the cast, switched to a duplicate const method.",
       "parentUuid": "44cedaa4_3e6ba6e6",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 3
+      },
+      "revId": "1fc200dbe2c956ae17448c0ee84e356f04fb61ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93f43b4_3336d2b4",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Thanks, I prefer this solution too.",
+      "parentUuid": "89fb8b33_9ee11d06",
       "range": {
         "startLine": 585,
         "startChar": 0,
