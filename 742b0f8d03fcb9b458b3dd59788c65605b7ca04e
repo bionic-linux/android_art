@@ -22,6 +22,191 @@
       "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_3e09e533",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Agreed, we could just have kMipsWordSize.",
+      "parentUuid": "648afea0_491854b1",
+      "range": {
+        "startLine": 795,
+        "startChar": 48,
+        "endLine": 795,
+        "endChar": 67
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490513fd_7fae4bbc",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "instructions",
+      "range": {
+        "startLine": 1443,
+        "startChar": 19,
+        "endLine": 1443,
+        "endChar": 30
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691f3755_78d77d2e",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Push(IncreaseFrameSize(ADDIU) + SW)",
+      "range": {
+        "startLine": 1443,
+        "startChar": 40,
+        "endLine": 1443,
+        "endChar": 47
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e87b64_025daa87",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Replace with\n\n  !IsAligned\u003ckMipsDoublewordSize\u003e\n\n(here and below).",
+      "range": {
+        "startLine": 1645,
+        "startChar": 29,
+        "endLine": 1645,
+        "endChar": 43
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_fe225db2",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1917,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Nit: long line (put one argument per line).",
+      "range": {
+        "startLine": 1917,
+        "startChar": 0,
+        "endLine": 1917,
+        "endChar": 107
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2900dfee_de1fa166",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1945,
+        "startChar": 0,
+        "endLine": 1945,
+        "endChar": 101
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93f43b4_d317860f",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Please sort these #includes by file names.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89fb8b33_c112248f",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-16T10:30:39Z",
+      "side": 1,
+      "message": "Likewise.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
