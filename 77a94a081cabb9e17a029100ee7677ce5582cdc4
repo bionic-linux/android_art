@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "44209a82_0a457f35",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-16T16:24:43Z",
+      "side": 1,
+      "message": "This is good for readability but it is still 2 or 3 extra instructions compared to\n\n      __ Bind(\u0026loop);\n      __ LoadFromOffset(kLoadWord, out, out, super_offset);\n      __ MaybeUnpoisonHeapReference(out);\n      // We can go to `done` if out is already zero.\n      __ CompareAndBranchIfZero(out, \u0026done);  // CBZ unless out is high reg.\n      // Branch here from kClassHierarchyCheck, see below.\n      __ cmp(out, ShifterOperand(cls));\n      __ b(\u0026loop, NE);\n      __ LoadImmediate(out, 1);\n      if (zero.IsLinked()) {\n        __ b(\u0026done);\n      }\n\nThis would save \"__ b(\u0026abstract_entry);\" and the unconditional \"__ b(\u0026done)\" and likely also use actual CBZ instead of CMP+Bcc.\n\nIt would be actually better for kClassHierarchyCheck to jump into the middle of _this_ loop, potentially saving one instruction on the CBZ.",
+      "range": {
+        "startLine": 4419,
+        "startChar": 6,
+        "endLine": 4419,
+        "endChar": 28
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ea475e_a44a8c41",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4445,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-16T16:24:43Z",
+      "side": 1,
+      "message": "\"if\" - Using \"because\" before we actually compare is odd.",
+      "range": {
+        "startLine": 4445,
+        "startChar": 29,
+        "endLine": 4445,
+        "endChar": 36
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6473de94_f779f3c3",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 7
@@ -89,6 +135,29 @@
         "startChar": 41,
         "endLine": 428,
         "endChar": 50
+      },
+      "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09e87b64_850f843a",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2309,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-16T16:24:43Z",
+      "side": 1,
+      "message": "Similar to Thumb2, you can avoid this instruction if you implement kClassHierarchyCheck by jumping into kAbstractClassCheck rather than the other way around. Unlike Thumb2, you\u0027re not getting any extra benefits from CBZ but code size for kClassHierarchyCheck will remain the same while kAbstractClassCheck will have 2 fewer instructions.\n\nSame for x86/x86-64.",
+      "range": {
+        "startLine": 2309,
+        "startChar": 6,
+        "endLine": 2309,
+        "endChar": 18
       },
       "revId": "77a94a081cabb9e17a029100ee7677ce5582cdc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
