@@ -93,6 +93,30 @@
       "revId": "cb9753f71359b96b6463045a0f0051990c957bf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9f4cf41_421f349b",
+        "filename": "runtime/gc/reference_queue.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-16T12:35:13Z",
+      "side": 1,
+      "message": "Oh indeed, line was too far way for gerrit. Thanks!",
+      "parentUuid": "0465c2c3_44ae6fd0",
+      "range": {
+        "startLine": 123,
+        "startChar": 6,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "cb9753f71359b96b6463045a0f0051990c957bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
