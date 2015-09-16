@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8478d270_67f0cd5b",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-09-16T10:49:10Z",
+      "side": 1,
+      "message": "There\u0027s a little problem here, though. kMipsWordSize is of type size_t. Adding it to offset, which is int32_t, makes the sum size_t as well and affects the result of IsInt\u003c16\u003e(). The original constant 4 in place of kMipsWordSizeOffset did not have this problem because it was of type signed int. There are several workarounds possible:\n1. revert kMipsWordSizeOffset back to 4\n2. keep this ugly kMipsWordSizeOffset\n3. cast kMipsWordSize or, better yet, offset + kMipsWordSize to int32_t\n4. introduce int32_t offset_hi \u003d offset + kMipsWordSize; and use it here\n5. is anything nicer possible at all?\nWhat\u0027s your opinion?",
+      "parentUuid": "2900dfee_3e09e533",
+      "range": {
+        "startLine": 795,
+        "startChar": 48,
+        "endLine": 795,
+        "endChar": 67
+      },
+      "revId": "742b0f8d03fcb9b458b3dd59788c65605b7ca04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "490513fd_7fae4bbc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 9
