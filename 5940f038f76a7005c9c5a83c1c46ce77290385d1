@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "693e57ee_5d24fbef",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-17T15:51:28Z",
+      "side": 1,
+      "message": "A Phi loop will always have its inputs \u003e\u003d 2, at least for the imcoming edge, and one back edge.",
+      "parentUuid": "299c5f29_21a20a9e",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "5940f038f76a7005c9c5a83c1c46ce77290385d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e986c7d4_c111e21a",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 1
