@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95bef3d_470cee04",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-17T10:12:40Z",
+      "side": 1,
+      "message": "Isn\u0027t that HInstruction::IsLoopHeaderPhi?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "5940f038f76a7005c9c5a83c1c46ce77290385d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e986c7d4_c111e21a",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-17T10:12:40Z",
+      "side": 1,
+      "message": "What does unit mean in this context? Please add comments.",
+      "range": {
+        "startLine": 158,
+        "startChar": 27,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "5940f038f76a7005c9c5a83c1c46ce77290385d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
