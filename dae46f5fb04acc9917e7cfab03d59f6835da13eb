@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c98d83f4_806e7638",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-17T12:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c98d83f4_c07a3ef9",
+      "range": {
+        "startLine": 803,
+        "startChar": 54,
+        "endLine": 804,
+        "endChar": 74
+      },
+      "revId": "dae46f5fb04acc9917e7cfab03d59f6835da13eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8952ab21_463e32a5",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0984fbca_e2d74660",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-17T12:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8952ab21_463e32a5",
+      "range": {
+        "startLine": 823,
+        "startChar": 11,
+        "endLine": 823,
+        "endChar": 41
+      },
+      "revId": "dae46f5fb04acc9917e7cfab03d59f6835da13eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "494c338b_c4ee9e7d",
         "filename": "compiler/optimizing/builder.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-09-17T11:08:08Z",
       "side": 1,
       "message": "I\u0027d drop if the other method is named HandleStringInit.",
+      "range": {
+        "startLine": 288,
+        "startChar": 12,
+        "endLine": 288,
+        "endChar": 18
+      },
+      "revId": "dae46f5fb04acc9917e7cfab03d59f6835da13eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95bef3d_677a5252",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-17T12:05:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494c338b_c4ee9e7d",
       "range": {
         "startLine": 288,
         "startChar": 12,
