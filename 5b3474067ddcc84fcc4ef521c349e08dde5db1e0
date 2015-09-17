@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95bef3d_27ab3af2",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 4423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-17T13:17:34Z",
+      "side": 1,
+      "message": "I still think this is poorly worded.",
+      "range": {
+        "startLine": 4423,
+        "startChar": 6,
+        "endLine": 4423,
+        "endChar": 57
+      },
+      "revId": "5b3474067ddcc84fcc4ef521c349e08dde5db1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95bef3d_c7b8de4c",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-17T13:17:34Z",
+      "side": 1,
+      "message": "Why not \"__ \"? (Also below.)",
+      "range": {
+        "startLine": 2298,
+        "startChar": 6,
+        "endLine": 2298,
+        "endChar": 22
+      },
+      "revId": "5b3474067ddcc84fcc4ef521c349e08dde5db1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
