@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99c0776_6bd11d36",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4752,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T18:10:07Z",
+      "side": 1,
+      "message": "This needs it blocks, I think. I\u0027ll do that...",
+      "range": {
+        "startLine": 4752,
+        "startChar": 4,
+        "endLine": 4752,
+        "endChar": 53
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
