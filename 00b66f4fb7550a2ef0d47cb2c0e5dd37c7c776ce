@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "099a3b78_fb7a43f8",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T18:21:52Z",
+      "side": 1,
+      "message": "That\u0027s the Quick number, isn\u0027t it? Do we have a good intuition that the same number is decent for Optimizing?",
+      "range": {
+        "startLine": 94,
+        "startChar": 52,
+        "endLine": 94,
+        "endChar": 53
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e99c0776_6bd11d36",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 4,
         "endLine": 4752,
         "endChar": 53
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_bbab5bbc",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T18:21:52Z",
+      "side": 1,
+      "message": "It feels like there should be a DCHECK here. Removing a target of a PackedSwitch seems simply wrong. If we allowed that (don\u0027t see why), we would have to convert to a SparseSwitch.",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 5
       },
       "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
