@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ab8b9d_1ec8ed31",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-18T10:24:47Z",
+      "side": 1,
+      "message": "Add a comment for this check.",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 78
+      },
+      "revId": "df22d95dd4d9860a021d8186be9bbf4f10db9a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a97f6fe5_c7675e30",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-18T10:24:47Z",
+      "side": 1,
+      "message": "Why would it just happen to references? Shouldn\u0027t you just drop this check?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 40
+      },
+      "revId": "df22d95dd4d9860a021d8186be9bbf4f10db9a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "091ddbf6_da97053c",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-18T10:24:47Z",
+      "side": 1,
+      "message": "How can that be?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 7
+      },
+      "revId": "df22d95dd4d9860a021d8186be9bbf4f10db9a9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
