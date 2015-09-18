@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "e9b7a7e1_88bd7fef",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-09-18T21:54:07Z",
+      "side": 1,
+      "message": "Thanks, forgot about this edge case.",
+      "parentUuid": "69dad736_1727cc79",
+      "revId": "a0a2004987d34381046ded4683155522ce9b68e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9a3c3b1_44144e50",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 5
