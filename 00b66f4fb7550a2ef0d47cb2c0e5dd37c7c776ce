@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9b7a7e1_a200a477",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-18T18:27:32Z",
+      "side": 1,
+      "message": "I haven\u0027t a clue.  For X86, the jump sequence is 5-6 instructions, dependending on the lower bound.  That would argue for a count of 3.",
+      "parentUuid": "099a3b78_fb7a43f8",
+      "range": {
+        "startLine": 94,
+        "startChar": 52,
+        "endLine": 94,
+        "endChar": 53
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e99c0776_6bd11d36",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2015-09-18T18:21:52Z",
       "side": 1,
       "message": "It feels like there should be a DCHECK here. Removing a target of a PackedSwitch seems simply wrong. If we allowed that (don\u0027t see why), we would have to convert to a SparseSwitch.",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 5
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_cf406128",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-18T18:27:32Z",
+      "side": 1,
+      "message": "I am open to suggestions of DCHECKs.  I believe that the only way you can remove a successor of a switch is if the switch is being folded at compile time, which would remove all but 1 of the successors, and therefore a GOTO would replace the switch.",
+      "parentUuid": "099a3b78_bbab5bbc",
       "range": {
         "startLine": 1301,
         "startChar": 0,
