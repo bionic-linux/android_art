@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89df0b23_c45a1267",
+        "filename": "test/530-checker-loops/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-18T02:12:32Z",
+      "side": 1,
+      "message": "sorry for the fast iterations (the code is converging to something I like, really :-), but I added more test cases based on the slides I sent you; also improved range analysis a bit",
+      "range": {
+        "startLine": 375,
+        "startChar": 4,
+        "endLine": 375,
+        "endChar": 7
+      },
+      "revId": "a9b11839c194e460910e5b4c6314658a6d51ce4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
