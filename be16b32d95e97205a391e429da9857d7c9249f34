@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69c3b75a_6aabbbf0",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Does this have performance implications I\u0027m not aware of?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b7a7e1_6d367db5",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Do I need to depend on all of the executables? Is this overkill? If not, which executables do I need?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_220f303c",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Should I clear these AHAT_TEST_* variables at the end of the makefile? If so, how do I use them in recipes?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_21ae58bb",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Where should this hprof file be generated? Is intermediates dir okay? Or should it go in some data directory?",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_c21f5c66",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Using the \u0027art\u0027 script causes this to generate an image. Should I try to use core.art/core.oat instead? Does it not matter?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 98
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_26ae6cbb",
+        "filename": "tools/ahat/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "\"Processing\" would be a better word.",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e99c0776_66b874fe",
+        "filename": "tools/ahat/test/InstanceUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Should I check that the result is an Instance? Should I check if it\u0027s null? Does it matter if I add extra checks, given that it\u0027s a test case, and it should be fairly obvious from the runtime exception that something is wrong?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "099a3b78_21fc98ab",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "It\u0027s awkward that a user has to call getAhatSnapshot, then pass that here. Why not call getAhatSnapshot ourselves?",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ae6393_6c95a37a",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Add null check on main.",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_62d768dc",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-18T20:49:39Z",
+      "side": 1,
+      "message": "Check this is an Instance rather than assuming?",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
