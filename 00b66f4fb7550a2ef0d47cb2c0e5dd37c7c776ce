@@ -140,6 +140,30 @@
       "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ae6393_e770ec64",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T22:06:44Z",
+      "side": 1,
+      "message": "As that requires simplifier support, I\u0027d rather put the DCHECK here now and fix this once we get there.",
+      "parentUuid": "69c3b75a_cf406128",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 5
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
