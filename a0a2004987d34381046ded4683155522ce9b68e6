@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_615a201c",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-18T21:36:34Z",
+      "side": 1,
+      "message": "Well, it is the old one, I just no longer needed 32 since I have included those two values now as well.\n\nBut I like your name better too, so changed.",
+      "parentUuid": "e9b7a7e1_8d0cb1b4",
+      "range": {
+        "startLine": 24,
+        "startChar": 12,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "a0a2004987d34381046ded4683155522ce9b68e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e99c0776_46b9b0b1",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "69dad736_1727cc79",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-18T21:36:34Z",
+      "side": 1,
+      "message": "You are right I can probably do this smarter, but I wanted to keep the code the same for all cases.\n\nBasically, I believe I am only defending against INT_MIN / -1 \u003d INT_MIN problem.",
+      "parentUuid": "e99c0776_46b9b0b1",
+      "revId": "a0a2004987d34381046ded4683155522ce9b68e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9a3c3b1_44144e50",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2015-09-18T21:27:19Z",
       "side": 1,
       "message": "c-style casts violate lint rules, use static_cast\u003cint32_t\u003e(c) instead",
+      "revId": "a0a2004987d34381046ded4683155522ce9b68e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_a2aee0cc",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-18T21:36:34Z",
+      "side": 1,
+      "message": "Right you are! Done.",
+      "parentUuid": "c9a3c3b1_44144e50",
       "revId": "a0a2004987d34381046ded4683155522ce9b68e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
