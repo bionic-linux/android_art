@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e99c0776_8659d876",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "It increases Makefile parse time, but shouldn\u0027t be really significant, I think.",
+      "parentUuid": "69c3b75a_6aabbbf0",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b7a7e1_6d367db5",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "Do I need to depend on all of the executables? Is this overkill? If not, which executables do I need?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_db9aa7ac",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "Guess you only need dex2oat and dalvikvm, but I think it\u0027s easier to just use this.",
+      "parentUuid": "e9b7a7e1_6d367db5",
       "range": {
         "startLine": 71,
         "startChar": 3,
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "69c3b75a_5eb32424",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "My guess is Ying won\u0027t like intermediate directories for tests...",
+      "parentUuid": "099a3b78_21ae58bb",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_dbb1473e",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "By assigning them to local variables for the target. This is overall safer, as you can\u0027t know that nobody modified your values until the target is being executed.",
+      "parentUuid": "29bd3fca_220f303c",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd3fca_c21f5c66",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "Using the \u0027art\u0027 script causes this to generate an image. Should I try to use core.art/core.oat instead? Does it not matter?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 98
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_5bc697a4",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "I don\u0027t really think it matters. I also thought the script is set up to use the images from the host if they\u0027re set up. (Maybe it\u0027s because of your custom boot classpath, is there a reason for that?)",
+      "parentUuid": "29bd3fca_c21f5c66",
       "range": {
         "startLine": 78,
         "startChar": 1,
@@ -151,6 +271,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "Should I check that the result is an Instance? Should I check if it\u0027s null? Does it matter if I add extra checks, given that it\u0027s a test case, and it should be fairly obvious from the runtime exception that something is wrong?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c27358_68010bcc",
+        "filename": "tools/ahat/test/InstanceUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:08:54Z",
+      "side": 1,
+      "message": "Your choice, I don\u0027t think we\u0027ve been very consistent in that regard. The exception will have enough info. It will be an NPE or a ClassCastException, so it\u0027s pretty clear what went wrong.",
+      "parentUuid": "e99c0776_66b874fe",
       "range": {
         "startLine": 28,
         "startChar": 4,
