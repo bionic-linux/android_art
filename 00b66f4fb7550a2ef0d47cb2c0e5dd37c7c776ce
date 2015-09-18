@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e9b7a7e1_28d7132f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4752,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-18T21:56:51Z",
+      "side": 1,
+      "message": "That\u0027s of course not true. Branches can have an it around, but don\u0027t require it. Doh.",
+      "parentUuid": "e99c0776_6bd11d36",
+      "range": {
+        "startLine": 4752,
+        "startChar": 4,
+        "endLine": 4752,
+        "endChar": 53
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "099a3b78_bbab5bbc",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 1
