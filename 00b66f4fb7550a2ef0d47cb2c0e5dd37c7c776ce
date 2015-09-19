@@ -188,6 +188,30 @@
       "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_b429b91f",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-19T01:22:57Z",
+      "side": 1,
+      "message": "I would put a DCHECK here that the last instruction is not a PackedSwitch, instead of having that as part of the if.",
+      "parentUuid": "49c27358_e3429c04",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 5
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
