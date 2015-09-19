@@ -164,6 +164,30 @@
       "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49c27358_e3429c04",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-19T01:02:33Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t write this part of the code.  What is the exact DCHECK that you suggest?",
+      "parentUuid": "c9ae6393_e770ec64",
+      "range": {
+        "startLine": 1301,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 5
+      },
+      "revId": "00b66f4fb7550a2ef0d47cb2c0e5dd37c7c776ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
