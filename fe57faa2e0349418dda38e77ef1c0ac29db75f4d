@@ -16,6 +16,24 @@
       "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "692bb717_8941492c",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3551,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-21T19:52:15Z",
+      "side": 1,
+      "message": "I need the value of i for the successors too.  Works out to be about the same.  You will discard all this for a jump table later, and then you won\u0027t need the values.",
+      "parentUuid": "69dad736_5fe96627",
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
