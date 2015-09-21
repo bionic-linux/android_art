@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69dad736_5fe96627",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3551,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-09-21T19:31:22Z",
+      "side": 1,
+      "message": "Nit: what about\n\n    for (int32_t case_value \u003d lower_boud; case_value \u003c lower_bound +; ...)",
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
