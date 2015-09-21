@@ -22,6 +22,30 @@
       "revId": "195f20eef10b6b3bdbe409761770907cb41bd843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ef43fe_307e48ef",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-21T15:43:37Z",
+      "side": 1,
+      "message": "I\u0027ve removed it entirely. We can\u0027t even do DCHECK(eq-\u003eIsDead() || eq-\u003eIsInLoop()) as discussed - it crashes immediately.",
+      "parentUuid": "e99a4788_e167e6ac",
+      "range": {
+        "startLine": 131,
+        "startChar": 7,
+        "endLine": 131,
+        "endChar": 13
+      },
+      "revId": "195f20eef10b6b3bdbe409761770907cb41bd843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
