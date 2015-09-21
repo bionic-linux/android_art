@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ab8b9d_e185a0fa",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-21T11:13:25Z",
+      "side": 1,
+      "message": "Maybe also add a test where you return WeakReference(loader)? That one should get removed too right?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "dfe5728a74b844831ab0f8b143e0a947a15039c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
