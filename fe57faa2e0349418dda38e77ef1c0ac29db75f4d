@@ -34,6 +34,24 @@
       "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9ae6393_75f0ff9e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3551,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-21T20:00:42Z",
+      "side": 1,
+      "message": "Also doesn\u0027t work when the last value is MAX because of overflow, does it?",
+      "parentUuid": "692bb717_8941492c",
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
