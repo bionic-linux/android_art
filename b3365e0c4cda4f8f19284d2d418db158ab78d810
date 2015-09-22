@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "691737fc_d5f4dc93",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-22T23:34:04Z",
+      "side": 1,
+      "message": "Another minor nit: I think you\u0027re supposed to include this .cc\u0027s header first (induction_var_range.h).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89d9cb71_14a69cf4",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 3
@@ -60,6 +83,30 @@
       "side": 1,
       "message": "Agreed, this is a bit more modern way of doing it. I will make the change in a follow up CL\n\n(note that we also use INT_MIN/MAX bounds_check_elimination.cc and\ncode_generator_x86_64.cc, so we may want to change those too)",
       "parentUuid": "a9192f10_ba61ed99",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9a3c3b1_8d6ad6b1",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-22T23:34:04Z",
+      "side": 1,
+      "message": "Sure, no problem; I\u0027m fine with a follow-up CL. And yeah, if you can also update the other files as well, that\u0027d be great! :-)",
+      "parentUuid": "099a3b78_a88064e8",
       "range": {
         "startLine": 25,
         "startChar": 9,
