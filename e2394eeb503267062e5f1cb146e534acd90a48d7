@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89470bec_0470baa6",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-09-22T02:06:00Z",
+      "side": 1,
+      "message": "I think, if this is correct at all (I don\u0027t quite like the exposure of class Label to outside of class Assembler, namely recent appearance of class Label in the generic class SlowPathCode), it should be down_cast\u003c\u003e() instead of static_cast\u003c\u003e().\n\nIt looks like for this to really work going forward, SlowPathCode::GetEntryLabel() and SlowPathCode::GetExitLabel() need to be virtual, so their overriden versions in class SlowPathCodeMIPS can return pointers to instances of MipsLabel (derived from class Label), which MipsAssembler will be able to handle properly.\n\nAndreas/Roland, what\u0027s your take on these two?",
+      "range": {
+        "startLine": 272,
+        "startChar": 9,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "e2394eeb503267062e5f1cb146e534acd90a48d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e91fa7ee_7c5b556c",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-09-22T02:06:00Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 275,
+        "startChar": 12,
+        "endLine": 275,
+        "endChar": 42
+      },
+      "revId": "e2394eeb503267062e5f1cb146e534acd90a48d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
