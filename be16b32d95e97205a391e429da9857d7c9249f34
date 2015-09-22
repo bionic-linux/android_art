@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_0f6eda83",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "I\u0027ll not worry about it.",
+      "parentUuid": "e99c0776_8659d876",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b7a7e1_6d367db5",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Guess you only need dex2oat and dalvikvm, but I think it\u0027s easier to just use this.",
       "parentUuid": "e9b7a7e1_6d367db5",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09823b51_5877955d",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "I left it as is.",
+      "parentUuid": "c91663dc_db9aa7ac",
       "range": {
         "startLine": 71,
         "startChar": 3,
@@ -190,6 +238,54 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_6f5da6d9",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c91663dc_dbb1473e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_529d1423",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "I\u0027ll ask Ying.",
+      "parentUuid": "69c3b75a_5eb32424",
+      "range": {
+        "startLine": 76,
+        "startChar": 24,
+        "endLine": 76,
+        "endChar": 71
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd3fca_c21f5c66",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "09823b51_18710d67",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "The custom boot classpath was because I thought I needed it to make it work. I tracked down the missing dependencies, so now I don\u0027t need a custom boot classpath.\n\nI won\u0027t worry about the art script generating images.",
+      "parentUuid": "c91663dc_5bc697a4",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 98
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e99c0776_26ae6cbb",
         "filename": "tools/ahat/src/Main.java",
         "patchSetId": 1
@@ -248,6 +368,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "\"Processing\" would be a better word.",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "692bb717_24d05c56",
+        "filename": "tools/ahat/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e99c0776_26ae6cbb",
       "range": {
         "startLine": 70,
         "startChar": 24,
@@ -307,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_4fcd42f0",
+        "filename": "tools/ahat/test/InstanceUtilsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as is for now. If it causes problems later on, or if anyone wants me to do otherwise, I\u0027ll add the extra  checks.",
+      "parentUuid": "49c27358_68010bcc",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 78
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "099a3b78_21fc98ab",
         "filename": "tools/ahat/test/TestDump.java",
         "patchSetId": 1
@@ -318,6 +486,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "It\u0027s awkward that a user has to call getAhatSnapshot, then pass that here. Why not call getAhatSnapshot ourselves?",
+      "range": {
+        "startLine": 55,
+        "startChar": 38,
+        "endLine": 55,
+        "endChar": 59
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c91663dc_9293ac1c",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "Because the user wants to work with a snapshot, not just a single object from the snapshot. I think this is fine.",
+      "parentUuid": "099a3b78_21fc98ab",
       "range": {
         "startLine": 55,
         "startChar": 38,
@@ -353,6 +545,30 @@
     },
     {
       "key": {
+        "uuid": "099a3b78_cfb8524d",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure it\u0027s worth the effort. I\u0027ll add a check if someone wants me to, otherwise I\u0027ll leave it as is.",
+      "parentUuid": "c9ae6393_6c95a37a",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29bd3fca_62d768dc",
         "filename": "tools/ahat/test/TestDump.java",
         "patchSetId": 1
@@ -364,6 +580,30 @@
       "writtenOn": "2015-09-18T20:49:39Z",
       "side": 1,
       "message": "Check this is an Instance rather than assuming?",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "be16b32d95e97205a391e429da9857d7c9249f34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69dad736_faab20bb",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-22T18:36:37Z",
+      "side": 1,
+      "message": "Again, I\u0027m not sure it\u0027s worth the effort.",
+      "parentUuid": "29bd3fca_62d768dc",
       "range": {
         "startLine": 60,
         "startChar": 16,
