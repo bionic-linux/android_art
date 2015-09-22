@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89d9cb71_14a69cf4",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-22T22:24:46Z",
+      "side": 1,
+      "message": "std::numeric_limits\u003cint32_t\u003e::max()",
+      "range": {
+        "startLine": 25,
+        "startChar": 30,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9192f10_ba61ed99",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-22T22:24:46Z",
+      "side": 1,
+      "message": "std::numeric_limits\u003cint32_t\u003e::min()",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29f7ffe2_86994cb7",
+        "filename": "compiler/optimizing/induction_var_range_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-22T22:24:46Z",
+      "side": 1,
+      "message": "Ditto (here and elsewhere).",
+      "range": {
+        "startLine": 291,
+        "startChar": 20,
+        "endLine": 291,
+        "endChar": 27
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
