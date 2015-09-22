@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "891c6b20_f61f60f0",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-22T23:59:49Z",
+      "side": 1,
+      "message": "Maybe leave the code above in SolvePhi(), and add a separate method SolveLoopHeaderPhi() which calls SolvePhi() plus doing periodic detection? This part isn\u0027t needed for normal phi\u0027s inside loop body.",
+      "revId": "a4fef9880c450383bf86f3e2c0852eeafcb617b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4916f301_54272c78",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-09-22T23:59:49Z",
+      "side": 1,
+      "message": "space.",
+      "range": {
+        "startLine": 438,
+        "startChar": 31,
+        "endLine": 438,
+        "endChar": 32
+      },
+      "revId": "a4fef9880c450383bf86f3e2c0852eeafcb617b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
