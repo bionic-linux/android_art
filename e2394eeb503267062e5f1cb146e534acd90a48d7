@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29de1f5b_5a7209de",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-22T02:18:50Z",
+      "side": 1,
+      "message": "Check out arm64, which uses its own label class from vixl. They don\u0027t rely a lot on the generic facilities, though - I don\u0027t know how much you want to have in common with that.\n\nIt\u0027s not an issue to make GetEntryLabel() and GetExitLabel() virtual. It just wasn\u0027t necessary before. And right now you only really benefit from it if you use the default intrinsics slow path. Don\u0027t know if you\u0027re going that way or not.",
+      "parentUuid": "89470bec_0470baa6",
+      "range": {
+        "startLine": 272,
+        "startChar": 9,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "e2394eeb503267062e5f1cb146e534acd90a48d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e91fa7ee_7c5b556c",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 10
