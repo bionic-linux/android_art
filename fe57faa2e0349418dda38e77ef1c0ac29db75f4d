@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "29f8dff9_db0a535f",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T09:31:56Z",
+      "side": 1,
+      "message": "Nit: one per line",
+      "range": {
+        "startLine": 1741,
+        "startChar": 28,
+        "endLine": 1742,
+        "endChar": 77
+      },
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69dad736_5fe96627",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
@@ -49,6 +72,75 @@
       "side": 1,
       "message": "Also doesn\u0027t work when the last value is MAX because of overflow, does it?",
       "parentUuid": "692bb717_8941492c",
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e90b27d5_59f763c2",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T09:31:56Z",
+      "side": 1,
+      "message": "This feels very codegen detail. Why not just making it a HSwitch ?",
+      "range": {
+        "startLine": 2406,
+        "startChar": 3,
+        "endLine": 2406,
+        "endChar": 28
+      },
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9612fbd_77f7b0c2",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2412,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T09:31:56Z",
+      "side": 1,
+      "message": "one per line",
+      "range": {
+        "startLine": 2411,
+        "startChar": 16,
+        "endLine": 2412,
+        "endChar": 42
+      },
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09095bdd_7a133994",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2433,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T09:31:56Z",
+      "side": 1,
+      "message": "const?",
+      "range": {
+        "startLine": 2432,
+        "startChar": 0,
+        "endLine": 2433,
+        "endChar": 23
+      },
       "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
