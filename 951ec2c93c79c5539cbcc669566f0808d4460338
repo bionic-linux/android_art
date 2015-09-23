@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2911bf09_d38eb462",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3048,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 1,
+      "message": "VisitClassLoaders doesn\u0027t remove cleared class loaders while VisitClassLoadersAndRemoveClearedLoaders did. Is this as intended?",
+      "range": {
+        "startLine": 3048,
+        "startChar": 2,
+        "endLine": 3048,
+        "endChar": 19
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a905afc4_f71f60f0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6203,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 1,
+      "message": "mirror::ClassLoader*?",
+      "range": {
+        "startLine": 6203,
+        "startChar": 4,
+        "endLine": 6203,
+        "endChar": 9
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09aebbf9_5224748b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6217,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 6217,
+        "startChar": 4,
+        "endLine": 6217,
+        "endChar": 8
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691737fc_b5b04062",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 1,
+      "message": "Could use jweak.",
+      "range": {
+        "startLine": 563,
+        "startChar": 4,
+        "endLine": 563,
+        "endChar": 11
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09aebbf9_12466c1a",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 1,
+      "message": "Can you remind why this has to be in low 4gb in this case?",
+      "range": {
+        "startLine": 1794,
+        "startChar": 24,
+        "endLine": 1794,
+        "endChar": 43
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

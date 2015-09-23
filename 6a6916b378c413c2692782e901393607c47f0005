@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9b08755_91b6dc32",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-23T00:35:19Z",
+      "side": 0,
+      "message": "Should this call be kept?",
+      "range": {
+        "startLine": 1512,
+        "startChar": 4,
+        "endLine": 1512,
+        "endChar": 45
+      },
+      "revId": "6a6916b378c413c2692782e901393607c47f0005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
