@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c902e3ba_98b8d5b0",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T11:22:48Z",
+      "side": 1,
+      "message": "Why does that have to be limited to 2? Should you mention a tight cycle?",
+      "range": {
+        "startLine": 447,
+        "startChar": 32,
+        "endLine": 447,
+        "endChar": 54
+      },
+      "revId": "dffb70a0671d3f9decb2c9ec465c0e9e7afb872b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89f38b1a_7ea05161",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T11:22:48Z",
+      "side": 1,
+      "message": "too many spaces",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 8
+      },
+      "revId": "dffb70a0671d3f9decb2c9ec465c0e9e7afb872b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49fd13e8_bce5c1e0",
+        "filename": "compiler/optimizing/induction_var_analysis_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T11:22:48Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 536,
+        "endChar": 10
+      },
+      "revId": "dffb70a0671d3f9decb2c9ec465c0e9e7afb872b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
