@@ -125,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "69ee5738_1d2af359",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-23T15:54:08Z",
+      "side": 1,
+      "message": "So at the high-level, a switch is just a branch instruction with multiple successors. Why does the HIR need to care about packed?",
+      "parentUuid": "a905afc4_7ac695d2",
+      "range": {
+        "startLine": 2406,
+        "startChar": 3,
+        "endLine": 2406,
+        "endChar": 28
+      },
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9612fbd_77f7b0c2",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
