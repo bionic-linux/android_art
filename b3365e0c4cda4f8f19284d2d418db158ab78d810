@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9b08755_d42332e7",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-23T00:42:19Z",
+      "side": 1,
+      "message": "Yes, already done (I had to strip the .h also :-)",
+      "parentUuid": "691737fc_d5f4dc93",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89d9cb71_14a69cf4",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 3
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "Sure, no problem; I\u0027m fine with a follow-up CL. And yeah, if you can also update the other files as well, that\u0027d be great! :-)",
       "parentUuid": "099a3b78_a88064e8",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 16
+      },
+      "revId": "b3365e0c4cda4f8f19284d2d418db158ab78d810",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "691737fc_557bacfd",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-09-23T00:42:19Z",
+      "side": 1,
+      "message": "Sure. Coming up.",
+      "parentUuid": "c9a3c3b1_8d6ad6b1",
       "range": {
         "startLine": 25,
         "startChar": 9,
