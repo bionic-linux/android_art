@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee86cdd4_0ad83f8c",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2767,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-24T23:27:28Z",
+      "side": 1,
+      "message": "Is this to be removed before checking this in?",
+      "range": {
+        "startLine": 2767,
+        "startChar": 6,
+        "endLine": 2767,
+        "endChar": 27
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_94c572c7",
+        "filename": "test/141-class-unload/src-ex/IntHolder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-24T23:27:28Z",
+      "side": 1,
+      "message": "I think you can omit this (no need to import java.lang.*).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_779b1a68",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-24T23:27:28Z",
+      "side": 1,
+      "message": "Factor this out to a separate method?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e470569_182531ed",
         "filename": "test/141-class-unload/src/Main.java",
         "patchSetId": 3
@@ -39,6 +108,29 @@
       "range": {
         "startLine": 32,
         "startChar": 12,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_1303d6d6",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-24T23:27:28Z",
+      "side": 1,
+      "message": "Factor this out to a method?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
         "endLine": 49,
         "endChar": 13
       },
