@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee616dea_c3b44ab6",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2767,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee86cdd4_0ad83f8c",
+      "range": {
+        "startLine": 2767,
+        "startChar": 6,
+        "endLine": 2767,
+        "endChar": 27
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e4d7d85_94c572c7",
         "filename": "test/141-class-unload/src-ex/IntHolder.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-24T23:27:28Z",
       "side": 1,
       "message": "I think you can omit this (no need to import java.lang.*).",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce582944_d7f5268a",
+        "filename": "test/141-class-unload/src-ex/IntHolder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e4d7d85_94c572c7",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2e2e2591_3fac4f0a",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce582944_779b1a68",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e470569_182531ed",
         "filename": "test/141-class-unload/src/Main.java",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-09-24T23:20:36Z",
       "side": 1,
       "message": "How\u0027s that testing it, when you don\u0027t GC?",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_b380822e",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "There is still GC for allocating, but I just added more.",
+      "parentUuid": "2e470569_182531ed",
       "range": {
         "startLine": 46,
         "startChar": 12,
@@ -164,6 +260,78 @@
     },
     {
       "key": {
+        "uuid": "6e4d7d85_9fffcb68",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee616dea_e3a74e8a",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_bf028714",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2e2591_5f86fbe0",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_7c989db2",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4c398b_1303d6d6",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae5bf53d_1cec0189",
         "filename": "test/141-class-unload/src/Main.java",
         "patchSetId": 3
@@ -175,6 +343,30 @@
       "writtenOn": "2015-09-24T23:22:21Z",
       "side": 1,
       "message": "Maybe don\u0027t use a variable for the method. It will still likely be kept alive by a dex register, but don\u0027t give it any reason... :-)",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_2a642359",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5bf53d_1cec0189",
       "range": {
         "startLine": 60,
         "startChar": 8,
