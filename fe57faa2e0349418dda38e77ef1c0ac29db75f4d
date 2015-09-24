@@ -269,6 +269,30 @@
     },
     {
       "key": {
+        "uuid": "ce582944_4ee3e7c3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2406,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-24T16:57:25Z",
+      "side": 1,
+      "message": "Removing unnecessary cases (can be determined by range analysis, for example), should behave differently for the switches, for example.",
+      "parentUuid": "0e9a4178_d211e418",
+      "range": {
+        "startLine": 2406,
+        "startChar": 3,
+        "endLine": 2406,
+        "endChar": 28
+      },
+      "revId": "fe57faa2e0349418dda38e77ef1c0ac29db75f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9612fbd_77f7b0c2",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
