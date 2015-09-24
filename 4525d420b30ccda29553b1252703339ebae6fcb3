@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e470569_182531ed",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-24T23:20:36Z",
+      "side": 1,
+      "message": "How\u0027s that testing it, when you don\u0027t GC?",
+      "range": {
+        "startLine": 46,
+        "startChar": 12,
+        "endLine": 46,
+        "endChar": 60
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2e2591_5f86fbe0",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-24T23:20:36Z",
+      "side": 1,
+      "message": "Would you mind separating this into helper functions, to make the different cases more obvious?",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
