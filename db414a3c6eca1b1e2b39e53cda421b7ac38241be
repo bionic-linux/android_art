@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "891c6b20_d969b7c0",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T01:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09aebbf9_92e89c26",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "db414a3c6eca1b1e2b39e53cda421b7ac38241be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "699c97d8_ad4f3d59",
         "filename": "test/141-class-unload/src/Main.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-23T01:03:13Z",
       "side": 1,
       "message": "I think a method named test... in a test class is expected to run a complete scenario of a test including the result checking part. Because the GC invocation and the result check/print code is back in main(), maybe call this setUpUnloadClass() and the other one setUpUnloadLoader()? Or, move the GC invoke code and the result print code to test... methods?",
+      "range": {
+        "startLine": 49,
+        "startChar": 40,
+        "endLine": 49,
+        "endChar": 55
+      },
+      "revId": "db414a3c6eca1b1e2b39e53cda421b7ac38241be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b08755_94b88ab0",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T01:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "699c97d8_ad4f3d59",
       "range": {
         "startLine": 49,
         "startChar": 40,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2e470569_e64f6000",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T01:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4916f301_b70e823c",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "db414a3c6eca1b1e2b39e53cda421b7ac38241be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4916f301_17449680",
         "filename": "test/141-class-unload/src/Main.java",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-09-23T01:03:13Z",
       "side": 1,
       "message": "This is unused, remove?",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "db414a3c6eca1b1e2b39e53cda421b7ac38241be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9b7434b_10a2e412",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-24T01:42:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4916f301_17449680",
       "range": {
         "startLine": 67,
         "startChar": 15,
