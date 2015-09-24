@@ -45,6 +45,29 @@
       "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_1cec0189",
+        "filename": "test/141-class-unload/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-24T23:22:21Z",
+      "side": 1,
+      "message": "Maybe don\u0027t use a variable for the method. It will still likely be kept alive by a dex register, but don\u0027t give it any reason... :-)",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "4525d420b30ccda29553b1252703339ebae6fcb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
