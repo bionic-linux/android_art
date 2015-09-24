@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_3ccea998",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_b8750192",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "DCHECK_EQ(type, Primitive::kPrimLong);",
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_99248b8e",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "DCHECK_EQ(type, Primitive::kPrimLong);",
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_18d3f13c",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1938,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "DCHECK_EQ(type, Primitive::kPrimLong);",
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e2e2591_74043ee0",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "\u003c\u003c type",
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_4f4e45b2",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1986,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "Nit: add parens around this expression for readability.",
+      "range": {
+        "startLine": 1986,
+        "startChar": 39,
+        "endLine": 1986,
+        "endChar": 67
+      },
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_b95067f4",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2044,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-09-24T21:40:40Z",
+      "side": 1,
+      "message": "\u003c\u003c type",
+      "revId": "e47f5a480d00dd1303c47f855320a995e3f31d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
