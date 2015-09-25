@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e4d7d85_e7599172",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-09-25T22:08:46Z",
+      "side": 1,
+      "message": "Ying said via email that using the intermediates directory was fine. He expressed concern that I was using variables that were implicitly set by BUILD_HOST_DALVIK_JAVA_LIBRARY, and that people may move the code around later on and break things. So I put this comment here.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 63
+      },
+      "revId": "ad438dd726642cabfa0127e3adc9fcb8e33ee3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
