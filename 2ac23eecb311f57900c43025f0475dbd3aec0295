@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec8f176_f66a6071",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T13:04:03Z",
+      "side": 1,
+      "message": "Please rename to \u0027$inline$method\u0027. The compiler recognizes the \"$inline$\" marker in debug mode and will verify that the method indeed got inlined. It\u0027s not necessary here but can\u0027t hurt either.",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "2ac23eecb311f57900c43025f0475dbd3aec0295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eeb7ade1_d932f387",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T13:04:03Z",
+      "side": 1,
+      "message": "Throw an exception if it doesn\u0027t return the expected result to verify runtime behaviour.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "2ac23eecb311f57900c43025f0475dbd3aec0295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
