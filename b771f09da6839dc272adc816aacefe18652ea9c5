@@ -16,6 +16,24 @@
       "revId": "b771f09da6839dc272adc816aacefe18652ea9c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec8f176_3613f8d6",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce074951_5358766f",
+      "revId": "b771f09da6839dc272adc816aacefe18652ea9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
