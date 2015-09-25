@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce582944_88d42c27",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3048,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-25T23:58:36Z",
+      "side": 1,
+      "message": "No longer necessary, CleanupClassLoaders is always called after any point that can unload classes (i.e. heap transitions or GC).",
+      "parentUuid": "2911bf09_d38eb462",
+      "range": {
+        "startLine": 3048,
+        "startChar": 2,
+        "endLine": 3048,
+        "endChar": 19
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a905afc4_f71f60f0",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-23T00:35:19Z",
       "side": 1,
       "message": "mirror::ClassLoader*?",
+      "range": {
+        "startLine": 6203,
+        "startChar": 4,
+        "endLine": 6203,
+        "endChar": 9
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_422f33bf",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6203,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-25T23:58:36Z",
+      "side": 1,
+      "message": "I think its OK to use auto if the type can trivially be inferred from the RHS.",
+      "parentUuid": "a905afc4_f71f60f0",
       "range": {
         "startLine": 6203,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ce582944_c8ca2487",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6217,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-25T23:58:36Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "09aebbf9_5224748b",
+      "range": {
+        "startLine": 6217,
+        "startChar": 4,
+        "endLine": 6217,
+        "endChar": 8
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "691737fc_b5b04062",
         "filename": "runtime/class_linker.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0e5fa128_ca11f818",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-25T23:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "691737fc_b5b04062",
+      "range": {
+        "startLine": 563,
+        "startChar": 4,
+        "endLine": 563,
+        "endChar": 11
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09aebbf9_12466c1a",
         "filename": "runtime/runtime.cc",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2015-09-23T00:35:19Z",
       "side": 1,
       "message": "Can you remind why this has to be in low 4gb in this case?",
+      "range": {
+        "startLine": 1794,
+        "startChar": 24,
+        "endLine": 1794,
+        "endChar": 43
+      },
+      "revId": "951ec2c93c79c5539cbcc669566f0808d4460338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_a6539f05",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-25T23:58:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09aebbf9_12466c1a",
       "range": {
         "startLine": 1794,
         "startChar": 24,
