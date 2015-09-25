@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce582944_3dc1031e",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:21:38Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 1333,
+        "startChar": 2,
+        "endLine": 1333,
+        "endChar": 32
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e5fa128_ff4fe3ff",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:21:38Z",
+      "side": 1,
+      "message": "You can\u0027t do it that. This would incur signed-integer overflow, which is undefined behavior in C...\n\nWrite it as\n\n  if (first_key \u003e std::numeric_limits\u003cint32_t\u003e::max() - (switch_count - 1))",
+      "range": {
+        "startLine": 1338,
+        "startChar": 6,
+        "endLine": 1339,
+        "endChar": 34
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
