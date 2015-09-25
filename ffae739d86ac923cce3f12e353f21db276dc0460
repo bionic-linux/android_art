@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ee616dea_52fee52a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:37:12Z",
+      "side": 1,
+      "message": "You can reference the dalvik spec, but we don\u0027t have a \"VM spec\"... :-)\n\nYou\u0027d reference \"packed-switch-payload format\" in \"Dalvik bytecode\" / \"Bytecode Format.\"",
+      "parentUuid": "8ec8f176_f6e1803d",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e52b121_b502aa14",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
