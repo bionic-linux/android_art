@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8ec8f176_f6e1803d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e4c398b_99292750",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e52b121_b502aa14",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-25T16:22:53Z",
       "side": 1,
       "message": "sparse-switch",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eececd75_a176de14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e52b121_b502aa14",
       "range": {
         "startLine": 10,
         "startChar": 34,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8ec8f176_160efcb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae5bf53d_869bff66",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce582944_3dc1031e",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0eb5e1d9_1dfff7a0",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:33:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce582944_3dc1031e",
+      "range": {
+        "startLine": 1333,
+        "startChar": 2,
+        "endLine": 1333,
+        "endChar": 32
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e5fa128_ff4fe3ff",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2015-09-25T16:21:38Z",
       "side": 1,
       "message": "You can\u0027t do it that. This would incur signed-integer overflow, which is undefined behavior in C...\n\nWrite it as\n\n  if (first_key \u003e std::numeric_limits\u003cint32_t\u003e::max() - (switch_count - 1))",
+      "range": {
+        "startLine": 1338,
+        "startChar": 6,
+        "endLine": 1339,
+        "endChar": 34
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ebd45ca_76bc8ef0",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:33:47Z",
+      "side": 1,
+      "message": "Done. Argh, stupid me...",
+      "parentUuid": "0e5fa128_ff4fe3ff",
       "range": {
         "startLine": 1338,
         "startChar": 6,
