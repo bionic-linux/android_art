@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0eb5e1d9_7a247949",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2435,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T09:52:09Z",
+      "side": 1,
+      "message": "Does it make sense for the size to be signed?",
+      "range": {
+        "startLine": 2435,
+        "startChar": 0,
+        "endLine": 2435,
+        "endChar": 29
+      },
+      "revId": "79b5e058a71c86be886076611ac53342f1fa230e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
