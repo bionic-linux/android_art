@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e4c398b_99292750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:22:53Z",
+      "side": 1,
+      "message": "There is no VM spec.",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e52b121_b502aa14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:22:53Z",
+      "side": 1,
+      "message": "sparse-switch",
+      "range": {
+        "startLine": 10,
+        "startChar": 34,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5bf53d_869bff66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-09-25T16:22:53Z",
+      "side": 1,
+      "message": "packed-switch",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce582944_3dc1031e",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
