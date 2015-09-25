@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e5fa128_ffab63bf",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-25T16:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb7ade1_59bb4319",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ec8f176_f62fc020",
         "filename": "test/485-checker-dce-switch/src/Main.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-25T16:37:14Z",
       "side": 1,
       "message": "Please rename the p \u0026 q methods to have more descriptive names and/or add comments about the situations they test.",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_aef7f64e",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-25T16:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ec8f176_f62fc020",
       "range": {
         "startLine": 30,
         "startChar": 20,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e5fa128_1f975781",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-25T16:49:58Z",
+      "side": 1,
+      "message": "If it wasn\u0027t constant, it wouldn\u0027t get folded.",
+      "parentUuid": "4ec27958_d4e47c50",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ec27958_b4d7005d",
         "filename": "test/485-checker-dce-switch/src/Main.java",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-09-25T16:37:14Z",
       "side": 1,
       "message": "This should be in its own group to test over the entire output and not just between the constant and Return (-NOT tests in the region between the surrounding instructions).\n\nSo add a second \"/// CHECK-START ... dead_code_elimination (after)\" containing just the -NOT.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_19b1b75e",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-09-25T16:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ec27958_b4d7005d",
       "range": {
         "startLine": 65,
         "startChar": 0,
