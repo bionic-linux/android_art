@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce074951_5358766f",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-25T16:38:49Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "b771f09da6839dc272adc816aacefe18652ea9c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
