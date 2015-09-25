@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeb7ade1_59bb4319",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:37:14Z",
+      "side": 1,
+      "message": "Same as below.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ec8f176_f62fc020",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:37:14Z",
+      "side": 1,
+      "message": "Please rename the p \u0026 q methods to have more descriptive names and/or add comments about the situations they test.",
+      "range": {
+        "startLine": 30,
+        "startChar": 20,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec27958_d4e47c50",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:37:14Z",
+      "side": 1,
+      "message": "Nit: You could test that the input is constant.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec27958_b4d7005d",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-25T16:37:14Z",
+      "side": 1,
+      "message": "This should be in its own group to test over the entire output and not just between the constant and Return (-NOT tests in the region between the surrounding instructions).\n\nSo add a second \"/// CHECK-START ... dead_code_elimination (after)\" containing just the -NOT.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 50
+      },
+      "revId": "1b57659f326599ecf741089e7bfbb6acd29e1a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
