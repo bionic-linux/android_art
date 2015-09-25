@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ceae6993_3bb76357",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-25T16:38:49Z",
+      "side": 1,
+      "message": "Davik bytecode spec.",
+      "parentUuid": "4e4c398b_99292750",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 24
+      },
+      "revId": "ffae739d86ac923cce3f12e353f21db276dc0460",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e52b121_b502aa14",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
