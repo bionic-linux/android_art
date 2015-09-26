@@ -5707,6 +5707,30 @@
     },
     {
       "key": {
+        "uuid": "8e52b121_cd023a16",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-09-26T03:51:11Z",
+      "side": 1,
+      "message": "I will add this comment in the MIPS64 implementation (coming up). It\u0027s the MIPS64 that is not end-to-end. Natural 32-bit truncation on MIPS32 should mask this assymetry. I believe, we can simply remove \u0027~\u0027 here.",
+      "parentUuid": "a46956e6_37d57821",
+      "range": {
+        "startLine": 506,
+        "startChar": 54,
+        "endLine": 506,
+        "endChar": 55
+      },
+      "revId": "3322e10cd5c2435e6b76928c2962c5f7b8120acf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446ed97b_afe75da1",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 2
