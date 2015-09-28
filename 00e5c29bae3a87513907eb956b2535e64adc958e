@@ -22,6 +22,30 @@
       "revId": "00e5c29bae3a87513907eb956b2535e64adc958e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee616dea_17029780",
+        "filename": "test/532-checker-nonnull-arrayset/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-09-28T19:21:50Z",
+      "side": 1,
+      "message": "I think there\u0027s value to have an extra arch-independent test here.",
+      "parentUuid": "0e9a4178_f816c94e",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "00e5c29bae3a87513907eb956b2535e64adc958e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
