@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ceae6993_5ee7a5a6",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-28T12:14:20Z",
+      "side": 1,
+      "message": "InRange",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 36
+      },
+      "revId": "4db3a0efe089799f7d2b770b944dfa179ca5f078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec27958_f73a5af7",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-28T12:14:20Z",
+      "side": 1,
+      "message": "AboveRange",
+      "range": {
+        "startLine": 109,
+        "startChar": 34,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "4db3a0efe089799f7d2b770b944dfa179ca5f078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce074951_13d0ae87",
+        "filename": "test/485-checker-dce-switch/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-09-28T12:14:20Z",
+      "side": 1,
+      "message": "BelowRange",
+      "range": {
+        "startLine": 145,
+        "startChar": 34,
+        "endLine": 145,
+        "endChar": 36
+      },
+      "revId": "4db3a0efe089799f7d2b770b944dfa179ca5f078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
