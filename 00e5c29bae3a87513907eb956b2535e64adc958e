@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e9a4178_f816c94e",
+        "filename": "test/532-checker-nonnull-arrayset/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-09-28T17:29:47Z",
+      "side": 1,
+      "message": "Why are you testing this on disassembly? Sounds like you could print a new \"value_can_be_null:true/false\" attribute and test that.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 59
+      },
+      "revId": "00e5c29bae3a87513907eb956b2535e64adc958e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
