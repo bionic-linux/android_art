@@ -70,6 +70,30 @@
       "revId": "6a6916b378c413c2692782e901393607c47f0005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e4d7d85_185d2c5f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-28T17:02:32Z",
+      "side": 0,
+      "message": "vm-\u003eDecodeWeakGlobalDuringShutdown(self, data.weak_root);",
+      "parentUuid": "ee86cdd4_80d42b27",
+      "range": {
+        "startLine": 1512,
+        "startChar": 4,
+        "endLine": 1512,
+        "endChar": 45
+      },
+      "revId": "6a6916b378c413c2692782e901393607c47f0005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
