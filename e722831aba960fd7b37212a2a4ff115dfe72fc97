@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce582944_9e56a2cd",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-28T17:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb7ade1_5c2091dd",
+      "range": {
+        "startLine": 1794,
+        "startChar": 88,
+        "endLine": 1794,
+        "endChar": 91
+      },
+      "revId": "e722831aba960fd7b37212a2a4ff115dfe72fc97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ec3bd5a_b55aa08c",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-09-27T20:46:11Z",
       "side": 1,
       "message": "drop?",
+      "range": {
+        "startLine": 1795,
+        "startChar": 5,
+        "endLine": 1795,
+        "endChar": 12
+      },
+      "revId": "e722831aba960fd7b37212a2a4ff115dfe72fc97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e4c398b_b5461fe8",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-28T17:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec3bd5a_b55aa08c",
       "range": {
         "startLine": 1795,
         "startChar": 5,
