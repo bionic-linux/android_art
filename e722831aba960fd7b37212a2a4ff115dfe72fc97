@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e52b121_2358bd6e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4189,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-09-28T19:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2e2591_6d86ace1",
+      "range": {
+        "startLine": 4189,
+        "startChar": 24,
+        "endLine": 4189,
+        "endChar": 37
+      },
+      "revId": "e722831aba960fd7b37212a2a4ff115dfe72fc97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb7ade1_5c2091dd",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
