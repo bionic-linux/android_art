@@ -46,6 +46,30 @@
       "revId": "6a6916b378c413c2692782e901393607c47f0005",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee86cdd4_80d42b27",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-09-28T16:57:41Z",
+      "side": 0,
+      "message": "Are we deleting the weak global ref in the new code?",
+      "parentUuid": "4e4c398b_64135fd6",
+      "range": {
+        "startLine": 1512,
+        "startChar": 4,
+        "endLine": 1512,
+        "endChar": 45
+      },
+      "revId": "6a6916b378c413c2692782e901393607c47f0005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
