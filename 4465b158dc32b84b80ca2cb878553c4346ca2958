@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ec3bd5a_783b9d60",
+        "filename": "compiler/dex/ssa_transformation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-09-29T14:02:56Z",
+      "side": 1,
+      "message": "temp.ssa_map is uninitialized. I know it won\u0027t be used but it still feels wrong.",
+      "range": {
+        "startLine": 552,
+        "startChar": 21,
+        "endLine": 552,
+        "endChar": 25
+      },
+      "revId": "4465b158dc32b84b80ca2cb878553c4346ca2958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
