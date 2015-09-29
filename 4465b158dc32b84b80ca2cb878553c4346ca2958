@@ -22,6 +22,30 @@
       "revId": "4465b158dc32b84b80ca2cb878553c4346ca2958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e5fa128_417606d0",
+        "filename": "compiler/dex/ssa_transformation.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1010712
+      },
+      "writtenOn": "2015-09-29T18:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ec3bd5a_783b9d60",
+      "range": {
+        "startLine": 552,
+        "startChar": 21,
+        "endLine": 552,
+        "endChar": 25
+      },
+      "revId": "4465b158dc32b84b80ca2cb878553c4346ca2958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
