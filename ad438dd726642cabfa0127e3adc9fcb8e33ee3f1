@@ -22,6 +22,29 @@
       "revId": "ad438dd726642cabfa0127e3adc9fcb8e33ee3f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354d9aaf_425416f5",
+        "filename": "tools/ahat/test/TestDump.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1047883
+      },
+      "writtenOn": "2015-09-30T22:19:26Z",
+      "side": 1,
+      "message": "presumably this is the only place you expect to call TestDump?\n\nIn which case put this code in a static initializer and make the constructor private.",
+      "range": {
+        "startLine": 76,
+        "startChar": 3,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "ad438dd726642cabfa0127e3adc9fcb8e33ee3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
