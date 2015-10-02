@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5526a4f_1f00a40f",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-02T17:49:39Z",
+      "side": 1,
+      "message": "only if instruction-\u003eInputAt(0) cannot be null. Otherwise we might miss an exception.",
+      "range": {
+        "startLine": 1041,
+        "startChar": 8,
+        "endLine": 1041,
+        "endChar": 43
+      },
+      "revId": "e9a7266d65bc68a7ed7233b2d797432609ea629e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5526a4f_5f0b3c32",
+        "filename": "test/536-checker-intrinsic-optimization/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-02T17:49:39Z",
+      "side": 1,
+      "message": "add a test for (null, null)",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 40
+      },
+      "revId": "e9a7266d65bc68a7ed7233b2d797432609ea629e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
