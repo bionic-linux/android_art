@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "953c86f3_970acf29",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3177,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-02T23:19:18Z",
+      "side": 1,
+      "message": "Consistency? The other two have the critical section around the suspend-all.",
+      "range": {
+        "startLine": 3175,
+        "startChar": 2,
+        "endLine": 3177,
+        "endChar": 69
+      },
+      "revId": "e51d81016f2a1f6feb489b64c5f4304de05c5cb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
