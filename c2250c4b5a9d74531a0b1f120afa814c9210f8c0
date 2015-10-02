@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "354d9aaf_836e1dc2",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-02T16:50:59Z",
+      "side": 1,
+      "message": "The meaning of this isCallerInterpreted() is \"is the caller of isCallerInterpreted() \u003d\u003d the call-site interpreted.\"\n\nIf that\u0027s too confusing, I can rename the set of functions.",
+      "parentUuid": "b57c2af2_ebdd0d4a",
+      "range": {
+        "startLine": 1200,
+        "startChar": 8,
+        "endLine": 1200,
+        "endChar": 27
+      },
+      "revId": "c2250c4b5a9d74531a0b1f120afa814c9210f8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "957f26e6_4aa613af",
         "filename": "test/common/runtime_state.cc",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "953c86f3_4bbb8817",
+        "filename": "test/common/runtime_state.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-02T16:50:59Z",
+      "side": 1,
+      "message": "Which is the same as \"the oat file is compiled with optimizing,\" no?",
+      "parentUuid": "957f26e6_4aa613af",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "c2250c4b5a9d74531a0b1f120afa814c9210f8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f597825c_42ad72ca",
         "filename": "test/common/runtime_state.cc",
         "patchSetId": 3
@@ -83,6 +131,30 @@
       "writtenOn": "2015-10-02T08:56:58Z",
       "side": 1,
       "message": "Check if the JIT is enabled then. It sucks to not have coverage.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 75
+      },
+      "revId": "c2250c4b5a9d74531a0b1f120afa814c9210f8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "354d9aaf_237d8976",
+        "filename": "test/common/runtime_state.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-02T16:50:59Z",
+      "side": 1,
+      "message": "The JIT may violate this anyways.\n\nE.g., single invocations of run-tests won\u0027t be compiled. So all the \"is compiled\" asserts would fail.\n\nFor this to really be tested for JIT, we\u0027d have to change the test setup in a *lot* of tests.",
+      "parentUuid": "f597825c_42ad72ca",
       "range": {
         "startLine": 79,
         "startChar": 0,
