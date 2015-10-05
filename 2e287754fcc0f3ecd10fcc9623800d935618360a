@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ba1f45d_3fa7832d",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-05T21:31:45Z",
+      "side": 1,
+      "message": "Why not check this?",
+      "range": {
+        "startLine": 304,
+        "startChar": 57,
+        "endLine": 304,
+        "endChar": 83
+      },
+      "revId": "2e287754fcc0f3ecd10fcc9623800d935618360a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
