@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ba1f45d_9c3ca568",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7078c2_5c43717e",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb66c411_5b7857b8",
         "filename": "runtime/debugger.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-05T18:23:02Z",
       "side": 1,
       "message": "Add a comment why we need this here?",
+      "range": {
+        "startLine": 583,
+        "startChar": 6,
+        "endLine": 583,
+        "endChar": 29
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb90200c_6243387f",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Actually this one is not required.",
+      "parentUuid": "eb66c411_5b7857b8",
       "range": {
         "startLine": 583,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb66c411_bb3653ac",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab976c01_3e98e9b0",
+      "range": {
+        "startLine": 606,
+        "startChar": 8,
+        "endLine": 606,
+        "endChar": 31
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab804cc5_160e3cb6",
         "filename": "runtime/debugger.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-05T18:23:02Z",
       "side": 1,
       "message": "Add a comment why we need this here?",
+      "range": {
+        "startLine": 3174,
+        "startChar": 6,
+        "endLine": 3174,
+        "endChar": 29
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb66c411_5b737774",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3174,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab804cc5_160e3cb6",
       "range": {
         "startLine": 3174,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "cb6900e6_97ea4410",
+        "filename": "runtime/gc/gc_cause.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b7078c2_bcc16d60",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 54
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb66c411_bb5df357",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2015-10-05T18:23:02Z",
       "side": 1,
       "message": "Future note: it may be possible to factor out the other start GC points logic (eg TransitionCollector) into this, if we make this more flexible.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 11,
+        "endLine": 1315,
+        "endChar": 18
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b7078c2_fc9b653a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "eb66c411_bb5df357",
       "range": {
         "startLine": 1315,
         "startChar": 11,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0b7078c2_bc7c0d77",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Deleted.",
+      "parentUuid": "2b6d3ced_da7c65f3",
+      "range": {
+        "startLine": 148,
+        "startChar": 7,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b7078c2_dc84610c",
         "filename": "runtime/instrumentation.h",
         "patchSetId": 3
@@ -174,6 +342,30 @@
       "writtenOn": "2015-10-05T18:23:02Z",
       "side": 1,
       "message": "Does this call VisitClasses()? Or is there another type of deadlock that this could cause?",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b7078c2_5c59311f",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment.",
+      "parentUuid": "0b7078c2_dc84610c",
       "range": {
         "startLine": 151,
         "startChar": 7,
@@ -220,6 +412,30 @@
       "writtenOn": "2015-10-05T18:23:02Z",
       "side": 1,
       "message": "Add a comment why we need this here?",
+      "range": {
+        "startLine": 354,
+        "startChar": 8,
+        "endLine": 354,
+        "endChar": 31
+      },
+      "revId": "fc26393f4e24ab1e39c465f507f84c9549aa963a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b9c302a_9e22596f",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-05T19:02:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab804cc5_366fb82e",
       "range": {
         "startLine": 354,
         "startChar": 8,
