@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f597825c_652e406b",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-05T11:17:35Z",
+      "side": 1,
+      "message": "Is this necessary? If the inputs are equal than `argument` must be non-null too, right?",
+      "range": {
+        "startLine": 1041,
+        "startChar": 9,
+        "endLine": 1041,
+        "endChar": 49
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55712e1a_a85dd38c",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-05T11:17:35Z",
+      "side": 1,
+      "message": "Not the other way round?",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75763214_4c58f375",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-05T11:17:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 26
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35e91ad0_c2bcc63d",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-05T11:17:35Z",
+      "side": 1,
+      "message": "Nit: why not use the bottom bit as well?",
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55712e1a_c85a0f92",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-05T11:17:35Z",
+      "side": 1,
+      "message": "Could we make this a bit in the magic word too?",
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
