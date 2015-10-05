@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55712e1a_abba2ded",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-05T12:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f597825c_652e406b",
+      "range": {
+        "startLine": 1041,
+        "startChar": 9,
+        "endLine": 1041,
+        "endChar": 49
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55712e1a_a85dd38c",
         "filename": "compiler/optimizing/intrinsics.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-05T11:17:35Z",
       "side": 1,
       "message": "Not the other way round?",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 31
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35703a18_877ac83e",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-05T12:48:47Z",
+      "side": 1,
+      "message": "Good point my example only had two cases :-) thanks for catching this.",
+      "parentUuid": "55712e1a_a85dd38c",
       "range": {
         "startLine": 125,
         "startChar": 23,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "75ab929e_61a63024",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-05T12:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75763214_4c58f375",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 26
+      },
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e91ad0_c2bcc63d",
         "filename": "compiler/optimizing/intrinsics.h",
         "patchSetId": 3
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "35e91ad0_42ba763c",
+        "filename": "compiler/optimizing/intrinsics.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-05T12:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e91ad0_c2bcc63d",
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55712e1a_c85a0f92",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 3
@@ -99,6 +189,24 @@
       "writtenOn": "2015-10-05T11:17:35Z",
       "side": 1,
       "message": "Could we make this a bit in the magic word too?",
+      "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f597825c_05dad4e0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-05T12:48:47Z",
+      "side": 1,
+      "message": "Turns out this leads to an annoying const_cast, but done. PTAL.",
+      "parentUuid": "55712e1a_c85a0f92",
       "revId": "5d6684d8127d346a2247598de18185f2317c6d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
