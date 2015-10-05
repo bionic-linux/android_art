@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "8b92a812_3d522f4a",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-05T16:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55712e1a_08b6e731",
+      "range": {
+        "startLine": 1200,
+        "startChar": 8,
+        "endLine": 1200,
+        "endChar": 27
+      },
+      "revId": "c2250c4b5a9d74531a0b1f120afa814c9210f8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "957f26e6_4aa613af",
         "filename": "test/common/runtime_state.cc",
         "patchSetId": 3
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "Sure, but you wrote \"this\", not \"the oat file\".",
       "parentUuid": "953c86f3_4bbb8817",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 54
+      },
+      "revId": "c2250c4b5a9d74531a0b1f120afa814c9210f8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d55b5e6b_c7baddee",
+        "filename": "test/common/runtime_state.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-05T16:50:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b57c2af2_cb10491d",
       "range": {
         "startLine": 70,
         "startChar": 0,
