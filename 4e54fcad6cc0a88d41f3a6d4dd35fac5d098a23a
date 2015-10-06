@@ -22,6 +22,30 @@
       "revId": "4e54fcad6cc0a88d41f3a6d4dd35fac5d098a23a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "156b3632_e915114b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-06T10:51:28Z",
+      "side": 1,
+      "message": "Thing is, it\u0027s a ref type propagation problem that a type is not valid. It does not seem right if other phases need to think whether the type is valid.",
+      "parentUuid": "35703a18_aa75cbc1",
+      "range": {
+        "startLine": 1660,
+        "startChar": 11,
+        "endLine": 1660,
+        "endChar": 20
+      },
+      "revId": "4e54fcad6cc0a88d41f3a6d4dd35fac5d098a23a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
