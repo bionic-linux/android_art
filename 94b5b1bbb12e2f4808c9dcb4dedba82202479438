@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ba1f45d_1005d48c",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5046,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-06T20:24:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50478167_c382168e",
+      "range": {
+        "startLine": 5046,
+        "startChar": 10,
+        "endLine": 5046,
+        "endChar": 20
+      },
+      "revId": "94b5b1bbb12e2f4808c9dcb4dedba82202479438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb66c411_0d162114",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-06T18:17:50Z",
       "side": 1,
       "message": "The CC collector currently calls these individually rather than calling VisitConcurrentRoots(). Can you add this call in ConcurrentCopying::MarkingPhase() as well for now?",
+      "range": {
+        "startLine": 1429,
+        "startChar": 7,
+        "endLine": 1429,
+        "endChar": 17
+      },
+      "revId": "94b5b1bbb12e2f4808c9dcb4dedba82202479438",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_59fd236c",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-06T20:24:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb66c411_0d162114",
       "range": {
         "startLine": 1429,
         "startChar": 7,
