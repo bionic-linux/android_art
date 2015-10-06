@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b7078c2_73ef80b8",
+        "filename": "compiler/utils/swap_space_fwd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-06T18:24:15Z",
+      "side": 1,
+      "message": "style nit: newline after 28",
+      "revId": "47a1a28087fc02c3cc09ac3045d1c0e2f1e1027c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b9c302a_0457d739",
+        "filename": "compiler/utils/swap_space_fwd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-06T18:24:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we need to include \u003d\u003d here, is it being used in other headers?\n\n(it doesn\u0027t hurt to have it actually, but I was thinking the _fwd.h could just be the bare minimum so the class can be used as a reference or pointer in another header).",
+      "revId": "47a1a28087fc02c3cc09ac3045d1c0e2f1e1027c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
