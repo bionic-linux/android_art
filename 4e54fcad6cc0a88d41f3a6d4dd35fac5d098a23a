@@ -46,6 +46,30 @@
       "revId": "4e54fcad6cc0a88d41f3a6d4dd35fac5d098a23a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "957f26e6_adc9693e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-06T11:11:32Z",
+      "side": 1,
+      "message": "The only reason the rest of the DCHECKS are there is to ensure RTP didn\u0027t miss anything. So it\u0027s a testing/safety thing.\n\nYea, agree, that\u0027s not ideal, this is why I\u0027m not opposing if you want to change it.",
+      "parentUuid": "156b3632_e915114b",
+      "range": {
+        "startLine": 1660,
+        "startChar": 11,
+        "endLine": 1660,
+        "endChar": 20
+      },
+      "revId": "4e54fcad6cc0a88d41f3a6d4dd35fac5d098a23a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
