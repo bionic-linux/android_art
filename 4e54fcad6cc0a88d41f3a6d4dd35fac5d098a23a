@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35703a18_aa75cbc1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-06T10:45:53Z",
+      "side": 1,
+      "message": "It would be nice to keep the invariant that when you query IsX() the type is valid. It\u0027s easier to reason about the types.\n\nBut if you find it overkill to add the test in the caller, I don\u0027t really mind.",
+      "range": {
+        "startLine": 1660,
+        "startChar": 11,
+        "endLine": 1660,
+        "endChar": 20
+      },
+      "revId": "4e54fcad6cc0a88d41f3a6d4dd35fac5d098a23a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
