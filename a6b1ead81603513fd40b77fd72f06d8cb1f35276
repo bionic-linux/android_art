@@ -46,6 +46,30 @@
       "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06c3d16_b68608da",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5047,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-07T17:42:27Z",
+      "side": 1,
+      "message": "Is that specified? If the users want the method to stay alive, does he have to create a jobject for its declaring class?",
+      "parentUuid": "5061411e_c7314e92",
+      "range": {
+        "startLine": 5047,
+        "startChar": 0,
+        "endLine": 5047,
+        "endChar": 83
+      },
+      "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
