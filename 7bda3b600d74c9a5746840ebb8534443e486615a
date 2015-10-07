@@ -94,6 +94,30 @@
       "revId": "7bda3b600d74c9a5746840ebb8534443e486615a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_fcee98e2",
+        "filename": "runtime/base/arena_allocator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-07T22:31:45Z",
+      "side": 1,
+      "message": "Thanks for checking.\n\nI think your suggested change needs internal discussion, because regrettably I haven\u0027t seen it discussed yet what we\u0027ll do going forward, and valgrind is still a strong possibility (and with a standard image, not just special-purposes images as would be necessary for ASAN).\n\nI\u0027d agree that this might be put behind yet another flag for *our* investigations.",
+      "parentUuid": "459c212a_5ba5c3de",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 41
+      },
+      "revId": "7bda3b600d74c9a5746840ebb8534443e486615a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
