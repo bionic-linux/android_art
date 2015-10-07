@@ -22,6 +22,30 @@
       "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_c7314e92",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5047,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-07T16:54:26Z",
+      "side": 1,
+      "message": "jmethodID aren\u0027t supposed to prevent class unloading. They become invalid if their corresponding class gets unloaded. It is the users job to not use stale jmethodID.",
+      "parentUuid": "90ec99cf_cdc0495e",
+      "range": {
+        "startLine": 5047,
+        "startChar": 0,
+        "endLine": 5047,
+        "endChar": 83
+      },
+      "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
