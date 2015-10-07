@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90673931_a9486545",
+        "filename": "test/468-checker-bool-simplifier-regression/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T13:02:45Z",
+      "side": 0,
+      "message": "Shouldn\u0027t there be an equivalent here?",
+      "revId": "5928931541e07b4c98e677cfca3088106b2b9e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

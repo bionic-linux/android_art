@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d03c51f4_88c63b2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T13:02:45Z",
+      "side": 1,
+      "message": "HSelect",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "03ca0d223ee5aaaf3e29667894dcdcea21e35ad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_fff3375d",
+        "filename": "compiler/optimizing/boolean_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T13:02:45Z",
+      "side": 1,
+      "message": "comment is out of date",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 71
+      },
+      "revId": "03ca0d223ee5aaaf3e29667894dcdcea21e35ad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30592d74_6e1497c6",
+        "filename": "test/474-checker-boolean-input/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T13:02:45Z",
+      "side": 1,
+      "message": "Match on the 0/1?",
+      "revId": "03ca0d223ee5aaaf3e29667894dcdcea21e35ad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_c7014e1c",
+        "filename": "test/533-checker-select/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T13:02:45Z",
+      "side": 1,
+      "message": "Test creation of Select",
+      "revId": "03ca0d223ee5aaaf3e29667894dcdcea21e35ad7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
