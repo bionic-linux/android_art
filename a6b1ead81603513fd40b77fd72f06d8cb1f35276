@@ -118,6 +118,30 @@
       "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1001893d_80b0c01f",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5047,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-07T21:11:03Z",
+      "side": 1,
+      "message": "We probably want to have check JNI give an abort, otherwise we could just SIGSEGV or something.",
+      "parentUuid": "506b0131_03588e1a",
+      "range": {
+        "startLine": 5047,
+        "startChar": 0,
+        "endLine": 5047,
+        "endChar": 83
+      },
+      "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
