@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90ec99cf_cdc0495e",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5047,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-07T08:26:42Z",
+      "side": 1,
+      "message": "This does not seem right. Native code also holds jmethodid, and those don\u0027t have the luxury of this VisitRoots hook.\n\nEither we need to find a way to get a jmethodid automatically create a root, or handle a jmethodid from an unloaded class.",
+      "range": {
+        "startLine": 5047,
+        "startChar": 0,
+        "endLine": 5047,
+        "endChar": 83
+      },
+      "revId": "a6b1ead81603513fd40b77fd72f06d8cb1f35276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
