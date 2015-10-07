@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "506b0131_038a4eea",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Ignores kPrimLong.",
+      "range": {
+        "startLine": 1234,
+        "startChar": 64,
+        "endLine": 1234,
+        "endChar": 66
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06c3d16_969aec35",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "WIP? If you want to keep this, separate source and dst_type with a space.",
+      "range": {
+        "startLine": 992,
+        "startChar": 55,
+        "endLine": 992,
+        "endChar": 77
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70fba586_6c479b12",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "These can be merged to a single branch except for \"equal or unordered\" and \"not equal\". See table C1-1 in section C1.2.3 of the ARMv8 reference.\n\nPlease add a TODO comment.",
+      "range": {
+        "startLine": 2318,
+        "startChar": 0,
+        "endLine": 2323,
+        "endChar": 67
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0079550_50fb4ce9",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2350,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "FCSEL can. Implement or add a TODO.",
+      "range": {
+        "startLine": 2350,
+        "startChar": 10,
+        "endLine": 2350,
+        "endChar": 55
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30fe8d70_72df78eb",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Add a TODO for FP comparisons in line with the table C1-1, see above.",
+      "range": {
+        "startLine": 2354,
+        "startChar": 10,
+        "endLine": 2354,
+        "endChar": 71
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70664538_d493bcc8",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2362,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "kNoOutputOverlap",
+      "range": {
+        "startLine": 2362,
+        "startChar": 4,
+        "endLine": 2362,
+        "endChar": 54
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0079550_b0df1870",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2366,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "kNoOutputOverlap",
+      "range": {
+        "startLine": 2366,
+        "startChar": 4,
+        "endLine": 2366,
+        "endChar": 51
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f00235ba_38b0a9cc",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1159,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Ignores kPrimLong.",
+      "range": {
+        "startLine": 1159,
+        "startChar": 64,
+        "endLine": 1159,
+        "endChar": 66
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70fba586_8c3da78d",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Only if condition is \u003d\u003d or !\u003d. For \u003c, \u003e, \u003c\u003d, \u003e\u003d, we still need to emit CMP. (TEST sets OF to 0, OF is needed for signed comparisons.)",
+      "range": {
+        "startLine": 1234,
+        "startChar": 8,
+        "endLine": 1234,
+        "endChar": 72
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506b0131_c3a75680",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Ignores kPrimLong.",
+      "range": {
+        "startLine": 1086,
+        "startChar": 64,
+        "endLine": 1086,
+        "endChar": 66
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3065adc4_ba94d140",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Only for \u003d\u003d or !\u003d.",
+      "range": {
+        "startLine": 1203,
+        "startChar": 12,
+        "endLine": 1203,
+        "endChar": 83
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90ec99cf_8dac8176",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Only for \u003d\u003d or !\u003d.",
+      "range": {
+        "startLine": 1218,
+        "startChar": 14,
+        "endLine": 1218,
+        "endChar": 84
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06c3d16_f6a7e07f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T17:42:54Z",
+      "side": 1,
+      "message": "Remove? The trailing line continuation seems rather inconsistent among the macros here.",
+      "range": {
+        "startLine": 1095,
+        "startChar": 42,
+        "endLine": 1095,
+        "endChar": 73
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
