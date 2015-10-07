@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5061411e_a7dc127c",
+        "filename": "runtime/base/arena_allocator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-07T17:02:04Z",
+      "side": 1,
+      "message": "Could you disassemble and see what happens to this, please?\n\nIn the past, the builtin_unlikely sometimes stopped constant evaluation, and as ASAN seems to be the actual \"memory tool\" we\u0027re supporting (valgrind being still/again broken), this could be fully optimized away.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 41
+      },
+      "revId": "7bda3b600d74c9a5746840ebb8534443e486615a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
