@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "70fba586_6c55dbaa",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T18:31:00Z",
+      "side": 1,
+      "message": "I see. WAI.",
+      "parentUuid": "105c2963_a2e6c49c",
+      "range": {
+        "startLine": 1234,
+        "startChar": 8,
+        "endLine": 1234,
+        "endChar": 72
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506b0131_c3a75680",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 3
@@ -279,6 +303,30 @@
     },
     {
       "key": {
+        "uuid": "70fba586_4c5a9fda",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T18:31:00Z",
+      "side": 1,
+      "message": "Please, ignore. WAI.",
+      "parentUuid": "3065adc4_ba94d140",
+      "range": {
+        "startLine": 1203,
+        "startChar": 12,
+        "endLine": 1203,
+        "endChar": 83
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90ec99cf_8dac8176",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 3
@@ -290,6 +338,30 @@
       "writtenOn": "2015-10-07T17:42:54Z",
       "side": 1,
       "message": "Only for \u003d\u003d or !\u003d.",
+      "range": {
+        "startLine": 1218,
+        "startChar": 14,
+        "endLine": 1218,
+        "endChar": 84
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b06c3d16_7662b0ce",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T18:31:00Z",
+      "side": 1,
+      "message": "Please, ignore. WAI.",
+      "parentUuid": "90ec99cf_8dac8176",
       "range": {
         "startLine": 1218,
         "startChar": 14,
