@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "105c2963_a2e6c49c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-10-07T18:28:48Z",
+      "side": 1,
+      "message": "This has been working up until now, and was copied from Quick.  For signed compares, this works, because SF is set if the register is \u003c 0, and OF is always set to 0.",
+      "parentUuid": "70fba586_8c3da78d",
+      "range": {
+        "startLine": 1234,
+        "startChar": 8,
+        "endLine": 1234,
+        "endChar": 72
+      },
+      "revId": "d25ff36f621687230fd0922528c35dc0f7b12be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506b0131_c3a75680",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 3
