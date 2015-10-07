@@ -70,6 +70,30 @@
       "revId": "7bda3b600d74c9a5746840ebb8534443e486615a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "459c212a_5ba5c3de",
+        "filename": "runtime/base/arena_allocator.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-07T18:43:37Z",
+      "side": 1,
+      "message": "If I compile with SANITIZE_HOST\u003dtrue FORCE_BUILD_LLVM_COMPONENTS\u003dtrue, the host global_value_numbering.o have no references to DoMakeInaccessible. The target global_value_numbering.o still does because it\u0027s compiled against valgrind.\n\nThe one thing left to do is to change makefiles and memory_tool.h so that the default configuration does _not_ assume we can run with valgrind.",
+      "parentUuid": "704d65ae_d0e74c0a",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 41
+      },
+      "revId": "7bda3b600d74c9a5746840ebb8534443e486615a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
