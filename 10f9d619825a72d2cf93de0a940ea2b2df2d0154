@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "504861a0_100c124f",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "I think the condition is correct?",
+      "parentUuid": "30592d74_84fbc7e8",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90673931_5e1ea401",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -59,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "1001893d_4be559be",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Most of these are just copied from class linker but I am fine with using the advanced STL stuff.",
+      "parentUuid": "704d65ae_b6b3983f",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5061411e_1fa8a64e",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -70,6 +112,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "one liner:\n\n  return std::find_if_not(oat_files_.begin(), oat_files_.end(), [](const OatFile* oat_file) { return oat_file-\u003eIsPic(); }) !\u003d oat_files_.end();",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_71ce3a8d",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Is that really worth it? That is more characters than the for loop.\n\nauto it \u003d std::find_if(oat_files_.begin(), oat_files_.end(), [\u0026](const OatFile* oat_file) {DCHECK(oat_file !\u003d nullptr);return oat_file-\u003eGetLocation() \u003d\u003d oat_location;});return (it \u003d\u003d oat_files_.end()) ?nullptr : *it;\n\nvs\n\nfor (const OatFile* oat_file : oat_files_) {DCHECK(oat_file !\u003d nullptr);if (oat_file-\u003eGetLocation() \u003d\u003d oat_location) {return oat_file;}}return nullptr;",
+      "parentUuid": "5061411e_1fa8a64e",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +153,24 @@
     },
     {
       "key": {
+        "uuid": "30592d74_f72197b4",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Adds code.",
+      "parentUuid": "d03c51f4_39dbffd8",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c51f4_d9e9336f",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -104,6 +182,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "This would be *much* better off using std::unique_ptr\u003cDexFile\u003e .\n\nIt\u0027s completely non obvious that it owns the ownership IMHO until I saw the emplace a few lines later.",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_3f4c8204",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Perhaps, other CL?",
+      "parentUuid": "d03c51f4_d9e9336f",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -127,6 +223,24 @@
     },
     {
       "key": {
+        "uuid": "d03c51f4_99ca0bcf",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Same",
+      "parentUuid": "d03c51f4_99e04b86",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1001893d_4b17195e",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -144,6 +258,24 @@
     },
     {
       "key": {
+        "uuid": "d03c51f4_9947ab11",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Leave that for another CL?",
+      "parentUuid": "1001893d_4b17195e",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5061411e_df862edb",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -155,6 +287,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: lhs_descriptor",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1001893d_8b946110",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5061411e_df862edb",
       "range": {
         "startLine": 126,
         "startChar": 16,
@@ -190,6 +346,30 @@
     },
     {
       "key": {
+        "uuid": "5061411e_7fe55a93",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90673931_3ec5a8c2",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0435d80_933b0eba",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -201,6 +381,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "dcheck the truncation is safe?",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_88f63f02",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0435d80_933b0eba",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -230,6 +428,30 @@
     },
     {
       "key": {
+        "uuid": "5061411e_1f226671",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0435d80_f32b7261",
+      "range": {
+        "startLine": 184,
+        "startChar": 16,
+        "endLine": 184,
+        "endChar": 22
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704d65ae_b661d83f",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -241,6 +463,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "heap-\u003eemplace(std::move(dex_file), 0U /*current_class_index*/, already_loaded)",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_b32e0a2c",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704d65ae_b661d83f",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -264,6 +504,24 @@
     },
     {
       "key": {
+        "uuid": "90673931_dedf546f",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105c2963_484707e4",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "504861a0_b0e43e07",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -275,6 +533,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: mark inout parameters as /*inout*/",
+      "range": {
+        "startLine": 204,
+        "startChar": 30,
+        "endLine": 204,
+        "endChar": 31
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_08ea2f10",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504861a0_b0e43e07",
       "range": {
         "startLine": 204,
         "startChar": 30,
@@ -310,6 +592,30 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_d89d9c31",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90673931_3eae480a",
+      "range": {
+        "startLine": 218,
+        "startChar": 59,
+        "endLine": 218,
+        "endChar": 60
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "504861a0_501dfaaa",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -321,6 +627,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "DCHECK error msg is not null, oat file is not null?",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d00a915c_f808603c",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504861a0_501dfaaa",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -350,6 +674,30 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_98115469",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504861a0_f0eec6e2",
+      "range": {
+        "startLine": 246,
+        "startChar": 31,
+        "endLine": 246,
+        "endChar": 36
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704d65ae_71b59a0d",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -367,6 +715,24 @@
     },
     {
       "key": {
+        "uuid": "5061411e_9f4156cf",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704d65ae_71b59a0d",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d00a915c_789f505a",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -378,6 +744,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: annotate with /*out*/ when parameters are written out",
+      "range": {
+        "startLine": 300,
+        "startChar": 30,
+        "endLine": 300,
+        "endChar": 31
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_feffb0c7",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00a915c_789f505a",
       "range": {
         "startLine": 300,
         "startChar": 30,
@@ -413,6 +803,30 @@
     },
     {
       "key": {
+        "uuid": "105c2963_a8050390",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03c51f4_99f96b3c",
+      "range": {
+        "startLine": 323,
+        "startChar": 38,
+        "endLine": 323,
+        "endChar": 39
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1001893d_0bba31aa",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -424,6 +838,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: annotate with /*out*/ when parameters are written out",
+      "range": {
+        "startLine": 331,
+        "startChar": 57,
+        "endLine": 331,
+        "endChar": 58
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_50797aba",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1001893d_0bba31aa",
       "range": {
         "startLine": 331,
         "startChar": 57,
@@ -459,6 +897,30 @@
     },
     {
       "key": {
+        "uuid": "704d65ae_71511a45",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "We compare against the pointer later, I don\u0027t think that is safe.",
+      "parentUuid": "d03c51f4_d912d328",
+      "range": {
+        "startLine": 355,
+        "startChar": 22,
+        "endLine": 355,
+        "endChar": 37
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704d65ae_b1b60217",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -470,6 +932,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: annotate with /*out*/ when parameters are written out",
+      "range": {
+        "startLine": 375,
+        "startChar": 54,
+        "endLine": 375,
+        "endChar": 55
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_b1528246",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704d65ae_b1b60217",
       "range": {
         "startLine": 375,
         "startChar": 54,
@@ -499,6 +985,24 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_78cbd033",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0435d80_73992244",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0435d80_d39d9631",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 1
@@ -510,6 +1014,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "Why no const overload?",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d00a915c_f8b6a0c5",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Renamed RegisterImageOatFile",
+      "parentUuid": "b0435d80_d39d9631",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -539,6 +1061,30 @@
     },
     {
       "key": {
+        "uuid": "704d65ae_31303227",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03c51f4_b948af45",
+      "range": {
+        "startLine": 63,
+        "startChar": 45,
+        "endLine": 63,
+        "endChar": 46
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0435d80_9394ae10",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 1
@@ -550,6 +1096,24 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: REQUIRES go on a separate line here, mark error_msgs as /*out*/",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_7e972083",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0435d80_9394ae10",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -579,6 +1143,30 @@
     },
     {
       "key": {
+        "uuid": "90673931_de7bd4f6",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105c2963_08698f73",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5061411e_5f417e1d",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
@@ -590,6 +1178,30 @@
       "writtenOn": "2015-10-08T00:42:26Z",
       "side": 1,
       "message": "nit: don\u0027t need the argument here, it defaults to nullptr",
+      "range": {
+        "startLine": 285,
+        "startChar": 26,
+        "endLine": 285,
+        "endChar": 33
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_01c16d5f",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T02:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5061411e_5f417e1d",
       "range": {
         "startLine": 285,
         "startChar": 26,
