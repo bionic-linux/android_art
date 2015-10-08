@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d03c51f4_74462ee6",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "This should return a unique_ptr",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d03c51f4_d45a9ab7",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "return std::move(oat_file_)",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
