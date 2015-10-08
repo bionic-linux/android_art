@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0435d80_a8e05485",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03c51f4_74462ee6",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c51f4_d45a9ab7",
         "filename": "runtime/gc/space/image_space.cc",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "30592d74_5047a98a",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03c51f4_d45a9ab7",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105c2963_ae3b4b06",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2015-10-08T18:07:14Z",
       "side": 1,
       "message": "This doesn\u0027t need to be a \u0026\u0026",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d03c51f4_f4d4fe43",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Clarify?\nart/compiler/image_writer.cc:144:7: error: non-const lvalue reference to type \u0027unique_ptr\u003c[...]\u003e\u0027 cannot bind to a temporary of type \u0027unique_ptr\u003c[...]\u003e\u0027",
+      "parentUuid": "105c2963_ae3b4b06",
       "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
