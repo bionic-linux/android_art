@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30592d74_84fbc7e8",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-08T00:13:58Z",
+      "side": 1,
+      "message": "Seems your condition is a bit screwed up here...",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
