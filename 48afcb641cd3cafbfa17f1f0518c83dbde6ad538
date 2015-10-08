@@ -33,6 +33,23 @@
       "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_ae3b4b06",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:07:14Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a \u0026\u0026",
+      "revId": "48afcb641cd3cafbfa17f1f0518c83dbde6ad538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
