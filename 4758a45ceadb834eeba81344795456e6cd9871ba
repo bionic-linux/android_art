@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0536a9c7_091bc93c",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T23:25:29Z",
+      "side": 1,
+      "message": "The check is OK, if that is the behavior you want. I\u0027m mostly concerned with the wording of the comment. Perhaps change it to: \"We want unique Oat files to be loaded...\"",
+      "parentUuid": "504861a0_04385797",
+      "range": {
+        "startLine": 986,
+        "startChar": 11,
+        "endLine": 986,
+        "endChar": 22
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0435d80_c53dc98c",
         "filename": "runtime/oat_file_assistant_test.cc",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Maybe future work?",
       "parentUuid": "b0435d80_c53dc98c",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 46
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8538d9b1_adae3d0a",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T23:25:29Z",
+      "side": 1,
+      "message": "Can you try removing the call to \u0027Lock\u0027 in the implementation of OpenDexFilesFromOat and see if this test case fails?\n\nIf the test case fails, then the test case still has some value. If the test case doesn\u0027t fail, can you put a TODO in the comments to say that the test case no longer tests locking the way it was intended?",
+      "parentUuid": "b0435d80_48ab90b1",
       "range": {
         "startLine": 987,
         "startChar": 0,
