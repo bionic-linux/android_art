@@ -22,6 +22,29 @@
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_08698f73",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-08T00:17:39Z",
+      "side": 1,
+      "message": "Does it own the oat files (I assume so). Then it should be unique_ptrs.",
+      "range": {
+        "startLine": 86,
+        "startChar": 14,
+        "endLine": 86,
+        "endChar": 28
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
