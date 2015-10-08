@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1001893d_da6c74f8",
+        "filename": "runtime/gc/space/image_space.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T23:25:29Z",
+      "side": 1,
+      "message": "This comment is out of date?",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "0bc93fc895a4c2909ffe0e5385f2f26094e87924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
