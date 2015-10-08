@@ -167,6 +167,24 @@
     },
     {
       "key": {
+        "uuid": "90673931_b76b9b6c",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00a915c_bb61b23f",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5061411e_1fa8a64e",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -308,6 +326,24 @@
     },
     {
       "key": {
+        "uuid": "90673931_b7571b90",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30592d74_15e7e349",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c51f4_99e04b86",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -390,6 +426,24 @@
       "side": 1,
       "message": "Sure if you like the code to be slower and use more memory, :).",
       "parentUuid": "d03c51f4_9947ab11",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_0709793e",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done, not 100% sure its correct after though.",
+      "parentUuid": "704d65ae_4329b557",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1053,6 +1107,30 @@
       "side": 1,
       "message": "Oh, I didn\u0027t see that, can\u0027t you just move the register to happen later? Or fetch a non-owning pointer after it ? Or have a private function that doesn\u0027t take over ownership?",
       "parentUuid": "704d65ae_71511a45",
+      "range": {
+        "startLine": 355,
+        "startChar": 22,
+        "endLine": 355,
+        "endChar": 37
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d03c51f4_8803d653",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1001893d_c69ca0de",
       "range": {
         "startLine": 355,
         "startChar": 22,
