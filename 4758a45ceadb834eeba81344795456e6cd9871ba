@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704d65ae_03368d1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "Are there memory implications of this? Will applications start using more memory because they aren\u0027t sharing oat files?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 59
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_a3feb998",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "What is this for? Where is it used?",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 289,
+        "endChar": 3
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d03c51f4_142522c1",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to match the check below. Is this right?",
+      "range": {
+        "startLine": 986,
+        "startChar": 11,
+        "endLine": 986,
+        "endChar": 22
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_c53dc98c",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 987,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "Should we move this test to an oat file manager test?\n\nThe original goal of the test was to check that the locking in the OatFileAssistant works. I\u0027m not sure it still tests that in this form. I\u0027ll have to think about it.",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 987,
+        "endChar": 46
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1001893d_261c8c7e",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1007,
+        "startChar": 26,
+        "endLine": 1007,
+        "endChar": 30
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_e49d6b31",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "make this std::unique_ptr.",
+      "range": {
+        "startLine": 35,
+        "startChar": 37,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_74cf41e0",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "This comment isn\u0027t clear. Do you mean: \"copies of the same oat file should be loaded at different addresses\"?",
+      "range": {
+        "startLine": 40,
+        "startChar": 69,
+        "endLine": 41,
+        "endChar": 30
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_4347f58a",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "Will this function be called often? If so, consider saving a boolean in the oat file manager that is updated when you register a new oat file?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 40
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_e3556132",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "Is this safe if RegisterImageOatFile has been called?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 35
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_e310c192",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "insert \"true\".",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1001893d_66cb3434",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "Does this need to be a dynamically allocated OatFileManager? How about using:\n \nOatFileManager oat_file_manager_;",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 52
+      },
+      "revId": "4758a45ceadb834eeba81344795456e6cd9871ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
