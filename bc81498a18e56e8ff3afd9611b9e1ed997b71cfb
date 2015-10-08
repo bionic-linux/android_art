@@ -22,6 +22,97 @@
       "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_e8affc68",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "IMHO ImageSpace::ReleaseOatFile should also be changed to return an std::unique_ptr",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_ae0d0b77",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "std::aborts ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_0e60770f",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "This should be a std::unique_ptr\u003cOatFile\u003e since it takes over the object",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30592d74_35d82775",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "This should mention that it takes over ownership of the imagespace\u0027s underlying oat file.",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_2e30db26",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "Out of curiosity, given this comment, why doesn\u0027t it say\n\n   REQUIRES(!Locks::mutator_lock_)\n\n?",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
