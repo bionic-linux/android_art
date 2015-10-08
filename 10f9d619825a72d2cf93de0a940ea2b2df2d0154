@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "504861a0_70e59693",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-08T02:31:15Z",
+      "side": 1,
+      "message": "1) You already know either (kIsTargetBuild || kUseDlopenOnHost), so this part can never be true here.\n\n2) If !kUseDlopenOnHost, you\u0027re gonna go ahead and use OpenDlopen()?\n\nJust remove the term and it\u0027s OK.",
+      "parentUuid": "504861a0_100c124f",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90673931_5e1ea401",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
