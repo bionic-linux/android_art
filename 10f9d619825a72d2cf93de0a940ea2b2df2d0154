@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_bb61b23f",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "The better question is why does it needs to dcheck the oat_files_ as being not-null ???\n\nCan\u0027t we just move that check to only the place where we manipulate the container?",
+      "parentUuid": "1001893d_4be559be",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5061411e_1fa8a64e",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -178,6 +196,24 @@
       "side": 1,
       "message": "Is that really worth it? That is more characters than the for loop.\n\nauto it \u003d std::find_if(oat_files_.begin(), oat_files_.end(), [\u0026](const OatFile* oat_file) {DCHECK(oat_file !\u003d nullptr);return oat_file-\u003eGetLocation() \u003d\u003d oat_location;});return (it \u003d\u003d oat_files_.end()) ?nullptr : *it;\n\nvs\n\nfor (const OatFile* oat_file : oat_files_) {DCHECK(oat_file !\u003d nullptr);if (oat_file-\u003eGetLocation() \u003d\u003d oat_location) {return oat_file;}}return nullptr;",
       "parentUuid": "5061411e_1fa8a64e",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30592d74_95fbf3e8",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "Yeah that probably doesn\u0027t need to change, I was just pointing out it can be less statements.",
+      "parentUuid": "704d65ae_71ce3a8d",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -254,6 +290,24 @@
     },
     {
       "key": {
+        "uuid": "30592d74_15e7e349",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "The only thing I really feel that warrants a change in this CL is changing to std::unique_ptr, using raw pointers is just asking for trouble :).\n\nIt would be a minor change with the code you have.",
+      "parentUuid": "5061411e_3f4c8204",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d03c51f4_99e04b86",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 1
@@ -318,6 +372,24 @@
       "side": 1,
       "message": "Leave that for another CL?",
       "parentUuid": "1001893d_4b17195e",
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_4329b557",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "Sure if you like the code to be slower and use more memory, :).",
+      "parentUuid": "d03c51f4_9947ab11",
       "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -957,6 +1029,30 @@
       "side": 1,
       "message": "We compare against the pointer later, I don\u0027t think that is safe.",
       "parentUuid": "d03c51f4_d912d328",
+      "range": {
+        "startLine": 355,
+        "startChar": 22,
+        "endLine": 355,
+        "endChar": 37
+      },
+      "revId": "10f9d619825a72d2cf93de0a940ea2b2df2d0154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1001893d_c69ca0de",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T18:05:20Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t see that, can\u0027t you just move the register to happen later? Or fetch a non-owning pointer after it ? Or have a private function that doesn\u0027t take over ownership?",
+      "parentUuid": "704d65ae_71511a45",
       "range": {
         "startLine": 355,
         "startChar": 22,
