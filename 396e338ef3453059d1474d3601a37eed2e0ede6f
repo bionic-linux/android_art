@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "704d65ae_791c60ad",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T21:36:41Z",
+      "side": 1,
+      "message": "Dead code?\n\n-------\n\nDeleting it, defaulting it, or defining it sounds like it wouldn\u0027t hurt, I personally always forget what the behavior is for non-trivial classes that omit mentioning anything about a copy constructor.",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90673931_f2b6c130",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T21:36:41Z",
+      "side": 1,
+      "message": "Is the pointer it returns always valid while OatFileManager is live? Does calling any of these other functions invalidate the pointer (other than of course the destructor)?\n\n(I suppose this is a general question for any of the pointers returned by this file, it could be documented near line 40 if the behavior is identical for all of them)",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704d65ae_59cfe48a",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T21:36:41Z",
+      "side": 1,
+      "message": "Should this also return a \u0027const OatFile\u0026\u0027 to be consistent with the function on line 68?",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5061411e_cb05d08f",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T21:36:41Z",
+      "side": 1,
+      "message": "spelling: ownership",
+      "range": {
+        "startLine": 66,
+        "startChar": 69,
+        "endLine": 66,
+        "endChar": 77
+      },
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504861a0_9adf9cea",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-08T21:36:41Z",
+      "side": 1,
+      "message": "spelling: imagespace\u0027s",
+      "range": {
+        "startLine": 66,
+        "startChar": 85,
+        "endLine": 66,
+        "endChar": 96
+      },
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
