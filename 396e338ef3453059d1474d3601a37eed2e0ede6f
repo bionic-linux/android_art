@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30592d74_26f2bbcb",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "704d65ae_791c60ad",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90673931_f2b6c130",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d00a915c_91a3ef20",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90673931_f2b6c130",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "704d65ae_59cfe48a",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2015-10-08T21:36:41Z",
       "side": 1,
       "message": "Should this also return a \u0027const OatFile\u0026\u0027 to be consistent with the function on line 68?",
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105c2963_220c6f4f",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T22:00:11Z",
+      "side": 1,
+      "message": "I rather change the other one to return a pointer.",
+      "parentUuid": "704d65ae_59cfe48a",
       "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -92,6 +146,54 @@
         "startChar": 85,
         "endLine": 66,
         "endChar": 96
+      },
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55355fb_b0d0582a",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504861a0_9adf9cea",
+      "range": {
+        "startLine": 66,
+        "startChar": 85,
+        "endLine": 66,
+        "endChar": 96
+      },
+      "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d00a915c_11bedf3e",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5061411e_cb05d08f",
+      "range": {
+        "startLine": 66,
+        "startChar": 69,
+        "endLine": 66,
+        "endChar": 77
       },
       "revId": "396e338ef3453059d1474d3601a37eed2e0ede6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
