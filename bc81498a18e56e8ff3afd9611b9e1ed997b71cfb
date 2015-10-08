@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "1001893d_0686a851",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0435d80_e8affc68",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105c2963_ae0d0b77",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 3
@@ -53,6 +71,30 @@
       "writtenOn": "2015-10-08T18:05:20Z",
       "side": 1,
       "message": "std::aborts ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 49,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d00a915c_8e28ee24",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105c2963_ae0d0b77",
       "range": {
         "startLine": 46,
         "startChar": 49,
@@ -82,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "90673931_97f65f02",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105c2963_0e60770f",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30592d74_35d82775",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 3
@@ -99,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "5061411e_d0829d8d",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30592d74_35d82775",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105c2963_2e30db26",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 3
@@ -110,6 +188,24 @@
       "writtenOn": "2015-10-08T18:05:20Z",
       "side": 1,
       "message": "Out of curiosity, given this comment, why doesn\u0027t it say\n\n   REQUIRES(!Locks::mutator_lock_)\n\n?",
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0435d80_68c00cb3",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-08T18:45:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105c2963_2e30db26",
       "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
