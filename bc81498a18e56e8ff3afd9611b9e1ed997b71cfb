@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d00a915c_db3476cb",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-08T17:03:55Z",
+      "side": 1,
+      "message": "It\u0027s confusing to me to have the comment say the opposite of the if condition. Can you change the polarity of the comment or the polarity of the if condition so that they match?",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
