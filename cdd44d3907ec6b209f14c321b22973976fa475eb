@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "45426131_45692e77",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-09T22:34:34Z",
+      "side": 1,
+      "message": "There\u0027s obviously room for optimizations to remove these checks as this is the most conservative version. Since this is what the optimizing compiler is currently calling, in the short term, I hope we can make this work before doing work to remove the checks.\n\nWe need to worry about the two fields loaded from the class here, the access flag and the object size. Like Hans suggested, if we insert \"xor r3, r3, r3, add r2, r2, r3\" between the status load and the access flag load, which makes a fake dependence from the second load to the first load, which also creates a dependence from the third (object size) load to the first load, it seems good as long as we change the fence at the end to \"dmb ish\" so that the code after this allocation site will see the right values in the fields of the class.",
+      "parentUuid": "eaf16251_496bd9b2",
+      "range": {
+        "startLine": 906,
+        "startChar": 4,
+        "endLine": 906,
+        "endChar": 48
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8538d9b1_d03b22b8",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
