@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a27faf5_6af65793",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "hand-written?",
+      "range": {
+        "startLine": 896,
+        "startChar": 5,
+        "endLine": 896,
+        "endChar": 19
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054dc959_94beeaa1",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -41,6 +64,53 @@
         "startChar": 4,
         "endLine": 911,
         "endChar": 50
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a0fce78_639cc264",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "A single bit can always be encoded as modified immediate. Just embed the constant in a TST immediate, instead of using TST register.",
+      "parentUuid": "8538d9b1_d03b22b8",
+      "range": {
+        "startLine": 911,
+        "startChar": 4,
+        "endLine": 911,
+        "endChar": 50
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca557e3a_776470db",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "Nit: LDRD is viable (with a test that they are consecutive and within range).",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 58
       },
       "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -142,6 +212,53 @@
     },
     {
       "key": {
+        "uuid": "2a27faf5_8a258bc6",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "Yes, let\u0027s move the \"intention revealing\" part to the comments and simply\n\n    sub    r3, r3, #1\n    lsr    r3, r3, #ROSALLOC_BRACKET_QUANTUM_SIZE_SHIFT\n\ninstead of the 4 instructions.",
+      "parentUuid": "eaf16251_03b250d3",
+      "range": {
+        "startLine": 926,
+        "startChar": 4,
+        "endLine": 926,
+        "endChar": 21
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cad81e3d_5ff6cb92",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "This can be replaced with\n\n    add r12, r9, r3, lsl #POINTER_SIZE_SHIFT\n    ldr r12, [r12, #THREAD_ROSALLOC_RUNS_OFFSET]\n    ldr r3, [r12, #(ROSALLOC_RUN_FREE_LIST_OFFSET + ROSALLOC_RUN_FREE_LIST_HEAD_OFFSET)]\n\nswapping the r3 and r12 results. The code size should be the same here (2+2+4+4 -\u003e 4+4+4) but it can help below.\n\nThere is some tension though between using CBZ right below, or having 16-bit LDR/STR instructions with low-register base further down. But it\u0027s worth it if you also take the STRD suggestion below.",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 91
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8521b987_289b23e4",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -153,6 +270,30 @@
       "writtenOn": "2015-10-09T02:07:32Z",
       "side": 1,
       "message": "cbz?",
+      "range": {
+        "startLine": 932,
+        "startChar": 4,
+        "endLine": 933,
+        "endChar": 54
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1a0ab2_866bcade",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "Not with a high register (r12). But it could be with r3, see above.",
+      "parentUuid": "8521b987_289b23e4",
       "range": {
         "startLine": 932,
         "startChar": 4,
@@ -204,6 +345,76 @@
         "startChar": 10,
         "endLine": 938,
         "endChar": 13
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a27faf5_0ac35b21",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "+1 for replacing with compile-time check.",
+      "parentUuid": "45426131_119e8cd3",
+      "range": {
+        "startLine": 938,
+        "startChar": 10,
+        "endLine": 938,
+        "endChar": 13
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6afbb286_eca54b7c",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "str r12, [r1], #COMPRESSED_REFERENCE_SIZE",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 45
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a154685_c5065a32",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-09T15:43:03Z",
+      "side": 1,
+      "message": "With better register allocation, this could be merged with the head store to STRD. (Store the Class* early to free up r2.)",
+      "range": {
+        "startLine": 949,
+        "startChar": 4,
+        "endLine": 949,
+        "endChar": 90
       },
       "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
