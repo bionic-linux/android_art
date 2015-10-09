@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2ae8da64_c28d82bf",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00a915c_db3476cb",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "bc81498a18e56e8ff3afd9611b9e1ed997b71cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0435d80_e8affc68",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 3
