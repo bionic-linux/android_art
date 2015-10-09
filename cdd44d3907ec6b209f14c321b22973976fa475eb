@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45426131_116ccc87",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T01:44:39Z",
+      "side": 1,
+      "message": "Is this necessary if the shift will round down?",
+      "range": {
+        "startLine": 924,
+        "startChar": 20,
+        "endLine": 924,
+        "endChar": 64
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaf16251_43f61893",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T01:44:39Z",
+      "side": 1,
+      "message": "Instead of subtracting by one here, can you do\nsub    r3, r3, #1\ninstead of\nadd    r3, r3, #ROSALLOC_BRACKET_QUANTUM_SIZE_MASK",
+      "range": {
+        "startLine": 926,
+        "startChar": 4,
+        "endLine": 926,
+        "endChar": 21
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451b415b_c6f5243d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T01:44:39Z",
+      "side": 1,
+      "message": "Is this necessary if we are going to overwrite with the class anyways? Maybe you could check the offsets at compile time and avoid the store if they match.",
+      "range": {
+        "startLine": 938,
+        "startChar": 65,
+        "endLine": 938,
+        "endChar": 91
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
