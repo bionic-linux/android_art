@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e55355fb_369b80e4",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T15:58:09Z",
+      "side": 1,
+      "message": "Does this need to be public (or declared here at all)?",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 47
+      },
+      "revId": "1dda8882bff37656d3ae5c4d07408784908e2cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45426131_b4f3e610",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T15:58:09Z",
+      "side": 1,
+      "message": "OatFileManager is always allocated, right (only in a unique_ptr for forwarding)? iam then would advocate for OatFileManager\u0026.",
+      "range": {
+        "startLine": 577,
+        "startChar": 2,
+        "endLine": 577,
+        "endChar": 17
+      },
+      "revId": "1dda8882bff37656d3ae5c4d07408784908e2cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
