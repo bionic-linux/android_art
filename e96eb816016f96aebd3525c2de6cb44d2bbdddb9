@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2ae8da64_e2b2c671",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "054dc959_d17a4445",
+      "range": {
+        "startLine": 13,
+        "startChar": 26,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "e96eb816016f96aebd3525c2de6cb44d2bbdddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ae8da64_22354eac",
         "filename": "runtime/base/mutex.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-08T23:32:40Z",
       "side": 1,
       "message": "Should this be intern_table_lock_?",
+      "range": {
+        "startLine": 655,
+        "startChar": 57,
+        "endLine": 655,
+        "endChar": 79
+      },
+      "revId": "e96eb816016f96aebd3525c2de6cb44d2bbdddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ae8da64_a2bcbe43",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae8da64_22354eac",
       "range": {
         "startLine": 655,
         "startChar": 57,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eaf16251_8026568c",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "dlopen alwasy returns the same library if it is already opened on the host. Added comment.",
+      "parentUuid": "e55355fb_70d4303f",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 25
+      },
+      "revId": "e96eb816016f96aebd3525c2de6cb44d2bbdddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0536a9c7_49f3015d",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eaf16251_c0233e76",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0536a9c7_49f3015d",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 73
+      },
+      "revId": "e96eb816016f96aebd3525c2de6cb44d2bbdddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ae8da64_a2203e6a",
         "filename": "runtime/oat_file_manager.h",
         "patchSetId": 7
@@ -105,6 +201,30 @@
       "writtenOn": "2015-10-08T23:32:40Z",
       "side": 1,
       "message": "exist -\u003e exists?",
+      "range": {
+        "startLine": 47,
+        "startChar": 78,
+        "endLine": 47,
+        "endChar": 83
+      },
+      "revId": "e96eb816016f96aebd3525c2de6cb44d2bbdddb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "054dc959_31cab0a1",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ae8da64_a2203e6a",
       "range": {
         "startLine": 47,
         "startChar": 78,
