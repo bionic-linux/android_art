@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "eaf16251_496bd9b2",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-10-09T20:58:16Z",
+      "side": 1,
+      "message": "(I discussed this with Hiroshi as well.)\n\nI presume this function is intended to guarantee that when it finishes the class is initialized?  In that case, I agree, this (painfully) needs something like a fence or acquire load.\n\nWe may want to generally revisit these initialization checks, since they seem quite expensive.  We should be using an even faster path when the check is unnecessary and the object size is known.  We can clearly avoid the initialization check in many cases:\n\n- Boot image classes.\n- If the code is dominated by another initialization check for the same class.\n- If we\u0027re running in a jit.\n- By using a thread-local cache to remember classes that we already checked were initialized.\n\nIn the short term, we may want to just trengthen the barrier at the bottom to dmb ish.  If we need the finalizability check to be ordered, we can separately enforce that ordering with a \"bogus\" address dependence.  Xor r3 with itself producing zero, and add that to the address for the second load.  ARM enforces memory ordering for this kind of bogus address dependence.",
+      "parentUuid": "6afbb286_cc2def7a",
+      "range": {
+        "startLine": 906,
+        "startChar": 4,
+        "endLine": 906,
+        "endChar": 48
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8538d9b1_d03b22b8",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -247,6 +271,30 @@
       "side": 1,
       "message": "Yes, let\u0027s move the \"intention revealing\" part to the comments and simply\n\n    sub    r3, r3, #1\n    lsr    r3, r3, #ROSALLOC_BRACKET_QUANTUM_SIZE_SHIFT\n\ninstead of the 4 instructions.",
       "parentUuid": "eaf16251_03b250d3",
+      "range": {
+        "startLine": 926,
+        "startChar": 4,
+        "endLine": 926,
+        "endChar": 21
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45426131_5aed8929",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-10-09T20:58:16Z",
+      "side": 1,
+      "message": "Can\u0027t we just compensate for the off-by-1 in the ldr offset below?",
+      "parentUuid": "2a27faf5_8a258bc6",
       "range": {
         "startLine": 926,
         "startChar": 4,
