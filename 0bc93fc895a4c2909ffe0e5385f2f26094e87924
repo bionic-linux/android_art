@@ -22,6 +22,30 @@
       "revId": "0bc93fc895a4c2909ffe0e5385f2f26094e87924",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451b415b_a3a49afb",
+        "filename": "runtime/gc/space/image_space.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-09T00:20:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1001893d_da6c74f8",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "0bc93fc895a4c2909ffe0e5385f2f26094e87924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
