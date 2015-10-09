@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "054dc959_94beeaa1",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "We try to stay in 100 characters when possible.",
+      "range": {
+        "startLine": 901,
+        "startChar": 99,
+        "endLine": 901,
+        "endChar": 104
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8538d9b1_d03b22b8",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "We have avoided this pseudo instruction in the past.\n\nIs it actually buying something? Are we lucky and our assembly code is small enough that this is in range of the end of the assembly code (we do not declare any areas where the assembler could put a literal pool)? I think this is simply representable as a single mov instruction, and as such that would maybe be more expressive?\n\n(But I\u0027ll defer to Vladimir)",
+      "range": {
+        "startLine": 911,
+        "startChar": 4,
+        "endLine": 911,
+        "endChar": 50
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45426131_116ccc87",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2015-10-09T01:44:39Z",
       "side": 1,
       "message": "Is this necessary if the shift will round down?",
+      "range": {
+        "startLine": 924,
+        "startChar": 20,
+        "endLine": 924,
+        "endChar": 64
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "451b415b_86a96c07",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 924,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "Then there needs to be a \"preprocessor check\" here that the numbers are OK (see the SAVE_... macros).",
+      "parentUuid": "45426131_116ccc87",
       "range": {
         "startLine": 924,
         "startChar": 20,
@@ -48,6 +118,53 @@
     },
     {
       "key": {
+        "uuid": "eaf16251_03b250d3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "Sounds reasonable, though this code is obviously more intention-revealing, so it should stay in a comment, at least.",
+      "parentUuid": "eaf16251_43f61893",
+      "range": {
+        "startLine": 926,
+        "startChar": 4,
+        "endLine": 926,
+        "endChar": 21
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8521b987_289b23e4",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "cbz?",
+      "range": {
+        "startLine": 932,
+        "startChar": 4,
+        "endLine": 933,
+        "endChar": 54
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "451b415b_c6f5243d",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -64,6 +181,29 @@
         "startChar": 65,
         "endLine": 938,
         "endChar": 91
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45426131_119e8cd3",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T02:07:32Z",
+      "side": 1,
+      "message": "r0 to make this independent? And if you use it below, you could try to schedule the loads earlier.",
+      "range": {
+        "startLine": 938,
+        "startChar": 10,
+        "endLine": 938,
+        "endChar": 13
       },
       "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
