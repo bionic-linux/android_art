@@ -46,6 +46,30 @@
       "revId": "ad743f3c46b02474836d093c9a8d38437f26ba82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ae8da64_8bcd5596",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-09T19:59:43Z",
+      "side": 1,
+      "message": "Your choice. It just looks weird logging this rather trivial call, considering that all the real work is done elsewhere.",
+      "parentUuid": "e55355fb_c4f19e9a",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 54
+      },
+      "revId": "ad743f3c46b02474836d093c9a8d38437f26ba82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
