@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a149288_679ccc64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "This is formally called ternary operator. But if you know that \"select\" is also used you can keep the name.",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f4d3685_057b92af",
+        "filename": "compiler/optimizing/boolean_simplifier.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "Add comments over what \"simple\" means.",
+      "range": {
+        "startLine": 41,
+        "startChar": 12,
+        "endLine": 41,
+        "endChar": 25
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff8686d4_41fab273",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "what does FP stands for? Floating point? if so, the test has nothing \u0027floating point\u0027 specific.",
+      "range": {
+        "startLine": 1234,
+        "startChar": 64,
+        "endLine": 1234,
+        "endChar": 66
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a149288_8739080f",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "you shouldn\u0027t have both of these set to true so DCHECK. \nI wouldn\u0027t mind having a local enum either, but it\u0027s up to you.",
+      "range": {
+        "startLine": 1276,
+        "startChar": 56,
+        "endLine": 1277,
+        "endChar": 80
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca557e3a_9ab4c90f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "add a space between.",
+      "range": {
+        "startLine": 991,
+        "startChar": 66,
+        "endLine": 991,
+        "endChar": 68
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f4d3685_454ceab1",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 4
@@ -81,6 +196,75 @@
         "startChar": 61,
         "endLine": 207,
         "endChar": 69
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f290a88_6eeb4fa8",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5089,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "Comment why you don\u0027t need to care about CanThrow/NeedsEnvironment.",
+      "range": {
+        "startLine": 5089,
+        "startChar": 6,
+        "endLine": 5089,
+        "endChar": 13
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a27faf5_2a457fdd",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5100,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "Why would the order matter for code generation? You should be able to generate the optimal code wihout assuming anything at this level.",
+      "range": {
+        "startLine": 5100,
+        "startChar": 7,
+        "endLine": 5100,
+        "endChar": 48
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a149288_0797d843",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5112,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T14:47:23Z",
+      "side": 1,
+      "message": "use SetCanBeNull(...) and extend RTP.\n\nThis need to be part of the fix point otherwise it will introduce imprecision in the analysis.",
+      "range": {
+        "startLine": 5112,
+        "startChar": 7,
+        "endLine": 5112,
+        "endChar": 16
       },
       "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
