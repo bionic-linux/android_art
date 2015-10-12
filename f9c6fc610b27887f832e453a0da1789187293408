@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a154685_05751256",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-12T13:29:10Z",
+      "side": 1,
+      "message": "This check is prone to races.",
+      "range": {
+        "startLine": 130,
+        "startChar": 11,
+        "endLine": 130,
+        "endChar": 73
+      },
+      "revId": "f9c6fc610b27887f832e453a0da1789187293408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a154685_c5077ae5",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-12T13:29:10Z",
+      "side": 1,
+      "message": "This should be\n\n    DexFileAndClassPair(DexFileAndClassPair\u0026\u0026 src) \u003d default;\n    DexFileAndClassPair\u0026 operator\u003d(DexFileAndClassPair\u0026\u0026 src) \u003d default;\n\nBtw., when you need to use the non-default, I recommend implementing the move assignment using the move constructor (and swap()) rather than the other way around.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 3
+      },
+      "revId": "f9c6fc610b27887f832e453a0da1789187293408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cad81e3d_5f26cb5c",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-12T13:29:10Z",
+      "side": 1,
+      "message": "This leaves cached_descriptor_ but we still use it afterwards.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 3
+      },
+      "revId": "f9c6fc610b27887f832e453a0da1789187293408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
