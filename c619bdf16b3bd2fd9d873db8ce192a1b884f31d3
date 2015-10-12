@@ -85,6 +85,23 @@
       "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff8686d4_612ed6c9",
+        "filename": "test/533-checker-select/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-12T11:12:03Z",
+      "side": 1,
+      "message": "Missing copyright.",
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
