@@ -22,6 +22,30 @@
       "revId": "061220a23d40fb2a1ece095619c6df841657152e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f290a88_2e0c2750",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3909,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-12T17:03:14Z",
+      "side": 1,
+      "message": "having them like this creates better ordering of fields in HParameterValue wrt to padding.",
+      "parentUuid": "6a149288_277bf4b3",
+      "range": {
+        "startLine": 3908,
+        "startChar": 18,
+        "endLine": 3909,
+        "endChar": 37
+      },
+      "revId": "061220a23d40fb2a1ece095619c6df841657152e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
