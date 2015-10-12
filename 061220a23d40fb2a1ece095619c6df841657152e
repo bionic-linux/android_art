@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a149288_277bf4b3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3909,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-12T15:16:58Z",
+      "side": 1,
+      "message": "Nit: I\u0027d put these after the primitive type, but that\u0027s just me...",
+      "range": {
+        "startLine": 3908,
+        "startChar": 18,
+        "endLine": 3909,
+        "endChar": 37
+      },
+      "revId": "061220a23d40fb2a1ece095619c6df841657152e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
