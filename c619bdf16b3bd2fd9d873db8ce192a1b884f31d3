@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f4d3685_454ceab1",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2364,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-10-12T10:54:28Z",
+      "side": 1,
+      "message": "CSEL does not support immediates on ARM. VIXL provides some minor optimization to handle `0`, `1`, and `-1` using other instructions, but otherwise will synthesize the constant in a register.\n\nI suggest simply using `Location::RequiresRegister()` for now and adding a TODO.",
+      "range": {
+        "startLine": 2364,
+        "startChar": 26,
+        "endLine": 2364,
+        "endChar": 58
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cad81e3d_df981be6",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2380,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-10-12T10:54:28Z",
+      "side": 1,
+      "message": "Comment: \"we don\u0027t expect this because of the simplifier but it might happen\" ?\nAlso handle the other unlikely case `loc_true \u003d\u003d loc_false`?",
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a149288_44a0aee5",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2402,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-10-12T10:54:28Z",
+      "side": 1,
+      "message": "`select-\u003eGetType()` should work.\nSame below.",
+      "range": {
+        "startLine": 2402,
+        "startChar": 45,
+        "endLine": 2402,
+        "endChar": 65
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a154685_85e46299",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-10-12T10:54:28Z",
+      "side": 1,
+      "message": "See comment in `LocationsBuilderARM64::VisitSelect()`.",
+      "range": {
+        "startLine": 207,
+        "startChar": 61,
+        "endLine": 207,
+        "endChar": 69
+      },
+      "revId": "c619bdf16b3bd2fd9d873db8ce192a1b884f31d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
