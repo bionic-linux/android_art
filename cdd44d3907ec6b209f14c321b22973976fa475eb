@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fa9b65d_2586aea8",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a27faf5_6af65793",
+      "range": {
+        "startLine": 896,
+        "startChar": 5,
+        "endLine": 896,
+        "endChar": 19
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "054dc959_94beeaa1",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-09T02:07:32Z",
       "side": 1,
       "message": "We try to stay in 100 characters when possible.",
+      "range": {
+        "startLine": 901,
+        "startChar": 99,
+        "endLine": 901,
+        "endChar": 104
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df39c202_a00a3af0",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "054dc959_94beeaa1",
       "range": {
         "startLine": 901,
         "startChar": 99,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "3fa3be81_c32eb62b",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done.\n\nThe performance with PS2 was almost unchanged from PS1. I also tried the two-fence approach and it was clearly worse, ~5-20% slower. So, this seems like a better approach.",
+      "parentUuid": "45426131_45692e77",
+      "range": {
+        "startLine": 906,
+        "startChar": 4,
+        "endLine": 906,
+        "endChar": 48
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8538d9b1_d03b22b8",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -166,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "ff32061b_41a6d2ff",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0fce78_639cc264",
+      "range": {
+        "startLine": 911,
+        "startChar": 4,
+        "endLine": 911,
+        "endChar": 50
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca557e3a_776470db",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -177,6 +273,30 @@
       "writtenOn": "2015-10-09T15:43:03Z",
       "side": 1,
       "message": "Nit: LDRD is viable (with a test that they are consecutive and within range).",
+      "range": {
+        "startLine": 915,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 58
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_82a0dae0",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Noted as a TODO.",
+      "parentUuid": "ca557e3a_776470db",
       "range": {
         "startLine": 915,
         "startChar": 0,
@@ -331,6 +451,30 @@
     },
     {
       "key": {
+        "uuid": "bf3c0ef3_1f7b8381",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "45426131_5aed8929",
+      "range": {
+        "startLine": 926,
+        "startChar": 4,
+        "endLine": 926,
+        "endChar": 21
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cad81e3d_5ff6cb92",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -342,6 +486,30 @@
       "writtenOn": "2015-10-09T15:43:03Z",
       "side": 1,
       "message": "This can be replaced with\n\n    add r12, r9, r3, lsl #POINTER_SIZE_SHIFT\n    ldr r12, [r12, #THREAD_ROSALLOC_RUNS_OFFSET]\n    ldr r3, [r12, #(ROSALLOC_RUN_FREE_LIST_OFFSET + ROSALLOC_RUN_FREE_LIST_HEAD_OFFSET)]\n\nswapping the r3 and r12 results. The code size should be the same here (2+2+4+4 -\u003e 4+4+4) but it can help below.\n\nThere is some tension though between using CBZ right below, or having 16-bit LDR/STR instructions with low-register base further down. But it\u0027s worth it if you also take the STRD suggestion below.",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 91
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_01396a72",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cad81e3d_5ff6cb92",
       "range": {
         "startLine": 927,
         "startChar": 0,
@@ -389,6 +557,30 @@
       "side": 1,
       "message": "Not with a high register (r12). But it could be with r3, see above.",
       "parentUuid": "8521b987_289b23e4",
+      "range": {
+        "startLine": 932,
+        "startChar": 4,
+        "endLine": 933,
+        "endChar": 54
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_c5ddcc46",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done. Now cbz with r3 and r12 swapped.",
+      "parentUuid": "aa1a0ab2_866bcade",
       "range": {
         "startLine": 932,
         "startChar": 4,
@@ -471,6 +663,30 @@
     },
     {
       "key": {
+        "uuid": "9fae6a64_e62bbe18",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a27faf5_0ac35b21",
+      "range": {
+        "startLine": 938,
+        "startChar": 10,
+        "endLine": 938,
+        "endChar": 13
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6afbb286_eca54b7c",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -494,6 +710,30 @@
     },
     {
       "key": {
+        "uuid": "1f30ba11_8551044c",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6afbb286_eca54b7c",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 45
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a154685_c5065a32",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -505,6 +745,30 @@
       "writtenOn": "2015-10-09T15:43:03Z",
       "side": 1,
       "message": "With better register allocation, this could be merged with the head store to STRD. (Store the Class* early to free up r2.)",
+      "range": {
+        "startLine": 949,
+        "startChar": 4,
+        "endLine": 949,
+        "endChar": 90
+      },
+      "revId": "cdd44d3907ec6b209f14c321b22973976fa475eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f30ba11_45eb7ca7",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-13T17:33:43Z",
+      "side": 1,
+      "message": "Noted as a TODO.",
+      "parentUuid": "8a154685_c5065a32",
       "range": {
         "startLine": 949,
         "startChar": 4,
