@@ -25,6 +25,57 @@
     },
     {
       "key": {
+        "uuid": "1f30ba11_1cb70dc0",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-13T17:17:39Z",
+      "side": 1,
+      "message": "Can we please const-ify the new methods in this file? Just make the artmethod mutable if you have to.\n\nPlease, the non-constness is a scourge that needs to be stopped.",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_da0d350c",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-13T17:17:39Z",
+      "side": 1,
+      "message": "Any ideas on how I might be able to use this new class with lambdas?",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f2b7617_98faf9a2",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-13T17:17:39Z",
+      "side": 1,
+      "message": "style nits: Public methods ought to have comments :).",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a149288_eada4343",
         "filename": "runtime/art_method.h",
         "patchSetId": 6
@@ -111,6 +162,23 @@
         "endLine": 225,
         "endChar": 72
       },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_fa11111f",
+        "filename": "runtime/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-13T17:17:39Z",
+      "side": 1,
+      "message": "nit: magic constants? comments, named constants please?",
       "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
