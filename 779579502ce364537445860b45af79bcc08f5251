@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff13e649_1c7bd9af",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T18:00:49Z",
+      "side": 1,
+      "message": "This will prevent reordering of memory accesses from the current CPU. But is this really enough? Or, could the CPU still use stale flags from its own L1 data cache after fetching a new status from the actual RAM?",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 21
+      },
+      "revId": "779579502ce364537445860b45af79bcc08f5251",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aadf6a22_a14df859",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T18:00:49Z",
+      "side": 1,
+      "message": "I think the assertion should be right here:\n\n    #if ROSALLOC_SLOT_NEXT_OFFSET !\u003d MIRROR_OBJECT_CLASS_OFFSET\n    #error \"Class pointer needs to overwrite next pointer.\"\n    #endif",
+      "range": {
+        "startLine": 960,
+        "startChar": 65,
+        "endLine": 960,
+        "endChar": 73
+      },
+      "revId": "779579502ce364537445860b45af79bcc08f5251",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
