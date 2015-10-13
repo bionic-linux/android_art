@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff13e649_39a6af2d",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1969,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-13T10:01:06Z",
+      "side": 1,
+      "message": "Done. This was in preparation for refactoring step 2, but I realized it was simpler to just start with this change for now.",
+      "parentUuid": "ca557e3a_7a11f5d3",
+      "range": {
+        "startLine": 1969,
+        "startChar": 4,
+        "endLine": 1969,
+        "endChar": 43
+      },
+      "revId": "a1661de79b282953cd36c2411ad8e584a78d568f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a149288_873f4881",
         "filename": "runtime/art_code.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ff13e649_19abebf5",
+        "filename": "runtime/art_code.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-13T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a149288_873f4881",
+      "range": {
+        "startLine": 289,
+        "startChar": 5,
+        "endLine": 291,
+        "endChar": 53
+      },
+      "revId": "a1661de79b282953cd36c2411ad8e584a78d568f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a149288_274f742e",
         "filename": "runtime/art_code.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-10-13T09:11:28Z",
       "side": 1,
       "message": "Why unnamed?",
+      "range": {
+        "startLine": 48,
+        "startChar": 35,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "a1661de79b282953cd36c2411ad8e584a78d568f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa65e28_8bf50db5",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-13T10:01:06Z",
+      "side": 1,
+      "message": "Leftover debugging, thanks for spotting it.",
+      "parentUuid": "6a149288_274f742e",
       "range": {
         "startLine": 48,
         "startChar": 35,
@@ -105,6 +177,30 @@
       "writtenOn": "2015-10-13T09:11:28Z",
       "side": 1,
       "message": "long line",
+      "range": {
+        "startLine": 298,
+        "startChar": 96,
+        "endLine": 298,
+        "endChar": 103
+      },
+      "revId": "a1661de79b282953cd36c2411ad8e584a78d568f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f290a88_2e2b074f",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-13T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa65e28_4bbe85eb",
       "range": {
         "startLine": 298,
         "startChar": 96,
