@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3fa3be81_0fa06863",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-13T23:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df39c202_558de675",
+      "range": {
+        "startLine": 137,
+        "startChar": 49,
+        "endLine": 137,
+        "endChar": 82
+      },
+      "revId": "e58991b3b2282b5761f1a6023a16c803e1c4eb45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa9b65d_44f883e9",
         "filename": "runtime/mem_map.cc",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ff32061b_60eb07a8",
+        "filename": "runtime/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-13T23:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa9b65d_44f883e9",
+      "range": {
+        "startLine": 144,
+        "startChar": 23,
+        "endLine": 144,
+        "endChar": 31
+      },
+      "revId": "e58991b3b2282b5761f1a6023a16c803e1c4eb45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fae6a64_1bdaefff",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2015-10-13T23:23:37Z",
       "side": 1,
       "message": "Reserve -\u003e Register?",
+      "range": {
+        "startLine": 130,
+        "startChar": 9,
+        "endLine": 130,
+        "endChar": 16
+      },
+      "revId": "e58991b3b2282b5761f1a6023a16c803e1c4eb45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfb462b2_85b19568",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-13T23:42:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fae6a64_1bdaefff",
       "range": {
         "startLine": 130,
         "startChar": 9,
