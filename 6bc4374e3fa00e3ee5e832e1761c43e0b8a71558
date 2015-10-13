@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a149288_eada4343",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T12:55:54Z",
+      "side": 1,
+      "message": "Why do you need this here?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff13e649_f903978c",
+        "filename": "runtime/oat_file.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T12:55:54Z",
+      "side": 1,
+      "message": "Why do you need utils.h in the oat_file.h? I think it should be in oat_file-inl.h.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cad81e3d_02a30c77",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T12:55:54Z",
+      "side": 1,
+      "message": "This is used only in the LOG(INFO). Can you move it there?",
+      "range": {
+        "startLine": 961,
+        "startChar": 8,
+        "endLine": 961,
+        "endChar": 40
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca557e3a_ddbe3beb",
+        "filename": "runtime/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-13T12:55:54Z",
+      "side": 1,
+      "message": "Why do you need this? AFAICT, you always call this with the current_code derived from current_method.",
+      "range": {
+        "startLine": 225,
+        "startChar": 41,
+        "endLine": 225,
+        "endChar": 72
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
