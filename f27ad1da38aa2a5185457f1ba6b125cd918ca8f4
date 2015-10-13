@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f290a88_ae1ed72d",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-13T10:07:22Z",
+      "side": 1,
+      "message": "long line",
+      "range": {
+        "startLine": 1978,
+        "startChar": 95,
+        "endLine": 1978,
+        "endChar": 106
+      },
+      "revId": "f27ad1da38aa2a5185457f1ba6b125cd918ca8f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
