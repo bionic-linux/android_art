@@ -367,6 +367,30 @@
       "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_246d4bee",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3620,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:49:40Z",
+      "side": 1,
+      "message": "No I think igor is right. We also need to keep around the \u0027iface\u0027 handle over this call and the handle_super_iface becomes that handle the next call down so each recursion requires another handle to be created.",
+      "parentUuid": "7fa9b65d_78744000",
+      "range": {
+        "startLine": 3617,
+        "startChar": 2,
+        "endLine": 3620,
+        "endChar": 60
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
