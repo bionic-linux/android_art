@@ -46,6 +46,30 @@
       "revId": "56a40f5530bae9bfb738479d28b799d3ea577a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f913064a_79a1c7ce",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T22:07:38Z",
+      "side": 1,
+      "message": "Sure, it reads a bit. But in those cases, I prefer better be safe than sorry and assign the handle anyway. Also, it feels odd to get this dangling mirror::Class line 2621 and then put it in a handler in a branch.\n\nI haven\u0027t authored any class linker code anyway, but a consistent story on when and why things are in a handle really helps. Igor, that\u0027s also something you could consider adding to the style (and semantic?) guide.",
+      "parentUuid": "bfb7aeb4_3f3eb2a8",
+      "range": {
+        "startLine": 3624,
+        "startChar": 0,
+        "endLine": 3624,
+        "endChar": 47
+      },
+      "revId": "56a40f5530bae9bfb738479d28b799d3ea577a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
