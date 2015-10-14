@@ -343,6 +343,30 @@
       "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fa9b65d_78744000",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3620,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-14T18:46:50Z",
+      "side": 1,
+      "message": "Igor: you only need *one* handle (which has to be Mutable).\n\nAlex: Libcore is not that interesting, because of the boot image. Look into apps - at least in the L time frame we had Google apps with non-trivial amount of interfaces. Then there\u0027s always Facebook.",
+      "parentUuid": "9fae6a64_707c5da9",
+      "range": {
+        "startLine": 3617,
+        "startChar": 2,
+        "endLine": 3620,
+        "endChar": 60
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
