@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa8725b_2b58bae5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3493,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-14T18:16:04Z",
+      "side": 1,
+      "message": "Would be shorter and just as expressive to add the NewHandle template instead?",
+      "range": {
+        "startLine": 3493,
+        "startChar": 29,
+        "endLine": 3493,
+        "endChar": 56
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff32061b_59ffde1c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3499,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-14T18:16:04Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 3499,
+        "startChar": 39,
+        "endLine": 3499,
+        "endChar": 43
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa3be81_8042e7d4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3620,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-14T18:16:04Z",
+      "side": 1,
+      "message": "You could consider asking for a MutableHandle from the caller. That way the class-hierarchy traversal doesn\u0027t install more than one handle scope.",
+      "range": {
+        "startLine": 3617,
+        "startChar": 2,
+        "endLine": 3620,
+        "endChar": 60
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
