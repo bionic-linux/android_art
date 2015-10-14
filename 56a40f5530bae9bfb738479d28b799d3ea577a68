@@ -22,6 +22,30 @@
       "revId": "56a40f5530bae9bfb738479d28b799d3ea577a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_3f3eb2a8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3624,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T21:47:05Z",
+      "side": 1,
+      "message": "HasBeenRecursivelyInitialized just reads a bit from the class object. It cannot cause GC. As to why its here its because it was here previously and I didn\u0027t move it.",
+      "parentUuid": "9cfbd833_41f4d486",
+      "range": {
+        "startLine": 3624,
+        "startChar": 0,
+        "endLine": 3624,
+        "endChar": 47
+      },
+      "revId": "56a40f5530bae9bfb738479d28b799d3ea577a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
