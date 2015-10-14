@@ -145,6 +145,54 @@
     },
     {
       "key": {
+        "uuid": "bfb7aeb4_449f1f60",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3493,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:43:51Z",
+      "side": 1,
+      "message": "We need to have it copy from NewHandle or else it\u0027s not bound to the scope IIUC.",
+      "parentUuid": "7fa9b65d_d8e3f435",
+      "range": {
+        "startLine": 3493,
+        "startChar": 29,
+        "endLine": 3493,
+        "endChar": 56
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa3be81_00d35761",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3493,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:43:51Z",
+      "side": 1,
+      "message": "Ah. Sorry templates are still somewhat new to me. Done.",
+      "parentUuid": "5fa8725b_2ba67a2d",
+      "range": {
+        "startLine": 3493,
+        "startChar": 29,
+        "endLine": 3493,
+        "endChar": 56
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff32061b_59ffde1c",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -168,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "9fae6a64_b06975e2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3499,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff32061b_59ffde1c",
+      "range": {
+        "startLine": 3499,
+        "startChar": 39,
+        "endLine": 3499,
+        "endChar": 43
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df39c202_5d76ac99",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -179,6 +251,24 @@
       "writtenOn": "2015-10-14T18:35:54Z",
       "side": 1,
       "message": "UNLIKELY?",
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfb7aeb4_64a4a3ab",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3617,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:43:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df39c202_5d76ac99",
       "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -219,6 +309,30 @@
       "writtenOn": "2015-10-14T18:35:54Z",
       "side": 1,
       "message": "agreed,\n\nbut how will it know the right size for StackHandleScope?",
+      "parentUuid": "3fa3be81_8042e7d4",
+      "range": {
+        "startLine": 3617,
+        "startChar": 2,
+        "endLine": 3620,
+        "endChar": 60
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fae6a64_707c5da9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3620,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:43:51Z",
+      "side": 1,
+      "message": "This path is extremely cold. I really don\u0027t think it would make enough of a difference to be worth how confusing it would make the function signature and call.\n\nFor example aosp/libcore has ~400 interfaces of which only ~120 extend anything (for context there are ~6000 classes in libcore).\n\n    % git grep -E \"^[^\\*\\\"\\/]*[^@]class \" | wc -l              \n    5894\n\n    % git grep -E \"^[^\\*\\\"\\/]*[^@]interface \" | wc -l          \n    395\n\n    % git grep -E \"^[^\\*\\\"\\/]*[^@]interface .* extends\" | wc -l\n    122",
       "parentUuid": "3fa3be81_8042e7d4",
       "range": {
         "startLine": 3617,
