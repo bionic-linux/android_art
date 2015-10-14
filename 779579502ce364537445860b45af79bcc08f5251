@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ff8686d4_44564043",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-14T10:31:55Z",
+      "side": 1,
+      "message": "I\u0027ll take the ARMv8 manual answer as satisfactory. (I\u0027m not taking the reasoning about StoreSequentiallyConsistent because we\u0027re not doing LoadSequentiallyConsistent.)",
+      "parentUuid": "7fa9b65d_8ed8dae0",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 21
+      },
+      "revId": "779579502ce364537445860b45af79bcc08f5251",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aadf6a22_a14df859",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 3
