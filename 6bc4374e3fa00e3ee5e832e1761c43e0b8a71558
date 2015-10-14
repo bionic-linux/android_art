@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "9cf118a5_ceea03cb",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "This CL basically just moved code around.",
+      "parentUuid": "1f30ba11_1cb70dc0",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fae6a64_da0d350c",
         "filename": "runtime/art_code.h",
         "patchSetId": 6
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "9f290a88_b1051a52",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "It\u0027s currently just a wrapper for better abstraction on code. Not sure how this interacts with lambdas but let\u0027s chat about it.",
+      "parentUuid": "9fae6a64_da0d350c",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f2b7617_98faf9a2",
         "filename": "runtime/art_code.h",
         "patchSetId": 6
@@ -70,6 +106,24 @@
       "writtenOn": "2015-10-13T17:17:39Z",
       "side": 1,
       "message": "style nits: Public methods ought to have comments :).",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a27faf5_8d55a588",
+        "filename": "runtime/art_code.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "Code was just moved. We can \"decorate\" it later :)",
+      "parentUuid": "7f2b7617_98faf9a2",
       "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -145,6 +199,30 @@
     },
     {
       "key": {
+        "uuid": "9f290a88_91021e46",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 961,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "Will do in a follow-up cl.",
+      "parentUuid": "cad81e3d_02a30c77",
+      "range": {
+        "startLine": 961,
+        "startChar": 8,
+        "endLine": 961,
+        "endChar": 40
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca557e3a_ddbe3beb",
         "filename": "runtime/utils.h",
         "patchSetId": 6
@@ -168,6 +246,30 @@
     },
     {
       "key": {
+        "uuid": "9cf118a5_2e1907c4",
+        "filename": "runtime/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "The plan is to do it the other way around: use the ArtCode to derive the ArtMethod, but I agree my intentions got lost by needing both. I\u0027ll clean it up.",
+      "parentUuid": "ca557e3a_ddbe3beb",
+      "range": {
+        "startLine": 225,
+        "startChar": 41,
+        "endLine": 225,
+        "endChar": 72
+      },
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fae6a64_fa11111f",
         "filename": "runtime/utils.h",
         "patchSetId": 6
@@ -179,6 +281,24 @@
       "writtenOn": "2015-10-13T17:17:39Z",
       "side": 1,
       "message": "nit: magic constants? comments, named constants please?",
+      "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f4d3685_e5b9961d",
+        "filename": "runtime/utils.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-14T08:50:01Z",
+      "side": 1,
+      "message": "Code was moved. I agree that magic constants suck.",
+      "parentUuid": "9fae6a64_fa11111f",
       "revId": "6bc4374e3fa00e3ee5e832e1761c43e0b8a71558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
