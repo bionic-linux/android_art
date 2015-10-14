@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "5fa8725b_2ba67a2d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3493,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-14T18:25:35Z",
+      "side": 1,
+      "message": "I suggested to explicitly mark the template (which you omitted)...",
+      "parentUuid": "9fae6a64_70953d3f",
+      "range": {
+        "startLine": 3493,
+        "startChar": 29,
+        "endLine": 3493,
+        "endChar": 56
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff32061b_59ffde1c",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
