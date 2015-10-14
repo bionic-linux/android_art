@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9fae6a64_70953d3f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3493,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-14T18:24:40Z",
+      "side": 1,
+      "message": "Nope:\n    art/runtime/class_linker.cc:3493:20: error: no matching member function for call to \u0027NewHandle\u0027\n              hs_iface.NewHandle(nullptr));\n              ~~~~~~~~~^~~~~~~~~\n    art/runtime/handle_scope.h:153:34: note: candidate template ignored: could not match \u0027T *\u0027 against \u0027nullptr_t\u0027\n  ALWAYS_INLINE MutableHandle\u003cT\u003e NewHandle(T* object) SHARED_REQUIRES(Locks::mutator_lock_);\n                                     ^\n\nI think it has to do with the way that nullptr interacts with templates or something.",
+      "parentUuid": "7f2b7617_84fcd06c",
+      "range": {
+        "startLine": 3493,
+        "startChar": 29,
+        "endLine": 3493,
+        "endChar": 56
+      },
+      "revId": "99a0d48968d97ff9640923238d1506f2ecd59603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff32061b_59ffde1c",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
