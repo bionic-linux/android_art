@@ -51,6 +51,29 @@
       "revId": "f97585f399ee4b6ccc012e0d4d373e470665a826",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39611e20_793a9f62",
+        "filename": "runtime/class_table.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-15T23:00:11Z",
+      "side": 1,
+      "message": "Please add a constructor for this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 70
+      },
+      "revId": "f97585f399ee4b6ccc012e0d4d373e470665a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
