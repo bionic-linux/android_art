@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "591ed25a_74bb08b0",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-15T09:47:47Z",
+      "side": 1,
+      "message": "Why not use the class_loader?",
+      "range": {
+        "startLine": 375,
+        "startChar": 10,
+        "endLine": 375,
+        "endChar": 46
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "797b96ad_95d5641a",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-15T09:47:47Z",
+      "side": 1,
+      "message": "Why not use the class loader?",
+      "range": {
+        "startLine": 2017,
+        "startChar": 8,
+        "endLine": 2017,
+        "endChar": 44
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9924caa5_76f310cf",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-15T09:47:47Z",
+      "side": 1,
+      "message": "This branch doesn\u0027t need to exist anymore.",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1219,
+        "endChar": 5
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b90d0e2e_37fd9899",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-15T09:47:47Z",
+      "side": 1,
+      "message": "No synchronization?",
+      "range": {
+        "startLine": 2101,
+        "startChar": 0,
+        "endLine": 2105,
+        "endChar": 3
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39759eb9_f3d87053",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-15T09:47:47Z",
+      "side": 1,
+      "message": "Style nit: break before \"hs\" and put the rest on a single line.\nAlternatively, break before \"*dex_file\" and \"runtime\" which would be consistent with other places in this CL.",
+      "range": {
+        "startLine": 500,
+        "startChar": 39,
+        "endLine": 502,
+        "endChar": 61
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
