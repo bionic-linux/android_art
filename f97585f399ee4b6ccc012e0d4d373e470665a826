@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39611e20_99297b26",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:56:12Z",
+      "side": 1,
+      "message": "I\u0027m not a float expert, so I could be completely wrong here.\n\nIs this going to work for values very close to 0.0? Maybe it should be approximately close to 0 for a few ULPs?",
+      "revId": "f97585f399ee4b6ccc012e0d4d373e470665a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1959ba73_a3b1a81a",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:56:12Z",
+      "side": 1,
+      "message": "Ah, the 0.5 definitely makes this more readable too :).",
+      "revId": "f97585f399ee4b6ccc012e0d4d373e470665a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
