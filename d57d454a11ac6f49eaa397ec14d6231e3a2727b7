@@ -22,6 +22,30 @@
       "revId": "d57d454a11ac6f49eaa397ec14d6231e3a2727b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9bdc694_a9b59db4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T16:14:32Z",
+      "side": 1,
+      "message": "Ah OK. I\u0027ll clean up.",
+      "parentUuid": "39759eb9_b37e7867",
+      "range": {
+        "startLine": 1217,
+        "startChar": 8,
+        "endLine": 1219,
+        "endChar": 10
+      },
+      "revId": "d57d454a11ac6f49eaa397ec14d6231e3a2727b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
