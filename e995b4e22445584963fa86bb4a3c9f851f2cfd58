@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79c0f615_0d4f11a9",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "591ed25a_74bb08b0",
+      "range": {
+        "startLine": 375,
+        "startChar": 10,
+        "endLine": 375,
+        "endChar": 46
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "797b96ad_95d5641a",
         "filename": "compiler/driver/compiler_driver.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-15T09:47:47Z",
       "side": 1,
       "message": "Why not use the class loader?",
+      "range": {
+        "startLine": 2017,
+        "startChar": 8,
+        "endLine": 2017,
+        "endChar": 44
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9b482b2_48f3bfce",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797b96ad_95d5641a",
       "range": {
         "startLine": 2017,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "99c5aa26_ae04b755",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9924caa5_76f310cf",
+      "range": {
+        "startLine": 1213,
+        "startChar": 0,
+        "endLine": 1219,
+        "endChar": 5
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9d4e6d4_114f2ca9",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-10-15T11:24:47Z",
       "side": 1,
       "message": "GetOrCreate..",
+      "range": {
+        "startLine": 2097,
+        "startChar": 26,
+        "endLine": 2097,
+        "endChar": 55
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19bb7aa1_2a02ff55",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2097,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9d4e6d4_114f2ca9",
       "range": {
         "startLine": 2097,
         "startChar": 26,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "59cfb247_0ca1579d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2105,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Meant to use classlinker_classes_lock_.",
+      "parentUuid": "b90d0e2e_37fd9899",
+      "range": {
+        "startLine": 2101,
+        "startChar": 0,
+        "endLine": 2105,
+        "endChar": 3
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39759eb9_f3d87053",
         "filename": "runtime/native/dalvik_system_VMRuntime.cc",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2015-10-15T09:47:47Z",
       "side": 1,
       "message": "Style nit: break before \"hs\" and put the rest on a single line.\nAlternatively, break before \"*dex_file\" and \"runtime\" which would be consistent with other places in this CL.",
+      "range": {
+        "startLine": 500,
+        "startChar": 39,
+        "endLine": 502,
+        "endChar": 61
+      },
+      "revId": "e995b4e22445584963fa86bb4a3c9f851f2cfd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99c5aa26_ee55df31",
+        "filename": "runtime/native/dalvik_system_VMRuntime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T15:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39759eb9_f3d87053",
       "range": {
         "startLine": 500,
         "startChar": 39,
