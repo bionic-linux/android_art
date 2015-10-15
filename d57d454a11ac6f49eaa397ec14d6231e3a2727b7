@@ -46,6 +46,29 @@
       "revId": "d57d454a11ac6f49eaa397ec14d6231e3a2727b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9bdc694_2c021b56",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-15T17:46:49Z",
+      "side": 1,
+      "message": "Add a comment that this asserts that the allocator has already been created?",
+      "range": {
+        "startLine": 532,
+        "startChar": 22,
+        "endLine": 532,
+        "endChar": 48
+      },
+      "revId": "d57d454a11ac6f49eaa397ec14d6231e3a2727b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
