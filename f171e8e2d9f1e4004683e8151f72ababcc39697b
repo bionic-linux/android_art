@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39611e20_3cc81588",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T23:39:30Z",
+      "side": 1,
+      "message": "This needs to be marked explicit, otherwise a single double will make a HashSet \n\n  HashSet\u003cK,V\u003e x \u003d 5.0; \n  // same as:\n  HashSet\u003cK,V\u003e x(5.0, kDefaultMaxLoadFactor);",
+      "revId": "f171e8e2d9f1e4004683e8151f72ababcc39697b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ae8a64_80618a90",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T23:39:30Z",
+      "side": 1,
+      "message": "That being said it\u0027s probably \"cleaner\" to add a second constructor with both arguments mandatory (why would anyone only want to set one of them?), and forward your original constructor to the new constructor.",
+      "revId": "f171e8e2d9f1e4004683e8151f72ababcc39697b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9bdc694_d5665fa1",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T23:39:30Z",
+      "side": 1,
+      "message": "Probably comparing against 0 and 1.0 from previous PS is better than this.",
+      "revId": "f171e8e2d9f1e4004683e8151f72ababcc39697b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
