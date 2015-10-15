@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39611e20_d94ad3e9",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T22:58:29Z",
+      "side": 1,
+      "message": "Not sure, I have assumptions that inputs are at least somewhat sane. I could change it to 0.01 or something though to be safer.",
+      "parentUuid": "39611e20_99297b26",
+      "revId": "f97585f399ee4b6ccc012e0d4d373e470665a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1959ba73_a3b1a81a",
         "filename": "runtime/base/hash_set.h",
         "patchSetId": 3
