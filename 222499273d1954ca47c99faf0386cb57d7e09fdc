@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d952c250_81dc60fa",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:44:07Z",
+      "side": 1,
+      "message": "minor: maybe move next to GetMaxLoadFactor ?",
+      "revId": "222499273d1954ca47c99faf0386cb57d7e09fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d952c250_a1d244df",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:44:07Z",
+      "side": 1,
+      "message": "What if its \u003c0 or \u003e1.0 ?",
+      "revId": "222499273d1954ca47c99faf0386cb57d7e09fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "996cca16_ffbe93e8",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:44:07Z",
+      "side": 1,
+      "message": "nicolas would\u0027ve wanted parens here",
+      "range": {
+        "startLine": 477,
+        "startChar": 13,
+        "endLine": 477,
+        "endChar": 25
+      },
+      "revId": "222499273d1954ca47c99faf0386cb57d7e09fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9943ea80_d2b75425",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:44:07Z",
+      "side": 1,
+      "message": "Could you drop a note here explaining how it was tuned / and how to retune it?",
+      "revId": "222499273d1954ca47c99faf0386cb57d7e09fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d952c250_418d2808",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-15T22:44:07Z",
+      "side": 1,
+      "message": "Nicolas would\u0027ve wanted this to be called is_low_memory_mode_",
+      "range": {
+        "startLine": 787,
+        "startChar": 7,
+        "endLine": 787,
+        "endChar": 23
+      },
+      "revId": "222499273d1954ca47c99faf0386cb57d7e09fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
