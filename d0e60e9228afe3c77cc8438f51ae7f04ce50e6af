@@ -22,6 +22,30 @@
       "revId": "d0e60e9228afe3c77cc8438f51ae7f04ce50e6af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39611e20_b66f2679",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-15T20:49:26Z",
+      "side": 1,
+      "message": "Done, I don\u0027t see use cases where people would repeatedly call SetLoadFactor though.",
+      "parentUuid": "d90ac213_78ae610b",
+      "range": {
+        "startLine": 476,
+        "startChar": 8,
+        "endLine": 476,
+        "endChar": 38
+      },
+      "revId": "d0e60e9228afe3c77cc8438f51ae7f04ce50e6af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
