@@ -70,6 +70,30 @@
       "revId": "e22135fc3da6cd1e2875bd05a14925beea3be548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39de7e5b_0e344b75",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-16T21:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b03e09_9bc9ab44",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "e22135fc3da6cd1e2875bd05a14925beea3be548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
