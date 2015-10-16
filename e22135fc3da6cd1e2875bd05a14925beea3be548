@@ -22,6 +22,30 @@
       "revId": "e22135fc3da6cd1e2875bd05a14925beea3be548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "190ffab2_ea44478d",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-10-16T16:16:10Z",
+      "side": 1,
+      "message": "My understanding was that passing NULL to the std::string constructor is undefined behavior.\n\nPerhaps it would be better for me to set dex_location_ \u003d dex_location after the check in line 70, rather than passing dex_location_ to the constructor? What do you think?",
+      "parentUuid": "19cc5a7c_42cd1297",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "e22135fc3da6cd1e2875bd05a14925beea3be548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
