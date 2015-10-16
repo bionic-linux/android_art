@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "190ffab2_6adcd746",
+        "filename": "compiler/jit/jit_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-16T15:49:42Z",
+      "side": 1,
+      "message": "This is just the straight copy from dex2oat. As such, it\u0027s better to have this be common.",
+      "parentUuid": "d9ae4293_f8041157",
+      "range": {
+        "startLine": 94,
+        "startChar": 75,
+        "endLine": 94,
+        "endChar": 82
+      },
+      "revId": "085fc87e7ea42989a4a00cacb0c9c3a6d2590af6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b03e09_3b63b71c",
         "filename": "compiler/jit/jit_compiler.cc",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2015-10-16T11:28:37Z",
       "side": 1,
       "message": "CHECK()? If this fails we\u0027re getting SIGSEGV below.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 9
+      },
+      "revId": "085fc87e7ea42989a4a00cacb0c9c3a6d2590af6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39de7e5b_6bb50105",
+        "filename": "compiler/jit/jit_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-16T15:49:42Z",
+      "side": 1,
+      "message": "Yeah, that was a translation error by Mathieu. Dex2oat does Usage() here, which will terminate dex2oat.\n\nHowever, I don\u0027t think it\u0027s dangerous. All features implementations understand default.",
+      "parentUuid": "59141288_64784ab1",
       "range": {
         "startLine": 107,
         "startChar": 0,
