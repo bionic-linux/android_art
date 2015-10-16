@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19cc5a7c_42cd1297",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-16T07:38:29Z",
+      "side": 1,
+      "message": "You\u0027re checking dex_location not null line 70 so I think you can remove this.",
+      "range": {
+        "startLine": 68,
+        "startChar": 20,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "e22135fc3da6cd1e2875bd05a14925beea3be548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
