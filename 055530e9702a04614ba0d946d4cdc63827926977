@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39b03e09_1b059b50",
+        "filename": "runtime/base/hash_set.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-16T11:16:58Z",
+      "side": 1,
+      "message": "Add these checks to the constructor as well.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 36
+      },
+      "revId": "055530e9702a04614ba0d946d4cdc63827926977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
