@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16e8a964_420df2bc",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-21T21:30:43Z",
+      "side": 1,
+      "message": "Things like this easily bitrot when it\u0027s a development tool that gets updated as needed. Do we want to go that route?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "fa4189c819a3a748f9607868b866703b8c13ef40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
