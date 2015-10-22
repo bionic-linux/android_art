@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "56a1415d_fcd92955",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-22T18:07:04Z",
+      "side": 1,
+      "message": "I think this is okay.\n\nWe update each field of an object with a relaxed CAS (what we do in this function) and then use a release CAS (see object-inl.h) to switch the object from gray to black/white.\n\nThis release CAS will make the updated fields visible. If a mutator sees a stale field value before this release CAS, it will take the read barrier slow path and get the correct value (since the object is still gray.)",
+      "parentUuid": "19337ad8_e44e96aa",
+      "range": {
+        "startLine": 1652,
+        "startChar": 18,
+        "endLine": 1652,
+        "endChar": 61
+      },
+      "revId": "fed3e2fd4919b58f8e4f8cbc317ee101f3b9af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19337ad8_e46f7629",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-10-22T18:07:04Z",
+      "side": 1,
+      "message": "This is the release CAS.",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 34
+      },
+      "revId": "fed3e2fd4919b58f8e4f8cbc317ee101f3b9af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "194a9a42_41803c3b",
         "filename": "runtime/read_barrier-inl.h",
         "patchSetId": 1
