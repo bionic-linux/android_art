@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19337ad8_e44e96aa",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-22T16:26:20Z",
+      "side": 1,
+      "message": "Maybe it would be OK if we put a fence at the end of object scanning? Every read goes through slow path until we set the read barrier flag from grey -\u003e white.",
+      "parentUuid": "99784a71_8a4b3bee",
+      "range": {
+        "startLine": 1652,
+        "startChar": 18,
+        "endLine": 1652,
+        "endChar": 61
+      },
+      "revId": "fed3e2fd4919b58f8e4f8cbc317ee101f3b9af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "194a9a42_41803c3b",
         "filename": "runtime/read_barrier-inl.h",
         "patchSetId": 1
