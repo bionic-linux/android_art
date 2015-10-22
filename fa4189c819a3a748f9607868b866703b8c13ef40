@@ -22,6 +22,30 @@
       "revId": "fa4189c819a3a748f9607868b866703b8c13ef40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7938f6b0_6d345577",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-10-22T10:09:50Z",
+      "side": 1,
+      "message": "Adding usage options is a bit too much for this script but I don\u0027t really mind it.\n\nHowever, you already missed an option (--mode), and I agree this can easily get obsolete.",
+      "parentUuid": "16e8a964_420df2bc",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 3
+      },
+      "revId": "fa4189c819a3a748f9607868b866703b8c13ef40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
