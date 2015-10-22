@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99784a71_8a4b3bee",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-10-22T05:13:29Z",
+      "side": 1,
+      "message": "I don\u0027t immediately understand why this is safe.  Doesn\u0027t another thread subsequently reading this field expect the copied object to be initialized?  How is the copied data made visible to the other thread?  I would have expected release semantics here, and probably below.",
+      "range": {
+        "startLine": 1652,
+        "startChar": 18,
+        "endLine": 1652,
+        "endChar": 61
+      },
+      "revId": "fed3e2fd4919b58f8e4f8cbc317ee101f3b9af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "194a9a42_41803c3b",
+        "filename": "runtime/read_barrier-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-10-22T05:13:29Z",
+      "side": 1,
+      "message": "Similar concerns here.  But I didn\u0027t have time to read the related code carefully enough.",
+      "range": {
+        "startLine": 66,
+        "startChar": 13,
+        "endLine": 66,
+        "endChar": 67
+      },
+      "revId": "fed3e2fd4919b58f8e4f8cbc317ee101f3b9af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
