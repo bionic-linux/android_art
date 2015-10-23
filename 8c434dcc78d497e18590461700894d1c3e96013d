@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56cf8147_acd36333",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-23T10:10:28Z",
+      "side": 1,
+      "message": "Why not BAL?",
+      "range": {
+        "startLine": 1403,
+        "startChar": 0,
+        "endLine": 1407,
+        "endChar": 16
+      },
+      "revId": "8c434dcc78d497e18590461700894d1c3e96013d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6b7ddb4_47f2cecc",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-10-23T10:10:28Z",
+      "side": 1,
+      "message": "Can you save RA in TMP instead of stack? Or is TMP reserved for codegen rather than assembler?\n\nCan the codegen tell the assembler whether it\u0027s safe to clobber RA?",
+      "range": {
+        "startLine": 1430,
+        "startChar": 6,
+        "endLine": 1430,
+        "endChar": 36
+      },
+      "revId": "8c434dcc78d497e18590461700894d1c3e96013d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
