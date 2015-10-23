@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f66f95e4_283bd365",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-10-23T10:34:09Z",
+      "side": 1,
+      "message": "BAL is no more in R6. NAL may get removed as well (at some distant point in the future, I suppose), but hasn\u0027t been yet, it\u0027s kept for compatibility/transition. The JNI compiler may generate branches, possibly long ones. At the moment of writing, if I\u0027m not mistaken, it didn\u0027t have the information to distinguish R2 from R6 (the assembler defaults to R2 if not supplied with instruction set features info). And so I chose to use NAL as the instruction that would work for both. Other than that there shouldn\u0027t be any practical difference between BAL and NAL.",
+      "parentUuid": "56cf8147_acd36333",
+      "range": {
+        "startLine": 1403,
+        "startChar": 0,
+        "endLine": 1407,
+        "endChar": 16
+      },
+      "revId": "8c434dcc78d497e18590461700894d1c3e96013d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6b7ddb4_47f2cecc",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-23T10:10:28Z",
       "side": 1,
       "message": "Can you save RA in TMP instead of stack? Or is TMP reserved for codegen rather than assembler?\n\nCan the codegen tell the assembler whether it\u0027s safe to clobber RA?",
+      "range": {
+        "startLine": 1430,
+        "startChar": 6,
+        "endLine": 1430,
+        "endChar": 36
+      },
+      "revId": "8c434dcc78d497e18590461700894d1c3e96013d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f66f95e4_484087cd",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1056098
+      },
+      "writtenOn": "2015-10-23T10:34:09Z",
+      "side": 1,
+      "message": "TMP(\u003dT8) is a heavily used scratch register in the code generator, so it\u0027s out of question at the moment.\n\nThis shouldn\u0027t be an issue in practice as you\u0027d need 128KB of code between a label and a branch to it for this long sequence to be generated (AFAIK, at the moment everything in Android, including the existing tests, works with short branches with +/-128KB range; you need some rather unnatural code to go beyond 128KB).\n\nIn theory we could also generate jumps to jumps to extend the range (this is the \"veneers\" in Arm64, right?). Again, I don\u0027t think this is needed now.",
+      "parentUuid": "b6b7ddb4_47f2cecc",
       "range": {
         "startLine": 1430,
         "startChar": 6,
