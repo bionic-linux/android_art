@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16c1896c_faf8a933",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-10-27T10:01:37Z",
+      "side": 1,
+      "message": "What about using a strategy similar to the one you used in lines 1765–1774, that is:\n* introducing `GpuRegister value \u003d ZERO;` instead;\n* if the source constant is non-null, set `value` to TMP and load the constant in that register;\n* replace `value ? TMP : ZERO` with `value` on line 759?\n\n(This can also be done on other places below.)",
+      "range": {
+        "startLine": 747,
+        "startChar": 6,
+        "endLine": 747,
+        "endChar": 20
+      },
+      "revId": "ee8c8a536e284bc18f00170227ef0c4de60fc9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f69a3588_c10ce2c3",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-10-27T10:01:37Z",
+      "side": 1,
+      "message": "Add\n\n  DCHECK(destination.IsDoubleStackSlot());",
+      "revId": "ee8c8a536e284bc18f00170227ef0c4de60fc9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1683491e_ea3187d0",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-10-27T10:01:37Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 804,
+        "startChar": 45,
+        "endLine": 804,
+        "endChar": 53
+      },
+      "revId": "ee8c8a536e284bc18f00170227ef0c4de60fc9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f69a3588_6104f697",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-10-27T10:01:37Z",
+      "side": 1,
+      "message": "Add\n\n  DCHECK(location.IsDoubleStackSlot());",
+      "revId": "ee8c8a536e284bc18f00170227ef0c4de60fc9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
