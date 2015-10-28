@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d63d314e_c6e176af",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-28T00:13:50Z",
+      "side": 1,
+      "message": "This should probably go into the default build script when we set an experimental flag, similar to how it\u0027s done for run-test-jar",
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76fd65bf_c81cef0a",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-28T00:13:50Z",
+      "side": 1,
+      "message": "Are any of these changes other than NO_SMALI actually being used?",
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56fce1c4_6a3bb3b3",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-28T00:13:50Z",
+      "side": 1,
+      "message": "multidex",
+      "range": {
+        "startLine": 60,
+        "startChar": 28,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
