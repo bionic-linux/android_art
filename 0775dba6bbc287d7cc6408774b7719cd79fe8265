@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6199d10_f79a206d",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-10-28T12:50:55Z",
+      "side": 1,
+      "message": "On a side note, is it still true? I\u0027m wondering whether we could also remove that in the future in order to use the same default image.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "0775dba6bbc287d7cc6408774b7719cd79fe8265",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
