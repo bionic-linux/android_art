@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56ab01f0_55bbbef7",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-10-28T23:57:48Z",
+      "side": 1,
+      "message": "This is now a public API and if instruction is irrelevant to the loop (not really used in the loop, say instruction and loop are in two branches), this way of testing IsLoopInvariant() will return true, which seems dangerous since people assume loop invariant is available in the loop pre-header.",
+      "revId": "92124eee3b72e8913982e433c02b1f6ac8c8d3d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
