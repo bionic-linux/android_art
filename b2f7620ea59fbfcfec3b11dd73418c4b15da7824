@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "769c85d8_4de5f93c",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-28T23:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63d314e_c6e176af",
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76fd65bf_c81cef0a",
         "filename": "test/etc/default-build",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "36a68d28_cba395ed",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-28T23:09:14Z",
+      "side": 1,
+      "message": "No. I just figured it would be better to pull all this up to one place.",
+      "parentUuid": "76fd65bf_c81cef0a",
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56fce1c4_6a3bb3b3",
         "filename": "test/etc/default-build",
         "patchSetId": 2
@@ -47,6 +83,30 @@
       "writtenOn": "2015-10-28T00:13:50Z",
       "side": 1,
       "message": "multidex",
+      "range": {
+        "startLine": 60,
+        "startChar": 28,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "b2f7620ea59fbfcfec3b11dd73418c4b15da7824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_5006325f",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-28T23:09:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56fce1c4_6a3bb3b3",
       "range": {
         "startLine": 60,
         "startChar": 28,
