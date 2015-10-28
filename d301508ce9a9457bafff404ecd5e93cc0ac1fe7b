@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36a68d28_71e89016",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-28T21:50:26Z",
+      "side": 1,
+      "message": "No longer required.",
+      "range": {
+        "startLine": 89,
+        "startChar": 28,
+        "endLine": 89,
+        "endChar": 65
+      },
+      "revId": "d301508ce9a9457bafff404ecd5e93cc0ac1fe7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d955b5_323bb6b4",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-28T21:50:26Z",
+      "side": 1,
+      "message": "This can be const, right?",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 21
+      },
+      "revId": "d301508ce9a9457bafff404ecd5e93cc0ac1fe7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d955b5_72352ebc",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-28T21:50:26Z",
+      "side": 1,
+      "message": "As can this?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "d301508ce9a9457bafff404ecd5e93cc0ac1fe7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_92837c04",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-28T21:50:26Z",
+      "side": 1,
+      "message": "And this.",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 51
+      },
+      "revId": "d301508ce9a9457bafff404ecd5e93cc0ac1fe7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

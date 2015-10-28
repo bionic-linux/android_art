@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "769c85d8_d6c7ba74",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-28T21:50:26Z",
+      "side": 0,
+      "message": "This is one of those ugly cases where you hold the lock, but are not in runnable state? Or is the annotation just wrong?",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "13f6af0f9c8af1fce34e9610ad9d30d4d0434478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
