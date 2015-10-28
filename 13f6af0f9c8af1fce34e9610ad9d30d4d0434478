@@ -22,6 +22,30 @@
       "revId": "13f6af0f9c8af1fce34e9610ad9d30d4d0434478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7621e584_68b0bb2c",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-10-28T22:07:44Z",
+      "side": 0,
+      "message": "The GC thread holds the mutator lock in a suspended thread state.",
+      "parentUuid": "769c85d8_d6c7ba74",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "13f6af0f9c8af1fce34e9610ad9d30d4d0434478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
