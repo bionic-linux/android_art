@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36a68d28_20b6b02a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-29T18:14:13Z",
+      "side": 1,
+      "message": "well, no further input, so I decided to document that meaning a bit more careful; see if this is acceptable.",
+      "range": {
+        "startLine": 555,
+        "startChar": 16,
+        "endLine": 555,
+        "endChar": 26
+      },
+      "revId": "15abee1c1c91e1fab7bb514cc0dacff76eef7c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
