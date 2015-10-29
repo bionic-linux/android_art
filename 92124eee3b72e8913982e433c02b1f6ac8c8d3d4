@@ -34,6 +34,24 @@
       "revId": "92124eee3b72e8913982e433c02b1f6ac8c8d3d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cad9dc_3ae42994",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-10-29T01:30:24Z",
+      "side": 1,
+      "message": "I\u0027m tempted to side with Mingyao because it can be called on instructions defined after the loop, or as he says independently of the loop. Perhaps a different name would be better - IsIndependentOfLoop or something along those lines.",
+      "parentUuid": "7621e584_8ec89f89",
+      "revId": "92124eee3b72e8913982e433c02b1f6ac8c8d3d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
