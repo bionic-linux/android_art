@@ -22,6 +22,30 @@
       "revId": "15abee1c1c91e1fab7bb514cc0dacff76eef7c8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6eb5e62_e14be6a8",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-10-29T19:17:07Z",
+      "side": 1,
+      "message": "Maybe add a second boolean parameter that adds the dominator check? So (1) or (2) depend on that parameter.",
+      "parentUuid": "36a68d28_20b6b02a",
+      "range": {
+        "startLine": 555,
+        "startChar": 16,
+        "endLine": 555,
+        "endChar": 26
+      },
+      "revId": "15abee1c1c91e1fab7bb514cc0dacff76eef7c8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
