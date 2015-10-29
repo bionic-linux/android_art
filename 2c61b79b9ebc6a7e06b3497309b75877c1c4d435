@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d63612de_52af14bf",
+        "filename": "test/etc/default-build",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-29T21:44:55Z",
+      "side": 1,
+      "message": "period at end",
+      "range": {
+        "startLine": 55,
+        "startChar": 45,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "2c61b79b9ebc6a7e06b3497309b75877c1c4d435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
