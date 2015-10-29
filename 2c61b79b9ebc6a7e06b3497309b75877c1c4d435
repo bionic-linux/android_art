@@ -22,6 +22,30 @@
       "revId": "2c61b79b9ebc6a7e06b3497309b75877c1c4d435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_b60c081a",
+        "filename": "test/etc/default-build",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-29T21:48:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63612de_52af14bf",
+      "range": {
+        "startLine": 55,
+        "startChar": 45,
+        "endLine": 55,
+        "endChar": 56
+      },
+      "revId": "2c61b79b9ebc6a7e06b3497309b75877c1c4d435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
