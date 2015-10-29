@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6399ed2_945a0a5d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-10-29T23:17:03Z",
+      "side": 1,
+      "message": "Indent off.",
+      "range": {
+        "startLine": 524,
+        "startChar": 13,
+        "endLine": 524,
+        "endChar": 31
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
