@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5625c29e_36a478df",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-29T22:58:02Z",
+      "side": 1,
+      "message": "The $JACK must not have quotes because it includes a bunch of flags which the quotes will mess up.\n\nDone for \u003e\u0026",
+      "parentUuid": "7643a650_ef84e133",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "562a227b_0ea04bc1",
         "filename": "test/960-default-smali/build",
         "patchSetId": 6
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "36204e91_387d8597",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-29T22:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "562a227b_0ea04bc1",
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "760e462a_57c5acaf",
         "filename": "test/964-default-iface-init-generated/build",
         "patchSetId": 6
@@ -76,6 +118,24 @@
       "writtenOn": "2015-10-29T22:32:03Z",
       "side": 1,
       "message": "ARGS\u003d\"$@\"",
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_d60e624a",
+        "filename": "test/964-default-iface-init-generated/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-10-29T22:58:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "760e462a_57c5acaf",
       "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
