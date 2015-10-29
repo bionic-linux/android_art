@@ -16,6 +16,24 @@
       "revId": "92124eee3b72e8913982e433c02b1f6ac8c8d3d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7621e584_8ec89f89",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-29T00:56:59Z",
+      "side": 1,
+      "message": "But in that case the instruction is technically loop invariant (and since this is a public API, I removed the DCHECK from here, since testing something for invariance that does not reach the body is okay).",
+      "parentUuid": "56ab01f0_55bbbef7",
+      "revId": "92124eee3b72e8913982e433c02b1f6ac8c8d3d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
