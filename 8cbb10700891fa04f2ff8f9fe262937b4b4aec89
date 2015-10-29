@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "760e462a_d7b09c4c",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-29T22:32:03Z",
+      "side": 1,
+      "message": "s/$JACK/\"$JACK\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_ef84e133",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-29T22:32:03Z",
+      "side": 1,
+      "message": "\u003e\u0026 /dev/null\n\nin case they decided to print extra stuff later.",
+      "range": {
+        "startLine": 29,
+        "startChar": 43,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "562a227b_0ea04bc1",
+        "filename": "test/960-default-smali/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-29T22:32:03Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of this approach, $@ starts out as a proper array and now it gets newtered into a string (which can insert extra spaces we don\u0027t want).\n\nIf we used ARGS_EXTRA\u003d\"--no-smali\" here\n\nthen 44 can look like\n\n  ./default_build \"$@\" \"$ARGS_EXTRA\" --experimental --default-methods\n\nThis is the simplest fix.\n\n.........\n\nIf you like the current approach of extra variables, it should look more like\n\n\n   ARGS\u003d(\"$@\")  ## Maintains array-ness\n   ...\n   ARGS+\u003d(\u0027--no-smali\u0027) ## Append without losing array-ness\n   ...\n   ## Properly forward array flags to default-build without \n   ## injecting extra spaces where there were none before\n   ./default_build \"${ARGS[@]}\" --experimental default-methods",
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_57c5acaf",
+        "filename": "test/964-default-iface-init-generated/build",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-10-29T22:32:03Z",
+      "side": 1,
+      "message": "ARGS\u003d\"$@\"",
+      "revId": "8cbb10700891fa04f2ff8f9fe262937b4b4aec89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
