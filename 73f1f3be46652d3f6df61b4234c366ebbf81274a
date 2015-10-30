@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f66795cb_b9b3ff6d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-10-30T09:35:47Z",
+      "side": 1,
+      "message": "Jumping in late, but I find this flag very weird. Do we expect users with \"false\" here?\n\nA DCHECK in the method that the instruction is not defined after the loop would have worked for me.",
+      "range": {
+        "startLine": 558,
+        "startChar": 55,
+        "endLine": 558,
+        "endChar": 68
+      },
+      "revId": "73f1f3be46652d3f6df61b4234c366ebbf81274a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
