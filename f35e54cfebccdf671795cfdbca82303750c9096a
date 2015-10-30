@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d63612de_67425023",
+        "filename": "compiler/optimizing/boolean_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-30T22:56:07Z",
+      "side": 1,
+      "message": "you placed the method a bit too close to the old comment, making it look like it applies to this one; perhaps avoid that with some space?",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 39
+      },
+      "revId": "f35e54cfebccdf671795cfdbca82303750c9096a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_a9eff117",
+        "filename": "compiler/optimizing/boolean_simplifier.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-30T22:56:07Z",
+      "side": 1,
+      "message": "explicit is no longer needed",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "f35e54cfebccdf671795cfdbca82303750c9096a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760e462a_8bed5de9",
+        "filename": "compiler/optimizing/constant_folding.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-10-30T22:56:07Z",
+      "side": 1,
+      "message": "explicit can go",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "f35e54cfebccdf671795cfdbca82303750c9096a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
