@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "b688bda5_c2c0c48a",
+        "filename": "test/542-unresolved-access-check/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-02T13:45:53Z",
+      "side": 1,
+      "message": "Sounds good, I filed a bug b/25414532.",
+      "parentUuid": "d685318b_43daf84a",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968f39ad_a12c98d0",
         "filename": "test/542-unresolved-access-check/src/p1/PlaceHolder.java",
         "patchSetId": 3
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "yea, it makes it clear. Please include it in the comment.",
       "parentUuid": "f66795cb_1c8a191d",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d685318b_23e6d40d",
+        "filename": "test/542-unresolved-access-check/src/p1/PlaceHolder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-02T13:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6627eec_c9b0f14c",
       "range": {
         "startLine": 19,
         "startChar": 52,
