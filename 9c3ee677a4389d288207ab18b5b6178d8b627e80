@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b688bda5_2255f08a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-02T12:36:58Z",
+      "side": 1,
+      "message": "also IsInvokeUnresolved().",
+      "range": {
+        "startLine": 513,
+        "startChar": 10,
+        "endLine": 513,
+        "endChar": 17
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968f39ad_41559430",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-02T12:36:58Z",
+      "side": 1,
+      "message": "good catch.",
+      "range": {
+        "startLine": 62,
+        "startChar": 76,
+        "endLine": 62,
+        "endChar": 77
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6627eec_69c0e5a1",
+        "filename": "test/542-unresolved-access-check/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-02T12:36:58Z",
+      "side": 1,
+      "message": ":( but without ideas how we can do better.",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "968f39ad_a12c98d0",
+        "filename": "test/542-unresolved-access-check/src/p1/PlaceHolder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-02T12:36:58Z",
+      "side": 1,
+      "message": "I see the need for the \u0027entered\u0027 marker, but don\u0027t really understand the rest of the comment.  What problems are you avoiding?",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "9c3ee677a4389d288207ab18b5b6178d8b627e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
