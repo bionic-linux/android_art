@@ -46,6 +46,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d685318b_a32ca4d0",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-02T15:44:02Z",
+      "side": 1,
+      "message": "I\u0027m a bit puzzled about the complexity of this change (the need to add a new HInstruction). Why can\u0027t the intrinsic just check whether there is one? Or always create one if an intrinsic actually needs one?",
+      "parentUuid": "f6195673_fc3138e7",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
