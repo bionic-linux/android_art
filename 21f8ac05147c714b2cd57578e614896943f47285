@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "562a227b_682c5f42",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-02T19:08:58Z",
+      "side": 1,
+      "message": "Also true. I wanted to illustrate that PULL_SYMBOLS is a no-op when running with --host. \n\nHow to reword?",
+      "parentUuid": "167c2956_e5c23067",
+      "range": {
+        "startLine": 55,
+        "startChar": 19,
+        "endLine": 55,
+        "endChar": 49
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "166509c4_5d356fbb",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-02T09:03:15Z",
       "side": 1,
       "message": "Fully?",
+      "range": {
+        "startLine": 261,
+        "startChar": 2,
+        "endLine": 261,
+        "endChar": 11
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_ebb0514c",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-02T19:08:58Z",
+      "side": 1,
+      "message": "Forgot to add comments here (will do in next PS) but basically without the ulimit it would just error (didn\u0027t check if it actually wrote out the file even partially).",
+      "parentUuid": "166509c4_5d356fbb",
       "range": {
         "startLine": 261,
         "startChar": 2,
@@ -128,6 +176,30 @@
       "writtenOn": "2015-11-02T09:03:15Z",
       "side": 1,
       "message": "Why do we need this? If we were to only use the Main invocation, it would be too late/annoying to pull the oat file?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7643a650_aeb6d2a3",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-02T19:08:58Z",
+      "side": 1,
+      "message": "The way the gdb magic works is that we start out immediately in the gdb prompt , before it even runs dex2oat.\n\nSo basically we don\u0027t have the relocated core.oat file yet by the time we are in gdb, so later on if the program crashes we don\u0027t have the core.oat symbols and it just prints ??? for the stack trace.\n\nRunning dex2oat with bogus Main function arg was suggested by Andreas, it will relocate core.oat/core.art but then fail to invoke main and exit out.\n\nThen when we run it again with almost the same args it would already have that same exact core.oat/core.art file which our gdb can load.\n\n(This seemed much cleaner than trying to detect when gdb halts execution, pulling the file only then which might not exist yet, and then injecting the file into gdb).\n\nOf course this does have the downside that we could crash before the relocation happens, but then hopefully it just crashes in the same exact way when we run it for real (without the bogus args).",
+      "parentUuid": "f66795cb_bc1f6da4",
       "range": {
         "startLine": 566,
         "startChar": 0,
