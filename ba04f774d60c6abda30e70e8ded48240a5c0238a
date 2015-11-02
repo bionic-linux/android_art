@@ -118,6 +118,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_11e17bed",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-11-02T16:34:53Z",
+      "side": 1,
+      "message": "The constant area has to be created before register allocation is done, in order to pass the address needed to access the constant area to the instructions that need it.  This is done in constant_area_fixups_x86.cc.  All this boolean flag does is let the intrinsic location generator know that there is a constant area, and it will need to add a RequiresRegister() for the method address input.",
+      "parentUuid": "768ac5a0_400cb07e",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
