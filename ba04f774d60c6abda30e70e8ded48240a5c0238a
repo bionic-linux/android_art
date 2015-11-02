@@ -94,6 +94,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "768ac5a0_400cb07e",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-02T16:24:52Z",
+      "side": 1,
+      "message": "Oh, yeah, I forgot about the extra parameter you need to add. Now I understand about the extra instruction. It\u0027s fine if you create an arch-specific one, I think.\n\nBut then why not creating the constant area as soon as an intrinsic requests one?",
+      "parentUuid": "96401a44_ff292b67",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
