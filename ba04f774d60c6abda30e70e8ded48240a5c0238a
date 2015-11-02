@@ -70,6 +70,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96401a44_ff292b67",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-11-02T15:58:48Z",
+      "side": 1,
+      "message": "The complexity is due to the fact that the Invoke needs to add an extra input holding the result of the HX86ComputeBaseMethodAddress so that it can be correctly register allocated.\n\nOne alternate scheme would be for me to create a new HInvokeStaticOrDirect node, and just add an extra parameter to that, and then check for the existence of the extra parameter during intrinsic code generation.  Would that be work for you?  I was under the impression that you wanted the arch-specific work to use different HInstructions.",
+      "parentUuid": "d685318b_a32ca4d0",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
