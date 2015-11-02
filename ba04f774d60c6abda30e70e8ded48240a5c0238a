@@ -22,6 +22,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_fc3138e7",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-11-02T15:34:51Z",
+      "side": 1,
+      "message": "In fact, it is really \u0027has constant area\u0027 available if you need it.  There is a cost for establishing addressability for the constant area (2 instructions per method), and so it isn\u0027t done, except for the cases where the intrinsics need it.  It also isn\u0027t set if we are using the baseline compiler, as the optimization pass to support the constant area isn\u0027t run.",
+      "parentUuid": "968f39ad_41b11419",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
