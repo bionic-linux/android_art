@@ -281,6 +281,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36c12e1a_cd858977",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-03T21:18:24Z",
+      "side": 1,
+      "message": "Do you want me to replicate all the conditions under which dalvikvm calls patchoat? That seems like it might be brittle to future change (and more complicated in the short term).",
+      "parentUuid": "f66795cb_1ca05968",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
