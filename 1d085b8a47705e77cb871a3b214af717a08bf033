@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "562a227b_0eeba0a0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-03T17:12:26Z",
+      "side": 1,
+      "message": "Would mean a lot of duplication for the surrounding code. Are you sure that\u0027s better?\n\nI\u0027d rather put the error !\u003d null code in static functions, if that\u0027s OK?",
+      "parentUuid": "569941f8_a2c81a89",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d685318b_c3152857",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-03T08:51:43Z",
       "side": 1,
       "message": "Maybe mention again spec v2 5.4.1?",
+      "range": {
+        "startLine": 165,
+        "startChar": 63,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6195673_4b4ce053",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-03T17:12:26Z",
+      "side": 1,
+      "message": "As we don\u0027t follow *that* spec, can\u0027t.",
+      "parentUuid": "d685318b_c3152857",
       "range": {
         "startLine": 165,
         "startChar": 63,
@@ -82,6 +130,30 @@
       "writtenOn": "2015-11-03T08:51:43Z",
       "side": 1,
       "message": "Why does this branch use a StackHandleScope but not the one line 151? I\u0027d make ut consistent and create the stack handle scope at the beginning of the method and use it in both branches.",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36204e91_4813c2a5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-03T17:12:26Z",
+      "side": 1,
+      "message": "Because in 151 the exception instance/class doesn\u0027t need to survive - we only get its name. It\u0027s also still stored in the heap and we could recover it from the class. (And that\u0027s the way it was before.)\n\nDown here we wont to wrap the cause in a NoClassDefFoundError. As we can\u0027t do NewWrappedException (NoClassDefFoundError doesn\u0027t have the constructor for it, and we\u0027re not sure cause is OK), we need to store it. Thus this branch needs an SHS.",
+      "parentUuid": "f66795cb_dc95010e",
       "range": {
         "startLine": 177,
         "startChar": 6,
