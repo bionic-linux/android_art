@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "968f39ad_01270c53",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-11-03T17:06:27Z",
+      "side": 1,
+      "message": "I was referring to the phrasing (\"should this […] be\" instead of \"in case this […] is\"), not the type of quotes. :)",
+      "parentUuid": "f675d6b9_b308b83c",
+      "range": {
+        "startLine": 651,
+        "startChar": 37,
+        "endLine": 651,
+        "endChar": 66
+      },
+      "revId": "b8b283b7b7ba120f7940b859394aa5ed8443a90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "768ac5a0_c0fd2022",
         "filename": "test/543-env-long-ref/env_long_ref.cc",
         "patchSetId": 1
