@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "161fca56_002ec366",
+        "filename": "tools/ahat/src/DominatedList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-11-03T16:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7643a650_11997f3c",
+      "revId": "dac5c19ec9a9382cc72a337f1ed3722815903c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5625c29e_1d1cf453",
         "filename": "tools/ahat/src/HeapTable.java",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-11-02T21:42:59Z",
       "side": 1,
       "message": "I think the convention is to not use public modifier for interface methods (they are public by default).",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "dac5c19ec9a9382cc72a337f1ed3722815903c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_c037abb8",
+        "filename": "tools/ahat/src/HeapTable.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-11-03T16:47:01Z",
+      "side": 1,
+      "message": "Done. I fixed the other places I had redundant modifiers too.",
+      "parentUuid": "5625c29e_1d1cf453",
       "range": {
         "startLine": 42,
         "startChar": 4,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "161fca56_a064afca",
+        "filename": "tools/ahat/src/LimitSelector.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-11-03T16:47:01Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "5625c29e_bd098009",
+      "revId": "dac5c19ec9a9382cc72a337f1ed3722815903c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d63612de_add936aa",
         "filename": "tools/ahat/src/ObjectHandler.java",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2015-11-02T21:42:59Z",
       "side": 1,
       "message": "This is just a suggestion/option - feel free to ignore.\n\nLooks like you always use a LimitSelector to throttle the data extracted from an Iterable (array or collection).  You might consider passing the iterable to the LimitSelector and then implementing the appropriate delegating iterator code (in LimitSelector) to let you iterate over the subset.  This would decrease the boiler-plate code you need to write each time you use it. \n\nSo usage would be...\n\nLimitSelector\u003cClassInstance.FieldValue) selector \u003d new LimitSelector(query, INSTANCE_FIELD_IDS, fields);\nfor (ClassInstance.FieldValue field:selector()){\n   ....\n}",
+      "revId": "dac5c19ec9a9382cc72a337f1ed3722815903c4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_161cd153",
+        "filename": "tools/ahat/src/ObjectHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2015-11-03T16:47:01Z",
+      "side": 1,
+      "message": "I like this suggestion. Thanks.",
+      "parentUuid": "d63612de_add936aa",
       "revId": "dac5c19ec9a9382cc72a337f1ed3722815903c4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
