@@ -51,6 +51,24 @@
       "revId": "a1246331ec4f86943c10dbc90f4917b310773092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63612de_a02db887",
+        "filename": "test/543-env-long-ref/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-11-03T17:19:56Z",
+      "side": 1,
+      "message": "Surely your test is not meant to verify stack map generation and neither simulate the way jdwp accesses vregs, but merely check the fact that a value was removed from the environment. I\u0027m not gonna be a checker-evangelist though, so will leave it to your judgement ;)",
+      "parentUuid": "f675d6b9_f395d0ff",
+      "revId": "a1246331ec4f86943c10dbc90f4917b310773092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
