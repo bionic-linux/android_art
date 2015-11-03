@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7643a650_7d03fa25",
+        "filename": "tools/ahat/src/ObjectHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1047883
+      },
+      "writtenOn": "2015-11-03T17:13:31Z",
+      "side": 1,
+      "message": "Initialize selector when declaring.",
+      "range": {
+        "startLine": 91,
+        "startChar": 45,
+        "endLine": 92,
+        "endChar": 14
+      },
+      "revId": "503db418bbac2d8f2a8565ae4a7f1e3cad31ecb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_56100929",
+        "filename": "tools/ahat/src/ObjectHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1047883
+      },
+      "writtenOn": "2015-11-03T17:13:31Z",
+      "side": 1,
+      "message": "Again initialize and declare",
+      "range": {
+        "startLine": 128,
+        "startChar": 45,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "503db418bbac2d8f2a8565ae4a7f1e3cad31ecb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161fca56_a04eef15",
+        "filename": "tools/ahat/src/SiteHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1047883
+      },
+      "writtenOn": "2015-11-03T17:13:31Z",
+      "side": 1,
+      "message": "combine declaration and initialization",
+      "range": {
+        "startLine": 93,
+        "startChar": 37,
+        "endLine": 94,
+        "endChar": 12
+      },
+      "revId": "503db418bbac2d8f2a8565ae4a7f1e3cad31ecb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
