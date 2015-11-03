@@ -305,6 +305,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5644e287_1ecb8d77",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T21:56:02Z",
+      "side": 1,
+      "message": "So you\u0027re saying it\u0027s less brittle to rely on two dalvikvm invocations doing the exact same thing?",
+      "parentUuid": "36c12e1a_cd858977",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
