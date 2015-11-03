@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d685318b_8368806e",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968f39ad_619d30d7",
+      "range": {
+        "startLine": 650,
+        "startChar": 11,
+        "endLine": 650,
+        "endChar": 76
+      },
+      "revId": "b8b283b7b7ba120f7940b859394aa5ed8443a90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "367ccea3_95656462",
         "filename": "compiler/optimizing/ssa_builder.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-03T16:56:32Z",
       "side": 1,
       "message": "Suggestion: \"should this `HStoreLocal` be\".",
+      "range": {
+        "startLine": 651,
+        "startChar": 37,
+        "endLine": 651,
+        "endChar": 66
+      },
+      "revId": "b8b283b7b7ba120f7940b859394aa5ed8443a90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f675d6b9_b308b83c",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:01:17Z",
+      "side": 1,
+      "message": "I\u0027ve used ` in this code base, so this is to stay consistent.",
+      "parentUuid": "367ccea3_95656462",
       "range": {
         "startLine": 651,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "968f39ad_a11738e6",
+        "filename": "test/543-env-long-ref/env_long_ref.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "768ac5a0_c0fd2022",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 39
+      },
+      "revId": "b8b283b7b7ba120f7940b859394aa5ed8443a90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "968f39ad_819a3cde",
         "filename": "test/543-env-long-ref/env_long_ref.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-11-03T16:56:32Z",
       "side": 1,
       "message": "Shouldn\u0027t this function be outside the anonymous namespace?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "b8b283b7b7ba120f7940b859394aa5ed8443a90e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f675d6b9_73aa2048",
+        "filename": "test/543-env-long-ref/env_long_ref.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "968f39ad_819a3cde",
       "range": {
         "startLine": 56,
         "startChar": 0,
