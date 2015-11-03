@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d685318b_e3cf8ce4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:17:04Z",
+      "side": 1,
+      "message": "I don\u0027t understand, you\u0027re mentioning that spec line 129.",
+      "parentUuid": "f6195673_4b4ce053",
+      "range": {
+        "startLine": 165,
+        "startChar": 63,
+        "endLine": 165,
+        "endChar": 70
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "568142c7_16f71cb8",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "Because in 151 the exception instance/class doesn\u0027t need to survive - we only get its name. It\u0027s also still stored in the heap and we could recover it from the class. (And that\u0027s the way it was before.)\n\nDown here we wont to wrap the cause in a NoClassDefFoundError. As we can\u0027t do NewWrappedException (NoClassDefFoundError doesn\u0027t have the constructor for it, and we\u0027re not sure cause is OK), we need to store it. Thus this branch needs an SHS.",
       "parentUuid": "f66795cb_dc95010e",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "167b4aaf_b4b660a4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-03T17:17:04Z",
+      "side": 1,
+      "message": "That\u0027s the kind of things I personally don\u0027t want to think about when reviewing/writing code, especially when this is about throwing an exception. To me, it looks like this is favoring a micro-optimization, in the expense of readability.",
+      "parentUuid": "36204e91_4813c2a5",
       "range": {
         "startLine": 177,
         "startChar": 6,
