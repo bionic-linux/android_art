@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d659b274_3aedc1e7",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-04T10:13:19Z",
+      "side": 1,
+      "message": "Actually this does not work in the general case. If the local before is a phi, at this stage it\u0027s typed void so we will mis it.\n\nLet\u0027s discuss about this. Could we give an initial type to a phi? That would make the type propagation convergence faster, but not sure if we handle it (today or even with your DeadPhiHandling change). WDYT?",
+      "parentUuid": "f6195673_eb516ce2",
+      "revId": "a1246331ec4f86943c10dbc90f4917b310773092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_5df8366e",
         "filename": "test/543-env-long-ref/smali/TestCase.smali",
         "patchSetId": 2
