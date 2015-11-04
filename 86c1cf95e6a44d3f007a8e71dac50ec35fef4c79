@@ -22,6 +22,30 @@
       "revId": "86c1cf95e6a44d3f007a8e71dac50ec35fef4c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c34a5c_14cc343e",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1023201
+      },
+      "writtenOn": "2015-11-04T17:23:05Z",
+      "side": 1,
+      "message": "It\u0027s defined in https://android.googlesource.com/platform/prebuilts/sdk/+/master/tools/jack_versions.mk\n\nWe plan to update it when we\u0027ll update jack.",
+      "parentUuid": "b6335e1f_6a980b5a",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "86c1cf95e6a44d3f007a8e71dac50ec35fef4c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
