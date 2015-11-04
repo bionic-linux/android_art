@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6335e1f_6a980b5a",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-11-04T17:19:55Z",
+      "side": 1,
+      "message": "Where does this get set?\n\nWill we need to update it or will jack?",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "86c1cf95e6a44d3f007a8e71dac50ec35fef4c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
