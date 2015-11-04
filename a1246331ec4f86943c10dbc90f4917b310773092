@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "1698aa84_ac6a43c0",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-11-04T19:01:51Z",
+      "side": 1,
+      "message": "Actually, no... If a vreg is single-width in some predecessors and low/high of a pair in others, you might still miss it if you assume single-width from the first input... Let me think about this more.",
+      "parentUuid": "d683721b_8a7c8bca",
+      "revId": "a1246331ec4f86943c10dbc90f4917b310773092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_5df8366e",
         "filename": "test/543-env-long-ref/smali/TestCase.smali",
         "patchSetId": 2
