@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "56af8261_86676af8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-04T20:44:38Z",
+      "side": 1,
+      "message": "Why?",
+      "parentUuid": "76a726c0_129fea76",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66795cb_dc95010e",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "This will be in a follow-up CL now.",
       "parentUuid": "167b4aaf_b4b660a4",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76b806a7_e75422d5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-04T20:44:38Z",
+      "side": 1,
+      "message": "That\u0027s ok, but you don\u0027t need to do it if you prefer. I wish we were consistent in our use of handles, but I know we\u0027re not in other places.",
+      "parentUuid": "96a49abb_f0626056",
       "range": {
         "startLine": 177,
         "startChar": 6,
