@@ -70,6 +70,53 @@
       "revId": "bd06761276f2c2c6ff086fec3700931424ffb668",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d659b274_babf117d",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-04T18:43:22Z",
+      "side": 1,
+      "message": "Emit or similar sounds better than Finalize",
+      "parentUuid": "36892e3b_cd586981",
+      "range": {
+        "startLine": 587,
+        "startChar": 36,
+        "endLine": 587,
+        "endChar": 43
+      },
+      "revId": "bd06761276f2c2c6ff086fec3700931424ffb668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6ca3638_4b28a576",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-11-04T18:43:22Z",
+      "side": 1,
+      "message": "I liked more the previous natural reading \"TryCompile returns the Compiled method or null\". Now it returns a codegenerator. I can see why you opted for this but please add a comment.",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 652,
+        "endChar": 13
+      },
+      "revId": "bd06761276f2c2c6ff086fec3700931424ffb668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
