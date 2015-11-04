@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "96a49abb_f63b38c4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-04T23:21:39Z",
+      "side": 1,
+      "message": "Because it\u0027s better to separate that out, I think.\n\n a) Be able to rethrow actual instances with failure messages etc. (this)\n\n b) Fix correctness issue of *what* should be thrown, and amend the exception details\n\nThat way, if the latter turns out to be wrong (or rejected for some reason), it\u0027s easier to revert.",
+      "parentUuid": "56af8261_86676af8",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66795cb_dc95010e",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
