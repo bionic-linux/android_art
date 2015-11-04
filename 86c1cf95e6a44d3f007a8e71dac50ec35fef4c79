@@ -70,6 +70,30 @@
       "revId": "86c1cf95e6a44d3f007a8e71dac50ec35fef4c79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "963adaf4_606312c0",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1023201
+      },
+      "writtenOn": "2015-11-04T18:13:37Z",
+      "side": 1,
+      "message": "They won\u0027t be automatically included, but jack_version.mk is directly included from a build/core file.",
+      "parentUuid": "76df26f3_83c8aea2",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "86c1cf95e6a44d3f007a8e71dac50ec35fef4c79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
