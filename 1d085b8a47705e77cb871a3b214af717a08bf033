@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1698aa84_4f0e317f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-04T20:08:54Z",
+      "side": 1,
+      "message": "I have moved the code below (151ff) into a separate function.",
+      "parentUuid": "562a227b_0eeba0a0",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d685318b_c3152857",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "76a726c0_129fea76",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-04T20:08:54Z",
+      "side": 1,
+      "message": "This will be in a follow-up CL now.",
+      "parentUuid": "568142c7_16f71cb8",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 65
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66795cb_dc95010e",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -202,6 +250,30 @@
       "side": 1,
       "message": "That\u0027s the kind of things I personally don\u0027t want to think about when reviewing/writing code, especially when this is about throwing an exception. To me, it looks like this is favoring a micro-optimization, in the expense of readability.",
       "parentUuid": "36204e91_4813c2a5",
+      "range": {
+        "startLine": 177,
+        "startChar": 6,
+        "endLine": 177,
+        "endChar": 35
+      },
+      "revId": "1d085b8a47705e77cb871a3b214af717a08bf033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96a49abb_f0626056",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-04T20:08:54Z",
+      "side": 1,
+      "message": "This will be in a follow-up CL now.",
+      "parentUuid": "167b4aaf_b4b660a4",
       "range": {
         "startLine": 177,
         "startChar": 6,
