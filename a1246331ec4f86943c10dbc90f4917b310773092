@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d683721b_8a7c8bca",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-11-04T18:47:47Z",
+      "side": 1,
+      "message": "Ah yeah, that\u0027s nasty. So don\u0027t forget there\u0027s three places where we create phis:\n\n1) visiting a block that\u0027s not a loop header\nThis creates a phi for each vreg defined in all predecessors. It does not do any typing though, so it will create a phi even if the values are of a different size - we rely on DeadPhiHandling to not revive it / will rely on type propagation to mark it dead. But that\u0027s after the StoreLocal was visited.\n\nYou could get away with assigning a type in this case though. You could initialize the phi to kPrimInt if there are only 32-bit inputs, and kPrimLong otherwise. Type propagation will either type it properly or mark the phi dead.\n\n2) visiting a block that is a loop header:\nWe eagerly create empty phis for all vregs defined in the pre-header. The problem is different here, though, because we only have locals for the pre-header. It should work just the same with a single input though. Either you get the type size right and the phi stays in the environments, or you get it wrong, typing will fail anyway and the phi gets removed.\n\n3) requesting locals for a catch block\nEagerly creating catch phis. Again, you could base the initial type for a phi for each vreg based on the current locals.\n\nSo that sounds like it could work. I\u0027d prefer if you waited until my CL goes in, though, because the above relies on dealing with type conflicts.",
+      "parentUuid": "d659b274_3aedc1e7",
+      "revId": "a1246331ec4f86943c10dbc90f4917b310773092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7643a650_5df8366e",
         "filename": "test/543-env-long-ref/smali/TestCase.smali",
         "patchSetId": 2
