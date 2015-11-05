@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b686fe2b_ddb72b11",
+        "filename": "runtime/monitor.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-05T17:00:28Z",
+      "side": 1,
+      "message": "Could make that a (D)CHECK_EQ.",
+      "range": {
+        "startLine": 1040,
+        "startChar": 4,
+        "endLine": 1044,
+        "endChar": 5
+      },
+      "revId": "b44961f5e408861d7d17da4e82841cd899e6d1ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
