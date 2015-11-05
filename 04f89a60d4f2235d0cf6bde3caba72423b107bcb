@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d69a9277_794bb85d",
+        "filename": "compiler/oat_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-05T23:21:44Z",
+      "side": 1,
+      "message": "Can be UNREACHABLE() instead, considering that LOG(FATAL) doesn\u0027t return.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "04f89a60d4f2235d0cf6bde3caba72423b107bcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
