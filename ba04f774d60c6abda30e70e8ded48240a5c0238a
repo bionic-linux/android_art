@@ -166,6 +166,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b686fe2b_158437ee",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-11-06T12:39:26Z",
+      "side": 1,
+      "message": "The problem is that the constants that are needed are NOT arguments to the intrinsic invoke.  They are needed for the code generation.  This allows the intrinsics to generate any code they want, and just ensure that the method base is available, so that they can generate all the literals that they want :-).  I don\u0027t want to hardcore WHICH literals each intrinsic needs in the code generator.  That logic belongs in the instrinsic generator.  THE CG only needs to know which intrinsic needs some sort of constant.",
+      "parentUuid": "760c86c0_a7156acb",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
