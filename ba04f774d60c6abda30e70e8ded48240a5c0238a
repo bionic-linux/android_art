@@ -190,6 +190,30 @@
       "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760c86c0_a7cc4ab5",
+        "filename": "compiler/optimizing/intrinsics_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-06T12:45:37Z",
+      "side": 1,
+      "message": "I see, thanks.",
+      "parentUuid": "b686fe2b_158437ee",
+      "range": {
+        "startLine": 55,
+        "startChar": 7,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "ba04f774d60c6abda30e70e8ded48240a5c0238a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
