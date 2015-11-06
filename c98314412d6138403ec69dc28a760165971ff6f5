@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6127ed6_8976f91f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-06T19:53:58Z",
+      "side": 1,
+      "message": "What device?",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b637de6a_6436642a",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-06T19:53:58Z",
+      "side": 1,
+      "message": "Is it? Malformed input consisting of one ascii character and a lot of continuation characters would yield size 1 and then subsequent conversion would have buffer overflow. This is a serious security issue.\n\nPreviously, the code that determines the length was in sync with \"GetUtf16FromUtf8(const char** utf8_data_in)\" so we would have allocated enough.",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b686fe2b_4840d288",
         "filename": "runtime/utf.cc",
         "patchSetId": 1
@@ -18,6 +64,29 @@
         "startChar": 18,
         "endLine": 61,
         "endChar": 25
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b637de6a_042758f6",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-06T19:53:58Z",
+      "side": 1,
+      "message": "We prefer\n\n  const char* first",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 19
       },
       "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -64,6 +133,52 @@
         "startChar": 9,
         "endLine": 78,
         "endChar": 26
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9609fab1_6b585d09",
+        "filename": "runtime/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-06T19:53:58Z",
+      "side": 1,
+      "message": "I\u0027d prefer this ordering: utf16_out, out_chars, utf8_in, in_bytes.\n\nAlso, line too long.",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 107
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96173ad8_9892f539",
+        "filename": "runtime/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-06T19:53:58Z",
+      "side": 1,
+      "message": "Order: utf8_out, byte_count, utf16_in, char_count.",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 68
       },
       "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
