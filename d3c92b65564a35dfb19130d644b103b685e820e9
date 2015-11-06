@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36fe8ebd_85fdc227",
+        "filename": "compiler/utils/mips64/assembler_mips64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-06T09:22:51Z",
+      "side": 1,
+      "message": "Missing braces.",
+      "range": {
+        "startLine": 898,
+        "startChar": 0,
+        "endLine": 901,
+        "endChar": 37
+      },
+      "revId": "d3c92b65564a35dfb19130d644b103b685e820e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
