@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6127ed6_499c81db",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2056,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-06T09:27:01Z",
+      "side": 1,
+      "message": "drop, the comparison code already says it",
+      "range": {
+        "startLine": 2056,
+        "startChar": 65,
+        "endLine": 2056,
+        "endChar": 78
+      },
+      "revId": "98178866f140ea086773e700d44c510f521e23c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
