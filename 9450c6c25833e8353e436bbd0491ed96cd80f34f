@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6127ed6_8c4967b6",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-08T13:42:32Z",
+      "side": 1,
+      "message": "Could we instead make both those requests (SuspendAllForDebugger and Dbg::Disconnected) only come from the jdwp thread?",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 83
+      },
+      "revId": "9450c6c25833e8353e436bbd0491ed96cd80f34f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
