@@ -70,6 +70,30 @@
       "revId": "9450c6c25833e8353e436bbd0491ed96cd80f34f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b69d1e72_d3b0ff4c",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-09T17:37:51Z",
+      "side": 1,
+      "message": "Yes, I would be nice to get rid of the SetStateUnsafe pattern. The issue is that if you have SuspendAll in a suspended thread state and use a ScopedObjectAccess, it will deadlock. The SetStateUnsafe to runnable is a hack to get around this.",
+      "parentUuid": "760c86c0_aae08fbc",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 83
+      },
+      "revId": "9450c6c25833e8353e436bbd0491ed96cd80f34f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
