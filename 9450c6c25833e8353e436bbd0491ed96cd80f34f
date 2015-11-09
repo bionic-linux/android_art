@@ -46,6 +46,30 @@
       "revId": "9450c6c25833e8353e436bbd0491ed96cd80f34f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "760c86c0_aae08fbc",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2015-11-09T09:36:47Z",
+      "side": 1,
+      "message": "Perhaps the scheme \"suspend all + SetStateUnsafe(kRunnable)\" is just wrong?\n\nThe debugger uses that to execute some code (like instrumentation update) when all others threads are suspended. But I think some of the executed code asserts the current thread is in the kRunnable state.",
+      "parentUuid": "9609fab1_cef197c4",
+      "range": {
+        "startLine": 952,
+        "startChar": 0,
+        "endLine": 953,
+        "endChar": 83
+      },
+      "revId": "9450c6c25833e8353e436bbd0491ed96cd80f34f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
