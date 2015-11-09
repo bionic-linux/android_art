@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6851e5b_f18d481a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "Sorry ..  Nexus 5",
+      "parentUuid": "b6127ed6_8976f91f",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b637de6a_6436642a",
         "filename": "runtime/utf.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-06T19:53:58Z",
       "side": 1,
       "message": "Is it? Malformed input consisting of one ascii character and a lot of continuation characters would yield size 1 and then subsequent conversion would have buffer overflow. This is a serious security issue.\n\nPreviously, the code that determines the length was in sync with \"GetUtf16FromUtf8(const char** utf8_data_in)\" so we would have allocated enough.",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 74
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "565f82cb_467d72c3",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "Darn, you\u0027re right. Thanks. I have reasons (for a future patch) to want the processing of each byte to be independent of the others.\n\nAltering GetUtf16FromUtf8 to match would fix the security issue, but for now I\u0027ll revert that part of CountModifiedUtf8Chars. The speedup on the 99%+ case of all ASCII input will remain identical, as that\u0027s purely due to the loop being counted.\n\nNote that the existing handling of malformed utf8 input is non-existant. Continuation bytes are assumed to be continuation bytes, but not checked (just blindly grab the lower 6 bits). There is no check for input buffer overflow when reading continuation bytes (my code can\u0027t overflow the input buffer). A continuation byte found in the initial position will be randomly decoded as a 2, 3, or 4 byte sequence depending on the 3rd and 4th bits (the 2nd bit is not checked).\n\nIf this code needs to be robust against malformed OAT files (it\u0027s used for class names and string literals, not user input) then it needs a total rewrite anyway.",
+      "parentUuid": "b637de6a_6436642a",
       "range": {
         "startLine": 58,
         "startChar": 23,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d6829250_52d77440",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "b686fe2b_4840d288",
+      "range": {
+        "startLine": 61,
+        "startChar": 18,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b637de6a_042758f6",
         "filename": "runtime/utf.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-11-06T19:53:58Z",
       "side": 1,
       "message": "We prefer\n\n  const char* first",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56314281_b69fc881",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "ok. Does this mean you never declare two variables on the same line?\n\nchar* first \u003d foo, second \u003d bar; // second is a char not a point",
+      "parentUuid": "b637de6a_042758f6",
       "range": {
         "startLine": 73,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "968c9a88_700f1047",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "OK, but given the changed API, there might one day be calls without any terminating null. (it\u0027s ok right now)",
+      "parentUuid": "36892e3b_f6adf1f1",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 38
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d683721b_9f0207e5",
         "filename": "runtime/utf.cc",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-11-06T19:16:04Z",
       "side": 1,
       "message": "Comment style is: start capitalized, and with a period. Same below.",
+      "range": {
+        "startLine": 78,
+        "startChar": 9,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56314281_76829027",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "d683721b_9f0207e5",
       "range": {
         "startLine": 78,
         "startChar": 9,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d6e0d23e_e26e8607",
+        "filename": "runtime/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "I would too. I guess I didn\u0027t want to change the existing call too much.",
+      "parentUuid": "9609fab1_6b585d09",
+      "range": {
+        "startLine": 55,
+        "startChar": 32,
+        "endLine": 55,
+        "endChar": 107
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96173ad8_9892f539",
         "filename": "runtime/utf.h",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2015-11-06T19:53:58Z",
       "side": 1,
       "message": "Order: utf8_out, byte_count, utf16_in, char_count.",
+      "range": {
+        "startLine": 76,
+        "startChar": 32,
+        "endLine": 77,
+        "endChar": 68
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "565f82cb_a6978628",
+        "filename": "runtime/utf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1085148
+      },
+      "writtenOn": "2015-11-09T11:52:19Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "96173ad8_9892f539",
       "range": {
         "startLine": 76,
         "startChar": 32,
