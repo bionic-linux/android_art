@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "369daed4_d64b3a3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-10T21:33:03Z",
+      "side": 1,
+      "message": "Because of the rounding bytes, which the loop checks.",
+      "range": {
+        "startLine": 11,
+        "startChar": 32,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "495f4d65a51a78543f9b1a9c8f2022553c6f8896",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16c50ace_785ea954",
         "filename": "runtime/base/arena_allocator.cc",
         "patchSetId": 1
