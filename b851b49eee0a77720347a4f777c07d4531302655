@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5b25eb9e_5954c7a7",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-11T23:06:53Z",
+      "side": 1,
+      "message": "The methods have to be somewhat grouped/sorted, otherwise you\u0027re likely to get one compilation-unit per method-info.\n\nI just didn\u0027t realize this is from the OatWriter, which creates the vector serialized (visiting classes non-multi-threaded). So this is always grouped by class, which then puts all of a class\u0027 methods into the same compilation unit...",
+      "parentUuid": "56278298_8677aa1f",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 492,
+        "endChar": 67
+      },
+      "revId": "b851b49eee0a77720347a4f777c07d4531302655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0e2f2a_4b11852d",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 1
