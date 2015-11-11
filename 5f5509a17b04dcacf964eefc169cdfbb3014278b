@@ -22,6 +22,30 @@
       "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db11db43_fa6ca94f",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-11T22:24:37Z",
+      "side": 0,
+      "message": "Well, compiling with debug information will also disable the deduplication, so this does not happen anymore.\n\nMore importantly, although I am happy with the tag in .symstr, it is fairly non-conventional in DWARF and I would like to remove it.  The fact that we just pretty print the method signature and write it as DW_AT_name is also a hack.  I intend to fix that in the next CL.",
+      "parentUuid": "76d4867d_89919004",
+      "range": {
+        "startLine": 311,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 7
+      },
+      "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

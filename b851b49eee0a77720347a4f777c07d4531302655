@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56278298_8677aa1f",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-11T22:24:37Z",
+      "side": 1,
+      "message": "The grouping is just for the sake of the debugger so that everything is not in one big table.  This way the debugger can first find the relevant compilation unit(s) based on address and search only those.\nThe methods do not have to be sorted in any particular source order, and repetitions should be also fine.",
+      "parentUuid": "16ac2a06_695b8263",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 492,
+        "endChar": 67
+      },
+      "revId": "b851b49eee0a77720347a4f777c07d4531302655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0e2f2a_4b11852d",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-11T22:10:15Z",
       "side": 1,
       "message": "Is it guaranteed there\u0027s one method that isn\u0027t marked as deduped?",
+      "range": {
+        "startLine": 496,
+        "startChar": 4,
+        "endLine": 498,
+        "endChar": 23
+      },
+      "revId": "b851b49eee0a77720347a4f777c07d4531302655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36220e8b_087d87c4",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-11T22:24:37Z",
+      "side": 1,
+      "message": "The first one is not marked and the rest is.",
+      "parentUuid": "7b0e2f2a_4b11852d",
       "range": {
         "startLine": 496,
         "startChar": 4,
