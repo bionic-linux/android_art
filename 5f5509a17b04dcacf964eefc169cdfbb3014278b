@@ -46,6 +46,30 @@
       "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a6aee_3f618315",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T11:45:12Z",
+      "side": 0,
+      "message": "If you expect deduplication to be disabled, shouldn\u0027t you DXCHECK(!mi.deduped_) in the new WriteDebugSections()?",
+      "parentUuid": "db11db43_fa6ca94f",
+      "range": {
+        "startLine": 311,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 7
+      },
+      "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
