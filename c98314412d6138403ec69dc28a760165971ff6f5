@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "36220e8b_a8dd5395",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:55:53Z",
+      "side": 1,
+      "message": "We also prefer to have separate definitions of initialized variables. (And try to declare as few uninitialized as possible. This is C++, not C.)",
+      "parentUuid": "d6e0d23e_a2dbde0f",
+      "range": {
+        "startLine": 73,
+        "startChar": 2,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "c98314412d6138403ec69dc28a760165971ff6f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36892e3b_f6adf1f1",
         "filename": "runtime/utf.cc",
         "patchSetId": 1
