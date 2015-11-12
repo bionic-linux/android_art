@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b67fde4b_4705a253",
+        "filename": "compiler/optimizing/instruction_simplifier_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:03:23Z",
+      "side": 1,
+      "message": "Reduce indentation.",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 25
+      },
+      "revId": "e6b21a6b520f214d5a0edbf1de7f31e180de7c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d67c5259_05cb9425",
+        "filename": "compiler/optimizing/instruction_simplifier_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:03:23Z",
+      "side": 1,
+      "message": "This is assuming that the instruction has at least one non-environment use. Otherwise, you crash.",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 67
+      },
+      "revId": "e6b21a6b520f214d5a0edbf1de7f31e180de7c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a6aee_3f27c392",
+        "filename": "compiler/optimizing/instruction_simplifier_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:03:23Z",
+      "side": 1,
+      "message": "remove \"the\"",
+      "range": {
+        "startLine": 286,
+        "startChar": 42,
+        "endLine": 286,
+        "endChar": 46
+      },
+      "revId": "e6b21a6b520f214d5a0edbf1de7f31e180de7c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
