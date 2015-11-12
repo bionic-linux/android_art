@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56278298_495ea554",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:55:53Z",
+      "side": 1,
+      "message": "Can you add dchecked_integral_cast\u003cuint16_t\u003e(), please? And perhaps a comment that for ASCII characters, the high bit is 0 so this is OK even on platforms where char is signed. (Oh, the joys of implementation-defined behavior!)",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 100,
+        "endChar": 22
+      },
+      "revId": "d6cd3f6c50100c5c97000e3297ac13316cf23106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67fde4b_e7a8769f",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:55:53Z",
+      "side": 1,
+      "message": "dchecked_integral_cast\u003cchar\u003e()",
+      "range": {
+        "startLine": 124,
+        "startChar": 20,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "d6cd3f6c50100c5c97000e3297ac13316cf23106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6bf9630_c69f0481",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:55:53Z",
+      "side": 1,
+      "message": "Where did the \"ch \u003e\u003d 0xd800\" go?\n\nPlease add also some invalid sequences to the test when testing that the behavior is the same as for old code. I think {0x800, 0xdc00} would show differences.",
+      "range": {
+        "startLine": 236,
+        "startChar": 8,
+        "endLine": 236,
+        "endChar": 19
+      },
+      "revId": "d6cd3f6c50100c5c97000e3297ac13316cf23106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_69b7e1a1",
+        "filename": "runtime/utf_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-12T20:55:53Z",
+      "side": 1,
+      "message": "Please add comments that this is also testing some invalid sequences, namely if codePoint is the leading character of a surrogate pair. In that case, you should also test the conversion of its correct 2-character representation.\n\nYou should also test that the conversion is the same for {some_ascii_character, codePoint} and {codePoint, some_ascii_character}. Other invalid sequences also need to be tested. (I already mentioned {0x800, 0xdc00} elsewehere.)",
+      "range": {
+        "startLine": 289,
+        "startChar": 6,
+        "endLine": 289,
+        "endChar": 30
+      },
+      "revId": "d6cd3f6c50100c5c97000e3297ac13316cf23106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
