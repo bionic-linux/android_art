@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b67fde4b_e715d6ca",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-13T16:42:29Z",
+      "side": 1,
+      "message": "Having duplicates in .debug_line would be very bad on the other hand.  Given PC must uniquely map to single source line.",
+      "range": {
+        "startLine": 540,
+        "startChar": 10,
+        "endLine": 540,
+        "endChar": 22
+      },
+      "revId": "4e753aa3bde898f76bc9f9cf23698022a0ec7aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
