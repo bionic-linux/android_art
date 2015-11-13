@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "368beea4_004aa8a8",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-11-13T11:54:12Z",
+      "side": 1,
+      "message": "Please use StartAttributeStream",
+      "revId": "e6b21a6b520f214d5a0edbf1de7f31e180de7c70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b67fde4b_4705a253",
         "filename": "compiler/optimizing/instruction_simplifier_arm64.cc",
         "patchSetId": 1
