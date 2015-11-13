@@ -118,6 +118,30 @@
       "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_8065d8f0",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-13T15:10:45Z",
+      "side": 0,
+      "message": "Note that this whole function is rewritten in the next CL anyway - and I really do not have to have the tag in proper DWARF.",
+      "parentUuid": "f6bf9630_09e80da1",
+      "range": {
+        "startLine": 311,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 7
+      },
+      "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
