@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5b25eb9e_c0d1ef22",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-11-13T22:48:47Z",
+      "side": 1,
+      "message": "You really need to comment on why these are different. Namely that image_begin_ is the \u0027logical\u0027 address where the image will be loaded at runtime. but image_-\u003eBegin() is the address where the image is loaded as it is being written (ie now).",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 1
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6da7ea7_71b35a11",
         "filename": "compiler/image_writer.h",
         "patchSetId": 1
@@ -18,6 +41,75 @@
         "startChar": 2,
         "endLine": 353,
         "endChar": 32
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_e35f50be",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-11-13T22:48:47Z",
+      "side": 1,
+      "message": "Why the new else? Previously we would always do this check even if above check succeeds.",
+      "range": {
+        "startLine": 690,
+        "startChar": 4,
+        "endLine": 690,
+        "endChar": 9
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b532b27_8f8c3de8",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-11-13T22:48:47Z",
+      "side": 1,
+      "message": "You should comment on what this does/what its used for.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_d3ca0a72",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2015-11-13T22:48:47Z",
+      "side": 1,
+      "message": "comment on what it does.\n\nAlso why even have this here? It uses nothing from dex_cache and is only used in patchoat (i think). Why not put it there?\n\nAlternatively why not put it with GcRoot?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 44
       },
       "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
