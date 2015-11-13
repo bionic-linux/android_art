@@ -166,6 +166,30 @@
       "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db11db43_7dd893a3",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-13T15:39:19Z",
+      "side": 0,
+      "message": "I think I will just generate .debug_info entries for all methods, including duplicates.\n\n.debug_line will still map to just one of the functions, and there is nothing we can do about that.\n\nBacktraces in libunwind and lldb print the string from .strtab so those will still have the tag.",
+      "parentUuid": "3b4e7783_05add2aa",
+      "range": {
+        "startLine": 311,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 7
+      },
+      "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
