@@ -46,6 +46,30 @@
       "revId": "9b51b0ef6b32bf25f44a38d4e841ea0774e1747a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b5c6f36_aad5af68",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2015-11-13T15:46:25Z",
+      "side": 1,
+      "message": "Oh I didn\u0027t think about using the same stream.\nUsing a separate attribute is fine. I updated it in the appropriate patch.",
+      "parentUuid": "169a6aee_7fdeab5b",
+      "range": {
+        "startLine": 427,
+        "startChar": 6,
+        "endLine": 427,
+        "endChar": 61
+      },
+      "revId": "9b51b0ef6b32bf25f44a38d4e841ea0774e1747a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
