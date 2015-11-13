@@ -94,6 +94,30 @@
       "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6bf9630_09e80da1",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-13T13:19:47Z",
+      "side": 0,
+      "message": "It will just be confusing... I think we should keep the tag as long as we accept deduplicated code.",
+      "parentUuid": "569062ca_016f0c05",
+      "range": {
+        "startLine": 311,
+        "startChar": 6,
+        "endLine": 313,
+        "endChar": 7
+      },
+      "revId": "5f5509a17b04dcacf964eefc169cdfbb3014278b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
