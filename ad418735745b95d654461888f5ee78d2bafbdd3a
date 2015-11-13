@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36220e8b_8877b71f",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-13T15:17:38Z",
+      "side": 1,
+      "message": "Can we add the \"deduplicated\" tag here?",
+      "revId": "ad418735745b95d654461888f5ee78d2bafbdd3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
