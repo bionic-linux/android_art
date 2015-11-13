@@ -16,6 +16,24 @@
       "revId": "ad418735745b95d654461888f5ee78d2bafbdd3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96865a95_26bee2f1",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-13T16:42:29Z",
+      "side": 1,
+      "message": "There will be DW_TAG_subprogram tag generated for each duplicated method now.  They will all point to the same address, but that should be valid in DWARF.\n\nIt is up to the debugger now to choose how it visualize the duplicates.  For the time being it just uses the .strtab name (with the tag).",
+      "parentUuid": "36220e8b_8877b71f",
+      "revId": "ad418735745b95d654461888f5ee78d2bafbdd3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
