@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6da7ea7_71b35a11",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-11-13T21:57:52Z",
+      "side": 1,
+      "message": "Name isn\u0027t immediately intuitive, comment please.",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 32
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
