@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b67fde4b_87424aea",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-13T15:42:47Z",
+      "side": 1,
+      "message": "StartAttributeStream(\"shift\") \u003c\u003c instruction-\u003eGetShiftAmount()",
+      "range": {
+        "startLine": 427,
+        "startChar": 6,
+        "endLine": 427,
+        "endChar": 61
+      },
+      "revId": "9b51b0ef6b32bf25f44a38d4e841ea0774e1747a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
