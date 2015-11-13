@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d67c5259_854fa43b",
+        "filename": "compiler/optimizing/graph_visualizer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-11-13T15:19:56Z",
+      "side": 1,
+      "message": "I meant something like:\n\n  StartAttributeStream(\"kind\") \u003c\u003c instruction-\u003eGetOpKind()\n\nwhich will generate:\n\n  kind:Add\n\nThis is to keep the output format the same for all instructions:\n\n  InstructionName attr1:val1 attr2:val2 ...",
+      "range": {
+        "startLine": 434,
+        "startChar": 4,
+        "endLine": 434,
+        "endChar": 74
+      },
+      "revId": "a2cecf33a0c28987c25acd1cbcb835a5a2889542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
