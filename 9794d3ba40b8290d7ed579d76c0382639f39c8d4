@@ -114,6 +114,30 @@
       "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6da7ea7_6c31bdc7",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-11-14T00:52:37Z",
+      "side": 1,
+      "message": "How about pass in only dest, turn this into non-static functions, eg. FixupStrings, FixupResolvedTypes and share the common code internally?",
+      "parentUuid": "76d4867d_d3ca0a72",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
