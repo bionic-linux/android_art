@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b532b27_8f8afd39",
+        "filename": "test/956-checker-lambda/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-11-14T00:07:16Z",
+      "side": 1,
+      "message": "note that the checker test even works inside the lambda body itself; nice!",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 65,
+        "endChar": 74
+      },
+      "revId": "56e582d41d5b350bd16643e57eed732445730658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
