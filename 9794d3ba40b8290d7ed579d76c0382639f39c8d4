@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b2597a9_8522cd34",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-16T23:05:47Z",
+      "side": 1,
+      "message": "Done in header.",
+      "parentUuid": "5b25eb9e_c0d1ef22",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 1
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6da7ea7_71b35a11",
         "filename": "compiler/image_writer.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-13T21:57:52Z",
       "side": 1,
       "message": "Name isn\u0027t immediately intuitive, comment please.",
+      "range": {
+        "startLine": 352,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 32
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_17ae3459",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-16T23:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_71b35a11",
       "range": {
         "startLine": 352,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b6da7ea7_7438637c",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-16T23:05:47Z",
+      "side": 1,
+      "message": "Since it was not necessary to always check, they are exclusive.",
+      "parentUuid": "5b2a4b7b_e35f50be",
+      "range": {
+        "startLine": 690,
+        "startChar": 4,
+        "endLine": 690,
+        "endChar": 9
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b532b27_8f8c3de8",
         "filename": "runtime/mirror/array.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-11-13T22:48:47Z",
       "side": 1,
       "message": "You should comment on what this does/what its used for.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 44
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_d7975c08",
+        "filename": "runtime/mirror/array.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-16T23:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b532b27_8f8c3de8",
       "range": {
         "startLine": 193,
         "startChar": 0,
@@ -129,6 +225,30 @@
       "side": 1,
       "message": "How about pass in only dest, turn this into non-static functions, eg. FixupStrings, FixupResolvedTypes and share the common code internally?",
       "parentUuid": "76d4867d_d3ca0a72",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "9794d3ba40b8290d7ed579d76c0382639f39c8d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_c707bd9b",
+        "filename": "runtime/mirror/dex_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-16T23:05:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6da7ea7_6c31bdc7",
       "range": {
         "startLine": 63,
         "startChar": 0,
