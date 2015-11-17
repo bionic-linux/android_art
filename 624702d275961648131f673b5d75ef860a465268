@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "569062ca_44e68246",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-17T13:06:49Z",
+      "side": 1,
+      "message": "This should be inside the scope.",
+      "range": {
+        "startLine": 553,
+        "startChar": 2,
+        "endLine": 553,
+        "endChar": 25
+      },
+      "revId": "624702d275961648131f673b5d75ef860a465268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96865a95_b4ecd8eb",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3857,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-17T13:06:49Z",
+      "side": 1,
+      "message": "Without vixl support, this is OK.\n\nLong term, I think you should add support for arbitrary length placeholder literals to vixl. Then this could be handled with such a literal (with kDeletedOnPoolDestruction) and the assembler would place it in a veneer if needed. Offsets would be written to the placeholder after FinalizeCode().",
+      "range": {
+        "startLine": 3854,
+        "startChar": 0,
+        "endLine": 3857,
+        "endChar": 49
+      },
+      "revId": "624702d275961648131f673b5d75ef860a465268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_c3028a21",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3890,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-17T13:06:49Z",
+      "side": 1,
+      "message": "Avoid this if lower_bound\u003d\u003d0.",
+      "range": {
+        "startLine": 3890,
+        "startChar": 4,
+        "endLine": 3890,
+        "endChar": 51
+      },
+      "revId": "624702d275961648131f673b5d75ef860a465268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_0c03dbeb",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3907,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-17T13:06:49Z",
+      "side": 1,
+      "message": "Drop the \"jump base\" and calculate offsets in EmitTable() relative to the table_start_ (held in table_base here).",
+      "range": {
+        "startLine": 3906,
+        "startChar": 0,
+        "endLine": 3907,
+        "endChar": 59
+      },
+      "revId": "624702d275961648131f673b5d75ef860a465268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
