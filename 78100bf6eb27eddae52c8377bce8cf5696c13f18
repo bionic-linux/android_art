@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169a6aee_a56f4406",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-18T10:54:20Z",
+      "side": 1,
+      "message": "Btw., this could be improved (on all architectures) with about 3 instructions per 2 entries:\n\n    subs tmp, value, lower_bound\n    blt fallthrough\n    beq successor[0]\n  last_index \u003d 0\n  for (; num_entries - last_index \u003e 2; last_index +\u003d 2) {\n    subs tmp, 2\n    blt successor[last_index + 1]\n    beq successor[last_index + 2]\n  }\n  if (num_entries - last_index \u003d\u003d 2) {\n    cmp tmp, 1\n    beq successor[last_index + 1]\n  }\n    b fallthrough  // if needed\n\n(If you choose to do that, do it in a separate CL.)",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 70
+      },
+      "revId": "78100bf6eb27eddae52c8377bce8cf5696c13f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_4ce1531b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3924,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-18T10:54:20Z",
+      "side": 1,
+      "message": "Remove the extra \";\".",
+      "range": {
+        "startLine": 3924,
+        "startChar": 39,
+        "endLine": 3924,
+        "endChar": 40
+      },
+      "revId": "78100bf6eb27eddae52c8377bce8cf5696c13f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
