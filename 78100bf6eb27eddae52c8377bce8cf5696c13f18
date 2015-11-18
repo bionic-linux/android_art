@@ -45,6 +45,30 @@
       "revId": "78100bf6eb27eddae52c8377bce8cf5696c13f18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_63f37607",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3924,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-18T17:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56278298_4ce1531b",
+      "range": {
+        "startLine": 3924,
+        "startChar": 39,
+        "endLine": 3924,
+        "endChar": 40
+      },
+      "revId": "78100bf6eb27eddae52c8377bce8cf5696c13f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
