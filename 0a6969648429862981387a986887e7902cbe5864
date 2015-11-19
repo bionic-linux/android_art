@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56278298_afae39c0",
+        "filename": "compiler/dwarf/debug_info_entry_writer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done (the de-duplication is done at higher level though)",
+      "parentUuid": "96865a95_8f0a61fb",
+      "range": {
+        "startLine": 177,
+        "startChar": 17,
+        "endLine": 177,
+        "endChar": 48
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b8e83ee_2923d59a",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2015-11-19T14:19:41Z",
       "side": 1,
       "message": "Can you use RAII instead of manually writing out the StartTag/EndTag entries at every location?",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96865a95_efa3edd6",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "I am not sure.  What would be the benefit?",
+      "parentUuid": "9b8e83ee_2923d59a",
       "revId": "0a6969648429862981387a986887e7902cbe5864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "368beea4_6668e4c9",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56278298_4f24e58b",
+      "range": {
+        "startLine": 301,
+        "startChar": 10,
+        "endLine": 301,
+        "endChar": 76
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db11db43_234e7814",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2015-11-19T14:19:41Z",
       "side": 1,
       "message": "We don\u0027t need pointers here.",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_8665f0f0",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db11db43_234e7814",
       "revId": "0a6969648429862981387a986887e7902cbe5864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -129,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "db11db43_2ec65f6d",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56278298_2f9c09db",
+      "range": {
+        "startLine": 390,
+        "startChar": 32,
+        "endLine": 390,
+        "endChar": 51
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368beea4_6659c482",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -152,6 +260,53 @@
     },
     {
       "key": {
+        "uuid": "9b8e83ee_895461a9",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "368beea4_6659c482",
+      "range": {
+        "startLine": 415,
+        "startChar": 6,
+        "endLine": 415,
+        "endChar": 65
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67fde4b_fb4acf58",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Tamas: This is one place where doing the EndTag at the end of scope would not work.\nOn the other hand, one could argue the code could be redesigned to make that work, but my initial attempts failed.",
+      "range": {
+        "startLine": 427,
+        "startChar": 14,
+        "endLine": 427,
+        "endChar": 22
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96865a95_0f157118",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -163,6 +318,30 @@
       "writtenOn": "2015-11-19T13:53:45Z",
       "side": 1,
       "message": "Does this need to be at the compilation unit level? Wouldn\u0027t we deduplicate much better if this was at a higher level?",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 86
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a6aee_b07220c7",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "The references are internal to the compilation unit.",
+      "parentUuid": "96865a95_0f157118",
       "range": {
         "startLine": 455,
         "startChar": 0,
@@ -198,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "169a6aee_d077acb5",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done (switched to map)",
+      "parentUuid": "368beea4_e61b14ae",
+      "range": {
+        "startLine": 458,
+        "startChar": 16,
+        "endLine": 458,
+        "endChar": 48
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56278298_6fa6012d",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -209,6 +412,24 @@
       "writtenOn": "2015-11-19T14:19:41Z",
       "side": 1,
       "message": "It is true that it will confuse the debugger but the bigger issue is that it is violating the dwarf spec.",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "569062ca_12503c08",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-19T19:54:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56278298_6fa6012d",
       "revId": "0a6969648429862981387a986887e7902cbe5864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
