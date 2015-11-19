@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96865a95_8f0a61fb",
+        "filename": "compiler/dwarf/debug_info_entry_writer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "I think this should be some deduplication structure instead. Currently, you write a separate \"java\" for each class in java.*.",
+      "range": {
+        "startLine": 177,
+        "startChar": 17,
+        "endLine": 177,
+        "endChar": 48
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_4f24e58b",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "Split into two lines; do not directly CHECK() the result of a modifying code. (Even if it\u0027s CHECK() and not DCHECK() and even if it\u0027s modifying just a member intended exclusively for that CHECK().)",
+      "range": {
+        "startLine": 301,
+        "startChar": 10,
+        "endLine": 301,
+        "endChar": 76
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67fde4b_5069da3c",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "Why not DW_TAG_array_type?",
+      "range": {
+        "startLine": 390,
+        "startChar": 32,
+        "endLine": 390,
+        "endChar": 51
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_6659c482",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "Please do. I\u0027d recommend adding a comparator to stl_util.h:\n\n  struct CStringLess {\n    bool operator()(const char* lhs, const char* rhs) const {\n      return strcmp(lhs, rhs) \u003c 0;\n    }\n  };",
+      "range": {
+        "startLine": 415,
+        "startChar": 6,
+        "endLine": 415,
+        "endChar": 65
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96865a95_0f157118",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "Does this need to be at the compilation unit level? Wouldn\u0027t we deduplicate much better if this was at a higher level?",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 86
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_e61b14ae",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-19T13:53:45Z",
+      "side": 1,
+      "message": "Create a simple struct with named members.",
+      "range": {
+        "startLine": 458,
+        "startChar": 16,
+        "endLine": 458,
+        "endChar": 48
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
