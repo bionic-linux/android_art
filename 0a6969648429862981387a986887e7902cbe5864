@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "9b8e83ee_2923d59a",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-19T14:19:41Z",
+      "side": 1,
+      "message": "Can you use RAII instead of manually writing out the StartTag/EndTag entries at every location?",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56278298_4f24e58b",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -48,6 +65,23 @@
     },
     {
       "key": {
+        "uuid": "db11db43_234e7814",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-19T14:19:41Z",
+      "side": 1,
+      "message": "We don\u0027t need pointers here.",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b67fde4b_5069da3c",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -59,6 +93,30 @@
       "writtenOn": "2015-11-19T13:53:45Z",
       "side": 1,
       "message": "Why not DW_TAG_array_type?",
+      "range": {
+        "startLine": 390,
+        "startChar": 32,
+        "endLine": 390,
+        "endChar": 51
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_2f9c09db",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-19T14:19:41Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "b67fde4b_5069da3c",
       "range": {
         "startLine": 390,
         "startChar": 32,
@@ -134,6 +192,23 @@
         "endLine": 458,
         "endChar": 48
       },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56278298_6fa6012d",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-19T14:19:41Z",
+      "side": 1,
+      "message": "It is true that it will confuse the debugger but the bigger issue is that it is violating the dwarf spec.",
       "revId": "0a6969648429862981387a986887e7902cbe5864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
