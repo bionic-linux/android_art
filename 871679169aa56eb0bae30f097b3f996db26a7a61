@@ -1,0 +1,391 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb75bfb9_5ffefe5a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "Thanks for clean up :).",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_b007839a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2835,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "Do we want to gate this behind -Xexperimental:lambdas? It would just be a runtime call to see is the flag was enabled. That\u0027s what the interpreter does today.\n\n(Also I would think in the future we likely don\u0027t want older dex versions to try to use the new opcodes, so having a gate here is a good placeholder to replace with later with a version check).",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bfb9_9fd256db",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2836,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "It\u0027s actually vC, not vA. I\u0027m going to fix it to be vA soon.",
+      "range": {
+        "startLine": 2836,
+        "startChar": 31,
+        "endLine": 2836,
+        "endChar": 33
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db847bce_138390e9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2837,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "vC",
+      "range": {
+        "startLine": 2837,
+        "startChar": 49,
+        "endLine": 2837,
+        "endChar": 51
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_799e7a7a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2852,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "If this is a shorty, it\u0027s fine. If it\u0027s a long type descriptor then line 2860 won\u0027t work anymore in the future because it\u0027s going to need to scan until the ;",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b816bc7_5dadaca9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2853,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "See 2856",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76d4867d_bd00f3dd",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2856,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "Actually this exists as a constant in interpreter_common.cc, can you bring it out to a header file and use it here?\n\n// All lambda closures have to be a consecutive pair of virtual registers.\nstatic constexpr size_t kLambdaVirtualRegisterWidth \u003d 2;",
+      "range": {
+        "startLine": 2856,
+        "startChar": 56,
+        "endLine": 2856,
+        "endChar": 60
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b2a4b7b_c38d631a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2860,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "It would probably be helpful to add a DCHECK(*descriptor \u003d\u003d \u0027J\u0027) here since its using that assumption which will soon change.",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_f0957b63",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2862,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: out, inout, just in?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_5372647f",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: maybe mention this is for lambdas?\n\n// Record of variable captures for the upcoming create-lambda instruction",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b25eb9e_1e561fdd",
+        "filename": "compiler/optimizing/builder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "I think this means the full type descriptor type list right?\n\nMaybe just add a comment example to be sure?\n\n   // e.g. \"LFoo;ZJLBar;\"",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_b9d41214",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3646,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: Judging on some other nodes like HInvokeStaticOrDirect this could probably use more comments.",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b3453db_13605c80",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3652,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: document parameter name, also line length",
+      "range": {
+        "startLine": 3652,
+        "startChar": 44,
+        "endLine": 3652,
+        "endChar": 46
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_d08f974b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3666,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "What is considered a \"side effect\"? This doesn\u0027t seem like it can be considered to not have any side effects because it could trigger class loading of the method ID specified, which in turn can cause a GC.\n\n(and also more generally it shouldn\u0027t be reordered since we want to maintain class load ordering, although this didn\u0027t seem to be mentioned by the SideEffects docs)",
+      "range": {
+        "startLine": 3666,
+        "startChar": 21,
+        "endLine": 3666,
+        "endChar": 40
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b816bc7_bdd40014",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3677,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: Please comments for public methods (assuming this is dex method ID but could be wrong).",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_a449410d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3683,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "No bounds check, is that ok?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d1fa8e_10780f10",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "See 3683",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_8403e59b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3691,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: dex method index?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_24f2f103",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3693,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "(Since I don\u0027t understand the compiler too well), why can\u0027t it just have a list of inputs? Why does it need to go through HUserRecord?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2597a9_a41701d3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3700,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "(Another stupid compiler question) Is  this always in SSA form? If vreg can have different value from different incoming edges, is this always set to Phi instruction?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b6aafda_991a6eba",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3708,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-19T02:09:10Z",
+      "side": 1,
+      "message": "nit: Dex method index?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
