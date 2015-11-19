@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b5c6f36_dcc8a9ce",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1074104
+      },
+      "writtenOn": "2015-11-19T07:41:09Z",
+      "side": 1,
+      "message": "brilliant!",
+      "parentUuid": "169a6aee_a56f4406",
+      "range": {
+        "startLine": 71,
+        "startChar": 49,
+        "endLine": 71,
+        "endChar": 70
+      },
+      "revId": "78100bf6eb27eddae52c8377bce8cf5696c13f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56278298_4ce1531b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 3
