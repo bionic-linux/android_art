@@ -173,6 +173,396 @@
     },
     {
       "key": {
+        "uuid": "3bed97ca_6dc15554",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2871,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "method index",
+      "range": {
+        "startLine": 2871,
+        "startChar": 61,
+        "endLine": 2871,
+        "endChar": 81
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_4bad65aa",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2872,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: into the implicit register pair in vA and vA+1",
+      "range": {
+        "startLine": 2872,
+        "startChar": 81,
+        "endLine": 2872,
+        "endChar": 83
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b440b88_a1d7d817",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2875,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Just so we\u0027re clear, we\u0027re relying on the verifier here to match object reference types to be correct right?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_8cdc8734",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2876,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_eae9a7d4",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2883,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out instruction.VRegA_21c into a separate variable for readability\n\n  uint32_t target_vreg \u003d instruction.VRegA_21c();\n  UpdateLocal(target_vreg, ...)",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_6c0f9b79",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2889,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: as a string index",
+      "range": {
+        "startLine": 2889,
+        "startChar": 79,
+        "endLine": 2889,
+        "endChar": 80
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_2d158d8d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2897,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to separate variable for readability\n\n  uint32_t source_vreg \u003d instruction.VRegA_21c()\n  LoadLocal(source_vreg, ...)",
+      "range": {
+        "startLine": 2897,
+        "startChar": 41,
+        "endLine": 2897,
+        "endChar": 64
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_29ec6de9",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2906,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "the implicit register pair vB and vB+1",
+      "range": {
+        "startLine": 2906,
+        "startChar": 66,
+        "endLine": 2906,
+        "endChar": 68
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_ec026b4c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2907,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: as a string index\n\nMight as well also add a // TODO: vC should be a type index instead\n\nsince that\u0027s the plan later",
+      "range": {
+        "startLine": 2907,
+        "startChar": 53,
+        "endLine": 2907,
+        "endChar": 54
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b3d4fed_df7d9b4a",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2911,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2911,
+        "startChar": 40,
+        "endLine": 2911,
+        "endChar": 63
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_6c44bb9d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2912,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b4e13ac_bf08936e",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2913,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2913,
+        "startChar": 18,
+        "endLine": 2913,
+        "endChar": 41
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_4c49ffb1",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "the implicit register pair vB and vB+1",
+      "range": {
+        "startLine": 2918,
+        "startChar": 50,
+        "endLine": 2918,
+        "endChar": 51
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_6a44979d",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2920,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2920,
+        "startChar": 40,
+        "endLine": 2920,
+        "endChar": 62
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_09f1a9c3",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2922,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2922,
+        "startChar": 18,
+        "endLine": 2922,
+        "endChar": 41
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_0b1a3dbb",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2928,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "the implicit register pair vA and vA+1",
+      "range": {
+        "startLine": 2928,
+        "startChar": 76,
+        "endLine": 2928,
+        "endChar": 78
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_ec570b4e",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2932,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2932,
+        "startChar": 42,
+        "endLine": 2932,
+        "endChar": 65
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_cc54cf4c",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2934,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: bring out to var name for readability",
+      "range": {
+        "startLine": 2934,
+        "startChar": 18,
+        "endLine": 2934,
+        "endChar": 41
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_5372647f",
         "filename": "compiler/optimizing/builder.h",
         "patchSetId": 4
@@ -201,6 +591,227 @@
       "writtenOn": "2015-11-19T02:09:10Z",
       "side": 1,
       "message": "I think this means the full type descriptor type list right?\n\nMaybe just add a comment example to be sure?\n\n   // e.g. \"LFoo;ZJLBar;\"",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_6d44b59d",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Andreas like to puts UNIMPLEMENTED(FATAL) in situations like this. Or is crashing here bad?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_cb54b54c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5536,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Andreas like to puts UNIMPLEMENTED(FATAL) in situations like this. Or is crashing here bad?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_ad4dfdbf",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5547,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b167790_65a8469c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5556,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_e6d43e15",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5565,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b167790_25c76e6d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5574,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b153384_e4d43a15",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5583,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: line length",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_ea8527ee",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5584,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Not sure what these all are doing, will probably need explanation offline\n\nSidenote: It looks like it\u0027s leaking. Why isn\u0027t it leaking (the arena)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_cb2dd5d0",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: check line lengths",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_e957f54d",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: check line lengths",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_c6e66204",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: check line lengths",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db271bf3_ca82e3e3",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: check line lengths",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_2615b68d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: check line lengths",
       "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -383,6 +994,229 @@
       "writtenOn": "2015-11-19T02:09:10Z",
       "side": 1,
       "message": "nit: Dex method index?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_0c2897c3",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3708,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Meant to say dex string index here.",
+      "parentUuid": "7b6aafda_991a6eba",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_89dc7934",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3731,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "nit: Dex string index",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_091a49bb",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3754,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "As I mentioned earlier we should probably have at least some comments for these nodes, at the very least they should point to somewhere else in the source with more documentation, although it wouldn\u0027t hurt to match the comment level of other nodes in this file either.\n\n(it might be pretty obvious to you and i what these IR nodes do but since these new opcodes are so brand new most other readers probably would have to spend a bit more time trying to figure out the fine details)",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_a608866e",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Isn\u0027t the exact type ID in one of the vregs (perhaps a string)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1b2bb8_c6ff8280",
+        "filename": "compiler/optimizing/reference_type_propagation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Isn\u0027t the exact type ID in the const-string preceding this instruction?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b246ff3_e7e9e2d4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6154,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Why not UNIMPLEMENTED(FATAL)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_a84dfbbf",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6177,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Why not UNIMPLEMENTED(FATAL)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf69f9c_ab7b29cf",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6207,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Why not UNIMPLEMENTED(FATAL)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb2a67bd_2923cdec",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 6276,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "Why not UNIMPLEMENTED(FATAL)?",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bfc537c_ec5eeb51",
+        "filename": "runtime/invoke_type.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "kLambda ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 19,
+        "endLine": 31,
+        "endChar": 29
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b153384_a408826e",
+        "filename": "test/956-checker-lambda/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "any way to check that what the parameters are?",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b153384_e4027a4c",
+        "filename": "test/956-checker-lambda/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-11-20T19:22:06Z",
+      "side": 1,
+      "message": "ditto here and for all the rest of the CHECKs",
+      "range": {
+        "startLine": 49,
+        "startChar": 17,
+        "endLine": 49,
+        "endChar": 29
+      },
       "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
