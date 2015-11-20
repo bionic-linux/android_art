@@ -304,6 +304,30 @@
       "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b8e83ee_9476b4e3",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T16:24:06Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "169a6aee_90a6042a",
+      "range": {
+        "startLine": 430,
+        "startChar": 18,
+        "endLine": 430,
+        "endChar": 55
+      },
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
