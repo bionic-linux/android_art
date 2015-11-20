@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "9b8e83ee_e96c0d50",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-20T11:58:28Z",
+      "side": 1,
+      "message": "So my understanding of RAII (I have not heard the name before) is that it is to ensure resources are freed in presence of exceptions.  This is not what EndTag does - it does further non-trivial processing and buffer writes.\n\nHaving said that, I have seriously considered abusing the scoping rules anyway and doing meaningful work in the destructor (here, and in the ElfBuilder which has similar Start/End pairs).  I have eventually decided against it for the sake of clarity (explicit over implicit).  I might be yet persuaded otherwise if others feel strongly about it.",
+      "parentUuid": "169a6aee_10159418",
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56278298_4f24e58b",
         "filename": "compiler/elf_writer_debug.cc",
         "patchSetId": 3
@@ -337,6 +355,30 @@
       "side": 1,
       "message": "If I understand your code correctly, then currently you emit the full namespace hierarchy for each class separately. I would expect that the restructuring what will be needed to remove the duplicated namespace tags will create a structure where RAII can be used.",
       "parentUuid": "b67fde4b_fb4acf58",
+      "range": {
+        "startLine": 427,
+        "startChar": 14,
+        "endLine": 427,
+        "endChar": 22
+      },
+      "revId": "0a6969648429862981387a986887e7902cbe5864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96865a95_da7425dd",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-20T11:58:28Z",
+      "side": 1,
+      "message": "True - for the declarations.  The definitions are more tricky.\nI tried to restructure the code to avoid the extra nesting and I failed.  I will give it another try at some point in the future.",
+      "parentUuid": "db11db43_0e7cbbc6",
       "range": {
         "startLine": 427,
         "startChar": 14,
