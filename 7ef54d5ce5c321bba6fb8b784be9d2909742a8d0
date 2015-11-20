@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "368beea4_0663a0c0",
+        "filename": "compiler/dwarf/debug_info_entry_writer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-20T11:40:16Z",
+      "side": 1,
+      "message": "There is 64-bit overload of PushUint32 which will DCHECK the number is in range.",
+      "parentUuid": "169a6aee_302a905c",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368beea4_c668d8a0",
         "filename": "compiler/dwarf/dedup_vector.h",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "368beea4_26589c08",
+        "filename": "compiler/dwarf/dedup_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-20T11:40:16Z",
+      "side": 1,
+      "message": "Good point.  I will encapsulate the vector and provide const accessor to it.  As bonus point, it will ensure it can not be modified.",
+      "parentUuid": "368beea4_c668d8a0",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "169a6aee_b03ce0a5",
         "filename": "compiler/dwarf/dedup_vector.h",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2015-11-20T11:30:23Z",
       "side": 1,
       "message": "I would suggest to use an std::unordered_map\u003cconst char*, size_t, HashFunction, EqualityFunction\u003e instead of the half hand written implementation.",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a6aee_9038c4ab",
+        "filename": "compiler/dwarf/dedup_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2015-11-20T11:40:16Z",
+      "side": 1,
+      "message": "That would not work for non-string data blocks (we need length).\nStoring pointer the vector would be bad (invalid after vector growth).\nIt would also mean we would have to rehash all data every time we grow the hash table.\nI know I am using the hashtable in a bit non-standard way, but it seems like the simplest solution.",
+      "parentUuid": "169a6aee_b03ce0a5",
       "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
