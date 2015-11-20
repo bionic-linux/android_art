@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db30fb14_c2df8227",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-11-20T16:52:13Z",
+      "side": 1,
+      "message": "This should be \"__ Lbu(AT, adr, 0);\". Don\u0027t know what I was thinking.",
+      "range": {
+        "startLine": 876,
+        "startChar": 0,
+        "endLine": 878,
+        "endChar": 61
+      },
+      "revId": "9088ed6d56bd8a71917cbc503c7ab5b3fdbc602d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b4e13ac_3cc7716d",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-11-20T16:52:13Z",
+      "side": 1,
+      "message": "swr/swl should not be used here but the comment misses a more fundamental issue. If the code used swr/swl 4 bytes of memory would be changed and this function should only change 2 bytes of memory.",
+      "range": {
+        "startLine": 963,
+        "startChar": 0,
+        "endLine": 966,
+        "endChar": 62
+      },
+      "revId": "9088ed6d56bd8a71917cbc503c7ab5b3fdbc602d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
