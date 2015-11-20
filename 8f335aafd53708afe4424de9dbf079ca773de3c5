@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169a6aee_b01b0001",
+        "filename": "compiler/dwarf/dedup_vector.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T16:24:06Z",
+      "side": 1,
+      "message": "Make it const. And is there perhaps a better name? Data()?",
+      "range": {
+        "startLine": 51,
+        "startChar": 32,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "8f335aafd53708afe4424de9dbf079ca773de3c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
