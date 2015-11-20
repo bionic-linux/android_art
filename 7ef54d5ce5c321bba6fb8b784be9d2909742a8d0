@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169a6aee_302a905c",
+        "filename": "compiler/dwarf/debug_info_entry_writer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-20T11:30:23Z",
+      "side": 1,
+      "message": "(nit) You use size_t with PushUint32 what will have different sizes on 64bit systems.",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "368beea4_c668d8a0",
+        "filename": "compiler/dwarf/dedup_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-20T11:30:23Z",
+      "side": 1,
+      "message": "Don\u0027t inherit from an std::vector as it don\u0027t have a virtual destructor. Doing it might be fine at the moment but will easily break in the future.",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "169a6aee_b03ce0a5",
+        "filename": "compiler/dwarf/dedup_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2015-11-20T11:30:23Z",
+      "side": 1,
+      "message": "I would suggest to use an std::unordered_map\u003cconst char*, size_t, HashFunction, EqualityFunction\u003e instead of the half hand written implementation.",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
