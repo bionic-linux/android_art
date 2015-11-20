@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b67fde4b_9b59c3dc",
+        "filename": "compiler/dwarf/debug_info_entry_writer.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T12:48:31Z",
+      "side": 1,
+      "message": "dchecked_integral_cast\u003cuint32_t\u003e(debug_str_offset)",
+      "parentUuid": "169a6aee_302a905c",
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368beea4_c668d8a0",
         "filename": "compiler/dwarf/dedup_vector.h",
         "patchSetId": 4
@@ -123,6 +141,75 @@
         "startChar": 12,
         "endLine": 297,
         "endChar": 23
+      },
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b67fde4b_fb9acf92",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T12:48:31Z",
+      "side": 1,
+      "message": "Pull this out of the WriteDebugInfoCU() call to a named local variable.",
+      "range": {
+        "startLine": 349,
+        "startChar": 23,
+        "endLine": 349,
+        "endChar": 95
+      },
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db11db43_6ea9f74f",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T12:48:31Z",
+      "side": 1,
+      "message": "Can we really get a null here? Should we instead have DCHECK(type_descriptor !\u003d nullptr)?",
+      "range": {
+        "startLine": 358,
+        "startChar": 10,
+        "endLine": 358,
+        "endChar": 36
+      },
+      "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "569062ca_3258d808",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-20T12:48:31Z",
+      "side": 1,
+      "message": "This really calls for an overload of WriteName() that takes the length as well. But further down the line that would require the DedupVector to know whether to add the terminating zeros or not.",
+      "range": {
+        "startLine": 430,
+        "startChar": 18,
+        "endLine": 430,
+        "endChar": 55
       },
       "revId": "7ef54d5ce5c321bba6fb8b784be9d2909742a8d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
