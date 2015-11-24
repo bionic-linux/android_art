@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b77ab0e_c9169533",
+        "filename": "runtime/utf_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-24T17:55:40Z",
+      "side": 1,
+      "message": "But we still want to test them.\n\nAnd please add also the test for the non-conforming sequence { 0x800, 0xdc00 }.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 7
+      },
+      "revId": "1646d7a22e43a1fb25452ead47a4073e63d7f391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
