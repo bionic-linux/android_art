@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbb8a7d5_3cf3dd5d",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-25T11:31:07Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 606,
+        "startChar": 74,
+        "endLine": 606,
+        "endChar": 84
+      },
+      "revId": "5d76e64bc0813ade6091ea20fce263dfdafec76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9baf638f_fed2397d",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-25T11:31:07Z",
+      "side": 1,
+      "message": "If after this erase() we have visited.empty(), this is the top level call and we should store the result even if false because all reachable classes have been fully searched.",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 659,
+        "endChar": 20
+      },
+      "revId": "5d76e64bc0813ade6091ea20fce263dfdafec76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
