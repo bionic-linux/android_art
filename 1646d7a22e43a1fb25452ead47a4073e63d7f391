@@ -129,6 +129,30 @@
       "revId": "1646d7a22e43a1fb25452ead47a4073e63d7f391",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9baf638f_3ec671bf",
+        "filename": "runtime/utf_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-25T11:34:08Z",
+      "side": 1,
+      "message": "This CL is now submitted, so you cannot upload PS4. If you have any more tests, not covered by https://android-review.googlesource.com/183734 , please upload as a separate CL.",
+      "parentUuid": "9ba203be_83982039",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 7
+      },
+      "revId": "1646d7a22e43a1fb25452ead47a4073e63d7f391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
