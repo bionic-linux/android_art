@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "fb921f65_4e92b33c",
+        "filename": "runtime/utf_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-25T11:14:05Z",
+      "side": 1,
+      "message": "This doesn\u0027t test the { 0x800, 0xdc00 } case that was wrong in PS2. This test should be extended to include prefixes/suffixes that encode as 2 or 3 bytes. I\u0027ll add the test in a separate CL.",
+      "revId": "1646d7a22e43a1fb25452ead47a4073e63d7f391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b77ab0e_c9169533",
         "filename": "runtime/utf_test.cc",
         "patchSetId": 3
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "Why do you believe those are not already sufficiently tested by CountAndConvertUtf8Bytes_UnpairedSurrogate?",
       "parentUuid": "5b77ab0e_c9169533",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 7
+      },
+      "revId": "1646d7a22e43a1fb25452ead47a4073e63d7f391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b80ef13_ca5e8352",
+        "filename": "runtime/utf_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-11-25T11:14:05Z",
+      "side": 1,
+      "message": "Sorry, I missed the \"unpaired surrogate\" test.",
+      "parentUuid": "1bb61305_3fbcc3dc",
       "range": {
         "startLine": 319,
         "startChar": 0,
