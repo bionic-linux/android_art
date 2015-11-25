@@ -45,6 +45,29 @@
       "revId": "5d76e64bc0813ade6091ea20fce263dfdafec76a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bc4b760_b88295b4",
+        "filename": "compiler/image_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-11-25T15:39:47Z",
+      "side": 1,
+      "message": "bool*",
+      "range": {
+        "startLine": 348,
+        "startChar": 52,
+        "endLine": 348,
+        "endChar": 57
+      },
+      "revId": "5d76e64bc0813ade6091ea20fce263dfdafec76a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
