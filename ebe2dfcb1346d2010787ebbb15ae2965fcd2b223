@@ -22,6 +22,30 @@
       "revId": "ebe2dfcb1346d2010787ebbb15ae2965fcd2b223",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_320c0817",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2015-11-30T23:17:21Z",
+      "side": 1,
+      "message": "Currently the app image logic tries to map the image at its expected address. If there is something already there, then it maps at any low4 gb address and patches in-place. Might as well avoid the 30ms overhead in that case if possible.",
+      "parentUuid": "9b1763d8_bbac93af",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "ebe2dfcb1346d2010787ebbb15ae2965fcd2b223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
