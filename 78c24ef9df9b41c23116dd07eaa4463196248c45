@@ -22,6 +22,30 @@
       "revId": "78c24ef9df9b41c23116dd07eaa4463196248c45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b21b386_445f6e4e",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-02T11:54:45Z",
+      "side": 1,
+      "message": "you\u0027re right, sorry. artefact from writing the test...",
+      "parentUuid": "9b2da379_a8271bf5",
+      "range": {
+        "startLine": 650,
+        "startChar": 79,
+        "endLine": 650,
+        "endChar": 113
+      },
+      "revId": "78c24ef9df9b41c23116dd07eaa4463196248c45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
