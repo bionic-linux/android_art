@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b2da379_a8271bf5",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-12-02T11:30:54Z",
+      "side": 1,
+      "message": "why the simplifier and not RTP?",
+      "range": {
+        "startLine": 650,
+        "startChar": 79,
+        "endLine": 650,
+        "endChar": 113
+      },
+      "revId": "78c24ef9df9b41c23116dd07eaa4463196248c45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
