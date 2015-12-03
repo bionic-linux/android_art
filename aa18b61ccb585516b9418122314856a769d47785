@@ -46,6 +46,30 @@
       "revId": "aa18b61ccb585516b9418122314856a769d47785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2006440b_bcbbc18c",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-12-03T18:19:59Z",
+      "side": 1,
+      "message": "AsInvokeVirtual is not the problem (it\u0027s basically just a down_cast). It\u0027s the GenerateVirtualCall which is missing.",
+      "parentUuid": "800e1027_37c8f829",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
