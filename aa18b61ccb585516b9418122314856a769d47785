@@ -118,6 +118,30 @@
       "revId": "aa18b61ccb585516b9418122314856a769d47785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009dc025_9bd10b22",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-03T19:04:17Z",
+      "side": 1,
+      "message": "Interesting. I didn\u0027t have that experience which is why I asked about which test(s) I should be running.\n\nDid you do a full build, i.e., did you run \"make clean\" before doing the build, or did you do an incremental build?\n\nThanks again.",
+      "parentUuid": "e06d0cee_7a1bd9be",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
