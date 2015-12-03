@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "00486077_c37b36cd",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-03T19:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20a2c463_dcb0ed03",
+      "range": {
+        "startLine": 40,
+        "startChar": 40,
+        "endLine": 40,
+        "endChar": 54
+      },
+      "revId": "1f7c9c38bb914f246ace4b50aeda48c3f3750629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_1df973a8",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-03T19:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40933818_bdb71ff7",
+      "range": {
+        "startLine": 40,
+        "startChar": 100,
+        "endLine": 40,
+        "endChar": 101
+      },
+      "revId": "1f7c9c38bb914f246ace4b50aeda48c3f3750629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00486077_632002e0",
         "filename": "imgdiag/imgdiag_test.cc",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-12-03T18:54:07Z",
       "side": 1,
       "message": "Would it be easier to just use the max value of the type?\n\nAnd should this be pid_t?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "1f7c9c38bb914f246ace4b50aeda48c3f3750629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_3dfeaf91",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-03T19:06:42Z",
+      "side": 1,
+      "message": "Fixed to pid_t.\n\nIf it\u0027s going to be a magic constant I\u0027d rather it be clear where it was coming from (PID_MAX_LIMIT) so we can look it up later.\n\nOtherwise I can query sysctl kernel.pid_max but that\u0027s way more code for a value that is usually \u003c1m everywhere I tried.",
+      "parentUuid": "00486077_632002e0",
       "range": {
         "startLine": 42,
         "startChar": 0,

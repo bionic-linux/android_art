@@ -22,6 +22,30 @@
       "revId": "f33ea7911dadab2e49c4634cb1763f0526047e89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "204d6487_04fb9669",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-03T19:06:42Z",
+      "side": 0,
+      "message": "The thought was that a negative PID would always be invalid (and it is), unfortunately an implementation detail made it so kill(2) would broadcast a signal to pgrp\u003d12345 instead of pid\u003d-12345.\n\nEvery once in a while (but rarely) there could indeed be a valid process with that pgrp.",
+      "parentUuid": "8091b00f_dfd77b15",
+      "range": {
+        "startLine": 135,
+        "startChar": 36,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "f33ea7911dadab2e49c4634cb1763f0526047e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
