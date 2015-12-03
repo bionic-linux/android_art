@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40f7b847_dd620b1b",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-12-03T17:34:24Z",
+      "side": 1,
+      "message": "It\u0027s not that easy. This is UNIMPLEMENTED(FATAL) for Mips32.",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
