@@ -142,6 +142,30 @@
       "revId": "aa18b61ccb585516b9418122314856a769d47785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8091b00f_3f80e7af",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-12-03T19:28:32Z",
+      "side": 1,
+      "message": "Oat/odex files won\u0027t be recompiled automatically when the compiler changes (that\u0027s intentional). So if you do an incremental build, run mm clean-oat-host before doing another top-level (m) build.",
+      "parentUuid": "009dc025_9bd10b22",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
