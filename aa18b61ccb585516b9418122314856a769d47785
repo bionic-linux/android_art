@@ -22,6 +22,30 @@
       "revId": "aa18b61ccb585516b9418122314856a769d47785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "800e1027_37c8f829",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-03T18:07:28Z",
+      "side": 1,
+      "message": "Perhaps not but the only references I can find to \"AsInvokeVirtual\" are in the following files:\n\n./art/compiler/optimizing/intrinsics_utils.h\n./art/compiler/optimizing/intrinsics_mips.cc\n./art/compiler/optimizing/intrinsics_mips64.cc\n./art/compiler/optimizing/intrinsics_arm64.cc\n\nI searched through all of the instances of \"UNIMPLEMENTED(FATAL)\" but didn\u0027t see anything which looked relevant.\n\nPlease point me to a working implementation of \"AsInvokeVirtual\" which I can use as a template.\n\nThanks.",
+      "parentUuid": "40f7b847_dd620b1b",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
