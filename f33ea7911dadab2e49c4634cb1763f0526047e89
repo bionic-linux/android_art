@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8091b00f_dfd77b15",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-12-03T18:56:06Z",
+      "side": 0,
+      "message": "Why was this a negative number and now we use a positive one?",
+      "range": {
+        "startLine": 135,
+        "startChar": 36,
+        "endLine": 135,
+        "endChar": 42
+      },
+      "revId": "f33ea7911dadab2e49c4634cb1763f0526047e89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
