@@ -70,6 +70,30 @@
       "revId": "aa18b61ccb585516b9418122314856a769d47785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0118c43_1a4e3d4f",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-03T18:31:35Z",
+      "side": 1,
+      "message": "Thanks. What test(s) do I need to run to verify this functionality after implementing the function?",
+      "parentUuid": "2006440b_bcbbc18c",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 95
+      },
+      "revId": "aa18b61ccb585516b9418122314856a769d47785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
