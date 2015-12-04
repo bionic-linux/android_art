@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8091b00f_250e9a10",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-04T00:07:41Z",
+      "side": 1,
+      "message": "Can we replace this with a call to GenerateVirtualCall() similarly to how it\u0027s done in all other implementations?",
+      "range": {
+        "startLine": 3169,
+        "startChar": 0,
+        "endLine": 3192,
+        "endChar": 11
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_266c5c12",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-04T00:07:41Z",
+      "side": 1,
+      "message": "Insert CHECK(!IsR6()); before this line.",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_06636020",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-04T00:07:41Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "204d6487_0a9a7f50",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-04T00:07:41Z",
+      "side": 1,
+      "message": "Dito.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8091b00f_c5500edd",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-04T00:07:41Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
