@@ -22,6 +22,30 @@
       "revId": "0ffa1f5a32ee49e3f219eb39d741e6c5cd1a4041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0eba861_0434981c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2015-12-04T14:33:49Z",
+      "side": 1,
+      "message": "Yes, this sounds better; done in PS2.",
+      "parentUuid": "a0f23453_8339c024",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "0ffa1f5a32ee49e3f219eb39d741e6c5cd1a4041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
