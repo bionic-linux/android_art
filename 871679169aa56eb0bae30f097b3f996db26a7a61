@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "60e03ce1_018cece8",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2835,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T21:14:42Z",
+      "side": 1,
+      "message": "Sounds like it should be a DCHECK then?\n\n  DCHECK(IsExperimentalLambdasEnabled) or similar.\n\nTo make sure the verifier is indeed catching unsupported opcodes.\n\nThe lambda verifier support is TBD so it really could help in the future not to accidentally end up in the compiler when it\u0027s inappropriate.",
+      "parentUuid": "40933818_c0648067",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb75bfb9_9fd256db",
         "filename": "compiler/optimizing/builder.cc",
         "patchSetId": 4
@@ -271,6 +289,30 @@
       "side": 1,
       "message": "Is this really the same thing?",
       "parentUuid": "76d4867d_bd00f3dd",
+      "range": {
+        "startLine": 2856,
+        "startChar": 56,
+        "endLine": 2856,
+        "endChar": 60
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b290f4_9a278994",
+        "filename": "compiler/optimizing/builder.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2856,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T21:14:42Z",
+      "side": 1,
+      "message": "More or less, \"2\" represents here the register width of the receiver in the method and it\u0027s always a lambda (always 2) for invoke-lambda.\n\nPerhaps it can have a different name that\u0027s more representative of what\u0027s happening here?",
+      "parentUuid": "20a2c463_c22a46ba",
       "range": {
         "startLine": 2856,
         "startChar": 56,
@@ -1711,6 +1753,24 @@
     },
     {
       "key": {
+        "uuid": "a0af948e_7b4b9b06",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3646,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T21:14:42Z",
+      "side": 1,
+      "message": "Right, so there\u0027s classes more and less documented residing  in this the same file.\n\nIs there any reason not to follow the convention of the more documented classes so we can continue to set a good example for the rest of the optimizing [lambda] code?",
+      "parentUuid": "8091b00f_a217002c",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_13605c80",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -1793,6 +1853,30 @@
       "side": 1,
       "message": "Side effects in this context is very specific to field read/write or GC",
       "parentUuid": "96d1fa8e_d08f974b",
+      "range": {
+        "startLine": 3666,
+        "startChar": 21,
+        "endLine": 3666,
+        "endChar": 40
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00e5c0f2_de42e1ed",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3666,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T21:14:42Z",
+      "side": 1,
+      "message": "Maybe someone familiar with the analysis can explain to me how that\u0027s sufficient to retain correctness",
+      "parentUuid": "e06d0cee_7d2af329",
       "range": {
         "startLine": 3666,
         "startChar": 21,
@@ -2009,6 +2093,24 @@
       "side": 1,
       "message": "not sure I understand this question?",
       "parentUuid": "3b2597a9_a41701d3",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0b808d7_5f95e31e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3700,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T21:14:42Z",
+      "side": 1,
+      "message": "Using this as an example\n\n   if (foo)\n      v1 \u003d 1\n   else\n      v1 \u003d 2\n   capture-variable v1\n\nPresumably \"variable\" here is something like phi(..evaluates to 1, ..evaluates to 2) right?",
+      "parentUuid": "009dc025_fe627d1a",
       "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
