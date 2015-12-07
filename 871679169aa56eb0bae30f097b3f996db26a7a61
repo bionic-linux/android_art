@@ -1807,6 +1807,24 @@
     },
     {
       "key": {
+        "uuid": "60e03ce1_671a20ab",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3646,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T23:39:21Z",
+      "side": 1,
+      "message": "Ah, yes :). These seem right.",
+      "parentUuid": "a0af948e_be81a1b4",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b3453db_13605c80",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -1937,6 +1955,30 @@
       "side": 1,
       "message": "calling create lambda can never change the value of a field.",
       "parentUuid": "00e5c0f2_de42e1ed",
+      "range": {
+        "startLine": 3666,
+        "startChar": 21,
+        "endLine": 3666,
+        "endChar": 40
+      },
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0af948e_be6a8132",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3666,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T23:39:21Z",
+      "side": 1,
+      "message": "Oh that makes perfect sense in the context of your above explanation. \n\nI\u0027m just not sure what \"side effects\" is supposed to represent in general (outside of lambdas) since it means something different than what I would intuitively expect (e.g. code that can be evaluated without any ordering constraints)",
+      "parentUuid": "60c91c79_bc0c4955",
       "range": {
         "startLine": 3666,
         "startChar": 21,
@@ -2189,6 +2231,24 @@
       "side": 1,
       "message": "Yes, but that applies to anything that is an HExpression. Any reason you are worried about having a Phi as input?",
       "parentUuid": "c0b808d7_5f95e31e",
+      "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40db3839_83c1e2a6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3700,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-07T23:39:21Z",
+      "side": 1,
+      "message": "Just trying to clarify my understanding of the fundamentals of the optimizing compiler architecture I suppose, don\u0027t think it has anything to do with this CL.",
+      "parentUuid": "a0af948e_fe8b19d0",
       "revId": "871679169aa56eb0bae30f097b3f996db26a7a61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
