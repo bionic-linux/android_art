@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "251f3657_34b0f0b3",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-09T19:58:15Z",
+      "side": 1,
+      "message": "Does mips provide the same guarantees as arm?",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4520aa91_d5809cb1",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-09T19:58:15Z",
+      "side": 1,
+      "message": "Is \"GE\" unsigned comparison? Or are we guaranteed to never allocate across the 0x80000000 boundary?\n(I think \"EQ\" would work just as well, top offset should never exceed end offset.)",
+      "range": {
+        "startLine": 1358,
+        "startChar": 4,
+        "endLine": 1358,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2506560b_fc99493a",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-09T19:58:15Z",
+      "side": 1,
+      "message": "Signed or unsigned? (Though I wouldn\u0027t expect a 2GiB instance size.)",
+      "range": {
+        "startLine": 1363,
+        "startChar": 4,
+        "endLine": 1363,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c03648c7_29632d21",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-09T19:58:15Z",
+      "side": 1,
+      "message": "I recently learned that this is an obsolete form, the correct is \"subtract.\"",
+      "range": {
+        "startLine": 1366,
+        "startChar": 54,
+        "endLine": 1366,
+        "endChar": 63
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65fcce2b_7ecf7135",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-09T19:58:15Z",
+      "side": 1,
+      "message": "This store should be before the comment. The comment belongs to the assertion and store below.",
+      "range": {
+        "startLine": 1386,
+        "startChar": 0,
+        "endLine": 1389,
+        "endChar": 88
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
