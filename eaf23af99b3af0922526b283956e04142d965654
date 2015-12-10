@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6553ee27_f51ee249",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-10T05:40:40Z",
+      "side": 1,
+      "message": "This really needs to get straightened out for more basic reasons.  If data dependencies like this are never guaranteed to enforce ordering, then there is no guarantee that reading a Java reference field, and the using that to access a final field ensures ordering of those two loads.  Those are required to be ordered by the Java language specification.  If we have to insert SYNCs there, I suspect the performance impact would be disastrous.\n\nWe really need to understand the rules.",
+      "parentUuid": "a567a60d_21bf74ce",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4520aa91_d5809cb1",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
