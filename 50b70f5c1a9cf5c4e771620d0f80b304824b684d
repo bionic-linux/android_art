@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5f24653_8092d679",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3184,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2015-12-10T13:20:15Z",
+      "side": 1,
+      "message": "I think that \"if\" part should be removed like in this CL: https://android-review.googlesource.com/#/c/153167/.",
+      "parentUuid": "253496db_55781ecc",
+      "range": {
+        "startLine": 3177,
+        "startChar": 0,
+        "endLine": 3184,
+        "endChar": 3
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8091b00f_250e9a10",
         "filename": "compiler/optimizing/code_generator_mips.cc",
         "patchSetId": 4
