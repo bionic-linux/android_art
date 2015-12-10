@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "454eea83_ee4bb3aa",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-10T02:08:28Z",
+      "side": 1,
+      "message": "Looking back at the MIPS memory model document, and prior discussions with David Lau, the answer remains unclear to me.  I\u0027m not sure whether dependencies enforce visibility ordering.  What does \"uniprocessor data dependencies are maintained\" mean?  Does it just mean that a single thread executes correctly.  Or does it mean that if there is an address dependency from load a to load b, then a is visible to other cores before b?\n\nWe need the latter, at least in some cases, for Java code with final fields to execute correctly at better than glacial speed.  We need a very strong version of the latter property for this to work correctly.\n\nI previously suggested an in-person meeting to resolve this and related issues.  I\u0027m still open to that.",
+      "parentUuid": "251f3657_34b0f0b3",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4520aa91_d5809cb1",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
