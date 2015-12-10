@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "253496db_41c9802c",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-12-10T21:44:09Z",
+      "side": 1,
+      "message": "+1 for using unsigned GE or EQ.",
+      "parentUuid": "4520aa91_d5809cb1",
+      "range": {
+        "startLine": 1358,
+        "startChar": 4,
+        "endLine": 1358,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2506560b_fc99493a",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "writtenOn": "2015-12-09T19:58:15Z",
       "side": 1,
       "message": "Signed or unsigned? (Though I wouldn\u0027t expect a 2GiB instance size.)",
+      "range": {
+        "startLine": 1363,
+        "startChar": 4,
+        "endLine": 1363,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e55fde25_91157b1d",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-12-10T21:44:09Z",
+      "side": 1,
+      "message": "+1 for using unsigned.",
+      "parentUuid": "2506560b_fc99493a",
       "range": {
         "startLine": 1363,
         "startChar": 4,
@@ -177,6 +225,30 @@
       "writtenOn": "2015-12-09T19:58:15Z",
       "side": 1,
       "message": "This store should be before the comment. The comment belongs to the assertion and store below.",
+      "range": {
+        "startLine": 1386,
+        "startChar": 0,
+        "endLine": 1389,
+        "endChar": 88
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855c6237_618fda14",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2015-12-10T21:44:09Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "65fcce2b_7ecf7135",
       "range": {
         "startLine": 1386,
         "startChar": 0,
