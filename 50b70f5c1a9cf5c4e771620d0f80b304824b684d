@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "253496db_55781ecc",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3184,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Goran, do we need the \"if\" part of this code or just the \"else\" part? No other implementations have this.",
+      "range": {
+        "startLine": 3177,
+        "startChar": 0,
+        "endLine": 3184,
+        "endChar": 3
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8091b00f_250e9a10",
         "filename": "compiler/optimizing/code_generator_mips.cc",
         "patchSetId": 4
@@ -25,6 +48,168 @@
     },
     {
       "key": {
+        "uuid": "20a2c463_cb0821b0",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "I made the changes we discussed last night and the code doesn\u0027t work.",
+      "parentUuid": "8091b00f_250e9a10",
+      "range": {
+        "startLine": 3169,
+        "startChar": 0,
+        "endLine": 3192,
+        "endChar": 11
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "404ed883_eed4d33b",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Replace with \"IsR6()\".",
+      "range": {
+        "startLine": 846,
+        "startChar": 6,
+        "endLine": 846,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_ac904b6c",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 872,
+        "startChar": 6,
+        "endLine": 872,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_8c7f8ff6",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 892,
+        "startChar": 6,
+        "endLine": 892,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0842cce_16e62cd8",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 937,
+        "startChar": 6,
+        "endLine": 937,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8091b00f_f37e38bf",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 959,
+        "startChar": 6,
+        "endLine": 959,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40933818_2c743b17",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 978,
+        "startChar": 6,
+        "endLine": 978,
+        "endChar": 50
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40933818_266c5c12",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 4
@@ -36,6 +221,30 @@
       "writtenOn": "2015-12-04T00:07:41Z",
       "side": 1,
       "message": "Insert CHECK(!IsR6()); before this line.",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009dc025_41a2b6ce",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40933818_266c5c12",
       "range": {
         "startLine": 407,
         "startChar": 0,
@@ -71,6 +280,30 @@
     },
     {
       "key": {
+        "uuid": "009dc025_e186623c",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40933818_06636020",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "204d6487_0a9a7f50",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 4
@@ -94,6 +327,30 @@
     },
     {
       "key": {
+        "uuid": "204d6487_4a7f57f7",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204d6487_0a9a7f50",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8091b00f_c5500edd",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 4
@@ -105,6 +362,30 @@
       "writtenOn": "2015-12-04T00:07:41Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 29
+      },
+      "revId": "50b70f5c1a9cf5c4e771620d0f80b304824b684d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0842cce_6b9d517a",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-10T00:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8091b00f_c5500edd",
       "range": {
         "startLine": 462,
         "startChar": 0,
