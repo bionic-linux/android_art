@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a567a60d_21bf74ce",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-10T02:18:46Z",
+      "side": 1,
+      "message": "My understanding (indicated in an internal review of this patch) is that we likely need SYNC here (just as we have one at the end of this routine). Clearly, the XOR/ADDU won\u0027t have any reliable effect on memory accesses or ordering. However, I don\u0027t know the perf impact of inserting SYNC here. But above all, we need to remain correct, fast alone is worhtless if the code is incorrect.",
+      "parentUuid": "454eea83_ee4bb3aa",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4520aa91_d5809cb1",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
