@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "454eea83_ee285365",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-12-10T16:11:07Z",
+      "side": 1,
+      "message": "It wasn\u0027t guaranteed to have happened before. I wanted to get Igor\u0027s input on this one.",
+      "parentUuid": "c5701ac6_798f6714",
+      "revId": "53e32d14d7a51198c6ef09120c15bafdd1d055c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5f24653_a0addaf2",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
