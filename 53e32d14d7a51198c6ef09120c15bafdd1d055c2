@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5f24653_a0addaf2",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-10T09:16:55Z",
+      "side": 1,
+      "message": "failed verifying ?",
+      "range": {
+        "startLine": 382,
+        "startChar": 49,
+        "endLine": 382,
+        "endChar": 55
+      },
+      "revId": "53e32d14d7a51198c6ef09120c15bafdd1d055c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
