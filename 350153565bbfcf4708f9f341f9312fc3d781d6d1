@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0576b2c5_13bf2cce",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-10T14:55:22Z",
+      "side": 1,
+      "message": "this is confusing, which one are we implementing and care about? Please just state the one we\u0027re using.",
+      "range": {
+        "startLine": 368,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 65
+      },
+      "revId": "350153565bbfcf4708f9f341f9312fc3d781d6d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
