@@ -22,6 +22,29 @@
       "revId": "350153565bbfcf4708f9f341f9312fc3d781d6d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c03648c7_09b66946",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-10T14:57:01Z",
+      "side": 1,
+      "message": "But why don\u0027t we encode the reg for low and reg + 1 for high in the stack maps?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 3
+      },
+      "revId": "350153565bbfcf4708f9f341f9312fc3d781d6d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
