@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6553ee27_9b07df2e",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2015-12-10T20:42:22Z",
+      "side": 1,
+      "message": "This seems fine as-is. Compilers will filter out experimental opcodes if there are any.",
+      "parentUuid": "454eea83_ee285365",
+      "revId": "53e32d14d7a51198c6ef09120c15bafdd1d055c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5f24653_a0addaf2",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
