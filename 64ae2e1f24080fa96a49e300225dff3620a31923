@@ -22,6 +22,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6553ee27_7ccad674",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-11T22:17:37Z",
+      "side": 1,
+      "message": "As per the spec below - section 4.2 Execution order behavior states the following \n\"Uniprocessor Data Dependencies are always maintained. These include read-after-write, write-after-write and\nwrite-after-read hazards\". Using these dependencies for two instructions, we can build a larger dependency tree. The dependency tree is mostly derived information and is not documented for MIPS AFAIK if that is what you are asking.\n\nMIPS Coherence Protocol specification\nhttps://imagination-technologies-cloudfront-assets.s3.amazonaws.com/documentation/MD00605-2B-CMPCOHERE-AFP-01.01.pdf\n\nAlthough addu instruction below appears as a nop, it will need to be executed by any MIPS processor to maintain the following dependencies.I have simplified the instruction sequence for discussion.\n\n1. lw    $t5, STATUS($t0) \n2. addu  $t0, $t0, $zero  #WAR dependency on $t0\n3. lw    $t5, FLAGS($t0) #RAW dependency on $t0 \n\nWhile maintaining both the above dependencies, through \nregister renaming, I can see a possibility of a CPU \nreading flags before status.\n                           addu TMP1, $t0, $zero\n                           lw   TMP2, FLAGS(TMP1)\n lw $t5, STATUS($t0)\n                           move t0, TMP1\n                           move t5, TMP2\n\nHence my earlier suggestion of introducing only addu dependency instead of \"xor and addu\" may not work on CPUs where aggressive speculative loads are enabled. However\"xor and addu\" will introduces a series of RAW dependencies which would serialize the execution.\n\n1. lw    $t5, STATUS($t0) \n2. xor   $t5, $t5, $t5   # RAW on $t5\n3. addu  $t0, $t0, $t5   # RAW on $t5\n4. lw    $t5, FLAGS($t0) #RAW on $t0\n\n@Hans, If you agree that this information is sufficient, we would upload another patch with \"xor and addu\" to maintain the load dependencies.If you need more information on any specific topic, let me know.",
+      "parentUuid": "253496db_29141a1b",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
