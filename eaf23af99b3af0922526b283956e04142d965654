@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "a5f24653_8371c07c",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-12-11T14:23:35Z",
+      "side": 1,
+      "message": "Added addu  $t0, $t0, $zero; this should create the required dependency.",
+      "parentUuid": "05487277_cc3fdeaf",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4520aa91_d5809cb1",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "+1 for using unsigned GE or EQ.",
       "parentUuid": "4520aa91_d5809cb1",
+      "range": {
+        "startLine": 1358,
+        "startChar": 4,
+        "endLine": 1358,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5701ac6_39a1efc9",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1358,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-12-11T14:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "253496db_41c9802c",
       "range": {
         "startLine": 1358,
         "startChar": 4,
@@ -215,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "0576b2c5_73c8e0ca",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1363,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-12-11T14:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e55fde25_91157b1d",
+      "range": {
+        "startLine": 1363,
+        "startChar": 4,
+        "endLine": 1363,
+        "endChar": 7
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c03648c7_29632d21",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
@@ -226,6 +298,30 @@
       "writtenOn": "2015-12-09T19:58:15Z",
       "side": 1,
       "message": "I recently learned that this is an obsolete form, the correct is \"subtract.\"",
+      "range": {
+        "startLine": 1366,
+        "startChar": 54,
+        "endLine": 1366,
+        "endChar": 63
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c03648c7_2ce6dbd7",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-12-11T14:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c03648c7_29632d21",
       "range": {
         "startLine": 1366,
         "startChar": 54,
@@ -273,6 +369,30 @@
       "side": 1,
       "message": "+1",
       "parentUuid": "65fcce2b_7ecf7135",
+      "range": {
+        "startLine": 1386,
+        "startChar": 0,
+        "endLine": 1389,
+        "endChar": 88
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45c18a18_4d73d9f3",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1389,
+      "author": {
+        "id": 1080239
+      },
+      "writtenOn": "2015-12-11T14:23:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "855c6237_618fda14",
       "range": {
         "startLine": 1386,
         "startChar": 0,
