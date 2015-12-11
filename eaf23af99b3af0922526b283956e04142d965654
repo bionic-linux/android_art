@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "05487277_cc3fdeaf",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-11T02:13:48Z",
+      "side": 1,
+      "message": "The two instructions xor and addu ensure that loading of status is visible before flags. Infact addu $t0, $t0, $zero is sufficient to create the dependency. This is the most efficient way of ensuring that status gets loaded before flags and size.\n\nAlternatively SYNC(19)/SYNC_RMB could also be used. The architecture defines this as optional but is implemented on all latest processors IMG releases. On processors where SYNC(19) is not implemented, SYNC gets used in its place. However using SYNC/SYNC(19) is less efficient than creating a dependency.",
+      "parentUuid": "6553ee27_f51ee249",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 23
+      },
+      "revId": "eaf23af99b3af0922526b283956e04142d965654",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4520aa91_d5809cb1",
         "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
         "patchSetId": 2
