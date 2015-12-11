@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4520aa91_fbd82747",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2015-12-11T15:41:31Z",
+      "side": 1,
+      "message": "Actually, both. For aosp_mips-eng, architecture is MIPS32r2 with 32 fpu registers, each 32-bit long. For doubles we are using pairs F0-F1, F2-F3... On the other hand, for aosp_mips64-eng, 2nd architecture is MIPS32r6 with 32 fpu registers, each 64-bit long.\n\nTo simplify things, in optimizing we are using 16 even-numbered 64-bit registers. 16 odd-numbered registers on MIPS32r6 are not used, and on MIPS32 pars of registers are used, but we see them as 64-bit registers. We are distinguishing those 2 cases on assembler level. E.g. to load upper half word to F12, on MIPS32r2 we use:\n\n  lwc1  $f13, 4($sp)\n\nwhile on MIPS32r6 we use:\n\n  lw    $t0, 4($sp)\n  mthc1 $t0, $f12\n\nBut mostly, same instructions are generated for both cases (e.g. ldc1 $f12, 0($sp) works for both).",
+      "parentUuid": "0576b2c5_13bf2cce",
+      "range": {
+        "startLine": 368,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 65
+      },
+      "revId": "350153565bbfcf4708f9f341f9312fc3d781d6d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c03648c7_09b66946",
         "filename": "runtime/stack.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-10T14:57:01Z",
       "side": 1,
       "message": "But why don\u0027t we encode the reg for low and reg + 1 for high in the stack maps?",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 374,
+        "endChar": 3
+      },
+      "revId": "350153565bbfcf4708f9f341f9312fc3d781d6d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "251f3657_37191204",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2015-12-11T15:41:31Z",
+      "side": 1,
+      "message": "Can you point me how to do that? If it is possible at all because of things in above comment.",
+      "parentUuid": "c03648c7_09b66946",
       "range": {
         "startLine": 371,
         "startChar": 0,
