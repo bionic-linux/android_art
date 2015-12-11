@@ -46,6 +46,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_6275b614",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-11T23:48:34Z",
+      "side": 1,
+      "message": "You identified the place where I also got stuck.  The questions is what that statement in 4.2 really means.  Does it mean that cross-processor ordering is enforced?  Or does it essentially only mean that a single core sees its own writes in the correct order, i.e. uniprocessor semantics are correctly maintained?\n\nI asked David Lau that question in a previous exchange, and his answer was:\n\n\"It just means that for the CPU executing the code, the RAW, WAR, WAW dependencies are always honored.\"\n\nI\u0027m inclined to read that as the latter, especially since, as you point out, you can\u0027t really do register renaming and maintain WAR dependencies.  Thus my best guess now is that the SYNC_ACQUIRE is needed, and dependencies do not affect visibility across cores.  Initially I read 4.2 roughly the way you did. In retrospect, the mention of write-after-read hazards should have dissuaded me from that.\n\nMy sense is that hardware architects are very unlikely to reflect anything but RAW dependencies in cross-core memory ordering, and they\u0027re unenthusiastic about that, because even that inhibits some optimizations.\n\nMy current interpretation scares me because of implications on final field accesses.  The added fence here seems comparatively minor.\n\nWe really do need a clarification.",
+      "parentUuid": "6553ee27_7ccad674",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
