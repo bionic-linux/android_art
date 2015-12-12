@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "656dae10_7642b094",
+        "filename": "test/554-jit-profile-file/run",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-12T13:35:55Z",
+      "side": 1,
+      "message": "It looks easy to get bitten by this one. Maybe if it\u0027s not specified, we should just take half of -Xjitthreshold (like we do when -Xjitthreshold is not provided).",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "226501b317e148aa8a8983355e85acb59c1eee83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
