@@ -70,6 +70,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45db4a39_c6bf7878",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-12T17:17:17Z",
+      "side": 1,
+      "message": "The statement in section 4.2 only means that uniprocessor semantics are correctly maintained. It does not guarantee cross-processor ordering of the resulting memory transactions. \n\nIn my opinion, the visibility of loads to other processors does not matter in this situation since we are talking about a cached access. It only matters that the first load completes before the second load is initiated on the current processor. We achieve it successfully through a series of RAWs. However if we have non-dependent loads or loads which are dependent through Write-after-Reads, then SYNC_ACQUIRE is mandatory to ensure that loading of status is complete before loading of flags and size is initiated.\n\nFor sake of completeness, I will mention how stores are expected to complete on MIPS where ever the status is being updated. On the store side of the story, visibility of the stores is mandatory. Hence a sync_wmb/sync_mb/sync is required.\n\n1. sw    $t1, FLAGS($t4)\n2. sw    $t2, SIZE($t4) \n3. sync_wmb      # Required for rest of the loads to be globally visible before status.\n4. sw    $t3, STATUS($t4)",
+      "parentUuid": "e5cc3e7f_6275b614",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
