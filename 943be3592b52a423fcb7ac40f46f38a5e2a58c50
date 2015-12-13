@@ -1,0 +1,487 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45db4a39_00530861",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Change to shorter:\n\n    __ Sltu(TMP, out_lo, TMP);\n    __ Addu(out_hi, out_hi, TMP);\n\nand update (or remove?) the comments above.",
+      "range": {
+        "startLine": 892,
+        "startChar": 0,
+        "endLine": 894,
+        "endChar": 33
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65e04ee1_e15aa0cb",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 896,
+        "startChar": 15,
+        "endLine": 896,
+        "endChar": 16
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5cf3a71_273e5e9b",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Unless I\u0027m missing something...\n\nJava spec says \"If either value is NaN, then the result is NaN.\"\n\nMIPS documentation says about Min/Max \"Numbers are preferred to NaNs: if one input is a NaN, but not both, the value of the numeric input is returned. If both are NaNs, the NaN in fs is returned.\"\n\nRight?\n\nIf so, MIPS64 needs a fix as well and we\u0027re missing a few tests for Java Min/Max w.r.t. NaNs.",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 943,
+        "endChar": 27
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_2c175795",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Rename to something less confusing, e.g. compare_done.",
+      "range": {
+        "startLine": 1158,
+        "startChar": 16,
+        "endLine": 1158,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_8ad0ef46",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Shorten as suggested for R2 below.",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1172,
+        "endChar": 39
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b81ad7_1f736bf4",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1197,
+        "endChar": 39
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_e8a52724",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1225,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "In the rare event that out, a and b are in the same register, we have AT\u003d0 here, which causes Selnez to set out to 0 and thus overwrite b before Seleqz has a chance to look at it.\n\nWe could adjust these Seleqz and Selnez to write to TMP and AT (never out) and change the final Or to take TMP and AT and \"or\" them together into out. This also eliminates the need for differentiation between out \u003d\u003d a and out !\u003d a.\n\nThere\u0027s a similar problem with 64-bit longs above.\n\nOTOH, I think we should just start this function with something like\n\n    if (locations-\u003eInAt(0).Equals(locations-\u003eInAt(1))) {\n        if (!locations-\u003eOut().Equals(locations-\u003eInAt(0))) {\n            move InAt(0) to Out(); // for both 32-bit \u0026 64-bit\n        }\n        return;\n    }\n\nto ensure that writing to the output can\u0027t ever clobber both inputs.\n\nMIPS64 intrinsic should be fixed as well as it has identical logic.",
+      "range": {
+        "startLine": 1224,
+        "startChar": 0,
+        "endLine": 1225,
+        "endChar": 31
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_aa604b85",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Rename to something less confusing, e.g. compare_done.",
+      "range": {
+        "startLine": 1248,
+        "startChar": 16,
+        "endLine": 1248,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25ead6c4_e218e25d",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Change to shorter\n\n    __ Slt(TMP, a_hi, b_hi);\n    __ Bne(a_hi, b_hi, \u0026compare_done);\n\n    __ Sltu(TMP, a_lo, b_lo);\n\n    __ Bind(\u0026compare_done);",
+      "range": {
+        "startLine": 1250,
+        "startChar": 0,
+        "endLine": 1261,
+        "endChar": 38
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85d9c240_e58712f6",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Always true by now.",
+      "range": {
+        "startLine": 1304,
+        "startChar": 14,
+        "endLine": 1304,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25ead6c4_1f67e7d2",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1307,
+        "startChar": 14,
+        "endLine": 1307,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_e90a5135",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1311,
+        "startChar": 14,
+        "endLine": 1311,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_45dfdc89",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1314,
+        "startChar": 14,
+        "endLine": 1314,
+        "endChar": 22
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_c11be657",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1410,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be any better than the R2 implementation. Use the following instead:\n\n    __ CmpEqS(FTMP, in, in);\n    __ Bc1nez(FTMP, \u0026notNan);",
+      "range": {
+        "startLine": 1407,
+        "startChar": 0,
+        "endLine": 1410,
+        "endChar": 26
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85d9c240_2888ef9a",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 1423,
+        "startChar": 0,
+        "endLine": 1426,
+        "endChar": 10
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_c881436d",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1429,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "And what happens when the intput is not -inf, but still less than -0x80000000 - 0.5?\n\nThe doc says on Floor.W.S:\nOn cores with FCSR NAN2008\u003d0, the default result is\n2**63-1. On cores with FCSR NAN2008\u003d1, the default result is:\n• 0 when the input value is NaN\n• 2**63-1 when the input value is +inf or rounds to a number larger than 2**63-1\n• -2**63-1 when the input value is -inf or rounds to a number smaller than -2**63-1\n\nThis text probably isn\u0027t correct for single-precision (in my understanding the result should be 32-bit (because of both .W and .S) and thus can\u0027t reach ~2**63 of any sign), but clearly, if the doc is right about FCSR NAN2008, we won\u0027t handle negative values correctly when FCSR NAN2008\u003d0 (R2 or earlier).",
+      "range": {
+        "startLine": 1428,
+        "startChar": 0,
+        "endLine": 1429,
+        "endChar": 43
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_02206a78",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "cc",
+      "range": {
+        "startLine": 859,
+        "startChar": 58,
+        "endLine": 859,
+        "endChar": 59
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b81ad7_19cf0b36",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Why commented out?",
+      "range": {
+        "startLine": 860,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 30
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_84346687",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 864,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 1
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_83b9fe06",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": "Rename N to cc, add trailing comment // R2.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 52
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_c4d49e6a",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-13T04:52:17Z",
+      "side": 1,
+      "message": ";  // R6",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 54
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
