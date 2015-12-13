@@ -94,6 +94,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_4aa1d7c8",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-13T04:12:25Z",
+      "side": 1,
+      "message": "Can you point me at the spec that states that if two loads, such that the address of the second is dependent on the result of the first, i.e. there is a RAW dependency, then the first load must complete before the second is initiated?\n\nAlthough this sounds like a vacuous requirement, it is not.  It prevents data speculation.  DEC Alpha violated this rule for a different reason, related to cache architecture.  I would also like to see it pinned down, since it may help to answer my next question, which is how such a RAW dependency is defined, and whether it includes the kind of \"fake\" dependencies we\u0027re trying to use here.",
+      "parentUuid": "45db4a39_c6bf7878",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
