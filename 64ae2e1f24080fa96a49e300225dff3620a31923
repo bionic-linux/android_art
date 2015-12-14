@@ -118,6 +118,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25157684_78de29fe",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-14T23:31:27Z",
+      "side": 1,
+      "message": "The second load can only be initiated after the address of the load instruction is known. But the address of the second load is dependent on the result of the previous instruction. As section 4.2 states that all RAW, WAR, WAW dependencies should be satisfied, each instruction after the first load will need to be executed until the address of the 2nd load is calculated. Only after the address gets calculated, the second load can be initiated. Data speculation is allowed as long as execution order rules (section 4.2) are satisfied. In our example there is no scope for a speculative 2nd load due to the RAW dependency on the address of the load.\n\nI had run this example by both architecture and hardware teams and both confirmed that these semantically fake dependencies are real dependencies for a MIPS processor and are sufficient to ensure that the second load gets initiated after the address dependency is satisfied.\n\nUnfortunately, there is no MIPS specific documentation about the dependencies. The Wikipedia definition matches the assumptions on MIPS.\nread after write (RAW), a true dependency\nwrite after read (WAR), an anti-dependency\nwrite after write (WAW), an output dependency\n\nhttps://en.wikipedia.org/wiki/Hazard_(computer_architecture)",
+      "parentUuid": "25157684_4aa1d7c8",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
