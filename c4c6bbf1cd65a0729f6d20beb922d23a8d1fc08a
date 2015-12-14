@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e59a7e77_d2a56424",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-14T17:58:18Z",
+      "side": 1,
+      "message": "It doesn\u0027t look right to have a Phi related method here. Probably you could rename it.",
+      "range": {
+        "startLine": 689,
+        "startChar": 15,
+        "endLine": 689,
+        "endChar": 24
+      },
+      "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
