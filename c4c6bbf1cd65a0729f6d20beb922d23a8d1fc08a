@@ -46,6 +46,30 @@
       "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4568aa02_b560c085",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-14T18:15:01Z",
+      "side": 1,
+      "message": "As i mentioned in the top-level message, the right way of fixing this is not having any aliasing. I\u0027m working on that anyway... From LSE perspective, I\u0027d add DCHECKs making sure that removing a set is safe, but i\u0027ll leave that up to mingyao.",
+      "parentUuid": "25673634_54c20cab",
+      "range": {
+        "startLine": 689,
+        "startChar": 15,
+        "endLine": 689,
+        "endChar": 24
+      },
+      "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
