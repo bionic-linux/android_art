@@ -94,6 +94,30 @@
       "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0593126b_8e4bbbab",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2015-12-14T19:35:13Z",
+      "side": 1,
+      "message": "I used to have a similar check on the store side so if there is possible type aliasing, I didn\u0027t eliminate the store. That check was removed due to the fact that I/F, J/D aliasing only happen for arrays. However as this bug showed there can still be int type aliasing, like between boolean and int (I was actually aware of this but somehow still removed the check).\n\nThe question is are we sure it\u0027s always safe to load as one integer type which is stored as a different integer type? To be on the safe side, we can always keep the store by calling KeepIfIsStore() if types mismatch.",
+      "parentUuid": "45db4a39_11527ce4",
+      "range": {
+        "startLine": 689,
+        "startChar": 15,
+        "endLine": 689,
+        "endChar": 24
+      },
+      "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
