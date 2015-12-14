@@ -22,6 +22,30 @@
       "revId": "226501b317e148aa8a8983355e85acb59c1eee83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65acceb5_5e32f533",
+        "filename": "test/554-jit-profile-file/run",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-12-14T14:32:55Z",
+      "side": 1,
+      "message": "Yes, I will submit another change to address it.",
+      "parentUuid": "656dae10_7642b094",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 44
+      },
+      "revId": "226501b317e148aa8a8983355e85acb59c1eee83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
