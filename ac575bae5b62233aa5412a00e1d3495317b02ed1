@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85d9c240_b3e9d019",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2124,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-14T22:47:29Z",
+      "side": 1,
+      "message": "I noticed we have a few intrinsics like \"kIntrinsicUnsafePut\". Can those refer to fields/arrays?\n\nIf so, we need to set up a side effects per intrinsic instead.",
+      "range": {
+        "startLine": 2124,
+        "startChar": 40,
+        "endLine": 2124,
+        "endChar": 42
+      },
+      "revId": "ac575bae5b62233aa5412a00e1d3495317b02ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
