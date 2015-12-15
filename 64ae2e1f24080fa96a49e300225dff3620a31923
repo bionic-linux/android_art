@@ -214,6 +214,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_582089dd",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-15T18:15:43Z",
+      "side": 1,
+      "message": "Point taken. I will initiate a discussion with internal teams to update the documentation to enforce ordering of dependent loads which I think is what the architecture team wants too.",
+      "parentUuid": "85d9c240_d481da6c",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
