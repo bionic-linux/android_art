@@ -166,6 +166,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5b81ad7_08208f78",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1064548
+      },
+      "writtenOn": "2015-12-15T03:16:01Z",
+      "side": 1,
+      "message": "Agree with you that only RAW can ensure ordered loads. I only brought up other dependencies to list all the dependencies MIPS processor honors. I can confirm that your first example does not ensure ordered loads on MIPS.\n\nI now understand your concern through the second example. Thanks for sharing the paper on Memory Address Prediction(MAP). Implementation of MAP is possible on MIPS in theory and that would violate the fake dependency we are trying to put. There is no such implementation available now or is planned in the near future on MIPS. I cannot predict the future direction though. If we are protecting the code against such a case, sync_acquire will be required. Wouldn\u0027t there be a similar issue on ARM?",
+      "parentUuid": "65e04ee1_e7f1d08d",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
