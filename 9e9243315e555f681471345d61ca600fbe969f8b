@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25ead6c4_508ddca9",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "I think this should just say that unlike for words, there\u0027s no lhl/lhr to read unaligned halfwords.",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 62
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_f209960a",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "Can use Ins instead, but we can leave it as-is for now (Ins should come with a different patch, which is still unmerged).",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 858,
+        "endChar": 24
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45db4a39_777ad09d",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "Include a shorter/faster case for adr !\u003d out.",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 21
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_ef5449d3",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 893,
+        "startChar": 0,
+        "endLine": 895,
+        "endChar": 24
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5cc3e7f_964cbc1e",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 25
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e598be91_48a47376",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:58:12Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 17
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
