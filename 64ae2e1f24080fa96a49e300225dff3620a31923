@@ -142,6 +142,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65e04ee1_e7f1d08d",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-15T00:08:51Z",
+      "side": 1,
+      "message": "The fact that the hardware teams believe fake dependencies are enforced is encouraging.\n\nThe fact that we\u0027re still talking about RAW, WAR, WAW dependencies at once seems very strange to me.  It seems entirely unreasonable to me to have hardware memory ordering be influenced by anything other than a RAW dependency, since WAR and WAW dependencies are removed by register renaming, as Ragu pointed out.  If the source code says:\n\nlw $t1, x\ncopy $t1 to $t2\nlw $t1, y\n\nI would be really surprised if that caused the loads to be ordered. That\u0027s certainly not true on any of the other weakly ordered architectures I\u0027ve encountered (ARM, Power, Itanium (and Alpha)).\n\nIf I have, with no unexpected aliasing\n\nlw $t1, x\nlw $t2, 0($t1)\n\nthe loads could in theory be performed by caching the previous address used by the second load (from the last time that instruction was executed), and then using that to run both loads in parallel, aborting the second one if the first one returns a different result.  In that case the data dependency would not force the first load to complete before the second.  I do not know of real architectures that do this, but I believe it has been seriously proposed in computer architecture papers (cf. http://citeseerx.ist.psu.edu/viewdoc/download?doi\u003d10.1.1.46.3036\u0026rep\u003drep1\u0026type\u003dpdf from Europar \u002797).\n\nAs I mentioned, Alpha had a different cache-related reason for not enforcing ordering here, which I can\u0027t immediately reconstruct.\n\nThus I don\u0027t believe we can implicitly assume that an address dependency orders accesses; you really need a commitment by the architects not to violate such dependencies.",
+      "parentUuid": "25157684_78de29fe",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
