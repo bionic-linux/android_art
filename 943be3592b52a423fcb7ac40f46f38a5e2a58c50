@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "45db4a39_ac4b2bab",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-15T00:17:12Z",
+      "side": 1,
+      "message": "This can\u0027t be right. We need to look at both a and b as each one of them can be either -0.0 or +0.0.\n\nI recommend changing the whole thing for R2 to the following (adjust accordingly for the doubles):\n\n\tc.un.s\ta, b\n\tbc1f\tlordered\n\n\t# a or b (or both) is a NaN. Return one, which is a NaN.\n\tc.eq.s\tb, b\n\tb\tlselect\n\nlordered:\n\t# Neither is a NaN.\n\t# a \u003d\u003d b? (-0.0 compares equal with +0.0)\n\t# If equal, handle zeroes, else compare further.\n\tc.eq.s\ta, b\n\tbc1f\tlcompare\n\n\t# a \u003d\u003d b either bit for bit or one is -0.0 and the other is +0.0.\n\tmfc1\tTMP, a\n\tmfc1\tAT, b\n\n\t# if min (-0.0 prevails over +0.0):\n\tor\tTMP, TMP, AT\n\n\t# if max (+0.0 prevails over -0.0):\n\t#and\tTMP, TMP, AT\n\n\tmtc1\tTMP, out\n\tb\tldone\n\nlcompare:\n\t# if min:\n\tc.lt.s\ta, b\n\n\t# if max:\n\t#c.lt.s\tb, a\n\nlselect:\n\tmovt.s\tout, a\n\tmovf.s\tout, b\n\nldone:",
+      "range": {
+        "startLine": 1017,
+        "startChar": 0,
+        "endLine": 1026,
+        "endChar": 32
+      },
+      "revId": "943be3592b52a423fcb7ac40f46f38a5e2a58c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05107294_2c175795",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 1
