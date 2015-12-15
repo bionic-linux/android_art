@@ -22,6 +22,29 @@
       "revId": "ac575bae5b62233aa5412a00e1d3495317b02ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c55c9a66_7cf7357e",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-15T09:37:20Z",
+      "side": 1,
+      "message": "That isn\u0027t true. For example, System.arraycopy is an intrinsic.",
+      "range": {
+        "startLine": 2131,
+        "startChar": 0,
+        "endLine": 2132,
+        "endChar": 21
+      },
+      "revId": "ac575bae5b62233aa5412a00e1d3495317b02ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
