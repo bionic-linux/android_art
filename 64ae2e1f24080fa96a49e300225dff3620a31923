@@ -190,6 +190,30 @@
       "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85d9c240_d481da6c",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2015-12-15T06:22:02Z",
+      "side": 1,
+      "message": "ARM, Power, and Itanium have semi-careful definitions specifying what kind of dependencies enforce ordering, particularly between loads.\n\nIn my opinion, your hardware architects need to do something similar, since this will constrain future implementations.  It needs to at least cover the final field reference case.  Otherwise SYNC_ACQUIRE needs to be very  fast, because it will end up all over the place.  For example, if I write p.f() and the compiler can\u0027t statically resolve f not show that the object referenced by p was allocated by the same thread, we would need a SYNC_ACQUIRE after loading p to make sure the class pointer is visible.  I believe no Java implementation currently does this on any architecture.  (Alpha died just in time.)",
+      "parentUuid": "c5b81ad7_08208f78",
+      "range": {
+        "startLine": 1348,
+        "startChar": 4,
+        "endLine": 1348,
+        "endChar": 25
+      },
+      "revId": "64ae2e1f24080fa96a49e300225dff3620a31923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
