@@ -45,6 +45,30 @@
       "revId": "ac575bae5b62233aa5412a00e1d3495317b02ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85d9c240_0856c651",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-15T17:08:11Z",
+      "side": 1,
+      "message": "Yes, I had found some other examples too as mentioned in my comment. I will make this table-driven, which will also enable us to put other properties there. Stay tuned :-)",
+      "parentUuid": "c55c9a66_7cf7357e",
+      "range": {
+        "startLine": 2131,
+        "startChar": 0,
+        "endLine": 2132,
+        "endChar": 21
+      },
+      "revId": "ac575bae5b62233aa5412a00e1d3495317b02ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
