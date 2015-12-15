@@ -118,6 +118,30 @@
       "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85a702bf_722036de",
+        "filename": "compiler/optimizing/load_store_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2015-12-15T14:32:36Z",
+      "side": 1,
+      "message": "I would push for the safe choice. I am not convinced that the above is safe in all cases and any possible bugs from this will be terrible to debug.",
+      "parentUuid": "0593126b_8e4bbbab",
+      "range": {
+        "startLine": 689,
+        "startChar": 15,
+        "endLine": 689,
+        "endChar": 24
+      },
+      "revId": "c4c6bbf1cd65a0729f6d20beb922d23a8d1fc08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
