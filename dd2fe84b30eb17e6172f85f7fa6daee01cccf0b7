@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45718a52_adaafd93",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2015-12-16T04:33:06Z",
+      "side": 1,
+      "message": "Not needed.",
+      "range": {
+        "startLine": 873,
+        "startChar": 0,
+        "endLine": 873,
+        "endChar": 24
+      },
+      "revId": "dd2fe84b30eb17e6172f85f7fa6daee01cccf0b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
