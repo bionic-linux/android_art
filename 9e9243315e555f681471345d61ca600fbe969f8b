@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e598be91_3152bae5",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Yes, that\u0027s true too! :-)\n\nDone.",
+      "parentUuid": "25ead6c4_508ddca9",
+      "range": {
+        "startLine": 849,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 62
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05107294_f209960a",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-15T00:58:12Z",
       "side": 1,
       "message": "Can use Ins instead, but we can leave it as-is for now (Ins should come with a different patch, which is still unmerged).",
+      "range": {
+        "startLine": 857,
+        "startChar": 0,
+        "endLine": 858,
+        "endChar": 24
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e598be91_919ce6da",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Per our discussion I\u0027ve plagiarized your implementations of INS, and EXT, for the assembler/disassembler/tests. While I was adding assembler tests I added a few of my own.",
+      "parentUuid": "05107294_f209960a",
       "range": {
         "startLine": 857,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "05e5d2f2_902042df",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Fixed problem by making sure that \"out\", and \"adr\" registers will be distinct.",
+      "parentUuid": "45db4a39_777ad09d",
+      "range": {
+        "startLine": 875,
+        "startChar": 0,
+        "endLine": 877,
+        "endChar": 21
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05e5d2f2_ef5449d3",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2015-12-15T00:58:12Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 893,
+        "startChar": 0,
+        "endLine": 895,
+        "endChar": 24
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05107294_6cce6a37",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Changed so that \"out_lo\"/\"out_hi\" will be distinct from \"adr\".",
+      "parentUuid": "05e5d2f2_ef5449d3",
       "range": {
         "startLine": 893,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "25ead6c4_511a3e4a",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "e5cc3e7f_964cbc1e",
+      "range": {
+        "startLine": 897,
+        "startChar": 0,
+        "endLine": 902,
+        "endChar": 25
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e598be91_48a47376",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2015-12-15T00:58:12Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 940,
+        "startChar": 0,
+        "endLine": 942,
+        "endChar": 17
+      },
+      "revId": "9e9243315e555f681471345d61ca600fbe969f8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_105ef24f",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2015-12-16T02:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e598be91_48a47376",
       "range": {
         "startLine": 940,
         "startChar": 0,
