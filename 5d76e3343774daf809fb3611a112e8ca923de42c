@@ -128,6 +128,24 @@
       "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5ea461e_a0de3a8b",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-17T18:16:52Z",
+      "side": 1,
+      "message": "I\u0027m saying that relying on the order of lines in the CFG file makes the tests difficult to maintain. Look at what BCE is doing: it creates a bunch of new blocks (that will appear at the end of the CFG file) and hoists instructions into them, i.e. moves them to the end of the CFG file. If a pass which runs after BCE depends on the order of blocks, it will break and somebody will need to go and update it.\n\nI believe that you wrote the tests carefully, but this way they are very fragile to orthogonal changes.",
+      "parentUuid": "0512320e_67e9dad4",
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
