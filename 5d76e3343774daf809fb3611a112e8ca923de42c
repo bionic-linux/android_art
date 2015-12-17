@@ -146,6 +146,24 @@
       "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "850622ce_e0fb1866",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T18:25:03Z",
+      "side": 1,
+      "message": "I am afraid that applies to more checker tests that just this one, except for the simpler ones that test the occurrence of one or two instructions.\n\nOther than perhaps the assumption deopt blocks appear at the end, I don\u0027t find them all fragile. It is always the case that nullchecks and boundchecks appear before the array get/set, for example.",
+      "parentUuid": "a5ea461e_a0de3a8b",
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
