@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45398ab3_ad1b9dbc",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-17T10:14:15Z",
+      "side": 1,
+      "message": "Why except?",
+      "range": {
+        "startLine": 2104,
+        "startChar": 57,
+        "endLine": 2104,
+        "endChar": 75
+      },
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65f4ce02_1e082d6e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3302,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-17T10:14:15Z",
+      "side": 1,
+      "message": "This is guaranteed from the caller.",
+      "range": {
+        "startLine": 3302,
+        "startChar": 11,
+        "endLine": 3302,
+        "endChar": 34
+      },
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
