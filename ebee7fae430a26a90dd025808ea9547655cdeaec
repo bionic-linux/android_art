@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "459d0ad3_4d3979aa",
+        "filename": "compiler/optimizing/intrinsics_list.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T00:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a702bf_f238a6a8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "ebee7fae430a26a90dd025808ea9547655cdeaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5532654_2102b424",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a565e697_2bb4c50a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3231,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T00:48:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5532654_2102b424",
+      "range": {
+        "startLine": 3231,
+        "startChar": 0,
+        "endLine": 3231,
+        "endChar": 106
+      },
+      "revId": "ebee7fae430a26a90dd025808ea9547655cdeaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5599e74_dd159f25",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2015-12-16T08:57:21Z",
       "side": 1,
       "message": "I think you can just say true here, as optimizations that move instructions *must* look at throwing and side effects property. You might want to make it conditional to intrinsic though, to avoid extra work in those optimizations.",
+      "range": {
+        "startLine": 3297,
+        "startChar": 0,
+        "endLine": 3297,
+        "endChar": 87
+      },
+      "revId": "ebee7fae430a26a90dd025808ea9547655cdeaec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2580164e_8f1a99a7",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3297,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T00:48:01Z",
+      "side": 1,
+      "message": "Ok, I like making this depend on IsIntrinsic() so that we can let the optimizations themselves make the decision based on the other stuff.",
+      "parentUuid": "e5599e74_dd159f25",
       "range": {
         "startLine": 3297,
         "startChar": 0,
