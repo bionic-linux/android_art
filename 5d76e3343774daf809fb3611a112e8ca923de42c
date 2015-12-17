@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5b1fa58_d7a054c8",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2104,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T17:25:42Z",
+      "side": 1,
+      "message": "This is the same as the default for any method. It means it may generate a GC, but it may not depend on a GC.",
+      "parentUuid": "45398ab3_ad1b9dbc",
+      "range": {
+        "startLine": 2104,
+        "startChar": 57,
+        "endLine": 2104,
+        "endChar": 75
+      },
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65f4ce02_1e082d6e",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "05a79224_d4985259",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 3302,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T17:25:42Z",
+      "side": 1,
+      "message": "Okay, removed",
+      "parentUuid": "65f4ce02_1e082d6e",
+      "range": {
+        "startLine": 3302,
+        "startChar": 11,
+        "endLine": 3302,
+        "endChar": 34
+      },
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85ed423a_1fdf8326",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 6
@@ -59,6 +107,24 @@
       "writtenOn": "2015-12-17T10:35:09Z",
       "side": 1,
       "message": "This is more of a general comment the Checker tests in this file:\n\nI trust you that you looked at the graph dump and test the important features of it, but it\u0027s not clear to me what exactly you\u0027re trying to do here. -DAG is meant to test dependencies between instructions, e.g. X is input of Y. It therefore doesn\u0027t care about the order of the instructions in the graph dump (i.e. the lines they appear on) because the fact that inputs dominate uses is guaranteed by GraphChecker. Your \"(before)\" test therefore only tests that there are at least two NullChecks, two ArrayLengths, etc. It\u0027s not obvious to me if that is all you need or not.\n\nThe \"(after)\" test is even weirder. What it will do is:\n1) find the first line of the CFG containing ArrayGet\n2) check that there aren\u0027t any NullChecks, ArrayLengths and BoundsChecks on any earlier lines\n3) find lines containing Invoke, ArraySet, Exit and Deoptimize, in no given order\n4) check that there isn\u0027t an ArrayGet between the line matched in 1) and the earliest line matched in 3)\n\nAgain, I\u0027m not saying that it\u0027s wrong but I don\u0027t see what it\u0027s testing either. Would it help if GraphVisualizer printed more info, e.g. loop headers like it does for LICM? If so, then by all means add that into the graph dump. I would even suggest we print the block number with every single instructions and put name of the block and its predecessors/successors on one line. That would help us0 better argue about the layout of blocks.",
+      "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0512320e_67e9dad4",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-17T17:25:42Z",
+      "side": 1,
+      "message": "So, are you saying I should use CHECK, not CHECK-DAG?\n\nIn any case, not all is weird. What you describe in the after test as weird is exactly what I want, for example. An ArrayGet with no precedding Null/Length/BoundsCheck.",
+      "parentUuid": "85ed423a_1fdf8326",
       "revId": "5d76e3343774daf809fb3611a112e8ca923de42c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
