@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa2133e4_2818eb07",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-12-22T17:54:12Z",
+      "side": 1,
+      "message": "As stated earlier, GenerateTestAndBranch needs to be templated to accept NearLabels rather than labels.  I should have done that when I introduced NearLabels.",
+      "parentUuid": "8ab2aff4_f75ee055",
+      "range": {
+        "startLine": 1645,
+        "startChar": 4,
+        "endLine": 1645,
+        "endChar": 9
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ac9fb78_7673b0ed",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 8
