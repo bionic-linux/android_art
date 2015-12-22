@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab2aff4_f75ee055",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Why isn\u0027t this a NearLabel?",
+      "range": {
+        "startLine": 1645,
+        "startChar": 4,
+        "endLine": 1645,
+        "endChar": 9
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ac9fb78_7673b0ed",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "NearLabel?",
+      "range": {
+        "startLine": 1658,
+        "startChar": 4,
+        "endLine": 1658,
+        "endChar": 9
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0abebfc6_13fa8c65",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Can you move this condition to Run(), please? Long term, it should be relaxed but that will require changes to the IsSinglePhi() check (only one Phi that has different inputs from succ1 and succ2), cleaning up other Phis (removing one of the two identical inputs) and not doing the last block merge.",
+      "range": {
+        "startLine": 43,
+        "startChar": 27,
+        "endLine": 43,
+        "endChar": 64
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ac43761_f55ed855",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Obsolete comment.",
+      "range": {
+        "startLine": 77,
+        "startChar": 7,
+        "endLine": 77,
+        "endChar": 74
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cab827d7_d96bd3bf",
+        "filename": "compiler/optimizing/select_generator.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ac3835c_5426aca5",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Flipping the result here and below exposes that EqualBoolVsIntConst() and NotEqualBoolVsIntConst() are actually unused in main(). Please add some assertions.",
+      "range": {
+        "startLine": 1145,
+        "startChar": 25,
+        "endLine": 1145,
+        "endChar": 27
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaaf738e_9894f509",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Select",
+      "range": {
+        "startLine": 1367,
+        "startChar": 34,
+        "endLine": 1367,
+        "endChar": 36
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ac3835c_742ba86c",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Select",
+      "range": {
+        "startLine": 1394,
+        "startChar": 34,
+        "endLine": 1394,
+        "endChar": 36
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cab827d7_594fc36d",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Please add assertions exercising the new methods.",
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eab5ebda_5ac2550d",
+        "filename": "test/485-checker-dce-loop-update/smali/TestCase.smali",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 1,
+      "message": "Btw., when we start following branches, this goto leads to an if-eqz with known result (we know that p1\u003d\u003d0 here), so it can be redirected straight to :loop_body. This will create an independent loop with header at :loop_body and the PhiX will end up in that header instead.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "d90ba97fa0a4812ca6d825ac0cacd8f738fef503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

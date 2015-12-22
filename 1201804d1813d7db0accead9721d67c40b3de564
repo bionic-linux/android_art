@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eab5ebda_3acda13e",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2015-12-22T17:49:23Z",
+      "side": 0,
+      "message": "Why did you remove this section and why was there this extra BooleanNot?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 40,
+        "endLine": 1126,
+        "endChar": 50
+      },
+      "revId": "1201804d1813d7db0accead9721d67c40b3de564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
