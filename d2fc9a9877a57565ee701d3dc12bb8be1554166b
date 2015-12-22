@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2afc637c_6c995bf2",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-12-22T15:10:31Z",
+      "side": 1,
+      "message": "Why is this code different from all other implementations?  Did you find that it was better?",
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2afc637c_0c9417ba",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-12-22T15:10:31Z",
+      "side": 1,
+      "message": "Please use NearLabel for x86 in all this code.",
+      "range": {
+        "startLine": 1647,
+        "startChar": 6,
+        "endLine": 1647,
+        "endChar": 11
+      },
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea27abf2_0a17db28",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1620,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-12-22T15:10:31Z",
+      "side": 1,
+      "message": "NearLabel",
+      "range": {
+        "startLine": 1620,
+        "startChar": 2,
+        "endLine": 1620,
+        "endChar": 7
+      },
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a0b8f60_2f8f49a9",
+        "filename": "test/468-checker-bool-simplifier-regression/smali/TestCase.smali",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2015-12-22T15:10:31Z",
+      "side": 1,
+      "message": "No after?",
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
