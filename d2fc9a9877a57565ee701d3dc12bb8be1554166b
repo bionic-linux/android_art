@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0ae5dff2_7be2bfc0",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-22T15:53:24Z",
+      "side": 1,
+      "message": "I expect HSelect to slightly increase register pressure. Not a concern on other architectures but I thought it made sense to support Any-\u003eAny moves on x86. Something worth benchmarking. What do you think?",
+      "parentUuid": "2afc637c_6c995bf2",
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2afc637c_0c9417ba",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2015-12-22T15:10:31Z",
       "side": 1,
       "message": "Please use NearLabel for x86 in all this code.",
+      "range": {
+        "startLine": 1647,
+        "startChar": 6,
+        "endLine": 1647,
+        "endChar": 11
+      },
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaaf738e_98e6b5d1",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-22T15:53:24Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll have to templatize GenerateTestAndBranch though.",
+      "parentUuid": "2afc637c_0c9417ba",
       "range": {
         "startLine": 1647,
         "startChar": 6,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2ac3835c_b46e20d1",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1620,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-22T15:53:24Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "ea27abf2_0a17db28",
+      "range": {
+        "startLine": 1620,
+        "startChar": 2,
+        "endLine": 1620,
+        "endChar": 7
+      },
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a0b8f60_2f8f49a9",
         "filename": "test/468-checker-bool-simplifier-regression/smali/TestCase.smali",
         "patchSetId": 5
@@ -76,6 +142,24 @@
       "writtenOn": "2015-12-22T15:10:31Z",
       "side": 1,
       "message": "No after?",
+      "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ac3835c_d46b9cbf",
+        "filename": "test/468-checker-bool-simplifier-regression/smali/TestCase.smali",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-22T15:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0b8f60_2f8f49a9",
       "revId": "d2fc9a9877a57565ee701d3dc12bb8be1554166b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
