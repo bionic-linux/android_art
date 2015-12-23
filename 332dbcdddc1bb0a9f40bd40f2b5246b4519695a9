@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa2133e4_0ee24f51",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-23T18:53:39Z",
+      "side": 1,
+      "message": "Moved to private",
+      "parentUuid": "ea9a4b77_32179029",
+      "range": {
+        "startLine": 2014,
+        "startChar": 7,
+        "endLine": 2014,
+        "endChar": 21
+      },
+      "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab827d7_991f9b4d",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2015-12-23T09:54:12Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 3296,
+        "startChar": 7,
+        "endLine": 3296,
+        "endChar": 18
+      },
+      "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aed17c9_01d05a20",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 3296,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-23T18:53:39Z",
+      "side": 1,
+      "message": "Moved to private",
+      "parentUuid": "cab827d7_991f9b4d",
       "range": {
         "startLine": 3296,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "aa2133e4_6ee78b61",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 3298,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-23T18:53:39Z",
+      "side": 1,
+      "message": "Please see Nicolas\u0027 feedback earlier. GVN/LICM do all the right tests, and the CanBeMoved() really has another meaning (it could even be true now, but this is more efficient.",
+      "parentUuid": "8ab2aff4_77f9f06c",
+      "range": {
+        "startLine": 3298,
+        "startChar": 44,
+        "endLine": 3298,
+        "endChar": 55
+      },
+      "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea9a4b77_d21f243a",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 11
@@ -82,6 +154,24 @@
       "writtenOn": "2015-12-23T09:54:12Z",
       "side": 1,
       "message": "As you mentioned in your email, we can discuss these later and perhaps make changes. For this CL, let\u0027s switch these CHECK-DAGs to CHECK so as to enforce a line ordering.",
+      "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafecb6e_789919f2",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2015-12-23T18:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9a4b77_d21f243a",
       "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
