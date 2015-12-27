@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0abebfc6_932cdc6c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 3298,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-27T09:25:28Z",
+      "side": 1,
+      "message": "I don\u0027t disagree with Nicolas\u0027 comment but we currently don\u0027t have another way of marking an instruction volatile (viz. StaticFieldGet and InstanceFieldGet). Is that the reason why you are giving all Unsafe operations kAllSideEffects? That does get around the problem but it is pretty misleading.",
+      "parentUuid": "aa2133e4_6ee78b61",
+      "range": {
+        "startLine": 3298,
+        "startChar": 44,
+        "endLine": 3298,
+        "endChar": 55
+      },
+      "revId": "332dbcdddc1bb0a9f40bd40f2b5246b4519695a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea9a4b77_d21f243a",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 11
