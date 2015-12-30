@@ -46,6 +46,30 @@
       "revId": "5d75afe333f57546786686d9bee16b52f1bbe971",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aac9bb5_81e7fccd",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2015-12-30T23:31:10Z",
+      "side": 1,
+      "message": "Huh? This is the latest PS and it says CHECK-DAG.",
+      "parentUuid": "2afc637c_6654d201",
+      "range": {
+        "startLine": 622,
+        "startChar": 6,
+        "endLine": 622,
+        "endChar": 15
+      },
+      "revId": "5d75afe333f57546786686d9bee16b52f1bbe971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
