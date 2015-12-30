@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a773b0f_a69fc6d3",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2015-12-30T14:54:35Z",
+      "side": 1,
+      "message": "Is that check done in a nicer way elsewhere/before? Otherwise, should you do just like line 731?",
+      "range": {
+        "startLine": 733,
+        "startChar": 2,
+        "endLine": 733,
+        "endChar": 23
+      },
+      "revId": "40144cc022d321e2ec28d7fac2f5a24ba6714aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
