@@ -22,6 +22,30 @@
       "revId": "40144cc022d321e2ec28d7fac2f5a24ba6714aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2afc637c_9b85d733",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2015-12-30T17:25:12Z",
+      "side": 1,
+      "message": "This is about equivalent to what Dalvik did.\n\nBut sure, we could be more tolerant of somebody pushing bad IDs.",
+      "parentUuid": "6a773b0f_a69fc6d3",
+      "range": {
+        "startLine": 733,
+        "startChar": 2,
+        "endLine": 733,
+        "endChar": 23
+      },
+      "revId": "40144cc022d321e2ec28d7fac2f5a24ba6714aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
