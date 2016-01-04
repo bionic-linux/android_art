@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a8e5b43_51fb36df",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2114,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-04T15:15:34Z",
+      "side": 1,
+      "message": "Why not SetCanThrow(exceptions \u003d\u003d kCanThrow) ?",
+      "range": {
+        "startLine": 2111,
+        "startChar": 0,
+        "endLine": 2114,
+        "endChar": 3
+      },
+      "revId": "5d75afe333f57546786686d9bee16b52f1bbe971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aac9bb5_01ae4cbf",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-04T15:15:34Z",
+      "side": 1,
+      "message": "InstructionDataEquals is just about the fields of the HInstruction, so you don\u0027t need to check this.",
+      "range": {
+        "startLine": 3319,
+        "startChar": 12,
+        "endLine": 3319,
+        "endChar": 42
+      },
+      "revId": "5d75afe333f57546786686d9bee16b52f1bbe971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ac3835c_d74d5e4a",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 15
