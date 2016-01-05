@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6a5f3bcc_065d3a72",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-05T11:44:10Z",
+      "side": 1,
+      "message": "Yeah, ok, so you\u0027re using the intrinsic field as some identity.\n\nI think ideally, this should be implemented as: resolved_art_method \u003d\u003d other-\u003eresolved_art_method.\n\nBut we don\u0027t put the resolved method in the HInstruction.\n\nSo it\u0027s fine doing it the way you did.",
+      "parentUuid": "ea27abf2_311deff8",
+      "range": {
+        "startLine": 3319,
+        "startChar": 12,
+        "endLine": 3319,
+        "endChar": 42
+      },
+      "revId": "5d75afe333f57546786686d9bee16b52f1bbe971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ac3835c_d74d5e4a",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 15
