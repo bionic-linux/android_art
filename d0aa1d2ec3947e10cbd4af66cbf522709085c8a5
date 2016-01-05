@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a31fb81_7601304c",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-05T10:20:01Z",
+      "side": 0,
+      "message": "Removed this test because it there\u0027s no way of generating it now (BoolNot-\u003eIf is simplified by swapping branches). To be honest, I\u0027m tempted to remove the pattern matching of simplified conditions from RTP entirely...",
+      "revId": "d0aa1d2ec3947e10cbd4af66cbf522709085c8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
