@@ -46,6 +46,30 @@
       "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_4c06dffc",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-06T15:23:32Z",
+      "side": 1,
+      "message": "The alternative is another virtual fcn on HInstruction:\nbool NeedsMaterialization(HCondition*) that returns true except for HIf, HDeoptimize and HSelect\n\nCould be ForceMaterialization, or something similar.\n\nI guess I can live with any of these.",
+      "parentUuid": "cae3c748_44530069",
+      "range": {
+        "startLine": 137,
+        "startChar": 81,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
