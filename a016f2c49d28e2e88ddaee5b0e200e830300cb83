@@ -70,6 +70,30 @@
       "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a2b8319_9475e413",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-06T15:35:04Z",
+      "side": 1,
+      "message": "That would be a cleaner OOP solution but let\u0027s not move more stuff to nodes.h. Went with the other solution.",
+      "parentUuid": "aa1773d7_4c06dffc",
+      "range": {
+        "startLine": 137,
+        "startChar": 81,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
