@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a41cfd9_f30f987d",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-06T13:46:43Z",
+      "side": 1,
+      "message": "How about an enum for this.  I don\u0027t like the hardcoded value. HSelect::kSelectConditionIndex?",
+      "range": {
+        "startLine": 137,
+        "startChar": 81,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
