@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a4357e2_574bd434",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "Would it be cleaner if we pass in a vector of ImageSpace and add all boot imagesand set images_added_to_intern_table_ to true in one shot?",
+      "range": {
+        "startLine": 154,
+        "startChar": 64,
+        "endLine": 154,
+        "endChar": 75
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4ddf0f_551d0c40",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "Does it make sense to DCHECK(!image_added_to_intern_table_) here?",
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4ddf0f_952ab44d",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "Is this intended to be left enabled in a non-debug build? The runtime overhead not a concern?",
+      "range": {
+        "startLine": 360,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea1debf7_0f6535c0",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "Is it easy to add an assert that we aren\u0027t inserting into an image table? It may not be easy to query whether a table is an image table or not.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 28
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a481bfe_0da0ddaf",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "0U or static_cast\u003csize_t\u003e(0)?",
+      "range": {
+        "startLine": 456,
+        "startChar": 25,
+        "endLine": 456,
+        "endChar": 34
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_d29b6459",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "This refers to boot images or also app images?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4ddf0f_15178428",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-01-06T22:22:26Z",
+      "side": 1,
+      "message": "Line too long?",
+      "range": {
+        "startLine": 167,
+        "startChar": 100,
+        "endLine": 167,
+        "endChar": 104
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
