@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a41cfd9_39db9fa1",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Good idea, I think that is probably better.",
+      "parentUuid": "4a4357e2_574bd434",
+      "range": {
+        "startLine": 154,
+        "startChar": 64,
+        "endLine": 154,
+        "endChar": 75
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a4ddf0f_551d0c40",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "aa3e9347_cff98937",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a4ddf0f_551d0c40",
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a4ddf0f_952ab44d",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2016-01-06T22:22:26Z",
       "side": 1,
       "message": "Is this intended to be left enabled in a non-debug build? The runtime overhead not a concern?",
+      "range": {
+        "startLine": 360,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a4357e2_77db7072",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Currently it would only happen once during boot, I think that overhead is acceptable for now. It is probably a few milliseconds at most.",
+      "parentUuid": "0a4ddf0f_952ab44d",
       "range": {
         "startLine": 360,
         "startChar": 43,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "ea1debf7_a1fc5d24",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "I don\u0027t think there is a clean way to add that assert, any ideas?",
+      "parentUuid": "ea1debf7_0f6535c0",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 418,
+        "endChar": 28
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a481bfe_0da0ddaf",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
@@ -99,6 +189,30 @@
       "writtenOn": "2016-01-06T22:22:26Z",
       "side": 1,
       "message": "0U or static_cast\u003csize_t\u003e(0)?",
+      "range": {
+        "startLine": 456,
+        "startChar": 25,
+        "endLine": 456,
+        "endChar": 34
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca202730_f37310ef",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a481bfe_0da0ddaf",
       "range": {
         "startLine": 456,
         "startChar": 25,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "4a4357e2_d25cd233",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Deleted the comment, it referred to all image spaces though.",
+      "parentUuid": "aa1773d7_d29b6459",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 11
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a4ddf0f_15178428",
         "filename": "runtime/intern_table.h",
         "patchSetId": 5
@@ -145,6 +283,30 @@
       "writtenOn": "2016-01-06T22:22:26Z",
       "side": 1,
       "message": "Line too long?",
+      "range": {
+        "startLine": 167,
+        "startChar": 100,
+        "endLine": 167,
+        "endChar": 104
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a481bfe_8d514de9",
+        "filename": "runtime/intern_table.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-01-06T23:46:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a4ddf0f_15178428",
       "range": {
         "startLine": 167,
         "startChar": 100,
