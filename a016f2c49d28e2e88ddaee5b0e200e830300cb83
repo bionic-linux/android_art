@@ -22,6 +22,30 @@
       "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cae3c748_44530069",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-06T15:18:34Z",
+      "side": 1,
+      "message": "Me neither but this is certainly not the only place where we hardcode input indices. What I could do in this particular case is:\n\n  !(user-\u003eIsSelect() \u0026\u0026 user-\u003eAsSelect()-\u003eGetCondition() \u003d\u003d condition)\n\nBut that\u0027s only possible because `condition` has just one use in this branch.",
+      "parentUuid": "8a41cfd9_f30f987d",
+      "range": {
+        "startLine": 137,
+        "startChar": 81,
+        "endLine": 137,
+        "endChar": 83
+      },
+      "revId": "a016f2c49d28e2e88ddaee5b0e200e830300cb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
