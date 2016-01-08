@@ -51,6 +51,24 @@
       "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cae3c748_6ae40bf7",
+        "filename": "runtime/quick_exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-08T17:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a54ffaf_e930f1dc",
+      "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
