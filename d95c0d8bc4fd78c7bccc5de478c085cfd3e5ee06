@@ -34,6 +34,23 @@
       "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a54ffaf_e930f1dc",
+        "filename": "runtime/quick_exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-08T16:36:42Z",
+      "side": 1,
+      "message": "How about we find the catch stack map first and do here:\n\n  DCHECK(!catch_vreg_map.IsValid())",
+      "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
