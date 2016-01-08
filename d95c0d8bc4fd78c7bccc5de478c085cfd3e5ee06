@@ -16,6 +16,24 @@
       "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a54ffaf_a953d918",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-08T16:21:13Z",
+      "side": 1,
+      "message": "No, David and I just realized we could do it.",
+      "parentUuid": "6a5f3bcc_ecd79fe5",
+      "revId": "d95c0d8bc4fd78c7bccc5de478c085cfd3e5ee06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
