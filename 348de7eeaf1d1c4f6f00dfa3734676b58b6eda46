@@ -140,6 +140,24 @@
     },
     {
       "key": {
+        "uuid": "6a901bcb_87aa4ceb",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5583,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-11T13:23:44Z",
+      "side": 1,
+      "message": "It helps x86, which has two operand instructions, and SameAsFirst output mode.",
+      "parentUuid": "6a273b99_661d4e41",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a738396_b43060dc",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 13
