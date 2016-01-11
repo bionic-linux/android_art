@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "6a3e5b9d_0ee74bcf",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you split pairs, like we do in the register allocator?",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1643,
+        "endChar": 71
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a738396_b416a029",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "Add a comment what you intend on doing in this branch?",
+      "range": {
+        "startLine": 618,
+        "startChar": 9,
+        "endLine": 618,
+        "endChar": 10
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a273b99_46205274",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 13
@@ -76,6 +122,47 @@
     },
     {
       "key": {
+        "uuid": "ca4d875b_1195ac03",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5583,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "I guess it\u0027s the SameAsFirstInput? But I agree it\u0027s odd to see this here.",
+      "parentUuid": "6a273b99_661d4e41",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a738396_b43060dc",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5594,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "You also need InstructionDataEquals and InstructionTypeEquals to support gvn.",
+      "range": {
+        "startLine": 5594,
+        "startChar": 7,
+        "endLine": 5594,
+        "endChar": 17
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a22778b_ab146d93",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 13
@@ -93,6 +180,29 @@
     },
     {
       "key": {
+        "uuid": "ea4a4b41_5284947b",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "Explain why \"at most\"?",
+      "range": {
+        "startLine": 21,
+        "startChar": 57,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a6ebfb0_539564f0",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 13
@@ -104,6 +214,30 @@
       "writtenOn": "2016-01-11T12:24:19Z",
       "side": 1,
       "message": "What about a more \"functional\" approach (which matches better the comment from lines 21–22 IMO):\n\n  return last_insn-\u003eIsGoto() \u0026\u0026\n      (first_insn \u003d\u003d last_insn ||\n       (first_insn-\u003eGetNext() \u003d\u003d last_insn \u0026\u0026\n        first_insn-\u003eCanBeMoved() \u0026\u0026\n        !first_insn-\u003eGetSideEffects().HasSideEffects()));\n\n?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3997b3_2d888dd9",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "I think I actually find the \"ifs\" more readable.\n\nOr just having:\nif (!last_insn-\u003eIsGoto()) return false\n...",
+      "parentUuid": "0a6ebfb0_539564f0",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -172,6 +306,29 @@
         "startChar": 11,
         "endLine": 66,
         "endChar": 56
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a3e5b9d_2e0b2740",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-11T13:22:51Z",
+      "side": 1,
+      "message": "How about if_instruction-\u003eIfTrueSuccessorIndex() ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 83
       },
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
