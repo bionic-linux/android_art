@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0a6ebfb0_536c84d8",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "Could you add a comment about why using a parallel move instead of a \"generic\" move here? (Likewise in other back ends using a parallel move for this operation.)",
+      "range": {
+        "startLine": 1643,
+        "startChar": 2,
+        "endLine": 1645,
+        "endChar": 62
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a273b99_46205274",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 13
@@ -70,6 +93,29 @@
     },
     {
       "key": {
+        "uuid": "0a6ebfb0_539564f0",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "What about a more \"functional\" approach (which matches better the comment from lines 21–22 IMO):\n\n  return last_insn-\u003eIsGoto() \u0026\u0026\n      (first_insn \u003d\u003d last_insn ||\n       (first_insn-\u003eGetNext() \u003d\u003d last_insn \u0026\u0026\n        first_insn-\u003eCanBeMoved() \u0026\u0026\n        !first_insn-\u003eGetSideEffects().HasSideEffects()));\n\n?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7f24e53_e037621f",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 13
@@ -81,6 +127,52 @@
       "writtenOn": "2016-01-11T11:56:03Z",
       "side": 1,
       "message": "The comment does not match the function.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa54d3e4_9038b4ae",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "Nit: `block1` and `block2`.",
+      "range": {
+        "startLine": 39,
+        "startChar": 19,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a431f35_ebf8316c",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "Could you add some more details on this? (When can this constraint be lifted?)",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 56
+      },
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +213,40 @@
       "writtenOn": "2016-01-11T11:56:03Z",
       "side": 1,
       "message": "Use CHECK instead of CHECK-DAG where possible?\nSame in other test files.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a570fe9_0fe745cf",
+        "filename": "test/480-checker-dead-blocks/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "« by creating a \"false\" block with more than one instruction. »?",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea332bd5_eaf8276c",
+        "filename": "test/480-checker-dead-blocks/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-11T12:24:19Z",
+      "side": 1,
+      "message": "Ditto?",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
