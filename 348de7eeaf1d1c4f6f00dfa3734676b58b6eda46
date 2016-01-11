@@ -181,6 +181,30 @@
     },
     {
       "key": {
+        "uuid": "4a8b57a3_513644dc",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5594,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-11T13:28:33Z",
+      "side": 1,
+      "message": "Since all the data is in the inputs, it shouldn\u0027t be necessary to provide InstructionDataEquals.  Not sure why you need InstructionTypeEquals, as nothing else provides it explicitly.",
+      "parentUuid": "2a738396_b43060dc",
+      "range": {
+        "startLine": 5594,
+        "startChar": 7,
+        "endLine": 5594,
+        "endChar": 17
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a22778b_ab146d93",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 13
