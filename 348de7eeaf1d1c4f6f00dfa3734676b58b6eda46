@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a273b99_46205274",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "Nit: You have this in the `if` as well. Take out of the `if/else`?",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a21c386_847326f0",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "`DCHECK(insn-\u003eCanBeMoved());`\n`DCHECK(!insn-\u003eHasSideEffects() \u0026\u0026 !insn-\u003eHasDependencies());",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a273b99_661d4e41",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5583,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "How does the order here impact codegen? We can pass indexes as we prefer at codegen time.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a22778b_ab146d93",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "This made me think of a corner case when a value is both used as the condition and as the true or false value.\n\nIf you think it is worth it, we could improve that in the simplifier by replacing the use of the condition as a true/false value by constant true/false.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7f24e53_e037621f",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "The comment does not match the function.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7e8c667_622c76d5",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "We can use simple CHECK directives for the parameter and after the constants. This may be fixed in another commit since it appears other tests in this file are using CHECK-DAG.",
+      "range": {
+        "startLine": 973,
+        "startChar": 6,
+        "endLine": 973,
+        "endChar": 15
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7ebc261_81777a6d",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-01-11T11:56:03Z",
+      "side": 1,
+      "message": "Use CHECK instead of CHECK-DAG where possible?\nSame in other test files.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
