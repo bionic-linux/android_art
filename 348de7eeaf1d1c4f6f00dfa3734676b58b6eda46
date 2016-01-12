@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "67f216a9_ae54d7d9",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-12T20:03:39Z",
+      "side": 1,
+      "message": "You can specify the template parameter here to avoid the static_cast\u003c\u003e() below. Same further down and for x86-64.",
+      "range": {
+        "startLine": 1617,
+        "startChar": 23,
+        "endLine": 1617,
+        "endChar": 24
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a3e5b9d_0ee74bcf",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 13
@@ -367,6 +390,30 @@
       "writtenOn": "2016-01-11T12:24:19Z",
       "side": 1,
       "message": "Could you add some more details on this? (When can this constraint be lifted?)",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c72ae2be_6977851c",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-12T20:03:39Z",
+      "side": 1,
+      "message": "For example:\n\n  int x \u003d 0;\n  if (bool1) {\n    x \u003d bool2 ? 42 : 7;  // We want to use HSelect here\n  }  // but the merge_block has 3 predecessors.\n\n(See also my comment in PS8.)",
+      "parentUuid": "0a431f35_ebf8316c",
       "range": {
         "startLine": 66,
         "startChar": 11,
