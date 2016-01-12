@@ -22,6 +22,30 @@
       "revId": "712c59d160325d5759300427ab596cf8321a4156",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27fc9e7c_6cf2fbc4",
+        "filename": "runtime/arch/mips/quick_entrypoints_mips.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1353,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2016-01-12T09:49:49Z",
+      "side": 1,
+      "message": "Unfortunately, no. ACCESS_FLAGS_CLASS_IS_FINALIZABLE is defined as 0x80000000. On the other hand, andi instruction takes 16-bit immediate so it can\u0027t be used here.",
+      "parentUuid": "676db610_7f4563f4",
+      "range": {
+        "startLine": 1353,
+        "startChar": 4,
+        "endLine": 1353,
+        "endChar": 23
+      },
+      "revId": "712c59d160325d5759300427ab596cf8321a4156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
