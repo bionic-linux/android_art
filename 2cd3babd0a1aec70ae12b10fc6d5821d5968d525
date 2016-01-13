@@ -45,6 +45,30 @@
       "revId": "2cd3babd0a1aec70ae12b10fc6d5821d5968d525",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67f216a9_712132dc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3916,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-13T16:07:18Z",
+      "side": 1,
+      "message": "This code only get executed if we executed the else part of the previous if statement (success is true only in that case). In that scenario line 3902 sets the status of the class to kStatusInitialized so I assume it have to be initialized but I might be wrong.\n\nIf this isn\u0027t the right location to communicate the debug info about the newly loaded class then where should we put it?",
+      "parentUuid": "67f216a9_710bf270",
+      "range": {
+        "startLine": 3912,
+        "startChar": 0,
+        "endLine": 3916,
+        "endChar": 3
+      },
+      "revId": "2cd3babd0a1aec70ae12b10fc6d5821d5968d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
