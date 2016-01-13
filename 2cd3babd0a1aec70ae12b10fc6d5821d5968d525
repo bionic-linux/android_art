@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f216a9_1116ee9c",
+        "filename": "compiler/jit/jit_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-13T15:38:14Z",
+      "side": 1,
+      "message": "Again, get the GenerateDebugInfo from the options?",
+      "range": {
+        "startLine": 76,
+        "startChar": 6,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "2cd3babd0a1aec70ae12b10fc6d5821d5968d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67f216a9_710bf270",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3916,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-13T15:38:14Z",
+      "side": 1,
+      "message": "Don\u0027t think that\u0027s where you want things to be. You can have instance of classes before that class is initialized (eg the class is in the initializing state).",
+      "range": {
+        "startLine": 3912,
+        "startChar": 0,
+        "endLine": 3916,
+        "endChar": 3
+      },
+      "revId": "2cd3babd0a1aec70ae12b10fc6d5821d5968d525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
