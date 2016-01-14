@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6777760f_e65ffe4f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-14T11:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c72ae2be_0f91a93b",
+      "range": {
+        "startLine": 1883,
+        "startChar": 6,
+        "endLine": 1883,
+        "endChar": 51
+      },
+      "revId": "eea7de46c56fe6f777534ba796ff70343fcff285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07f79a9a_2e5f472a",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2016-01-14T11:13:37Z",
       "side": 1,
       "message": "+1: The current version is crashing while changing it to h_new_class make it work again",
+      "parentUuid": "07f79a9a_2e5f472a",
+      "range": {
+        "startLine": 1884,
+        "startChar": 23,
+        "endLine": 1884,
+        "endChar": 28
+      },
+      "revId": "eea7de46c56fe6f777534ba796ff70343fcff285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8780ea14_e75f0250",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-14T11:35:38Z",
+      "side": 1,
+      "message": "Done.  Thanks.  My bad.",
       "parentUuid": "07f79a9a_2e5f472a",
       "range": {
         "startLine": 1884,
