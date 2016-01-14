@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07931a6b_4b80e5b4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1886,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-14T12:21:26Z",
+      "side": 1,
+      "message": "Maybe just add a static method Jit::NewTypeLoaded that will do the check if the jit is enabled.",
+      "range": {
+        "startLine": 1882,
+        "startChar": 0,
+        "endLine": 1886,
+        "endChar": 3
+      },
+      "revId": "a03e604ffc6446b8ddcaf0afa060fc2636e55da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
