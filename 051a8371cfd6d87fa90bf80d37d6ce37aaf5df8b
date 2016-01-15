@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8780ea14_4a4e1372",
+        "filename": "compiler/jit/jit_compiler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-15T19:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07495aa4_50097042",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "051a8371cfd6d87fa90bf80d37d6ce37aaf5df8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "676db610_6d992ba2",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c786622d_6c121338",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1883,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-15T19:45:02Z",
+      "side": 1,
+      "message": "should be better now... (at least we are not going to the compiler)",
+      "parentUuid": "676db610_6d992ba2",
+      "range": {
+        "startLine": 1882,
+        "startChar": 2,
+        "endLine": 1883,
+        "endChar": 55
+      },
+      "revId": "051a8371cfd6d87fa90bf80d37d6ce37aaf5df8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "676db610_cd779f1a",
         "filename": "runtime/jit/jit.cc",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-15T19:32:24Z",
       "side": 1,
       "message": "Sorry, this is yuck. Even if the debugger is not attached you need to make this call and go into the compiler to figure it out. Not super happy about that design.",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 47
+      },
+      "revId": "051a8371cfd6d87fa90bf80d37d6ce37aaf5df8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "076cfa46_e95fd14f",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-15T19:45:02Z",
+      "side": 1,
+      "message": "Done.  Nicolas actually recently propagated the flag that we need to Jit.",
+      "parentUuid": "676db610_cd779f1a",
       "range": {
         "startLine": 226,
         "startChar": 2,
