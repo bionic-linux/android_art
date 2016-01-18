@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a77deeee_2e181356",
+        "filename": "runtime/interpreter/interpreter.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-18T15:41:08Z",
+      "side": 1,
+      "message": "(nit): Please revert this change",
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "076cfa46_a9d6b946",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-18T15:41:08Z",
+      "side": 1,
+      "message": "I think we want to retry the allocation here to decrease the number of cases where we fail to jit.",
+      "range": {
+        "startLine": 166,
+        "startChar": 80,
+        "endLine": 166,
+        "endChar": 85
+      },
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a77deeee_4e0d4713",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-18T15:41:08Z",
+      "side": 1,
+      "message": "Can you add some logging here if the compilation is failed for any reason?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
