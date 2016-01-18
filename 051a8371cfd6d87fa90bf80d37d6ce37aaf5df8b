@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c786622d_ec81a36c",
+        "filename": "compiler/jit/jit_compiler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T09:43:35Z",
+      "side": 1,
+      "message": "I think you need to special case thumb2/arm. The runtime instruction set is arm, but the compiler generates thumb2.",
+      "parentUuid": "8780ea14_4a4e1372",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "051a8371cfd6d87fa90bf80d37d6ce37aaf5df8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "676db610_6d992ba2",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 7
