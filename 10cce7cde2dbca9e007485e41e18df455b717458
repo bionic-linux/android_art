@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e783661b_8da10515",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T09:39:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1444,
+        "startChar": 65,
+        "endLine": 1444,
+        "endChar": 66
+      },
+      "revId": "10cce7cde2dbca9e007485e41e18df455b717458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2771fe1c_87356883",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T09:39:07Z",
+      "side": 1,
+      "message": "We don\u0027t allow this: please fetch the const_arena and then compare it to null.",
+      "range": {
+        "startLine": 1449,
+        "startChar": 15,
+        "endLine": 1450,
+        "endChar": 55
+      },
+      "revId": "10cce7cde2dbca9e007485e41e18df455b717458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e798c691_e86347ed",
+        "filename": "compiler/optimizing/code_generator_x86.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T09:39:07Z",
+      "side": 1,
+      "message": "misplaced",
+      "range": {
+        "startLine": 293,
+        "startChar": 66,
+        "endLine": 293,
+        "endChar": 67
+      },
+      "revId": "10cce7cde2dbca9e007485e41e18df455b717458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
