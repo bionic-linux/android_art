@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07931a6b_51aa5441",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T13:52:35Z",
+      "side": 1,
+      "message": "nit: use \u0027\u0026\u0026\u0027.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "aee21073a0b6c42022927cbcf80533b64b3d1719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
