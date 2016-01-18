@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e783661b_ed036192",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-18T12:33:29Z",
+      "side": 1,
+      "message": "Inline line 234, and remove.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 1
+      },
+      "revId": "d032100819139a4b283e955995d681ec93d9ac9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
