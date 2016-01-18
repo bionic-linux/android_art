@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8780ea14_4abff31a",
+        "filename": "compiler/jit/jit_compiler.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-18T12:18:57Z",
+      "side": 1,
+      "message": "Note that this function is removed as per Andreas\u0027 comment.\nI think the ELF code always considers thumb2 and arm to the same.  It even annotates arm isa as DW_ISA_ARM_thumb",
+      "parentUuid": "c786622d_ec81a36c",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 3
+      },
+      "revId": "051a8371cfd6d87fa90bf80d37d6ce37aaf5df8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "676db610_6d992ba2",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 7
