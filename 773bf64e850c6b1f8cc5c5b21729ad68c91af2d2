@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "676db610_abafa8b9",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-01-19T20:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07623a24_0bc34380",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 1
+      },
+      "revId": "773bf64e850c6b1f8cc5c5b21729ad68c91af2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e759a674_1291ab17",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4768b202_02fb1d2c",
+        "filename": "compiler/utils/mips/assembler_mips.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-01-19T20:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e759a674_1291ab17",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 1
+      },
+      "revId": "773bf64e850c6b1f8cc5c5b21729ad68c91af2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e759a674_d2af334e",
         "filename": "compiler/utils/mips/assembler_mips.h",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-16T03:23:57Z",
       "side": 1,
       "message": "I\u0027d rather put lwl/lwr immediately after lw and swl/slr immediately after sw as they\u0027re related instructions.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 53
+      },
+      "revId": "773bf64e850c6b1f8cc5c5b21729ad68c91af2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_8313ae3c",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-01-19T20:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e759a674_d2af334e",
       "range": {
         "startLine": 164,
         "startChar": 0,
