@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c786622d_12d292f9",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-20T16:17:50Z",
+      "side": 1,
+      "message": "So you\u0027re just not bothering with phis, right? Because you could handle it.",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 36
+      },
+      "revId": "0032ab8f4532c8f7e479fb9df63abbb6142163ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
