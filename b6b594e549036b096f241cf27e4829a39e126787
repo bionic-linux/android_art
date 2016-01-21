@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "544ea283_65748666",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-21T18:16:21Z",
+      "side": 1,
+      "message": "Indentation.",
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "344dae87_44ee2e72",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-21T18:16:21Z",
+      "side": 1,
+      "message": "Even this is a bit too restrictive.\n\nFor example:\n  int x \u003d 0;\n  int y \u003d 0;\n  if (bool1) {\n    x \u003d bool2 ? 42 : 7;  // We want to use HSelect here\n  } else {\n    y \u003d foo();\n  }  // but the merge_block has 2 Phis.\n\nThere is only one Phi which has different inputs from the ternary expression blocks. (That\u0027s what I meant in PS8.)",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
