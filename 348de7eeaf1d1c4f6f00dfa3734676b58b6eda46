@@ -666,6 +666,30 @@
     },
     {
       "key": {
+        "uuid": "e74a8641_524f3440",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-21T18:16:21Z",
+      "side": 1,
+      "message": "Once we have proper HSelect implementations with condition moves instead of branching, 2xHSelect will be much better than the branching code.",
+      "parentUuid": "341f6e57_54e48c5e",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a3e5b9d_2e0b2740",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 13
