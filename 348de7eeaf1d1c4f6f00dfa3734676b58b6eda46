@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4774327b_759b2836",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1645,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Removed, using MoveLocation after go/aog/197640.",
+      "parentUuid": "0a6ebfb0_536c84d8",
+      "range": {
+        "startLine": 1643,
+        "startChar": 2,
+        "endLine": 1645,
+        "endChar": 62
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67f216a9_ae54d7d9",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-12T20:03:39Z",
       "side": 1,
       "message": "You can specify the template parameter here to avoid the static_cast\u003c\u003e() below. Same further down and for x86-64.",
+      "range": {
+        "startLine": 1617,
+        "startChar": 23,
+        "endLine": 1617,
+        "endChar": 24
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "344dae87_24f21289",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1617,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Much better, thanks for the suggestion.",
+      "parentUuid": "67f216a9_ae54d7d9",
       "range": {
         "startLine": 1617,
         "startChar": 23,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e74a8641_d2c2440d",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Good catch, thanks. Resolved by go/aog/197640.",
+      "parentUuid": "6a3e5b9d_0ee74bcf",
+      "range": {
+        "startLine": 1642,
+        "startChar": 0,
+        "endLine": 1643,
+        "endChar": 71
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a738396_b416a029",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 13
@@ -82,6 +154,30 @@
       "writtenOn": "2016-01-11T13:22:51Z",
       "side": 1,
       "message": "Add a comment what you intend on doing in this branch?",
+      "range": {
+        "startLine": 618,
+        "startChar": 9,
+        "endLine": 618,
+        "endChar": 10
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f484f6cd_425b9238",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a738396_b416a029",
       "range": {
         "startLine": 618,
         "startChar": 9,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "1448aa77_43cf4639",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a273b99_46205274",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a21c386_847326f0",
         "filename": "compiler/optimizing/nodes.cc",
         "patchSetId": 13
@@ -122,6 +236,24 @@
       "writtenOn": "2016-01-11T11:56:03Z",
       "side": 1,
       "message": "`DCHECK(insn-\u003eCanBeMoved());`\n`DCHECK(!insn-\u003eHasSideEffects() \u0026\u0026 !insn-\u003eHasDependencies());",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4774327b_b56300ee",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Why !HasDependencies?",
+      "parentUuid": "2a21c386_847326f0",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -175,6 +307,24 @@
       "side": 1,
       "message": "It helps x86, which has two operand instructions, and SameAsFirst output mode.",
       "parentUuid": "6a273b99_661d4e41",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "544ea283_c537bad4",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5583,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s a combination of two things: SameAsFirstInput allocation policy and inverting floating-point compares.\n\nWith the fallback implementation and architectures with conditional moves (x86, x86_64, arm) we will do:\n\n  out \u003d SameAsFirstInput \u003d false_value;\n  if (cond) { out \u003d true_value; }\n\nSo first input needs to be `false_value`. If we could at least invert conditions, it could be `true_value` as well.",
+      "parentUuid": "6a901bcb_87aa4ceb",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -252,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "344dae87_64a36a71",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5594,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea4a4b41_52dbb49f",
+      "range": {
+        "startLine": 5594,
+        "startChar": 7,
+        "endLine": 5594,
+        "endChar": 17
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a22778b_ab146d93",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 13
@@ -263,6 +437,24 @@
       "writtenOn": "2016-01-11T11:56:03Z",
       "side": 1,
       "message": "This made me think of a corner case when a value is both used as the condition and as the true or false value.\n\nIf you think it is worth it, we could improve that in the simplifier by replacing the use of the condition as a true/false value by constant true/false.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67793673_d67fa488",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "So what you\u0027re saying is:\n\n  a \u003d x ? x : y \u003d x || y\n  b \u003d x ? y : x \u003d x \u0026\u0026 y\n\nThere are other patterns like that, for example:\n\n  c \u003d x ? 1 : y \u003d x || y\n  d \u003d x ? y : 0 \u003d x \u0026\u0026 y\n\nIf you want to implement a general-purpose static math solver, then be my guest.",
+      "parentUuid": "4a22778b_ab146d93",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -327,6 +519,30 @@
       "side": 1,
       "message": "I think I actually find the \"ifs\" more readable.\n\nOr just having:\nif (!last_insn-\u003eIsGoto()) return false\n...",
       "parentUuid": "0a6ebfb0_539564f0",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 15
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "341f6e57_f4871883",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d rather left it like this.",
+      "parentUuid": "4a3997b3_2d888dd9",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -426,6 +642,30 @@
     },
     {
       "key": {
+        "uuid": "341f6e57_54e48c5e",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "I was gonna do this in a follow-up CL but might as well do it now because the code needs some refactor to allow for this.\n\nNote, however, that this has a strange consequence of chaining Selects. Consider:\n\n  x \u003d bool1 ? (bool2 ? a : b) : c;\n\nTranslates to:\n\n  temp \u003d Select [b, a, bool2]\n  x \u003d Select [c, temp, bool1]\n\nHere we will always do the bool2 comparison even if bool1 is false. I don\u0027t think the performance impact would be significant in either direction though.\n\nIt also only happens if bool2 is a simplified condition because otherwise there are three instructions in the true branch (Cond, Select, Goto) of bool1.",
+      "parentUuid": "c72ae2be_6977851c",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a3e5b9d_2e0b2740",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 13
@@ -437,6 +677,30 @@
       "writtenOn": "2016-01-11T13:22:51Z",
       "side": 1,
       "message": "How about if_instruction-\u003eIfTrueSuccessorIndex() ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4774327b_f5465837",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Huh? This computes the predecessor index from the merge block. What you\u0027re suggesting would give me the successor index from the if block.",
+      "parentUuid": "6a3e5b9d_2e0b2740",
       "range": {
         "startLine": 71,
         "startChar": 36,
@@ -472,6 +736,30 @@
     },
     {
       "key": {
+        "uuid": "e74a8641_b23ce09f",
+        "filename": "test/458-checker-instruction-simplification/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t follow. There\u0027s no guaranteed order of instructions in the entry block. We need to use -DAG.",
+      "parentUuid": "e7e8c667_622c76d5",
+      "range": {
+        "startLine": 973,
+        "startChar": 6,
+        "endLine": 973,
+        "endChar": 15
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7ebc261_81777a6d",
         "filename": "test/463-checker-boolean-simplifier/src/Main.java",
         "patchSetId": 13
@@ -483,6 +771,24 @@
       "writtenOn": "2016-01-11T11:56:03Z",
       "side": 1,
       "message": "Use CHECK instead of CHECK-DAG where possible?\nSame in other test files.",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4774327b_3529b059",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Why?",
+      "parentUuid": "c7ebc261_81777a6d",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -506,6 +812,24 @@
     },
     {
       "key": {
+        "uuid": "f484f6cd_a24ffe42",
+        "filename": "test/480-checker-dead-blocks/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a570fe9_0fe745cf",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea332bd5_eaf8276c",
         "filename": "test/480-checker-dead-blocks/src/Main.java",
         "patchSetId": 13
@@ -517,6 +841,24 @@
       "writtenOn": "2016-01-11T12:24:19Z",
       "side": 1,
       "message": "Ditto?",
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a75faef8_7805e1ee",
+        "filename": "test/480-checker-dead-blocks/src/Main.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-21T17:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea332bd5_eaf8276c",
       "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
