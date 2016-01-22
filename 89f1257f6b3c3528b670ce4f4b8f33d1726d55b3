@@ -353,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "14cb4a3e_ae04b79d",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2016-01-22T23:02:30Z",
+      "side": 1,
+      "message": "OK later.\n\nI think the answer to the question is in the definition of the macro UNIMPLEMENTED_INTRINSIC(). It does nothing: does not create LocationSummary, does not emit instructions into the buffer.",
+      "parentUuid": "47efd232_03f292c3",
+      "range": {
+        "startLine": 1381,
+        "startChar": 33,
+        "endLine": 1381,
+        "endChar": 52
+      },
+      "revId": "89f1257f6b3c3528b670ce4f4b8f33d1726d55b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e759a674_52b4c399",
         "filename": "compiler/utils/mips/assembler_mips.cc",
         "patchSetId": 3
