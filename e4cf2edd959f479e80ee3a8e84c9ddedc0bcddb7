@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2752dead_19933cd6",
+        "filename": "runtime/interpreter/interpreter.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1059868
+      },
+      "writtenOn": "2016-01-22T03:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77deeee_2e181356",
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "076cfa46_a9d6b946",
         "filename": "runtime/jit/jit_instrumentation.cc",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "27673e34_7ac55fb6",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1059868
+      },
+      "writtenOn": "2016-01-22T03:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "076cfa46_a9d6b946",
+      "range": {
+        "startLine": 166,
+        "startChar": 80,
+        "endLine": 166,
+        "endChar": 85
+      },
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a77deeee_4e0d4713",
         "filename": "runtime/jit/jit_instrumentation.cc",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2016-01-18T15:41:08Z",
       "side": 1,
       "message": "Can you add some logging here if the compilation is failed for any reason?",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "e4cf2edd959f479e80ee3a8e84c9ddedc0bcddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676db610_0e0cea53",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1059868
+      },
+      "writtenOn": "2016-01-22T03:31:52Z",
+      "side": 1,
+      "message": "Logging is already present in JitCompileTask::Run.",
+      "parentUuid": "a77deeee_4e0d4713",
       "range": {
         "startLine": 171,
         "startChar": 4,
