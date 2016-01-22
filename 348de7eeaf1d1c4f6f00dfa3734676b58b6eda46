@@ -508,6 +508,30 @@
     },
     {
       "key": {
+        "uuid": "1476eac5_d3ac54af",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Sry. This is an arbitrary choice of the max number of instructions in the branch where it is still worthwhile to do the optimization. I\u0027ve rewritten the method so that the number is configurable.",
+      "parentUuid": "d46292ed_2c70bbde",
+      "range": {
+        "startLine": 21,
+        "startChar": 57,
+        "endLine": 21,
+        "endChar": 64
+      },
+      "revId": "348de7eeaf1d1c4f6f00dfa3734676b58b6eda46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a6ebfb0_539564f0",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 13
