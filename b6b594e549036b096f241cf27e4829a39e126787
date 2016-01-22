@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "945c9a37_2a0adfff",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "As discussed, this should probably be RequiresRegister.",
+      "range": {
+        "startLine": 1383,
+        "startChar": 30,
+        "endLine": 1383,
+        "endChar": 34
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "544ea283_65748666",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 15
@@ -13,6 +36,98 @@
       "writtenOn": "2016-01-21T18:16:21Z",
       "side": 1,
       "message": "Indentation.",
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b440be43_331492cf",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "true_value or false_valse",
+      "range": {
+        "startLine": 5596,
+        "startChar": 27,
+        "endLine": 5596,
+        "endChar": 44
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4599e47_8bb43198",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5597,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "We make it \u0027false_value\u0027, so that...",
+      "range": {
+        "startLine": 5597,
+        "startChar": 44,
+        "endLine": 5597,
+        "endChar": 65
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "742ac67b_516716cc",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "2016",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b440be43_13198e07",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "successor,",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 12
+      },
       "revId": "b6b594e549036b096f241cf27e4829a39e126787",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -35,6 +150,75 @@
         "startChar": 8,
         "endLine": 66,
         "endChar": 36
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "142fca8d_6e48ef10",
+        "filename": "compiler/optimizing/select_generator.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "2016",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3434cedb_2fdb0513",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "Not really...",
+      "range": {
+        "startLine": 201,
+        "startChar": 29,
+        "endLine": 201,
+        "endChar": 44
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5425c2a7_70c56e8f",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-22T10:14:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 211,
+        "startChar": 30,
+        "endLine": 211,
+        "endChar": 45
       },
       "revId": "b6b594e549036b096f241cf27e4829a39e126787",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
