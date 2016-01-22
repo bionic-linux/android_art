@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d439b2d1_ebd04d22",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 5352,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-22T14:20:28Z",
+      "side": 1,
+      "message": "I know that this is unrelated to this change, but is there any reason pushl wasn\u0027t used?\nNoticed while looking at diffs from PS15",
+      "range": {
+        "startLine": 5347,
+        "startChar": 4,
+        "endLine": 5352,
+        "endChar": 57
+      },
+      "revId": "7745087b5482fcecd7ccf5d94d06599120f8b29c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
