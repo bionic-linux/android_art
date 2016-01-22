@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b467de0d_58c05d57",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945c9a37_2a0adfff",
+      "range": {
+        "startLine": 1383,
+        "startChar": 30,
+        "endLine": 1383,
+        "endChar": 34
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "544ea283_65748666",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 15
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "347beeaf_14a394bf",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1404,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "544ea283_65748666",
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b440be43_331492cf",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 15
@@ -53,6 +95,30 @@
       "writtenOn": "2016-01-22T10:14:51Z",
       "side": 1,
       "message": "true_value or false_valse",
+      "range": {
+        "startLine": 5596,
+        "startChar": 27,
+        "endLine": 5596,
+        "endChar": 44
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "547ce2a3_759e887c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b440be43_331492cf",
       "range": {
         "startLine": 5596,
         "startChar": 27,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "946adad7_d7ac3caf",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 5597,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4599e47_8bb43198",
+      "range": {
+        "startLine": 5597,
+        "startChar": 44,
+        "endLine": 5597,
+        "endChar": 65
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "742ac67b_516716cc",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 15
@@ -99,6 +189,30 @@
       "writtenOn": "2016-01-22T10:14:51Z",
       "side": 1,
       "message": "2016",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d46292ed_0c561708",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742ac67b_516716cc",
       "range": {
         "startLine": 2,
         "startChar": 17,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "3434cedb_cf37e1d4",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "I don\u0027t believe in the Oxford comma :P",
+      "parentUuid": "b440be43_13198e07",
+      "range": {
+        "startLine": 41,
+        "startChar": 3,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "344dae87_44ee2e72",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 15
@@ -145,6 +283,30 @@
       "writtenOn": "2016-01-21T18:16:21Z",
       "side": 1,
       "message": "Even this is a bit too restrictive.\n\nFor example:\n  int x \u003d 0;\n  int y \u003d 0;\n  if (bool1) {\n    x \u003d bool2 ? 42 : 7;  // We want to use HSelect here\n  } else {\n    y \u003d foo();\n  }  // but the merge_block has 2 Phis.\n\nThere is only one Phi which has different inputs from the ternary expression blocks. (That\u0027s what I meant in PS8.)",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 36
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b440be43_76eb28d2",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "High standards, I like that. Done.",
+      "parentUuid": "344dae87_44ee2e72",
       "range": {
         "startLine": 66,
         "startChar": 8,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "9443ba4f_d231c291",
+        "filename": "compiler/optimizing/select_generator.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142fca8d_6e48ef10",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3434cedb_2fdb0513",
         "filename": "test/463-checker-boolean-simplifier/src/Main.java",
         "patchSetId": 15
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "742ac67b_711a1201",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "Actually yes, there\u0027s a LoadClass, so this is a test for both multiple instructions and side effects. I also don\u0027t see how to separate the two cases - can I somehow get a branch with just one instruction that has side effects? I don\u0027t think so.",
+      "parentUuid": "3434cedb_2fdb0513",
+      "range": {
+        "startLine": 201,
+        "startChar": 29,
+        "endLine": 201,
+        "endChar": 44
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5425c2a7_70c56e8f",
         "filename": "test/463-checker-boolean-simplifier/src/Main.java",
         "patchSetId": 15
@@ -214,6 +424,30 @@
       "writtenOn": "2016-01-22T10:14:51Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 211,
+        "startChar": 30,
+        "endLine": 211,
+        "endChar": 45
+      },
+      "revId": "b6b594e549036b096f241cf27e4829a39e126787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d46292ed_6c10f32d",
+        "filename": "test/463-checker-boolean-simplifier/src/Main.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-22T14:09:29Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "5425c2a7_70c56e8f",
       "range": {
         "startLine": 211,
         "startChar": 30,
