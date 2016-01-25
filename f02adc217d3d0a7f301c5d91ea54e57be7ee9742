@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14626a24_338fa81b",
+        "filename": "compiler/elf_writer_debug.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-25T09:10:17Z",
+      "side": 1,
+      "message": "of what? method names? Please extend the comment.",
+      "range": {
+        "startLine": 1374,
+        "startChar": 64,
+        "endLine": 1374,
+        "endChar": 75
+      },
+      "revId": "f02adc217d3d0a7f301c5d91ea54e57be7ee9742",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
