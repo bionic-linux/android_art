@@ -142,6 +142,30 @@
       "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14626a24_3347a85a",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-25T12:21:19Z",
+      "side": 0,
+      "message": "Since you control how this test is being run, you could pass a flag to the Main class, and use that flag to check here with and without signatures.",
+      "parentUuid": "54edc2c8_ed638518",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 78
+      },
+      "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
