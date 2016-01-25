@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4bb169e_449c02e0",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-25T16:08:10Z",
+      "side": 1,
+      "message": "How about pushl high; pushl low instead? According to my reading of the optimization manual, it should be the same or better.",
+      "range": {
+        "startLine": 1088,
+        "startChar": 6,
+        "endLine": 1090,
+        "endChar": 78
+      },
+      "revId": "5740ac79175727f69a224751c05a0e782a9dba2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14cb4a3e_bf893f0f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-25T16:08:10Z",
+      "side": 1,
+      "message": "I think it may be slightly better to use LEA rather than add here.\n\nFor both these, the difference is minuscule.",
+      "revId": "5740ac79175727f69a224751c05a0e782a9dba2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
