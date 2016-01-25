@@ -70,6 +70,30 @@
       "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74f2c6a8_ce41633e",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-25T12:10:40Z",
+      "side": 0,
+      "message": "Do I want to test that?  We might easily change our mind and decide to always include the signature or never do.  Either way, this test will check we can still unwind.",
+      "parentUuid": "54edc2c8_2d762ddf",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 78
+      },
+      "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
