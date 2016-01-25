@@ -118,6 +118,30 @@
       "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54edc2c8_ed638518",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-25T12:19:41Z",
+      "side": 0,
+      "message": "I know it still produces it still produces the right method names, and right CFI for unwinding.\nHowever, I do not check that the parameters are absent. (other than verifying manually of course)  I am still not sure I want do that check in this test.\nAny suggestion how this CL (and the other one) should be tested?  The only thing I can think of is to actually test the size of the compressed data and check is it smaller then given bound.",
+      "parentUuid": "1410aa94_03d6aee9",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 78
+      },
+      "revId": "5fdcc3c931b70204fd8c491afa66f57f8428490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
