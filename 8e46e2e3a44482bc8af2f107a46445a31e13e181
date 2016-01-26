@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f4c1566d_5a1f954a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-26T16:55:05Z",
+      "side": 1,
+      "message": "sorry, supposed to be the \"method address\" instead of \"dex pc\"",
+      "parentUuid": "d49b728b_6185167a",
+      "range": {
+        "startLine": 457,
+        "startChar": 58,
+        "endLine": 457,
+        "endChar": 73
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a782d1_fd3ae7a2",
         "filename": "test/566-polymorphic-inlining/src/Main.java",
         "patchSetId": 3
