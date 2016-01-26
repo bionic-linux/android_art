@@ -93,6 +93,75 @@
       "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34520eae_7caa7992",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6612,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-26T16:52:05Z",
+      "side": 1,
+      "message": "i think a switch is clearer. you don\u0027t need to wonder what the else branch value is.\n\nsame for the rest.",
+      "range": {
+        "startLine": 6612,
+        "startChar": 2,
+        "endLine": 6612,
+        "endChar": 4
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d49b728b_6185167a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-26T16:52:05Z",
+      "side": 1,
+      "message": "It\u0027s not clear that this new Instruction evaluates to the dex pc of the methods. Either add a comment in nodes.h or consider changing the name.",
+      "range": {
+        "startLine": 457,
+        "startChar": 58,
+        "endLine": 457,
+        "endChar": 73
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_fd3ae7a2",
+        "filename": "test/566-polymorphic-inlining/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-26T16:52:05Z",
+      "side": 1,
+      "message": "fairly weak test, right? i.e. hard to tell that you actually inlined those from this tests. \n\nMaybe a $jit$inlined$ tag could help here.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
