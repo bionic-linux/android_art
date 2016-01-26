@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4a27ebd_201b8a4e",
+        "filename": "runtime/handle.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-26T14:56:22Z",
+      "side": 1,
+      "message": "did you miss to update this one? otherwise why is this needed and not the above one.",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 43
+      },
+      "revId": "f39745e663f8f2634fc8858e427b77da98f8f2b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
