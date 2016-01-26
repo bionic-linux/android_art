@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c3ee5c_1b045cf4",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3969,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-01-26T21:31:22Z",
+      "side": 1,
+      "message": "size_t may be 64-bit, depending on what machine the compiler runs. However, you movl the result as 32-bit, since you compile for x86.\n\nSo the use of uint32_t seems better (done elsewhere too).",
+      "range": {
+        "startLine": 3969,
+        "startChar": 2,
+        "endLine": 3969,
+        "endChar": 9
+      },
+      "revId": "7db5deb820c901f80d4a43a2836adbac3e463504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f49a3677_06032a26",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 3971,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-01-26T21:31:22Z",
+      "side": 1,
+      "message": "By similar argument, this should be a uint64_t to avoid issues when cross compiling for x86_64 on a 32-bit host.\n\nOr, if this is always  uint32_t, then perhaps best to use that type here too?",
+      "range": {
+        "startLine": 3971,
+        "startChar": 9,
+        "endLine": 3971,
+        "endChar": 22
+      },
+      "revId": "7db5deb820c901f80d4a43a2836adbac3e463504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
