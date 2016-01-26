@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c3ee5c_6e0cb38b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-01-26T16:24:14Z",
+      "side": 1,
+      "message": "?\n\nUsually polymorphic inline (caching) isn\u0027t limited to the exact same target method.",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
