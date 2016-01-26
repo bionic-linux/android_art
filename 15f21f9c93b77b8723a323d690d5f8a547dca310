@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14b18a0d_9b2c0b87",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-26T15:27:59Z",
+      "side": 1,
+      "message": "I would really like to avoid going into the interpreter if possible, but presumably we can not avoid it.\nWe set the flags when the Zygote is forked and the code might already be in the interpreter.\nWe will also get into the interpreter if the code can not be compiled.\nEither way, we need something in the interpreter to exit it.\n\nHaving said that, there might be other places in the interpreter to do this, but this place might be as good as any. (and we have already done the dance with testing it)",
+      "parentUuid": "34b68e05_1cec75b0",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 43
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4a27ebd_40068e37",
         "filename": "runtime/interpreter/interpreter_switch_impl.cc",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "34b68e05_dc3f2d91",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-26T15:27:59Z",
+      "side": 1,
+      "message": "Done (std::unique_ptr overloads it, I did not know that)",
+      "parentUuid": "b4a27ebd_20038a27",
+      "range": {
+        "startLine": 206,
+        "startChar": 28,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a782d1_7d6a57f3",
         "filename": "runtime/jit/jit_instrumentation.cc",
         "patchSetId": 4
@@ -82,6 +130,30 @@
       "writtenOn": "2016-01-26T12:02:42Z",
       "side": 1,
       "message": "GetJit()-\u003eJitAtFirstUse()",
+      "range": {
+        "startLine": 165,
+        "startChar": 6,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a27ebd_4039eea7",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-26T15:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a782d1_7d6a57f3",
       "range": {
         "startLine": 165,
         "startChar": 6,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b4a27ebd_2036eab7",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-26T15:27:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a57ac9_5f942b04",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4c4527f_19612b11",
         "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
         "patchSetId": 4
@@ -128,6 +224,30 @@
       "writtenOn": "2016-01-26T12:02:42Z",
       "side": 1,
       "message": "Should you log fatal if that\u0027s not the case? Blindly continuing is not helping the user.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14b18a0d_3b1cd753",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-01-26T15:27:59Z",
+      "side": 1,
+      "message": "Done.  As far as I can tell GetJITOptions are always non-null.",
+      "parentUuid": "d4c4527f_19612b11",
       "range": {
         "startLine": 115,
         "startChar": 0,
