@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b408be64_90201478",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-26T17:54:17Z",
+      "side": 1,
+      "message": "I went back to using ParallelMove on x86. I might get back to the cleanup of these helpers but I want to get this CL in already.",
+      "parentUuid": "f4bb169e_449c02e0",
+      "range": {
+        "startLine": 1088,
+        "startChar": 6,
+        "endLine": 1090,
+        "endChar": 78
+      },
+      "revId": "5740ac79175727f69a224751c05a0e782a9dba2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14cb4a3e_bf893f0f",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 17
@@ -36,6 +60,29 @@
       "writtenOn": "2016-01-25T16:08:10Z",
       "side": 1,
       "message": "I think it may be slightly better to use LEA rather than add here.\n\nFor both these, the difference is minuscule.",
+      "revId": "5740ac79175727f69a224751c05a0e782a9dba2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4feb66e_f23ec860",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 5546,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-26T17:54:17Z",
+      "side": 1,
+      "message": "Sry, this wasn\u0027t meant to be here.",
+      "range": {
+        "startLine": 5541,
+        "startChar": 4,
+        "endLine": 5546,
+        "endChar": 11
+      },
       "revId": "5740ac79175727f69a224751c05a0e782a9dba2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
