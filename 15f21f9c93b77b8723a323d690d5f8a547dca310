@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34b68e05_1cec75b0",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "This dance (repeated in the other interpreter implementations) is annoying. It\u0027s a shame we create all the ifnrastructure for starting running with the interpreter and then decide that we actually want to JIT and discard everything.\n\nCould you try moving this earlier, before the creation of the interpreter state?",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 43
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a27ebd_40068e37",
+        "filename": "runtime/interpreter/interpreter_switch_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "misplaced",
+      "range": {
+        "startLine": 101,
+        "startChar": 14,
+        "endLine": 101,
+        "endChar": 15
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a27ebd_20038a27",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "I think you don\u0027t need this anymore.",
+      "range": {
+        "startLine": 206,
+        "startChar": 28,
+        "endLine": 206,
+        "endChar": 34
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_7d6a57f3",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "GetJit()-\u003eJitAtFirstUse()",
+      "range": {
+        "startLine": 165,
+        "startChar": 6,
+        "endLine": 165,
+        "endChar": 65
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a57ac9_5f942b04",
+        "filename": "runtime/jit/jit_instrumentation.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "Drop the logging, just create it and comment that\u0027s because the compiler requires a ProfilingInfo object.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 5
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c4527f_19612b11",
+        "filename": "runtime/native/dalvik_system_ZygoteHooks.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T12:02:42Z",
+      "side": 1,
+      "message": "Should you log fatal if that\u0027s not the case? Blindly continuing is not helping the user.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
