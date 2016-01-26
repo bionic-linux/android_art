@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74ac86b5_fede6192",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6618,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "I feel the operations are big enough htat a ternary operator will not help readability.",
+      "parentUuid": "d4c4527f_f93af7a2",
+      "range": {
+        "startLine": 6611,
+        "startChar": 2,
+        "endLine": 6618,
+        "endChar": 3
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a782d1_bd27bfa1",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-26T15:38:53Z",
       "side": 1,
       "message": "Nit: indentation is off.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 50
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_985535fd",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54a782d1_bd27bfa1",
       "range": {
         "startLine": 300,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "14b18a0d_5bfa0328",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b18a0d_9bf76b3f",
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4c1566d_7a7019ae",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2016-01-26T15:38:53Z",
       "side": 1,
       "message": "Nit: fits on a single line.",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 41
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14b18a0d_3b0737fc",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Unfortunately no.",
+      "parentUuid": "f4c1566d_7a7019ae",
       "range": {
         "startLine": 404,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "b4bb5ef1_783b81c4",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "b4bb5ef1_1867e5f6",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 41
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94a57ac9_7f248f8b",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
@@ -122,6 +236,30 @@
       "writtenOn": "2016-01-26T15:38:53Z",
       "side": 1,
       "message": "intptr_t?",
+      "range": {
+        "startLine": 448,
+        "startChar": 25,
+        "endLine": 448,
+        "endChar": 31
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d49b728b_a149de4b",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a57ac9_7f248f8b",
       "range": {
         "startLine": 448,
         "startChar": 25,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "54a782d1_fde8a766",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b18a0d_7bfdbf1d",
+      "range": {
+        "startLine": 451,
+        "startChar": 25,
+        "endLine": 451,
+        "endChar": 31
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4a27ebd_0062c6bc",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
@@ -168,6 +330,30 @@
       "writtenOn": "2016-01-26T15:38:53Z",
       "side": 1,
       "message": "Should this still return false?",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 474,
+        "endChar": 15
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a57ac9_bf445732",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:59:57Z",
+      "side": 1,
+      "message": "Erf, good catch. Note that it only affects the testing for $noinline$ markers.",
+      "parentUuid": "b4a27ebd_0062c6bc",
       "range": {
         "startLine": 474,
         "startChar": 2,
