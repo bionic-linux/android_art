@@ -22,6 +22,30 @@
       "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74ac86b5_3eb4c936",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T16:27:32Z",
+      "side": 1,
+      "message": "Yes, you can drop the usually. This is just the simplest implementation. More to come.",
+      "parentUuid": "34c3ee5c_6e0cb38b",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
