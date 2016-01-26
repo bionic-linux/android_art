@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "14beeac6_47835e2b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6612,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-01-26T18:11:44Z",
+      "side": 1,
+      "message": "If you cover all enum cases, you don\u0027t have to add a default case. Switch warnings are only enabled for covering all known values, not \"incorrect\" ones.\n\nNow whether you want the LOG(FATAL) in the \"other\" cases or not is up to you. I could argue you made the choice against it already...",
+      "parentUuid": "f4c1566d_9a49ad4c",
+      "range": {
+        "startLine": 6612,
+        "startChar": 2,
+        "endLine": 6612,
+        "endChar": 4
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49b728b_6185167a",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 3
