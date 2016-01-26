@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "74ac86b5_1e7fcd3d",
+        "filename": "runtime/interpreter/interpreter_goto_table_impl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-26T15:41:00Z",
+      "side": 1,
+      "message": "\u003e I would really like to avoid going into the interpreter if\n \u003e possible, but presumably we can not avoid it.\n \u003e We set the flags when the Zygote is forked and the code might\n \u003e already be in the interpreter.\n\nSure, but you check whether you need to run into jit if the dex_pc is 0, so existing threads in the interpreter will stay in the interpreter.\n\nWhat I\u0027m asking for is an earlier place where we check if the JIT is set for first use.\n\n \u003e We will also get into the interpreter if the code can not be\n \u003e compiled.\n \u003e Either way, we need something in the interpreter to exit it.\n \u003e \n \u003e Having said that, there might be other places in the interpreter to\n \u003e do this, but this place might be as good as any. (and we have\n \u003e already done the dance with testing it)",
+      "parentUuid": "14b18a0d_9b2c0b87",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 43
+      },
+      "revId": "15f21f9c93b77b8723a323d690d5f8a547dca310",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4a27ebd_40068e37",
         "filename": "runtime/interpreter/interpreter_switch_impl.cc",
         "patchSetId": 4
