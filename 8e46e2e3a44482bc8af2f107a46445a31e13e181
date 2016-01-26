@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "b4a43ebb_a4deda2d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6612,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-01-26T18:14:49Z",
+      "side": 1,
+      "message": "You only need a default case if you decide to not have explicit cases for known enum values. That is all that was ever enabled.\n\nIf you have an enum { A, B, C}, then you can do either:\n\n  case A:\n  case B:\n  case C:\n\nor\n\n  case A:\n  case B:\n  default:\n\nbut not\n\n  case A:\n  case B:",
+      "parentUuid": "54a782d1_dde3ab56",
+      "range": {
+        "startLine": 6612,
+        "startChar": 2,
+        "endLine": 6612,
+        "endChar": 4
+      },
+      "revId": "8e46e2e3a44482bc8af2f107a46445a31e13e181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49b728b_6185167a",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 3
