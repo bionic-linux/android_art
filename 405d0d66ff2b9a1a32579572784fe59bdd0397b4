@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "34b68e05_7ca13913",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-26T16:08:30Z",
+      "side": 1,
+      "message": "You added the DCHECK to HInliner::TryInlineMonomorphicCall (which is a good thing too), but I was referring to HInliner::TryInlinePolymorphicCall. :)",
+      "parentUuid": "14b18a0d_5bfa0328",
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4c1566d_7a7019ae",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 2
@@ -166,6 +184,30 @@
       "side": 1,
       "message": "Unfortunately no.",
       "parentUuid": "f4c1566d_7a7019ae",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 41
+      },
+      "revId": "405d0d66ff2b9a1a32579572784fe59bdd0397b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_dd14cb22",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-26T16:08:30Z",
+      "side": 1,
+      "message": "Right, I was too optimistic. :)",
+      "parentUuid": "14b18a0d_3b0737fc",
       "range": {
         "startLine": 404,
         "startChar": 0,
