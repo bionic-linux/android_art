@@ -33,6 +33,24 @@
       "revId": "1242cb51b6ea3d6446054c5f67de961e34434deb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c1566d_da3f2591",
+        "filename": "compiler/optimizing/register_allocator.cc",
+        "patchSetId": 19
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-26T17:54:17Z",
+      "side": 1,
+      "message": "Gimme a sec, Mark. I\u0027m stuck in some crazy rebase hell.",
+      "parentUuid": "f49a3677_581435d0",
+      "revId": "1242cb51b6ea3d6446054c5f67de961e34434deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
