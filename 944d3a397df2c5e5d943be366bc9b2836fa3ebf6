@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d49b728b_a410cc9b",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T11:28:17Z",
+      "side": 1,
+      "message": "How about doing this check first and return true if it\u0027s not x86?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
