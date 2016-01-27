@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4c4527f_5c031158",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "Sure, be my guest. I have another sore spot and that\u0027s constantly having to do:\n\n  insn-\u003eGetBlock()-\u003eRemoveInstruction(insn)\n\none of these days I\u0027ll add sugar:\n\n  insn-\u003eRemove()",
+      "parentUuid": "54a782d1_80dff82a",
+      "range": {
+        "startLine": 570,
+        "startChar": 33,
+        "endLine": 570,
+        "endChar": 47
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34b68e05_9f9d174e",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 24
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-27T11:54:36Z",
       "side": 1,
       "message": "What does this buy us?",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 600,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c4527f_1cfd9983",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "One less BooleanNot? Codegen\u0027s don\u0027t (and shouldn\u0027t have to) recognize a negated condition to flip the branches, so it would always emit a XOR x,1",
+      "parentUuid": "34b68e05_9f9d174e",
       "range": {
         "startLine": 600,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b4bb5ef1_987c15fd",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "As above, feel free to do a follow up. (hey, that rhymes!)",
+      "parentUuid": "b417ded7_d8d06df0",
+      "range": {
+        "startLine": 622,
+        "startChar": 20,
+        "endLine": 622,
+        "endChar": 44
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b417ded7_b8c8192f",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 24
@@ -82,6 +154,30 @@
       "writtenOn": "2016-01-27T12:49:56Z",
       "side": 1,
       "message": "I guess you can always emit... I find this method a bit confusing on what it does. I would either call it just for a select user, and name it SelectCanInlineCondition or something, or have a larger scope method that returns whether a condition needs materialization.",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c1566d_fd11c3a2",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "Agreed that the name might be better but not agreed that this doesn\u0027t make sense for other instructions than Selects. It\u0027s a query of whether the kind of instruction that `user` is can inline `condition`. The structure of the code follows that: if it\u0027s an If or Deopt, it always can. If it\u0027s a Select, more conditions apply...",
+      "parentUuid": "b417ded7_b8c8192f",
       "range": {
         "startLine": 130,
         "startChar": 35,
@@ -236,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "b417ded7_78092147",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c1566d_dac965ad",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bb5ef1_5888bd4b",
         "filename": "compiler/optimizing/select_generator.cc",
         "patchSetId": 24
@@ -259,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "f4c1566d_da9ba599",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "Of course I could. I initially enforced this with:\n\n  first_insn-\u003eGetNext() \u003d\u003d last_insn\n\nbut wanted to make it more tweakable, although I\u0027d need to update Run() as well to move more instructions out.\n\nThe agreement is that converting:\n\n  if (cond) {\n    x \u003d a + b;\n  } else {\n    x \u003d c + d;\n  }\n\nto:\n\n  int t1 \u003d a + b;\n  int t2 \u003d c + d;\n  x \u003d cond ? t1 : t2\n\nis worthwhile, but maybe two instructions in each branch would be too.",
+      "parentUuid": "b4bb5ef1_5888bd4b",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34b68e05_7f836bf1",
         "filename": "compiler/optimizing/select_generator.h",
         "patchSetId": 24
@@ -270,6 +414,30 @@
       "writtenOn": "2016-01-27T11:54:36Z",
       "side": 1,
       "message": "As a follow up, we should enforce this for our sanity. We already have something similar: side_effects.HasRun().",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14b18a0d_9e9d194e",
+        "filename": "compiler/optimizing/select_generator.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 1,
+      "message": "I actually plan on dealing with this another way. The suspend checks are there for baseline. When I merge GraphBuilder and SsaBuilder, they won\u0027t be needed any more.",
+      "parentUuid": "34b68e05_7f836bf1",
       "range": {
         "startLine": 37,
         "startChar": 3,

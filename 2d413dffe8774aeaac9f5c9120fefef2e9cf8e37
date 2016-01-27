@@ -22,6 +22,30 @@
       "revId": "2d413dffe8774aeaac9f5c9120fefef2e9cf8e37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_1bfd9f83",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T14:21:36Z",
+      "side": 0,
+      "message": "This was explained earlier. It comes down to moving simplification of BoolNot-\u003eIf from boolean simplifier (which does not exist any more) to instruction simplifier.\n\nThe particular test case relies on inlining a method that returns InstanceOf, forming InstanceOf-\u003eBoolNot-\u003eIf recognized by the post-inline RTP. That was possible to set up before but not any more because you cannot have Invoke-\u003eBoolNot-\u003eIf in the code just before the inliner is called.\n\nSuggestions on how to exercise this are more than welcome...",
+      "parentUuid": "94a57ac9_628078e3",
+      "range": {
+        "startLine": 289,
+        "startChar": 14,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "2d413dffe8774aeaac9f5c9120fefef2e9cf8e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
