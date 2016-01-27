@@ -22,6 +22,30 @@
       "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c4527f_bcf46dac",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T11:53:21Z",
+      "side": 1,
+      "message": "Huh? Even on non-x86 you still need to test if the user is a Select and return false if not.",
+      "parentUuid": "d49b728b_a410cc9b",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
