@@ -22,6 +22,30 @@
       "revId": "31b529acd1e3cd8b625abee9f4588bb792e02f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_98aad5a9",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T11:25:15Z",
+      "side": 1,
+      "message": "Yeah I was wondering about it myself. Since other places in this file where we inline also run rtp for every inlined invoke, i\u0027ll consider it in a follow-up.",
+      "parentUuid": "94a57ac9_a22200e0",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 55
+      },
+      "revId": "31b529acd1e3cd8b625abee9f4588bb792e02f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
