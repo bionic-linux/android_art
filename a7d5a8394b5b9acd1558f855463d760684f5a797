@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4afde8e_b50d37c7",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-01-27T18:06:03Z",
+      "side": 1,
+      "message": "Could you put a comment, as that isn\u0027t the obvious choice. I assume your reasoning is: usually a single-element list, so faster than computing hash and doing lookup?\n\n(Also, the comment needs updating for plural)",
+      "range": {
+        "startLine": 261,
+        "startChar": 8,
+        "endLine": 261,
+        "endChar": 19
+      },
+      "revId": "a7d5a8394b5b9acd1558f855463d760684f5a797",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
