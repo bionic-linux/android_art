@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "54a782d1_80dff82a",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "I think I proposed this before: how about having a GetTrue/ GetFalse in the graph? Can do in a subsequent CL.",
+      "range": {
+        "startLine": 570,
+        "startChar": 33,
+        "endLine": 570,
+        "endChar": 47
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34b68e05_9f9d174e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "What does this buy us?",
+      "range": {
+        "startLine": 600,
+        "startChar": 4,
+        "endLine": 600,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b417ded7_d8d06df0",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "Similar suggestion as above: Have, IsBooleanFalse/IsBooleanTrue.",
+      "range": {
+        "startLine": 622,
+        "startChar": 20,
+        "endLine": 622,
+        "endChar": 44
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49b728b_a410cc9b",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 24
@@ -42,6 +111,75 @@
         "startChar": 4,
         "endLine": 137,
         "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c1566d_dac965ad",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "8 spaces alignment.\nI think it will look better if you split the arguments.",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_5888bd4b",
+        "filename": "compiler/optimizing/select_generator.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "Will you ever be able to handle more than 1 instruction in a branch? If not, consider being more specific.",
+      "range": {
+        "startLine": 21,
+        "startChar": 24,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34b68e05_7f836bf1",
+        "filename": "compiler/optimizing/select_generator.h",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 1,
+      "message": "As a follow up, we should enforce this for our sanity. We already have something similar: side_effects.HasRun().",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 7
       },
       "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",

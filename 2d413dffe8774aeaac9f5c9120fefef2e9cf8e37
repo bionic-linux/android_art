@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a57ac9_628078e3",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:54:36Z",
+      "side": 0,
+      "message": "seems unrelated. Can you explain? and add an equivalent test?",
+      "range": {
+        "startLine": 289,
+        "startChar": 14,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "2d413dffe8774aeaac9f5c9120fefef2e9cf8e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
