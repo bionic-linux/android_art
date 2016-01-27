@@ -45,6 +45,30 @@
       "revId": "a7d5a8394b5b9acd1558f855463d760684f5a797",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_8056d8dc",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-27T18:11:45Z",
+      "side": 1,
+      "message": "I\u0027ve removed the exact match and use only the StartsWith() check. So, if base location matches, normal location matches as well. And for the tests, I actually want to specify \u003ctest-name\u003e:classes2.dex , so that only that particular file matches.",
+      "parentUuid": "f4b5d6da_0132292c",
+      "range": {
+        "startLine": 1478,
+        "startChar": 49,
+        "endLine": 1478,
+        "endChar": 60
+      },
+      "revId": "a7d5a8394b5b9acd1558f855463d760684f5a797",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
