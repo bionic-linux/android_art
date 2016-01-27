@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "b4bb5ef1_d8828d27",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-27T12:01:25Z",
+      "side": 1,
+      "message": "What about x86-64?",
+      "parentUuid": "d4c4527f_bcf46dac",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4c1566d_dac965ad",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 24
