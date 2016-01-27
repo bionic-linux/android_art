@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "34b68e05_3f6a83c0",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T14:26:39Z",
+      "side": 1,
+      "message": "How about CanEmitConditionAt then?",
+      "parentUuid": "f4c1566d_fd11c3a2",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49b728b_a410cc9b",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 24
