@@ -46,6 +46,30 @@
       "revId": "31b529acd1e3cd8b625abee9f4588bb792e02f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a57ac9_028f6c1a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T11:35:40Z",
+      "side": 1,
+      "message": "It brings you better type info, but since it\u0027s expensive we could avoid it.\n\nHistorical context:\n- I initially did it after each invoke because we need to fix some type assumptions. That was scrapped due to complexity and unclear benefits, but I never move the pass to the top level.",
+      "parentUuid": "b4bb5ef1_98aad5a9",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 55
+      },
+      "revId": "31b529acd1e3cd8b625abee9f4588bb792e02f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
