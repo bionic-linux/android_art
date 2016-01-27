@@ -22,6 +22,29 @@
       "revId": "a7d5a8394b5b9acd1558f855463d760684f5a797",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4b5d6da_0132292c",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-01-27T18:07:14Z",
+      "side": 1,
+      "message": "I guess you want to use GetBaseLocation here (for the multidex stuff)?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 49,
+        "endLine": 1478,
+        "endChar": 60
+      },
+      "revId": "a7d5a8394b5b9acd1558f855463d760684f5a797",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
