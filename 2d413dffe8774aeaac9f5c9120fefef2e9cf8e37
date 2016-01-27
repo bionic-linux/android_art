@@ -46,6 +46,30 @@
       "revId": "2d413dffe8774aeaac9f5c9120fefef2e9cf8e37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b417ded7_781fe14a",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 24
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-27T14:39:37Z",
+      "side": 0,
+      "message": "ack.",
+      "parentUuid": "b4bb5ef1_1bfd9f83",
+      "range": {
+        "startLine": 289,
+        "startChar": 14,
+        "endLine": 289,
+        "endChar": 39
+      },
+      "revId": "2d413dffe8774aeaac9f5c9120fefef2e9cf8e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
