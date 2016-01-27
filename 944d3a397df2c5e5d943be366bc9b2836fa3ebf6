@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "b417ded7_b8c8192f",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T12:49:56Z",
+      "side": 1,
+      "message": "I guess you can always emit... I find this method a bit confusing on what it does. I would either call it just for a select user, and name it SelectCanInlineCondition or something, or have a larger scope method that returns whether a condition needs materialization.",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 51
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49b728b_a410cc9b",
         "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
         "patchSetId": 24
@@ -130,6 +153,54 @@
       "side": 1,
       "message": "What about x86-64?",
       "parentUuid": "d4c4527f_bcf46dac",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_3bce2388",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T12:49:56Z",
+      "side": 1,
+      "message": "Oh ok, did not realize that you could return false still if it\u0027s not x86.",
+      "parentUuid": "d4c4527f_bcf46dac",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 50
+      },
+      "revId": "944d3a397df2c5e5d943be366bc9b2836fa3ebf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c4527f_bc98ed5d",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 24
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-27T12:49:56Z",
+      "side": 1,
+      "message": "We have enough registers on it, especially since a long only requires one.",
+      "parentUuid": "b4bb5ef1_d8828d27",
       "range": {
         "startLine": 137,
         "startChar": 4,
