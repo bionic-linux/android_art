@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a57ac9_a22200e0",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-27T11:21:44Z",
+      "side": 1,
+      "message": "Rather than potentially running RTP for every Invoke, could you signal to the main inliner method that it should run RTP at the end?",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 55
+      },
+      "revId": "31b529acd1e3cd8b625abee9f4588bb792e02f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
