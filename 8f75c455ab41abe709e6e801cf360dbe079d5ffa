@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54a782d1_23038e27",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-28T15:42:12Z",
+      "side": 1,
+      "message": "This looks odd. Can you at least add some comment with explanation?",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
