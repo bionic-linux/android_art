@@ -70,6 +70,30 @@
       "revId": "9ff2f3d169e4269dfa0dd7427416a3fe7f8e50c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_23426e42",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 5536,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-28T17:18:05Z",
+      "side": 1,
+      "message": "Note that this is only used if invoked from MoveLocation where we do not expect the inputs to be preserved. An actual ParallelMove will never move between core and fpu regs. But I agree that it would be better not having to give up that assumption.",
+      "parentUuid": "d4b8d2d6_d1d39f2c",
+      "range": {
+        "startLine": 5536,
+        "startChar": 6,
+        "endLine": 5536,
+        "endChar": 39
+      },
+      "revId": "9ff2f3d169e4269dfa0dd7427416a3fe7f8e50c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
