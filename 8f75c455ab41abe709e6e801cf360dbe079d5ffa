@@ -70,6 +70,30 @@
       "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4bb5ef1_de9dd57e",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-28T16:34:12Z",
+      "side": 1,
+      "message": "Not all trampoline have the same size. On arm jniDlsymLookup is 16 byte while all of the others I seen are 8 bytes.\n\nI created a separate CL (https://android-review.googlesource.com/#/c/198708/) for adding the comment as this one is already merged.",
+      "parentUuid": "54a782d1_83bee279",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
