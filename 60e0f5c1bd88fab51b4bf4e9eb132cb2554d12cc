@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b417ded7_1ba1ff61",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-28T14:50:33Z",
+      "side": 1,
+      "message": "IIUC, when `info` is not null on line 744, it means we are executing\n\n  info \u003d method-\u003eGetProfilingInfo(sizeof(void*));\n\ntwice now.  Is that intended?",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 749,
+        "endChar": 49
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
