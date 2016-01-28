@@ -22,6 +22,30 @@
       "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a57ac9_45efbea7",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1059813
+      },
+      "writtenOn": "2016-01-28T15:53:06Z",
+      "side": 1,
+      "message": "It is useful if the symbols have valid size but it isn\u0027t strictly necessary. If no size is specified then the consumer will assume it will last until the next symbol. (0 size is quite common for symbols coming from hand written assembly).\n\nIs there an easy and reliable way to calculate the sizes of these symbols? If there isn\u0027t then I can just add a comment explaining why they are fine",
+      "parentUuid": "54a782d1_23038e27",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
