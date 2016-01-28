@@ -46,6 +46,30 @@
       "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_83bee279",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-28T16:04:46Z",
+      "side": 1,
+      "message": "You could use the fact that all the trampolines should have the same size but that\u0027s not very nice or future-proof. Just add a comment that size 0 means until the next symbol. (Though the last trampoline will span the preheader of the first compiled method.)",
+      "parentUuid": "94a57ac9_45efbea7",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 46
+      },
+      "revId": "8f75c455ab41abe709e6e801cf360dbe079d5ffa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
