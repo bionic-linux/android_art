@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d49b728b_87838af0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-28T15:24:16Z",
+      "side": 1,
+      "message": "Yes, that was intended, as it made the code clearer. Note that GetProfilingInfo is just a getter.",
+      "parentUuid": "b417ded7_1ba1ff61",
+      "range": {
+        "startLine": 749,
+        "startChar": 2,
+        "endLine": 749,
+        "endChar": 49
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54a782d1_838382f0",
         "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-28T14:55:41Z",
       "side": 1,
       "message": "I\u0027m not sure to understand the purpose of this anonymous namespace, as the sole function of enclosed in it is `extern`; or am I missing something specific to JNI?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c4527f_1fe6ab01",
+        "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-28T15:24:16Z",
+      "side": 1,
+      "message": "No, that was just copy paste from another cc file. Removed.",
+      "parentUuid": "54a782d1_838382f0",
       "range": {
         "startLine": 26,
         "startChar": 0,
