@@ -22,6 +22,29 @@
       "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a782d1_838382f0",
+        "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-28T14:55:41Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand the purpose of this anonymous namespace, as the sole function of enclosed in it is `extern`; or am I missing something specific to JNI?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
