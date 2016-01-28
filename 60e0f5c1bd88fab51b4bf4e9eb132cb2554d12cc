@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f4c1566d_fdab03b0",
+        "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-28T15:56:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4c1566d_9dd3e757",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b417ded7_bb8333c1",
         "filename": "test/566-polymorphic-inlining/src/Main.java",
         "patchSetId": 8
@@ -130,6 +154,30 @@
       "writtenOn": "2016-01-28T15:26:00Z",
       "side": 1,
       "message": "You wanted to add a sleep here?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a57ac9_65676228",
+        "filename": "test/566-polymorphic-inlining/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-01-28T15:56:50Z",
+      "side": 1,
+      "message": "Leftover comment. No need for sleep as the method below will ensure things are compiled.",
+      "parentUuid": "b417ded7_bb8333c1",
       "range": {
         "startLine": 46,
         "startChar": 4,
