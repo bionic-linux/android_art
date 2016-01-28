@@ -93,6 +93,52 @@
       "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c1566d_9dd3e757",
+        "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-28T15:26:00Z",
+      "side": 1,
+      "message": "nit: you could write a helper :)",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b417ded7_bb8333c1",
+        "filename": "test/566-polymorphic-inlining/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-01-28T15:26:00Z",
+      "side": 1,
+      "message": "You wanted to add a sleep here?",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 41
+      },
+      "revId": "60e0f5c1bd88fab51b4bf4e9eb132cb2554d12cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
