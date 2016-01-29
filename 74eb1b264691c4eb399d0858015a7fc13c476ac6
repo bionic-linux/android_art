@@ -94,6 +94,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9143cc4f_ef950104",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-29T13:49:27Z",
+      "side": 1,
+      "message": "Or we could have the HCondition generate the CC, HSelect use the CC and modify the parallel move resolver to not touch the CC.\n\nWhen does the parallel move resolver touch the CC? Is it just for loading a zero with XOR?",
+      "parentUuid": "14950abd_019e2e48",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
