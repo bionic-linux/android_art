@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d162a4ed_09b169b3",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-29T14:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3134e0db_2c29d375",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "cb04cf4da5bfc69b06cee315f0f4070dd5974a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b10b7017_18b1a5b3",
         "filename": "runtime/oat_file_assistant_test.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-29T14:42:11Z",
       "side": 1,
       "message": "relative to the dex file.",
+      "range": {
+        "startLine": 513,
+        "startChar": 32,
+        "endLine": 513,
+        "endChar": 44
+      },
+      "revId": "cb04cf4da5bfc69b06cee315f0f4070dd5974a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b10b7017_d8bb2d88",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-29T14:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10b7017_18b1a5b3",
       "range": {
         "startLine": 513,
         "startChar": 32,
