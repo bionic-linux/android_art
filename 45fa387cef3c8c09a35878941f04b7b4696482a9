@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9489faaa_b3f79079",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-01-29T20:56:49Z",
+      "side": 1,
+      "message": "Okay, my RISC friends. Show me how to do this with one instruction instead of three :-)",
+      "range": {
+        "startLine": 1510,
+        "startChar": 9,
+        "endLine": 1510,
+        "endChar": 16
+      },
+      "revId": "45fa387cef3c8c09a35878941f04b7b4696482a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
