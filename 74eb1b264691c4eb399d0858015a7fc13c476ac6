@@ -214,6 +214,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b140d043_d009bc47",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-01-29T14:54:29Z",
+      "side": 1,
+      "message": "\u003e I see some subl/addl that could become lea for stack manipulation,\n \u003e the xorl for 0, a xorpd for 0.0, and xorls to do an exchange of\n \u003e registers\n\nThe exchange could be rewritten as PUSH+MOV+POP (reducing code size by 2 bytes). Would that impact performance?\n\nCould we tell the move resolver to preserve flags (and emit different code for 0 and 0.0) in certain situations?",
+      "parentUuid": "5125d4a7_8dea0194",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
