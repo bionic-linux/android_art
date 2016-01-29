@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "749006cb_72b7c0f4",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-01-29T19:15:23Z",
+      "side": 1,
+      "message": "This would give kNoDexOptNeeded because the odex file is up-to-date, not because VerifyAtRuntime contains no code. Don\u0027t you need to change the image checksum to test what you want?",
+      "range": {
+        "startLine": 834,
+        "startChar": 4,
+        "endLine": 834,
+        "endChar": 82
+      },
+      "revId": "823c9f324a0729aa83471cbf28645866b87a6a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
