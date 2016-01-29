@@ -46,6 +46,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7153b827_a664c623",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-29T12:44:45Z",
+      "side": 1,
+      "message": "Yep, I agree that this is not very efficient - the point was to get Selects in already and find a better solution later, so feel free to tweak this.\n\nThat said, we typically try to avoid platform-specific code in the HIR optimizations and assume that codegens can always generate the code they want from the HIR. Now I know that I\u0027ve already broken that by forcing input0 of the Select to be the false value, but would be a shame to spread such assumptions further.\n\nThe \"right\" way of doing this would be to investigate how the register allocator could spill the true value (input1) of the Select. What happens in the highlighted case here is that the Select has effectively 4 inputs - val_false, val_true, cond_lhs, cond_rhs. We set out\u003dval_false\u003dneeds_reg_pair, cond_lhs\u003dneeds_reg_pair, cond_rhs\u003dneeds_reg_pair. If we could set val_true\u003dneeds_double_stack, then we\u0027d have no problem at all.",
+      "parentUuid": "d468d2a0_ff18f705",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
