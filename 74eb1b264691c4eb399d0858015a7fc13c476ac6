@@ -70,6 +70,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14950abd_019e2e48",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-29T13:14:00Z",
+      "side": 1,
+      "message": "I disagree.  Even if we allowed an input to be forced to the  stack, the x86 long compare would still need to materialize -1/0/1, which will then be compared to 0 to set the CC in order to implement the select.  This is VERY inefficient.  The same applies if the compare was FP.\n\nWhat I would really prefer is a virtual function in CodeGenerator called ShouldGenerateSelect, which is passed in all 4 inputs (or just the types of the compare and moves), and returns a boolean.  That allows the code generator to proactively decide before getting into trouble later.  Last time I suggested something like that, it was shot down.",
+      "parentUuid": "7153b827_a664c623",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
