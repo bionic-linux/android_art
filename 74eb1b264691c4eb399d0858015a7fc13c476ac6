@@ -118,6 +118,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_082f4762",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-29T13:54:42Z",
+      "side": 1,
+      "message": "I see some subl/addl that could become lea for stack manipulation, the xorl for 0, a xorpd for 0.0, and xorls to do an exchange of registers",
+      "parentUuid": "9143cc4f_ef950104",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
