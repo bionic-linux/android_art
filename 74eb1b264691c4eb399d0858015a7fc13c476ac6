@@ -166,6 +166,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b486fe94_262fc262",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-29T14:02:39Z",
+      "side": 1,
+      "message": "I can live with fixing it in an x86 specific pass.  It does seem like a bit of a waste to run a pass just for this one fixup, but I can do it.  There may be other examples later.  I can then remove this code and replace it with a DCHECK in VisitSelect for x86.",
+      "parentUuid": "712ad87b_2ec54717",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
