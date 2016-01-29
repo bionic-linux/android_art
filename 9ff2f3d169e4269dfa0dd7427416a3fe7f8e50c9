@@ -94,6 +94,30 @@
       "revId": "9ff2f3d169e4269dfa0dd7427416a3fe7f8e50c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5125d4a7_0dca9125",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 30
+      },
+      "lineNbr": 5536,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-01-29T15:44:50Z",
+      "side": 1,
+      "message": "I think we should leave a comment anyway, as I think this is the first time we are breaking this assumption.",
+      "parentUuid": "54a782d1_23426e42",
+      "range": {
+        "startLine": 5536,
+        "startChar": 6,
+        "endLine": 5536,
+        "endChar": 39
+      },
+      "revId": "9ff2f3d169e4269dfa0dd7427416a3fe7f8e50c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
