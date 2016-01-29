@@ -238,6 +238,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "548b02a3_91b44cf0",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-29T15:05:11Z",
+      "side": 1,
+      "message": "The push/mov/pop will probably affect performance, as it is going to memory.  I am willing to leave parallel move as it is and rewrite the HSelect for the x86 only in the long case.  I have to think about FP compares as well",
+      "parentUuid": "b140d043_d009bc47",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
