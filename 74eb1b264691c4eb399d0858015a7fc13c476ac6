@@ -22,6 +22,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d468d2a0_ff18f705",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-01-29T11:55:45Z",
+      "side": 1,
+      "message": "Okay, you will generate a single CC by comparing the materialized compare result with 0, but it is still slow, and undoes the work to merge the long compare with the HIf",
+      "parentUuid": "349a0eef_a5f2e400",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
