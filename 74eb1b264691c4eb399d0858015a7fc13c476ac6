@@ -142,6 +142,30 @@
       "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "712ad87b_2ec54717",
+        "filename": "compiler/optimizing/prepare_for_register_allocation.cc",
+        "patchSetId": 32
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-01-29T13:59:03Z",
+      "side": 1,
+      "message": "Vladimir: I think Mark is trying to say that that doesn\u0027t work for long compares + CMOV.\n\nMark: \nI\u0027m not saying that you need to generate a CMOV for every Select. The codegen should be able to generate the most efficient code for any HIR Select it is given. It can decide whether to emit a CMOV or fall back to the if-then-else implementation. The fallback should be equivalent to not generating the Select in the first place, only here we are having trouble with the register allocator policies.\n\nWe would like to avoid adding the CodeGenerator::ShouldGenerateSelect as a means of preventing SelectGenerator from removing the if-then-else pattern. It would make the compiler high-level optimizations behave differently on different platforms and make testing/debugging much more difficult. We might also miss out on optimization opportunities.\n\nI\u0027d suggest a workaround. Run an x86-specific pass at the end of the pipeline that will regenerate the if-then-else pattern for this case.",
+      "parentUuid": "9143cc4f_ef950104",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 3
+      },
+      "revId": "74eb1b264691c4eb399d0858015a7fc13c476ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
