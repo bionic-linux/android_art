@@ -22,6 +22,30 @@
       "revId": "ce4b0ba4d762775a86b3529ac76cb89199c0cc1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d162a4ed_6c3c730e",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-02-01T16:34:16Z",
+      "side": 1,
+      "message": "Certainly seems so, doesn\u0027t it. This is how oatdump does it, but I guess it just doesn\u0027t care.. Fix: go/aog/199863",
+      "parentUuid": "9462dabe_26d34888",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 475,
+        "endChar": 9
+      },
+      "revId": "ce4b0ba4d762775a86b3529ac76cb89199c0cc1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
