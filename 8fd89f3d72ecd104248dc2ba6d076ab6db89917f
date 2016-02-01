@@ -22,6 +22,30 @@
       "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7153b827_09df2dfd",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-01T15:04:46Z",
+      "side": 1,
+      "message": "The online documentation for 4.2.0 does not list the builtin, it seems to be available only since 4.3.0. Why 4.3.3? I\u0027d guess that was the first 4.3.x version used by Android.",
+      "parentUuid": "9143cc4f_320dae86",
+      "range": {
+        "startLine": 392,
+        "startChar": 59,
+        "endLine": 392,
+        "endChar": 71
+      },
+      "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
