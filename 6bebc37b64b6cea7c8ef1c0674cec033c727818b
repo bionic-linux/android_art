@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d139c4d1_741326ac",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-02-01T15:27:30Z",
+      "side": 1,
+      "message": "I don\u0027t want to scan deeper than OatClass, so I\u0027ll pass on this one.",
+      "parentUuid": "517cf4a3_1544f431",
+      "range": {
+        "startLine": 467,
+        "startChar": 58,
+        "endLine": 468,
+        "endChar": 45
+      },
+      "revId": "6bebc37b64b6cea7c8ef1c0674cec033c727818b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "317b00b0_94ed64b0",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-01T14:23:06Z",
       "side": 1,
       "message": "Please add a comment.",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 507,
+        "endChar": 16
+      },
+      "revId": "6bebc37b64b6cea7c8ef1c0674cec033c727818b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d162a4ed_2979cd0b",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-02-01T15:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "317b00b0_94ed64b0",
       "range": {
         "startLine": 507,
         "startChar": 0,
