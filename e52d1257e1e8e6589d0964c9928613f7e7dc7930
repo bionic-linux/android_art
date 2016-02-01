@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7125789f_967fcc3b",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-02-01T10:57:50Z",
+      "side": 1,
+      "message": "I couldn\u0027t find anything in two instructions. Here are a couple other possibilities.\n\nUsing only one \u0027conditional\u0027 instruction (same as suggested before, but here we don\u0027t have integer overflows annoying us):\n\n    __ Cmp(op1_reg, 0);\n    __ Asr(out_reg, out_reg, 31);\n    __ Cinc(out_reg, out_reg, gt);\n\nOr using only arithmetic operations (we would need to not specify kNoOutputOverlap for this one):\n\n    __ Neg(out_reg, op1_reg);\n    __ Lsr(out_reg, out_reg, 31);\n    __ Orr(out_reg, out_reg, Operand(op1_reg, ASR, 31));\n\nI benchmarked the three routines on A53 and A57 in a tight loop, and they time exactly the same. I would have a preference for the `Cinc`, but sticking to yours is good as it mirrors the `compare()` code.",
+      "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51207491_385d85fc",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-02-01T10:57:50Z",
+      "side": 1,
+      "message": "__ Cmp(op1_reg, 0);\n\nand get rid of `op2_reg`.",
+      "range": {
+        "startLine": 1510,
+        "startChar": 18,
+        "endLine": 1510,
+        "endChar": 25
+      },
+      "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
