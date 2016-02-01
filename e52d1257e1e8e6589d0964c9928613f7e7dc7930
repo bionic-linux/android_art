@@ -39,6 +39,24 @@
       "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b140d043_3015a8cd",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-01T13:38:22Z",
+      "side": 1,
+      "message": "Let\u0027s keep the CMP+CSET/GT+CINV/LT here.\n\nFor Thumb2 int, maybe\n\n    CMP in, #1             // 16-bit if op1 is low reg.\n    ASR out, in, #31       // 32-bit, don\u0027t want to set flags (kCcKeep).\n    ADC(S?) out, out, out  // 16-bit if out is low reg (kCcDontCare).\n\nwith kNoOutputOverlap or\n\n    ASR(S?) out, in, #31   // 16-bit if both are low regs.\n    CMP in, #1             // 16-bit if op1 is low reg.\n    ADC(S?) out, out, out  // 16-bit if out is low reg.\n\nwith kOutputOverlap. (Or we could specify kNoOutputOverlap and select from the above depending on the registers we actually get.)",
+      "parentUuid": "7125789f_967fcc3b",
+      "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
