@@ -57,6 +57,30 @@
       "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "749006cb_a5901d00",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-01T18:29:43Z",
+      "side": 1,
+      "message": "Ah, did not know that would work too. Changed.\nThanks.",
+      "parentUuid": "51207491_385d85fc",
+      "range": {
+        "startLine": 1510,
+        "startChar": 18,
+        "endLine": 1510,
+        "endChar": 25
+      },
+      "revId": "e52d1257e1e8e6589d0964c9928613f7e7dc7930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
