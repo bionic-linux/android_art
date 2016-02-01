@@ -70,6 +70,30 @@
       "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7153b827_89031d26",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-01T15:17:27Z",
+      "side": 1,
+      "message": "I just explored GCC\u0027s Git tree: the builtin was indeed added in GCC 4.3.0.  I\u0027ll update the preprocessor condition and the documentation.",
+      "parentUuid": "517cf4a3_558cacb3",
+      "range": {
+        "startLine": 392,
+        "startChar": 59,
+        "endLine": 392,
+        "endChar": 71
+      },
+      "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
