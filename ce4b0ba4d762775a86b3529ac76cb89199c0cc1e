@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9462dabe_26d34888",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-01T16:02:03Z",
+      "side": 1,
+      "message": "Isn\u0027t this leaking a DexFile object?",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 475,
+        "endChar": 9
+      },
+      "revId": "ce4b0ba4d762775a86b3529ac76cb89199c0cc1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
