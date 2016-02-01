@@ -22,6 +22,30 @@
       "revId": "45fa387cef3c8c09a35878941f04b7b4696482a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1146435_392a2f23",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-02-01T09:03:39Z",
+      "side": 1,
+      "message": "A welcome bit of fun for a Monday morning! I\u0027m afraid I won\u0027t reach the one instruction target, but let\u0027s see what can be done!",
+      "parentUuid": "9489faaa_b3f79079",
+      "range": {
+        "startLine": 1510,
+        "startChar": 9,
+        "endLine": 1510,
+        "endChar": 16
+      },
+      "revId": "45fa387cef3c8c09a35878941f04b7b4696482a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
