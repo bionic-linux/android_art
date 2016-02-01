@@ -22,6 +22,30 @@
       "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1116843_dda8bf98",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-02-01T15:27:24Z",
+      "side": 1,
+      "message": "No, we are not. Refer to art::CheckTypeConsistency() (compiler/optimizing/code_generator.cc:99).",
+      "parentUuid": "712ad87b_ce86c340",
+      "range": {
+        "startLine": 1595,
+        "startChar": 74,
+        "endLine": 1597,
+        "endChar": 24
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
