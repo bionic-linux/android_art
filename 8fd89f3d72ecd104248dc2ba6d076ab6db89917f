@@ -46,6 +46,30 @@
       "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "517cf4a3_558cacb3",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-01T15:08:50Z",
+      "side": 1,
+      "message": "`__builtin___clear_cache` seems to have been introduced in GCC 4.3:\n- https://gcc.gnu.org/gcc-4.3/changes.html\n- https://ghc.haskell.org/trac/ghc/ticket/8562",
+      "parentUuid": "9143cc4f_320dae86",
+      "range": {
+        "startLine": 392,
+        "startChar": 59,
+        "endLine": 392,
+        "endChar": 71
+      },
+      "revId": "8fd89f3d72ecd104248dc2ba6d076ab6db89917f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
