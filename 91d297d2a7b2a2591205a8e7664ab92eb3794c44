@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "712ad87b_ce86c340",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-01T14:58:49Z",
+      "side": 1,
+      "message": "Does it fail if we specify r0/r1 as input and output locations? Are we allowed to specify core regs for FP values?",
+      "range": {
+        "startLine": 1595,
+        "startChar": 74,
+        "endLine": 1597,
+        "endChar": 24
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
