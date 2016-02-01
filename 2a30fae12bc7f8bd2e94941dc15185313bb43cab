@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9489faaa_34e7e641",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-01T20:04:27Z",
+      "side": 1,
+      "message": "I recently introduced the Load32BitValue() for this, so we don\u0027t have to repeat this logic every time (and we can later also improve moving other immediate values in shorter ways).",
+      "range": {
+        "startLine": 1142,
+        "startChar": 23,
+        "endLine": 1142,
+        "endChar": 24
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d468d2a0_56062569",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-01T20:04:27Z",
+      "side": 1,
+      "message": "introduce a similar method for FP?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 19,
+        "endLine": 1164,
+        "endChar": 23
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5422228b_f472c676",
+        "filename": "test/566-checker-codegen-select/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-01T20:04:27Z",
+      "side": 1,
+      "message": "period at end",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "749006cb_4538390f",
+        "filename": "test/566-checker-codegen-select/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-01T20:04:27Z",
+      "side": 1,
+      "message": "period at end",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
