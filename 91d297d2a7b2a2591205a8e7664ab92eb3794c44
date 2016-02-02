@@ -93,6 +93,30 @@
       "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51687402_358e701d",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-02-02T14:46:25Z",
+      "side": 1,
+      "message": "This is still profitable even if the graph is debuggable. However, if the graph is not debuggable, then the input and output constraints can be relaxed to Location::RequiresFpuRegister(). In any case, Vladimir\u0027s suggestion is even better because it avoids this issue and provides a further optimization for code such as Math.cos(Math.sin( ... )) at the same time.",
+      "parentUuid": "f1b5e8da_3aef61dd",
+      "range": {
+        "startLine": 1597,
+        "startChar": 25,
+        "endLine": 1597,
+        "endChar": 91
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
