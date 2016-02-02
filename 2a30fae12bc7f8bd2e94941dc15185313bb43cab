@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "d139c4d1_549142c8",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-02-02T10:15:29Z",
+      "side": 1,
+      "message": "Why not? Isn\u0027t\n\n  CMP \u003cbool val\u003e, #0\n  CMOV\n\nstill better than doing the same with jumps? You\u0027re also depriving yourself of being able to use EFLAGS set by a materialized condition just before the Select (just like on line 1541 in this file).",
+      "range": {
+        "startLine": 1643,
+        "startChar": 0,
+        "endLine": 1643,
+        "endChar": 70
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5422228b_f472c676",
         "filename": "test/566-checker-codegen-select/src/Main.java",
         "patchSetId": 1
