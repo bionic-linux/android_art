@@ -70,6 +70,29 @@
       "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b5e8da_3aef61dd",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-02T14:36:05Z",
+      "side": 1,
+      "message": "Just don\u0027t do the intrinsic if the graph is debuggable...",
+      "range": {
+        "startLine": 1597,
+        "startChar": 25,
+        "endLine": 1597,
+        "endChar": 91
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
