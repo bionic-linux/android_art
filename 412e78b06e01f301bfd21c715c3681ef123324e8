@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9124acf4_ca05c39b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4030,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-02T19:25:00Z",
+      "side": 1,
+      "message": "That\u0027s yucky. Mind adding a DCHECK for the name, maybe?",
+      "range": {
+        "startLine": 4029,
+        "startChar": 2,
+        "endLine": 4030,
+        "endChar": 30
+      },
+      "revId": "412e78b06e01f301bfd21c715c3681ef123324e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
