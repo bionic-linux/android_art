@@ -117,6 +117,30 @@
       "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "314ea0ac_fc8b4904",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1072549
+      },
+      "writtenOn": "2016-02-02T14:59:57Z",
+      "side": 1,
+      "message": "@Nicolas\n\n1) if the graph is !debuggable we can have:\ncodegen() {\n vmovrrd(r0, r1, AnyFPReg())\n blx \n vmovrrd(AnyFPReg(), r0, r1))\n}\n\n2) if the graph is debuggable we can only have:\ncodegen() {\n vmovrrd(r0, r1, FixedFPReg())\n blx \n vmovrrd(FixedFPReg(), r0, r1))\n}\n\nHowever, none of them are ideal since we would still not generate the best code for something like (extra useless moves between FP-GP regs):\n\nsin(cos(sin(cos(#value))));\n\n(But this would be handled by what Vladimir suggested).\n\nI suggest for now we proceed with the 2nd variant that works fine for both debuggagle and non debuggable graphs, and we work on fixing this properly.",
+      "parentUuid": "51687402_358e701d",
+      "range": {
+        "startLine": 1597,
+        "startChar": 25,
+        "endLine": 1597,
+        "endChar": 91
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
