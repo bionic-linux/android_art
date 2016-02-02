@@ -141,6 +141,30 @@
       "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11e51cf3_bb036757",
+        "filename": "compiler/optimizing/intrinsics_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-02T15:16:33Z",
+      "side": 1,
+      "message": "No, don\u0027t sweat it. debuggable is a rare case you should not worry about.",
+      "parentUuid": "314ea0ac_fc8b4904",
+      "range": {
+        "startLine": 1597,
+        "startChar": 25,
+        "endLine": 1597,
+        "endChar": 91
+      },
+      "revId": "91d297d2a7b2a2591205a8e7664ab92eb3794c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
