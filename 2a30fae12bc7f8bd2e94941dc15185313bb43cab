@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b486fe94_876c054c",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-02T01:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9489faaa_34e7e641",
+      "range": {
+        "startLine": 1142,
+        "startChar": 23,
+        "endLine": 1142,
+        "endChar": 24
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d468d2a0_56062569",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-01T20:04:27Z",
       "side": 1,
       "message": "introduce a similar method for FP?",
+      "range": {
+        "startLine": 1164,
+        "startChar": 19,
+        "endLine": 1164,
+        "endChar": 23
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "548b02a3_55e547c6",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-02T01:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d468d2a0_56062569",
       "range": {
         "startLine": 1164,
         "startChar": 19,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f465d6c4_50ad49a7",
+        "filename": "test/566-checker-codegen-select/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-02T01:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5422228b_f472c676",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "749006cb_4538390f",
         "filename": "test/566-checker-codegen-select/src/Main.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-01T20:04:27Z",
       "side": 1,
       "message": "period at end",
+      "range": {
+        "startLine": 62,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "2a30fae12bc7f8bd2e94941dc15185313bb43cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d468d2a0_2c479efe",
+        "filename": "test/566-checker-codegen-select/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-02T01:22:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "749006cb_4538390f",
       "range": {
         "startLine": 62,
         "startChar": 11,
