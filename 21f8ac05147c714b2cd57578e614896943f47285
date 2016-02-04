@@ -353,6 +353,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31fce07c_c7365dda",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-02-04T19:54:16Z",
+      "side": 1,
+      "message": "Unless you are running with relocation disabled patchoat should always be run. You can run it manually and as long as the names are correct it will use your patched version. Honestly an easier solution would be to just force --no-relocate and take the /system ones.",
+      "parentUuid": "3115c084_ae2a184d",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
