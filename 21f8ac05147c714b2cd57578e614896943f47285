@@ -401,6 +401,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c3005d_71f3af8d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-02-04T23:31:26Z",
+      "side": 1,
+      "message": "Nicolas, does that sound reasonable? I can have the next patch set calling patchoat directly as you requested originally.",
+      "parentUuid": "3115c084_619b11e8",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
