@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1c4647f_39a06f5e",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-04T19:12:36Z",
+      "side": 1,
+      "message": "It\u0027s getting yuckier. Maybe we should refactor the native-bridge-interface stuff at some point...",
+      "range": {
+        "startLine": 777,
+        "startChar": 2,
+        "endLine": 789,
+        "endChar": 32
+      },
+      "revId": "d3e7c6c76f564b58e66010c30b62bb56ef046f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
