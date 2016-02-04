@@ -329,6 +329,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3115c084_ae2a184d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-02-04T19:49:50Z",
+      "side": 1,
+      "message": "Alex, can you jump in here with some thoughts on the conditions on which I can run patchoat directly to force a relocation?\n\nI can take a stab at replicating patchoat logic in this script but I\u0027m worried I don\u0027t thoroughly understand the complexity of the patchoat decision table.\n-------\nNicolas,\n\nWhat if we added a proper flag to dalvikvm to only relocate and then halt execution? Then we wouldn\u0027t have to rely on a funky error being thrown which I agree 100% is brittle.",
+      "parentUuid": "5644e287_1ecb8d77",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
