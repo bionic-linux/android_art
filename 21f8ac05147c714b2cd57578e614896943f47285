@@ -449,6 +449,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f16b2868_0a653b1e",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-02-05T18:14:49Z",
+      "side": 1,
+      "message": "dalvikvm has a better knowledge of the right arguments to pass to patchoat (see Alex\u0027s comments).\n\n-Xnorelocate seems undesirable since then we wouldn\u0027t be able to use this to debug any relocation-related issues.\n\nI can put up a PS that invokes patchoat on the device from the script, and we can go from there?",
+      "parentUuid": "11f8bcd1_03cc2e8b",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
