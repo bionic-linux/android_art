@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f16b2868_aa618fb7",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T19:09:36Z",
+      "side": 1,
+      "message": "We do have other static state like this. As long as it\u0027s not something that needs destructors, I think it\u0027s fine.",
+      "parentUuid": "d137046a_61ac16ac",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7176584c_0ecf8b83",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "515a34de_a5abfeac",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T19:09:36Z",
+      "side": 1,
+      "message": "No. This is best effort, in a sense. If you prefer, I\u0027ll use an atomic (I think a lock is overkill).",
+      "parentUuid": "7176584c_0ecf8b83",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 26
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "918f4c7c_afa679cc",
         "filename": "runtime/verifier/method_verifier.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-02-05T08:54:10Z",
       "side": 1,
       "message": "I think this is confusing (not blaming you, as it looks like it\u0027s always been the terminology?). What\u0027s the difference between kind and types? Would \"failure level\" and \"failure kind\" be more appropriate? \"types\" is somehow overloaded, especially in a verifier setup...",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 23
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "715f38cc_e6333ee5",
+        "filename": "runtime/verifier/method_verifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T19:09:36Z",
+      "side": 1,
+      "message": "I\u0027m worried of renaming things now, as this will make it a non-local change, impacting class-linker, compiler, and tests. Let me file a cleanup bug and do this in a follow-up?",
+      "parentUuid": "918f4c7c_afa679cc",
       "range": {
         "startLine": 348,
         "startChar": 0,
