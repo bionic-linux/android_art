@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5174f47a_75624818",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T23:52:50Z",
+      "side": 1,
+      "message": "I wanted to put in some static_asserts to ensure here that the levels do have the right ordinal order...",
+      "parentUuid": "f165e8c4_3a7fe1b6",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d16e247a_2ffe0d80",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9162ecbe_b7a6a87e",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T23:52:50Z",
+      "side": 1,
+      "message": "This is old code...",
+      "parentUuid": "d16e247a_2ffe0d80",
+      "range": {
+        "startLine": 243,
+        "startChar": 9,
+        "endLine": 243,
+        "endChar": 21
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11951cbd_fb23afe4",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
@@ -106,6 +154,30 @@
       "writtenOn": "2016-02-05T23:14:40Z",
       "side": 1,
       "message": "DISGUSTING",
+      "range": {
+        "startLine": 327,
+        "startChar": 8,
+        "endLine": 327,
+        "endChar": 29
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f165e8c4_5a073533",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-05T23:52:50Z",
+      "side": 1,
+      "message": "Be more specific, with actionable feedback, please...",
+      "parentUuid": "11951cbd_fb23afe4",
       "range": {
         "startLine": 327,
         "startChar": 8,
