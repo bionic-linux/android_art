@@ -49,6 +49,75 @@
     },
     {
       "key": {
+        "uuid": "f165e8c4_3a7fe1b6",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-02-05T23:14:40Z",
+      "side": 1,
+      "message": "Does std::max not work?",
+      "range": {
+        "startLine": 179,
+        "startChar": 9,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d16e247a_2ffe0d80",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-02-05T23:14:40Z",
+      "side": 1,
+      "message": "Why do you hate StringPrintf",
+      "range": {
+        "startLine": 243,
+        "startChar": 9,
+        "endLine": 243,
+        "endChar": 21
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11951cbd_fb23afe4",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-02-05T23:14:40Z",
+      "side": 1,
+      "message": "DISGUSTING",
+      "range": {
+        "startLine": 327,
+        "startChar": 8,
+        "endLine": 327,
+        "endChar": 29
+      },
+      "revId": "a1efc66fee292e425c40ddd7f1423cbd6fab54e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7176584c_0ecf8b83",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
