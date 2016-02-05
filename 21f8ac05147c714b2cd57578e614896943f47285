@@ -425,6 +425,30 @@
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11f8bcd1_03cc2e8b",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-05T09:30:18Z",
+      "side": 1,
+      "message": "You\u0027re suggesting a dex2oat --relocate-only? How is that different than invoking patchoat on device?\n\nAlso, remind me why -Xnorelocate is not good enough for this situation?",
+      "parentUuid": "31c3005d_71f3af8d",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
