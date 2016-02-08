@@ -71,6 +71,75 @@
     },
     {
       "key": {
+        "uuid": "1d4e1083_c5c45a0b",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:15:36Z",
+      "side": 1,
+      "message": "you are using this field as a \"global variable\u0027 so that you don\u0027t have to pass this information around, something i tried to avoid in the original implementation, as it gets to cloud rather quickly.",
+      "range": {
+        "startLine": 278,
+        "startChar": 12,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd471866_e319929d",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:15:36Z",
+      "side": 1,
+      "message": "you added an enormous amount of code to this method that only serves a few corner cases on type conversions, which make it now very hard to read; at least put this in self-contained methods",
+      "range": {
+        "startLine": 640,
+        "startChar": 25,
+        "endLine": 640,
+        "endChar": 35
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d983433_3e19c9bd",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:15:36Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 655,
+        "startChar": 31,
+        "endLine": 655,
+        "endChar": 35
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d8760d1_61e576f5",
         "filename": "compiler/optimizing/induction_var_analysis.h",
         "patchSetId": 1
