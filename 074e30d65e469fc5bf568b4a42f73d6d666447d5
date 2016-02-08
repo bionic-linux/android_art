@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d91680c_1fb883ed",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:06:15Z",
+      "side": 1,
+      "message": "you are doing part of this TODO",
+      "range": {
+        "startLine": 207,
+        "startChar": 30,
+        "endLine": 207,
+        "endChar": 40
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d53d428_e6463e9a",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:06:15Z",
+      "side": 1,
+      "message": "by doing this you are violating the invariant that induction nodes always have the same type as their context",
+      "range": {
+        "startLine": 213,
+        "startChar": 13,
+        "endLine": 213,
+        "endChar": 23
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8e2cf1_4042ae88",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:06:15Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 268,
+        "startChar": 24,
+        "endLine": 268,
+        "endChar": 28
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d8760d1_61e576f5",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:06:15Z",
+      "side": 1,
+      "message": "why is this not part of the constructor, like all the others?",
+      "range": {
+        "startLine": 132,
+        "startChar": 22,
+        "endLine": 132,
+        "endChar": 33
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8e2cf1_600c928f",
+        "filename": "compiler/optimizing/induction_var_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-08T19:06:15Z",
+      "side": 1,
+      "message": "I would really prefer a solution that is more general and would include int/long as well",
+      "range": {
+        "startLine": 222,
+        "startChar": 44,
+        "endLine": 222,
+        "endChar": 47
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
