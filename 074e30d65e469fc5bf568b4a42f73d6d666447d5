@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5d91680c_3f19c7bd",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-08T19:29:35Z",
+      "side": 1,
+      "message": "I didn\u0027t know about that assumption.  What is a better way to handle this?",
+      "parentUuid": "3d53d428_e6463e9a",
+      "range": {
+        "startLine": 213,
+        "startChar": 13,
+        "endLine": 213,
+        "endChar": 23
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d8e2cf1_4042ae88",
         "filename": "compiler/optimizing/induction_var_analysis.cc",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2016-02-08T19:15:36Z",
       "side": 1,
       "message": "you added an enormous amount of code to this method that only serves a few corner cases on type conversions, which make it now very hard to read; at least put this in self-contained methods",
+      "range": {
+        "startLine": 640,
+        "startChar": 25,
+        "endLine": 640,
+        "endChar": 35
+      },
+      "revId": "074e30d65e469fc5bf568b4a42f73d6d666447d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d8760d1_a1aa9e47",
+        "filename": "compiler/optimizing/induction_var_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-02-08T19:29:35Z",
+      "side": 1,
+      "message": "While the checks are needed, I don\u0027t like using the type_conv_ data member, as it affects the whole method, which is bogus.  This code is just here to demonstrate the checking, but I am looking for guidance on how to do a better job.  Where could this code code that would be IV dependent, and not method dependent?",
+      "parentUuid": "dd471866_e319929d",
       "range": {
         "startLine": 640,
         "startChar": 25,
