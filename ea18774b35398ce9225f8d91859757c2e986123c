@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7d09ccae_28a6eb1c",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T23:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d1200d7_695ce554",
+      "range": {
+        "startLine": 505,
+        "startChar": 10,
+        "endLine": 505,
+        "endChar": 15
+      },
+      "revId": "ea18774b35398ce9225f8d91859757c2e986123c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d09ccae_c8106fa5",
         "filename": "compiler/optimizing/bounds_check_elimination.cc",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2016-02-10T22:49:45Z",
       "side": 1,
       "message": "This comment is true only if the above if condition is false?",
+      "revId": "ea18774b35398ce9225f8d91859757c2e986123c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9de920fd_94bbaaa2",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T23:48:18Z",
+      "side": 1,
+      "message": "Yes, good point. I had an else at some point, but now it makes no more sense. Reverted to original.",
+      "parentUuid": "7d09ccae_c8106fa5",
       "revId": "ea18774b35398ce9225f8d91859757c2e986123c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
