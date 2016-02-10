@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bdc1846e_209eeeda",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T18:22:20Z",
+      "side": 1,
+      "message": "I followed the style of this file, but added here and where else it applies.",
+      "parentUuid": "9d9da072_d14c841b",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 60
+      },
+      "revId": "d8cca802b80b59c057571a352c6580074696c769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde93cd0_9c730528",
         "filename": "compiler/optimizing/bounds_check_elimination.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-10T16:20:00Z",
       "side": 1,
       "message": "Why do you need this? What about\n\n    int foo(int[][] array) {\n        int[] a \u003d array[off1];\n        int result \u003d a[off2]+a[off2+1]+a[off2+2]+a[off2+3];\n        return result;\n    }",
+      "range": {
+        "startLine": 867,
+        "startChar": 10,
+        "endLine": 867,
+        "endChar": 64
+      },
+      "revId": "d8cca802b80b59c057571a352c6580074696c769",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdce9ca2_e8d57b63",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T18:22:20Z",
+      "side": 1,
+      "message": "I am not sure I understand your example, but I don\u0027t need this. I was overly concerned about matching array references, since the current approach is detached (collect them, but then rely on range propagation to eliminate them).\n\nI actually have a new approach that simply removes bound checks on the ones collected, so we don\u0027t need to worry about that (and it is even less code changed compared to current file).\n\nStay tuned...",
+      "parentUuid": "fde93cd0_9c730528",
       "range": {
         "startLine": 867,
         "startChar": 10,
