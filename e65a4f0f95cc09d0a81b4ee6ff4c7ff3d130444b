@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5df328ea_cf287d20",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T23:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dbb8cf2_e7012c9e",
+      "revId": "e65a4f0f95cc09d0a81b4ee6ff4c7ff3d130444b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb5bcf8_4b97d16e",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-02-10T22:49:45Z",
       "side": 1,
       "message": "Ditto.",
+      "revId": "e65a4f0f95cc09d0a81b4ee6ff4c7ff3d130444b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fde3fc1c_2f56e532",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-02-10T23:48:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb5bcf8_4b97d16e",
       "revId": "e65a4f0f95cc09d0a81b4ee6ff4c7ff3d130444b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
