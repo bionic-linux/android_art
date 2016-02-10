@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d1200d7_695ce554",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2016-02-10T22:49:45Z",
+      "side": 1,
+      "message": "\"large/small\" due to the added min?",
+      "range": {
+        "startLine": 505,
+        "startChar": 10,
+        "endLine": 505,
+        "endChar": 15
+      },
+      "revId": "ea18774b35398ce9225f8d91859757c2e986123c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d09ccae_c8106fa5",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2016-02-10T22:49:45Z",
+      "side": 1,
+      "message": "This comment is true only if the above if condition is false?",
+      "revId": "ea18774b35398ce9225f8d91859757c2e986123c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
