@@ -22,6 +22,30 @@
       "revId": "86503785cd6414b8692e5c83cadaa2972b6a099b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dde478f9_61ef72d6",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-11T19:49:13Z",
+      "side": 1,
+      "message": "There are a few other operator\u003c\u003c()s in nodes.h that could be auto-generated but we\u0027d also have to ensure that the script doesn\u0027t pick up those that cannot. If someone wants to clean that up, I\u0027ll be happy to review the change.",
+      "parentUuid": "bde6e426_8cacbbff",
+      "range": {
+        "startLine": 2390,
+        "startChar": 14,
+        "endLine": 2390,
+        "endChar": 22
+      },
+      "revId": "86503785cd6414b8692e5c83cadaa2972b6a099b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
