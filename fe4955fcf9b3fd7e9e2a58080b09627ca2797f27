@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7daf0c90_be58c160",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-11T12:49:46Z",
+      "side": 1,
+      "message": "Which operation requires this? You\u0027re doing bitcasts so I assumed you wouldn\u0027t need it.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "fe4955fcf9b3fd7e9e2a58080b09627ca2797f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9da072_d44c721b",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2759,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-11T12:49:46Z",
+      "side": 1,
+      "message": "Make this consistent?",
+      "range": {
+        "startLine": 2749,
+        "startChar": 0,
+        "endLine": 2759,
+        "endChar": 3
+      },
+      "revId": "fe4955fcf9b3fd7e9e2a58080b09627ca2797f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fde93cd0_1f6287e6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2839,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-11T12:49:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2828,
+        "startChar": 0,
+        "endLine": 2839,
+        "endChar": 3
+      },
+      "revId": "fe4955fcf9b3fd7e9e2a58080b09627ca2797f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dde478f9_dece61d1",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4237,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-11T12:49:46Z",
+      "side": 1,
+      "message": "one per line",
+      "range": {
+        "startLine": 4236,
+        "startChar": 8,
+        "endLine": 4237,
+        "endChar": 34
+      },
+      "revId": "fe4955fcf9b3fd7e9e2a58080b09627ca2797f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
