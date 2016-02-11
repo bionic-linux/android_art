@@ -69,6 +69,30 @@
       "revId": "f2372e0ec3e8d896b2c0dc6ba030737f917994d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb504dc_dd11ffe2",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-11T16:06:54Z",
+      "side": 1,
+      "message": "I think the GVN should remove any HArrayLength if there is an identical one in a dominator and BCE is running after GVN.",
+      "parentUuid": "bd0fc4b0_de6ca50b",
+      "range": {
+        "startLine": 1194,
+        "startChar": 37,
+        "endLine": 1194,
+        "endChar": 71
+      },
+      "revId": "f2372e0ec3e8d896b2c0dc6ba030737f917994d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
