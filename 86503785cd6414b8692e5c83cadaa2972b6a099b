@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bde6e426_8cacbbff",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-02-11T19:24:48Z",
+      "side": 1,
+      "message": "This could be auto-generated if you add nodes.h to LIBART_COMPILER_ENUM_OPERATOR_OUT_HEADER_FILES?",
+      "range": {
+        "startLine": 2390,
+        "startChar": 14,
+        "endLine": 2390,
+        "endChar": 22
+      },
+      "revId": "86503785cd6414b8692e5c83cadaa2972b6a099b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
