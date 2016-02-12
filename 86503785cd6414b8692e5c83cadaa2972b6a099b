@@ -46,6 +46,30 @@
       "revId": "86503785cd6414b8692e5c83cadaa2972b6a099b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3de034e0_a4d8a639",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2390,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-12T10:30:40Z",
+      "side": 1,
+      "message": "\u003e There are a few other operator\u003c\u003c()s in nodes.h that could be\n \u003e auto-generated but we\u0027d also have to ensure that the script doesn\u0027t\n \u003e pick up those that cannot. If someone wants to clean that up, I\u0027ll\n \u003e be happy to review the change.\n\nIndeed; I went for the simple solution (already used for some other enums in compiler/optimizing/nodes.h) and implemented it myself. I\u0027ll take a look at whether we can generate all operators of this file automatically.",
+      "parentUuid": "dde478f9_61ef72d6",
+      "range": {
+        "startLine": 2390,
+        "startChar": 14,
+        "endLine": 2390,
+        "endChar": 22
+      },
+      "revId": "86503785cd6414b8692e5c83cadaa2972b6a099b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
