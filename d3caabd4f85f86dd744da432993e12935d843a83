@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dd62c0e_464e0668",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-12T11:33:04Z",
+      "side": 0,
+      "message": "This",
+      "range": {
+        "startLine": 409,
+        "startChar": 6,
+        "endLine": 409,
+        "endChar": 32
+      },
+      "revId": "d3caabd4f85f86dd744da432993e12935d843a83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

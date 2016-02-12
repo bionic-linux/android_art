@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3de034e0_643dbe16",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-12T11:33:04Z",
+      "side": 1,
+      "message": "indentation is off.",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 82
+      },
+      "revId": "c2385f7fe8589868221e5d3b0d5b44cb5da934c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
