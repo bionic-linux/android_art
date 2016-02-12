@@ -22,6 +22,98 @@
       "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d9da072_374ea067",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-12T14:07:57Z",
+      "side": 1,
+      "message": "likely or, in some cases, certain",
+      "range": {
+        "startLine": 506,
+        "startChar": 61,
+        "endLine": 506,
+        "endChar": 67
+      },
+      "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fde93cd0_7fb1cb27",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-12T14:07:57Z",
+      "side": 1,
+      "message": "This is misleading. We have chosen kMaxLengthForAddingDeoptimize so that if the first and last indexes are valid, all indexes in between will also be valid. You should add DCHECK_LE(distance, kMaxLengthForAddingDeoptimize) and static_assert(kMaxLengthForAddingDeoptimize \u003c std::numeric_limits\u003cint32_t\u003e::max()).",
+      "range": {
+        "startLine": 1147,
+        "startChar": 19,
+        "endLine": 1147,
+        "endChar": 74
+      },
+      "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fde93cd0_5fa32fd8",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-12T14:07:57Z",
+      "side": 1,
+      "message": "I think these should be eliminated after we have added the deoptimization compares. Assuming that we see the bound checks in the order in which they appear in the snippet, consider\n\n    int x \u003d a[i] + a[i+1];\n    if (b) {\n      x +\u003d a[i+2];  // min_c \u003d 0, max_c \u003d 1 at this point.\n    }\n    x+\u003d a[i+3] + a[i+4];\n\nWe would not add the a[i+2] bound check to the candidate list here even though we can obviously eliminate it after adding the deoptimization compares for a[i]...a[i+4].",
+      "range": {
+        "startLine": 1201,
+        "startChar": 45,
+        "endLine": 1201,
+        "endChar": 83
+      },
+      "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ddb703a_03c9526f",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-12T14:07:57Z",
+      "side": 1,
+      "message": "likely or certain",
+      "range": {
+        "startLine": 1218,
+        "startChar": 67,
+        "endLine": 1218,
+        "endChar": 73
+      },
+      "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
