@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d1200d7_3e4dfd14",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-02-12T00:50:02Z",
+      "side": 1,
+      "message": "I understand that this will check the invariant that added_image_space is correct.\n\nBut it\u0027s still weird to see this here, and not inside the conditional...",
+      "range": {
+        "startLine": 411,
+        "startChar": 6,
+        "endLine": 414,
+        "endChar": 7
+      },
+      "revId": "4537fd4e08955ecc012ae5fad519c1806ae8f573",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
