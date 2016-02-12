@@ -22,6 +22,30 @@
       "revId": "bb0bdf45879a17397a7a01d4c5ba90110f8a4392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dbb8cf2_4797b86e",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-02-12T01:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde6e426_9c8f4ae7",
+      "range": {
+        "startLine": 396,
+        "startChar": 100,
+        "endLine": 396,
+        "endChar": 101
+      },
+      "revId": "bb0bdf45879a17397a7a01d4c5ba90110f8a4392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
