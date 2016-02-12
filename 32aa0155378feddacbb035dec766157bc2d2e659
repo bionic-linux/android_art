@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "5da5e8c5_a53d6a77",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-12T17:06:00Z",
+      "side": 1,
+      "message": "I was previously reading it in the larger context of what we do. If I read this only in the context of this function, it actually sounds OK.\n\n(In the larger context, the \"must assume\" is actually a choice that we have made somewhere else, not something that really needs to hold in general. That\u0027s what I found misleading.)",
+      "parentUuid": "1dd53033_79c272a7",
+      "range": {
+        "startLine": 1147,
+        "startChar": 19,
+        "endLine": 1147,
+        "endChar": 74
+      },
+      "revId": "32aa0155378feddacbb035dec766157bc2d2e659",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde93cd0_5fa32fd8",
         "filename": "compiler/optimizing/bounds_check_elimination.cc",
         "patchSetId": 7
