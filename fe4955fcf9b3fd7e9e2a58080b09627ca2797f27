@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd4c7816_1efd695a",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-16T18:50:43Z",
+      "side": 1,
+      "message": "My guess is that it is because of art::HCompare::Compute, which can be applied to floating-point values with this CL.\n\n(I dodged this issue in https://android-review.googlesource.com/#/c/161016 by using only FP inequalities in art::HCompare::Compute.)",
+      "parentUuid": "7daf0c90_be58c160",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "fe4955fcf9b3fd7e9e2a58080b09627ca2797f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d9da072_d44c721b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
