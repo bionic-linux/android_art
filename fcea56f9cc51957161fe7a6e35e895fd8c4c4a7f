@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d8968a7_df617b11",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-02-17T23:25:13Z",
+      "side": 1,
+      "message": "Nice refactoring!",
+      "revId": "fcea56f9cc51957161fe7a6e35e895fd8c4c4a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
