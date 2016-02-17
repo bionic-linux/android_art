@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd255844_99ee7bd8",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-02-17T00:57:53Z",
+      "side": 1,
+      "message": "I\u0027m happy to do this. Are you talking about something like what is done for ARM:\n\nusing IntrinsicSlowPathARM \u003d IntrinsicSlowPath\u003cInvokeDexCallingConventionVisitorARM\u003e;\n\n?\n\nAnd, I would prefer to do it as a separate patch since this patch has been outstanding for so long.\n\nThanks.",
+      "parentUuid": "3de034e0_72b820ef",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "e9443615e1b1967cbc3e691c3facb4de601d215f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_7ca835a2",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-16T16:16:00Z",
       "side": 1,
       "message": "As far as I know, INS is available since MIPS32 R2; shouldn\u0027t you ensure that the instruction set is R2+ here?",
+      "range": {
+        "startLine": 860,
+        "startChar": 7,
+        "endLine": 860,
+        "endChar": 10
+      },
+      "revId": "e9443615e1b1967cbc3e691c3facb4de601d215f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd82644f_f81e89a7",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-02-17T00:57:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d20402f_7ca835a2",
       "range": {
         "startLine": 860,
         "startChar": 7,
