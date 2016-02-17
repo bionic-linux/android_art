@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9d20402f_9c8429cd",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-17T10:55:50Z",
+      "side": 1,
+      "message": "\u003e I\u0027m happy to do this. Are you talking about something like what is\n \u003e done for ARM:\n \u003e \n \u003e using IntrinsicSlowPathARM \u003d IntrinsicSlowPath\u003cInvokeDexCallingConventionVisitorARM\u003e;\n \u003e \n \u003e ?\n\nYes, precisely.\n\n \u003e And, I would prefer to do it as a separate patch since this patch\n \u003e has been outstanding for so long.\n\nSure, sounds good to me.",
+      "parentUuid": "dd255844_99ee7bd8",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "e9443615e1b1967cbc3e691c3facb4de601d215f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_7ca835a2",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 15
