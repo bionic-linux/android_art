@@ -16,6 +16,29 @@
       "revId": "fcea56f9cc51957161fe7a6e35e895fd8c4c4a7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d862c98_8047961a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-02-17T23:54:22Z",
+      "side": 1,
+      "message": "This is where the bug is fixed. Line 765 is actually incorrect if the method \u0027m\u0027 is a default method, since in that case we would expect its declaring_class to be the interface that declared the method, same as with miranda\u0027s.",
+      "range": {
+        "startLine": 762,
+        "startChar": 2,
+        "endLine": 762,
+        "endChar": 34
+      },
+      "revId": "fcea56f9cc51957161fe7a6e35e895fd8c4c4a7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
