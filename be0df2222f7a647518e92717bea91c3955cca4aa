@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "c2d2d5e6_415cfcf4",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2016-02-19T18:50:58Z",
+      "side": 1,
+      "message": "Then I\u0027m going to move away from using \"bool\" here. I like that when the routine is called because the type is in the argument list it\u0027s easier to read the code, IMHO.",
+      "parentUuid": "6224c9f3_a73b6acf",
+      "range": {
+        "startLine": 1158,
+        "startChar": 27,
+        "endLine": 1158,
+        "endChar": 36
+      },
+      "revId": "be0df2222f7a647518e92717bea91c3955cca4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "223f31ea_bd3b7fcf",
         "filename": "runtime/arch/mips/registers_mips.h",
         "patchSetId": 11
