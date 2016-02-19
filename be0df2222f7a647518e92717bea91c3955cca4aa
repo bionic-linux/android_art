@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "421b45b8_4643921c",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-19T18:44:44Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "82b53dae_eb706de5",
+      "range": {
+        "startLine": 888,
+        "startChar": 25,
+        "endLine": 888,
+        "endChar": 27
+      },
+      "revId": "be0df2222f7a647518e92717bea91c3955cca4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c1f119_ad2efd69",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 11
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "I\u0027ve been considering changing \"bool is_double,\" to \"Primitive::Type type,\". I don\u0027t have a strong preference. Please let me know which you would prefer.",
       "parentUuid": "22c1f119_ad2efd69",
+      "range": {
+        "startLine": 1158,
+        "startChar": 27,
+        "endLine": 1158,
+        "endChar": 36
+      },
+      "revId": "be0df2222f7a647518e92717bea91c3955cca4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6224c9f3_a73b6acf",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-19T18:44:44Z",
+      "side": 1,
+      "message": "I don\u0027t have a strong preference either.",
+      "parentUuid": "62b849a7_2d5699a7",
       "range": {
         "startLine": 1158,
         "startChar": 27,
