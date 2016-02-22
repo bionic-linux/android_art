@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42c98578_39120bad",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-22T18:20:22Z",
+      "side": 1,
+      "message": "Primitive::Type to be consistent?",
+      "range": {
+        "startLine": 919,
+        "startChar": 24,
+        "endLine": 919,
+        "endChar": 38
+      },
+      "revId": "f21d78e492e322001f48c4f3c1fbffe011b1172a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2bd19cb_1398cca2",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-22T18:20:22Z",
+      "side": 1,
+      "message": "DCHECK_EQ(type, Primitive::kPrimInt)",
+      "revId": "f21d78e492e322001f48c4f3c1fbffe011b1172a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62a769c0_4f7b8d02",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-22T18:20:22Z",
+      "side": 1,
+      "message": "DCHECK_EQ(type, Primitive::kPrimInt)",
+      "revId": "f21d78e492e322001f48c4f3c1fbffe011b1172a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2b881d5_79800720",
+        "filename": "test/082-inline-execute/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-02-22T18:20:22Z",
+      "side": 1,
+      "message": "StrictMath",
+      "range": {
+        "startLine": 1062,
+        "startChar": 24,
+        "endLine": 1062,
+        "endChar": 28
+      },
+      "revId": "f21d78e492e322001f48c4f3c1fbffe011b1172a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
