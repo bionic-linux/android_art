@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d8b70a4_f7610011",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7daf0c90_87bc909b",
+      "range": {
+        "startLine": 2601,
+        "startChar": 22,
+        "endLine": 2601,
+        "endChar": 27
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_d969538c",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-02-16T10:20:49Z",
       "side": 1,
       "message": "2 bits.",
+      "range": {
+        "startLine": 2654,
+        "startChar": 22,
+        "endLine": 2654,
+        "endChar": 27
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd993cfa_621c524b",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2654,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d20402f_d969538c",
       "range": {
         "startLine": 2654,
         "startChar": 22,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e200b9f1_9bb00b0b",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc45060_4913713f",
+      "range": {
+        "startLine": 2659,
+        "startChar": 48,
+        "endLine": 2659,
+        "endChar": 53
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd4c7816_fb5a0fcc",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-02-16T10:20:49Z",
       "side": 1,
       "message": "2 bits.",
+      "range": {
+        "startLine": 2678,
+        "startChar": 24,
+        "endLine": 2678,
+        "endChar": 29
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d862c98_69e35ded",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2678,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4c7816_fb5a0fcc",
       "range": {
         "startLine": 2678,
         "startChar": 24,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bd7c2458_e8ff674d",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2687,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da5e8c5_48e913fc",
+      "range": {
+        "startLine": 2685,
+        "startChar": 0,
+        "endLine": 2687,
+        "endChar": 25
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_7994c7ba",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7d862c98_49d6990c",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2695,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d20402f_7994c7ba",
+      "range": {
+        "startLine": 2693,
+        "startChar": 0,
+        "endLine": 2695,
+        "endChar": 25
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_19a10b1c",
         "filename": "compiler/utils/arm/assembler_thumb2.cc",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2016-02-16T10:20:49Z",
       "side": 1,
       "message": "One line.",
+      "range": {
+        "startLine": 2701,
+        "startChar": 0,
+        "endLine": 2703,
+        "endChar": 25
+      },
+      "revId": "5d855f4a7c54ed8c8dce1672e48a2ac6edd2198a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd9478c3_e15b022e",
+        "filename": "compiler/utils/arm/assembler_thumb2.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2703,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-02-24T13:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d20402f_19a10b1c",
       "range": {
         "startLine": 2701,
         "startChar": 0,
