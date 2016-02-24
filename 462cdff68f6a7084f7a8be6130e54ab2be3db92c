@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "e2b0b90b_270dd589",
+        "filename": "runtime/arch/arm/instruction_set_features_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-02-24T17:17:32Z",
+      "side": 1,
+      "message": "This seems very dubious. What does it mean to be a super set with respect to SMP? Could you write comments that captures what you expect the function to return and why? Why would it be safe to say have code with and without barriers within it, mixed? It\u0027d be very broken on the SMP side to be missing barriers, but safe on the non-SMP side but it\u0027d hurt performance.",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 47
+      },
+      "revId": "462cdff68f6a7084f7a8be6130e54ab2be3db92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d0113b_86e26ae8",
+        "filename": "runtime/arch/instruction_set_features.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-02-24T17:17:32Z",
+      "side": 1,
+      "message": "This is a sufficiently vague concept that it relies needs a comment! How does this and other relate? Why no IsSubsetOf which is defined to just be the inverse of this?",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 27
+      },
+      "revId": "462cdff68f6a7084f7a8be6130e54ab2be3db92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2981592_c2a617e8",
+        "filename": "runtime/arch/instruction_set_features_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-02-24T17:17:32Z",
+      "side": 1,
+      "message": "This removes a key property of this test that it ensures all notions of InstructionSetFeatures are in sync - for example, did someone get lazy in specifying C++ flags that a target has a divide instruction? Has this functionality been moved to CTS? Could you provide a link in a comment?",
+      "range": {
+        "startLine": 51,
+        "startChar": 35,
+        "endLine": 51,
+        "endChar": 47
+      },
+      "revId": "462cdff68f6a7084f7a8be6130e54ab2be3db92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a220812e_1c7ed9b6",
         "filename": "runtime/arch/mips64/instruction_set_features_mips64.cc",
         "patchSetId": 1
