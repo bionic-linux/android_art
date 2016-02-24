@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a220812e_1c7ed9b6",
+        "filename": "runtime/arch/mips64/instruction_set_features_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-24T16:29:19Z",
+      "side": 1,
+      "message": "Nit: move this definition after Equals\u0027 definition (i.e., after line 94) for the sake of uniformity?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "462cdff68f6a7084f7a8be6130e54ab2be3db92c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
