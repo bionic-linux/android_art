@@ -1219,6 +1219,30 @@
     },
     {
       "key": {
+        "uuid": "22c49160_fe0075e5",
+        "filename": "runtime/interpreter/mterp/mips64/op_neg_double.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-02-26T13:28:21Z",
+      "side": 1,
+      "message": "Thanks.  The instruction count argument sounds good to me.",
+      "parentUuid": "62be89e4_06f52d35",
+      "range": {
+        "startLine": 1,
+        "startChar": 39,
+        "endLine": 1,
+        "endChar": 73
+      },
+      "revId": "c1fafbda18f17fcc172f2fe67c47d6f0d6266a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62b209f8_3d2af715",
         "filename": "runtime/interpreter/mterp/mips64/op_neg_float.S",
         "patchSetId": 1
