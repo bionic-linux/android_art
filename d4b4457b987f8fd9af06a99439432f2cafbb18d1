@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22c49160_3e2aed15",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5489,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-27T14:25:09Z",
+      "side": 1,
+      "message": "String.",
+      "range": {
+        "startLine": 5489,
+        "startChar": 32,
+        "endLine": 5489,
+        "endChar": 49
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02c30d5c_c8f69f40",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-27T14:25:09Z",
+      "side": 1,
+      "message": "IsSameDexFile",
+      "range": {
+        "startLine": 173,
+        "startChar": 9,
+        "endLine": 173,
+        "endChar": 50
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22c49160_5e1fa9f2",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-27T14:25:09Z",
+      "side": 1,
+      "message": "unused?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 31
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2b881d5_621f6cf3",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-02-27T14:25:09Z",
+      "side": 1,
+      "message": "Seems like a useful method worth moving to the Heap class (if not already there?)?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 1
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
