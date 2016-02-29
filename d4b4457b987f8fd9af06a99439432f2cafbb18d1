@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e27a7932_8d43788a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6067,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-02-29T19:04:39Z",
+      "side": 1,
+      "message": "Do these support read barriers?",
+      "range": {
+        "startLine": 6052,
+        "startChar": 0,
+        "endLine": 6067,
+        "endChar": 13
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c49160_3e2aed15",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
