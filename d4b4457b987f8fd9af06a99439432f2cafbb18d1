@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "22ef3134_5fa0e66a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6067,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-01T21:46:59Z",
+      "side": 1,
+      "message": "I think so. If we don\u0027t have a read barrier there, the string could be a from-space (white) object and the to-space invariant (mutators see only gray or black objects and we may miss correctly marking objects without it) would break and the checks would fail. Once it\u0027s broken, anything transitively reachable/loaded through it like the string class, etc... would have the same issue because loading from a white object won\u0027t trigger the read barrier. This is still the case even if an object is in the image or non-moving as non-moving objects can (transitively) point to moving objects. This is sort of a principle with a Baker-style read barrier.\n\nThat doesn\u0027t necessarily mean there aren\u0027t specific cases where we could remove read barriers. But that would likely need to be done with care and proper checks and assertions, I would think. Currently, I am not sure if it\u0027s safe.\n\nIs it hard to have read barriers implemented there? If we choose not implementing read barriers there, I\u0027d ask that we disable these string load optimizations for the read barrier build for now and consider enabling them in the future.",
+      "parentUuid": "82affd8e_2c6bab83",
+      "range": {
+        "startLine": 6052,
+        "startChar": 0,
+        "endLine": 6067,
+        "endChar": 13
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c49160_3e2aed15",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
