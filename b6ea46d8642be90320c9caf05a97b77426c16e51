@@ -22,6 +22,30 @@
       "revId": "b6ea46d8642be90320c9caf05a97b77426c16e51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22ef3134_fcf2a0bd",
+        "filename": "tools/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-03-01T18:25:19Z",
+      "side": 1,
+      "message": "For this module specifically, the executable bit isn\u0027t set on the local module since it will only properly run once installed. I\u0027ll take a look at doing this generically in prebuilt_internal.mk.\n\nFor the other modules, they can run from the source directory, and have their executable bits set already. So I\u0027ve removed the chmod on those.",
+      "parentUuid": "a26ec178_8b43648a",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 67
+      },
+      "revId": "b6ea46d8642be90320c9caf05a97b77426c16e51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
