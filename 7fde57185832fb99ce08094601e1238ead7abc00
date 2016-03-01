@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02feade5_06245b46",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-01T22:21:47Z",
+      "side": 1,
+      "message": "Should this be \u0027true\u0027?",
+      "range": {
+        "startLine": 136,
+        "startChar": 29,
+        "endLine": 136,
+        "endChar": 42
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_1ce33cc4",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-01T22:21:47Z",
+      "side": 1,
+      "message": "Do we need this if we don\u0027t call TryToAllocate here after?",
+      "range": {
+        "startLine": 1815,
+        "startChar": 0,
+        "endLine": 1818,
+        "endChar": 3
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e211990a_13c4ac78",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-01T22:21:47Z",
+      "side": 1,
+      "message": "Maybe AllocEntrypointsInstrumented()?",
+      "range": {
+        "startLine": 424,
+        "startChar": 7,
+        "endLine": 424,
+        "endChar": 30
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
