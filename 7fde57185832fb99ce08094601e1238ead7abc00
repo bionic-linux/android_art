@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02594de9_b955639b",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-01T23:54:32Z",
+      "side": 1,
+      "message": "Yes, my bad. The other race will also be fixed in the new CL.",
+      "parentUuid": "02feade5_06245b46",
+      "range": {
+        "startLine": 136,
+        "startChar": 29,
+        "endLine": 136,
+        "endChar": 42
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a26ec178_1ce33cc4",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_19a7cce5",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1818,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-01T23:54:32Z",
+      "side": 1,
+      "message": "I think I can move this into the if statement.",
+      "parentUuid": "a26ec178_1ce33cc4",
+      "range": {
+        "startLine": 1815,
+        "startChar": 0,
+        "endLine": 1818,
+        "endChar": 3
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e211990a_13c4ac78",
         "filename": "runtime/instrumentation.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-03-01T22:21:47Z",
       "side": 1,
       "message": "Maybe AllocEntrypointsInstrumented()?",
+      "range": {
+        "startLine": 424,
+        "startChar": 7,
+        "endLine": 424,
+        "endChar": 30
+      },
+      "revId": "7fde57185832fb99ce08094601e1238ead7abc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b0b90b_6c32904b",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-01T23:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e211990a_13c4ac78",
       "range": {
         "startLine": 424,
         "startChar": 7,
