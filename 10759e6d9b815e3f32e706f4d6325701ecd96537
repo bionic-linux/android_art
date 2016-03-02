@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2b0b90b_4ceb545a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T00:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2b0b90b_8c95dcf7",
+      "range": {
+        "startLine": 1815,
+        "startChar": 8,
+        "endLine": 1815,
+        "endChar": 9
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02feade5_f9b1102b",
         "filename": "test/145-alloc-tracking-stress/src/Main.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-02T00:20:03Z",
       "side": 1,
       "message": "Remove tab?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02594de9_ab374a96",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T00:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02feade5_f9b1102b",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "22ef3134_2b3cb818",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T00:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02feade5_59c7647f",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e211990a_364276e8",
         "filename": "test/145-alloc-tracking-stress/src/Main.java",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-03-02T00:20:03Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26bb568_c1eff69f",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T00:56:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e211990a_364276e8",
       "range": {
         "startLine": 42,
         "startChar": 0,
