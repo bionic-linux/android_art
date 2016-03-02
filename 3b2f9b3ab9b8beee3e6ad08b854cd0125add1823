@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "02594de9_61d3b126",
+        "filename": "runtime/interpreter/interpreter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2016-03-02T15:05:35Z",
+      "side": 1,
+      "message": "Now that all targets have an mterp, we can eliminate this.  I\u0027ll take care of it.",
+      "revId": "3b2f9b3ab9b8beee3e6ad08b854cd0125add1823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82ea9d1e_ac158860",
+        "filename": "runtime/interpreter/interpreter.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2016-03-02T15:05:35Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "3b2f9b3ab9b8beee3e6ad08b854cd0125add1823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_58ee33d9",
+        "filename": "runtime/interpreter/mterp/mips64/footer.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2016-03-02T15:05:35Z",
+      "side": 1,
+      "message": "Unsupported instrumentation may have been switched on, so we might need to bail out to the fallback interpreter.  Go ahead and do this and branch profiling in a separate CL.  For an example, see the x86_64 change \"ART: Enable JitProfiling for x86_64 Mterp\"\n\nhttps://android-review.googlesource.com/#/c/205001",
+      "revId": "3b2f9b3ab9b8beee3e6ad08b854cd0125add1823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82affd8e_c13838d5",
         "filename": "runtime/interpreter/mterp/mips64/op_double_to_float.S",
         "patchSetId": 2
@@ -278,6 +329,23 @@
         "endLine": 3,
         "endChar": 35
       },
+      "revId": "3b2f9b3ab9b8beee3e6ad08b854cd0125add1823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2e32149_98d8bb39",
+        "filename": "runtime/interpreter/mterp/rebuild.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2016-03-02T15:05:35Z",
+      "side": 1,
+      "message": "Need \"mips\" here as well.  I\u0027ll take care of it.",
       "revId": "3b2f9b3ab9b8beee3e6ad08b854cd0125add1823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
