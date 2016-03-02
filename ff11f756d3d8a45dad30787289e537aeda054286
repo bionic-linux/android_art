@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "620689d1_9ae8c9ce",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-03-02T13:15:30Z",
+      "side": 1,
+      "message": "I think you still want to move to the next methods. This may early return `true` from the loop.",
+      "range": {
+        "startLine": 733,
+        "startChar": 6,
+        "endLine": 733,
+        "endChar": 92
+      },
+      "revId": "ff11f756d3d8a45dad30787289e537aeda054286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
