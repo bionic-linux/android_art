@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b0b90b_8c95dcf7",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1815,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-02T00:20:03Z",
+      "side": 1,
+      "message": "How about adding \"ptr \u003d\u003d nullptr \u0026\u0026...\" because if ptr is not null, the allocation succeeded. We don\u0027t want to drop the just allocated memory (the non-null ptr) and we don\u0027t need to retry allocation in the current call context?",
+      "range": {
+        "startLine": 1815,
+        "startChar": 8,
+        "endLine": 1815,
+        "endChar": 9
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_f9b1102b",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-02T00:20:03Z",
+      "side": 1,
+      "message": "Remove tab?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02feade5_59c7647f",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-02T00:20:03Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e211990a_364276e8",
+        "filename": "test/145-alloc-tracking-stress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-02T00:20:03Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 4
+      },
+      "revId": "10759e6d9b815e3f32e706f4d6325701ecd96537",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
