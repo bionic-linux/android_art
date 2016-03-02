@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c26bb568_e18b1a9b",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T01:38:57Z",
+      "side": 1,
+      "message": "Good point, it is no longer used here.",
+      "parentUuid": "a26ec178_57fc2e5d",
+      "range": {
+        "startLine": 40,
+        "startChar": 19,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "4b49f54fada72d7e71eb0bebd9faebd9baed5da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02feade5_3c22469b",
         "filename": "runtime/gc/heap-inl.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-02T01:19:30Z",
       "side": 1,
       "message": "collector -\u003e allocator?",
+      "range": {
+        "startLine": 131,
+        "startChar": 46,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "4b49f54fada72d7e71eb0bebd9faebd9baed5da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a26ec178_978e26e9",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-03-02T01:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02feade5_3c22469b",
       "range": {
         "startLine": 131,
         "startChar": 46,
