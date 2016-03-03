@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "421d051a_df6197e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-03T23:22:22Z",
+      "side": 1,
+      "message": "Mathieu, Hiroshi, I\u0027d appreciate some context on this. Apparently, having the ArtField and ArtMethod call VisitRoot on their declaring class is fine, but anything else is not.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
