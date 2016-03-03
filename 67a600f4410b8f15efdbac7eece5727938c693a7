@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27a7932_4e7a4a9a",
+        "filename": "build/Android.common_build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2016-03-03T17:47:07Z",
+      "side": 1,
+      "message": "Was b/25130937 the reason not using CLANG here?\nIf that\u0027s fixed, we can remove the comment.",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 12
+      },
+      "revId": "67a600f4410b8f15efdbac7eece5727938c693a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
