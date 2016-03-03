@@ -22,6 +22,30 @@
       "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82ea9d1e_2f32004a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-03T23:57:18Z",
+      "side": 1,
+      "message": "The way I see this is that a class makes its method/field roots reachable from GC and causes GC to visit them through it. It\u0027s sort of a canonical way for GC to visit methods/fields. This doesn\u0027t mean that GC can\u0027t visit methods/fields through other paths (like the allocation records). And it makes sense because if a class becomes (otherwise) unreachable but its methods are reachable from the allocation records (the allocation site stack traces), the methods makes the class reachable (note that methods/fields have a back pointer to their class) and avoids an incorrect situation like methods are alive but their class isn\u0027t and gets unloaded.\n\nSo, I don\u0027t think this assumption exists.\n\nDo you see a case where visiting methods/fields outside their class causes a problem?",
+      "parentUuid": "421d051a_df6197e1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
