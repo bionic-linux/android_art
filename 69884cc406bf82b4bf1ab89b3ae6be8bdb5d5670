@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62eda937_a5b76a1f",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-03T13:39:28Z",
+      "side": 1,
+      "message": "Nit: `:`.",
+      "range": {
+        "startLine": 967,
+        "startChar": 29,
+        "endLine": 967,
+        "endChar": 30
+      },
+      "revId": "69884cc406bf82b4bf1ab89b3ae6be8bdb5d5670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82037dbe_fe5c5927",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-03T13:39:28Z",
+      "side": 1,
+      "message": "I would replace this with `std::endl` to flush the stream as well.",
+      "range": {
+        "startLine": 973,
+        "startChar": 84,
+        "endLine": 973,
+        "endChar": 88
+      },
+      "revId": "69884cc406bf82b4bf1ab89b3ae6be8bdb5d5670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
