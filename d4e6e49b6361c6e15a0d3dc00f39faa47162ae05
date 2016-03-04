@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "620689d1_fd51ff07",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-04T15:18:20Z",
+      "side": 1,
+      "message": "testLocal",
+      "range": {
+        "startLine": 25,
+        "startChar": 18,
+        "endLine": 25,
+        "endChar": 28
+      },
+      "revId": "d4e6e49b6361c6e15a0d3dc00f39faa47162ae05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2b16159_97b08cc1",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-04T15:18:20Z",
+      "side": 1,
+      "message": "testRemove",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "d4e6e49b6361c6e15a0d3dc00f39faa47162ae05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "620689d1_dd56bbfd",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-04T15:18:20Z",
+      "side": 1,
+      "message": "fullSignatures",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "d4e6e49b6361c6e15a0d3dc00f39faa47162ae05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
