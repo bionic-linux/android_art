@@ -46,6 +46,30 @@
       "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a220812e_531afc4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-04T09:57:47Z",
+      "side": 1,
+      "message": "Mathieu: The ProfilingInfo objects are indeed visited twice. Once through the the allocation records (via SemiSpace::MarkRoots), and one through the mark stack (via SemiSpace::MarkReachableObjects).\n\nThe first visit through SemiSpace::MarkRoots moves entries in the ProfilingInfo from the from space to the to space. The second visit crashes because it doesn\u0027t expect a to space entry in the ProfilingInfo.\n\nI\u0027m not sure why it doesn\u0027t happen with the declaring class. I also don\u0027t understand the comment in \"Class::VisitNativeRoots\": \"// Visit roots first in case the declaring class gets moved\", which could be related.",
+      "parentUuid": "82ea9d1e_2f32004a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
