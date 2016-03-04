@@ -70,6 +70,30 @@
       "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27a7932_b031c0ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-04T18:54:12Z",
+      "side": 1,
+      "message": "Good that this fixes (or avoids) the test failure.\n\nIf this turns out a different issue, I\u0027d prefer moving the profilinginfo visit code back to art_method as that\u0027s what directly points to the profiling info from a code organization point of view.",
+      "parentUuid": "a220812e_531afc4e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
