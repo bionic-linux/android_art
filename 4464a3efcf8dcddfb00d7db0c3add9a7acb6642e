@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2b0b90b_a8acfb69",
+        "filename": "runtime/monitor_pool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-04T18:59:41Z",
+      "side": 1,
+      "message": "Andreas, I thought a solution would have some extra runtime overhead, but this doesn\u0027t? If so, it\u0027s nice.",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "4464a3efcf8dcddfb00d7db0c3add9a7acb6642e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
