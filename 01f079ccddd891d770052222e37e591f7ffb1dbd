@@ -70,6 +70,24 @@
       "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79c592c_9b758b5a",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-03-07T19:50:01Z",
+      "side": 1,
+      "message": "I used the getUnsafe from the existing test. Which is more or less what you suggested. Obviously I was waiting for your CL before running this on all archs, so the getUnsafe worked for now :-)",
+      "parentUuid": "f7a15d5f_df2a1f5d",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
