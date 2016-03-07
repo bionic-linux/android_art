@@ -16,6 +16,24 @@
       "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5791490c_02710cac",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-03-07T19:42:19Z",
+      "side": 1,
+      "message": "Ok, I got it passing by replacing the above line with this code:\n\n  private static Unsafe getUnsafe() {\n    try {\n      Field f \u003d Unsafe.class.getDeclaredField(\"THE_ONE\");\n      f.setAccessible(true);\n      return (Unsafe) f.get(null);\n    } catch (Exception e) {\n      throw new AssertionError(e);\n    }\n  }\n\n  private static final Unsafe unsafe \u003d getUnsafe();",
+      "parentUuid": "977021c5_1983cbc7",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
