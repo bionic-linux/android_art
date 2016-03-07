@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37af7563_e6897ee4",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-03-07T21:18:05Z",
+      "side": 1,
+      "message": "This is what I have (taken from what was there in exiting 004 test). Seems work well, but I need of course the API cl to go in before I can run all my tests.",
+      "range": {
+        "startLine": 224,
+        "startChar": 10,
+        "endLine": 224,
+        "endChar": 16
+      },
+      "revId": "7566b8a5cdf70632c330bdfc40f8093a9ef9a60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
