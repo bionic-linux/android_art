@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "977021c5_1983cbc7",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-03-07T19:36:02Z",
+      "side": 1,
+      "message": "This throws a SecurityException when trying to run it on an architecture without intrinsics implemented\n\n(I actually tried to run it with all the compiler intrinsics backed out, to double check the non-intrinsics were correct)",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
