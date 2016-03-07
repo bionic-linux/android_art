@@ -39,6 +39,24 @@
       "revId": "7566b8a5cdf70632c330bdfc40f8093a9ef9a60b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b56dab_a8483b2e",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-03-07T21:32:45Z",
+      "side": 1,
+      "message": "Like so? Also changed in the original.",
+      "parentUuid": "17aa7153_c5f0fa83",
+      "revId": "7566b8a5cdf70632c330bdfc40f8093a9ef9a60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
