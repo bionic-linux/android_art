@@ -88,6 +88,24 @@
       "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c26575c5_da0505aa",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-03-07T20:18:09Z",
+      "side": 1,
+      "message": "What existing test ? The existing tests define getUnsafe like so:\n\n  private static Unsafe getUnsafe() throws Exception {\n    Class\u003c?\u003e unsafeClass \u003d Class.forName(\"sun.misc.Unsafe\");\n    Field f \u003d unsafeClass.getDeclaredField(\"theUnsafe\");\n    f.setAccessible(true);\n    return (Unsafe) f.get(null);\n  }\n\nThat\u0027s how application code is \"supposed\" to access Unsafe (as propagated by stackoverflow et al.). Unsafe.getUnsafe has always behaved this way.",
+      "parentUuid": "d79c592c_9b758b5a",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
