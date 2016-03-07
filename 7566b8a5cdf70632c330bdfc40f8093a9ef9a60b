@@ -57,6 +57,24 @@
       "revId": "7566b8a5cdf70632c330bdfc40f8093a9ef9a60b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17aa7153_e5d9766a",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-03-07T22:38:41Z",
+      "side": 1,
+      "message": "Yes, LGTM.",
+      "parentUuid": "77b56dab_a8483b2e",
+      "revId": "7566b8a5cdf70632c330bdfc40f8093a9ef9a60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
