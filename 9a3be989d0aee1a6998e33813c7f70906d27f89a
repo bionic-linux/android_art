@@ -118,6 +118,30 @@
       "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79c592c_3b46b72e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-07T19:38:28Z",
+      "side": 1,
+      "message": "I haven\u0027t tried reverting yet.",
+      "parentUuid": "4227c598_06de5a54",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "9a3be989d0aee1a6998e33813c7f70906d27f89a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
