@@ -52,6 +52,24 @@
       "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a15d5f_df2a1f5d",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-03-07T19:48:44Z",
+      "side": 1,
+      "message": "Not sure I understand?\n\nI am confused as to how it could work since the Unsafe.java code checks that #getUnsafe callers are within the bootclasspath, this test appears to run on a regular classpath.",
+      "parentUuid": "37985533_de75450b",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
