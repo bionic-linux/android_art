@@ -34,6 +34,24 @@
       "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37985533_de75450b",
+        "filename": "test/004-checker-UnsafeTest18/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-03-07T19:42:20Z",
+      "side": 1,
+      "message": "I already have used the method from the other test for this. It worked while I was waiting for your CL though.",
+      "parentUuid": "977021c5_1983cbc7",
+      "revId": "01f079ccddd891d770052222e37e591f7ffb1dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
