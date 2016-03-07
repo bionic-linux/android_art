@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978741d1_c4e1f0e5",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5503,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-03-07T19:58:12Z",
+      "side": 1,
+      "message": "Should use Load64BitValue(load-\u003eGetAddress())",
+      "range": {
+        "startLine": 5502,
+        "startChar": 5,
+        "endLine": 5503,
+        "endChar": 50
+      },
+      "revId": "e8c77baf5886bc1a08f75168092da0d10eb21441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
