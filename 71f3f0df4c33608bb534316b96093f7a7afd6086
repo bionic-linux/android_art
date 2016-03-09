@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "570ce9bf_702cc6e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-03-09T02:31:00Z",
+      "side": 1,
+      "message": "We don\u0027t have that dependency chain any more with Yohann\u0027s change https://android-review.googlesource.com/#/c/205442/ .\nYou just need sync your source tree.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 90
+      },
+      "revId": "71f3f0df4c33608bb534316b96093f7a7afd6086",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
