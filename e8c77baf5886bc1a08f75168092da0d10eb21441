@@ -22,6 +22,30 @@
       "revId": "e8c77baf5886bc1a08f75168092da0d10eb21441",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37313583_d980777e",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5503,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-03-10T18:09:39Z",
+      "side": 1,
+      "message": "There is a better option if the address is 32-bit.",
+      "parentUuid": "978741d1_c4e1f0e5",
+      "range": {
+        "startLine": 5502,
+        "startChar": 5,
+        "endLine": 5503,
+        "endChar": 50
+      },
+      "revId": "e8c77baf5886bc1a08f75168092da0d10eb21441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
