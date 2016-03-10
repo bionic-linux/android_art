@@ -22,6 +22,30 @@
       "revId": "5586c7daa72d30a21ef0ed3bf23e479048993c17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "570ce9bf_bfae7df7",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-03-10T19:34:44Z",
+      "side": 1,
+      "message": "Oops, I don\u0027t know what happened there. For some reason I went blind to the tid being printed.\n\nFixed now, but I wasn\u0027t quite sure exactly what looked better. I settled on \"... for thread: 1212: Error message\".",
+      "parentUuid": "570ce9bf_5f00a1e4",
+      "range": {
+        "startLine": 1124,
+        "startChar": 10,
+        "endLine": 1124,
+        "endChar": 11
+      },
+      "revId": "5586c7daa72d30a21ef0ed3bf23e479048993c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
