@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "570ce9bf_3573d375",
+        "filename": "compiler/optimizing/intrinsics_mips.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2016-03-10T07:51:02Z",
+      "side": 1,
+      "message": "Roland, we have a bit of a problem with class Mips[64]Label derived from class Label.\n\nWe want SlowPathCode::GetEntryLabel() and SlowPathCode::GetExitLabel() to return pointers to instances of MIPS-specific labels. Right now class SlowPathCode simply contains two instances of class Label and returns pointers to them. I\u0027m not sure if we could somehow easily tweak the label instance type at this level (SlowPathCode is a generic class and exposing arch-specific types in it appears problematic and is probably wrong, though the existing hard-coded type Label in it isn\u0027t great either).\n\nWe could make SlowPathCode::GetE*Label() virtual and have the derived class SlowPathCodeMIPS[64] override these and return pointers to its own labels of type Mips[64]Label, much like it\u0027s done now.\nBut this alone doesn\u0027t help with class IntrinsicSlowPath\u003c\u003e, currently deriving from SlowPathCode directly. It still needs to be derived from SlowPathCodeMIPS[64] or it has to replicate the same MIPS-specific label stuff.\n\nWe aren\u0027t planning to redo the MIPS labels and branches mechanism right now (we will revisit it when we get to making improvements in the areas of delay slots, static/direct method calls and method loading in e.g. CodeGeneratorMIPS*::GenerateStaticOrDirectCall()) and so right now we won\u0027t be able to just use the base class Label for MIPS. We still need our Mips[64]Label.\n\nA few solutions that I can think of:\n\n1. \"virtualize\" SlowPathCode::GetE*Label() and extend the template class IntrinsicSlowPath\u003c\u003e to take the type of a SlowPathCode class, so we can plug SlowPathCodeMIPS[64] in more seamlessly.\n\n2. Move prev_branch_id_plus_one_ from Mips[64]Label to the parent class Label and abandon Mips[64]Label.\n\n3. \"virtualize\" SlowPathCode::GetE*Label() and figure out how to create the two labels of the right type at run time.\n\nI\u0027m not sure no. 2 is great, it makes it less generic (although just an extra int32_t won\u0027t break it if unused) and we may need to touch/redo class Label again.\n\nNo. 3 may be a little(?) involving.\n\nI\u0027d probably go with no. 1.\n\nAlso, we have the same issue with ARM64 (rather custom label and slow path classes).\n\nIf we use a bit of pointer casting (between vixl::Label* and Label*), we could apply no. 1 to MIPS[64] and ARM64. With this we\u0027d trade code cleanliness in one place with uncleanliness in another.\n\nIf you have some other thoughts or recommendations w.r.t. how to do this better at this time, please let us know.",
+      "parentUuid": "9d20402f_9c8429cd",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "e9443615e1b1967cbc3e691c3facb4de601d215f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d20402f_7ca835a2",
         "filename": "compiler/optimizing/intrinsics_mips.cc",
         "patchSetId": 15
