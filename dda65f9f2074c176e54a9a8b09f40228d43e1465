@@ -22,6 +22,30 @@
       "revId": "dda65f9f2074c176e54a9a8b09f40228d43e1465",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "570ce9bf_7f58055d",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2016-03-10T19:12:17Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure what looked better, but I think the : error message format is better.\n\nSo, done.",
+      "parentUuid": "570ce9bf_7acdb87e",
+      "range": {
+        "startLine": 1124,
+        "startChar": 10,
+        "endLine": 1124,
+        "endChar": 13
+      },
+      "revId": "dda65f9f2074c176e54a9a8b09f40228d43e1465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
