@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "570ce9bf_5f00a1e4",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-03-10T19:23:25Z",
+      "side": 1,
+      "message": "?\n\nDon\u0027t you still need the space to separate tid from error message?\n\n(Otherwise, single space, please)",
+      "range": {
+        "startLine": 1124,
+        "startChar": 10,
+        "endLine": 1124,
+        "endChar": 11
+      },
+      "revId": "5586c7daa72d30a21ef0ed3bf23e479048993c17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
