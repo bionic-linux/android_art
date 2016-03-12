@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "d7a61927_be6c789c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6067,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-03-12T01:09:20Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "c209f5de_5d48ef2a",
+      "range": {
+        "startLine": 6052,
+        "startChar": 0,
+        "endLine": 6067,
+        "endChar": 13
+      },
+      "revId": "d4b4457b987f8fd9af06a99439432f2cafbb18d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22c49160_3e2aed15",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
