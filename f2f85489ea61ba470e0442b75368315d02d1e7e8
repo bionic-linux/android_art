@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bff930_8c31aba3",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3999,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-03-15T22:38:08Z",
+      "side": 1,
+      "message": "Either extend the comment explaining why you don\u0027t have to throw a soft-fail here, or throw a soft-fail...",
+      "range": {
+        "startLine": 3998,
+        "startChar": 6,
+        "endLine": 3999,
+        "endChar": 43
+      },
+      "revId": "f2f85489ea61ba470e0442b75368315d02d1e7e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
