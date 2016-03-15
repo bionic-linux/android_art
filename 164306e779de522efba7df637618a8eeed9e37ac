@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "974d815c_9436eac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-03-15T21:36:30Z",
+      "side": 1,
+      "message": "This is an example of the simplified expression. It applies to \u003c\u003c, \u003e\u003e and \u003e\u003e\u003e. We could actually extend this to HRor as well.",
+      "parentUuid": "373e959c_d16166a3",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "164306e779de522efba7df637618a8eeed9e37ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1ea258_b71402d2",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 1
