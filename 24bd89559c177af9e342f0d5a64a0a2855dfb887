@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b76525c6_a003be2f",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-03-15T10:47:17Z",
+      "side": 1,
+      "message": "The main difference from VisitCheckCast() is that the else branch isn\u0027t empty.",
+      "range": {
+        "startLine": 527,
+        "startChar": 6,
+        "endLine": 527,
+        "endChar": 63
+      },
+      "revId": "24bd89559c177af9e342f0d5a64a0a2855dfb887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
