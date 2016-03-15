@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f7723d90_f7665ab8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-15T21:40:44Z",
+      "side": 1,
+      "message": "Ah, I mostly took a look at the test, which only does the \u0027\u003e\u003e\u0027 variant. Is it worth extending it the test with the other cases?",
+      "parentUuid": "974d815c_9436eac8",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "164306e779de522efba7df637618a8eeed9e37ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1ea258_b71402d2",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 1
