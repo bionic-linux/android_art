@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7bff930_123e726e",
+        "filename": "test/422-type-conversion/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-03-16T13:46:58Z",
+      "side": 1,
+      "message": "These",
+      "range": {
+        "startLine": 655,
+        "startChar": 5,
+        "endLine": 655,
+        "endChar": 10
+      },
+      "revId": "c9ef3667c64a202651f80a678da1bc89ab497af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
