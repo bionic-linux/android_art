@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373e959c_747ee0b5",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-16T16:58:47Z",
+      "side": 1,
+      "message": "Nit: space before `\u003d`.",
+      "range": {
+        "startLine": 1284,
+        "startChar": 53,
+        "endLine": 1284,
+        "endChar": 54
+      },
+      "revId": "44fd0e5e9cc384783398b1f3ad85937aa856651c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
