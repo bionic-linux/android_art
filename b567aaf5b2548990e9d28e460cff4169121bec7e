@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cd5a6d1_17e63cd4",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4001,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-03-16T21:23:00Z",
+      "side": 1,
+      "message": "Can you verify this against the RI? I\u0027m curious whether this is a hard runtime failure, or should be thrown at the point of the invoke (so, e.g., VERIFY_ERROR_NO_CLASS).",
+      "range": {
+        "startLine": 4001,
+        "startChar": 13,
+        "endLine": 4001,
+        "endChar": 40
+      },
+      "revId": "b567aaf5b2548990e9d28e460cff4169121bec7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
