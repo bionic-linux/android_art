@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bccc2a7e_a2a7bed4",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-03-17T17:00:18Z",
+      "side": 1,
+      "message": "Not done, as I do not see a clean way to keep the condition for this path, but not the others. I am open to suggestions.",
+      "parentUuid": "bcbb4a9f_ca5243df",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 88
+      },
+      "revId": "802e54137638ffa01559e5118a8cf50848eddef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ced36ca_4d91f93a",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I could also alternatively make the condition in CodeGenerator check that it is not HNativeDebugInfo",
       "parentUuid": "1ced36ca_4d91f93a",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1547,
+        "endChar": 1
+      },
+      "revId": "802e54137638ffa01559e5118a8cf50848eddef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bccc2a7e_82a39ac9",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-03-17T17:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ced36ca_cd7cc9bd",
       "range": {
         "startLine": 1547,
         "startChar": 0,
