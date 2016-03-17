@@ -69,6 +69,30 @@
       "revId": "802e54137638ffa01559e5118a8cf50848eddef6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ced36ca_cd7cc9bd",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-03-17T16:18:19Z",
+      "side": 1,
+      "message": "I could also alternatively make the condition in CodeGenerator check that it is not HNativeDebugInfo",
+      "parentUuid": "1ced36ca_4d91f93a",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1547,
+        "endChar": 1
+      },
+      "revId": "802e54137638ffa01559e5118a8cf50848eddef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
