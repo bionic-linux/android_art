@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcbb4a9f_ca5243df",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2016-03-17T16:12:42Z",
+      "side": 1,
+      "message": "Hmmm. I would like to make sure it gets called in the other cases regardless of Environment. I assume there can in theory be slow path without environment, and basic block start is not even associated with instruction.",
+      "parentUuid": "fccf8245_2c269353",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 88
+      },
+      "revId": "802e54137638ffa01559e5118a8cf50848eddef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ced36ca_4d91f93a",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 1
