@@ -1575,13 +1575,13 @@ class OatDumper {
           stats_.AddBits(
               Stats::kByteKindStackMapRegisterMask,
               stack_map_encoding.GetRegisterMaskEncoding().BitSize() * num_stack_maps);
-          const size_t stack_mask_bits = encoding.stack_map_size_in_bits -
-              stack_map_encoding.GetStackMaskBitOffset();
+          const size_t stack_mask_bits =
+              stack_map_encoding.GetStackMaskIndexEncoding().BitSize();
           stats_.AddBits(
               Stats::kByteKindStackMapMask,
               stack_mask_bits * num_stack_maps);
-          const size_t stack_map_bits =
-              stack_map_encoding.GetStackMaskBitOffset() + stack_mask_bits;
+          const size_t stack_map_bits = 0u;
+              // stack_map_encoding.GetStackMaskBitOffset() + stack_mask_bits;
           stats_.AddBits(
               Stats::kByteKindStackMapOther,
               (encoding.stack_map_size_in_bits - stack_map_bits) * num_stack_maps);
