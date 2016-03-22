@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "dce47ef9_5eb5f143",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-03-22T15:34:41Z",
+      "side": 1,
+      "message": "The ternary operator is special. For all other operators we indeed break after the operator.",
+      "parentUuid": "3ce03ae0_2494965e",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 28
+      },
+      "revId": "946dff7e6f5aee5489b9bb654f39eac076b4095f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cdb763a_20c8049b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
