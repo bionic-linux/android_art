@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bccc2a7e_e89527f6",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-22T14:38:14Z",
+      "side": 1,
+      "message": "I think I\u0027ve used this style (where the line is broken after an operator) following Nicolas\u0027s recommendations for a while now.\n\nShould we make an exception for the ?: operator?",
+      "parentUuid": "9cb846d6_1f944b5e",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 28
+      },
+      "revId": "946dff7e6f5aee5489b9bb654f39eac076b4095f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cdb763a_20c8049b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-03-22T14:11:33Z",
       "side": 1,
       "message": "We don\u0027t need this anymore, it is always int32_t.",
+      "range": {
+        "startLine": 4456,
+        "startChar": 24,
+        "endLine": 4456,
+        "endChar": 34
+      },
+      "revId": "946dff7e6f5aee5489b9bb654f39eac076b4095f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bccc2a7e_08932b11",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4456,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-22T14:38:14Z",
+      "side": 1,
+      "message": "Right; good catch!  Fixed in PS2.",
+      "parentUuid": "1cdb763a_20c8049b",
       "range": {
         "startLine": 4456,
         "startChar": 24,
