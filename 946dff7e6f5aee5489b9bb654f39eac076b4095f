@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9cb846d6_1fbd2bde",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-22T14:41:31Z",
+      "side": 1,
+      "message": "No my recommendation is the \u0027?\u0027 and \u0027:\u0027 on a new line. That\u0027s the style I follow. Apologies if there has been some confusion?",
+      "parentUuid": "bccc2a7e_e89527f6",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 28
+      },
+      "revId": "946dff7e6f5aee5489b9bb654f39eac076b4095f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cdb763a_20c8049b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
