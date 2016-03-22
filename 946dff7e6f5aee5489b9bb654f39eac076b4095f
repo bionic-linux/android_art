@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3ce03ae0_2494965e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-22T15:10:55Z",
+      "side": 1,
+      "message": "For this CL, I\u0027ve changed the style to \"break before the operator\" for `?:`, but I\u0027ve kept the \"break after the operator\" for other operators in PS3.\n\nMy source was this comment: https://android-review.googlesource.com/#/c/167792/1/compiler/utils/arm/assembler_thumb2.cc@3303",
+      "parentUuid": "9cb846d6_1fbd2bde",
+      "range": {
+        "startLine": 243,
+        "startChar": 19,
+        "endLine": 245,
+        "endChar": 28
+      },
+      "revId": "946dff7e6f5aee5489b9bb654f39eac076b4095f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cdb763a_20c8049b",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
