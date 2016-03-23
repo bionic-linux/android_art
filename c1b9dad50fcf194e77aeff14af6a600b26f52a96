@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ce03ae0_e46e2ece",
+        "filename": "test/590-checker-array-set-null-regression/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-03-23T09:54:38Z",
+      "side": 1,
+      "message": "Why not \"prepare_for_register_allocation (before)\"?",
+      "range": {
+        "startLine": 38,
+        "startChar": 71,
+        "endLine": 38,
+        "endChar": 101
+      },
+      "revId": "c1b9dad50fcf194e77aeff14af6a600b26f52a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
