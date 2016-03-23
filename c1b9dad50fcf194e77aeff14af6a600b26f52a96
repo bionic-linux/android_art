@@ -22,6 +22,30 @@
       "revId": "c1b9dad50fcf194e77aeff14af6a600b26f52a96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cdb763a_23800e7c",
+        "filename": "test/590-checker-array-set-null-regression/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-23T12:42:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce03ae0_e46e2ece",
+      "range": {
+        "startLine": 38,
+        "startChar": 71,
+        "endLine": 38,
+        "endChar": 101
+      },
+      "revId": "c1b9dad50fcf194e77aeff14af6a600b26f52a96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
