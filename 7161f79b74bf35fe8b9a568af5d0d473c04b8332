@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c5f5acd_4676d2e0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 5256,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-03-24T10:44:43Z",
+      "side": 1,
+      "message": "Roland added Primitive::PrimitiveKind for that.",
+      "range": {
+        "startLine": 5256,
+        "startChar": 15,
+        "endLine": 5256,
+        "endChar": 29
+      },
+      "revId": "7161f79b74bf35fe8b9a568af5d0d473c04b8332",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
