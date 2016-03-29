@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7141fdd6_3fbb8794",
+        "filename": "compiler/utils/string_reference.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T15:02:04Z",
+      "side": 1,
+      "message": "common",
+      "range": {
+        "startLine": 44,
+        "startChar": 58,
+        "endLine": 44,
+        "endChar": 65
+      },
+      "revId": "76958786ae38d6c8c242c39820b7e9453ed8777f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
