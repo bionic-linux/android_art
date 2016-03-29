@@ -1,0 +1,458 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1bdedca_73010026",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 5263,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Just a suggestion, not sure what the right way is... How about you test whether the LoadString has the special input instead? Then the DexCachePcRelative would kick in as soon as someone extends the fixup pass. Same for x86(_64)",
+      "range": {
+        "startLine": 5263,
+        "startChar": 10,
+        "endLine": 5263,
+        "endChar": 43
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e62928_d2970466",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3796,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "I don\u0027t understand this comment.",
+      "range": {
+        "startLine": 3796,
+        "startChar": 5,
+        "endLine": 3796,
+        "endChar": 87
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b08d0b_dbbe13d8",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Please document this better, e.g. what the `adrp_label` is for and what this method returns.",
+      "range": {
+        "startLine": 476,
+        "startChar": 15,
+        "endLine": 476,
+        "endChar": 39
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51acf9b4_9e1cfdb2",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 479,
+        "startChar": 15,
+        "endLine": 479,
+        "endChar": 46
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_b35c7859",
+        "filename": "compiler/optimizing/code_generator_mips.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4069,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "swap operands to avoid the NOT",
+      "range": {
+        "startLine": 4067,
+        "startChar": 40,
+        "endLine": 4069,
+        "endChar": 40
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_d359f467",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 3288,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3286,
+        "startChar": 40,
+        "endLine": 3288,
+        "endChar": 40
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_b3eb9891",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5501,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Absolute? That would make it the opposite of PcRelative. But I\u0027ll leave it up to you...",
+      "range": {
+        "startLine": 5501,
+        "startChar": 22,
+        "endLine": 5501,
+        "endChar": 29
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_13028c2e",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5511,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 5511,
+        "startChar": 14,
+        "endLine": 5511,
+        "endChar": 21
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_d3f81469",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5515,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 5515,
+        "startChar": 13,
+        "endLine": 5515,
+        "endChar": 20
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31a785d3_3dc84f70",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5596,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Extend comment",
+      "range": {
+        "startLine": 5596,
+        "startChar": 4,
+        "endLine": 5596,
+        "endChar": 73
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_53fc0457",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5601,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "You\u0027re using this in the codegens as well. Maybe add a helper method IsInBootImage?",
+      "range": {
+        "startLine": 5599,
+        "startChar": 8,
+        "endLine": 5601,
+        "endChar": 48
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_b312b879",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "When would this happen? I\u0027d DCHECK the above instead.",
+      "range": {
+        "startLine": 158,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_f30c305e",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Indentation",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 9
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_13a9ac56",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Any chance we could DCHECK this?",
+      "range": {
+        "startLine": 183,
+        "startChar": 26,
+        "endLine": 183,
+        "endChar": 46
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_33aea85f",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Why can\u0027t we do that now?",
+      "range": {
+        "startLine": 197,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 67
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_53b324c6",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Nit: is_in_dex_cache? Matches your comment in the else branch.",
+      "range": {
+        "startLine": 200,
+        "startChar": 12,
+        "endLine": 200,
+        "endChar": 29
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_f3ba708d",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 214,
+        "startChar": 17,
+        "endLine": 214,
+        "endChar": 34
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_d3bd7488",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "indent",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d198e991_02bacae5",
+        "filename": "compiler/utils/string_reference.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "This comment is difficult to parse, please rephrase. I understood that the slow comparison will be made only in the rare (?) case of dex files not matching.",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 52
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_13ba8ce5",
+        "filename": "compiler/utils/string_reference.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-29T10:41:31Z",
+      "side": 1,
+      "message": "Nit: else",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
