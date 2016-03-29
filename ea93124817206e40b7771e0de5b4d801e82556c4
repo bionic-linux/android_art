@@ -2,6 +2,310 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1bdedca_f370b0a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "I guess I should read that as -0.9%, right?",
+      "range": {
+        "startLine": 15,
+        "startChar": 30,
+        "endLine": 15,
+        "endChar": 34
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_735ca022",
+        "filename": "compiler/compiled_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Turn this into an `enum class`?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 4
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_33522810",
+        "filename": "compiler/compiled_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "/* target_dex_file */ nullptr",
+      "range": {
+        "startLine": 176,
+        "startChar": 67,
+        "endLine": 176,
+        "endChar": 74
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_93405c33",
+        "filename": "compiler/compiled_method.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Nit: put on a single line.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 300,
+        "endChar": 53
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_5ffc4b84",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Add\n\n  \u003c\u003c patch.Type()\n\nand add operator\u003c\u003c for LinkerPatchType?",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_1ff6c3a2",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_ff3bdf1e",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Nit: One argument per line.",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 60
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_9f409385",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Use DCHECK_ALIGNED.",
+      "range": {
+        "startLine": 395,
+        "startChar": 4,
+        "endLine": 395,
+        "endChar": 35
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_bf455794",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Use IsAligned instead?",
+      "range": {
+        "startLine": 806,
+        "startChar": 21,
+        "endLine": 806,
+        "endChar": 81
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_7f2fcfce",
+        "filename": "compiler/linker/relative_patcher_test.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "\u003c\u003c patch.Type()",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_bf931749",
+        "filename": "compiler/linker/x86/relative_patcher_x86_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Maybe put one per line?",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 159,
+        "endChar": 72
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_1f8323f6",
+        "filename": "compiler/linker/x86_64/relative_patcher_x86_64_test.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 72
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_df6b7bee",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Use a switch statement on patch.Type() instead?",
+      "range": {
+        "startLine": 1110,
+        "startChar": 12,
+        "endLine": 1110,
+        "endChar": 14
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_3f570733",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 5239,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Thanks for leaving a TODO!  I\u0027ll have a look at this later. :)",
+      "range": {
+        "startLine": 5239,
+        "startChar": 8,
+        "endLine": 5239,
+        "endChar": 44
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1bdedca_73010026",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 13
@@ -284,6 +588,109 @@
     },
     {
       "key": {
+        "uuid": "7141fdd6_dfa85b55",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 4547,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Lines 4546–4547 and 4554­–4555 are the same; how about factoring them and moving the test GetCompilerOptions().GetCompilePic() inside the loop?",
+      "range": {
+        "startLine": 4546,
+        "startChar": 0,
+        "endLine": 4547,
+        "endChar": 96
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_9fb2d3c1",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 6084,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Add /* placeholder */ here ?",
+      "range": {
+        "startLine": 6084,
+        "startChar": 42,
+        "endLine": 6084,
+        "endChar": 43
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_bfb797b0",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 6107,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 6107,
+        "startChar": 42,
+        "endLine": 6107,
+        "endChar": 43
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_1fa7a37d",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 5498,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Add /* placeholder */ before CodeGeneratorX86_64::kDummy32BitOffset?",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_3fa4e775",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 5525,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1bdedca_b3eb9891",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 13
@@ -425,6 +832,23 @@
     },
     {
       "key": {
+        "uuid": "7141fdd6_bfa1d7bc",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5571,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "\u003c\u003c GetLoadKind()",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31a785d3_3dc84f70",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 13
@@ -512,6 +936,63 @@
         "startChar": 8,
         "endLine": 5601,
         "endChar": 48
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_7fcb4f6f",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5633,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "\u003c\u003c GetLoadKind()",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_3fc5c756",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5666,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "\u003c\u003c GetLoadKind()",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1bdedca_93277ca6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 5687,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be architecture dependent?  Or maybe this doesn\u0027t really matter as the union is already has a size of at least 64 bits?  If so, I\u0027d add a comment.",
+      "range": {
+        "startLine": 5687,
+        "startChar": 4,
+        "endLine": 5687,
+        "endChar": 12
       },
       "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -754,6 +1235,52 @@
     },
     {
       "key": {
+        "uuid": "7141fdd6_ffd43fc4",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "« has its sign bit set. »?",
+      "range": {
+        "startLine": 202,
+        "startChar": 84,
+        "endLine": 202,
+        "endChar": 96
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_9fc9732b",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 211,
+        "startChar": 84,
+        "endLine": 211,
+        "endChar": 96
+      },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1bdedca_f3ba708d",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 13
@@ -830,6 +1357,29 @@
       "side": 1,
       "message": "Done. I thought this was the correct indentation but now I can see that there\u0027s not a single such indentation in Optimizing (and we just removed those that were in Quick).",
       "parentUuid": "f1bdedca_d3bd7488",
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_bfceb72e",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 224,
+        "startChar": 84,
+        "endLine": 224,
+        "endChar": 96
+      },
       "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -924,6 +1474,23 @@
         "endLine": 51,
         "endChar": 5
       },
+      "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7141fdd6_ff067f40",
+        "filename": "runtime/safe_map.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-03-29T14:58:44Z",
+      "side": 1,
+      "message": "I would check the return type of `create` as well:\n\n  static_assert(std::is_same\u003cstd::result_of\u003cCreateFn(t)\u003e::type, V\u003e::value,\n                \"Argument `create` should return a value of type V.\");",
       "revId": "ea93124817206e40b7771e0de5b4d801e82556c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
