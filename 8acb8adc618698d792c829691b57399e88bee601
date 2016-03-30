@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a6cd26_2b7979cd",
+        "filename": "test/593-checker-long-to-float-regression/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-03-30T13:05:14Z",
+      "side": 1,
+      "message": "Cool, almost there. Let\u0027s shuffle the methods a little bit, though, because this invoke may get inlined in the future and your Checker test would not test the code that you run.\n\nYou can also drop the $opt$ marker, it\u0027s obsolete now.\n\n  static void main(...) {\n    assertEquals(1.0f, $noinline$longToFloat());\n  }\n\n  // CHECK-START: ...\n  // CHECK-DAG: ...\n  static float $noinline$longToFloat() {\n    if (doThrow) { throw new Error(); }\n    longValue \u003d $inline$returnConst();\n    return (float) longValue;\n  }\n\n  static long $inline$returnConst() { return 1L; }",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "8acb8adc618698d792c829691b57399e88bee601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
