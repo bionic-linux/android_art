@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "aeb870d5_a58d09f5",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T23:02:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure if anyone really does put structs into functions like that except for macros which make anonymous classes. It makes it much harder to find them later without an IDE.",
+      "parentUuid": "aeb870d5_ce7f7f36",
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeb870d5_cec13fff",
         "filename": "imgdiag/imgdiag.cc",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "It\u0027s a struct, isn\u0027t that a given?",
       "parentUuid": "aeb870d5_cec13fff",
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb870d5_e525419f",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T23:02:17Z",
+      "side": 1,
+      "message": "It can be initialized any number of ways \n\n  ClassData x; // all the primitive fields have indeterminate values\n  new ClassData; // same as above\n\n  ClassData x{}; // all the primitive fields are zeroed out\n  new ClassData(); // same as above\n\nhttp://en.cppreference.com/w/cpp/language/default_initialization\n\nIt probably works fine because I\u0027m guessing \"new T()\" somewhere to provide the backing memory for a its keys/values, so the memory is already zeroed out.",
+      "parentUuid": "aeb870d5_4ed9afa1",
       "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
