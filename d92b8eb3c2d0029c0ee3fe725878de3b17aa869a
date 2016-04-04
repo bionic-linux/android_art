@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeb870d5_6e8833e4",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T21:36:59Z",
+      "side": 1,
+      "message": "nit: Is this right in the middle of a function? It should probably go to the top of the file, perhaps call it DirtyClassData",
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb870d5_cec13fff",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T21:36:59Z",
+      "side": 1,
+      "message": "nit: could probably use an initializer\n\n    \u003d 0",
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb870d5_2e671bf5",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T21:36:59Z",
+      "side": 1,
+      "message": "nit: Is this really necessary? It should be able to infer types from the parameters",
+      "range": {
+        "startLine": 554,
+        "startChar": 51,
+        "endLine": 554,
+        "endChar": 84
+      },
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb870d5_ae7a4b86",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T21:36:59Z",
+      "side": 1,
+      "message": "nit: Combine this with the above function somehow?\n\n    std::function\u003cV(const D\u0026)\u003e f \u003d identity\n\nor similar",
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb870d5_8e5bc728",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-04-04T21:36:59Z",
+      "side": 1,
+      "message": "nit: value_mapper",
+      "range": {
+        "startLine": 843,
+        "startChar": 81,
+        "endLine": 843,
+        "endChar": 82
+      },
+      "revId": "d92b8eb3c2d0029c0ee3fe725878de3b17aa869a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
