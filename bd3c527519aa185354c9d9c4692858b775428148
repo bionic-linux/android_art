@@ -22,6 +22,30 @@
       "revId": "bd3c527519aa185354c9d9c4692858b775428148",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae4dd05b_31eb9093",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-08T15:04:31Z",
+      "side": 1,
+      "message": "Improved comments.",
+      "parentUuid": "ae4dd05b_d102445d",
+      "range": {
+        "startLine": 1123,
+        "startChar": 8,
+        "endLine": 1123,
+        "endChar": 43
+      },
+      "revId": "bd3c527519aa185354c9d9c4692858b775428148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
