@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee1b4859_63ad42aa",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-08T16:42:40Z",
+      "side": 1,
+      "message": "Suggestion: what about:\n\n  bool ordered \u003d true;\n\ninstead?",
+      "range": {
+        "startLine": 1126,
+        "startChar": 8,
+        "endLine": 1126,
+        "endChar": 31
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_83ba3ee3",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-08T16:42:40Z",
+      "side": 1,
+      "message": "Nit: \u003c ?",
+      "range": {
+        "startLine": 1128,
+        "startChar": 29,
+        "endLine": 1128,
+        "endChar": 31
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_a3bf3ad2",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-08T16:42:40Z",
+      "side": 1,
+      "message": "Maybe add a TODO about that?",
+      "range": {
+        "startLine": 1138,
+        "startChar": 71,
+        "endLine": 1140,
+        "endChar": 65
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_e3b932ee",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-08T16:42:40Z",
+      "side": 1,
+      "message": "What about:\n\n indexes_.insert(number_of_stack_maps_);\n std::iota(indexes_.begin(), indexes_.end(), 0u);\n\n?",
+      "range": {
+        "startLine": 1141,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 11
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_03cf2e7b",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-08T16:42:40Z",
+      "side": 1,
+      "message": "Used and non-empty?",
+      "range": {
+        "startLine": 1195,
+        "startChar": 42,
+        "endLine": 1195,
+        "endChar": 46
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
