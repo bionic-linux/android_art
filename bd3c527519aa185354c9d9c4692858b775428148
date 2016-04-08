@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae4dd05b_d102445d",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-08T13:00:53Z",
+      "side": 1,
+      "message": "As discussed offline, but I already had this written, so posting it anyway...\n\nCareful with this. Stack maps are always ordered by native PCs, except for methods with try/catch when you have normal stack maps first, followed by catch-point stack maps also ordered by native PCs (i think).\n\nWhat this means is:\n(a) You don\u0027t need to do a generic sort - you could simply find the start of the second list and scan two lists linearly.\n\n(b) There may be both a normal and a catch stack map for a given native PC. You\u0027re using a stable sort so you\u0027ll never confuse the two. Good, but please explain why you need that.",
+      "range": {
+        "startLine": 1123,
+        "startChar": 8,
+        "endLine": 1123,
+        "endChar": 43
+      },
+      "revId": "bd3c527519aa185354c9d9c4692858b775428148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
