@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee1b4859_430046e9",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-11T13:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1b4859_63ad42aa",
+      "range": {
+        "startLine": 1126,
+        "startChar": 8,
+        "endLine": 1126,
+        "endChar": 31
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1b4859_83ba3ee3",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-08T16:42:40Z",
       "side": 1,
       "message": "Nit: \u003c ?",
+      "range": {
+        "startLine": 1128,
+        "startChar": 29,
+        "endLine": 1128,
+        "endChar": 31
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_a3e65a8c",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-11T13:25:10Z",
+      "side": 1,
+      "message": "I prefer using the minimum requirements on the iterator and \"\u003c\" adds an extra requirement that it is a random_access_iterator.",
+      "parentUuid": "ee1b4859_83ba3ee3",
       "range": {
         "startLine": 1128,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ee1b4859_e3f05244",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-11T13:25:10Z",
+      "side": 1,
+      "message": "No, as long as it\u0027s not critical for performance, no one should need to touch it.",
+      "parentUuid": "ee1b4859_a3bf3ad2",
+      "range": {
+        "startLine": 1138,
+        "startChar": 71,
+        "endLine": 1140,
+        "endChar": 65
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1b4859_e3b932ee",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ee1b4859_63fd4214",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-11T13:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1b4859_e3b932ee",
+      "range": {
+        "startLine": 1141,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 11
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1b4859_03cf2e7b",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2016-04-08T16:42:40Z",
       "side": 1,
       "message": "Used and non-empty?",
+      "range": {
+        "startLine": 1195,
+        "startChar": 42,
+        "endLine": 1195,
+        "endChar": 46
+      },
+      "revId": "7db79bc08b8b2d87182ac998f86e803727375275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee1b4859_c30436fb",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-11T13:25:10Z",
+      "side": 1,
+      "message": "That should be obvious; adding \"and non-empty\" would exceed the 100 character limit and I don\u0027t want to move this comment to a separate line.",
+      "parentUuid": "ee1b4859_03cf2e7b",
       "range": {
         "startLine": 1195,
         "startChar": 42,
