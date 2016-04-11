@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee1b4859_432e8669",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1195,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-04-11T13:52:10Z",
+      "side": 1,
+      "message": "How about moving this to stack_map.h? Looks like a useful class to iterate orderly on the entries.",
+      "range": {
+        "startLine": 1113,
+        "startChar": 0,
+        "endLine": 1195,
+        "endChar": 5
+      },
+      "revId": "adbf93edb12dee174be3c5cad4d65ea97b40ffb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
