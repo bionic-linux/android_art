@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc632da_0ee3eabf",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1013855
+      },
+      "writtenOn": "2016-04-13T23:02:46Z",
+      "side": 1,
+      "message": "single frame or full stack?",
+      "range": {
+        "startLine": 1103,
+        "startChar": 12,
+        "endLine": 1103,
+        "endChar": 17
+      },
+      "revId": "9278aeed9e4268d22545392aa49583d7febebf9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
