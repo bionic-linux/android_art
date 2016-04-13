@@ -213,6 +213,29 @@
     },
     {
       "key": {
+        "uuid": "eb25fa43_537be4c3",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-13T12:05:06Z",
+      "side": 1,
+      "message": "Why two brackets?",
+      "range": {
+        "startLine": 553,
+        "startChar": 7,
+        "endLine": 553,
+        "endChar": 10
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66795cb_bc1f6da4",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
@@ -468,6 +491,75 @@
         "startLine": 566,
         "startChar": 0,
         "endLine": 578,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b71d253_2df4cd6d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-13T12:05:06Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 622,
+        "startChar": 7,
+        "endLine": 622,
+        "endChar": 9
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b2b2e19_f4d698c8",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-13T12:05:06Z",
+      "side": 1,
+      "message": "Stray `]` character?",
+      "range": {
+        "startLine": 622,
+        "startChar": 28,
+        "endLine": 622,
+        "endChar": 29
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b71d253_cdff494a",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-13T12:05:06Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 630,
+        "startChar": 7,
+        "endLine": 630,
         "endChar": 9
       },
       "revId": "21f8ac05147c714b2cd57578e614896943f47285",
