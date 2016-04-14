@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_7413283c",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-14T14:59:37Z",
+      "side": 1,
+      "message": "Sorry, I missed that.",
+      "parentUuid": "0b732e96_9407e4ff",
+      "range": {
+        "startLine": 1044,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 7
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_d4587c2f",
         "filename": "test/594-regression-irreducible-linorder/smali/IrreducibleLoop.smali",
         "patchSetId": 3
@@ -172,6 +196,24 @@
       "side": 1,
       "message": "And do what exactly? I carefully crafted the test case to generate an ill-formed linear order. It is not meant to do anything meaningful and I don\u0027t intend to sacrifice clarity of the smali code for this. I would have dumped the failing DEX file here and wished you good luck making sense of those 200+ blocks if I wanted to run it.\n\nI\u0027ve added a Checker test case instead - compromise?",
       "parentUuid": "0b732e96_b43a20c1",
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_b43780c0",
+        "filename": "test/594-regression-irreducible-linorder/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-14T14:59:37Z",
+      "side": 1,
+      "message": "OK, I\u0027m not going to insist on running it. It\u0027s just a personal preference, not a strict requirement.",
+      "parentUuid": "0b732e96_b40ce024",
       "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
