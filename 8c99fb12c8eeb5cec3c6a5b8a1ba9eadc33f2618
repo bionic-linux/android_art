@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b732e96_744a4854",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-14T14:30:28Z",
+      "side": 1,
+      "message": "I prefer CHECK() when we\u0027re already in an \"if (kIsDebugBuild)\" block.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 12,
+        "endLine": 1037,
+        "endChar": 18
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_d42f9c81",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-14T14:30:28Z",
+      "side": 1,
+      "message": "Maybe also \"if (kIsDebugBuild)\" as above?",
+      "range": {
+        "startLine": 1044,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 7
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_d4587c2f",
         "filename": "test/594-regression-irreducible-linorder/smali/IrreducibleLoop.smali",
         "patchSetId": 3
@@ -19,6 +65,23 @@
         "endLine": 1,
         "endChar": 20
       },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_b43a20c1",
+        "filename": "test/594-regression-irreducible-linorder/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-04-14T14:30:28Z",
+      "side": 1,
+      "message": "I prefer actually running the test anyway.",
       "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
