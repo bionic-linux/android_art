@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_54ff0c0d",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:55:07Z",
+      "side": 1,
+      "message": "But this way it\u0027s obvious it is still checked only in debug builds. I\u0027m pretty sure we do it this way elsewhere too.",
+      "parentUuid": "0b732e96_744a4854",
+      "range": {
+        "startLine": 1037,
+        "startChar": 12,
+        "endLine": 1037,
+        "endChar": 18
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_d42f9c81",
         "filename": "compiler/optimizing/ssa_liveness_analysis.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-14T14:30:28Z",
       "side": 1,
       "message": "Maybe also \"if (kIsDebugBuild)\" as above?",
+      "range": {
+        "startLine": 1044,
+        "startChar": 0,
+        "endLine": 1052,
+        "endChar": 7
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_9407e4ff",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:55:07Z",
+      "side": 1,
+      "message": "We need to `break` here so we don\u0027t generate an unsorted use list. Other parts of liveness analysis assume it is sorted. Added a comment.",
+      "parentUuid": "0b732e96_d42f9c81",
       "range": {
         "startLine": 1044,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_f4065800",
+        "filename": "test/594-regression-irreducible-linorder/smali/IrreducibleLoop.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:55:07Z",
+      "side": 1,
+      "message": "Done. Thanks for catching it a second time.",
+      "parentUuid": "0b732e96_d4587c2f",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_b43a20c1",
         "filename": "test/594-regression-irreducible-linorder/src/Main.java",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2016-04-14T14:30:28Z",
       "side": 1,
       "message": "I prefer actually running the test anyway.",
+      "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_b40ce024",
+        "filename": "test/594-regression-irreducible-linorder/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:55:07Z",
+      "side": 1,
+      "message": "And do what exactly? I carefully crafted the test case to generate an ill-formed linear order. It is not meant to do anything meaningful and I don\u0027t intend to sacrifice clarity of the smali code for this. I would have dumped the failing DEX file here and wished you good luck making sense of those 200+ blocks if I wanted to run it.\n\nI\u0027ve added a Checker test case instead - compromise?",
+      "parentUuid": "0b732e96_b43a20c1",
       "revId": "8c99fb12c8eeb5cec3c6a5b8a1ba9eadc33f2618",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
