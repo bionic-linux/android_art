@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_d415dc84",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-04-14T09:42:12Z",
+      "side": 1,
+      "message": "I should have better phrased my question: why don\u0027t we use `[` or `[[` uniformly in our shell scripts?\n\nIf we can assume Bash is always available (which I think we do in Android), then I agree that using `[[` is probably better.",
+      "parentUuid": "2bc632da_ffea7f52",
+      "range": {
+        "startLine": 553,
+        "startChar": 7,
+        "endLine": 553,
+        "endChar": 10
+      },
+      "revId": "21f8ac05147c714b2cd57578e614896943f47285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f66795cb_bc1f6da4",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
