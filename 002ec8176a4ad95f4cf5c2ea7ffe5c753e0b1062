@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_b46860c5",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b732e96_b48140c5",
+      "range": {
+        "startLine": 999,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 39
+      },
+      "revId": "002ec8176a4ad95f4cf5c2ea7ffe5c753e0b1062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_d486bcd9",
         "filename": "test/594-regression-irreducible-linear-order/expected.txt",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-14T13:42:58Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "002ec8176a4ad95f4cf5c2ea7ffe5c753e0b1062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_946364e8",
+        "filename": "test/594-regression-irreducible-linear-order/expected.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b732e96_d486bcd9",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0b732e96_549b8c2d",
+        "filename": "test/594-regression-irreducible-linear-order/smali/IrreducibleLoop.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b732e96_54c0ecf9",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 20
+      },
+      "revId": "002ec8176a4ad95f4cf5c2ea7ffe5c753e0b1062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b732e96_74bde882",
         "filename": "test/594-regression-irreducible-linear-order/src/Main.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-04-14T13:42:58Z",
       "side": 1,
       "message": "2016",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "002ec8176a4ad95f4cf5c2ea7ffe5c753e0b1062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b732e96_74988830",
+        "filename": "test/594-regression-irreducible-linear-order/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-04-14T14:14:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b732e96_74bde882",
       "range": {
         "startLine": 2,
         "startChar": 17,
