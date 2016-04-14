@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bc632da_c73a4cc2",
+        "filename": "test/Android.run-test.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-04-14T21:15:11Z",
+      "side": 1,
+      "message": "Needs to go to line 240",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 27
+      },
+      "revId": "dd9beccef1b08f3e8180f0e900e9a13c8a801848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
