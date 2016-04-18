@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b732e96_badbe999",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2016-04-18T17:50:48Z",
+      "side": 1,
+      "message": "May graph contain nullptr BB in the list? For example if BB has been removed? In this case you need to check the header \u003d\u003d nullptr in the next if statement.",
+      "range": {
+        "startLine": 973,
+        "startChar": 22,
+        "endLine": 973,
+        "endChar": 28
+      },
+      "revId": "adf84911030ca36835c48cbff8be6b078693fb00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
