@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8801e53f_a5acf646",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:26:02Z",
+      "side": 1,
+      "message": "256 now?",
+      "range": {
+        "startLine": 211,
+        "startChar": 38,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "94b6ab6d9d9212a947576151dd6e7347fcd678d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_e57d5ea3",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:26:02Z",
+      "side": 1,
+      "message": "How many monitors do we support in the debug build? Is it high enough?",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "94b6ab6d9d9212a947576151dd6e7347fcd678d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
