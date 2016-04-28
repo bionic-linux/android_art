@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "28dab964_2e76e72e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-04-28T21:12:55Z",
+      "side": 1,
+      "message": "It seems difficult to do a decent job of that.  The current version starts out with a tiny list for debug builds, which should do a bit of that.  But even for much more frequently executed code, we\u0027ve had trouble getting memory model issues to show up during testing. Some processors basically don\u0027t exhibit these issues at all, so it also depends a lot on which particular core design you use for testing.\n\nBeing able to run tsan is probably a better goal.",
+      "parentUuid": "889d6572_f15188c9",
+      "range": {
+        "startLine": 26,
+        "startChar": 18,
+        "endLine": 27,
+        "endChar": 13
+      },
+      "revId": "94b6ab6d9d9212a947576151dd6e7347fcd678d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "889d6572_316310a3",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 3
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "28dab964_d162669d",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-04-28T21:12:55Z",
+      "side": 1,
+      "message": "Clarified that this is with the maximum possible setting.",
+      "parentUuid": "8801e53f_a5acf646",
+      "range": {
+        "startLine": 211,
+        "startChar": 38,
+        "endLine": 211,
+        "endChar": 41
+      },
+      "revId": "94b6ab6d9d9212a947576151dd6e7347fcd678d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_e57d5ea3",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 3
@@ -105,6 +153,30 @@
       "writtenOn": "2016-04-28T01:26:02Z",
       "side": 1,
       "message": "How many monitors do we support in the debug build? Is it high enough?",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 19
+      },
+      "revId": "94b6ab6d9d9212a947576151dd6e7347fcd678d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28dab964_f12b2222",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-04-28T21:12:55Z",
+      "side": 1,
+      "message": "Good question.  It\u0027s a megabyte worth of monitors, which is on the order of 10,000 inflated monitors.  I think it works for an AOSP boot.",
+      "parentUuid": "8801e53f_e57d5ea3",
       "range": {
         "startLine": 212,
         "startChar": 14,
