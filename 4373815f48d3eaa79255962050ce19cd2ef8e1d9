@@ -48,6 +48,98 @@
     },
     {
       "key": {
+        "uuid": "8801e53f_65d68ed7",
+        "filename": "runtime/monitor_pool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Does memset work here?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_e5e1deab",
+        "filename": "runtime/monitor_pool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Add an error message using a \u003c\u003c as this is where we hit the maximum number of monitors we support?",
+      "range": {
+        "startLine": 47,
+        "startChar": 51,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_ba67f5d9",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Have a DCHECK that kMaxListSize is a power of 2 somewhere?",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 138,
+        "endChar": 43
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_25300646",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Would it make sense to swap the left and the right of the \u0026\u0026 for efficiency?",
+      "range": {
+        "startLine": 154,
+        "startChar": 29,
+        "endLine": 154,
+        "endChar": 31
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_dac47971",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 1
@@ -141,6 +233,52 @@
     },
     {
       "key": {
+        "uuid": "8801e53f_1a31e192",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "28 -\u003e LockWord::kMonitorIdSize ?",
+      "range": {
+        "startLine": 200,
+        "startChar": 50,
+        "endLine": 200,
+        "endChar": 52
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_1a8d6142",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "I assume this means that 2^9 * 8 (kMonitorAlignment) \u003d 4096 (kChunkSize)?\n\nMaybe would it be clearer if \"int64_t offset\" is changed to \"index into an array of kMonitorAlignment-aligned entries\" or something like that?",
+      "range": {
+        "startLine": 208,
+        "startChar": 9,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_1a0a81c2",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 1
@@ -157,6 +295,29 @@
         "startChar": 5,
         "endLine": 211,
         "endChar": 59
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_45dd4a24",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "How about \"current_chunk_list_index_\"?",
+      "range": {
+        "startLine": 218,
+        "startChar": 9,
+        "endLine": 218,
+        "endChar": 28
       },
       "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -187,6 +348,29 @@
     },
     {
       "key": {
+        "uuid": "8801e53f_65ecced8",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Is this meant to be current_chunk_list_ instead (I don\u0027t see the definition of num_chunk_lists_)?",
+      "range": {
+        "startLine": 221,
+        "startChar": 39,
+        "endLine": 221,
+        "endChar": 55
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_5ab08904",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 1
@@ -203,6 +387,52 @@
         "startChar": 38,
         "endLine": 222,
         "endChar": 41
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_c5d01a0a",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 222,
+        "startChar": 74,
+        "endLine": 222,
+        "endChar": 90
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8801e53f_25cc8645",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T01:20:29Z",
+      "side": 1,
+      "message": "How about \"current_chunk_list_capacity_\"?",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 18
       },
       "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
