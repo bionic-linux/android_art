@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "8801e53f_052062e6",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-04-28T01:16:27Z",
+      "side": 1,
+      "message": "There\u0027s nothing magic about page size, so I think a constant is fine. I followed your advice for now (with a slightly smaller value for 512U to save space), but I\u0027m a little nervous about always having the debug configuration diverge from the release one.  We should probably change this after initial testing?",
+      "parentUuid": "8801e53f_dabab919",
+      "range": {
+        "startLine": 194,
+        "startChar": 54,
+        "endLine": 194,
+        "endChar": 89
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_1a0a81c2",
         "filename": "runtime/monitor_pool.h",
         "patchSetId": 1
