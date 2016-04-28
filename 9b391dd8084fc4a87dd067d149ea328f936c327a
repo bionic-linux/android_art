@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28dab964_b7f22a15",
+        "filename": "runtime/monitor_pool.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-04-28T22:37:19Z",
+      "side": 1,
+      "message": "Worth mentioning how much monitors we can have for the kInitialChunkStorage \u003d 256 (the current default) in the comment as well?",
+      "range": {
+        "startLine": 217,
+        "startChar": 24,
+        "endLine": 217,
+        "endChar": 41
+      },
+      "revId": "9b391dd8084fc4a87dd067d149ea328f936c327a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
