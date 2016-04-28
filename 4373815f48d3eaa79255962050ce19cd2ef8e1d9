@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "28dab964_42ad8297",
+        "filename": "runtime/monitor_pool.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2016-04-28T23:05:45Z",
+      "side": 1,
+      "message": "I don\u0027t think a nullptr\u0027s representation is guaranteed to consist of zero bytes.  T* p \u003d 0 is guaranteed to work, but I think it\u0027s allowed to do a conversion.\n\nThis is of course entirely theoretical. Probably a slightly more real danger is that some compiler will decide that this isn\u0027t legal, and therefore it\u0027s allowed to transform the code to something else.",
+      "parentUuid": "28dab964_573e66a9",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "4373815f48d3eaa79255962050ce19cd2ef8e1d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8801e53f_e5e1deab",
         "filename": "runtime/monitor_pool.cc",
         "patchSetId": 1
