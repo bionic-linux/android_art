@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88b805d6_3c367df4",
+        "filename": "test/476-checker-ctor-memory-barrier/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1037563
+      },
+      "writtenOn": "2016-04-29T09:59:09Z",
+      "side": 0,
+      "message": "It is a bit strange that the constructor barrier is not generated for Throw exits, but only for ReturnVoid. Even with Throw \u0027this\u0027 may escape from the constructor.",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "3ab445a5be002c713ac44bee57a65c0951d8920d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
