@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd6bef2f_32886e80",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-04T21:42:44Z",
+      "side": 1,
+      "message": "added negative test on deopt to make sure removal is really done statically.",
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6bef2f_92ada2fc",
+        "filename": "test/530-checker-loops2/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-04T21:42:44Z",
+      "side": 1,
+      "message": "I need to up this subscript in my own test due to the length \u003d\u003d 0 test above. BCE is getting too smart :-)",
+      "range": {
+        "startLine": 713,
+        "startChar": 11,
+        "endLine": 713,
+        "endChar": 13
+      },
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
