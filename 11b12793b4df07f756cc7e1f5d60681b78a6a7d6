@@ -22,6 +22,30 @@
       "revId": "11b12793b4df07f756cc7e1f5d60681b78a6a7d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d1763d9_783da1a9",
+        "filename": "test/136-daemon-jni-shutdown/daemon_jni_shutdown.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-05-05T18:21:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1763d9_b817b941",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "11b12793b4df07f756cc7e1f5d60681b78a6a7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
