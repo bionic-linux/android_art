@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cd6bef2f_b17533bf",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-05T16:21:55Z",
+      "side": 1,
+      "message": "Yes, the new and existing code relies on being right-constant-heavy. Most code seems to be rewritten in that form, but I like the suggestion of using these utilities (with cmp rewrite in here).",
+      "parentUuid": "edb513f9_5c243dfd",
+      "range": {
+        "startLine": 979,
+        "startChar": 28,
+        "endLine": 979,
+        "endChar": 61
+      },
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb513f9_dce04de0",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Nope, this is fine. Maybe just CHECK would be more descriptive but Checker will never match the same line twice, so this says \"there are at least two BoundsChecks\"",
       "parentUuid": "edb513f9_dce04de0",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 28
+      },
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6bef2f_51c23ffb",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-05T16:21:55Z",
+      "side": 1,
+      "message": "Yes, like David says, this works fine (I had already verified this long time back with one extra check-dag that would fail). As for CHECK vs CHECK-DAG, since the order in \n\nCHECK X\nCHECK X\n\ndoes not matter, it only seemed appropriate to pick the order-does-not matter check. But I am ok with CHECK if that has the group preference.",
+      "parentUuid": "2dac8bb4_fe12e1a4",
       "range": {
         "startLine": 943,
         "startChar": 0,
