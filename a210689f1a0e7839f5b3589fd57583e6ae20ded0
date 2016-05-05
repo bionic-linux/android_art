@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "edb513f9_5c243dfd",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-05-05T09:59:08Z",
+      "side": 1,
+      "message": "I don\u0027t think we swap inputs to put the constant on the right, do we? Should you use the GetConstantRight and GetLeastConstantLeft here?",
+      "range": {
+        "startLine": 979,
+        "startChar": 28,
+        "endLine": 979,
+        "endChar": 61
+      },
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edb513f9_dce04de0",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2016-05-05T07:49:39Z",
       "side": 1,
       "message": "I think this doesn\u0027t do what you expect: it will match just one BoundsCheck in the graph ,right David?",
+      "range": {
+        "startLine": 943,
+        "startChar": 0,
+        "endLine": 944,
+        "endChar": 28
+      },
+      "revId": "a210689f1a0e7839f5b3589fd57583e6ae20ded0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dac8bb4_fe12e1a4",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-05-05T09:59:08Z",
+      "side": 1,
+      "message": "Nope, this is fine. Maybe just CHECK would be more descriptive but Checker will never match the same line twice, so this says \"there are at least two BoundsChecks\"",
+      "parentUuid": "edb513f9_dce04de0",
       "range": {
         "startLine": 943,
         "startChar": 0,
