@@ -69,6 +69,30 @@
       "revId": "ac8c986ee21e8d66a836506cb7f6ec4e01c8a4bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72f2e456_06e5be1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-05-06T21:28:48Z",
+      "side": 1,
+      "message": "Perhaps say that instead? Right now looking at this CL diff independently it\u0027s loosening the preconditions (\u003dweaker).\n\n\n  \"Preserve the verification behavior of M for v35 dex files. v37+ get stronger behavior\"  \n\nor similar.",
+      "parentUuid": "72f2e456_8680ae5c",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "ac8c986ee21e8d66a836506cb7f6ec4e01c8a4bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
