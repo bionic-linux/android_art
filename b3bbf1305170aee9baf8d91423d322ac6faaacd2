@@ -22,6 +22,30 @@
       "revId": "b3bbf1305170aee9baf8d91423d322ac6faaacd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12ed28ca_6d1155f3",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-05-09T19:44:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72af4490_787f2155",
+      "range": {
+        "startLine": 1677,
+        "startChar": 35,
+        "endLine": 1677,
+        "endChar": 64
+      },
+      "revId": "b3bbf1305170aee9baf8d91423d322ac6faaacd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
