@@ -22,6 +22,30 @@
       "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5724f2f2_f5de9be6",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-18T23:57:35Z",
+      "side": 1,
+      "message": "Do you mean the stay_in_interpreter flag I introduced or something else? Either way, (1) it does not seem trivial to get that information from there to here and (2) will that be fool proof? just testing that we need or don\u0027t need the interpreter when invoking the method does not guarantee we need that here later,does it?",
+      "parentUuid": "5724f2f2_35915356",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 5
+      },
+      "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
