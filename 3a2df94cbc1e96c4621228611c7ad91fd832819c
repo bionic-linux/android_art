@@ -70,6 +70,30 @@
       "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5724f2f2_95711f9b",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-05-19T00:08:28Z",
+      "side": 1,
+      "message": "Is not future-proof, though. Seb worked hard on getting changes in to speed up debugging experience, and you\u0027d *want* OSR after the debugger lost interest...\n\n(Just devil\u0027s advocate, as I advocated for the opposite before...)",
+      "parentUuid": "5724f2f2_352af36f",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 5
+      },
+      "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
