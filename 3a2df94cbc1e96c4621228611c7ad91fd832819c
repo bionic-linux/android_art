@@ -118,6 +118,30 @@
       "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97374a6b_271a9e5d",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-05-19T17:55:59Z",
+      "side": 1,
+      "message": "OK, I think this is fine. Please add a comment that we could selectively disable osr when we\u0027re single stepping, but that\u0027s currently hard to know at this point.",
+      "parentUuid": "5724f2f2_7c98d3d9",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 5
+      },
+      "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
