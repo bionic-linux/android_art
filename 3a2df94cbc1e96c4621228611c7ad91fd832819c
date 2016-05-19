@@ -46,6 +46,30 @@
       "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5724f2f2_352af36f",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-05-19T00:06:16Z",
+      "side": 1,
+      "message": "You could avoid doing the call to this method if the flag is set.\n\nWe should make it full proof. Flag is set: never leave the interpreter. Flag is not set: we can optimize.",
+      "parentUuid": "5724f2f2_f5de9be6",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 5
+      },
+      "revId": "3a2df94cbc1e96c4621228611c7ad91fd832819c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
