@@ -22,6 +22,30 @@
       "revId": "c63fc4d8676931c2f9dfb2f9eb9f4d12ab37ef3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d7ee7d_f928e327",
+        "filename": "tools/dexfuzz/src/dexfuzz/executors/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-20T18:09:09Z",
+      "side": 1,
+      "message": "Probably because I am missing a subtle point :-)\n\nMy rationale:\n\n(1) getHostCoreImagePath is used at L89 to see if the core image exists in the build; this needs the x86 addition I made above (for x86, which is currently the only host arch supported)\n\n(2) getHostPICCoreImagePath is used at L165 inside getHostExecutionFlags() which, in turn, is used in all the arch back end executor classes to be passed to dalvikvm32 ..... to call, appended as -Ximage:....\n\nI found the current settings (1) and (2) it the only way that works, but love to hear how to do this shorter/better...",
+      "parentUuid": "b7d7ee7d_d90a3f11",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "c63fc4d8676931c2f9dfb2f9eb9f4d12ab37ef3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
