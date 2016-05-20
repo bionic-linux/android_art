@@ -46,6 +46,30 @@
       "revId": "c63fc4d8676931c2f9dfb2f9eb9f4d12ab37ef3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d7ee7d_df75ff84",
+        "filename": "tools/dexfuzz/src/dexfuzz/executors/Device.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-05-20T20:15:54Z",
+      "side": 1,
+      "message": "Why is it not possible to use the -optimizing-pic one for 1) ?",
+      "parentUuid": "b7d7ee7d_f928e327",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 79,
+        "endChar": 3
+      },
+      "revId": "c63fc4d8676931c2f9dfb2f9eb9f4d12ab37ef3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
