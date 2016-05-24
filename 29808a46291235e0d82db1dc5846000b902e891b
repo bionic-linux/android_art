@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c67b70e_987a75d6",
+        "filename": "tools/dexfuzz/src/dexfuzz/executors/Device.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-05-24T09:33:31Z",
+      "side": 1,
+      "message": "Nit: I\u0027d prefer two methods:\n\ngetHostCoreImagePathNoArch\ngetHostCoreImagePathWithArch",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "29808a46291235e0d82db1dc5846000b902e891b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
