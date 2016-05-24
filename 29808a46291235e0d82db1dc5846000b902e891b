@@ -22,6 +22,30 @@
       "revId": "29808a46291235e0d82db1dc5846000b902e891b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0fd377_a3707af8",
+        "filename": "tools/dexfuzz/src/dexfuzz/executors/Device.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-05-24T17:11:15Z",
+      "side": 1,
+      "message": "Then you will get two methods. You get a method, Calin gets a method, everyone gets a method!",
+      "parentUuid": "5c67b70e_987a75d6",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "29808a46291235e0d82db1dc5846000b902e891b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
