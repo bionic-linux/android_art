@@ -46,6 +46,30 @@
       "revId": "216fca07982b64436539abe0db9f695c5092e4e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3b52cf9_1c459539",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-06-07T17:18:46Z",
+      "side": 1,
+      "message": "The verifier requires that there are no soft failures reported after hard failures.\n\nThe move is fine in this context (I considered suggesting it to get rid of the flag, but thought it didn\u0027t matter too much, especially since you\u0027ll get a complicated condition on line 4564), as the hard failures return early.",
+      "parentUuid": "e3660c36_bef9b65a",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4563,
+        "endChar": 24
+      },
+      "revId": "216fca07982b64436539abe0db9f695c5092e4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
