@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03db203a_7d02b767",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-06-07T09:08:31Z",
+      "side": 1,
+      "message": "Could you do these checks at the end of the method instead?",
+      "range": {
+        "startLine": 4555,
+        "startChar": 0,
+        "endLine": 4563,
+        "endChar": 24
+      },
+      "revId": "216fca07982b64436539abe0db9f695c5092e4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
