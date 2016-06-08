@@ -22,6 +22,30 @@
       "revId": "bc477a3245cca618d3499de9b81ea96245f67f4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "239024ca_27cb38ba",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1123,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-06-08T21:31:00Z",
+      "side": 1,
+      "message": "To avoid work when you anyways ignore it?",
+      "parentUuid": "239024ca_a163b808",
+      "range": {
+        "startLine": 1123,
+        "startChar": 2,
+        "endLine": 1123,
+        "endChar": 27
+      },
+      "revId": "bc477a3245cca618d3499de9b81ea96245f67f4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
