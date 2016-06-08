@@ -46,6 +46,30 @@
       "revId": "ad0b733bb337c5b0ce394a1dbd7f907d4554c30a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "239024ca_1e784dad",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-06-08T19:00:29Z",
+      "side": 1,
+      "message": "If you\u0027re willing to wait until I get back from vacation the week after next, I would be happy to take this over and submit it along with the rest of my oat file assistant cleanup.",
+      "parentUuid": "239024ca_be82f9de",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 36
+      },
+      "revId": "ad0b733bb337c5b0ce394a1dbd7f907d4554c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
