@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "239024ca_5ed81530",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-06-08T18:00:15Z",
+      "side": 1,
+      "message": "Maybe change to: \"Dex file with valid checksum for location \", to hint that there are two failure conditions: 1. the dex location isn\u0027t found. 2. the checksum doesn\u0027t match.\n\nThe cleanup I would like to do for this (not necessarily in this CL) is modify GetOatDexFile to return its error message and include that in the VLOG message.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 36
+      },
+      "revId": "ad0b733bb337c5b0ce394a1dbd7f907d4554c30a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
