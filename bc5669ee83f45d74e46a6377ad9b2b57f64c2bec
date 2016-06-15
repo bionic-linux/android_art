@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48a499e_bdfbdf52",
+        "filename": "test/136-daemon-jni-shutdown/daemon_jni_shutdown.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-06-15T14:00:37Z",
+      "side": 1,
+      "message": "Do you still need this? Maybe explain why?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 48
+      },
+      "revId": "bc5669ee83f45d74e46a6377ad9b2b57f64c2bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
