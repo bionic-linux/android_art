@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eeeef635_ddbfebe1",
+        "filename": "dexlist/dexlist.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T21:39:17Z",
+      "side": 1,
+      "message": "agreed that this would be more along our style guidelines, and happy to make this change, but I did this on purpose as a (poor?) form of documentation.\n\nAlternatively, I could use\n\n/*verify_checksum*/ inside the parameter list, but I find that less pretty\n\nwhat do you think?",
+      "parentUuid": "8e09fadf_1a8afd7f",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1d0a1b_3608b81f",
         "filename": "profman/profman.cc",
         "patchSetId": 1
