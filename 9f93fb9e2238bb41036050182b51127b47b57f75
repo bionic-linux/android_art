@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "eeeef635_208a2480",
+        "filename": "dexlist/dexlist.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Talked offline. Decided to let style (read David :-) win",
+      "parentUuid": "2e064ed0_fa8d8542",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1d0a1b_3608b81f",
         "filename": "profman/profman.cc",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2016-06-22T21:34:40Z",
       "side": 1,
       "message": "constexpr bool kVerifyChecksum?",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 30
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee9c36da_6dea7584",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e1d0a1b_3608b81f",
       "range": {
         "startLine": 237,
         "startChar": 4,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "aea6be25_6b3ee11d",
+        "filename": "runtime/common_runtime_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5fcacc_06a8daa0",
+      "range": {
+        "startLine": 287,
+        "startChar": 41,
+        "endLine": 287,
+        "endChar": 45
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e064ed0_575a8c04",
         "filename": "runtime/common_runtime_test.cc",
         "patchSetId": 1
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "aea6be25_4b3b252c",
+        "filename": "runtime/common_runtime_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e064ed0_575a8c04",
+      "range": {
+        "startLine": 485,
+        "startChar": 67,
+        "endLine": 485,
+        "endChar": 71
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e5fcacc_66842e24",
         "filename": "runtime/dex_file_test.cc",
         "patchSetId": 1
@@ -153,6 +249,30 @@
       "writtenOn": "2016-06-22T21:34:40Z",
       "side": 1,
       "message": "a constexpr here for documentation again.",
+      "range": {
+        "startLine": 159,
+        "startChar": 51,
+        "endLine": 159,
+        "endChar": 55
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e064ed0_da352185",
+        "filename": "runtime/dex_file_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5fcacc_66842e24",
       "range": {
         "startLine": 159,
         "startChar": 51,
@@ -211,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "eec516ce_c5925a60",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cefdb2ea_ffa61bc2",
+      "range": {
+        "startLine": 699,
+        "startChar": 19,
+        "endLine": 699,
+        "endChar": 34
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eed6e38_1fff83b2",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
@@ -222,6 +366,30 @@
       "writtenOn": "2016-06-22T21:34:40Z",
       "side": 1,
       "message": "constexpr and naming.",
+      "range": {
+        "startLine": 886,
+        "startChar": 15,
+        "endLine": 886,
+        "endChar": 30
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6eda06ab_493b212c",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eed6e38_1fff83b2",
       "range": {
         "startLine": 886,
         "startChar": 15,
