@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eec0b617_93e9e48f",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-06-22T04:15:14Z",
+      "side": 1,
+      "message": "Note, this is in fact the only interesting change of the whole PS (together with the new unit tests in dex_file_verifier_test.cc). All the other stuff is a bit unfortunate boiler plate to get the boolean at this place.....",
+      "range": {
+        "startLine": 281,
+        "startChar": 8,
+        "endLine": 281,
+        "endChar": 24
+      },
+      "revId": "9f93fb9e2238bb41036050182b51127b47b57f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
