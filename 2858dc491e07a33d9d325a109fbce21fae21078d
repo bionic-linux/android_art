@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "400b5318_783ae18d",
+        "filename": "test/450-checker-types/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-06-27T14:03:58Z",
+      "side": 1,
+      "message": "I\u0027d add this comment:\n\n  // Note: The ArtMethod* (typed as int or long) is optional after sharpening.\n\n(as in test/569-checker-pattern-replacement/src/Main.java).",
+      "revId": "2858dc491e07a33d9d325a109fbce21fae21078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
