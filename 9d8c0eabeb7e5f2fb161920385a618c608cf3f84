@@ -22,6 +22,30 @@
       "revId": "9d8c0eabeb7e5f2fb161920385a618c608cf3f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8011cb44_fd24a354",
+        "filename": "runtime/jit/offline_profiling_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-06-28T10:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe3e04a_1543e44d",
+      "range": {
+        "startLine": 557,
+        "startChar": 8,
+        "endLine": 558,
+        "endChar": 78
+      },
+      "revId": "9d8c0eabeb7e5f2fb161920385a618c608cf3f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
