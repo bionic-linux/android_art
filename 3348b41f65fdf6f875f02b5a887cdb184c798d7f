@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e321b186_483f7fa7",
+        "filename": "runtime/jit/offline_profiling_info.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-06-28T11:04:37Z",
+      "side": 1,
+      "message": "Please also add context where you would like to use this.",
+      "range": {
+        "startLine": 43,
+        "startChar": 3,
+        "endLine": 43,
+        "endChar": 8
+      },
+      "revId": "3348b41f65fdf6f875f02b5a887cdb184c798d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e338d1b2_90f19a72",
+        "filename": "runtime/jit/offline_profiling_info.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-06-28T11:04:37Z",
+      "side": 1,
+      "message": "One line?",
+      "range": {
+        "startLine": 554,
+        "startChar": 0,
+        "endLine": 555,
+        "endChar": 47
+      },
+      "revId": "3348b41f65fdf6f875f02b5a887cdb184c798d7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
