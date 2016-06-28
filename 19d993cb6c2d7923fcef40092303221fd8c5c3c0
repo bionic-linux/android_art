@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8011cb44_7d3ad38d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-06-28T09:27:12Z",
+      "side": 1,
+      "message": "I can\u0027t see this from the change. I can only see some missing RecordPcInfo.",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "19d993cb6c2d7923fcef40092303221fd8c5c3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
