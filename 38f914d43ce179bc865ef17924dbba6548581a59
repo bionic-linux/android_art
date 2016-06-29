@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8030eb13_a2023e00",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-06-29T16:25:22Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "38f914d43ce179bc865ef17924dbba6548581a59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
