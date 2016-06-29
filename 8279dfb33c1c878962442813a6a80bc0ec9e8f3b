@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0152784_858f4291",
+        "filename": "runtime/base/mutex-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-06-29T14:21:28Z",
+      "side": 1,
+      "message": "Suggestion:\n\n  we just pass a null Thread* to the MutexLock (see\n  Thread::TransitionFromSuspendedToRunnable)\n\n?",
+      "range": {
+        "startLine": 78,
+        "startChar": 24,
+        "endLine": 78,
+        "endChar": 41
+      },
+      "revId": "8279dfb33c1c878962442813a6a80bc0ec9e8f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
