@@ -22,6 +22,30 @@
       "revId": "19d993cb6c2d7923fcef40092303221fd8c5c3c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d348266_e2f02634",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1072549
+      },
+      "writtenOn": "2016-07-05T08:47:09Z",
+      "side": 1,
+      "message": "A stale comment. We had one of the these cases in instrinsics_arm64.cc which we have fixed. Will remove.",
+      "parentUuid": "8011cb44_7d3ad38d",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "19d993cb6c2d7923fcef40092303221fd8c5c3c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
