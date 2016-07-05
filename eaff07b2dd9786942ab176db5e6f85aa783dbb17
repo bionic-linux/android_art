@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdd95270_2e414726",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1040038
+      },
+      "writtenOn": "2016-07-05T10:19:51Z",
+      "side": 1,
+      "message": "Yevgeny, it seems it is not enough. due to order is re-building completely we need to traverse from the beginning skipping the new and already considered blocks.",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "eaff07b2dd9786942ab176db5e6f85aa783dbb17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
