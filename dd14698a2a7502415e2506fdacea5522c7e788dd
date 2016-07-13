@@ -45,6 +45,30 @@
       "revId": "dd14698a2a7502415e2506fdacea5522c7e788dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab2acf6_9a1a2971",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4089,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-07-13T13:32:28Z",
+      "side": 1,
+      "message": "And we need to fix that for x86-64 as well.",
+      "parentUuid": "1ab2acf6_fa3885dc",
+      "range": {
+        "startLine": 4089,
+        "startChar": 29,
+        "endLine": 4089,
+        "endChar": 36
+      },
+      "revId": "dd14698a2a7502415e2506fdacea5522c7e788dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
