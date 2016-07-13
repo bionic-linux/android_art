@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab2acf6_da8ae181",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-07-13T15:08:37Z",
+      "side": 1,
+      "message": "Add \"Bug: 29188168\" as this is a follow-up to something tracked by that bug. Unfortunately, the revert-revert does not have the reference.",
+      "revId": "99ea0cf52fe9aaa92bc1088ef24b5ae208e27048",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
