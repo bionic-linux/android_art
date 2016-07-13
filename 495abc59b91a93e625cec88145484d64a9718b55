@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab2acf6_ba328ddc",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4085,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-07-13T14:27:59Z",
+      "side": 1,
+      "message": "Nit: align with previous line.",
+      "range": {
+        "startLine": 4085,
+        "startChar": 0,
+        "endLine": 4085,
+        "endChar": 8
+      },
+      "revId": "495abc59b91a93e625cec88145484d64a9718b55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
