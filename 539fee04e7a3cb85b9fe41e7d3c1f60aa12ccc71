@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ab2acf6_5a65f1c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-07-13T14:35:11Z",
+      "side": 1,
+      "message": "I\u0027d indent the URL.",
+      "revId": "539fee04e7a3cb85b9fe41e7d3c1f60aa12ccc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab2acf6_7a6ab59a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-07-13T14:35:11Z",
+      "side": 1,
+      "message": "Add \"Test:\" with description what the new test actually tests and what\u0027s left untested because it\u0027s a performance rather than correctness issue.",
+      "revId": "539fee04e7a3cb85b9fe41e7d3c1f60aa12ccc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
