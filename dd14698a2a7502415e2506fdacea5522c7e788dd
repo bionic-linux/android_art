@@ -69,6 +69,30 @@
       "revId": "dd14698a2a7502415e2506fdacea5522c7e788dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab2acf6_ba29ad7c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4089,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-13T14:20:51Z",
+      "side": 1,
+      "message": "Thanks Vladimir, it\u0027s even worst than I thought :(\n\nFixed for the other backends as well.",
+      "parentUuid": "1ab2acf6_9a1a2971",
+      "range": {
+        "startLine": 4089,
+        "startChar": 29,
+        "endLine": 4089,
+        "endChar": 36
+      },
+      "revId": "dd14698a2a7502415e2506fdacea5522c7e788dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
