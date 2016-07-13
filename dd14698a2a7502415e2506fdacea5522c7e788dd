@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5acfc472_0e1b1c77",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4088,
+      "author": {
+        "id": 1036869
+      },
+      "writtenOn": "2016-07-13T13:29:39Z",
+      "side": 1,
+      "message": "Doesn\u0027t this clobber the above?",
+      "range": {
+        "startLine": 4088,
+        "startChar": 10,
+        "endLine": 4088,
+        "endChar": 50
+      },
+      "revId": "dd14698a2a7502415e2506fdacea5522c7e788dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
