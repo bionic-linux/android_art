@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ad1308d_e42785a5",
+        "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1108540
+      },
+      "writtenOn": "2016-07-18T21:16:11Z",
+      "side": 1,
+      "message": "I was going to keep a DCHECK here to make sure leaf method suspend checks were always removed before register allocation, but the DCHECK interfered with unit testing of the register allocator, since optimization passes are not run. It should be ok to leave out the DCHECK, though; removing the suspend checks is an optimization, and not necessary for correctness.",
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
