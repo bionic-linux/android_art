@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3ad1308d_d7e4b144",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108540
+      },
+      "writtenOn": "2016-07-18T22:10:31Z",
+      "side": 1,
+      "message": "You\u0027re right, it looks like this is not set until liveness analysis runs. Thank you for catching this.\n\nThis means I can\u0027t move this to prepare_for_register_allocation, though, since we\u0027ll have the same issue. It would be nice if marking a method as a leaf were not tied up with liveness analysis, but creating a new pass just for that is not cheap. Thoughts?",
+      "parentUuid": "ea2507a1_f62280a9",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2507a1_d61f845f",
         "filename": "compiler/optimizing/suspend_check_elimination.cc",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2016-07-18T21:48:05Z",
       "side": 1,
       "message": "That\u0027s heavyweight for just removing a suspend check: you\u0027re visiting the whole graph here. Ideally this should be done in prepare_for_register_allocation.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ad1308d_377b8da5",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1108540
+      },
+      "writtenOn": "2016-07-18T22:10:31Z",
+      "side": 1,
+      "message": "Agreed, I\u0027ll move this to prepare_for_register_allocation. I must have misunderstood your email about this. (Edit: see my other comment regarding prepare_for_register_allocation.)",
+      "parentUuid": "ea2507a1_d61f845f",
       "range": {
         "startLine": 47,
         "startChar": 0,
