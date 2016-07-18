@@ -16,6 +16,52 @@
       "revId": "3d40d2277f5c412e86033def261a58261f787a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea2507a1_f62280a9",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-18T21:48:05Z",
+      "side": 1,
+      "message": "I don\u0027t think this is set at this point. You\u0027re probably either removing all suspend checks at entry or keeping them all :)",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea2507a1_d61f845f",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-18T21:48:05Z",
+      "side": 1,
+      "message": "That\u0027s heavyweight for just removing a suspend check: you\u0027re visiting the whole graph here. Ideally this should be done in prepare_for_register_allocation.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
