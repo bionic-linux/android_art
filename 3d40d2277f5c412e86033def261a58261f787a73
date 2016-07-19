@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0a697be4_371ed867",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-07-19T14:26:16Z",
+      "side": 1,
+      "message": "Fwiw, removing suspend checks from leaf methods is dubiously correct wrt starving the garbage collector (introducing long times to safe point, a form of GC pause). A large leaf method may have no suspend checks. The worst case is a method calling nothing but large leaf methods, the first safe point will happen at return from that method. There are also no suspend checks at method entry, so combining recursion with large leaf methods is an easy way to starve the GC, cause pauses, jank...\n\nGiven the refocus on JIT with profile driven AOT, and functional method inlining, is there an abundance of leaf methods where this dubious optimization is beneficial as an overall means of reducing  total code size? Note, not removing the leaf method suspend checks would only be part of doing this right. The second part would be removing suspend checks from loop back edges dominated by method calls.",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad1308d_e42785a5",
         "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
         "patchSetId": 3
