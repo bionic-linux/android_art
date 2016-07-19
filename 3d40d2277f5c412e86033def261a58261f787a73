@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "8a748bbe_f3b630d7",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-19T08:24:01Z",
+      "side": 1,
+      "message": "Fixing the TODO is not so trivial :) So we need liveness analysis to run before marking a method as leaf/not leaf, can we move the removal of the suspend check in liveness analysis instead of register allocator?",
+      "parentUuid": "3ad1308d_d7e4b144",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2507a1_d61f845f",
         "filename": "compiler/optimizing/suspend_check_elimination.cc",
         "patchSetId": 3
