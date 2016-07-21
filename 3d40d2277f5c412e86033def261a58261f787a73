@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea77c70c_668eae26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-07-21T07:03:06Z",
+      "side": 1,
+      "message": "Thanks. It is to be expected that removing suspend checks does improve benchmark scores, it doesn\u0027t make it correct :-) If it is winning on benchmarks then it is evidence of method dispatch cost, which is a symptom of broken inlining.",
+      "parentUuid": "0a697be4_1a73b91b",
+      "range": {
+        "startLine": 9,
+        "startChar": 18,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad1308d_e42785a5",
         "filename": "compiler/optimizing/register_allocator_linear_scan.cc",
         "patchSetId": 3
