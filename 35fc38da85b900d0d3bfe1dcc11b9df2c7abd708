@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a7abff6_91be7e18",
+        "filename": "build/Android.common_path.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T04:13:34Z",
+      "side": 1,
+      "message": "The run-test script by default also injects the user after TMPDIR, but that wasn\u0027t as important to me.",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "35fc38da85b900d0d3bfe1dcc11b9df2c7abd708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
