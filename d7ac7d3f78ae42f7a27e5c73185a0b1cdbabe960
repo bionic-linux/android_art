@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a7abff6_3ee03625",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-07-21T22:46:04Z",
+      "side": 1,
+      "message": "Update comment?",
+      "range": {
+        "startLine": 749,
+        "startChar": 5,
+        "endLine": 750,
+        "endChar": 73
+      },
+      "revId": "d7ac7d3f78ae42f7a27e5c73185a0b1cdbabe960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
