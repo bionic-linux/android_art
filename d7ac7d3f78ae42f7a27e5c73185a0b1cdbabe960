@@ -22,6 +22,30 @@
       "revId": "d7ac7d3f78ae42f7a27e5c73185a0b1cdbabe960",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a7abff6_5e732a83",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T22:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a7abff6_3ee03625",
+      "range": {
+        "startLine": 749,
+        "startChar": 5,
+        "endLine": 750,
+        "endChar": 73
+      },
+      "revId": "d7ac7d3f78ae42f7a27e5c73185a0b1cdbabe960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
