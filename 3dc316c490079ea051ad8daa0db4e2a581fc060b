@@ -22,6 +22,30 @@
       "revId": "3dc316c490079ea051ad8daa0db4e2a581fc060b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a7abff6_37e302a3",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T15:47:59Z",
+      "side": 1,
+      "message": "Will do.\n\nRe off-topic: We always do, I guess? OFFSETOF_MEMBER and offsetof (the default macro implementation) aren\u0027t that much different, and I assume the builtin that Clang seems to use is not worse. Anyways, it\u0027s a good point, I\u0027ll add a static_assert about it.",
+      "parentUuid": "ea77c70c_e6c7fe39",
+      "range": {
+        "startLine": 768,
+        "startChar": 19,
+        "endLine": 768,
+        "endChar": 27
+      },
+      "revId": "3dc316c490079ea051ad8daa0db4e2a581fc060b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
