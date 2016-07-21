@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea77c70c_66a5ce9a",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-21T08:49:56Z",
+      "side": 1,
+      "message": "Not sure it\u0027s any better, but maybe jni_or_profile_or_conflict_table ?",
+      "range": {
+        "startLine": 758,
+        "startChar": 10,
+        "endLine": 758,
+        "endChar": 15
+      },
+      "revId": "3957a42fa7b357c3768592a6dc5b7aa4edf81e1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
