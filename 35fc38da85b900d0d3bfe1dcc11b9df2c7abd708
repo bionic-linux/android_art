@@ -46,6 +46,30 @@
       "revId": "35fc38da85b900d0d3bfe1dcc11b9df2c7abd708",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a7abff6_42899684",
+        "filename": "build/Android.common_path.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T17:10:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea77c70c_a6b6e6d5",
+      "range": {
+        "startLine": 39,
+        "startChar": 21,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "35fc38da85b900d0d3bfe1dcc11b9df2c7abd708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
