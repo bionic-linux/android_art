@@ -22,6 +22,30 @@
       "revId": "3957a42fa7b357c3768592a6dc5b7aa4edf81e1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a7abff6_c2ee6686",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T16:54:54Z",
+      "side": 1,
+      "message": "I\u0027m aiming for a union in a follow-up.",
+      "parentUuid": "ea77c70c_66a5ce9a",
+      "range": {
+        "startLine": 758,
+        "startChar": 10,
+        "endLine": 758,
+        "endChar": 15
+      },
+      "revId": "3957a42fa7b357c3768592a6dc5b7aa4edf81e1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
