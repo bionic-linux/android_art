@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea77c70c_e6c7fe39",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-07-21T09:31:19Z",
+      "side": 1,
+      "message": "Do you mind including \u003ccstddef\u003e/\u003cstddef.h\u003e? (Include what you use.)\n\nOff-topic: You rely on the ArtMethod being a standard layout class and it really is. But looking at the data members makes me wonder why are they protected instead of private?",
+      "range": {
+        "startLine": 768,
+        "startChar": 19,
+        "endLine": 768,
+        "endChar": 27
+      },
+      "revId": "3dc316c490079ea051ad8daa0db4e2a581fc060b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
