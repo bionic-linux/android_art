@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a7abff6_225d8225",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-21T17:10:02Z",
+      "side": 1,
+      "message": "It\u0027s called image pointer size in the runtime, so I wanted to stay consistent (and it makes clear that it\u0027s not the sizeof stuff, but whatever the runtime has loaded).",
+      "parentUuid": "2a7abff6_02f31e3e",
+      "range": {
+        "startLine": 500,
+        "startChar": 16,
+        "endLine": 500,
+        "endChar": 37
+      },
+      "revId": "3957a42fa7b357c3768592a6dc5b7aa4edf81e1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea77c70c_66a5ce9a",
         "filename": "runtime/art_method.h",
         "patchSetId": 1
