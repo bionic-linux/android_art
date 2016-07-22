@@ -205,6 +205,53 @@
       "revId": "3d40d2277f5c412e86033def261a58261f787a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a23733a_7cf4b5be",
+        "filename": "compiler/optimizing/suspend_check_elimination.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-07-22T17:34:58Z",
+      "side": 1,
+      "message": "I had the same comment on being a bit heavy for basically one optimization only, but I also see Andreas\u0027 point on not finding an artificial place to put it. Perhaps this could be a more general \"leaf method\" optimization phase, that can later extend to more stuff?\n\nEither way, once that is done, please make a few checker tests on this feature",
+      "parentUuid": "3ad1308d_377b8da5",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a23733a_bca48d9f",
+        "filename": "compiler/optimizing/suspend_check_elimination.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-07-22T17:34:58Z",
+      "side": 1,
+      "message": "nit: this can be moved to private section. but looking at all other phases, we don\u0027t seem to have a consistent story on this :-)",
+      "range": {
+        "startLine": 33,
+        "startChar": 31,
+        "endLine": 33,
+        "endChar": 63
+      },
+      "revId": "3d40d2277f5c412e86033def261a58261f787a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
