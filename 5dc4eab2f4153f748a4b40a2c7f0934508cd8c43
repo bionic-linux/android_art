@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a4bd746_f8de4965",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-07-25T21:27:33Z",
+      "side": 1,
+      "message": "Why is there an extra class indirection anyway, couldn\u0027t this class itself could inherit from gtest classes directly?",
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4bd746_18d4ed42",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-07-25T21:27:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right.\n\nIt should be either:\n\n   (a) private, so it\u0027s clear you\u0027re not supposed to override it.\nor\n   (b) virtual so that it\u0027s actually sane to override it.\n\nProbably (b) since it\u0027s called on line 164,168",
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4bd746_58ce75b2",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-07-25T21:27:33Z",
+      "side": 1,
+      "message": "see above",
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4bd746_3864511c",
         "filename": "runtime/common_runtime_test.h",
         "patchSetId": 1
@@ -25,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "6a4bd746_98b0ddf9",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-07-25T21:27:33Z",
+      "side": 1,
+      "message": "Override here seems good",
+      "parentUuid": "6a4bd746_3864511c",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 3
+      },
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4bd746_98b61da3",
         "filename": "runtime/common_runtime_test.h",
         "patchSetId": 1
@@ -36,6 +111,30 @@
       "writtenOn": "2016-07-25T20:53:58Z",
       "side": 1,
       "message": "Please remove.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4bd746_3889b122",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-07-25T21:27:33Z",
+      "side": 1,
+      "message": "If removing, please move the comment to CommonRunTimeTestImpl which currently lacks this comment.",
+      "parentUuid": "6a4bd746_98b61da3",
       "range": {
         "startLine": 171,
         "startChar": 0,
