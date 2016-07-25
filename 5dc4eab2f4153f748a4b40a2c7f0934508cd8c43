@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4bd746_98b61da3",
+        "filename": "runtime/common_runtime_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-25T20:53:58Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 3
+      },
+      "revId": "5dc4eab2f4153f748a4b40a2c7f0934508cd8c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
