@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6a4bd746_1935ccdc",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-26T01:29:42Z",
+      "side": 1,
+      "message": "This one fits:\n\n void ThrowIllegalAccessError(mirror::Class* referrer, const char* fmt, ...)\n\nYou can leave referrer null, if you want to.",
+      "parentUuid": "6a4bd746_b92040b7",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 97
+      },
+      "revId": "d51b46d2b6aa5e96d53c614f4bfba0e6a1c9e3d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a4bd746_39e8d0aa",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 1
