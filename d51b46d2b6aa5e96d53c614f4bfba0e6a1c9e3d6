@@ -117,6 +117,30 @@
       "revId": "d51b46d2b6aa5e96d53c614f4bfba0e6a1c9e3d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f473d8f_bb16e7a3",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-26T10:43:45Z",
+      "side": 1,
+      "message": "We do have needs access check to force the interpreter, right?",
+      "parentUuid": "6a4bd746_39153050",
+      "range": {
+        "startLine": 1263,
+        "startChar": 9,
+        "endLine": 1263,
+        "endChar": 39
+      },
+      "revId": "d51b46d2b6aa5e96d53c614f4bfba0e6a1c9e3d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
