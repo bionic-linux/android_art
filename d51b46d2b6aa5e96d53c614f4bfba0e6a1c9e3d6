@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4bd746_59b754d3",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-26T01:02:23Z",
+      "side": 1,
+      "message": "Consider ThrowIllegalAccessError from common_throws.",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 97
+      },
+      "revId": "d51b46d2b6aa5e96d53c614f4bfba0e6a1c9e3d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a4bd746_39e8d0aa",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-07-26T01:02:23Z",
+      "side": 1,
+      "message": "That\u0027s the first time we use it outside of lambdas. This error wasn\u0027t meant to be used outside of testing. Not sure we have something better, though.",
+      "range": {
+        "startLine": 1263,
+        "startChar": 9,
+        "endLine": 1263,
+        "endChar": 39
+      },
+      "revId": "d51b46d2b6aa5e96d53c614f4bfba0e6a1c9e3d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
