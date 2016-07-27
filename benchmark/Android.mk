@@ -67,6 +67,7 @@ define build-libartbenchmark
   art_target_or_host :=
 endef
 
+$(warning $(ART_BUILD_TARGET) $(ART_BUILD_HOST))
 ifeq ($(ART_BUILD_TARGET),true)
   $(eval $(call build-libartbenchmark,target))
 endif
