@@ -22,6 +22,30 @@
       "revId": "4fc81fda9f66483a28e4c6a68cf952f83b43eee1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfd7753a_0f99dc77",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-07-28T16:03:57Z",
+      "side": 1,
+      "message": "Ah. What I was trying to say is that we don\u0027t have to deal with throwing the exception in the compiler as well since we force a \"single path\".\n\nI have rephrased the comment, see if that is better.\n\nAlternatively, we can remove this, and add similar throwing code in the compiler if you prefer.",
+      "parentUuid": "cfd7753a_6f14e09b",
+      "range": {
+        "startLine": 1262,
+        "startChar": 22,
+        "endLine": 1262,
+        "endChar": 33
+      },
+      "revId": "4fc81fda9f66483a28e4c6a68cf952f83b43eee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
