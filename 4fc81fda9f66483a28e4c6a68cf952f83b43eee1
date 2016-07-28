@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd7753a_6f14e09b",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-07-28T14:30:08Z",
+      "side": 1,
+      "message": "what does that mean?",
+      "range": {
+        "startLine": 1262,
+        "startChar": 22,
+        "endLine": 1262,
+        "endChar": 33
+      },
+      "revId": "4fc81fda9f66483a28e4c6a68cf952f83b43eee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
