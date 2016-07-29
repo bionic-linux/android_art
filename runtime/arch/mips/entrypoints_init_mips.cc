@@ -222,8 +222,10 @@ void InitEntryPoints(JniEntryPoints* jpoints, QuickEntryPoints* qpoints) {
   // Intrinsics
   qpoints->pIndexOf = art_quick_indexof;
   static_assert(!IsDirectEntrypoint(kQuickIndexOf), "Non-direct C stub marked direct.");
-  qpoints->pStringCompareTo = art_quick_string_compareto;
-  static_assert(!IsDirectEntrypoint(kQuickStringCompareTo), "Non-direct C stub marked direct.");
+  // TODO: Implement assembly comparison for compressed mirror::String
+  // qpoints->pStringCompareTo = art_quick_string_compareto;
+  // static_assert(!IsDirectEntrypoint(kQuickStringCompareTo), "Non-direct C stub marked direct.");
+  qpoints->pStringCompareTo = nullptr;
   qpoints->pMemcpy = memcpy;
 
   // Invocation
