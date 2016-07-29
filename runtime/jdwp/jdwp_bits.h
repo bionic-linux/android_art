@@ -66,6 +66,13 @@ static inline void AppendUtf16BE(std::vector<uint8_t>& bytes, const uint16_t* ch
   }
 }
 
+static inline void AppendUtf16CompressedBE(std::vector<uint8_t>& bytes, const uint8_t* chars, size_t char_count) {
+  Append4BE(bytes, char_count);
+  for (size_t i = 0; i < char_count; ++i) {
+    Append2BE(bytes, static_cast<uint16_t>(chars[i]));
+  }
+}
+
 // @deprecated
 static inline void Set1(uint8_t* buf, uint8_t val) {
   *buf = val;
