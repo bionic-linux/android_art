@@ -95,7 +95,9 @@ void InitEntryPoints(JniEntryPoints* jpoints, QuickEntryPoints* qpoints) {
   qpoints->pUshrLong = art_quick_lushr;
 
   // Intrinsics
-  qpoints->pStringCompareTo = art_quick_string_compareto;
+  // TODO: Implement assembly comparison for compressed mirror::String
+  // qpoints->pStringCompareTo = art_quick_string_compareto;
+  qpoints->pStringCompareTo = nullptr;
   qpoints->pMemcpy = art_quick_memcpy;
 
   // Read barrier.
