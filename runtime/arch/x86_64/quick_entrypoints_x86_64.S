@@ -2092,6 +2092,7 @@ END_FUNCTION art_quick_deoptimize_from_compiled_code
 DEFINE_FUNCTION art_quick_string_compareto
     movl MIRROR_STRING_COUNT_OFFSET(%edi), %r8d
     movl MIRROR_STRING_COUNT_OFFSET(%esi), %r9d
+
     /* Build pointers to the start of string data */
     leal MIRROR_STRING_VALUE_OFFSET(%edi), %edi
     leal MIRROR_STRING_VALUE_OFFSET(%esi), %esi
