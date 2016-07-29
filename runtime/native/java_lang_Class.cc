@@ -198,12 +198,24 @@ ALWAYS_INLINE static inline ArtField* FindFieldByName(
   }
   size_t low = 0;
   size_t high = fields->size();
-  const uint16_t* const data = name->GetValue();
+  const bool nameIsCompressed = name->IsCompressed();
+  const uint16_t* const data = (nameIsCompressed) ? nullptr : name->GetValue();
+  const uint8_t* const dataCompressed = (nameIsCompressed) ? name->GetValueCompressed() : nullptr;
   const size_t length = name->GetLength();
   while (low < high) {
     auto mid = (low + high) / 2;
     ArtField& field = fields->At(mid);
-    int result = CompareModifiedUtf8ToUtf16AsCodePointValues(field.GetName(), data, length);
+    int result = 0;
+    if (nameIsCompressed) {
+      size_t fieldLength = strlen(field.GetName());
+      size_t minSize = (length < fieldLength) ? length : fieldLength;
+      result = memcmp(field.GetName(), dataCompressed, minSize);
+      if (result == 0) {
+        result = fieldLength - length;
+      }
+    } else {
+      result = CompareModifiedUtf8ToUtf16AsCodePointValues(field.GetName(), data, length);
+    }
     // Alternate approach, only a few % faster at the cost of more allocations.
     // int result = field->GetStringName(self, true)->CompareTo(name);
     if (result < 0) {
@@ -636,8 +648,7 @@ static jobject Class_newInstance(JNIEnv* env, jobject javaThis) {
   // Invoke the string allocator to return an empty string for the string class.
   if (klass->IsStringClass()) {
     gc::AllocatorType allocator_type = Runtime::Current()->GetHeap()->GetCurrentAllocator();
-    mirror::SetStringCountVisitor visitor(0);
-    mirror::Object* obj = mirror::String::Alloc<true>(soa.Self(), 0, allocator_type, visitor);
+    mirror::Object* obj = mirror::String::AllocEmptyString<true>(soa.Self(), allocator_type);
     if (UNLIKELY(soa.Self()->IsExceptionPending())) {
       return nullptr;
     } else {
