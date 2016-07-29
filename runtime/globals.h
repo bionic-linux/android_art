@@ -148,6 +148,9 @@ enum class TraceClockSource {
   kDual,  // Both wall and thread CPU clocks.
 };
 
+// String Compression
+static constexpr bool kUseCompression = false;
+
 #if defined(__linux__)
 static constexpr TraceClockSource kDefaultTraceClockSource = TraceClockSource::kDual;
 #else
