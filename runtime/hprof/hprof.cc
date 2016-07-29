@@ -223,6 +223,10 @@ class EndianOutput {
     HandleU1List(values, count);
     length_ += count;
   }
+  void AddU1AsU2List(const uint8_t* values, size_t count) {
+    HandleU1AsU2List(values, count);
+    length_ += count * sizeof(uint16_t);
+  }
   void AddU2List(const uint16_t* values, size_t count) {
     HandleU2List(values, count);
     length_ += count * sizeof(uint16_t);
@@ -268,6 +272,9 @@ class EndianOutput {
   virtual void HandleU1List(const uint8_t* values ATTRIBUTE_UNUSED,
                             size_t count ATTRIBUTE_UNUSED) {
   }
+  virtual void HandleU1AsU2List(const uint8_t* values ATTRIBUTE_UNUSED,
+                                size_t count ATTRIBUTE_UNUSED) {
+  }
   virtual void HandleU2List(const uint16_t* values ATTRIBUTE_UNUSED,
                             size_t count ATTRIBUTE_UNUSED) {
   }
@@ -306,6 +313,16 @@ class EndianOutputBuffered : public EndianOutput {
   void HandleU1List(const uint8_t* values, size_t count) OVERRIDE {
     DCHECK_EQ(length_, buffer_.size());
     buffer_.insert(buffer_.end(), values, values + count);
+  }
+
+  void HandleU1AsU2List(const uint8_t* values, size_t count) OVERRIDE {
+    DCHECK_EQ(length_, buffer_.size());
+    for (size_t i = 0; i < count; ++i) {
+      uint8_t value = *values;
+      buffer_.push_back(static_cast<uint8_t>(0));
+      buffer_.push_back(value);
+      values++;
+    }
   }
 
   void HandleU2List(const uint16_t* values, size_t count) OVERRIDE {
@@ -1354,7 +1371,11 @@ void Hprof::DumpHeapInstanceObject(mirror::Object* obj, mirror::Class* klass) {
         string_value = reinterpret_cast<mirror::Object*>(
             reinterpret_cast<uintptr_t>(s) + kObjectAlignment);
       } else {
-        string_value = reinterpret_cast<mirror::Object*>(s->GetValue());
+        if (s->IsCompressed()) {
+          string_value = reinterpret_cast<mirror::Object*>(s->GetValueCompressed());
+        } else {
+          string_value = reinterpret_cast<mirror::Object*>(s->GetValue());
+        }
       }
       __ AddObjectId(string_value);
     }
@@ -1374,7 +1395,11 @@ void Hprof::DumpHeapInstanceObject(mirror::Object* obj, mirror::Class* klass) {
     __ AddStackTraceSerialNumber(LookupStackTraceSerialNumber(obj));
     __ AddU4(s->GetLength());
     __ AddU1(hprof_basic_char);
-    __ AddU2List(s->GetValue(), s->GetLength());
+    if (s->IsCompressed()) {
+      __ AddU1AsU2List(s->GetValueCompressed(), s->GetLength());
+    } else {
+      __ AddU2List(s->GetValue(), s->GetLength());
+    }
   }
 }
 
