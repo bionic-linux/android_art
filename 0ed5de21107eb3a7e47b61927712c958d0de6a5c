@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f1add55_e64f80bd",
+        "filename": "test/615-checker-arm64-zr-parallel-move/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-08-02T12:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1add55_66639045",
+      "range": {
+        "startLine": 40,
+        "startChar": 33,
+        "endLine": 40,
+        "endChar": 35
+      },
+      "revId": "0ed5de21107eb3a7e47b61927712c958d0de6a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f1add55_a6558855",
         "filename": "test/615-checker-arm64-zr-parallel-move/src/Main.java",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-02T12:54:09Z",
       "side": 1,
       "message": "0L",
+      "range": {
+        "startLine": 56,
+        "startChar": 21,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "0ed5de21107eb3a7e47b61927712c958d0de6a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f1add55_06457c9e",
+        "filename": "test/615-checker-arm64-zr-parallel-move/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052304
+      },
+      "writtenOn": "2016-08-02T12:58:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f1add55_a6558855",
       "range": {
         "startLine": 56,
         "startChar": 21,
