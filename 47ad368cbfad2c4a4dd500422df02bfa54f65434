@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74d3c2eb_d520aea5",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-08-02T20:17:09Z",
+      "side": 1,
+      "message": "nit: parenthesis",
+      "range": {
+        "startLine": 1288,
+        "startChar": 15,
+        "endLine": 1288,
+        "endChar": 71
+      },
+      "revId": "47ad368cbfad2c4a4dd500422df02bfa54f65434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74d3c2eb_f51db266",
+        "filename": "test/615-checker-arm64-zr-parallel-move/info.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-08-02T20:17:09Z",
+      "side": 1,
+      "message": "Checker",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "47ad368cbfad2c4a4dd500422df02bfa54f65434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
