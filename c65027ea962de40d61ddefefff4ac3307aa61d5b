@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34894a78_7fb59bc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-08-04T06:20:46Z",
+      "side": 1,
+      "message": "The",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "c65027ea962de40d61ddefefff4ac3307aa61d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34894a78_5fb8d7c2",
+        "filename": "runtime/dex_instruction_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-08-04T06:20:46Z",
+      "side": 1,
+      "message": "entries.\n\nBut that\u0027s a weird TODO. Do you mean they\u0027re currently not being implemented by any interpreter/verifier/compiler?",
+      "range": {
+        "startLine": 272,
+        "startChar": 38,
+        "endLine": 272,
+        "endChar": 45
+      },
+      "revId": "c65027ea962de40d61ddefefff4ac3307aa61d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
