@@ -45,6 +45,30 @@
       "revId": "c65027ea962de40d61ddefefff4ac3307aa61d5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "540f9ee2_19b5ebc8",
+        "filename": "runtime/dex_instruction_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-04T09:09:35Z",
+      "side": 1,
+      "message": "Correct - it will be a hard verification error if these opcodes show up in a dex file currently. The reason this has to be in the change is I cannot test any of the format related functions i added without having an instruction that uses the format.",
+      "parentUuid": "34894a78_5fb8d7c2",
+      "range": {
+        "startLine": 272,
+        "startChar": 38,
+        "endLine": 272,
+        "endChar": 45
+      },
+      "revId": "c65027ea962de40d61ddefefff4ac3307aa61d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
