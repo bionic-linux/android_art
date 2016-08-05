@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "145606ee_986a9920",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1918,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-05T00:51:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "145606ee_d22de297",
+      "range": {
+        "startLine": 1918,
+        "startChar": 30,
+        "endLine": 1918,
+        "endChar": 32
+      },
+      "revId": "8b7a7df8887c85bc400e38b6cdecefd817728c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "145606ee_f2310608",
         "filename": "runtime/arch/quick_alloc_entrypoints.S",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-04T21:57:28Z",
       "side": 1,
       "message": "Remove line",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 67
+      },
+      "revId": "8b7a7df8887c85bc400e38b6cdecefd817728c02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "145606ee_588591ac",
+        "filename": "runtime/arch/quick_alloc_entrypoints.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-05T00:51:24Z",
+      "side": 1,
+      "message": "We left the other lines commented for the others here.",
+      "parentUuid": "145606ee_f2310608",
       "range": {
         "startLine": 227,
         "startChar": 0,
