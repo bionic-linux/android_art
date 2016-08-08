@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9a53384_a4c2a29c",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "This can overflow. It think the check should be\n\n  available \u003d end - pos;\n  if (available \u003c data_offset) goto slow_path;\n  if (((available - data_offset) \u003e\u003e shift) \u003c count) goto slow_path;\n\nUse SUBS for the first check, CMP shifted register for the second.\nCalculate data_offset \u003d (MIRROR_INT_ARRAY_DATA_OFFSET + 1 + shift) \u0026 ~3.",
+      "range": {
+        "startLine": 1926,
+        "startChar": 4,
+        "endLine": 1926,
+        "endChar": 36
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9aca770_a59b7eb6",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "Assert that MIRROR_LONG_ARRAY_DATA_OFFSET \u003d\u003d MIRROR_INT_ARRAY_DATA_OFFSET + 4.",
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99478f8f_bb154751",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "LDP?",
+      "range": {
+        "startLine": 1934,
+        "startChar": 0,
+        "endLine": 1937,
+        "endChar": 53
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5936f710_a1b87e29",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "Where is the \"+7\"?",
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "990eaf7b_43526669",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "4",
+      "range": {
+        "startLine": 2119,
+        "startChar": 8,
+        "endLine": 2119,
+        "endChar": 9
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b94a9396_9cb8452a",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "This should not be here. It makes the code below unreachable.",
+      "range": {
+        "startLine": 2145,
+        "startChar": 4,
+        "endLine": 2145,
+        "endChar": 22
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a53384_24b7923e",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "Why not\n\n  ldp    x2, xLR, [sp, #16]\n  ldp    x0, x1, [sp], #32",
+      "range": {
+        "startLine": 2153,
+        "startChar": 0,
+        "endLine": 2155,
+        "endChar": 22
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b223c6_082f0790",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2158,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-08T13:35:04Z",
+      "side": 1,
+      "message": "This comment is misleading if \\is_resolved.",
+      "range": {
+        "startLine": 2158,
+        "startChar": 7,
+        "endLine": 2158,
+        "endChar": 28
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
