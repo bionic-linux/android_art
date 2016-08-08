@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b977f3bf_8cc1cd4f",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "xCount is a 32 bit integer as input, I don\u0027t think it can overflow.",
+      "parentUuid": "b9a53384_a4c2a29c",
+      "range": {
+        "startLine": 1926,
+        "startChar": 4,
+        "endLine": 1926,
+        "endChar": 36
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9aca770_a59b7eb6",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2016-08-08T13:35:04Z",
       "side": 1,
       "message": "Assert that MIRROR_LONG_ARRAY_DATA_OFFSET \u003d\u003d MIRROR_INT_ARRAY_DATA_OFFSET + 4.",
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_3097a336",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9aca770_a59b7eb6",
       "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b977f3bf_4ca3b5b0",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Follow up CL? We don\u0027t do this load other places yet.",
+      "parentUuid": "99478f8f_bb154751",
+      "range": {
+        "startLine": 1934,
+        "startChar": 0,
+        "endLine": 1937,
+        "endChar": 53
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5936f710_a1b87e29",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 3
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "b977f3bf_efd153c9",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Its done above with the MIRROR_INT_ARRAY_DATA_OFFSET",
+      "parentUuid": "5936f710_a1b87e29",
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990eaf7b_43526669",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 3
@@ -93,6 +177,30 @@
       "writtenOn": "2016-08-08T13:35:04Z",
       "side": 1,
       "message": "4",
+      "range": {
+        "startLine": 2119,
+        "startChar": 8,
+        "endLine": 2119,
+        "endChar": 9
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_0fb04fd6",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990eaf7b_43526669",
       "range": {
         "startLine": 2119,
         "startChar": 8,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "b977f3bf_6f222311",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2145,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Oops was for debugging.",
+      "parentUuid": "b94a9396_9cb8452a",
+      "range": {
+        "startLine": 2145,
+        "startChar": 4,
+        "endLine": 2145,
+        "endChar": 22
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a53384_24b7923e",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 3
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "b977f3bf_0f65af49",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2155,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a53384_24b7923e",
+      "range": {
+        "startLine": 2153,
+        "startChar": 0,
+        "endLine": 2155,
+        "endChar": 22
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39b223c6_082f0790",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 3
@@ -162,6 +318,30 @@
       "writtenOn": "2016-08-08T13:35:04Z",
       "side": 1,
       "message": "This comment is misleading if \\is_resolved.",
+      "range": {
+        "startLine": 2158,
+        "startChar": 7,
+        "endLine": 2158,
+        "endChar": 28
+      },
+      "revId": "f686c3feabe3519bedd1f3001e5dd598f46946ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_0f0ccf8f",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 2158,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-08-08T22:35:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b223c6_082f0790",
       "range": {
         "startLine": 2158,
         "startChar": 7,
