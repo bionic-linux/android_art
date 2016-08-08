@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b977f3bf_ac0b692f",
+        "filename": "runtime/dex_instruction-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-08T18:12:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t make sense, why does VRegA return InstB?\n\nI\u0027m guessing its because the layout is different enough from the rest of the instructions so the same convention can\u0027t be reused.\n\nIn that case it would just be more clearer to inline the contents of InstB here",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_ec42c146",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-08T18:12:45Z",
+      "side": 1,
+      "message": "It would be really good to document this in the dex instruction files instead of just in the test.\n\nAlso, where is the H?",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_8cb78d3c",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-08T18:12:45Z",
+      "side": 1,
+      "message": "Where is the G?",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b977f3bf_ccad85f0",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-08T18:12:45Z",
+      "side": 1,
+      "message": "Where is the H?",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
