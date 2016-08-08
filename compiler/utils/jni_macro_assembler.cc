@@ -21,6 +21,7 @@
 
 #ifdef ART_ENABLE_CODEGEN_arm
 #include "arm/jni_macro_assembler_arm.h"
+#include "arm/jni_macro_assembler_arm_vixl.h"
 #endif
 #ifdef ART_ENABLE_CODEGEN_arm64
 #include "arm64/jni_macro_assembler_arm64.h"
@@ -45,6 +46,11 @@ namespace art {
 
 using MacroAsm32UniquePtr = std::unique_ptr<JNIMacroAssembler<PointerSize::k32>>;
 
+#ifdef ART_ENABLE_CODEGEN_arm
+// True if the VIXL32 assembler should be used on ARM.
+static constexpr bool kArmUseVixl32 = true;
+#endif
+
 template <>
 MacroAsm32UniquePtr JNIMacroAssembler<PointerSize::k32>::Create(
     ArenaAllocator* arena,
@@ -58,7 +64,9 @@ MacroAsm32UniquePtr JNIMacroAssembler<PointerSize::k32>::Create(
 #ifdef ART_ENABLE_CODEGEN_arm
     case kArm:
     case kThumb2:
-      return MacroAsm32UniquePtr(new (arena) arm::ArmJNIMacroAssembler(arena, instruction_set));
+      return (kArmUseVixl32)
+          ? MacroAsm32UniquePtr(new (arena) arm::ArmVIXLJNIMacroAssembler(arena))
+          : MacroAsm32UniquePtr(new (arena) arm::ArmJNIMacroAssembler(arena, instruction_set));
 #endif
 #ifdef ART_ENABLE_CODEGEN_mips
     case kMips:
