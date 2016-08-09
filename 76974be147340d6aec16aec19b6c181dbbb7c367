@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "39b223c6_8bd1b1ca",
+        "filename": "runtime/dex_instruction-inl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-09T13:07:04Z",
+      "side": 1,
+      "message": "This is inherited from the formats for the 35c series of instructions and isn\u0027t unique to 45cc (it\u0027s even called out in the dex format spec). \n\nI\u0027d rather clean this / 35c up in a future change.",
+      "parentUuid": "b977f3bf_ac0b692f",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b977f3bf_ec42c146",
         "filename": "runtime/dex_instruction_test.cc",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-08T18:12:45Z",
       "side": 1,
       "message": "It would be really good to document this in the dex instruction files instead of just in the test.\n\nAlso, where is the H?",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b223c6_0bd701bb",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-09T13:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b977f3bf_ec42c146",
       "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "39b223c6_2bdc45da",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-09T13:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b977f3bf_8cb78d3c",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b977f3bf_ccad85f0",
         "filename": "runtime/dex_instruction_test.cc",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2016-08-08T18:12:45Z",
       "side": 1,
       "message": "Where is the H?",
+      "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b223c6_cbf00965",
+        "filename": "runtime/dex_instruction_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-08-09T13:07:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b977f3bf_ccad85f0",
       "revId": "76974be147340d6aec16aec19b6c181dbbb7c367",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
