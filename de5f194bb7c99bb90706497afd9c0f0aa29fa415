@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ef2a5e6_ef56a13b",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-12T15:43:33Z",
+      "side": 1,
+      "message": "Nit: 16 double words of double args.",
+      "range": {
+        "startLine": 194,
+        "startChar": 42,
+        "endLine": 194,
+        "endChar": 65
+      },
+      "revId": "de5f194bb7c99bb90706497afd9c0f0aa29fa415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5eec1d0a_3123f0ba",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-12T15:43:33Z",
+      "side": 1,
+      "message": "Nit: Add a comment to explain that D0 and D31 are stored with STR (instead of being stored as part of a pair with STP), so that the STP instructions are 16-bytes aligned (which is better for performance)?",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 27
+      },
+      "revId": "de5f194bb7c99bb90706497afd9c0f0aa29fa415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9eaf75ac_fbb2efab",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-12T15:43:33Z",
+      "side": 1,
+      "message": "Likewise for loads?",
+      "range": {
+        "startLine": 435,
+        "startChar": 4,
+        "endLine": 435,
+        "endChar": 27
+      },
+      "revId": "de5f194bb7c99bb90706497afd9c0f0aa29fa415",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
