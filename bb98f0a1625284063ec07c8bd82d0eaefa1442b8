@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "dbdd7f2d_43127a69",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:27:09Z",
+      "side": 1,
+      "message": "(And actually, now that I saw that you seem to cut off ASCII at 0x80, you may even have to scan the byte array?)",
+      "parentUuid": "dbdd7f2d_83064277",
+      "range": {
+        "startLine": 244,
+        "startChar": 35,
+        "endLine": 244,
+        "endChar": 49
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbdd7f2d_63bcd67e",
         "filename": "runtime/mirror/string-inl.h",
         "patchSetId": 17
