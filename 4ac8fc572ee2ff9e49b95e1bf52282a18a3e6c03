@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3bd93b0e_f64ff88f",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-16T00:31:33Z",
+      "side": 1,
+      "message": "I\u0027ll wrap at 100",
+      "parentUuid": "3bd93b0e_367b40ef",
+      "range": {
+        "startLine": 74,
+        "startChar": 100,
+        "endLine": 74,
+        "endChar": 113
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_76b7889d",
         "filename": "build/art.go",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-08-16T00:22:49Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_5624c4c6",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-16T00:31:33Z",
+      "side": 1,
+      "message": "I generally leave the copyright date on files that are autoconverted, but I can update it if you want.",
+      "parentUuid": "3bd93b0e_d6ee7482",
       "range": {
         "startLine": 2,
         "startChar": 19,
