@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbdd7f2d_e3b0e6d8",
+        "filename": "runtime/debugger.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 4330,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "is_compressed",
+      "range": {
+        "startLine": 4330,
+        "startChar": 9,
+        "endLine": 4330,
+        "endChar": 21
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_23c80e55",
+        "filename": "runtime/globals.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Put this into string.h, which sounds more like where it belongs?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 46
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_c3b84ab9",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 397,
+        "endChar": 7
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_a3e41ed4",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "That\u0027s the wrong check. Just because compression is on doesn\u0027t mean all strings are compressed. You probably want the implication \"string is compressed\" --\u003e kUseCompression.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 70,
+        "endChar": 55
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_83064277",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Is this correct? Shouldn\u0027t this depend on high_byte?",
+      "range": {
+        "startLine": 244,
+        "startChar": 35,
+        "endLine": 244,
+        "endChar": 49
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_c32e8af1",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 244,
+        "startChar": 100,
+        "endLine": 244,
+        "endChar": 103
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_63bcd67e",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 268,
+        "startChar": 100,
+        "endLine": 268,
+        "endChar": 101
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_037b12ca",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Move to header (see comment there).",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 1
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_c3c20a02",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Use the static helper.",
+      "range": {
+        "startLine": 67,
+        "startChar": 11,
+        "endLine": 67,
+        "endChar": 49
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_83dac2e3",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Exposing _with_flag means that callers need to know about compression. Maybe consider another private method if you have to.",
+      "range": {
+        "startLine": 96,
+        "startChar": 71,
+        "endLine": 96,
+        "endChar": 81
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_03e6b2a8",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "Use GetCompressionFlagFromCount.",
+      "range": {
+        "startLine": 176,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbdd7f2d_c3704aea",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T22:25:53Z",
+      "side": 1,
+      "message": "These should be defined here so they can be inlined. May annotate with ALWAYS_INLINE.",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 188,
+        "endChar": 54
+      },
+      "revId": "bb98f0a1625284063ec07c8bd82d0eaefa1442b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
