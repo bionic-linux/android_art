@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_4896ff9b",
+        "filename": "runtime/arch/stub_test.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll enable the test again and put macro next time. Yes, it works when the compression is off",
+      "parentUuid": "3bd93b0e_2abc337d",
+      "range": {
+        "startLine": 1213,
+        "startChar": 2,
+        "endLine": 1214,
+        "endChar": 106
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_aa7d83bf",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Is this correct? Utf8String doesn\u0027t mean ASCII string, normally... (when ASCII \u003d\u003d 0x00-0xff like you did)",
+      "range": {
+        "startLine": 389,
+        "startChar": 2,
+        "endLine": 390,
+        "endChar": 100
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_aebb43b3",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_aa7d83bf",
       "range": {
         "startLine": 389,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_a8aa1bc4",
+        "filename": "runtime/jdwp/jdwp_bits.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_ea9ceb09",
+      "range": {
+        "startLine": 69,
+        "startChar": 100,
+        "endLine": 69,
+        "endChar": 114
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_bf5ce3f5",
         "filename": "runtime/mirror/string-inl.h",
         "patchSetId": 15
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Whatever automatic tool you used, it\u0027s not following our style.\n\nSTL, posix, etc libraries first, in \u0027\u003c\u0027 \u0027\u003e\u0027. Our headers separated second, with \u0027\"\u0027.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_c8c82fc1",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_bf5ce3f5",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_e80373ab",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_1f65efb0",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 53
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_ca380737",
         "filename": "runtime/mirror/string-inl.h",
         "patchSetId": 15
@@ -128,6 +248,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Make this a static helper in String, to keep things centralized and discoverable.",
+      "range": {
+        "startLine": 90,
+        "startChar": 21,
+        "endLine": 90,
+        "endChar": 41
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_28390b88",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_ca380737",
       "range": {
         "startLine": 90,
         "startChar": 21,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_e80d33e9",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_2a019360",
+      "range": {
+        "startLine": 121,
+        "startChar": 24,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_4a06577a",
         "filename": "runtime/mirror/string-inl.h",
         "patchSetId": 15
@@ -174,6 +342,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Should not be necessary.",
+      "range": {
+        "startLine": 184,
+        "startChar": 11,
+        "endLine": 184,
+        "endChar": 32
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_a8033bbe",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_4a06577a",
       "range": {
         "startLine": 184,
         "startChar": 11,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_08d4071b",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_8a719f11",
+      "range": {
+        "startLine": 226,
+        "startChar": 16,
+        "endLine": 226,
+        "endChar": 18
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_ea5f0b7b",
         "filename": "runtime/mirror/string-inl.h",
         "patchSetId": 15
@@ -220,6 +436,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "See comment in .cc file...",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 260,
+        "endChar": 65
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_0b8521b6",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_ea5f0b7b",
       "range": {
         "startLine": 260,
         "startChar": 2,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_6b149d4b",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_2a4f53c6",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 315,
+        "endChar": 3
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_9ff9dfe3",
         "filename": "runtime/mirror/string.cc",
         "patchSetId": 15
@@ -266,6 +530,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Don\u0027t use commented code. Use a constexpr bool somewhere to toggle this.\n\n constexpr bool kUseCompression \u003d false;\n [...]\n const bool compressible \u003d kUseCompression \u0026\u0026 (...);",
+      "range": {
+        "startLine": 97,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 34
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_2b33c5fa",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_9ff9dfe3",
       "range": {
         "startLine": 97,
         "startChar": 2,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_6b62dde2",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_dfd8c77d",
+      "range": {
+        "startLine": 99,
+        "startChar": 100,
+        "endLine": 99,
+        "endChar": 107
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_3fe47333",
         "filename": "runtime/mirror/string.cc",
         "patchSetId": 15
@@ -312,6 +624,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Align on next line with \u0027?\u0027",
+      "range": {
+        "startLine": 136,
+        "startChar": 74,
+        "endLine": 136,
+        "endChar": 75
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_4b6719f1",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_3fe47333",
       "range": {
         "startLine": 136,
         "startChar": 74,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_6b913da2",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_3f51d3e1",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 309,
+        "endChar": 5
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_df5527ce",
         "filename": "runtime/mirror/string.cc",
         "patchSetId": 15
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "3b1e9ba6_2b810563",
+        "filename": "runtime/mirror/string.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_df5527ce",
+      "range": {
+        "startLine": 362,
+        "startChar": 8,
+        "endLine": 362,
+        "endChar": 21
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_4a65f716",
         "filename": "runtime/utf.cc",
         "patchSetId": 15
@@ -381,6 +765,30 @@
       "writtenOn": "2016-08-16T16:08:33Z",
       "side": 1,
       "message": "Could use a template.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "07ba50b35651197d55c146e99e6f2d0eecf60441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b1e9ba6_ae7343f4",
+        "filename": "runtime/utf.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1113370
+      },
+      "writtenOn": "2016-08-16T22:02:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_4a65f716",
       "range": {
         "startLine": 173,
         "startChar": 0,
