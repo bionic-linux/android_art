@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3bd93b0e_f6fdb807",
+        "filename": "build/art.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-16T00:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_76b7889d",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_d6ee7482",
         "filename": "runtime/Android.bp",
         "patchSetId": 1
@@ -153,6 +177,30 @@
       "writtenOn": "2016-08-16T00:22:49Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_560a8427",
+        "filename": "runtime/simulator/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-16T00:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bd93b0e_9696ace6",
       "range": {
         "startLine": 17,
         "startChar": 0,
