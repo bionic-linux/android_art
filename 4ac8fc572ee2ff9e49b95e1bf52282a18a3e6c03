@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3bd93b0e_16b87c28",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:45:43Z",
+      "side": 1,
+      "message": "Up to you. We leave it if it is substantially derived. Here, though, one could call that in question. :-)",
+      "parentUuid": "3bd93b0e_5624c4c6",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd93b0e_36a8201e",
         "filename": "runtime/simulator/Android.bp",
         "patchSetId": 1
