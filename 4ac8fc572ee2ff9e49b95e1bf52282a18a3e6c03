@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bd93b0e_367b40ef",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:22:49Z",
+      "side": 1,
+      "message": "What\u0027s the convention in go files? 100 column?",
+      "range": {
+        "startLine": 74,
+        "startChar": 100,
+        "endLine": 74,
+        "endChar": 113
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_76b7889d",
+        "filename": "build/art.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:22:49Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 49
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_d6ee7482",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:22:49Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_36a8201e",
+        "filename": "runtime/simulator/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:22:49Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd93b0e_9696ace6",
+        "filename": "runtime/simulator/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-16T00:22:49Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "4ac8fc572ee2ff9e49b95e1bf52282a18a3e6c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
