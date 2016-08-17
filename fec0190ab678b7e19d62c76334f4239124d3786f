@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb77a30c_1a1e2dcd",
+        "filename": "runtime/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-17T21:11:12Z",
+      "side": 0,
+      "message": "I missed translating this stanza to art.go",
+      "revId": "fec0190ab678b7e19d62c76334f4239124d3786f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
