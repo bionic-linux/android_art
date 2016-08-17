@@ -1155,8 +1155,15 @@ int ExecAndReturnCode(std::vector<std::string>& arg_vector, std::string* error_m
     // change process groups, so we don't get reaped by ProcessManager
     setpgid(0, 0);
 
-    execv(program, &args[0]);
-    PLOG(ERROR) << "Failed to execv(" << command_line << ")";
+    // (b/30160149): protect subprocesses from modifications to LD_LIBRARY_PATH, etc.
+    // Use the snapshot of the environment from the time the runtime was created.
+    if (Runtime::Current() == nullptr) {
+      execv(program, &args[0]);
+    } else {
+      char** envp = Runtime::Current()->GetEnvSnapshot();
+      execve(program, &args[0], envp);
+    }
+    PLOG(ERROR) << "Failed to execve(" << command_line << ")";
     // _exit to avoid atexit handlers in child.
     _exit(1);
   } else {
