@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fb77a30c_26b916df",
+        "filename": "build/art.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-17T17:47:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdd7f2d_230d6e46",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "e46ac1b0d99f366d95402e676eb5ab255bc5dea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbdd7f2d_638a16c6",
         "filename": "build/art.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-16T22:28:58Z",
       "side": 1,
       "message": "This seems wrong",
+      "range": {
+        "startLine": 106,
+        "startChar": 35,
+        "endLine": 106,
+        "endChar": 36
+      },
+      "revId": "e46ac1b0d99f366d95402e676eb5ab255bc5dea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb77a30c_46be12c8",
+        "filename": "build/art.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-17T17:47:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbdd7f2d_638a16c6",
       "range": {
         "startLine": 106,
         "startChar": 35,
