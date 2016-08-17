@@ -413,7 +413,7 @@ class MarkSweep::MarkObjectSlowPath {
     if (UNLIKELY(obj == nullptr || !IsAligned<kPageSize>(obj) ||
                  (kIsDebugBuild && large_object_space != nullptr &&
                      !large_object_space->Contains(obj)))) {
-      LOG(INTERNAL_FATAL) << "Tried to mark " << obj << " not contained by any spaces\n";
+      LOG(INTERNAL_FATAL) << "Tried to mark " << obj << " not contained by any spaces";
       if (holder_ != nullptr) {
         size_t holder_size = holder_->SizeOf();
         ArtField* field = holder_->FindFieldByOffset(offset_);
@@ -436,18 +436,17 @@ class MarkSweep::MarkObjectSlowPath {
                             << " num_of_ref_fields="
                             << (holder_->IsClass()
                                 ? holder_->AsClass()->NumReferenceStaticFields()
-                                : holder_->GetClass()->NumReferenceInstanceFields())
-                            << "\n";
+                                : holder_->GetClass()->NumReferenceInstanceFields());
         // Print the memory content of the holder.
         for (size_t i = 0; i < holder_size / sizeof(uint32_t); ++i) {
           uint32_t* p = reinterpret_cast<uint32_t*>(holder_);
           LOG(INTERNAL_FATAL) << &p[i] << ": " << "holder+" << (i * sizeof(uint32_t)) << " = "
-                              << std::hex << p[i] << "\n";
+                              << std::hex << p[i];
         }
       }
       PrintFileToLog("/proc/self/maps", LogSeverity::INTERNAL_FATAL);
       MemMap::DumpMaps(LOG(INTERNAL_FATAL), true);
-      LOG(INTERNAL_FATAL) << "Attempting see if it's a bad thread root\n";
+      LOG(INTERNAL_FATAL) << "Attempting see if it's a bad thread root";
       mark_sweep_->VerifySuspendedThreadRoots();
       LOG(FATAL) << "Can't mark invalid object";
     }
@@ -575,7 +574,7 @@ class MarkSweep::VerifyRootVisitor : public SingleRootVisitor {
     if (heap->GetLiveBitmap()->GetContinuousSpaceBitmap(root) == nullptr) {
       space::LargeObjectSpace* large_object_space = heap->GetLargeObjectsSpace();
       if (large_object_space != nullptr && !large_object_space->Contains(root)) {
-        LOG(INTERNAL_FATAL) << "Found invalid root: " << root << " " << info << "\n";
+        LOG(INTERNAL_FATAL) << "Found invalid root: " << root << " " << info;
       }
     }
   }
