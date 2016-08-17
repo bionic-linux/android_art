@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb77a30c_35293a9d",
+        "filename": "runtime/arch/mips64/entrypoints_init_mips64.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "Extra line?",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb77a30c_f51ec274",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 20
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "Extra line?",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb77a30c_350f7a37",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "This line is a bit too long.",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7c4b2e_eca7aba0",
+        "filename": "runtime/jni_internal_test.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "Are these tests safe to enable again?",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7c4b2e_acd683f8",
+        "filename": "runtime/native/java_lang_Class.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "Minor style comment. C++ uses underscores instead of camel case for variable names, ie. name_is_compressed and data_compressed.",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7c4b2e_2cc37336",
+        "filename": "runtime/native/java_lang_Class.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-08-17T23:12:04Z",
+      "side": 1,
+      "message": "Same style comment here.",
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
