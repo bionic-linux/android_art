@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bb7c4b2e_2c40538f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-17T23:16:44Z",
+      "side": 1,
+      "message": "outdated?",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "c982aafc8f91c625c5768ea2a08aea89d5d8efa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb77a30c_35293a9d",
         "filename": "runtime/arch/mips64/entrypoints_init_mips64.cc",
         "patchSetId": 20
