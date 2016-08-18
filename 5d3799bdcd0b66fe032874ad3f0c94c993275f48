@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd813b0_caa7034f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "assembler",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 38
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_aa556f32",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "IsUint\u003c12\u003e(immediate)",
+      "range": {
+        "startLine": 89,
+        "startChar": 10,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbcb23e0_66e9ee77",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Drop?",
+      "range": {
+        "startLine": 142,
+        "startChar": 18,
+        "endLine": 142,
+        "endChar": 19
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_ea5f674c",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "IsAligned\u003c4\u003e(offset)",
+      "range": {
+        "startLine": 184,
+        "startChar": 43,
+        "endLine": 184,
+        "endChar": 60
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_ca64231e",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 186,
+        "startChar": 43,
+        "endLine": 186,
+        "endChar": 60
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_0a675b1f",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 202,
+        "startChar": 43,
+        "endLine": 202,
+        "endChar": 60
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_6a7417cb",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 204,
+        "startChar": 44,
+        "endLine": 204,
+        "endChar": 60
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_8a434b72",
+        "filename": "compiler/utils/arm/assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "\u003c\u003c tmp_reg;",
+      "range": {
+        "startLine": 263,
+        "startChar": 43,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_4a1f9371",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Use instead:\n\n  ManagedRegister dest ATTRIBUTE_UNUSED\n\n(here and in other places).",
+      "range": {
+        "startLine": 235,
+        "startChar": 39,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bbab737_4f532d17",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Nit: one argument per line.",
+      "range": {
+        "startLine": 485,
+        "startChar": 36,
+        "endLine": 486,
+        "endChar": 60
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fba24310_4e25f3aa",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Nit:\n\n  ArmVIXLJNIMacroAssembler::ArmException* exception",
+      "range": {
+        "startLine": 547,
+        "startChar": 4,
+        "endLine": 547,
+        "endChar": 53
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd813b0_aa23afbe",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Nit: 4-space indent.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fba24310_0efe4b03",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-18T16:00:46Z",
+      "side": 1,
+      "message": "Nit: one argument per line.",
+      "range": {
+        "startLine": 1679,
+        "startChar": 16,
+        "endLine": 1680,
+        "endChar": 62
+      },
+      "revId": "5d3799bdcd0b66fe032874ad3f0c94c993275f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
