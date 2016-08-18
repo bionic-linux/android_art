@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb7c4b2e_8f9059a0",
+        "filename": "compiler/utils/jni_macro_assembler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-18T01:15:39Z",
+      "side": 1,
+      "message": "Is there any reason for this flag? The CL seems to be almost a one-liner without, so for toggling one could revert rather quickly. (I\u0027d have understood if the default was false for the time being...)",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "3aa127a5270ce369c04d423a5c3196773af09035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
