@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb7c4b2e_d50fcee4",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-18T16:47:55Z",
+      "side": 1,
+      "message": "That isn\u0027t true with your restriction, is it? Codepoints till 0x9f are single bytes. It\u0027s still fine to compare this way, but the variable is named incorrectly.",
+      "range": {
+        "startLine": 392,
+        "startChar": 4,
+        "endLine": 392,
+        "endChar": 60
+      },
+      "revId": "6fad084d26722cda4c3b0a6c51ee30b1ccb7892f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7c4b2e_9532a6a2",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-18T16:47:55Z",
+      "side": 1,
+      "message": "kUseStringCompression. Or move it into the String class itself so it\u0027s String::kUseCompression.",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "6fad084d26722cda4c3b0a6c51ee30b1ccb7892f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
