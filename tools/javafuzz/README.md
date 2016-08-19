@@ -40,19 +40,20 @@ How to start the JavaFuzz tests
 ===============================
 
     run_java_fuzz_test.py [--num_tests]
+                          [--device]
                           [--mode1=mode] [--mode2=mode]
 
 where
 
-    --num_tests: number of tests to run (10000 by default)
-    --mode1:m1
-    --mode2:m2
-    with m1 != m2, and one of
-      ri   : reference implementation on host (default for m1)
-      hint : Art interpreter on host
-      hopt : Art optimizing on host (default for m2)
-      tint : Art interpreter on target
-      topt : Art optimizing on target
+    --num_tests : number of tests to run (10000 by default)
+    --device    : target device serial number (passed to adb -s)
+    --mode1     : m1
+    --mode2     : m2, with m1 != m2, and values one of
+      ri   = reference implementation on host (default for m1)
+      hint = Art interpreter on host
+      hopt = Art optimizing on host (default for m2)
+      tint = Art interpreter on target
+      topt = Art optimizing on target
 
 Background
 ==========
