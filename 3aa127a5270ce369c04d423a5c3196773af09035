@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8a23f7a_63dd82dd",
+        "filename": "compiler/utils/jni_macro_assembler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-08-19T14:51:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7c4b2e_8f9059a0",
+      "range": {
+        "startLine": 51,
+        "startChar": 22,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "3aa127a5270ce369c04d423a5c3196773af09035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bb5bb44_90ad3433",
         "filename": "compiler/utils/jni_macro_assembler.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-18T14:25:49Z",
       "side": 1,
       "message": "Nit: drop the parentheses.",
+      "range": {
+        "startLine": 67,
+        "startChar": 13,
+        "endLine": 67,
+        "endChar": 28
+      },
+      "revId": "3aa127a5270ce369c04d423a5c3196773af09035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b0abbd_46adf2eb",
+        "filename": "compiler/utils/jni_macro_assembler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-08-19T14:51:12Z",
+      "side": 1,
+      "message": "Removed the whole condition.",
+      "parentUuid": "3bb5bb44_90ad3433",
       "range": {
         "startLine": 67,
         "startChar": 13,
