@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f9973d_60d0ecfc",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-19T01:31:23Z",
+      "side": 1,
+      "message": "kUseStringCompression ? ... : ...",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 30
+      },
+      "revId": "2d323b4a267b59fd9569748f3c28af072ff1fa2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8f9973d_80cbf854",
+        "filename": "runtime/mirror/string.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-19T01:31:23Z",
+      "side": 1,
+      "message": "kUseStringCompression ? 0 : ...",
+      "range": {
+        "startLine": 195,
+        "startChar": 20,
+        "endLine": 195,
+        "endChar": 30
+      },
+      "revId": "2d323b4a267b59fd9569748f3c28af072ff1fa2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
