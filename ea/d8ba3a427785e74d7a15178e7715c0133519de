@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Andreas Gampe <agampe@google.com>
+Autosubmit+1: Mathieu Chartier <mathieuc@google.com>
+Code-Review+2: Mathieu Chartier <mathieuc@google.com>
+Presubmit-Ready+1: Mathieu Chartier <mathieuc@google.com>
+Verified+1: Mathieu Chartier <mathieuc@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Mon, 22 Aug 2016 22:50:04 +0000
+Reviewed-on: https://android-review.googlesource.com/254662
+Project: platform/art
+Branch: refs/heads/master
