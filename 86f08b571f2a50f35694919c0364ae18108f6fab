@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88357b64_bc1c8121",
+        "filename": "build/art.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-23T21:51:31Z",
+      "side": 1,
+      "message": "Should this be in codegen.go?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "86f08b571f2a50f35694919c0364ae18108f6fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
