@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88357b64_02a50a9a",
+        "filename": "tools/javafuzz/run_java_fuzz_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-08-23T17:41:43Z",
+      "side": 1,
+      "message": "because it may add the flag below",
+      "parentUuid": "48ac639b_385bde34",
+      "revId": "b16d413165d790dea02c699c6ef608605a6191c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ac639b_18561a04",
         "filename": "tools/javafuzz/run_java_fuzz_test.py",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-23T17:31:22Z",
       "side": 1,
       "message": "This can be done with setting the ANDROID_SERIAL environment variable",
+      "revId": "b16d413165d790dea02c699c6ef608605a6191c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88357b64_42ab126b",
+        "filename": "tools/javafuzz/run_java_fuzz_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-08-23T17:41:43Z",
+      "side": 1,
+      "message": "agreed, also, I plan to remove this logic in favor of importing Wojciech\u0027s setup scripts when they go in!",
+      "parentUuid": "48ac639b_18561a04",
       "revId": "b16d413165d790dea02c699c6ef608605a6191c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
