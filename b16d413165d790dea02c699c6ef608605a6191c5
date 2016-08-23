@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48ac639b_385bde34",
+        "filename": "tools/javafuzz/run_java_fuzz_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-23T17:31:22Z",
+      "side": 1,
+      "message": "Why does this need to be a separate field?",
+      "revId": "b16d413165d790dea02c699c6ef608605a6191c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48ac639b_18561a04",
+        "filename": "tools/javafuzz/run_java_fuzz_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-23T17:31:22Z",
+      "side": 1,
+      "message": "This can be done with setting the ANDROID_SERIAL environment variable",
+      "revId": "b16d413165d790dea02c699c6ef608605a6191c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
