@@ -22,6 +22,30 @@
       "revId": "86f08b571f2a50f35694919c0364ae18108f6fab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88357b64_17b6a69d",
+        "filename": "build/art.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-23T21:57:56Z",
+      "side": 1,
+      "message": "This is a generic art list, it just happens to be only used in codegen.go for now.",
+      "parentUuid": "88357b64_bc1c8121",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 81
+      },
+      "revId": "86f08b571f2a50f35694919c0364ae18108f6fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
