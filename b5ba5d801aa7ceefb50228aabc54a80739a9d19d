@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08f50bfe_e154c058",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2016-08-24T17:51:06Z",
+      "side": 1,
+      "message": "Is it guaranteed that Runtime::Init() has been called by this point? Should you check that envp !\u003d nullptr?",
+      "range": {
+        "startLine": 1163,
+        "startChar": 6,
+        "endLine": 1163,
+        "endChar": 23
+      },
+      "revId": "b5ba5d801aa7ceefb50228aabc54a80739a9d19d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
