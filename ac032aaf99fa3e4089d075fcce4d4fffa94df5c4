@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88357b64_fc03e96a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88357b64_ebd7a1bc",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88357b64_0b876578",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-23T20:13:07Z",
       "side": 1,
       "message": "A bug number here might be nice.",
+      "range": {
+        "startLine": 476,
+        "startChar": 63,
+        "endLine": 476,
+        "endChar": 68
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88357b64_177466fb",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "Added, here and where it is used.",
+      "parentUuid": "88357b64_0b876578",
       "range": {
         "startLine": 476,
         "startChar": 63,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88357b64_b7fd7a5a",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "It was due to a complicated interaction with unique_ptr, the intent to keep the implementation exclusively in utils.cc, and the problem with allocating memory between fork and exec.  I have refactored as you suggest.",
+      "parentUuid": "88357b64_8bfff5fd",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 2
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88357b64_4b56cd04",
         "filename": "runtime/runtime.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-08-23T20:13:07Z",
       "side": 1,
       "message": "Why use a ptr here instead of having the field be an EnvSnapshot directly?",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 879,
+        "endChar": 51
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88357b64_771852d3",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88357b64_4b56cd04",
       "range": {
         "startLine": 878,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "88357b64_97607638",
+        "filename": "runtime/utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "Again, part of the complex interaction I have shifted away from.",
+      "parentUuid": "88357b64_cbbbbd23",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 37
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88357b64_0b18c52c",
         "filename": "runtime/utils_test.cc",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-08-23T20:13:07Z",
       "side": 1,
       "message": "EXPECT_FALSE(error_msg.empty())  ?",
+      "range": {
+        "startLine": 407,
+        "startChar": 5,
+        "endLine": 407,
+        "endChar": 34
+      },
+      "revId": "ac032aaf99fa3e4089d075fcce4d4fffa94df5c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88357b64_37440aa5",
+        "filename": "runtime/utils_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T00:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88357b64_0b18c52c",
       "range": {
         "startLine": 407,
         "startChar": 5,
