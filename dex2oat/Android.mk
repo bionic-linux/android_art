@@ -30,14 +30,6 @@ include art/build/Android.executable.mk
 DEX2OAT_SRC_FILES := \
 	dex2oat.cc
 
-# TODO: Remove this when the framework (installd) supports pushing the
-# right instruction-set parameter for the primary architecture.
-ifneq ($(filter ro.zygote=zygote64,$(PRODUCT_DEFAULT_PROPERTY_OVERRIDES)),)
-  dex2oat_target_arch := 64
-else
-  dex2oat_target_arch := 32
-endif
-
 ifeq ($(HOST_PREFER_32_BIT),true)
   # We need to explicitly restrict the host arch to 32-bit only, as
   # giving 'both' would make build-art-executable generate a build
@@ -48,7 +40,7 @@ else
 endif
 
 ifeq ($(ART_BUILD_TARGET_NDEBUG),true)
-  $(eval $(call build-art-executable,dex2oat,$(DEX2OAT_SRC_FILES),libcutils libart-compiler libsigchain,art/compiler,target,ndebug,$(dex2oat_target_arch)))
+  $(eval $(call build-art-executable,dex2oat,$(DEX2OAT_SRC_FILES),libcutils libart-compiler libsigchain,art/compiler,target,ndebug,32))
 endif
 
 ifeq ($(ART_BUILD_TARGET_DEBUG),true)
