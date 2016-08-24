@@ -22,6 +22,30 @@
       "revId": "b5ba5d801aa7ceefb50228aabc54a80739a9d19d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8bebf34_49ab256b",
+        "filename": "runtime/utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-08-24T22:51:07Z",
+      "side": 1,
+      "message": "I think Runtime::Current() is only non-nullptr iff Init ran and returned true.  Regardless, the check doesn\u0027t cost much, so done.",
+      "parentUuid": "08f50bfe_e154c058",
+      "range": {
+        "startLine": 1163,
+        "startChar": 6,
+        "endLine": 1163,
+        "endChar": 23
+      },
+      "revId": "b5ba5d801aa7ceefb50228aabc54a80739a9d19d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
