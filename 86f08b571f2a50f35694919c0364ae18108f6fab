@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a8bebf34_062bdc2d",
+        "filename": "build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-24T22:36:02Z",
+      "side": 1,
+      "message": "Gone.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 23
+      },
+      "revId": "86f08b571f2a50f35694919c0364ae18108f6fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8bebf34_4625d453",
+        "filename": "build/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-24T22:36:02Z",
+      "side": 1,
+      "message": "Spaces?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "86f08b571f2a50f35694919c0364ae18108f6fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88357b64_bc1c8121",
         "filename": "build/art.go",
         "patchSetId": 6
