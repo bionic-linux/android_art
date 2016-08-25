@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "25de7af7_f57290ed",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-25T17:47:03Z",
+      "side": 1,
+      "message": "It has to be JniAssemblerType, at least. I think it\u0027s ArmJNIMacroAssembler. \n\nIf you want to touch it, maybe also re-style to \"using.\"",
+      "parentUuid": "255bda40_87730678",
+      "range": {
+        "startLine": 1624,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 43
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858566ca_62e7b63e",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 5
