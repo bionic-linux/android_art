@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a59b4a32_1be17b26",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-25T18:03:33Z",
+      "side": 1,
+      "message": "I think we should instead remove the ArmJNIMacroAssembler altogether as it\u0027s not used anymore. All this #ifdef magic can be removed with it.",
+      "parentUuid": "25de7af7_f57290ed",
+      "range": {
+        "startLine": 1624,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 43
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858566ca_62e7b63e",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 5
