@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e59542fc_ddf1cbfb",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-08-25T17:24:27Z",
+      "side": 1,
+      "message": "Because of the copy-pasted friend class with a typo:\n  friend class ArmVIXAssemblerTest_VixlLoadFromOffset_Test;\n  friend class ArmVIXAssemblerTest_VixlStoreToOffset_Test;\n\nSorry about it, will upload a fix very soon.",
+      "parentUuid": "25de7af7_b2f89edb",
+      "range": {
+        "startLine": 1627,
+        "startChar": 6,
+        "endLine": 1627,
+        "endChar": 25
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "658a32dd_e1f186fb",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 5
