@@ -22,6 +22,29 @@
       "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "658a32dd_e1f186fb",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-25T17:05:25Z",
+      "side": 1,
+      "message": "Asking for reference unpoisoning, the test fails for reference-poisoning configurations.",
+      "range": {
+        "startLine": 1692,
+        "startChar": 67,
+        "endLine": 1692,
+        "endChar": 71
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
