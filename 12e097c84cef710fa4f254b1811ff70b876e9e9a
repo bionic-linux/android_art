@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "858566ca_62e7b63e",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-25T16:46:32Z",
+      "side": 1,
+      "message": "Typo: missing \u0027L\u0027.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 6,
+        "endLine": 1627,
+        "endChar": 25
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
