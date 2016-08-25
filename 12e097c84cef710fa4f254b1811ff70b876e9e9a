@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "25de7af7_35681888",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1624,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-25T18:14:05Z",
+      "side": 1,
+      "message": "That\u0027s ARMs job. Right now their declared process was to push VIXL in and wait till it\u0027s clear it\u0027s really stable...",
+      "parentUuid": "a59b4a32_1be17b26",
+      "range": {
+        "startLine": 1624,
+        "startChar": 0,
+        "endLine": 1624,
+        "endChar": 43
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858566ca_62e7b63e",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 5
