@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "25de7af7_b2f89edb",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-25T17:20:18Z",
+      "side": 1,
+      "message": "Surprisingly, this trivial change fails to compile, because it then finds that assembler.asm_ (line 1747) is protected. Right now I don\u0027t know why it works *with* the typo.",
+      "parentUuid": "858566ca_62e7b63e",
+      "range": {
+        "startLine": 1627,
+        "startChar": 6,
+        "endLine": 1627,
+        "endChar": 25
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "658a32dd_e1f186fb",
         "filename": "compiler/utils/assembler_thumb_test.cc",
         "patchSetId": 5
