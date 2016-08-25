@@ -92,6 +92,30 @@
       "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "255bda40_a7760a68",
+        "filename": "compiler/utils/assembler_thumb_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1692,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2016-08-25T17:22:02Z",
+      "side": 1,
+      "message": "I can upload a quick workaround that will fix it (true -\u003e false) and then upload a proper fix for testing when heap poisoning is on. Should I?",
+      "parentUuid": "658a32dd_e1f186fb",
+      "range": {
+        "startLine": 1692,
+        "startChar": 67,
+        "endLine": 1692,
+        "endChar": 71
+      },
+      "revId": "12e097c84cef710fa4f254b1811ff70b876e9e9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
