@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45052e49_3057a861",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-26T10:14:52Z",
+      "side": 1,
+      "message": "Move just before the use? (Line 2177)",
+      "revId": "19007342e79a6bfe7513ebd2a7b0e79363c9047f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
