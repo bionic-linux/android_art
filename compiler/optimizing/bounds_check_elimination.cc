@@ -887,7 +887,7 @@ class BCEVisitor : public HGraphVisitor {
       bool needs_finite_test = false;
       bool needs_taken_test = false;
       if (DynamicBCESeemsProfitable(loop, bounds_check->GetBlock()) &&
-          induction_range_.CanGenerateCode(
+          induction_range_.CanGenerateRange(
               bounds_check, index, &needs_finite_test, &needs_taken_test) &&
           CanHandleInfiniteLoop(loop, index, needs_finite_test) &&
           // Do this test last, since it may generate code.
@@ -1403,10 +1403,10 @@ class BCEVisitor : public HGraphVisitor {
           // whether code generation on the original and, thus, related bounds check was possible.
           // It handles either loop invariants (lower is not set) or unit strides.
           if (other_c == max_c) {
-            induction_range_.GenerateRangeCode(
+            induction_range_.GenerateRange(
                 other_bounds_check, other_index, GetGraph(), block, &max_lower, &max_upper);
           } else if (other_c == min_c && base != nullptr) {
-            induction_range_.GenerateRangeCode(
+            induction_range_.GenerateRange(
                 other_bounds_check, other_index, GetGraph(), block, &min_lower, &min_upper);
           }
           ReplaceInstruction(other_bounds_check, other_index);
