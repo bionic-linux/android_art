@@ -366,12 +366,11 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   // is a throw-catch loop, i.e. the header is a catch block.
   GraphAnalysisResult AnalyzeLoops() const;
 
-  // Computes the linear order (should be called before using HLinearOrderIterator).
-  // Linearizes the graph such that:
+  // Computes a linear order for the current graph in 'linear_order', such that:
   // (1): a block is always after its dominator,
   // (2): blocks of loops are contiguous.
   // This creates a natural and efficient ordering when visualizing live ranges.
-  void Linearize();
+  void Linearize(ArenaVector<HBasicBlock*>* linear_order);
 
   // Iterate over blocks to compute try block membership. Needs reverse post
   // order and loop information.
@@ -586,7 +585,9 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   // List of blocks to perform a reverse post order tree traversal.
   ArenaVector<HBasicBlock*> reverse_post_order_;
 
-  // List of blocks to perform a linear order tree traversal.
+  // List of blocks to perform a linear order tree traversal. Unlike the reverse
+  // post order, this order is not incrementally kept up-to-date and should only be
+  // set by liveness analysis (when no further graph mutations can occur).
   ArenaVector<HBasicBlock*> linear_order_;
 
   HBasicBlock* entry_block_;
@@ -6710,6 +6711,8 @@ class HLinearOrderIterator : public ValueObject {
  public:
   explicit HLinearOrderIterator(const HGraph& graph)
       : order_(graph.GetLinearOrder()), index_(0) {}
+  explicit HLinearOrderIterator(const ArenaVector<HBasicBlock*>& order)
+      : order_(order), index_(0) {}  // alternative on outside given order
 
   bool Done() const { return index_ == order_.size(); }
   HBasicBlock* Current() const { return order_[index_]; }
