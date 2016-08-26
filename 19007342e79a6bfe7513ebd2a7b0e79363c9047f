@@ -16,6 +16,24 @@
       "revId": "19007342e79a6bfe7513ebd2a7b0e79363c9047f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45052e49_5056ac61",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2161,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-08-26T10:18:38Z",
+      "side": 1,
+      "message": "I decided to inline it, because it was use only once.",
+      "parentUuid": "45052e49_3057a861",
+      "revId": "19007342e79a6bfe7513ebd2a7b0e79363c9047f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
