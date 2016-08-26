@@ -1185,13 +1185,14 @@ class SsaLivenessAnalysis : public ValueObject {
 
   static constexpr const char* kLivenessPassName = "liveness";
 
- private:
   // Linearize the graph so that:
   // (1): a block is always after its dominator,
   // (2): blocks of loops are contiguous.
   // This creates a natural and efficient ordering when visualizing live ranges.
+  // TODO: move to nodes.cc (since HLinearOrderIterator is defined in nodes.h)?
   void LinearizeGraph();
 
+ private:
   // Give an SSA number to each instruction that defines a value used by another instruction,
   // and setup the lifetime information of each instruction and block.
   void NumberInstructions();
