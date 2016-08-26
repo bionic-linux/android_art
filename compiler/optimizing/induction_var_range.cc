@@ -179,7 +179,7 @@ void InductionVarRange::GenerateRange(HInstruction* context,
                                       /*out*/HInstruction** lower,
                                       /*out*/HInstruction** upper) {
   bool is_last_value = false;
-  int64_t s = 0;
+  int64_t stride_value = 0;
   bool b1, b2;  // unused
   if (!GenerateCode(context,
                     instruction,
@@ -189,7 +189,7 @@ void InductionVarRange::GenerateRange(HInstruction* context,
                     lower,
                     upper,
                     nullptr,
-                    &s,
+                    &stride_value,
                     &b1,
                     &b2)) {
     LOG(FATAL) << "Failed precondition: CanGenerateRange()";
@@ -232,7 +232,9 @@ bool InductionVarRange::CanGenerateLastValue(HInstruction* instruction) {
                       nullptr,
                       nullptr,
                       nullptr,  // nothing generated yet
-                      &stride_value, &needs_finite_test, &needs_taken_test)
+                      &stride_value,
+                      &needs_finite_test,
+                      &needs_taken_test)
       && !needs_finite_test && !needs_taken_test;
 }
 
@@ -878,8 +880,11 @@ bool InductionVarRange::GenerateCode(HInductionVarAnalysis::InductionInfo* info,
               } else if (stride_value == -1) {
                 oper = new (graph->GetArena()) HSub(type, opb, opa);
               } else {
-                HInstruction* mul = new (graph->GetArena()) HMul(type, graph->GetIntConstant(stride_value), opa);
-                oper = new (graph->GetArena()) HAdd(type, Insert(block, mul), opb);
+                oper = new (graph->GetArena()) HAdd(
+                    type,
+                    Insert(block, new (graph->GetArena())
+                           HMul(type, graph->GetIntConstant(stride_value), opa)),
+                    opb);
               }
               *result = Insert(block, oper);
             }

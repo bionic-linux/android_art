@@ -523,6 +523,8 @@ static bool IsLinearOrderWellFormed(const HGraph& graph) {
 }
 
 void HGraph::Linearize() {
+  linear_order_.clear();
+
   // Create a reverse post ordering with the following properties:
   // - Blocks in a loop are consecutive,
   // - Back-edge is the last block before loop exits.
