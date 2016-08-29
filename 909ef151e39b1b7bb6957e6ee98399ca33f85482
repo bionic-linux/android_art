@@ -16,6 +16,24 @@
       "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "051ed617_79d50340",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-29T20:36:13Z",
+      "side": 1,
+      "message": "libart-disassembler depends strongly on libart. Goal is to not do this. Basically that just means using libbase as the foundation for some of the macros, and logging.",
+      "parentUuid": "051ed617_59a007e6",
+      "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
