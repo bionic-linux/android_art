@@ -34,6 +34,24 @@
       "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "051ed617_19032fc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-29T20:39:08Z",
+      "side": 1,
+      "message": "Is there a corresponding CL that removes libart from the libart-disassembler build dependencies?",
+      "parentUuid": "051ed617_79d50340",
+      "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
