@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051ed617_59a007e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-08-29T20:34:28Z",
+      "side": 1,
+      "message": "What does this mean? I read the bug and I\u0027m still not super clear.",
+      "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
