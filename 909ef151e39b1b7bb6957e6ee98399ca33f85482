@@ -52,6 +52,24 @@
       "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "051ed617_f998f375",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-29T20:45:26Z",
+      "side": 1,
+      "message": "It\u0027s upcoming.\n\nRight now I\u0027m disentangling dependencies (the compiler uses both, so definitions were clashing).",
+      "parentUuid": "051ed617_19032fc2",
+      "revId": "909ef151e39b1b7bb6957e6ee98399ca33f85482",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
