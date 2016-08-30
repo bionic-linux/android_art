@@ -5352,7 +5352,7 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
       // We cannot use a NearLabel for `done`, as its range may be too
       // short when Baker read barriers are enabled.
       Label done;
-      NearLabel not_null, do_put;
+      NearLabel not_null, type_check_success, object_array_type_check_success;
       SlowPathCode* slow_path = nullptr;
       Location temp_loc = locations->GetTemp(0);
       Register temp = temp_loc.AsRegister<Register>();
@@ -5400,8 +5400,29 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
             // There is no such problem with Baker read barriers (see below).
             __ jmp(slow_path->GetEntryLabel());
           } else {
+            // First try to do the type check with no read barriers.
+            // If it succeeds, proceed; otherwise, emit read barriers
+            // for every heap reference load and do the check again.
+
+            // /* HeapReference<Class> */ temp = array->klass_
+            __ movl(temp, Address(array, class_offset));
+            codegen_->MaybeRecordImplicitNullCheck(instruction);
+            __ MaybeUnpoisonHeapReference(temp);
+
+            // /* HeapReference<Class> */ temp = temp->component_type_
+            __ movl(temp, Address(temp, component_offset));
+            // If heap poisoning is enabled, no need to unpoison `temp`
+            // nor the object reference in `register_value->klass`, as
+            // we are comparing two poisoned references.
+            __ cmpl(temp, Address(register_value, class_offset));
+            __ j(kEqual, &type_check_success);
+
+            // If the type check with no read barrier above failed, do
+            // another type check, this time with read barriers.
+
             Location temp2_loc = locations->GetTemp(1);
             Register temp2 = temp2_loc.AsRegister<Register>();
+
             // /* HeapReference<Class> */ temp = array->klass_
             codegen_->GenerateFieldLoadWithBakerReadBarrier(
                 instruction, temp_loc, array, class_offset, /* needs_null_check */ true);
@@ -5423,7 +5444,7 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
             __ cmpl(temp, temp2);
 
             if (instruction->StaticTypeOfArrayIsObjectArray()) {
-              __ j(kEqual, &do_put);
+              __ j(kEqual, &object_array_type_check_success);
               // We do not need to emit a read barrier for the
               // following heap reference load, as `temp` is only used
               // in a comparison with null below, and this reference
@@ -5432,10 +5453,11 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
               // reference for the same reason (comparison with null).
               __ cmpl(Address(temp, super_offset), Immediate(0));
               __ j(kNotEqual, slow_path->GetEntryLabel());
-              __ Bind(&do_put);
+              __ Bind(&object_array_type_check_success);
             } else {
               __ j(kNotEqual, slow_path->GetEntryLabel());
             }
+            __ Bind(&type_check_success);
           }
         } else {
           // Non read barrier code.
@@ -5453,7 +5475,7 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
           __ cmpl(temp, Address(register_value, class_offset));
 
           if (instruction->StaticTypeOfArrayIsObjectArray()) {
-            __ j(kEqual, &do_put);
+            __ j(kEqual, &object_array_type_check_success);
             // If heap poisoning is enabled, the `temp` reference has
             // not been unpoisoned yet; unpoison it now.
             __ MaybeUnpoisonHeapReference(temp);
@@ -5463,7 +5485,7 @@ void InstructionCodeGeneratorX86::VisitArraySet(HArraySet* instruction) {
             // comparison with null.
             __ cmpl(Address(temp, super_offset), Immediate(0));
             __ j(kNotEqual, slow_path->GetEntryLabel());
-            __ Bind(&do_put);
+            __ Bind(&object_array_type_check_success);
           } else {
             __ j(kNotEqual, slow_path->GetEntryLabel());
           }

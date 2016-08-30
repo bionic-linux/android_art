@@ -2303,6 +2303,29 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
             Location temp2_loc = locations->GetTemp(0);
             Register temp2 = WRegisterFrom(temp2_loc);
 
+            // First try to do the type check with no read barriers.
+            // If it succeeds, proceed; otherwise, emit read barriers
+            // for every heap reference load and do the check again.
+
+            vixl::aarch64::Label type_check_success;
+
+            // /* HeapReference<Class> */ temp = array->klass_
+            __ Ldr(temp, HeapOperand(array, class_offset));
+            codegen_->MaybeRecordImplicitNullCheck(instruction);
+            GetAssembler()->MaybeUnpoisonHeapReference(temp);
+
+            // /* HeapReference<Class> */ temp = temp->component_type_
+            __ Ldr(temp, HeapOperand(temp, component_offset));
+            // /* HeapReference<Class> */ temp2 = value->klass_
+            __ Ldr(temp2, HeapOperand(Register(value), class_offset));
+            // If heap poisoning is enabled, no need to unpoison `temp`
+            // nor `temp2`, as we are comparing two poisoned references.
+            __ Cmp(temp, temp2);
+            __ B(eq, &type_check_success);
+
+            // If the type check with no read barrier above failed, do
+            // another type check, this time with read barriers.
+
             // Note: Because it is acquired from VIXL's scratch register
             // pool, `temp` might be IP0, and thus cannot be used as
             // `ref` argument of GenerateFieldLoadWithBakerReadBarrier
@@ -2350,8 +2373,8 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
             __ Cmp(temp2, temp3);
 
             if (instruction->StaticTypeOfArrayIsObjectArray()) {
-              vixl::aarch64::Label do_put;
-              __ B(eq, &do_put);
+              vixl::aarch64::Label object_array_type_check_success;
+              __ B(eq, &object_array_type_check_success);
               // We do not need to emit a read barrier for the
               // following heap reference load, as `temp2` is only used
               // in a comparison with null below, and this reference
@@ -2361,10 +2384,11 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
               // If heap poisoning is enabled, no need to unpoison
               // `temp`, as we are comparing against null below.
               __ Cbnz(temp, slow_path->GetEntryLabel());
-              __ Bind(&do_put);
+              __ Bind(&object_array_type_check_success);
             } else {
               __ B(ne, slow_path->GetEntryLabel());
             }
+            __ Bind(&type_check_success);
           }
         } else {
           // Non read barrier code.
@@ -2385,8 +2409,8 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
           temps.Release(temp2);
 
           if (instruction->StaticTypeOfArrayIsObjectArray()) {
-            vixl::aarch64::Label do_put;
-            __ B(eq, &do_put);
+            vixl::aarch64::Label object_array_type_check_success;
+            __ B(eq, &object_array_type_check_success);
             // If heap poisoning is enabled, the `temp` reference has
             // not been unpoisoned yet; unpoison it now.
             GetAssembler()->MaybeUnpoisonHeapReference(temp);
@@ -2396,7 +2420,7 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
             // If heap poisoning is enabled, no need to unpoison
             // `temp`, as we are comparing against null below.
             __ Cbnz(temp, slow_path->GetEntryLabel());
-            __ Bind(&do_put);
+            __ Bind(&object_array_type_check_success);
           } else {
             __ B(ne, slow_path->GetEntryLabel());
           }

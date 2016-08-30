@@ -4769,13 +4769,35 @@ void InstructionCodeGeneratorARM::VisitArraySet(HArraySet* instruction) {
             // There is no such problem with Baker read barriers (see below).
             __ b(slow_path->GetEntryLabel());
           } else {
-            Register temp3 = IP;
-            Location temp3_loc = Location::RegisterLocation(temp3);
+            // First try to do the type check with no read barriers.
+            // If it succeeds, proceed; otherwise, emit read barriers
+            // for every heap reference load and do the check again.
+
+            Label type_check_success;
+
+            // /* HeapReference<Class> */ temp1 = array->klass_
+            __ LoadFromOffset(kLoadWord, temp1, array, class_offset);
+            codegen_->MaybeRecordImplicitNullCheck(instruction);
+            __ MaybeUnpoisonHeapReference(temp1);
+
+            // /* HeapReference<Class> */ temp1 = temp1->component_type_
+            __ LoadFromOffset(kLoadWord, temp1, temp1, component_offset);
+            // /* HeapReference<Class> */ temp2 = value->klass_
+            __ LoadFromOffset(kLoadWord, temp2, value, class_offset);
+            // If heap poisoning is enabled, no need to unpoison `temp1`
+            // nor `temp2`, as we are comparing two poisoned references.
+            __ cmp(temp1, ShifterOperand(temp2));
+            __ b(&type_check_success, EQ);
+
+            // If the type check with no read barrier above failed, do
+            // another type check, this time with read barriers.
 
             // Note: `temp3` (scratch register IP) cannot be used as
             // `ref` argument of GenerateFieldLoadWithBakerReadBarrier
             // calls below (see ReadBarrierMarkSlowPathARM for more
             // details).
+            Register temp3 = IP;
+            Location temp3_loc = Location::RegisterLocation(temp3);
 
             // /* HeapReference<Class> */ temp1 = array->klass_
             codegen_->GenerateFieldLoadWithBakerReadBarrier(instruction,
@@ -4810,8 +4832,8 @@ void InstructionCodeGeneratorARM::VisitArraySet(HArraySet* instruction) {
             __ cmp(temp1, ShifterOperand(temp2));
 
             if (instruction->StaticTypeOfArrayIsObjectArray()) {
-              Label do_put;
-              __ b(&do_put, EQ);
+              Label object_array_type_check_success;
+              __ b(&object_array_type_check_success, EQ);
               // We do not need to emit a read barrier for the
               // following heap reference load, as `temp1` is only used
               // in a comparison with null below, and this reference
@@ -4821,10 +4843,11 @@ void InstructionCodeGeneratorARM::VisitArraySet(HArraySet* instruction) {
               // If heap poisoning is enabled, no need to unpoison
               // `temp`, as we are comparing against null below.
               __ CompareAndBranchIfNonZero(temp1, slow_path->GetEntryLabel());
-              __ Bind(&do_put);
+              __ Bind(&object_array_type_check_success);
             } else {
               __ b(slow_path->GetEntryLabel(), NE);
             }
+            __ Bind(&type_check_success);
           }
         } else {
           // Non read barrier code.
@@ -4843,8 +4866,8 @@ void InstructionCodeGeneratorARM::VisitArraySet(HArraySet* instruction) {
           __ cmp(temp1, ShifterOperand(temp2));
 
           if (instruction->StaticTypeOfArrayIsObjectArray()) {
-            Label do_put;
-            __ b(&do_put, EQ);
+            Label object_array_type_check_success;
+            __ b(&object_array_type_check_success, EQ);
             // If heap poisoning is enabled, the `temp1` reference has
             // not been unpoisoned yet; unpoison it now.
             __ MaybeUnpoisonHeapReference(temp1);
@@ -4854,7 +4877,7 @@ void InstructionCodeGeneratorARM::VisitArraySet(HArraySet* instruction) {
             // If heap poisoning is enabled, no need to unpoison
             // `temp1`, as we are comparing against null below.
             __ CompareAndBranchIfNonZero(temp1, slow_path->GetEntryLabel());
-            __ Bind(&do_put);
+            __ Bind(&object_array_type_check_success);
           } else {
             __ b(slow_path->GetEntryLabel(), NE);
           }
