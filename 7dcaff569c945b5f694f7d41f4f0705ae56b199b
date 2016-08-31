@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116e1d0e_d06e24f7",
+        "filename": "runtime/base/bit_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-31T15:52:05Z",
+      "side": 1,
+      "message": "I thought we prefer \"using\" now...",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 61
+      },
+      "revId": "7dcaff569c945b5f694f7d41f4f0705ae56b199b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
