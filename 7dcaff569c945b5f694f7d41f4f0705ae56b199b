@@ -22,6 +22,30 @@
       "revId": "7dcaff569c945b5f694f7d41f4f0705ae56b199b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7104b94d_31421063",
+        "filename": "runtime/base/bit_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-08-31T16:20:58Z",
+      "side": 1,
+      "message": "I agree. And yet I keep forgetting.",
+      "parentUuid": "116e1d0e_d06e24f7",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 61
+      },
+      "revId": "7dcaff569c945b5f694f7d41f4f0705ae56b199b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
