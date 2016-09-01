@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1be3135_29b7c945",
+        "filename": "dexlayout/dex_ir.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-09-01T23:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1be3135_23ad2aa3",
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1be3135_e3f4b2bb",
         "filename": "dexlayout/dex_ir.h",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2016-09-01T22:05:13Z",
       "side": 1,
       "message": "In these cases it\u0027s common style to remove the non-inl one.\n\n(Though if we ever run iwyu, it would do it like this)",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1be3135_499fa5fe",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-09-01T23:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1be3135_e3f4b2bb",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b1be3135_692701d1",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-09-01T23:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1be3135_e3cb126c",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 48
+      },
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1be3135_03e3cef6",
         "filename": "dexlayout/dex_ir.h",
         "patchSetId": 4
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "b1be3135_89807d62",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-09-01T23:52:02Z",
+      "side": 1,
+      "message": "Done here and elsewhere.",
+      "parentUuid": "b1be3135_03e3cef6",
+      "range": {
+        "startLine": 254,
+        "startChar": 87,
+        "endLine": 254,
+        "endChar": 88
+      },
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1be3135_63e0c2e8",
         "filename": "dexlayout/dex_ir.h",
         "patchSetId": 4
@@ -99,6 +189,30 @@
       "writtenOn": "2016-09-01T22:05:13Z",
       "side": 1,
       "message": "4-space indent.",
+      "range": {
+        "startLine": 255,
+        "startChar": 2,
+        "endLine": 255,
+        "endChar": 4
+      },
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1be3135_c97a757e",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-09-01T23:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1be3135_63e0c2e8",
       "range": {
         "startLine": 255,
         "startChar": 2,
