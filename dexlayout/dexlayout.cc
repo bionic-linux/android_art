@@ -30,7 +30,7 @@
 #include <sstream>
 #include <vector>
 
-#include "dex_ir.h"
+#include "dex_ir_builder.h"
 #include "dex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "utils.h"
@@ -524,12 +524,11 @@ static void DumpClassDef(dex_ir::Header* header, int idx) {
  * Dumps an annotation set item.
  */
 static void DumpAnnotationSetItem(dex_ir::AnnotationSetItem* set_item) {
-  if (set_item == nullptr || set_item->GetItems().size() == 0) {
+  if (set_item == nullptr || set_item->GetItems()->size() == 0) {
     fputs("  empty-annotation-set\n", out_file_);
     return;
   }
-  for (std::unique_ptr<dex_ir::AnnotationSetItem::AnnotationItem>& annotation :
-       set_item->GetItems()) {
+  for (std::unique_ptr<dex_ir::AnnotationItem>& annotation : *set_item->GetItems()) {
     if (annotation == nullptr) {
       continue;
     }
@@ -561,12 +560,9 @@ static void DumpClassAnnotations(dex_ir::Header* header, int idx) {
   fprintf(out_file_, "Class #%d annotations:\n", idx);
 
   dex_ir::AnnotationSetItem* class_set_item = annotations_directory->GetClassAnnotation();
-  std::vector<std::unique_ptr<dex_ir::AnnotationsDirectoryItem::FieldAnnotation>>& fields =
-      annotations_directory->GetFieldAnnotations();
-  std::vector<std::unique_ptr<dex_ir::AnnotationsDirectoryItem::MethodAnnotation>>& methods =
-      annotations_directory->GetMethodAnnotations();
-  std::vector<std::unique_ptr<dex_ir::AnnotationsDirectoryItem::ParameterAnnotation>>& parameters =
-      annotations_directory->GetParameterAnnotations();
+  dex_ir::FieldAnnotationVector* fields = annotations_directory->GetFieldAnnotations();
+  dex_ir::MethodAnnotationVector* methods = annotations_directory->GetMethodAnnotations();
+  dex_ir::ParameterAnnotationVector* parameters = annotations_directory->GetParameterAnnotations();
 
   // Annotations on the class itself.
   if (class_set_item != nullptr) {
@@ -575,34 +571,40 @@ static void DumpClassAnnotations(dex_ir::Header* header, int idx) {
   }
 
   // Annotations on fields.
-  for (auto& field : fields) {
-    const dex_ir::FieldId* field_id = field->GetFieldId();
-    const uint32_t field_idx = field_id->GetOffset();
-    const char* field_name = field_id->Name()->Data();
-    fprintf(out_file_, "Annotations on field #%u '%s'\n", field_idx, field_name);
-    DumpAnnotationSetItem(field->GetAnnotationSetItem());
+  if (fields != nullptr) {
+    for (auto& field : *fields) {
+      const dex_ir::FieldId* field_id = field->GetFieldId();
+      const uint32_t field_idx = field_id->GetOffset();
+      const char* field_name = field_id->Name()->Data();
+      fprintf(out_file_, "Annotations on field #%u '%s'\n", field_idx, field_name);
+      DumpAnnotationSetItem(field->GetAnnotationSetItem());
+    }
   }
 
   // Annotations on methods.
-  for (auto& method : methods) {
-    const dex_ir::MethodId* method_id = method->GetMethodId();
-    const uint32_t method_idx = method_id->GetOffset();
-    const char* method_name = method_id->Name()->Data();
-    fprintf(out_file_, "Annotations on method #%u '%s'\n", method_idx, method_name);
-    DumpAnnotationSetItem(method->GetAnnotationSetItem());
+  if (methods != nullptr) {
+    for (auto& method : *methods) {
+      const dex_ir::MethodId* method_id = method->GetMethodId();
+      const uint32_t method_idx = method_id->GetOffset();
+      const char* method_name = method_id->Name()->Data();
+      fprintf(out_file_, "Annotations on method #%u '%s'\n", method_idx, method_name);
+      DumpAnnotationSetItem(method->GetAnnotationSetItem());
+    }
   }
 
   // Annotations on method parameters.
-  for (auto& parameter : parameters) {
-    const dex_ir::MethodId* method_id = parameter->GetMethodId();
-    const uint32_t method_idx = method_id->GetOffset();
-    const char* method_name = method_id->Name()->Data();
-    fprintf(out_file_, "Annotations on method #%u '%s' parameters\n", method_idx, method_name);
-    uint32_t j = 0;
-    for (auto& annotation : parameter->GetAnnotations()) {
-      fprintf(out_file_, "#%u\n", j);
-      DumpAnnotationSetItem(annotation.get());
-      ++j;
+  if (parameters != nullptr) {
+    for (auto& parameter : *parameters) {
+      const dex_ir::MethodId* method_id = parameter->GetMethodId();
+      const uint32_t method_idx = method_id->GetOffset();
+      const char* method_name = method_id->Name()->Data();
+      fprintf(out_file_, "Annotations on method #%u '%s' parameters\n", method_idx, method_name);
+      uint32_t j = 0;
+      for (auto& annotation : *parameter->GetAnnotations()) {
+        fprintf(out_file_, "#%u\n", j);
+        DumpAnnotationSetItem(annotation.get());
+        ++j;
+      }
     }
   }
 
@@ -612,7 +614,7 @@ static void DumpClassAnnotations(dex_ir::Header* header, int idx) {
 /*
  * Dumps an interface that a class declares to implement.
  */
-static void DumpInterface(dex_ir::TypeId* type_item, int i) {
+static void DumpInterface(const dex_ir::TypeId* type_item, int i) {
   const char* interface_name = type_item->GetStringId()->Data();
   if (options_.output_format_ == kOutputPlain) {
     fprintf(out_file_, "    #%d              : '%s'\n", i, interface_name);
@@ -1260,8 +1262,8 @@ static void DumpCFG(const DexFile* dex_file, int idx) {
   }
   while (it.HasNextVirtualMethod()) {
     DumpCFG(dex_file,
-                it.GetMemberIndex(),
-                it.GetMethodCodeItem());
+            it.GetMemberIndex(),
+            it.GetMethodCodeItem());
     it.Next();
   }
 }
@@ -1274,7 +1276,10 @@ static void DumpCFG(const DexFile* dex_file, int idx) {
  * If "*last_package" is nullptr or does not match the current class' package,
  * the value will be replaced with a newly-allocated string.
  */
-static void DumpClass(dex_ir::Header* header, int idx, char** last_package) {
+static void DumpClass(const DexFile* dex_file,
+                      dex_ir::Header* header,
+                      int idx,
+                      char** last_package) {
   dex_ir::ClassDef* class_def = header->ClassDefs()[idx].get();
   // Omitting non-public class.
   if (options_.exports_only_ && (class_def->GetAccessFlags() & kAccPublic) == 0) {
@@ -1290,7 +1295,7 @@ static void DumpClass(dex_ir::Header* header, int idx, char** last_package) {
   }
 
   if (options_.show_cfg_) {
-    DumpCFG(&header->GetDexFile(), idx);
+    DumpCFG(dex_file, idx);
     return;
   }
 
@@ -1368,10 +1373,12 @@ static void DumpClass(dex_ir::Header* header, int idx, char** last_package) {
   }
 
   // Interfaces.
-  std::vector<dex_ir::TypeId*>* interfaces = class_def->Interfaces();
-  for (uint32_t i = 0; i < interfaces->size(); i++) {
-    DumpInterface((*interfaces)[i], i);
-  }  // for
+  dex_ir::TypeIdVector* interfaces = class_def->Interfaces();
+  if (interfaces != nullptr) {
+    for (uint32_t i = 0; i < interfaces->size(); i++) {
+      DumpInterface((*interfaces)[i], i);
+    }  // for
+  }
 
   // Fields and methods.
   dex_ir::ClassData* class_data = class_def->GetClassData();
@@ -1379,56 +1386,58 @@ static void DumpClass(dex_ir::Header* header, int idx, char** last_package) {
   std::vector<std::unique_ptr<dex_ir::ArrayItem>>* static_values = class_def->StaticValues();
   const uint32_t static_values_size = (static_values == nullptr) ? 0 : static_values->size();
 
-  // Static fields.
-  if (options_.output_format_ == kOutputPlain) {
-    fprintf(out_file_, "  Static fields     -\n");
-  }
-  std::vector<std::unique_ptr<dex_ir::FieldItem>>& static_fields = class_data->StaticFields();
-  for (uint32_t i = 0; i < static_fields.size(); i++) {
-    DumpSField(header,
-               static_fields[i]->GetFieldId()->GetOffset(),
-               static_fields[i]->GetAccessFlags(),
-               i,
-               i < static_values_size ? (*static_values)[i].get() : nullptr);
-  }  // for
+  if (class_data != nullptr) {
+    // Static fields.
+    if (options_.output_format_ == kOutputPlain) {
+      fprintf(out_file_, "  Static fields     -\n");
+    }
+    std::vector<std::unique_ptr<dex_ir::FieldItem>>& static_fields = class_data->StaticFields();
+    for (uint32_t i = 0; i < static_fields.size(); i++) {
+      DumpSField(header,
+                 static_fields[i]->GetFieldId()->GetOffset(),
+                 static_fields[i]->GetAccessFlags(),
+                 i,
+                 i < static_values_size ? (*static_values)[i].get() : nullptr);
+    }  // for
 
-  // Instance fields.
-  if (options_.output_format_ == kOutputPlain) {
-    fprintf(out_file_, "  Instance fields   -\n");
-  }
-  std::vector<std::unique_ptr<dex_ir::FieldItem>>& instance_fields = class_data->InstanceFields();
-  for (uint32_t i = 0; i < instance_fields.size(); i++) {
-    DumpIField(header,
-               instance_fields[i]->GetFieldId()->GetOffset(),
-               instance_fields[i]->GetAccessFlags(),
-               i);
-  }  // for
+    // Instance fields.
+    if (options_.output_format_ == kOutputPlain) {
+      fprintf(out_file_, "  Instance fields   -\n");
+    }
+    std::vector<std::unique_ptr<dex_ir::FieldItem>>& instance_fields = class_data->InstanceFields();
+    for (uint32_t i = 0; i < instance_fields.size(); i++) {
+      DumpIField(header,
+                 instance_fields[i]->GetFieldId()->GetOffset(),
+                 instance_fields[i]->GetAccessFlags(),
+                 i);
+    }  // for
 
-  // Direct methods.
-  if (options_.output_format_ == kOutputPlain) {
-    fprintf(out_file_, "  Direct methods    -\n");
-  }
-  std::vector<std::unique_ptr<dex_ir::MethodItem>>& direct_methods = class_data->DirectMethods();
-  for (uint32_t i = 0; i < direct_methods.size(); i++) {
-    DumpMethod(header,
-               direct_methods[i]->GetMethodId()->GetOffset(),
-               direct_methods[i]->GetAccessFlags(),
-               direct_methods[i]->GetCodeItem(),
-               i);
-  }  // for
+    // Direct methods.
+    if (options_.output_format_ == kOutputPlain) {
+      fprintf(out_file_, "  Direct methods    -\n");
+    }
+    std::vector<std::unique_ptr<dex_ir::MethodItem>>& direct_methods = class_data->DirectMethods();
+    for (uint32_t i = 0; i < direct_methods.size(); i++) {
+      DumpMethod(header,
+                 direct_methods[i]->GetMethodId()->GetOffset(),
+                 direct_methods[i]->GetAccessFlags(),
+                 direct_methods[i]->GetCodeItem(),
+                 i);
+    }  // for
 
-  // Virtual methods.
-  if (options_.output_format_ == kOutputPlain) {
-    fprintf(out_file_, "  Virtual methods   -\n");
+    // Virtual methods.
+    if (options_.output_format_ == kOutputPlain) {
+      fprintf(out_file_, "  Virtual methods   -\n");
+    }
+    std::vector<std::unique_ptr<dex_ir::MethodItem>>& virtual_methods = class_data->VirtualMethods();
+    for (uint32_t i = 0; i < virtual_methods.size(); i++) {
+      DumpMethod(header,
+                 virtual_methods[i]->GetMethodId()->GetOffset(),
+                 virtual_methods[i]->GetAccessFlags(),
+                 virtual_methods[i]->GetCodeItem(),
+                 i);
+    }  // for
   }
-  std::vector<std::unique_ptr<dex_ir::MethodItem>>& virtual_methods = class_data->VirtualMethods();
-  for (uint32_t i = 0; i < virtual_methods.size(); i++) {
-    DumpMethod(header,
-               virtual_methods[i]->GetMethodId()->GetOffset(),
-               virtual_methods[i]->GetAccessFlags(),
-               virtual_methods[i]->GetCodeItem(),
-               i);
-  }  // for
 
   // End of class.
   if (options_.output_format_ == kOutputPlain) {
@@ -1454,11 +1463,11 @@ static void ProcessDexFile(const char* file_name, const DexFile* dex_file) {
     fprintf(out_file_, "Opened '%s', DEX version '%.3s'\n",
             file_name, dex_file->GetHeader().magic_ + 4);
   }
-  dex_ir::Header header(*dex_file);
+  dex_ir::Header* header = dex_ir::DexIrBuilder(*dex_file);
 
   // Headers.
   if (options_.show_file_headers_) {
-    DumpFileHeader(&header);
+    DumpFileHeader(header);
   }
 
   // Open XML context.
@@ -1468,9 +1477,9 @@ static void ProcessDexFile(const char* file_name, const DexFile* dex_file) {
 
   // Iterate over all classes.
   char* package = nullptr;
-  const uint32_t class_defs_size = header.ClassDefsSize();
+  const uint32_t class_defs_size = header->ClassDefsSize();
   for (uint32_t i = 0; i < class_defs_size; i++) {
-    DumpClass(&header, i, &package);
+    DumpClass(dex_file, header, i, &package);
   }  // for
 
   // Free the last package allocated.
