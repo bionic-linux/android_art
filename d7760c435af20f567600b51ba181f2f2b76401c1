@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b1be3135_23ad2aa3",
+        "filename": "dexlayout/dex_ir.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-09-01T22:40:45Z",
+      "side": 1,
+      "message": "Maybe we can just delete this file since it\u0027s empty now?",
+      "revId": "d7760c435af20f567600b51ba181f2f2b76401c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1be3135_e3f4b2bb",
         "filename": "dexlayout/dex_ir.h",
         "patchSetId": 4
