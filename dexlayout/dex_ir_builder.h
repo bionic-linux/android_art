@@ -13,26 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * Implementation file of the dex file intermediate representation.
- *
- * Utilities for reading dex files into an internal representation,
- * manipulating them, and writing them out.
+ * Header file of an in-memory representation of DEX files.
  */
 
+#ifndef ART_DEXLAYOUT_DEX_IR_BUILDER_H_
+#define ART_DEXLAYOUT_DEX_IR_BUILDER_H_
+
 #include "dex_ir.h"
-
-#include <map>
-#include <vector>
-
-#include "dex_file.h"
-#include "dex_file-inl.h"
-#include "utils.h"
 
 namespace art {
 namespace dex_ir {
 
-namespace {
-}  // namespace
+dex_ir::Header* DexIrBuilder(const DexFile& dex_file);
 
 }  // namespace dex_ir
 }  // namespace art
+
+#endif  // ART_DEXLAYOUT_DEX_IR_BUILDER_H_
