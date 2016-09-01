@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e00515_b210f85a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4790,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-01T00:58:41Z",
+      "side": 1,
+      "message": "Not sure if its worth doing the read barriers below or going straight to the slow path. Maybe this would save enough code size to be worth it.",
+      "range": {
+        "startLine": 4790,
+        "startChar": 18,
+        "endLine": 4790,
+        "endChar": 36
+      },
+      "revId": "6952ac7e56dba608c7eb77e1f416318c7994b1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
