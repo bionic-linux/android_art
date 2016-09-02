@@ -22,6 +22,30 @@
       "revId": "f8b9f7a384fa9e51809e0242914ce8490be3dadd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312fa172_a7fe6a52",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2121,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-02T09:36:21Z",
+      "side": 1,
+      "message": "Stupid rebase, sorry",
+      "parentUuid": "d163a525_f724fabd",
+      "range": {
+        "startLine": 2121,
+        "startChar": 31,
+        "endLine": 2121,
+        "endChar": 45
+      },
+      "revId": "f8b9f7a384fa9e51809e0242914ce8490be3dadd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
