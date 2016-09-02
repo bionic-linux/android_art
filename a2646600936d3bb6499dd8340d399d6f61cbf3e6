@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b11ab155_03b9eec8",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-02T10:03:21Z",
+      "side": 1,
+      "message": "That\u0027s just all the DEX files. We write everything with the ChecksumUpdatingOutputStream except for these, so we have to update the checksum separately. I\u0027d get rid of it, tbh, but that\u0027s not the point of this CL.",
+      "parentUuid": "16fd3327_5ea4b5a9",
+      "range": {
+        "startLine": 447,
+        "startChar": 35,
+        "endLine": 447,
+        "endChar": 40
+      },
+      "revId": "a2646600936d3bb6499dd8340d399d6f61cbf3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "318881a4_ff21df0f",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "91668dcf_5a31f55c",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-02T10:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318881a4_ff21df0f",
+      "range": {
+        "startLine": 1526,
+        "startChar": 29,
+        "endLine": 1526,
+        "endChar": 36
+      },
+      "revId": "a2646600936d3bb6499dd8340d399d6f61cbf3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fd3327_3e99e96d",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 3
@@ -83,6 +131,24 @@
       "writtenOn": "2016-09-02T09:57:38Z",
       "side": 1,
       "message": "Do you mind adding a paranoid check that this succeeded? We do this everywhere except for DCHECK()s. (See above and fix the bad error message there, please.)",
+      "revId": "a2646600936d3bb6499dd8340d399d6f61cbf3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1191bdce_7ed791dd",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2016-09-02T10:03:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16fd3327_3e99e96d",
       "revId": "a2646600936d3bb6499dd8340d399d6f61cbf3e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
