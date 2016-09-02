@@ -17,32 +17,85 @@
 #ifndef ART_DISASSEMBLER_DISASSEMBLER_ARM_H_
 #define ART_DISASSEMBLER_DISASSEMBLER_ARM_H_
 
-#include <vector>
+#include <sstream>
 
+#include "arch/arm/registers_arm.h"
 #include "disassembler.h"
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wshadow"
+#include "aarch32/instructions-aarch32.h"
+#include "aarch32/disasm-aarch32.h"
+#pragma GCC diagnostic pop
 
 namespace art {
 namespace arm {
 
+static const vixl::aarch32::Register tr(TR);
+
+class CustomDisassembler FINAL : public vixl::aarch32::PrintDisassembler {
+  class CustomDisassemblerStream FINAL : public DisassemblerStream {
+   public:
+    explicit CustomDisassemblerStream(std::ostream& os,
+                                      const CustomDisassembler* disasm,
+                                      const DisassemblerOptions* options)
+        : DisassemblerStream(os), disasm_(disasm), options_(options) {}
+
+    DisassemblerStream& operator<<(const PrintLabel& label) OVERRIDE;
+    DisassemblerStream& operator<<(const vixl::aarch32::Register reg) OVERRIDE;
+    DisassemblerStream& operator<<(const vixl::aarch32::MemOperand& operand) OVERRIDE;
+
+    DisassemblerStream& operator<<(const vixl::aarch32::AlignedMemOperand& operand) OVERRIDE {
+      // VIXL must use a PrintLabel object whenever the base register is PC;
+      // the following check verifies this invariant, and guards against bugs.
+      DCHECK(!operand.GetBaseRegister().Is(vixl::aarch32::pc));
+      return DisassemblerStream::operator<<(operand);
+    }
+
+   private:
+    void PrintLiteral(LocationType type, int32_t offset);
+
+    const CustomDisassembler* disasm_;
+    const DisassemblerOptions* options_;
+  };
+
+ public:
+  explicit CustomDisassembler(std::ostream& os, const DisassemblerOptions* options)
+      : vixl::aarch32::PrintDisassembler(new CustomDisassemblerStream(os, this, options)) {}
+
+  void PrintPc(uint32_t pc) OVERRIDE {
+    os() << "0x" << std::hex << std::setw(8) << std::setfill('0') << pc << ": ";
+  }
+
+  bool IsT32(void) const {
+    return is_t32_;
+  }
+
+  void SetT32(bool is_t32) {
+    is_t32_ = is_t32;
+  }
+
+ private:
+  bool is_t32_;
+};
+
 class DisassemblerArm FINAL : public Disassembler {
  public:
-  explicit DisassemblerArm(DisassemblerOptions* options) : Disassembler(options) {}
+  explicit DisassemblerArm(DisassemblerOptions* options)
+      : Disassembler(options), disasm_(output_, options) {}
 
   size_t Dump(std::ostream& os, const uint8_t* begin) OVERRIDE;
   void Dump(std::ostream& os, const uint8_t* begin, const uint8_t* end) OVERRIDE;
 
  private:
-  void DumpArm(std::ostream& os, const uint8_t* instr);
+  uintptr_t GetPc(uintptr_t instr_ptr) const {
+    return GetDisassemblerOptions()->absolute_addresses_
+        ? instr_ptr
+        : instr_ptr - reinterpret_cast<uintptr_t>(GetDisassemblerOptions()->base_address_);
+  }
 
-  // Returns the size of the instruction just decoded
-  size_t DumpThumb16(std::ostream& os, const uint8_t* instr);
-  size_t DumpThumb32(std::ostream& os, const uint8_t* instr_ptr);
-
-  void DumpBranchTarget(std::ostream& os, const uint8_t* instr_ptr, int32_t imm32);
-  void DumpCond(std::ostream& os, uint32_t cond);
-  void DumpMemoryDomain(std::ostream& os, uint32_t domain);
-
-  std::vector<const char*> it_conditions_;
+  std::ostringstream output_;
+  CustomDisassembler disasm_;
 
   DISALLOW_COPY_AND_ASSIGN(DisassemblerArm);
 };
