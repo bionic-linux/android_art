@@ -2139,7 +2139,7 @@ END art_quick_deoptimize
      */
     .extern artDeoptimizeFromCompiledCode
 ENTRY art_quick_deoptimize_from_compiled_code
-    SETUP_SAVE_ALL_CALLEE_SAVES_FRAME
+    SETUP_SAVE_EVERYTHING_FRAME
     jal      artDeoptimizeFromCompiledCode    # artDeoptimizeFromCompiledCode(Thread*, SP)
                                               # Returns caller method's frame size.
     move     $a0, rSELF                       # pass Thread::current
