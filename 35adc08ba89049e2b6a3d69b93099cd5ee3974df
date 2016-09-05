@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "765f4f59_b90eff90",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-05T19:46:28Z",
+      "side": 1,
+      "message": "I\u0027d prefer you hide this in the cc file. There\u0027s not a large benefit of keeping the field a non-pointer, and this way the vixl headers pollute the main disassembler file.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
