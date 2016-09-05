@@ -22,6 +22,29 @@
       "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765f4f59_f9087785",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-05T19:48:16Z",
+      "side": 1,
+      "message": "Why? This is changing the test spec.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
