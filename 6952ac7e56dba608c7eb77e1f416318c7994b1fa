@@ -22,6 +22,30 @@
       "revId": "6952ac7e56dba608c7eb77e1f416318c7994b1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e9236c_85be6483",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4790,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-05T12:29:52Z",
+      "side": 1,
+      "message": "Agree.",
+      "parentUuid": "d1e00515_b210f85a",
+      "range": {
+        "startLine": 4790,
+        "startChar": 18,
+        "endLine": 4790,
+        "endChar": 36
+      },
+      "revId": "6952ac7e56dba608c7eb77e1f416318c7994b1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
