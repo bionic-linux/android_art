@@ -101,9 +101,10 @@ public class Main implements Comparator<Main> {
           }
 
           // Wait until the forked process had time to run until its sleep phase.
+          BufferedReader lineReader;
           try {
               InputStreamReader stdout = new InputStreamReader(p.getInputStream(), "UTF-8");
-              BufferedReader lineReader = new BufferedReader(stdout);
+              lineReader = new BufferedReader(stdout);
               while (!lineReader.readLine().contains("Going to sleep")) {
               }
           } catch (Exception e) {
@@ -112,6 +113,23 @@ public class Main implements Comparator<Main> {
 
           if (!unwindOtherProcess(fullSignatures, pid)) {
               System.out.println("Unwinding other process failed.");
+
+              // In this case, log all the output.
+              try {
+                  String tmp;
+                  System.out.println("Output from the secondary:");
+                  while ((tmp = lineReader.readLine()) != null) {
+                      System.out.println("Secondary: " + tmp);
+                  }
+              } catch (Exception e) {
+                  e.printStackTrace(System.out);
+              }
+          }
+
+          try {
+              lineReader.close();
+          } catch (Exception e) {
+              e.printStackTrace(System.out);
           }
       } finally {
           // Kill the forked process if it is not already dead.
