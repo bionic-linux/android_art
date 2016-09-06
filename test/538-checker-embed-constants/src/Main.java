@@ -37,7 +37,7 @@ public class Main {
   }
 
   /// CHECK-START-ARM: int Main.and511(int) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK:                and{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
 
   public static int and511(int arg) {
@@ -61,7 +61,7 @@ public class Main {
   }
 
   /// CHECK-START-ARM: int Main.or511(int) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK:                orr{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
 
   public static int or511(int arg) {
@@ -85,7 +85,7 @@ public class Main {
   }
 
   /// CHECK-START-ARM: int Main.xor511(int) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK:                eor{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
 
   public static int xor511(int arg) {
@@ -114,9 +114,10 @@ public class Main {
   }
 
   /// CHECK-START-ARM: long Main.and511(long) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK-NOT:            and
   /// CHECK-NOT:            bic
+  /// CHECK-DAG:            and{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-DAG:            and{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-DAG:            movs {{r\d+}}, #0
   /// CHECK-NOT:            and
@@ -165,10 +166,11 @@ public class Main {
   }
 
   /// CHECK-START-ARM: long Main.or511(long) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK-NOT:            orr
   /// CHECK-NOT:            orn
-  /// CHECK:                orr{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
+  /// CHECK-DAG:            orr{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
+  /// CHECK-DAG:            orr{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-NOT:            orr
   /// CHECK-NOT:            orn
 
@@ -214,8 +216,9 @@ public class Main {
   }
 
   /// CHECK-START-ARM: long Main.xor511(long) disassembly (after)
-  /// CHECK:                movw {{r\d+}}, #511
+  /// CHECK:                mov {{r\d+}}, #511
   /// CHECK-NOT:            eor
+  /// CHECK-DAG:            eor{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-DAG:            eor{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-NOT:            eor
 
@@ -225,7 +228,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.xorNot15(long) disassembly (after)
   /// CHECK-DAG:            mvn {{r\d+}}, #15
-  /// CHECK-DAG:            mov.w {{r\d+}}, #-1
+  /// CHECK-DAG:            mov {{r\d+}}, #4294967295
   /// CHECK-NOT:            eor
   /// CHECK-DAG:            eor{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
   /// CHECK-DAG:            eor{{(\.w)?}} {{r\d+}}, {{r\d+}}, {{r\d+}}
@@ -253,7 +256,7 @@ public class Main {
   /// CHECK-NOT:            mov.w {{r\d+}}, #-268435456
   /// CHECK-NOT:            eor
   /// CHECK-DAG:            eor {{r\d+}}, {{r\d+}}, #15
-  /// CHECK-DAG:            eor {{r\d+}}, {{r\d+}}, #-268435456
+  /// CHECK-DAG:            eor {{r\d+}}, {{r\d+}}, #4026531840
   /// CHECK-NOT:            eor
 
   public static long xor0xf00000000000000f(long arg) {
@@ -280,7 +283,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.shl2(long) disassembly (after)
   /// CHECK:                lsl{{s?|\.w}} <<oh:r\d+>>, {{r\d+}}, #2
-  /// CHECK:                orr.w <<oh>>, <<oh>>, <<low:r\d+>>, lsr #30
+  /// CHECK:                orr <<oh>>, <<low:r\d+>>, lsr #30
   /// CHECK:                lsl{{s?|\.w}} {{r\d+}}, <<low>>, #2
 
   /// CHECK-START-ARM: long Main.shl2(long) disassembly (after)
@@ -292,7 +295,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.shl31(long) disassembly (after)
   /// CHECK:                lsl{{s?|\.w}} <<oh:r\d+>>, {{r\d+}}, #31
-  /// CHECK:                orr.w <<oh>>, <<oh>>, <<low:r\d+>>, lsr #1
+  /// CHECK:                orr <<oh>>, <<low:r\d+>>, lsr #1
   /// CHECK:                lsl{{s?|\.w}} {{r\d+}}, <<low>>, #31
 
   /// CHECK-START-ARM: long Main.shl31(long) disassembly (after)
@@ -337,7 +340,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.shr1(long) disassembly (after)
   /// CHECK:                asrs{{(\.w)?}} {{r\d+}}, {{r\d+}}, #1
-  /// CHECK:                mov.w {{r\d+}}, {{r\d+}}, rrx
+  /// CHECK:                rrx {{r\d+}}, {{r\d+}}
 
   /// CHECK-START-ARM: long Main.shr1(long) disassembly (after)
   /// CHECK-NOT:            asr{{s?|\.w}} {{r\d+}}, {{r\d+}}, {{r\d+}}
@@ -348,7 +351,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.shr2(long) disassembly (after)
   /// CHECK:                lsr{{s?|\.w}} <<ol:r\d+>>, {{r\d+}}, #2
-  /// CHECK:                orr.w <<ol>>, <<ol>>, <<high:r\d+>>, lsl #30
+  /// CHECK:                orr <<ol>>, <<high:r\d+>>, lsl #30
   /// CHECK-DAG:            asr{{s?|\.w}} {{r\d+}}, <<high>>, #2
 
   /// CHECK-START-ARM: long Main.shr2(long) disassembly (after)
@@ -360,7 +363,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.shr31(long) disassembly (after)
   /// CHECK:                lsr{{s?|\.w}} <<ol:r\d+>>, {{r\d+}}, #31
-  /// CHECK:                orr.w <<ol>>, <<ol>>, <<high:r\d+>>, lsl #1
+  /// CHECK:                orr <<ol>>, <<high:r\d+>>, lsl #1
   /// CHECK:                asr{{s?|\.w}} {{r\d+}}, <<high>>, #31
 
   /// CHECK-START-ARM: long Main.shr31(long) disassembly (after)
@@ -406,7 +409,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.ushr1(long) disassembly (after)
   /// CHECK:                lsrs{{|.w}} {{r\d+}}, {{r\d+}}, #1
-  /// CHECK:                mov.w {{r\d+}}, {{r\d+}}, rrx
+  /// CHECK:                rrx {{r\d+}}, {{r\d+}}
 
   /// CHECK-START-ARM: long Main.ushr1(long) disassembly (after)
   /// CHECK-NOT:            lsr{{s?|\.w}} {{r\d+}}, {{r\d+}}, {{r\d+}}
@@ -417,7 +420,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.ushr2(long) disassembly (after)
   /// CHECK:                lsr{{s?|\.w}} <<ol:r\d+>>, {{r\d+}}, #2
-  /// CHECK:                orr.w <<ol>>, <<ol>>, <<high:r\d+>>, lsl #30
+  /// CHECK:                orr <<ol>>, <<high:r\d+>>, lsl #30
   /// CHECK-DAG:            lsr{{s?|\.w}} {{r\d+}}, <<high>>, #2
 
   /// CHECK-START-ARM: long Main.ushr2(long) disassembly (after)
@@ -429,7 +432,7 @@ public class Main {
 
   /// CHECK-START-ARM: long Main.ushr31(long) disassembly (after)
   /// CHECK:                lsr{{s?|\.w}} <<ol:r\d+>>, {{r\d+}}, #31
-  /// CHECK:                orr.w <<ol>>, <<ol>>, <<high:r\d+>>, lsl #1
+  /// CHECK:                orr <<ol>>, <<high:r\d+>>, lsl #1
   /// CHECK:                lsr{{s?|\.w}} {{r\d+}}, <<high>>, #31
 
   /// CHECK-START-ARM: long Main.ushr31(long) disassembly (after)
@@ -503,10 +506,10 @@ public class Main {
   /// CHECK:     <<ConstM1:j\d+>>   LongConstant -1
   /// CHECK:                        Add [<<Arg>>,<<ConstM1>>]
   /// CHECK-NEXT:                   subs r{{\d+}}, #1
-  /// CHECK-NEXT:                   adc r{{\d+}}, r{{\d+}}, #-1
+  /// CHECK-NEXT:                   adc r{{\d+}}, r{{\d+}}, #4294967295
   /// CHECK:                        Sub [<<Arg>>,<<ConstM1>>]
   /// CHECK-NEXT:                   adds r{{\d+}}, #1
-  /// CHECK-NEXT:                   adc r{{\d+}}, r{{\d+}}, #0
+  /// CHECK-NEXT:                   adc r{{\d+}}, #0
 
   public static long addM1(long arg) {
     return (arg + (-1)) | (arg - (-1));
@@ -537,10 +540,10 @@ public class Main {
   /// CHECK-NEXT:                   sbc r{{\d+}}, r{{\d+}}, #249561088
   /// CHECK:                        Add [<<Arg>>,<<ConstD>>]
   // There may or may not be a MOV here.
-  /// CHECK:                        addw r{{\d+}}, r{{\d+}}, #4095
+  /// CHECK:                        add r{{\d+}}, r{{\d+}}, #4095
   /// CHECK:                        Add [<<Arg>>,<<ConstE>>]
   // There may or may not be a MOV here.
-  /// CHECK:                        subw r{{\d+}}, r{{\d+}}, #2051
+  /// CHECK:                        sub r{{\d+}}, r{{\d+}}, #2051
   /// CHECK:                        Add [<<Arg>>,<<ConstF>>]
   /// CHECK-NEXT:                   adds{{(\.w)?}} r{{\d+}}, r{{\d+}}, r{{\d+}}
   /// CHECK-NEXT:                   adc{{(\.w)?}} r{{\d+}}, r{{\d+}}, r{{\d+}}
@@ -592,10 +595,10 @@ public class Main {
   /// CHECK-NEXT:                   adc r{{\d+}}, r{{\d+}}, #249561088
   /// CHECK:                        Sub [<<Arg>>,<<ConstD>>]
   // There may or may not be a MOV here.
-  /// CHECK:                        subw r{{\d+}}, r{{\d+}}, #4095
+  /// CHECK:                        sub r{{\d+}}, r{{\d+}}, #4095
   /// CHECK:                        Sub [<<Arg>>,<<ConstE>>]
   // There may or may not be a MOV here.
-  /// CHECK:                        addw r{{\d+}}, r{{\d+}}, #2051
+  /// CHECK:                        add r{{\d+}}, r{{\d+}}, #2051
   /// CHECK:                        Sub [<<Arg>>,<<ConstF>>]
   /// CHECK-NEXT:                   subs{{(\.w)?}} r{{\d+}}, r{{\d+}}, r{{\d+}}
   /// CHECK-NEXT:                   sbc{{(\.w)?}} r{{\d+}}, r{{\d+}}, r{{\d+}}
