@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "36b797b7_4a12d3c6",
+        "filename": "runtime/arch/mips64/quick_entrypoints_mips64.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 2141,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2016-09-06T12:41:52Z",
+      "side": 1,
+      "message": "It should start with ENTRY_NO_GP when using SETUP_SAVE_EVERYTHING_FRAME.",
+      "range": {
+        "startLine": 2141,
+        "startChar": 0,
+        "endLine": 2141,
+        "endChar": 5
+      },
+      "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6417f7a_005e8872",
         "filename": "runtime/stack.cc",
         "patchSetId": 2
