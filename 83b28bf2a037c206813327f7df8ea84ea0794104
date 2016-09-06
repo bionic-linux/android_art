@@ -22,6 +22,30 @@
       "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166e130e_96866c11",
+        "filename": "test/534-checker-bce-deoptimization/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T10:07:06Z",
+      "side": 1,
+      "message": "I don\u0027t understand how reducing the number of Deoptimize instructions is related to this comment. I\u0027m referring to the rewrite I advocated at\n\n    https://android-review.googlesource.com/#/c/248205/1/compiler/optimizing/bounds_check_elimination.cc@1339\n\n(I guess I could get rid of the null check Deoptimize with\n\n  if (array \u003d\u003d null) return;\n\nbut the two BCE Deoptimize instructions are inevitably there in the \"BCE (after)\" even though one of them is later removed by DCE.)",
+      "parentUuid": "16fd3327_3ecd6980",
+      "range": {
+        "startLine": 63,
+        "startChar": 70,
+        "endLine": 64,
+        "endChar": 79
+      },
+      "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
