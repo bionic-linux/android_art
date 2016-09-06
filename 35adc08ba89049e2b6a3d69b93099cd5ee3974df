@@ -72,6 +72,98 @@
     },
     {
       "key": {
+        "uuid": "91668dcf_7d6793df",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "In the manual, the T3 encoding is shown as\n\n  MOVW\u003cc\u003e \u003cRd\u003e, #\u003cimm16\u003e\n\nWhy isn\u0027t vixl disassembling it as \"movw\"?",
+      "parentUuid": "b11ab155_89289da8",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166e130e_f65d2077",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "Yeah, I got this test wrong. Can you move the \"MOVS ., #0\" to line 118 as CHECK-NEXT, please? It looks pretty confusing the way it is now.",
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36b797b7_4a2893a5",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "(Optimization opportunity: allow HAnd to generate UBFX. Then the 511 can be embedded.)",
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166e130e_164edcbd",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "Add \"CHECK-NEXT: movs {{r\\d+}}, #0\"?",
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e9236c_888c3be7",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "Add \"CHECK-NEXT: movs {{r\\d+}}, #0\"?",
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765f4f59_f9087785",
         "filename": "test/538-checker-embed-constants/src/Main.java",
         "patchSetId": 1
@@ -107,6 +199,30 @@
       "side": 1,
       "message": "Not exactly. Here is the original disassembly before this change:\n\n 24010ff       movw    r0, #511\n 2100          movs    r1, #0\n ea820000      eor.w   r0, r2, r0\n ea830101      eor.w   r1, r3, r1\n 4770          bx      lr\n\nAs you can see, the only reason the test passed is because the second eor instruction has the \".w\" suffix, and the checker rule on line 220 (in the original) looks just for \"eor\" (contrary to the previous rule). The new disassembler drops the suffix, hence the test fails, although nothing has changed in the generated code.\n\nI am not sure what the exact intention behind the rule on line 220 is, but it seems that the test case should be fixed/improved, which I\u0027d rather do in a separate patch. Here you just see the quick change that makes the test pass.",
       "parentUuid": "765f4f59_f9087785",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166e130e_16c37cff",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T15:47:44Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s plenty of CHECK-NOTs that are missing the \"{{(\\.w)?}}\". So, they are not really checking what they should.\n\nWhy does the vixl disassembler omit the \".w\"? It\u0027s explicit in the manual, for example\n\n    EOR{S}.W \u003cRd\u003e, \u003cRn\u003e, \u003cRm\u003e{, \u003cshift\u003e}",
+      "parentUuid": "318881a4_85b406ee",
       "range": {
         "startLine": 221,
         "startChar": 0,
