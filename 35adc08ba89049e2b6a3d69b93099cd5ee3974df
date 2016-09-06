@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "36b797b7_0a437b96",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "765f4f59_b90eff90",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 26
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b11ab155_89289da8",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "The actual disassembly is:\n\n f24010ff\tmov r0, #511\n\nIn other words, T3 encoding, and 511 can\u0027t be represented in both T1 or T2.",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 46
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765f4f59_f9087785",
         "filename": "test/538-checker-embed-constants/src/Main.java",
         "patchSetId": 1
@@ -41,6 +88,145 @@
         "startChar": 0,
         "endLine": 221,
         "endChar": 70
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "318881a4_85b406ee",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "Not exactly. Here is the original disassembly before this change:\n\n 24010ff       movw    r0, #511\n 2100          movs    r1, #0\n ea820000      eor.w   r0, r2, r0\n ea830101      eor.w   r1, r3, r1\n 4770          bx      lr\n\nAs you can see, the only reason the test passed is because the second eor instruction has the \".w\" suffix, and the checker rule on line 220 (in the original) looks just for \"eor\" (contrary to the previous rule). The new disassembler drops the suffix, hence the test fails, although nothing has changed in the generated code.\n\nI am not sure what the exact intention behind the rule on line 220 is, but it seems that the test case should be fixed/improved, which I\u0027d rather do in a separate patch. Here you just see the quick change that makes the test pass.",
+      "parentUuid": "765f4f59_f9087785",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36b797b7_8adbebe1",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "The current disassembler has the limitation that all immediate operands have to be printed either signed or unsigned, so we have decided to be consistent with LLVM, and to print unsigned. However, we do realize that the best format depends on instruction type (e.g. signed for addition, but unsigned for bitwise operations), so the VIXL team is considering extending the disassembler.\n\nThe actual disassembly is:\n\n f04f31ff\tmov r1, #-1\n\nIn other words, T2 encoding outside an IT block.",
+      "range": {
+        "startLine": 231,
+        "startChar": 28,
+        "endLine": 231,
+        "endChar": 53
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b11ab155_0904ad20",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "The ARM ARM makes specifying the destination register optional if it is the same as the immediately following it source register.\n\nThe actual disassembly is:\n\n ea417192\torr r1, r2, lsr #30\n\nIn other words, T2 encoding outside an IT block.",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 286,
+        "endChar": 61
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e9236c_28488fad",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "This is the preferred disassembly according to the ARM ARM.",
+      "range": {
+        "startLine": 343,
+        "startChar": 28,
+        "endLine": 343,
+        "endChar": 50
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "318881a4_a8c47f36",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "The actual disassembly is:\n\n f6037bff\tadd r11, r3, #4095\n\nIn other words, T4 encoding, and 4095 can\u0027t be represented in T1, T2 and T3.",
+      "range": {
+        "startLine": 543,
+        "startChar": 36,
+        "endLine": 543,
+        "endChar": 65
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166e130e_b60e0891",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:36:02Z",
+      "side": 1,
+      "message": "The actual disassembly is:\n\n f6a30b03\tsub r11, r3, #2051\n\nIn other words, T4 encoding, and 4095 can\u0027t be represented in T1, T2 and T3.",
+      "range": {
+        "startLine": 546,
+        "startChar": 36,
+        "endLine": 546,
+        "endChar": 65
       },
       "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
