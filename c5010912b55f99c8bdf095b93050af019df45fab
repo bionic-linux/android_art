@@ -46,6 +46,30 @@
       "revId": "c5010912b55f99c8bdf095b93050af019df45fab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16453384_217bc81c",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T17:51:24Z",
+      "side": 1,
+      "message": "If Secondary doesn\u0027t exit or close its stdout, the lineReader.readLine() will block indefinitely, right?",
+      "parentUuid": "765f4f59_02c0508b",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "c5010912b55f99c8bdf095b93050af019df45fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
