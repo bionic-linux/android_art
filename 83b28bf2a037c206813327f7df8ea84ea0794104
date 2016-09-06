@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16fd3327_3ecd6980",
+        "filename": "test/534-checker-bce-deoptimization/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-06T09:34:35Z",
+      "side": 1,
+      "message": "To prevent this, could you update the test to only have one deoptimize with an empty loop header?",
+      "range": {
+        "startLine": 63,
+        "startChar": 70,
+        "endLine": 64,
+        "endChar": 79
+      },
+      "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
