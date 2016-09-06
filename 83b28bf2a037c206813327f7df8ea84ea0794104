@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f6417f7a_005e8872",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-06T10:34:31Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 325,
+        "startChar": 50,
+        "endLine": 325,
+        "endChar": 57
+      },
+      "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16453384_be9ed9b2",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-06T10:34:31Z",
+      "side": 1,
+      "message": "Nit: add parentheses.",
+      "range": {
+        "startLine": 325,
+        "startChar": 36,
+        "endLine": 325,
+        "endChar": 47
+      },
+      "revId": "83b28bf2a037c206813327f7df8ea84ea0794104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16fd3327_3ecd6980",
         "filename": "test/534-checker-bce-deoptimization/src/Main.java",
         "patchSetId": 2
