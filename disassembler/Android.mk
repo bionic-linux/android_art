@@ -112,12 +112,12 @@ define build-libart-disassembler
   LOCAL_ADDITIONAL_DEPENDENCIES := art/build/Android.common_build.mk
   LOCAL_ADDITIONAL_DEPENDENCIES += $(LOCAL_PATH)/Android.mk
   LOCAL_NATIVE_COVERAGE := $(ART_COVERAGE)
-  # For disassembler_arm64.
+  # For disassembler_arm*.
   ifeq ($$(art_static_or_shared),static)
     ifeq ($$(art_ndebug_or_debug),debug)
-      LOCAL_STATIC_LIBRARIES += libvixld-arm64
+      LOCAL_STATIC_LIBRARIES += libvixld-arm libvixld-arm64
     else
-      LOCAL_STATIC_LIBRARIES += libvixl-arm64
+      LOCAL_STATIC_LIBRARIES += libvixl-arm libvixl-arm64
     endif
     ifeq ($$(art_target_or_host),target)
       $$(error libart-disassembler static builds for target are not supported)
@@ -126,9 +126,9 @@ define build-libart-disassembler
     endif
   else # shared
     ifeq ($$(art_ndebug_or_debug),debug)
-      LOCAL_SHARED_LIBRARIES += libvixld-arm64
+      LOCAL_SHARED_LIBRARIES += libvixld-arm libvixld-arm64
     else
-      LOCAL_SHARED_LIBRARIES += libvixl-arm64
+      LOCAL_SHARED_LIBRARIES += libvixl-arm libvixl-arm64
     endif
     ifeq ($$(art_target_or_host),target)
       include $(BUILD_SHARED_LIBRARY)
