@@ -70,6 +70,30 @@
       "revId": "c5010912b55f99c8bdf095b93050af019df45fab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "765f4f59_e2ea7cfe",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-06T17:53:26Z",
+      "side": 1,
+      "message": "Yes, if the secondary doesn\u0027t react to the SIGKILL we send it, this will wait until the run-test setup sends the primary the timeout.",
+      "parentUuid": "16453384_217bc81c",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "c5010912b55f99c8bdf095b93050af019df45fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
