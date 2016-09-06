@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91668dcf_9dd70744",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-06T17:41:37Z",
+      "side": 1,
+      "message": "Deliberately waiting for timeout if the secondary doesn\u0027t terminate?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 19
+      },
+      "revId": "c5010912b55f99c8bdf095b93050af019df45fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
