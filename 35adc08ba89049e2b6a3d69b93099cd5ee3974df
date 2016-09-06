@@ -231,6 +231,30 @@
       "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6417f7a_c070209f",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-06T14:40:03Z",
+      "side": 1,
+      "message": "Sorry, I meant 2051.",
+      "parentUuid": "166e130e_b60e0891",
+      "range": {
+        "startLine": 546,
+        "startChar": 36,
+        "endLine": 546,
+        "endChar": 65
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
