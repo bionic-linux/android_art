@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "962843c7_4449c2b4",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-07T00:31:47Z",
+      "side": 1,
+      "message": "If this takes ownership can you make the parameter a unique_ptr to clarify? Also for other constructors that take ownership.",
+      "range": {
+        "startLine": 251,
+        "startChar": 61,
+        "endLine": 251,
+        "endChar": 73
+      },
+      "revId": "853a8e10844b9b9e791c6d40e5d332cd38af97d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962843c7_4460a236",
+        "filename": "dexlayout/dex_ir.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-07T00:31:47Z",
+      "side": 1,
+      "message": "DCHECK(paramaters_ !\u003d nullptr) here and for other similar getters?",
+      "range": {
+        "startLine": 257,
+        "startChar": 65,
+        "endLine": 257,
+        "endChar": 76
+      },
+      "revId": "853a8e10844b9b9e791c6d40e5d332cd38af97d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962843c7_e4ea76fe",
+        "filename": "dexlayout/dex_ir_builder.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-07T00:31:47Z",
+      "side": 1,
+      "message": "Return unique_ptr to clarify that the caller needs to deal with freeing?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "853a8e10844b9b9e791c6d40e5d332cd38af97d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
