@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76890f3e_8cb2e7eb",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-07T18:43:24Z",
+      "side": 1,
+      "message": "They are declared virtual in the CustomDisassembler::DisassemblerStream (enforced by OVERIDE), so they will be picked up. (And do not use covariant returns without a good reason, please.)",
+      "parentUuid": "76ecaf0a_f7755829",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5606cb9f_4887df0e",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 2
@@ -93,6 +111,29 @@
       "writtenOn": "2016-09-07T18:11:45Z",
       "side": 1,
       "message": "DCHECK begin \u003c\u003d end ?",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56a16ba9_30dea860",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-07T18:43:24Z",
+      "side": 1,
+      "message": "Make this a nested class in DisassemblerArm. Or would all the nesting clutter the code too much?",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 24
+      },
       "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
