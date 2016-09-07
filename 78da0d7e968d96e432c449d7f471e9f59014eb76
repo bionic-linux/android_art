@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96992396_a2eb1e9f",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-07T10:37:21Z",
+      "side": 1,
+      "message": "Why this? If it\u0027s for your own experiment, it\u0027s as easy to just change line 96 to if ((false) \u0026\u0026 ....",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 39
+      },
+      "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
