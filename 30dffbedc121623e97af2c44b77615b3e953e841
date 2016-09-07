@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96992396_82e13ac1",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-07T11:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "962843c7_4a8a7370",
+      "range": {
+        "startLine": 33,
+        "startChar": 54,
+        "endLine": 33,
+        "endChar": 62
+      },
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "962843c7_4ab1d350",
         "filename": "disassembler/disassembler_arm.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-06T19:11:32Z",
       "side": 1,
       "message": "unique_ptr",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 22
+      },
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "367f97e8_c7503e29",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-07T11:03:01Z",
+      "side": 1,
+      "message": "Ugh, I guess it was not my day...",
+      "parentUuid": "962843c7_4ab1d350",
       "range": {
         "startLine": 44,
         "startChar": 2,
