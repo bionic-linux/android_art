@@ -70,6 +70,30 @@
       "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962843c7_a787dd45",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-07T15:11:56Z",
+      "side": 1,
+      "message": "I think that\u0027s bogus. I\u0027d have to write\n\n  MoreErrorInfo(pid, false /* sig_quit_on_fail */)\n\nand\n\n  if (!result \u0026\u0026 (false) /* sig_quit_on_fail */)\n\nThis is in the end exactly the same, except a named variable makes sure that across the code there is one common definition.\n\n(For numbers we almost always ask to put \"magic values\" into named variables...)",
+      "parentUuid": "f6741f0d_e54d368c",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 39
+      },
+      "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
