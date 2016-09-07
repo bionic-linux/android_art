@@ -235,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "96992396_42db320b",
+        "filename": "test/538-checker-embed-constants/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-07T11:03:01Z",
+      "side": 1,
+      "message": "I am still a little bit puzzled by this test. What\u0027s the intention? That there are a couple of MOVs followed by exactly two EORs? So, would the following work (using pre-ARMv8 syntax):\n\n /// CHECK-START-ARM: long Main.xor511(long) disassembly (after)\n /// CHECK:                movw {{r\\d+}}, #511\n /// CHECK-NEXT:           movs {{r\\d+}}, #0\n /// CHECK-NOT:            eor{{(\\.w)?}}\n /// CHECK:                eor{{(\\.w)?}} {{r\\d+}}, {{r\\d+}}, {{r\\d+}}\n /// CHECK-NEXT:           eor{{(\\.w)?}} {{r\\d+}}, {{r\\d+}},{{r\\d+}}\n /// CHECK-NOT:            eor{{(\\.w)?}}",
+      "parentUuid": "166e130e_16c37cff",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 70
+      },
+      "revId": "35adc08ba89049e2b6a3d69b93099cd5ee3974df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36b797b7_8adbebe1",
         "filename": "test/538-checker-embed-constants/src/Main.java",
         "patchSetId": 1
