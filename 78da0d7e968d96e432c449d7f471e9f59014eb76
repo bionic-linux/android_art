@@ -94,6 +94,30 @@
       "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "367f97e8_4a99b36c",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-07T15:21:44Z",
+      "side": 1,
+      "message": "It would be bogus if it wasn\u0027t just for you to change the value to true or false, depending on the mood you\u0027re in.\n\nWhat I\u0027m saying is just to drop the extra argument to MoreErrorInfo (as you\u0027re effectively always passing true, as far as this code is concerned), and drop the check line 281. Then you\u0027re free to change whatever locally to match your needs.",
+      "parentUuid": "962843c7_a787dd45",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 39
+      },
+      "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
