@@ -22,6 +22,30 @@
       "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "962843c7_8758d9fa",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-07T15:04:23Z",
+      "side": 1,
+      "message": "It\u0027s more expressive to name things, especially when they\u0027re used in two different places...",
+      "parentUuid": "96992396_a2eb1e9f",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 39
+      },
+      "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
