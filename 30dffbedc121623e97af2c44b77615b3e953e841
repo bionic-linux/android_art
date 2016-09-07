@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d64e3b0b_dc44ed00",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-07T20:30:02Z",
+      "side": 1,
+      "message": "Ok, I took a look at disasm-aarch32.h where it seems all the virtual operators were coming from.\n\nEverything just calls os \u003c\u003c parameter where os is an ostream.\n\nTherefore perhaps wouldn\u0027t it be more generic (and less confusing) if it simply overloaded ostream?\n\n   std::ostream\u0026 operator\u003c\u003c(std::ostream\u0026 os, const PrintLabel\u0026 label) {\n      ...\n      os \u003c\u003c \"pc, #\" \u003c\u003c ....;\n      return os;\n   }\n\nand so on? Perhaps there is a reason not to do this, if the output is different based on the subclass of DisassemblerStream (e.g. arm vs arm64), in which case I don\u0027t understand why is there a templated operator\u003c\u003c which is not virtual?",
+      "parentUuid": "76890f3e_8cb2e7eb",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5606cb9f_4887df0e",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 2
