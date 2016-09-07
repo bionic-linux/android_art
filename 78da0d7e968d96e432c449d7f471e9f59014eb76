@@ -46,6 +46,30 @@
       "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6741f0d_e54d368c",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-07T15:05:42Z",
+      "side": 1,
+      "message": "Name what? This is just behavior. The problem I have with such variables is that they don\u0027t scale if everyone starts doing the same.",
+      "parentUuid": "962843c7_8758d9fa",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 39
+      },
+      "revId": "78da0d7e968d96e432c449d7f471e9f59014eb76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
