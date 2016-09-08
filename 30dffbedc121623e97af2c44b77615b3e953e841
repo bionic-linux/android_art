@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0bfd0a27_9eed9d1c",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "Yes, the output is different because the base DisassemblerStream class (defined in VIXL) does not produce what ART expects. The templated operator\u003c\u003c() is there for convenience, I think. Also, function templates cannot be declared virtual.",
+      "parentUuid": "d64e3b0b_dc44ed00",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5606cb9f_4887df0e",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0bfd0a27_be2859a3",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5606cb9f_4887df0e",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "961043d0_2ac25f26",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 2
@@ -83,6 +119,30 @@
       "writtenOn": "2016-09-07T18:11:45Z",
       "side": 1,
       "message": "Why is it always os() instead of just os ?",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 7
+      },
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bfd0a27_3e2689c3",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "There is no os member, just a getter.",
+      "parentUuid": "961043d0_2ac25f26",
       "range": {
         "startLine": 163,
         "startChar": 2,
@@ -118,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "0bfd0a27_9e259dcb",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f237e7_6f575122",
+      "range": {
+        "startLine": 208,
+        "startChar": 39,
+        "endLine": 208,
+        "endChar": 42
+      },
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f237e7_ef10e166",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 2
@@ -135,6 +219,24 @@
     },
     {
       "key": {
+        "uuid": "0bfd0a27_7e12d16b",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f237e7_ef10e166",
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56a16ba9_30dea860",
         "filename": "disassembler/disassembler_arm.h",
         "patchSetId": 2
@@ -146,6 +248,30 @@
       "writtenOn": "2016-09-07T18:43:24Z",
       "side": 1,
       "message": "Make this a nested class in DisassemblerArm. Or would all the nesting clutter the code too much?",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "30dffbedc121623e97af2c44b77615b3e953e841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bfd0a27_5e17155a",
+        "filename": "disassembler/disassembler_arm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-08T15:15:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a16ba9_30dea860",
       "range": {
         "startLine": 27,
         "startChar": 6,
