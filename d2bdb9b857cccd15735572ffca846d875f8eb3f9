@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b9bba7b_92603ca5",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-09T20:33:02Z",
+      "side": 1,
+      "message": "Did you measure how often this case actually occurs?",
+      "range": {
+        "startLine": 323,
+        "startChar": 11,
+        "endLine": 323,
+        "endChar": 12
+      },
+      "revId": "d2bdb9b857cccd15735572ffca846d875f8eb3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
