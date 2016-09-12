@@ -18,7 +18,12 @@
 set -e
 
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+
+if [ ${USE_JACK} != "true" ]; then
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+fi
+
+${JAVAC} ${JAVAC_ARGS} -d classes `find src -name '*.java'`
 rm classes/TestException.class
 
 if [ ${USE_JACK} = "true" ]; then

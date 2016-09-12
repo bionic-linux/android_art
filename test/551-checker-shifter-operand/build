@@ -139,6 +139,8 @@ if [ ${USE_JACK} = "true" ]; then
   fi
 else
   # Legacy toolchain with javac+dx
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+
   if [ "${HAS_SRC}" = "true" ]; then
     mkdir classes
     ${JAVAC} ${JAVAC_ARGS} -implicit:none -classpath src-multidex -d classes `find src -name '*.java'`

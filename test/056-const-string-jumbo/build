@@ -43,7 +43,8 @@ if [ ${USE_JACK} = "true" ]; then
   ${JACK} --output-dex . src
 else
   mkdir classes
-  ${JAVAC} -d classes src/*.java
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+  ${JAVAC} ${JAVAC_ARGS} -source 1.7 -target 1.7 -d classes src/*.java
 
   ${DX} -JXmx500m --debug --dex --no-optimize --positions=none --no-locals --output=classes.dex classes
 fi

@@ -17,11 +17,15 @@
 # Stop if something fails.
 set -e
 
+if [ ${USE_JACK} != "true" ]; then
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+fi
+
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} ${JAVAC_ARGS} -d classes `find src -name '*.java'`
 
 mkdir classes-ex
-${JAVAC} -d classes-ex `find src-ex -name '*.java'`
+${JAVAC} ${JAVAC_ARGS} -d classes-ex `find src-ex -name '*.java'`
 rm classes-ex/A.class
 
 if [ ${USE_JACK} = "true" ]; then

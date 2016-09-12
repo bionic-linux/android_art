@@ -20,7 +20,10 @@ set -e
 mkdir classes
 
 # Some classes are available at compile time...
-${JAVAC} -d classes `find src -name '*.java'`
+if [ ${USE_JACK} != "true" ]; then
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+fi
+${JAVAC} ${JAVAC_ARGS} -d classes `find src -name '*.java'`
 
 # ...but not at run time.
 rm 'classes/MissingClass.class'

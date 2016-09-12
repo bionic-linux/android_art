@@ -25,10 +25,11 @@ if [ ${USE_JACK} = "true" ]; then
   zip ${TEST_NAME}-ex.jar classes.dex
 else
   mkdir classes
-  ${JAVAC} -d classes `find src -name '*.java'`
+  JAVAC_ARGS="-source 1.7 -target 1.7 ${JAVAC_ARGS}"
+  ${JAVAC} ${JAVAC_ARGS} -d classes `find src -name '*.java'`
 
   mkdir classes-ex
-  ${JAVAC} -d classes-ex `find src-ex -name '*.java'`
+  ${JAVAC} -source 1.7 -target 1.7 -d classes-ex `find src-ex -name '*.java'`
 
   if [ ${NEED_DEX} = "true" ]; then
     ${DX} -JXmx256m --debug --dex --dump-to=classes.lst --output=classes.dex --dump-width=1000 classes
