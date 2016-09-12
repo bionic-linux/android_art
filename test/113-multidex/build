@@ -19,12 +19,12 @@ set -e
 
 # All except Main
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src -name '*.java'`
 rm classes/Main.class
 
 # Only Main
 mkdir classes2
-${JAVAC} -d classes2 `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes2 `find src -name '*.java'`
 rm classes2/Second.class classes2/FillerA.class classes2/FillerB.class classes2/Inf*.class
 
 if [ ${USE_JACK} = "true" ]; then

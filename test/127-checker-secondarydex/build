@@ -18,7 +18,7 @@
 set -e
 
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src -name '*.java'`
 
 mkdir classes-ex
 mv classes/Super.class classes-ex

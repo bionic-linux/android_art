@@ -141,7 +141,7 @@ else
   # Legacy toolchain with javac+dx
   if [ "${HAS_SRC}" = "true" ]; then
     mkdir classes
-    ${JAVAC} ${JAVAC_ARGS} -implicit:none -classpath src-multidex -d classes `find src -name '*.java'`
+    ${JAVAC} ${JAVAC_ARGS} -source 1.7 -target 1.7 -implicit:none -classpath src-multidex -d classes `find src -name '*.java'`
   fi
 
   if [ "${HAS_SRC_MULTIDEX}" = "true" ]; then
@@ -155,7 +155,7 @@ else
 
   if [ "${HAS_SRC2}" = "true" ]; then
     mkdir -p classes
-    ${JAVAC} ${JAVAC_ARGS} -d classes `find src2 -name '*.java'`
+    ${JAVAC} ${JAVAC_ARGS} -source 1.7 -target 1.7 -d classes `find src2 -name '*.java'`
   fi
 
   if [ "${HAS_SRC}" = "true" ] || [ "${HAS_SRC2}" = "true" ]; then
@@ -189,7 +189,7 @@ if [ ${HAS_SRC_EX} = "true" ]; then
       mv classes-1.dex classes.dex
   else
     mkdir classes-ex
-    ${JAVAC} ${JAVAC_ARGS} -d classes-ex -cp classes `find src-ex -name '*.java'`
+    ${JAVAC} ${JAVAC_ARGS} -source 1.7 -target 1.7 -d classes-ex -cp classes `find src-ex -name '*.java'`
     if [ ${NEED_DEX} = "true" ]; then
       ${DX} -JXmx256m --debug --dex --dump-to=classes-ex.lst --output=classes-ex.dex \
         --dump-width=1000 ${DX_FLAGS} classes-ex

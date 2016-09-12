@@ -18,10 +18,10 @@
 set -e
 
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src -name '*.java'`
 
 mkdir classes-ex
-${JAVAC} -d classes-ex `find src-ex -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes-ex `find src-ex -name '*.java'`
 rm classes-ex/A.class
 
 if [ ${USE_JACK} = "true" ]; then

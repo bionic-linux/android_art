@@ -26,7 +26,7 @@ if [ ${USE_JACK} = "true" ]; then
   ./default-build
 else
   mkdir classes
-  ${JAVAC} -d classes src/*.java
+  ${JAVAC} -source 1.7 -target 1.7 -d classes src/*.java
 
   # dx needs more memory for that test so do not pass Xmx option here.
   ${DX} --debug --dex --output=classes.dex classes

@@ -19,12 +19,12 @@ set -e
 
 # All except MirandaInterface
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src -name '*.java'`
 rm classes/MirandaInterface.class
 
 # Only MirandaInterface
 mkdir classes2
-${JAVAC} -d classes2 `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes2 `find src -name '*.java'`
 rm classes2/Main.class classes2/MirandaAbstract.class classes2/MirandaClass*.class classes2/MirandaInterface2*.class
 
 if [ ${USE_JACK} = "true" ]; then

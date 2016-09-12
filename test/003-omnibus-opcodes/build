@@ -18,9 +18,9 @@
 set -e
 
 mkdir classes
-${JAVAC} -d classes `find src -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src -name '*.java'`
 rm classes/UnresClass.class
-${JAVAC} -d classes `find src2 -name '*.java'`
+${JAVAC} -source 1.7 -target 1.7 -d classes `find src2 -name '*.java'`
 
 if [ ${USE_JACK} = "true" ]; then
   jar cf classes.jill.jar -C classes .
