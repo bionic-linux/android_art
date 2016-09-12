@@ -22,6 +22,30 @@
       "revId": "d2bdb9b857cccd15735572ffca846d875f8eb3f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ba48eca_dfe83b7a",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-12T15:03:39Z",
+      "side": 1,
+      "message": "No, I did not. It is intended for the unlikely cases of hash conflicts or heavy memory pressure (see https://android-review.googlesource.com/269055 ).",
+      "parentUuid": "8b9bba7b_92603ca5",
+      "range": {
+        "startLine": 323,
+        "startChar": 11,
+        "endLine": 323,
+        "endChar": 12
+      },
+      "revId": "d2bdb9b857cccd15735572ffca846d875f8eb3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
