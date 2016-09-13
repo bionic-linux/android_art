@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b9bba7b_eaf896ad",
+        "filename": "test/005-annotations/build",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-13T15:35:21Z",
+      "side": 1,
+      "message": "USE_JACK should imply 1.8 here. (Same for the others)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "dff27ab2001eca2f8478e888b687ecf03b69d096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
