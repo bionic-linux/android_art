@@ -16,6 +16,24 @@
       "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_2b3de9c9",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2785,
+      "author": {
+        "id": 1067043
+      },
+      "writtenOn": "2016-09-13T21:41:25Z",
+      "side": 1,
+      "message": "This would require modifying ExecAndReturnCode.",
+      "parentUuid": "8be1fa42_283defc9",
+      "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
