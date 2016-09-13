@@ -74,7 +74,7 @@ bool VerifyAccess(Thread* self, mirror::Object* obj, mirror::Class* declaring_cl
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 // This version takes a known calling class.
-bool VerifyAccess(Thread* self, mirror::Object* obj, mirror::Class* declaring_class,
+bool VerifyAccess(mirror::Object* obj, mirror::Class* declaring_class,
                   uint32_t access_flags, mirror::Class* calling_class)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
