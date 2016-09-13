@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8be1fa42_9106e678",
+        "filename": "runtime/reflection.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-13T22:13:35Z",
+      "side": 1,
+      "message": "You touch it, you prettify it...",
+      "range": {
+        "startLine": 77,
+        "startChar": 18,
+        "endLine": 78,
+        "endChar": 69
+      },
+      "revId": "7b7bc5d96b0825368f8f7a9019f9cb1d56922488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
