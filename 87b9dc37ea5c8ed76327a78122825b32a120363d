@@ -34,6 +34,24 @@
       "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_ee4ca442",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2785,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-14T18:32:08Z",
+      "side": 1,
+      "message": "I am okay with the change, but the position of this VLOG and message seem a bit ad-hoc. How about logging this at the start of this method (assuming you had no specific reason to put this here), and make the message a bit more general, something like\n\n\"Running dex2oat (parent PID \u003d xxxx)\"\n\nThat way, we don\u0027t fragment our messaging, since we can put other information in the same line later if needed.",
+      "parentUuid": "8be1fa42_283defc9",
+      "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
