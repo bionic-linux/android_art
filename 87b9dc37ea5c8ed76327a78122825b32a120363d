@@ -52,6 +52,24 @@
       "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_2acaf162",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2785,
+      "author": {
+        "id": 1067043
+      },
+      "writtenOn": "2016-09-14T23:38:22Z",
+      "side": 1,
+      "message": "This line has no effect when placed before dex2oat-\u003eSetup(), I guess runtime options are processed during this call. Updated the message.",
+      "parentUuid": "8be1fa42_ee4ca442",
+      "revId": "87b9dc37ea5c8ed76327a78122825b32a120363d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
