@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "cb1db24e_fe2aa185",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-15T22:08:29Z",
+      "side": 1,
+      "message": "It\u0027s in ~Disassembler\n\nI agree it\u0027s a bit confusing and it would be much better if vixl was fixed upstream to take a unique_ptr as an argument.",
+      "parentUuid": "eb76f682_1854e918",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
