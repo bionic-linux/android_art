@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8be1fa42_c5009610",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bce22f1_a88e1bdf",
+      "range": {
+        "startLine": 146,
+        "startChar": 10,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b5c6205_782081a9",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-14T21:51:21Z",
       "side": 1,
       "message": "nit: one per line (and all places below)",
+      "range": {
+        "startLine": 162,
+        "startChar": 22,
+        "endLine": 163,
+        "endChar": 61
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_65b26a53",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5c6205_782081a9",
       "range": {
         "startLine": 162,
         "startChar": 22,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8be1fa42_4df82cac",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b7d7a55_02662af1",
+      "range": {
+        "startLine": 735,
+        "startChar": 4,
+        "endLine": 735,
+        "endChar": 61
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b5c6205_982b958d",
         "filename": "compiler/optimizing/induction_var_range.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-09-14T21:51:21Z",
       "side": 1,
       "message": "weird indentation, how about adding a local variable for the HMul?",
+      "range": {
+        "startLine": 848,
+        "startChar": 34,
+        "endLine": 849,
+        "endChar": 81
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_adfd789c",
+        "filename": "compiler/optimizing/induction_var_range.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5c6205_982b958d",
       "range": {
         "startLine": 848,
         "startChar": 34,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8be1fa42_1f2e5152",
+        "filename": "compiler/optimizing/induction_var_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "You are right. I was following the GenerateRange() pattern, but for a single out parameter that does not make much sense. Changed..... and thanks.",
+      "parentUuid": "eb76f682_d5c95c78",
+      "range": {
+        "startLine": 132,
+        "startChar": 25,
+        "endLine": 132,
+        "endChar": 52
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_f5ce587d",
         "filename": "compiler/optimizing/induction_var_range.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2016-09-14T21:51:21Z",
       "side": 1,
       "message": "do you want to say /* out */ here?",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 31
+      },
+      "revId": "c1ec68f65a0c8fc4c37aff961fdd368a4d28ae78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8be1fa42_bf1da51e",
+        "filename": "compiler/optimizing/induction_var_range.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-15T16:01:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76f682_f5ce587d",
       "range": {
         "startLine": 167,
         "startChar": 22,
