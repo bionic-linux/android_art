@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb76f682_7874fdc2",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_983f19e7",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Please make the bool-to-unsigned-integer conversion explicit.",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 53
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_d8399102",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_f83e4de7",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_1854e918",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Who is responsible for deallocating this?",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_b844d56f",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 125,
+        "startChar": 13,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb76f682_784b1d7b",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-15T15:19:58Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 6
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
