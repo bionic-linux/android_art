@@ -381,6 +381,30 @@
     },
     {
       "key": {
+        "uuid": "cb1db24e_bcbca724",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-16T20:44:54Z",
+      "side": 1,
+      "message": "Not at all, just a thought so we don\u0027t get tripped up by this again in future reviews.",
+      "parentUuid": "508b33e0_805bd624",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
