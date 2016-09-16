@@ -141,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "305b1f41_87354632",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-09-16T10:27:28Z",
+      "side": 1,
+      "message": "Thanks Igor.\n\nAnton, I think there should be a comment here saying that `vixl::aarch32::Disassembler::~Disassembler` is in charge of deallocating this stream object.",
+      "parentUuid": "cb1db24e_fe2aa185",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
