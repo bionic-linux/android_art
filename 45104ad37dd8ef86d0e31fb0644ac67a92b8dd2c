@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1db24e_daedeaf0",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-16T16:10:25Z",
+      "side": 1,
+      "message": "There is basically nothing left in here that is common to target and host, call define-art-gtest-rule-host|target directly?",
+      "revId": "45104ad37dd8ef86d0e31fb0644ac67a92b8dd2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
