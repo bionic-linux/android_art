@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "305b1f41_e706422d",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76f682_7874fdc2",
+      "range": {
+        "startLine": 45,
+        "startChar": 4,
+        "endLine": 45,
+        "endChar": 12
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_983f19e7",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-15T15:19:58Z",
       "side": 1,
       "message": "Please make the bool-to-unsigned-integer conversion explicit.",
+      "range": {
+        "startLine": 66,
+        "startChar": 37,
+        "endLine": 66,
+        "endChar": 53
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305b1f41_a7004a0f",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "I am sorry, but I don\u0027t understand. There is no conversion - the bool value is just used as the first argument to the ternary operator, but what is actually assigned is either vixl::aarch32::kT32PcDelta or vixl::aarch32::kA32PcDelta, which are unsigned integers.",
+      "parentUuid": "eb76f682_983f19e7",
       "range": {
         "startLine": 66,
         "startChar": 37,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b0462f6a_e3cf521f",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "I am just consistent with the method in the base class.",
+      "parentUuid": "eb76f682_d8399102",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_f83e4de7",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2016-09-15T15:19:58Z",
       "side": 1,
       "message": "Drop.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305b1f41_0765d6e5",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76f682_f83e4de7",
       "range": {
         "startLine": 118,
         "startChar": 2,
@@ -165,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "305b1f41_e749a25c",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "Unfortunately, VIXL is meant to be compiled as C++98 code as well, so unique_ptr is not really an option.",
+      "parentUuid": "cb1db24e_fe2aa185",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
@@ -188,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "305b1f41_c7469e4c",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76f682_b844d56f",
+      "range": {
+        "startLine": 125,
+        "startChar": 13,
+        "endLine": 125,
+        "endChar": 17
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_784b1d7b",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
@@ -199,6 +343,30 @@
       "writtenOn": "2016-09-15T15:19:58Z",
       "side": 1,
       "message": "Indentation is off.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 6
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f09507fc_fd3b6723",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T15:39:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb76f682_784b1d7b",
       "range": {
         "startLine": 203,
         "startChar": 0,
