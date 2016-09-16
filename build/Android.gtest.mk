@@ -205,8 +205,18 @@ ART_TEST_MODULES := \
 ART_TARGET_GTEST_FILES := $(foreach m,$(ART_TEST_MODULES),\
     $(ART_TEST_LIST_device_$(TARGET_ARCH)_$(m)))
 
+ifdef TARGET_2ND_ARCH
+2ND_ART_TARGET_GTEST_FILES := $(foreach m,$(ART_TEST_MODULES),\
+    $(ART_TEST_LIST_device_$(2ND_TARGET_ARCH)_$(m)))
+endif
+
 ART_HOST_GTEST_FILES := $(foreach m,$(ART_TEST_MODULES),\
     $(ART_TEST_LIST_host_$(ART_HOST_ARCH)_$(m)))
+
+ifneq ($(HOST_PREFER_32_BIT),true)
+2ND_ART_HOST_GTEST_FILES += $(foreach m,$(ART_TEST_MODULES),\
+    $(ART_TEST_LIST_host_$(2ND_ART_HOST_ARCH)_$(m)))
+endif
 
 ART_TEST_CFLAGS :=
 
@@ -380,6 +390,7 @@ endef  # define-art-gtest-rule-host
 # Define the rules to build and run host and target gtests.
 # $(1): target or host
 # $(2): file name
+# $(3): 2ND_ or undefined - used to differentiate between the primary and secondary architecture.
 define define-art-gtest
   ifneq ($(1),target)
     ifneq ($(1),host)
@@ -395,10 +406,10 @@ define define-art-gtest
 
   ifeq ($$(art_target_or_host),target)
     library_path :=
-    2nd_library_path :=
+    2ND_library_path :=
     ifneq ($$(ART_TEST_ANDROID_ROOT),)
       ifdef TARGET_2ND_ARCH
-        2nd_library_path := $$(ART_TEST_ANDROID_ROOT)/lib
+        2ND_library_path := $$(ART_TEST_ANDROID_ROOT)/lib
         library_path := $$(ART_TEST_ANDROID_ROOT)/lib64
       else
         ifneq ($(filter %64,$(TARGET_ARCH)),)
@@ -409,13 +420,42 @@ define define-art-gtest
       endif
     endif
 
-    ART_TEST_TARGET_GTEST_$$(art_gtest_name)_RULES :=
-    ART_TEST_TARGET_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
-    ifdef TARGET_2ND_ARCH
-      $$(eval $$(call define-art-gtest-rule-target,$$(art_gtest_name),$$(art_gtest_filename),2ND_,$$(2nd_library_path)))
+    ifndef ART_TEST_TARGET_GTEST_$$(art_gtest_name)_RULES
+      ART_TEST_TARGET_GTEST_$$(art_gtest_name)_RULES :=
+      ART_TEST_TARGET_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
     endif
-    $$(eval $$(call define-art-gtest-rule-target,$$(art_gtest_name),$$(art_gtest_filename),,$$(library_path)))
+    $$(eval $$(call define-art-gtest-rule-target,$$(art_gtest_name),$$(art_gtest_filename),$(3),$$($(3)library_path)))
+  else # host
+    ifndef ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES
+      ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES :=
+      ART_TEST_HOST_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
+    endif
+    $$(eval $$(call define-art-gtest-rule-host,$$(art_gtest_name),$$(art_gtest_filename),$(3)))
 
+  endif  # host_or_target
+
+  # Clear locally defined variables.
+  art_target_or_host :=
+  art_gtest_filename :=
+  art_gtest_name :=
+  library_path :=
+  2ND_library_path :=
+endef  # define-art-gtest
+
+# Define the rules to build and run gtests for both archs.
+# $(1): target or host
+# $(2): test name
+define define-art-gtest-both
+  ifneq ($(1),target)
+    ifneq ($(1),host)
+      $$(error expected target or host for argument 1, received $(1))
+    endif
+  endif
+
+  art_target_or_host := $(1)
+  art_gtest_name := $(2)
+
+  ifeq ($$(art_target_or_host),target)
     # A rule to run the different architecture versions of the gtest.
 .PHONY: test-art-target-gtest-$$(art_gtest_name)
 test-art-target-gtest-$$(art_gtest_name): $$(ART_TEST_TARGET_GTEST_$$(art_gtest_name)_RULES)
@@ -428,15 +468,8 @@ valgrind-test-art-target-gtest-$$(art_gtest_name): $$(ART_TEST_TARGET_VALGRIND_G
     # Clear locally defined variables.
     ART_TEST_TARGET_GTEST_$$(art_gtest_name)_RULES :=
     ART_TEST_TARGET_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
-  else # host
-    ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES :=
-    ART_TEST_HOST_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
-    ifneq ($$(HOST_PREFER_32_BIT),true)
-      $$(eval $$(call define-art-gtest-rule-host,$$(art_gtest_name),$$(art_gtest_filename),2ND_))
-    endif
-    $$(eval $$(call define-art-gtest-rule-host,$$(art_gtest_name),$$(art_gtest_filename),))
+  else
 
-    # Rules to run the different architecture versions of the gtest.
 .PHONY: test-art-host-gtest-$$(art_gtest_name)
 test-art-host-gtest-$$(art_gtest_name): $$(ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES)
 	$$(hide) $$(call ART_TEST_PREREQ_FINISHED,$$@)
@@ -445,25 +478,30 @@ test-art-host-gtest-$$(art_gtest_name): $$(ART_TEST_HOST_GTEST_$$(art_gtest_name
 valgrind-test-art-host-gtest-$$(art_gtest_name): $$(ART_TEST_HOST_VALGRIND_GTEST_$$(art_gtest_name)_RULES)
 	$$(hide) $$(call ART_TEST_PREREQ_FINISHED,$$@)
 
-    # Clear locally defined variables.
-    ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES :=
-    ART_TEST_HOST_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
+  # Clear locally defined variables.
+  ART_TEST_HOST_GTEST_$$(art_gtest_name)_RULES :=
+  ART_TEST_HOST_VALGRIND_GTEST_$$(art_gtest_name)_RULES :=
   endif  # host_or_target
 
-  # Clear locally defined variables.
   art_target_or_host :=
-  art_gtest_filename :=
   art_gtest_name :=
-  library_path :=
-  2nd_library_path :=
-endef  # define-art-gtest
-
+endef  # define-art-gtest-both
 
 ifeq ($(ART_BUILD_TARGET),true)
-  $(foreach file,$(ART_TARGET_GTEST_FILES), $(eval $(call define-art-gtest,target,$(file))))
+  $(foreach file,$(ART_TARGET_GTEST_FILES), $(eval $(call define-art-gtest,target,$(file),)))
+  ifdef TARGET_2ND_ARCH
+    $(foreach file,$(2ND_ART_TARGET_GTEST_FILES), $(eval $(call define-art-gtest,target,$(file),2ND_)))
+  endif
+  # Rules to run the different architecture versions of the gtest.
+  $(foreach file,$(ART_TARGET_GTEST_FILES), $(eval $(call define-art-gtest-both,target,$$(notdir $$(basename $$(file))))))
 endif
 ifeq ($(ART_BUILD_HOST),true)
-  $(foreach file,$(ART_HOST_GTEST_FILES), $(eval $(call define-art-gtest,host,$(file))))
+  $(foreach file,$(ART_HOST_GTEST_FILES), $(eval $(call define-art-gtest,host,$(file),)))
+  ifneq ($(HOST_PREFER_32_BIT),true)
+    $(foreach file,$(2ND_ART_HOST_GTEST_FILES), $(eval $(call define-art-gtest,host,$(file),2ND_)))
+  endif
+  # Rules to run the different architecture versions of the gtest.
+  $(foreach file,$(ART_HOST_GTEST_FILES), $(eval $(call define-art-gtest-both,host,$$(notdir $$(basename $$(file))))))
 endif
 
 # Used outside the art project to get a list of the current tests
