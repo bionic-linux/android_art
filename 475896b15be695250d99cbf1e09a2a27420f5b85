@@ -285,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "cb1db24e_35bb6fc1",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-16T16:30:10Z",
+      "side": 1,
+      "message": "What about this?\n\n    #if __cplusplus \u003e 199711L\n    additional better constructors\n    #endif",
+      "parentUuid": "305b1f41_e749a25c",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
