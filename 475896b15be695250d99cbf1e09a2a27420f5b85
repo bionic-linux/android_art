@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "508b33e0_805bd624",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-16T16:41:55Z",
+      "side": 1,
+      "message": "We will discuss it with the VIXL team as a potential addition to the next revision; in the mean time, I hope that it is not a blocker.",
+      "parentUuid": "cb1db24e_35bb6fc1",
+      "range": {
+        "startLine": 119,
+        "startChar": 26,
+        "endLine": 119,
+        "endChar": 73
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_b844d56f",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
