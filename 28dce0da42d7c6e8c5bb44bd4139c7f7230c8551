@@ -39,6 +39,24 @@
       "revId": "28dce0da42d7c6e8c5bb44bd4139c7f7230c8551",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0ac2770_255b0ef5",
+        "filename": "build/art.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-19T22:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30907f09_42839406",
+      "revId": "28dce0da42d7c6e8c5bb44bd4139c7f7230c8551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
