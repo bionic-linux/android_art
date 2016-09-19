@@ -18,6 +18,7 @@
 
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "art_method.h"
+#include "base/bit_utils.h"
 #include "code_generator_utils.h"
 #include "compiled_method.h"
 #include "entrypoints/quick/quick_entrypoints.h"
@@ -997,19 +998,42 @@ void CodeGeneratorARM64::GenerateFrameEntry() {
   }
 
   if (!HasEmptyFrame()) {
-    int frame_size = GetFrameSize();
+    const int frame_size = GetFrameSize();
     // Stack layout:
     //      sp[frame_size - 8]        : lr.
     //      ...                       : other preserved core registers.
     //      ...                       : other preserved fp registers.
     //      ...                       : reserved frame space.
     //      sp[0]                     : current method.
-    __ Str(kArtMethodRegister, MemOperand(sp, -frame_size, PreIndex));
+
     GetAssembler()->cfi().AdjustCFAOffset(frame_size);
-    GetAssembler()->SpillRegisters(GetFramePreservedCoreRegisters(),
-        frame_size - GetCoreSpillSize());
+
+    // Try to use STP to store ArtMethod if we can. This removes one store from SpillRegisters.
+    vixl::aarch64::CPURegList core_spills = GetFramePreservedCoreRegisters();
+    vixl::aarch64::CPURegister stp_register;
+    bool use_stp = false;
+    int core_spill_offset = frame_size - GetCoreSpillSize();
+    MemOperand frame_operand(sp, -frame_size, PreIndex);
+    static constexpr int kMaxSTPOffset = 504;
+    if (frame_size <= kMaxSTPOffset &&
+        core_spills.GetCount() > 0 &&
+        core_spill_offset == kXRegSize) {
+      use_stp = true;
+      stp_register = core_spills.PopLowestIndex();
+    }
+
+    GetAssembler()->cfi().RelOffset(dwarf::Reg::Arm64Core(kArtMethodRegister.GetCode()), 0);
+    if (use_stp) {
+      GetAssembler()->cfi().RelOffset(dwarf::Reg::Arm64Core(stp_register.GetCode()), kXRegSize);
+      __ Stp(kArtMethodRegister, stp_register, frame_operand);
+      core_spill_offset += kXRegSize;
+    } else {
+      __ Str(kArtMethodRegister, frame_operand);
+    }
+
+    GetAssembler()->SpillRegisters(core_spills, core_spill_offset);
     GetAssembler()->SpillRegisters(GetFramePreservedFPRegisters(),
-        frame_size - FrameEntrySpillSize());
+                                   frame_size - FrameEntrySpillSize());
   }
 }
 
