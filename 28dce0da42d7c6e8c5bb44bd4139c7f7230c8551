@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb1db24e_e2e82de3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-19T19:34:20Z",
+      "side": 1,
+      "message": "This is *not* a good-enough test. Technically you should run the code and see whether the larger frame sizes screw up during signal handling etc.\n\n(However, I know that SANITIZE_HOST things fail right now, anyways.)",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "28dce0da42d7c6e8c5bb44bd4139c7f7230c8551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
