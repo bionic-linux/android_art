@@ -16,6 +16,24 @@
       "revId": "d44e0471c5d006a7e6ba2aeab11bf0afd10981da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f09507fc_dd546b1d",
+        "filename": "test/555-checker-regression-x86const/build",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2016-09-19T09:20:19Z",
+      "side": 1,
+      "message": "That is also an option, and probably a better option. I have uploaded https://android-review.googlesource.com/275656, which updates JAVAC in the run-test script when Jack is not used.\n\nAnother option will be to have the run-test script use an already set JAVAC environment variable, like it does for DX, JACK, etc.",
+      "parentUuid": "cb1db24e_f32ada85",
+      "revId": "d44e0471c5d006a7e6ba2aeab11bf0afd10981da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
