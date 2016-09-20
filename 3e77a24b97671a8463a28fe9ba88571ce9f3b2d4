@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d049e37c_6a045321",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-20T20:55:37Z",
+      "side": 1,
+      "message": "What is that for?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "3e77a24b97671a8463a28fe9ba88571ce9f3b2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f050a71d_6b10d5ba",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-20T20:55:37Z",
+      "side": 1,
+      "message": "Stall comment?",
+      "range": {
+        "startLine": 1023,
+        "startChar": 11,
+        "endLine": 1023,
+        "endChar": 12
+      },
+      "revId": "3e77a24b97671a8463a28fe9ba88571ce9f3b2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
