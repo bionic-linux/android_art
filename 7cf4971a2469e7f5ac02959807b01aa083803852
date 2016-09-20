@@ -22,6 +22,29 @@
       "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f09507fc_9dc8239f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-09-20T12:12:00Z",
+      "side": 1,
+      "message": "The range is from -512 to 504 and we\u0027re using the negative immediate here, so this should be 512.",
+      "range": {
+        "startLine": 1017,
+        "startChar": 25,
+        "endLine": 1017,
+        "endChar": 44
+      },
+      "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
