@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "50a173a9_d0c39c29",
+        "filename": "disassembler/disassembler_arm.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2016-09-21T09:30:23Z",
+      "side": 1,
+      "message": "I\u0027ll discuss a cleanup with the VIXL team.",
+      "parentUuid": "d049e37c_2460d2d5",
+      "range": {
+        "startLine": 80,
+        "startChar": 35,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "475896b15be695250d99cbf1e09a2a27420f5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb76f682_f83e4de7",
         "filename": "disassembler/disassembler_arm.cc",
         "patchSetId": 8
