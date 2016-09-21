@@ -401,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "909beb7b_7212f869",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-21T21:35:37Z",
+      "side": 1,
+      "message": "Yeah, initially we only used one arena for simplicity, but we should really revisit each pass and change to use more pass-level scoped arena.",
+      "parentUuid": "d0b2c310_65a87c2b",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_4d464d7a",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -882,6 +906,30 @@
       "side": 1,
       "message": "I am not sure I understand completely, but this seems sufficiently general? (basically I make the method re-entrant).",
       "parentUuid": "305b1f41_cd511d2b",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "909beb7b_92067c2c",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-21T21:35:37Z",
+      "side": 1,
+      "message": "It\u0027s just that it feels cleaner to have one method that creates and returns the linear order, and one other method that sets it in the graph. The loop pass would just call the one that creates, whereas the liveness will call the creation and then sets it in the graph.",
+      "parentUuid": "d0b2c310_85aee89e",
       "range": {
         "startLine": 526,
         "startChar": 0,
