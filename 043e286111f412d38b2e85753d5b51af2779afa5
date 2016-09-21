@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "f0ac2770_a723706b",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-21T02:12:09Z",
+      "side": 1,
+      "message": "I wonder whether you\u0027d want to use a different helper.",
+      "range": {
+        "startLine": 1836,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 90
+      },
+      "revId": "043e286111f412d38b2e85753d5b51af2779afa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0462f6a_83a77eaa",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
