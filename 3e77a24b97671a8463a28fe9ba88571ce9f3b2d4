@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "909beb7b_72d598df",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-21T09:11:02Z",
+      "side": 1,
+      "message": "I actually prefer your named constant, I was just confused by the anonymous namespace :)",
+      "parentUuid": "f0ac2770_d8fd3400",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 53
+      },
+      "revId": "3e77a24b97671a8463a28fe9ba88571ce9f3b2d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f050a71d_6b10d5ba",
         "filename": "runtime/dex_file.h",
         "patchSetId": 2
