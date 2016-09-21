@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_02dbee6f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "I am mostly using induction analysis information (see below to get last value), but this is a quick cycle recognizer for the simple case.\n\nI plan to replace this with a general cycle operation by storing the cycle during analysis and reusing it here (rather than finding it again), but this requires a bit more work getting this from induction analysis to here.\n\nThis CL is really just a start, to get the ball rolling.",
+      "parentUuid": "305b1f41_4d5d2d48",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 62
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_2d62f90f",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_c2d4e63e",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_2d62f90f",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_ed6bc1e6",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": ":)",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 47
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_a2d9da74",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_ed6bc1e6",
       "range": {
         "startLine": 60,
         "startChar": 0,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_45f34066",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_cd68fdec",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_ad75c9c2",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -128,6 +224,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "ditto\n\nBut a comment on what conditions can a pre header can be removed could be nice.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 51
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_c25506c2",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "removed, conditions are documented below; is that                      description sufficient?",
+      "parentUuid": "305b1f41_ad75c9c2",
       "range": {
         "startLine": 91,
         "startChar": 0,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_625d12e4",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_8d7205d7",
+      "range": {
+        "startLine": 110,
+        "startChar": 10,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_6d411160",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -174,6 +318,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "Expand the comment on why you need the graph to be linearized?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 51
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_058e58e0",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_6d411160",
       "range": {
         "startLine": 145,
         "startChar": 0,
@@ -209,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_65a87c2b",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Good point. They don\u0027t escape, so I was wasting bytes for nothing! Fixed.\n\nBy the way, we don\u0027t seem to do this very often, right? I could only find one other instance in the just introduced graph coloring reg allocator?",
+      "parentUuid": "f09507fc_1dcbb36f",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_4d464d7a",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -220,6 +412,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "environment",
+      "range": {
+        "startLine": 209,
+        "startChar": 54,
+        "endLine": 209,
+        "endChar": 57
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_c53ab0f4",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_4d464d7a",
       "range": {
         "startLine": 209,
         "startChar": 54,
@@ -255,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_a53fa4e2",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_2d3b19fa",
+      "range": {
+        "startLine": 220,
+        "startChar": 54,
+        "endLine": 220,
+        "endChar": 57
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_0d405558",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -266,6 +506,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "environment",
+      "range": {
+        "startLine": 224,
+        "startChar": 42,
+        "endLine": 224,
+        "endChar": 45
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_6552bc30",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1f41_0d405558",
       "range": {
         "startLine": 224,
         "startChar": 42,
@@ -324,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_651bdc8a",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508b33e0_c6d9f60f",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 35
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0462f6a_a62168b0",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -335,6 +623,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "I guess this guarding against body branching to the exit too? Please add a comment (I think single exit is not really clear here).",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 3
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_0504181f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0462f6a_a62168b0",
       "range": {
         "startLine": 251,
         "startChar": 0,
@@ -370,6 +682,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_857388a7",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f050a71d_6bf9f568",
+      "range": {
+        "startLine": 254,
+        "startChar": 25,
+        "endLine": 254,
+        "endChar": 27
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f09507fc_7dd67718",
         "filename": "compiler/optimizing/loop_optimization.h",
         "patchSetId": 7
@@ -381,6 +717,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "as",
+      "range": {
+        "startLine": 30,
+        "startChar": 35,
+        "endLine": 30,
+        "endChar": 36
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_02564eff",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f09507fc_7dd67718",
       "range": {
         "startLine": 30,
         "startChar": 35,
@@ -416,6 +776,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_824a5e4f",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done (well, at least made it lp_info, since we still have loop_info below)",
+      "parentUuid": "d049e37c_4a099735",
+      "range": {
+        "startLine": 45,
+        "startChar": 40,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508b33e0_a6dcf200",
         "filename": "compiler/optimizing/loop_optimization.h",
         "patchSetId": 7
@@ -427,6 +811,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_4297b695",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "508b33e0_a6dcf200",
       "range": {
         "startLine": 51,
         "startChar": 21,
@@ -462,6 +870,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_85aee89e",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "I am not sure I understand completely, but this seems sufficiently general? (basically I make the method re-entrant).",
+      "parentUuid": "305b1f41_cd511d2b",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30907f09_622d789f",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
@@ -485,6 +917,30 @@
     },
     {
       "key": {
+        "uuid": "d0b2c310_45b8e0df",
+        "filename": "test/618-checker-induction/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30907f09_622d789f",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 15
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_ad4ee988",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
@@ -496,6 +952,30 @@
       "writtenOn": "2016-09-20T21:23:52Z",
       "side": 1,
       "message": "CHECK the value returned? (here and other tests below)",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0b2c310_6594fc41",
+        "filename": "test/618-checker-induction/src/Main.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-21T21:28:05Z",
+      "side": 1,
+      "message": "ok (note that I also do that functionally by running the method; but I can CHECK explicitly on that as well)",
+      "parentUuid": "305b1f41_ad4ee988",
       "range": {
         "startLine": 153,
         "startChar": 0,
