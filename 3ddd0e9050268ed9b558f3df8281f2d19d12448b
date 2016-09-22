@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0938fd9_84324ca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-22T22:57:43Z",
+      "side": 1,
+      "message": "Forgot to add Bug: 31401609 here",
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
