@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "b0938fd9_b3921e4c",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T22:39:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to work if I remove it\n\nI get these two binaries with the build commands:\n\n\u003e out/x86/host/linux-x86/lib64/libartbenchmark.so\n\u003e out/x86_64/host/linux-x86/lib64/libartbenchmark.so\n\nSo it\u0027s missing the 32-bit lib when doing a 32-bit compile for sdk lunch target.\n\n   . build/envsetup.sh \u0026\u0026 lunch sdk-eng \u0026\u0026 JACK_SERVER\u003dfalse JACK_REPOSITORY\u003d$PWD/prebuilts/sdk/tools/jacks SOONG_ALLOW_MISSING_DEPENDENCIES\u003dtrue ART_BUILD_TARGET_DEBUG\u003dfalse ART_BUILD_HOST_DEBUG\u003dfalse USE_DEX2OAT_DEBUG\u003dfalse  OUT_DIR\u003dout/x86   \\ \n   HOST_PREFER_32_BIT\u003dtrue m -j8 build-art-host-golem\n\nIs the build command used",
+      "parentUuid": "85656bf7_c927d11c",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 459,
+        "endChar": 5
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85656bf7_a9349d4a",
         "filename": "benchmark/micro-native/micro_native.cc",
         "patchSetId": 1
@@ -159,6 +183,30 @@
     },
     {
       "key": {
+        "uuid": "b0938fd9_f39ca65f",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T22:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0938fd9_3560c0a4",
+      "range": {
+        "startLine": 34,
+        "startChar": 100,
+        "endLine": 34,
+        "endChar": 114
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0938fd9_d5507cd4",
         "filename": "benchmark/micro-native/micro_native.cc",
         "patchSetId": 1
@@ -194,6 +242,30 @@
       "side": 1,
       "message": "Gotta wonder why lint isn\u0027t part of the master-art build",
       "parentUuid": "b0938fd9_d5507cd4",
+      "range": {
+        "startLine": 67,
+        "startChar": 57,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_13a2f2a0",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T22:39:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0938fd9_3a3fc813",
       "range": {
         "startLine": 67,
         "startChar": 57,
