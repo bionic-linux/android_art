@@ -16,6 +16,52 @@
       "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_3560c0a4",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-23T01:04:48Z",
+      "side": 1,
+      "message": "Overlong lines.",
+      "range": {
+        "startLine": 34,
+        "startChar": 100,
+        "endLine": 34,
+        "endChar": 114
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_d5507cd4",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-23T01:04:48Z",
+      "side": 1,
+      "message": "This makes TreeHugger fail.",
+      "range": {
+        "startLine": 67,
+        "startChar": 57,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
