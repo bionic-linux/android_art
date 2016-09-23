@@ -45,6 +45,54 @@
       "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_f35cab4e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-23T20:23:47Z",
+      "side": 1,
+      "message": "True, forgot about the negate.",
+      "parentUuid": "f09507fc_9dc8239f",
+      "range": {
+        "startLine": 1017,
+        "startChar": 25,
+        "endLine": 1017,
+        "endChar": 44
+      },
+      "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_3340d359",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-23T20:23:47Z",
+      "side": 1,
+      "message": "What did you have in mind? Add an arm64 specific vixl test in compiler/utils/arm64/?",
+      "parentUuid": "305b1f41_4aa5130f",
+      "range": {
+        "startLine": 1017,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 45
+      },
+      "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
