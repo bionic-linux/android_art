@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "b0938fd9_fa4480a0",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T14:28:26Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll try it as you suggested. \n\nMaybe this even inadvertently caused it to get more bloated since I saw both 32 and 64-bit libraries being built.",
+      "parentUuid": "85656bf7_e92a95e6",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 5
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85656bf7_c927d11c",
         "filename": "Android.mk",
         "patchSetId": 1
@@ -88,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "b0938fd9_1a4a0caa",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T14:28:26Z",
+      "side": 1,
+      "message": "I think LOG_TAG is used by the jni helpers (21, 22)\n\nCLASS_NAME is just to avoid repeating it, can change it to C const char* etc.",
+      "parentUuid": "85656bf7_a9349d4a",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0938fd9_3560c0a4",
         "filename": "benchmark/micro-native/micro_native.cc",
         "patchSetId": 1
@@ -122,6 +170,30 @@
       "writtenOn": "2016-09-23T01:04:48Z",
       "side": 1,
       "message": "This makes TreeHugger fail.",
+      "range": {
+        "startLine": 67,
+        "startChar": 57,
+        "endLine": 67,
+        "endChar": 58
+      },
+      "revId": "3ddd0e9050268ed9b558f3df8281f2d19d12448b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0938fd9_3a3fc813",
+        "filename": "benchmark/micro-native/micro_native.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-23T14:28:26Z",
+      "side": 1,
+      "message": "Gotta wonder why lint isn\u0027t part of the master-art build",
+      "parentUuid": "b0938fd9_d5507cd4",
       "range": {
         "startLine": 67,
         "startChar": 57,
