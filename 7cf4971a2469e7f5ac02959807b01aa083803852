@@ -93,6 +93,30 @@
       "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a56eefe7_daa30549",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-26T12:02:17Z",
+      "side": 1,
+      "message": "Actually, vixl is doing this check internally, right? So nevermind.\n\nCan we use IsImmLSPair directly? +arm engineers.",
+      "parentUuid": "b0938fd9_f35cab4e",
+      "range": {
+        "startLine": 1017,
+        "startChar": 25,
+        "endLine": 1017,
+        "endChar": 44
+      },
+      "revId": "7cf4971a2469e7f5ac02959807b01aa083803852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
