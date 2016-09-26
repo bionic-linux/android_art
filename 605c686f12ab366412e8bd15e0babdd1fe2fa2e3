@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65a157aa_7682e804",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-26T21:45:47Z",
+      "side": 1,
+      "message": "I couldn\u0027t remove this (see PS1 comments), it was not including 32-bit library in the 32-bit build; only the 64-bit library was being built. \n\nAny thoughts?",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
