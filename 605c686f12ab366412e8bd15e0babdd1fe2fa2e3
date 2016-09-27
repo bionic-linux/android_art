@@ -88,6 +88,24 @@
       "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05d89b6b_c787426b",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-27T16:41:25Z",
+      "side": 1,
+      "message": "Colin told me that on the host, HOST_OUT_SHARED_LIBRARIES is always 64-bit. So we need to switch on HOST_PREFER_32_BIT and use 2ND_HOST_OUT_SHARED_LIBRARIES then.",
+      "parentUuid": "a5afcff4_922edc94",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
