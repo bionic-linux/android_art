@@ -34,6 +34,24 @@
       "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05d89b6b_67708ecf",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-27T16:11:15Z",
+      "side": 1,
+      "message": "Yes, same exact command golem uses:\n\n  . build/envsetup.sh \u0026\u0026 lunch sdk-eng \u0026\u0026 JACK_SERVER\u003dfalse JACK_REPOSITORY\u003d$PWD/prebuilts/sdk/tools/jacks SOONG_ALLOW_MISSING_DEPENDENCIES\u003dtrue ART_BUILD_TARGET_DEBUG\u003dfalse ART_BUILD_HOST_DEBUG\u003dfalse USE_DEX2OAT_DEBUG\u003dfalse  OUT_DIR\u003dout/x86   \\ \n   HOST_PREFER_32_BIT\u003dtrue m -j8 build-art-host-golem",
+      "parentUuid": "c55203c6_e369f21e",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
