@@ -70,6 +70,24 @@
       "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05d89b6b_078e6a8b",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-27T16:41:07Z",
+      "side": 1,
+      "message": "The host build is always 64-bit, with 32-bit as a secondary architecture.  HOST_PREFER_32_BIT just sets art modules to target the 2nd architecture.  ART_HOST_OUT_SHARED_LIBRARIES is set in Android.common.mk to point to the 64-bit or 32-bit host shared libraries depending on HOST_PREFER_32_BIT.",
+      "parentUuid": "a5afcff4_922edc94",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
