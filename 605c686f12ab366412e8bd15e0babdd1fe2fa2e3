@@ -52,6 +52,24 @@
       "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5afcff4_922edc94",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-27T16:32:43Z",
+      "side": 1,
+      "message": "That\u0027s odd, I would have thought HOST_PREFER_32_BIT would discard the 2ND?\n+ccross",
+      "parentUuid": "05d89b6b_67708ecf",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
