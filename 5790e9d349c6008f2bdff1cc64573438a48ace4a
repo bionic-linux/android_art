@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "c54be3fb_1b9edb07",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-27T13:48:35Z",
+      "side": 1,
+      "message": "Actually... My comment wasn\u0027t clear :) I\u0027d keep the lines 56-59 below still.",
+      "parentUuid": "305b1f41_2d62f90f",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_ed6bc1e6",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -954,6 +978,30 @@
       "side": 1,
       "message": "It\u0027s just that it feels cleaner to have one method that creates and returns the linear order, and one other method that sets it in the graph. The loop pass would just call the one that creates, whereas the liveness will call the creation and then sets it in the graph.",
       "parentUuid": "d0b2c310_85aee89e",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "650077b3_58d63dbe",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-27T13:48:35Z",
+      "side": 1,
+      "message": "ping on this one? I really think it\u0027s cleaner :)",
+      "parentUuid": "909beb7b_92067c2c",
       "range": {
         "startLine": 526,
         "startChar": 0,
