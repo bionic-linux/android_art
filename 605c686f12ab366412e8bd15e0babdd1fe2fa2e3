@@ -16,6 +16,24 @@
       "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c55203c6_e369f21e",
+        "filename": "Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-27T12:44:25Z",
+      "side": 1,
+      "message": "Did you use HOST_PREFER_32_BIT?",
+      "parentUuid": "65a157aa_7682e804",
+      "revId": "605c686f12ab366412e8bd15e0babdd1fe2fa2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
