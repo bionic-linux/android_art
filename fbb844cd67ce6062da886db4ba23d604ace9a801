@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_f098e56f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_7ba11f40",
+      "range": {
+        "startLine": 41,
+        "startChar": 100,
+        "endLine": 41,
+        "endChar": 101
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_1094a138",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_5ba46351",
+      "range": {
+        "startLine": 41,
+        "startChar": 54,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c54be3fb_9b68abea",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2016-09-27T13:48:35Z",
       "side": 1,
       "message": "Maybe\n\nHow about TryRemovePreHeader?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_90bff1a6",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_9b68abea",
       "range": {
         "startLine": 83,
         "startChar": 20,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_30d9dd18",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "added more comment, see if that is more clear",
+      "parentUuid": "c54be3fb_7b703fcf",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c54be3fb_bbaec732",
         "filename": "compiler/optimizing/loop_optimization.h",
         "patchSetId": 8
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_d064c947",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_bbaec732",
+      "range": {
+        "startLine": 51,
+        "startChar": 27,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c54be3fb_9ba98b2f",
         "filename": "compiler/optimizing/loop_optimization.h",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2016-09-27T13:48:35Z",
       "side": 1,
       "message": "previous? (for consistency with other structures in the compiler :))",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "fbb844cd67ce6062da886db4ba23d604ace9a801",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_7009958b",
+        "filename": "compiler/optimizing/loop_optimization.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_9ba98b2f",
       "range": {
         "startLine": 54,
         "startChar": 14,
