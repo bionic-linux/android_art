@@ -28,6 +28,9 @@
 #include "verify_object.h"
 
 namespace art {
+
+template<class MirrorType, bool kPoison> class ObjPtr;
+
 namespace mirror {
 class Object;
 }
@@ -156,6 +159,10 @@ class PACKED(4) StackHandleScope FINAL : public HandleScope {
   template<class T>
   ALWAYS_INLINE HandleWrapper<T> NewHandleWrapper(T** object)
       REQUIRES_SHARED(Locks::mutator_lock_);
+
+  template<class MirrorType, bool kPoison>
+  ALWAYS_INLINE MutableHandle<MirrorType> NewHandle(ObjPtr<MirrorType, kPoison> object)
+    REQUIRES_SHARED(Locks::mutator_lock_);
 
   ALWAYS_INLINE void SetReference(size_t i, mirror::Object* object)
       REQUIRES_SHARED(Locks::mutator_lock_);

@@ -69,7 +69,7 @@
 #include "reflection.h"
 #include "runtime.h"
 #include "ScopedLocalRef.h"
-#include "scoped_thread_state_change.h"
+#include "scoped_thread_state_change-inl.h"
 #include "handle_scope-inl.h"
 #include "thread_list.h"
 #include "well_known_classes.h"
@@ -3727,7 +3727,7 @@ void Heap::AddFinalizerReference(Thread* self, mirror::Object** object) {
   args[0].l = arg.get();
   InvokeWithJValues(soa, nullptr, WellKnownClasses::java_lang_ref_FinalizerReference_add, args);
   // Restore object in case it gets moved.
-  *object = soa.Decode<mirror::Object*>(arg.get());
+  *object = soa.Decode<mirror::Object>(arg.get()).Decode();
 }
 
 void Heap::RequestConcurrentGCAndSaveObject(Thread* self, bool force_full, mirror::Object** obj) {

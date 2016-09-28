@@ -36,7 +36,7 @@
 #include "runtime-inl.h"
 #include "runtime_options.h"
 #include "ScopedLocalRef.h"
-#include "scoped_thread_state_change.h"
+#include "scoped_thread_state_change-inl.h"
 #include "thread-inl.h"
 #include "thread_list.h"
 
@@ -755,15 +755,15 @@ bool JavaVMExt::LoadNativeLibrary(JNIEnv* env,
     ScopedObjectAccess soa(env);
     // As the incoming class loader is reachable/alive during the call of this function,
     // it's okay to decode it without worrying about unexpectedly marking it alive.
-    mirror::ClassLoader* loader = soa.Decode<mirror::ClassLoader*>(class_loader);
+    ObjPtr<mirror::ClassLoader> loader = soa.Decode<mirror::ClassLoader>(class_loader);
 
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-    if (class_linker->IsBootClassLoader(soa, loader)) {
+    if (class_linker->IsBootClassLoader(soa, loader.Decode())) {
       loader = nullptr;
       class_loader = nullptr;
     }
 
-    class_loader_allocator = class_linker->GetAllocatorForClassLoader(loader);
+    class_loader_allocator = class_linker->GetAllocatorForClassLoader(loader.Decode());
     CHECK(class_loader_allocator != nullptr);
   }
   if (library != nullptr) {
