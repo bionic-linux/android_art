@@ -35,8 +35,8 @@
 #include "mirror/string-inl.h"
 #include "obj_ptr-inl.h"
 #include "reflection.h"
-#include "scoped_thread_state_change.h"
-#include "scoped_fast_native_object_access.h"
+#include "scoped_thread_state_change-inl.h"
+#include "scoped_fast_native_object_access-inl.h"
 #include "ScopedLocalRef.h"
 #include "ScopedUtfChars.h"
 #include "utf.h"
@@ -44,10 +44,10 @@
 
 namespace art {
 
-ALWAYS_INLINE static inline mirror::Class* DecodeClass(
+ALWAYS_INLINE static inline ObjPtr<mirror::Class> DecodeClass(
     const ScopedFastNativeObjectAccess& soa, jobject java_class)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  mirror::Class* c = soa.Decode<mirror::Class*>(java_class);
+  ObjPtr<mirror::Class> c = soa.Decode<mirror::Class>(java_class);
   DCHECK(c != nullptr);
   DCHECK(c->IsClass());
   // TODO: we could EnsureInitialized here, rather than on every reflective get/set or invoke .
@@ -76,7 +76,7 @@ static jclass Class_classForName(JNIEnv* env, jclass, jstring javaName, jboolean
 
   std::string descriptor(DotToDescriptor(name.c_str()));
   StackHandleScope<2> hs(soa.Self());
-  Handle<mirror::ClassLoader> class_loader(hs.NewHandle(soa.Decode<mirror::ClassLoader*>(javaLoader)));
+  Handle<mirror::ClassLoader> class_loader(hs.NewHandle(soa.Decode<mirror::ClassLoader>(javaLoader)));
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
   Handle<mirror::Class> c(
       hs.NewHandle(class_linker->FindClass(soa.Self(), descriptor.c_str(), class_loader)));
@@ -101,18 +101,18 @@ static jclass Class_classForName(JNIEnv* env, jclass, jstring javaName, jboolean
 static jstring Class_getNameNative(JNIEnv* env, jobject javaThis) {
   ScopedFastNativeObjectAccess soa(env);
   StackHandleScope<1> hs(soa.Self());
-  mirror::Class* const c = DecodeClass(soa, javaThis);
+  ObjPtr<mirror::Class> c = DecodeClass(soa, javaThis);
   return soa.AddLocalReference<jstring>(mirror::Class::ComputeName(hs.NewHandle(c)));
 }
 
 static jobjectArray Class_getProxyInterfaces(JNIEnv* env, jobject javaThis) {
   ScopedFastNativeObjectAccess soa(env);
-  mirror::Class* c = DecodeClass(soa, javaThis);
+  ObjPtr<mirror::Class> c = DecodeClass(soa, javaThis);
   return soa.AddLocalReference<jobjectArray>(c->GetInterfaces()->Clone(soa.Self()));
 }
 
 static mirror::ObjectArray<mirror::Field>* GetDeclaredFields(
-    Thread* self, mirror::Class* klass, bool public_only, bool force_resolve)
+    Thread* self, ObjPtr<mirror::Class> klass, bool public_only, bool force_resolve)
       REQUIRES_SHARED(Locks::mutator_lock_) {
   StackHandleScope<1> hs(self);
   IterationRange<StrideIterator<ArtField>> ifields = klass->GetIFields();
@@ -192,8 +192,8 @@ static jobjectArray Class_getPublicDeclaredFields(JNIEnv* env, jobject javaThis)
 // Performs a binary search through an array of fields, TODO: Is this fast enough if we don't use
 // the dex cache for lookups? I think CompareModifiedUtf8ToUtf16AsCodePointValues should be fairly
 // fast.
-ALWAYS_INLINE static inline ArtField* FindFieldByName(
-    Thread* self ATTRIBUTE_UNUSED, mirror::String* name, LengthPrefixedArray<ArtField>* fields)
+ALWAYS_INLINE static inline ArtField* FindFieldByName(ObjPtr<mirror::String> name,
+                                                      LengthPrefixedArray<ArtField>* fields)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (fields == nullptr) {
     return nullptr;
@@ -237,14 +237,15 @@ ALWAYS_INLINE static inline ArtField* FindFieldByName(
   return nullptr;
 }
 
-ALWAYS_INLINE static inline mirror::Field* GetDeclaredField(
-    Thread* self, mirror::Class* c, mirror::String* name)
+ALWAYS_INLINE static inline mirror::Field* GetDeclaredField(Thread* self,
+                                                            ObjPtr<mirror::Class> c,
+                                                            ObjPtr<mirror::String> name)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  ArtField* art_field = FindFieldByName(self, name, c->GetIFieldsPtr());
+  ArtField* art_field = FindFieldByName(name, c->GetIFieldsPtr());
   if (art_field != nullptr) {
     return mirror::Field::CreateFromArtField<kRuntimePointerSize>(self, art_field, true);
   }
-  art_field = FindFieldByName(self, name, c->GetSFieldsPtr());
+  art_field = FindFieldByName(name, c->GetSFieldsPtr());
   if (art_field != nullptr) {
     return mirror::Field::CreateFromArtField<kRuntimePointerSize>(self, art_field, true);
   }
@@ -252,7 +253,7 @@ ALWAYS_INLINE static inline mirror::Field* GetDeclaredField(
 }
 
 static mirror::Field* GetPublicFieldRecursive(
-    Thread* self, mirror::Class* clazz, mirror::String* name)
+    Thread* self, ObjPtr<mirror::Class> clazz, ObjPtr<mirror::String> name)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(clazz != nullptr);
   DCHECK(name != nullptr);
@@ -302,7 +303,7 @@ static mirror::Field* GetPublicFieldRecursive(
 
 static jobject Class_getPublicFieldRecursive(JNIEnv* env, jobject javaThis, jstring name) {
   ScopedFastNativeObjectAccess soa(env);
-  auto* name_string = soa.Decode<mirror::String*>(name);
+  auto name_string = soa.Decode<mirror::String>(name);
   if (UNLIKELY(name_string == nullptr)) {
     ThrowNullPointerException("name == null");
     return nullptr;
@@ -313,13 +314,13 @@ static jobject Class_getPublicFieldRecursive(JNIEnv* env, jobject javaThis, jstr
 
 static jobject Class_getDeclaredField(JNIEnv* env, jobject javaThis, jstring name) {
   ScopedFastNativeObjectAccess soa(env);
-  auto* name_string = soa.Decode<mirror::String*>(name);
+  auto name_string = soa.Decode<mirror::String>(name);
   if (name_string == nullptr) {
     ThrowNullPointerException("name == null");
     return nullptr;
   }
-  auto* klass = DecodeClass(soa, javaThis);
-  mirror::Field* result = GetDeclaredField(soa.Self(), klass, name_string);
+  ObjPtr<mirror::Class> klass = DecodeClass(soa, javaThis);
+  ObjPtr<mirror::Field> result = GetDeclaredField(soa.Self(), klass, name_string);
   if (result == nullptr) {
     std::string name_str = name_string->ToModifiedUtf8();
     if (name_str == "value" && klass->IsStringClass()) {
@@ -333,7 +334,7 @@ static jobject Class_getDeclaredField(JNIEnv* env, jobject javaThis, jstring nam
     }
     // We may have a pending exception if we failed to resolve.
     if (!soa.Self()->IsExceptionPending()) {
-      ThrowNoSuchFieldException(DecodeClass(soa, javaThis), name_str.c_str());
+      ThrowNoSuchFieldException(DecodeClass(soa, javaThis).Decode(), name_str.c_str());
     }
     return nullptr;
   }
@@ -345,11 +346,11 @@ static jobject Class_getDeclaredConstructorInternal(
   ScopedFastNativeObjectAccess soa(env);
   DCHECK_EQ(Runtime::Current()->GetClassLinker()->GetImagePointerSize(), kRuntimePointerSize);
   DCHECK(!Runtime::Current()->IsActiveTransaction());
-  mirror::Constructor* result = mirror::Class::GetDeclaredConstructorInternal<kRuntimePointerSize,
-                                                                              false>(
+  ObjPtr<mirror::Constructor> result =
+      mirror::Class::GetDeclaredConstructorInternal<kRuntimePointerSize, false>(
       soa.Self(),
-      DecodeClass(soa, javaThis),
-      soa.Decode<mirror::ObjectArray<mirror::Class>*>(args));
+      DecodeClass(soa, javaThis).Decode(),
+      soa.Decode<mirror::ObjectArray<mirror::Class>>(args).Decode());
   return soa.AddLocalReference<jobject>(result);
 }
 
@@ -399,9 +400,9 @@ static jobject Class_getDeclaredMethodInternal(JNIEnv* env, jobject javaThis,
   DCHECK(!Runtime::Current()->IsActiveTransaction());
   mirror::Method* result = mirror::Class::GetDeclaredMethodInternal<kRuntimePointerSize, false>(
       soa.Self(),
-      DecodeClass(soa, javaThis),
-      soa.Decode<mirror::String*>(name),
-      soa.Decode<mirror::ObjectArray<mirror::Class>*>(args));
+      DecodeClass(soa, javaThis).Decode(),
+      soa.Decode<mirror::String>(name).Decode(),
+      soa.Decode<mirror::ObjectArray<mirror::Class>>(args).Decode());
   return soa.AddLocalReference<jobject>(result);
 }
 
@@ -454,7 +455,7 @@ static jobject Class_getDeclaredAnnotation(JNIEnv* env, jobject javaThis, jclass
   if (klass->IsProxyClass() || klass->GetDexCache() == nullptr) {
     return nullptr;
   }
-  Handle<mirror::Class> annotation_class(hs.NewHandle(soa.Decode<mirror::Class*>(annotationClass)));
+  Handle<mirror::Class> annotation_class(hs.NewHandle(soa.Decode<mirror::Class>(annotationClass)));
   return soa.AddLocalReference<jobject>(
       annotations::GetAnnotationForClass(klass, annotation_class));
 }
@@ -465,10 +466,12 @@ static jobjectArray Class_getDeclaredAnnotations(JNIEnv* env, jobject javaThis) 
   Handle<mirror::Class> klass(hs.NewHandle(DecodeClass(soa, javaThis)));
   if (klass->IsProxyClass() || klass->GetDexCache() == nullptr) {
     // Return an empty array instead of a null pointer.
-    mirror::Class* annotation_array_class =
-        soa.Decode<mirror::Class*>(WellKnownClasses::java_lang_annotation_Annotation__array);
+    ObjPtr<mirror::Class>  annotation_array_class =
+        soa.Decode<mirror::Class>(WellKnownClasses::java_lang_annotation_Annotation__array);
     mirror::ObjectArray<mirror::Object>* empty_array =
-        mirror::ObjectArray<mirror::Object>::Alloc(soa.Self(), annotation_array_class, 0);
+        mirror::ObjectArray<mirror::Object>::Alloc(soa.Self(),
+                                                   annotation_array_class.Decode(),
+                                                   0);
     return soa.AddLocalReference<jobjectArray>(empty_array);
   }
   return soa.AddLocalReference<jobjectArray>(annotations::GetAnnotationsForClass(klass));
@@ -520,8 +523,8 @@ static jobject Class_getEnclosingConstructorNative(JNIEnv* env, jobject javaThis
   }
   mirror::Object* method = annotations::GetEnclosingMethod(klass);
   if (method != nullptr) {
-    if (method->GetClass() ==
-        soa.Decode<mirror::Class*>(WellKnownClasses::java_lang_reflect_Constructor)) {
+    if (soa.Decode<mirror::Class>(WellKnownClasses::java_lang_reflect_Constructor) ==
+        method->GetClass()) {
       return soa.AddLocalReference<jobject>(method);
     }
   }
@@ -537,8 +540,8 @@ static jobject Class_getEnclosingMethodNative(JNIEnv* env, jobject javaThis) {
   }
   mirror::Object* method = annotations::GetEnclosingMethod(klass);
   if (method != nullptr) {
-    if (method->GetClass() ==
-        soa.Decode<mirror::Class*>(WellKnownClasses::java_lang_reflect_Method)) {
+    if (soa.Decode<mirror::Class>(WellKnownClasses::java_lang_reflect_Method) ==
+        method->GetClass()) {
       return soa.AddLocalReference<jobject>(method);
     }
   }
@@ -599,7 +602,7 @@ static jboolean Class_isDeclaredAnnotationPresent(JNIEnv* env, jobject javaThis,
   if (klass->IsProxyClass() || klass->GetDexCache() == nullptr) {
     return false;
   }
-  Handle<mirror::Class> annotation_class(hs.NewHandle(soa.Decode<mirror::Class*>(annotationType)));
+  Handle<mirror::Class> annotation_class(hs.NewHandle(soa.Decode<mirror::Class>(annotationType)));
   return annotations::IsClassAnnotationPresent(klass, annotation_class);
 }
 

@@ -45,10 +45,13 @@ class ObjPtr {
   ALWAYS_INLINE ObjPtr(Type* ptr) REQUIRES_SHARED(Locks::mutator_lock_)
       : reference_(Encode(static_cast<MirrorType*>(ptr))) {}
 
-  ALWAYS_INLINE ObjPtr(const ObjPtr& other) REQUIRES_SHARED(Locks::mutator_lock_) = default;
+  template <typename Type>
+  ALWAYS_INLINE ObjPtr(const ObjPtr<Type>& other) REQUIRES_SHARED(Locks::mutator_lock_)
+      : reference_(Encode(static_cast<MirrorType*>(other.Decode()))) {}
 
+  template <typename Type>
   ALWAYS_INLINE ObjPtr& operator=(const ObjPtr& other) {
-    reference_ = other.reference_;
+    reference_ = Encode(static_cast<MirrorType*>(other.Decode()));
     return *this;
   }
 
@@ -64,7 +67,6 @@ class ObjPtr {
   ALWAYS_INLINE MirrorType* operator->() const REQUIRES_SHARED(Locks::mutator_lock_) {
     return Decode();
   }
-
 
   ALWAYS_INLINE bool IsNull() const {
     return reference_ == 0;

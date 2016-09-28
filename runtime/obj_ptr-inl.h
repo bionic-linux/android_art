@@ -41,6 +41,7 @@ inline void ObjPtr<MirrorType, kPoison>::AssertValid() const {
 template<class MirrorType, bool kPoison>
 inline uintptr_t ObjPtr<MirrorType, kPoison>::Encode(MirrorType* ptr) {
   uintptr_t ref = reinterpret_cast<uintptr_t>(ptr);
+  DCHECK_ALIGNED(ref, kObjectAlignment);
   if (kPoison && ref != 0) {
     DCHECK_LE(ref, 0xFFFFFFFFU);
     ref >>= kObjectAlignmentShift;
