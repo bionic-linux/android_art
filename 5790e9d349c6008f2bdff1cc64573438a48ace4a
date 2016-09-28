@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_107dc10a",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c54be3fb_1b9edb07",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305b1f41_ed6bc1e6",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 7
@@ -461,6 +485,30 @@
       "side": 1,
       "message": "Yeah, initially we only used one arena for simplicity, but we should really revisit each pass and change to use more pass-level scoped arena.",
       "parentUuid": "d0b2c310_65a87c2b",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 59
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_30843d0c",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909beb7b_7212f869",
       "range": {
         "startLine": 162,
         "startChar": 0,
@@ -1002,6 +1050,30 @@
       "side": 1,
       "message": "ping on this one? I really think it\u0027s cleaner :)",
       "parentUuid": "909beb7b_92067c2c",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_f03bc5ec",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-28T22:14:41Z",
+      "side": 1,
+      "message": "Ah, I think I understand now, but I don\u0027t think we can just build it in liveness. Between liveness and loop we have, e.g. BCE, which adds blocks. So we need the resize, and rebuild right at the point we need the new order.\n\nOr am I still not understanding fully?",
+      "parentUuid": "650077b3_58d63dbe",
       "range": {
         "startLine": 526,
         "startChar": 0,
