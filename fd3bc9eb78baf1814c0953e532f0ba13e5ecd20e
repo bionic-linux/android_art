@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5c1c7c3_d9e6b5a4",
+        "filename": "benchmark/jobject-benchmark/jobject_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Why not just change JNIEnvExt to take a ObjPtr ?",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_19e16d8b",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Why not change ScopedObjectAccess to take ObjPtr ?",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_d98d15e7",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ideally these would all take ObjPtr instead of an Object*",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_19984d25",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ideally these would all take ObjPtr instead of an Object*",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_597ac5c1",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "You\u0027re probably missing the static operator !\u003d which flips rhs/lhs. This should be fixed in object_pointer.h and not by flipping the directions around in the usages.",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_19afad31",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ugh.  I guess this is what we have to do.\n\nBut in the future maybe we can make AbortF use templates instead of va_args ...",
+      "range": {
+        "startLine": 652,
+        "startChar": 6,
+        "endLine": 652,
+        "endChar": 12
+      },
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_999b9d16",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "why not ObjPtr\u003cmirror::Class\u003e c\n\n?",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_f95e114c",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ideally Handle would take an ObjPtr",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_d963550c",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ideally SetException would take an ObjPtr",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_3969c9ed",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-28T23:33:13Z",
+      "side": 1,
+      "message": "Ideally these all take ObjPtr",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
