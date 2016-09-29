@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_bca80776",
+        "filename": "benchmark/jobject-benchmark/jobject_benchmark.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-29T01:02:18Z",
+      "side": 1,
+      "message": "TODO",
+      "parentUuid": "e5c1c7c3_d9e6b5a4",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5c1c7c3_19e16d8b",
         "filename": "compiler/driver/compiler_driver-inl.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_f93f3173",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-29T01:02:18Z",
+      "side": 1,
+      "message": "You mean add operator MirrorType? I\u0027d rather not have that operator.",
+      "parentUuid": "e5c1c7c3_19e16d8b",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5c1c7c3_d98d15e7",
         "filename": "runtime/check_jni.cc",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-09-28T23:33:13Z",
       "side": 1,
       "message": "Ideally these would all take ObjPtr instead of an Object*",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_593125a2",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-29T01:02:18Z",
+      "side": 1,
+      "message": "Yes but I want it to be incremental and not every single place in one CL. I think I can fix up ones like IsValidObjectAddress though.",
+      "parentUuid": "e5c1c7c3_d98d15e7",
       "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_f9ee11e6",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-29T01:02:18Z",
+      "side": 1,
+      "message": "Yes, is implementing both operators preferred? Eventually we should only need one.",
+      "parentUuid": "e5c1c7c3_597ac5c1",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5c1c7c3_19afad31",
         "filename": "runtime/check_jni.cc",
         "patchSetId": 1
@@ -121,6 +193,24 @@
       "writtenOn": "2016-09-28T23:33:13Z",
       "side": 1,
       "message": "why not ObjPtr\u003cmirror::Class\u003e c\n\n?",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5c1c7c3_fc99df75",
+        "filename": "runtime/jni_internal.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-09-29T01:02:18Z",
+      "side": 1,
+      "message": "Can I do that in another CL? Otherwise I will end up converting everything at once.",
+      "parentUuid": "e5c1c7c3_999b9d16",
       "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
