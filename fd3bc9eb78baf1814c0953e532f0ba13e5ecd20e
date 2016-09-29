@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_5f00e5a8",
+        "filename": "runtime/check_jni.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-29T01:45:39Z",
+      "side": 1,
+      "message": "Yeah it\u0027s pretty standard to only implement 1 \u003d\u003d, then have the other \u003d\u003d and the other 2 !\u003d use the first \u003d\u003d.",
+      "parentUuid": "e5c1c7c3_f9ee11e6",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5c1c7c3_19afad31",
         "filename": "runtime/check_jni.cc",
         "patchSetId": 1
