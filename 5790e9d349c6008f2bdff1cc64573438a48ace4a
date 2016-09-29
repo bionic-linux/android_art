@@ -1086,6 +1086,30 @@
     },
     {
       "key": {
+        "uuid": "452ff370_c70d1e4e",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-29T09:05:02Z",
+      "side": 1,
+      "message": "No :)\n\nSo the linear order is currently only computed by liveness analysis (SsaLivenessAnalysis::Analyze), which is a point where it\u0027s guaranteed no new blocks will be added/removed. The register allocator and the code generator use that order too.\n\nYou are adding a new optimization pass that also wants a linear order. However that order is really only for that pass, as passes after it can change the control flow.\n\nSo instead of having the new pass set something that will become invalid right after, what I\u0027m suggesting is having a static helper that will return the linear order. The loop optimization pass will call that and store the linear order in its private class. And the SsaLivenessAnalysis will also call that helper, but will store it in the graph.\n\nNote that having the linear order in the graph is primarily a convenience way of accessing it in liveness/RA/Codegen. We could record the linear order in the codegen class instead.",
+      "parentUuid": "e5c1c7c3_f03bc5ec",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30907f09_622d789f",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
