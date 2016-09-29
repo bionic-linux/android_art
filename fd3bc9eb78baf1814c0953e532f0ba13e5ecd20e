@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e5c1c7c3_ffeef1e5",
+        "filename": "compiler/driver/compiler_driver-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-09-29T01:44:58Z",
+      "side": 1,
+      "message": "Oh I misread the order of ()s.\n\nJust change this to return an ObjPtr instead.",
+      "parentUuid": "e5c1c7c3_f93f3173",
+      "revId": "fd3bc9eb78baf1814c0953e532f0ba13e5ecd20e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5c1c7c3_d98d15e7",
         "filename": "runtime/check_jni.cc",
         "patchSetId": 1
