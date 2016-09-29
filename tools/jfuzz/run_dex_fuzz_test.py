@@ -29,6 +29,7 @@ from common.common import FatalError
 from common.common import GetJackClassPath
 from common.common import RetCode
 from common.common import RunCommand
+from common.common import GetEnvVariableOrError
 
 
 #
@@ -69,6 +70,8 @@ class DexFuzzTester(object):
         self._inputs_dir is None:
       raise FatalError('Cannot obtain temp directory')
     os.chdir(self._dexfuzz_dir)
+    os.mkdir('divergent_programs')
+    os.mkdir('bisection_outputs')
     return self
 
   def __exit__(self, etype, evalue, etraceback):
@@ -111,9 +114,13 @@ class DexFuzzTester(object):
     """Starts the DexFuzz testing."""
     os.chdir(self._dexfuzz_dir)
     os.environ['ANDROID_DATA'] = self._dexfuzz_dir
+    top = GetEnvVariableOrError('ANDROID_BUILD_TOP')
+    bisection_search_path = top + '/art/tools/bisection_search'
+    os.environ['PATH'] = bisection_search_path + ':' + os.environ['PATH']
     dexfuzz_args = ['--inputs=' + self._inputs_dir, '--execute',
                     '--execute-class=Test', '--repeat=' + str(self._num_tests),
-                    '--dump-output', '--interpreter', '--optimizing']
+                    '--dump-output', '--interpreter', '--optimizing',
+                    '--bisection-search']
     if self._device is not None:
       dexfuzz_args += ['--device=' + self._device, '--allarm']
     else:
