@@ -7638,6 +7638,42 @@ mirror::String* ClassLinker::LookupString(const DexFile& dex_file,
   return string;
 }
 
+// Look up a loaded type with the given ID from the DexFile. The ClassLoader is used to search for
+// the type, since it may be referenced from but not contained within the given DexFile.
+ObjPtr<mirror::Class> ClassLinker::LookupLoadedType(const DexFile& dex_file,
+                                                    uint16_t type_idx,
+                                                    ObjPtr<mirror::DexCache> dex_cache,
+                                                    ObjPtr<mirror::ClassLoader> class_loader) {
+  ObjPtr<mirror::Class> type = dex_cache->GetResolvedType(type_idx);
+  if (type == nullptr) {
+    const char* descriptor = dex_file.StringByTypeIdx(type_idx);
+    DCHECK_NE(*descriptor, '\0') << "descriptor is empty string";
+    if (descriptor[1] == '\0') {
+      // only the descriptors of primitive types should be 1 character long, also avoid class lookup
+      // for primitive classes that aren't backed by dex files.
+      type = FindPrimitiveClass(descriptor[0]);
+    } else {
+      Thread* const self = Thread::Current();
+      DCHECK(self != nullptr);
+      const size_t hash = ComputeModifiedUtf8Hash(descriptor);
+      // Find the class in the loaded classes table.
+      type = LookupClass(self, descriptor, hash, class_loader.Decode());
+    }
+  }
+  return type;
+}
+
+ObjPtr<mirror::Class> ClassLinker::LookupResolvedType(const DexFile& dex_file,
+                                                      uint16_t type_idx,
+                                                      ObjPtr<mirror::DexCache> dex_cache,
+                                                      ObjPtr<mirror::ClassLoader> class_loader) {
+  ObjPtr<mirror::Class> type = LookupLoadedType(dex_file, type_idx, dex_cache, class_loader);
+  if (type->IsResolved()) {
+    return type;
+  }
+  return nullptr;
+}
+
 mirror::Class* ClassLinker::ResolveType(const DexFile& dex_file,
                                         uint16_t type_idx,
                                         mirror::Class* referrer) {
