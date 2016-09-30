@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_f8b60ef2",
+        "filename": "tools/jfuzz/run_dex_fuzz_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-30T17:56:17Z",
+      "side": 1,
+      "message": "Ah, now I remember. Yes, I went to my original prototype, and also found mdkir divergent_programs then :-)",
+      "parentUuid": "a28505ca_18b412cc",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "42dfe0c0945e79a3ba5b2d8650f76427b9898e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a28505ca_1d6de4bd",
         "filename": "tools/jfuzz/run_dex_fuzz_test.py",
         "patchSetId": 1
