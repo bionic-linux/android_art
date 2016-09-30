@@ -1110,6 +1110,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_9d47b477",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-09-30T16:20:41Z",
+      "side": 1,
+      "message": "That would mean that reverse_post_order_ and      linear_order_ become very different. Incrementally keeping the linear_order_ up to date would make them more similar, but i am not sure we want to go there. Also this would mean that some (all?) HXXXXOrderIterator now need to provide a different constructor (want that takes the order, not the graph). And finally, we need a setter on the linear order. Is that really simpler than what I have now?\n\nIf you really want to avoid the \"getting stale\" property, we should do a major refactoring to restrict ownership of orders and their iterators.",
+      "parentUuid": "452ff370_c70d1e4e",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30907f09_622d789f",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
