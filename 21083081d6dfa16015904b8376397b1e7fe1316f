@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a28505ca_f75aa24b",
+        "filename": "benchmark/jobject-benchmark/jobject_benchmark.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-30T00:01:03Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 67,
+        "startChar": 44,
+        "endLine": 67,
+        "endChar": 53
+      },
+      "revId": "21083081d6dfa16015904b8376397b1e7fe1316f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
