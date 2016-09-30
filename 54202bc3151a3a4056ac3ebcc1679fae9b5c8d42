@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a28505ca_97e23621",
+        "filename": "runtime/native/java_lang_Class.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-30T00:27:18Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 79,
+        "startChar": 100,
+        "endLine": 79,
+        "endChar": 102
+      },
+      "revId": "54202bc3151a3a4056ac3ebcc1679fae9b5c8d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
