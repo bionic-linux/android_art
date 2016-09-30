@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22b035be_6604ae7a",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2473,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-30T09:47:51Z",
+      "side": 1,
+      "message": "Thanks for fixing this.",
+      "range": {
+        "startLine": 2471,
+        "startChar": 0,
+        "endLine": 2473,
+        "endChar": 46
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b035be_26feb64e",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2577,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-30T09:47:51Z",
+      "side": 1,
+      "message": "Move this to a handle.",
+      "range": {
+        "startLine": 2577,
+        "startChar": 4,
+        "endLine": 2577,
+        "endChar": 38
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b035be_c61242bd",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-30T09:47:51Z",
+      "side": 1,
+      "message": "handle",
+      "range": {
+        "startLine": 2617,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 56
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b035be_e60f3e90",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2647,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-09-30T09:47:51Z",
+      "side": 1,
+      "message": "handle",
+      "range": {
+        "startLine": 2647,
+        "startChar": 0,
+        "endLine": 2647,
+        "endChar": 61
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
