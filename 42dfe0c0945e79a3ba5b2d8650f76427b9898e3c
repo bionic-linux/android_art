@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_18b412cc",
+        "filename": "tools/jfuzz/run_dex_fuzz_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1067043
+      },
+      "writtenOn": "2016-09-30T17:18:38Z",
+      "side": 1,
+      "message": "It\u0027s needed for dexfuzz to save divergent programs. Relevant code: UniqueProgramTrackerListener.java:200 .",
+      "parentUuid": "a28505ca_dd153cfc",
+      "range": {
+        "startLine": 73,
+        "startChar": 14,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "42dfe0c0945e79a3ba5b2d8650f76427b9898e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a28505ca_1d6de4bd",
         "filename": "tools/jfuzz/run_dex_fuzz_test.py",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-09-30T16:42:10Z",
       "side": 1,
       "message": "shouldn\u0027t this preparation of the env be at a more generic entry point, like the first lines of Run() or so?",
+      "revId": "42dfe0c0945e79a3ba5b2d8650f76427b9898e3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a28505ca_38555654",
+        "filename": "tools/jfuzz/run_dex_fuzz_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1067043
+      },
+      "writtenOn": "2016-09-30T17:18:38Z",
+      "side": 1,
+      "message": "Good point. I just noticed that this is not even correct, we keep making path longer and longer. I\u0027ll setup a separate copy of env for dexfuzz in the constructor",
+      "parentUuid": "a28505ca_1d6de4bd",
       "revId": "42dfe0c0945e79a3ba5b2d8650f76427b9898e3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
