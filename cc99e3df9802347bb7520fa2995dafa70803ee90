@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_dd61bc31",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2577,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-30T16:45:03Z",
+      "side": 1,
+      "message": "I did let the users do it, which seemed easier with the null default. But done.",
+      "parentUuid": "22b035be_26feb64e",
+      "range": {
+        "startLine": 2577,
+        "startChar": 4,
+        "endLine": 2577,
+        "endChar": 38
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b035be_c61242bd",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_fd5e0075",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2617,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-30T16:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b035be_c61242bd",
+      "range": {
+        "startLine": 2617,
+        "startChar": 0,
+        "endLine": 2617,
+        "endChar": 56
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b035be_e60f3e90",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 4
@@ -82,6 +130,30 @@
       "writtenOn": "2016-09-30T09:47:51Z",
       "side": 1,
       "message": "handle",
+      "range": {
+        "startLine": 2647,
+        "startChar": 0,
+        "endLine": 2647,
+        "endChar": 61
+      },
+      "revId": "cc99e3df9802347bb7520fa2995dafa70803ee90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a28505ca_9d4d74c8",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2647,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-09-30T16:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b035be_e60f3e90",
       "range": {
         "startLine": 2647,
         "startChar": 0,
