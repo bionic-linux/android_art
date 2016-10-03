@@ -1158,6 +1158,30 @@
     },
     {
       "key": {
+        "uuid": "a28505ca_663ecd15",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-10-03T17:22:25Z",
+      "side": 1,
+      "message": "No worries, there is no rush to get this in immediately, so there is time to get this done the way you prefer. Let me try to do what you are asking for in this CL and see if you like the solution (if not, we can make it a TODO and try later, but at least I want to give it a shot now).",
+      "parentUuid": "22b035be_4673b279",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30907f09_622d789f",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
