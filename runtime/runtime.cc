@@ -361,6 +361,8 @@ Runtime::~Runtime() {
 }
 
 struct AbortState {
+  explicit AbortState(bool _all_threads) : all_threads(_all_threads) {}
+
   void Dump(std::ostream& os) const {
     if (gAborting > 1) {
       os << "Runtime aborting --- recursively, so no thread-specific detail!\n";
@@ -389,7 +391,9 @@ struct AbortState {
         }
       }
     }
-    DumpAllThreads(os, self);
+    if (all_threads) {
+      DumpAllThreads(os, self);
+    }
   }
 
   // No thread-safety analysis as we do explicitly test for holding the mutator lock.
@@ -420,9 +424,11 @@ struct AbortState {
       }
     }
   }
+
+  bool all_threads;
 };
 
-void Runtime::Abort() {
+void Runtime::Abort(bool all_threads) {
   gAborting++;  // set before taking any locks
 
   // Ensure that we don't have multiple threads trying to abort at once,
@@ -434,7 +440,7 @@ void Runtime::Abort() {
 
   // Many people have difficulty distinguish aborts from crashes,
   // so be explicit.
-  AbortState state;
+  AbortState state(all_threads);
   LOG(FATAL_WITHOUT_ABORT) << Dumpable<AbortState>(state);
 
   // Call the abort hook if we have one.

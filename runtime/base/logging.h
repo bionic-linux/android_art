@@ -108,6 +108,13 @@ class LogHelper {
 // Return the stream associated with logging for the given module.
 #define VLOG_STREAM(module) LOG_STREAM(INFO)
 
+
+// Fatal log that only dumps the thread causing it.
+#define LOG_FATAL_THIS_THREAD_ONLY(msg)  \
+  LOG(FATAL_WITHOUT_ABORT) << (msg);     \
+  Runtime::Abort(false);                 \
+  UNREACHABLE();
+
 }  // namespace art
 
 #endif  // ART_RUNTIME_BASE_LOGGING_H_
