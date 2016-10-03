@@ -1134,6 +1134,30 @@
     },
     {
       "key": {
+        "uuid": "22b035be_4673b279",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-10-03T08:54:19Z",
+      "side": 1,
+      "message": "Ah it\u0027s the iterator you worry about, I see.\n\nSo linear order used to be something just for the code generator / register allocator, so again, a better place for it could have been in CodeGenerator, and then you don\u0027t need a setter in HGraph.\n\nAnd if you look at the iterators, they just have fancy names for something that just iterates from start to end or end to start.\n\nI\u0027m indeed not fund of the \"getting stale\" state, even though, yes, it\u0027s simpler :). It feels very easy to have someone mistakenly using it. Which is the main reason for me arguing here. I don\u0027t think we have any stale state in HGraph, it\u0027d be great to avoid it.\n\nI don\u0027t want to hold off this change though, or block you. I\u0027d prefer having the linear order cleanup done first, or as part of this change, but will comply if you prefer to do it as a follow-up of this change.",
+      "parentUuid": "a28505ca_9d47b477",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 24
+      },
+      "revId": "5790e9d349c6008f2bdff1cc64573438a48ace4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30907f09_622d789f",
         "filename": "test/618-checker-induction/src/Main.java",
         "patchSetId": 7
