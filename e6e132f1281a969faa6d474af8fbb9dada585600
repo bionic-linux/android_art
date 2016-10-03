@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "22b035be_29252918",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-10-03T14:41:55Z",
+      "side": 1,
+      "message": "If the driver is used only for the assertion at line 764, we may as well drop it.",
+      "range": {
+        "startLine": 761,
+        "startChar": 32,
+        "endLine": 761,
+        "endChar": 55
+      },
+      "revId": "e6e132f1281a969faa6d474af8fbb9dada585600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22b035be_a9ba79b3",
         "filename": "compiler/driver/compiler_driver.cc",
         "patchSetId": 1
