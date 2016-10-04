@@ -45,6 +45,30 @@
       "revId": "3aaa12736e84f8144c3a48b35689576190f48e21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02aa519b_11169cbd",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-10-04T15:35:47Z",
+      "side": 1,
+      "message": "That is actually what I was moving to as well, since it still has allocation from the global arena. But at this point, I made it a TODO and will do this after this loop CL if you don\u0027t mind.\n\nI also have some more ideas to do the same phase local heap memory for some of the induction data structures.",
+      "parentUuid": "e2e0dd14_ac3543fc",
+      "range": {
+        "startLine": 537,
+        "startChar": 45,
+        "endLine": 537,
+        "endChar": 51
+      },
+      "revId": "3aaa12736e84f8144c3a48b35689576190f48e21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
