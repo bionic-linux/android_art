@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e0dd14_4c581f53",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-10-04T14:35:10Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 497,
+        "startChar": 36,
+        "endLine": 497,
+        "endChar": 75
+      },
+      "revId": "3aaa12736e84f8144c3a48b35689576190f48e21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e0dd14_ac3543fc",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-10-04T14:35:10Z",
+      "side": 1,
+      "message": "Change the arena to something passed as parameter? I think this change is very close to what I intende. Maybe I\u0027d prefer Linearize to be a static method that takes a graph and an allocator, and returns an ArenaVector, but won\u0027t push for it.",
+      "range": {
+        "startLine": 537,
+        "startChar": 45,
+        "endLine": 537,
+        "endChar": 51
+      },
+      "revId": "3aaa12736e84f8144c3a48b35689576190f48e21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
