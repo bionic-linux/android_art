@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02aa519b_86eb90ca",
+        "filename": "runtime/indirect_reference_table.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-04T15:09:02Z",
+      "side": 1,
+      "message": "The intent was to by default only log the current thread, but allow (without having to recompile) to regain all logging, if necessary.",
+      "parentUuid": "e2e0dd14_4ccb7f16",
+      "range": {
+        "startLine": 136,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "04815c10da33c99066b94de035a22a116d4bbf2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2e0dd14_2cd833e9",
         "filename": "runtime/runtime.cc",
         "patchSetId": 1
