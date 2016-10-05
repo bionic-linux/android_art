@@ -194,6 +194,7 @@ class DumpCheckpoint FINAL : public Closure {
     // Note thread and self may not be equal if thread was already suspended at the point of the
     // request.
     Thread* self = Thread::Current();
+    CHECK(self != nullptr);
     std::ostringstream local_os;
     {
       ScopedObjectAccess soa(self);
@@ -231,19 +232,24 @@ class DumpCheckpoint FINAL : public Closure {
 };
 
 void ThreadList::Dump(std::ostream& os, bool dump_native_stack) {
+  Thread* self = Thread::Current();
   {
-    MutexLock mu(Thread::Current(), *Locks::thread_list_lock_);
+    MutexLock mu(self, *Locks::thread_list_lock_);
     os << "DALVIK THREADS (" << list_.size() << "):\n";
   }
-  DumpCheckpoint checkpoint(&os, dump_native_stack);
-  size_t threads_running_checkpoint;
-  {
-    // Use SOA to prevent deadlocks if multiple threads are calling Dump() at the same time.
-    ScopedObjectAccess soa(Thread::Current());
-    threads_running_checkpoint = RunCheckpoint(&checkpoint);
-  }
-  if (threads_running_checkpoint != 0) {
-    checkpoint.WaitForThreadsToRunThroughCheckpoint(threads_running_checkpoint);
+  if (self != nullptr) {
+    DumpCheckpoint checkpoint(&os, dump_native_stack);
+    size_t threads_running_checkpoint;
+    {
+      // Use SOA to prevent deadlocks if multiple threads are calling Dump() at the same time.
+      ScopedObjectAccess soa(self);
+      threads_running_checkpoint = RunCheckpoint(&checkpoint);
+    }
+    if (threads_running_checkpoint != 0) {
+      checkpoint.WaitForThreadsToRunThroughCheckpoint(threads_running_checkpoint);
+    }
+  } else {
+    DumpUnattachedThread(os, GetTid(), dump_native_stack);
   }
 }
 
