@@ -180,8 +180,32 @@ class X86_64JNIMacroAssembler FINAL : public JNIMacroAssemblerFwd<X86_64Assemble
   // and branch to a ExceptionSlowPath if it is.
   void ExceptionPoll(ManagedRegister scratch, size_t stack_adjust) OVERRIDE;
 
+  // Create a new label that can be used with Jump/Bind calls.
+  std::unique_ptr<JNIMacroLabel> CreateLabel() OVERRIDE;
+  // Emit an unconditional jump to the label.
+  void Jump(JNIMacroLabel* label) OVERRIDE;
+  // Emit a conditional jump to the label.
+  void Jump(JNIMacroLabel* label, BinaryCondition condition) OVERRIDE;
+  // Emit a conditional jump to the label by applying a unary condition test to the register.
+  virtual void Jump(JNIMacroLabel*, UnaryCondition, ManagedRegister) OVERRIDE;
+  // Code at this offset will serve as the target for the Jump call.
+  void Bind(JNIMacroLabel* label) OVERRIDE;
+  // Test the left register against the right register for equality. Sets the conditional flags used
+  // by other instructions that accept a Condition argument (see e.g. Jump).
+  virtual void Test(ManagedRegister, ManagedRegister) OVERRIDE;
+
  private:
   DISALLOW_COPY_AND_ASSIGN(X86_64JNIMacroAssembler);
+};
+
+class X86_64JNIMacroLabel FINAL
+  : public JNIMacrolabelCommon<X86_64JNIMacroLabel,
+                               art::Label,
+                               kX86_64> {
+ public:
+  art::Label* AsX86_64() {
+    return AsPlatformLabel();
+  }
 };
 
 }  // namespace x86_64

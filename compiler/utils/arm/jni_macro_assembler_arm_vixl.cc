@@ -558,6 +558,46 @@ void ArmVIXLJNIMacroAssembler::ExceptionPoll(ManagedRegister m_scratch, size_t s
   // TODO: think about using CBNZ here.
 }
 
+std::unique_ptr<JNIMacroLabel> ArmVIXLJNIMacroAssembler::CreateLabel() {
+  return std::unique_ptr<JNIMacroLabel>(new ArmVIXLJNIMacroLabel());
+}
+
+void ArmVIXLJNIMacroAssembler::Jump(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ B(ArmVIXLJNIMacroLabel::Cast(label)->AsArm());
+}
+
+void ArmVIXLJNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                ArmVIXLJNIMacroAssembler::BinaryCondition condition) {
+  CHECK(label != nullptr);
+
+  LOG(FATAL) << "Not implemented binary condition: " << static_cast<int>(condition);
+  UNREACHABLE();
+}
+
+void ArmVIXLJNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                ArmVIXLJNIMacroAssembler::UnaryCondition condition,
+                                ManagedRegister test) {
+  CHECK(label != nullptr);
+
+  switch (condition) {
+    case UnaryCondition::kZero:
+      ___ Cbz(test.AsArm().AsVIXLRegister(), ArmVIXLJNIMacroLabel::Cast(label)->AsArm());
+      break;
+    case UnaryCondition::kNotZero:
+      ___ Cbnz(test.AsArm().AsVIXLRegister(), ArmVIXLJNIMacroLabel::Cast(label)->AsArm());
+      break;
+    default:
+      LOG(FATAL) << "Not implemented unary condition: " << static_cast<int>(condition);
+      UNREACHABLE();
+  }
+}
+
+void ArmVIXLJNIMacroAssembler::Bind(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ Bind(ArmVIXLJNIMacroLabel::Cast(label)->AsArm());
+}
+
 void ArmVIXLJNIMacroAssembler::EmitExceptionPoll(
     ArmVIXLJNIMacroAssembler::ArmException* exception) {
   ___ Bind(exception->Entry());

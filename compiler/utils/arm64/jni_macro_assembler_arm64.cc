@@ -627,6 +627,46 @@ void Arm64JNIMacroAssembler::ExceptionPoll(ManagedRegister m_scratch, size_t sta
   ___ Cbnz(reg_x(scratch.AsXRegister()), exception_blocks_.back()->Entry());
 }
 
+std::unique_ptr<JNIMacroLabel> Arm64JNIMacroAssembler::CreateLabel() {
+  return std::unique_ptr<JNIMacroLabel>(new Arm64JNIMacroLabel());
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ B(Arm64JNIMacroLabel::Cast(label)->AsArm64());
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                Arm64JNIMacroAssembler::BinaryCondition condition) {
+  CHECK(label != nullptr);
+
+  LOG(FATAL) << "Not implemented binary condition: " << static_cast<int>(condition);
+  UNREACHABLE();
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                Arm64JNIMacroAssembler::UnaryCondition condition,
+                                ManagedRegister test) {
+  CHECK(label != nullptr);
+
+  switch (condition) {
+    case UnaryCondition::kZero:
+      ___ Cbz(reg_x(test.AsArm64().AsXRegister()), Arm64JNIMacroLabel::Cast(label)->AsArm64());
+      break;
+    case UnaryCondition::kNotZero:
+      ___ Cbnz(reg_x(test.AsArm64().AsXRegister()), Arm64JNIMacroLabel::Cast(label)->AsArm64());
+      break;
+    default:
+      LOG(FATAL) << "Not implemented unary condition: " << static_cast<int>(condition);
+      UNREACHABLE();
+  }
+}
+
+void Arm64JNIMacroAssembler::Bind(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ Bind(Arm64JNIMacroLabel::Cast(label)->AsArm64());
+}
+
 void Arm64JNIMacroAssembler::EmitExceptionPoll(Arm64Exception *exception) {
   UseScratchRegisterScope temps(asm_.GetVIXLAssembler());
   temps.Exclude(reg_x(exception->scratch_.AsXRegister()));

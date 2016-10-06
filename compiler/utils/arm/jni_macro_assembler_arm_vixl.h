@@ -187,6 +187,17 @@ class ArmVIXLJNIMacroAssembler FINAL
   // and branch to a ExceptionSlowPath if it is.
   void ExceptionPoll(ManagedRegister scratch, size_t stack_adjust);
 
+  // Create a new label that can be used with Jump/Bind calls.
+  std::unique_ptr<JNIMacroLabel> CreateLabel() OVERRIDE;
+  // Emit an unconditional jump to the label.
+  void Jump(JNIMacroLabel* label) OVERRIDE;
+  // Emit a conditional jump to the label.
+  void Jump(JNIMacroLabel* label, BinaryCondition condition) OVERRIDE;
+  // Emit a conditional jump to the label by applying a unary condition test to the register.
+  virtual void Jump(JNIMacroLabel*, UnaryCondition, ManagedRegister) OVERRIDE;
+  // Code at this offset will serve as the target for the Jump call.
+  void Bind(JNIMacroLabel* label) OVERRIDE;
+
   void MemoryBarrier(ManagedRegister scratch) OVERRIDE;
 
   void EmitExceptionPoll(ArmVIXLJNIMacroAssembler::ArmException *exception);
@@ -217,6 +228,16 @@ class ArmVIXLJNIMacroAssembler FINAL
   // Used for testing.
   friend class ArmVIXLAssemblerTest_VixlLoadFromOffset_Test;
   friend class ArmVIXLAssemblerTest_VixlStoreToOffset_Test;
+};
+
+class ArmVIXLJNIMacroLabel FINAL
+  : public JNIMacrolabelCommon<ArmVIXLJNIMacroLabel,
+                               vixl32::Label,
+                               kArm> {
+ public:
+  vixl32::Label* AsArm() {
+    return AsPlatformLabel();
+  }
 };
 
 }  // namespace arm

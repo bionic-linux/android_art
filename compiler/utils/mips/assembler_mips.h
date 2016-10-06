@@ -179,6 +179,8 @@ class MipsExceptionSlowPath {
 
 class MipsAssembler FINAL : public Assembler, public JNIMacroAssembler<PointerSize::k32> {
  public:
+  using JNIBase = JNIMacroAssembler<PointerSize::k32>;
+
   explicit MipsAssembler(ArenaAllocator* arena,
                          const MipsInstructionSetFeatures* instruction_set_features = nullptr)
       : Assembler(arena),
@@ -722,6 +724,10 @@ class MipsAssembler FINAL : public Assembler, public JNIMacroAssembler<PointerSi
   void Jump(Label* label ATTRIBUTE_UNUSED) OVERRIDE {
     UNIMPLEMENTED(FATAL) << "Do not use Jump for MIPS";
   }
+
+  // Don't warn about a different virtual Bind/Jump in the base class.
+  using JNIBase::Bind;
+  using JNIBase::Jump;
 
   // Create a new literal with a given value.
   // NOTE: Force the template parameter to be explicitly specified.

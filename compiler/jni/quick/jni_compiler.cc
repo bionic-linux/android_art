@@ -54,6 +54,7 @@ namespace art {
 
 using JniOptimizationFlags = Compiler::JniOptimizationFlags;
 
+
 template <PointerSize kPointerSize>
 static void CopyParameter(JNIMacroAssembler<kPointerSize>* jni_asm,
                           ManagedRuntimeCallingConvention* mr_conv,
@@ -81,6 +82,10 @@ static CompiledMethod* ArtJniCompileMethodInternal(CompilerDriver* driver,
                                                    uint32_t method_idx,
                                                    const DexFile& dex_file,
                                                    JniOptimizationFlags optimization_flags) {
+  // Convenience typedefs for pointer size-dependent type names.
+  using JniMacroAssemblerPtrSized = JNIMacroAssembler<kPointerSize>;
+  using UnaryCondition = typename JniMacroAssemblerPtrSized::UnaryCondition;
+
   const bool is_native = (access_flags & kAccNative) != 0;
   CHECK(is_native);
   const bool is_static = (access_flags & kAccStatic) != 0;
@@ -276,10 +281,31 @@ static CompiledMethod* ArtJniCompileMethodInternal(CompilerDriver* driver,
   __ IncreaseFrameSize(main_out_arg_size);
 
   // Call the read barrier for the declaring class loaded from the method for a static call.
+  // Skip this for @CriticalNative because we didn't build a HandleScope to begin with.
   // Note that we always have outgoing param space available for at least two params.
   if (kUseReadBarrier && is_static && !is_critical_native) {
-    // XX: Why is this necessary only for the jclass? Why not for every single object ref?
-    // Skip this for @CriticalNative because we didn't build a HandleScope to begin with.
+    const bool kReadBarrierFastPath = instruction_set == kX86;
+    std::unique_ptr<JNIMacroLabel> skip_cold_path_label;
+    if (kReadBarrierFastPath) {
+      skip_cold_path_label = __ CreateLabel();
+      // Fast path for supported targets.
+      //
+      // Check if gc_is_marking is set -- if it's not, we don't need
+      // a read barrier so skip it.
+      __ LoadFromThread(main_jni_conv->InterproceduralScratchRegister(),
+                        Thread::IsGcMarkingOffset<kPointerSize>(),
+                        sizeof(bool));
+      // Jump over the slow path if gc is marking is false.
+      __ Jump(skip_cold_path_label.get(),
+              UnaryCondition::kZero,
+              main_jni_conv->InterproceduralScratchRegister());
+    }
+
+    // Construct slow path for read barrier:
+    //
+    // Call into the runtime's ReadBarrierJni and have it fix up
+    // the object address if it was moved.
+
     ThreadOffset<kPointerSize> read_barrier = QUICK_ENTRYPOINT_OFFSET(kPointerSize,
                                                                       pReadBarrierJni);
     main_jni_conv->ResetIterator(FrameOffset(main_out_arg_size));
@@ -310,6 +336,10 @@ static CompiledMethod* ArtJniCompileMethodInternal(CompilerDriver* driver,
       __ CallFromThread(read_barrier, main_jni_conv->InterproceduralScratchRegister());
     }
     main_jni_conv->ResetIterator(FrameOffset(main_out_arg_size));  // Reset.
+
+    if (kReadBarrierFastPath) {
+      __ Bind(skip_cold_path_label.get());
+    }
   }
 
   // 6. Call into appropriate JniMethodStart passing Thread* so that transition out of Runnable

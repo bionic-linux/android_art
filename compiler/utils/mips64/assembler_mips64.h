@@ -335,6 +335,8 @@ class Mips64ExceptionSlowPath {
 
 class Mips64Assembler FINAL : public Assembler, public JNIMacroAssembler<PointerSize::k64> {
  public:
+  using JNIBase = JNIMacroAssembler<PointerSize::k64>;
+
   explicit Mips64Assembler(ArenaAllocator* arena)
       : Assembler(arena),
         overwriting_(false),
@@ -574,6 +576,11 @@ class Mips64Assembler FINAL : public Assembler, public JNIMacroAssembler<Pointer
   }
 
   void Bind(Mips64Label* label);
+
+  // Don't warn about a different virtual Bind/Jump in the base class.
+  using JNIBase::Bind;
+  using JNIBase::Jump;
+
   void Bc(Mips64Label* label);
   void Jialc(Mips64Label* label, GpuRegister indirect_reg);
   void Bltc(GpuRegister rs, GpuRegister rt, Mips64Label* label);
