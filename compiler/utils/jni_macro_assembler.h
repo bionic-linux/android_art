@@ -35,10 +35,21 @@ class ArenaAllocator;
 class DebugFrameOpCodeWriterForAssembler;
 class InstructionSetFeatures;
 class MemoryRegion;
+class JNIMacroLabel;
 
 template <PointerSize kPointerSize>
 class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
  public:
+  enum class BinaryCondition {
+    kZero,
+    kNotZero
+  };
+
+  enum class UnaryCondition {
+    kZero,
+    kNotZero
+  };
+
   static std::unique_ptr<JNIMacroAssembler<kPointerSize>> Create(
       ArenaAllocator* arena,
       InstructionSet instruction_set,
@@ -193,6 +204,20 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
   // and branch to a ExceptionSlowPath if it is.
   virtual void ExceptionPoll(ManagedRegister scratch, size_t stack_adjust) = 0;
 
+  // Create a new label that can be used with Jump/Bind calls.
+  virtual std::unique_ptr<JNIMacroLabel> CreateLabel() { return nullptr; }  // = 0;
+  // Emit an unconditional jump to the label.
+  virtual void Jump(JNIMacroLabel* /*label*/) {}  // = 0;
+  // Emit a conditional jump to the label. See Compare.
+  virtual void Jump(JNIMacroLabel* /*label*/, BinaryCondition /*condition*/) {}  // = 0;
+  // Emit a conditional jump to the label by applying a unary condition test to the register.
+  virtual void Jump(JNIMacroLabel*, UnaryCondition, ManagedRegister) {}  // = 0;
+  // Code at this offset will serve as the target for the Jump call.
+  virtual void Bind(JNIMacroLabel*) {}  // = 0;
+  // Test the left register against the right register for equality. Sets the conditional flags used
+  // by other instructions that accept a Condition argument (see e.g. Jump).
+  virtual void Test(ManagedRegister, ManagedRegister) {}  // = 0;
+
   virtual ~JNIMacroAssembler() {}
 
   /**
@@ -204,6 +229,28 @@ class JNIMacroAssembler : public DeletableArenaObject<kArenaAllocAssembler> {
  protected:
   explicit JNIMacroAssembler() {}
 };
+
+// A "Label" class used with the JNIMacroAssembler
+// allowing one to use branches (jumping from one place to another).
+//
+// This is just an interface, so every platform must provide
+// its own implementation of it.
+//
+// It is only safe to use a label created
+// via JNIMacroAssembler::CreateLabel with that same macro assembler.
+class JNIMacroLabel {
+   public:
+    virtual ~JNIMacroLabel() = 0;
+
+    const InstructionSet isa_;
+   protected:
+    explicit JNIMacroLabel(InstructionSet isa) : isa_(isa) {}
+};
+
+inline JNIMacroLabel::~JNIMacroLabel() {
+  // Compulsory definition for a pure virtual destructor
+  // to avoid linking errors.
+}
 
 template <typename T, PointerSize kPointerSize>
 class JNIMacroAssemblerFwd : public JNIMacroAssembler<kPointerSize> {
@@ -228,6 +275,30 @@ class JNIMacroAssemblerFwd : public JNIMacroAssembler<kPointerSize> {
   explicit JNIMacroAssemblerFwd(ArenaAllocator* arena) : asm_(arena) {}
 
   T asm_;
+};
+
+template <typename Self, typename PlatformLabel, InstructionSet kIsa>
+class JNIMacrolabelCommon : public JNIMacroLabel {
+ public:
+  static Self* Cast(JNIMacroLabel* label) {
+    CHECK(label != nullptr);
+    CHECK_EQ(kIsa, label->isa_);
+
+    return reinterpret_cast<Self*>(label);
+  }
+
+ protected:
+  PlatformLabel* AsPlatformLabel() {
+    return &label_;
+  }
+
+  JNIMacrolabelCommon() : JNIMacroLabel(kIsa) {
+  }
+
+  virtual ~JNIMacrolabelCommon() OVERRIDE {}
+
+ private:
+  PlatformLabel label_;
 };
 
 }  // namespace art

@@ -215,8 +215,12 @@ void X86JNIMacroAssembler::LoadFromThread(ManagedRegister mdest, ThreadOffset32 
   if (dest.IsNoRegister()) {
     CHECK_EQ(0u, size);
   } else if (dest.IsCpuRegister()) {
-    CHECK_EQ(4u, size);
-    __ fs()->movl(dest.AsCpuRegister(), Address::Absolute(src));
+    if (size == 1u) {
+      __ fs()->movzxb(dest.AsCpuRegister(), Address::Absolute(src));
+    } else {
+      CHECK_EQ(4u, size);
+      __ fs()->movl(dest.AsCpuRegister(), Address::Absolute(src));
+    }
   } else if (dest.IsRegisterPair()) {
     CHECK_EQ(8u, size);
     __ fs()->movl(dest.AsRegisterPairLow(), Address::Absolute(src));
@@ -517,6 +521,73 @@ void X86JNIMacroAssembler::ExceptionPoll(ManagedRegister /*scratch*/, size_t sta
   __ GetBuffer()->EnqueueSlowPath(slow);
   __ fs()->cmpl(Address::Absolute(Thread::ExceptionOffset<kX86PointerSize>()), Immediate(0));
   __ j(kNotEqual, slow->Entry());
+}
+
+std::unique_ptr<JNIMacroLabel> X86JNIMacroAssembler::CreateLabel() {
+  return std::unique_ptr<JNIMacroLabel>(new X86JNIMacroLabel());
+}
+
+void X86JNIMacroAssembler::Jump(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  __ jmp(X86JNIMacroLabel::Cast(label)->AsX86());
+}
+
+void X86JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                X86JNIMacroAssembler::BinaryCondition condition) {
+  CHECK(label != nullptr);
+
+  art::x86::Condition x86_cond;
+  switch (condition) {
+    case BinaryCondition::kZero:
+      x86_cond = art::x86::kZero;
+      break;
+    case BinaryCondition::kNotZero:
+      x86_cond = art::x86::kNotZero;
+      break;
+    default:
+      LOG(FATAL) << "Not implemented condition: " << static_cast<int>(condition);
+      UNREACHABLE();
+  }
+
+  // Depends on the condition flags set by the previous instruction(s).
+  __ j(x86_cond, X86JNIMacroLabel::Cast(label)->AsX86());
+}
+
+void X86JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                X86JNIMacroAssembler::UnaryCondition condition,
+                                ManagedRegister test) {
+  CHECK(label != nullptr);
+
+  art::x86::Condition x86_cond;
+  switch (condition) {
+    case UnaryCondition::kZero:
+      x86_cond = art::x86::kZero;
+      break;
+    case UnaryCondition::kNotZero:
+      x86_cond = art::x86::kNotZero;
+      break;
+    default:
+      LOG(FATAL) << "Not implemented condition: " << static_cast<int>(condition);
+      UNREACHABLE();
+  }
+
+  // TEST reg, reg
+  // Jcc <Offset>
+  __ testl(test.AsX86().AsCpuRegister(), test.AsX86().AsCpuRegister());
+  __ j(x86_cond, X86JNIMacroLabel::Cast(label)->AsX86());
+
+
+  // X86 also has JCZX, JECZX, however it's not worth it to implement
+  // because we aren't likely to codegen with ECX+kZero check.
+}
+
+void X86JNIMacroAssembler::Bind(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  __ Bind(X86JNIMacroLabel::Cast(label)->AsX86());
+}
+
+void X86JNIMacroAssembler::Test(ManagedRegister left, ManagedRegister right) {
+  __ testl(left.AsX86().AsCpuRegister(), right.AsX86().AsCpuRegister());
 }
 
 #undef __

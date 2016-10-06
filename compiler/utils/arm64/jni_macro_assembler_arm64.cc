@@ -264,6 +264,8 @@ void Arm64JNIMacroAssembler::Load(Arm64ManagedRegister dest,
     CHECK_NE(dest.AsXRegister(), SP) << dest;
     if (size == 4u) {
       ___ Ldr(reg_w(dest.AsOverlappingWRegister()), MEM_OP(reg_x(base), offset));
+    } else if (size == 1u) {
+      ___ Ldrb(reg_w(dest.AsOverlappingWRegister()), MEM_OP(reg_x(base), offset));
     } else {
       CHECK_EQ(8u, size) << dest;
       ___ Ldr(reg_x(dest.AsXRegister()), MEM_OP(reg_x(base), offset));
@@ -625,6 +627,46 @@ void Arm64JNIMacroAssembler::ExceptionPoll(ManagedRegister m_scratch, size_t sta
                  TR,
                  Thread::ExceptionOffset<kArm64PointerSize>().Int32Value());
   ___ Cbnz(reg_x(scratch.AsXRegister()), exception_blocks_.back()->Entry());
+}
+
+std::unique_ptr<JNIMacroLabel> Arm64JNIMacroAssembler::CreateLabel() {
+  return std::unique_ptr<JNIMacroLabel>(new Arm64JNIMacroLabel());
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ B(Arm64JNIMacroLabel::Cast(label)->AsArm64());
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                Arm64JNIMacroAssembler::BinaryCondition condition) {
+  CHECK(label != nullptr);
+
+  LOG(FATAL) << "Not implemented binary condition: " << static_cast<int>(condition);
+  UNREACHABLE();
+}
+
+void Arm64JNIMacroAssembler::Jump(JNIMacroLabel* label,
+                                Arm64JNIMacroAssembler::UnaryCondition condition,
+                                ManagedRegister test) {
+  CHECK(label != nullptr);
+
+  switch (condition) {
+    case UnaryCondition::kZero:
+      ___ Cbz(reg_x(test.AsArm64().AsXRegister()), Arm64JNIMacroLabel::Cast(label)->AsArm64());
+      break;
+    case UnaryCondition::kNotZero:
+      ___ Cbnz(reg_x(test.AsArm64().AsXRegister()), Arm64JNIMacroLabel::Cast(label)->AsArm64());
+      break;
+    default:
+      LOG(FATAL) << "Not implemented unary condition: " << static_cast<int>(condition);
+      UNREACHABLE();
+  }
+}
+
+void Arm64JNIMacroAssembler::Bind(JNIMacroLabel* label) {
+  CHECK(label != nullptr);
+  ___ Bind(Arm64JNIMacroLabel::Cast(label)->AsArm64());
 }
 
 void Arm64JNIMacroAssembler::EmitExceptionPoll(Arm64Exception *exception) {
