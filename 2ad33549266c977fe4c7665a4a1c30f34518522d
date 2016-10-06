@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7734bf_37b4923a",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-06T00:28:51Z",
+      "side": 1,
+      "message": "A check here that size is 1, maybe?",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 58
+      },
+      "revId": "2ad33549266c977fe4c7665a4a1c30f34518522d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
