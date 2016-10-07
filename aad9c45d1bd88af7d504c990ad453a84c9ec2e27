@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_a5fb16a4",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T17:14:52Z",
+      "side": 1,
+      "message": "Well without the using it becomes a huge mess of \"typename JNIMacroAssembler\u003ckPointerSize\u003e::UnaryCondition::kNotZero\" \n\nI agree with the general thought here, I will just move it out of the class so it\u0027s not behind a template.",
+      "parentUuid": "3f23f0ed_a799aa80",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 68
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_3a0aa184",
         "filename": "compiler/jni/quick/jni_compiler.cc",
         "patchSetId": 2
@@ -255,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_05d42210",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T17:14:52Z",
+      "side": 1,
+      "message": "This is fine, 1 per line is allowed (and it requires less reformatting later).",
+      "parentUuid": "9fc21c70_fa4d49c9",
+      "range": {
+        "startLine": 234,
+        "startChar": 31,
+        "endLine": 236,
+        "endChar": 36
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_3ad86110",
         "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
         "patchSetId": 2
@@ -393,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_a5d2f621",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T17:14:52Z",
+      "side": 1,
+      "message": "Maybe I\u0027ll just add this to the mips compiler only since I already had to make other changes there to get it to even compile.",
+      "parentUuid": "9fc21c70_5a267524",
+      "range": {
+        "startLine": 208,
+        "startChar": 76,
+        "endLine": 208,
+        "endChar": 82
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_da004569",
         "filename": "compiler/utils/jni_macro_assembler.h",
         "patchSetId": 2
@@ -432,6 +504,29 @@
         "startChar": 0,
         "endLine": 242,
         "endChar": 3
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_45e22af0",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T17:14:52Z",
+      "side": 1,
+      "message": "This should be JNIMacroLabelCommon (typo)",
+      "range": {
+        "startLine": 281,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 25
       },
       "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -657,6 +752,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Factor this with lines 605–616?",
+      "range": {
+        "startLine": 627,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 3
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_65b08ef5",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T17:14:52Z",
+      "side": 1,
+      "message": "Going to delete the BinaryCondition one since nothing is using it and kZero/kNotZero aren\u0027t even binary conditions to begin with.",
+      "parentUuid": "9fc21c70_3a3ce117",
       "range": {
         "startLine": 627,
         "startChar": 0,
