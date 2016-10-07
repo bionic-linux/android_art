@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_40d8d810",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fec880a_a5fb16a4",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 68
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_3a0aa184",
         "filename": "compiler/jni/quick/jni_compiler.cc",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Would the shorter\n\n  using typename JniMacroAssemblerPtrSized::UnaryCondition;\n\nwork too?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 76
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_e0190ceb",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "(Done) \n\nIt\u0027s not a nested type anymore, don\u0027t need this.",
+      "parentUuid": "9fc21c70_3a0aa184",
       "range": {
         "startLine": 86,
         "startChar": 2,
@@ -141,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_40333861",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_7ab7f9ce",
+      "range": {
+        "startLine": 287,
+        "startChar": 4,
+        "endLine": 287,
+        "endChar": 6
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_bae351c6",
         "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
         "patchSetId": 2
@@ -164,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_403698e9",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Removed function, unused",
+      "parentUuid": "9fc21c70_bae351c6",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 32
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_9ae88da3",
         "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
         "patchSetId": 2
@@ -175,6 +271,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 32
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_0053f013",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_9ae88da3",
       "range": {
         "startLine": 579,
         "startChar": 0,
@@ -233,6 +353,54 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_e02c6ca1",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_ba1eb1cf",
+      "range": {
+        "startLine": 197,
+        "startChar": 36,
+        "endLine": 197,
+        "endChar": 67
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_c02168a7",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_fae9c9a9",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 197,
+        "endChar": 9
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_daee05b0",
         "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
         "patchSetId": 2
@@ -244,6 +412,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_a02664bb",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_daee05b0",
       "range": {
         "startLine": 234,
         "startChar": 0,
@@ -303,6 +495,40 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_802360c4",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "nit: Swap else/if order for readability",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_60207cb7",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_3ad86110",
         "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
         "patchSetId": 2
@@ -326,6 +552,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_402d78ad",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_3ad86110",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 642,
+        "endChar": 32
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_1ad59dd6",
         "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
         "patchSetId": 2
@@ -337,6 +587,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Ditto.",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 32
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_202a7497",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_1ad59dd6",
       "range": {
         "startLine": 650,
         "startChar": 0,
@@ -395,6 +669,54 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_40521832",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_7aded900",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 9
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_60551c18",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_9a23ed15",
+      "range": {
+        "startLine": 178,
+        "startChar": 36,
+        "endLine": 178,
+        "endChar": 67
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_5adb150f",
         "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.h",
         "patchSetId": 2
@@ -412,6 +734,64 @@
         "endLine": 237,
         "endChar": 2
       },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_002f70ae",
+        "filename": "compiler/utils/arm64/jni_macro_assembler_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_5adb150f",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 2
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_a0142457",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Removed, unused.",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_800a4034",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "No longer nested class, don\u0027t need the usings.",
       "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -465,6 +845,30 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_c094c8f1",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fec880a_a5d2f621",
+      "range": {
+        "startLine": 208,
+        "startChar": 76,
+        "endLine": 208,
+        "endChar": 82
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_da004569",
         "filename": "compiler/utils/jni_macro_assembler.h",
         "patchSetId": 2
@@ -488,6 +892,64 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_20bef4a8",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_da004569",
+      "range": {
+        "startLine": 210,
+        "startChar": 35,
+        "endLine": 210,
+        "endChar": 44
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_20015415",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Deleted",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_c00a882f",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Deleted (not sure if ARM even had a notion of test instructions? Either way the single instruction branch+compare is tighter code, so this was unused).",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_baf59169",
         "filename": "compiler/utils/jni_macro_assembler.h",
         "patchSetId": 2
@@ -499,6 +961,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 3
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_00ead09d",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_baf59169",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -534,6 +1020,64 @@
     },
     {
       "key": {
+        "uuid": "7fec880a_e0eeacaf",
+        "filename": "compiler/utils/jni_macro_assembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fec880a_45e22af0",
+      "range": {
+        "startLine": 281,
+        "startChar": 6,
+        "endLine": 281,
+        "endChar": 25
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_e057ccfb",
+        "filename": "compiler/utils/mips/assembler_mips.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Added the LOG(FATAL)s here.",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fec880a_c05cc822",
+        "filename": "compiler/utils/mips64/assembler_mips64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Added the LOG(FATAL)s here.",
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_fab8a994",
         "filename": "compiler/utils/x86/jni_macro_assembler_x86.cc",
         "patchSetId": 2
@@ -545,6 +1089,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Factor this with lines 539–550?",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 572,
+        "endChar": 3
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3ac856_448c8035",
+        "filename": "compiler/utils/x86/jni_macro_assembler_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_fab8a994",
       "range": {
         "startLine": 561,
         "startChar": 0,
@@ -603,6 +1171,30 @@
     },
     {
       "key": {
+        "uuid": "7f3ac856_6485040b",
+        "filename": "compiler/utils/x86/jni_macro_assembler_x86.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_fa66694f",
+      "range": {
+        "startLine": 164,
+        "startChar": 36,
+        "endLine": 164,
+        "endChar": 67
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_ba70f100",
         "filename": "compiler/utils/x86/jni_macro_assembler_x86.h",
         "patchSetId": 2
@@ -649,6 +1241,30 @@
     },
     {
       "key": {
+        "uuid": "7f3ac856_84828802",
+        "filename": "compiler/utils/x86/jni_macro_assembler_x86.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_da6ba517",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 9
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_1a623d36",
         "filename": "compiler/utils/x86/jni_macro_assembler_x86.h",
         "patchSetId": 2
@@ -660,6 +1276,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 2
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3ac856_248ffc2c",
+        "filename": "compiler/utils/x86/jni_macro_assembler_x86.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_1a623d36",
       "range": {
         "startLine": 176,
         "startChar": 0,
@@ -695,6 +1335,30 @@
     },
     {
       "key": {
+        "uuid": "7f3ac856_04c8b84e",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_ba47d1a5",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 602,
+        "endChar": 32
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_9a4c0dcb",
         "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
         "patchSetId": 2
@@ -706,6 +1370,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "x86_64_cond?",
+      "range": {
+        "startLine": 605,
+        "startChar": 25,
+        "endLine": 605,
+        "endChar": 33
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3ac856_a4cc6c63",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_9a4c0dcb",
       "range": {
         "startLine": 605,
         "startChar": 25,
@@ -857,6 +1545,30 @@
     },
     {
       "key": {
+        "uuid": "7f3ac856_44a3209a",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_9a752df1",
+      "range": {
+        "startLine": 190,
+        "startChar": 36,
+        "endLine": 190,
+        "endChar": 67
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_7a5b7988",
         "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.h",
         "patchSetId": 2
@@ -914,6 +1626,30 @@
       "writtenOn": "2016-10-07T01:54:22Z",
       "side": 1,
       "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 2
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f3ac856_a491cc49",
+        "filename": "compiler/utils/x86_64/jni_macro_assembler_x86_64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-07T21:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc21c70_da528565",
       "range": {
         "startLine": 202,
         "startChar": 0,
