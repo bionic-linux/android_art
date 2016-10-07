@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3f23f0ed_a799aa80",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-10-07T10:03:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t look more convenient to me.",
+      "range": {
+        "startLine": 85,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 68
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_3a0aa184",
         "filename": "compiler/jni/quick/jni_compiler.cc",
         "patchSetId": 2
