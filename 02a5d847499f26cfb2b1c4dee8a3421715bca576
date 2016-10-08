@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f3ac856_162d4a9b",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-10-08T01:23:07Z",
+      "side": 1,
+      "message": "Thread::tls32_.is_gc_marking_ is a 32-bit size field. Should this better be sizeof(uint32_t)?",
+      "range": {
+        "startLine": 293,
+        "startChar": 24,
+        "endLine": 293,
+        "endChar": 36
+      },
+      "revId": "02a5d847499f26cfb2b1c4dee8a3421715bca576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
