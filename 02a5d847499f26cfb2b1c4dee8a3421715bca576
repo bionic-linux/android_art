@@ -46,6 +46,30 @@
       "revId": "02a5d847499f26cfb2b1c4dee8a3421715bca576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff9f98ca_b314c0b2",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-10-10T17:21:59Z",
+      "side": 1,
+      "message": "That probably works.",
+      "parentUuid": "7f3ac856_d68a8276",
+      "range": {
+        "startLine": 293,
+        "startChar": 24,
+        "endLine": 293,
+        "endChar": 36
+      },
+      "revId": "02a5d847499f26cfb2b1c4dee8a3421715bca576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
