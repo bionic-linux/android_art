@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "1f7aac68_b3522f0d",
+        "filename": "compiler/jni/quick/jni_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-11T19:54:56Z",
+      "side": 1,
+      "message": "Strange, I definitely recall fixing it, maybe it got backed out at some point?\n\nGood spot, I\u0027ll fix it in PS4 along with the sizeof(bool).",
+      "parentUuid": "1c2b9a7f_4e9e535b",
+      "range": {
+        "startLine": 287,
+        "startChar": 4,
+        "endLine": 287,
+        "endChar": 6
+      },
+      "revId": "aad9c45d1bd88af7d504c990ad453a84c9ec2e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fc21c70_bae351c6",
         "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
         "patchSetId": 2
