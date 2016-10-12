@@ -257,6 +257,30 @@
       "revId": "08c17b10f4fade49537969844a912080917baf5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c37d20c_a0e51afa",
+        "filename": "runtime/handle_scope_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-10-12T18:52:46Z",
+      "side": 1,
+      "message": "right. I miss the first hs.add.",
+      "parentUuid": "9c286ac7_2d71196f",
+      "range": {
+        "startLine": 84,
+        "startChar": 22,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
