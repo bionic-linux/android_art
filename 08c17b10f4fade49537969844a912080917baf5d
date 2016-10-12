@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "9c286ac7_6d0031df",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-12T17:02:01Z",
+      "side": 1,
+      "message": "It is still used a few places like jni compiler / stack walking. OK to leave it for now?",
+      "parentUuid": "5c37d20c_e0d282c7",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c37d20c_80dbb6df",
         "filename": "runtime/handle_scope.h",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2016-10-12T12:30:54Z",
       "side": 1,
       "message": "FixedSizeHandleScope",
+      "range": {
+        "startLine": 278,
+        "startChar": 66,
+        "endLine": 278,
+        "endChar": 82
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c286ac7_4d056ded",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-12T17:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c37d20c_80dbb6df",
       "range": {
         "startLine": 278,
         "startChar": 66,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "9c286ac7_edf381f7",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-12T17:02:01Z",
+      "side": 1,
+      "message": "I\u0027ll lower it back down.",
+      "parentUuid": "5c37d20c_60e0328a",
+      "range": {
+        "startLine": 302,
+        "startChar": 51,
+        "endLine": 302,
+        "endChar": 52
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c37d20c_40e1ae8f",
         "filename": "runtime/handle_scope_test.cc",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9c286ac7_6d6b117f",
+        "filename": "runtime/handle_scope_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-12T17:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c37d20c_40e1ae8f",
+      "range": {
+        "startLine": 76,
+        "startChar": 40,
+        "endLine": 76,
+        "endChar": 53
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb0fabd_a684e6be",
         "filename": "runtime/handle_scope_test.cc",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2016-10-12T12:30:54Z",
       "side": 1,
       "message": "Could you make this destruct after `hs`? It will be a more interesting test. The current setup should have worked before as well.",
+      "range": {
+        "startLine": 84,
+        "startChar": 22,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c286ac7_2d71196f",
+        "filename": "runtime/handle_scope_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-12T17:02:01Z",
+      "side": 1,
+      "message": "Actually, it should not have worked before since we do:\nhs.Add\n\ninner.Add\n\nhs.Add (100+ times).\n\nIt would make a chain like: hs -\u003e inner -\u003e hs -\u003e hs ...\nbut it would free in this order: inner -\u003e hs -\u003e hs ...\n\nIf inner is the outer one, it would have work fine before.",
+      "parentUuid": "1cb0fabd_a684e6be",
       "range": {
         "startLine": 84,
         "startChar": 22,
