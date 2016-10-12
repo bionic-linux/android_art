@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bca28e7a_e37ad2bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-10-12T12:30:54Z",
+      "side": 1,
+      "message": "Thanks for changing this :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 29
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c37d20c_e0d282c7",
         "filename": "runtime/handle_scope.h",
         "patchSetId": 1
@@ -25,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "5c37d20c_80dbb6df",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-10-12T12:30:54Z",
+      "side": 1,
+      "message": "FixedSizeHandleScope",
+      "range": {
+        "startLine": 278,
+        "startChar": 66,
+        "endLine": 278,
+        "endChar": 82
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c37d20c_60e0328a",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-10-12T12:30:54Z",
+      "side": 1,
+      "message": "Am fine with it but any reason for the increase?",
+      "range": {
+        "startLine": 302,
+        "startChar": 51,
+        "endLine": 302,
+        "endChar": 52
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c37d20c_40e1ae8f",
         "filename": "runtime/handle_scope_test.cc",
         "patchSetId": 1
@@ -41,6 +110,29 @@
         "startChar": 40,
         "endLine": 76,
         "endChar": 53
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cb0fabd_a684e6be",
+        "filename": "runtime/handle_scope_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-10-12T12:30:54Z",
+      "side": 1,
+      "message": "Could you make this destruct after `hs`? It will be a more interesting test. The current setup should have worked before as well.",
+      "range": {
+        "startLine": 84,
+        "startChar": 22,
+        "endLine": 84,
+        "endChar": 27
       },
       "revId": "08c17b10f4fade49537969844a912080917baf5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
