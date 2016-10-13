@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fc73265a_b641eef3",
+        "filename": "runtime/handle_scope.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-13T23:53:50Z",
+      "side": 1,
+      "message": "Yes, that would be possible. I\u0027ll try to get around to doing that eventually.",
+      "parentUuid": "5c37d20c_239e345a",
+      "range": {
+        "startLine": 91,
+        "startChar": 16,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "08c17b10f4fade49537969844a912080917baf5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c37d20c_80dbb6df",
         "filename": "runtime/handle_scope.h",
         "patchSetId": 1
