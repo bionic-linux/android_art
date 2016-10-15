@@ -1171,7 +1171,9 @@ class ClinitImageUpdate {
   }
 
   // Visitor for VisitReferences.
-  void operator()(mirror::Object* object, MemberOffset field_offset, bool /* is_static */) const
+  void operator()(ObjPtr<mirror::Object> object,
+                  MemberOffset field_offset,
+                  bool /* is_static */) const
       REQUIRES_SHARED(Locks::mutator_lock_) {
     mirror::Object* ref = object->GetFieldObject<mirror::Object>(field_offset);
     if (ref != nullptr) {
@@ -1180,8 +1182,8 @@ class ClinitImageUpdate {
   }
 
   // java.lang.Reference visitor for VisitReferences.
-  void operator()(mirror::Class* klass ATTRIBUTE_UNUSED, mirror::Reference* ref ATTRIBUTE_UNUSED)
-      const {}
+  void operator()(ObjPtr<mirror::Class> klass ATTRIBUTE_UNUSED,
+                  ObjPtr<mirror::Reference> ref ATTRIBUTE_UNUSED) const {}
 
   // Ignore class native roots.
   void VisitRootIfNonNull(mirror::CompressedReference<mirror::Object>* root ATTRIBUTE_UNUSED)
