@@ -18,6 +18,7 @@
 #define ART_RUNTIME_MIRROR_REFERENCE_INL_H_
 
 #include "reference.h"
+#include "obj_ptr-inl.h"
 
 #include "obj_ptr-inl.h"
 
