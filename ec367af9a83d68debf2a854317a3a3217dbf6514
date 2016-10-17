@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "5c6993e3_563fc51e",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-17T17:57:51Z",
+      "side": 1,
+      "message": "Is this duplication really necessary?",
+      "range": {
+        "startLine": 1368,
+        "startChar": 2,
+        "endLine": 1368,
+        "endChar": 38
+      },
+      "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c6993e3_d6b755b8",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 1
@@ -58,6 +81,29 @@
         "startChar": 51,
         "endLine": 77,
         "endChar": 53
+      },
+      "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6993e3_16b86d7a",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-17T17:57:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this is required, is it?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 24
       },
       "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
