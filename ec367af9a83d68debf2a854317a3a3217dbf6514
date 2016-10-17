@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c6993e3_b6a3c183",
+        "filename": "dexdump/dexdump_main.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-17T17:47:35Z",
+      "side": 1,
+      "message": "nit: I think ATTRIBUTE_UNUSED is preferred now",
+      "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6993e3_d6b755b8",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-17T17:47:35Z",
+      "side": 1,
+      "message": "std::forward is only for templated parameters, you probably want std::move here",
+      "range": {
+        "startLine": 89,
+        "startChar": 34,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c6993e3_36c7b132",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-17T17:47:35Z",
+      "side": 1,
+      "message": "nit: Probably want the regular not-\u0026\u0026 version here",
+      "range": {
+        "startLine": 77,
+        "startChar": 51,
+        "endLine": 77,
+        "endChar": 53
+      },
+      "revId": "ec367af9a83d68debf2a854317a3a3217dbf6514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
