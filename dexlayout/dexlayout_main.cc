@@ -60,12 +60,16 @@ static void Usage(void) {
   fprintf(stderr, " -w : output dex directory \n");
 }
 
+static void Aborter(const char* message) {
+  UNUSED(message);
+}
+
 /*
  * Main driver of the dexlayout utility.
  */
 int DexlayoutDriver(int argc, char** argv) {
   // Art specific set up.
-  InitLogging(argv);
+  InitLogging(argv, Aborter);
   MemMap::Init();
 
   // Reset options.
