@@ -54,12 +54,17 @@ static void usage(void) {
   fprintf(stderr, " -o : output file name (defaults to stdout)\n");
 }
 
+NO_RETURN
+static void Aborter(const char* message ATTRIBUTE_UNUSED) {
+  exit(EXIT_FAILURE);
+}
+
 /*
  * Main driver of the dexdump utility.
  */
 int dexdumpDriver(int argc, char** argv) {
   // Art specific set up.
-  InitLogging(argv);
+  InitLogging(argv, Aborter);
   MemMap::Init();
 
   // Reset options.

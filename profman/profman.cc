@@ -119,6 +119,11 @@ NO_RETURN static void Usage(const char *fmt, ...) {
   exit(EXIT_FAILURE);
 }
 
+NO_RETURN
+static void Aborter(const char* message ATTRIBUTE_UNUSED) {
+  exit(EXIT_FAILURE);
+}
+
 // Note: make sure you update the Usage if you change these values.
 static constexpr uint16_t kDefaultTestProfileNumDex = 20;
 static constexpr uint16_t kDefaultTestProfileMethodRatio = 5;
@@ -143,7 +148,7 @@ class ProfMan FINAL {
     original_argc = argc;
     original_argv = argv;
 
-    InitLogging(argv);
+    InitLogging(argv, Aborter);
 
     // Skip over the command name.
     argv++;

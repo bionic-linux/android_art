@@ -121,8 +121,11 @@ class CmdlineParserTest : public ::testing::Test {
   using M = RuntimeArgumentMap;
   using RuntimeParser = ParsedOptions::RuntimeParser;
 
+  static void Aborter(const char* message ATTRIBUTE_UNUSED) {
+  }
+
   static void SetUpTestCase() {
-    art::InitLogging(nullptr);  // argv = null
+    art::InitLogging(nullptr, Aborter);  // argv = null
   }
 
   virtual void SetUp() {
