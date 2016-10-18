@@ -431,7 +431,8 @@ TEST_ART_BROKEN_TRACING_RUN_TESTS := \
   137-cfi \
   141-class-unload \
   570-checker-osr \
-  802-deoptimization
+  802-deoptimization \
+  1339-clamp-growth-limit-GC-deadlock
 
 ifneq (,$(filter trace stream,$(TRACE_TYPES)))
   ART_TEST_KNOWN_BROKEN += $(call all-run-test-names,$(TARGET_TYPES),$(RUN_TYPES),$(PREBUILD_TYPES), \

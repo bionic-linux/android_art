@@ -64,6 +64,7 @@ Mutex* Locks::trace_lock_ = nullptr;
 Mutex* Locks::unexpected_signal_lock_ = nullptr;
 Mutex* Locks::lambda_table_lock_ = nullptr;
 Uninterruptible Roles::uninterruptible_;
+Mutex* Locks::clamp_growth_limit_GC_lock_ = nullptr;
 
 struct AllMutexData {
   // A guard for all_mutexes_ that's not a mutex (Mutexes must CAS to acquire and busy wait).
@@ -964,6 +965,7 @@ void Locks::Init() {
     DCHECK(trace_lock_ != nullptr);
     DCHECK(unexpected_signal_lock_ != nullptr);
     DCHECK(lambda_table_lock_ != nullptr);
+    DCHECK(clamp_growth_limit_GC_lock_ != nullptr);
   } else {
     // Create global locks in level order from highest lock level to lowest.
     LockLevel current_lock_level = kInstrumentEntrypointsLock;
@@ -978,6 +980,10 @@ void Locks::Init() {
         exit(1); \
       } \
       current_lock_level = new_level;
+
+    UPDATE_CURRENT_LOCK_LEVEL(kClampGrowthLimitGCLock);
+    DCHECK(clamp_growth_limit_GC_lock_ == nullptr);
+    clamp_growth_limit_GC_lock_ = new Mutex("clamp growth limit GC lock", current_lock_level);
 
     UPDATE_CURRENT_LOCK_LEVEL(kMutatorLock);
     DCHECK(mutator_lock_ == nullptr);

@@ -115,6 +115,7 @@ enum LockLevel {
   kTraceLock,
   kHeapBitmapLock,
   kMutatorLock,
+  kClampGrowthLimitGCLock,
   kInstrumentEntrypointsLock,
   kZygoteCreationLock,
 
@@ -595,7 +596,9 @@ class Locks {
   //    state is changed                           |  .. running ..
   //  - if the CAS operation fails then goto x     |  .. running ..
   //  .. running ..                                |  .. running ..
-  static MutatorMutex* mutator_lock_ ACQUIRED_AFTER(instrument_entrypoints_lock_);
+  static Mutex* clamp_growth_limit_GC_lock_ ACQUIRED_AFTER(instrument_entrypoints_lock_);
+
+  static MutatorMutex* mutator_lock_ ACQUIRED_AFTER(clamp_growth_limit_GC_lock_);
 
   // Allow reader-writer mutual exclusion on the mark and live bitmaps of the heap.
   static ReaderWriterMutex* heap_bitmap_lock_ ACQUIRED_AFTER(mutator_lock_);

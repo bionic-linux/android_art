@@ -1,0 +1,7 @@
+JNI_OnLoad called
+mutatorHeld start.
+mutatorHeld mutator held.
+gcRunCheckpoint start.
+gcRunCheckpoint heap_bitmap_lock_ held.
+gcRunCheckpoint finish.
+mutatorHeld finish.
