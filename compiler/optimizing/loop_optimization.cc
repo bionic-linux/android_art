@@ -216,6 +216,7 @@ void HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
     if (node->inner != nullptr) {
       TraverseLoopsInnerToOuter(node->inner);
     }
+    SimplifyBlocks(node);
     // Visit loop after its inner loops have been visited. If the induction of any inner
     // loop has been simplified, recompute the induction information of this loop first.
     if (current_induction_simplification_count != induction_simplication_count_) {
