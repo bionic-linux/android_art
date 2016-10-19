@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf58392_ebf992d8",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2016-10-19T20:46:54Z",
+      "side": 1,
+      "message": "I picked a slightly better name. Now all fold\u003ci\u003e/simplify\u003ci\u003e pairs have the same name. Seems right to do it that way.",
+      "revId": "c98547a1b4f1416a2aaf40c3a0436a990a404820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
