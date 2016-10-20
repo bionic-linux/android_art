@@ -73,6 +73,7 @@ namespace accounting {
 namespace collector {
   class ConcurrentCopying;
   class GarbageCollector;
+  class GarbageCollectorTest;
   class MarkCompact;
   class MarkSweep;
   class SemiSpace;
@@ -1380,6 +1381,7 @@ class Heap {
 
   friend class CollectorTransitionTask;
   friend class collector::GarbageCollector;
+  friend class collector::GarbageCollectorTest;
   friend class collector::MarkCompact;
   friend class collector::ConcurrentCopying;
   friend class collector::MarkSweep;

@@ -31,17 +31,27 @@ typedef void (ObjectCallback)(mirror::Object* obj, void* arg);
 class IsMarkedVisitor {
  public:
   virtual ~IsMarkedVisitor() {}
+
   // Return null if an object is not marked, otherwise returns the new address of that object.
   // May return the same address as the input if the object did not move.
+  // May return false if the object was recently allocated.
   virtual mirror::Object* IsMarked(mirror::Object* obj) = 0;
+
+  // Is marked or newly allocated always returns true for objects that are newly allocated or
+  // marked. Performance is worse IsMarked since it may require searching the allocation stack.
+  virtual mirror::Object* IsMarkedOrNewlyAllocated(mirror::Object* obj) {
+    return IsMarked(obj);
+  }
 };
 
 class MarkObjectVisitor {
  public:
   virtual ~MarkObjectVisitor() {}
+
   // Mark an object and return the new address of an object.
   // May return the same address as the input if the object did not move.
   virtual mirror::Object* MarkObject(mirror::Object* obj) = 0;
+
   // Mark an object and update the value stored in the heap reference if the object moved.
   virtual void MarkHeapReference(mirror::HeapReference<mirror::Object>* obj) = 0;
 };
