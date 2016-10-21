@@ -17,6 +17,8 @@
 #include <stdio.h>
 #include <jni.h>
 
+#include <functional>
+
 #ifndef NATIVE_METHOD
 #define NATIVE_METHOD(className, functionName, signature) \
     { #functionName, signature, reinterpret_cast<void*>(className ## _ ## functionName) }
@@ -96,6 +98,55 @@ static JNINativeMethod gMethods_Critical[] = {
         reinterpret_cast<void*>(NAME_CRITICAL_JNI_METHOD(emptyJniStaticMethod6_1Critical)) }
 };
 
+static void NativeMethods_localBaseline(JNIEnv*, jobject, jobject) {
+}
+static void NativeMethods_addLocal(JNIEnv* env, jobject, jobject obj) {
+  env->NewLocalRef(obj);
+  // Leak the local reference, it will be freed automatically.
+}
+static void NativeMethods_addRemoveLocal(JNIEnv* env, jobject, jobject obj) {
+  jobject local = env->NewLocalRef(obj);
+  env->DeleteLocalRef(local);
+}
+static void NativeMethods_addAddRemoveAddLocals(JNIEnv* env, jobject, jobject obj) {
+  jobject to_delete = env->NewLocalRef(obj);
+  env->NewLocalRef(obj);
+  env->DeleteLocalRef(to_delete);
+  env->NewLocalRef(obj);
+  // Leak the local references, they will be freed automatically.
+}
+static void NativeMethods_pushAndPopLocal(JNIEnv* env, jobject, jobject obj) {
+  std::function<void(size_t, size_t)> recurse = [&](size_t depth, size_t max_depth) {
+    env->PushLocalFrame(10);
+    if (depth != max_depth) {
+      // Add 3 local references, delete the middle.
+      env->NewLocalRef(obj);
+      jobject to_delete = env->NewLocalRef(obj);
+      env->NewLocalRef(obj);
+      env->DeleteLocalRef(to_delete);
+
+      // Recurse.
+      recurse(depth + 1, max_depth);
+
+      // Add two references, delete one.
+      jobject to_delete2 = env->NewLocalRef(obj);
+      env->NewLocalRef(obj);
+      env->DeleteLocalRef(to_delete2);
+    }
+    env->PopLocalFrame(nullptr);
+  };
+
+  recurse(0, 5);
+}
+
+static JNINativeMethod gMethods_Locals[] = {
+  NATIVE_METHOD(NativeMethods, localBaseline, "(Ljava/lang/Object;)V"),
+  NATIVE_METHOD(NativeMethods, addLocal, "(Ljava/lang/Object;)V"),
+  NATIVE_METHOD(NativeMethods, addRemoveLocal, "(Ljava/lang/Object;)V"),
+  NATIVE_METHOD(NativeMethods, addAddRemoveAddLocals, "(Ljava/lang/Object;)V"),
+  NATIVE_METHOD(NativeMethods, pushAndPopLocal, "(Ljava/lang/Object;)V"),
+};
+
 void jniRegisterNativeMethods(JNIEnv* env,
                               const char* className,
                               const JNINativeMethod* methods,
@@ -142,5 +193,8 @@ void register_micro_native_methods(JNIEnv* env) {
       env->ExceptionClear();
     }
   }
+
+  jniRegisterNativeMethods(env, CLASS_NAME, gMethods_Locals, NELEM(gMethods_Locals));
+
   // else let them be registered implicitly.
 }
