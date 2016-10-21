@@ -559,6 +559,16 @@ void Thread::CreateNativeThread(JNIEnv* env, jobject java_peer, size_t stack_siz
   CHECK(java_peer != nullptr);
   Thread* self = static_cast<JNIEnvExt*>(env)->self;
 
+  jlong native_peer = env->GetLongField(
+      java_peer, WellKnownClasses::java_lang_Thread_nativePeer);
+  if (native_peer != 0) {
+    // Thread already started
+    ScopedLocalRef<jclass> error_class(env, env->FindClass("java/lang/IllegalThreadStateException"));
+    env->ThrowNew(error_class.get(), "Thread already started");
+    return;
+  }
+
+
   if (VLOG_IS_ON(threads)) {
     ScopedObjectAccess soa(env);
 

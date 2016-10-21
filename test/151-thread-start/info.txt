@@ -1,0 +1,1 @@
+Checks that Thread.start works
