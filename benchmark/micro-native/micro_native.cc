@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-#include <stdio.h>
-#include <jni.h>
+#include "micro_native.h"
 
-#ifndef NATIVE_METHOD
-#define NATIVE_METHOD(className, functionName, signature) \
-    { #functionName, signature, reinterpret_cast<void*>(className ## _ ## functionName) }
-#endif
-#define NELEM(x) (sizeof(x)/sizeof((x)[0]))
+#include <stdio.h>
+
+namespace art {
 
 #define GLUE4(a, b, c, d) a ## b ## c ## d
 #define GLUE4_(a, b, c, d) GLUE4(a, b, c, d)
 
-#define CLASS_NAME "benchmarks/MicroNative/java/NativeMethods"
 #define CLASS_INFIX benchmarks_MicroNative_java_NativeMethods
 
 #define NAME_NORMAL_JNI_METHOD(name) GLUE4_(Java_, CLASS_INFIX, _, name)
@@ -96,46 +92,14 @@ static JNINativeMethod gMethods_Critical[] = {
         reinterpret_cast<void*>(NAME_CRITICAL_JNI_METHOD(emptyJniStaticMethod6_1Critical)) }
 };
 
-void jniRegisterNativeMethods(JNIEnv* env,
-                              const char* className,
-                              const JNINativeMethod* methods,
-                              int numMethods) {
-    jclass c = env->FindClass(className);
-    if (c == nullptr) {
-        char* tmp;
-        const char* msg;
-        if (asprintf(&tmp,
-                     "Native registration unable to find class '%s'; aborting...",
-                     className) == -1) {
-            // Allocation failed, print default warning.
-            msg = "Native registration unable to find class; aborting...";
-        } else {
-            msg = tmp;
-        }
-        env->FatalError(msg);
-    }
-
-    if (env->RegisterNatives(c, methods, numMethods) < 0) {
-        char* tmp;
-        const char* msg;
-        if (asprintf(&tmp, "RegisterNatives failed for '%s'; aborting...", className) == -1) {
-            // Allocation failed, print default warning.
-            msg = "RegisterNatives failed; aborting...";
-        } else {
-            msg = tmp;
-        }
-        env->FatalError(msg);
-    }
-}
-
 void register_micro_native_methods(JNIEnv* env) {
-  jniRegisterNativeMethods(env, CLASS_NAME, gMethods_NormalOnly, NELEM(gMethods_NormalOnly));
-  jniRegisterNativeMethods(env, CLASS_NAME, gMethods, NELEM(gMethods));
-  jniRegisterNativeMethods(env, CLASS_NAME, gMethods_Fast, NELEM(gMethods_Fast));
+  jniRegisterNativeMethodsHelper(env, kClassName, gMethods_NormalOnly, NELEM(gMethods_NormalOnly));
+  jniRegisterNativeMethodsHelper(env, kClassName, gMethods, NELEM(gMethods));
+  jniRegisterNativeMethodsHelper(env, kClassName, gMethods_Fast, NELEM(gMethods_Fast));
 
   if (env->FindClass("dalvik/annotation/optimization/CriticalNative") != nullptr) {
     // Only register them explicitly if the annotation is present.
-    jniRegisterNativeMethods(env, CLASS_NAME, gMethods_Critical, NELEM(gMethods_Critical));
+    jniRegisterNativeMethodsHelper(env, kClassName, gMethods_Critical, NELEM(gMethods_Critical));
   } else {
     if (env->ExceptionCheck()) {
       // It will throw NoClassDefFoundError
@@ -144,3 +108,5 @@ void register_micro_native_methods(JNIEnv* env) {
   }
   // else let them be registered implicitly.
 }
+
+}  // namespace art
