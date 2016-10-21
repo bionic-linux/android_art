@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c913fcf_db5d0c95",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "Pull these macros out into a common header? micro-native.h or common.h should suffice.",
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_3b1fd0d2",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "Too few, use 1000000 which is the same value as in the java file.\n\nAlso add an assert that it\u0027s the same thing as in the Java file.\n\nNativeBenchmarkBase#EXERCISE_COUNT",
+      "range": {
+        "startLine": 30,
+        "startChar": 39,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_bb0a0092",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "I think it\u0027s missing one where it newlocalrefs in a loop then deletelocalrefs in a loop (I guess in reverse).\n\nThat\u0027s the more common case when using a bunch of \"ScopedLocalRef\" at the same scope",
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_3b4d10df",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "Naming wise I\u0027d like to see it be called LocalRefs\n\nIf you are planning on adding global/weak refs to this file as well (and it certainly makes sense), then rename to IndirectRefs for most generality (and use the same prefix as the name of the java class containing the natives).\n\nThe java *benchmark* names should probably be something like UpcallRefLocalAdd, UpcallRefLocalAddRemove, etc.",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 41
+      },
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_dbd26cbb",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "Consider a few more cases with Push/Pop as it simulates the cost of multiple JNI transitions.\n\nCould probably simple reuse some of the other functions (e.g. by calling a callback there which pushes/pops) by restructuring it a bit.",
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_3bbb507b",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "nit: make varname",
+      "range": {
+        "startLine": 75,
+        "startChar": 42,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_1b685433",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-21T20:08:16Z",
+      "side": 1,
+      "message": "Put this into a common header?",
+      "revId": "0be5cc1f1a54c9823754556bfbbf0a4a50924e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
