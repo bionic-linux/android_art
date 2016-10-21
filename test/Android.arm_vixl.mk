@@ -55,12 +55,10 @@ TEST_ART_BROKEN_OPTIMIZING_ARM_VIXL_RUN_TESTS := \
   535-regression-const-val \
   536-checker-intrinsic-optimization \
   538-checker-embed-constants \
-  550-checker-multiply-accumulate \
   552-checker-primitive-typeprop \
   552-checker-sharpening \
   555-UnsafeGetLong-regression \
   562-checker-no-intermediate \
-  564-checker-negbitwise \
   570-checker-select \
   574-irreducible-and-constant-area \
   580-checker-round \
