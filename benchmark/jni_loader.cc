@@ -17,6 +17,7 @@
 #include <jni.h>
 
 extern void register_micro_native_methods(JNIEnv* env);
+extern void register_micro_native_locals_methods(JNIEnv* env);
 
 jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/) {
   JNIEnv* env;
@@ -27,6 +28,7 @@ jint JNI_OnLoad(JavaVM* vm, void* /*reserved*/) {
   // List of functions to call to register methods explicitly.
   // Otherwise we use the regular JNI naming conventions to register implicitly.
   register_micro_native_methods(env);
+  register_micro_native_locals_methods(env);
 
   return JNI_VERSION_1_6;
 }
