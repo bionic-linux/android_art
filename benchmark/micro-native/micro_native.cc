@@ -96,10 +96,10 @@ static JNINativeMethod gMethods_Critical[] = {
         reinterpret_cast<void*>(NAME_CRITICAL_JNI_METHOD(emptyJniStaticMethod6_1Critical)) }
 };
 
-void jniRegisterNativeMethods(JNIEnv* env,
-                              const char* className,
-                              const JNINativeMethod* methods,
-                              int numMethods) {
+static void jniRegisterNativeMethods(JNIEnv* env,
+                                     const char* className,
+                                     const JNINativeMethod* methods,
+                                     int numMethods) {
     jclass c = env->FindClass(className);
     if (c == nullptr) {
         char* tmp;
