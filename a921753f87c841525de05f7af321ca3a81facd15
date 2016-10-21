@@ -1,0 +1,243 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c913fcf_4d8065dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Please improve commit title and provide details (what does this commit?)",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_2d8319ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Test: run tests",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_0d7e5d22",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Why do we need this check here as we have it in Java code here - https://android-review.googlesource.com/#/c/292750/1/ojluni/src/main/java/java/lang/Thread.java",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_32b538d4",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Duplicate blank line",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_cd73955a",
+        "filename": "test/151-thread-start/info.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Checks -\u003e Tests",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_ed785139",
+        "filename": "test/151-thread-start/info.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Improve message to better describe what is actually tested",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_f2a11091",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Copyright should start at the 1st line of file",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_d2ac148c",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Please provide better decsription",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_7296e033",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Error -\u003e ERROR",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_5299e462",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Use System.err for reporting broken behavior",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_ad6e4971",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "Why do we need lock?",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_92936c41",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "err.print(\"ERROR: ....",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c913fcf_ad95691d",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-10-21T10:42:08Z",
+      "side": 1,
+      "message": "-\u003e Got expected IllegalThreadStateException on start() second call",
+      "range": {
+        "startLine": 59,
+        "startChar": 36,
+        "endLine": 59,
+        "endChar": 55
+      },
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
