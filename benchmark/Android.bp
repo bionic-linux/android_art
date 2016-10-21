@@ -23,6 +23,8 @@ art_cc_library {
         "jobject-benchmark/jobject_benchmark.cc",
         "jni-perf/perf_jni.cc",
         "micro-native/micro_native.cc",
+        "micro-native/micro_native_common.cc",
+        "micro-native/micro_native_locals.cc",
         "scoped-primitive-array/scoped_primitive_array.cc",
     ],
     shared_libs: [
@@ -53,6 +55,8 @@ art_cc_library {
     srcs: [
         "jni_loader.cc",
         "micro-native/micro_native.cc",
+        "micro-native/micro_native_common.cc",
+        "micro-native/micro_native_locals.cc",
     ],
     shared_libs: [
     ],
