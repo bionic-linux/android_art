@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1d3dce9_c188ec04",
+        "filename": "benchmark/micro-native/micro_native_locals.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-24T22:15:53Z",
+      "side": 1,
+      "message": "Or \"upcall?\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 26,
+        "endLine": 23,
+        "endChar": 35
+      },
+      "revId": "b59a5e0d8b24ce68fb3a6769a6cd674c4dfe0965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
