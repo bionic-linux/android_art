@@ -184,6 +184,48 @@
     },
     {
       "key": {
+        "uuid": "bc0a8fd0_24ecfb9f",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1083288
+      },
+      "writtenOn": "2016-10-24T10:52:37Z",
+      "side": 1,
+      "message": "It is no difference which strings we output in test. It is important that outputted strings matched the strings in the expected.txt",
+      "parentUuid": "3c913fcf_7296e033",
+      "range": {
+        "startLine": 41,
+        "startChar": 32,
+        "endLine": 41,
+        "endChar": 37
+      },
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0a8fd0_c4f6df72",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1083288
+      },
+      "writtenOn": "2016-10-24T10:52:37Z",
+      "side": 1,
+      "message": "I have looked at different tests. All of them used System.out.",
+      "parentUuid": "3c913fcf_5299e462",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c913fcf_ad6e4971",
         "filename": "test/151-thread-start/src/Main.java",
         "patchSetId": 1
@@ -195,6 +237,24 @@
       "writtenOn": "2016-10-21T10:42:08Z",
       "side": 1,
       "message": "Why do we need lock?",
+      "revId": "a921753f87c841525de05f7af321ca3a81facd15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0a8fd0_04f1f778",
+        "filename": "test/151-thread-start/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1083288
+      },
+      "writtenOn": "2016-10-24T10:52:37Z",
+      "side": 1,
+      "message": "I need to ensure that I call method start for running thread.",
+      "parentUuid": "3c913fcf_ad6e4971",
       "revId": "a921753f87c841525de05f7af321ca3a81facd15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
