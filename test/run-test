@@ -835,7 +835,9 @@ elif [ "$build_only" = "yes" ]; then
         fi
     fi
     # Clean up extraneous files that are not used by tests.
-    find $tmp_dir -mindepth 1  ! -regex ".*/\(.*jar\|$output\|$expected\)" | xargs rm -rf
+    if [ "$never-clean" = "no" ]; then
+      find $tmp_dir -mindepth 1  ! -regex ".*/\(.*jar\|$output\|$expected\)" | xargs rm -rf
+    fi
     exit 0
 else
     "./${build}" $build_args >"$build_output" 2>&1
