@@ -124,6 +124,7 @@ gc_stress="false"
 strace="false"
 always_clean="no"
 never_clean="no"
+keep_class_files="no"
 have_dex2oat="yes"
 have_patchoat="yes"
 have_image="yes"
@@ -340,6 +341,9 @@ while true; do
         shift
     elif [ "x$1" = "x--never-clean" ]; then
         never_clean="yes"
+        shift
+    elif [ "x$1" = "x--keep-class-files" ]; then
+        keep_class_files="yes"
         shift
     elif [ "x$1" = "x--dex2oat-swap" ]; then
         run_args="${run_args} --dex2oat-swap"
@@ -629,6 +633,7 @@ if [ "$usage" = "yes" ]; then
         echo "    --gcverify            Run with gc verification"
         echo "    --always-clean        Delete the test files even if the test fails."
         echo "    --never-clean         Keep the test files even if the test succeeds."
+        echo "    --keep-class-files    Don't delete the class files after building".
         echo "    --android-root [path] The path on target for the android root. (/system by default)."
         echo "    --dex2oat-swap        Use a dex2oat swap file."
         echo "    --instruction-set-features [string]"
@@ -835,7 +840,12 @@ elif [ "$build_only" = "yes" ]; then
         fi
     fi
     # Clean up extraneous files that are not used by tests.
-    find $tmp_dir -mindepth 1  ! -regex ".*/\(.*jar\|$output\|$expected\)" | xargs rm -rf
+    if [ "$keep_class_files" = "yes" ]; then
+      keep=".*/\(.*jar\|classes\|.*class\|$output\|$expected\)"
+    else
+      keep=".*/\(.*jar\|$output\|$expected\)"
+    fi
+    find $tmp_dir -mindepth 1  ! -regex "$keep" | xargs rm -rf
     exit 0
 else
     "./${build}" $build_args >"$build_output" 2>&1
