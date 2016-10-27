@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4654620e_e6ccfec6",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-27T20:15:32Z",
+      "side": 1,
+      "message": "Yes, will come, once the part below is OK. :-)",
+      "parentUuid": "4654620e_2690d696",
+      "revId": "7f1acdce47f6ec7dae6747d744d8c00ef6b802fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4654620e_469bd2be",
         "filename": "runtime/thread.cc",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-10-27T20:14:15Z",
       "side": 1,
       "message": "After you do ModifySuspendCount you might need to wait until suspended if the thread went back to runnable after the check above.",
+      "range": {
+        "startLine": 1229,
+        "startChar": 12,
+        "endLine": 1229,
+        "endChar": 15
+      },
+      "revId": "7f1acdce47f6ec7dae6747d744d8c00ef6b802fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4654620e_a6d6064f",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-27T20:15:32Z",
+      "side": 1,
+      "message": "What do you think about the TODO up there.\n\nShould I just check the state again under lock, and loop to top if it\u0027s runnable?",
+      "parentUuid": "4654620e_469bd2be",
       "range": {
         "startLine": 1229,
         "startChar": 12,
