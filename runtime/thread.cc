@@ -1175,6 +1175,65 @@ bool Thread::RequestCheckpoint(Closure* function) {
   return success;
 }
 
+class BarrierClosure : public Closure {
+ public:
+  explicit BarrierClosure(Closure* wrapped) : wrapped_(wrapped) {}
+
+  void Run(Thread* self) OVERRIDE {
+    wrapped_->Run(self);
+  }
+
+  void Wait() {
+  }
+
+ private:
+  Closure* wrapped_;
+};
+
+void Thread::RequestSynchronousCheckpoint(Closure* function) {
+  if (this == Thread::Current()) {
+    // Asked to run on this thread. Just run.
+    function->Run(this);
+    return;
+  }
+
+  // The current thread is not this thread.
+
+  // If this thread is runnable, try to schedule a checkpoint. Do some gymnastics to not hold the
+  // suspend-count lock for too long.
+  if (GetState() == ThreadState::kRunnable) {
+    BarrierClosure barrier_closure(function);
+    bool installed = false;
+    {
+      MutexLock mu(Thread::Current(), *Locks::thread_suspend_count_lock_);
+      if (GetState() == ThreadState::kRunnable) {
+        installed = RequestCheckpoint(&barrier_closure);
+      }
+    }
+    if (installed) {
+      barrier_closure.Wait();
+      return;
+    }
+    // Fall-through.
+  }
+
+  // This thread is not runnable, make sure we stay suspended, then run the checkpoint.
+  {
+    MutexLock mu(Thread::Current(), *Locks::thread_suspend_count_lock_);
+    ModifySuspendCount(Thread::Current(), +1, nullptr, false);
+
+    // TODO: Is it necessary here to check again and suspend the thread? Should this all be in
+    //       a loop?
+  }
+
+  function->Run(this);
+
+  {
+    MutexLock mu(Thread::Current(), *Locks::thread_suspend_count_lock_);
+    ModifySuspendCount(Thread::Current(), -1, nullptr, false);
+  }
+}
+
 Closure* Thread::GetFlipFunction() {
   Atomic<Closure*>* atomic_func = reinterpret_cast<Atomic<Closure*>*>(&tlsPtr_.flip_function);
   Closure* func;
