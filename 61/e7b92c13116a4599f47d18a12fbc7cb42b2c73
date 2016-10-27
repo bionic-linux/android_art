@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Benoit Lamarche <benoitlamarche@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Verified+1: Narayan Kamath <narayan@google.com>
+Submitted-by: Benoit Lamarche <benoitlamarche@google.com>
+Submitted-at: Thu, 27 Oct 2016 10:51:25 +0000
+Reviewed-on: https://android-review.googlesource.com/295450
+Project: platform/art
+Branch: refs/heads/master
