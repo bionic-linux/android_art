@@ -2480,35 +2480,25 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
       // We use a block to end the scratch scope before the write barrier, thus
       // freeing the temporary registers so they can be used in `MarkGCCard`.
       UseScratchRegisterScope temps(masm);
-      Register temp = temps.AcquireSameSizeAs(array);
-      if (index.IsConstant()) {
-        offset += Int64ConstantFrom(index) << Primitive::ComponentSizeShift(value_type);
-        destination = HeapOperand(array, offset);
-      } else {
-        destination = HeapOperand(temp,
-                                  XRegisterFrom(index),
-                                  LSL,
-                                  Primitive::ComponentSizeShift(value_type));
-      }
 
-      uint32_t class_offset = mirror::Object::ClassOffset().Int32Value();
-      uint32_t super_offset = mirror::Class::SuperClassOffset().Int32Value();
-      uint32_t component_offset = mirror::Class::ComponentTypeOffset().Int32Value();
+      Register temp;
 
+      const uint32_t class_offset = mirror::Object::ClassOffset().Int32Value();
+      const uint32_t super_offset = mirror::Class::SuperClassOffset().Int32Value();
+      const uint32_t component_offset = mirror::Class::ComponentTypeOffset().Int32Value();
+
+      const bool need_null_check = instruction->GetValueCanBeNull();
+      vixl::aarch64::Label is_zero;
       if (may_need_runtime_call_for_type_check) {
         slow_path = new (GetGraph()->GetArena()) ArraySetSlowPathARM64(instruction);
         codegen_->AddSlowPath(slow_path);
-        if (instruction->GetValueCanBeNull()) {
-          vixl::aarch64::Label non_zero;
-          __ Cbnz(Register(value), &non_zero);
-          if (!index.IsConstant()) {
-            __ Add(temp, array, offset);
-          }
-          __ Str(wzr, destination);
-          codegen_->MaybeRecordImplicitNullCheck(instruction);
-          __ B(&done);
-          __ Bind(&non_zero);
+        if (need_null_check) {
+          __ Cbz(Register(value), &is_zero);
         }
+
+        // Guaranteed not null at this point. It is safe to do the card mark up here since there is
+        // no possible thread suspension before the store.
+        codegen_->MarkGCCard(array, value.W(), false);
 
         // Note that when Baker read barriers are enabled, the type
         // checks are performed without read barriers.  This is fine,
@@ -2518,6 +2508,7 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
         // false negative, in which case we would take the ArraySet
         // slow path.
 
+        temp = temps.AcquireSameSizeAs(array);
         Register temp2 = temps.AcquireSameSizeAs(array);
         // /* HeapReference<Class> */ temp = array->klass_
         __ Ldr(temp, HeapOperand(array, class_offset));
@@ -2549,6 +2540,15 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
         } else {
           __ B(ne, slow_path->GetEntryLabel());
         }
+      } else {
+        codegen_->MarkGCCard(array, value.W(), need_null_check);
+
+        temp = temps.AcquireSameSizeAs(array);
+      }
+
+      if (is_zero.IsLinked()) {
+        // Skip the card mark if it is zero.
+        __ Bind(&is_zero);
       }
 
       if (kPoisonHeapReferences) {
@@ -2559,17 +2559,23 @@ void InstructionCodeGeneratorARM64::VisitArraySet(HArraySet* instruction) {
         source = temp2;
       }
 
-      if (!index.IsConstant()) {
+      if (index.IsConstant()) {
+        offset += Int64ConstantFrom(index) << Primitive::ComponentSizeShift(value_type);
+        destination = HeapOperand(array, offset);
+      } else {
         __ Add(temp, array, offset);
+        destination = HeapOperand(temp,
+                                  XRegisterFrom(index),
+                                  LSL,
+                                  Primitive::ComponentSizeShift(value_type));
       }
+
       __ Str(source, destination);
 
       if (!may_need_runtime_call_for_type_check) {
         codegen_->MaybeRecordImplicitNullCheck(instruction);
       }
     }
-
-    codegen_->MarkGCCard(array, value.W(), instruction->GetValueCanBeNull());
 
     if (done.IsLinked()) {
       __ Bind(&done);
