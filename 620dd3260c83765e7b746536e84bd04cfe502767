@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86501a4a_410b6809",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-28T21:20:08Z",
+      "side": 1,
+      "message": "You probably still need to check that the thread is suspended before running the checkpoint function? TransitionFromSuspendedToRunnable does necessarily take thread_list_lock or thread_suspend_count_lock.",
+      "range": {
+        "startLine": 1238,
+        "startChar": 11,
+        "endLine": 1238,
+        "endChar": 29
+      },
+      "revId": "620dd3260c83765e7b746536e84bd04cfe502767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86501a4a_c1cc98c7",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-10-28T21:20:08Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1239,
+        "startChar": 38,
+        "endLine": 1239,
+        "endChar": 58
+      },
+      "revId": "620dd3260c83765e7b746536e84bd04cfe502767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
