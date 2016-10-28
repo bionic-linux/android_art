@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86501a4a_bb0433c5",
+        "filename": "compiler/jni/jni_compiler_test.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2016-10-28T18:54:58Z",
+      "side": 1,
+      "message": "I don\u0027t really see what\u0027s wrong with keeping this in thread.h though?\n\nA lot of this information could be considered \"helpers\" for thread. Also I think semantically it\u0027s hard to know things like \"NumStackReferences\" is the sum of 2 other things.",
+      "revId": "0a85576a71adb9af631c9b9f5e48f21888313c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
