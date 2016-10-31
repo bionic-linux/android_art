@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "e6bc76d0_53ea4488",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2500,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-10-31T10:29:41Z",
+      "side": 1,
+      "message": "We can also release temps. Release the \"temp\" after line 2544, move the \"temp\" acquisition from line 2548 before line 2567 and move the MarkGcCard before line 2551.",
+      "range": {
+        "startLine": 2499,
+        "startChar": 0,
+        "endLine": 2500,
+        "endChar": 50
+      },
+      "revId": "d4b27d8dd478dc47fdc42e79df78cd44b2dca0e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6bc76d0_13bfec98",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
