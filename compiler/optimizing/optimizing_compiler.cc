@@ -169,7 +169,7 @@ class PassObserver : public ValueObject {
     }
     if (visualizer_enabled_) {
       MutexLock mu(Thread::Current(), visualizer_dump_mutex_);
-      *visualizer_output_ << visualizer_oss_.str();
+      *visualizer_output_ << visualizer_oss_.rdbuf();
     }
   }
 
