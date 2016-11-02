@@ -2003,55 +2003,21 @@ void IntrinsicCodeGeneratorMIPS::VisitStringEquals(HInvoke* invoke) {
 static void GenerateStringIndexOf(HInvoke* invoke,
                                   bool start_at_zero,
                                   MipsAssembler* assembler,
-                                  CodeGeneratorMIPS* codegen,
-                                  ArenaAllocator* allocator) {
+                                  CodeGeneratorMIPS* codegen) {
   LocationSummary* locations = invoke->GetLocations();
-  Register tmp_reg = start_at_zero ? locations->GetTemp(0).AsRegister<Register>() : TMP;
 
   // Note that the null check must have been done earlier.
   DCHECK(!invoke->CanDoImplicitNullCheckOn(invoke->InputAt(0)));
 
-  // Check for code points > 0xFFFF. Either a slow-path check when we don't know statically,
-  // or directly dispatch for a large constant, or omit slow-path for a small constant or a char.
-  SlowPathCodeMIPS* slow_path = nullptr;
-  HInstruction* code_point = invoke->InputAt(1);
-  if (code_point->IsIntConstant()) {
-    if (!IsUint<16>(code_point->AsIntConstant()->GetValue())) {
-      // Always needs the slow-path. We could directly dispatch to it,
-      // but this case should be rare, so for simplicity just put the
-      // full slow-path down and branch unconditionally.
-      slow_path = new (allocator) IntrinsicSlowPathMIPS(invoke);
-      codegen->AddSlowPath(slow_path);
-      __ B(slow_path->GetEntryLabel());
-      __ Bind(slow_path->GetExitLabel());
-      return;
-    }
-  } else if (code_point->GetType() != Primitive::kPrimChar) {
-    Register char_reg = locations->InAt(1).AsRegister<Register>();
-    // The "bltu" conditional branch tests to see if the character value
-    // fits in a valid 16-bit (MIPS halfword) value. If it doesn't then
-    // the character being searched for, if it exists in the string, is
-    // encoded using UTF-16 and stored in the string as two (16-bit)
-    // halfwords. Currently the assembly code used to implement this
-    // intrinsic doesn't support searching for a character stored as
-    // two halfwords so we fallback to using the generic implementation
-    // of indexOf().
-    __ LoadConst32(tmp_reg, std::numeric_limits<uint16_t>::max());
-    slow_path = new (allocator) IntrinsicSlowPathMIPS(invoke);
-    codegen->AddSlowPath(slow_path);
-    __ Bltu(tmp_reg, char_reg, slow_path->GetEntryLabel());
-  }
-
   if (start_at_zero) {
-    DCHECK_EQ(tmp_reg, A2);
+    Register fromIndex = locations->GetTemp(0).AsRegister<Register>();
+
+    DCHECK_EQ(fromIndex, A2);
     // Start-index = 0.
-    __ Clear(tmp_reg);
+    __ Clear(fromIndex);
   }
 
-  codegen->InvokeRuntime(kQuickIndexOf, invoke, invoke->GetDexPc(), slow_path);
-  if (slow_path != nullptr) {
-    __ Bind(slow_path->GetExitLabel());
-  }
+  codegen->InvokeRuntime(kQuickIndexOf, invoke, invoke->GetDexPc(), nullptr);
 }
 
 // int java.lang.String.indexOf(int ch)
@@ -2067,16 +2033,12 @@ void IntrinsicLocationsBuilderMIPS::VisitStringIndexOf(HInvoke* invoke) {
   Location outLocation = calling_convention.GetReturnLocation(Primitive::kPrimInt);
   locations->SetOut(Location::RegisterLocation(outLocation.AsRegister<Register>()));
 
-  // Need a temp for slow-path codepoint compare, and need to send start-index=0.
+  // Need to send fromIndex=0.
   locations->AddTemp(Location::RegisterLocation(calling_convention.GetRegisterAt(2)));
 }
 
 void IntrinsicCodeGeneratorMIPS::VisitStringIndexOf(HInvoke* invoke) {
-  GenerateStringIndexOf(invoke,
-                        /* start_at_zero */ true,
-                        GetAssembler(),
-                        codegen_,
-                        GetAllocator());
+  GenerateStringIndexOf(invoke, /* start_at_zero */ true, GetAssembler(), codegen_);
 }
 
 // int java.lang.String.indexOf(int ch, int fromIndex)
@@ -2092,17 +2054,10 @@ void IntrinsicLocationsBuilderMIPS::VisitStringIndexOfAfter(HInvoke* invoke) {
   locations->SetInAt(2, Location::RegisterLocation(calling_convention.GetRegisterAt(2)));
   Location outLocation = calling_convention.GetReturnLocation(Primitive::kPrimInt);
   locations->SetOut(Location::RegisterLocation(outLocation.AsRegister<Register>()));
-
-  // Need a temp for slow-path codepoint compare.
-  locations->AddTemp(Location::RequiresRegister());
 }
 
 void IntrinsicCodeGeneratorMIPS::VisitStringIndexOfAfter(HInvoke* invoke) {
-  GenerateStringIndexOf(invoke,
-                        /* start_at_zero */ false,
-                        GetAssembler(),
-                        codegen_,
-                        GetAllocator());
+  GenerateStringIndexOf(invoke, /* start_at_zero */ false, GetAssembler(), codegen_);
 }
 
 // java.lang.StringFactory.newStringFromBytes(byte[] data, int high, int offset, int byteCount)

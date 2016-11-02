@@ -2199,30 +2199,111 @@ ENTRY_NO_GP art_quick_indexof
 /* $a0 holds address of "this" */
 /* $a1 holds "ch" */
 /* $a2 holds "fromIndex" */
+
+  li   $t0, 0x10FFFF    # if (0x10FFFF < ch)
+  sltu $t1, $t0, $a1    #     return -1;
+  beqz $t1, 1f          # "
+
+  li   $v0, -1          # "
+  j    $ra              # "
+
+1:
   lw    $t0, MIRROR_STRING_COUNT_OFFSET($a0)    # this.length()
-  slt   $t1, $a2, $zero # if fromIndex < 0
+
+  slt   $t1, $a2, $zero # if (fromIndex < 0) {
 #if defined(_MIPS_ARCH_MIPS32R6) || defined(_MIPS_ARCH_MIPS64R6)
   seleqz $a2, $a2, $t1  #     fromIndex = 0;
 #else
   movn   $a2, $zero, $t1 #    fromIndex = 0;
 #endif
-  subu  $t0, $t0, $a2   # this.length() - fromIndex
-  blez  $t0, 6f         # if this.length()-fromIndex <= 0
-  li    $v0, -1         #     return -1;
+                        # }
 
+  li    $t4, 0x10000    # if (ch >= 0x10000) {
+                        #   // We need to use UTF-16 encoding for this
+                        #   // character.
+  bltu  $a1, $t4, 2f
+  subu  $t6, $a1, $t4   #   ch1 = ((ch-0x10000) >> 10) | 0xD800;
+  srl   $t5, $t6, 10
+  ori   $t5, $t5, 0xD800
+  andi  $t6, $t6, 0x3FF #   ch2 = ((ch-0x10000) & 0x3FF) | 0xDC00;
+  ori   $t6, $t6, 0xDC00
+  addiu $t0, $t0, -1    #   this.length()--; // No reason to test
+                        #                    // last half-word as the
+                        #                    // beginning of a UTF-16
+                        #                    // pair because it has no
+                        #                    // subsequent character to
+                        #                    // complete the pair.
+                        # }
+2:
+  bleu  $t0, $a2, 6f    # if (this.length() <= fromIndex)
+  li    $v0, -1         #     return -1;
+# Because we got here we know that we need to test at least one
+# character in the string so it's safe to decrement this.length()
+# as described in the next step. That is, decrementing this.length()
+# in the next step won't make this.length() negative, and we can safely
+# wait to test whether to continue testing characters in the loops
+# below at the end of the loop, rather than at the beginning.
+
+  addiu $t0, $t0, -1    # Decrement length because we don't increment
+                        # fromIndex in the loops below until after we've
+                        # compared it to length resulting in an "off by
+                        # one" error. We can't increment fromIndex
+                        # earlier because it would happen in the delay
+                        # slot of the conditional branch that we take
+                        # when we've found the character we're looking
+                        # for thus corrupting our return value.
+                        #
+                        # The code used to keep track of the number of
+                        # characters left to test but this required one
+                        # extra instruction in the loop.
+
+// Address of first character to test.
+#if defined(_MIPS_ARCH_MIPS32R6) || defined(_MIPS_ARCH_MIPS64R6)
+  lsa   $a0, $a2, $a0, 1  # $a0 += $a2 << 1
+#else
   sll   $v0, $a2, 1     # $a0 += $a2 * 2
   addu  $a0, $a0, $v0   #  "  "   "  " "
+#endif
+
   move  $v0, $a2        # Set i to fromIndex.
 
-1:
+  bgeu  $a1, $t4, 4f    # if (ch needs UTF-16 encoding) {
+                        #     skip to second loop which tests both the upper &
+                        #     lower halfwords.
+                        # }
+
+3:
   lhu   $t3, MIRROR_STRING_VALUE_OFFSET($a0)    # if this.charAt(i) == ch
   beq   $t3, $a1, 6f                            #     return i;
   addu  $a0, $a0, 2     # i++
-  subu  $t0, $t0, 1     # this.length() - i
-  bnez  $t0, 1b         # while this.length() - i > 0
+  bne   $t0, $v0, 3b    # while (this.length()-1 != i)
   addu  $v0, $v0, 1     # i++
 
-  li    $v0, -1         # if this.length() - i <= 0
+  j     $ra             # if (this.length() == i)
+  li    $v0, -1         #     return -1;
+
+  # We only need to load this.charAt(i) when we enter this loop for the first
+  # time. Subsequent iterations will use this.charAt(i+1) from the previous
+  # iteration.
+  #
+  # We don't explicitly load this.charAt(i) here. We got the benefit of
+  # loading the character in the delay slot of the conditional branch which
+  # brought us here.
+# lhu   $t3, MIRROR_STRING_VALUE_OFFSET($a0)   # if (this.charAt(i) == ch1 &&
+                                               #     this.charAt(i+1) == ch2)
+                                               #     return i;
+4:
+  bne   $t3, $t5, 5f                           # this.charAt(i) != ch1 so skip
+                                               # "if" statement.
+  lhu   $t3, MIRROR_STRING_VALUE_OFFSET+2($a0) # Load this iteration's this.charAt(i+1),
+                                               # aka next iteration's this.charAt(i).
+  beq   $t3, $t6, 6f
+5:
+  addiu $a0, $a0, 2
+  bne   $t0, $v0, 4b    # while (this.length()-1 != i)
+  addu  $v0, $v0, 1     # i++
+
+  li    $v0, -1         # if (this.length() == i)
                         #     return -1;
 
 6:
