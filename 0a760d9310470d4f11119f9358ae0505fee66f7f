@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e641d62c_8ec25b43",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-03T16:05:40Z",
+      "side": 1,
+      "message": "This should be HprofStringId. Why are we converting from uint32_t to size_t here and then converting back in the call to AddU4()?",
+      "range": {
+        "startLine": 579,
+        "startChar": 12,
+        "endLine": 579,
+        "endChar": 18
+      },
+      "revId": "0a760d9310470d4f11119f9358ae0505fee66f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
