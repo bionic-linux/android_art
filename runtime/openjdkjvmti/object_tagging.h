@@ -34,7 +34,7 @@ class EventHandler;
 class ObjectTagTable : public art::gc::SystemWeakHolder {
  public:
   explicit ObjectTagTable(EventHandler* event_handler)
-      : art::gc::SystemWeakHolder(art::LockLevel::kAllocTrackerLock),
+      : art::gc::SystemWeakHolder(static_cast<art::LockLevel>(art::LockLevel::kAbortLock + 1)),
         update_since_last_sweep_(false),
         event_handler_(event_handler) {
   }
