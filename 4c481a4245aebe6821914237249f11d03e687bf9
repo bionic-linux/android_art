@@ -22,6 +22,30 @@
       "revId": "4c481a4245aebe6821914237249f11d03e687bf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6dd1ea2_f1ef4a97",
+        "filename": "runtime/monitor_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-03T21:04:09Z",
+      "side": 0,
+      "message": "I didn\u0027t see how that would change *anything*. Why would you need a second object to test that TryLock works?",
+      "parentUuid": "a6dd1ea2_66cd5ec0",
+      "range": {
+        "startLine": 411,
+        "startChar": 43,
+        "endLine": 411,
+        "endChar": 47
+      },
+      "revId": "4c481a4245aebe6821914237249f11d03e687bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
