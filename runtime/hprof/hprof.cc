@@ -574,7 +574,7 @@ class Hprof : public SingleRootVisitor {
   }
 
   void WriteStringTable() {
-    for (const std::pair<std::string, HprofStringId>& p : strings_) {
+    for (const std::pair<const std::string, HprofStringId>& p : strings_) {
       const std::string& string = p.first;
       const size_t id = p.second;
 
