@@ -22,6 +22,30 @@
       "revId": "1eeb00c7499c520159a38af4be3835aee7ee7b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf38bab_4eaa936e",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-04T15:34:06Z",
+      "side": 1,
+      "message": "I believe Nicolas wasn\u0027t super happy with std::tie when Matthew used it. There\u0027s now only one occurrence in our codebase, in the cmdline part...",
+      "parentUuid": "2b6bb700_b5fd60c4",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 40
+      },
+      "revId": "1eeb00c7499c520159a38af4be3835aee7ee7b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
