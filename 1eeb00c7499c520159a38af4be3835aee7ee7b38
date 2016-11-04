@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b6bb700_b5fd60c4",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-11-04T14:51:15Z",
+      "side": 1,
+      "message": "Maybe use `std::tie` here?",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 40
+      },
+      "revId": "1eeb00c7499c520159a38af4be3835aee7ee7b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
