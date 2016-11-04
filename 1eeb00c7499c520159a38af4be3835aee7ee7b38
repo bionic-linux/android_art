@@ -46,6 +46,30 @@
       "revId": "1eeb00c7499c520159a38af4be3835aee7ee7b38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b6bb700_75d3c81d",
+        "filename": "runtime/hprof/hprof.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-11-04T15:47:55Z",
+      "side": 1,
+      "message": "It seems to be used in art/compiler/optimizing/register_allocator_graph_color.cc too.  This was just a suggestion; I\u0027m fine with the existing code. :)",
+      "parentUuid": "4bf38bab_4eaa936e",
+      "range": {
+        "startLine": 578,
+        "startChar": 0,
+        "endLine": 579,
+        "endChar": 40
+      },
+      "revId": "1eeb00c7499c520159a38af4be3835aee7ee7b38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
