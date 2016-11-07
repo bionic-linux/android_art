@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b19f7c0_6591669c",
+        "filename": "test/957-methodhandle-transforms/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-11-07T10:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b6bb700_152b744c",
+      "revId": "553a477662c92fc9c90a9d962e39f71674853a31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b6bb700_d5873c2d",
         "filename": "test/957-methodhandle-transforms/src/Main.java",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-11-04T15:27:51Z",
       "side": 1,
       "message": "Could we check 2-3 elements here?",
+      "range": {
+        "startLine": 449,
+        "startChar": 15,
+        "endLine": 449,
+        "endChar": 28
+      },
+      "revId": "553a477662c92fc9c90a9d962e39f71674853a31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b6bb700_1800c91a",
+        "filename": "test/957-methodhandle-transforms/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-11-07T10:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b6bb700_d5873c2d",
       "range": {
         "startLine": 449,
         "startChar": 15,
