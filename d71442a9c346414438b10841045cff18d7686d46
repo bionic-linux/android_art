@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbb69be6_dd5d7f5d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 2008,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-07T20:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6dd1ea2_e00f71dd",
+      "range": {
+        "startLine": 2008,
+        "startChar": 26,
+        "endLine": 2008,
+        "endChar": 44
+      },
+      "revId": "d71442a9c346414438b10841045cff18d7686d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6dd1ea2_c0e34dec",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "cbb69be6_3d2e7bc4",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-07T20:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6dd1ea2_c0e34dec",
+      "range": {
+        "startLine": 2073,
+        "startChar": 0,
+        "endLine": 2073,
+        "endChar": 19
+      },
+      "revId": "d71442a9c346414438b10841045cff18d7686d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6dd1ea2_63226bd8",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-03T23:27:25Z",
       "side": 1,
       "message": "Same.",
+      "range": {
+        "startLine": 2618,
+        "startChar": 0,
+        "endLine": 2618,
+        "endChar": 20
+      },
+      "revId": "d71442a9c346414438b10841045cff18d7686d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbb69be6_dd365f15",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 2618,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-07T20:57:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6dd1ea2_63226bd8",
       "range": {
         "startLine": 2618,
         "startChar": 0,
