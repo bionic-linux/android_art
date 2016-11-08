@@ -70,6 +70,30 @@
       "revId": "b02b8d7df48ea3314cfcb3c08d84ac9556363833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b64332d_17b096dc",
+        "filename": "compiler/optimizing/dead_code_elimination.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-08T22:26:04Z",
+      "side": 0,
+      "message": "Implicit conversion constructors are generally discouraged because they may lead to some unexpected conversions (and strange compilation errors); they also increase compilation time due to extra conversion sequences that must be considered during overload resolution. They are therefore flagged by clang-tidy. See the bug and follow the link to the warnings.",
+      "parentUuid": "2bf0179f_d3890cb2",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 70
+      },
+      "revId": "b02b8d7df48ea3314cfcb3c08d84ac9556363833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
