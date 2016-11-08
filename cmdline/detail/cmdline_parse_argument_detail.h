@@ -108,7 +108,7 @@ namespace art {
       // If this is true, then the wildcard matching later on can still fail, so this is not
       // a guarantee that the argument is correct, it's more of a strong hint that the
       // user-provided input *probably* was trying to match this argument.
-      size_t MaybeMatches(TokenRange token_list) const {
+      size_t MaybeMatches(const TokenRange& token_list) const {
         auto best_match = FindClosestMatch(token_list);
 
         return best_match.second;
