@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b64332d_37ab1276",
+        "filename": "compiler/optimizing/dead_code_elimination.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-08T22:13:05Z",
+      "side": 0,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 70
+      },
+      "revId": "b02b8d7df48ea3314cfcb3c08d84ac9556363833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
