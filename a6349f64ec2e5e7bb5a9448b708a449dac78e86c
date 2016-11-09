@@ -16,6 +16,24 @@
       "revId": "a6349f64ec2e5e7bb5a9448b708a449dac78e86c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b4fd308_7cd83905",
+        "filename": "test/957-methodhandle-transforms/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2016-11-09T14:47:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4b5ffb_7ba6ff99",
+      "revId": "a6349f64ec2e5e7bb5a9448b708a449dac78e86c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
