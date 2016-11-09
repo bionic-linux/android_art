@@ -164,7 +164,78 @@ public class Main {
     return result;
   }
 
+  //
+  // All operations up to the bounds check can be hoisted out of the
+  // loop (even the nullcheck, provided we adjust the value its
+  // environment sees with a corrected induction value).
+  //
+  /// CHECK-START: int Main.doWhile(int) licm (before)
+  /// CHECK-DAG: LoadClass      loop:<<Loop:B\d+>> outer_loop:none
+  /// CHECK-DAG: StaticFieldGet loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: NullCheck      loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: ArrayLength    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: BoundsCheck    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: ArrayGet       loop:<<Loop>>      outer_loop:none
+  //
+  /// CHECK-START: int Main.doWhile(int) licm (after)
+  /// CHECK-NOT: LoadClass      loop:{{B\d+}}
+  /// CHECK-NOT: StaticFieldGet loop:{{B\d+}}
+  /// CHECK-NOT: NullCheck      loop:{{B\d+}}
+  /// CHECK-NOT: ArrayLength    loop:{{B\d+}}
+  //
+  /// CHECK-START: int Main.doWhile(int) licm (after)
+  /// CHECK-DAG:              LoadClass           loop:none
+  /// CHECK-DAG: <<Get:l\d+>> StaticFieldGet      loop:none
+  /// CHECK-DAG: <<Add:i\d+>> Add                 loop:none
+  /// CHECK-DAG:              NullCheck [<<Get>>] env:[[<<Add>>,<<Get>>,{{i\d+}}]] loop:none
+  /// CHECK-DAG:              ArrayLength         loop:none
+  //
+  /// CHECK-START: int Main.doWhile(int) licm (after)
+  /// CHECK-DAG: BoundsCheck loop:<<Loop:B\d+>> outer_loop:none
+  /// CHECK-DAG: ArrayGet    loop:<<Loop>>      outer_loop:none
+  public static int doWhile(int k) {
+    int i = k;
+    do {
+      i += 2;
+    } while (staticArray[i] == 0);
+    return i;
+  }
+
+  //
+  // Similar to doWhile(), but our current heuristics reject
+  // more than one induction in between to restrict added overhead.
+  // So everything after the NullCheck remains in the loop.
+  //
+  /// CHECK-START: int Main.doWhileTwoInduc() licm (before)
+  /// CHECK-DAG: LoadClass      loop:<<Loop:B\d+>> outer_loop:none
+  /// CHECK-DAG: StaticFieldGet loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: NullCheck      loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: ArrayLength    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: BoundsCheck    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: ArrayGet       loop:<<Loop>>      outer_loop:none
+
+  /// CHECK-START: int Main.doWhileTwoInduc() licm (after)
+  /// CHECK-NOT: LoadClass      loop:{{B\d+}}
+  /// CHECK-NOT: StaticFieldGet loop:{{B\d+}}
+  //
+  /// CHECK-START: int Main.doWhileTwoInduc() licm (after)
+  /// CHECK-DAG: NullCheck      loop:<<Loop:B\d+>> outer_loop:none
+  /// CHECK-DAG: ArrayLength    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: BoundsCheck    loop:<<Loop>>      outer_loop:none
+  /// CHECK-DAG: ArrayGet       loop:<<Loop>>      outer_loop:none
+  static int doWhileTwoInduc() {
+    int i = 0;
+    int j = 0;
+    do {
+      i += 2;
+      j += 5;
+    } while (staticArray[i + j] == 0);
+    return i - j;
+  }
+
   public static int staticField = 42;
+
+  public static int[] staticArray = null;
 
   public static void assertEquals(int expected, int actual) {
     if (expected != actual) {
@@ -181,5 +252,40 @@ public class Main {
     assertEquals(21, divAndIntrinsic(new int[] { 4, -2, 8, -3 }));
     assertEquals(45, invariantBoundIntrinsic(-10));
     assertEquals(30, invariantBodyIntrinsic(2, 3));
+
+    staticArray = null;
+    try {
+      doWhile(0);
+      throw new Error("Expected NPE");
+    } catch (NullPointerException e) {
+    }
+    staticArray = new int[5];
+    staticArray[4] = 1;
+    assertEquals(4, doWhile(-2));
+    assertEquals(4, doWhile(0));
+    assertEquals(4, doWhile(2));
+    try {
+      doWhile(1);
+      throw new Error("Expected IOOBE");
+    } catch (IndexOutOfBoundsException e) {
+    }
+
+    staticArray = null;
+    try {
+      doWhileTwoInduc();
+      throw new Error("Expected NPE");
+    } catch (NullPointerException e) {
+    }
+    staticArray = new int[1];
+    try {
+      doWhileTwoInduc();
+      throw new Error("Expected IOOBE");
+    } catch (IndexOutOfBoundsException e) {
+    }
+    staticArray = new int[15];
+    staticArray[14] = 1;
+    assertEquals(-6, doWhileTwoInduc());
+
+    System.out.println("passed");
   }
 }
