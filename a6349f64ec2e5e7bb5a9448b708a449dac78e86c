@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb4b5ffb_7ba6ff99",
+        "filename": "test/957-methodhandle-transforms/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2016-11-09T14:10:57Z",
+      "side": 1,
+      "message": "A few additional test cases here to cover for completeness:\n- permutation with reference type arguments\n- boxing/unboxing\n- element duplication in the permutation",
+      "revId": "a6349f64ec2e5e7bb5a9448b708a449dac78e86c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
