@@ -20,8 +20,34 @@
 
 namespace art {
 
-static bool IsPhiOf(HInstruction* instruction, HBasicBlock* block) {
-  return instruction->IsPhi() && instruction->GetBlock() == block;
+/*
+ * Detects a Phi + c construct. When c == 0 the environment of anything that
+ * is moved out of the loop can use the initial value of Phi. When c != 0,
+ * it can still be moved by introducing a single add to the initial value of
+ * Phi in the header to ensure the environment sees the right value there.
+ * Savings from LICM typically outweighs the overhead of this extra add.
+ */
+static bool IsPhiOf(HInstruction* instruction,
+                    HBasicBlock* block,
+                    /*out*/ HInstruction** incoming,
+                    /*out*/ int32_t* value) {
+  if (instruction->IsPhi()) {
+    if (instruction->GetBlock() == block) {
+      *incoming = instruction->InputAt(0);
+      *value = 0;
+      return true;
+    }
+  } else if (instruction->GetType() == Primitive::kPrimInt && (instruction->IsAdd() ||
+                                                               instruction->IsSub())) {
+    HInstruction* x = instruction->InputAt(0);
+    HInstruction* y = instruction->InputAt(1);
+    if (y->IsIntConstant() && IsPhiOf(x, block, incoming, value)) {
+      int32_t c = y->AsIntConstant()->GetValue();
+      *value += (instruction->IsAdd() ? c : -c);
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -50,8 +76,9 @@ static bool InputsAreDefinedBeforeLoop(HInstruction* instruction) {
         if (input_loop != nullptr && input_loop->IsIn(*info)) {
           // We can move an instruction that takes a loop header phi in the environment:
           // we will just replace that phi with its first input later in `UpdateLoopPhisIn`.
-          bool is_loop_header_phi = IsPhiOf(input, info->GetHeader());
-          if (!is_loop_header_phi) {
+          int32_t value = 0;
+          HInstruction* incoming = nullptr;
+          if (!IsPhiOf(input, info->GetHeader(), &incoming, &value)) {
             return false;
           }
         }
@@ -64,13 +91,23 @@ static bool InputsAreDefinedBeforeLoop(HInstruction* instruction) {
 /**
  * If `environment` has a loop header phi, we replace it with its first input.
  */
-static void UpdateLoopPhisIn(HEnvironment* environment, HLoopInformation* info) {
+static void UpdateLoopPhisIn(HGraph* graph,
+                             HBasicBlock* preheader,
+                             HEnvironment* environment,
+                             HLoopInformation* info) {
   for (; environment != nullptr; environment = environment->GetParent()) {
     for (size_t i = 0, e = environment->Size(); i < e; ++i) {
       HInstruction* input = environment->GetInstructionAt(i);
-      if (input != nullptr && IsPhiOf(input, info->GetHeader())) {
+      HInstruction* incoming = nullptr;
+      int32_t value = 0;
+      if (input != nullptr && IsPhiOf(input, info->GetHeader(), &incoming, &value)) {
+        if (value != 0) {
+          // Adjust the initial value with constant.
+          incoming = new (graph->GetArena())
+              HAdd(Primitive::kPrimInt, incoming, graph->GetIntConstant(value));
+          preheader->InsertInstructionBefore(incoming, preheader->GetLastInstruction());
+        }
         environment->RemoveAsUserOfInput(i);
-        HInstruction* incoming = input->InputAt(0);
         environment->SetRawEnvAt(i, incoming);
         incoming->AddEnvUseAt(environment, i);
       }
@@ -136,7 +173,7 @@ void LICM::Run() {
           // We need to update the environment if the instruction has a loop header
           // phi in it.
           if (instruction->NeedsEnvironment()) {
-            UpdateLoopPhisIn(instruction->GetEnvironment(), loop_info);
+            UpdateLoopPhisIn(graph_, pre_header, instruction->GetEnvironment(), loop_info);
           } else {
             DCHECK(!instruction->HasEnvironment());
           }
