@@ -1063,11 +1063,14 @@ ObjectArray<Object>* ImageWriter::CreateImageRoots(size_t oat_index) const {
   }
 
   // build an Object[] of the roots needed to restore the runtime
+  int32_t image_roots_size =
+      compile_app_image_ ? ImageHeader::kImageRootsMax : (ImageHeader::kImageRootsMax - 1u);
   auto image_roots(hs.NewHandle(
-      ObjectArray<Object>::Alloc(self, object_array_class.Get(), ImageHeader::kImageRootsMax)));
+      ObjectArray<Object>::Alloc(self, object_array_class.Get(), image_roots_size)));
   image_roots->Set<false>(ImageHeader::kDexCaches, dex_caches.Get());
   image_roots->Set<false>(ImageHeader::kClassRoots, class_linker->GetClassRoots());
-  for (int i = 0; i < ImageHeader::kImageRootsMax; i++) {
+  // image_roots[ImageHeader::kClassLoader] will be set later for app image.
+  for (int32_t i = 0; i < ImageHeader::kImageRootsMax - 1; ++i) {
     CHECK(image_roots->Get(i) != nullptr);
   }
   return image_roots.Get();
@@ -1488,6 +1491,12 @@ void ImageWriter::CalculateNewObjectOffsets() {
     }
     // Process the work stack in case anything was added by TryAssignBinSlot.
     ProcessWorkStack(&work_stack);
+
+    // Store the class loader in the class roots.
+    CHECK_EQ(class_loaders_.size(), 1u);
+    CHECK_EQ(image_roots.size(), 1u);
+    CHECK(*class_loaders_.begin() != nullptr);
+    image_roots[0]->Set<false>(ImageHeader::kClassLoader, *class_loaders_.begin());
   }
 
   // Verify that all objects have assigned image bin slots.

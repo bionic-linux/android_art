@@ -189,6 +189,7 @@ class PACKED(4) ImageHeader {
   enum ImageRoot {
     kDexCaches,
     kClassRoots,
+    kClassLoader,  // App image only.
     kImageRootsMax,
   };
 
