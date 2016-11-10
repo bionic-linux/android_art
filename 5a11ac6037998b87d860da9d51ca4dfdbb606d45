@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5ca306_d8e0adb9",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-11-10T19:37:55Z",
+      "side": 1,
+      "message": "Minor point: would the following code work (without assuming kClassLoader is the last in the enum)?\n\n  for (int32_t i \u003d 0; i \u003c image_roots_size; ++i) {\n    // image_roots[ImageHeader::kClassLoader] will be set later for app image.\n    if (i !\u003d ImageHeader::kClassLoader) {\n      CHECK(image_roots-\u003eGet(i) !\u003d nullptr);\n    }\n  }\n\nOr have \n\n  static_assert(ImageHeader::kClassLoader + 1u \u003d\u003d ImageHeader::kImageRootsMax,\n                \"Class loader should be the last image root.\");\n\nhere too?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 3
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_38de09c2",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-11-10T19:37:55Z",
+      "side": 1,
+      "message": "Is it the case that we always have one class loader in the app image?",
+      "range": {
+        "startLine": 1495,
+        "startChar": 4,
+        "endLine": 1495,
+        "endChar": 40
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
