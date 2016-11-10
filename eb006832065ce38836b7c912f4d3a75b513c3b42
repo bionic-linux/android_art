@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b56f3b8_c41b9e85",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-10T15:36:11Z",
+      "side": 1,
+      "message": "We don\u0027t have such comments for Set\u003cfalse\u003e() anywhere else.",
+      "parentUuid": "6bba0f39_8fa3553c",
+      "range": {
+        "startLine": 1499,
+        "startChar": 24,
+        "endLine": 1499,
+        "endChar": 29
+      },
+      "revId": "eb006832065ce38836b7c912f4d3a75b513c3b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbe13b42_625b9668",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-10T14:19:50Z",
       "side": 1,
       "message": "Make a helper and share it with image_writer.cc?",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1626,
+        "endChar": 78
+      },
+      "revId": "eb006832065ce38836b7c912f4d3a75b513c3b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b56f3b8_44efae44",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-10T15:36:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe13b42_625b9668",
       "range": {
         "startLine": 1625,
         "startChar": 0,
