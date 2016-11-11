@@ -46,6 +46,30 @@
       "revId": "b06fed381163606cfeb1fdf7235f8c2d2ee8f5eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abe6c757_419f7246",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-11T10:40:21Z",
+      "side": 1,
+      "message": "The optimization is fine but we should cap this.\n(Alternatively, extend stack maps to allow \"value_from_some_location+adjustment\".)",
+      "parentUuid": "8b5ca306_5ea3a587",
+      "range": {
+        "startLine": 81,
+        "startChar": 60,
+        "endLine": 81,
+        "endChar": 66
+      },
+      "revId": "b06fed381163606cfeb1fdf7235f8c2d2ee8f5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
