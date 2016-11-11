@@ -92,6 +92,30 @@
       "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b5ca306_12d83c36",
+        "filename": "runtime/image.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-11T18:34:36Z",
+      "side": 1,
+      "message": "If we don;t need for the boot image we could just leave it null.",
+      "parentUuid": "4bf54bfd_7eafb1ca",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 37
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
