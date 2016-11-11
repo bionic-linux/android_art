@@ -68,6 +68,30 @@
       "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bf54bfd_7eafb1ca",
+        "filename": "runtime/image.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-11T14:06:49Z",
+      "side": 1,
+      "message": "Is there an easy way to get hold of the class loader for the boot image?",
+      "parentUuid": "8b5ca306_bba5b3f1",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 37
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
