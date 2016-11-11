@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8be74356_603712f9",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-11T12:01:13Z",
+      "side": 1,
+      "message": "This looks very special cased. Should we consider loop folding instead? For this example folding the first iteration would do the trick.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "b06fed381163606cfeb1fdf7235f8c2d2ee8f5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bf54bfd_7e10516d",
         "filename": "compiler/optimizing/licm.cc",
         "patchSetId": 2
