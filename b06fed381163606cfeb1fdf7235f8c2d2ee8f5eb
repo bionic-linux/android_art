@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f030b0ea_4c709f4a",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2016-11-12T01:15:31Z",
+      "side": 1,
+      "message": "Loop peeling? I\u0027m confused by terminology here. An alternative is to use HDeoptimize to hoist the the null check which then allows more instructions to be hoisted. Dynamic BCE did this.",
+      "parentUuid": "8b5ca306_b244f069",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "b06fed381163606cfeb1fdf7235f8c2d2ee8f5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bf54bfd_7e10516d",
         "filename": "compiler/optimizing/licm.cc",
         "patchSetId": 2
