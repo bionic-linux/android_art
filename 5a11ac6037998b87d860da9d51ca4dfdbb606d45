@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7008401c_986375ef",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-14T19:33:12Z",
+      "side": 1,
+      "message": "Done (with the static_assert).",
+      "parentUuid": "8b5ca306_d8e0adb9",
+      "range": {
+        "startLine": 1071,
+        "startChar": 0,
+        "endLine": 1074,
+        "endChar": 3
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5ca306_38de09c2",
         "filename": "compiler/image_writer.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-10T19:37:55Z",
       "side": 1,
       "message": "Is it the case that we always have one class loader in the app image?",
+      "range": {
+        "startLine": 1495,
+        "startChar": 4,
+        "endLine": 1495,
+        "endChar": 40
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "500dfc2a_d7fd3cc1",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-14T19:33:12Z",
+      "side": 1,
+      "message": "I think so. That\u0027s how we set it up in the dex2oat.\n\nDoes the transactional interpreter used for AOT class initialization allow creating new class loaders and defining classes?",
+      "parentUuid": "8b5ca306_38de09c2",
       "range": {
         "startLine": 1495,
         "startChar": 4,
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "If we don;t need for the boot image we could just leave it null.",
       "parentUuid": "4bf54bfd_7eafb1ca",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 37
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b012b845_fa5a696c",
+        "filename": "runtime/image.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-14T19:33:12Z",
+      "side": 1,
+      "message": "I\u0027d prefer not having the null in the array for the boot image.",
+      "parentUuid": "8b5ca306_12d83c36",
       "range": {
         "startLine": 192,
         "startChar": 0,
