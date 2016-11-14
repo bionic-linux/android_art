@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d0ff2c21_db80d34a",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-14T13:14:59Z",
+      "side": 1,
+      "message": "French fold :)\n\nBut maybe I should have turned it around: loop folding as a general (ie not special cased) optimization would cover this case.",
+      "parentUuid": "d0ff2c21_3bad7739",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "b06fed381163606cfeb1fdf7235f8c2d2ee8f5eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bf54bfd_7e10516d",
         "filename": "compiler/optimizing/licm.cc",
         "patchSetId": 2
