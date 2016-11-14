@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3045e884_a1b6b821",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2016-11-14T22:27:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure. Does anyone know?\n\nI think that app image doesn\u0027t currently support class initialization.",
+      "parentUuid": "500dfc2a_d7fd3cc1",
+      "range": {
+        "startLine": 1495,
+        "startChar": 4,
+        "endLine": 1495,
+        "endChar": 40
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5ca306_bba5b3f1",
         "filename": "runtime/image.h",
         "patchSetId": 4
