@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3045e884_15d35869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-16T18:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3045e884_aac32427",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3045e884_aa8cc419",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-16T01:44:56Z",
       "side": 1,
       "message": "Why so late?",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 54
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3045e884_95a648f5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-16T18:31:21Z",
+      "side": 1,
+      "message": "AllocIfTable requires kObjectArrayClass root to be set.",
+      "parentUuid": "3045e884_aa8cc419",
       "range": {
         "startLine": 478,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3045e884_35b13429",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4127,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-16T18:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3045e884_ea7ecc1c",
+      "range": {
+        "startLine": 4127,
+        "startChar": 2,
+        "endLine": 4127,
+        "endChar": 65
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30e168e5_c1576442",
         "filename": "runtime/class_linker_test.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-16T11:35:49Z",
       "side": 1,
       "message": "Also check it\u0027s empty?",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 52
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3045e884_f5fd0cc1",
+        "filename": "runtime/class_linker_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-16T18:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30e168e5_c1576442",
       "range": {
         "startLine": 104,
         "startChar": 3,
