@@ -973,11 +973,11 @@ bool CompilerDriver::ShouldVerifyClassBasedOnProfile(const DexFile& dex_file,
     return true;
   }
   DCHECK(profile_compilation_info_ != nullptr);
-  bool result = profile_compilation_info_->ContainsClass(dex_file, class_idx);
+  const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_idx);
+  bool result = profile_compilation_info_->ContainsClassType(dex_file, class_def.class_idx_);
   if (kDebugProfileGuidedCompilation) {
-    LOG(INFO) << "[ProfileGuidedCompilation] "
-        << (result ? "Verified" : "Skipped") << " method:"
-        << dex_file.GetClassDescriptor(dex_file.GetClassDef(class_idx));
+    LOG(INFO) << "[ProfileGuidedCompilation] " << (result ? "Verified" : "Skipped") << " method:"
+        << dex_file.GetClassDescriptor(class_def);
   }
   return result;
 }
