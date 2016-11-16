@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3045e884_cfb5e2d0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-16T01:44:56Z",
+      "side": 0,
+      "message": "Unrelated change",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 0
+      },
+      "revId": "78edc92a8eb6841046cbc638247e8803ed3e443e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

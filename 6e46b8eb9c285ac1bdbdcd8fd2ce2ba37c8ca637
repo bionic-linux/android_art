@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3045e884_aac32427",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-16T01:44:56Z",
+      "side": 1,
+      "message": "Null case execution might be rare, null iftable itself not. Please give more reasons why this change is acceptable (e.g., only low O(1) memory overhead, performance, ...)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 40
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3045e884_aa8cc419",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-16T01:44:56Z",
+      "side": 1,
+      "message": "Why so late?",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 54
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3045e884_ea7ecc1c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4127,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-16T01:44:56Z",
+      "side": 1,
+      "message": "Comment, please. Without reading the whole method, this is non-intuitive.",
+      "range": {
+        "startLine": 4127,
+        "startChar": 2,
+        "endLine": 4127,
+        "endChar": 65
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
