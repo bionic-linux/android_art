@@ -68,6 +68,29 @@
       "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e168e5_c1576442",
+        "filename": "runtime/class_linker_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-16T11:35:49Z",
+      "side": 1,
+      "message": "Also check it\u0027s empty?",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 52
+      },
+      "revId": "6e46b8eb9c285ac1bdbdcd8fd2ce2ba37c8ca637",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
