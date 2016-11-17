@@ -94,6 +94,30 @@
       "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a6dcc4_0f47c597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-17T18:03:20Z",
+      "side": 1,
+      "message": "But the counterpoint is that now things return an OatDexFile (with a null OatFile) that didn\u0027t before - and it\u0027s not clear that you put DCHECKs at all those points...",
+      "parentUuid": "50a6dcc4_ef2e01e8",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
