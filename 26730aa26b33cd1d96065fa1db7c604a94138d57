@@ -70,6 +70,30 @@
       "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a6dcc4_ef2e01e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-17T17:52:30Z",
+      "side": 1,
+      "message": "Side tables are annoying since you need a lock and stuff.",
+      "parentUuid": "3045e884_d8259cc1",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
