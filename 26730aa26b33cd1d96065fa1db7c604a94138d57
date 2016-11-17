@@ -46,6 +46,30 @@
       "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3045e884_d8259cc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-17T16:20:41Z",
+      "side": 1,
+      "message": "Yes. David moved them to the OatDexFile, which doesn\u0027t exist during compilation.\n\nI suggested both this solution and side tables in the class-linker to him as an alternative (and honestly I prefer the latter).",
+      "parentUuid": "30e168e5_a4d26662",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
