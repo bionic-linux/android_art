@@ -22,6 +22,30 @@
       "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30e168e5_a4d26662",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-11-17T15:07:06Z",
+      "side": 1,
+      "message": "I strongly suspect it was when I reorganized type lookup tables out of DexFile.",
+      "parentUuid": "30e168e5_44fb6258",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
