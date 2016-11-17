@@ -232,8 +232,18 @@ class VerifierDeps {
 
   // Returns a string ID of the descriptor of the declaring class of `element`,
   // or `kUnresolvedMarker` if `element` is null.
-  template <typename T>
-  uint32_t GetDeclaringClassStringId(const DexFile& dex_file, T* element)
+  uint32_t GetMethodDeclaringClassStringId(const DexFile& dex_file,
+                                           uint32_t dex_method_idx,
+                                           ArtMethod* method)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(Locks::verifier_deps_lock_);
+  uint32_t GetFieldDeclaringClassStringId(const DexFile& dex_file,
+                                          ArtField* field)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(Locks::verifier_deps_lock_);
+
+  // Returns a string ID of the descriptor of the class.
+  uint32_t GetClassDescriptorStringId(const DexFile& dex_file, ObjPtr<mirror::Class> klass)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(Locks::verifier_deps_lock_);
 

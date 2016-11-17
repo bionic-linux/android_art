@@ -16,6 +16,8 @@
 
 #include "verifier_deps.h"
 
+#include <cstring>
+
 #include "compiler_callbacks.h"
 #include "leb128.h"
 #include "mirror/class-inl.h"
@@ -56,17 +58,54 @@ uint16_t VerifierDeps::GetAccessFlags(T* element) {
   }
 }
 
-template <typename T>
-uint32_t VerifierDeps::GetDeclaringClassStringId(const DexFile& dex_file, T* element) {
-  static_assert(kAccJavaFlagsMask == 0xFFFF, "Unexpected value of a constant");
-  if (element == nullptr) {
-    return VerifierDeps::kUnresolvedMarker;
-  } else {
-    std::string temp;
-    uint32_t string_id = GetIdFromString(
-        dex_file, element->GetDeclaringClass()->GetDescriptor(&temp));
-    return string_id;
+uint32_t VerifierDeps::GetClassDescriptorStringId(const DexFile& dex_file,
+                                                  ObjPtr<mirror::Class> klass) {
+  DCHECK(klass != nullptr);
+  ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache();
+  if (LIKELY(dex_cache != nullptr)) {
+    if (dex_cache->GetDexFile() == &dex_file) {
+      // FindStringId is slow, try to go through the class def if we have one.
+      const DexFile::ClassDef* class_def = klass->GetClassDef();
+      if (class_def != nullptr) {
+        std::string temp;
+        const DexFile::TypeId& type_id = dex_file.GetTypeId(class_def->class_idx_);
+        DCHECK_EQ(GetIdFromString(dex_file, klass->GetDescriptor(&temp)), type_id.descriptor_idx_);
+        return type_id.descriptor_idx_;
+      }
+    }
   }
+  std::string temp;
+  return GetIdFromString(dex_file, klass->GetDescriptor(&temp));
+}
+
+uint32_t VerifierDeps::GetMethodDeclaringClassStringId(const DexFile& dex_file,
+                                                       uint32_t dex_method_index,
+                                                       ArtMethod* method) {
+  static_assert(kAccJavaFlagsMask == 0xFFFF, "Unexpected value of a constant");
+  if (method == nullptr) {
+    return VerifierDeps::kUnresolvedMarker;
+  }
+  const DexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_index);
+  const DexFile::TypeId& type_id = dex_file.GetTypeId(method_id.class_idx_);
+  ObjPtr<mirror::Class> klass = method->GetDeclaringClass();
+  const DexFile& dex_file2 = klass->GetDexFile();
+  const DexFile::TypeId& type_id2 = dex_file2.GetTypeId(klass->GetClassDef()->class_idx_);
+  if (strcmp(dex_file.GetTypeDescriptor(type_id), dex_file2.GetTypeDescriptor(type_id2)) == 0) {
+    // Got lucky using the original dex file, return based on the input dex file.
+    DCHECK_EQ(GetClassDescriptorStringId(dex_file, method->GetDeclaringClass()),
+              type_id.descriptor_idx_);
+    return type_id.descriptor_idx_;
+  }
+  return GetClassDescriptorStringId(dex_file, method->GetDeclaringClass());
+}
+
+uint32_t VerifierDeps::GetFieldDeclaringClassStringId(const DexFile& dex_file,
+                                                      ArtField* field) {
+  static_assert(kAccJavaFlagsMask == 0xFFFF, "Unexpected value of a constant");
+  if (field == nullptr) {
+    return VerifierDeps::kUnresolvedMarker;
+  }
+  return GetClassDescriptorStringId(dex_file, field->GetDeclaringClass());
 }
 
 uint32_t VerifierDeps::GetIdFromString(const DexFile& dex_file, const std::string& str) {
@@ -172,7 +211,7 @@ void VerifierDeps::AddFieldResolution(const DexFile& dex_file,
 
   MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   dex_deps->fields_.emplace(FieldResolution(
-      field_idx, GetAccessFlags(field), GetDeclaringClassStringId(dex_file, field)));
+      field_idx, GetAccessFlags(field), GetFieldDeclaringClassStringId(dex_file, field)));
 }
 
 void VerifierDeps::AddMethodResolution(const DexFile& dex_file,
@@ -194,7 +233,7 @@ void VerifierDeps::AddMethodResolution(const DexFile& dex_file,
   MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   MethodResolution method_tuple(method_idx,
                                 GetAccessFlags(method),
-                                GetDeclaringClassStringId(dex_file, method));
+                                GetMethodDeclaringClassStringId(dex_file, method_idx, method));
   if (resolution_kind == kDirectMethodResolution) {
     dex_deps->direct_methods_.emplace(method_tuple);
   } else if (resolution_kind == kVirtualMethodResolution) {
@@ -263,12 +302,8 @@ void VerifierDeps::AddAssignability(const DexFile& dex_file,
   MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
 
   // Get string IDs for both descriptors and store in the appropriate set.
-
-  std::string temp1, temp2;
-  std::string destination_desc(destination->GetDescriptor(&temp1));
-  std::string source_desc(source->GetDescriptor(&temp2));
-  uint32_t destination_id = GetIdFromString(dex_file, destination_desc);
-  uint32_t source_id = GetIdFromString(dex_file, source_desc);
+  uint32_t destination_id = GetClassDescriptorStringId(dex_file, destination);
+  uint32_t source_id = GetClassDescriptorStringId(dex_file, source);
 
   if (is_assignable) {
     dex_deps->assignable_types_.emplace(TypeAssignability(destination_id, source_id));
