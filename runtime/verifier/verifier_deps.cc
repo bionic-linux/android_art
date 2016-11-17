@@ -56,17 +56,32 @@ uint16_t VerifierDeps::GetAccessFlags(T* element) {
   }
 }
 
+uint32_t VerifierDeps::GetClassDescriptorStringId(const DexFile& dex_file,
+                                                  ObjPtr<mirror::Class> klass) {
+  DCHECK(klass != nullptr);
+  ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache();
+  std::string temp;
+  if (LIKELY(dex_cache != nullptr)) {
+    if (dex_cache->GetDexFile() == &dex_file) {
+      // FindStringId is slow, try to go through the class def if we have one.
+      const DexFile::ClassDef* class_def = klass->GetClassDef();
+      if (class_def != nullptr) {
+        const DexFile::TypeId& type_id = dex_file.GetTypeId(class_def->class_idx_);
+        DCHECK_EQ(GetIdFromString(dex_file, klass->GetDescriptor(&temp)), type_id.descriptor_idx_);
+        return type_id.descriptor_idx_;
+      }
+    }
+  }
+  return GetIdFromString(dex_file, klass->GetDescriptor(&temp));
+}
+
 template <typename T>
 uint32_t VerifierDeps::GetDeclaringClassStringId(const DexFile& dex_file, T* element) {
   static_assert(kAccJavaFlagsMask == 0xFFFF, "Unexpected value of a constant");
   if (element == nullptr) {
     return VerifierDeps::kUnresolvedMarker;
-  } else {
-    std::string temp;
-    uint32_t string_id = GetIdFromString(
-        dex_file, element->GetDeclaringClass()->GetDescriptor(&temp));
-    return string_id;
   }
+  return GetClassDescriptorStringId(dex_file, element->GetDeclaringClass());
 }
 
 uint32_t VerifierDeps::GetIdFromString(const DexFile& dex_file, const std::string& str) {
@@ -263,12 +278,8 @@ void VerifierDeps::AddAssignability(const DexFile& dex_file,
   MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
 
   // Get string IDs for both descriptors and store in the appropriate set.
-
-  std::string temp1, temp2;
-  std::string destination_desc(destination->GetDescriptor(&temp1));
-  std::string source_desc(source->GetDescriptor(&temp2));
-  uint32_t destination_id = GetIdFromString(dex_file, destination_desc);
-  uint32_t source_id = GetIdFromString(dex_file, source_desc);
+  uint32_t destination_id = GetClassDescriptorStringId(dex_file, destination);
+  uint32_t source_id = GetClassDescriptorStringId(dex_file, source);
 
   if (is_assignable) {
     dex_deps->assignable_types_.emplace(TypeAssignability(destination_id, source_id));

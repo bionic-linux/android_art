@@ -237,6 +237,11 @@ class VerifierDeps {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(Locks::verifier_deps_lock_);
 
+  // Returns a string ID of the descriptor of the class.
+  uint32_t GetClassDescriptorStringId(const DexFile& dex_file, ObjPtr<mirror::Class> klass)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(Locks::verifier_deps_lock_);
+
   void AddClassResolution(const DexFile& dex_file,
                           uint16_t type_idx,
                           mirror::Class* klass)
