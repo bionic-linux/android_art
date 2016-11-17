@@ -69,15 +69,15 @@ inline void DexCache::ClearString(uint32_t string_idx) {
   }
 }
 
-inline Class* DexCache::GetResolvedType(uint32_t type_idx) {
-  DCHECK_LT(type_idx, NumResolvedTypes());
-  return GetResolvedTypes()[type_idx].Read();
+inline Class* DexCache::GetResolvedType(dex::TypeIndex type_idx) {
+  DCHECK_LT(type_idx.index, NumResolvedTypes());
+  return GetResolvedTypes()[type_idx.index].Read();
 }
 
-inline void DexCache::SetResolvedType(uint32_t type_idx, ObjPtr<Class> resolved) {
-  DCHECK_LT(type_idx, NumResolvedTypes());  // NOTE: Unchecked, i.e. not throwing AIOOB.
+inline void DexCache::SetResolvedType(dex::TypeIndex type_idx, ObjPtr<Class> resolved) {
+  DCHECK_LT(type_idx.index, NumResolvedTypes());  // NOTE: Unchecked, i.e. not throwing AIOOB.
   // TODO default transaction support.
-  GetResolvedTypes()[type_idx] = GcRoot<Class>(resolved);
+  GetResolvedTypes()[type_idx.index] = GcRoot<Class>(resolved);
   // TODO: Fine-grained marking, so that we don't need to go through all arrays in full.
   Runtime::Current()->GetHeap()->WriteBarrierEveryFieldOf(this);
 }

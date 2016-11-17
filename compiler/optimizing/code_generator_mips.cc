@@ -224,7 +224,7 @@ class LoadClassSlowPathMIPS : public SlowPathCodeMIPS {
     SaveLiveRegisters(codegen, locations);
 
     InvokeRuntimeCallingConvention calling_convention;
-    __ LoadConst32(calling_convention.GetRegisterAt(0), cls_->GetTypeIndex());
+    __ LoadConst32(calling_convention.GetRegisterAt(0), cls_->GetTypeIndex().index);
 
     QuickEntrypointEnum entrypoint = do_clinit_ ? kQuickInitializeStaticStorage
                                                 : kQuickInitializeType;
@@ -1056,7 +1056,7 @@ void CodeGeneratorMIPS::EmitLinkerPatches(ArenaVector<LinkerPatch>* linker_patch
     uint32_t literal_offset = __ GetLabelLocation(literal->GetLabel());
     linker_patches->push_back(LinkerPatch::TypePatch(literal_offset,
                                                      target_type.dex_file,
-                                                     target_type.type_index));
+                                                     target_type.type_index.index));
   }
   for (const auto& entry : boot_image_address_patches_) {
     DCHECK(GetCompilerOptions().GetIncludePatchInformation());
@@ -1073,8 +1073,8 @@ CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativeStringPa
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativeTypePatch(
-    const DexFile& dex_file, uint32_t type_index) {
-  return NewPcRelativePatch(dex_file, type_index, &pc_relative_type_patches_);
+    const DexFile& dex_file, dex::TypeIndex type_index) {
+  return NewPcRelativePatch(dex_file, type_index.index, &pc_relative_type_patches_);
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativeDexCacheArrayPatch(
@@ -1117,7 +1117,7 @@ Literal* CodeGeneratorMIPS::DeduplicateBootImageStringLiteral(const DexFile& dex
 }
 
 Literal* CodeGeneratorMIPS::DeduplicateBootImageTypeLiteral(const DexFile& dex_file,
-                                                            uint32_t type_index) {
+                                                            dex::TypeIndex type_index) {
   return boot_image_type_patches_.GetOrCreate(
       TypeReference(&dex_file, type_index),
       [this]() { return __ NewLiteral<uint32_t>(/* placeholder */ 0u); });
@@ -5534,7 +5534,7 @@ void LocationsBuilderMIPS::VisitLoadClass(HLoadClass* cls) {
 void InstructionCodeGeneratorMIPS::VisitLoadClass(HLoadClass* cls) {
   LocationSummary* locations = cls->GetLocations();
   if (cls->NeedsAccessCheck()) {
-    codegen_->MoveConstant(locations->GetTemp(0), cls->GetTypeIndex());
+    codegen_->MoveConstant(locations->GetTemp(0), cls->GetTypeIndex().index);
     codegen_->InvokeRuntime(kQuickInitializeTypeAndVerifyAccess, cls, cls->GetDexPc());
     CheckEntrypointTypes<kQuickInitializeTypeAndVerifyAccess, void*, uint32_t>();
     return;
@@ -5628,7 +5628,7 @@ void InstructionCodeGeneratorMIPS::VisitLoadClass(HLoadClass* cls) {
                         base_or_current_method_reg,
                         ArtMethod::DexCacheResolvedTypesOffset(kArmPointerSize).Int32Value());
       // /* GcRoot<mirror::Class> */ out = out[type_index]
-      size_t offset = CodeGenerator::GetCacheOffset(cls->GetTypeIndex());
+      size_t offset = CodeGenerator::GetCacheOffset(cls->GetTypeIndex().index);
       GenerateGcRootFieldLoad(cls, out_loc, out, offset);
       generate_null_check = !cls->IsInDexCache();
     }
@@ -5970,7 +5970,7 @@ void InstructionCodeGeneratorMIPS::VisitNewArray(HNewArray* instruction) {
   Register current_method_register = calling_convention.GetRegisterAt(2);
   __ Lw(current_method_register, SP, kCurrentMethodStackOffset);
   // Move an uint16_t value to a register.
-  __ LoadConst32(calling_convention.GetRegisterAt(0), instruction->GetTypeIndex());
+  __ LoadConst32(calling_convention.GetRegisterAt(0), instruction->GetTypeIndex().index);
   codegen_->InvokeRuntime(instruction->GetEntrypoint(), instruction, instruction->GetDexPc());
   CheckEntrypointTypes<kQuickAllocArrayWithAccessCheck,
                        void*, uint32_t, int32_t, ArtMethod*>();
