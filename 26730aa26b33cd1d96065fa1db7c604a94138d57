@@ -118,6 +118,30 @@
       "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a6dcc4_af8a3938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-17T18:35:39Z",
+      "side": 1,
+      "message": "The points are only for AOT compiler, most places don\u0027t need updating.",
+      "parentUuid": "50a6dcc4_0f47c597",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "26730aa26b33cd1d96065fa1db7c604a94138d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
