@@ -47,6 +47,7 @@
 #include "register_line-inl.h"
 #include "runtime.h"
 #include "scoped_thread_state_change-inl.h"
+#include "thread_list.h"
 #include "utils.h"
 #include "verifier_deps.h"
 #include "handle_scope-inl.h"
@@ -101,6 +102,10 @@ ALWAYS_INLINE static inline bool FailOrAbort(MethodVerifier* verifier, bool cond
                                              const char* error_msg, uint32_t work_insn_idx) {
   if (kIsDebugBuild) {
     // In a debug build, abort if the error condition is wrong.
+    if (!condition) {
+      // Dump native stacks to help with debugging.
+      Runtime::Current()->GetThreadList()->DumpNativeStacks(LOG_STREAM(ERROR));
+    }
     DCHECK(condition) << error_msg << work_insn_idx;
   } else {
     // In a non-debug build, just fail the class.
