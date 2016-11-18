@@ -187,6 +187,14 @@ struct Identity {
   using type = T;
 };
 
+// Merge `other` entries into `to_update`.
+template <typename T>
+static inline void MergeSets(std::set<T>& to_update, const std::set<T>& other) {
+  for (const T& entry : other) {
+    to_update.emplace(entry);
+  }
+}
+
 }  // namespace art
 
 #endif  // ART_RUNTIME_BASE_STL_UTIL_H_
