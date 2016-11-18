@@ -26,11 +26,38 @@ namespace art {
 namespace verifier {
 
 VerifierDeps::VerifierDeps(const std::vector<const DexFile*>& dex_files) {
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   for (const DexFile* dex_file : dex_files) {
     DCHECK(GetDexFileDeps(*dex_file) == nullptr);
     std::unique_ptr<DexFileDeps> deps(new DexFileDeps());
     dex_deps_.emplace(dex_file, std::move(deps));
+  }
+}
+
+template <typename T>
+static inline void MergeSets(std::set<T>& to_update, const std::set<T>& other) {
+  for (const T& entry : other) {
+    to_update.emplace(entry);
+  }
+}
+
+void VerifierDeps::MergeWith(const VerifierDeps& other,
+                             const std::vector<const DexFile*>& dex_files) {
+  DCHECK(dex_deps_.size() == other.dex_deps_.size());
+  for (const DexFile* dex_file : dex_files) {
+    DexFileDeps* my_deps = GetDexFileDeps(*dex_file);
+    const DexFileDeps& other_deps = *other.GetDexFileDeps(*dex_file);
+    // We currently collect extra strings only on the main `VerifierDeps`.
+    DCHECK(other_deps.strings_.empty());
+    MergeSets(my_deps->assignable_types_, other_deps.assignable_types_);
+    MergeSets(my_deps->unassignable_types_, other_deps.unassignable_types_);
+    MergeSets(my_deps->classes_, other_deps.classes_);
+    MergeSets(my_deps->fields_, other_deps.fields_);
+    MergeSets(my_deps->direct_methods_, other_deps.direct_methods_);
+    MergeSets(my_deps->virtual_methods_, other_deps.virtual_methods_);
+    MergeSets(my_deps->interface_methods_, other_deps.interface_methods_);
+    for (uint16_t entry : other_deps.unverified_classes_) {
+      my_deps->unverified_classes_.push_back(entry);
+    }
   }
 }
 
@@ -69,6 +96,28 @@ uint32_t VerifierDeps::GetDeclaringClassStringId(const DexFile& dex_file, T* ele
   }
 }
 
+static inline VerifierDeps* GetVerifierDepsSingleton() {
+  CompilerCallbacks* callbacks = Runtime::Current()->GetCompilerCallbacks();
+  if (callbacks == nullptr) {
+    return nullptr;
+  }
+  return callbacks->GetVerifierDeps();
+}
+
+
+static bool FindExistingStringId(const std::vector<std::string>& strings,
+                                 const std::string& str,
+                                 uint32_t* found_id) {
+  uint32_t num_extra_ids = strings.size();
+  for (size_t i = 0; i < num_extra_ids; ++i) {
+    if (strings[i] == str) {
+      *found_id = i;
+      return true;
+    }
+  }
+  return false;
+}
+
 uint32_t VerifierDeps::GetIdFromString(const DexFile& dex_file, const std::string& str) {
   const DexFile::StringId* string_id = dex_file.FindStringId(str.c_str());
   if (string_id != nullptr) {
@@ -79,25 +128,32 @@ uint32_t VerifierDeps::GetIdFromString(const DexFile& dex_file, const std::strin
   // String is not in the DEX file. Assign a new ID to it which is higher than
   // the number of strings in the DEX file.
 
-  DexFileDeps* deps = GetDexFileDeps(dex_file);
+  // We use the main `VerifierDeps` for adding new strings to simplify
+  // synchronization/merging of these entries between threads.
+  VerifierDeps* singleton = GetVerifierDepsSingleton();
+  DexFileDeps* deps = singleton->GetDexFileDeps(dex_file);
   DCHECK(deps != nullptr);
 
   uint32_t num_ids_in_dex = dex_file.NumStringIds();
-  uint32_t num_extra_ids = deps->strings_.size();
+  uint32_t found_id;
 
-  for (size_t i = 0; i < num_extra_ids; ++i) {
-    if (deps->strings_[i] == str) {
-      return num_ids_in_dex + i;
+  {
+    ReaderMutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
+    if (FindExistingStringId(deps->strings_, str, &found_id)) {
+      return num_ids_in_dex + found_id;
     }
   }
-
-  deps->strings_.push_back(str);
-
-  uint32_t new_id = num_ids_in_dex + num_extra_ids;
-  CHECK_GE(new_id, num_ids_in_dex);  // check for overflows
-  DCHECK_EQ(str, GetStringFromId(dex_file, new_id));
-
-  return new_id;
+  {
+    WriterMutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
+    if (FindExistingStringId(deps->strings_, str, &found_id)) {
+      return num_ids_in_dex + found_id;
+    }
+    deps->strings_.push_back(str);
+    uint32_t new_id = num_ids_in_dex + deps->strings_.size() - 1;
+    CHECK_GE(new_id, num_ids_in_dex);  // check for overflows
+    DCHECK_EQ(str, singleton->GetStringFromId(dex_file, new_id));
+    return new_id;
+  }
 }
 
 std::string VerifierDeps::GetStringFromId(const DexFile& dex_file, uint32_t string_id) const {
@@ -151,7 +207,6 @@ void VerifierDeps::AddClassResolution(const DexFile& dex_file,
     return;
   }
 
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   dex_deps->classes_.emplace(ClassResolution(type_idx, GetAccessFlags(klass)));
 }
 
@@ -170,7 +225,6 @@ void VerifierDeps::AddFieldResolution(const DexFile& dex_file,
     return;
   }
 
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   dex_deps->fields_.emplace(FieldResolution(
       field_idx, GetAccessFlags(field), GetDeclaringClassStringId(dex_file, field)));
 }
@@ -191,7 +245,6 @@ void VerifierDeps::AddMethodResolution(const DexFile& dex_file,
     return;
   }
 
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   MethodResolution method_tuple(method_idx,
                                 GetAccessFlags(method),
                                 GetDeclaringClassStringId(dex_file, method));
@@ -260,8 +313,6 @@ void VerifierDeps::AddAssignability(const DexFile& dex_file,
     return;
   }
 
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
-
   // Get string IDs for both descriptors and store in the appropriate set.
 
   std::string temp1, temp2;
@@ -277,12 +328,11 @@ void VerifierDeps::AddAssignability(const DexFile& dex_file,
   }
 }
 
-static inline VerifierDeps* GetVerifierDepsSingleton() {
-  CompilerCallbacks* callbacks = Runtime::Current()->GetCompilerCallbacks();
-  if (callbacks == nullptr) {
+static inline VerifierDeps* GetThreadLocalVerifierDeps() {
+  if (!Runtime::Current()->IsAotCompiler()) {
     return nullptr;
   }
-  return callbacks->GetVerifierDeps();
+  return reinterpret_cast<VerifierDeps*>(Thread::Current()->GetStackTraceSample());
 }
 
 void VerifierDeps::MaybeRecordVerificationStatus(const DexFile& dex_file,
@@ -293,10 +343,9 @@ void VerifierDeps::MaybeRecordVerificationStatus(const DexFile& dex_file,
     return;
   }
 
-  VerifierDeps* singleton = GetVerifierDepsSingleton();
-  if (singleton != nullptr) {
-    DexFileDeps* dex_deps = singleton->GetDexFileDeps(dex_file);
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
+  VerifierDeps* thread_deps = GetThreadLocalVerifierDeps();
+  if (thread_deps != nullptr) {
+    DexFileDeps* dex_deps = thread_deps->GetDexFileDeps(dex_file);
     dex_deps->unverified_classes_.push_back(type_idx);
   }
 }
@@ -304,18 +353,18 @@ void VerifierDeps::MaybeRecordVerificationStatus(const DexFile& dex_file,
 void VerifierDeps::MaybeRecordClassResolution(const DexFile& dex_file,
                                               uint16_t type_idx,
                                               mirror::Class* klass) {
-  VerifierDeps* singleton = GetVerifierDepsSingleton();
-  if (singleton != nullptr) {
-    singleton->AddClassResolution(dex_file, type_idx, klass);
+  VerifierDeps* thread_deps = GetThreadLocalVerifierDeps();
+  if (thread_deps != nullptr) {
+    thread_deps->AddClassResolution(dex_file, type_idx, klass);
   }
 }
 
 void VerifierDeps::MaybeRecordFieldResolution(const DexFile& dex_file,
                                               uint32_t field_idx,
                                               ArtField* field) {
-  VerifierDeps* singleton = GetVerifierDepsSingleton();
-  if (singleton != nullptr) {
-    singleton->AddFieldResolution(dex_file, field_idx, field);
+  VerifierDeps* thread_deps = GetThreadLocalVerifierDeps();
+  if (thread_deps != nullptr) {
+    thread_deps->AddFieldResolution(dex_file, field_idx, field);
   }
 }
 
@@ -323,9 +372,9 @@ void VerifierDeps::MaybeRecordMethodResolution(const DexFile& dex_file,
                                                uint32_t method_idx,
                                                MethodResolutionKind resolution_kind,
                                                ArtMethod* method) {
-  VerifierDeps* singleton = GetVerifierDepsSingleton();
-  if (singleton != nullptr) {
-    singleton->AddMethodResolution(dex_file, method_idx, resolution_kind, method);
+  VerifierDeps* thread_deps = GetThreadLocalVerifierDeps();
+  if (thread_deps != nullptr) {
+    thread_deps->AddMethodResolution(dex_file, method_idx, resolution_kind, method);
   }
 }
 
@@ -334,9 +383,9 @@ void VerifierDeps::MaybeRecordAssignability(const DexFile& dex_file,
                                             mirror::Class* source,
                                             bool is_strict,
                                             bool is_assignable) {
-  VerifierDeps* singleton = GetVerifierDepsSingleton();
-  if (singleton != nullptr) {
-    singleton->AddAssignability(dex_file, destination, source, is_strict, is_assignable);
+  VerifierDeps* thread_deps = GetThreadLocalVerifierDeps();
+  if (thread_deps != nullptr) {
+    thread_deps->AddAssignability(dex_file, destination, source, is_strict, is_assignable);
   }
 }
 
@@ -438,7 +487,6 @@ static inline void DecodeStringVector(const uint8_t** in,
 
 void VerifierDeps::Encode(const std::vector<const DexFile*>& dex_files,
                           std::vector<uint8_t>* buffer) const {
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
   for (const DexFile* dex_file : dex_files) {
     const DexFileDeps& deps = *GetDexFileDeps(*dex_file);
     EncodeStringVector(buffer, deps.strings_);
@@ -480,8 +528,6 @@ VerifierDeps::VerifierDeps(const std::vector<const DexFile*>& dex_files,
 }
 
 bool VerifierDeps::Equals(const VerifierDeps& rhs) const {
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
-
   if (dex_deps_.size() != rhs.dex_deps_.size()) {
     return false;
   }
