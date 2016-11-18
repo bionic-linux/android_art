@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f990d6_4a3fd7e8",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-18T22:45:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be very simple (and share lots of code)? I\u0027d think it would be better to be consistent.",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 76
+      },
+      "revId": "44c2c5e7a48988a270c2ee01089fc1290491cc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
