@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e0b014_8cf4c765",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T09:47:27Z",
+      "side": 1,
+      "message": "Please add a comment how can the oat_file be null (here and other places. Maybe the comment can be in GetOatFile()).",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 5
+      },
+      "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_6c0abb8d",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T09:47:27Z",
+      "side": 1,
+      "message": "Hmm, Andreas +1\u0027ed this :-)?",
+      "range": {
+        "startLine": 1146,
+        "startChar": 2,
+        "endLine": 1146,
+        "endChar": 9
+      },
+      "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
