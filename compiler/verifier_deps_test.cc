@@ -153,6 +153,7 @@ class VerifierDepsTest : public CommonCompilerTest {
     }
     CHECK(method != nullptr);
 
+    Thread::Current()->SetVerifierDeps(callbacks_->GetVerifierDeps());
     MethodVerifier verifier(Thread::Current(),
                             primary_dex_file_,
                             dex_cache_handle,
@@ -168,6 +169,7 @@ class VerifierDepsTest : public CommonCompilerTest {
                             false /* verify to dump */,
                             true /* allow_thread_suspension */);
     verifier.Verify();
+    Thread::Current()->SetVerifierDeps(nullptr);
     return !verifier.HasFailures();
   }
 
@@ -229,7 +231,6 @@ class VerifierDepsTest : public CommonCompilerTest {
     const DexFile::TypeId* type_id = primary_dex_file_->FindTypeId(cls.c_str());
     DCHECK(type_id != nullptr);
     uint16_t index = primary_dex_file_->GetIndexForTypeId(*type_id);
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     for (const auto& dex_dep : verifier_deps_->dex_deps_) {
       for (uint16_t entry : dex_dep.second->unverified_classes_) {
         if (index == entry) {
@@ -245,7 +246,6 @@ class VerifierDepsTest : public CommonCompilerTest {
   bool HasAssignable(const std::string& expected_destination,
                      const std::string& expected_source,
                      bool expected_is_assignable) {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     for (auto& dex_dep : verifier_deps_->dex_deps_) {
       const DexFile& dex_file = *dex_dep.first;
       auto& storage = expected_is_assignable ? dex_dep.second->assignable_types_
@@ -267,7 +267,6 @@ class VerifierDepsTest : public CommonCompilerTest {
   bool HasClass(const std::string& expected_klass,
                 bool expected_resolved,
                 const std::string& expected_access_flags = "") {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     for (auto& dex_dep : verifier_deps_->dex_deps_) {
       for (auto& entry : dex_dep.second->classes_) {
         if (expected_resolved != entry.IsResolved()) {
@@ -302,7 +301,6 @@ class VerifierDepsTest : public CommonCompilerTest {
                 bool expected_resolved,
                 const std::string& expected_access_flags = "",
                 const std::string& expected_decl_klass = "") {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     for (auto& dex_dep : verifier_deps_->dex_deps_) {
       for (auto& entry : dex_dep.second->fields_) {
         if (expected_resolved != entry.IsResolved()) {
@@ -356,7 +354,6 @@ class VerifierDepsTest : public CommonCompilerTest {
                  bool expected_resolved,
                  const std::string& expected_access_flags = "",
                  const std::string& expected_decl_klass = "") {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     for (auto& dex_dep : verifier_deps_->dex_deps_) {
       auto& storage = (expected_kind == "direct") ? dex_dep.second->direct_methods_
                           : (expected_kind == "virtual") ? dex_dep.second->virtual_methods_
@@ -405,13 +402,10 @@ class VerifierDepsTest : public CommonCompilerTest {
   }
 
   size_t NumberOfCompiledDexFiles() {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
     return verifier_deps_->dex_deps_.size();
   }
 
   size_t HasEachKindOfRecord() {
-    MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
-
     bool has_strings = false;
     bool has_assignability = false;
     bool has_classes = false;
@@ -461,8 +455,6 @@ class VerifierDepsTest : public CommonCompilerTest {
 TEST_F(VerifierDepsTest, StringToId) {
   ScopedObjectAccess soa(Thread::Current());
   LoadDexFile(&soa);
-
-  MutexLock mu(Thread::Current(), *Locks::verifier_deps_lock_);
 
   uint32_t id_Main1 = verifier_deps_->GetIdFromString(*primary_dex_file_, "LMain;");
   ASSERT_LT(id_Main1, primary_dex_file_->NumStringIds());
