@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e0b014_0c01f76a",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T10:01:41Z",
+      "side": 1,
+      "message": "Please add a comment when can the dex cache be null.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 37
+      },
+      "revId": "344af91f3b419f987cec9fb62b58eb4857e4f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_ec5c6b9e",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T10:01:41Z",
+      "side": 1,
+      "message": "ditto, why wouldn\u0027t you have one?",
+      "range": {
+        "startLine": 67,
+        "startChar": 63,
+        "endLine": 67,
+        "endChar": 78
+      },
+      "revId": "344af91f3b419f987cec9fb62b58eb4857e4f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_8c6ba72c",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T10:01:41Z",
+      "side": 1,
+      "message": "Why can\u0027t you do the same for fields? Please add a comment.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 3
+      },
+      "revId": "344af91f3b419f987cec9fb62b58eb4857e4f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_cc61af4e",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-18T10:01:41Z",
+      "side": 1,
+      "message": "One line?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 71
+      },
+      "revId": "344af91f3b419f987cec9fb62b58eb4857e4f1d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
