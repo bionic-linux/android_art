@@ -54,9 +54,14 @@ class QuickCompilerCallbacks FINAL : public CompilerCallbacks {
       verifier_deps_.reset(deps);
     }
 
+    std::vector<std::string>* GetVerifierDepsExtraStrings() OVERRIDE {
+      return &verifier_deps_extra_strings_;
+    }
+
   private:
     VerificationResults* const verification_results_;
     std::unique_ptr<verifier::VerifierDeps> verifier_deps_;
+    std::vector<std::string> verifier_deps_extra_strings_;
 };
 
 }  // namespace art

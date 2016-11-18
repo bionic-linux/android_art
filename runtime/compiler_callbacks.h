@@ -49,6 +49,10 @@ class CompilerCallbacks {
   virtual verifier::VerifierDeps* GetVerifierDeps() const = 0;
   virtual void SetVerifierDeps(verifier::VerifierDeps* deps ATTRIBUTE_UNUSED) {}
 
+  virtual std::vector<std::string>* GetVerifierDepsExtraStrings() {
+    return nullptr;
+  }
+
   bool IsBootImage() {
     return mode_ == CallbackMode::kCompileBootImage;
   }
