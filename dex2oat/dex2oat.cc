@@ -49,6 +49,7 @@
 #include "compiler_callbacks.h"
 #include "debug/elf_debug_writer.h"
 #include "debug/method_debug_info.h"
+#include "dex/dex_to_dex_decompiler.h"
 #include "dex/quick_compiler_callbacks.h"
 #include "dex/verification_results.h"
 #include "dex_file-inl.h"
@@ -78,6 +79,7 @@
 #include "ScopedLocalRef.h"
 #include "scoped_thread_state_change-inl.h"
 #include "utils.h"
+#include "vdex_file.h"
 #include "verifier/verifier_deps.h"
 #include "well_known_classes.h"
 #include "zip_archive.h"
@@ -520,6 +522,7 @@ class Dex2Oat FINAL {
       oat_fd_(-1),
       input_vdex_fd_(-1),
       output_vdex_fd_(-1),
+      input_vdex_file_(nullptr),
       zip_fd_(-1),
       image_base_(0U),
       image_classes_zip_filename_(nullptr),
@@ -1123,6 +1126,8 @@ class Dex2Oat FINAL {
         zip_location_ = option.substr(strlen("--zip-location=")).data();
       } else if (option.starts_with("--input-vdex-fd=")) {
         ParseInputVdexFd(option);
+      } else if (option.starts_with("--input-vdex=")) {
+        input_vdex_ = option.substr(strlen("--input-vdex=")).data();
       } else if (option.starts_with("--output-vdex-fd=")) {
         ParseOutputVdexFd(option);
       } else if (option.starts_with("--oat-file=")) {
@@ -1266,6 +1271,16 @@ class Dex2Oat FINAL {
           return false;
         }
         oat_files_.push_back(std::move(oat_file));
+        if (!input_vdex_.empty()) {
+          std::string error_msg;
+          input_vdex_file_.reset(VdexFile::Open(input_vdex_,
+                                                /* writable */ false,
+                                                /* low_4gb */ false,
+                                                &error_msg));
+          if (input_vdex_file_ != nullptr && !input_vdex_file_->IsValid()) {
+            input_vdex_file_.reset(nullptr);
+          }
+        }
 
         DCHECK_EQ(output_vdex_fd_, -1);
         std::string vdex_filename = ReplaceFileExtension(oat_filename, "vdex");
@@ -1292,6 +1307,28 @@ class Dex2Oat FINAL {
         PLOG(WARNING) << "Truncating oat file " << oat_location_ << " failed.";
       }
       oat_files_.push_back(std::move(oat_file));
+
+      DCHECK_NE(input_vdex_fd_, output_vdex_fd_);
+      if (input_vdex_fd_ != -1) {
+        struct stat s;
+        int rc = TEMP_FAILURE_RETRY(fstat(input_vdex_fd_, &s));
+        if (rc == -1) {
+          PLOG(WARNING) << "Failed getting length of vdex file";
+        } else {
+          std::string error_msg;
+          input_vdex_file_.reset(VdexFile::Open(input_vdex_fd_,
+                                                s.st_size,
+                                                "vdex",
+                                                /* writable */ false,
+                                                /* low_4gb */ false,
+                                                &error_msg));
+          if (input_vdex_file_ == nullptr) {
+            PLOG(WARNING) << "Failed opening vdex file " << error_msg;
+          } else if (!input_vdex_file_->IsValid()) {
+            input_vdex_file_.reset(nullptr);
+          }
+        }
+      }
 
       DCHECK_NE(output_vdex_fd_, -1);
       std::string vdex_location = ReplaceFileExtension(oat_location_, "vdex");
@@ -1388,7 +1425,6 @@ class Dex2Oat FINAL {
   // boot class path.
   bool Setup() {
     TimingLogger::ScopedTiming t("dex2oat Setup", timings_);
-    art::MemMap::Init();  // For ZipEntry::ExtractToMemMap.
 
     if (!PrepareImageClasses() || !PrepareCompiledClasses() || !PrepareCompiledMethods()) {
       return false;
@@ -1480,8 +1516,10 @@ class Dex2Oat FINAL {
         // Unzip or copy dex files straight to the oat file.
         std::unique_ptr<MemMap> opened_dex_files_map;
         std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
-        // Dexlayout verifies the dex file, so disable dex file verification in that case.
-        bool verify = compiler_options_->GetCompilerFilter() != CompilerFilter::kLayoutProfile;
+        // No need to verify the dex file for dexlayout, which already verified it, and when
+        // when have a vdex.
+        bool verify = compiler_options_->GetCompilerFilter() != CompilerFilter::kLayoutProfile &&
+            (input_vdex_file_ == nullptr);
         if (!oat_writers_[i]->WriteAndOpenDexFiles(
             kIsVdexEnabled ? vdex_files_[i].get() : oat_files_[i].get(),
             rodata_.back(),
@@ -1598,6 +1636,57 @@ class Dex2Oat FINAL {
     return IsImage() && oat_fd_ != kInvalidFd;
   }
 
+  // In-place unquicken the given `dex_files` based on `quickening_info`.
+  void Unquicken(const std::vector<const DexFile*>& dex_files,
+                 const ArrayRef<const uint8_t>& quickening_info) {
+    const uint8_t* quickening_info_ptr = quickening_info.data();
+    const uint8_t* const quickening_info_end = quickening_info.data() + quickening_info.size();
+    for (const DexFile* dex_file : dex_files) {
+      for (uint32_t i = 0; i < dex_file->NumClassDefs(); ++i) {
+        const DexFile::ClassDef& class_def = dex_file->GetClassDef(i);
+        const uint8_t* class_data = dex_file->GetClassData(class_def);
+        if (class_data == nullptr) {
+          continue;
+        }
+        ClassDataItemIterator it(*dex_file, class_data);
+        // Skip fields
+        while (it.HasNextStaticField()) {
+          it.Next();
+        }
+        while (it.HasNextInstanceField()) {
+          it.Next();
+        }
+
+        // Unquicken each method.
+        while (it.HasNextDirectMethod()) {
+          const DexFile::CodeItem* code_item = it.GetMethodCodeItem();
+          if (code_item != nullptr) {
+            uint32_t quickening_size = *reinterpret_cast<const uint32_t*>(quickening_info_ptr);
+            quickening_info_ptr += sizeof(uint32_t);
+            optimizer::ArtDecompileDEX(
+                *code_item, ArrayRef<const uint8_t>(quickening_info_ptr, quickening_size));
+            quickening_info_ptr += quickening_size;
+          }
+          it.Next();
+        }
+
+        while (it.HasNextVirtualMethod()) {
+          const DexFile::CodeItem* code_item = it.GetMethodCodeItem();
+          if (code_item != nullptr) {
+            uint32_t quickening_size = *reinterpret_cast<const uint32_t*>(quickening_info_ptr);
+            quickening_info_ptr += sizeof(uint32_t);
+            optimizer::ArtDecompileDEX(
+                *code_item, ArrayRef<const uint8_t>(quickening_info_ptr, quickening_size));
+            quickening_info_ptr += quickening_size;
+          }
+          it.Next();
+        }
+        DCHECK(!it.HasNext());
+      }
+    }
+    DCHECK_EQ(quickening_info_ptr, quickening_info_end) << "Failed to use all quickening info";
+  }
+
   // Create and invoke the compiler driver. This will compile all the dex files.
   void Compile() {
     TimingLogger::ScopedTiming t("dex2oat Compile", timings_);
@@ -1665,7 +1754,21 @@ class Dex2Oat FINAL {
                                      swap_fd_,
                                      profile_compilation_info_.get()));
     driver_->SetDexFilesForOatFile(dex_files_);
-    driver_->CompileAll(class_loader_, dex_files_, /* verifier_deps */ nullptr, timings_);
+    std::unique_ptr<verifier::VerifierDeps> verifier_deps(nullptr);
+    if (input_vdex_file_ != nullptr) {
+      // Unquicken in case the given vdex file file is out of date.
+      // TODO: do not unquicken if the boot image hasn't changed. How exactly
+      // we'll know is under experimentation.
+      Unquicken(dex_files_, input_vdex_file_->GetQuickeningInfo());
+      verifier_deps.reset(
+          new verifier::VerifierDeps(dex_files_, input_vdex_file_->GetVerifierDepsData()));
+    }
+    driver_->CompileAll(class_loader_, dex_files_, /* verifier_deps */ verifier_deps.get(), timings_);
+    if (verifier_deps != nullptr && callbacks_->GetVerifierDeps() == nullptr) {
+      // This means the compiler did not need to create a new VerifierDeps. Move the one we
+      // have in the callbacks, which will be fetched when writing the vdex.
+      callbacks_->SetVerifierDeps(verifier_deps.release());
+    }
   }
 
   // Notes on the interleaving of creating the images and oat files to
@@ -2238,7 +2341,14 @@ class Dex2Oat FINAL {
 
   bool AddDexFileSources() {
     TimingLogger::ScopedTiming t2("AddDexFileSources", timings_);
-    if (zip_fd_ != -1) {
+    if (input_vdex_file_ != nullptr) {
+      DCHECK_EQ(oat_writers_.size(), 1u);
+      const std::string& name = zip_location_.empty() ? dex_locations_[0] : zip_location_;
+      DCHECK(!name.empty());
+      if (!oat_writers_[0]->AddVdexDexFilesSource(*input_vdex_file_.get(), name.c_str())) {
+        return false;
+      }
+    } else if (zip_fd_ != -1) {
       DCHECK_EQ(oat_writers_.size(), 1u);
       if (!oat_writers_[0]->AddZippedDexFilesSource(File(zip_fd_, /* check_usage */ false),
                                                     zip_location_.c_str())) {
@@ -2596,6 +2706,8 @@ class Dex2Oat FINAL {
   int oat_fd_;
   int input_vdex_fd_;
   int output_vdex_fd_;
+  std::string input_vdex_;
+  std::unique_ptr<VdexFile> input_vdex_file_;
   std::vector<const char*> dex_filenames_;
   std::vector<const char*> dex_locations_;
   int zip_fd_;
@@ -2791,6 +2903,8 @@ static int dex2oat(int argc, char** argv) {
       return EXIT_FAILURE;
     }
   }
+
+  art::MemMap::Init();  // For ZipEntry::ExtractToMemMap, and vdex.
 
   // Check early that the result of compilation can be written
   if (!dex2oat->OpenFile()) {
