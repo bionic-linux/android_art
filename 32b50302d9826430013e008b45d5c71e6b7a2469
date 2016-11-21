@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0f990d6_7a7c9623",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-21T23:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e0b014_d2c38498",
+      "range": {
+        "startLine": 65,
+        "startChar": 6,
+        "endLine": 65,
+        "endChar": 18
+      },
+      "revId": "32b50302d9826430013e008b45d5c71e6b7a2469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e0b014_92cdfcc5",
         "filename": "runtime/verifier/verifier_deps.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-21T22:27:29Z",
       "side": 1,
       "message": "Since this is only used in debug mode, move this and the check to a if (kIsDebugBuild) ?",
+      "range": {
+        "startLine": 72,
+        "startChar": 6,
+        "endLine": 72,
+        "endChar": 23
+      },
+      "revId": "32b50302d9826430013e008b45d5c71e6b7a2469",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f990d6_5a89da0b",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-21T23:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e0b014_92cdfcc5",
       "range": {
         "startLine": 72,
         "startChar": 6,
