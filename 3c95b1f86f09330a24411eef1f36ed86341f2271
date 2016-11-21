@@ -46,6 +46,76 @@
       "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_cf4c0144",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-21T14:42:34Z",
+      "side": 1,
+      "message": "I like the idea of passing it to VerifyClass. It sounds better from a design point of view, rather then using the tls. You could file a bug for it so we don\u0027t forget to revisit if needed.",
+      "parentUuid": "f0e0b014_cf940195",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_cf252172",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-21T14:42:34Z",
+      "side": 1,
+      "message": "you could move this to utils...",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_af2ad53f",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-21T14:42:34Z",
+      "side": 1,
+      "message": "That\u0027s a bit out of context. What\u0027s the *main* one? There\u0027s no reference in this function. There\u0027s also a reference to the main one somewhere else in this file as well. That needs clarification as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
