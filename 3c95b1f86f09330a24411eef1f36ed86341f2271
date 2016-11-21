@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10d8e46b_90905a2e",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-21T12:00:51Z",
+      "side": 1,
+      "message": "Why don\u0027t we simply pass the VerifierDeps as an extra parameter to VerifyClass()? That way we can avoid the extra member in Thread and a lot of indirections in the VerifierDeps. Repeatedly retrieving the VerifierDeps singleton just to compare it with null for the non-AOT case isn\u0027t exactly free.\n\nWe would need to rewrite the ParallelCompilationManager a bit to provide a worker id to Visit(), so that we can pass the right per-thread VerifierDeps.",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
