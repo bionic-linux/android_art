@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f0e0b014_52079481",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T16:13:25Z",
+      "side": 1,
+      "message": "My original point against not putting VerifierDeps in the class linker is that I did not want the class linker to care about it.\n\nAnd yes, the deps are only created for AOT.",
+      "parentUuid": "f0f990d6_8e2f1c9f",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e0b014_cf252172",
         "filename": "runtime/verifier/verifier_deps.cc",
         "patchSetId": 3
