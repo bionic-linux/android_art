@@ -22,6 +22,30 @@
       "revId": "69add144ea1953f03c442022567b5b31da7d5c9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f990d6_8ef27cb7",
+        "filename": "runtime/oat_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-21T18:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e0b014_cf5761e6",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 46
+      },
+      "revId": "69add144ea1953f03c442022567b5b31da7d5c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
