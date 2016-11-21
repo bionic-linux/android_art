@@ -22,6 +22,30 @@
       "revId": "9bfc4c004d30dc607410ba3a0c4d30b57e22b5e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f990d6_219dd941",
+        "filename": "runtime/dex_file_types.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-21T18:02:37Z",
+      "side": 1,
+      "message": "It\u0027s almost a struct, except Google convention says that basically any method implementations (which I assume includes stuff like IsValid) should make it a class.\n\nOpen for discussion.",
+      "parentUuid": "f0f990d6_4189f50b",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "9bfc4c004d30dc607410ba3a0c4d30b57e22b5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
