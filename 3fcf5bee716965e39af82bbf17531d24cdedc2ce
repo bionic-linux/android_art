@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0e0b014_f28fa07d",
+        "filename": "runtime/base/stl_util.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T22:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f990d6_2e1ca82c",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 3
+      },
+      "revId": "3fcf5bee716965e39af82bbf17531d24cdedc2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f990d6_0ef7acb5",
         "filename": "runtime/thread.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-21T17:43:14Z",
       "side": 1,
       "message": "Can you add a comment that the verifier deps need to be cleared with null to prevent crashing in destructor (from deleting stack_trace_sample).",
+      "range": {
+        "startLine": 963,
+        "startChar": 7,
+        "endLine": 963,
+        "endChar": 22
+      },
+      "revId": "3fcf5bee716965e39af82bbf17531d24cdedc2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_d294a494",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T22:06:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f990d6_0ef7acb5",
       "range": {
         "startLine": 963,
         "startChar": 7,
