@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f990d6_8456db1e",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-21T20:50:28Z",
+      "side": 1,
+      "message": "This could be unified with templates and a lambda for class_idx_.\n\nCould also cache GetDeclaringClass.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
+      },
+      "revId": "b4869a5a7bec300832158f78874789f38367d51c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
