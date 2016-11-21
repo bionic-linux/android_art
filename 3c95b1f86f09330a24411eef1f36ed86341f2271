@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "50f25ce7_3232ce4f",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T14:59:49Z",
+      "side": 1,
+      "message": "Until it gets removed by bug bankruptcy :) As a whole, we should reconsider the compiler_callbacks.",
+      "parentUuid": "f0e0b014_cf4c0144",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e0b014_cf252172",
         "filename": "runtime/verifier/verifier_deps.cc",
         "patchSetId": 3
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "d0c80c9b_36dd1673",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T14:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e0b014_cf252172",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e0b014_af2ad53f",
         "filename": "runtime/verifier/verifier_deps.cc",
         "patchSetId": 3
@@ -107,6 +155,30 @@
       "writtenOn": "2016-11-21T14:42:34Z",
       "side": 1,
       "message": "That\u0027s a bit out of context. What\u0027s the *main* one? There\u0027s no reference in this function. There\u0027s also a reference to the main one somewhere else in this file as well. That needs clarification as well.",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70eda006_1012240a",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T14:59:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e0b014_af2ad53f",
       "range": {
         "startLine": 49,
         "startChar": 54,
