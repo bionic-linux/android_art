@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f990d6_4189f50b",
+        "filename": "runtime/dex_file_types.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2016-11-21T18:00:35Z",
+      "side": 1,
+      "message": "Unfamiliar with the conventions here.  Why is this public, or if it is, why is this not a struct rather than a class?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "9bfc4c004d30dc607410ba3a0c4d30b57e22b5e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
