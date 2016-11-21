@@ -93,6 +93,30 @@
       "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_2fe26515",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T13:56:47Z",
+      "side": 1,
+      "message": "touché\n\n.... but, I did add a TODO :-) Do you think we can/should fix this mutable thing?",
+      "parentUuid": "f0f990d6_077b1894",
+      "range": {
+        "startLine": 1146,
+        "startChar": 2,
+        "endLine": 1146,
+        "endChar": 9
+      },
+      "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
