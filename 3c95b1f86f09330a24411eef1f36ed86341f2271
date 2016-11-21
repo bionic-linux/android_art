@@ -22,6 +22,30 @@
       "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0e0b014_cf940195",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T12:52:51Z",
+      "side": 1,
+      "message": "We talked about it with dbrazdil@, who started out passing it to VerifyClass. The problem is more about ClassLinker::VerifyClass, which would need to be aware of VerifierDeps, and IIRC, the VerifierDeps had to be passed to a couple of methods before hitting the verifier (not that I think it matters much here, but passing parameters is in the same performance scale as checking null for a thread entry).\n\nSo we went to the way we traditionally did things: put compiler-related stuff to the callbacks. We can revisit that later if you think it\u0027s worth it.",
+      "parentUuid": "10d8e46b_90905a2e",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
