@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e0b014_cf5761e6",
+        "filename": "runtime/oat_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T13:56:47Z",
+      "side": 1,
+      "message": "Add DCHECK(oat_file_ !\u003d nullptr || Runtime::Current()-\u003eIsAotCompiler()) ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 46
+      },
+      "revId": "69add144ea1953f03c442022567b5b31da7d5c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
