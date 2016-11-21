@@ -117,6 +117,30 @@
       "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f990d6_0ec56c4d",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-11-21T18:05:31Z",
+      "side": 1,
+      "message": "we would have to change many of the callers to not have const DexFile pointers, it might be invasive.",
+      "parentUuid": "f0e0b014_2fe26515",
+      "range": {
+        "startLine": 1146,
+        "startChar": 2,
+        "endLine": 1146,
+        "endChar": 9
+      },
+      "revId": "5cb4227239d6e30d8e90b79d4056dbed05f91d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
