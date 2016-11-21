@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e0b014_0f62091c",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-21T11:03:25Z",
+      "side": 1,
+      "message": "Is that on purpose? Or could we have a per-thread counter, if that actually makes sense for what we\u0027re dumping?",
+      "range": {
+        "startLine": 438,
+        "startChar": 14,
+        "endLine": 438,
+        "endChar": 79
+      },
+      "revId": "9fd470f87342dfe974c8ec8c74239a547e768650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
