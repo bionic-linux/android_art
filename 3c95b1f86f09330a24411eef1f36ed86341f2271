@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "f0f990d6_8e2f1c9f",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-21T16:03:17Z",
+      "side": 1,
+      "message": "Is that really true anymore? Why would the classlinker be involved? I\u0027d assume you\u0027d always pass null or a dummy from the classlinker? (I thought I had cleaned up results passing enough that the CompilerCallbacks are not necessary anymore)\n\n(Maybe I have forgotten the design, but I thought we\u0027d only create the deps on a dex2oat run?)",
+      "parentUuid": "50f25ce7_3232ce4f",
+      "range": {
+        "startLine": 2054,
+        "startChar": 10,
+        "endLine": 2054,
+        "endChar": 48
+      },
+      "revId": "3c95b1f86f09330a24411eef1f36ed86341f2271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0e0b014_cf252172",
         "filename": "runtime/verifier/verifier_deps.cc",
         "patchSetId": 3
