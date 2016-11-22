@@ -617,7 +617,7 @@ void JdwpState::SuspendByPolicy(JdwpSuspendPolicy suspend_policy, JDWP::ObjectId
 }
 
 void JdwpState::SendRequestAndPossiblySuspend(ExpandBuf* pReq, JdwpSuspendPolicy suspend_policy,
-                                              ObjectId threadId) {
+                                              ObjectId threadId ATTRIBUTE_UNUSED) {
   Thread* const self = Thread::Current();
   self->AssertThreadSuspensionIsAllowable();
   CHECK(pReq != nullptr);
@@ -625,7 +625,7 @@ void JdwpState::SendRequestAndPossiblySuspend(ExpandBuf* pReq, JdwpSuspendPolicy
   JDWP::ObjectId thread_self_id = Dbg::GetThreadSelfId();
   ScopedThreadSuspension sts(self, kWaitingForDebuggerSend);
   if (suspend_policy != SP_NONE) {
-    AcquireJdwpTokenForEvent(threadId);
+    AcquireJdwpTokenForEvent(thread_self_id);
   }
   EventFinish(pReq);
   {
@@ -658,13 +658,10 @@ void JdwpState::ReleaseJdwpTokenForCommand() {
 }
 
 void JdwpState::AcquireJdwpTokenForEvent(ObjectId threadId) {
-  CHECK_NE(Thread::Current(), GetDebugThread()) << "Expected event thread";
-  CHECK_NE(debug_thread_id_, threadId) << "Not expected debug thread";
   SetWaitForJdwpToken(threadId);
 }
 
 void JdwpState::ReleaseJdwpTokenForEvent() {
-  CHECK_NE(Thread::Current(), GetDebugThread()) << "Expected event thread";
   ClearWaitForJdwpToken();
 }
 
@@ -685,23 +682,28 @@ void JdwpState::SetWaitForJdwpToken(ObjectId threadId) {
   /* this is held for very brief periods; contention is unlikely */
   MutexLock mu(self, jdwp_token_lock_);
 
-  CHECK_NE(jdwp_token_owner_thread_id_, threadId) << "Thread is already holding event thread lock";
+  if (jdwp_token_owner_thread_id_ == threadId) {
+    // Only the debugger thread may already hold the event token. For instance, it may trigger
+    // a CLASS_PREPARE event while processing a command that initializes a class.
+    CHECK_EQ(threadId, debug_thread_id_) << "Non-debugger thread is already holding event token";
+  } else {
+    /*
+     * If another thread is already doing stuff, wait for it.  This can
+     * go to sleep indefinitely.
+     */
 
-  /*
-   * If another thread is already doing stuff, wait for it.  This can
-   * go to sleep indefinitely.
-   */
-  while (jdwp_token_owner_thread_id_ != 0) {
-    VLOG(jdwp) << StringPrintf("event in progress (%#" PRIx64 "), %#" PRIx64 " sleeping",
-                               jdwp_token_owner_thread_id_, threadId);
-    waited = true;
-    jdwp_token_cond_.Wait(self);
-  }
+    while (jdwp_token_owner_thread_id_ != 0) {
+      VLOG(jdwp) << StringPrintf("event in progress (%#" PRIx64 "), %#" PRIx64 " sleeping",
+                                 jdwp_token_owner_thread_id_, threadId);
+      waited = true;
+      jdwp_token_cond_.Wait(self);
+    }
 
-  if (waited || threadId != debug_thread_id_) {
-    VLOG(jdwp) << StringPrintf("event token grabbed (%#" PRIx64 ")", threadId);
+    if (waited || threadId != debug_thread_id_) {
+      VLOG(jdwp) << StringPrintf("event token grabbed (%#" PRIx64 ")", threadId);
+    }
+    jdwp_token_owner_thread_id_ = threadId;
   }
-  jdwp_token_owner_thread_id_ = threadId;
 }
 
 /*
