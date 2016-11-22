@@ -22,6 +22,8 @@ public class Main {
 
   private int privateField = 0;
 
+  public static boolean booleanField;
+
   private void privateMethod() { }
 
   private static void test(String name) throws Exception {
@@ -40,5 +42,6 @@ public class Main {
     test("D");
     test("E");
     test("F");
+    test("G");
   }
 }

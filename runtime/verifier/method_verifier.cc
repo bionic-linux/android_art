@@ -4410,7 +4410,10 @@ void MethodVerifier::VerifyPrimitivePut(const RegType& target_type, const RegTyp
   bool instruction_compatible;
   bool value_compatible;
   const RegType& value_type = work_line_->GetRegisterType(this, vregA);
-  if (target_type.IsIntegralTypes()) {
+  if (target_type.IsBooleanTypes() && value_type.IsConstant()) {
+    instruction_compatible = target_type.Equals(insn_type);
+    value_compatible = value_type.IsBooleanTypes();
+  } else if (target_type.IsIntegralTypes()) {
     instruction_compatible = target_type.Equals(insn_type);
     value_compatible = value_type.IsIntegralTypes();
   } else if (target_type.IsFloat()) {
