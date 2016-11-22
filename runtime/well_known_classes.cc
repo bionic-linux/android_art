@@ -69,6 +69,7 @@ jclass WellKnownClasses::java_lang_System;
 jclass WellKnownClasses::java_lang_Thread;
 jclass WellKnownClasses::java_lang_ThreadGroup;
 jclass WellKnownClasses::java_lang_Throwable;
+jclass WellKnownClasses::java_lang_VMClassLoader;
 jclass WellKnownClasses::java_nio_DirectByteBuffer;
 jclass WellKnownClasses::java_util_ArrayList;
 jclass WellKnownClasses::java_util_Collections;
@@ -302,6 +303,7 @@ void WellKnownClasses::Init(JNIEnv* env) {
   java_lang_Thread = CacheClass(env, "java/lang/Thread");
   java_lang_ThreadGroup = CacheClass(env, "java/lang/ThreadGroup");
   java_lang_Throwable = CacheClass(env, "java/lang/Throwable");
+  java_lang_VMClassLoader = CacheClass(env, "java/lang/VMClassLoader");
   java_nio_DirectByteBuffer = CacheClass(env, "java/nio/DirectByteBuffer");
   java_util_ArrayList = CacheClass(env, "java/util/ArrayList");
   java_util_Collections = CacheClass(env, "java/util/Collections");
