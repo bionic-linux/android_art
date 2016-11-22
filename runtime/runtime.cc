@@ -584,7 +584,7 @@ static jobject CreateSystemClassLoader(Runtime* runtime) {
   ClassLinker* cl = Runtime::Current()->GetClassLinker();
   auto pointer_size = cl->GetImagePointerSize();
 
-  StackHandleScope<2> hs(soa.Self());
+  StackHandleScope<3> hs(soa.Self());
   Handle<mirror::Class> class_loader_class(
       hs.NewHandle(soa.Decode<mirror::Class>(WellKnownClasses::java_lang_ClassLoader)));
   CHECK(cl->EnsureInitialized(soa.Self(), class_loader_class, true, true));
@@ -615,6 +615,11 @@ static jobject CreateSystemClassLoader(Runtime* runtime) {
   contextClassLoader->SetObject<false>(
       soa.Self()->GetPeer(),
       soa.Decode<mirror::ClassLoader>(system_class_loader.get()).Ptr());
+
+  // Initialize VMClassLoader. Workaround for b/33067273.
+  Handle<mirror::Class> vm_class_loader_class(
+      hs.NewHandle(soa.Decode<mirror::Class>(WellKnownClasses::java_lang_VMClassLoader)));
+  CHECK(cl->EnsureInitialized(soa.Self(), vm_class_loader_class, true, true));
 
   return env->NewGlobalRef(system_class_loader.get());
 }
