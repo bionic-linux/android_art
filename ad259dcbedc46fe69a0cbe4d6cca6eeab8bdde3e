@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50ba5c38_5201126a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0100c08_13edcc45",
+      "range": {
+        "startLine": 1129,
+        "startChar": 4,
+        "endLine": 1130,
+        "endChar": 68
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0100c08_33560821",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-23T13:59:15Z",
       "side": 1,
       "message": "comment why you don\u0027t care or dcheck that you input_vdex_fd is not passed. Same below.",
+      "range": {
+        "startLine": 1274,
+        "startChar": 13,
+        "endLine": 1274,
+        "endChar": 24
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905054f1_117f6c1a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0100c08_33560821",
       "range": {
         "startLine": 1274,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d06c8cba_337c6823",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the plan. But until then, we should have this DCHECK.",
+      "parentUuid": "d0100c08_9300bc1e",
+      "range": {
+        "startLine": 1311,
+        "startChar": 6,
+        "endLine": 1311,
+        "endChar": 49
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0100c08_33f0c81f",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-23T13:59:15Z",
       "side": 1,
       "message": "Add a comment explaining why it\u0027s ok to proceed if the vdex can\u0027t be opened.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 0,
+        "endLine": 1329,
+        "endChar": 11
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905054f1_5189f40b",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0100c08_33f0c81f",
       "range": {
         "startLine": 1325,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "905054f1_91919c36",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ba5c38_926ffa69",
+      "range": {
+        "startLine": 1519,
+        "startChar": 84,
+        "endLine": 1520,
+        "endChar": 27
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0100c08_d329949d",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2016-11-23T13:59:15Z",
       "side": 1,
       "message": "Is this the right file for this method? Feels that it should sit next to where we actually do the quickening.",
+      "range": {
+        "startLine": 1640,
+        "startChar": 7,
+        "endLine": 1640,
+        "endChar": 16
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905054f1_b196a029",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "The quickening is in the oar_writer.cc, which looks maybe better but not great either.\n\nIt\u0027s unclear how jvmti will also use quickening, and maybe the\u0027ll need that method as well, in which case, it will probably end up in runtime/ (instead of compiler/). So we\u0027re kind of in a transition state.\n\nWhat is your opinion?",
+      "parentUuid": "d0100c08_d329949d",
       "range": {
         "startLine": 1640,
         "startChar": 7,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "103c64a3_8d6a615a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "The comment says \"in case\", is that confusing?\n\nThe TODO below isn\u0027t addressing your comment?",
+      "parentUuid": "d0100c08_b36858d4",
+      "range": {
+        "startLine": 1759,
+        "startChar": 19,
+        "endLine": 1759,
+        "endChar": 66
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0100c08_d377d4af",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 4
@@ -174,6 +342,30 @@
       "writtenOn": "2016-11-23T13:59:15Z",
       "side": 1,
       "message": "The flow here is rather tricky to follow. I think that\u0027s mostly due to the surrounding code, handling vdex, being here and not in CompileAll.\n\nMaybe consider wrapping all this (L1757-L1770 + Unquicken) in a new CompilerDriver method?",
+      "range": {
+        "startLine": 1766,
+        "startChar": 13,
+        "endLine": 1766,
+        "endChar": 23
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "103c64a3_2da32d83",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1766,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-23T16:52:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0100c08_d377d4af",
       "range": {
         "startLine": 1766,
         "startChar": 13,
