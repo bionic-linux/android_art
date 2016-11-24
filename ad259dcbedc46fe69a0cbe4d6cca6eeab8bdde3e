@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "905054f1_711c382e",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-24T14:58:07Z",
+      "side": 1,
+      "message": "Having everything in the compiler driver looks much better. I think we\u0027re good with the current solution until we find another user for that code.",
+      "parentUuid": "905054f1_b196a029",
+      "range": {
+        "startLine": 1640,
+        "startChar": 7,
+        "endLine": 1640,
+        "endChar": 16
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0100c08_b36858d4",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 4
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "The comment says \"in case\", is that confusing?\n\nThe TODO below isn\u0027t addressing your comment?",
       "parentUuid": "d0100c08_b36858d4",
+      "range": {
+        "startLine": 1759,
+        "startChar": 19,
+        "endLine": 1759,
+        "endChar": 66
+      },
+      "revId": "ad259dcbedc46fe69a0cbe4d6cca6eeab8bdde3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905054f1_511f3423",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1759,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-24T14:58:07Z",
+      "side": 1,
+      "message": "yea, when I read \"in case\" I expect to see a conditional branch. Otherwise you should wrap the entire comment as a TODO.",
+      "parentUuid": "103c64a3_8d6a615a",
       "range": {
         "startLine": 1759,
         "startChar": 19,
