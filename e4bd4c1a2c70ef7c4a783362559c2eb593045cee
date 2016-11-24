@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5056dcee_0f5d8534",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4413,
+      "author": {
+        "id": 1125523
+      },
+      "writtenOn": "2016-11-24T14:11:07Z",
+      "side": 1,
+      "message": "It might be good to check everything, not just the constants. But I am not sure if this should be done. \n\nOne problem seen when removing the IsConstant() check is that 592-checker-regression-bool-input test fails.",
+      "range": {
+        "startLine": 4413,
+        "startChar": 35,
+        "endLine": 4413,
+        "endChar": 61
+      },
+      "revId": "e4bd4c1a2c70ef7c4a783362559c2eb593045cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
