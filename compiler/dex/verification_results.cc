@@ -98,6 +98,16 @@ const VerifiedMethod* VerificationResults::GetVerifiedMethod(MethodReference ref
   return (it != verified_methods_.end()) ? it->second : nullptr;
 }
 
+void VerificationResults::CreateVerifiedMethodFor(MethodReference ref) {
+  DexFileMethodArray* array = GetMethodArray(ref.dex_file);
+  DCHECK(array != nullptr);
+  // This method should only be called for classes verified at compile time,
+  // which have no verifier error, nor has methods that we know will throw
+  // at runtime.
+  (*array)[ref.dex_method_index].StoreSequentiallyConsistent(
+      new VerifiedMethod(/* encountered_error_types */ 0, /* has_runtime_throw */ false));
+}
+
 void VerificationResults::AddRejectedClass(ClassReference ref) {
   {
     WriterMutexLock mu(Thread::Current(), rejected_classes_lock_);
