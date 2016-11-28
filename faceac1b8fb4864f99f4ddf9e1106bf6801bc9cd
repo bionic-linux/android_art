@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d90030a_3fb1c795",
+        "filename": "compiler/dex/verification_results.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-28T11:42:17Z",
+      "side": 1,
+      "message": "add a comment why you need StoreSequentuallyConsistent.",
+      "range": {
+        "startLine": 104,
+        "startChar": 33,
+        "endLine": 104,
+        "endChar": 60
+      },
+      "revId": "faceac1b8fb4864f99f4ddf9e1106bf6801bc9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d90030a_bfbcf769",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2069,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2016-11-28T11:42:17Z",
+      "side": 1,
+      "message": "I think it is worth adding more details here about:\n\n- the implication that we don\u0027t compile classes with soft verification errors anymore\n- why has_runtime_throw\u003dfalse for the empty VerifiedMethod\n- that re-quickening will not optimize the check casts.",
+      "range": {
+        "startLine": 2068,
+        "startChar": 12,
+        "endLine": 2069,
+        "endChar": 39
+      },
+      "revId": "faceac1b8fb4864f99f4ddf9e1106bf6801bc9cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
