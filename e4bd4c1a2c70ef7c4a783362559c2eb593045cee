@@ -22,6 +22,30 @@
       "revId": "e4bd4c1a2c70ef7c4a783362559c2eb593045cee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d266fad_ac202c63",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4413,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2016-11-28T16:58:05Z",
+      "side": 1,
+      "message": "Sadly this will fail for synthetic methods and for code that already exists in market places. It was the original verifier behavior to be strict about this.",
+      "parentUuid": "5056dcee_0f5d8534",
+      "range": {
+        "startLine": 4413,
+        "startChar": 35,
+        "endLine": 4413,
+        "endChar": 61
+      },
+      "revId": "e4bd4c1a2c70ef7c4a783362559c2eb593045cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
