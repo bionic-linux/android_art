@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ade97f6b_c9e922c8",
+        "filename": "runtime/verifier/verifier_deps.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-11-29T17:30:13Z",
+      "side": 1,
+      "message": "Ups, I should have noticed this when rewriting.",
+      "range": {
+        "startLine": 398,
+        "startChar": 17,
+        "endLine": 398,
+        "endChar": 19
+      },
+      "revId": "a5b09a67034e57a6e10231dd4bd92f4cb50b824c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
