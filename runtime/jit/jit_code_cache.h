@@ -217,6 +217,9 @@ class JitCodeCache {
   void DisallowInlineCacheAccess() REQUIRES(!lock_);
   void BroadcastForInlineCacheAccess() REQUIRES(!lock_);
 
+  void MoveObsoleteMethod(ArtMethod* old_method, ArtMethod* new_method)
+      REQUIRES(!lock_) REQUIRES(Locks::mutator_lock_);
+
  private:
   // Take ownership of maps.
   JitCodeCache(MemMap* code_map,
