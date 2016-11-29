@@ -34,9 +34,10 @@ else
   fi
 fi
 
+
 ./default-run "$@" --experimental agents \
                    --experimental runtime-plugins \
-                   --runtime-option -agentpath:${agent}=902-hello-transformation,${arg} \
+                   --runtime-option -agentpath:${agent}=914-hello-obsolescence,${arg} \
                    --android-runtime-option -Xplugin:${plugin} \
                    --android-runtime-option -Xfully-deoptable \
                    ${other_args} \

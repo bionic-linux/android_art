@@ -49,6 +49,149 @@
 
 namespace openjdkjvmti {
 
+// Reverse key and data in a map;
+// TODO Put this somewhere else.
+// TODO Check 1:1-ness
+template <typename A>
+static void InvertMaping(const std::unordered_map<A, A>& source,
+                         /*out*/std::unordered_map<A, A>* dest) {
+  for (auto i : source) {
+    (*dest)[i.second] = i.first;
+  }
+}
+
+class ObsoleteMethodStackVisitor : public art::StackVisitor {
+ protected:
+  ObsoleteMethodStackVisitor(
+      art::Thread* thread,
+      art::Context* ctx,
+      const std::unordered_set<art::ArtMethod*>& obsoleted_methods,
+      /*out*/std::unordered_map<art::ArtMethod*, art::ArtMethod*>* obsolete_maps,
+      /*out*/bool* success,
+      /*out*/std::string* error_msg)
+        : StackVisitor(thread, ctx, StackVisitor::StackWalkKind::kIncludeInlinedFrames),
+          obsoleted_methods_(obsoleted_methods),
+          obsolete_maps_(obsolete_maps),
+          success_(success),
+          error_msg_(error_msg) {}
+
+  ~ObsoleteMethodStackVisitor() override {}
+
+
+  class RestoreStackVisitor : public art::StackVisitor {
+   public:
+    RestoreStackVisitor(
+      art::Thread* thread,
+      art::Context* ctx,
+      const std::unordered_map<art::ArtMethod*, art::ArtMethod*>& obsolete_maps)
+        : StackVisitor(thread, ctx, StackVisitor::StackWalkKind::kIncludeInlinedFrames),
+          obsolete_maps_(obsolete_maps) {}
+
+    bool VisitFrame() override NO_THREAD_SAFETY_ANALYSIS {
+      art::ArtMethod* old_method = GetMethod();
+      if (old_method->IsObsolete() && obsolete_maps_.find(old_method) != obsolete_maps_.end()) {
+        SetMethod(obsolete_maps_.at(old_method));
+      }
+      return true;
+    }
+
+   private:
+    const std::unordered_map<art::ArtMethod*, art::ArtMethod*>& obsolete_maps_;
+  };
+
+ public:
+  // Returns true if we successfully installed obsolete methods on this thread, filling
+  // obsolete_maps_ with the translations if needed. Returns false and fills error_msg_ if we fail.
+  // The stack is cleaned up when we fail.
+  static bool UpdateObsoleteFrames(
+      art::Thread* thread,
+      art::Context* ctx,
+      const std::unordered_set<art::ArtMethod*>& obsoleted_methods,
+      /*out*/std::unordered_map<art::ArtMethod*, art::ArtMethod*>* obsolete_maps,
+      /*out*/std::string* error_msg) REQUIRES(art::Locks::mutator_lock_) {
+    bool success = true;
+    ObsoleteMethodStackVisitor visitor(thread,
+                                       ctx,
+                                       obsoleted_methods,
+                                       obsolete_maps,
+                                       &success,
+                                       error_msg);
+    visitor.WalkStack();
+    if (!success) {
+      RestoreFrames(thread, ctx, *obsolete_maps);
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  static void RestoreFrames(
+      art::Thread* thread,
+      art::Context* ctx,
+      const std::unordered_map<art::ArtMethod*, art::ArtMethod*>& obsolete_maps)
+        REQUIRES(art::Locks::mutator_lock_) {
+    std::unordered_map<art::ArtMethod*, art::ArtMethod*> rev_map;
+    InvertMaping<art::ArtMethod*>(obsolete_maps, &rev_map);
+    RestoreStackVisitor rsv(thread, ctx, rev_map);
+    rsv.WalkStack();
+  }
+
+  bool VisitFrame() override NO_THREAD_SAFETY_ANALYSIS {
+    // TODO Actually do any work here. For now just scan for obsolete methods to make sure I have
+    // this down.
+    art::ArtMethod* old_method = GetMethod();
+    if (obsoleted_methods_.find(old_method) != obsoleted_methods_.end()) {
+      if (IsInInlinedFrame()) {
+        *success_ = false;
+        *error_msg_ = art::StringPrintf("Method '%s' has been inlined and cannot be made obsolete!",
+                                        old_method->PrettyMethod().c_str());
+        return false;
+      }
+      if (old_method->IsIntrinsic()) {
+        *success_ = false;
+        *error_msg_ = art::StringPrintf("Method '%s' is intrinsic and cannot be made obsolete!",
+                                        old_method->PrettyMethod().c_str());
+        return false;
+      }
+      // LOG(FATAL) << "FOUND OBSOLETE METHOD!";
+      if (obsolete_maps_->find(old_method) == obsolete_maps_->end()) {
+        // TODO Create a new Obsolete Method and put it in the list.
+        art::Runtime* runtime = art::Runtime::Current();
+        art::ClassLinker* cl = runtime->GetClassLinker();
+        auto ptr_size = cl->GetImagePointerSize();
+        const size_t method_size = art::ArtMethod::Size(ptr_size);
+        auto* method_storage = runtime->GetLinearAlloc()->Alloc(GetThread(), method_size);
+        if (method_storage == nullptr) {
+          *success_ = false;
+          *error_msg_ = art::StringPrintf("Unable to allocate storage for obsolete version of '%s'",
+                                          old_method->PrettyMethod().c_str());
+          return false;
+        }
+        art::ArtMethod* new_method = new (method_storage) art::ArtMethod;
+        new_method->CopyFrom(old_method, ptr_size);
+        new_method->SetIsObsolete();
+        obsolete_maps_->insert({old_method, new_method});
+      }
+      auto obsolete_method_pair = obsolete_maps_->find(old_method);
+      DCHECK(obsolete_method_pair != obsolete_maps_->end());
+      SetMethod(obsolete_method_pair->second);
+    }
+    *success_ = true;
+    return true;
+  }
+
+ private:
+  // The set of all methods which could be obsoleted.
+  const std::unordered_set<art::ArtMethod*>& obsoleted_methods_;
+  // A map from the original to the newly allocated obsolete method for frames on this thread. The
+  // values in this map must be added to the obsolete_methods_ (and obsolete_dex_caches_) fields of
+  // the redefined classes ClassExt by the caller.
+  std::unordered_map<art::ArtMethod*, art::ArtMethod*>* obsolete_maps_;
+  bool* success_;
+  std::string* error_msg_;
+};
+
+
 // Moves dex data to an anonymous, read-only mmap'd region.
 std::unique_ptr<art::MemMap> Redefiner::MoveDataToMemMap(const std::string& original_location,
                                                          jint data_len,
@@ -291,6 +434,89 @@ bool Redefiner::FinishRemainingAllocations(
   return true;
 }
 
+struct CallbackCtx {
+  Redefiner* r;
+  art::Context* ctx;
+  std::unordered_map<art::ArtMethod*, art::ArtMethod*> obsolete_map;
+  std::unordered_set<art::ArtMethod*> obsolete_methods;
+  bool success;
+  std::string* error_msg;
+
+  CallbackCtx(Redefiner* self, art::Context* actx, std::string* error)
+      : r(self), ctx(actx), success(true), error_msg(error) {}
+};
+
+void DoRestoreObsoleteMethodsCallback(art::Thread* t, void* vdata) NO_THREAD_SAFETY_ANALYSIS {
+  CallbackCtx* data = reinterpret_cast<CallbackCtx*>(vdata);
+  ObsoleteMethodStackVisitor::RestoreFrames(t, data->ctx, data->obsolete_map);
+}
+
+void DoAllocateObsoleteMethodsCallback(art::Thread* t, void* vdata) NO_THREAD_SAFETY_ANALYSIS {
+  CallbackCtx* data = reinterpret_cast<CallbackCtx*>(vdata);
+  if (data->success) {
+    // Don't do anything if we already failed once.
+    data->success = ObsoleteMethodStackVisitor::UpdateObsoleteFrames(t,
+                                                                     data->ctx,
+                                                                     data->obsolete_methods,
+                                                                     &data->obsolete_map,
+                                                                     data->error_msg);
+  }
+}
+
+void Redefiner::AddAllDeclaredMethods(
+    art::mirror::Class* art_klass,
+    art::PointerSize ptr_size,
+    /*out*/std::unordered_set<art::ArtMethod*>* declared_methods) {
+  for (auto& m : art_klass->GetDeclaredMethods(ptr_size)) {
+    declared_methods->insert(&m);
+  }
+}
+
+bool Redefiner::AllocateObsoleteMethods(art::mirror::Class* art_klass) {
+  art::mirror::ClassExt* ext = art_klass->GetExtData();
+  CHECK(ext->GetObsoleteMethods() != nullptr);
+  // TODO kRuntimePointerSize.
+  CallbackCtx ctx(this, art::Context::Create(), error_msg_);
+  AddAllDeclaredMethods(art_klass, art::kRuntimePointerSize, &ctx.obsolete_methods);
+  art::ThreadList* list = art::Runtime::Current()->GetThreadList();
+  {
+    art::MutexLock mu(self_, *art::Locks::thread_list_lock_);
+    list->ForEach(DoAllocateObsoleteMethodsCallback, static_cast<void*>(&ctx));
+    if (!ctx.success) {
+      list->ForEach(DoRestoreObsoleteMethodsCallback, static_cast<void*>(&ctx));
+      return false;
+    }
+  }
+  FillObsoleteMethodMap(art_klass, ctx.obsolete_map);
+  return true;
+}
+
+void Redefiner::FillObsoleteMethodMap(
+    art::mirror::Class* art_klass,
+    const std::unordered_map<art::ArtMethod*, art::ArtMethod*>& obsoletes) {
+  int32_t index = 0;
+  auto* ext_data = art_klass->GetExtData();
+  auto* obsolete_methods = ext_data->GetObsoleteMethods();
+  auto* obsolete_dex_caches = ext_data->GetObsoleteDexCaches();
+  int32_t num_method_slots = obsolete_methods->GetLength();
+  // Find the first empty index.
+  for (; index < num_method_slots; index++) {
+    // TODO kRuntimePointerSize
+    if (obsolete_methods->GetElementPtrSize<art::ArtMethod*>(
+          index, art::kRuntimePointerSize) == nullptr) {
+      break;
+    }
+  }
+  // Make sure we have enough space.
+  CHECK_GT(num_method_slots, static_cast<int32_t>(obsoletes.size() + index));
+  CHECK(obsolete_dex_caches->Get(index) == nullptr);
+  for (auto& obs : obsoletes) {
+    obsolete_methods->SetElementPtrSize(index, obs.second, art::kRuntimePointerSize);
+    obsolete_dex_caches->Set(index, art_klass->GetDexCache());
+    index++;
+  }
+}
+
 jvmtiError Redefiner::Run() {
   art::StackHandleScope<5> hs(self_);
   // TODO We might want to have a global lock (or one based on the class being redefined at least)
@@ -340,7 +566,8 @@ jvmtiError Redefiner::Run() {
   art::ObjPtr<art::mirror::LongArray> original_dex_file_cookie(nullptr);
   if (!UpdateJavaDexFile(java_dex_file.Get(),
                          new_dex_file_cookie.Get(),
-                         &original_dex_file_cookie)) {
+                         &original_dex_file_cookie) ||
+      !AllocateObsoleteMethods(art_class.Get())) {
     // Release suspendAll
     runtime_->GetThreadList()->ResumeAll();
     // Get back shared mutator lock as expected for return.

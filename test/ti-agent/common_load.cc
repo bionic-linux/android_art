@@ -37,6 +37,7 @@
 #include "911-get-stack-trace/stack_trace.h"
 #include "912-classes/classes.h"
 #include "913-heaps/heaps.h"
+#include "914-hello-obsolescence/transform.h"
 
 namespace art {
 
@@ -66,6 +67,7 @@ AgentLib agents[] = {
   { "911-get-stack-trace", Test911GetStackTrace::OnLoad, nullptr },
   { "912-classes", Test912Classes::OnLoad, nullptr },
   { "913-heaps", Test913Heaps::OnLoad, nullptr },
+  { "914-hello-obsolescence", Test914HelloObsolescence::OnLoad, nullptr },
 };
 
 static AgentLib* FindAgent(char* name) {

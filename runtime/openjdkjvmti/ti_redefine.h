@@ -161,6 +161,21 @@ class Redefiner {
   bool UpdateClass(art::ObjPtr<art::mirror::Class> mclass,
                    art::ObjPtr<art::mirror::DexCache> new_dex_cache)
       REQUIRES(art::Locks::mutator_lock_);
+
+  bool AllocateObsoleteMethods(art::mirror::Class* art_klass) REQUIRES(art::Locks::mutator_lock_);
+
+  void RemoveObsoleteMethods() REQUIRES(art::Locks::mutator_lock_) {
+    LOG(FATAL) << "TODO";
+  }
+
+  void AddAllDeclaredMethods(art::mirror::Class* art_klass,
+                             art::PointerSize ptr_size,
+                             /*out*/std::unordered_set<art::ArtMethod*>* declared_methods)
+      REQUIRES_SHARED(art::Locks::mutator_lock_);
+
+  void FillObsoleteMethodMap(art::mirror::Class* art_klass,
+                             const std::unordered_map<art::ArtMethod*, art::ArtMethod*>& obsoletes)
+      REQUIRES(art::Locks::mutator_lock_);
 };
 
 }  // namespace openjdkjvmti
