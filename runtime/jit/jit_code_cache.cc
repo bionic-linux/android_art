@@ -624,6 +624,28 @@ size_t JitCodeCache::CodeCacheSize() {
   return CodeCacheSizeLocked();
 }
 
+// This invalidates old_method.
+// TODO We should add some info to note that 'old_method' has been invalidated and shouldn't be
+// used.
+void JitCodeCache::MoveObsoleteMethod(ArtMethod* old_method, ArtMethod* new_method) {
+  MutexLock mu(Thread::Current(), lock_);
+  new_method->SetEntryPointFromQuickCompiledCodePtrSize(
+      old_method->GetEntryPointFromQuickCompiledCode(),
+      kRuntimePointerSize);
+  if (old_method->GetProfilingInfo(kRuntimePointerSize) != nullptr) {
+    DCHECK_EQ(old_method->GetProfilingInfo(kRuntimePointerSize)->GetMethod(), old_method);
+    ProfilingInfo* info = old_method->GetProfilingInfo(kRuntimePointerSize);
+    // TODO Can these be set when I get here?
+    DCHECK(!info->is_method_being_compiled_);
+    DCHECK(!info->is_osr_method_being_compiled_);
+    new_method->SetProfilingInfo(info);
+    info->method_ = new_method;
+    method_code_map_.Overwrite(old_method->GetEntryPointFromQuickCompiledCode(), new_method);
+    // TODO Change in data.
+  }
+  // TODO Make this better.
+}
+
 size_t JitCodeCache::CodeCacheSizeLocked() {
   return used_memory_for_code_;
 }
