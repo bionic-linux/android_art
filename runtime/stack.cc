@@ -122,6 +122,20 @@ InlineInfo StackVisitor::GetCurrentInlineInfo() const {
   return code_info.GetInlineInfoOf(stack_map, encoding);
 }
 
+void StackVisitor::SetMethod(ArtMethod* method) {
+  DCHECK(GetMethod() != nullptr);
+  if (cur_shadow_frame_ != nullptr) {
+    cur_shadow_frame_->SetMethod(method);
+  } else {
+    DCHECK(cur_quick_frame_ != nullptr);
+    if (IsInInlinedFrame()) {
+      LOG(FATAL) << "We do not support setting inlined method's ArtMethod!";
+    } else {
+      *cur_quick_frame_ = method;
+    }
+  }
+}
+
 ArtMethod* StackVisitor::GetMethod() const {
   if (cur_shadow_frame_ != nullptr) {
     return cur_shadow_frame_->GetMethod();
