@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "705120f4_5671e488",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-11-29T15:18:28Z",
+      "side": 1,
+      "message": "I investigated and the conclusion is that for app image we don\u0027t execute \u003cclinit\u003e at all, see compiler_driver.cc, InitializeClassVisitor::Visit(),\n\n    bool can_init_static_fields \u003d\n        manager_-\u003eGetCompiler()-\u003eGetCompilerOptions().IsBootImage() \u0026\u0026\n        manager_-\u003eGetCompiler()-\u003eIsImageClass(descriptor) \u0026\u0026\n        !StringPiece(descriptor).ends_with(\"$NoPreloadHolder;\");\n\nWe use only the EncodedStaticFieldValueIterator to process the \"encoded_array_item\"s indicated by \"static_values_off\". However, that\u0027s used only for integral values as both javac+dx and jack will generate a \u003cclinit\u003e even for\n\n    static Object o \u003d null;\n\nor\n\n    static String s \u003d \"dummy\";\n\ndespite the availability of VALUE_NULL and VALUE_STRING types in encoded_value.",
+      "parentUuid": "3045e884_a1b6b821",
+      "range": {
+        "startLine": 1495,
+        "startChar": 4,
+        "endLine": 1495,
+        "endChar": 40
+      },
+      "revId": "5a11ac6037998b87d860da9d51ca4dfdbb606d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b5ca306_bba5b3f1",
         "filename": "runtime/image.h",
         "patchSetId": 4
