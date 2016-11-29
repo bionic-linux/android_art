@@ -217,6 +217,9 @@ class JitCodeCache {
   void DisallowInlineCacheAccess() REQUIRES(!lock_);
   void BroadcastForInlineCacheAccess() REQUIRES(!lock_);
 
+  void MoveObsoleteMethod(ArtMethod* old_method, ArtMethod* new_method)
+      REQUIRES(!lock_) REQUIRES_SHARED(Locks::mutator_lock_);
+
  private:
   // Take ownership of maps.
   JitCodeCache(MemMap* code_map,
@@ -225,6 +228,8 @@ class JitCodeCache {
                size_t initial_data_capacity,
                size_t max_capacity,
                bool garbage_collect_code);
+
+  bool ContainsMethodInternal(ArtMethod* method) REQUIRES(lock_);
 
   // Internal version of 'CommitCode' that will not retry if the
   // allocation fails. Return null if the allocation fails.
