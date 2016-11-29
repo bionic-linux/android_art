@@ -52,6 +52,14 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_isInterpreted(JNIEnv* env, jclas
   return IsInterpreted(env, klass, 1);
 }
 
+// public static native boolean isInterpreted(int depth);
+
+extern "C" JNIEXPORT jboolean JNICALL Java_Main_isInterpretedAt(JNIEnv* env,
+                                                                jclass klass,
+                                                                jint depth) {
+  return IsInterpreted(env, klass, depth);
+}
+
 // public static native void assertIsInterpreted();
 
 extern "C" JNIEXPORT void JNICALL Java_Main_assertIsInterpreted(JNIEnv* env, jclass klass) {

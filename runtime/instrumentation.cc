@@ -43,7 +43,7 @@
 namespace art {
 namespace instrumentation {
 
-constexpr bool kVerboseInstrumentation = false;
+constexpr bool kVerboseInstrumentation = true;
 
 // Instrumentation works on non-inlined frames by updating returned PCs
 // of compiled frames.
@@ -557,13 +557,20 @@ void Instrumentation::RemoveListener(InstrumentationListener* listener, uint32_t
 }
 
 Instrumentation::InstrumentationLevel Instrumentation::GetCurrentInstrumentationLevel() const {
-  if (interpreter_stubs_installed_) {
+  if (interpreter_stubs_installed_ && interpret_only_) {
     return InstrumentationLevel::kInstrumentWithInterpreter;
+  } else if (interpreter_stubs_installed_) {
+    return InstrumentationLevel::kInstrumentWithInterpreterAndJit;
   } else if (entry_exit_stubs_installed_) {
     return InstrumentationLevel::kInstrumentWithInstrumentationStubs;
   } else {
     return InstrumentationLevel::kInstrumentNothing;
   }
+}
+
+bool Instrumentation::RequiresInstrumentationInstallation(InstrumentationLevel new_level) const {
+  return new_level == InstrumentationLevel::kInstrumentWithInterpreterAndJit ||
+      GetCurrentInstrumentationLevel() != new_level;
 }
 
 void Instrumentation::ConfigureStubs(const char* key, InstrumentationLevel desired_level) {
@@ -586,7 +593,8 @@ void Instrumentation::ConfigureStubs(const char* key, InstrumentationLevel desir
                     forced_interpret_only_;
 
   InstrumentationLevel current_level = GetCurrentInstrumentationLevel();
-  if (requested_level == current_level) {
+  if (requested_level == current_level &&
+      current_level != InstrumentationLevel::kInstrumentWithInterpreterAndJit) {
     // We're already set.
     return;
   }
@@ -595,7 +603,7 @@ void Instrumentation::ConfigureStubs(const char* key, InstrumentationLevel desir
   Locks::mutator_lock_->AssertExclusiveHeld(self);
   Locks::thread_list_lock_->AssertNotHeld(self);
   if (requested_level > InstrumentationLevel::kInstrumentNothing) {
-    if (requested_level == InstrumentationLevel::kInstrumentWithInterpreter) {
+    if (requested_level >= InstrumentationLevel::kInstrumentWithInterpreterAndJit) {
       interpreter_stubs_installed_ = true;
       entry_exit_stubs_installed_ = true;
     } else {
@@ -842,7 +850,8 @@ void Instrumentation::EnableDeoptimization() {
 void Instrumentation::DisableDeoptimization(const char* key) {
   CHECK_EQ(deoptimization_enabled_, true);
   // If we deoptimized everything, undo it.
-  if (interpreter_stubs_installed_) {
+  InstrumentationLevel level = GetCurrentInstrumentationLevel();
+  if (level == InstrumentationLevel::kInstrumentWithInterpreter) {
     UndeoptimizeEverything(key);
   }
   // Undeoptimized selected methods.
@@ -867,6 +876,11 @@ bool Instrumentation::ShouldNotifyMethodEnterExitEvents() const {
     return false;
   }
   return !deoptimization_enabled_ && !interpreter_stubs_installed_;
+}
+
+void Instrumentation::ReJitEverything(const char* key) {
+  CHECK(deoptimization_enabled_);
+  ConfigureStubs(key, InstrumentationLevel::kInstrumentWithInterpreterAndJit);
 }
 
 void Instrumentation::DeoptimizeEverything(const char* key) {

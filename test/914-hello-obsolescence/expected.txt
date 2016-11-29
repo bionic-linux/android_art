@@ -1,0 +1,10 @@
+hello
+Not doing anything here
+goodbye
+hello
+transforming calling function
+modifying class 'Transform'
+goodbye
+Hello - Transformed
+Not doing anything here
+Goodbye - Transformed
