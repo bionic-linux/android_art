@@ -107,6 +107,7 @@ StackVisitor::StackVisitor(Thread* thread,
       cur_oat_quick_method_header_(nullptr),
       num_frames_(num_frames),
       cur_depth_(0),
+      instrumentation_stack_depth_(0),
       current_inlining_depth_(0),
       context_(context) {
   DCHECK(thread == Thread::Current() || thread->IsSuspended()) << *thread;
@@ -614,6 +615,40 @@ std::string StackVisitor::DescribeLocation() const {
   return result;
 }
 
+static instrumentation::InstrumentationStackFrame& GetInstrumentationStackFrame(Thread* thread,
+                                                                                uint32_t depth) {
+  CHECK_LT(depth, thread->GetInstrumentationStack()->size());
+  return thread->GetInstrumentationStack()->at(depth);
+}
+
+void StackVisitor::SetMethod(ArtMethod* method) {
+  DCHECK(GetMethod() != nullptr);
+  if (cur_shadow_frame_ != nullptr) {
+    cur_shadow_frame_->SetMethod(method);
+  } else {
+    DCHECK(cur_quick_frame_ != nullptr);
+    if (IsInInlinedFrame()) {
+      LOG(FATAL) << "We do not support setting inlined method's ArtMethod!";
+    } else {
+      *cur_quick_frame_ = method;
+    }
+  }
+  // QuickMethodFrameInfo frame_info = GetCurrentQuickFrameInfo();
+  // // Compute PC for next stack frame from return PC.
+  // size_t frame_size = frame_info.FrameSizeInBytes();
+  // size_t return_pc_offset = frame_size - sizeof(void*);
+  // uint8_t* return_pc_addr = reinterpret_cast<uint8_t*>(cur_quick_frame_) + return_pc_offset;
+  // uintptr_t return_pc = *reinterpret_cast<uintptr_t*>(return_pc_addr);
+
+  // bool exit_stubs_installed = Runtime::Current()->GetInstrumentation()->AreExitStubsInstalled();
+  // if (exit_stubs_installed &&
+  //     reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc()) == return_pc) {
+  //   instrumentation::InstrumentationStackFrame& instrumentation_frame =
+  //       GetInstrumentationStackFrame(thread_, instrumentation_stack_depth_);
+  //   instrumentation_frame.method_ = method;
+  // }
+}
+
 static void AssertPcIsWithinQuickCode(ArtMethod* method, uintptr_t pc)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (method->IsNative() || method->IsRuntimeMethod() || method->IsProxyMethod()) {
@@ -775,8 +810,8 @@ template <StackVisitor::CountTransitions kCount>
 void StackVisitor::WalkStack(bool include_transitions) {
   DCHECK(thread_ == Thread::Current() || thread_->IsSuspended());
   CHECK_EQ(cur_depth_, 0U);
+  CHECK_EQ(instrumentation_stack_depth_, 0U);
   bool exit_stubs_installed = Runtime::Current()->GetInstrumentation()->AreExitStubsInstalled();
-  uint32_t instrumentation_stack_depth = 0;
   size_t inlined_frames_count = 0;
 
   for (const ManagedStack* current_fragment = thread_->GetManagedStack();
@@ -837,10 +872,10 @@ void StackVisitor::WalkStack(bool include_transitions) {
           // While profiling, the return pc is restored from the side stack, except when walking
           // the stack for an exception where the side stack will be unwound in VisitFrame.
           if (reinterpret_cast<uintptr_t>(GetQuickInstrumentationExitPc()) == return_pc) {
-            CHECK_LT(instrumentation_stack_depth, thread_->GetInstrumentationStack()->size());
+            CHECK_LT(instrumentation_stack_depth_, thread_->GetInstrumentationStack()->size());
             const instrumentation::InstrumentationStackFrame& instrumentation_frame =
-                thread_->GetInstrumentationStack()->at(instrumentation_stack_depth);
-            instrumentation_stack_depth++;
+                GetInstrumentationStackFrame(thread_, instrumentation_stack_depth_);
+            instrumentation_stack_depth_++;
             if (GetMethod() ==
                 Runtime::Current()->GetCalleeSaveMethod(Runtime::kSaveAllCalleeSaves)) {
               // Skip runtime save all callee frames which are used to deliver exceptions.
@@ -849,7 +884,7 @@ void StackVisitor::WalkStack(bool include_transitions) {
                   Runtime::Current()->GetCalleeSaveMethod(Runtime::kSaveRefsAndArgs);
               CHECK_EQ(GetMethod(), callee) << "Expected: " << ArtMethod::PrettyMethod(callee)
                                             << " Found: " << ArtMethod::PrettyMethod(GetMethod());
-            } else {
+            } else if (!GetMethod()->IsObsolete()) {
               CHECK_EQ(instrumentation_frame.method_, GetMethod())
                   << "Expected: " << ArtMethod::PrettyMethod(instrumentation_frame.method_)
                   << " Found: " << ArtMethod::PrettyMethod(GetMethod());

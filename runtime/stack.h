@@ -327,6 +327,12 @@ class ShadowFrame {
     }
   }
 
+  void SetMethod(ArtMethod* method) REQUIRES(Locks::mutator_lock_) {
+    DCHECK(method != nullptr);
+    DCHECK(method_ != nullptr);
+    method_ = method;
+  }
+
   ArtMethod* GetMethod() const REQUIRES_SHARED(Locks::mutator_lock_) {
     DCHECK(method_ != nullptr);
     return method_;
@@ -610,6 +616,9 @@ class StackVisitor {
 
   ArtMethod* GetMethod() const REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Sets this stack frames method pointer. This requires a full lock of the MutatorLock.
+  void SetMethod(ArtMethod* method) REQUIRES(Locks::mutator_lock_);
+
   ArtMethod* GetOuterMethod() const {
     return *GetCurrentQuickFrame();
   }
@@ -835,6 +844,8 @@ class StackVisitor {
   size_t num_frames_;
   // Depth of the frame we're currently at.
   size_t cur_depth_;
+  // Depth of instrumentation stack frame.
+  size_t instrumentation_stack_depth_;
   // Current inlining depth of the method we are currently at.
   // 0 if there is no inlined frame.
   size_t current_inlining_depth_;
