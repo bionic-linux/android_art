@@ -18,8 +18,11 @@
 
 #include <stdio.h>
 
+#include "art_method.h"
 #include "jni.h"
 #include "openjdkjvmti/jvmti.h"
+#include "scoped_thread_state_change-inl.h"
+#include "stack.h"
 #include "ti-agent/common_load.h"
 #include "utils.h"
 
@@ -35,6 +38,51 @@ void SetAllCapabilities(jvmtiEnv* env) {
   env->GetPotentialCapabilities(&caps);
   env->AddCapabilities(&caps);
 }
+
+// Prints out methods with their type of frame.
+class DumpFramesWithTypeStackVisitor FINAL : public StackVisitor {
+ public:
+  explicit DumpFramesWithTypeStackVisitor(Thread* self, bool show_details = false)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      : StackVisitor(self, nullptr, StackVisitor::StackWalkKind::kIncludeInlinedFrames),
+        show_details_(show_details) {}
+
+  bool VisitFrame() OVERRIDE REQUIRES_SHARED(Locks::mutator_lock_) {
+    ArtMethod* method = GetMethod();
+    if (show_details_) {
+      LOG(INFO) << "|> pc   = " << std::hex << GetCurrentQuickFramePc();
+      LOG(INFO) << "|> addr = " << std::hex << reinterpret_cast<uintptr_t>(GetCurrentQuickFrame());
+      if (GetCurrentQuickFrame() != nullptr && method != nullptr) {
+        LOG(INFO) << "|> ret  = " << std::hex << GetReturnPc();
+      }
+    }
+    if (method == nullptr) {
+      // Transition, do go on, we want to unwind over bridges, all the way.
+      if (show_details_) {
+        LOG(INFO) << "N  <transition>";
+      }
+      return true;
+    } else if (method->IsRuntimeMethod()) {
+      if (show_details_) {
+        LOG(INFO) << "R  " << method->PrettyMethod(true);
+      }
+      return true;
+    } else {
+      bool is_shadow = GetCurrentShadowFrame() != nullptr;
+      LOG(INFO) << (is_shadow ? "S" : "Q")
+                << ((!is_shadow && IsInInlinedFrame()) ? "i" : " ")
+                << " "
+                << method->PrettyMethod(true);
+      return true;  // Go on.
+    }
+  }
+
+ private:
+  bool show_details_;
+
+  DISALLOW_COPY_AND_ASSIGN(DumpFramesWithTypeStackVisitor);
+};
+
 
 namespace common_redefine {
 
@@ -55,9 +103,17 @@ static void DoClassTransformation(jvmtiEnv* jvmti_env, JNIEnv* env,
     def.class_bytes = redef_bytes;
     res = jvmti_env->RedefineClasses(1, &def);
   } else {
+    {
+      ScopedObjectAccess soa(Thread::Current());
+      DumpFramesWithTypeStackVisitor d2(Thread::Current(), true);
+      d2.WalkStack();
+    }
     RedefineDirectFunction f =
         reinterpret_cast<RedefineDirectFunction>(jvmti_env->functions->reserved3);
     res = f(jvmti_env, target, len, redef_bytes);
+    ScopedObjectAccess soa(Thread::Current());
+    DumpFramesWithTypeStackVisitor d(Thread::Current(), true);
+    d.WalkStack();
   }
   if (res != JVMTI_ERROR_NONE) {
     printf("Redefinition failed!");
