@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d90030a_82fc3c50",
+        "filename": "runtime/jdwp/jdwp_event.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-29T10:14:26Z",
+      "side": 1,
+      "message": "Add a \" \u003c\u003c \" to explain why.",
+      "range": {
+        "startLine": 624,
+        "startChar": 2,
+        "endLine": 624,
+        "endChar": 45
+      },
+      "revId": "f1dc831a2075103b7c0d867bbe3846b19ac85f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
