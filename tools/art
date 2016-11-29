@@ -31,7 +31,7 @@ function follow_links() {
 
 function find_libdir() {
   # Use realpath instead of readlink because Android does not have a readlink.
-  if [ "$(realpath "$ANDROID_ROOT/bin/$DALVIKVM")" = "$(realpath "$ANDROID_ROOT/bin/dalvikvm64")" ]; then
+  if [[ "$(realpath "$ANDROID_ROOT/bin/$DALVIKVM")" == *dalvikvm64 ]]; then
     echo "lib64"
   else
     echo "lib"
