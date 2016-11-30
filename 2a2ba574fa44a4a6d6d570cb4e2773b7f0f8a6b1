@@ -22,6 +22,30 @@
       "revId": "2a2ba574fa44a4a6d6d570cb4e2773b7f0f8a6b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d90030a_25245ac4",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-11-30T11:57:29Z",
+      "side": 1,
+      "message": "No, we want to know what the symbolic link points to.",
+      "parentUuid": "4d90030a_8519a6a4",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 69
+      },
+      "revId": "2a2ba574fa44a4a6d6d570cb4e2773b7f0f8a6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
