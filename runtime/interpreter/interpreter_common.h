@@ -474,8 +474,8 @@ static inline void AssignRegister(ShadowFrame* new_shadow_frame, const ShadowFra
 
 void ArtInterpreterToCompiledCodeBridge(Thread* self,
                                         ArtMethod* caller,
-                                        const DexFile::CodeItem* code_item,
                                         ShadowFrame* shadow_frame,
+                                        uint16_t arg_offset,
                                         JValue* result);
 
 // Set string value created from StringFactory.newStringFromXXX() into all aliases of
