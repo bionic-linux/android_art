@@ -22,6 +22,29 @@
       "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adbc1f98_0ac85bb2",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T12:36:22Z",
+      "side": 1,
+      "message": "Why is that not just number_of_inputs?",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1388,
+        "endChar": 3
+      },
+      "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
