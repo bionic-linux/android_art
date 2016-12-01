@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd9470d_3048282a",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-12-01T15:37:48Z",
+      "side": 1,
+      "message": "Is it fine to no longer have the `classlinker_classes_lock_ lock` for this operation?",
+      "range": {
+        "startLine": 919,
+        "startChar": 4,
+        "endLine": 919,
+        "endChar": 62
+      },
+      "revId": "2adb605f40e9e533be9e6bf9c1139846d3e2c683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_07d93641",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2016-12-01T15:37:48Z",
+      "side": 1,
+      "message": "Maybe mention that you drop the first character of the result string for cosmetic reasons, as it\u0027s a semi-colon?",
+      "range": {
+        "startLine": 1204,
+        "startChar": 47,
+        "endLine": 1204,
+        "endChar": 64
+      },
+      "revId": "2adb605f40e9e533be9e6bf9c1139846d3e2c683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
