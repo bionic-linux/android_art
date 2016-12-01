@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d556338_ebbc196b",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-01T02:15:11Z",
+      "side": 1,
+      "message": "I\u0027d prefer you add a DCHECK as in line 1381. I assume benchmarking is done in non-debug builds...",
+      "range": {
+        "startLine": 1383,
+        "startChar": 4,
+        "endLine": 1383,
+        "endChar": 99
+      },
+      "revId": "13ae0f669374bc88db6f0731d8e554a6699a925a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
