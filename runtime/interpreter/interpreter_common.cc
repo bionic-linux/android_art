@@ -738,8 +738,8 @@ ALWAYS_INLINE void CopyRegisters(ShadowFrame& caller_frame,
 
 void ArtInterpreterToCompiledCodeBridge(Thread* self,
                                         ArtMethod* caller,
-                                        const DexFile::CodeItem* code_item,
                                         ShadowFrame* shadow_frame,
+                                        uint16_t arg_offset,
                                         JValue* result)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ArtMethod* method = shadow_frame->GetMethod();
@@ -762,9 +762,7 @@ void ArtInterpreterToCompiledCodeBridge(Thread* self,
       method = shadow_frame->GetMethod();
     }
   }
-  uint16_t arg_offset = (code_item == nullptr)
-                            ? 0
-                            : code_item->registers_size_ - code_item->ins_size_;
+  DCHECK_LT(arg_offset, shadow_frame->NumberOfVRegs());
   jit::Jit* jit = Runtime::Current()->GetJit();
   if (jit != nullptr && caller != nullptr) {
     jit->NotifyInterpreterToCompiledCodeTransition(self, caller);
@@ -1114,8 +1112,7 @@ inline void PerformCall(Thread* self,
         target->GetEntryPointFromQuickCompiledCode())) {
       ArtInterpreterToInterpreterBridge(self, code_item, callee_frame, result);
     } else {
-      ArtInterpreterToCompiledCodeBridge(
-          self, caller_method, code_item, callee_frame, result);
+      ArtInterpreterToCompiledCodeBridge(self, caller_method, callee_frame, first_dest_reg, result);
     }
   } else {
     UnstartedRuntime::Invoke(self, code_item, callee_frame, result, first_dest_reg);
@@ -1377,12 +1374,17 @@ static inline bool DoCallCommon(ArtMethod* called_method,
 
   // Number of registers for the callee's call frame.
   uint16_t num_regs;
-  if (LIKELY(code_item != nullptr)) {
+  bool use_compiler_entrypoint = Runtime::Current()->IsStarted() &&
+      !ClassLinker::ShouldUseInterpreterEntrypoint(
+          called_method, called_method->GetEntryPointFromQuickCompiledCode());
+  if (LIKELY(code_item != nullptr && !use_compiler_entrypoint)) {
     num_regs = code_item->registers_size_;
-    DCHECK_EQ(string_init ? number_of_inputs - 1 : number_of_inputs, code_item->ins_size_);
   } else {
-    DCHECK(called_method->IsNative() || called_method->IsProxyMethod());
+    DCHECK(called_method->IsNative() || called_method->IsProxyMethod() || use_compiler_entrypoint);
     num_regs = number_of_inputs;
+  }
+  if (LIKELY(code_item != nullptr)) {
+    DCHECK_EQ(string_init ? number_of_inputs - 1 : number_of_inputs, code_item->ins_size_);
   }
 
   // Hack for String init:
