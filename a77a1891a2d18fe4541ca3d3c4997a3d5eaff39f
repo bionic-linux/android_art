@@ -1,0 +1,590 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dc44b28_6d4ed53b",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Why this check?",
+      "range": {
+        "startLine": 407,
+        "startChar": 26,
+        "endLine": 407,
+        "endChar": 45
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd9470d_d0e8bcf7",
+        "filename": "runtime/interpreter/interpreter_common.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Nice. Was that caught under test?",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 266,
+        "endChar": 20
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adbc1f98_2a619fbb",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 24
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db02fbe_a66ce6af",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db02fbe_e662debd",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "OVERRIDE",
+      "range": {
+        "startLine": 78,
+        "startChar": 32,
+        "endLine": 78,
+        "endChar": 40
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_ae2837f3",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "No need.",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_87e20614",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "How about a DCHECK in VisitFrame that you\u0027re not an inline frame?",
+      "range": {
+        "startLine": 87,
+        "startChar": 65,
+        "endLine": 87,
+        "endChar": 86
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_4fa74df4",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 87,
+        "startChar": 31,
+        "endLine": 87,
+        "endChar": 34
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_0fa145dc",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "OVERRIDE",
+      "range": {
+        "startLine": 90,
+        "startChar": 22,
+        "endLine": 90,
+        "endChar": 30
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db02fbe_0675ba72",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this (here and all below).",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_a7df0a51",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "OVERRIDE",
+      "range": {
+        "startLine": 139,
+        "startChar": 20,
+        "endLine": 139,
+        "endChar": 28
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dc11b20_89b4591c",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 48
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db02fbe_267a3662",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Isn\u0027t that what you\u0027re doing here?",
+      "range": {
+        "startLine": 158,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 68
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd83b0a_f1b7081f",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "()\n\n(I know you don\u0027t need them, but grepping is easier with parens)",
+      "range": {
+        "startLine": 170,
+        "startChar": 72,
+        "endLine": 170,
+        "endChar": 73
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dd9470d_50528cfa",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Share this with line 157.",
+      "range": {
+        "startLine": 175,
+        "startChar": 34,
+        "endLine": 175,
+        "endChar": 67
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc95346_0ef14b76",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this.",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 20
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_afb1192b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Move this line 484.",
+      "range": {
+        "startLine": 481,
+        "startChar": 2,
+        "endLine": 481,
+        "endChar": 66
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dc11b20_09162934",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Do a for loop like it\u0027s done in ThreadList::ForEach and avoid the hassle of this callback.",
+      "range": {
+        "startLine": 484,
+        "startChar": 52,
+        "endLine": 484,
+        "endChar": 77
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc44b28_2dde8d2a",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Do a for loop like it\u0027s done in ThreadList::ForEach and avoid the hassle of this callback.",
+      "range": {
+        "startLine": 484,
+        "startChar": 52,
+        "endLine": 484,
+        "endChar": 77
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_c7655ec8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "mirror::Object",
+      "range": {
+        "startLine": 498,
+        "startChar": 2,
+        "endLine": 498,
+        "endChar": 6
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_e762e2bd",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "mirror::Object",
+      "range": {
+        "startLine": 499,
+        "startChar": 2,
+        "endLine": 499,
+        "endChar": 6
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db02fbe_c68ec24e",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "mirror::Object",
+      "range": {
+        "startLine": 500,
+        "startChar": 2,
+        "endLine": 500,
+        "endChar": 6
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd83b0a_7111d83a",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 31
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adbc1f98_2a7aff61",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "Please add a high-level comment describing that loop.",
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4db723b6_07eff601",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "This cannot happen. Or if you experienced it, please explain why/how.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 53
+      },
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dde43f8_afd83981",
+        "filename": "test/914-hello-obsolescence/build",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-01T13:40:03Z",
+      "side": 1,
+      "message": "You need to disable this test for target and JIT.",
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
