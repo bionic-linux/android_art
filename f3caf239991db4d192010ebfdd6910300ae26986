@@ -117,6 +117,30 @@
       "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d556338_4ae6d6cf",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-12-01T22:35:15Z",
+      "side": 1,
+      "message": "I moved the check up to avoid accessing the code item\u0027s fields in the case where it is compiled. It worked the old way too, but this way I improve dex file memory accesses. \n\nThis fix comes out of dexlayout measurements I was making. I saw it access parts of the dex file that should only contain compiled code, and this is the cause. It loads in 128kB just to read a code item\u0027s registers_size and ins_size.",
+      "parentUuid": "8dd83b0a_94a0ea75",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1388,
+        "endChar": 3
+      },
+      "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
