@@ -16,6 +16,7 @@
 
 #include "intern_table.h"
 
+#include "base/hash_set.h"
 #include "common_runtime_test.h"
 #include "mirror/object.h"
 #include "handle_scope-inl.h"
@@ -60,6 +61,39 @@ TEST_F(InternTableTest, Size) {
   EXPECT_EQ(1U, t.Size());
   t.InternStrong(3, "bar");
   EXPECT_EQ(2U, t.Size());
+}
+
+// Check if table indexes match on 64 and 32 bit machines.
+// Otherwise cross compilation can cause a table to be filled on host using one indexing algorithm
+// and later on a device with different sizeof(size_t) can use another indexing algorithm.
+// Thus the table may provide wrong data.
+TEST_F(InternTableTest, CrossHash) {
+// The 32-bit test doesn't make sense.
+#if __SIZEOF_SIZE_T__ != 4
+  ScopedObjectAccess soa(Thread::Current());
+  InternTable t;
+
+  // A string that has a negative hash value.
+  GcRoot<mirror::String> str(mirror::String::AllocFromModifiedUtf8(soa.Self(), "00000000"));
+
+  MutexLock mu(Thread::Current(), *Locks::intern_table_lock_);
+  for (InternTable::Table::UnorderedSet& table : t.strong_interns_.tables_) {
+    // Assuming size_t == 8 bytes, emulate 32-bit value.
+    size_t hash32 = table.hashfn_(str) & 0x00000000ffffffff;
+    size_t hash64 = table.hashfn_(str);
+
+    // Table size is chosen so 0xffff_ffff_0000_0000 % size != 0,
+    // i.e. integer signed extension leads to one index and unsinged -
+    // to another one.
+    table.AllocateStorage(7);
+
+    // Check the index in the table computed on a 32-bit target.
+    size_t index32 = table.IndexForHash(hash32);
+    // Check the index in the table computed on a 64-bit host.
+    size_t index64 = table.IndexForHash(hash64);
+    ASSERT_EQ(index32, index64);
+  }
+#endif
 }
 
 class TestPredicate : public IsMarkedVisitor {
