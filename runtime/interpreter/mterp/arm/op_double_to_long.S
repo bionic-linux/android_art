@@ -10,43 +10,21 @@
  * to modest integer.  The EABI convert function isn't doing this for us.
  */
 d2l_doconv:
-    stmfd   sp!, {r4, r5, lr}           @ save regs
-    mov     r3, #0x43000000             @ maxlong, as a double (high word)
-    add     r3, #0x00e00000             @  0x43e00000
-    mov     r2, #0                      @ maxlong, as a double (low word)
-    sub     sp, sp, #4                  @ align for EABI
-    mov     r4, r0                      @ save a copy of r0
-    mov     r5, r1                      @  and r1
-    bl      __aeabi_dcmpge              @ is arg >= maxlong?
-    cmp     r0, #0                      @ nonzero == yes
-    mvnne   r0, #0                      @ return maxlong (7fffffffffffffff)
-    mvnne   r1, #0x80000000
-    bne     1f
+    sbfx    r2, r1, #20, #11          @ extract exponent; sign-extension helps with isNaN(x)
+    movw    r3, #0x3c2                @ pow(2.0, 63.0) has exponent 0x43e, sign-extended -0x3c2
+    cmn     r2, r3                    @ if (isNan(x) || abs(x) >= pow(2.0, 63.0))
+    bhs     d2l_doconv_special_case   @   goto d2l_doconv_special_case
+    b       __aeabi_d2lz              @ tail call to convert double to long
 
-    mov     r0, r4                      @ recover arg
-    mov     r1, r5
-    mov     r3, #0xc3000000             @ minlong, as a double (high word)
-    add     r3, #0x00e00000             @  0xc3e00000
-    mov     r2, #0                      @ minlong, as a double (low word)
-    bl      __aeabi_dcmple              @ is arg <= minlong?
-    cmp     r0, #0                      @ nonzero == yes
-    movne   r0, #0                      @ return minlong (8000000000000000)
-    movne   r1, #0x80000000
-    bne     1f
-
-    mov     r0, r4                      @ recover arg
-    mov     r1, r5
-    mov     r2, r4                      @ compare against self
-    mov     r3, r5
-    bl      __aeabi_dcmpeq              @ is arg == self?
-    cmp     r0, #0                      @ zero == no
-    moveq   r1, #0                      @ return zero for NaN
-    beq     1f
-
-    mov     r0, r4                      @ recover arg
-    mov     r1, r5
-    bl      __aeabi_d2lz                @ convert double to long
-
-1:
-    add     sp, sp, #4
-    ldmfd   sp!, {r4, r5, pc}
+d2l_doconv_special_case:
+    orrs    r0, r0, r1, lsl #12       @ Check if there are any non-zero significant bits.
+    asr     r3, r1, #31               @ extract sign; needed at d2l_f2l_doconv_min_max
+    beq     d2l_f2l_doconv_min_max    @ If all significant bits are 0, x may be Inf but not NaN.
+    adds    r0, r2, #1                @ if (isNaN(x))
+    beq     f2l_d2l_doconv_nan        @   goto f2l_d2l_doconv_nan (see op_float_to_long.S)
+d2l_f2l_doconv_min_max:               @ Shared code for d2l_doconv and f2l_doconv.
+    mvn     r0, #0                    @ result = (x >= 0.0) ? maxlong (0x7fffffffffffffff)
+    mvn     r1, #0x80000000
+    eor     r0, r3                    @                     : minlong (0x8000000000000000)
+    eor     r1, r3
+    bx      lr                        @ return result
