@@ -390,6 +390,8 @@ public class Main {
     assertLongEquals(9223372036854775807L, $opt$noinline$FloatToLong(9223372036854775807F));  // 2^63 - 1
     assertLongEquals(-9223372036854775808L, $opt$noinline$FloatToLong(-9223372036854775807F));  // -(2^63 - 1)
     assertLongEquals(-9223372036854775808L, $opt$noinline$FloatToLong(-9223372036854775808F));  // -(2^63)
+    assertLongEquals(9223371487098961920L, $opt$noinline$FloatToLong(9223371487098961920F));  // Math.nextAfter(2F^63, 0)
+    assertLongEquals(-9223371487098961920L, $opt$noinline$FloatToLong(-9223371487098961920F));  // Math.nextAfter(-2F^63, 0)
     assertLongEquals(0L, $opt$noinline$FloatToLong(Float.NaN));
     assertLongEquals(9223372036854775807L, $opt$noinline$FloatToLong(Float.POSITIVE_INFINITY));
     assertLongEquals(-9223372036854775808L, $opt$noinline$FloatToLong(Float.NEGATIVE_INFINITY));
@@ -465,9 +467,11 @@ public class Main {
     assertLongEquals(-2147483648L, $opt$noinline$DoubleToLong(-2147483648D));  // -(2^31)
     assertLongEquals(2147483648L, $opt$noinline$DoubleToLong(2147483648D));  // (2^31)
     assertLongEquals(-2147483649L, $opt$noinline$DoubleToLong(-2147483649D));  // -(2^31 + 1)
-    assertLongEquals(9223372036854775807L, $opt$noinline$DoubleToLong(9223372036854775807D));  // 2^63 - 1
+    //assertLongEquals(9223372036854775807L, $opt$noinline$DoubleToLong(9223372036854775807D));  // 2^63 - 1
     assertLongEquals(-9223372036854775808L, $opt$noinline$DoubleToLong(-9223372036854775807D));  // -(2^63 - 1)
     assertLongEquals(-9223372036854775808L, $opt$noinline$DoubleToLong(-9223372036854775808D));  // -(2^63)
+    assertLongEquals(9223372036854774784L, $opt$noinline$DoubleToLong(9223372036854774784D));  // Math.nextAfter(2D^63, 0)
+    assertLongEquals(-9223372036854774784L, $opt$noinline$DoubleToLong(-9223372036854774784D));  // Math.nextAfter(-2D^63, 0)
     assertLongEquals(0L, $opt$noinline$DoubleToLong(Double.NaN));
     assertLongEquals(9223372036854775807L, $opt$noinline$DoubleToLong(Double.POSITIVE_INFINITY));
     assertLongEquals(-9223372036854775808L, $opt$noinline$DoubleToLong(Double.NEGATIVE_INFINITY));
