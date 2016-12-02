@@ -213,6 +213,30 @@
       "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d556338_cca161de",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1388,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2016-12-02T01:41:59Z",
+      "side": 1,
+      "message": "The way the frame is laid out, the called method\u0027s parameters are put at the end of the frame, but it doesn\u0027t matter for the compiler case since the inputs now take up the whole frame. I\u0027ll add some comments to explain this.",
+      "parentUuid": "8dd83b0a_34c7be36",
+      "range": {
+        "startLine": 1377,
+        "startChar": 0,
+        "endLine": 1388,
+        "endChar": 3
+      },
+      "revId": "f3caf239991db4d192010ebfdd6910300ae26986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
