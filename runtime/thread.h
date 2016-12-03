@@ -486,9 +486,7 @@ class Thread {
   }
   void Notify() REQUIRES(!*wait_mutex_);
 
-  ALWAYS_INLINE void PoisonObjectPointers() {
-    ++poison_object_cookie_;
-  }
+  ALWAYS_INLINE void PoisonObjectPointers();
 
   ALWAYS_INLINE static void PoisonObjectPointersIfDebug();
 

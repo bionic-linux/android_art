@@ -327,6 +327,14 @@ inline void Thread::RevokeThreadLocalAllocationStack() {
   tlsPtr_.thread_local_alloc_stack_top = nullptr;
 }
 
+inline void Thread::PoisonObjectPointers() {
+  if (Runtime::Current()->GetHeap()->IsMovingGCDisabled(this)) {
+    // When moving GC is disabled, objects can't move. So ignore a poisoning request.
+    return;
+  }
+  ++poison_object_cookie_;
+}
+
 inline void Thread::PoisonObjectPointersIfDebug() {
   if (kIsDebugBuild) {
     Thread::Current()->PoisonObjectPointers();
