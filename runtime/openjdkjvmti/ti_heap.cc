@@ -174,10 +174,11 @@ jvmtiError HeapUtil::IterateThroughHeap(jvmtiEnv* env ATTRIBUTE_UNUSED,
 class FollowReferencesHelper FINAL {
  public:
   FollowReferencesHelper(HeapUtil* h,
-                         art::ObjPtr<art::mirror::Object> initial_object ATTRIBUTE_UNUSED,
+                         art::ObjPtr<art::mirror::Object> initial_object,
                          const jvmtiHeapCallbacks* callbacks,
                          const void* user_data)
       : tag_table_(h->GetTags()),
+        initial_object_(initial_object),
         callbacks_(callbacks),
         user_data_(user_data),
         start_(0),
@@ -187,13 +188,18 @@ class FollowReferencesHelper FINAL {
   void Init()
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!*tag_table_->GetAllowDisallowLock()) {
-    CollectAndReportRootsVisitor carrv(this, tag_table_, &worklist_, &visited_);
-    art::Runtime::Current()->VisitRoots(&carrv);
-    art::Runtime::Current()->VisitImageRoots(&carrv);
-    stop_reports_ = carrv.IsStopReports();
+    if (initial_object_.IsNull()) {
+      CollectAndReportRootsVisitor carrv(this, tag_table_, &worklist_, &visited_);
+      art::Runtime::Current()->VisitRoots(&carrv);
+      art::Runtime::Current()->VisitImageRoots(&carrv);
+      stop_reports_ = carrv.IsStopReports();
 
-    if (stop_reports_) {
-      worklist_.clear();
+      if (stop_reports_) {
+        worklist_.clear();
+      }
+    } else {
+      visited_.insert(initial_object_.Ptr());
+      worklist_.push_back(initial_object_.Ptr());
     }
   }
 
@@ -616,6 +622,7 @@ class FollowReferencesHelper FINAL {
   }
 
   ObjectTagTable* tag_table_;
+  art::ObjPtr<art::mirror::Object> initial_object_;
   const jvmtiHeapCallbacks* callbacks_;
   const void* user_data_;
 
