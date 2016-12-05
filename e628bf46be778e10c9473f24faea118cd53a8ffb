@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad35ff63_85a4c48a",
+        "filename": "runtime/interpreter/interpreter.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-05T14:10:41Z",
+      "side": 1,
+      "message": "Please add comments around this too.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 62
+      },
+      "revId": "e628bf46be778e10c9473f24faea118cd53a8ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d490f02_5e8d35c0",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-05T14:10:41Z",
+      "side": 1,
+      "message": "If the callee is not a proxy or native method, ...",
+      "range": {
+        "startLine": 1376,
+        "startChar": 55,
+        "endLine": 1376,
+        "endChar": 71
+      },
+      "revId": "e628bf46be778e10c9473f24faea118cd53a8ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d0ba3a9_e70b6209",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-05T14:10:41Z",
+      "side": 1,
+      "message": "As this is the main motivation and very easy to break, I suggest making this a standalone comment (new line, with a big NOTE:).",
+      "range": {
+        "startLine": 1379,
+        "startChar": 35,
+        "endLine": 1380,
+        "endChar": 23
+      },
+      "revId": "e628bf46be778e10c9473f24faea118cd53a8ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
