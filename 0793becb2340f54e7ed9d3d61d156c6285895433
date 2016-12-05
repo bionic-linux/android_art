@@ -22,6 +22,30 @@
       "revId": "0793becb2340f54e7ed9d3d61d156c6285895433",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d159bc1_863a5b86",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-05T15:59:11Z",
+      "side": 1,
+      "message": "Thought about it (with a general push for making this file smaller). But it seemed too much work for too small a file. Opinions welcome. class_linker_utils-inl.h?",
+      "parentUuid": "cdf6b3e5_43fd86bd",
+      "range": {
+        "startLine": 1493,
+        "startChar": 0,
+        "endLine": 1495,
+        "endChar": 31
+      },
+      "revId": "0793becb2340f54e7ed9d3d61d156c6285895433",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
