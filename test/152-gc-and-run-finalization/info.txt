@@ -1,0 +1,1 @@
+Tests runFinalization and GC running in parallel.
