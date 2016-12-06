@@ -261,9 +261,11 @@ endif
 # 147-stripped-dex-fallback isn't supported on device because --strip-dex
 # requires the zip command.
 # 569-checker-pattern-replacement tests behaviour present only on host.
+# 152-gc-and-run-finalization needs many threads to be effective which is too heavy for target.
 TEST_ART_BROKEN_TARGET_TESTS := \
   147-stripped-dex-fallback \
-  569-checker-pattern-replacement
+  569-checker-pattern-replacement \
+  152-gc-and-run-finalization
 
 # These 9** tests are not supported in current form due to linker
 # restrictions. See b/31681198
