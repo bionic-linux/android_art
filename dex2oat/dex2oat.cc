@@ -33,6 +33,8 @@
 #include <sys/utsname.h>
 #endif
 
+#include "android-base/strings.h"
+
 #include "arch/instruction_set_features.h"
 #include "arch/mips/instruction_set_features_mips.h"
 #include "art_method-inl.h"
@@ -84,6 +86,10 @@
 #include "zip_archive.h"
 
 namespace art {
+
+using android::base::EndsWith;
+using android::base::Join;
+using android::base::StartsWith;
 
 static constexpr size_t kDefaultMinDexFilesForSwap = 2;
 static constexpr size_t kDefaultMinDexFileCumulativeSizeForSwap = 20 * MB;

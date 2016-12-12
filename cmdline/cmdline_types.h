@@ -22,6 +22,8 @@
 #include "detail/cmdline_debug_detail.h"
 #include "cmdline_type_parser.h"
 
+#include "android-base/strings.h"
+
 // Includes for the types that are being specialized
 #include <string>
 #include "base/logging.h"
@@ -36,6 +38,9 @@
 #include "unit.h"
 
 namespace art {
+
+using android::base::Join;
+using android::base::StartsWith;
 
 // The default specialization will always fail parsing the type from a string.
 // Provide your own specialization that inherits from CmdlineTypeParser<T>

@@ -26,6 +26,8 @@
 #include <unordered_set>
 #include <vector>
 
+#include "android-base/strings.h"
+
 #include "arch/instruction_set_features.h"
 #include "art_field-inl.h"
 #include "art_method-inl.h"
@@ -73,6 +75,8 @@
 #include "cmdline.h"
 
 namespace art {
+
+using android::base::StartsWith;
 
 const char* image_methods_descriptions_[] = {
   "kResolutionMethod",
@@ -668,6 +672,12 @@ class OatDumper {
     }
 
   private:
+    // All of the elements from one container to another.
+    template <typename Dest, typename Src>
+    static void AddAll(Dest& dest, const Src& src) {
+      dest.insert(src.begin(), src.end());
+    }
+
     void WalkClass(const DexFile& dex_file, const DexFile::ClassDef& class_def) {
       const uint8_t* class_data = dex_file.GetClassData(class_def);
       if (class_data == nullptr) {  // empty class such as a marker interface?

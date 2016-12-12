@@ -37,6 +37,8 @@
 #include <vector>
 #include <fcntl.h>
 
+#include "android-base/strings.h"
+
 #include "JniConstants.h"
 #include "ScopedLocalRef.h"
 #include "arch/arm/quick_method_frame_info_arm.h"
@@ -869,7 +871,7 @@ static bool OpenDexFilesFromImage(const std::string& image_location,
         ImageHeader::GetOatLocationFromImageLocation(image_locations[index].c_str());
     // Note: in the multi-image case, the image location may end in ".jar," and not ".art." Handle
     //       that here.
-    if (EndsWith(oat_location, ".jar")) {
+    if (android::base::EndsWith(oat_location, ".jar")) {
       oat_location.replace(oat_location.length() - 3, 3, "oat");
     }
     std::string error_msg;
