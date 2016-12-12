@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2b0780_85c2c6ec",
+        "filename": "runtime/openjdkjvmti/ti_heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2016-12-12T18:40:44Z",
+      "side": 1,
+      "message": "I still think this should just be a mutable handle.",
+      "range": {
+        "startLine": 625,
+        "startChar": 35,
+        "endLine": 625,
+        "endChar": 50
+      },
+      "revId": "638a6932e4eef5e1cd8f88f5a32b4a1a8f43f559",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
