@@ -769,6 +769,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0978ad69",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-13T23:24:26Z",
+      "side": 1,
+      "message": "Sorry the doubled comment made me miss I hadn\u0027t responded to this.\n\nI would rather avoid duplicating code from thread_list. By using the official ForEach method we are sure that it will remain updated no matter what changes are made to how we keep track of threads.",
+      "parentUuid": "3aca276f_963f6ce7",
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4db723b6_c7655ec8",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 1
