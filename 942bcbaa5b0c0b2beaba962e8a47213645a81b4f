@@ -40,6 +40,167 @@
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96584c74",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "I don\u0027t understand this TODO, why would the JIT use it?",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 8
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b655483b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "I think 100% yes if all threads are suspended.",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 45
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_162c3cc8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "jit::Jit",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 12
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f65fc056",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "its internal data structures.",
+      "range": {
+        "startLine": 100,
+        "startChar": 79,
+        "endLine": 101,
+        "endChar": 33
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_3631381d",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 17
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_762bb0ae",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "Why isn\u0027t this a DCHECK?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 7
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_5626b4e7",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T22:50:55Z",
+      "side": 1,
+      "message": "Isn\u0027t that the same thing?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 61
+      },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
