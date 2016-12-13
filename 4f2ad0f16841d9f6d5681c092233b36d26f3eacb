@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2b0780_7bac0f6c",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Please put a TODO here. This restriction needs to be lifted at some point.",
+      "range": {
+        "startLine": 225,
+        "startChar": 4,
+        "endLine": 225,
+        "endChar": 27
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_bb45d7b6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Sentence structure: Capitalize and trailing period. Same below.",
+      "range": {
+        "startLine": 646,
+        "startChar": 5,
+        "endLine": 646,
+        "endChar": 28
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_9b533b86",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Comment what this does, please.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 220,
+        "endChar": 71
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_1b474bc2",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Call it Locked.",
+      "range": {
+        "startLine": 232,
+        "startChar": 21,
+        "endLine": 232,
+        "endChar": 29
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_5b7153f6",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 649,
+        "endChar": 6
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_fbcd9f20",
+        "filename": "runtime/stack.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "frame\u0027s\n\nAlso state here that this doesn\u0027t work for inlined frames.",
+      "range": {
+        "startLine": 619,
+        "startChar": 21,
+        "endLine": 619,
+        "endChar": 27
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_3b856799",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T18:59:35Z",
+      "side": 1,
+      "message": "Sort.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 18
+      },
+      "revId": "4f2ad0f16841d9f6d5681c092233b36d26f3eacb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
