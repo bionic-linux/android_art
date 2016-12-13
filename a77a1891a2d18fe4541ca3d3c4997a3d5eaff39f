@@ -61,6 +61,24 @@
     },
     {
       "key": {
+        "uuid": "3a2b0780_95b54a80",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-13T17:24:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5af43b41_e5365241",
+      "revId": "a77a1891a2d18fe4541ca3d3c4997a3d5eaff39f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dd9470d_d0e8bcf7",
         "filename": "runtime/interpreter/interpreter_common.h",
         "patchSetId": 1
