@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a2b0780_5b803349",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T19:12:38Z",
+      "side": 1,
+      "message": "Describe what this visitor is for. In particular, some of your failure cases below seem to indicate that you\u0027d rather fail instead of deopt (which needs to change long-term).",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "b70c19542ceff41f9fdd2a3445d248a94a4b5e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_1b1aab87",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T19:12:38Z",
+      "side": 1,
+      "message": "Any usage of this needs to have a comment.\n\nNote that the virtual base is annotated with REQUIRES_SHARED(Locks::mutator_lock_). Now while this isn\u0027t enforceable, you can annotate the same here.",
+      "range": {
+        "startLine": 144,
+        "startChar": 29,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "b70c19542ceff41f9fdd2a3445d248a94a4b5e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_fb97df93",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T19:12:38Z",
+      "side": 1,
+      "message": "Comment why?",
+      "range": {
+        "startLine": 168,
+        "startChar": 6,
+        "endLine": 173,
+        "endChar": 7
+      },
+      "revId": "b70c19542ceff41f9fdd2a3445d248a94a4b5e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_fb70ffb9",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T19:12:38Z",
+      "side": 1,
+      "message": "Why? TODO here.",
+      "range": {
+        "startLine": 174,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 7
+      },
+      "revId": "b70c19542ceff41f9fdd2a3445d248a94a4b5e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a2b0780_1b2d0bc5",
+        "filename": "runtime/openjdkjvmti/ti_redefine.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-13T19:12:38Z",
+      "side": 1,
+      "message": "Drop",
+      "range": {
+        "startLine": 130,
+        "startChar": 32,
+        "endLine": 130,
+        "endChar": 33
+      },
+      "revId": "b70c19542ceff41f9fdd2a3445d248a94a4b5e4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
