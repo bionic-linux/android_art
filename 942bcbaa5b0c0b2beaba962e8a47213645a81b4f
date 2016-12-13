@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "3aca276f_76fd70f7",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T23:40:42Z",
+      "side": 1,
+      "message": "Oh I don\u0027t parse this TODO like you\u0027re now explaining it. But it just being a TODO is scary, please address it here.",
+      "parentUuid": "da6aeb2c_a9b4f919",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_b655483b",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 13
@@ -119,6 +137,47 @@
       "side": 1,
       "message": "Even if I paused jit threads?",
       "parentUuid": "3aca276f_b655483b",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_56f87408",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T23:40:42Z",
+      "side": 1,
+      "message": "That\u0027s even more guaranteed then.\n\nAfter a quick look, I think the only think you need is the lock. But in any case, you\u0027re only executing this when everything is stopped right?",
+      "parentUuid": "da6aeb2c_e9aef1c9",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba9b777b_92f11c24",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T23:40:42Z",
+      "side": 1,
+      "message": "Why this change? If not needed, please avoid unrelated changes.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 63
+      },
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -289,6 +348,24 @@
     },
     {
       "key": {
+        "uuid": "3aca276f_16fefcf7",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T23:40:42Z",
+      "side": 1,
+      "message": "Sure, but that\u0027s a state we should not be in. If we\u0027re in that state we\u0027ve messed up our setup, hence a CHECK or DCHECK.",
+      "parentUuid": "da6aeb2c_09f50daa",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_5626b4e7",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 13
@@ -324,6 +401,24 @@
       "side": 1,
       "message": "not really. I could see allowing redefinition of intrinsics without allowing there to be obsolete ones on the stack.",
       "parentUuid": "3aca276f_5626b4e7",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_3603f82c",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-13T23:40:42Z",
+      "side": 1,
+      "message": "Ah indeed. I bet all our current intrinsics are leaf methods.",
+      "parentUuid": "da6aeb2c_893d7d81",
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
