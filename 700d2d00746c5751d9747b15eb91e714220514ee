@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aef3f70_e34f6cdb",
+        "filename": "cmdline/cmdline_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-13T10:58:06Z",
+      "side": 1,
+      "message": "Is there a particular reason for these using declarations? You have explicitly added the namespace in other places we use Join() and StartsWith().",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "700d2d00746c5751d9747b15eb91e714220514ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aeeb371_84c8a811",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-13T10:58:06Z",
+      "side": 1,
+      "message": "Why using declarations? (Not as objectionable as the use in a header file.)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 32
+      },
+      "revId": "700d2d00746c5751d9747b15eb91e714220514ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aeeb371_44c2a0ef",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-13T10:58:06Z",
+      "side": 1,
+      "message": "Why using declaration?",
+      "revId": "700d2d00746c5751d9747b15eb91e714220514ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
