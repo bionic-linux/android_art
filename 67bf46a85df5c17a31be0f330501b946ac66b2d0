@@ -485,6 +485,52 @@
     },
     {
       "key": {
+        "uuid": "5aa6fbc4_d2cf2242",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2016-12-14T15:58:26Z",
+      "side": 1,
+      "message": "Redefiner* const r ?",
+      "range": {
+        "startLine": 482,
+        "startChar": 2,
+        "endLine": 482,
+        "endChar": 14
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa940f52_efcc3d50",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2016-12-14T15:58:26Z",
+      "side": 1,
+      "message": "std::string* const error_msg ?",
+      "range": {
+        "startLine": 486,
+        "startChar": 2,
+        "endLine": 486,
+        "endChar": 24
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_16235c71",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -807,6 +853,29 @@
     },
     {
       "key": {
+        "uuid": "5aa6fbc4_92d59ad4",
+        "filename": "runtime/openjdkjvmti/ti_redefine.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2016-12-14T15:58:26Z",
+      "side": 1,
+      "message": "nit: I find UNIMPLEMENTED(FATAL) even more obvious (especially with the function name being printed)",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 25
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_5644f419",
         "filename": "runtime/stack.cc",
         "patchSetId": 16
@@ -961,6 +1030,29 @@
         "startChar": 0,
         "endLine": 95,
         "endChar": 3
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa940f52_cf2a21ef",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2016-12-14T15:58:26Z",
+      "side": 1,
+      "message": "soa.Self() ?",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 97,
+        "endChar": 48
       },
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
