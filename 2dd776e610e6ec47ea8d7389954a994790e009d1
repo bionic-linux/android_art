@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6aeb2c_a55ed52d",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-14T18:37:58Z",
+      "side": 1,
+      "message": "Isn\u0027t this leaking? Consider using the thread\u0027s long-jump context, maybe?",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 45
+      },
+      "revId": "2dd776e610e6ec47ea8d7389954a994790e009d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
