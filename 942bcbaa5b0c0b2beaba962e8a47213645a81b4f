@@ -512,6 +512,24 @@
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_978bd440",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-14T00:35:16Z",
+      "side": 1,
+      "message": "Not true. String compare is implemented as a loop with charAt in Java, so if you\u0027re running the interpreter, it\u0027s not a leaf.",
+      "parentUuid": "da6aeb2c_8cbaebbd",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
