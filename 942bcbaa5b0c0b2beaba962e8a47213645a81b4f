@@ -215,6 +215,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_02379f0c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t ScopedJitSuspend Do that?",
+      "parentUuid": "3aca276f_d6dac478",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba9b777b_92f11c24",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 13
