@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_8c3d8b81",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:08:30Z",
+      "side": 1,
+      "message": "Doing this would involve adding a status bit (which we are rapidly running out of) and checking it everywhere. I don\u0027t want to make this cl even larger so I\u0027m going to leave it as a (slightly expanded) TODO.",
+      "parentUuid": "3aca276f_76fd70f7",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_b655483b",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 13
@@ -161,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0cf51baa",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:08:30Z",
+      "side": 1,
+      "message": "I\u0027m assuming you mean it\u0027s guaranteed that the checks will always pass.",
+      "parentUuid": "3aca276f_56f87408",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba9b777b_92f11c24",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 13
@@ -178,6 +214,24 @@
         "endLine": 234,
         "endChar": 63
       },
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_ec827f20",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:08:30Z",
+      "side": 1,
+      "message": "It seems I removed the Check that used it while locked so done.",
+      "parentUuid": "ba9b777b_92f11c24",
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -366,6 +420,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_acb7a7d4",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:08:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_16fefcf7",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_5626b4e7",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 13
@@ -419,6 +491,24 @@
       "side": 1,
       "message": "Ah indeed. I bet all our current intrinsics are leaf methods.",
       "parentUuid": "da6aeb2c_893d7d81",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_8cbaebbd",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:08:30Z",
+      "side": 1,
+      "message": "AFAIK they are. We also might want to disallow obsoleting them since they are all (or mostly) implemented by hand assembly. I don\u0027t really want to have to laboriously validate all of them.\n\nAnyway it\u0027s likely moot since I don\u0027t believe any of the intrinisics have any suspend points in them so they cannot be obsoleted.",
+      "parentUuid": "3aca276f_3603f82c",
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
