@@ -602,6 +602,24 @@
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_564a35a1",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-14T20:48:47Z",
+      "side": 1,
+      "message": "That was my point: seeing the method means that you\u0027re in the interpreter, most likely. At which point we should not fail...\n\n(But this is a follow-up, there are enough TODOs for now)",
+      "parentUuid": "3aca276f_b6cd48c6",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
