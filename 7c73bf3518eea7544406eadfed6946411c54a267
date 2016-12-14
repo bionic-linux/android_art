@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aca276f_16dc3c32",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 845,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 0,
+      "message": "Isn\u0027t that also set by kInstrumentWithInterpreterAndJit? Have you checked that methods do get jitted after the deopt?",
+      "range": {
+        "startLine": 845,
+        "startChar": 6,
+        "endLine": 845,
+        "endChar": 34
+      },
+      "revId": "7c73bf3518eea7544406eadfed6946411c54a267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

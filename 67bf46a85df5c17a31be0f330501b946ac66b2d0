@@ -1,0 +1,1016 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aca276f_96084cde",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Why this change? Please keep the DCHECK as before.",
+      "range": {
+        "startLine": 398,
+        "startChar": 2,
+        "endLine": 398,
+        "endChar": 28
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b60548c5",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 49
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f60fc0e0",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Comments please on the rationale.",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 1
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_d612c407",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Please add a comment, this doesn\u0027t look straightforward.",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 80
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f6d7c04d",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "I\u0027m still uneasy with this. Please elaborate. You mention a bit (in the access flags?), but that doesn\u0027t make sense for something transient.\n\nYou\u0027re removing references of old_method in the jit_code_cache in the code below, so why are you saying it can still be used?\n\nIf it\u0027s about failing to redefine and now needing to call MoveObsoleteMethod with the reverse in old/new method, then why not doing it?",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 629,
+        "endChar": 75
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96b76c1e",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Also add a DCHECK that there\u0027s no inline use of this profling info.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 49
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_36a938c8",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "ditto about unrelated change\n\n(I think there\u0027s a fine line to do some cleanup in unrelated changes, especially when the cleanup is just local to a method, but this CL is big enough that avoiding noise is desired for reviewers).",
+      "range": {
+        "startLine": 1086,
+        "startChar": 0,
+        "endLine": 1089,
+        "endChar": 26
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_36e138e7",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Comment please, also explaining what old_method is and new_method is.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 54
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ac72367_d562bc1d",
+        "filename": "runtime/jit/profiling_info.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Add a comment \"not const as JVMTI introduces obsolete methods that we implement by creating new ArtMethod. See JitCodeCache::MoveObsoleteMethod",
+      "range": {
+        "startLine": 130,
+        "startChar": 38,
+        "endLine": 130,
+        "endChar": 39
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f6e6e0f8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "/* context */",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_56d6b411",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "This should be addressed in this CL.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 55
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_76dbb038",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "/* context */",
+      "range": {
+        "startLine": 90,
+        "startChar": 31,
+        "endLine": 90,
+        "endChar": 38
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96ef6cd1",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Do only one query?",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 96,
+        "endChar": 67
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b6ec68dd",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "old_method?",
+      "range": {
+        "startLine": 97,
+        "startChar": 8,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_d6e9e4cb",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Change this to: \"We are restoring the obsolete method....\" ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_5619545f",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Isn\u0027t it the other way around? You need to check if the previous method you visited in VisitFrame is a runtime method.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 42
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_761e504a",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "This seems kind of lost if we want to support it. Could you move that when we compute obsolete_methods_ ?",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 7
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96020ceb",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "This needs to be the class loader\u0027s linear alloc.",
+      "range": {
+        "startLine": 188,
+        "startChar": 31,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b6ff08b6",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 33
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_d60c8421",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "jit::Jit",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 12
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f609800e",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Odd TODO. Aren\u0027t you using the instrumentation for deopting elsewhere?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 72
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_16235c71",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Needs to be in a handle given what you\u0027re doing below.",
+      "range": {
+        "startLine": 517,
+        "startChar": 40,
+        "endLine": 517,
+        "endChar": 69
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f6826020",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Needs to be in a handle given what you\u0027re doing below.\n\nAlternatively, add a ScopedAssertNoThreadSuspension.",
+      "range": {
+        "startLine": 518,
+        "startChar": 2,
+        "endLine": 518,
+        "endChar": 55
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_d685642b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 520,
+        "endChar": 30
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_3628584b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Drop, I think it is the best.",
+      "range": {
+        "startLine": 547,
+        "startChar": 4,
+        "endLine": 547,
+        "endChar": 53
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_562dd459",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Please file a bug, assign it to Mingyao, and reference it here.",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 99
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96168c0d",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Please address this one, it sounds easy. Call the deopt once you\u0027ve successfully updated the stack?",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 44
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_7632d0b8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Isn\u0027t everyone suspended? There can\u0027t be leaf methods then.",
+      "range": {
+        "startLine": 622,
+        "startChar": 26,
+        "endLine": 622,
+        "endChar": 53
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b613881c",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Huh? Having all threads suspended, I would think the deopt is deterministic.",
+      "range": {
+        "startLine": 624,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 93
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_36ccd87b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Don\u0027t you have it with SuspendAll? Please address or remove.",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 645,
+        "endChar": 54
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_16c7dc59",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Isn\u0027t this whole block out of date?",
+      "range": {
+        "startLine": 653,
+        "startChar": 2,
+        "endLine": 658,
+        "endChar": 39
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_56d1540e",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "the release? What\u0027s a more reasonable place?",
+      "range": {
+        "startLine": 662,
+        "startChar": 13,
+        "endLine": 662,
+        "endChar": 17
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_76d65009",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 710,
+        "endChar": 34
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_96ba0cbe",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 34
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f61d0029",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Don\u0027t bother allocating the profiling info. It will be allocated when the method becomes warm again.\n\nAnd then you don\u0027t need to \"wait until now\" (see line 734).",
+      "range": {
+        "startLine": 737,
+        "startChar": 6,
+        "endLine": 737,
+        "endChar": 52
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_5644f419",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "CHECK(!IsInlinedFrame()) \u003c\u003c ...",
+      "range": {
+        "startLine": 630,
+        "startChar": 0,
+        "endLine": 631,
+        "endChar": 76
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_164a7c29",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Comment please, this looks like a left-over workaround.\n\nIf that\u0027s because the instrumentation stack may have obsolete methods, then you need to handle it.",
+      "range": {
+        "startLine": 873,
+        "startChar": 20,
+        "endLine": 873,
+        "endChar": 52
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_364f783a",
+        "filename": "runtime/stack.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "You don\u0027t need this change (anymore?). Please keep it local to WalkStack.",
+      "range": {
+        "startLine": 848,
+        "startChar": 1,
+        "endLine": 849,
+        "endChar": 38
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_7649f030",
+        "filename": "test/914-hello-obsolescence/run",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Please move this to run-test, and add to run-test a --jvmti option.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_963dac81",
+        "filename": "test/916-obsolete-jit/src/Transform.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Reference Mingyao\u0027s bug.",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_f6342099",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_d637249b",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Remove (or DHCECK if you want).",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 3
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_16f51caa",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "You porbably want to drop that?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 5
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_36fa189b",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
