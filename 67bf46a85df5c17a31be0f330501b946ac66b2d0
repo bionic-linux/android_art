@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_afe954fe",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "We do need to handle proxy methods here due to interpreter. I did realize this was redundant though.",
+      "parentUuid": "3aca276f_96084cde",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_b60548c5",
         "filename": "runtime/art_method-inl.h",
         "patchSetId": 16
@@ -42,6 +60,24 @@
         "endLine": 406,
         "endChar": 49
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_cfe6902b",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "3aca276f_b60548c5",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_4f146029",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f60fc0e0",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_d612c407",
         "filename": "runtime/instrumentation.cc",
         "patchSetId": 16
@@ -88,6 +142,24 @@
         "endLine": 597,
         "endChar": 80
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_6ff03ce0",
+        "filename": "runtime/instrumentation.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_d612c407",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_8fa3b8e4",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Expanded. I\u0027m saying that one needs to fill the old_method with new data since the ArtMethod thinks it\u0027s in the JitCodeCache but it is not.",
+      "parentUuid": "3aca276f_f6d7c04d",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_96b76c1e",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 16
@@ -134,6 +224,24 @@
         "endLine": 640,
         "endChar": 49
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_cfb4d01b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_96b76c1e",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_efb18c28",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_36a938c8",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36e138e7",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 16
@@ -180,6 +306,24 @@
         "endLine": 221,
         "endChar": 54
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_0fafc8c7",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_36e138e7",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -209,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_2fa484ef",
+        "filename": "runtime/jit/profiling_info.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ac72367_d562bc1d",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6e6e0f8",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -226,6 +388,24 @@
         "endLine": 75,
         "endChar": 38
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_cfcdb0c5",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f6e6e0f8",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -255,6 +435,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0f66e801",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Fine. Removed.\n\nI\u0027ll make this later and for now just LOG(FATAL) if we fail this. (Which is fine b/c almost every failure state has been replaced with check failures.)",
+      "parentUuid": "3aca276f_56d6b411",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_76dbb038",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -272,6 +470,24 @@
         "endLine": 90,
         "endChar": 38
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_2f92c4a6",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aca276f_76dbb038",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -301,6 +517,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_4f970096",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aca276f_96ef6cd1",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_b6ec68dd",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -318,6 +552,24 @@
         "endLine": 97,
         "endChar": 30
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_6f8cbc8b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aca276f_b6ec68dd",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -347,6 +599,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_8f91f8a0",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3aca276f_d6e9e4cb",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_5619545f",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -364,6 +634,24 @@
         "endLine": 152,
         "endChar": 42
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_2fdc8432",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_5619545f",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -393,6 +681,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_ef7fcc7b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_761e504a",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_96020ceb",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -410,6 +716,24 @@
         "endLine": 188,
         "endChar": 56
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_efe98ccb",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_96020ceb",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -439,6 +763,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_2fbd640b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_b6ff08b6",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_d60c8421",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -456,6 +798,24 @@
         "endLine": 201,
         "endChar": 12
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_4fc2a098",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_d60c8421",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -485,6 +845,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_ef68acd0",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f609800e",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa6fbc4_d2cf2242",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -502,6 +880,24 @@
         "endLine": 482,
         "endChar": 14
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_8f32d8b5",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5aa6fbc4_d2cf2242",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -531,6 +927,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_af16b40c",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "We change this to return values.",
+      "parentUuid": "fa940f52_efcc3d50",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_16235c71",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -548,6 +962,24 @@
         "endLine": 517,
         "endChar": 69
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_0f6ee81a",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "This function can only be called after all threads are suspended so we\u0027re fine.",
+      "parentUuid": "3aca276f_16235c71",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -577,6 +1009,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_2f6ba4d2",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f6826020",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_d685642b",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -594,6 +1044,24 @@
         "endLine": 520,
         "endChar": 30
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_ef4d0c8c",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_d685642b",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -623,6 +1091,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_cf505023",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_3628584b",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_562dd459",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -640,6 +1126,24 @@
         "endLine": 565,
         "endChar": 99
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_af53142d",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_562dd459",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -669,6 +1173,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_8f3f38c8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_96168c0d",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_7632d0b8",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -686,6 +1208,24 @@
         "endLine": 622,
         "endChar": 53
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_4f454066",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "made comment clearer.",
+      "parentUuid": "3aca276f_7632d0b8",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -715,6 +1255,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_af8dd4c6",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "We would unsuspend before trying again.",
+      "parentUuid": "3aca276f_b613881c",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36ccd87b",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -732,6 +1290,24 @@
         "endLine": 645,
         "endChar": 54
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_0f850899",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "I meant scope to make sure that all appropriate cleanup is done in all error cases, and release the suspendall and transition back to runnable.\n\nHonestly this CL is large enough. I\u0027ll do this in later cleanup cls",
+      "parentUuid": "3aca276f_36ccd87b",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -761,6 +1337,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0f3428ee",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Changed",
+      "parentUuid": "3aca276f_16c7dc59",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_56d1540e",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -778,6 +1372,24 @@
         "endLine": 662,
         "endChar": 17
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_2f456490",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Not sure. Hence the TODO.",
+      "parentUuid": "3aca276f_56d1540e",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -807,6 +1419,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_6f4f5cb0",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "This is work we need to do.\n\nI just moved it before the CHECKS they are refering to so I wouldn\u0027t forget what they meant.",
+      "parentUuid": "3aca276f_76d65009",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_96ba0cbe",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -824,6 +1454,24 @@
         "endLine": 715,
         "endChar": 34
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_8f549840",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "3aca276f_96ba0cbe",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -853,6 +1501,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_ef36ecf7",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f61d0029",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa6fbc4_92d59ad4",
         "filename": "runtime/openjdkjvmti/ti_redefine.h",
         "patchSetId": 16
@@ -870,6 +1536,24 @@
         "endLine": 180,
         "endChar": 25
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_4f28e04b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Removed.\n\nI\u0027m not even sure what I added that for.",
+      "parentUuid": "5aa6fbc4_92d59ad4",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -899,6 +1583,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_af2cf4ad",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_5644f419",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_164a7c29",
         "filename": "runtime/stack.cc",
         "patchSetId": 16
@@ -916,6 +1618,24 @@
         "endLine": 873,
         "endChar": 52
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_02287ff4",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "By moving the deopt after the stack walk we actually don\u0027t need this anymore so it\u0027s now gone.",
+      "parentUuid": "3aca276f_164a7c29",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -945,6 +1665,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_62ee9399",
+        "filename": "runtime/stack.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_364f783a",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_7649f030",
         "filename": "test/914-hello-obsolescence/run",
         "patchSetId": 16
@@ -962,6 +1700,24 @@
         "endLine": 44,
         "endChar": 32
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_ef37cc9a",
+        "filename": "test/914-hello-obsolescence/run",
+        "patchSetId": 16
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "I\u0027ll do this in a testing follow-up",
+      "parentUuid": "3aca276f_7649f030",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -991,6 +1747,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_efeb4c31",
+        "filename": "test/916-obsolete-jit/src/Transform.java",
+        "patchSetId": 16
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "This can also be removed once/if you get rid of HCurrentMethod but done.",
+      "parentUuid": "3aca276f_963dac81",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6342099",
         "filename": "test/common/stack_inspect.cc",
         "patchSetId": 16
@@ -1008,6 +1782,24 @@
         "endLine": 86,
         "endChar": 5
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_ef142c66",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_f6342099",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1037,6 +1829,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_2ffe44f8",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "This is so that we can still use this function even in tests running on the RI. In that case it will just always return true.",
+      "parentUuid": "3aca276f_d637249b",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa940f52_cf2a21ef",
         "filename": "test/common/stack_inspect.cc",
         "patchSetId": 16
@@ -1054,6 +1864,24 @@
         "endLine": 97,
         "endChar": 48
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_0f834826",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa940f52_cf2a21ef",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1083,6 +1911,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0f37c80c",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "It doesn\u0027t actually change the output of the tests but done.",
+      "parentUuid": "3aca276f_16f51caa",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36fa189b",
         "filename": "test/ti-agent/common_helper.cc",
         "patchSetId": 16
@@ -1100,6 +1946,24 @@
         "endLine": 116,
         "endChar": 18
       },
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_2f172470",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T17:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aca276f_36fa189b",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
