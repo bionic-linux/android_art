@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6aeb2c_d655453a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-14T20:48:47Z",
+      "side": 1,
+      "message": "Seb wanted to variants here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "876e02730f602d88fb75040c5bf58954857133e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_76c2d1ef",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-12-14T20:48:47Z",
+      "side": 1,
+      "message": "Single line now?",
+      "range": {
+        "startLine": 97,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 83
+      },
+      "revId": "876e02730f602d88fb75040c5bf58954857133e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
