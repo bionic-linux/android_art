@@ -197,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "3aca276f_d6dac478",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Ah I misunderstood the TODO and thought you meant the lines 643 and 644.\n\nSo yes, they could be set. You need the JIT threads to be stopped, and the work queue to be drained.",
+      "parentUuid": "da6aeb2c_0cf51baa",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba9b777b_92f11c24",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 13
@@ -545,6 +563,24 @@
       "side": 1,
       "message": "Would we even have the method be marked as an intrinsic in that case though?",
       "parentUuid": "da6aeb2c_978bd440",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aca276f_b6cd48c6",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-14T13:15:06Z",
+      "side": 1,
+      "message": "Yes.\n\nagampe@: indeed for string compare, but if you run it in the interpreter you can redefine it / make it obsolete. If you run it in the compiler, where it\u0027s a leaf, we could redefine it, but we\u0027ll never be in a place where we see it in the stack.",
+      "parentUuid": "da6aeb2c_f7e6c8f8",
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
