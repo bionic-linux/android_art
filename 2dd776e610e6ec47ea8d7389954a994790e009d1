@@ -22,6 +22,24 @@
       "revId": "2dd776e610e6ec47ea8d7389954a994790e009d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_4528c14b",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T19:01:16Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll Just get the allocator earlier and pass it down.",
+      "parentUuid": "da6aeb2c_a55ed52d",
+      "revId": "2dd776e610e6ec47ea8d7389954a994790e009d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
