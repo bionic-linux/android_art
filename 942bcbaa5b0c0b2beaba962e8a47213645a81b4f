@@ -530,6 +530,24 @@
       "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_f7e6c8f8",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-14T00:39:40Z",
+      "side": 1,
+      "message": "Would we even have the method be marked as an intrinsic in that case though?",
+      "parentUuid": "da6aeb2c_978bd440",
+      "revId": "942bcbaa5b0c0b2beaba962e8a47213645a81b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
