@@ -22,6 +22,24 @@
       "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_d2ad4383",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "It\u0027s like the \"mirror::\u003cwhatever\u003e*\"s are after suspend. They shouldn\u0027t be used since they might point to anything. After this function the \u0027old_method\u0027 ArtMethod is not valid. If any runtime/compiled code outside of the redefinition stuff gets a hold of it then weird things could happen. This comment is saying that we might want to put in some debug checking that these invalid ArtMethods aren\u0027t used that way. It\u0027s like why we added the ObjPtr type.",
+      "parentUuid": "5a199b0d_5740ac73",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
