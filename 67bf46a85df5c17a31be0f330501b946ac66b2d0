@@ -248,6 +248,24 @@
     },
     {
       "key": {
+        "uuid": "5a199b0d_773db0ec",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "Please bring back those two dchecks.",
+      "parentUuid": "da6aeb2c_cfb4d01b",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36a938c8",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 16
@@ -447,6 +465,24 @@
       "side": 1,
       "message": "Fine. Removed.\n\nI\u0027ll make this later and for now just LOG(FATAL) if we fail this. (Which is fine b/c almost every failure state has been replaced with check failures.)",
       "parentUuid": "3aca276f_56d6b411",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a199b0d_d72b5cb0",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "sgtm",
+      "parentUuid": "da6aeb2c_0f66e801",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -986,6 +1022,24 @@
     },
     {
       "key": {
+        "uuid": "5a199b0d_578e6cc2",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "All threads being suspended doesn\u0027t mean no GC (especially since you\u0027re doing work here *in the current thread*).",
+      "parentUuid": "da6aeb2c_0f6ee81a",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -1273,6 +1327,24 @@
     },
     {
       "key": {
+        "uuid": "5a199b0d_f749c0ac",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "Can we deopt a method that is branching from the suspend? I think we\u0027ll always get the problem, but just get lucky the methods we\u0027re interested in are now ok to deopt.\n\nNevertheless, the deopt thing needs to be fixed, so I don\u0027t think it\u0027s worth outsmarting it.",
+      "parentUuid": "da6aeb2c_af8dd4c6",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36ccd87b",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -1390,6 +1462,24 @@
       "side": 1,
       "message": "Not sure. Hence the TODO.",
       "parentUuid": "3aca276f_56d1540e",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a199b0d_974e44b2",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "It\u0027s not just you reading that code, it\u0027s also others. Such things need to be clearer.",
+      "parentUuid": "da6aeb2c_2f456490",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1642,6 +1732,24 @@
     },
     {
       "key": {
+        "uuid": "5a199b0d_57598c75",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "Good.",
+      "parentUuid": "da6aeb2c_02287ff4",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_364f783a",
         "filename": "runtime/stack.h",
         "patchSetId": 16
@@ -1847,6 +1955,24 @@
     },
     {
       "key": {
+        "uuid": "5a199b0d_17631424",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "Then please add a comment.",
+      "parentUuid": "da6aeb2c_2ffe44f8",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa940f52_cf2a21ef",
         "filename": "test/common/stack_inspect.cc",
         "patchSetId": 16
@@ -1923,6 +2049,24 @@
       "side": 1,
       "message": "It doesn\u0027t actually change the output of the tests but done.",
       "parentUuid": "3aca276f_16f51caa",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a199b0d_37609814",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "It will once you manage to get those tests run on actual devices. The logcat will be polluted by it.",
+      "parentUuid": "da6aeb2c_0f37c80c",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
