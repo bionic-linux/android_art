@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a199b0d_5740ac73",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-15T12:18:00Z",
+      "side": 1,
+      "message": "by anyone/anything right? It\u0027s not just down to the jit code cache, as the jit code cache doesn\u0027t reference it anymore.\n\nSorry I\u0027m still puzzled. Aren\u0027t you using old_method for the new redefinition?",
+      "range": {
+        "startLine": 631,
+        "startChar": 3,
+        "endLine": 631,
+        "endChar": 20
+      },
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
