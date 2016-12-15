@@ -266,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_521073fe",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "The IsInUseByCompiler() function does both of these and checks if there are inlines\n\n  bool IsInUseByCompiler() const {\n    return IsMethodBeingCompiled(/*osr*/ true) || IsMethodBeingCompiled(/*osr*/ false) ||\n        (current_inline_uses_ \u003e 0);\n  }",
+      "parentUuid": "5a199b0d_773db0ec",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36a938c8",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 16
@@ -483,6 +501,24 @@
       "side": 1,
       "message": "sgtm",
       "parentUuid": "da6aeb2c_0f66e801",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_cd784632",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a199b0d_d72b5cb0",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1040,6 +1076,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_edaee264",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "+Mathieuc@ gave me the impression that SuspendAll meant that there wouldn\u0027t be any GC.\n\nAll allocation done here is just from linearallocs. Is there any possibility that GC could happen?",
+      "parentUuid": "5a199b0d_578e6cc2",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -1345,6 +1399,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_edd502d3",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Agreed. This is just speculation. Removed in the unrevert.",
+      "parentUuid": "5a199b0d_f749c0ac",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_36ccd87b",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
@@ -1480,6 +1552,24 @@
       "side": 1,
       "message": "It\u0027s not just you reading that code, it\u0027s also others. Such things need to be clearer.",
       "parentUuid": "da6aeb2c_2f456490",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_2dd0fade",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Expanded somewhat in unrevert.",
+      "parentUuid": "5a199b0d_974e44b2",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1750,6 +1840,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_2d2b9af4",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a199b0d_57598c75",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_364f783a",
         "filename": "runtime/stack.h",
         "patchSetId": 16
@@ -1973,6 +2081,24 @@
     },
     {
       "key": {
+        "uuid": "da6aeb2c_0d05fe7a",
+        "filename": "test/common/stack_inspect.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Done in un-revert. This method/struct was what was causing flakiness anyway so it is largely rewritten.",
+      "parentUuid": "5a199b0d_17631424",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa940f52_cf2a21ef",
         "filename": "test/common/stack_inspect.cc",
         "patchSetId": 16
@@ -2067,6 +2193,24 @@
       "side": 1,
       "message": "It will once you manage to get those tests run on actual devices. The logcat will be polluted by it.",
       "parentUuid": "da6aeb2c_0f37c80c",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6aeb2c_8d648e60",
+        "filename": "test/ti-agent/common_helper.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-15T19:20:17Z",
+      "side": 1,
+      "message": "Ack. Its been removed.",
+      "parentUuid": "5a199b0d_37609814",
       "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
