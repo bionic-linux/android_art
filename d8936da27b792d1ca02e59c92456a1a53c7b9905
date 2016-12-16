@@ -40,6 +40,47 @@
       "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ad35b96_e74e82b2",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-16T10:43:31Z",
+      "side": 1,
+      "message": "I\u0027m sorry if I keep getting back and forth on this one. It might be something trivial I\u0027m not getting.\n\nSo here\u0027s what I think I understand\n\na) old_method is getting redefined, and new_method is the newly allocated obsolete ArtMethod. The JIT needs to update its data structure so that things now reference new_method instead of old_method.\n\nb) old_method will now be the actual redefinition with its CodeItem being the new CodeItem in the redefined dex file.\n\nSo far so good?\n\nGiven that a) and b) are done sort of atomically (by having all threads suspended), the part I don\u0027t understand is why are you saying old_method cannot be used anymore.",
+      "parentUuid": "da6aeb2c_d2ad4383",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daa58b1c_6b026174",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-16T10:43:31Z",
+      "side": 1,
+      "message": "This made me think about another problem: the jit code cache may already have a profiling info and compiled code (and osr) for this method. And I couldn\u0027t find a place where you discard those entries.",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 5
+      },
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
