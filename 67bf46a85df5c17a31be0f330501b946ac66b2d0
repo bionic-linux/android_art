@@ -1112,6 +1112,24 @@
     },
     {
       "key": {
+        "uuid": "7a51fff3_df25e7da",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-16T17:49:50Z",
+      "side": 1,
+      "message": "I mean this is marked in the header as REQUIRES(Locks::mutator_lock_). Also this entire function is NoThreadSuspension.",
+      "parentUuid": "daa58b1c_2b085994",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
