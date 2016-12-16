@@ -1094,6 +1094,24 @@
     },
     {
       "key": {
+        "uuid": "daa58b1c_2b085994",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-16T10:43:31Z",
+      "side": 1,
+      "message": "\"All allocation done here is just from linearallocs\"\n\nEven though, there\u0027s no harm in being defensive. And your potential co-worker that will add a line that may suspend this thread will be grateful you\u0027ve added a handle there.",
+      "parentUuid": "da6aeb2c_edaee264",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
