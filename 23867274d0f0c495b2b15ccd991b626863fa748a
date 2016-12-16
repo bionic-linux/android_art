@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab57f43_b0779879",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-16T16:05:35Z",
+      "side": 1,
+      "message": "The 32-bit test should trivially pass, so there\u0027s no need to disable it.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ab4f348_749ec63e",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-16T16:05:35Z",
+      "side": 1,
+      "message": "Why not just\n\n  ASSERT_TRUE(IsUint\u003c32\u003e(table.hashfn_(str))",
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
