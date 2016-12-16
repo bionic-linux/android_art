@@ -61,6 +61,24 @@
     },
     {
       "key": {
+        "uuid": "7a51fff3_1ff20f27",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-16T17:49:50Z",
+      "side": 1,
+      "message": "Okay so the thing is this function only does (a). Once (b) is finished everything is fine but that doesn\u0027t happen until we call \u0027UpdateClass\u0027 later in the redefinition procedure. We need to be sure to cleanup if we return between the end of this function and calling updateClass successfully. \n\nIn many places it is useful for debugging to mark even temporarily invalid objects in order to ease debugging in case they ever escape. That is what this TODO is referring to.",
+      "parentUuid": "5ad35b96_e74e82b2",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daa58b1c_6b026174",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 20
@@ -78,6 +96,24 @@
         "endLine": 688,
         "endChar": 5
       },
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a51fff3_1f404f73",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-16T17:49:50Z",
+      "side": 1,
+      "message": "I\u0027ll look at this in the revert.",
+      "parentUuid": "daa58b1c_6b026174",
       "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
