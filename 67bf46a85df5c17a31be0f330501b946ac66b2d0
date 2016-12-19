@@ -1184,6 +1184,24 @@
     },
     {
       "key": {
+        "uuid": "7a51fff3_f71d607e",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-19T21:56:14Z",
+      "side": 1,
+      "message": "I\u0027m going to look into it in the future. I\u0027ll ask for Mathieuc@s help if needed",
+      "parentUuid": "17237e9f_3518f05a",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
