@@ -115,6 +115,24 @@
     },
     {
       "key": {
+        "uuid": "17237e9f_55136c42",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-19T21:34:30Z",
+      "side": 1,
+      "message": "It doesn\u0027t have to be here. ti_redefine is where all the logic happens. It\u0027s the one that can drive this \"sanity\" check.",
+      "parentUuid": "7a51fff3_eb5023f0",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daa58b1c_6b026174",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 20
