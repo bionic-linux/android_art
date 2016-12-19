@@ -1166,6 +1166,24 @@
     },
     {
       "key": {
+        "uuid": "17237e9f_3518f05a",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-19T21:34:30Z",
+      "side": 1,
+      "message": "\"We should\" sounds like we\u0027re taking this lightly. We need guarantees.\n\nIt sounds like being in the native state (thanks to line 614) actually does prevent allocating.\n\nGood to know you want to get rid of line 614. Are you looking into it? Or Mathieu?",
+      "parentUuid": "7a51fff3_4b492f31",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
