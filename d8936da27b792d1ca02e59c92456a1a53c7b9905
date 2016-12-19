@@ -79,6 +79,24 @@
     },
     {
       "key": {
+        "uuid": "773d9abc_b08518f5",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-19T11:21:31Z",
+      "side": 1,
+      "message": "I see. So here\u0027s my suggestion: add a boolean flag to ScopedSuspendJit, which, once you\u0027re sure you\u0027re done, you set to true. Then when the ScopedSuspendJit calls its destructor, DCHECK that the flag is true.",
+      "parentUuid": "7a51fff3_1ff20f27",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daa58b1c_6b026174",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 20
