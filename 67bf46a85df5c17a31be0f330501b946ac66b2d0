@@ -1130,6 +1130,24 @@
     },
     {
       "key": {
+        "uuid": "f71b4a68_948224e9",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-19T11:21:31Z",
+      "side": 1,
+      "message": "REQUIRES(Locks::mutator_lock_) doesn\u0027t guarantee no suspension, and allows allocation.\n\n\"Also this entire function is NoThreadSuspension\": is that by doing ScopedAssertNoThreadSuspension? Then ok, but I\u0027d be more confident if you add another Scope here (and the TODO line 614 is a bit scary knowing that this conversation is arguing about guarantees).",
+      "parentUuid": "7a51fff3_df25e7da",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
