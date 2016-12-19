@@ -97,6 +97,24 @@
     },
     {
       "key": {
+        "uuid": "7a51fff3_eb5023f0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 20
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-19T18:51:08Z",
+      "side": 1,
+      "message": "We cannot see the ScopedSuspendJit here.\n\nThis is basically just a nice-to-have thing we should make before we consider this feature fully done. I don\u0027t think it is anything even resembling a high priority piece of this feature.",
+      "parentUuid": "773d9abc_b08518f5",
+      "revId": "d8936da27b792d1ca02e59c92456a1a53c7b9905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "daa58b1c_6b026174",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 20
