@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17237e9f_9558e49f",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3592,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-19T14:35:15Z",
+      "side": 1,
+      "message": "CodeGenerator::GetLoadStringCallKind(load)",
+      "range": {
+        "startLine": 3589,
+        "startChar": 40,
+        "endLine": 3592,
+        "endChar": 45
+      },
+      "revId": "605655b5d46660dd6e236adf0582cbbf610553bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_95ffc43b",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3611,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-19T14:35:15Z",
+      "side": 1,
+      "message": "This has since been removed from arm/arm64/x86/x86-64 but it\u0027s still present in the mips codegen. No read barrier is necessary in this case.",
+      "range": {
+        "startLine": 3611,
+        "startChar": 6,
+        "endLine": 3611,
+        "endChar": 40
+      },
+      "revId": "605655b5d46660dd6e236adf0582cbbf610553bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_55636c58",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3618,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-19T14:35:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3618,
+        "startChar": 6,
+        "endLine": 3618,
+        "endChar": 40
+      },
+      "revId": "605655b5d46660dd6e236adf0582cbbf610553bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_d54e5cdf",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3627,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-19T14:35:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3627,
+        "startChar": 6,
+        "endLine": 3627,
+        "endChar": 40
+      },
+      "revId": "605655b5d46660dd6e236adf0582cbbf610553bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
