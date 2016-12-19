@@ -1148,6 +1148,24 @@
     },
     {
       "key": {
+        "uuid": "7a51fff3_4b492f31",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2016-12-19T18:51:08Z",
+      "side": 1,
+      "message": "\u003e REQUIRES(Locks::mutator_lock_) doesn\u0027t guarantee no suspension, and allows allocation.\n\n+Mathieuc@ said to me that it doesn\u0027t allow allocation since if we allowed java allocation we might suspension while holding the mutator_lock_ exclusive and could deadlock.\n\nAlso I agree that 614 is scary. I am pretty sure it is fine but it is rather worrisome and something it would be good to get rid of.\n\nAlso I don\u0027t think it has anything to do with this stuff here since this is after the suspendAll and all the references are in Handles across that suspend so we should be fine.",
+      "parentUuid": "f71b4a68_948224e9",
+      "revId": "67bf46a85df5c17a31be0f330501b946ac66b2d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aca276f_f6826020",
         "filename": "runtime/openjdkjvmti/ti_redefine.cc",
         "patchSetId": 16
