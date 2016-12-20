@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "17237e9f_d8aa114f",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-20T11:37:06Z",
+      "side": 1,
+      "message": "Yes, we should remove the #if. Compilers tend to be quiet about non-trivial code they constant-fold and eliminate.",
+      "parentUuid": "f7a50a83_191677c2",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab4f348_749ec63e",
         "filename": "runtime/intern_table_test.cc",
         "patchSetId": 1
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "Vladimir, do you still think it is better to change it to ASSERT_TRUE?",
       "parentUuid": "9ab4f348_749ec63e",
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_f8adcd68",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2016-12-20T11:37:06Z",
+      "side": 1,
+      "message": "If you want to continue with the rest of the test, make it EXPECT_TRUE(). But I do believe we should test the hash to be 32-bit only.",
+      "parentUuid": "f7a50a83_d91f7fd1",
       "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
