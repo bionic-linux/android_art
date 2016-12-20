@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f7a50a83_191677c2",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-12-20T11:07:41Z",
+      "side": 1,
+      "message": "Vladimir, do you still think it is better to remove \"#if\"?",
+      "parentUuid": "7ab57f43_b0779879",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ab4f348_749ec63e",
         "filename": "runtime/intern_table_test.cc",
         "patchSetId": 1
@@ -77,6 +101,24 @@
       "writtenOn": "2016-12-16T17:14:04Z",
       "side": 1,
       "message": "Well it will work.\nYet I believe the test shall check the whole path of addressing an entry in a hash table. That opens up variants and underlines the problem. \nFor example in this particular case we could fix the bug either on the side of IndexForHash() or hashfn_().",
+      "parentUuid": "9ab4f348_749ec63e",
+      "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7a50a83_d91f7fd1",
+        "filename": "runtime/intern_table_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2016-12-20T11:07:41Z",
+      "side": 1,
+      "message": "Vladimir, do you still think it is better to change it to ASSERT_TRUE?",
       "parentUuid": "9ab4f348_749ec63e",
       "revId": "23867274d0f0c495b2b15ccd991b626863fa748a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
