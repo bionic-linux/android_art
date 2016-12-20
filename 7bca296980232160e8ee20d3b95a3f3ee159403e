@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17237e9f_d851f126",
+        "filename": "test/918-obsolete-fields/run",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2016-12-20T17:05:43Z",
+      "side": 1,
+      "message": "Add a comment.\n\nAgain, doesn\u0027t jvmti (today) requires this? Why don\u0027t you add it under the --jmvti run-test option.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 2
+      },
+      "revId": "7bca296980232160e8ee20d3b95a3f3ee159403e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
