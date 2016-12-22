@@ -1927,7 +1927,8 @@ END art_quick_l2f
     /*
      * Create a function `name` calling the ReadBarrier::Mark routine,
      * getting its argument and returning its result through register
-     * `reg`, saving and restoring all caller-save registers.
+     * `reg`, saving and restoring all caller-save core registers
+     * (but not floating-point ones).
      *
      * IP is clobbered; `reg` must not be IP.
      *
@@ -1976,11 +1977,7 @@ ENTRY \name
       mov   r0, \reg                    @ pass arg1 - obj from `reg`
     .endif
 
-    vpush {s0-s15}                      @ save floating-point caller-save registers
-    .cfi_adjust_cfa_offset 64
     bl    artReadBarrierMark            @ r0 <- artReadBarrierMark(obj)
-    vpop {s0-s15}                       @ restore floating-point registers
-    .cfi_adjust_cfa_offset -64
 
     .ifc \reg, r0                       @ Save result to the stack slot or destination register.
       str r0, [sp, #0]

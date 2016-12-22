@@ -2245,7 +2245,8 @@ END_FUNCTION art_nested_signal_return
 
 // Create a function `name` calling the ReadBarrier::Mark routine,
 // getting its argument and returning its result through register
-// `reg`, saving and restoring all caller-save registers.
+// `reg`, saving and restoring all caller-save core registers (but
+// not floating-point ones).
 //
 // The generated function follows a non-standard runtime calling
 // convention:
@@ -2288,22 +2289,6 @@ MACRO2(READ_BARRIER_MARK_REG, name, reg)
     PUSH r9
     PUSH r10
     PUSH r11
-    // Create space for caller-save floating-point registers.
-    subq MACRO_LITERAL(12 * 8), %rsp
-    CFI_ADJUST_CFA_OFFSET(12 * 8)
-    // Save all potentially live caller-save floating-point registers.
-    movq %xmm0, 0(%rsp)
-    movq %xmm1, 8(%rsp)
-    movq %xmm2, 16(%rsp)
-    movq %xmm3, 24(%rsp)
-    movq %xmm4, 32(%rsp)
-    movq %xmm5, 40(%rsp)
-    movq %xmm6, 48(%rsp)
-    movq %xmm7, 56(%rsp)
-    movq %xmm8, 64(%rsp)
-    movq %xmm9, 72(%rsp)
-    movq %xmm10, 80(%rsp)
-    movq %xmm11, 88(%rsp)
     SETUP_FP_CALLEE_SAVE_FRAME
 
     .ifnc RAW_VAR(reg), rdi
@@ -2315,22 +2300,6 @@ MACRO2(READ_BARRIER_MARK_REG, name, reg)
     .endif
 
     RESTORE_FP_CALLEE_SAVE_FRAME
-    // Restore floating-point registers.
-    movq 0(%rsp), %xmm0
-    movq 8(%rsp), %xmm1
-    movq 16(%rsp), %xmm2
-    movq 24(%rsp), %xmm3
-    movq 32(%rsp), %xmm4
-    movq 40(%rsp), %xmm5
-    movq 48(%rsp), %xmm6
-    movq 56(%rsp), %xmm7
-    movq 64(%rsp), %xmm8
-    movq 72(%rsp), %xmm9
-    movq 80(%rsp), %xmm10
-    movq 88(%rsp), %xmm11
-    // Remove floating-point registers.
-    addq MACRO_LITERAL(12 * 8), %rsp
-    CFI_ADJUST_CFA_OFFSET(-(12 * 8))
     // Restore core regs, except `reg`, as it is used to return the
     // result of this function (simply remove it from the stack instead).
     POP_REG_NE r11, RAW_VAR(reg)

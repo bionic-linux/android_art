@@ -52,7 +52,7 @@ INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
  private:
   ArenaAllocator* arena_;
   ArmAssembler* assembler_;
-
+  CodeGeneratorARM* codegen_;
   const ArmInstructionSetFeatures& features_;
 
   DISALLOW_COPY_AND_ASSIGN(IntrinsicLocationsBuilderARM);

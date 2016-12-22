@@ -38,7 +38,7 @@ class CodeGeneratorARM64;
 
 class IntrinsicLocationsBuilderARM64 FINAL : public IntrinsicVisitor {
  public:
-  explicit IntrinsicLocationsBuilderARM64(ArenaAllocator* arena) : arena_(arena) {}
+  explicit IntrinsicLocationsBuilderARM64(CodeGeneratorARM64* codegen);
 
   // Define visitor methods.
 
@@ -56,6 +56,7 @@ INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
 
  private:
   ArenaAllocator* arena_;
+  CodeGeneratorARM64* codegen_;
 
   DISALLOW_COPY_AND_ASSIGN(IntrinsicLocationsBuilderARM64);
 };

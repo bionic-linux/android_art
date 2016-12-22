@@ -622,7 +622,7 @@ class ArraySetSlowPathARMVIXL : public SlowPathCodeARMVIXL {
 // Slow path marking an object reference `ref` during a read
 // barrier. The field `obj.field` in the object `obj` holding this
 // reference does not get updated by this slow path after marking (see
-// ReadBarrierMarkAndUpdateFieldSlowPathARM below for that).
+// ReadBarrierMarkAndUpdateFieldSlowPathARMVIXL below for that).
 //
 // This means that after the execution of this slow path, `ref` will
 // always be up-to-date, but `obj.field` may not; i.e., after the
@@ -649,11 +649,9 @@ class ReadBarrierMarkSlowPathARMVIXL : public SlowPathCodeARMVIXL {
     DCHECK(instruction_->IsInstanceFieldGet() ||
            instruction_->IsStaticFieldGet() ||
            instruction_->IsArrayGet() ||
-           instruction_->IsArraySet() ||
            instruction_->IsLoadClass() ||
            instruction_->IsLoadString() ||
            instruction_->IsInstanceOf() ||
-           instruction_->IsCheckCast() ||
            (instruction_->IsInvokeVirtual() && instruction_->GetLocations()->Intrinsified()) ||
            (instruction_->IsInvokeStaticOrDirect() && instruction_->GetLocations()->Intrinsified()))
         << "Unexpected instruction in read barrier marking slow path: "
@@ -665,9 +663,45 @@ class ReadBarrierMarkSlowPathARMVIXL : public SlowPathCodeARMVIXL {
              instruction_->AsArrayGet()->GetArray()->IsIntermediateAddress()));
 
     __ Bind(GetEntryLabel());
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
+
+    // We only save live floating-point registers; all core registers
+    // are saved by the entrypoint. Also, there is no need to update
+    // the stack mask, as this runtime call will not trigger a garbage
+    // collection.
+    SaveLiveFPRegisters(codegen, locations);
+    if (kIsDebugBuild) {
+      // We expect a custom slow path calling convention saving (at
+      // most) floating-point caller-save registers, except in two cases:
+      // - for a LoadClass instruction needing an environment, as
+      //   that instruction may use another slow path using a standard
+      //   calling convention, LoadClassSlowPathARMVIXL;
+      // - and similarly for SystemArrayCopy intrinsic, with the
+      //   IntrinsicSlowPathARMVIXL slow path.
+      if ((instruction_->IsLoadClass()
+           && instruction_->AsLoadClass()->NeedsEnvironment())
+          || (instruction_->IsInvokeStaticOrDirect()
+              && instruction_->GetLocations()->Intrinsified()
+              && (instruction_->AsInvokeStaticOrDirect()->GetIntrinsic()
+                  == Intrinsics::kSystemArrayCopy))) {
+        DCHECK(!locations->HasCustomSlowPathCallingConvention());
+      } else {
+        DCHECK(locations->HasCustomSlowPathCallingConvention());
+        if (instruction_->IsLoadString()) {
+          // For LoadString instructions, the set of caller-saves is
+          // made of floating-point registers *and* EAX, although we
+          // do not save/restore the latter, as it is taken care of by
+          // the entry point.
+          DCHECK(locations->GetCustomSlowPathCallerSaves().Includes(
+              codegen->FloatingPointCallerSaveRegisters()))
+                << instruction_->DebugName();
+        } else {
+          DCHECK(locations->GetCustomSlowPathCallerSaves().Equals(
+              codegen->FloatingPointCallerSaveRegisters()))
+              << instruction_->DebugName();
+        }
+      }
+    }
+
     CodeGeneratorARMVIXL* arm_codegen = down_cast<CodeGeneratorARMVIXL*>(codegen);
     DCHECK(!ref_reg.Is(sp));
     DCHECK(!ref_reg.Is(lr));
@@ -699,6 +733,9 @@ class ReadBarrierMarkSlowPathARMVIXL : public SlowPathCodeARMVIXL {
       // This runtime call does not require a stack map.
       arm_codegen->InvokeRuntimeWithoutRecordingPcInfo(entry_point_offset, instruction_, this);
     }
+
+    RestoreLiveFPRegisters(codegen, locations);
+
     __ B(GetExitLabel());
   }
 
@@ -715,7 +752,7 @@ class ReadBarrierMarkSlowPathARMVIXL : public SlowPathCodeARMVIXL {
 // Slow path marking an object reference `ref` during a read barrier,
 // and if needed, atomically updating the field `obj.field` in the
 // object `obj` holding this reference after marking (contrary to
-// ReadBarrierMarkSlowPathARM above, which never tries to update
+// ReadBarrierMarkSlowPathARMVIXL above, which never tries to update
 // `obj.field`).
 //
 // This means that after the execution of this slow path, both `ref`
@@ -765,9 +802,17 @@ class ReadBarrierMarkAndUpdateFieldSlowPathARMVIXL : public SlowPathCodeARMVIXL 
     DCHECK(!temp1_.Is(ip));
     __ Mov(temp1_, ref_reg);
 
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
+    // We only save live floating-point registers; all core registers
+    // are saved by the entrypoint. Also, there is no need to update
+    // the stack mask, as this runtime call will not trigger a garbage
+    // collection.
+    SaveLiveFPRegisters(codegen, locations);
+    // We expect a custom slow path calling convention saving only
+    // floating-point caller-save registers.
+    DCHECK(locations->HasCustomSlowPathCallingConvention());
+    DCHECK(locations->GetCustomSlowPathCallerSaves().Equals(
+        codegen->FloatingPointCallerSaveRegisters()));
+
     CodeGeneratorARMVIXL* arm_codegen = down_cast<CodeGeneratorARMVIXL*>(codegen);
     DCHECK(!ref_reg.Is(sp));
     DCHECK(!ref_reg.Is(lr));
@@ -794,6 +839,8 @@ class ReadBarrierMarkAndUpdateFieldSlowPathARMVIXL : public SlowPathCodeARMVIXL 
         CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kArmPointerSize>(ref_reg.GetCode());
     // This runtime call does not require a stack map.
     arm_codegen->InvokeRuntimeWithoutRecordingPcInfo(entry_point_offset, instruction_, this);
+
+    RestoreLiveFPRegisters(codegen, locations);
 
     // If the new reference is different from the old reference,
     // update the field in the holder (`*(obj_ + field_offset_)`).
@@ -4394,7 +4441,7 @@ void LocationsBuilderARMVIXL::HandleFieldGet(HInstruction* instruction,
                                                        LocationSummary::kCallOnSlowPath :
                                                        LocationSummary::kNoCall);
   if (object_field_get_with_read_barrier && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
 
@@ -4873,7 +4920,7 @@ void LocationsBuilderARMVIXL::VisitArrayGet(HArrayGet* instruction) {
                                                        LocationSummary::kCallOnSlowPath :
                                                        LocationSummary::kNoCall);
   if (object_array_get_with_read_barrier && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RegisterOrConstant(instruction->InputAt(1)));
@@ -5825,7 +5872,7 @@ void LocationsBuilderARMVIXL::VisitLoadClass(HLoadClass* cls) {
       : LocationSummary::kNoCall;
   LocationSummary* locations = new (GetGraph()->GetArena()) LocationSummary(cls, call_kind);
   if (kUseBakerReadBarrier && requires_read_barrier && !cls->NeedsEnvironment()) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
 
   HLoadClass::LoadKind load_kind = cls->GetLoadKind();
@@ -6005,11 +6052,11 @@ void LocationsBuilderARMVIXL::VisitLoadString(HLoadString* load) {
     locations->SetOut(Location::RequiresRegister());
     if (load_kind == HLoadString::LoadKind::kBssEntry) {
       if (!kUseReadBarrier || kUseBakerReadBarrier) {
-        // Rely on the pResolveString and/or marking to save everything, including temps.
+        // Rely on the pResolveString and/or marking to save all core registers, including temps.
         // Note that IP may theoretically be clobbered by saving/restoring the live register
         // (only one thanks to the custom calling convention), so we request a different temp.
         locations->AddTemp(Location::RequiresRegister());
-        RegisterSet caller_saves = RegisterSet::Empty();
+        RegisterSet caller_saves = codegen_->FloatingPointCallerSaveRegisters();
         InvokeRuntimeCallingConventionARMVIXL calling_convention;
         caller_saves.Add(LocationFrom(calling_convention.GetRegisterAt(0)));
         // TODO: Add GetReturnLocation() to the calling convention so that we can DCHECK()
@@ -6163,12 +6210,12 @@ void LocationsBuilderARMVIXL::VisitInstanceOf(HInstanceOf* instruction) {
 
   LocationSummary* locations = new (GetGraph()->GetArena()) LocationSummary(instruction, call_kind);
   if (baker_read_barrier_slow_path) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RequiresRegister());
   // The "out" register is used as a temporary, so it overlaps with the inputs.
-  // Note that TypeCheckSlowPathARM uses this register too.
+  // Note that TypeCheckSlowPathARMVIXL uses this register too.
   locations->SetOut(Location::RequiresRegister(), Location::kOutputOverlap);
   locations->AddRegisterTemps(NumberOfInstanceOfTemps(type_check_kind));
 }
@@ -7197,7 +7244,7 @@ void CodeGeneratorARMVIXL::MaybeGenerateReadBarrierSlow(HInstruction* instructio
                                                         Location index) {
   if (kEmitCompilerReadBarrier) {
     // Baker's read barriers shall be handled by the fast path
-    // (CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier).
+    // (CodeGeneratorARMVIXL::GenerateReferenceLoadWithBakerReadBarrier).
     DCHECK(!kUseBakerReadBarrier);
     // If heap poisoning is enabled, unpoisoning will be taken care of
     // by the runtime within the slow path.

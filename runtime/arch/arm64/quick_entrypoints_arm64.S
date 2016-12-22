@@ -2483,7 +2483,7 @@ END art_quick_indexof
      * Create a function `name` calling the ReadBarrier::Mark routine,
      * getting its argument and returning its result through W register
      * `wreg` (corresponding to X register `xreg`), saving and restoring
-     * all caller-save registers.
+     * all caller-save core registers (but not floating-point ones).
      *
      * If `wreg` is different from `w0`, the generated function follows a
      * non-standard runtime calling convention:
@@ -2500,9 +2500,8 @@ ENTRY \name
     // Reference is null, no work to do at all.
     cbz \wreg, .Lret_rb_\name
     /*
-     * Allocate 46 stack slots * 8 = 368 bytes:
+     * Allocate 22 stack slots * 8 = 176 bytes:
      * - 20 slots for core registers X0-X19
-     * - 24 slots for floating-point registers D0-D7 and D16-D31
      * -  1 slot for return address register XLR
      * -  1 padding slot for 16-byte stack alignment
      */
@@ -2520,7 +2519,7 @@ ENTRY \name
     // We must not clobber IP0 since art_quick_resolve_string makes a tail call here and relies on
     // IP0 being restored.
     // Save all potentially live caller-save core registers.
-    SAVE_TWO_REGS_INCREASE_FRAME x0, x1, 368
+    SAVE_TWO_REGS_INCREASE_FRAME x0, x1, 176
     SAVE_TWO_REGS  x2,  x3, 16
     SAVE_TWO_REGS  x4,  x5, 32
     SAVE_TWO_REGS  x6,  x7, 48
@@ -2530,22 +2529,9 @@ ENTRY \name
     SAVE_TWO_REGS x14, x15, 112
     SAVE_TWO_REGS x16, x17, 128
     SAVE_TWO_REGS x18, x19, 144
-    // Save all potentially live caller-save floating-point registers.
-    stp   d0, d1,   [sp, #160]
-    stp   d2, d3,   [sp, #176]
-    stp   d4, d5,   [sp, #192]
-    stp   d6, d7,   [sp, #208]
-    stp   d16, d17, [sp, #224]
-    stp   d18, d19, [sp, #240]
-    stp   d20, d21, [sp, #256]
-    stp   d22, d23, [sp, #272]
-    stp   d24, d25, [sp, #288]
-    stp   d26, d27, [sp, #304]
-    stp   d28, d29, [sp, #320]
-    stp   d30, d31, [sp, #336]
     // Save return address.
-    // (sp + #352 is a padding slot)
-    SAVE_REG xLR, 360
+    // (sp + #160 is a padding slot)
+    SAVE_REG xLR, 168
 
     .ifnc \wreg, w0
       mov   w0, \wreg                   // Pass arg1 - obj from `wreg`
@@ -2567,22 +2553,9 @@ ENTRY \name
     POP_REGS_NE x14, x15, 112, \xreg
     POP_REGS_NE x16, x17, 128, \xreg
     POP_REGS_NE x18, x19, 144, \xreg
-    // Restore floating-point registers.
-    ldp   d0, d1,   [sp, #160]
-    ldp   d2, d3,   [sp, #176]
-    ldp   d4, d5,   [sp, #192]
-    ldp   d6, d7,   [sp, #208]
-    ldp   d16, d17, [sp, #224]
-    ldp   d18, d19, [sp, #240]
-    ldp   d20, d21, [sp, #256]
-    ldp   d22, d23, [sp, #272]
-    ldp   d24, d25, [sp, #288]
-    ldp   d26, d27, [sp, #304]
-    ldp   d28, d29, [sp, #320]
-    ldp   d30, d31, [sp, #336]
     // Restore return address and remove padding.
-    RESTORE_REG xLR, 360
-    DECREASE_FRAME 368
+    RESTORE_REG xLR, 168
+    DECREASE_FRAME 176
     ret
 .Lret_forwarding_address\name:
     mvn wIP0, wIP0

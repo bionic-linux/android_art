@@ -417,6 +417,9 @@ std::ostream& operator<<(std::ostream& os, const Location::Policy& rhs);
 class RegisterSet : public ValueObject {
  public:
   static RegisterSet Empty() { return RegisterSet(); }
+  static RegisterSet FloatingPointRegisterSet(uint32_t floating_point_registers) {
+    return RegisterSet(0, floating_point_registers);
+  }
 
   void Add(Location loc) {
     if (loc.IsRegister()) {
@@ -448,6 +451,18 @@ class RegisterSet : public ValueObject {
     return (register_set & (1 << reg)) != 0;
   }
 
+  // Is `rhs` equals to this register set?
+  bool Equals(const RegisterSet& rhs) const {
+    return core_registers_ == rhs.core_registers_
+        && floating_point_registers_ == rhs.floating_point_registers_;
+  }
+
+  // Is `rhs` a subset of this register set?
+  bool Includes(const RegisterSet& rhs) const {
+    return core_registers_ >= rhs.core_registers_
+        && floating_point_registers_ >= rhs.floating_point_registers_;
+  }
+
   size_t GetNumberOfRegisters() const {
     return POPCOUNT(core_registers_) + POPCOUNT(floating_point_registers_);
   }
@@ -462,8 +477,12 @@ class RegisterSet : public ValueObject {
 
  private:
   RegisterSet() : core_registers_(0), floating_point_registers_(0) {}
+  RegisterSet(uint32_t core_registers, uint32_t floating_point_registers)
+      : core_registers_(core_registers), floating_point_registers_(floating_point_registers) {}
 
+  // Core register set (can encode up to 32 registers).
   uint32_t core_registers_;
+  // Floating-point register set (can encode up to 32 registers).
   uint32_t floating_point_registers_;
 };
 

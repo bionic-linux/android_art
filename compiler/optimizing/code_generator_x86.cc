@@ -456,24 +456,59 @@ class ReadBarrierMarkSlowPathX86 : public SlowPathCode {
     DCHECK(instruction_->IsInstanceFieldGet() ||
            instruction_->IsStaticFieldGet() ||
            instruction_->IsArrayGet() ||
-           instruction_->IsArraySet() ||
            instruction_->IsLoadClass() ||
            instruction_->IsLoadString() ||
            instruction_->IsInstanceOf() ||
-           instruction_->IsCheckCast() ||
            (instruction_->IsInvokeVirtual() && instruction_->GetLocations()->Intrinsified()) ||
            (instruction_->IsInvokeStaticOrDirect() && instruction_->GetLocations()->Intrinsified()))
         << "Unexpected instruction in read barrier marking slow path: "
         << instruction_->DebugName();
 
     __ Bind(GetEntryLabel());
+
     if (unpoison_ref_before_marking_) {
       // Object* ref = ref_addr->AsMirrorPtr()
       __ MaybeUnpoisonHeapReference(ref_reg);
     }
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
+
+    // We only save live floating-point registers; all core registers
+    // are saved by the entrypoint. Also, there is no need to update
+    // the stack mask, as this runtime call will not trigger a garbage
+    // collection.
+    SaveLiveFPRegisters(codegen, locations);
+    if (kIsDebugBuild) {
+      // We expect a custom slow path calling convention saving (at
+      // most) floating-point caller-save registers, except in two cases:
+      // - for a LoadClass instruction needing an environment, as
+      //   that instruction may use another slow path using a standard
+      //   calling convention, LoadClassSlowPathX86;
+      // - and similarly for SystemArrayCopy intrinsic, with the
+      //   IntrinsicSlowPathX86 slow path.
+      if ((instruction_->IsLoadClass()
+           && instruction_->AsLoadClass()->NeedsEnvironment())
+          || (instruction_->IsInvokeStaticOrDirect()
+              && instruction_->GetLocations()->Intrinsified()
+              && (instruction_->AsInvokeStaticOrDirect()->GetIntrinsic()
+                  == Intrinsics::kSystemArrayCopy))) {
+        DCHECK(!locations->HasCustomSlowPathCallingConvention());
+      } else {
+        DCHECK(locations->HasCustomSlowPathCallingConvention());
+        if (instruction_->IsLoadString()) {
+          // For LoadString instructions, the set of caller-saves is
+          // made of floating-point registers *and* EAX, although we
+          // do not save/restore the latter, as it is taken care of by
+          // the entry point.
+          DCHECK(locations->GetCustomSlowPathCallerSaves().Includes(
+              codegen->FloatingPointCallerSaveRegisters()))
+              << instruction_->DebugName();
+        } else {
+          DCHECK(locations->GetCustomSlowPathCallerSaves().Equals(
+              codegen->FloatingPointCallerSaveRegisters()))
+              << instruction_->DebugName();
+        }
+      }
+    }
+
     CodeGeneratorX86* x86_codegen = down_cast<CodeGeneratorX86*>(codegen);
     DCHECK_NE(ref_reg, ESP);
     DCHECK(0 <= ref_reg && ref_reg < kNumberOfCpuRegisters) << ref_reg;
@@ -495,6 +530,9 @@ class ReadBarrierMarkSlowPathX86 : public SlowPathCode {
         CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kX86PointerSize>(ref_reg);
     // This runtime call does not require a stack map.
     x86_codegen->InvokeRuntimeWithoutRecordingPcInfo(entry_point_offset, instruction_, this);
+
+    RestoreLiveFPRegisters(codegen, locations);
+
     __ jmp(GetExitLabel());
   }
 
@@ -557,9 +595,17 @@ class ReadBarrierMarkAndUpdateFieldSlowPathX86 : public SlowPathCode {
     // Save the old (unpoisoned) reference.
     __ movl(temp_, ref_reg);
 
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
+    // We only save live floating-point registers; all core registers
+    // are saved by the entrypoint. Also, there is no need to update
+    // the stack mask, as this runtime call will not trigger a garbage
+    // collection.
+    SaveLiveFPRegisters(codegen, locations);
+    // We expect a custom slow path calling convention saving only
+    // floating-point caller-save registers.
+    DCHECK(locations->HasCustomSlowPathCallingConvention());
+    DCHECK(locations->GetCustomSlowPathCallerSaves().Equals(
+        codegen->FloatingPointCallerSaveRegisters()));
+
     CodeGeneratorX86* x86_codegen = down_cast<CodeGeneratorX86*>(codegen);
     DCHECK_NE(ref_reg, ESP);
     DCHECK(0 <= ref_reg && ref_reg < kNumberOfCpuRegisters) << ref_reg;
@@ -581,6 +627,8 @@ class ReadBarrierMarkAndUpdateFieldSlowPathX86 : public SlowPathCode {
         CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kX86PointerSize>(ref_reg);
     // This runtime call does not require a stack map.
     x86_codegen->InvokeRuntimeWithoutRecordingPcInfo(entry_point_offset, instruction_, this);
+
+    RestoreLiveFPRegisters(codegen, locations);
 
     // If the new reference is different from the old reference,
     // update the field in the holder (`*field_addr`).
@@ -4693,7 +4741,7 @@ void LocationsBuilderX86::HandleFieldGet(HInstruction* instruction, const FieldI
                                                        LocationSummary::kCallOnSlowPath :
                                                        LocationSummary::kNoCall);
   if (object_field_get_with_read_barrier && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
 
@@ -5154,7 +5202,7 @@ void LocationsBuilderX86::VisitArrayGet(HArrayGet* instruction) {
                                                        LocationSummary::kCallOnSlowPath :
                                                        LocationSummary::kNoCall);
   if (object_array_get_with_read_barrier && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::RegisterOrConstant(instruction->InputAt(1)));
@@ -6016,7 +6064,7 @@ void LocationsBuilderX86::VisitLoadClass(HLoadClass* cls) {
       : LocationSummary::kNoCall;
   LocationSummary* locations = new (GetGraph()->GetArena()) LocationSummary(cls, call_kind);
   if (kUseBakerReadBarrier && requires_read_barrier && !cls->NeedsEnvironment()) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
 
   HLoadClass::LoadKind load_kind = cls->GetLoadKind();
@@ -6219,8 +6267,8 @@ void LocationsBuilderX86::VisitLoadString(HLoadString* load) {
     locations->SetOut(Location::RequiresRegister());
     if (load_kind == HLoadString::LoadKind::kBssEntry) {
       if (!kUseReadBarrier || kUseBakerReadBarrier) {
-        // Rely on the pResolveString and/or marking to save everything.
-        RegisterSet caller_saves = RegisterSet::Empty();
+        // Rely on the pResolveString and/or marking to save all core registers.
+        RegisterSet caller_saves = codegen_->FloatingPointCallerSaveRegisters();
         InvokeRuntimeCallingConvention calling_convention;
         caller_saves.Add(Location::RegisterLocation(calling_convention.GetRegisterAt(0)));
         locations->SetCustomSlowPathCallerSaves(caller_saves);
@@ -6375,7 +6423,7 @@ void LocationsBuilderX86::VisitInstanceOf(HInstanceOf* instruction) {
 
   LocationSummary* locations = new (GetGraph()->GetArena()) LocationSummary(instruction, call_kind);
   if (baker_read_barrier_slow_path) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen_->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::RequiresRegister());
   locations->SetInAt(1, Location::Any());

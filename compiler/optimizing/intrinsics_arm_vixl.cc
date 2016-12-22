@@ -147,6 +147,20 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
     vixl32::Register tmp = RegisterFrom(locations->GetTemp(3));
 
     __ Bind(GetEntryLabel());
+
+    // We only save live floating-point registers; all core
+    // registers are saved by the entrypoint.  However, we expect a
+    // standard calling convention, because this slow-path is used
+    // in SystemArrayCopy, which also uses another slow path,
+    // IntrinsicSlowPathARMVIXL.
+    //
+    // Also, there is no need to update the stack mask, as this
+    // runtime call will not trigger a garbage collection.  (See
+    // ReadBarrierMarkSlowPathARMVIXL::EmitNativeCode for more
+    // explanations.)
+    SaveLiveFPRegisters(codegen, locations);
+    DCHECK(!locations->HasCustomSlowPathCallingConvention());
+
     // Compute the base destination address in `dst_curr_addr`.
     if (dest_pos.IsConstant()) {
       int32_t constant = Int32ConstantFrom(dest_pos);
@@ -164,11 +178,6 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
     assembler->MaybeUnpoisonHeapReference(tmp);
     // TODO: Inline the mark bit check before calling the runtime?
     // tmp = ReadBarrier::Mark(tmp);
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
-    // (See ReadBarrierMarkSlowPathARM::EmitNativeCode for more
-    // explanations.)
     DCHECK(!tmp.IsSP());
     DCHECK(!tmp.IsLR());
     DCHECK(!tmp.IsPC());
@@ -188,6 +197,9 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
     __ Str(tmp, MemOperand(dst_curr_addr, element_size, PostIndex));
     __ Cmp(src_curr_addr, src_stop_addr);
     __ B(ne, &loop, /* far_target */ false);
+
+    RestoreLiveFPRegisters(codegen, locations);
+
     __ B(GetExitLabel());
   }
 
@@ -202,6 +214,7 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
 IntrinsicLocationsBuilderARMVIXL::IntrinsicLocationsBuilderARMVIXL(CodeGeneratorARMVIXL* codegen)
     : arena_(codegen->GetGraph()->GetArena()),
       assembler_(codegen->GetAssembler()),
+      codegen_(codegen),
       features_(codegen->GetInstructionSetFeatures()) {}
 
 bool IntrinsicLocationsBuilderARMVIXL::TryDispatch(HInvoke* invoke) {
@@ -701,7 +714,8 @@ static void GenUnsafeGet(HInvoke* invoke,
 
 static void CreateIntIntIntToIntLocations(ArenaAllocator* arena,
                                           HInvoke* invoke,
-                                          Primitive::Type type) {
+                                          Primitive::Type type,
+                                          CodeGeneratorARMVIXL* codegen) {
   bool can_call = kEmitCompilerReadBarrier &&
       (invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObject ||
        invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObjectVolatile);
@@ -711,7 +725,7 @@ static void CreateIntIntIntToIntLocations(ArenaAllocator* arena,
                                                                 : LocationSummary::kNoCall),
                                                            kIntrinsified);
   if (can_call && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
@@ -720,28 +734,28 @@ static void CreateIntIntIntToIntLocations(ArenaAllocator* arena,
                     (can_call ? Location::kOutputOverlap : Location::kNoOutputOverlap));
   if (type == Primitive::kPrimNot && kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
     // We need a temporary register for the read barrier marking slow
-    // path in InstructionCodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier.
+    // path in InstructionCodeGeneratorARMVIXL::GenerateReferenceLoadWithBakerReadBarrier.
     locations->AddTemp(Location::RequiresRegister());
   }
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGet(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimInt);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimInt, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimInt);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimInt, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetLong(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimLong);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimLong, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetLongVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimLong);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimLong, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetObject(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimNot);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimNot, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeGetObjectVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimNot);
+  CreateIntIntIntToIntLocations(arena_, invoke, Primitive::kPrimNot, codegen_);
 }
 
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeGet(HInvoke* invoke) {
@@ -945,7 +959,8 @@ void IntrinsicCodeGeneratorARMVIXL::VisitUnsafePutLongVolatile(HInvoke* invoke) 
 
 static void CreateIntIntIntIntIntToIntPlusTemps(ArenaAllocator* arena,
                                                 HInvoke* invoke,
-                                                Primitive::Type type) {
+                                                Primitive::Type type,
+                                                CodeGeneratorARMVIXL* codegen) {
   bool can_call = kEmitCompilerReadBarrier &&
       kUseBakerReadBarrier &&
       (invoke->GetIntrinsic() == Intrinsics::kUnsafeCASObject);
@@ -954,6 +969,9 @@ static void CreateIntIntIntIntIntToIntPlusTemps(ArenaAllocator* arena,
                                                                 ? LocationSummary::kCallOnSlowPath
                                                                 : LocationSummary::kNoCall),
                                                            kIntrinsified);
+  if (can_call) {
+    locations->SetCustomSlowPathCallerSaves(codegen->FloatingPointCallerSaveRegisters());
+  }
   locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
@@ -1089,7 +1107,7 @@ static void GenCas(HInvoke* invoke, Primitive::Type type, CodeGeneratorARMVIXL* 
 }
 
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeCASInt(HInvoke* invoke) {
-  CreateIntIntIntIntIntToIntPlusTemps(arena_, invoke, Primitive::kPrimInt);
+  CreateIntIntIntIntIntToIntPlusTemps(arena_, invoke, Primitive::kPrimInt, codegen_);
 }
 void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeCASObject(HInvoke* invoke) {
   // The only read barrier implementation supporting the
@@ -1098,7 +1116,7 @@ void IntrinsicLocationsBuilderARMVIXL::VisitUnsafeCASObject(HInvoke* invoke) {
     return;
   }
 
-  CreateIntIntIntIntIntToIntPlusTemps(arena_, invoke, Primitive::kPrimNot);
+  CreateIntIntIntIntIntToIntPlusTemps(arena_, invoke, Primitive::kPrimNot, codegen_);
 }
 void IntrinsicCodeGeneratorARMVIXL::VisitUnsafeCASInt(HInvoke* invoke) {
   GenCas(invoke, Primitive::kPrimInt, codegen_);
@@ -1679,11 +1697,22 @@ void IntrinsicLocationsBuilderARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   }
   if (kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
     // Temporary register IP cannot be used in
-    // ReadBarrierSystemArrayCopySlowPathARM (because that register
+    // ReadBarrierSystemArrayCopySlowPathARMVIXL (because that register
     // is clobbered by ReadBarrierMarkRegX entry points). Get an extra
     // temporary register from the register allocator.
     locations->AddTemp(Location::RequiresRegister());
   }
+
+  // Note that in the case of Baker read barriers, we do not set a
+  // custom slow-path calling convention (to save only live
+  // caller-save floating-point registers) for the
+  // ReadBarrierSystemArrayCopySlowPathARMVIXL, as SystemArrayCopy also
+  // uses a second slow path, IntrinsicSlowPathARMVIXL, which expects a
+  // standard calling convention.
+  //
+  // ReadBarrierSystemArrayCopySlowPathARMVIXL will however take care to
+  // only save (and restore) floating-point registers before (after)
+  // calling the read barrier marking runtime entry point.
 }
 
 static void CheckPosition(ArmVIXLAssembler* assembler,
@@ -2046,7 +2075,7 @@ void IntrinsicCodeGeneratorARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
     // used for intermediate computations.
 
     // SystemArrayCopy implementation for Baker read barriers (see
-    // also CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier):
+    // also CodeGeneratorARMVIXL::GenerateReferenceLoadWithBakerReadBarrier):
     //
     //   if (src_ptr != end_ptr) {
     //     uint32_t rb_state = Lockword(src->monitor_).ReadBarrierState();
