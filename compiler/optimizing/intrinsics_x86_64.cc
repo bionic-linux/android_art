@@ -93,15 +93,26 @@ class ReadBarrierSystemArrayCopySlowPathX86_64 : public SlowPathCode {
     CpuRegister src_stop_addr = locations->GetTemp(2).AsRegister<CpuRegister>();
 
     __ Bind(GetEntryLabel());
+
+    // We only save live floating-point registers; all core
+    // registers are saved by the entrypoint.  However, we expect a
+    // standard calling convention, because this slow-path is used
+    // in SystemArrayCopy, which also uses another slow path,
+    // IntrinsicSlowPathX86_64.
+    //
+    // Also, there is no need to update the stack mask, as this
+    // runtime call will not trigger a garbage collection.  (See
+    // ReadBarrierMarkSlowPathX86_64::EmitNativeCode for more
+    // explanations.)
+    SaveLiveFPRegisters(codegen, locations);
+    DCHECK(!locations->HasCustomSlowPathCallingConvention());
+
     NearLabel loop;
     __ Bind(&loop);
     __ movl(CpuRegister(TMP), Address(src_curr_addr, 0));
     __ MaybeUnpoisonHeapReference(CpuRegister(TMP));
     // TODO: Inline the mark bit check before calling the runtime?
     // TMP = ReadBarrier::Mark(TMP);
-    // No need to save live registers; it's taken care of by the
-    // entrypoint. Also, there is no need to update the stack mask,
-    // as this runtime call will not trigger a garbage collection.
     int32_t entry_point_offset =
         CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kX86_64PointerSize>(TMP);
     // This runtime call does not require a stack map.
@@ -112,6 +123,9 @@ class ReadBarrierSystemArrayCopySlowPathX86_64 : public SlowPathCode {
     __ addl(dst_curr_addr, Immediate(element_size));
     __ cmpl(src_curr_addr, src_stop_addr);
     __ j(kNotEqual, &loop);
+
+    RestoreLiveFPRegisters(codegen, locations);
+
     __ jmp(GetExitLabel());
   }
 
@@ -1117,6 +1131,17 @@ void IntrinsicLocationsBuilderX86_64::VisitSystemArrayCopy(HInvoke* invoke) {
   }
 
   CodeGenerator::CreateSystemArrayCopyLocationSummary(invoke);
+
+  // Note that in the case of Baker read barriers, we do not set a
+  // custom slow-path calling convention (to save only live
+  // caller-save floating-point registers) for the
+  // ReadBarrierSystemArrayCopySlowPathX86_64, as SystemArrayCopy also
+  // uses a second slow path, IntrinsicSlowPathX86_64, which expects a
+  // standard calling convention.
+  //
+  // ReadBarrierSystemArrayCopySlowPathX86_64 will however take care to
+  // only save (and restore) floating-point registers before (after)
+  // calling the read barrier marking runtime entry point.
 }
 
 void IntrinsicCodeGeneratorX86_64::VisitSystemArrayCopy(HInvoke* invoke) {
@@ -2172,7 +2197,9 @@ static void GenUnsafeGet(HInvoke* invoke,
   }
 }
 
-static void CreateIntIntIntToIntLocations(ArenaAllocator* arena, HInvoke* invoke) {
+static void CreateIntIntIntToIntLocations(ArenaAllocator* arena,
+                                          HInvoke* invoke,
+                                          CodeGeneratorX86_64* codegen) {
   bool can_call = kEmitCompilerReadBarrier &&
       (invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObject ||
        invoke->GetIntrinsic() == Intrinsics::kUnsafeGetObjectVolatile);
@@ -2182,7 +2209,7 @@ static void CreateIntIntIntToIntLocations(ArenaAllocator* arena, HInvoke* invoke
                                                                 : LocationSummary::kNoCall),
                                                            kIntrinsified);
   if (can_call && kUseBakerReadBarrier) {
-    locations->SetCustomSlowPathCallerSaves(RegisterSet::Empty());  // No caller-save registers.
+    locations->SetCustomSlowPathCallerSaves(codegen->FloatingPointCallerSaveRegisters());
   }
   locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
@@ -2192,22 +2219,22 @@ static void CreateIntIntIntToIntLocations(ArenaAllocator* arena, HInvoke* invoke
 }
 
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGet(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetLong(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetLongVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetObject(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeGetObjectVolatile(HInvoke* invoke) {
-  CreateIntIntIntToIntLocations(arena_, invoke);
+  CreateIntIntIntToIntLocations(arena_, invoke, codegen_);
 }
 
 
@@ -2340,7 +2367,8 @@ void IntrinsicCodeGeneratorX86_64::VisitUnsafePutLongVolatile(HInvoke* invoke) {
 
 static void CreateIntIntIntIntIntToInt(ArenaAllocator* arena,
                                        Primitive::Type type,
-                                       HInvoke* invoke) {
+                                       HInvoke* invoke,
+                                       CodeGeneratorX86_64* codegen) {
   bool can_call = kEmitCompilerReadBarrier &&
       kUseBakerReadBarrier &&
       (invoke->GetIntrinsic() == Intrinsics::kUnsafeCASObject);
@@ -2349,6 +2377,9 @@ static void CreateIntIntIntIntIntToInt(ArenaAllocator* arena,
                                                                 ? LocationSummary::kCallOnSlowPath
                                                                 : LocationSummary::kNoCall),
                                                            kIntrinsified);
+  if (can_call) {
+    locations->SetCustomSlowPathCallerSaves(codegen->FloatingPointCallerSaveRegisters());
+  }
   locations->SetInAt(0, Location::NoLocation());        // Unused receiver.
   locations->SetInAt(1, Location::RequiresRegister());
   locations->SetInAt(2, Location::RequiresRegister());
@@ -2366,11 +2397,11 @@ static void CreateIntIntIntIntIntToInt(ArenaAllocator* arena,
 }
 
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeCASInt(HInvoke* invoke) {
-  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimInt, invoke);
+  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimInt, invoke, codegen_);
 }
 
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeCASLong(HInvoke* invoke) {
-  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimLong, invoke);
+  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimLong, invoke, codegen_);
 }
 
 void IntrinsicLocationsBuilderX86_64::VisitUnsafeCASObject(HInvoke* invoke) {
@@ -2380,7 +2411,7 @@ void IntrinsicLocationsBuilderX86_64::VisitUnsafeCASObject(HInvoke* invoke) {
     return;
   }
 
-  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimNot, invoke);
+  CreateIntIntIntIntIntToInt(arena_, Primitive::kPrimNot, invoke, codegen_);
 }
 
 static void GenCAS(Primitive::Type type, HInvoke* invoke, CodeGeneratorX86_64* codegen) {

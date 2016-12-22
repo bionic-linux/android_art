@@ -2093,7 +2093,8 @@ END_FUNCTION art_nested_signal_return
 
 // Create a function `name` calling the ReadBarrier::Mark routine,
 // getting its argument and returning its result through register
-// `reg`, saving and restoring all caller-save registers.
+// `reg`, saving and restoring all caller-save core registers (but not
+// floating-point ones).
 //
 // If `reg` is different from `eax`, the generated function follows a
 // non-standard runtime calling convention:
@@ -2127,42 +2128,17 @@ MACRO2(READ_BARRIER_MARK_REG, name, reg)
     PUSH ecx
     PUSH edx
     PUSH ebx
-    // 8-byte align the stack to improve (8-byte) XMM register saving and restoring.
-    // and create space for caller-save floating-point registers.
-    subl MACRO_LITERAL(4 + 8 * 8), %esp
-    CFI_ADJUST_CFA_OFFSET(4 + 8 * 8)
-    // Save all potentially live caller-save floating-point registers.
-    movsd %xmm0, 0(%esp)
-    movsd %xmm1, 8(%esp)
-    movsd %xmm2, 16(%esp)
-    movsd %xmm3, 24(%esp)
-    movsd %xmm4, 32(%esp)
-    movsd %xmm5, 40(%esp)
-    movsd %xmm6, 48(%esp)
-    movsd %xmm7, 56(%esp)
-
-    subl LITERAL(4), %esp            // alignment padding
-    CFI_ADJUST_CFA_OFFSET(4)
+    // 8-byte align the stack.
+    subl MACRO_LITERAL(8), %esp      // alignment padding
+    CFI_ADJUST_CFA_OFFSET(8)
     PUSH RAW_VAR(reg)                // pass arg1 - obj from `reg`
     call SYMBOL(artReadBarrierMark)  // artReadBarrierMark(obj)
     .ifnc RAW_VAR(reg), eax
       movl %eax, REG_VAR(reg)        // return result into `reg`
     .endif
-    addl LITERAL(8), %esp            // pop argument and remove padding
-    CFI_ADJUST_CFA_OFFSET(-8)
+    addl MACRO_LITERAL(12), %esp     // pop argument and remove padding
+    CFI_ADJUST_CFA_OFFSET(-12)
 
-    // Restore floating-point registers.
-    movsd 0(%esp), %xmm0
-    movsd 8(%esp), %xmm1
-    movsd 16(%esp), %xmm2
-    movsd 24(%esp), %xmm3
-    movsd 32(%esp), %xmm4
-    movsd 40(%esp), %xmm5
-    movsd 48(%esp), %xmm6
-    movsd 56(%esp), %xmm7
-    // Remove floating-point registers and padding.
-    addl MACRO_LITERAL(8 * 8 + 4), %esp
-    CFI_ADJUST_CFA_OFFSET(-(8 * 8 + 4))
     // Restore core regs, except `reg`, as it is used to return the
     // result of this function (simply remove it from the stack instead).
     POP_REG_NE ebx, RAW_VAR(reg)

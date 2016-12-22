@@ -1291,6 +1291,18 @@ void SlowPathCode::SaveLiveRegisters(CodeGenerator* codegen, LocationSummary* lo
   }
 }
 
+void SlowPathCode::SaveLiveFPRegisters(CodeGenerator* codegen, LocationSummary* locations) {
+  size_t stack_offset = codegen->GetFirstRegisterSlotInSlowPath();
+
+  const uint32_t fp_spills = codegen->GetSlowPathSpills(locations, /* core_registers */ false);
+  for (uint32_t i : LowToHighBits(fp_spills)) {
+    DCHECK_LT(stack_offset, codegen->GetFrameSize() - codegen->FrameEntrySpillSize());
+    DCHECK_LT(i, kMaximumNumberOfExpectedRegisters);
+    saved_fpu_stack_offsets_[i] = stack_offset;
+    stack_offset += codegen->SaveFloatingPointRegister(stack_offset, i);
+  }
+}
+
 void SlowPathCode::RestoreLiveRegisters(CodeGenerator* codegen, LocationSummary* locations) {
   size_t stack_offset = codegen->GetFirstRegisterSlotInSlowPath();
 
@@ -1300,6 +1312,17 @@ void SlowPathCode::RestoreLiveRegisters(CodeGenerator* codegen, LocationSummary*
     DCHECK_LT(i, kMaximumNumberOfExpectedRegisters);
     stack_offset += codegen->RestoreCoreRegister(stack_offset, i);
   }
+
+  const uint32_t fp_spills = codegen->GetSlowPathSpills(locations, /* core_registers */ false);
+  for (uint32_t i : LowToHighBits(fp_spills)) {
+    DCHECK_LT(stack_offset, codegen->GetFrameSize() - codegen->FrameEntrySpillSize());
+    DCHECK_LT(i, kMaximumNumberOfExpectedRegisters);
+    stack_offset += codegen->RestoreFloatingPointRegister(stack_offset, i);
+  }
+}
+
+void SlowPathCode::RestoreLiveFPRegisters(CodeGenerator* codegen, LocationSummary* locations) {
+  size_t stack_offset = codegen->GetFirstRegisterSlotInSlowPath();
 
   const uint32_t fp_spills = codegen->GetSlowPathSpills(locations, /* core_registers */ false);
   for (uint32_t i : LowToHighBits(fp_spills)) {

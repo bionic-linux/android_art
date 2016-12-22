@@ -88,11 +88,16 @@ class SlowPathCode : public DeletableArenaObject<kArenaAllocSlowPaths> {
   virtual void EmitNativeCode(CodeGenerator* codegen) = 0;
 
   // Save live core and floating-point caller-save registers and
-  // update the stack mask in `locations` for registers holding object
+  // update the stack mask in `locations` for core registers holding object
   // references.
   virtual void SaveLiveRegisters(CodeGenerator* codegen, LocationSummary* locations);
   // Restore live core and floating-point caller-save registers.
   virtual void RestoreLiveRegisters(CodeGenerator* codegen, LocationSummary* locations);
+
+  // Save live floating-point caller-save registers.
+  virtual void SaveLiveFPRegisters(CodeGenerator* codegen, LocationSummary* locations);
+  // Restore live floating-point caller-save registers.
+  virtual void RestoreLiveFPRegisters(CodeGenerator* codegen, LocationSummary* locations);
 
   bool IsCoreRegisterSaved(int reg) const {
     return saved_core_stack_offsets_[reg] != kRegisterNotSaved;
@@ -312,6 +317,11 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
     DCHECK(GetGraph()->HasShouldDeoptimizeFlag());
     DCHECK_GE(GetFrameSize(), FrameEntrySpillSize() + kShouldDeoptimizeFlagSize);
     return GetFrameSize() - FrameEntrySpillSize() - kShouldDeoptimizeFlagSize;
+  }
+
+  // Return the set of floating-point caller-save registers.
+  RegisterSet FloatingPointCallerSaveRegisters() const {
+    return RegisterSet::FloatingPointRegisterSet(~fpu_callee_save_mask_);
   }
 
   // Record native to dex mapping for a suspend point.  Required by runtime.
