@@ -514,6 +514,22 @@ void ThreadList::SuspendAll(const char* cause, bool long_suspend) {
   }
 }
 
+#if ART_USE_FUTEXES
+static bool ComputeRelativeTimeSpec(timespec* result_ts, const timespec& lhs, const timespec& rhs) {
+  const int32_t one_sec = 1000 * 1000 * 1000;  // one second in nanoseconds.
+  result_ts->tv_sec = lhs.tv_sec - rhs.tv_sec;
+  result_ts->tv_nsec = lhs.tv_nsec - rhs.tv_nsec;
+  if (result_ts->tv_nsec < 0) {
+    result_ts->tv_sec--;
+    result_ts->tv_nsec += one_sec;
+  } else if (result_ts->tv_nsec > one_sec) {
+    result_ts->tv_sec++;
+    result_ts->tv_nsec -= one_sec;
+  }
+  return result_ts->tv_sec < 0;
+}
+#endif
+
 // Ensures all threads running Java suspend and that those not running Java don't start.
 // Debugger thread might be set to kRunnable for a short period of time after the
 // SuspendAllInternal. This is safe because it will be set back to suspended state before
@@ -593,14 +609,18 @@ void ThreadList::SuspendAllInternal(Thread* self,
   // Wait for the barrier to be passed by all runnable threads. This wait
   // is done with a timeout so that we can detect problems.
 #if ART_USE_FUTEXES
-  timespec wait_timeout;
-  InitTimeSpec(true, CLOCK_MONOTONIC, 10000, 0, &wait_timeout);
+  timespec end_abs_ts;
+  InitTimeSpec(true, CLOCK_MONOTONIC, 10000, 0, &end_abs_ts);
+  timespec now_abs_ts;
+  InitTimeSpec(true, CLOCK_MONOTONIC, 0, 0, &now_abs_ts);
+  timespec rel_ts;
+  ComputeRelativeTimeSpec(&rel_ts, end_abs_ts, now_abs_ts);
 #endif
   while (true) {
     int32_t cur_val = pending_threads.LoadRelaxed();
     if (LIKELY(cur_val > 0)) {
 #if ART_USE_FUTEXES
-      if (futex(pending_threads.Address(), FUTEX_WAIT, cur_val, &wait_timeout, nullptr, 0) != 0) {
+      if (futex(pending_threads.Address(), FUTEX_WAIT, cur_val, &rel_ts, nullptr, 0) != 0) {
         // EAGAIN and EINTR both indicate a spurious failure, try again from the beginning.
         if ((errno != EAGAIN) && (errno != EINTR)) {
           if (errno == ETIMEDOUT) {
