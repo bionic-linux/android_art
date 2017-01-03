@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7a50a83_624e8fe1",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-01-03T16:20:44Z",
+      "side": 0,
+      "message": "Is there a reason we can\u0027t just change this to \"false\", and get a relative timespec?",
+      "range": {
+        "startLine": 597,
+        "startChar": 15,
+        "endLine": 597,
+        "endChar": 19
+      },
+      "revId": "250fd0701cd60fe825e1bf628df04c8c463d5c7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
