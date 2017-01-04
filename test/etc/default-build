@@ -126,6 +126,11 @@ done
 # Be sure to get any default arguments if not doing any experiments.
 EXPERIMENTAL="${EXPERIMENTAL} ${DEFAULT_EXPERIMENT}"
 
+# Limit Jack to 4 threads to reduce memory footprint and thread contention.
+JACK_ARGS="${JACK_ARGS} -D sched.runner=multi-threaded"
+JACK_ARGS="${JACK_ARGS} -D sched.runner.thread.kind=fixed"
+JACK_ARGS="${JACK_ARGS} -D sched.runner.thread.fixed.count=4"
+
 # Add args from the experimental mappings.
 for experiment in ${EXPERIMENTAL}; do
   JACK_ARGS="${JACK_ARGS} ${JACK_EXPERIMENTAL_ARGS[${experiment}]}"
