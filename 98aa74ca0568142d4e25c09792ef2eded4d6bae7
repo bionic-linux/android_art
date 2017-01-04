@@ -22,6 +22,30 @@
       "revId": "98aa74ca0568142d4e25c09792ef2eded4d6bae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_4fc4f132",
+        "filename": "test/etc/default-build",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2017-01-04T17:05:51Z",
+      "side": 1,
+      "message": "I guess you only want this for the buildbot, right? Though it would be slower than 4 threads.\n\nAnyway the JACK_SERVER variable is not exported here so I cannot use it (unless I add more bash to make it available...). Maybe I can find another way, I\u0027ll take a look.\n\nNote that even if I change it here, the global settings for the Android build (in build/core/jack-default.args) remain to 4 threads.",
+      "parentUuid": "17237e9f_cf85a1f4",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "98aa74ca0568142d4e25c09792ef2eded4d6bae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
