@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17237e9f_a46a8c93",
+        "filename": "test/626-checker-arm64-scratch-register/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-04T11:57:44Z",
+      "side": 1,
+      "message": "Actually, my fix is incorrect; new fix coming soon…",
+      "range": {
+        "startLine": 118,
+        "startChar": 62,
+        "endLine": 118,
+        "endChar": 71
+      },
+      "revId": "763dd585abcc4339a5f3dbe17f5d9f5b002e63ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
