@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b632e5_2093aeac",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-01-04T00:26:35Z",
+      "side": 1,
+      "message": "I don\u0027t see how this could legitimately arise. But I don\u0027t think this function is needed anyway.",
+      "range": {
+        "startLine": 525,
+        "startChar": 2,
+        "endLine": 528,
+        "endChar": 3
+      },
+      "revId": "79c8a9256f0990ead6e15e97b1f06d53b441bb4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

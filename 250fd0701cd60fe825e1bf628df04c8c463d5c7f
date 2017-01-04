@@ -22,6 +22,30 @@
       "revId": "250fd0701cd60fe825e1bf628df04c8c463d5c7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b632e5_6074c6ad",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-01-04T00:26:35Z",
+      "side": 0,
+      "message": "It also looks to me like that should work.",
+      "parentUuid": "f7a50a83_624e8fe1",
+      "range": {
+        "startLine": 597,
+        "startChar": 15,
+        "endLine": 597,
+        "endChar": 19
+      },
+      "revId": "250fd0701cd60fe825e1bf628df04c8c463d5c7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
