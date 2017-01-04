@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17237e9f_cf85a1f4",
+        "filename": "test/etc/default-build",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-04T16:16:29Z",
+      "side": 1,
+      "message": "Any way you can detect whether we are using the server or jack standalone? It\u0027d be great to have 1 thread for Jack standalone.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "98aa74ca0568142d4e25c09792ef2eded4d6bae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
