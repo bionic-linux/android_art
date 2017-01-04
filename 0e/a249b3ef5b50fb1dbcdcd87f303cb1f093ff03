@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Verified+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Wed, 04 Jan 2017 10:03:00 +0000
+Reviewed-on: https://android-review.googlesource.com/316762
+Project: platform/art
+Branch: refs/heads/master
