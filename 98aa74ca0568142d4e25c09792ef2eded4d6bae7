@@ -46,6 +46,30 @@
       "revId": "98aa74ca0568142d4e25c09792ef2eded4d6bae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_8f0c49b5",
+        "filename": "test/etc/default-build",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1029223
+      },
+      "writtenOn": "2017-01-04T17:53:47Z",
+      "side": 1,
+      "message": "Actually I was wrong. It\u0027s likely exported on the buildbot. Locally I had to \u0027export JACK_SERVER\u003dfalse\u0027 to make it work. I\u0027m preparing a new PS.",
+      "parentUuid": "17237e9f_4fc4f132",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "98aa74ca0568142d4e25c09792ef2eded4d6bae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
