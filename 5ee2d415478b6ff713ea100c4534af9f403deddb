@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b632e5_e8b35199",
+        "filename": "test/631-checker-fp-abs/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-01-05T00:39:31Z",
+      "side": 1,
+      "message": "actually, let me refine this just a bit\n(we want to make allow signaling to become quiet, but not the other way around, so I like to avoid that possibility in the test, even though that never occurs of course)",
+      "revId": "5ee2d415478b6ff713ea100c4534af9f403deddb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
