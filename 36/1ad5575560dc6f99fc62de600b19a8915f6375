@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Jean-Philippe Lesot <jplesot@google.com>
+Code-Review+2: Sebastien Hertz <shertz@google.com>
+Verified+1: Sebastien Hertz <shertz@google.com>
+Submitted-by: Sebastien Hertz <shertz@google.com>
+Submitted-at: Thu, 05 Jan 2017 10:28:56 +0000
+Reviewed-on: https://android-review.googlesource.com/316198
+Project: platform/art
+Branch: refs/heads/master
