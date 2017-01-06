@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b7b632e5_651d94d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-06T18:28:39Z",
+      "side": 1,
+      "message": "Can you expand on these two points?\n\nI interpret this as always loading the class (HLoadClass) in the compiled code and pass it to the alloc entrypoint for the unresolved case, rather than letting the alloc entrypoint load the class from the dex cache type array. Is that right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17237e9f_2a2523d2",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 5
