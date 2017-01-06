@@ -22,6 +22,30 @@
       "revId": "5f1f9daefb98cb02b6c77be90f01597bbb3d9ab4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_8ae317c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-01-06T08:17:36Z",
+      "side": 1,
+      "message": "The case I\u0027m thinking of is for non-pic oat files compiled on device, when something bad happens to the device, like a boot loop, that causes the (prebuilt) boot image to be relocated again. In this case the non-pic oat files will have up-to-date dex checksums, but wrong patch deltas.\n\nThis isn\u0027t a problem for prebuilts, because prebuilts are always compiled PIC now.\n\nWould you still like me to mention this in the commit message?",
+      "parentUuid": "b7b632e5_e846e6c1",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "5f1f9daefb98cb02b6c77be90f01597bbb3d9ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
