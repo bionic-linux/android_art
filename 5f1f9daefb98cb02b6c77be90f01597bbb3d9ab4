@@ -46,6 +46,30 @@
       "revId": "5f1f9daefb98cb02b6c77be90f01597bbb3d9ab4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b632e5_3d07343e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-01-06T21:07:15Z",
+      "side": 1,
+      "message": "I think it will be useful to have that in the commit message.",
+      "parentUuid": "17237e9f_8ae317c1",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "5f1f9daefb98cb02b6c77be90f01597bbb3d9ab4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
