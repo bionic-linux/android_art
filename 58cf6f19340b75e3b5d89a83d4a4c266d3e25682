@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17237e9f_2a2523d2",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 1848,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-06T16:29:29Z",
+      "side": 1,
+      "message": "Clobbers w0 that we need to store below.",
+      "range": {
+        "startLine": 1848,
+        "startChar": 4,
+        "endLine": 1848,
+        "endChar": 17
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_0a0a6744",
+        "filename": "runtime/arch/stub_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-06T16:29:29Z",
+      "side": 1,
+      "message": "Obsolete comment.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 56
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_ea060b40",
+        "filename": "runtime/arch/x86/quick_entrypoints_x86.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-06T16:29:29Z",
+      "side": 1,
+      "message": "JECXZ",
+      "range": {
+        "startLine": 987,
+        "startChar": 0,
+        "endLine": 988,
+        "endChar": 61
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17237e9f_ca134f7c",
+        "filename": "runtime/thread.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-06T16:29:29Z",
+      "side": 1,
+      "message": "Previously we just shuffled the thread_local_start around the pos/end pair.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 4,
+        "endLine": 1543,
+        "endChar": 22
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
