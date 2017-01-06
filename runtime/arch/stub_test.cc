@@ -1063,11 +1063,8 @@ TEST_F(StubTest, AllocObject) {
   EXPECT_FALSE(self->IsExceptionPending());
   {
     // Use an arbitrary method from c to use as referrer
-    size_t result = Invoke3(static_cast<size_t>(c->GetDexTypeIndex().index_),    // type_idx
-                            // arbitrary
-                            reinterpret_cast<size_t>(c->GetVirtualMethod(0, kRuntimePointerSize)),
-                            0U,
-                            StubTest::GetEntrypoint(self, kQuickAllocObject),
+    size_t result = Invoke3(reinterpret_cast<size_t>(c.Get()), 0u, 0U,
+                            StubTest::GetEntrypoint(self, kQuickAllocObjectWithAccessCheck),
                             self);
 
     EXPECT_FALSE(self->IsExceptionPending());

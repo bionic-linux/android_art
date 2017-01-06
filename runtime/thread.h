@@ -1540,6 +1540,7 @@ class Thread {
     JniEntryPoints jni_entrypoints;
     QuickEntryPoints quick_entrypoints;
 
+    uintptr_t padding;  // Force alignment for ARM without requiring rounding in asm_support.h
     // thread_local_pos and thread_local_end must be consecutive for ldrd and are 8 byte aligned for
     // potentially better performance.
     uint8_t* thread_local_pos;
