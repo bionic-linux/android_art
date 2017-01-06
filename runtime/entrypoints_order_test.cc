@@ -156,8 +156,7 @@ class EntrypointsOrderTest : public CommonRuntimeTest {
     EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocArray, pAllocArrayResolved, sizeof(void*));
     EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocArrayResolved, pAllocArrayWithAccessCheck,
                          sizeof(void*));
-    EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocArrayWithAccessCheck, pAllocObject, sizeof(void*));
-    EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocObject, pAllocObjectResolved, sizeof(void*));
+    EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocArrayWithAccessCheck, pAllocObjectResolved, sizeof(void*));
     EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocObjectResolved, pAllocObjectInitialized,
                          sizeof(void*));
     EXPECT_OFFSET_DIFFNP(QuickEntryPoints, pAllocObjectInitialized, pAllocObjectWithAccessCheck,
