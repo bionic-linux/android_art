@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Mathieu Chartier <mathieuc@google.com>
+Verified+1: Hiroshi Yamauchi <yamauchi@google.com>
+Submitted-by: Hiroshi Yamauchi <yamauchi@google.com>
+Submitted-at: Mon, 09 Jan 2017 20:26:01 +0000
+Reviewed-on: https://android-review.googlesource.com/319481
+Project: platform/art
+Branch: refs/heads/master
