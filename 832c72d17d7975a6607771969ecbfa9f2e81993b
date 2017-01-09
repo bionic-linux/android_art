@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7b632e5_3f78f62d",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-09T23:20:35Z",
+      "side": 1,
+      "message": "It looks like we don\u0027t do access check any more but always do the above two checks which we were doing only if kAccessCheck\u003d\u003dtrue. Are we not doing any unnecessary checks now?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b632e5_a4395991",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-09T23:20:35Z",
+      "side": 1,
+      "message": "Do we always have a non-null class even when we need an access check?\n\nCan we DCHECK that?",
+      "range": {
+        "startLine": 71,
+        "startChar": 80,
+        "endLine": 71,
+        "endChar": 85
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7b632e5_1f17b2be",
+        "filename": "runtime/entrypoints/quick/quick_entrypoints_list.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-09T23:20:35Z",
+      "side": 1,
+      "message": "It looks like this doesn\u0027t do the access check really. Should we rename it or reuse the AllocObject name for this (like we do for AllocObjectFromCode). It\u0027s not super clear what this reorganization means.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
