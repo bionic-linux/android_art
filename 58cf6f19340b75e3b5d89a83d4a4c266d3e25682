@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b7b632e5_e49351a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-09T23:20:35Z",
+      "side": 1,
+      "message": "Can you still expand?\n\n\"the fast path\" refers to the allocation fast path?\n\nIf a dex cache lookup is too expensive in the allocation fast path, why would it not be too expensive if it\u0027s done in the compiled code?\n\nI don\u0027t understand the \"Inlining\" item.",
+      "parentUuid": "b7af12f5_5283d4ee",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17237e9f_2a2523d2",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 5
