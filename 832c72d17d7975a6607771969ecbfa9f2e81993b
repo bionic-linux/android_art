@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b70ab2d0_5a4c758c",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T10:27:04Z",
+      "side": 1,
+      "message": "We don\u0027t need to do access checks anymore, as the compiler and the interpreter have done it already.",
+      "parentUuid": "b7b632e5_3f78f62d",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 3
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7b632e5_a4395991",
         "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
         "patchSetId": 8
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b7e1d242_a2a91ec9",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T10:27:04Z",
+      "side": 1,
+      "message": "Yes, DCHECK added.",
+      "parentUuid": "b7b632e5_a4395991",
+      "range": {
+        "startLine": 71,
+        "startChar": 80,
+        "endLine": 71,
+        "endChar": 85
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7b632e5_1f17b2be",
         "filename": "runtime/entrypoints/quick/quick_entrypoints_list.h",
         "patchSetId": 8
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-09T23:20:35Z",
       "side": 1,
       "message": "It looks like this doesn\u0027t do the access check really. Should we rename it or reuse the AllocObject name for this (like we do for AllocObjectFromCode). It\u0027s not super clear what this reorganization means.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175d3ed4_656186bb",
+        "filename": "runtime/entrypoints/quick/quick_entrypoints_list.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T10:27:04Z",
+      "side": 1,
+      "message": "Correct, I kept the name AccessCheck to make it consistent with other entrypoints, but I agree that\u0027s confusing. Renamed to AllocObjectWithChecks (as we do Finalizable check, Instantiable check, and java.lang.Class check).\n\nI think the confusion is inherited here, as AllocObjectResolved and AllocObjectInitialized cannot be used for finalizable objects. I could rename these too if you want to AllocObjectResolvedNonFinalizable and AllocObjectInitializedNonFinalizable, but the names are becoming long.",
+      "parentUuid": "b7b632e5_1f17b2be",
       "range": {
         "startLine": 28,
         "startChar": 4,

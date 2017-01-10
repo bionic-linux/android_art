@@ -22,6 +22,30 @@
       "revId": "91db41f315f6c2366b7098c531224bee01170364",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d752c6c5_a3ca1aac",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 8
+      },
+      "lineNbr": 1862,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T10:27:04Z",
+      "side": 0,
+      "message": "No, as we should not clobber x0 (see line 1852 where we store x0 in the class offset of x4).",
+      "parentUuid": "b7b632e5_9f62e21d",
+      "range": {
+        "startLine": 1862,
+        "startChar": 4,
+        "endLine": 1862,
+        "endChar": 96
+      },
+      "revId": "91db41f315f6c2366b7098c531224bee01170364",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
