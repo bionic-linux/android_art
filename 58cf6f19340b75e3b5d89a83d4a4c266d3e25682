@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "37608288_0681ba4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T10:27:04Z",
+      "side": 1,
+      "message": "I\u0027ve expanded the comment, let me know if it helps.",
+      "parentUuid": "b7b632e5_e49351a9",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 71
+      },
+      "revId": "58cf6f19340b75e3b5d89a83d4a4c266d3e25682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17237e9f_2a2523d2",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 5
