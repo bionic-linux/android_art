@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "175d3ed4_25e86ec4",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 3860,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T13:59:09Z",
+      "side": 1,
+      "message": "Oh, I did not mean to remove this, good catch. Done.",
+      "parentUuid": "37608288_a65ea6fd",
+      "range": {
+        "startLine": 3860,
+        "startChar": 14,
+        "endLine": 3860,
+        "endChar": 27
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37608288_c621626a",
         "filename": "runtime/asm_support.h",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-10T13:51:44Z",
       "side": 1,
       "message": "199?",
+      "range": {
+        "startLine": 93,
+        "startChar": 60,
+        "endLine": 93,
+        "endChar": 63
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d752c6c5_433fa676",
+        "filename": "runtime/asm_support.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T13:59:09Z",
+      "side": 1,
+      "message": "I guess you mean 197 for the one less entrypoint? We don\u0027t (and should not do this) because I moved fields so that thread_local_pos_ is aligned properly for ARM (see comment in thread.h).",
+      "parentUuid": "37608288_c621626a",
       "range": {
         "startLine": 93,
         "startChar": 60,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b70ab2d0_3a8d4154",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T13:59:09Z",
+      "side": 1,
+      "message": "No, replaced.",
+      "parentUuid": "37608288_a630e6b0",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b70ab2d0_9a7d6d5b",
         "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
         "patchSetId": 10
@@ -82,6 +154,30 @@
       "writtenOn": "2017-01-10T13:51:44Z",
       "side": 1,
       "message": "Nit: long line.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 102
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b70ab2d0_1a8afd3b",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-10T13:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70ab2d0_9a7d6d5b",
       "range": {
         "startLine": 36,
         "startChar": 0,
