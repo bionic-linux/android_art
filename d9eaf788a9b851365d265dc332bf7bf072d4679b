@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37608288_a65ea6fd",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 3860,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-10T13:51:44Z",
+      "side": 1,
+      "message": "Maybe add a CheckEntrypointTypes statements after this?",
+      "range": {
+        "startLine": 3860,
+        "startChar": 14,
+        "endLine": 3860,
+        "endChar": 27
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37608288_c621626a",
+        "filename": "runtime/asm_support.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-10T13:51:44Z",
+      "side": 1,
+      "message": "199?",
+      "range": {
+        "startLine": 93,
+        "startChar": 60,
+        "endLine": 93,
+        "endChar": 63
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37608288_a630e6b0",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-10T13:51:44Z",
+      "side": 1,
+      "message": "Is this comment still correct as-is?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b70ab2d0_9a7d6d5b",
+        "filename": "runtime/entrypoints/quick/quick_alloc_entrypoints.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-10T13:51:44Z",
+      "side": 1,
+      "message": "Nit: long line.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 102
+      },
+      "revId": "d9eaf788a9b851365d265dc332bf7bf072d4679b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
