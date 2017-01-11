@@ -313,10 +313,10 @@ bool DexFileVerifier::CheckHeader() {
 
   // Check that all offsets are inside the file.
   bool result =
-      CheckValidOffsetAndSize(header_->link_off_,
-                              header_->link_size_,
-                              0 /* unaligned */,
-                              "link") &&
+      CheckValidOffsetAndSize(header_->extensions_off_,
+                              header_->extensions_size_,
+                              4,
+                              "extensions") &&
       CheckValidOffsetAndSize(header_->map_off_,
                               header_->map_off_,
                               4,

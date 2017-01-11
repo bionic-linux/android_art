@@ -559,6 +559,29 @@ uint32_t DexFile::Header::GetVersion() const {
   return atoi(version);
 }
 
+bool DexFile::Header::VersionSupportsHeaderExtensions() const {
+  static const uint32_t kMinimumVersionForHeaderExtensions = 38;
+  return GetVersion() >= kMinimumVersionForHeaderExtensions;
+}
+
+std::string DexFile::GetHeaderExtensionName(uint16_t extension_type) {
+  HeaderExtensionType t = static_cast<HeaderExtensionType>(extension_type);
+  switch (t) {
+    case kDexHeaderExtensionMethodType:
+      return "method_type";
+    case kDexHeaderExtensionMethodHandle:
+      return "method_handle";
+  }
+  return StringPrintf("unknown-%04x", extension_type);
+}
+
+const DexFile::HeaderExtension& DexFile::GetHeaderExtension(uint16_t extension_idx) const {
+  DCHECK(header_->VersionSupportsHeaderExtensions() &&
+         extension_idx < GetHeader().extensions_size_);
+  const uint8_t* ptr = begin_ + header_->extensions_off_;
+  return reinterpret_cast<const HeaderExtension*>(ptr)[extension_idx];
+}
+
 const DexFile::ClassDef* DexFile::FindClassDef(dex::TypeIndex type_idx) const {
   size_t num_class_defs = NumClassDefs();
   // Fast path for rare no class defs case.
@@ -1386,6 +1409,8 @@ void EncodedStaticFieldValueIterator::Next() {
     break;
   case kString:
   case kType:
+  case kMethodType:
+  case kMethodHandle:
     jval_.i = DexFile::ReadUnsignedInt(ptr_, value_arg, false);
     break;
   case kField:

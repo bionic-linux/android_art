@@ -91,8 +91,8 @@ class TestDexFileBuilder {
     std::copy_n(DexFile::kDexMagicVersions[0], 4u, header->magic_ + 4u);
     header->header_size_ = sizeof(DexFile::Header);
     header->endian_tag_ = DexFile::kDexEndianConstant;
-    header->link_size_ = 0u;  // Unused.
-    header->link_off_ = 0u;  // Unused.
+    header->extensions_size_ = 0u;  // Not used in this test.
+    header->extensions_off_ = 0u;  // Not used in this test.
     header->map_off_ = 0u;  // Unused. TODO: This is wrong. Dex files created by this builder
                             //               cannot be verified. b/26808512
 

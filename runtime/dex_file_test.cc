@@ -253,8 +253,8 @@ static void ValidateDexFileHeader(std::unique_ptr<const DexFile> dex_file) {
   EXPECT_EQ(*kExpectedSha1, *header.signature_);
   EXPECT_EQ(904U, header.file_size_);
   EXPECT_EQ(112U, header.header_size_);
-  EXPECT_EQ(0U, header.link_size_);
-  EXPECT_EQ(0U, header.link_off_);
+  EXPECT_EQ(0U, header.extensions_size_);
+  EXPECT_EQ(0U, header.extensions_off_);
   EXPECT_EQ(15U, header.string_ids_size_);
   EXPECT_EQ(112U, header.string_ids_off_);
   EXPECT_EQ(7U, header.type_ids_size_);
