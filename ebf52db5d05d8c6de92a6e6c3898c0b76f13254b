@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c365a9f6_e90cd564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-01-11T15:58:37Z",
+      "side": 1,
+      "message": "changes are tied together by change-ids.\n\n\t\ngerrit thinks the change-id for this change is \"Iaffc5c4dc2c99229899d89feb80007ae85f1af45\"\n\nThat\u0027s because it failed to parse the change-id out of this commit, probably because you have a line that says \"Test\" (note: no colon after Test)\n\nTo fix it, remove this line and add\n\n\"Change-Id: Iaffc5c4dc2c99229899d89feb80007ae85f1af45\" at the very end of the commit message, or get rid of the \"Test\" line.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "ebf52db5d05d8c6de92a6e6c3898c0b76f13254b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4328d982_adc6dd46",
         "filename": "runtime/dex_file.h",
         "patchSetId": 1
