@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a356f512_68e8e3f6",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-01-11T14:52:32Z",
+      "side": 1,
+      "message": "I was out of sync here. I\u0027ve revised the CL to have MethodHandle and CallSite sections. The CallSite section is just an array of offsets into the data section. Does this put us in sync there? [ modulo header extension addition ].",
+      "parentUuid": "4328d982_adc6dd46",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 4
+      },
+      "revId": "ebf52db5d05d8c6de92a6e6c3898c0b76f13254b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032ee190_6ba4614a",
         "filename": "runtime/dex_file.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-11T13:38:24Z",
       "side": 1,
       "message": "If I remember correctly, when I did the support into Jack, the specification of MethodHandleIdItem was to align then on 4 bytes, with the following content: {ushort handle_type; ushort reserved; ushort field_or_method_idx; ushort reserved2;}",
+      "range": {
+        "startLine": 428,
+        "startChar": 2,
+        "endLine": 433,
+        "endChar": 4
+      },
+      "revId": "ebf52db5d05d8c6de92a6e6c3898c0b76f13254b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "032ee190_ab6249e6",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-01-11T14:52:32Z",
+      "side": 1,
+      "message": "Yes, you\u0027re absolutely right. Done.",
+      "parentUuid": "032ee190_6ba4614a",
       "range": {
         "startLine": 428,
         "startChar": 2,
