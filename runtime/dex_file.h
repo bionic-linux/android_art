@@ -72,34 +72,52 @@ class DexFile {
   // Raw header_item.
   struct Header {
     uint8_t magic_[8];
-    uint32_t checksum_;  // See also location_checksum_
+    uint32_t checksum_;         // See also location_checksum_
     uint8_t signature_[kSha1DigestSize];
-    uint32_t file_size_;  // size of entire file
-    uint32_t header_size_;  // offset to start of next section
+    uint32_t file_size_;        // size of entire file
+    uint32_t header_size_;      // offset to start of next section
     uint32_t endian_tag_;
-    uint32_t link_size_;  // unused
-    uint32_t link_off_;  // unused
-    uint32_t map_off_;  // unused
+    uint32_t extensions_size_;  // number of HeaderExtensions since v38 (was link_size_)
+    uint32_t extensions_off_;   // file offset of HeaderExtensions array since v38 (was link_off_)
+    uint32_t map_off_;          // list of contents of file. Used for verification.
     uint32_t string_ids_size_;  // number of StringIds
-    uint32_t string_ids_off_;  // file offset of StringIds array
-    uint32_t type_ids_size_;  // number of TypeIds, we don't support more than 65535
-    uint32_t type_ids_off_;  // file offset of TypeIds array
-    uint32_t proto_ids_size_;  // number of ProtoIds, we don't support more than 65535
-    uint32_t proto_ids_off_;  // file offset of ProtoIds array
-    uint32_t field_ids_size_;  // number of FieldIds
-    uint32_t field_ids_off_;  // file offset of FieldIds array
+    uint32_t string_ids_off_;   // file offset of StringIds array
+    uint32_t type_ids_size_;    // number of TypeIds, we don't support more than 65535
+    uint32_t type_ids_off_;     // file offset of TypeIds array
+    uint32_t proto_ids_size_;   // number of ProtoIds, we don't support more than 65535
+    uint32_t proto_ids_off_;    // file offset of ProtoIds array
+    uint32_t field_ids_size_;   // number of FieldIds
+    uint32_t field_ids_off_;    // file offset of FieldIds array
     uint32_t method_ids_size_;  // number of MethodIds
-    uint32_t method_ids_off_;  // file offset of MethodIds array
+    uint32_t method_ids_off_;   // file offset of MethodIds array
     uint32_t class_defs_size_;  // number of ClassDefs
-    uint32_t class_defs_off_;  // file offset of ClassDef array
-    uint32_t data_size_;  // unused
-    uint32_t data_off_;  // unused
+    uint32_t class_defs_off_;   // file offset of ClassDef array
+    uint32_t data_size_;        // size of the data section in bytes
+    uint32_t data_off_;         // file offset of the data section
 
     // Decode the dex magic version
     uint32_t GetVersion() const;
 
+    // Returns true if version 38 or above.
+    bool VersionSupportsHeaderExtensions() const;
+
    private:
     DISALLOW_COPY_AND_ASSIGN(Header);
+  };
+
+  // Enumeration of header extension types (introduced in version 38).
+  enum HeaderExtensionType : uint16_t {
+    kDexHeaderExtensionMethodHandles = 0x0000,
+    kDexHeaderExtensionCallSites     = 0x0001,
+    kDexHeaderExtensionLast          = kDexHeaderExtensionCallSites,
+  };
+
+  // Raw extension_header_item
+  struct HeaderExtension {
+    uint16_t type_;
+    uint16_t reserved_;
+    uint32_t size_;
+    uint32_t off_;
   };
 
   // Map item type codes.
@@ -389,6 +407,35 @@ class DexFile {
 
   struct AnnotationValue;
 
+  enum {
+    kPutStatic         = 0x00, // a setter for a given static field.
+    kGetStatic         = 0x01, // a getter for a given static field.
+    kPutInstance       = 0x02, // a setter for a given instance field.
+    kGetInstance       = 0x03, // a getter for a given instance field.
+    kInvokeStatic      = 0x04, // an invoker for a given static method
+    kInvokeInstance    = 0x05, // invoke_instance : an invoker for a given instance method. This can
+                               // be any non-static method on any class (or interface) except for
+                               // “<init>”.
+    kInvokeConstructor = 0x06  // an invoker for a given constructor.
+  };
+
+  // raw method_handle_item
+  struct MethodHandle {
+    uint16_t method_handle_type_;
+    uint16_t reserved1_;           // TODO(oth): Do we need these?
+    uint16_t field_or_method_idx_;
+    uint16_t reserved2_;           // TODO(oth): Do we need these?
+   private:
+    DISALLOW_COPY_AND_ASSIGN(MethodHandle);
+  };
+
+  // raw call_site_item
+  struct CallSite {
+    uint32_t data_off_;  // Offset into data section pointing to encoded array items.
+   private:
+    DISALLOW_COPY_AND_ASSIGN(CallSite);
+  };
+
   // Returns the checksum of a file for comparison with GetLocationChecksum().
   // For .dex files, this is the header checksum.
   // For zip files, this is the classes.dex zip entry CRC32 checksum.
@@ -493,6 +540,32 @@ class DexFile {
 
   // Returns true if the byte string after the magic is the correct value.
   static bool IsVersionValid(const uint8_t* magic);
+
+  // Returns the number of extension headers in the .dex file.
+  size_t NumHeaderExtensions() const {
+    return header_->VersionSupportsHeaderExtensions() ? header_->extensions_size_ : 0;
+  }
+
+  // Returns the |extension_idx| header extension present.
+  const HeaderExtension& GetHeaderExtension(uint32_t extension_idx) const;
+
+  // Returns the name of the header extension of |extension_type|.
+  static std::string GetHeaderExtensionName(const HeaderExtension& extension);
+
+  // Returns header extension of type |type| or null if not present.
+  const HeaderExtension* FindHeaderExtension(HeaderExtensionType type) const;
+
+  // Returns the number of MethodHandle instances in dex file.
+  uint32_t NumMethodHandles() const;
+
+  // Returns the MethodHandle instance at index |method_handle_idx|.
+  const MethodHandle& GetMethodHandle(uint32_t method_handle_idx) const;
+
+  // Returns the number of call sites.
+  uint32_t NumCallSites() const;
+
+  // Returns the CallSite instance at index |call_site_idx|.
+  const CallSite& GetCallSite(uint32_t call_site_idx) const;
 
   // Returns the number of string identifiers in the .dex file.
   size_t NumStringIds() const {
@@ -1416,22 +1489,24 @@ class EncodedStaticFieldValueIterator {
   void Next();
 
   enum ValueType {
-    kByte = 0x00,
-    kShort = 0x02,
-    kChar = 0x03,
-    kInt = 0x04,
-    kLong = 0x06,
-    kFloat = 0x10,
-    kDouble = 0x11,
-    kString = 0x17,
-    kType = 0x18,
-    kField = 0x19,
-    kMethod = 0x1a,
-    kEnum = 0x1b,
-    kArray = 0x1c,
-    kAnnotation = 0x1d,
-    kNull = 0x1e,
-    kBoolean = 0x1f
+    kByte         = 0x00,
+    kShort        = 0x02,
+    kChar         = 0x03,
+    kInt          = 0x04,
+    kLong         = 0x06,
+    kFloat        = 0x10,
+    kDouble       = 0x11,
+    kMethodHandle = 0x15,
+    kCallSite     = 0x16,
+    kString       = 0x17,
+    kType         = 0x18,
+    kField        = 0x19,
+    kMethod       = 0x1a,
+    kEnum         = 0x1b,
+    kArray        = 0x1c,
+    kAnnotation   = 0x1d,
+    kNull         = 0x1e,
+    kBoolean      = 0x1f,
   };
 
   ValueType GetValueType() const { return type_; }

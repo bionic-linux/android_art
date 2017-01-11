@@ -561,9 +561,16 @@ static void dumpFileHeader(const DexFile* pDexFile) {
           pHeader.signature_[DexFile::kSha1DigestSize - 1]);
   fprintf(gOutFile, "file_size           : %d\n", pHeader.file_size_);
   fprintf(gOutFile, "header_size         : %d\n", pHeader.header_size_);
-  fprintf(gOutFile, "link_size           : %d\n", pHeader.link_size_);
-  fprintf(gOutFile, "link_off            : %d (0x%06x)\n",
-          pHeader.link_off_, pHeader.link_off_);
+  if (pHeader.VersionSupportsHeaderExtensions()) {
+    fprintf(gOutFile, "extensions_size           : %d\n", pHeader.extensions_size_);
+    fprintf(gOutFile, "extensions_off            : %d (0x%06x)\n",
+            pHeader.extensions_off_, pHeader.extensions_off_);
+  } else {
+    // From version 39 the old link fields are used for header extensions.
+    fprintf(gOutFile, "link_size           : %d\n", pHeader.extensions_size_);
+    fprintf(gOutFile, "link_off            : %d (0x%06x)\n",
+            pHeader.extensions_off_, pHeader.extensions_off_);
+  }
   fprintf(gOutFile, "string_ids_size     : %d\n", pHeader.string_ids_size_);
   fprintf(gOutFile, "string_ids_off      : %d (0x%06x)\n",
           pHeader.string_ids_off_, pHeader.string_ids_off_);
@@ -585,6 +592,18 @@ static void dumpFileHeader(const DexFile* pDexFile) {
   fprintf(gOutFile, "data_size           : %d\n", pHeader.data_size_);
   fprintf(gOutFile, "data_off            : %d (0x%06x)\n\n",
           pHeader.data_off_, pHeader.data_off_);
+
+  if (pHeader.VersionSupportsHeaderExtensions()) {
+    // TODO(oth): check this pretty prints appropriately.
+    for (size_t i = 0; i < pHeader.extensions_size_; ++i) {
+      const DexFile::HeaderExtension& extension = pDexFile->GetHeaderExtension(i);
+      const std::string name = DexFile::GetHeaderExtensionName(extension);
+      const std::string pad_size = std::string(' ', 14 - name.size());
+      const std::string pad_off = std::string(' ', 15 - name.size());
+      fprintf(gOutFile, "%s_size%s: %d\n", name.c_str(), pad_size.c_str(), extension.size_);
+      fprintf(gOutFile, "%s_off%s: %d\n", name.c_str(), pad_off.c_str(), extension.off_);
+    }
+  }
 }
 
 /*

@@ -313,10 +313,10 @@ bool DexFileVerifier::CheckHeader() {
 
   // Check that all offsets are inside the file.
   bool result =
-      CheckValidOffsetAndSize(header_->link_off_,
-                              header_->link_size_,
-                              0 /* unaligned */,
-                              "link") &&
+      CheckValidOffsetAndSize(header_->extensions_off_,
+                              header_->extensions_size_,
+                              4,
+                              "extensions") &&
       CheckValidOffsetAndSize(header_->map_off_,
                               header_->map_off_,
                               4,
@@ -352,6 +352,16 @@ bool DexFileVerifier::CheckHeader() {
                               0,  // Unaligned, spec doesn't talk about it, even though size
                                   // is supposed to be a multiple of 4.
                               "data");
+  if (header_->VersionSupportsHeaderExtensions()) {
+    for (uint32_t i = 0; i < header_->extensions_size_; ++i) {
+      const DexFile::HeaderExtension& extension = dex_file_->GetHeaderExtension(i);
+      const std::string& name = DexFile::GetHeaderExtensionName(extension);
+      result &= CheckValidOffsetAndSize(extension.off_,
+                                        extension.size_,
+                                        4,
+                                        name.c_str());
+    }
+  }
   return result;
 }
 

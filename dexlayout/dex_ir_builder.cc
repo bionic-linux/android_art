@@ -34,8 +34,8 @@ Header* DexIrBuilder(const DexFile& dex_file) {
                               disk_header.endian_tag_,
                               disk_header.file_size_,
                               disk_header.header_size_,
-                              disk_header.link_size_,
-                              disk_header.link_off_,
+                              disk_header.extensions_size_,
+                              disk_header.extensions_off_,
                               disk_header.data_size_,
                               disk_header.data_off_);
   Collections& collections = header->GetCollections();

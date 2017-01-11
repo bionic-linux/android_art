@@ -559,6 +559,73 @@ uint32_t DexFile::Header::GetVersion() const {
   return atoi(version);
 }
 
+bool DexFile::Header::VersionSupportsHeaderExtensions() const {
+  static const uint32_t kMinimumVersionForHeaderExtensions = 38;
+  return GetVersion() >= kMinimumVersionForHeaderExtensions;
+}
+
+const DexFile::HeaderExtension& DexFile::GetHeaderExtension(uint32_t extension_idx) const {
+  DCHECK(header_->VersionSupportsHeaderExtensions() &&
+         extension_idx < GetHeader().extensions_size_);
+  const uint8_t* ptr = begin_ + header_->extensions_off_;
+  return reinterpret_cast<const HeaderExtension*>(ptr)[extension_idx];
+}
+
+std::string DexFile::GetHeaderExtensionName(const HeaderExtension& extension) {
+  HeaderExtensionType t = static_cast<HeaderExtensionType>(extension.type_);
+  switch (t) {
+    case kDexHeaderExtensionMethodHandles:
+      return "method_handles";
+    case kDexHeaderExtensionCallSites:
+      return "call_sites";
+  }
+  return StringPrintf("unknown-%04x", extension.type_);
+}
+
+const DexFile::HeaderExtension* DexFile::FindHeaderExtension(HeaderExtensionType type) const {
+  if (!header_->VersionSupportsHeaderExtensions()) return nullptr;
+
+  // Change to use a more efficient structure when number of extensions increases.
+  for (uint32_t i = 0; i < header_->extensions_size_; ++i) {
+    const DexFile::HeaderExtension* candidate =
+        reinterpret_cast<const HeaderExtension*>(begin_ + header_->extensions_off_) + i;
+    if (candidate->type_ == static_cast<uint16_t>(type)) {
+      return candidate;
+    }
+  }
+  return nullptr;
+}
+
+uint32_t DexFile::NumMethodHandles() const {
+  const HeaderExtension* extension =
+      FindHeaderExtension(HeaderExtensionType::kDexHeaderExtensionMethodHandles);
+  return (extension != nullptr) ? extension->size_ : 0;
+}
+
+const DexFile::MethodHandle& DexFile::GetMethodHandle(uint32_t method_handle_idx) const {
+  DCHECK_LT(method_handle_idx, NumMethodHandles());
+  const HeaderExtension* extension =
+      FindHeaderExtension(HeaderExtensionType::kDexHeaderExtensionMethodHandles);
+  const MethodHandle* method_handles =
+      reinterpret_cast<const MethodHandle*>(begin_ + extension->off_);
+  return method_handles[method_handle_idx];
+}
+
+uint32_t DexFile::NumCallSites() const {
+  const HeaderExtension* extension =
+      FindHeaderExtension(HeaderExtensionType::kDexHeaderExtensionCallSites);
+  return (extension != nullptr) ? extension->size_ : 0;
+}
+
+const DexFile::CallSite& DexFile::GetCallSite(uint32_t method_handle_idx) const {
+  DCHECK_LT(method_handle_idx, NumCallSites());
+  const HeaderExtension* extension =
+      FindHeaderExtension(HeaderExtensionType::kDexHeaderExtensionCallSites);
+  const CallSite* method_handles =
+      reinterpret_cast<const CallSite*>(begin_ + extension->off_);
+  return method_handles[method_handle_idx];
+}
+
 const DexFile::ClassDef* DexFile::FindClassDef(dex::TypeIndex type_idx) const {
   size_t num_class_defs = NumClassDefs();
   // Fast path for rare no class defs case.
@@ -1386,6 +1453,8 @@ void EncodedStaticFieldValueIterator::Next() {
     break;
   case kString:
   case kType:
+  case kCallSite:
+  case kMethodHandle:
     jval_.i = DexFile::ReadUnsignedInt(ptr_, value_arg, false);
     break;
   case kField:
