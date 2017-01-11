@@ -140,6 +140,30 @@
       "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d9950f_25946485",
+        "filename": "runtime/entrypoints/quick/quick_entrypoints_list.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-11T20:00:52Z",
+      "side": 1,
+      "message": "Thanks for clarifying. It looks fine to me.",
+      "parentUuid": "175d3ed4_656186bb",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "832c72d17d7975a6607771969ecbfa9f2e81993b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
