@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3d9950f_16714af7",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-12T16:41:21Z",
+      "side": 1,
+      "message": "This is an incompatible change because of your alignment check. The alignment should be conditional on the version.",
+      "range": {
+        "startLine": 316,
+        "startChar": 6,
+        "endLine": 319,
+        "endChar": 43
+      },
+      "revId": "3f7694a5ce56178a9d948f5dee2a2bbedcd4dece",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
