@@ -17,6 +17,7 @@
 #ifndef ART_COMPILER_OPTIMIZING_COMMON_ARM_H_
 #define ART_COMPILER_OPTIMIZING_COMMON_ARM_H_
 
+#include "instruction_simplifier_shared.h"
 #include "debug/dwarf/register.h"
 #include "locations.h"
 #include "nodes.h"
@@ -29,6 +30,9 @@
 #pragma GCC diagnostic pop
 
 namespace art {
+
+using helpers::HasShifterOperand;
+
 namespace arm {
 namespace helpers {
 
@@ -216,6 +220,16 @@ inline Location LocationFrom(const vixl::aarch32::Register& low,
 inline Location LocationFrom(const vixl::aarch32::SRegister& low,
                              const vixl::aarch32::SRegister& high) {
   return Location::FpuRegisterPairLocation(low.GetCode(), high.GetCode());
+}
+
+inline bool ShifterOperandSupportsExtension(HInstruction* instruction) {
+  DCHECK(HasShifterOperand(instruction));
+  return (instruction->IsAdd()
+#ifndef ART_USE_VIXL_ARM_BACKEND
+             && instruction->GetType() == Primitive::kPrimLong
+#endif
+         )
+         || (instruction->IsSub() && instruction->GetType() == Primitive::kPrimLong);
 }
 
 }  // namespace helpers
