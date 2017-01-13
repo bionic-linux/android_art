@@ -2280,3 +2280,59 @@ ENTRY_NO_GP art_quick_string_compareto
   j      $ra
   nop
 END art_quick_string_compareto
+
+.extern artInvokePolymorphic
+ENTRY art_quick_invoke_polymorphic
+    SETUP_SAVE_REFS_AND_ARGS_FRAME
+    move  $a2, rSELF                          # Make $a2 an alias for the current Thread.
+    move  $a3, $sp                            # Make $a3 a pointer to the saved frame context.
+    addiu $sp, $sp, -8                        # Reserve space for JValue result.
+    .cfi_adjust_cfa_offset 8
+    sw    $zero, 4($sp)                       # Initialize JValue result.
+    sw    $zero, 0($sp)
+    move  $a0, $sp                            # Make $a0 a pointer to the JValue result
+    la    $t9, artInvokePolymorphic
+    jalr  $t9                                 # (result, receiver, Thread*, context)
+.macro MATCH_RETURN_TYPE c, handler
+    li    $t0, \c
+    beq   $v0, $t0, \handler
+.endm
+    MATCH_RETURN_TYPE 'V', .Lcleanup_and_return
+    MATCH_RETURN_TYPE 'L', .Lstore_int_result
+    MATCH_RETURN_TYPE 'I', .Lstore_int_result
+    MATCH_RETURN_TYPE 'J', .Lstore_long_result
+    MATCH_RETURN_TYPE 'B', .Lstore_int_result
+    MATCH_RETURN_TYPE 'C', .Lstore_char_result
+    MATCH_RETURN_TYPE 'D', .Lstore_double_result
+    MATCH_RETURN_TYPE 'F', .Lstore_float_result
+    MATCH_RETURN_TYPE 'S', .Lstore_int_result
+.purgem MATCH_RETURN_TYPE
+    b .Lcleanup_and_return
+    nop
+.Lstore_boolean_result:
+    lbu   $v0, 0($sp)                         # Move byte from JValue result to return value register.
+    b .Lcleanup_and_return
+.Lstore_char_result:
+    lhu   $v0, 0($sp)                         # Move char from JValue result to return value register.
+    b .Lcleanup_and_return
+.Lstore_double_result:
+.Lstore_float_result:
+    LDu   $f0, $f1, 0, $sp, $t0               # Move double/float from JValue result to return value register.
+    b .Lcleanup_and_return
+.Lstore_long_result:
+    lw    $v1, 4($sp)                         # Move upper bits from JValue result to return value register.
+    // Fall-through for lower bits.
+.Lstore_int_result:
+    lw    $v0, 0($sp)                         # Move lower bits from JValue result to return value register.
+    // Fall-through to clean up and return.
+.Lcleanup_and_return:
+    addiu $sp, $sp, 8                         # Remove space for JValue result.
+    .cfi_adjust_cfa_offset -8
+    lw    $t0, THREAD_EXCEPTION_OFFSET(rSELF) # Load Thread::Current()->exception_
+    RESTORE_SAVE_REFS_AND_ARGS_FRAME
+    bnez  $t0, 1f                             # Success if no exception is pending.
+    nop
+    jalr  $zero, $ra
+1:
+    DELIVER_PENDING_EXCEPTION
+END art_quick_invoke_polymorphic
