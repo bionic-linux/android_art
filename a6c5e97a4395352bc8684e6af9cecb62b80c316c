@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "284ae270_503ed2da",
+        "filename": "runtime/openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-19T23:04:34Z",
+      "side": 0,
+      "message": "This isn\u0027t freeable so shouldn\u0027t make it a unique_ptr. \n\nDidn\u0027t see any problems in non-forcecopy builds because the memory didn\u0027t have time to get overwritten.",
+      "range": {
+        "startLine": 269,
+        "startChar": 19,
+        "endLine": 269,
+        "endChar": 99
+      },
+      "revId": "a6c5e97a4395352bc8684e6af9cecb62b80c316c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
