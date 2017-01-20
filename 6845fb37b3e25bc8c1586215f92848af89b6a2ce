@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "284ae270_d65517be",
+        "filename": "test/115-native-bridge/nativebridge.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2017-01-20T01:42:27Z",
+      "side": 1,
+      "message": "We think that in 115-native-bridge test set only libinvalid.so is expected to load fail, and the message print here can confirm one more time.",
+      "parentUuid": "284ae270_d0ebe229",
+      "range": {
+        "startLine": 475,
+        "startChar": 9,
+        "endLine": 475,
+        "endChar": 12
+      },
+      "revId": "6845fb37b3e25bc8c1586215f92848af89b6a2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284ae270_b01866a4",
         "filename": "test/115-native-bridge/src/NativeBridgeMain.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "284ae270_d6fab797",
+        "filename": "test/115-native-bridge/src/NativeBridgeMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2017-01-20T01:42:27Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "284ae270_b01866a4",
+      "range": {
+        "startLine": 191,
+        "startChar": 99,
+        "endLine": 191,
+        "endChar": 104
+      },
+      "revId": "6845fb37b3e25bc8c1586215f92848af89b6a2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284ae270_7022eed6",
         "filename": "test/115-native-bridge/src/NativeBridgeMain.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-01-19T23:05:34Z",
       "side": 1,
       "message": "line too long",
+      "range": {
+        "startLine": 193,
+        "startChar": 100,
+        "endLine": 193,
+        "endChar": 104
+      },
+      "revId": "6845fb37b3e25bc8c1586215f92848af89b6a2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284ae270_b6ff3b87",
+        "filename": "test/115-native-bridge/src/NativeBridgeMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1104175
+      },
+      "writtenOn": "2017-01-20T01:42:27Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "284ae270_7022eed6",
       "range": {
         "startLine": 193,
         "startChar": 100,
