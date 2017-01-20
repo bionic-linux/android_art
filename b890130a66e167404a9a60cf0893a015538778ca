@@ -22,6 +22,30 @@
       "revId": "b890130a66e167404a9a60cf0893a015538778ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c88a26db_a7caae22",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 7661,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-20T17:14:50Z",
+      "side": 1,
+      "message": "Fix is part of https://android-review.googlesource.com/325580 .",
+      "parentUuid": "17237e9f_584961a9",
+      "range": {
+        "startLine": 7661,
+        "startChar": 22,
+        "endLine": 7661,
+        "endChar": 24
+      },
+      "revId": "b890130a66e167404a9a60cf0893a015538778ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
