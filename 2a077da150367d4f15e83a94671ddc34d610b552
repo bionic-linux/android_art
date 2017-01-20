@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "284ae270_f20011ec",
+        "filename": "test/ti-agent/common_load.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-20T20:58:20Z",
+      "side": 1,
+      "message": "can you put this in both common_redefine::OnLoad and common_retransform::OnLoad too so that we can have everything?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "2a077da150367d4f15e83a94671ddc34d610b552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
