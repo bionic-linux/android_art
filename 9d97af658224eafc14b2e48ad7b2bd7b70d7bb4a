@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "284ae270_623456ff",
+        "filename": "runtime/mirror/class_ext.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-20T19:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284ae270_a2d12ede",
+      "revId": "9d97af658224eafc14b2e48ad7b2bd7b70d7bb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284ae270_62169675",
         "filename": "runtime/openjdkjvmti/ti_class_definition.h",
         "patchSetId": 1
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "284ae270_821d1231",
+        "filename": "runtime/openjdkjvmti/ti_class_definition.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-20T19:32:22Z",
+      "side": 1,
+      "message": "Added a comment to explain reasoning.\n\nBasically instances of this structure will never survive past the completion of the redefinition/retransformation event they were created for. This makes them safe. The only reason this is in a seperate file is because both redefinition and retransformation need most of this same info so might as well share the struct.",
+      "parentUuid": "284ae270_62169675",
+      "revId": "9d97af658224eafc14b2e48ad7b2bd7b70d7bb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "284ae270_624e96d2",
         "filename": "runtime/openjdkjvmti/ti_redefine.h",
         "patchSetId": 1
@@ -65,6 +101,24 @@
         "endLine": 138,
         "endChar": 51
       },
+      "revId": "9d97af658224eafc14b2e48ad7b2bd7b70d7bb4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "284ae270_82551202",
+        "filename": "runtime/openjdkjvmti/ti_redefine.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-20T19:32:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284ae270_624e96d2",
       "revId": "9d97af658224eafc14b2e48ad7b2bd7b70d7bb4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
