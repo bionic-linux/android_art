@@ -17,11 +17,15 @@
 #ifndef ART_TEST_TI_AGENT_COMMON_LOAD_H_
 #define ART_TEST_TI_AGENT_COMMON_LOAD_H_
 
+#include "jni.h"
 #include "openjdkjvmti/jvmti.h"
 
 namespace art {
 
 extern jvmtiEnv* jvmti_env;
+
+// Install a phase callback that will bind JNI functions on VMInit.
+bool InstallBindCallback(JavaVM* vm);
 
 }  // namespace art
 
