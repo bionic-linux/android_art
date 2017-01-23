@@ -1417,4 +1417,24 @@ void CodeGenerator::EmitJitRoots(uint8_t* code,
   EmitJitRootPatches(code, roots_data);
 }
 
+QuickEntrypointEnum CodeGenerator::GetArrayAllocationEntrypoint(Handle<mirror::Class> klass) {
+  ScopedObjectAccess soa(Thread::Current());
+  if (klass.Get() == nullptr) {
+    return kQuickAllocArrayResolved;
+  }
+
+  mirror::Class* component = klass->GetComponentType();
+  if (component->IsPrimitiveByte() || component->IsPrimitiveBoolean()) {
+    return kQuickAllocArrayResolved8;
+  } else if (component->IsPrimitiveShort() || component->IsPrimitiveChar()) {
+    return kQuickAllocArrayResolved16;
+  } else if (component->IsPrimitiveInt() || component->IsPrimitiveFloat() || !component->IsPrimitive()) {
+    static_assert(kHeapReferenceSize == sizeof(uint32_t), "Unsupported heap reference size");
+    return kQuickAllocArrayResolved32;
+  } else {
+    DCHECK(component->IsPrimitiveDouble() || component->IsPrimitiveLong()); 
+    return kQuickAllocArrayResolved64;
+  }
+}
+
 }  // namespace art

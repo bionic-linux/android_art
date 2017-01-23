@@ -987,6 +987,10 @@ GENERATE_ALLOC_ENTRYPOINTS_FOR_NON_TLAB_ALLOCATORS
 // GENERATE_ALLOC_ENTRYPOINTS_ALLOC_OBJECT_INITIALIZED(_region_tlab, RegionTLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_OBJECT_WITH_ACCESS_CHECK(_region_tlab, RegionTLAB)
 // GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED(_region_tlab, RegionTLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED8(_region_tlab, RegionTLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED16(_region_tlab, RegionTLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED32(_region_tlab, RegionTLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED64(_region_tlab, RegionTLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_BYTES(_region_tlab, RegionTLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_CHARS(_region_tlab, RegionTLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_STRING(_region_tlab, RegionTLAB)
@@ -995,6 +999,10 @@ GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_STRING(_region_tlab, RegionTLAB)
 // GENERATE_ALLOC_ENTRYPOINTS_ALLOC_OBJECT_INITIALIZED(_tlab, TLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_OBJECT_WITH_ACCESS_CHECK(_tlab, TLAB)
 // GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED(_tlab, TLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED8(_tlab, TLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED16(_tlab, TLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED32(_tlab, TLAB)
+// GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED64(_tlab, TLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_BYTES(_tlab, TLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_CHARS(_tlab, TLAB)
 GENERATE_ALLOC_ENTRYPOINTS_ALLOC_STRING_FROM_STRING(_tlab, TLAB)
@@ -1112,26 +1120,11 @@ MACRO1(ALLOC_OBJECT_INITIALIZED_TLAB_FAST_PATH, slowPathLabel)
 END_MACRO
 
 // The fast path code for art_quick_alloc_array_region_tlab.
-// Inputs: RDI: the class, RSI: int32_t component_count
-// Free temps: RCX, RDX, R8, R9
+// Inputs: RDI: the class, RSI: int32_t component_count, R9: total_size
+// Free temps: RCX, RDX, R8
 // Output: RAX: return value.
-MACRO1(ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED, slowPathLabel)
-    movl MIRROR_CLASS_COMPONENT_TYPE_OFFSET(%rdi), %ecx        // Load component type.
-    UNPOISON_HEAP_REF ecx
-    movl MIRROR_CLASS_OBJECT_PRIMITIVE_TYPE_OFFSET(%rcx), %ecx // Load primitive type.
-    shrq LITERAL(PRIMITIVE_TYPE_SIZE_SHIFT_SHIFT), %rcx        // Get component size shift.
-    movq %rsi, %r9
-    salq %cl, %r9                                              // Calculate array count shifted.
-    // Add array header + alignment rounding.
-    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK), %r9
-    // Add 4 extra bytes if we are doing a long array.
-    addq LITERAL(1), %rcx
-    andq LITERAL(4), %rcx
-    addq %rcx, %r9
+MACRO1(ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE, slowPathLabel)
     movq %gs:THREAD_SELF_OFFSET, %rcx                          // rcx = thread
-#if MIRROR_LONG_ARRAY_DATA_OFFSET != MIRROR_INT_ARRAY_DATA_OFFSET + 4
-#error Long array data offset must be 4 greater than int array data offset.
-#endif
     // Mask out the unaligned part to make sure we are 8 byte aligned.
     andq LITERAL(OBJECT_ALIGNMENT_MASK_TOGGLED64), %r9
     movq THREAD_LOCAL_POS_OFFSET(%rcx), %rax
@@ -1149,6 +1142,28 @@ MACRO1(ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED, slowPathLabel)
     ret                                                        // Fast path succeeded.
 END_MACRO
 
+// The fast path code for art_quick_alloc_array_region_tlab.
+// Inputs: RDI: the class, RSI: int32_t component_count
+// Free temps: RCX, RDX, R8, R9
+// Output: RAX: return value.
+MACRO1(ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED, slowPathLabel)
+    movl MIRROR_CLASS_COMPONENT_TYPE_OFFSET(%rdi), %ecx        // Load component type.
+    UNPOISON_HEAP_REF ecx
+    movl MIRROR_CLASS_OBJECT_PRIMITIVE_TYPE_OFFSET(%rcx), %ecx // Load primitive type.
+    shrq LITERAL(PRIMITIVE_TYPE_SIZE_SHIFT_SHIFT), %rcx        // Get component size shift.
+    movq %rsi, %r9
+    salq %cl, %r9                                              // Calculate array count shifted.
+    // Add array header + alignment rounding.
+    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK), %r9
+    // Add 4 extra bytes if we are doing a long array.
+    addq LITERAL(1), %rcx
+    andq LITERAL(4), %rcx
+#if MIRROR_LONG_ARRAY_DATA_OFFSET != MIRROR_INT_ARRAY_DATA_OFFSET + 4
+#error Long array data offset must be 4 greater than int array data offset.
+#endif
+    addq %rcx, %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE(RAW_VAR(slowPathLabel))
+END_MACRO
 
 // The common slow path code for art_quick_alloc_object_{resolved, initialized}_tlab
 // and art_quick_alloc_object_{resolved, initialized}_region_tlab.
@@ -1200,6 +1215,58 @@ DEFINE_FUNCTION art_quick_alloc_array_resolved_tlab
     ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedTLAB
 END_FUNCTION art_quick_alloc_array_resolved_tlab
 
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED8(_tlab, TLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved8_tlab
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RDX, RCX, R8, R9: free. RAX: return val.
+    movq %rsi, %r9
+    // Add array header + alignment rounding.
+    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved_tlab_slow_path8
+.Lart_quick_alloc_array_resolved_tlab_slow_path8:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedTLAB
+END_FUNCTION art_quick_alloc_array_resolved8_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED16(_tlab, TLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved16_tlab
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RDX, RCX, R8, R9: free. RAX: return val.
+    movq %rsi, %r9
+    salq LITERAL(1), %r9
+    // Add array header + alignment rounding.
+    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved_tlab_slow_path16
+.Lart_quick_alloc_array_resolved_tlab_slow_path16:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedTLAB
+END_FUNCTION art_quick_alloc_array_resolved16_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED32(_tlab, TLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved32_tlab
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RDX, RCX, R8, R9: free. RAX: return val.
+    movq %rsi, %r9
+    salq LITERAL(2), %r9
+    // Add array header + alignment rounding.
+    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved_tlab_slow_path32
+.Lart_quick_alloc_array_resolved_tlab_slow_path32:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedTLAB
+END_FUNCTION art_quick_alloc_array_resolved32_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED64(_tlab, TLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved64_tlab
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RDX, RCX, R8, R9: free. RAX: return val.
+    movq %rsi, %r9
+    salq LITERAL(3), %r9
+    // Add array header + alignment rounding.
+    // Add 4 extra bytes for array data alignment
+    addq LITERAL(MIRROR_INT_ARRAY_DATA_OFFSET + OBJECT_ALIGNMENT_MASK + 4), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved_tlab_slow_path64
+.Lart_quick_alloc_array_resolved_tlab_slow_path64:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedTLAB
+END_FUNCTION art_quick_alloc_array_resolved64_tlab
+
 // A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED(_region_tlab, RegionTLAB).
 DEFINE_FUNCTION art_quick_alloc_array_resolved_region_tlab
     // Fast path region tlab allocation.
@@ -1210,6 +1277,59 @@ DEFINE_FUNCTION art_quick_alloc_array_resolved_region_tlab
 .Lart_quick_alloc_array_resolved_region_tlab_slow_path:
     ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedRegionTLAB
 END_FUNCTION art_quick_alloc_array_resolved_region_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED8(_region_tlab, RegionTLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved8_region_tlab
+    // Fast path region tlab allocation.
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RCX, RDX, R8, R9: free. RAX: return val.
+    ASSERT_USE_READ_BARRIER
+    movq %rsi, %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved8_region_tlab_slow_path
+.Lart_quick_alloc_array_resolved8_region_tlab_slow_path:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedRegionTLAB
+END_FUNCTION art_quick_alloc_array_resolved8_region_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED16(_region_tlab, RegionTLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved16_region_tlab
+    // Fast path region tlab allocation.
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RCX, RDX, R8, R9: free. RAX: return val.
+    ASSERT_USE_READ_BARRIER
+    movq %rsi, %r9
+    salq LITERAL(1), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved16_region_tlab_slow_path
+.Lart_quick_alloc_array_resolved16_region_tlab_slow_path:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedRegionTLAB
+END_FUNCTION art_quick_alloc_array_resolved16_region_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED32(_region_tlab, RegionTLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved32_region_tlab
+    // Fast path region tlab allocation.
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RCX, RDX, R8, R9: free. RAX: return val.
+    ASSERT_USE_READ_BARRIER
+    movq %rsi, %r9
+    salq LITERAL(2), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved32_region_tlab_slow_path
+.Lart_quick_alloc_array_resolved32_region_tlab_slow_path:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedRegionTLAB
+END_FUNCTION art_quick_alloc_array_resolved32_region_tlab
+
+// A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_ARRAY_RESOLVED64(_region_tlab, RegionTLAB).
+DEFINE_FUNCTION art_quick_alloc_array_resolved64_region_tlab
+    // Fast path region tlab allocation.
+    // RDI: mirror::Class* klass, RSI: int32_t component_count
+    // RCX, RDX, R8, R9: free. RAX: return val.
+    ASSERT_USE_READ_BARRIER
+    movq %rsi, %r9
+    salq LITERAL(3), %r9
+    // Add 4 extra bytes for array data alignment
+    addq LITERAL(4), %r9
+    ALLOC_ARRAY_TLAB_FAST_PATH_RESOLVED_WITH_SIZE .Lart_quick_alloc_array_resolved64_region_tlab_slow_path
+.Lart_quick_alloc_array_resolved64_region_tlab_slow_path:
+    ALLOC_ARRAY_TLAB_SLOW_PATH artAllocArrayFromCodeResolvedRegionTLAB
+END_FUNCTION art_quick_alloc_array_resolved64_region_tlab
 
 // A hand-written override for GENERATE_ALLOC_ENTRYPOINTS_ALLOC_OBJECT_RESOLVED(_region_tlab, RegionTLAB).
 DEFINE_FUNCTION art_quick_alloc_object_resolved_region_tlab
