@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "284ae270_6072f2bf",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-01-23T23:31:37Z",
+      "side": 1,
+      "message": "You could maybe use a macro to generated these.",
+      "range": {
+        "startLine": 1282,
+        "startChar": 16,
+        "endLine": 1282,
+        "endChar": 59
+      },
+      "revId": "7244b694205482d43b22990b8c08d40ebd7923db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
