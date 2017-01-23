@@ -106,7 +106,7 @@ static constexpr bool kEmbedClassInCode = true;
 #ifdef USE_BAKER_READ_BARRIER
 static constexpr bool kUseBakerReadBarrier = true;
 #else
-static constexpr bool kUseBakerReadBarrier = false;
+static constexpr bool kUseBakerReadBarrier = true;
 #endif
 
 #ifdef USE_BROOKS_READ_BARRIER
