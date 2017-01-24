@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "411e2f18_5c015a45",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-24T19:39:15Z",
+      "side": 1,
+      "message": "Having a DCHECK or static_assert that this is a valid type might be good.",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
