@@ -173,6 +173,23 @@
     },
     {
       "key": {
+        "uuid": "babca9a0_983a1459",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-24T19:59:12Z",
+      "side": 1,
+      "message": "Up to you, with all these required casts though I wouldn\u0027t be surprised if somewhere the wrong type is passed in someday and get a bug by accident.",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6881dae2_fa2f1ab2",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
