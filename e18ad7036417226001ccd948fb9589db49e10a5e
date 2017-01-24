@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26e31be9_2fb27df7",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-24T23:02:49Z",
+      "side": 1,
+      "message": "A minor point but maybe rename this to array_class to be clearer?",
+      "range": {
+        "startLine": 1420,
+        "startChar": 86,
+        "endLine": 1420,
+        "endChar": 91
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ba539c_f0debbb2",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-24T23:02:49Z",
+      "side": 1,
+      "message": "May not matter but use a lookup table or a switch based on Class::GetComponentSize()?",
+      "range": {
+        "startLine": 1429,
+        "startChar": 0,
+        "endLine": 1441,
+        "endChar": 3
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaecf1a0_4f3d7df1",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-24T23:02:49Z",
+      "side": 1,
+      "message": "What type uses this?",
+      "range": {
+        "startLine": 1925,
+        "startChar": 33,
+        "endLine": 1925,
+        "endChar": 75
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
