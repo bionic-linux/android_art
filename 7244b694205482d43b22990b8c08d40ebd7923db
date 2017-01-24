@@ -22,6 +22,29 @@
       "revId": "7244b694205482d43b22990b8c08d40ebd7923db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7b96f04_efac1899",
+        "filename": "runtime/arch/x86_64/quick_entrypoints_x86_64.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-24T22:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 1282,
+        "startChar": 16,
+        "endLine": 1282,
+        "endChar": 59
+      },
+      "revId": "7244b694205482d43b22990b8c08d40ebd7923db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
