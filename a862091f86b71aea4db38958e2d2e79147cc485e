@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5e380b79_ef26e884",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-24T20:00:55Z",
+      "side": 1,
+      "message": "(to be clear, I mean why does it need the reinterpret cast. The FnType is needed for specialization)",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08b6f0db_b1f788b7",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
