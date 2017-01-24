@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f127fc8f_d2af9ab7",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-24T19:57:32Z",
+      "side": 1,
+      "message": "Upon looking at this closer I don\u0027t really like this FnType either, it\u0027s unsafe (L54 reinterpret cast?). \n\nThe type is already known from L48, why does it need it?",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08b6f0db_b1f788b7",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -99,6 +116,29 @@
     },
     {
       "key": {
+        "uuid": "7dd79ded_177c81a5",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-24T19:57:32Z",
+      "side": 1,
+      "message": "There will be a linking error if you somehow pass it invalid enum (maybe with int cast?). I agree it would be more readable to have a proper string message but the GET_CALLBACK macro needs to emit some type traits then.\n\n   constexpr boolean IsCallbackValid\u003cMonitorWaited\u003e() {\n     return true:\n   }\n   ...\n   // default\n   constexpr boolean IsCallbackValid\u003c\u003e() {\n     return false;\n   }",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a375acd2_ea6bd96a",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -161,6 +201,23 @@
       "writtenOn": "2017-01-24T19:53:14Z",
       "side": 1,
       "message": "It *is* identical except for the event type. I wish C++ allowed partial function specialization...",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0baa877_d609bc03",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-24T19:57:32Z",
+      "side": 1,
+      "message": "you can put it into a struct and partially specialize the struct",
       "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
