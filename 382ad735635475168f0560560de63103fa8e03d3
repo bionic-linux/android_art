@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "e626dc1e_9eac1b73",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f2d7828_c3ea66e9",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 3
@@ -47,6 +64,23 @@
       "writtenOn": "2017-01-24T22:33:50Z",
       "side": 1,
       "message": "sp: prohibiting",
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f50776_b97620a2",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Done",
       "revId": "382ad735635475168f0560560de63103fa8e03d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -70,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "96f8346c_ecc703e6",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74758962_9d96e326",
         "filename": "runtime/openjdkjvmti/ti_class.cc",
         "patchSetId": 3
@@ -81,6 +132,29 @@
       "writtenOn": "2017-01-24T22:33:50Z",
       "side": 1,
       "message": "static_cast",
+      "range": {
+        "startLine": 66,
+        "startChar": 12,
+        "endLine": 66,
+        "endChar": 28
+      },
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb1ca572_bec844a3",
+        "filename": "runtime/openjdkjvmti/ti_class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 66,
         "startChar": 12,
@@ -116,6 +190,29 @@
     },
     {
       "key": {
+        "uuid": "85a20c6f_28f84f8b",
+        "filename": "runtime/openjdkjvmti/ti_class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 86,
+        "startChar": 10,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa7e408b_66c8fe34",
         "filename": "runtime/openjdkjvmti/transform.cc",
         "patchSetId": 3
@@ -127,6 +224,23 @@
       "writtenOn": "2017-01-24T22:33:50Z",
       "side": 1,
       "message": "nit: update comment\n\n  Static casts are required because implicit type conversion for DispatchEvent parameters is not allowed.",
+      "revId": "382ad735635475168f0560560de63103fa8e03d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33205de4_70e5c559",
+        "filename": "runtime/openjdkjvmti/transform.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T23:22:07Z",
+      "side": 1,
+      "message": "Removed the old comment. It is not longer necessary. All but one static_cast removed.",
       "revId": "382ad735635475168f0560560de63103fa8e03d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
