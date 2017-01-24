@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c88a26db_6a3f8bd9",
+        "filename": "runtime/openjdkjvmti/ti_class_definition.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-24T10:20:43Z",
+      "side": 1,
+      "message": "Why is that a struct, and not a class? Also style is to put fields at the end.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 2
+      },
+      "revId": "a7e38d8aaacfca85b40b5df654f85c0979968672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
