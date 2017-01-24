@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "1cd712ff_dcb2d053",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T19:53:14Z",
+      "side": 1,
+      "message": "Required for decltype. If there\u0027s another way please let me know.",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a320c72d_a18eca61",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -59,6 +76,29 @@
     },
     {
       "key": {
+        "uuid": "05af5d61_b3c51ad1",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T19:53:14Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 93,
+        "startChar": 10,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a375acd2_ea6bd96a",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -70,6 +110,23 @@
       "writtenOn": "2017-01-24T19:42:54Z",
       "side": 1,
       "message": "This is a bit flawed because it unnecessarily requires the type information redundantly to be passed at the call site.\n\nIf you split it up to return a functor, it could return a FnType callable.\n\n\n   template \u003cArtJvmtiEvent kEvent, typename FnType \u003d decltype(*GetCallback(nullptr))\u003e\n   auto DispatchEvent(art::Thread* thread) {\n     FnType* callback \u003d impl::GetCallback\u003ckEvent, FnType\u003e(env);\n     return \n\n       template \u003ctypename Args... args\u003e\n       [callback, env](Args ... args) {\n         return (*callback)(env, args...);\n       }\n   }\n\nIt might seem it\u0027s the same (also using variadic args) but actually the outer DispatchEvent function would return a well-typed functor that only accepts the correct argument types to FnType.\n----\n\nWhy does it matter?\n\nYou won\u0027t have to do those crazy static_casts at the callsites because it will already know the right type. \n\nRedundant:\n\n     \n   gEventHandler.DispatchEvent\u003cArtJvmtiEvent::kClassFileLoadHookRetransformable\u003e(\n        self,\n        GetJniEnv(env),\n        static_cast\u003cjclass\u003e(def.klass),\n        static_cast\u003cjobject\u003e(def.loader),\n        static_cast\u003cconst char*\u003e(def.name.c_str()),\n        static_cast\u003cjobject\u003e(def.protection_domain),\n        static_cast\u003cjint\u003e(def.dex_len),\n        static_cast\u003cconst unsigned char*\u003e(def.dex_data.get()),\n        static_cast\u003cjint*\u003e(\u0026new_len),\n        static_cast\u003cunsigned char**\u003e(\u0026new_data));\n\n\nClean:\n\n    gEventHandler.DispatchEvent\u003cArtJvmtiEvent::kClassFileLoadHookRetransformable\u003e(self)(\n        GetJniEnv(env),\n        def.klass,\n        def.loader,\n        def.name.c_str(),\n        def.protection_domain,\n        def.dex_len,\n        def.dex_data.get(),\n        \u0026new_len,\n        \u0026new_data);",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a81b41fd_3dae3bf8",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T19:53:14Z",
+      "side": 1,
+      "message": "The casts are rather minimal, and I\u0027m not the biggest fan of a functor here, as it is not intuitive.\n\n\nAlex, what\u0027s your opinion?",
       "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +150,23 @@
     },
     {
       "key": {
+        "uuid": "5002661a_6f241e6d",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T19:53:14Z",
+      "side": 1,
+      "message": "It *is* identical except for the event type. I wish C++ allowed partial function specialization...",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b614b3bf_405652c6",
         "filename": "runtime/openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -104,6 +178,23 @@
       "writtenOn": "2017-01-24T19:42:54Z",
       "side": 1,
       "message": "Why does DispatchEvent need to be specialized instead of GetCallback?\n\nIt seems the only difference is that is also accepts a thread but the others do not. Maybe a comment would explain it?",
+      "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62c28cf3_03305c1c",
+        "filename": "runtime/openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-01-24T19:53:14Z",
+      "side": 1,
+      "message": "See the extra code for the ClassFileLoadHook. I\u0027ll add a comment.",
       "revId": "a862091f86b71aea4db38958e2d2e79147cc485e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
