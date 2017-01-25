@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1e06007c_5e405e8c",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-25T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 1420,
+        "startChar": 86,
+        "endLine": 1420,
+        "endChar": 91
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9ba539c_f0debbb2",
         "filename": "compiler/optimizing/code_generator.cc",
         "patchSetId": 4
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "e53fbaf7_e4187aaf",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-25T23:02:40Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 1429,
+        "startChar": 0,
+        "endLine": 1441,
+        "endChar": 3
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaecf1a0_4f3d7df1",
         "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
         "patchSetId": 4
@@ -59,6 +105,29 @@
       "writtenOn": "2017-01-24T23:02:49Z",
       "side": 1,
       "message": "What type uses this?",
+      "range": {
+        "startLine": 1925,
+        "startChar": 33,
+        "endLine": 1925,
+        "endChar": 75
+      },
+      "revId": "e18ad7036417226001ccd948fb9589db49e10a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4950289c_8d9581ef",
+        "filename": "runtime/arch/arm64/quick_entrypoints_arm64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1925,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-25T23:02:40Z",
+      "side": 1,
+      "message": "No-one anymore, I kept it around just in case, and the fact that other backends don\u0027t have the 8/16/32/64 variants. I can remove it if you prefer.",
       "range": {
         "startLine": 1925,
         "startChar": 33,
