@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29070ed_0dc0f37b",
+        "filename": "runtime/globals.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-01-25T23:39:55Z",
+      "side": 1,
+      "message": "This is not meant to be uploaded?",
+      "range": {
+        "startLine": 109,
+        "startChar": 45,
+        "endLine": 109,
+        "endChar": 49
+      },
+      "revId": "3ffab21cbd23479c5f94415d1546d5c55fa77a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
