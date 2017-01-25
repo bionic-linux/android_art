@@ -2588,6 +2588,27 @@ mirror::Class* ClassLinker::FindClass(Thread* self,
     const char* result_name = result_ptr->GetDescriptor(&result_storage);
     std::string loader_storage;
     const char* loader_class_name = class_loader->GetClass()->GetDescriptor(&loader_storage);
+
+    // For backward compatibility, accept the class for target SDK version <= 25.
+    // Bug: 34394972
+    int32_t target_sdk_version = Runtime::Current()->GetTargetSdkVersion();
+    if (target_sdk_version > 0 && target_sdk_version <= 25) {
+      // Report the compatibility shim once.
+      // (This is racy but the worst case is that multiple threads report it.)
+      static volatile bool reported = false;
+      if (!reported) {
+        reported = true;
+        LOG(ERROR)
+            << "APPLICATION ERROR: "
+               " Initiating class loader of type " << DescriptorToDot(loader_class_name)
+            << " returned class " << DescriptorToDot(result_name)
+            << " instead of " << DescriptorToDot(descriptor)
+            << ". This will throw a NoClassDefFoundException on API levels 26 and above."
+               " PLEASE FIX - runtime behaviour is undefined for such class loaders.";
+      }
+      return result_ptr.Ptr();
+    }
+
     ThrowNoClassDefFoundError(
         "Initiating class loader of type %s returned class %s instead of %s.",
         DescriptorToDot(loader_class_name).c_str(),
