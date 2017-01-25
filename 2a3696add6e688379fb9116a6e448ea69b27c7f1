@@ -16,6 +16,23 @@
       "revId": "2a3696add6e688379fb9116a6e448ea69b27c7f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0128fd8c_bfa3823f",
+        "filename": "test/957-methodhandle-transforms/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-01-25T15:02:50Z",
+      "side": 1,
+      "message": "Yes for now, will add a comment - difference between the RI and us.",
+      "revId": "2a3696add6e688379fb9116a6e448ea69b27c7f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
