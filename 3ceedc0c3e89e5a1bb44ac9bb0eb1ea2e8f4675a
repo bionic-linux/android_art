@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b54c4d97_fb360781",
+        "filename": "runtime/memory_region.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-26T10:07:59Z",
+      "side": 1,
+      "message": "uint32_t",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 6
+      },
+      "revId": "3ceedc0c3e89e5a1bb44ac9bb0eb1ea2e8f4675a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc12f1ce_ea685711",
+        "filename": "runtime/memory_region.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-26T10:07:59Z",
+      "side": 1,
+      "message": "uint32_t",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 6
+      },
+      "revId": "3ceedc0c3e89e5a1bb44ac9bb0eb1ea2e8f4675a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
