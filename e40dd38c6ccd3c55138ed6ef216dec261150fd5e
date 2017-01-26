@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "376402b8_4c5f5bd3",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T23:12:23Z",
+      "side": 1,
+      "message": "\u003e Of course, good catch. So that actually means app dex file you don\u0027t need to unquicken.\n\u003e \n\u003e But now I wonder. What about boot classpath classes that the developer would want to redefine, then? The JIT is not going to help us here.\n\u003e \n\u003e We might need to do in-place unquickening for boot.oat and friends.\n\nYes we will still need to do it for boot.oat.\n\nWe might even want to remove this once that is implemented.",
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc8f4ac4_de7cec23",
         "filename": "test/934-load-transform/run",
         "patchSetId": 7
@@ -42,6 +59,23 @@
         "endLine": 17,
         "endChar": 41
       },
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd04bed7_04192c91",
+        "filename": "test/934-load-transform/run",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T23:12:23Z",
+      "side": 1,
+      "message": "No most tests aren\u0027t affected by this.",
       "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
