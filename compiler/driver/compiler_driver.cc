@@ -530,8 +530,14 @@ static optimizer::DexToDexCompilationLevel GetDexToDexCompilationLevel(
   // can validate (checksums) and use to skip load-time verification. It is thus safe to
   // optimize when a class has been fully verified before.
   if (klass->IsVerified()) {
-    // Class is verified so we can enable DEX-to-DEX compilation for performance.
-    return optimizer::DexToDexCompilationLevel::kOptimize;
+    // Class is verified so we might be able to enable DEX-to-DEX compilation for performance.
+    if (driver.GetCompilerOptions().GetDebuggable()) {
+      // We are debuggable so definitions of classes might be changed. We don't want to do any
+      // optimizations that could break that.
+      return optimizer::DexToDexCompilationLevel::kRequired;
+    } else {
+      return optimizer::DexToDexCompilationLevel::kOptimize;
+    }
   } else if (klass->IsCompileTimeVerified()) {
     // Class verification has soft-failed. Anyway, ensure at least correctness.
     DCHECK_EQ(klass->GetStatus(), mirror::Class::kStatusRetryVerificationAtRuntime);
