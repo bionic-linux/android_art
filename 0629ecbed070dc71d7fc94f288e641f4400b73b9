@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "189b2f44_0d4b4b01",
+        "filename": "compiler/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T22:21:38Z",
+      "side": 1,
+      "message": "Actually we don\u0027t need this anyway,.",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30dfe7ce_88406710",
         "filename": "compiler/driver/compiler_driver.cc",
         "patchSetId": 5
@@ -36,6 +53,23 @@
         "endLine": 535,
         "endChar": 68
       },
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4bb791b_6f22621e",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T22:21:38Z",
+      "side": 1,
+      "message": "Done",
       "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -76,6 +110,23 @@
     },
     {
       "key": {
+        "uuid": "2cc36f7d_db56e3b0",
+        "filename": "test/934-load-transform/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T22:21:38Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c818e3_39765d9f",
         "filename": "test/935-non-retransformable/src-ex/TestMain.java",
         "patchSetId": 5
@@ -87,6 +138,23 @@
       "writtenOn": "2017-01-26T22:01:34Z",
       "side": 1,
       "message": "I think its to avoid using partial compilation?",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e8cf1f7_29ba13a1",
+        "filename": "test/935-non-retransformable/src-ex/TestMain.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-01-26T22:21:38Z",
+      "side": 1,
+      "message": "correct. We could have done it that way too.",
       "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
