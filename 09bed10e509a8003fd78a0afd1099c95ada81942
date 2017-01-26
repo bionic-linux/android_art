@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "a29dbfdd_d5c83fb7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2601,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-26T10:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 2601,
+        "startChar": 8,
+        "endLine": 2601,
+        "endChar": 20
+      },
+      "revId": "09bed10e509a8003fd78a0afd1099c95ada81942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af98bc30_bc25ece0",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -71,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "9fe63d75_10cb9c5b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2602,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-26T10:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 2602,
+        "startChar": 16,
+        "endLine": 2602,
+        "endChar": 35
+      },
+      "revId": "09bed10e509a8003fd78a0afd1099c95ada81942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23e8f512_60d987a0",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -82,6 +128,29 @@
       "writtenOn": "2017-01-26T09:34:26Z",
       "side": 1,
       "message": "I suggest rewording this.\n\n\"This will throw a NoClassDefFoundException on API levels 26 and above. PLEASE FIX - runtime behaviour is undefined for such class loaders\".",
+      "range": {
+        "startLine": 2606,
+        "startChar": 18,
+        "endLine": 2607,
+        "endChar": 72
+      },
+      "revId": "09bed10e509a8003fd78a0afd1099c95ada81942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b087fd3f_b10e172b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2607,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-01-26T10:42:58Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 2606,
         "startChar": 18,
