@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7cd7f794_644dfdc2",
+        "filename": "compiler/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-26T22:01:34Z",
+      "side": 1,
+      "message": "Are these well-ordered? Perhaps we can just implement operator\u003c for DexToDexCompilationLevel and then use std::min",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30dfe7ce_88406710",
         "filename": "compiler/driver/compiler_driver.cc",
         "patchSetId": 5
@@ -19,6 +36,57 @@
         "endLine": 535,
         "endChar": 68
       },
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1cacf78_b9172a61",
+        "filename": "test/934-load-transform/run",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-26T22:01:34Z",
+      "side": 1,
+      "message": "Perhaps include a comment explaining why it\u0027s no-app-image?",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3ece2c6_8ad47736",
+        "filename": "test/934-load-transform/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-26T22:01:34Z",
+      "side": 1,
+      "message": "nit: Include comment saying its for running on RI?",
+      "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82c818e3_39765d9f",
+        "filename": "test/935-non-retransformable/src-ex/TestMain.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-26T22:01:34Z",
+      "side": 1,
+      "message": "I think its to avoid using partial compilation?",
       "revId": "0629ecbed070dc71d7fc94f288e641f4400b73b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
