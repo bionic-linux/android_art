@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe3e08c8_2f95b305",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-26T23:06:00Z",
+      "side": 1,
+      "message": "Of course, good catch. So that actually means app dex file you don\u0027t need to unquicken.\n\nBut now I wonder. What about boot classpath classes that the developer would want to redefine, then? The JIT is not going to help us here.\n\nWe might need to do in-place unquickening for boot.oat and friends.",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 3
+      },
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc8f4ac4_de7cec23",
+        "filename": "test/934-load-transform/run",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-26T23:06:00Z",
+      "side": 1,
+      "message": "Should --jmvti just include --no-app-image?",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 41
+      },
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
