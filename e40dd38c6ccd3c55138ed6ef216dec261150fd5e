@@ -79,6 +79,23 @@
       "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a8cc96_9e7f05da",
+        "filename": "test/934-load-transform/run",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-01-26T23:34:42Z",
+      "side": 1,
+      "message": "Why exactly does it need --no-app-image? I don\u0027t think it was ever explained anywhere.",
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
