@@ -529,7 +529,11 @@ static optimizer::DexToDexCompilationLevel GetDexToDexCompilationLevel(
   // We store the verification information in the class status in the oat file, which the linker
   // can validate (checksums) and use to skip load-time verification. It is thus safe to
   // optimize when a class has been fully verified before.
-  if (klass->IsVerified()) {
+  if (driver.GetCompilerOptions().GetDebuggable()) {
+    // We are debuggable so definitions of classes might be changed. We don't want to do any
+    // optimizations that could break that.
+    return optimizer::DexToDexCompilationLevel::kDontDexToDexCompile;
+  } else if (klass->IsVerified()) {
     // Class is verified so we can enable DEX-to-DEX compilation for performance.
     return optimizer::DexToDexCompilationLevel::kOptimize;
   } else if (klass->IsCompileTimeVerified()) {
@@ -607,7 +611,8 @@ static void CompileMethod(Thread* self,
           dex_file,
           (verified_method != nullptr)
               ? dex_to_dex_compilation_level
-              : optimizer::DexToDexCompilationLevel::kRequired);
+              : optimizer::MinCompilationLevel(optimizer::DexToDexCompilationLevel::kRequired,
+                                               dex_to_dex_compilation_level));
     }
   } else if ((access_flags & kAccNative) != 0) {
     // Are we extracting only and have support for generic JNI down calls?

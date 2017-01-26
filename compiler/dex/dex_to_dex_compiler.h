@@ -34,6 +34,9 @@ enum class DexToDexCompilationLevel {
 };
 std::ostream& operator<<(std::ostream& os, const DexToDexCompilationLevel& rhs);
 
+DexToDexCompilationLevel MinCompilationLevel(DexToDexCompilationLevel a,
+                                             DexToDexCompilationLevel b);
+
 CompiledMethod* ArtCompileDEX(CompilerDriver* driver,
                               const DexFile::CodeItem* code_item,
                               uint32_t access_flags,

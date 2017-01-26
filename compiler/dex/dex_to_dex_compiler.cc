@@ -323,6 +323,19 @@ void DexCompiler::CompileInvokeVirtual(Instruction* inst, uint32_t dex_pc,
   quickened_info_.push_back(QuickenedInfo(dex_pc, method_idx));
 }
 
+DexToDexCompilationLevel MinCompilationLevel(DexToDexCompilationLevel a,
+                                             DexToDexCompilationLevel b) {
+  if (a == DexToDexCompilationLevel::kDontDexToDexCompile ||
+      b == DexToDexCompilationLevel::kDontDexToDexCompile) {
+    return DexToDexCompilationLevel::kDontDexToDexCompile;
+  } else if (a == DexToDexCompilationLevel::kRequired ||
+             b == DexToDexCompilationLevel::kRequired) {
+    return DexToDexCompilationLevel::kRequired;
+  } else {
+    return DexToDexCompilationLevel::kOptimize;
+  }
+}
+
 CompiledMethod* ArtCompileDEX(
     CompilerDriver* driver,
     const DexFile::CodeItem* code_item,
