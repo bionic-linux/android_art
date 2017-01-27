@@ -96,6 +96,23 @@
       "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9e04d07_d24596ca",
+        "filename": "test/934-load-transform/run",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-01-27T10:14:03Z",
+      "side": 1,
+      "message": "Sure, but given the jvmti feature is incompatible with app images, I can\u0027t find a reason why we would test that case. Hence just making sure our tests never test it by adding --no-app-image to --jvmti.",
+      "revId": "e40dd38c6ccd3c55138ed6ef216dec261150fd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
