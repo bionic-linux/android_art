@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Vladimir Marko <vmarko@google.com>
+Verified+1: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Mon, 30 Jan 2017 09:05:00 +0000
+Reviewed-on: https://android-review.googlesource.com/328886
+Project: platform/art
+Branch: refs/heads/master
