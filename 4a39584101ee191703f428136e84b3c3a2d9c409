@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7c9e850_053aa575",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-31T15:46:48Z",
+      "side": 1,
+      "message": "Nit: That #include of a system header should be listed before local headers (i.e. before line 19).",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 24
+      },
+      "revId": "4a39584101ee191703f428136e84b3c3a2d9c409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b94a3_8d6bd7b2",
+        "filename": "compiler/optimizing/stack_map_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-31T15:46:48Z",
+      "side": 1,
+      "message": "Maybe add a test case containing a duplicated stack mask?",
+      "revId": "4a39584101ee191703f428136e84b3c3a2d9c409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed904787_0715a06c",
+        "filename": "runtime/memory_region.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-01-31T15:46:48Z",
+      "side": 1,
+      "message": "Maybe remove art::MemoryRegion::start and replace its uses with art::MemoryRegion::begin?",
+      "range": {
+        "startLine": 56,
+        "startChar": 11,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "4a39584101ee191703f428136e84b3c3a2d9c409",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa943faa_b8af610b",
         "filename": "runtime/stack_map.h",
         "patchSetId": 3
