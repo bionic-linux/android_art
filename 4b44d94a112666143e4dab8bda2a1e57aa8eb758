@@ -22,6 +22,30 @@
       "revId": "4b44d94a112666143e4dab8bda2a1e57aa8eb758",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06719452_0b955158",
+        "filename": "build/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-02-03T23:42:49Z",
+      "side": 1,
+      "message": "No idea how that got there.  Removed.",
+      "parentUuid": "694ed029_1c73cda7",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 1
+      },
+      "revId": "4b44d94a112666143e4dab8bda2a1e57aa8eb758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
