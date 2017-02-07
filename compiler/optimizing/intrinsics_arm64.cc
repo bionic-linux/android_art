@@ -115,13 +115,18 @@ class IntrinsicSlowPathARM64 : public SlowPathCodeARM64 {
 
     MoveArguments(invoke_, codegen);
 
-    if (invoke_->IsInvokeStaticOrDirect()) {
-      codegen->GenerateStaticOrDirectCall(invoke_->AsInvokeStaticOrDirect(),
-                                          LocationFrom(kArtMethodRegister));
-    } else {
-      codegen->GenerateVirtualCall(invoke_->AsInvokeVirtual(), LocationFrom(kArtMethodRegister));
+    {
+      // Ensure that between the BLR (emitted by Generate*Call) and RecordPcInfo there
+      // are no pools emitted.
+      vixl::EmissionCheckScope guard(codegen->GetVIXLAssembler(), kInvokeCodeMarginSizeInBytes);
+      if (invoke_->IsInvokeStaticOrDirect()) {
+        codegen->GenerateStaticOrDirectCall(invoke_->AsInvokeStaticOrDirect(),
+                                            LocationFrom(kArtMethodRegister));
+      } else {
+        codegen->GenerateVirtualCall(invoke_->AsInvokeVirtual(), LocationFrom(kArtMethodRegister));
+      }
+      codegen->RecordPcInfo(invoke_, invoke_->GetDexPc(), this);
     }
-    codegen->RecordPcInfo(invoke_, invoke_->GetDexPc(), this);
 
     // Copy the result back to the expected output.
     Location out = invoke_->GetLocations()->Out();
@@ -2825,9 +2830,13 @@ void IntrinsicCodeGeneratorARM64::VisitReferenceGetReferent(HInvoke* invoke) {
   }
   __ Cbnz(temp0, slow_path->GetEntryLabel());
 
-  // Fast path.
-  __ Ldr(out, HeapOperand(obj, mirror::Reference::ReferentOffset().Int32Value()));
-  codegen_->MaybeRecordImplicitNullCheck(invoke);
+  {
+    // Ensure that between load and MaybeRecordImplicitNullCheck there are no pools emitted.
+    vixl::EmissionCheckScope guard(codegen_->GetVIXLAssembler(), kMaxMacroInstructionSizeInBytes);
+    // Fast path.
+    __ Ldr(out, HeapOperand(obj, mirror::Reference::ReferentOffset().Int32Value()));
+    codegen_->MaybeRecordImplicitNullCheck(invoke);
+  }
   codegen_->GetAssembler()->MaybeUnpoisonHeapReference(out);
   __ Bind(slow_path->GetExitLabel());
 }

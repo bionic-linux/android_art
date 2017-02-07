@@ -43,6 +43,11 @@ class CodeGeneratorARM64;
 // Use a local definition to prevent copying mistakes.
 static constexpr size_t kArm64WordSize = static_cast<size_t>(kArm64PointerSize);
 
+// These constants are used as an approximate margin when blocking veneer and literal pools
+// when required.
+constexpr static int kMaxMacroInstructionSizeInBytes = 100;
+constexpr static int kInvokeCodeMarginSizeInBytes = 2048;
+
 static const vixl::aarch64::Register kParameterCoreRegisters[] = {
   vixl::aarch64::x1,
   vixl::aarch64::x2,
