@@ -1,0 +1,440 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978c59d3_fa071bff",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Since we have the locations for \"left\", \"right\", \"out\", why not use RegisterFrom()?",
+      "range": {
+        "startLine": 6835,
+        "startChar": 35,
+        "endLine": 6835,
+        "endChar": 66
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5187a09c_8715d4f6",
+        "filename": "compiler/optimizing/common_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "I\u0027d rather we do not diverge between the old and vixl codegens just yet. Can you change this to a \"TODO\" comment and split the implementation out to a separate CL?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b6c9eaa_fe01e019",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Why? I\u0027d expect shift_amount !\u003d 0.",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9e73b12_cffe9122",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "/* do_merge */ (also add to the ARM64 simplifier)",
+      "range": {
+        "startLine": 41,
+        "startChar": 55,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "624042d7_aee4bda3",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "/* do_merge */",
+      "range": {
+        "startLine": 45,
+        "startChar": 55,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11ca840b_6234d568",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Use \"InstructionSet isa\" as in TryCombineMultiplyAccumulate(), do not provide a default argument.",
+      "range": {
+        "startLine": 41,
+        "startChar": 51,
+        "endLine": 41,
+        "endChar": 71
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f328ab7e_0a505b76",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Please add a test that there is no DataProcWithShifterOp on ARM.",
+      "range": {
+        "startLine": 316,
+        "startChar": 21,
+        "endLine": 316,
+        "endChar": 30
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6ec18ae_3270adf3",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "No DataProcWithShifterOp on ARM.",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 64
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02d86556_1dd19d5d",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "No DataProcWithShifterOp on ARM.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 64
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a241c3b_98b5b09f",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "And an environment use for this?",
+      "range": {
+        "startLine": 422,
+        "startChar": 25,
+        "endLine": 422,
+        "endChar": 48
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53d426fe_72fbc0cd",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "I see 6 DataProcWithShifterOp opportunities on ARM. Please add \"CHECK-NOT: DataProcWithShifterOp\" to the end of the \"CHECK: DataProcWithShifterOp\" tests for both ARM and ARM64.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 65
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ece0252a_9f70c63f",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "No DataProcWithShifterOp on ARM.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 470,
+        "endChar": 64
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b15a9b9_99018e73",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "And an environment use for this?",
+      "range": {
+        "startLine": 485,
+        "startChar": 25,
+        "endLine": 485,
+        "endChar": 50
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d487aef_74e43d9f",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "6 shifter-ops on ARM?",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 64
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad0d573b_39b0ece8",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "7 shifter-ops on ARM?",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 64
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8b3f783_db2c6bba",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "8 shifter-ops on ARM?",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 588,
+        "endChar": 65
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "127ed119_8dd643db",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Maybe same comment as below about shifts by 32? Do we want to terminate this with a CHECK-NOT?",
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fcbae47_1d0808d7",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Terminate with CHECK-NOT?",
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "812fa0e0_0cda716f",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Terminate with CHECK-NOT?",
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26731db1_042e28ad",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T14:14:54Z",
+      "side": 1,
+      "message": "Terminate with CHECK-NOT?",
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
