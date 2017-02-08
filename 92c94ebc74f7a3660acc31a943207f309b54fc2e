@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ce1ff68f_505a6c45",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T17:46:31Z",
+      "side": 1,
+      "message": "Please add a comment about this decision.",
+      "parentUuid": "e201c154_82dd9871",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9e73b12_cffe9122",
         "filename": "compiler/optimizing/instruction_simplifier_arm.h",
         "patchSetId": 1
