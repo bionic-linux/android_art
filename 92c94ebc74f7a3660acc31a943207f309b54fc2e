@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5adbe173_024ffd2b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6840,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T16:02:46Z",
+      "side": 1,
+      "message": "For ADD/shift\u003d2, this generates the 16-byte sequence\n\n    lsr  ip, second_hi, #2\n    orr  ip, second_lo, lsr, #30\n    adds out_lo, left_lo, lsl #2\n    adc  out_hi, left_hi, ip\n\n. Why not the 12-byte sequence\n\n    adds out_lo, left_lo, second_lo, lsl #2\n    adc  out_hi, left_hi, second_lo, lsr, #30\n    add  out_hi, out_hi, second_hi, lsl #2\n\n? Maybe because this requires kOutputOverlap and may not necessarily be faster?",
+      "range": {
+        "startLine": 6833,
+        "startChar": 0,
+        "endLine": 6840,
+        "endChar": 33
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "978c59d3_fa071bff",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 1
@@ -83,6 +106,30 @@
       "side": 1,
       "message": "I was following the logic in InstructionCodeGeneratorARM::HandleShift() (line 3966) - the shift by 1 sets the flags, and there is a further operation dependent on them, but merging the shift into a subsequent instruction will not have that side effect.",
       "parentUuid": "0b6c9eaa_fe01e019",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "960c8491_870e587f",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-08T16:02:46Z",
+      "side": 1,
+      "message": "That is a special case optimization, the other path can handle shift_amount\u003d1 correctly. The question is whether we expect such code to be faster when merged into the shifter-op instruction.",
+      "parentUuid": "59df4b84_f3a93440",
       "range": {
         "startLine": 81,
         "startChar": 45,
