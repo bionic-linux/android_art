@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "e201c154_82dd9871",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-08T17:13:39Z",
+      "side": 1,
+      "message": "Exactly, the number of instructions is always 4, and on Cortex-A57 one out of the first two of them utilizes the regular integer pipelines, while the other - the integer multi-cycle one (the other two instructions are exactly the same). However, the usage of the IP register guarantees a 32-bit encoding, so I have decided to leave this case as it is.",
+      "parentUuid": "960c8491_870e587f",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9e73b12_cffe9122",
         "filename": "compiler/optimizing/instruction_simplifier_arm.h",
         "patchSetId": 1
