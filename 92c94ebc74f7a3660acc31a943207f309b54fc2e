@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "59df4b84_f3a93440",
+        "filename": "compiler/optimizing/instruction_simplifier_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-08T15:22:55Z",
+      "side": 1,
+      "message": "I was following the logic in InstructionCodeGeneratorARM::HandleShift() (line 3966) - the shift by 1 sets the flags, and there is a further operation dependent on them, but merging the shift into a subsequent instruction will not have that side effect.",
+      "parentUuid": "0b6c9eaa_fe01e019",
+      "range": {
+        "startLine": 81,
+        "startChar": 45,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9e73b12_cffe9122",
         "filename": "compiler/optimizing/instruction_simplifier_arm.h",
         "patchSetId": 1
