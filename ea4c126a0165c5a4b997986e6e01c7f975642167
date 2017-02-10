@@ -22,6 +22,30 @@
       "revId": "ea4c126a0165c5a4b997986e6e01c7f975642167",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c4d3d13_1b0f7d2f",
+        "filename": "runtime/entrypoints/quick/quick_dexcache_entrypoints.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-10T13:11:35Z",
+      "side": 1,
+      "message": "It\u0027s shared with artResolveStringFromCode() below.",
+      "parentUuid": "cf158ba1_aab20849",
+      "range": {
+        "startLine": 56,
+        "startChar": 34,
+        "endLine": 56,
+        "endChar": 39
+      },
+      "revId": "ea4c126a0165c5a4b997986e6e01c7f975642167",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
