@@ -204,6 +204,7 @@ class ReadBarrierSystemArrayCopySlowPathARMVIXL : public SlowPathCodeARMVIXL {
 IntrinsicLocationsBuilderARMVIXL::IntrinsicLocationsBuilderARMVIXL(CodeGeneratorARMVIXL* codegen)
     : arena_(codegen->GetGraph()->GetArena()),
       assembler_(codegen->GetAssembler()),
+      codegen_(codegen),
       features_(codegen->GetInstructionSetFeatures()) {}
 
 bool IntrinsicLocationsBuilderARMVIXL::TryDispatch(HInvoke* invoke) {
@@ -1877,6 +1878,11 @@ void IntrinsicLocationsBuilderARMVIXL::VisitSystemArrayCopy(HInvoke* invoke) {
   // The only read barrier implementation supporting the
   // SystemArrayCopy intrinsic is the Baker-style read barriers.
   if (kEmitCompilerReadBarrier && !kUseBakerReadBarrier) {
+    return;
+  }
+
+  // Compile for code size, for AOT compiled APP code.
+  if (!codegen_->GetCompilerOptions().IsBootImage() && !Runtime::Current()->UseJitCompilation()) {
     return;
   }
 

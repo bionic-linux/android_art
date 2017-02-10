@@ -2240,6 +2240,11 @@ void IntrinsicLocationsBuilderARM64::VisitSystemArrayCopy(HInvoke* invoke) {
     return;
   }
 
+  // Compile for code size, for AOT compiled APP code.
+  if (!codegen_->GetCompilerOptions().IsBootImage() && !Runtime::Current()->UseJitCompilation()) {
+    return;
+  }
+
   // Check to see if we have known failures that will cause us to have to bail out
   // to the runtime, and just generate the runtime call directly.
   HIntConstant* src_pos = invoke->InputAt(1)->AsIntConstant();

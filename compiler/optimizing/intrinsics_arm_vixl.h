@@ -48,6 +48,7 @@ INTRINSICS_LIST(OPTIMIZING_INTRINSICS)
  private:
   ArenaAllocator* arena_;
   ArmVIXLAssembler* assembler_;
+  const CodeGeneratorARMVIXL* codegen_;
   const ArmInstructionSetFeatures& features_;
 
   DISALLOW_COPY_AND_ASSIGN(IntrinsicLocationsBuilderARMVIXL);

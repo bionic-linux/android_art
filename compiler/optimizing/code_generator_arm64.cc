@@ -3980,7 +3980,7 @@ void InstructionCodeGeneratorARM64::VisitInvokeInterface(HInvokeInterface* invok
 }
 
 void LocationsBuilderARM64::VisitInvokeVirtual(HInvokeVirtual* invoke) {
-  IntrinsicLocationsBuilderARM64 intrinsic(GetGraph()->GetArena());
+  IntrinsicLocationsBuilderARM64 intrinsic(GetGraph()->GetArena(), codegen_);
   if (intrinsic.TryDispatch(invoke)) {
     return;
   }
@@ -3993,7 +3993,7 @@ void LocationsBuilderARM64::VisitInvokeStaticOrDirect(HInvokeStaticOrDirect* inv
   // art::PrepareForRegisterAllocation.
   DCHECK(!invoke->IsStaticWithExplicitClinitCheck());
 
-  IntrinsicLocationsBuilderARM64 intrinsic(GetGraph()->GetArena());
+  IntrinsicLocationsBuilderARM64 intrinsic(GetGraph()->GetArena(), codegen_);
   if (intrinsic.TryDispatch(invoke)) {
     return;
   }
