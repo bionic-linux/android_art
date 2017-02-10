@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7558e5b0_8fd8f109",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T13:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d132e68_900de7f5",
+      "range": {
+        "startLine": 1267,
+        "startChar": 0,
+        "endLine": 1273,
+        "endChar": 5
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c4e42ce_b67c020e",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-10T10:34:13Z",
       "side": 1,
       "message": "indentation is off: please move this to the line above.",
+      "range": {
+        "startLine": 1648,
+        "startChar": 8,
+        "endLine": 1648,
+        "endChar": 9
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffe35d82_c0d6379f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T13:28:13Z",
+      "side": 1,
+      "message": "The intent was not to have a braced block for the whole case part but only for the scope. For example kPrimByte case: SFBX is outside the scope; so all the cases have consistent indentation.",
+      "parentUuid": "1c4e42ce_b67c020e",
       "range": {
         "startLine": 1648,
         "startChar": 8,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "ff32fb52_20b5438e",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4182,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T13:28:13Z",
+      "side": 1,
+      "message": "To do that we will have to change the target independent interface \"GenerateStaticOrDirectCall\" and \"GenerateVirtualCall\": these functions are called from codegen and intrinsics slow path; RecordPc afterwards acts different:\n                                            \n1. codegen-\u003eRecordPcInfo(invoke_, invoke_-\u003eGetDexPc(), this);\n2. codegen_-\u003eRecordPcInfo(invoke, invoke-\u003eGetDexPc());",
+      "parentUuid": "2ea8648f_b36531cc",
+      "range": {
+        "startLine": 4182,
+        "startChar": 11,
+        "endLine": 4182,
+        "endChar": 23
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c729d7e4_970fe98b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
@@ -142,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "bb571517_6ab2d793",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4230,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T13:28:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c729d7e4_970fe98b",
+      "range": {
+        "startLine": 4230,
+        "startChar": 6,
+        "endLine": 4230,
+        "endChar": 13
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2124a22_dc6acbcb",
         "filename": "compiler/optimizing/code_generator_arm64.h",
         "patchSetId": 2
@@ -153,6 +249,30 @@
       "writtenOn": "2017-02-10T10:34:13Z",
       "side": 1,
       "message": "are?",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca31171f_f29528e6",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T13:28:13Z",
+      "side": 1,
+      "message": "changed the comment.",
+      "parentUuid": "d2124a22_dc6acbcb",
       "range": {
         "startLine": 47,
         "startChar": 3,
