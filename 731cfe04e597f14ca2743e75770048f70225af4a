@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4304941b_69cec659",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T15:18:10Z",
+      "side": 1,
+      "message": "Oh, the scope originally was named AssemblyAccurateScope, so this was a copy-pasted mismatch. Changed.",
+      "parentUuid": "b6a3709e_9f17b47c",
+      "range": {
+        "startLine": 1269,
+        "startChar": 25,
+        "endLine": 1269,
+        "endChar": 28
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "390e5d74_93554a63",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-10T14:44:29Z",
       "side": 1,
       "message": "store",
+      "range": {
+        "startLine": 1762,
+        "startChar": 25,
+        "endLine": 1762,
+        "endChar": 29
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d83b6293_94f135db",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T15:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "390e5d74_93554a63",
       "range": {
         "startLine": 1762,
         "startChar": 25,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9f790d14_08a18103",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T15:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b6bd23f_b53cd825",
+      "range": {
+        "startLine": 988,
+        "startChar": 25,
+        "endLine": 988,
+        "endChar": 51
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cc6ac90_e27b925d",
         "filename": "compiler/optimizing/intrinsics_arm64.cc",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-10T14:44:29Z",
       "side": 1,
       "message": "…and pass `invoke` instead of `nullptr` here\n\nAnd then remove the assertion\n\n  DCHECK(!needs_null_check || instruction !\u003d nullptr);\n\nin CodeGeneratorARM64::StoreRelease on line 1754 in compiler/optimizing/code_generator_arm64.cc.",
+      "range": {
+        "startLine": 1015,
+        "startChar": 28,
+        "endLine": 1015,
+        "endChar": 35
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d006ed5_e5b1f72f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T15:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc6ac90_e27b925d",
       "range": {
         "startLine": 1015,
         "startChar": 28,
