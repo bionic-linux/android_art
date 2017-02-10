@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6a3709e_9f17b47c",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-10T14:44:29Z",
+      "side": 1,
+      "message": "BTW, why is it `aas` and not `eas` (or even `scope`)?",
+      "range": {
+        "startLine": 1269,
+        "startChar": 25,
+        "endLine": 1269,
+        "endChar": 28
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "390e5d74_93554a63",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1762,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-10T14:44:29Z",
+      "side": 1,
+      "message": "store",
+      "range": {
+        "startLine": 1762,
+        "startChar": 25,
+        "endLine": 1762,
+        "endChar": 29
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b6bd23f_b53cd825",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-10T14:44:29Z",
+      "side": 1,
+      "message": "I would pass the instruction (`HInvoke* invoke`) instead of the locations (`LocationSummary* locations`) here…",
+      "range": {
+        "startLine": 988,
+        "startChar": 25,
+        "endLine": 988,
+        "endChar": 51
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc6ac90_e27b925d",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-10T14:44:29Z",
+      "side": 1,
+      "message": "…and pass `invoke` instead of `nullptr` here\n\nAnd then remove the assertion\n\n  DCHECK(!needs_null_check || instruction !\u003d nullptr);\n\nin CodeGeneratorARM64::StoreRelease on line 1754 in compiler/optimizing/code_generator_arm64.cc.",
+      "range": {
+        "startLine": 1015,
+        "startChar": 28,
+        "endLine": 1015,
+        "endChar": 35
+      },
+      "revId": "731cfe04e597f14ca2743e75770048f70225af4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
