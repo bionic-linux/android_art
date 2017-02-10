@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "59026a20_37bfad80",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4182,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-02-10T11:33:54Z",
+      "side": 1,
+      "message": "Recording the pc doesn\u0027t happen within the scope but when we return from the function. BLR must be a last instruction in GenerateStaticOrDirectCall, otherwise recording will be incorrect.",
+      "parentUuid": "5d3a56f4_962b81ae",
+      "range": {
+        "startLine": 4182,
+        "startChar": 11,
+        "endLine": 4182,
+        "endChar": 23
+      },
+      "revId": "0908491abf2571f9373faf15183efa7a213aed6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c729d7e4_970fe98b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 2
