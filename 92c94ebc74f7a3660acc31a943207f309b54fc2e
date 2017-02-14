@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37a95d60_9f8acfa2",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6840,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-14T14:24:25Z",
+      "side": 1,
+      "message": "Thanks for the suggestion! I see two potential issues with overlap (i.e. ADDS may overwrite second_lo, and ADC may overwrite second_hi), so I can\u0027t work around them by adding a move to IP depending on the register allocator\u0027s decision. Furthermore, on Cortex-A57 and A72 all instructions in your suggestion will use the integer multi-cycle pipeline, while in the original the first and last instructions will execute on the regular integer pipelines. So, I\u0027d rather keep it that way; however, your idea is applicable to ORR without the overlap issue.",
+      "parentUuid": "5adbe173_024ffd2b",
+      "range": {
+        "startLine": 6833,
+        "startChar": 0,
+        "endLine": 6840,
+        "endChar": 33
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "978c59d3_fa071bff",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-08T14:14:54Z",
       "side": 1,
       "message": "Since we have the locations for \"left\", \"right\", \"out\", why not use RegisterFrom()?",
+      "range": {
+        "startLine": 6835,
+        "startChar": 35,
+        "endLine": 6835,
+        "endChar": 66
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1975356_fb1ea264",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-14T14:24:25Z",
+      "side": 1,
+      "message": "I tend to write it like this because the alternative introduces unnecessary dependencies on variables.",
+      "parentUuid": "978c59d3_fa071bff",
       "range": {
         "startLine": 6835,
         "startChar": 35,
