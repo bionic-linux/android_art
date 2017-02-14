@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00620796_dbbb28fd",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6840,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-14T14:52:28Z",
+      "side": 1,
+      "message": "kOutputOverlap ensures that the live range of the output overlaps the live ranges of inputs, so they will get different registers.\n\nBut if you want to keep the bigger code for performance reasons, that\u0027s fine with me.",
+      "parentUuid": "37a95d60_9f8acfa2",
+      "range": {
+        "startLine": 6833,
+        "startChar": 0,
+        "endLine": 6840,
+        "endChar": 33
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "978c59d3_fa071bff",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I tend to write it like this because the alternative introduces unnecessary dependencies on variables.",
       "parentUuid": "978c59d3_fa071bff",
+      "range": {
+        "startLine": 6835,
+        "startChar": 35,
+        "endLine": 6835,
+        "endChar": 66
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9ed1085_2d3d679e",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-14T14:52:28Z",
+      "side": 1,
+      "message": "It is a bit inconsistent to use InputRegisterAt() here and LowRegisterFrom() in the kPrimLong path. We should either use those locations or get rid of the local variables entirely.",
+      "parentUuid": "b1975356_fb1ea264",
       "range": {
         "startLine": 6835,
         "startChar": 35,
