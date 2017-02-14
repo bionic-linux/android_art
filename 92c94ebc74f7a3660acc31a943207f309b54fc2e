@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "381cd5ef_868e732c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6840,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-14T15:12:44Z",
+      "side": 1,
+      "message": "Yes, the main reason for this change is improving performance, so I don\u0027t want to put unnecessary constraints on the register allocator.\n\nI realized, though, that your idea is applicable to EOR as well.",
+      "parentUuid": "00620796_dbbb28fd",
+      "range": {
+        "startLine": 6833,
+        "startChar": 0,
+        "endLine": 6840,
+        "endChar": 33
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "978c59d3_fa071bff",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 1
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "It is a bit inconsistent to use InputRegisterAt() here and LowRegisterFrom() in the kPrimLong path. We should either use those locations or get rid of the local variables entirely.",
       "parentUuid": "b1975356_fb1ea264",
+      "range": {
+        "startLine": 6835,
+        "startChar": 35,
+        "endLine": 6835,
+        "endChar": 66
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2acf0e03_e1e67a14",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6835,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-14T15:12:44Z",
+      "side": 1,
+      "message": "Hm, this function is getting a little long anyway, so I will rewrite it.",
+      "parentUuid": "b9ed1085_2d3d679e",
       "range": {
         "startLine": 6835,
         "startChar": 35,
