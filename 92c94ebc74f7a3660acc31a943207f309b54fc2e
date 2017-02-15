@@ -543,6 +543,30 @@
     },
     {
       "key": {
+        "uuid": "ce1dadb5_81c4cc5e",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-15T14:23:30Z",
+      "side": 1,
+      "message": "Got it. Actually, the reason is that there is an environment use for the implicit \"(long) a\". I\u0027ll update the comment.",
+      "parentUuid": "2b5224c3_c63d1fb9",
+      "range": {
+        "startLine": 422,
+        "startChar": 25,
+        "endLine": 422,
+        "endChar": 48
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d426fe_72fbc0cd",
         "filename": "test/551-checker-shifter-operand/src/Main.java",
         "patchSetId": 1
@@ -600,6 +624,30 @@
       "writtenOn": "2017-02-08T14:14:54Z",
       "side": 1,
       "message": "And an environment use for this?",
+      "range": {
+        "startLine": 485,
+        "startChar": 25,
+        "endLine": 485,
+        "endChar": 50
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c81dc24_3a1624aa",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-15T14:23:30Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "6b15a9b9_99018e73",
       "range": {
         "startLine": 485,
         "startChar": 25,
