@@ -495,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "9985945c_91f2ba47",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-02-15T13:20:03Z",
+      "side": 1,
+      "message": "I am not sure that I understand you; the function call will not be inlined, so would you, please, clarify why we need an environment use for it?",
+      "parentUuid": "6a241c3b_98b5b09f",
+      "range": {
+        "startLine": 422,
+        "startChar": 25,
+        "endLine": 422,
+        "endChar": 48
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d426fe_72fbc0cd",
         "filename": "test/551-checker-shifter-operand/src/Main.java",
         "patchSetId": 1
