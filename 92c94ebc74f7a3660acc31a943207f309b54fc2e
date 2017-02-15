@@ -519,6 +519,30 @@
     },
     {
       "key": {
+        "uuid": "2b5224c3_c63d1fb9",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-15T13:38:31Z",
+      "side": 1,
+      "message": "\"$noinline$charToLong(b)\" returns long, so the addition \"a + $noinline$charToLong(b)\" is \"int+long\" and could be merged into DataProcWithShifterOp. There must be a reason why that\u0027s not happening... is that because there\u0027s an environment use for \"$noinline$charToLong(b)\"?",
+      "parentUuid": "9985945c_91f2ba47",
+      "range": {
+        "startLine": 422,
+        "startChar": 25,
+        "endLine": 422,
+        "endChar": 48
+      },
+      "revId": "92c94ebc74f7a3660acc31a943207f309b54fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53d426fe_72fbc0cd",
         "filename": "test/551-checker-shifter-operand/src/Main.java",
         "patchSetId": 1
