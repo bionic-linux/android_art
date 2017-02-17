@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31269880_20acfa6f",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-02-17T18:30:58Z",
+      "side": 1,
+      "message": "It\u0027d be preferable to add this condition to the DCHECK on the caller side in VisitObjectsInternalRegionSpace and to keep the IsMovingGCDisabled logic simple?",
+      "range": {
+        "startLine": 741,
+        "startChar": 40,
+        "endLine": 741,
+        "endChar": 69
+      },
+      "revId": "183009a616b9d0d77591651f8e97f48ed4d924db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
