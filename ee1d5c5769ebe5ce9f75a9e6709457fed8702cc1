@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b4f4221_cfddaa5b",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7010,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-17T13:28:36Z",
+      "side": 1,
+      "message": "Please align with code_generator_arm.cc where you\u0027re doing an \"} else {\".",
+      "range": {
+        "startLine": 7009,
+        "startChar": 0,
+        "endLine": 7010,
+        "endChar": 3
+      },
+      "revId": "ee1d5c5769ebe5ce9f75a9e6709457fed8702cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e5a26c2_9baf5e23",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-17T13:28:36Z",
+      "side": 1,
+      "message": "The second CHECK-NOT is useless.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 61
+      },
+      "revId": "ee1d5c5769ebe5ce9f75a9e6709457fed8702cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a821622a_09229b91",
+        "filename": "test/551-checker-shifter-operand/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-02-17T13:28:36Z",
+      "side": 1,
+      "message": "Useless.",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 61
+      },
+      "revId": "ee1d5c5769ebe5ce9f75a9e6709457fed8702cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
