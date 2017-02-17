@@ -5776,31 +5776,120 @@ void CodeGeneratorARM64::GenerateReferenceLoadWithBakerReadBarrier(HInstruction*
   MacroAssembler* masm = GetVIXLAssembler();
   UseScratchRegisterScope temps(masm);
 
-  // After loading the reference from `obj.field` into `ref`, query
-  // `art::Thread::Current()->GetIsGcMarking()` to decide whether we
-  // need to enter the slow path to mark the reference. This
-  // optimistic strategy (we expect the GC to not be marking most of
-  // the time) does not check `obj`'s lock word (to see if it is a
-  // gray object or not), so may sometimes mark an already marked
-  // object.
+  // Query `art::Thread::Current()->GetIsGcMarking()`, then (still in
+  // the fast path) check the gray bit in the lock word of the
+  // reference's holder (`obj`) to decide whether we need to enter the
+  // slow path to mark the reference.
   //
   // Note that we do not actually check the value of `GetIsGcMarking()`;
   // instead, we load into `temp3` the read barrier mark entry point
   // corresponding to register `ref`. If `temp3` is null, it means
   // that `GetIsGcMarking()` is false, and vice versa.
   //
-  //   HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   temp3 = Thread::Current()->pReadBarrierMarkReg ## root.reg()
   //   if (temp3 != nullptr) {  // <=> Thread::Current()->GetIsGcMarking()
-  //     // Slow path.
-  //     ref = temp3(ref);  // ref = ReadBarrier::Mark(ref);  // Runtime entry point call.
+  //     uint32_t rb_state = Lockword(obj->monitor_).ReadBarrierState();
+  //     lfence;  // Load fence or artificial data dependency to prevent load-load reordering
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
+  //     bool is_gray = (rb_state == ReadBarrier::GrayState());
+  //     if (is_gray) {
+  //       // Slow path.
+  //       ref = temp3(ref);  // ref = ReadBarrier::Mark(ref);  // Runtime entry point call.
+  //     }
+  //   } else {
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   }
 
+  DCHECK(obj.IsW());
+  uint32_t monitor_offset = mirror::Object::MonitorOffset().Int32Value();
+  vixl::aarch64::Label gc_is_not_marking, done;
+
+  // First, test the entrypoint (`Thread::Current()->pReadBarrierMarkReg ## ref.reg()`).
+  const int32_t entry_point_offset =
+      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kArm64PointerSize>(ref.reg());
+  Register temp3 = lr;
+  // temp3 = Thread::Current()->pReadBarrierMarkReg ## ref.reg()
+  // Loading the entrypoint does not require a load acquire since it is only changed when
+  // threads are suspended or running a checkpoint.
+  __ Ldr(temp3, MemOperand(tr, entry_point_offset));
+  // The entrypoint is null when the GC is not marking, this prevents one load compared to
+  // checking GetIsGcMarking.
+  __ Cbz(temp3, &gc_is_not_marking);
+
+  // Then, check the gray bit in the lock word of `obj`.
+  {
+    // Ensure that between load and MaybeRecordImplicitNullCheck there are no pools emitted.
+    EmissionCheckScope guard(GetVIXLAssembler(), kMaxMacroInstructionSizeInBytes);
+    // /* int32_t */ monitor = obj->monitor_
+    __ Ldr(temp, HeapOperand(obj, monitor_offset));
+    if (needs_null_check) {
+      MaybeRecordImplicitNullCheck(instruction);
+    }
+  }
+  // /* LockWord */ lock_word = LockWord(monitor)
+  static_assert(sizeof(LockWord) == sizeof(int32_t),
+                "art::LockWord and int32_t have different sizes.");
+
+  // Introduce a dependency on the lock_word including rb_state,
+  // to prevent load-load reordering, and without using
+  // a memory barrier (which would be more expensive).
+  // `obj` is unchanged by this operation, but its value now depends
+  // on `temp`.
+  __ Add(obj.X(), obj.X(), Operand(temp.X(), LSR, 32));
+
+  GenerateRawReferenceLoad(
+      instruction, ref, obj, offset, index, scale_factor, needs_null_check, use_load_acquire);
+
+  // if (rb_state == ReadBarrier::GrayState())
+  //   ref = ReadBarrier::Mark(ref);
+  // Given the numeric representation, it's enough to check the low bit of the rb_state.
+  static_assert(ReadBarrier::WhiteState() == 0, "Expecting white to have value 0");
+  static_assert(ReadBarrier::GrayState() == 1, "Expecting gray to have value 1");
+  __ Tbz(temp, LockWord::kReadBarrierStateShift, &done);
+
+  // Slow path marking the object `ref` when the GC is marking and `obj` is gray
+  // The entrypoint is already loaded in `temp3`.
+  Location temp3_loc = LocationFrom(temp3);
+  SlowPathCodeARM64* slow_path;
+  if (always_update_field) {
+    // ReadBarrierMarkAndUpdateFieldSlowPathARM64 only supports
+    // address of the form `obj + field_offset`, where `obj` is a
+    // register and `field_offset` is a register. Thus `offset` and
+    // `scale_factor` above are expected to be null in this code path.
+    DCHECK_EQ(offset, 0u);
+    DCHECK_EQ(scale_factor, 0u);  /* "times 1" */
+    slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkAndUpdateFieldSlowPathARM64(
+        instruction, ref, obj, /* field_offset */ index, temp, /* entrypoint */ temp3_loc);
+  } else {
+    slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkSlowPathARM64(
+        instruction, ref, /* entrypoint */ temp3_loc);
+  }
+  AddSlowPath(slow_path);
+  __ B(slow_path->GetEntryLabel());
+
+  __ Bind(&gc_is_not_marking);
+  GenerateRawReferenceLoad(
+      instruction, ref, obj, offset, index, scale_factor, needs_null_check, use_load_acquire);
+
+  __ Bind(&done);
+  __ Bind(slow_path->GetExitLabel());
+}
+
+void CodeGeneratorARM64::GenerateRawReferenceLoad(HInstruction* instruction,
+                                                  Location ref,
+                                                  Register obj,
+                                                  uint32_t offset,
+                                                  Location index,
+                                                  size_t scale_factor,
+                                                  bool needs_null_check,
+                                                  bool use_load_acquire) {
+  DCHECK(obj.IsW());
   Primitive::Type type = Primitive::kPrimNot;
   Register ref_reg = RegisterFrom(ref, type);
-  DCHECK(obj.IsW());
 
-  // The reference load.
+  // TODO: Add an EmissionCheckScope guard to ensure that between load
+  // and MaybeRecordImplicitNullCheck there are no pools emitted.
+
   if (index.IsValid()) {
     // Load types involving an "index": ArrayGet,
     // UnsafeGetObject/UnsafeGetObjectVolatile and UnsafeCASObject
@@ -5815,27 +5904,28 @@ void CodeGeneratorARM64::GenerateReferenceLoadWithBakerReadBarrier(HInstruction*
           << instruction->AsInvoke()->GetIntrinsic();
       DCHECK_EQ(offset, 0u);
       DCHECK_EQ(scale_factor, 0u);
-      DCHECK_EQ(needs_null_check, 0u);
-      // /* HeapReference<Object> */ ref = *(obj + index)
+      DCHECK_EQ(needs_null_check, false);
+      // /* HeapReference<mirror::Object> */ ref = *(obj + index)
       MemOperand field = HeapOperand(obj, XRegisterFrom(index));
       LoadAcquire(instruction, ref_reg, field, /* needs_null_check */ false);
     } else {
-      // ArrayGet and UnsafeGetObject intrinsics cases.
-      // /* HeapReference<Object> */ ref = *(obj + offset + (index << scale_factor))
+      // ArrayGet and UnsafeGetObject and UnsafeCASObject intrinsics cases.
+      // /* HeapReference<mirror::Object> */ ref = *(obj + offset + (index << scale_factor))
       if (index.IsConstant()) {
         uint32_t computed_offset = offset + (Int64ConstantFrom(index) << scale_factor);
         Load(type, ref_reg, HeapOperand(obj, computed_offset));
       } else {
-        Register temp2 = temps.AcquireW();
-        __ Add(temp2, obj, offset);
-        Load(type, ref_reg, HeapOperand(temp2, XRegisterFrom(index), LSL, scale_factor));
-        temps.Release(temp2);
+        UseScratchRegisterScope temps(GetVIXLAssembler());
+        Register temp = temps.AcquireW();
+        __ Add(temp, obj, offset);
+        Load(type, ref_reg, HeapOperand(temp, XRegisterFrom(index), LSL, scale_factor));
       }
     }
   } else {
-    // /* HeapReference<Object> */ ref = *(obj + offset)
+    // /* HeapReference<mirror::Object> */ ref = *(obj + offset)
     MemOperand field = HeapOperand(obj, offset);
     if (use_load_acquire) {
+      // A possible implicit null check is handled below.
       LoadAcquire(instruction, ref_reg, field, /* needs_null_check */ false);
     } else {
       Load(type, ref_reg, field);
@@ -5848,36 +5938,6 @@ void CodeGeneratorARM64::GenerateReferenceLoadWithBakerReadBarrier(HInstruction*
 
   // Object* ref = ref_addr->AsMirrorPtr()
   GetAssembler()->MaybeUnpoisonHeapReference(ref_reg);
-
-  // Slow path marking the object `ref` when the GC is marking. The
-  // entrypoint will already be loaded in `temp3`.
-  Register temp3 = lr;
-  SlowPathCodeARM64* slow_path;
-  if (always_update_field) {
-    // ReadBarrierMarkAndUpdateFieldSlowPathARM64 only supports
-    // address of the form `obj + field_offset`, where `obj` is a
-    // register and `field_offset` is a register. Thus `offset` and
-    // `scale_factor` above are expected to be null in this code path.
-    DCHECK_EQ(offset, 0u);
-    DCHECK_EQ(scale_factor, 0u);  /* "times 1" */
-    slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkAndUpdateFieldSlowPathARM64(
-        instruction, ref, obj, /* field_offset */ index, temp, LocationFrom(temp3));
-  } else {
-    slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkSlowPathARM64(
-        instruction, ref, LocationFrom(temp3));
-  }
-  AddSlowPath(slow_path);
-
-  // temp3 = Thread::Current()->pReadBarrierMarkReg ## ref.reg()
-  const int32_t entry_point_offset =
-      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kArm64PointerSize>(ref.reg());
-  // Loading the entrypoint does not require a load acquire since it is only changed when
-  // threads are suspended or running a checkpoint.
-  __ Ldr(temp3, MemOperand(tr, entry_point_offset));
-  // The entrypoint is null when the GC is not marking, this prevents one load compared to
-  // checking GetIsGcMarking.
-  __ Cbnz(temp3, slow_path->GetEntryLabel());
-  __ Bind(slow_path->GetExitLabel());
 }
 
 void CodeGeneratorARM64::GenerateReadBarrierSlow(HInstruction* instruction,
