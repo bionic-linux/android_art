@@ -6615,54 +6615,93 @@ void CodeGeneratorX86_64::GenerateReferenceLoadWithBakerReadBarrier(HInstruction
   DCHECK(kEmitCompilerReadBarrier);
   DCHECK(kUseBakerReadBarrier);
 
-  // After loading the reference from `obj.field` into `ref`, query
-  // `art::Thread::Current()->GetIsGcMarking()` to decide whether we
-  // need to enter the slow path to mark the reference. This
-  // optimistic strategy (we expect the GC to not be marking most of
-  // the time) does not check `obj`'s lock word (to see if it is a
-  // gray object or not), so may sometimes mark an already marked
-  // object.
+  // Query `art::Thread::Current()->GetIsGcMarking()`, then (still in
+  // the fast path) check the gray bit in the lock word of the
+  // reference's holder (`obj`) to decide whether we need to enter the
+  // slow path to mark the reference.
   //
   // Note that we do not actually check the value of `GetIsGcMarking()`;
   // instead, we check the value of the read barrier mark entry point
   // corresponding to register `ref`. If it is null, it means
   // that `GetIsGcMarking()` is false, and vice versa.
   //
-  //   HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   if (Thread::Current()->pReadBarrierMarkReg ## root.reg()) {  // <=> GetIsGcMarking()
-  //     // Slow path.
-  //     // ref = ReadBarrier::Mark(ref);
-  //     ref = (Thread::Current()->pReadBarrierMarkReg ## root.reg())(ref);  // Entry point call.
+  //     uint32_t rb_state = Lockword(obj->monitor_).ReadBarrierState();
+  //     lfence;  // Load fence or artificial data dependency to prevent load-load reordering
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
+  //     bool is_gray = (rb_state == ReadBarrier::GrayState());
+  //     if (is_gray) {
+  //       // Slow path.
+  //       // ref = ReadBarrier::Mark(ref);
+  //       ref = (Thread::Current()->pReadBarrierMarkReg ## root.reg())(ref);  // Entry point call.
+  //     }
+  //   } else {
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   }
 
   CpuRegister ref_reg = ref.AsRegister<CpuRegister>();
+  uint32_t monitor_offset = mirror::Object::MonitorOffset().Int32Value();
+  NearLabel gc_is_not_marking, done;
 
-  // /* HeapReference<Object> */ ref = *src
-  __ movl(ref_reg, src);
+  // First, test the entrypoint (`Thread::Current()->pReadBarrierMarkReg ## ref.reg()`).
+  const int32_t entry_point_offset =
+      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kX86_64PointerSize>(ref.reg());
+  __ gs()->cmpl(Address::Absolute(entry_point_offset, /* no_rip */ true), Immediate(0));
+  __ j(kEqual, &gc_is_not_marking);
+
+  // Then, check the gray bit in the lock word of `obj`.
+  // Given the numeric representation, it's enough to check the low bit of the rb_state.
+  static_assert(ReadBarrier::WhiteState() == 0, "Expecting white to have value 0");
+  static_assert(ReadBarrier::GrayState() == 1, "Expecting gray to have value 1");
+  constexpr uint32_t gray_byte_position = LockWord::kReadBarrierStateShift / kBitsPerByte;
+  constexpr uint32_t gray_bit_position = LockWord::kReadBarrierStateShift % kBitsPerByte;
+  constexpr int32_t test_value = static_cast<int8_t>(1 << gray_bit_position);
+
+  // if (rb_state == ReadBarrier::GrayState())
+  //   ref = ReadBarrier::Mark(ref);
+  // At this point, just do the "if" and make sure that flags are preserved until the branch.
+  __ testb(Address(obj, monitor_offset + gray_byte_position), Immediate(test_value));
   if (needs_null_check) {
     MaybeRecordImplicitNullCheck(instruction);
   }
-  // Object* ref = ref_addr->AsMirrorPtr()
-  __ MaybeUnpoisonHeapReference(ref_reg);
 
-  // Slow path marking the object `ref` when the GC is marking.
+  // Load fence to prevent load-load reordering.
+  // Note that this is a no-op, thanks to the x86-64 memory model.
+  GenerateMemoryBarrier(MemBarrierKind::kLoadAny);  // Flags are unaffected.
+
+  // The actual reference load.
+  // /* HeapReference<Object> */ ref = *src
+  __ movl(ref_reg, src);  // Flags are unaffected.
+
+  // We have done the "if" of the gray bit check above, now branch based on the flags.
+  // Note: Reference unpoisoning modifies the flags, so we need to delay it after the branch.
+  __ j(kZero, &done);
+
+  // Slow path marking the object `ref` when the GC is marking and `obj` is gray.
   SlowPathCode* slow_path;
   if (always_update_field) {
     DCHECK(temp1 != nullptr);
     DCHECK(temp2 != nullptr);
     slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkAndUpdateFieldSlowPathX86_64(
-        instruction, ref, obj, src, /* unpoison_ref_before_marking */ false, *temp1, *temp2);
+        instruction, ref, obj, src, /* unpoison_ref_before_marking */ true, *temp1, *temp2);
   } else {
     slow_path = new (GetGraph()->GetArena()) ReadBarrierMarkSlowPathX86_64(
-        instruction, ref, /* unpoison_ref_before_marking */ false);
+        instruction, ref, /* unpoison_ref_before_marking */ true);
   }
   AddSlowPath(slow_path);
+  __ jmp(slow_path->GetEntryLabel());
 
-  // Test the entrypoint (`Thread::Current()->pReadBarrierMarkReg ## ref.reg()`).
-  const int32_t entry_point_offset =
-      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kX86_64PointerSize>(ref.reg());
-  __ gs()->cmpl(Address::Absolute(entry_point_offset, /* no_rip */ true), Immediate(0));
-  __ j(kNotEqual, slow_path->GetEntryLabel());
+  __ Bind(&gc_is_not_marking);
+  // /* HeapReference<Object> */ ref = *src
+  __ movl(ref_reg, src);
+  if (needs_null_check) {
+    MaybeRecordImplicitNullCheck(instruction);
+  }
+
+  __ Bind(&done);
+  // Object* ref = ref_addr->AsMirrorPtr()
+  __ MaybeUnpoisonHeapReference(ref_reg);
+
   __ Bind(slow_path->GetExitLabel());
 }
 

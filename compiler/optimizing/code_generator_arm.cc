@@ -7065,13 +7065,10 @@ void CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier(HInstruction* i
   DCHECK(kEmitCompilerReadBarrier);
   DCHECK(kUseBakerReadBarrier);
 
-  // After loading the reference from `obj.field` into `ref`, query
-  // `art::Thread::Current()->GetIsGcMarking()` to decide whether we
-  // need to enter the slow path to mark the reference. This
-  // optimistic strategy (we expect the GC to not be marking most of
-  // the time) does not check `obj`'s lock word (to see if it is a
-  // gray object or not), so may sometimes mark an already marked
-  // object.
+  // Query `art::Thread::Current()->GetIsGcMarking()`, then (still in
+  // the fast path) check the gray bit in the lock word of the
+  // reference's holder (`obj`) to decide whether we need to enter the
+  // slow path to mark the reference.
   //
   // Note that we do not actually check the value of `GetIsGcMarking()`;
   // instead, we load into `temp3` the read barrier mark entry point
@@ -7079,19 +7076,66 @@ void CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier(HInstruction* i
   // that `GetIsGcMarking()` is false, and vice versa.
   //
   //   temp3 = Thread::Current()->pReadBarrierMarkReg ## root.reg()
-  //   HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   if (temp3 != nullptr) {  // <=> Thread::Current()->GetIsGcMarking()
-  //     // Slow path.
-  //     ref = temp3(ref);  // ref = ReadBarrier::Mark(ref);  // Runtime entry point call.
+  //     uint32_t rb_state = Lockword(obj->monitor_).ReadBarrierState();
+  //     lfence;  // Load fence or artificial data dependency to prevent load-load reordering
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
+  //     bool is_gray = (rb_state == ReadBarrier::GrayState());
+  //     if (is_gray) {
+  //       // Slow path.
+  //       ref = temp3(ref);  // ref = ReadBarrier::Mark(ref);  // Runtime entry point call.
+  //     }
+  //   } else {
+  //     HeapReference<mirror::Object> ref = *src;  // Original reference load.
   //   }
 
-  // TODO: This temp register is only necessary when
-  // `always_update_field` is true; make it optional (like `temp2`).
   Register temp_reg = temp.AsRegister<Register>();
+  uint32_t monitor_offset = mirror::Object::MonitorOffset().Int32Value();
+  Label gc_is_not_marking, done;
 
-  // Slow path marking the object `ref` when the GC is marking. The
-  // entrypoint will already be loaded in `temp3`.
+  // First, test the entrypoint (`Thread::Current()->pReadBarrierMarkReg ## ref.reg()`).
+  const int32_t entry_point_offset =
+      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kArmPointerSize>(ref.reg());
   Location temp3 = Location::RegisterLocation(LR);
+  // temp3 = Thread::Current()->pReadBarrierMarkReg ## ref.reg()
+  // Loading the entrypoint does not require a load acquire since it is only changed when
+  // threads are suspended or running a checkpoint.
+  __ LoadFromOffset(kLoadWord, temp3.AsRegister<Register>(), TR, entry_point_offset);
+  // The entrypoint is null when the GC is not marking, this prevents one load compared to
+  // checking GetIsGcMarking.
+  __ CompareAndBranchIfZero(temp3.AsRegister<Register>(), &gc_is_not_marking);
+
+  // Then, check the gray bit in the lock word of `obj`.
+  // /* int32_t */ monitor = obj->monitor_
+  __ LoadFromOffset(kLoadWord, temp_reg, obj, monitor_offset);
+  if (needs_null_check) {
+    MaybeRecordImplicitNullCheck(instruction);
+  }
+  // /* LockWord */ lock_word = LockWord(monitor)
+  static_assert(sizeof(LockWord) == sizeof(int32_t),
+                "art::LockWord and int32_t have different sizes.");
+
+  // Introduce a dependency on the lock_word including the rb_state,
+  // which shall prevent load-load reordering without using
+  // a memory barrier (which would be more expensive).
+  // `obj` is unchanged by this operation, but its value now depends
+  // on `temp_reg`.
+  __ add(obj, obj, ShifterOperand(temp_reg, LSR, 32));
+
+  GenerateRawReferenceLoad(instruction, ref, obj, offset, index, scale_factor, needs_null_check);
+
+  // if (rb_state == ReadBarrier::GrayState())
+  //   ref = ReadBarrier::Mark(ref);
+  // Given the numeric representation, it's enough to check the low bit of the
+  // rb_state. We do that by shifting the bit out of the lock word with LSRS
+  // which can be a 16-bit instruction unlike the TST immediate.
+  static_assert(ReadBarrier::WhiteState() == 0, "Expecting white to have value 0");
+  static_assert(ReadBarrier::GrayState() == 1, "Expecting gray to have value 1");
+  __ Lsrs(temp_reg, temp_reg, LockWord::kReadBarrierStateShift + 1);
+  __ b(&done, CC);  // Carry flag is the last bit shifted out by LSRS.
+
+  // Slow path marking the object `ref` when the GC is marking and `obj` is gray
+  // The entrypoint is already loaded in `temp3`.
   SlowPathCodeARM* slow_path;
   if (always_update_field) {
     DCHECK(temp2 != nullptr);
@@ -7109,18 +7153,12 @@ void CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier(HInstruction* i
         instruction, ref, /* entrypoint */ temp3);
   }
   AddSlowPath(slow_path);
+  __ b(slow_path->GetEntryLabel());
 
-  // temp3 = Thread::Current()->pReadBarrierMarkReg ## ref.reg()
-  const int32_t entry_point_offset =
-      CodeGenerator::GetReadBarrierMarkEntryPointsOffset<kArmPointerSize>(ref.reg());
-  // Loading the entrypoint does not require a load acquire since it is only changed when
-  // threads are suspended or running a checkpoint.
-  __ LoadFromOffset(kLoadWord, temp3.AsRegister<Register>(), TR, entry_point_offset);
-  // The reference load.
+  __ Bind(&gc_is_not_marking);
   GenerateRawReferenceLoad(instruction, ref, obj, offset, index, scale_factor, needs_null_check);
-  // The entrypoint is null when the GC is not marking, this prevents one load compared to
-  // checking GetIsGcMarking.
-  __ CompareAndBranchIfNonZero(temp3.AsRegister<Register>(), slow_path->GetEntryLabel());
+
+  __ Bind(&done);
   __ Bind(slow_path->GetExitLabel());
 }
 
