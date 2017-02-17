@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Aleksey Shlyapnikov <alekseys@google.com>
+Code-Review+1: Aleksey Shlyapnikov <alekseys@google.com>
+Code-Review+2: Mathieu Chartier <mathieuc@google.com>
+Submitted-by: Hiroshi Yamauchi <yamauchi@google.com>
+Submitted-at: Fri, 17 Feb 2017 18:13:17 +0000
+Reviewed-on: https://android-review.googlesource.com/340827
+Project: platform/art
+Branch: refs/heads/master
