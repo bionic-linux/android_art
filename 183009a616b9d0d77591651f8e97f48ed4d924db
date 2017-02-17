@@ -22,6 +22,30 @@
       "revId": "183009a616b9d0d77591651f8e97f48ed4d924db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18be67dc_72287f4c",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-02-17T18:49:34Z",
+      "side": 1,
+      "message": "Sure, will do.",
+      "parentUuid": "31269880_20acfa6f",
+      "range": {
+        "startLine": 741,
+        "startChar": 40,
+        "endLine": 741,
+        "endChar": 69
+      },
+      "revId": "183009a616b9d0d77591651f8e97f48ed4d924db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
