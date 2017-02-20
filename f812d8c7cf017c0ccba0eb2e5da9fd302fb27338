@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c41b2596_fd904e85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-02-20T10:14:54Z",
+      "side": 1,
+      "message": "oatdump_test wasn\u0027t broken before this change. Worth adding a test to make sure your fix is not going to bitrot.",
+      "range": {
+        "startLine": 13,
+        "startChar": 28,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "f812d8c7cf017c0ccba0eb2e5da9fd302fb27338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
