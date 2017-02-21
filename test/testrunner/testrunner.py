@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3 -E
 #
 # Copyright 2017, The Android Open Source Project
 #
@@ -451,7 +451,8 @@ def run_test(command, test, test_variant, test_name):
       test_skipped = True
     else:
       test_skipped = False
-      proc = subprocess.Popen(command.split(), stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
+      proc = subprocess.Popen(command.split(), universal_newlines=True,
+                              stderr=subprocess.STDOUT, stdout=subprocess.PIPE)
       script_output = proc.stdout.read().strip()
       test_passed = not proc.wait()
 
@@ -469,7 +470,7 @@ def run_test(command, test, test_variant, test_name):
       skipped_tests.append(test_name)
     else:
       print_test_info(test_name, '')
-  except Exception, e:
+  except Exception as e:
     failed_tests.append(test_name)
     print_text(('%s\n%s\n') % (command, str(e)))
   finally:
@@ -541,7 +542,7 @@ def print_test_info(test_name, result, failed_test_info=""):
           test_name,
           result_text)
     print_text(info)
-  except Exception, e:
+  except Exception as e:
     print_text(('%s\n%s\n') % (test_name, str(e)))
     failed_tests.append(test_name)
   finally:
@@ -549,10 +550,10 @@ def print_test_info(test_name, result, failed_test_info=""):
 
 def verify_knownfailure_entry(entry):
   supported_field = {
-      'tests' : (list, unicode),
-      'description' : (list, unicode),
-      'bug' : (unicode,),
-      'variant' : (unicode,),
+      'tests' : (list, str),
+      'description' : (list, str),
+      'bug' : (str,),
+      'variant' : (str,),
       'env_vars' : (dict,),
   }
   for field in entry:
@@ -581,7 +582,7 @@ def get_disabled_test_info():
   for failure in known_failures_info:
     verify_knownfailure_entry(failure)
     tests = failure.get('tests', [])
-    if isinstance(tests, unicode):
+    if isinstance(tests, str):
       tests = [tests]
     variants = parse_variants(failure.get('variant'))
     env_vars = failure.get('env_vars')
@@ -914,7 +915,7 @@ def main():
     while threading.active_count() > 1:
       time.sleep(0.1)
     print_analysis()
-  except Exception, e:
+  except Exception as e:
     print_analysis()
     print_text(str(e))
     sys.exit(1)
