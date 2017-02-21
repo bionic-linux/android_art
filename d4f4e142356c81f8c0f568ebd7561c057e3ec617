@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "69bea102_0cfa9577",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5817,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-21T23:37:43Z",
+      "side": 1,
+      "message": "Actually, I think the number of instructions is the same as for the code originally implemented in this CL; the second version proposed in these comments (without  the conditional forward branches) does not have the \"b slow_path\" instruction. I\u0027ll implement it.\n\nAnother thing we should try (later) is to \"inline\" the slow path when it contains only a call to the read barrier marking entry point (but that would probably be bad for branch prediction too).",
+      "parentUuid": "4d1f46bf_996b9fe0",
+      "range": {
+        "startLine": 5817,
+        "startChar": 2,
+        "endLine": 5817,
+        "endChar": 36
+      },
+      "revId": "d4f4e142356c81f8c0f568ebd7561c057e3ec617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0e10183_917c2609",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 1
