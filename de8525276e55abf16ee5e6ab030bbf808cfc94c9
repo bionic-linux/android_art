@@ -22,6 +22,30 @@
       "revId": "de8525276e55abf16ee5e6ab030bbf808cfc94c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47f481e7_c7a5dff1",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-02-21T20:00:07Z",
+      "side": 1,
+      "message": "Why does this file even have a #!?",
+      "parentUuid": "32c35fcf_24f30c9a",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "de8525276e55abf16ee5e6ab030bbf808cfc94c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
