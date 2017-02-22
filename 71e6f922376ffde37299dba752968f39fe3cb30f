@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7fc6fc5_a8e0d239",
+        "filename": "dexlayout/dexlayout_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-02-22T01:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d412f0c_1858c6a7",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 52
+      },
+      "revId": "71e6f922376ffde37299dba752968f39fe3cb30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80d7945d_e6c2cb96",
         "filename": "dexlayout/dexlayout_test.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-22T00:20:16Z",
       "side": 1,
       "message": "If you rebase you can make this simpler by using the same type of stuff I was doing.",
+      "range": {
+        "startLine": 213,
+        "startChar": 7,
+        "endLine": 213,
+        "endChar": 32
+      },
+      "revId": "71e6f922376ffde37299dba752968f39fe3cb30f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d8506a7_7aaa268c",
+        "filename": "dexlayout/dexlayout_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-02-22T01:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80d7945d_e6c2cb96",
       "range": {
         "startLine": 213,
         "startChar": 7,
