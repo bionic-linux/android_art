@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f653827b_7b79f44f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5817,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-02-22T19:45:39Z",
+      "side": 1,
+      "message": "I mean calling directly the entry point from the fast path, instead of jumping to a slow path at the end of the method:\n\n    // Load and test the read barrier marking entry point.\n    ldr lr, [tr, entry_point_offset]\n    cbz lr, gc_is_not_marking\n    // Test the gray bit of `obj`.\n    ldr temp, [obj, monitor_offset]  // Load lock word.\n    add obj, obj, temp \u003e\u003e 32         // Fake dependency of `obj on the lock word.\n    // Actual reference load (+ potential heap unpoisoning)\n    ldr ref, [obj, offset]\n    // Test gray bit.\n    tbz temp, LockWord::kReadBarrierStateShift, done\n    // Call read barrier marking entry point.\n    blr lr\n    b done\n  \n  gc_is_not_marking:\n    // Actual reference load (+ potential heap unpoisoning)\n    ldr ref, [obj, offset]\n  \n  done:\n    […]\n\nThis implementation has one less instruction.",
+      "parentUuid": "5b16f795_3c3958e9",
+      "range": {
+        "startLine": 5817,
+        "startChar": 2,
+        "endLine": 5817,
+        "endChar": 36
+      },
+      "revId": "d4f4e142356c81f8c0f568ebd7561c057e3ec617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0e10183_917c2609",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 1
