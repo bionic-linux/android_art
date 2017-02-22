@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b1fc83_d9f4bdca",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-22T01:02:40Z",
+      "side": 1,
+      "message": "That empty line should fail to lint.",
+      "range": {
+        "startLine": 1275,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 1
+      },
+      "revId": "f60e59b20fa5f402984d6bf01883bafa5ae2bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
