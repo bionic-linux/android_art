@@ -1,0 +1,8 @@
+Code-Review+2: Andreas Gampe <agampe@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Hiroshi Yamauchi <yamauchi@google.com>
+Submitted-by: Hiroshi Yamauchi <yamauchi@google.com>
+Submitted-at: Thu, 23 Feb 2017 17:47:16 +0000
+Reviewed-on: https://android-review.googlesource.com/342654
+Project: platform/art
+Branch: refs/heads/master
