@@ -105,6 +105,30 @@
       "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da60088_dcb1a29b",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-02-24T22:58:22Z",
+      "side": 1,
+      "message": "Oh, this uses the disassembler to verify.",
+      "parentUuid": "2697d074_04e8e942",
+      "range": {
+        "startLine": 326,
+        "startChar": 52,
+        "endLine": 326,
+        "endChar": 60
+      },
+      "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
