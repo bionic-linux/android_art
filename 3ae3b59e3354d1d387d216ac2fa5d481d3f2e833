@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22a0d3b4_9adb8547",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-02-24T22:50:52Z",
+      "side": 1,
+      "message": "if you are at Intel long enough, you prefer these over the actual mnemonic.... :-)",
+      "parentUuid": "6cf64600_f545263f",
+      "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc9e49d1_04634800",
         "filename": "compiler/utils/x86/assembler_x86_test.cc",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-02-24T22:47:27Z",
       "side": 1,
       "message": "Where are these strings coming from?",
+      "range": {
+        "startLine": 326,
+        "startChar": 52,
+        "endLine": 326,
+        "endChar": 60
+      },
+      "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4d5fbff_5c7e0ca1",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-02-24T22:50:52Z",
+      "side": 1,
+      "message": "convert double quad to packed single floating point\n\n:-)\n\n[don\u0027t get me or David started on our mnemonics....]",
+      "parentUuid": "bc9e49d1_04634800",
       "range": {
         "startLine": 326,
         "startChar": 52,
