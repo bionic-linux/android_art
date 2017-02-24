@@ -16,6 +16,24 @@
       "revId": "5f80fae0e9a7b08bd98e04d45f971ebe249c1546",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7be35322_762b4b38",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3969,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-02-24T21:46:57Z",
+      "side": 1,
+      "message": "I think I\u0027ll avoid printing the memory for now.",
+      "parentUuid": "255a94ba_fdcd6e67",
+      "revId": "5f80fae0e9a7b08bd98e04d45f971ebe249c1546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
