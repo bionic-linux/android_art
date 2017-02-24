@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "255a94ba_fdcd6e67",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3969,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-02-24T21:19:49Z",
+      "side": 1,
+      "message": "Maybe also print  sizeof(mirror::Class) and the pointer value of c nad the memory around c as a hex?",
+      "revId": "5f80fae0e9a7b08bd98e04d45f971ebe249c1546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
