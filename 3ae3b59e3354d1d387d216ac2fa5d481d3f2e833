@@ -81,6 +81,30 @@
       "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2697d074_04e8e942",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-02-24T22:52:20Z",
+      "side": 1,
+      "message": "To clarify:\n\nI didn\u0027t see you add this as a string anywhere else in the code, but the test is getting it somehow as a string? How?\n\nSome kind of macro magic from the function pointer?",
+      "parentUuid": "f4d5fbff_5c7e0ca1",
+      "range": {
+        "startLine": 326,
+        "startChar": 52,
+        "endLine": 326,
+        "endChar": 60
+      },
+      "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
