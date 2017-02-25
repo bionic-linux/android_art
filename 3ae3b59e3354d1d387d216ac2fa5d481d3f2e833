@@ -129,6 +129,30 @@
       "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a3d0b6_7ceda929",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-02-25T00:06:36Z",
+      "side": 1,
+      "message": "How is it that we had the disassembler support for this but not the assembler?",
+      "parentUuid": "7da60088_dcb1a29b",
+      "range": {
+        "startLine": 326,
+        "startChar": 52,
+        "endLine": 326,
+        "endChar": 60
+      },
+      "revId": "3ae3b59e3354d1d387d216ac2fa5d481d3f2e833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
