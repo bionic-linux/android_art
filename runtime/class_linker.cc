@@ -8939,8 +8939,8 @@ std::unordered_set<std::string> ClassLinker::GetClassDescriptorsForProfileKeys(
       if (dex_cache != nullptr) {
         const DexFile* dex_file = dex_cache->GetDexFile();
         // There could be duplicates if two dex files with the same location are mapped.
-        location_to_dex_file.emplace(
-            ProfileCompilationInfo::GetProfileDexFileKey(dex_file->GetLocation()), dex_file);
+        std::string key = ProfileCompilationInfo::GetProfileDexFileKey(dex_file->GetLocation());
+        location_to_dex_file.emplace(key, dex_file);
       }
     }
   }
