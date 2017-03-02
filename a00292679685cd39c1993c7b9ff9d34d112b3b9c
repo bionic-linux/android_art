@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4c45d5_bd1b7715",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-02T17:53:56Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3d8f392_22f96295",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-02T17:53:56Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1d73cd5_fdee36b9",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-02T17:53:56Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 454,
+        "startChar": 47,
+        "endLine": 454,
+        "endChar": 65
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
