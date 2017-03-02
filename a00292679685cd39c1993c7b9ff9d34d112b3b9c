@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2217b7b9_8bf3f705",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-02T22:48:09Z",
+      "side": 1,
+      "message": "This just makes the output of communicate String not Bytes",
+      "parentUuid": "5d4c45d5_bd1b7715",
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d8f392_22f96295",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "116dfe47_ab6e8803",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-02T22:48:09Z",
+      "side": 1,
+      "message": "It just makes sure that the testrunner uses the default python3 library.",
+      "parentUuid": "e3d8f392_22f96295",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1d73cd5_fdee36b9",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2017-03-02T17:53:56Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 454,
+        "startChar": 47,
+        "endLine": 454,
+        "endChar": 65
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac813ec8_9054719f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-02T22:48:09Z",
+      "side": 1,
+      "message": "makes stdout.read() return string.",
+      "parentUuid": "d1d73cd5_fdee36b9",
       "range": {
         "startLine": 454,
         "startChar": 47,
