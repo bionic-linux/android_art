@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9778396f_48299ef1",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-02T19:37:48Z",
+      "side": 1,
+      "message": "is this different from header-\u003echecksum_? If so, why?",
+      "range": {
+        "startLine": 2286,
+        "startChar": 29,
+        "endLine": 2286,
+        "endChar": 70
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c5474ee_b660461a",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-02T19:37:48Z",
+      "side": 1,
+      "message": "I was actually suggesting that you pass dex_files_locations at L1430.\n\nprofile_compilation_info-\u003eGetResolvedClasses(dex_files_location) \n\nand then you can return a DexCacheResolvedClasses with the real dex location so you don\u0027t have to don any more matching here (L1433) or in the class linker. Code will be much simpler.",
+      "range": {
+        "startLine": 1438,
+        "startChar": 71,
+        "endLine": 1438,
+        "endChar": 90
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0224789_ca3d27a6",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-02T19:37:48Z",
+      "side": 1,
+      "message": "add and \u0027_or_fd\u0027 to highlight that you may pass either.\n\nAdd a note that the fd will be closed in this method.",
+      "range": {
+        "startLine": 604,
+        "startChar": 60,
+        "endLine": 604,
+        "endChar": 64
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a07deaa_fa335788",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-02T19:37:48Z",
+      "side": 1,
+      "message": "capital R.",
+      "range": {
+        "startLine": 620,
+        "startChar": 5,
+        "endLine": 620,
+        "endChar": 12
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
