@@ -8925,8 +8925,13 @@ std::set<DexCacheResolvedClasses> ClassLinker::GetResolvedClasses(bool ignore_bo
 }
 
 std::unordered_set<std::string> ClassLinker::GetClassDescriptorsForProfileKeys(
+    const std::unordered_set<std::string>& dex_files_locations,
     const std::set<DexCacheResolvedClasses>& classes) {
   ScopedTrace trace(__PRETTY_FUNCTION__);
+  std::unordered_set<std::string> location_keys;
+  for (const std::string& location : dex_files_locations) {
+    location_keys.insert(ProfileCompilationInfo::GetProfileDexFileKey(location));
+  }
   std::unordered_set<std::string> ret;
   Thread* const self = Thread::Current();
   std::unordered_map<std::string, const DexFile*> location_to_dex_file;
@@ -8939,8 +8944,10 @@ std::unordered_set<std::string> ClassLinker::GetClassDescriptorsForProfileKeys(
       if (dex_cache != nullptr) {
         const DexFile* dex_file = dex_cache->GetDexFile();
         // There could be duplicates if two dex files with the same location are mapped.
-        location_to_dex_file.emplace(
-            ProfileCompilationInfo::GetProfileDexFileKey(dex_file->GetLocation()), dex_file);
+        std::string key = ProfileCompilationInfo::GetProfileDexFileKey(dex_file->GetLocation());
+        if (location_keys.find(key) != location_keys.end()) {
+          location_to_dex_file.emplace(key, dex_file);
+        }
       }
     }
   }
