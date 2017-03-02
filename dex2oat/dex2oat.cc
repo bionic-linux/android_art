@@ -1434,17 +1434,9 @@ class Dex2Oat FINAL {
       for (const DexFile* dex_file : dex_files_) {
         dex_files_locations.insert(dex_file->GetLocation());
       }
-      for (auto it = resolved_classes.begin(); it != resolved_classes.end(); ) {
-        if (dex_files_locations.find(it->GetDexLocation()) == dex_files_locations.end()) {
-          VLOG(compiler) << "Removed profile samples for non-app dex file " << it->GetDexLocation();
-          it = resolved_classes.erase(it);
-        } else {
-          ++it;
-        }
-      }
-
       image_classes_.reset(new std::unordered_set<std::string>(
-          runtime->GetClassLinker()->GetClassDescriptorsForProfileKeys(resolved_classes)));
+          runtime->GetClassLinker()->GetClassDescriptorsForProfileKeys(dex_files_locations,
+                                                                       resolved_classes)));
       VLOG(compiler) << "Loaded " << image_classes_->size()
                      << " image class descriptors from profile";
       if (VLOG_IS_ON(compiler)) {
@@ -2821,6 +2813,10 @@ static int CompileImage(Dex2Oat& dex2oat) {
 
   // When given --host, finish early without stripping.
   if (dex2oat.IsHost()) {
+    if (!dex2oat.FlushCloseOutputFiles()) {
+      return EXIT_FAILURE;
+    }
+
     dex2oat.DumpTiming();
     return EXIT_SUCCESS;
   }
