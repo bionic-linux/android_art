@@ -47,17 +47,21 @@
 
 namespace openjdkjvmti {
 
-void ObjectTagTable::Lock() {
+template <typename T>
+void JvmtiWeakTable<T>::Lock() {
   allow_disallow_lock_.ExclusiveLock(art::Thread::Current());
 }
-void ObjectTagTable::Unlock() {
+template <typename T>
+void JvmtiWeakTable<T>::Unlock() {
   allow_disallow_lock_.ExclusiveUnlock(art::Thread::Current());
 }
-void ObjectTagTable::AssertLocked() {
+template <typename T>
+void JvmtiWeakTable<T>::AssertLocked() {
   allow_disallow_lock_.AssertHeld(art::Thread::Current());
 }
 
-void ObjectTagTable::UpdateTableWithReadBarrier() {
+template <typename T>
+void JvmtiWeakTable<T>::UpdateTableWithReadBarrier() {
   update_since_last_sweep_ = true;
 
   auto WithReadBarrierUpdater = [&](const art::GcRoot<art::mirror::Object>& original_root,
@@ -69,7 +73,8 @@ void ObjectTagTable::UpdateTableWithReadBarrier() {
   UpdateTableWith<decltype(WithReadBarrierUpdater), kIgnoreNull>(WithReadBarrierUpdater);
 }
 
-bool ObjectTagTable::GetTagSlowPath(art::Thread* self, art::mirror::Object* obj, jlong* result) {
+template <typename T>
+bool JvmtiWeakTable<T>::GetTagSlowPath(art::Thread* self, art::mirror::Object* obj, T* result) {
   // Under concurrent GC, there is a window between moving objects and sweeping of system
   // weaks in which mutators are active. We may receive a to-space object pointer in obj,
   // but still have from-space pointers in the table. Explicitly update the table once.
@@ -78,19 +83,22 @@ bool ObjectTagTable::GetTagSlowPath(art::Thread* self, art::mirror::Object* obj,
   return GetTagLocked(self, obj, result);
 }
 
-void ObjectTagTable::Add(art::mirror::Object* obj, jlong tag) {
+template <typename T>
+void JvmtiWeakTable<T>::Add(art::mirror::Object* obj, T tag) {
   // Same as Set(), as we don't have duplicates in an unordered_map.
   Set(obj, tag);
 }
 
-bool ObjectTagTable::Remove(art::mirror::Object* obj, jlong* tag) {
+template <typename T>
+bool JvmtiWeakTable<T>::Remove(art::mirror::Object* obj, T* tag) {
   art::Thread* self = art::Thread::Current();
   art::MutexLock mu(self, allow_disallow_lock_);
   Wait(self);
 
   return RemoveLocked(self, obj, tag);
 }
-bool ObjectTagTable::RemoveLocked(art::mirror::Object* obj, jlong* tag) {
+template <typename T>
+bool JvmtiWeakTable<T>::RemoveLocked(art::mirror::Object* obj, T* tag) {
   art::Thread* self = art::Thread::Current();
   allow_disallow_lock_.AssertHeld(self);
   Wait(self);
@@ -98,7 +106,8 @@ bool ObjectTagTable::RemoveLocked(art::mirror::Object* obj, jlong* tag) {
   return RemoveLocked(self, obj, tag);
 }
 
-bool ObjectTagTable::RemoveLocked(art::Thread* self, art::mirror::Object* obj, jlong* tag) {
+template <typename T>
+bool JvmtiWeakTable<T>::RemoveLocked(art::Thread* self, art::mirror::Object* obj, T* tag) {
   auto it = tagged_objects_.find(art::GcRoot<art::mirror::Object>(obj));
   if (it != tagged_objects_.end()) {
     if (tag != nullptr) {
@@ -125,24 +134,16 @@ bool ObjectTagTable::RemoveLocked(art::Thread* self, art::mirror::Object* obj, j
   return false;
 }
 
-bool ObjectTagTable::Set(art::mirror::Object* obj, jlong new_tag) {
-  if (new_tag == 0) {
-    jlong tmp;
-    return Remove(obj, &tmp);
-  }
-
+template <typename T>
+bool JvmtiWeakTable<T>::Set(art::mirror::Object* obj, T new_tag) {
   art::Thread* self = art::Thread::Current();
   art::MutexLock mu(self, allow_disallow_lock_);
   Wait(self);
 
   return SetLocked(self, obj, new_tag);
 }
-bool ObjectTagTable::SetLocked(art::mirror::Object* obj, jlong new_tag) {
-  if (new_tag == 0) {
-    jlong tmp;
-    return RemoveLocked(obj, &tmp);
-  }
-
+template <typename T>
+bool JvmtiWeakTable<T>::SetLocked(art::mirror::Object* obj, T new_tag) {
   art::Thread* self = art::Thread::Current();
   allow_disallow_lock_.AssertHeld(self);
   Wait(self);
@@ -150,7 +151,8 @@ bool ObjectTagTable::SetLocked(art::mirror::Object* obj, jlong new_tag) {
   return SetLocked(self, obj, new_tag);
 }
 
-bool ObjectTagTable::SetLocked(art::Thread* self, art::mirror::Object* obj, jlong new_tag) {
+template <typename T>
+bool JvmtiWeakTable<T>::SetLocked(art::Thread* self, art::mirror::Object* obj, T new_tag) {
   auto it = tagged_objects_.find(art::GcRoot<art::mirror::Object>(obj));
   if (it != tagged_objects_.end()) {
     it->second = new_tag;
@@ -176,8 +178,9 @@ bool ObjectTagTable::SetLocked(art::Thread* self, art::mirror::Object* obj, jlon
   return false;
 }
 
-void ObjectTagTable::Sweep(art::IsMarkedVisitor* visitor) {
-  if (event_handler_->IsEventEnabledAnywhere(ArtJvmtiEvent::kObjectFree)) {
+template <typename T>
+void JvmtiWeakTable<T>::Sweep(art::IsMarkedVisitor* visitor) {
+  if (DoesHandleNullOnSweep()) {
     SweepImpl<true>(visitor);
   } else {
     SweepImpl<false>(visitor);
@@ -192,8 +195,9 @@ void ObjectTagTable::Sweep(art::IsMarkedVisitor* visitor) {
   update_since_last_sweep_ = false;
 }
 
+template <typename T>
 template <bool kHandleNull>
-void ObjectTagTable::SweepImpl(art::IsMarkedVisitor* visitor) {
+void JvmtiWeakTable<T>::SweepImpl(art::IsMarkedVisitor* visitor) {
   art::Thread* self = art::Thread::Current();
   art::MutexLock mu(self, allow_disallow_lock_);
 
@@ -206,12 +210,9 @@ void ObjectTagTable::SweepImpl(art::IsMarkedVisitor* visitor) {
                   kHandleNull ? kCallHandleNull : kRemoveNull>(IsMarkedUpdater);
 }
 
-void ObjectTagTable::HandleNullSweep(jlong tag) {
-  event_handler_->DispatchEvent<ArtJvmtiEvent::kObjectFree>(nullptr, tag);
-}
-
-template <typename T, ObjectTagTable::TableUpdateNullTarget kTargetNull>
-ALWAYS_INLINE inline void ObjectTagTable::UpdateTableWith(T& updater) {
+template <typename T>
+template <typename Updater, typename JvmtiWeakTable<T>::TableUpdateNullTarget kTargetNull>
+ALWAYS_INLINE inline void JvmtiWeakTable<T>::UpdateTableWith(Updater& updater) {
   // We optimistically hope that elements will still be well-distributed when re-inserting them.
   // So play with the map mechanics, and postpone rehashing. This avoids the need of a side
   // vector and two passes.
@@ -222,7 +223,7 @@ ALWAYS_INLINE inline void ObjectTagTable::UpdateTableWith(T& updater) {
 
   for (auto it = tagged_objects_.begin(); it != tagged_objects_.end();) {
     DCHECK(!it->first.IsNull());
-    art::mirror::Object* original_obj = it->first.Read<art::kWithoutReadBarrier>();
+    art::mirror::Object* original_obj = it->first.template Read<art::kWithoutReadBarrier>();
     art::mirror::Object* target_obj = updater(it->first, original_obj);
     if (original_obj != target_obj) {
       if (kTargetNull == kIgnoreNull && target_obj == nullptr) {
@@ -303,12 +304,13 @@ struct ReleasableContainer {
   size_t capacity;
 };
 
-jvmtiError ObjectTagTable::GetTaggedObjects(jvmtiEnv* jvmti_env,
-                                            jint tag_count,
-                                            const jlong* tags,
-                                            jint* count_ptr,
-                                            jobject** object_result_ptr,
-                                            jlong** tag_result_ptr) {
+template <typename T>
+jvmtiError JvmtiWeakTable<T>::GetTaggedObjects(jvmtiEnv* jvmti_env,
+                                               jint tag_count,
+                                               const T* tags,
+                                               jint* count_ptr,
+                                               jobject** object_result_ptr,
+                                               T** tag_result_ptr) {
   if (tag_count < 0) {
     return ERR(ILLEGAL_ARGUMENT);
   }
@@ -343,7 +345,7 @@ jvmtiError ObjectTagTable::GetTaggedObjects(jvmtiEnv* jvmti_env,
   }
   JvmtiAllocator<void> allocator(jvmti_env);
   ReleasableContainer<jobject, JvmtiAllocator<jobject>> selected_objects(allocator, initial_object_size);
-  ReleasableContainer<jlong, JvmtiAllocator<jlong>> selected_tags(allocator, initial_tag_size);
+  ReleasableContainer<T, JvmtiAllocator<T>> selected_tags(allocator, initial_tag_size);
 
   size_t count = 0;
   for (auto& pair : tagged_objects_) {
@@ -361,7 +363,7 @@ jvmtiError ObjectTagTable::GetTaggedObjects(jvmtiEnv* jvmti_env,
     }
 
     if (select) {
-      art::mirror::Object* obj = pair.first.Read<art::kWithReadBarrier>();
+      art::mirror::Object* obj = pair.first.template Read<art::kWithReadBarrier>();
       if (obj != nullptr) {
         count++;
         if (object_result_ptr != nullptr) {
@@ -382,6 +384,31 @@ jvmtiError ObjectTagTable::GetTaggedObjects(jvmtiEnv* jvmti_env,
   }
   *count_ptr = static_cast<jint>(count);
   return ERR(NONE);
+}
+
+// Instantiate for jlong = JVMTI tags.
+template class JvmtiWeakTable<jlong>;
+
+bool ObjectTagTable::Set(art::mirror::Object* obj, jlong new_tag) {
+  if (new_tag == 0) {
+    jlong tmp;
+    return Remove(obj, &tmp);
+  }
+  return JvmtiWeakTable<jlong>::Set(obj, new_tag);
+}
+bool ObjectTagTable::SetLocked(art::mirror::Object* obj, jlong new_tag) {
+  if (new_tag == 0) {
+    jlong tmp;
+    return RemoveLocked(obj, &tmp);
+  }
+  return JvmtiWeakTable<jlong>::SetLocked(obj, new_tag);
+}
+
+bool ObjectTagTable::DoesHandleNullOnSweep() {
+  return event_handler_->IsEventEnabledAnywhere(ArtJvmtiEvent::kObjectFree);
+}
+void ObjectTagTable::HandleNullSweep(jlong tag) {
+  event_handler_->DispatchEvent<ArtJvmtiEvent::kObjectFree>(nullptr, tag);
 }
 
 }  // namespace openjdkjvmti

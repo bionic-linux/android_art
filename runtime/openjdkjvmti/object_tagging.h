@@ -31,33 +31,33 @@ namespace openjdkjvmti {
 
 class EventHandler;
 
-class ObjectTagTable : public art::gc::SystemWeakHolder {
+template <typename T>
+class JvmtiWeakTable : public art::gc::SystemWeakHolder {
  public:
-  explicit ObjectTagTable(EventHandler* event_handler)
+  JvmtiWeakTable()
       : art::gc::SystemWeakHolder(kTaggingLockLevel),
-        update_since_last_sweep_(false),
-        event_handler_(event_handler) {
+        update_since_last_sweep_(false) {
   }
 
-  void Add(art::mirror::Object* obj, jlong tag)
+  void Add(art::mirror::Object* obj, T tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
 
-  bool Remove(art::mirror::Object* obj, jlong* tag)
+  bool Remove(art::mirror::Object* obj, T* tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
-  bool RemoveLocked(art::mirror::Object* obj, jlong* tag)
+  bool RemoveLocked(art::mirror::Object* obj, T* tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
-  bool Set(art::mirror::Object* obj, jlong tag)
+  virtual bool Set(art::mirror::Object* obj, T tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
-  bool SetLocked(art::mirror::Object* obj, jlong tag)
+  virtual bool SetLocked(art::mirror::Object* obj, T tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
-  bool GetTag(art::mirror::Object* obj, jlong* result)
+  bool GetTag(art::mirror::Object* obj, T* result)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_) {
     art::Thread* self = art::Thread::Current();
@@ -66,7 +66,7 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
 
     return GetTagLocked(self, obj, result);
   }
-  bool GetTagLocked(art::mirror::Object* obj, jlong* result)
+  bool GetTagLocked(art::mirror::Object* obj, T* result)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_) {
     art::Thread* self = art::Thread::Current();
@@ -76,31 +76,16 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
     return GetTagLocked(self, obj, result);
   }
 
-  jlong GetTagOrZero(art::mirror::Object* obj)
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(!allow_disallow_lock_) {
-    jlong tmp = 0;
-    GetTag(obj, &tmp);
-    return tmp;
-  }
-  jlong GetTagOrZeroLocked(art::mirror::Object* obj)
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(allow_disallow_lock_) {
-    jlong tmp = 0;
-    GetTagLocked(obj, &tmp);
-    return tmp;
-  }
-
   void Sweep(art::IsMarkedVisitor* visitor)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
 
   jvmtiError GetTaggedObjects(jvmtiEnv* jvmti_env,
                               jint tag_count,
-                              const jlong* tags,
+                              const T* tags,
                               jint* count_ptr,
                               jobject** object_result_ptr,
-                              jlong** tag_result_ptr)
+                              T** tag_result_ptr)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
 
@@ -108,16 +93,22 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
   void Unlock() RELEASE(allow_disallow_lock_);
   void AssertLocked() ASSERT_CAPABILITY(allow_disallow_lock_);
 
+ protected:
+  virtual bool DoesHandleNullOnSweep() {
+    return false;
+  }
+  virtual void HandleNullSweep(T tag ATTRIBUTE_UNUSED) {}
+
  private:
-  bool SetLocked(art::Thread* self, art::mirror::Object* obj, jlong tag)
+  bool SetLocked(art::Thread* self, art::mirror::Object* obj, T tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
-  bool RemoveLocked(art::Thread* self, art::mirror::Object* obj, jlong* tag)
+  bool RemoveLocked(art::Thread* self, art::mirror::Object* obj, T* tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
-  bool GetTagLocked(art::Thread* self, art::mirror::Object* obj, jlong* result)
+  bool GetTagLocked(art::Thread* self, art::mirror::Object* obj, T* result)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_) {
     auto it = tagged_objects_.find(art::GcRoot<art::mirror::Object>(obj));
@@ -138,7 +129,7 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
 
   // Slow-path for GetTag. We didn't find the object, but we might be storing from-pointers and
   // are asked to retrieve with a to-pointer.
-  bool GetTagSlowPath(art::Thread* self, art::mirror::Object* obj, jlong* result)
+  bool GetTagSlowPath(art::Thread* self, art::mirror::Object* obj, T* result)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
@@ -152,7 +143,6 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
   void SweepImpl(art::IsMarkedVisitor* visitor)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
-  void HandleNullSweep(jlong tag);
 
   enum TableUpdateNullTarget {
     kIgnoreNull,
@@ -160,8 +150,8 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
     kCallHandleNull
   };
 
-  template <typename T, TableUpdateNullTarget kTargetNull>
-  void UpdateTableWith(T& updater)
+  template <typename Updater, TableUpdateNullTarget kTargetNull>
+  void UpdateTableWith(Updater& updater)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
@@ -185,14 +175,47 @@ class ObjectTagTable : public art::gc::SystemWeakHolder {
       static_cast<art::LockLevel>(art::LockLevel::kAbortLock + 1);
 
   std::unordered_map<art::GcRoot<art::mirror::Object>,
-                     jlong,
+                     T,
                      HashGcRoot,
                      EqGcRoot> tagged_objects_
       GUARDED_BY(allow_disallow_lock_)
       GUARDED_BY(art::Locks::mutator_lock_);
   // To avoid repeatedly scanning the whole table, remember if we did that since the last sweep.
   bool update_since_last_sweep_;
+};
 
+class ObjectTagTable : public JvmtiWeakTable<jlong> {
+ public:
+  explicit ObjectTagTable(EventHandler* event_handler) : event_handler_(event_handler) {
+  }
+
+  bool Set(art::mirror::Object* obj, jlong tag) OVERRIDE
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(!allow_disallow_lock_);
+  bool SetLocked(art::mirror::Object* obj, jlong tag) OVERRIDE
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_);
+
+  jlong GetTagOrZero(art::mirror::Object* obj)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(!allow_disallow_lock_) {
+    jlong tmp = 0;
+    GetTag(obj, &tmp);
+    return tmp;
+  }
+  jlong GetTagOrZeroLocked(art::mirror::Object* obj)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_) {
+    jlong tmp = 0;
+    GetTagLocked(obj, &tmp);
+    return tmp;
+  }
+
+ protected:
+  bool DoesHandleNullOnSweep() OVERRIDE;
+  void HandleNullSweep(jlong tag) OVERRIDE;
+
+ private:
   EventHandler* event_handler_;
 };
 
