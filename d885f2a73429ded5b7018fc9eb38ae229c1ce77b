@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "16bb4118_fde9c91f",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-03T02:05:29Z",
+      "side": 1,
+      "message": "Can you open a discussion/investigation bug and add a reference here?\n\nI think we should understand when that happens.",
+      "parentUuid": "d4914a60_f377ff33",
+      "range": {
+        "startLine": 2286,
+        "startChar": 29,
+        "endLine": 2286,
+        "endChar": 70
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5474ee_b660461a",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 3
