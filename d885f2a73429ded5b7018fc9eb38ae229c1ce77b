@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "9d9ba09c_db2e42d2",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2286,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-03T03:45:21Z",
+      "side": 1,
+      "message": "I already merged the fix but I\u0027ll make a bug.",
+      "parentUuid": "16bb4118_fde9c91f",
+      "range": {
+        "startLine": 2286,
+        "startChar": 29,
+        "endLine": 2286,
+        "endChar": 70
+      },
+      "revId": "d885f2a73429ded5b7018fc9eb38ae229c1ce77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5474ee_b660461a",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 3
