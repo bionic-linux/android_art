@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "d42bf8d2_dc1d54fb",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-03T17:57:10Z",
+      "side": 1,
+      "message": "Ok, this seems like a great fix in light of python 3.\n\nI checked and it looks like while there is a split , it only takes in bytes and the interface of bytes is more restricted (alternative being to fix a lot of other code that uses these results instead of just the few places for Popen).",
+      "parentUuid": "66275de6_c9d8e4dc",
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d8f392_22f96295",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -156,6 +174,30 @@
       "side": 1,
       "message": "It\u0027s mostly because I set PYTHONPATH on my own machine for various tools I wrote TBH.\n\nSince we only use stdlib stuff in this program this flag is safe and we even get a security benefit (assuming they have an updated python install).",
       "parentUuid": "eb5286a6_74ba9264",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18bc26ef_6e25647a",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-03T17:57:10Z",
+      "side": 1,
+      "message": "Is this a best practice somewhere?",
+      "parentUuid": "c4b3e008_f2cdaa5f",
       "range": {
         "startLine": 1,
         "startChar": 19,
