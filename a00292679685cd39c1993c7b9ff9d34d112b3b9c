@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "66275de6_c9d8e4dc",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-03T17:49:16Z",
+      "side": 1,
+      "message": "String is easier to use in many ways. Having \u0027split\u0027 methods and regex support and other helpful things.",
+      "parentUuid": "73056454_b408ecb5",
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3d8f392_22f96295",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "Is this necessary for build server or buildbot, I don\u0027t understand?\n\nWhat if they are setting their own PYTHONPATH?",
       "parentUuid": "116dfe47_ab6e8803",
+      "range": {
+        "startLine": 1,
+        "startChar": 19,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "a00292679685cd39c1993c7b9ff9d34d112b3b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4b3e008_f2cdaa5f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-03T17:49:16Z",
+      "side": 1,
+      "message": "It\u0027s mostly because I set PYTHONPATH on my own machine for various tools I wrote TBH.\n\nSince we only use stdlib stuff in this program this flag is safe and we even get a security benefit (assuming they have an updated python install).",
+      "parentUuid": "eb5286a6_74ba9264",
       "range": {
         "startLine": 1,
         "startChar": 19,
