@@ -41,6 +41,17 @@ namespace openjdkjvmti {
 
 namespace {
 
+struct IndexCache {
+  // The number of interface fields implemented by the class. This is a prefix to all assigned
+  // field indices.
+  size_t interface_fields;
+
+  // The number of fields in interfaces and superclasses. This is the first index assigned to
+  // fields of the class.
+  size_t superclass_fields;
+};
+using IndexCachingTable = JvmtiWeakTable<IndexCache>;
+
 // Report the contents of a string, if a callback is set.
 jint ReportString(art::ObjPtr<art::mirror::Object> obj,
                   jvmtiEnv* env,
