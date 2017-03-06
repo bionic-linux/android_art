@@ -22,6 +22,30 @@
       "revId": "54f869ed3c7910e6eb7bade924d41570e9a4cb14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5285658_a479a74f",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-03-06T15:08:23Z",
+      "side": 1,
+      "message": "Yes; we relied on the acquisition of a register from the VIXL scratch pool (line 2763 in the \"Base\" pane).",
+      "parentUuid": "ab82b634_fcadb756",
+      "range": {
+        "startLine": 2761,
+        "startChar": 0,
+        "endLine": 2762,
+        "endChar": 38
+      },
+      "revId": "54f869ed3c7910e6eb7bade924d41570e9a4cb14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
