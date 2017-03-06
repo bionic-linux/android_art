@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab82b634_fcadb756",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2762,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-06T14:56:33Z",
+      "side": 1,
+      "message": "How did we make sure before? Because there was an Acquire call before? (line 2501 of PS2).",
+      "range": {
+        "startLine": 2761,
+        "startChar": 0,
+        "endLine": 2762,
+        "endChar": 38
+      },
+      "revId": "54f869ed3c7910e6eb7bade924d41570e9a4cb14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
