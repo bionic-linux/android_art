@@ -62,6 +62,7 @@ RUNTIME_OPTIONS_KEY (MillisecondsToNanoseconds, \
                                           LongGCLogThreshold,             gc::Heap::kDefaultLongGCLogThreshold)
 RUNTIME_OPTIONS_KEY (MillisecondsToNanoseconds, \
                                           ThreadSuspendTimeout,           ThreadList::kDefaultThreadSuspendTimeout)
+RUNTIME_OPTIONS_KEY (bool,                BootClassPathOptimizations,     false)
 RUNTIME_OPTIONS_KEY (Unit,                DumpGCPerformanceOnShutdown)
 RUNTIME_OPTIONS_KEY (Unit,                DumpJITInfoOnShutdown)
 RUNTIME_OPTIONS_KEY (Unit,                IgnoreMaxFootprint)

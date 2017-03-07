@@ -382,13 +382,65 @@ bool ArtMethod::IsOverridableByDefaultMethod() {
 }
 
 bool ArtMethod::IsAnnotatedWithFastNative() {
-  return IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_FastNative,
-                         DexFile::kDexVisibilityBuild);
+  Thread* self = Thread::Current();
+  ScopedObjectAccess soa(self);
+
+  if (UNLIKELY(IsProxyMethod())) {
+    // Avoid crashing in #GetClassLoader().
+    return false;
+  }
+
+  bool res = IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_FastNative,
+                             DexFile::kDexVisibilityBuild);
+
+  if (res) {
+    // Do not simply let through @FastNative unless this method is
+    // part of the BOOTCLASSPATH. Usage of these optimization hints is
+    // not allowed by zygote-forked applications.
+    if (GetClassLoader() != nullptr) {
+      Runtime* runtime = Runtime::Current();
+      // Override this behavior for testing/benchmarks with -Xbootclass-optimizations:permit
+      if (runtime != nullptr && !runtime->PermitBootClassPathOnlyOptimizations()) {
+        LOG(WARNING) << "@FastNative is only allowed within bootclasspath: " << PrettyMethod();
+        // Fall-back to normal, unoptimized JNI.
+        // This will still work because the calling convention is identical.
+        return false;
+      }
+    }
+  }
+
+  return res;
 }
 
 bool ArtMethod::IsAnnotatedWithCriticalNative() {
-  return IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_CriticalNative,
-                         DexFile::kDexVisibilityBuild);
+  Thread* self = Thread::Current();
+  ScopedObjectAccess soa(self);
+
+  if (UNLIKELY(IsProxyMethod())) {
+    // Avoid crashing in #GetClassLoader().
+    return false;
+  }
+
+  bool res = IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_CriticalNative,
+                             DexFile::kDexVisibilityBuild);
+
+  if (res) {
+    // Do not simply let through @CriticalNative unless this method is
+    // part of the BOOTCLASSPATH. Usage of these optimization hints is
+    // not allowed by zygote-forked applications.
+    if (GetClassLoader() != nullptr) {
+      Runtime* runtime = Runtime::Current();
+      // Override this behavior for testing/benchmarks with -Xbootclass-optimizations:permit
+      if (runtime != nullptr && !runtime->PermitBootClassPathOnlyOptimizations()) {
+        // Do not attempt to fall-back here because @CriticalNative has a different
+        // calling convention and we would just end up corrupting the call stack.
+        LOG(FATAL) << "@CriticalNative is only allowed within bootclasspath: " << PrettyMethod();
+        UNREACHABLE();
+      }
+    }
+  }
+
+  return res;
 }
 
 bool ArtMethod::IsAnnotatedWith(jclass klass, uint32_t visibility) {

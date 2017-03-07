@@ -335,6 +335,8 @@ void CommonRuntimeTestImpl::SetUp() {
   options.push_back(std::make_pair("-Xcheck:jni", nullptr));
   options.push_back(std::make_pair(min_heap_string, nullptr));
   options.push_back(std::make_pair(max_heap_string, nullptr));
+  // Allow bootclass-only optimizations to be done for our gtest DEX files.
+  options.push_back(std::make_pair("-Xbootclasspath-optimizations:permit", nullptr));
 
   callbacks_.reset(new NoopCompilerCallbacks());
 

@@ -303,6 +303,10 @@ std::unique_ptr<RuntimeParser> ParsedOptions::MakeParser(bool ignore_unrecognize
       .Define("-XX:ThreadSuspendTimeout=_")  // in ms
           .WithType<MillisecondsToNanoseconds>()  // store as ns
           .IntoKey(M::ThreadSuspendTimeout)
+      .Define("-Xbootclasspath-optimizations:_")
+          .WithType<bool>()
+          .WithValueMap({{"restrict", false}, {"permit", true}})
+          .IntoKey(M::BootClassPathOptimizations)
       .Ignore({
           "-ea", "-da", "-enableassertions", "-disableassertions", "--runtime-arg", "-esa",
           "-dsa", "-enablesystemassertions", "-disablesystemassertions", "-Xrs", "-Xint:_",
@@ -683,6 +687,9 @@ void ParsedOptions::Usage(const char* fmt, ...) {
   UsageMessage(stream, "  -Ximage:filename\n");
   UsageMessage(stream, "  -Xbootclasspath-locations:bootclasspath\n"
                        "     (override the dex locations of the -Xbootclasspath files)\n");
+  UsageMessage(stream, "  -Xbootclasspath-optimizations:{restrict,permit}\n"
+                       "     (permit optimizations that are otherwise restricted to\n"
+                       "      code running only within the bootclasspath. default=restrict)\n");
   UsageMessage(stream, "  -XX:+DisableExplicitGC\n");
   UsageMessage(stream, "  -XX:ParallelGCThreads=integervalue\n");
   UsageMessage(stream, "  -XX:ConcGCThreads=integervalue\n");
