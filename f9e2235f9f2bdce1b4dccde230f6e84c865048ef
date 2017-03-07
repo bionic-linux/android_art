@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "c31215ca_65201fb8",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-07T22:55:25Z",
+      "side": 1,
+      "message": "But it looks to me there\u0027s no full-proof way for us to prevent apps from still trying it. If based on the flag, the verifier check has the same problems.",
+      "parentUuid": "539bd8ee_8246beda",
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d91056_3913f5fc",
         "filename": "runtime/runtime_options.def",
         "patchSetId": 2
@@ -113,6 +131,30 @@
       "side": 1,
       "message": "Sure, do you have any preference on name?\n\n   -Xexperimental:app-fast-native\n\nSound ok?",
       "parentUuid": "a8d91056_3913f5fc",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 80
+      },
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1c26a1c_ff914e7c",
+        "filename": "runtime/runtime_options.def",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-07T22:55:25Z",
+      "side": 1,
+      "message": "Yeah this would have my preference *if we were to add a flag*.",
+      "parentUuid": "618f95a8_955b7e81",
       "range": {
         "startLine": 65,
         "startChar": 0,
