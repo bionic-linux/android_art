@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "539bd8ee_8246beda",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T22:25:13Z",
+      "side": 1,
+      "message": "Should I add this in as a verifier check instead and reject it there?",
+      "parentUuid": "dd7fd2d6_db7aeea0",
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d91056_3913f5fc",
         "filename": "runtime/runtime_options.def",
         "patchSetId": 2
@@ -71,6 +89,30 @@
       "writtenOn": "2017-03-07T22:05:48Z",
       "side": 1,
       "message": "If we do go with the flag option, could we piggy back on the  -Xexperimental instead?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 80
+      },
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "618f95a8_955b7e81",
+        "filename": "runtime/runtime_options.def",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T22:25:13Z",
+      "side": 1,
+      "message": "Sure, do you have any preference on name?\n\n   -Xexperimental:app-fast-native\n\nSound ok?",
+      "parentUuid": "a8d91056_3913f5fc",
       "range": {
         "startLine": 65,
         "startChar": 0,
