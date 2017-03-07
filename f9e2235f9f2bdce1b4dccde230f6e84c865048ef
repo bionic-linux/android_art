@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b136aa2_338dc367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-07T15:47:13Z",
+      "side": 1,
+      "message": "Not a big fan of adding new options :(\nCan we lock it down based on how you\u0027re compiling things? Eg If you have CriticalNative in your bootclasspath.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 39
+      },
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
