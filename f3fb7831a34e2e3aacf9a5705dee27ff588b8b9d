@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ba32a05_70f12654",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f6be9ad_4c3e33ee",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d3bfde0_b9e2e8b2",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-06T23:58:50Z",
       "side": 1,
       "message": "nit: I thought it was REQUIRES then REQUIRES_SHARED (alphabetically sorted)",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba54dd75_50342e88",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "This is the common order in other files, so...",
+      "parentUuid": "4d3bfde0_b9e2e8b2",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "159966fe_bb947cd8",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Honestly, I hate this one. Simple reason: I can\u0027t add /* */ comments over such code.",
+      "parentUuid": "5188c38b_f5bd59c8",
+      "range": {
+        "startLine": 75,
+        "startChar": 39,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a5e3494_30633d53",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2017-03-06T23:58:50Z",
       "side": 1,
       "message": "Why is there Locked/Unlocked versions? Seems prone to deadlock.",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c64d4046_eb568a21",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "To allow for coarse-grained locking. E.g., when it\u0027s clear there\u0027s only a single caller for a longer duration. E.g., when doing some global walk.",
+      "parentUuid": "8a5e3494_30633d53",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "82172d7c_3a2b74b9",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Manual control.",
+      "parentUuid": "89bdcece_25175027",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62cde63c_05a3857c",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "c1b533e9_71a60494",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Performance optimization, required to curb excessive full-table scanning.",
+      "parentUuid": "62cde63c_05a3857c",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1eafc7b_5fcfe541",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -121,6 +235,24 @@
       "writtenOn": "2017-03-06T23:58:50Z",
       "side": 1,
       "message": "Is this really safe? The address will change, isn\u0027t there better way to get the hash code?",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b730165a_eaf90de2",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "If you tell me how, sure. We need a \"stable\" and *fast* mapping that is *not* the identity hashcode.\n\nThis is safe, as the same object-address is not reused for a different object after one GC cycle. The slow-path in GetLocked takes care of inputs that are already to-space pointers (and thus do not match here).",
+      "parentUuid": "b1eafc7b_5fcfe541",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "1c692a61_755b1087",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Because I only ever need the old pointer. This code is never gonna read the content of the object. As such, a read barrier (which will mark the object and thus keep it live) is overkill and defeats the purpose of a system-weak.",
+      "parentUuid": "2139b9a0_6791374e",
+      "range": {
+        "startLine": 187,
+        "startChar": 26,
+        "endLine": 187,
+        "endChar": 45
+      },
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d86724_2bbb3dc2",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "3f832e19_697c7aab",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Don\u0027t understand this. Why would I need const?",
+      "parentUuid": "95d86724_2bbb3dc2",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4228b894_9f8b388b",
         "filename": "runtime/openjdkjvmti/object_tagging.cc",
         "patchSetId": 4
@@ -178,6 +352,24 @@
       "writtenOn": "2017-03-06T23:58:50Z",
       "side": 1,
       "message": "Where is the .cc file?",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8906a5be_64becd49",
+        "filename": "runtime/openjdkjvmti/object_tagging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T18:12:36Z",
+      "side": 1,
+      "message": "Remember our discussion? I have a second instantiation coming up. So all implementation (that needs to be hidden from the header) is in the -inl file.",
+      "parentUuid": "4228b894_9f8b388b",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
