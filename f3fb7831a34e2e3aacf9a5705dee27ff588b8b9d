@@ -224,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "687cf845_6d58643b",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T18:30:37Z",
+      "side": 1,
+      "message": "Leave this explanation as comment?",
+      "parentUuid": "c1b533e9_71a60494",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1eafc7b_5fcfe541",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -253,6 +271,24 @@
       "side": 1,
       "message": "If you tell me how, sure. We need a \"stable\" and *fast* mapping that is *not* the identity hashcode.\n\nThis is safe, as the same object-address is not reused for a different object after one GC cycle. The slow-path in GetLocked takes care of inputs that are already to-space pointers (and thus do not match here).",
       "parentUuid": "b1eafc7b_5fcfe541",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "940727a0_f56d245c",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T18:30:37Z",
+      "side": 1,
+      "message": "Not sure, what\u0027s wrong with the system identity hash code? I thought we only take the cost of expanding it once?",
+      "parentUuid": "b730165a_eaf90de2",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -341,6 +377,24 @@
     },
     {
       "key": {
+        "uuid": "22dba570_4c6fb9fe",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T18:30:37Z",
+      "side": 1,
+      "message": "Never mind, thought this was a pointer for some reason.",
+      "parentUuid": "3f832e19_697c7aab",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4228b894_9f8b388b",
         "filename": "runtime/openjdkjvmti/object_tagging.cc",
         "patchSetId": 4
@@ -370,6 +424,24 @@
       "side": 1,
       "message": "Remember our discussion? I have a second instantiation coming up. So all implementation (that needs to be hidden from the header) is in the -inl file.",
       "parentUuid": "4228b894_9f8b388b",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "745941a5_3cbf2c46",
+        "filename": "runtime/openjdkjvmti/object_tagging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-07T18:30:37Z",
+      "side": 1,
+      "message": "Are you using the JvmtiWeakTable\u003cjlong\u003e anywhere outside of this file?\n\n\"template class\" is only useful if other files are going to use that instantiation (without including the -inl.h file)",
+      "parentUuid": "8906a5be_64becd49",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
