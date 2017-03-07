@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "dd7fd2d6_db7aeea0",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-07T22:07:55Z",
+      "side": 1,
+      "message": "Actually, just realized this will be invoked through dex2oat, which is not forked from the zygote.\n\nBut then we continue having the issue: apps can invoke dex2oat and pass the flag (and we\u0027ve seen some messing around).",
+      "parentUuid": "cd35eae3_394a542b",
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d91056_3913f5fc",
         "filename": "runtime/runtime_options.def",
         "patchSetId": 2
