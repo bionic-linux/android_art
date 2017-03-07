@@ -295,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "f6c0701e_c5f36263",
+        "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T19:21:31Z",
+      "side": 1,
+      "message": "It adds overhead to every synchronization call. The generic system-weak infrastructure is the common way to hold raw pointers (and make them GC aware).",
+      "parentUuid": "940727a0_f56d245c",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2139b9a0_6791374e",
         "filename": "runtime/openjdkjvmti/jvmti_weak_table.h",
         "patchSetId": 4
@@ -442,6 +460,24 @@
       "side": 1,
       "message": "Are you using the JvmtiWeakTable\u003cjlong\u003e anywhere outside of this file?\n\n\"template class\" is only useful if other files are going to use that instantiation (without including the -inl.h file)",
       "parentUuid": "8906a5be_64becd49",
+      "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "814e8ec4_0a62917e",
+        "filename": "runtime/openjdkjvmti/object_tagging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-07T19:21:31Z",
+      "side": 1,
+      "message": "Yes. The tagging table is used in other files.",
+      "parentUuid": "745941a5_3cbf2c46",
       "revId": "f3fb7831a34e2e3aacf9a5705dee27ff588b8b9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
