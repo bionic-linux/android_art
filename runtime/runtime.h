@@ -638,6 +638,10 @@ class Runtime {
     return zygote_no_threads_;
   }
 
+  bool PermitBootClassPathOnlyOptimizations() const {
+    return permit_bootclasspath_only_optimizations_;
+  }
+
   // Returns if the code can be deoptimized asynchronously. Code may be compiled with some
   // optimization that makes it impossible to deoptimize.
   bool IsAsyncDeoptimizeable(uintptr_t code) const REQUIRES_SHARED(Locks::mutator_lock_);
@@ -900,6 +904,10 @@ class Runtime {
 
   // Whether zygote code is in a section that should not start threads.
   bool zygote_no_threads_;
+
+  // Whether or not we should permit optimizations that are normally
+  // reserved only for the bootclasspath code.
+  bool permit_bootclasspath_only_optimizations_;
 
   // Saved environment.
   class EnvSnapshot {

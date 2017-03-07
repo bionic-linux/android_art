@@ -257,6 +257,7 @@ Runtime::Runtime()
       // Initially assume we perceive jank in case the process state is never updated.
       process_state_(kProcessStateJankPerceptible),
       zygote_no_threads_(false),
+      permit_bootclasspath_only_optimizations_(false),
       cha_(nullptr) {
   CheckAsmSupportOffsetsAndSizes();
   std::fill(callee_save_methods_, callee_save_methods_ + arraysize(callee_save_methods_), 0u);
@@ -1332,6 +1333,10 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   pre_allocated_NoClassDefFoundError_ = GcRoot<mirror::Throwable>(self->GetException());
   self->ClearException();
 
+  // Read value of -Xbootclasspath-optimizations
+  permit_bootclasspath_only_optimizations_ =
+      runtime_options.GetOrDefault(Opt::BootClassPathOptimizations);
+
   // Runtime initialization is largely done now.
   // We load plugins first since that can modify the runtime state slightly.
   // Load all plugins
@@ -2154,6 +2159,13 @@ void Runtime::AddCurrentRuntimeFeaturesAsDex2OatArguments(std::vector<std::strin
   std::string feature_string("--instruction-set-features=");
   feature_string += features->GetFeatureString();
   argv->push_back(feature_string);
+
+  argv->push_back("--runtime-arg");
+  std::string restrict_boot_classpath_string("-Xbootclasspath-optimizations:");
+  restrict_boot_classpath_string += PermitBootClassPathOnlyOptimizations()
+                                    ? "permit"
+                                    : "restrict";
+  argv->push_back(restrict_boot_classpath_string);
 }
 
 void Runtime::CreateJit() {
