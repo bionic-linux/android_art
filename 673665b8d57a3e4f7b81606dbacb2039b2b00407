@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "474dab6e_e3db4f57",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-08T10:05:33Z",
+      "side": 1,
+      "message": "Mind adding jit \u0026 debug here?",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "673665b8d57a3e4f7b81606dbacb2039b2b00407",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
