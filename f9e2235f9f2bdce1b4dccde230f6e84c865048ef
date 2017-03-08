@@ -96,6 +96,24 @@
     },
     {
       "key": {
+        "uuid": "fbd49878_ce5f37cc",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-08T22:09:23Z",
+      "side": 1,
+      "message": "What if we detect that it\u0027s running as the non-shell/non-root user (on Android) and restrict it then?\n\n   if ((getusername(geteuid()) \u003d\u003d \"root\" || \"shell\") \u0026\u0026 ANDROID))\n     do_boot_classpath_check\n\n(there might be a similarly better way like checking if they\u0027re part of some application group).",
+      "parentUuid": "c31215ca_65201fb8",
+      "revId": "f9e2235f9f2bdce1b4dccde230f6e84c865048ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8d91056_3913f5fc",
         "filename": "runtime/runtime_options.def",
         "patchSetId": 2
