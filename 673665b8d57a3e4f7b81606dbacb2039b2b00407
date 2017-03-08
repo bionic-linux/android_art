@@ -46,6 +46,30 @@
       "revId": "673665b8d57a3e4f7b81606dbacb2039b2b00407",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1b3398f_b958977c",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-08T22:52:55Z",
+      "side": 1,
+      "message": "Yes, I suspect the reason that you\u0027re getting a lot of GCs due to JIT is that there are a lot of JIT compilations going on, which you wouldn\u0027t have in non-debug configuration.",
+      "parentUuid": "f15dcf72_330a23cd",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "673665b8d57a3e4f7b81606dbacb2039b2b00407",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
