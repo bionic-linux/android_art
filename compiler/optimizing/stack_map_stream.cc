@@ -152,6 +152,12 @@ size_t StackMapStream::PrepareForFillIn() {
   encoding.location_catalog.num_entries = location_catalog_entries_.size();
   encoding.location_catalog.num_bytes = ComputeDexRegisterLocationCatalogSize();
   encoding.inline_info.num_entries = inline_infos_.size();
+  size_t num_method_indices = PrepareMethodIndices();
+  static size_t a = 0, b = 0;
+  b += num_method_indices;
+  if ((++a & 0xFF) == 0) {
+    LOG(ERROR) << a << " " << PrettySize(b * 2);
+  }
   ComputeInlineInfoEncoding(&encoding.inline_info.encoding,
                             encoding.dex_register_map.num_bytes);
   CodeOffset max_native_pc_offset = ComputeMaxNativePcCodeOffset();
@@ -245,7 +251,7 @@ void StackMapStream::ComputeInlineInfoEncoding(InlineInfoEncoding* encoding,
     for (size_t j = 0; j < entry.inlining_depth; ++j) {
       InlineInfoEntry inline_entry = inline_infos_[inline_info_index++];
       if (inline_entry.method == nullptr) {
-        method_index_max = std::max(method_index_max, inline_entry.method_index);
+        method_index_max = std::max(method_index_max, inline_entry.dex_method_index_slot);
         extra_data_max = std::max(extra_data_max, 1u);
       } else {
         method_index_max = std::max(
@@ -345,7 +351,7 @@ void StackMapStream::FillIn(MemoryRegion region) {
       InvokeInfo invoke_info(code_info.GetInvokeInfo(encoding, invoke_info_idx));
       invoke_info.SetNativePcCodeOffset(encoding.invoke_info.encoding, entry.native_pc_code_offset);
       invoke_info.SetInvokeType(encoding.invoke_info.encoding, entry.invoke_type);
-      invoke_info.SetMethodIndex(encoding.invoke_info.encoding, entry.dex_method_index);
+      invoke_info.SetMethodIndex(encoding.invoke_info.encoding, entry.dex_method_index_slot);
       ++invoke_info_idx;
     }
 
@@ -375,7 +381,7 @@ void StackMapStream::FillIn(MemoryRegion region) {
         } else {
           inline_info.SetMethodIndexAtDepth(encoding.inline_info.encoding,
                                             depth,
-                                            inline_entry.method_index);
+                                            inline_entry.dex_method_index_slot);
           inline_info.SetExtraDataAtDepth(encoding.inline_info.encoding, depth, 1);
         }
         inline_info.SetDexPcAtDepth(encoding.inline_info.encoding, depth, inline_entry.dex_pc);
@@ -532,6 +538,28 @@ size_t StackMapStream::PrepareRegisterMasks() {
   }
   return dedupe.size();
 }
+
+size_t StackMapStream::PrepareMethodIndices() {
+  method_indices_.resize(stack_maps_.size() + inline_infos_.size(), 0u);
+  ArenaUnorderedMap<uint32_t, size_t> dedupe(allocator_->Adapter(kArenaAllocStackMapStream));
+  for (StackMapEntry& stack_map : stack_maps_) {
+    const size_t index = dedupe.size();
+    const uint32_t method_index = stack_map.dex_method_index;
+    if (method_index != DexFile::kDexNoIndex) {
+      stack_map.dex_method_index_slot = dedupe.emplace(method_index, index).first->second;
+      method_indices_[index] = stack_map.dex_method_index_slot;
+    }
+  }
+  for (InlineInfoEntry& inline_info : inline_infos_) {
+    const size_t index = dedupe.size();
+    const uint32_t method_index = inline_info.method_index;
+    CHECK_NE(method_index, DexFile::kDexNoIndex);
+    inline_info.dex_method_index_slot = dedupe.emplace(method_index, index).first->second;
+    method_indices_[index] = inline_info.dex_method_index_slot;
+  }
+  return dedupe.size();
+}
+
 
 size_t StackMapStream::PrepareStackMasks(size_t entry_size_in_bits) {
   // Preallocate memory since we do not want it to move (the dedup map will point into it).

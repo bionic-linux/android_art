@@ -70,6 +70,7 @@ class StackMapStream : public ValueObject {
         inline_infos_(allocator->Adapter(kArenaAllocStackMapStream)),
         stack_masks_(allocator->Adapter(kArenaAllocStackMapStream)),
         register_masks_(allocator->Adapter(kArenaAllocStackMapStream)),
+        method_indices_(allocator->Adapter(kArenaAllocStackMapStream)),
         dex_register_entries_(allocator->Adapter(kArenaAllocStackMapStream)),
         stack_mask_max_(-1),
         dex_pc_max_(0),
@@ -120,6 +121,7 @@ class StackMapStream : public ValueObject {
     size_t dex_register_map_index;
     InvokeType invoke_type;
     uint32_t dex_method_index;
+    uint32_t dex_method_index_slot;  // Index into dex method index table.
   };
 
   struct InlineInfoEntry {
@@ -128,6 +130,7 @@ class StackMapStream : public ValueObject {
     uint32_t method_index;
     DexRegisterMapEntry dex_register_entry;
     size_t dex_register_map_index;
+    uint32_t dex_method_index_slot;  // Index into the dex method index table.
   };
 
   void BeginStackMapEntry(uint32_t dex_pc,
@@ -179,6 +182,9 @@ class StackMapStream : public ValueObject {
 
   // Returns the number of unique register masks.
   size_t PrepareRegisterMasks();
+
+  // Returns the number of unique method indices..
+  size_t PrepareMethodIndices();
 
   // Deduplicate entry if possible and return the corresponding index into dex_register_entries_
   // array. If entry is not a duplicate, a new entry is added to dex_register_entries_.
@@ -232,6 +238,7 @@ class StackMapStream : public ValueObject {
   ArenaVector<InlineInfoEntry> inline_infos_;
   ArenaVector<uint8_t> stack_masks_;
   ArenaVector<uint32_t> register_masks_;
+  ArenaVector<uint32_t> method_indices_;
   ArenaVector<DexRegisterMapEntry> dex_register_entries_;
   int stack_mask_max_;
   uint32_t dex_pc_max_;
