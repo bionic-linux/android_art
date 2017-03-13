@@ -555,11 +555,9 @@ def get_disabled_test_info():
 
   disabled_test_info = {}
   for failure in known_failures_info:
-    tests = failure.get('test')
-    if tests:
+    tests = failure.get('tests', [])
+    if isinstance(tests, basestring):
       tests = [tests]
-    else:
-      tests = failure.get('tests', [])
     variants = parse_variants(failure.get('variant'))
     env_vars = failure.get('env_vars')
     if check_env_vars(env_vars):
