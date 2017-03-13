@@ -55,11 +55,17 @@ void CommonCompilerTest::MakeExecutable(ArtMethod* method) {
   // If the code size is 0 it means the method was skipped due to profile guided compilation.
   if (compiled_method != nullptr && compiled_method->GetQuickCode().size() != 0u) {
     ArrayRef<const uint8_t> code = compiled_method->GetQuickCode();
-    uint32_t code_size = code.size();
+    const uint32_t code_size = code.size();
     ArrayRef<const uint8_t> vmap_table = compiled_method->GetVmapTable();
-    uint32_t vmap_table_offset = vmap_table.empty() ? 0u
+    const uint32_t vmap_table_offset = vmap_table.empty() ? 0u
         : sizeof(OatQuickMethodHeader) + vmap_table.size();
+    // The method info is directly before the vmap table.
+    ArrayRef<const uint8_t> method_info = compiled_method->GetMethodInfo();
+    const uint32_t method_info_offset = method_info.empty() ? 0u
+        : vmap_table_offset + method_info.size();
+
     OatQuickMethodHeader method_header(vmap_table_offset,
+                                       method_info_offset,
                                        compiled_method->GetFrameSizeInBytes(),
                                        compiled_method->GetCoreSpillMask(),
                                        compiled_method->GetFpSpillMask(),
@@ -73,6 +79,7 @@ void CommonCompilerTest::MakeExecutable(ArtMethod* method) {
     chunk->resize(sizeof(method_header));
     memcpy(&(*chunk)[0], &method_header, sizeof(method_header));
     chunk->insert(chunk->begin(), vmap_table.begin(), vmap_table.end());
+    chunk->insert(chunk->begin(), method_info.begin(), method_info.end());
     chunk->insert(chunk->end(), code.begin(), code.end());
     CHECK_EQ(chunk->size(), size);
     const void* unaligned_code_ptr = chunk->data() + (size - code_size);
