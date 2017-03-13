@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7698cb7a_a91d5c0d",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-13T21:55:28Z",
+      "side": 1,
+      "message": "For consistency with other code treat the value as 32-bit (only longs and doubles are 64-bit):\n\n    int32_t value \u003d CodeGenerator::GetInt32ValueOf(value_location.GetConstant());",
+      "range": {
+        "startLine": 1746,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 85
+      },
+      "revId": "8a9441639bfd307e2b686943c4d310a6954e9c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3519791_69552517",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1765,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-13T21:55:28Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1765,
+        "startChar": 0,
+        "endLine": 1765,
+        "endChar": 85
+      },
+      "revId": "8a9441639bfd307e2b686943c4d310a6954e9c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d13dfb67_b1cc5681",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-13T21:55:28Z",
+      "side": 1,
+      "message": "Dsll",
+      "range": {
+        "startLine": 1881,
+        "startChar": 11,
+        "endLine": 1881,
+        "endChar": 14
+      },
+      "revId": "8a9441639bfd307e2b686943c4d310a6954e9c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a83a030_03f73b48",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-13T21:55:28Z",
+      "side": 1,
+      "message": "Daddu",
+      "range": {
+        "startLine": 1882,
+        "startChar": 11,
+        "endLine": 1882,
+        "endChar": 15
+      },
+      "revId": "8a9441639bfd307e2b686943c4d310a6954e9c6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
