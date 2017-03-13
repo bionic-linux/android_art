@@ -809,6 +809,7 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
       DCHECK_LT(method_offsets_index_, oat_class->method_headers_.size());
       OatQuickMethodHeader* method_header = &oat_class->method_headers_[method_offsets_index_];
       uint32_t vmap_table_offset = method_header->GetVmapTableOffset();
+      uint32_t method_info_offset = method_header->GetMethodInfoOffset();
       // The code offset was 0 when the mapping/vmap table offset was set, so it's set
       // to 0-offset and we need to adjust it by code_offset.
       uint32_t code_offset = quick_code_offset - thumb_offset;
@@ -819,23 +820,33 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
           vmap_table_offset += code_offset;
           DCHECK_LT(vmap_table_offset, code_offset);
         }
+        if (method_info_offset != 0u) {
+          method_info_offset += code_offset;
+          DCHECK_LT(method_info_offset, code_offset);
+        }
       } else {
         if (kIsVdexEnabled) {
           // We write the offset in the .vdex file.
           DCHECK_EQ(vmap_table_offset, 0u);
           vmap_table_offset = current_quickening_info_offset_;
-          ArrayRef<const uint8_t> map = compiled_method->GetVmapTable();
-          current_quickening_info_offset_ += map.size() * sizeof(map.front());
+          ArrayRef<const uint8_t> vmap_table = compiled_method->GetVmapTable();
+          current_quickening_info_offset_ += vmap_table.size() * sizeof(vmap_table.front());
+          method_info_offset = current_quickening_info_offset_;
+          ArrayRef<const uint8_t> method_info = compiled_method->GetVmapTable();
+          current_quickening_info_offset_ += method_info.size() * sizeof(method_info.front());
         } else {
           // We write the offset of the quickening info relative to the code.
           vmap_table_offset += code_offset;
           DCHECK_LT(vmap_table_offset, code_offset);
+          method_info_offset += code_offset;
+          DCHECK_LT(method_info_offset, code_offset);
         }
       }
       uint32_t frame_size_in_bytes = compiled_method->GetFrameSizeInBytes();
       uint32_t core_spill_mask = compiled_method->GetCoreSpillMask();
       uint32_t fp_spill_mask = compiled_method->GetFpSpillMask();
       *method_header = OatQuickMethodHeader(vmap_table_offset,
+                                            method_info_offset,
                                             frame_size_in_bytes,
                                             core_spill_mask,
                                             fp_spill_mask,

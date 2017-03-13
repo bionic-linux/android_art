@@ -152,6 +152,12 @@ size_t StackMapStream::PrepareForFillIn() {
   encoding.location_catalog.num_entries = location_catalog_entries_.size();
   encoding.location_catalog.num_bytes = ComputeDexRegisterLocationCatalogSize();
   encoding.inline_info.num_entries = inline_infos_.size();
+  size_t num_method_indices = PrepareMethodIndices();
+  static size_t a = 0, b = 0;
+  b += num_method_indices;
+  if ((++a & 0xFF) == 0) {
+    LOG(ERROR) << a << " " << PrettySize(b * 2);
+  }
   ComputeInlineInfoEncoding(&encoding.inline_info.encoding,
                             encoding.dex_register_map.num_bytes);
   CodeOffset max_native_pc_offset = ComputeMaxNativePcCodeOffset();
@@ -245,7 +251,7 @@ void StackMapStream::ComputeInlineInfoEncoding(InlineInfoEncoding* encoding,
     for (size_t j = 0; j < entry.inlining_depth; ++j) {
       InlineInfoEntry inline_entry = inline_infos_[inline_info_index++];
       if (inline_entry.method == nullptr) {
-        method_index_max = std::max(method_index_max, inline_entry.method_index);
+        method_index_max = std::max(method_index_max, inline_entry.dex_method_index_idx);
         extra_data_max = std::max(extra_data_max, 1u);
       } else {
         method_index_max = std::max(
@@ -288,7 +294,14 @@ size_t StackMapStream::MaybeCopyDexRegisterMap(DexRegisterMapEntry& entry,
   return entry.offset;
 }
 
-void StackMapStream::FillIn(MemoryRegion region) {
+void StackMapStream::FillInMethodInfo(MemoryRegion region) {
+  MethodInfo info(region.begin(), method_indices_.size());
+  for (size_t i = 0; i < method_indices_.size(); ++i) {
+    info.SetMethodIndex(i, method_indices_[i]);
+  }
+}
+
+void StackMapStream::FillInCodeInfo(MemoryRegion region) {
   DCHECK_EQ(0u, current_entry_.dex_pc) << "EndStackMapEntry not called after BeginStackMapEntry";
   DCHECK_NE(0u, needed_size_) << "PrepareForFillIn not called before FillIn";
 
@@ -345,7 +358,7 @@ void StackMapStream::FillIn(MemoryRegion region) {
       InvokeInfo invoke_info(code_info.GetInvokeInfo(encoding, invoke_info_idx));
       invoke_info.SetNativePcCodeOffset(encoding.invoke_info.encoding, entry.native_pc_code_offset);
       invoke_info.SetInvokeType(encoding.invoke_info.encoding, entry.invoke_type);
-      invoke_info.SetMethodIndex(encoding.invoke_info.encoding, entry.dex_method_index);
+      invoke_info.SetMethodIndexIdx(encoding.invoke_info.encoding, entry.dex_method_index_idx);
       ++invoke_info_idx;
     }
 
@@ -364,7 +377,7 @@ void StackMapStream::FillIn(MemoryRegion region) {
       for (size_t depth = 0; depth < entry.inlining_depth; ++depth) {
         InlineInfoEntry inline_entry = inline_infos_[depth + entry.inline_infos_start_index];
         if (inline_entry.method != nullptr) {
-          inline_info.SetMethodIndexAtDepth(
+          inline_info.SetMethodIndexIdxAtDepth(
               encoding.inline_info.encoding,
               depth,
               High32Bits(reinterpret_cast<uintptr_t>(inline_entry.method)));
@@ -373,9 +386,9 @@ void StackMapStream::FillIn(MemoryRegion region) {
               depth,
               Low32Bits(reinterpret_cast<uintptr_t>(inline_entry.method)));
         } else {
-          inline_info.SetMethodIndexAtDepth(encoding.inline_info.encoding,
-                                            depth,
-                                            inline_entry.method_index);
+          inline_info.SetMethodIndexIdxAtDepth(encoding.inline_info.encoding,
+                                               depth,
+                                               inline_entry.dex_method_index_idx);
           inline_info.SetExtraDataAtDepth(encoding.inline_info.encoding, depth, 1);
         }
         inline_info.SetDexPcAtDepth(encoding.inline_info.encoding, depth, inline_entry.dex_pc);
@@ -533,6 +546,28 @@ size_t StackMapStream::PrepareRegisterMasks() {
   return dedupe.size();
 }
 
+size_t StackMapStream::PrepareMethodIndices() {
+  method_indices_.resize(stack_maps_.size() + inline_infos_.size(), 0u);
+  ArenaUnorderedMap<uint32_t, size_t> dedupe(allocator_->Adapter(kArenaAllocStackMapStream));
+  for (StackMapEntry& stack_map : stack_maps_) {
+    const size_t index = dedupe.size();
+    const uint32_t method_index = stack_map.dex_method_index;
+    if (method_index != DexFile::kDexNoIndex) {
+      stack_map.dex_method_index_idx = dedupe.emplace(method_index, index).first->second;
+      method_indices_[index] = stack_map.dex_method_index_idx;
+    }
+  }
+  for (InlineInfoEntry& inline_info : inline_infos_) {
+    const size_t index = dedupe.size();
+    const uint32_t method_index = inline_info.method_index;
+    CHECK_NE(method_index, DexFile::kDexNoIndex);
+    inline_info.dex_method_index_idx = dedupe.emplace(method_index, index).first->second;
+    method_indices_[index] = inline_info.dex_method_index_idx;
+  }
+  return dedupe.size();
+}
+
+
 size_t StackMapStream::PrepareStackMasks(size_t entry_size_in_bits) {
   // Preallocate memory since we do not want it to move (the dedup map will point into it).
   const size_t byte_entry_size = RoundUp(entry_size_in_bits, kBitsPerByte) / kBitsPerByte;
@@ -590,7 +625,8 @@ void StackMapStream::CheckCodeInfo(MemoryRegion region) const {
       DCHECK_EQ(invoke_info.GetNativePcOffset(encoding.invoke_info.encoding, instruction_set_),
                 entry.native_pc_code_offset.Uint32Value(instruction_set_));
       DCHECK_EQ(invoke_info.GetInvokeType(encoding.invoke_info.encoding), entry.invoke_type);
-      DCHECK_EQ(invoke_info.GetMethodIndex(encoding.invoke_info.encoding), entry.dex_method_index);
+      DCHECK_EQ(invoke_info.GetMethodIndexIdx(encoding.invoke_info.encoding),
+                entry.dex_method_index_idx);
       invoke_info_index++;
     }
     CheckDexRegisterMap(code_info,
@@ -615,8 +651,8 @@ void StackMapStream::CheckCodeInfo(MemoryRegion region) const {
           DCHECK_EQ(inline_info.GetArtMethodAtDepth(encoding.inline_info.encoding, d),
                     inline_entry.method);
         } else {
-          DCHECK_EQ(inline_info.GetMethodIndexAtDepth(encoding.inline_info.encoding, d),
-                    inline_entry.method_index);
+          DCHECK_EQ(inline_info.GetMethodIndexIdxAtDepth(encoding.inline_info.encoding, d),
+                    inline_entry.dex_method_index_idx);
         }
 
         CheckDexRegisterMap(code_info,
@@ -631,6 +667,11 @@ void StackMapStream::CheckCodeInfo(MemoryRegion region) const {
       }
     }
   }
+}
+
+size_t StackMapStream::ComputeMethodInfoSize() const {
+  DCHECK_NE(0u, needed_size_) << "PrepareForFillIn not called before " << __FUNCTION__;
+  return MethodInfo::ComputeSize(method_indices_.size());
 }
 
 }  // namespace art

@@ -856,8 +856,13 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* arena,
                                          const DexFile::CodeItem* code_item) const {
   ArenaVector<LinkerPatch> linker_patches = EmitAndSortLinkerPatches(codegen);
   ArenaVector<uint8_t> stack_map(arena->Adapter(kArenaAllocStackMaps));
-  stack_map.resize(codegen->ComputeStackMapsSize());
-  codegen->BuildStackMaps(MemoryRegion(stack_map.data(), stack_map.size()), *code_item);
+  ArenaVector<uint8_t> method_info(arena->Adapter(kArenaAllocStackMaps));
+  size_t method_info_size = 0;
+  stack_map.resize(codegen->ComputeStackMapsSize(&method_info_size));
+  method_info.resize(method_info_size);
+  codegen->BuildStackMaps(MemoryRegion(stack_map.data(), stack_map.size()),
+                          MemoryRegion(method_info.data(), method_info.size()),
+                          *code_item);
 
   CompiledMethod* compiled_method = CompiledMethod::SwapAllocCompiledMethod(
       compiler_driver,
@@ -869,7 +874,7 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* arena,
       codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
       codegen->GetCoreSpillMask(),
       codegen->GetFpuSpillMask(),
-      ArrayRef<const SrcMapElem>(),
+      ArrayRef<const uint8_t>(method_info),
       ArrayRef<const uint8_t>(stack_map),
       ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data()),
       ArrayRef<const LinkerPatch>(linker_patches));
@@ -1200,7 +1205,8 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     }
   }
 
-  size_t stack_map_size = codegen->ComputeStackMapsSize();
+  size_t method_info_size = 0;
+  size_t stack_map_size = codegen->ComputeStackMapsSize(&method_info_size);
   size_t number_of_roots = codegen->GetNumberOfJitRoots();
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
   // We allocate an object array to ensure the JIT roots that we will collect in EmitJitRoots
@@ -1216,9 +1222,15 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     return false;
   }
   uint8_t* stack_map_data = nullptr;
+  uint8_t* method_info_data = nullptr;
   uint8_t* roots_data = nullptr;
-  uint32_t data_size = code_cache->ReserveData(
-      self, stack_map_size, number_of_roots, method, &stack_map_data, &roots_data);
+  uint32_t data_size = code_cache->ReserveData(self,
+                                               stack_map_size,
+                                               number_of_roots,
+                                               method,
+                                               &stack_map_data,
+                                               &method_info_data,
+                                               &roots_data);
   if (stack_map_data == nullptr || roots_data == nullptr) {
     return false;
   }
@@ -1229,6 +1241,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
   const void* code = code_cache->CommitCode(
       self,
       method,
+      method_info_size,
       stack_map_data,
       roots_data,
       codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
