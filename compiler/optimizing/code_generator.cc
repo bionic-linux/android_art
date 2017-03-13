@@ -654,8 +654,10 @@ std::unique_ptr<CodeGenerator> CodeGenerator::Create(HGraph* graph,
   }
 }
 
-size_t CodeGenerator::ComputeStackMapsSize() {
-  return stack_map_stream_.PrepareForFillIn();
+size_t CodeGenerator::ComputeStackMapsSize(size_t* method_info_size) {
+  size_t ret = stack_map_stream_.PrepareForFillIn();
+  *method_info_size = stack_map_stream_.ComputeMethodInfoSize();
+  return ret;
 }
 
 static void CheckCovers(uint32_t dex_pc,
@@ -723,10 +725,13 @@ static void CheckLoopEntriesCanBeUsedForOsr(const HGraph& graph,
   }
 }
 
-void CodeGenerator::BuildStackMaps(MemoryRegion region, const DexFile::CodeItem& code_item) {
-  stack_map_stream_.FillIn(region);
+void CodeGenerator::BuildStackMaps(MemoryRegion stack_map_region,
+                                   MemoryRegion method_info_region,
+                                   const DexFile::CodeItem& code_item) {
+  stack_map_stream_.FillInCodeInfo(stack_map_region);
+  stack_map_stream_.FillInMethodInfo(method_info_region);
   if (kIsDebugBuild) {
-    CheckLoopEntriesCanBeUsedForOsr(*graph_, CodeInfo(region), code_item);
+    CheckLoopEntriesCanBeUsedForOsr(*graph_, CodeInfo(stack_map_region), code_item);
   }
 }
 
