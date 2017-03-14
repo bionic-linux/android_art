@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1a6c627_30616a6f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-14T19:59:26Z",
+      "side": 1,
+      "message": "Can you just use jsonschema somehow? \n\n(OTOH it is a 3rd party package so I am not sure how we could get that added to the android build)",
+      "revId": "2a0e16d09c6888b646402582d909467b11e445c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
