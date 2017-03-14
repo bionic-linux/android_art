@@ -16,6 +16,24 @@
       "revId": "2a0e16d09c6888b646402582d909467b11e445c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e401e59e_efacd81f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-03-14T20:15:19Z",
+      "side": 1,
+      "message": "Yes, it is not included in standard python package.\nIt requires us to keep the src of the package locally in the art directory, which I am not feeling very well about.\nWhat do you think?",
+      "parentUuid": "e1a6c627_30616a6f",
+      "revId": "2a0e16d09c6888b646402582d909467b11e445c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
