@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0dd03ec7_8f76471d",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e066f49b_c11d9176",
+      "range": {
+        "startLine": 1542,
+        "startChar": 42,
+        "endLine": 1542,
+        "endChar": 45
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e8d40d9_45dc5587",
         "filename": "compiler/oat_writer.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-14T17:30:20Z",
       "side": 1,
       "message": "Is this used?  I can\u0027t find a use.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 13,
+        "endLine": 1543,
+        "endChar": 24
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a261ac1_4f23a433",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "Used by DCHECK_OFFSET_",
+      "parentUuid": "3e8d40d9_45dc5587",
       "range": {
         "startLine": 1543,
         "startChar": 13,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8d0ecfba_ee1138e8",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "Used by DCHECK_OFFSET_",
+      "parentUuid": "7da6adec_9268c21a",
+      "range": {
+        "startLine": 1544,
+        "startChar": 20,
+        "endLine": 1544,
+        "endChar": 23
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06100ba_f05c0415",
         "filename": "runtime/method_info.h",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "7b6de345_4e240c05",
+        "filename": "runtime/method_info.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d06100ba_f05c0415",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd5c622_b09b65b0",
         "filename": "runtime/method_info.h",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2017-03-14T17:30:20Z",
       "side": 1,
       "message": "Will it matter that for \u003c 127 methods the MethodIndexTypes are all misaligned?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4040017_1e4cf58b",
+        "filename": "runtime/method_info.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "I put a comment below about pesky alignment requirements.",
+      "parentUuid": "4fd5c622_b09b65b0",
       "range": {
         "startLine": 53,
         "startChar": 4,
@@ -176,6 +296,30 @@
       "side": 1,
       "message": "It shouldn\u0027t hurt dedupe: you can add to the CodeInfo object  one extra entry containing that offset.",
       "parentUuid": "68fe0a7b_bfd02b7b",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1591ede1_322aa37c",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T22:28:28Z",
+      "side": 1,
+      "message": "But the whole point of moving the method indices out was to help dedupe, moving an offset back in will regress this by since it will be unique for each different set of method ids.",
+      "parentUuid": "f65faa39_ac25e111",
       "range": {
         "startLine": 192,
         "startChar": 0,
