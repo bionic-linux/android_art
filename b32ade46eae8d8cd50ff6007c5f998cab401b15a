@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "e066f49b_c11d9176",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-03-14T17:30:20Z",
+      "side": 1,
+      "message": "i.e.,",
+      "range": {
+        "startLine": 1542,
+        "startChar": 42,
+        "endLine": 1542,
+        "endChar": 45
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e8d40d9_45dc5587",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-03-14T17:30:20Z",
+      "side": 1,
+      "message": "Is this used?  I can\u0027t find a use.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 13,
+        "endLine": 1543,
+        "endChar": 24
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da6adec_9268c21a",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-03-14T17:30:20Z",
+      "side": 1,
+      "message": "Is this local needed?  There\u0027s only one use.",
+      "range": {
+        "startLine": 1544,
+        "startChar": 20,
+        "endLine": 1544,
+        "endChar": 23
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06100ba_f05c0415",
+        "filename": "runtime/method_info.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-03-14T17:30:20Z",
+      "side": 1,
+      "message": "missing a space",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 52
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fd5c622_b09b65b0",
+        "filename": "runtime/method_info.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-03-14T17:30:20Z",
+      "side": 1,
+      "message": "Will it matter that for \u003c 127 methods the MethodIndexTypes are all misaligned?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 71
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ce207c0_f7bd22f8",
         "filename": "runtime/oat_quick_method_header.h",
         "patchSetId": 6
