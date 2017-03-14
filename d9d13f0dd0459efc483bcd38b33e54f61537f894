@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50031c25_6fb238fa",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1685,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T00:30:30Z",
+      "side": 1,
+      "message": "Should I reduce copy paste by adding a bool flag to InitMapMethodVisitor?",
+      "range": {
+        "startLine": 1685,
+        "startChar": 4,
+        "endLine": 1685,
+        "endChar": 25
+      },
+      "revId": "d9d13f0dd0459efc483bcd38b33e54f61537f894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4dab519_0e716f0d",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T00:30:30Z",
+      "side": 1,
+      "message": "Out arg seems gross, any idea for a good alternative?",
+      "range": {
+        "startLine": 657,
+        "startChar": 43,
+        "endLine": 657,
+        "endChar": 67
+      },
+      "revId": "d9d13f0dd0459efc483bcd38b33e54f61537f894",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
