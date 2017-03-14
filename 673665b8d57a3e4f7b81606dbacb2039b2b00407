@@ -70,6 +70,30 @@
       "revId": "673665b8d57a3e4f7b81606dbacb2039b2b00407",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29540b65_e910c1e2",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T18:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1b3398f_b958977c",
+      "range": {
+        "startLine": 137,
+        "startChar": 31,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "673665b8d57a3e4f7b81606dbacb2039b2b00407",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
