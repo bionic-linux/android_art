@@ -747,10 +747,6 @@ bool HInliner::TryInlinePolymorphicCallToSameTarget(
     Handle<mirror::ObjectArray<mirror::Class>> classes) {
   // This optimization only works under JIT for now.
   DCHECK(Runtime::Current()->UseJitCompilation());
-  if (graph_->GetInstructionSet() == kMips64) {
-    // TODO: Support HClassTableGet for mips64.
-    return false;
-  }
   ClassLinker* class_linker = caller_compilation_unit_.GetClassLinker();
   PointerSize pointer_size = class_linker->GetImagePointerSize();
 
