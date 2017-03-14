@@ -143,6 +143,29 @@
     },
     {
       "key": {
+        "uuid": "bc67a659_70d0dcfa",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-14T22:53:43Z",
+      "side": 1,
+      "message": "explain why",
+      "range": {
+        "startLine": 155,
+        "startChar": 27,
+        "endLine": 155,
+        "endChar": 84
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d06100ba_f05c0415",
         "filename": "runtime/method_info.h",
         "patchSetId": 6
@@ -320,6 +343,30 @@
       "side": 1,
       "message": "But the whole point of moving the method indices out was to help dedupe, moving an offset back in will regress this by since it will be unique for each different set of method ids.",
       "parentUuid": "f65faa39_ac25e111",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41958019_1390e6fe",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-14T22:53:43Z",
+      "side": 1,
+      "message": "Nicolas, what\u0027s the rationale for single offset here? If there\u0027s a strong one we should document it in the code as a design choice.\n\nMathieu, I think this requires better motivation and explanations on how the savings are achieved and why the dedup won\u0027t work as good if this is is part of the CodeInfo. i.e. I don\u0027t think the obvious is that obvious.",
+      "parentUuid": "1591ede1_322aa37c",
       "range": {
         "startLine": 192,
         "startChar": 0,
