@@ -34,6 +34,24 @@
       "revId": "2a0e16d09c6888b646402582d909467b11e445c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab8007b2_bdb12e5f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-03-14T20:21:11Z",
+      "side": 1,
+      "message": "I think check just this in, but if you have time in the future it would be good to investigate how the (greater) Android build can use 3rd party packages.\n\nThere might be a way we can just upload 1 file (egg?) with the package somewhere and not have to copy the whole source tree. Or maybe just have our own pypi cache https://packaging.python.org/mirrors/\n\nWhat I\u0027ve done in the past is just have a README to instruct people how to install all the dependencies but obviously that\u0027s less convenient than having all the dependencies in the build already (plus that wouldn\u0027t work for scripts being run as part of the build).",
+      "parentUuid": "e401e59e_efacd81f",
+      "revId": "2a0e16d09c6888b646402582d909467b11e445c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
