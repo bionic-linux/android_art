@@ -22,6 +22,30 @@
       "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68fe0a7b_bfd02b7b",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-14T17:15:32Z",
+      "side": 1,
+      "message": "If I move it into code info it will hurt dedupe for obv reasons. +~2.5% code size from doing that. I agree that we could move the frame info into code info though.",
+      "parentUuid": "3ce207c0_f7bd22f8",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
