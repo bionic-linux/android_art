@@ -161,6 +161,30 @@
       "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f65faa39_ac25e111",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-14T17:30:27Z",
+      "side": 1,
+      "message": "It shouldn\u0027t hurt dedupe: you can add to the CodeInfo object  one extra entry containing that offset.",
+      "parentUuid": "68fe0a7b_bfd02b7b",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
