@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ce207c0_f7bd22f8",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-14T17:10:27Z",
+      "side": 1,
+      "message": "This isn\u0027t going in the direction we want for OatQuickMethodHeader, which is only having an offset to CodeInfo (through vmap_table_offset). Can you please move method_info_offset_ to CodeInfo?\n\nAlso the only reason I understand you want this to be an offset is that you could dedupe some of it? If not, then I think the table should be inlined in CodeInfo.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
