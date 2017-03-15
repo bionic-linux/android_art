@@ -376,6 +376,30 @@
       "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66835d14_88e79a21",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-15T11:03:17Z",
+      "side": 1,
+      "message": "OK, after chatting with Mathieu and David I now have a better understanding. I agree with Calin we\u0027d want more comments here, something like\n\n\"We put that offset out of CodeInfo as the CodeInfo has good dedupe properties, but the offset breaks it. The offset contains .... which are hard to dedupe\".\n\n\nNote that we unfortunately create a OatQuickMethodHeader for methods that are being quickened (something we should really cleanup...), so quickened methods will have a +4 increase for something unused. But maybe benefits are high enough to not make it matter.",
+      "parentUuid": "41958019_1390e6fe",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
