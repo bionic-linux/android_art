@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64652d24_5ad8f9eb",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5093,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-15T03:25:33Z",
+      "side": 1,
+      "message": "All three must load a double word.",
+      "range": {
+        "startLine": 5082,
+        "startChar": 0,
+        "endLine": 5093,
+        "endChar": 32
+      },
+      "revId": "8e85e74f3c7dc2effbff28d5784bc8b64da31c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
