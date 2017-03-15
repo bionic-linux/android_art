@@ -496,6 +496,30 @@
       "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24dec43e_66a2af7f",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-15T23:00:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b4dd208_609513f2",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 36
+      },
+      "revId": "b32ade46eae8d8cd50ff6007c5f998cab401b15a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
