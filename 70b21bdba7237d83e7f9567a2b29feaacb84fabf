@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd597e38_f0659dc7",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-03-15T11:04:47Z",
+      "side": 1,
+      "message": "no regalloc_gc?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 35
+      },
+      "revId": "70b21bdba7237d83e7f9567a2b29feaacb84fabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
