@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c2309c6_b077c07f",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-16T10:39:58Z",
+      "side": 1,
+      "message": "Please change the API for this method, eg:\nvoid CodeGenerator::ComputeStackMapAndMethodInfoSize(size_t* stack_map_size, size_t* method_info_size).",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 661,
+        "endChar": 1
+      },
+      "revId": "dd975c61948f2ab7313f2cde98d0a531e12ef47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b4802c9_65324ebe",
+        "filename": "runtime/method_info.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-16T10:39:58Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "dd975c61948f2ab7313f2cde98d0a531e12ef47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
