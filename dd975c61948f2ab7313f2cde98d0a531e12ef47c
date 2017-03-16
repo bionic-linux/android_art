@@ -93,6 +93,46 @@
       "revId": "dd975c61948f2ab7313f2cde98d0a531e12ef47c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9698ce0_63e1a97f",
+        "filename": "runtime/oat.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:57:00Z",
+      "side": 1,
+      "message": ".",
+      "range": {
+        "startLine": 35,
+        "startChar": 71,
+        "endLine": 35,
+        "endChar": 88
+      },
+      "revId": "dd975c61948f2ab7313f2cde98d0a531e12ef47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f41f1ce_76269e26",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-16T17:57:00Z",
+      "side": 1,
+      "message": "extra new line",
+      "revId": "dd975c61948f2ab7313f2cde98d0a531e12ef47c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
