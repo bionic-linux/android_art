@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571ef92c_a7213dac",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-03-16T18:21:46Z",
+      "side": 1,
+      "message": "||?",
+      "range": {
+        "startLine": 76,
+        "startChar": 34,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "04fd2ecd6382b78c08eb66b782057347f050a4e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
