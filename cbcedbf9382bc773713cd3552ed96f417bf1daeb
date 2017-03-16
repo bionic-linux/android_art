@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1647af68_dae75395",
+        "filename": "compiler/oat_writer.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-03-16T17:22:41Z",
+      "side": 1,
+      "message": "This was the bug that was breaking stuff.",
+      "range": {
+        "startLine": 920,
+        "startChar": 6,
+        "endLine": 922,
+        "endChar": 7
+      },
+      "revId": "cbcedbf9382bc773713cd3552ed96f417bf1daeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
