@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4621c58_4ee2afa8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-03-16T20:26:29Z",
+      "side": 1,
+      "message": "There is also sigchain art-test - I do not remember if it is up-to-date - I believe it is.",
+      "revId": "3a43ad09041bacce30ea90cd17ce38ccf1c58d9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
