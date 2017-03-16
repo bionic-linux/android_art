@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aecee3ed_f59b250d",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-16T20:51:25Z",
+      "side": 1,
+      "message": "Removed. I think this was just my first idea of where we might be screwing up the pointers and I forgot to remove it.",
+      "parentUuid": "add93d07_c4268ca0",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 89
+      },
+      "revId": "05414854c1bde78c9a35f50f9c68bec15dd4848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94c377d3_7c029563",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2017-03-16T20:49:25Z",
       "side": 1,
       "message": "Only required in inl file.",
+      "range": {
+        "startLine": 1167,
+        "startChar": 2,
+        "endLine": 1167,
+        "endChar": 8
+      },
+      "revId": "05414854c1bde78c9a35f50f9c68bec15dd4848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c978560_7c6e183b",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-16T20:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c377d3_7c029563",
       "range": {
         "startLine": 1167,
         "startChar": 2,
@@ -106,6 +154,30 @@
       "writtenOn": "2017-03-16T20:49:25Z",
       "side": 1,
       "message": "Can you say why need this? There should not be thread suspension in the middle of root visiting.",
+      "parentUuid": "caa1816c_8a2c8865",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "05414854c1bde78c9a35f50f9c68bec15dd4848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "417ebab2_67cabb8b",
+        "filename": "runtime/mirror/class_ext-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-03-16T20:51:25Z",
+      "side": 1,
+      "message": "Good point. Removed",
       "parentUuid": "caa1816c_8a2c8865",
       "range": {
         "startLine": 29,
