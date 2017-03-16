@@ -46,17 +46,7 @@ custom_env['SOONG_ALLOW_MISSING_DEPENDENCIES'] = 'true'
 print custom_env
 os.environ.update(custom_env)
 
-
-if target.get('target'):
-  build_command = 'make'
-  build_command += ' -j' + str(n_threads)
-  build_command += ' -C ' + env.ANDROID_BUILD_TOP
-  build_command += ' ' + target.get('target')
-  print build_command.split()
-  if subprocess.call(build_command.split()):
-    sys.exit(1)
-
-else:
+if 'flags' in target:
   run_test_command = [os.path.join(env.ANDROID_BUILD_TOP,
                                    'art/test/testrunner/testrunner.py')]
   run_test_command += target.get('flags', [])
@@ -67,6 +57,15 @@ else:
 
   print run_test_command
   if subprocess.call(run_test_command):
+    sys.exit(1)
+
+if target.get('target'):
+  build_command = 'make'
+  build_command += ' -j' + str(n_threads)
+  build_command += ' -C ' + env.ANDROID_BUILD_TOP
+  build_command += ' ' + target.get('target')
+  print build_command.split()
+  if subprocess.call(build_command.split()):
     sys.exit(1)
 
 sys.exit(0)
