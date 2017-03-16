@@ -16,6 +16,24 @@
       "revId": "3a43ad09041bacce30ea90cd17ce38ccf1c58d9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7d715a9_2abbd209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-16T20:28:25Z",
+      "side": 1,
+      "message": "I\u0027m going to extend the art test to test the signal mask stuff (since it was obviously broken)",
+      "parentUuid": "b4621c58_4ee2afa8",
+      "revId": "3a43ad09041bacce30ea90cd17ce38ccf1c58d9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
