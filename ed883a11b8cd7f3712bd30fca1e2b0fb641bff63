@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35f316a6_b8646ca6",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-16T21:21:49Z",
+      "side": 0,
+      "message": "Remove the Makefile blacklist too?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 6
+      },
+      "revId": "ed883a11b8cd7f3712bd30fca1e2b0fb641bff63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
