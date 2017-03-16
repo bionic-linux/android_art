@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "939b8f00_21b2d21e",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-16T01:50:39Z",
+      "side": 1,
+      "message": "Why have Remove when it\u0027s a nop?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 1
+      },
+      "revId": "e4e1d18754e91245947df887ce5d900c27d1f830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1502f7fd_78b10e73",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-16T01:50:39Z",
+      "side": 1,
+      "message": "DCHECK that it\u0027s not null (or call InitializeSignalChain)?",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 53
+      },
+      "revId": "e4e1d18754e91245947df887ce5d900c27d1f830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
