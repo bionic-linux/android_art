@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "add93d07_c4268ca0",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-16T20:46:43Z",
+      "side": 1,
+      "message": "Not sure why this is required. Nothing here is a suspend point as far as I can see. Can you point out where it is?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 89
+      },
+      "revId": "05414854c1bde78c9a35f50f9c68bec15dd4848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caa1816c_8a2c8865",
+        "filename": "runtime/mirror/class_ext-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-16T20:46:43Z",
+      "side": 1,
+      "message": "Same here. I\u0027m a bit surprised we need a scope here.",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 70
+      },
+      "revId": "05414854c1bde78c9a35f50f9c68bec15dd4848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
