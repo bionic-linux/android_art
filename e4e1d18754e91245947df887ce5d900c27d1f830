@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0f8d9b47_3a9b74d8",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-16T06:45:57Z",
+      "side": 1,
+      "message": "Added a naive implementation",
+      "parentUuid": "939b8f00_21b2d21e",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 1
+      },
+      "revId": "e4e1d18754e91245947df887ce5d900c27d1f830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1502f7fd_78b10e73",
         "filename": "sigchainlib/sigchain.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-16T01:50:39Z",
       "side": 1,
       "message": "DCHECK that it\u0027s not null (or call InitializeSignalChain)?",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 53
+      },
+      "revId": "e4e1d18754e91245947df887ce5d900c27d1f830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5799e3d7_3d84d81d",
+        "filename": "sigchainlib/sigchain.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-03-16T06:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1502f7fd_78b10e73",
       "range": {
         "startLine": 380,
         "startChar": 2,
