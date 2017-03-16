@@ -84,9 +84,10 @@ ArtMethod* ArtMethod::FromReflectedMethod(const ScopedObjectAccessAlreadyRunnabl
 mirror::DexCache* ArtMethod::GetObsoleteDexCache() {
   DCHECK(!Runtime::Current()->IsAotCompiler()) << PrettyMethod();
   DCHECK(IsObsolete());
-  ObjPtr<mirror::ClassExt> ext(GetDeclaringClass()->GetExtData());
+  StackHandleScope<2> hs(Thread::Current());
+  Handle<mirror::ClassExt> ext(hs.NewHandle(GetDeclaringClass()->GetExtData()));
   CHECK(!ext.IsNull());
-  ObjPtr<mirror::PointerArray> obsolete_methods(ext->GetObsoleteMethods());
+  Handle<mirror::PointerArray> obsolete_methods(hs.NewHandle(ext->GetObsoleteMethods()));
   CHECK(!obsolete_methods.IsNull());
   DCHECK(ext->GetObsoleteDexCaches() != nullptr);
   int32_t len = obsolete_methods->GetLength();

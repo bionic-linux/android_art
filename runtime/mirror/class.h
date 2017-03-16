@@ -1162,7 +1162,9 @@ class MANAGED Class FINAL : public Object {
 
   void SetClinitThreadId(pid_t new_clinit_thread_id) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  ClassExt* GetExtData() REQUIRES_SHARED(Locks::mutator_lock_);
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
+           ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
+  inline ClassExt* GetExtData() REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Returns the ExtData for this class, allocating one if necessary. This should be the only way
   // to force ext_data_ to be set. No functions are available for changing an already set ext_data_
