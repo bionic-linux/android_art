@@ -1,5 +1,6 @@
 target_config = {
     'art-test' : {
+        'target' : 'test-art-host-gtest',
         'flags' : [],
         'env' : {
             'ART_USE_READ_BARRIER' : 'false'
