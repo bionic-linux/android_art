@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81821f85_275b03f3",
+        "filename": "test/testrunner/run_build_test_target.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-17T09:57:35Z",
+      "side": 1,
+      "message": "Rename this to \"run-test-flags\", or \"testrunner-flags\"\n\nOr maybe introduce \"testrunner: true\" in target_config.py?",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "f82995c54225c7fb9da45e49270dc85f563a4652",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
