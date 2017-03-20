@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b962713_07a989ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-03-20T18:22:44Z",
+      "side": 1,
+      "message": "I don\u0027t really understand this. I thought we just end up with multiple entries in the vtable pointing to the same method and everything should just work.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "3f98053f954fff56543fedc5349b439cac92f992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
