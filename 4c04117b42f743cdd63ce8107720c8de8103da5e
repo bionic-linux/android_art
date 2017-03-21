@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f04b3fec_fff7d8b5",
+        "filename": "runtime/reflection.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-21T10:02:19Z",
+      "side": 0,
+      "message": "Why not just changing this? I don\u0027t think this method is hot enough that it\u0027s worth the risk of not using a handle.",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 9
+      },
+      "revId": "4c04117b42f743cdd63ce8107720c8de8103da5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
