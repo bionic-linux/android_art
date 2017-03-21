@@ -46,6 +46,30 @@
       "revId": "d1ce66a46e2d74755ce3825f645644a0efcf8633",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c8dd535_0f4decf9",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-21T22:50:19Z",
+      "side": 1,
+      "message": "I felt calling it gtest would make it consistent with the other \u0027run-tests\u0027 flag (ie, here\u0027s the test suites that this config runs), but up to you.",
+      "parentUuid": "aecb97e9_b8834298",
+      "range": {
+        "startLine": 3,
+        "startChar": 9,
+        "endLine": 3,
+        "endChar": 41
+      },
+      "revId": "d1ce66a46e2d74755ce3825f645644a0efcf8633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
