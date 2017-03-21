@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b070c045_02c96e60",
+        "filename": "compiler/utils/mips64/assembler_mips64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-03-21T16:10:15Z",
+      "side": 1,
+      "message": "although this is of course the right way of testing it, but since HasMsa is the only feature you are interested in, and because this method is called by every msa method, would it make sense to just store has_msa_ as a private field in the assembler constructor?",
+      "revId": "a0a9320090f99d004dde8e780388b7367f960794",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
