@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "243555c2_d9532671",
+        "filename": "compiler/utils/mips64/assembler_mips64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-03-22T17:21:36Z",
+      "side": 1,
+      "message": "You had this in the original too, but without the ISA feature pointer, shouldn\u0027t the safe assumption be that there is no msa? I suspect you are doing this on purpose, but please document why.",
+      "revId": "de2b7023089ab44779b0aa7f27cddc22c18369f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
