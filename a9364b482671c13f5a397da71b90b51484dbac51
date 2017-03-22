@@ -22,6 +22,30 @@
       "revId": "a9364b482671c13f5a397da71b90b51484dbac51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2890099c_2cbbe0b7",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-03-22T14:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed7ef363_4a2149ed",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "a9364b482671c13f5a397da71b90b51484dbac51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
