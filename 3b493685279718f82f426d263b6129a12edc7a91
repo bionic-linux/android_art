@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f06b6986_08ac462c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2534,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-03-22T18:30:08Z",
+      "side": 1,
+      "message": "Yeah, my brain forgot to switch to a different coding style for a moment.",
+      "parentUuid": "e8b73ca9_60ac1ccb",
+      "revId": "3b493685279718f82f426d263b6129a12edc7a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "089ff8e1_e09b0b10",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-22T17:29:36Z",
       "side": 1,
       "message": "ditto",
+      "revId": "3b493685279718f82f426d263b6129a12edc7a91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56fe82cb_7fbc2898",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2566,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-03-22T18:30:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "089ff8e1_e09b0b10",
       "revId": "3b493685279718f82f426d263b6129a12edc7a91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
