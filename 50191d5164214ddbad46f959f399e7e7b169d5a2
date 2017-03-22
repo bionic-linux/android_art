@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de51b120_966c7175",
+        "filename": "compiler/optimizing/nodes.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-03-22T16:35:26Z",
+      "side": 1,
+      "message": "note that this break-out CL is back for consideration :-)\nI have added the suggestion from the other CL in this one too, so the rebase will be consistent later.",
+      "revId": "50191d5164214ddbad46f959f399e7e7b169d5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
