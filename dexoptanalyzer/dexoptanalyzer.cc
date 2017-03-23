@@ -104,6 +104,9 @@ NO_RETURN static void Usage(const char *fmt, ...) {
   UsageError("        kDex2OatForRelocationOdex = %d",
              static_cast<int>(dexoptanalyzer::ReturnCodes::kDex2OatForRelocationOdex));
 
+  UsageError("        kBootImageError = %d",
+             static_cast<int>(dexoptanalyzer::ReturnCodes::kBootImageError));
+
   UsageError("        kErrorInvalidArguments = %d",
              static_cast<int>(dexoptanalyzer::ReturnCodes::kErrorInvalidArguments));
   UsageError("        kErrorCannotCreateRuntime = %d",
@@ -124,6 +127,8 @@ NO_RETURN static void Usage(const char *fmt, ...) {
     case dexoptanalyzer::ReturnCodes::kDex2OatForFilterOdex:
     case dexoptanalyzer::ReturnCodes::kDex2OatForRelocationOdex:
 
+    case dexoptanalyzer::ReturnCodes::kBootImageError:
+
     case dexoptanalyzer::ReturnCodes::kErrorInvalidArguments:
     case dexoptanalyzer::ReturnCodes::kErrorCannotCreateRuntime:
     case dexoptanalyzer::ReturnCodes::kErrorUnknownDexOptNeeded:
@@ -137,7 +142,8 @@ class DexoptAnalyzer FINAL {
  public:
   DexoptAnalyzer() : isa_(InstructionSet::kNone),
                      compiler_filter_(CompilerFilter::Filter::kVerifyNone),
-                     assume_profile_changed_(false) {}
+                     assume_profile_changed_(false),
+                     mode_(Mode::kGetDexOptNeeded) {}
 
   void ParseArgs(int argc, char **argv) {
     original_argc = argc;
@@ -176,6 +182,8 @@ class DexoptAnalyzer FINAL {
         // compute dalvik-cache folder). This is mostly used in tests.
         std::string new_android_data = option.substr(strlen("--android-data=")).ToString();
         setenv("ANDROID_DATA", new_android_data.c_str(), 1);
+      } else if (option.starts_with("--get-image-state")) {
+        mode_ = Mode::kGetImageStatus;
       } else {
         Usage("Unknown argument '%s'", option.data());
       }
@@ -194,7 +202,25 @@ class DexoptAnalyzer FINAL {
     }
   }
 
-  bool CreateRuntime() {
+  dexoptanalyzer::ReturnCodes Run() {
+    switch (mode_) {
+      case Mode::kGetDexOptNeeded:
+        return GetDexOptNeeded();
+      case Mode::kGetImageStatus:
+        return GetBootImageState();
+    }
+    LOG(FATAL) << "Unreachable";
+    UNREACHABLE();
+  }
+
+ private:
+  enum Mode {
+    kGetDexOptNeeded,
+    kGetImageStatus,
+  };
+
+  bool CreateRuntime(bool relocate,
+      const std::initializer_list<std::pair<const char*, void*>>& extra_options = {}) {
     RuntimeOptions options;
     // The image could be custom, so make sure we explicitly pass it.
     std::string img = "-Ximage:" + image_;
@@ -206,11 +232,34 @@ class DexoptAnalyzer FINAL {
     options.push_back(std::make_pair("-Xno-sig-chain", nullptr));
     // Pretend we are a compiler so that we can re-use the same infrastructure to load a different
     // ISA image and minimize the amount of things that get started.
-    NoopCompilerCallbacks callbacks;
+    class NoopCompilerCallbacksWithRelocate FINAL : public CompilerCallbacks {
+     public:
+      explicit NoopCompilerCallbacksWithRelocate(bool relocation_possible)
+          : CompilerCallbacks(CompilerCallbacks::CallbackMode::kCompileApp),
+            relocation_possible_(relocation_possible) {}
+      ~NoopCompilerCallbacksWithRelocate() {}
+
+      void MethodVerified(verifier::MethodVerifier* verifier ATTRIBUTE_UNUSED) OVERRIDE {
+      }
+
+      void ClassRejected(ClassReference ref ATTRIBUTE_UNUSED) OVERRIDE {}
+
+      bool IsRelocationPossible() OVERRIDE { return relocation_possible_; }
+
+      verifier::VerifierDeps* GetVerifierDeps() const OVERRIDE { return nullptr; }
+
+     private:
+      bool relocation_possible_;
+
+      DISALLOW_COPY_AND_ASSIGN(NoopCompilerCallbacksWithRelocate);
+    };
+    NoopCompilerCallbacksWithRelocate callbacks(relocate);
     options.push_back(std::make_pair("compilercallbacks", &callbacks));
-    // Make sure we don't attempt to relocate. The tool should only retrieve the DexOptNeeded
-    // status and not attempt to relocate the boot image.
-    options.push_back(std::make_pair("-Xnorelocate", nullptr));
+    options.push_back(std::make_pair(relocate ? "-Xrelocate" : "-Xnorelocate", nullptr));
+
+    for (auto& pair : extra_options) {
+      options.push_back(pair);
+    }
 
     if (!Runtime::Create(options, false)) {
       LOG(ERROR) << "Unable to initialize runtime";
@@ -223,13 +272,23 @@ class DexoptAnalyzer FINAL {
     return true;
   }
 
+  dexoptanalyzer::ReturnCodes GetBootImageState() {
+    // Disable image compilation and fallback to running out of jars.
+    return CreateRuntime(true, { std::make_pair("-Xnoimage-dex2oat", nullptr),
+                                 std::make_pair("-Xno-dex-file-fallback", nullptr) })
+        ? dexoptanalyzer::ReturnCodes::kNoDexOptNeeded
+        : dexoptanalyzer::ReturnCodes::kBootImageError;
+  }
+
   dexoptanalyzer::ReturnCodes GetDexOptNeeded() {
     // If the file does not exist there's nothing to do.
     // This is a fast path to avoid creating the runtime (b/34385298).
     if (!OS::FileExists(dex_file_.c_str())) {
       return dexoptanalyzer::ReturnCodes::kNoDexOptNeeded;
     }
-    if (!CreateRuntime()) {
+    // Make sure we don't attempt to relocate. The tool should only retrieve the DexOptNeeded
+    // status and not attempt to relocate the boot image.
+    if (!CreateRuntime(false)) {
       return dexoptanalyzer::ReturnCodes::kErrorCannotCreateRuntime;
     }
     OatFileAssistant oat_file_assistant(dex_file_.c_str(), isa_, /*load_executable*/ false);
@@ -266,12 +325,12 @@ class DexoptAnalyzer FINAL {
     }
   }
 
- private:
   std::string dex_file_;
   InstructionSet isa_;
   CompilerFilter::Filter compiler_filter_;
   bool assume_profile_changed_;
   std::string image_;
+  Mode mode_;
 };
 
 static int dexoptAnalyze(int argc, char** argv) {
@@ -279,7 +338,7 @@ static int dexoptAnalyze(int argc, char** argv) {
 
   // Parse arguments. Argument mistakes will lead to exit(kErrorInvalidArguments) in UsageError.
   analyzer.ParseArgs(argc, argv);
-  return static_cast<int>(analyzer.GetDexOptNeeded());
+  return static_cast<int>(analyzer.Run());
 }
 
 }  // namespace art
