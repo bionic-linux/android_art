@@ -22,6 +22,30 @@
       "revId": "a09b8c3d3d0db27b7efd58e14078d9cf6ae608dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f2573bc_1c558bf5",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-03-23T22:00:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "063981f6_42eacf69",
+      "range": {
+        "startLine": 619,
+        "startChar": 27,
+        "endLine": 619,
+        "endChar": 43
+      },
+      "revId": "a09b8c3d3d0db27b7efd58e14078d9cf6ae608dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
