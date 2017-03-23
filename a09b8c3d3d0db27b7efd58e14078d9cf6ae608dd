@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063981f6_42eacf69",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-03-23T10:29:26Z",
+      "side": 1,
+      "message": "kFpuCalleeSaves",
+      "range": {
+        "startLine": 619,
+        "startChar": 27,
+        "endLine": 619,
+        "endChar": 43
+      },
+      "revId": "a09b8c3d3d0db27b7efd58e14078d9cf6ae608dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
