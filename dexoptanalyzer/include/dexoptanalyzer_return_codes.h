@@ -31,6 +31,10 @@ enum class ExitStatus : int {
   kDex2OatForFilterOdex = 6,
   kDex2OatForRelocationOdex = 7,
 
+  kBootImageError = 50,                 // Failure return value for --get-image-state.
+                                        // kNoDexOptNeeded is returned when the image is
+                                        // up-to-date.
+
   kErrorInvalidArguments = 101,
   kErrorCannotCreateRuntime = 102,
   kErrorUnknownDexOptNeeded = 103
