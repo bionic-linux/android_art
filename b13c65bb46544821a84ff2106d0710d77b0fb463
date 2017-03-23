@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2693fd79_99e87043",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5718,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-23T11:28:47Z",
+      "side": 1,
+      "message": "indentation is off.",
+      "range": {
+        "startLine": 5717,
+        "startChar": 0,
+        "endLine": 5718,
+        "endChar": 66
+      },
+      "revId": "b13c65bb46544821a84ff2106d0710d77b0fb463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "283b4e1f_3976c61b",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5171,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-03-23T11:28:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 5170,
+        "startChar": 0,
+        "endLine": 5171,
+        "endChar": 66
+      },
+      "revId": "b13c65bb46544821a84ff2106d0710d77b0fb463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
