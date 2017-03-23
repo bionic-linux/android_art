@@ -16,6 +16,24 @@
       "revId": "217b2ce15674cb3cf2373110711d74aefb6c91e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3557ae_f322d97d",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-03-23T11:51:03Z",
+      "side": 1,
+      "message": "Yes, I was anticipating remarks about it.",
+      "parentUuid": "8b1f1d0f_cb123091",
+      "revId": "217b2ce15674cb3cf2373110711d74aefb6c91e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
