@@ -54,6 +54,17 @@ class DexoptAnalyzerTest : public DexoptTest {
     return ExecAndReturnCode(argv_str, &error);
   }
 
+  int CheckBootImage(const std::initializer_list<std::string>& options = {}) {
+    std::string dexoptanalyzer_cmd = GetDexoptAnalyzerCmd();
+    std::vector<std::string> argv_str;
+    argv_str.push_back(dexoptanalyzer_cmd);
+    argv_str.push_back("--get-image-state");
+    argv_str.insert(argv_str.end(), options.begin(), options.end());
+
+    std::string error;
+    return ExecAndReturnCode(argv_str, &error);
+  }
+
   int DexoptanalyzerToOatFileAssistant(int dexoptanalyzerResult) {
     switch (static_cast<dexoptanalyzer::ReturnCodes>(dexoptanalyzerResult)) {
       case dexoptanalyzer::ReturnCodes::kNoDexOptNeeded:
@@ -74,6 +85,7 @@ class DexoptAnalyzerTest : public DexoptTest {
         return -OatFileAssistant::kDex2OatForRelocation;
 
       // Enumerate failure cases. This allows -Wswitch to complain if we're missing something.
+      case art::dexoptanalyzer::ReturnCodes::kBootImageError:
       case art::dexoptanalyzer::ReturnCodes::kErrorInvalidArguments:
       case art::dexoptanalyzer::ReturnCodes::kErrorCannotCreateRuntime:
       case art::dexoptanalyzer::ReturnCodes::kErrorUnknownDexOptNeeded:
@@ -321,6 +333,30 @@ TEST_F(DexoptAnalyzerTest, ShortDexLocation) {
   std::string dex_location = "/xx";
 
   Verify(dex_location, CompilerFilter::kSpeed);
+}
+
+TEST_F(DexoptAnalyzerTest, CheckBootImageOK) {
+  int result = CheckBootImage({ "--isa=" + std::string(GetInstructionSetString(kRuntimeISA)),
+                                "--image=" + GetImageLocation(),
+                                "--android-data=" + android_data_ });
+  EXPECT_EQ(static_cast<int>(dexoptanalyzer::ReturnCodes::kNoDexOptNeeded), result);
+}
+
+TEST_F(DexoptAnalyzerTest, CheckBootImageEmptyCache) {
+  std::string empty_android_data;
+  SetUpAndroidData(empty_android_data);
+  int result = CheckBootImage({ "--isa=" + std::string(GetInstructionSetString(kRuntimeISA)),
+                                "--image=" + GetImageLocation(),
+                                "--android-data=" + empty_android_data });
+  EXPECT_EQ(static_cast<int>(dexoptanalyzer::ReturnCodes::kBootImageError), result);
+  TearDownAndroidData(empty_android_data, false);
+}
+
+TEST_F(DexoptAnalyzerTest, CheckBootImageMissingData) {
+  int result = CheckBootImage({ "--isa=" + std::string(GetInstructionSetString(kRuntimeISA)),
+                                "--image=" + GetImageLocation(),
+                                "--android-data=/does/not/exist" });
+  EXPECT_NE(static_cast<int>(dexoptanalyzer::ReturnCodes::kNoDexOptNeeded), result);
 }
 
 }  // namespace art
