@@ -61,8 +61,8 @@ NO_RETURN static void Usage(const char *fmt, ...) {
   va_end(ap);
 
   UsageError("Command: %s", CommandLine().c_str());
-  UsageError("  Performs a dexopt analysis on the given dex file and returns whether or not");
-  UsageError("  the dex file needs to be dexopted.");
+  UsageError("  Performs a dexopt analysis of the boot image or on the given dex file and returns");
+  UsageError("  whether or not a dexopt is needed.");
   UsageError("Usage: dexoptanalyzer [options]...");
   UsageError("");
   UsageError("  --dex-file=<filename>: the dex file which should be analyzed.");
@@ -82,6 +82,9 @@ NO_RETURN static void Usage(const char *fmt, ...) {
   UsageError("  --android-data=<directory>: optional, the directory which should be used as");
   UsageError("       android-data. By default ANDROID_DATA env variable is used.");
   UsageError("");
+  UsageError("  --check-boot-image: check whether the boot image is up to date or needs to");
+  UsageError("       be regenerated. Cannot be used with --dex-file.");
+  UsageError("");
   UsageError("Return code:");
   UsageError("  To make it easier to integrate with the internal tools this command will make");
   UsageError("  available its result (dexoptNeeded) as the exit/return code. i.e. it will not");
@@ -96,7 +99,8 @@ class DexoptAnalyzer FINAL {
  public:
   DexoptAnalyzer() : isa_(InstructionSet::kNone),
                      compiler_filter_(CompilerFilter::Filter::kVerifyNone),
-                     assume_profile_changed_(false) {}
+                     assume_profile_changed_(false),
+                     mode_(Mode::kGetDexOptNeeded) {}
 
   void ParseArgs(int argc, char **argv) {
     original_argc = argc;
@@ -135,9 +139,15 @@ class DexoptAnalyzer FINAL {
         // compute dalvik-cache folder). This is mostly used in tests.
         std::string new_android_data = option.substr(strlen("--android-data=")).ToString();
         setenv("ANDROID_DATA", new_android_data.c_str(), 1);
+      } else if (option.starts_with("--check-boot-image")) {
+        mode_ = Mode::kCheckBootImage;
       } else {
         Usage("Unknown argument '%s'", option.data());
       }
+    }
+
+    if (mode_ == Mode::kCheckBootImage && !dex_file_.empty()) {
+      UsageError("--dex-file incompatible with --check-boot-image");
     }
 
     if (image_.empty()) {
@@ -153,7 +163,25 @@ class DexoptAnalyzer FINAL {
     }
   }
 
-  bool CreateRuntime() {
+  dexoptanalyzer::ExitStatus Run() {
+    switch (mode_) {
+      case Mode::kGetDexOptNeeded:
+        return GetDexOptNeeded();
+      case Mode::kCheckBootImage:
+        return CheckBootImage();
+    }
+    LOG(FATAL) << "Unreachable";
+    UNREACHABLE();
+  }
+
+ private:
+  enum Mode {
+    kGetDexOptNeeded,
+    kCheckBootImage,
+  };
+
+  bool CreateRuntime(bool relocate,
+      const std::initializer_list<std::pair<const char*, void*>>& extra_options = {}) {
     RuntimeOptions options;
     // The image could be custom, so make sure we explicitly pass it.
     std::string img = "-Ximage:" + image_;
@@ -165,11 +193,34 @@ class DexoptAnalyzer FINAL {
     options.push_back(std::make_pair("-Xno-sig-chain", nullptr));
     // Pretend we are a compiler so that we can re-use the same infrastructure to load a different
     // ISA image and minimize the amount of things that get started.
-    NoopCompilerCallbacks callbacks;
+    class NoopCompilerCallbacksWithRelocate FINAL : public CompilerCallbacks {
+     public:
+      explicit NoopCompilerCallbacksWithRelocate(bool relocation_possible)
+          : CompilerCallbacks(CompilerCallbacks::CallbackMode::kCompileApp),
+            relocation_possible_(relocation_possible) {}
+      ~NoopCompilerCallbacksWithRelocate() {}
+
+      void MethodVerified(verifier::MethodVerifier* verifier ATTRIBUTE_UNUSED) OVERRIDE {
+      }
+
+      void ClassRejected(ClassReference ref ATTRIBUTE_UNUSED) OVERRIDE {}
+
+      bool IsRelocationPossible() OVERRIDE { return relocation_possible_; }
+
+      verifier::VerifierDeps* GetVerifierDeps() const OVERRIDE { return nullptr; }
+
+     private:
+      bool relocation_possible_;
+
+      DISALLOW_COPY_AND_ASSIGN(NoopCompilerCallbacksWithRelocate);
+    };
+    NoopCompilerCallbacksWithRelocate callbacks(relocate);
     options.push_back(std::make_pair("compilercallbacks", &callbacks));
-    // Make sure we don't attempt to relocate. The tool should only retrieve the DexOptNeeded
-    // status and not attempt to relocate the boot image.
-    options.push_back(std::make_pair("-Xnorelocate", nullptr));
+    options.push_back(std::make_pair(relocate ? "-Xrelocate" : "-Xnorelocate", nullptr));
+
+    for (auto& pair : extra_options) {
+      options.push_back(pair);
+    }
 
     if (!Runtime::Create(options, false)) {
       LOG(ERROR) << "Unable to initialize runtime";
@@ -182,13 +233,24 @@ class DexoptAnalyzer FINAL {
     return true;
   }
 
+  dexoptanalyzer::ExitStatus CheckBootImage() {
+    // Disable image compilation and fallback to running out of jars.
+    // TODO: Re-implement this with something that does not require to start a runtime. b/36556109
+    return CreateRuntime(true, { std::make_pair("-Xnoimage-dex2oat", nullptr),
+                                 std::make_pair("-Xno-dex-file-fallback", nullptr) })
+        ? dexoptanalyzer::ExitStatus::kNoDexOptNeeded
+        : dexoptanalyzer::ExitStatus::kBootImageError;
+  }
+
   dexoptanalyzer::ExitStatus GetDexOptNeeded() {
     // If the file does not exist there's nothing to do.
     // This is a fast path to avoid creating the runtime (b/34385298).
     if (!OS::FileExists(dex_file_.c_str())) {
       return dexoptanalyzer::ExitStatus::kNoDexOptNeeded;
     }
-    if (!CreateRuntime()) {
+    // Make sure we don't attempt to relocate. The tool should only retrieve the DexOptNeeded
+    // status and not attempt to relocate the boot image.
+    if (!CreateRuntime(false)) {
       return dexoptanalyzer::ExitStatus::kErrorCannotCreateRuntime;
     }
     OatFileAssistant oat_file_assistant(dex_file_.c_str(), isa_, /*load_executable*/ false);
@@ -225,12 +287,12 @@ class DexoptAnalyzer FINAL {
     }
   }
 
- private:
   std::string dex_file_;
   InstructionSet isa_;
   CompilerFilter::Filter compiler_filter_;
   bool assume_profile_changed_;
   std::string image_;
+  Mode mode_;
 };
 
 static int dexoptAnalyze(int argc, char** argv) {
@@ -238,7 +300,7 @@ static int dexoptAnalyze(int argc, char** argv) {
 
   // Parse arguments. Argument mistakes will lead to exit(kErrorInvalidArguments) in UsageError.
   analyzer.ParseArgs(argc, argv);
-  return static_cast<int>(analyzer.GetDexOptNeeded());
+  return static_cast<int>(analyzer.Run());
 }
 
 }  // namespace art
