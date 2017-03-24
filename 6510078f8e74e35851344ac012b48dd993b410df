@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6422bbf_d630f607",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-24T16:32:25Z",
+      "side": 1,
+      "message": "I was going for the latter behavior (as that was the result of the meeting, I thought - two separate commands), but without enforcement. Your argument parsing is already weak (e.g., you don\u0027t check for ISA being set).\n\nI\u0027m happy to enforce --check-boot-image vs --dex-file.",
+      "parentUuid": "4ed075be_2d78f994",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 38
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78aa17a2_8c462e1f",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "128e0a4a_c2d16b79",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-24T16:32:25Z",
+      "side": 1,
+      "message": "/system is as-is, and the B dalvik-cache is referenced via ANDROID_DATA (or --android-data here), but otherwise the structure and naming is unchanged. Only /data/app odex files have a suffix.",
+      "parentUuid": "5f861c12_0ae2eda7",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 55
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "361d1a5f_19b8cfee",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2017-03-24T10:22:56Z",
       "side": 1,
       "message": "/*relocate*/false",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19b4677d_2dc7e4b3",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-03-24T16:32:25Z",
+      "side": 1,
+      "message": "bdc is strongly against that. I\u0027ve developed the same feeling - it makes block-commenting so much harder.\n\nI\u0027ll introduce an internal enum.",
+      "parentUuid": "361d1a5f_19b8cfee",
       "range": {
         "startLine": 291,
         "startChar": 23,
