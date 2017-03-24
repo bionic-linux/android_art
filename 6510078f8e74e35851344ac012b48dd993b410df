@@ -333,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "6f06a5a9_9e35ccd5",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-24T18:36:07Z",
+      "side": 1,
+      "message": "IMO enums for natural true/false values are overkill. \n\nAnyway, I think we should discuss the style considerations in a team email and not here :).",
+      "parentUuid": "ff434a8a_6cd02cc3",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6abe9875_eb0596c8",
         "filename": "dexoptanalyzer/include/dexoptanalyzer_return_codes.h",
         "patchSetId": 2
