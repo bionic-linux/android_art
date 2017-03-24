@@ -49,6 +49,53 @@
     },
     {
       "key": {
+        "uuid": "a88a9a7b_8572198a",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-24T18:22:54Z",
+      "side": 1,
+      "message": "Please enforce it. A simpler semantic is always a better one.\n\nYou could even go one step extra and add another flag to switch modes, i.e. --...boot-image and --...dex-opt-needed.",
+      "parentUuid": "e6422bbf_d630f607",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 38
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea1e639_a2267aad",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-24T18:22:54Z",
+      "side": 1,
+      "message": "why do you need this? We should never attempt to update the image in dexoptanalyzer.",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78aa17a2_8c462e1f",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -154,6 +201,30 @@
       "side": 1,
       "message": "bdc is strongly against that. I\u0027ve developed the same feeling - it makes block-commenting so much harder.\n\nI\u0027ll introduce an internal enum.",
       "parentUuid": "361d1a5f_19b8cfee",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4090a1f5_e48e35f2",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-03-24T18:22:54Z",
+      "side": 1,
+      "message": "please don\u0027t add enums for true/false... I think that\u0027s a stretch.\n\nMost of the our codebases uses this style. Unilateral changes will only create more inconsistency. Let\u0027s discuss this if you wan\u0027t to change it. Personally I\u0027m ok with the comments (it helps more than it annoys me) but can leave without it if I\u0027m part of minority.",
+      "parentUuid": "19b4677d_2dc7e4b3",
       "range": {
         "startLine": 291,
         "startChar": 23,
