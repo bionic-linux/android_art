@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "5f861c12_0ae2eda7",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-03-24T10:42:30Z",
+      "side": 1,
+      "message": "In the chroot environment for otapreopt, you mentioned something about a ._b suffix. Does this suffix apply to the boot image files? Will the runtime find the boot image where it expects to? If there is no precompiled image, will the runtime find the boot classpath dex files where it expects to?",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 55
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "361d1a5f_19b8cfee",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
