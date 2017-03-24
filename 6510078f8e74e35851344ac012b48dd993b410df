@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed075be_2d78f994",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-03-24T10:22:56Z",
+      "side": 1,
+      "message": "Add to usage docs.\n\nMaybe change this options to \"--check-boot-image\". If \"--check-boot-image\" is set, then before checking the status of the dex file, check the boot image. Return kBootImageOutOfDate if the boot image is out of date, otherwise return the status of the dex file. If no --dex-file is specified, return the kNoDexOptNeeded exit code?\n\nI suggest this as an attempt to clarify the behavior of dexoptanalyzer when both --get-image-state and --dex-file are provided. Other options would be to have separate subcommands \"dex\" and \"boot-image\" like the cmd command on Android, or to enforce that only one of --get-image-state or --dex-file is provided.",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 38
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78aa17a2_8c462e1f",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-03-24T10:22:56Z",
+      "side": 1,
+      "message": "Add a TODO and pointer to bug to check the image state directly rather than indirectly by instantiating a runtime. Maybe b/36556109, expand b/34385298 to cover this, or file a new bug and assign it to me.",
+      "range": {
+        "startLine": 276,
+        "startChar": 3,
+        "endLine": 276,
+        "endChar": 69
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "361d1a5f_19b8cfee",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-03-24T10:22:56Z",
+      "side": 1,
+      "message": "/*relocate*/false",
+      "range": {
+        "startLine": 291,
+        "startChar": 23,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6abe9875_eb0596c8",
+        "filename": "dexoptanalyzer/include/dexoptanalyzer_return_codes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-03-24T10:22:56Z",
+      "side": 1,
+      "message": "Call it \"kBootImageOutOfDate\" instead?",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "6510078f8e74e35851344ac012b48dd993b410df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
