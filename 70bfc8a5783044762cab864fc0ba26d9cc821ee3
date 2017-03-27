@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "291b2823_fc35783b",
+        "filename": "runtime/openjdkjvmti/ti_heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2017-03-27T17:08:19Z",
+      "side": 1,
+      "message": "Is it correct that referree actual argument is passed to referrer formal argument (and the similar for referrer actual argument)?",
+      "revId": "70bfc8a5783044762cab864fc0ba26d9cc821ee3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
