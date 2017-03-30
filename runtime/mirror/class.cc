@@ -980,6 +980,13 @@ ObjPtr<Class> Class::GetCommonSuperClass(Handle<Class> klass) {
   return common_super_class;
 }
 
+const char* Class::GetSourceDebugExtension() {
+  Thread* const self = Thread::Current();
+  StackHandleScope<1> hs(self);
+  Handle<mirror::Class> class_obj(hs.NewHandle(this));
+  return annotations::GetSourceDebugExtension(class_obj);
+}
+
 const char* Class::GetSourceFile() {
   const DexFile& dex_file = GetDexFile();
   const DexFile::ClassDef* dex_class_def = GetClassDef();

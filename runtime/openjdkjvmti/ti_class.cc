@@ -744,6 +744,24 @@ jvmtiError ClassUtil::GetClassSignature(jvmtiEnv* env,
   return ERR(NONE);
 }
 
+jvmtiError ClassUtil::GetClassSourceDebugExtension(jvmtiEnv* env,
+                                                   jclass jklass,
+                                                   char** extension_ptr) {
+  art::ScopedObjectAccess soa(art::Thread::Current());
+  art::ObjPtr<art::mirror::Class> klass = soa.Decode<art::mirror::Class>(jklass);
+  if (klass == nullptr) {
+    return ERR(INVALID_CLASS);
+  }
+
+  const char* extension_data = klass->GetSourceDebugExtension();
+  if (extension_data == nullptr) {
+    return ERR(ABSENT_INFORMATION);
+  }
+  *extension_ptr = extension_data;
+  return ERR(NONE);
+}
+
+
 jvmtiError ClassUtil::GetClassStatus(jvmtiEnv* env ATTRIBUTE_UNUSED,
                                      jclass jklass,
                                      jint* status_ptr) {

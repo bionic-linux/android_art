@@ -1245,6 +1245,10 @@ class MANAGED Class FINAL : public Object {
   static ObjPtr<Class> ResolveDirectInterface(Thread* self, Handle<Class> klass, uint32_t idx)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Gets any source debug extension information associated with this class.
+  // Returns true and updates extension_data on success, returns false otherwise.
+  const char* GetSourceDebugExtension() REQUIRES_SHARED(Locks::mutator_lock_);
+
   const char* GetSourceFile() REQUIRES_SHARED(Locks::mutator_lock_);
 
   std::string GetLocation() REQUIRES_SHARED(Locks::mutator_lock_);

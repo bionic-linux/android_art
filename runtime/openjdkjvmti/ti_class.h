@@ -66,6 +66,8 @@ class ClassUtil {
                                       char** signature_ptr,
                                       char** generic_ptr);
 
+  static jvmtiError GetClassSourceDebugExtension(jvmtiEnv* env, jclass klass, char** extension_ptr);
+
   static jvmtiError GetClassStatus(jvmtiEnv* env, jclass klass, jint* status_ptr);
 
   static jvmtiError GetClassLoader(jvmtiEnv* env, jclass klass, jobject* classloader_ptr);

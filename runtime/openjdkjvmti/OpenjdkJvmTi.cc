@@ -773,12 +773,9 @@ class JvmtiFunctions {
     return ClassUtil::GetClassLoader(env, klass, classloader_ptr);
   }
 
-  static jvmtiError GetSourceDebugExtension(jvmtiEnv* env,
-                                            jclass klass ATTRIBUTE_UNUSED,
-                                            char** source_debug_extension_ptr ATTRIBUTE_UNUSED) {
+  static jvmtiError GetSourceDebugExtension(jvmtiEnv* env, jclass klass, char** extension_ptr) {
     ENSURE_VALID_ENV(env);
-    ENSURE_HAS_CAP(env, can_get_source_debug_extension);
-    return ERR(NOT_IMPLEMENTED);
+    return ClassUtil::GetClassSourceDebugExtension(env, klass, extension_ptr);
   }
 
   static jvmtiError RetransformClasses(jvmtiEnv* env, jint class_count, const jclass* classes) {
