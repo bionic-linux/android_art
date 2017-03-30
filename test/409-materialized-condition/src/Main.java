@@ -50,6 +50,30 @@ public class Main {
     return b;
   }
 
+  public static boolean $noinline$intEq0(int x) {
+    return x == 0;
+  }
+
+  public static boolean $noinline$intNe0(int x) {
+    return x != 0;
+  }
+
+  public static boolean $noinline$longEq0(long x) {
+    return x == 0;
+  }
+
+  public static boolean $noinline$longNe0(long x) {
+    return x != 0;
+  }
+
+  public static boolean $noinline$longEqCst(long x) {
+    return x == 0x0123456789ABCDEFL;
+  }
+
+  public static boolean $noinline$longNeCst(long x) {
+    return x != 0x0123456789ABCDEFL;
+  }
+
   public static void main(String[] args) {
     System.out.println("foo1");
     int res = foo1();
@@ -61,6 +85,83 @@ public class Main {
     res = foo2();
     if (res != 42) {
       throw new Error("Unexpected return value for foo2: " + res + ", expected 42.");
+    }
+
+    int[] int_inputs = {0, 1, -1, Integer.MIN_VALUE, Integer.MAX_VALUE, 42, -9000};
+    long[] long_inputs = {
+        0L, 1L, -1L, Long.MIN_VALUE, Long.MAX_VALUE, 0x100000000L,
+        0x100000001L, -9000L, 0x0123456789ABCDEFL};
+
+    boolean[] int_eq_0_expected = {true, false, false, false, false, false, false};
+
+    for (int i = 0; i < int_inputs.length; i++) {
+      boolean result = $noinline$intEq0(int_inputs[i]);
+
+      if (result != int_eq_0_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$intEq0: " + result + ", expected "
+          + int_eq_0_expected[i] + ".");
+      }
+    }
+
+    boolean[] int_ne_0_expected = {false, true, true, true, true, true, true};
+
+    for (int i = 0; i < int_inputs.length; i++) {
+      boolean result = $noinline$intNe0(int_inputs[i]);
+
+      if (result != int_ne_0_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$intNe0: " + result + ", expected "
+          + int_ne_0_expected[i] + ".");
+      }
+    }
+
+    boolean[] long_eq_0_expected = {true, false, false, false, false, false, false, false, false};
+
+    for (int i = 0; i < long_inputs.length; i++) {
+      boolean result = $noinline$longEq0(long_inputs[i]);
+
+      if (result != long_eq_0_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$longEq0: " + result + ", expected "
+          + long_eq_0_expected[i] + ".");
+      }
+    }
+
+    boolean[] long_ne_0_expected = {false, true, true, true, true, true, true, true, true};
+
+    for (int i = 0; i < long_inputs.length; i++) {
+      boolean result = $noinline$longNe0(long_inputs[i]);
+
+      if (result != long_ne_0_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$longNe0: " + result + ", expected "
+          + long_ne_0_expected[i] + ".");
+      }
+    }
+
+    boolean[] long_eq_cst_expected = {false, false, false, false, false, false, false, false, true};
+
+    for (int i = 0; i < long_inputs.length; i++) {
+      boolean result = $noinline$longEqCst(long_inputs[i]);
+
+      if (result != long_eq_cst_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$longEqCst: " + result + ", expected "
+          + long_eq_cst_expected[i] + ".");
+      }
+    }
+
+    boolean[] long_ne_cst_expected = {true, true, true, true, true, true, true, true, false};
+
+    for (int i = 0; i < long_inputs.length; i++) {
+      boolean result = $noinline$longNeCst(long_inputs[i]);
+
+      if (result != long_ne_cst_expected[i]) {
+        throw new Error(
+          "Unexpected return value for $noinline$longNeCst: " + result + ", expected "
+          + long_ne_cst_expected[i] + ".");
+      }
     }
   }
 }
