@@ -50,6 +50,30 @@ public class Main {
     return b;
   }
 
+  public static boolean $noinline$intEq0(int x) {
+    return x == 0;
+  }
+
+  public static boolean $noinline$intNe0(int x) {
+    return x != 0;
+  }
+
+  public static boolean $noinline$longEq0(long x) {
+    return x == 0;
+  }
+
+  public static boolean $noinline$longNe0(long x) {
+    return x != 0;
+  }
+
+  public static boolean $noinline$longEqCst(long x) {
+    return x == 0x0123456789ABCDEFL;
+  }
+
+  public static boolean $noinline$longNeCst(long x) {
+    return x != 0x0123456789ABCDEFL;
+  }
+
   public static void main(String[] args) {
     System.out.println("foo1");
     int res = foo1();
@@ -61,6 +85,78 @@ public class Main {
     res = foo2();
     if (res != 42) {
       throw new Error("Unexpected return value for foo2: " + res + ", expected 42.");
+    }
+
+    if (!$noinline$intEq0(0)) {
+      throw new Error("Unexpected return value for $noinline$intEq0: false, expected true.");
+    }
+    if ($noinline$intEq0(42)) {
+      throw new Error("Unexpected return value for $noinline$intEq0: true, expected false.");
+    }
+    if ($noinline$intEq0(-9000)) {
+      throw new Error("Unexpected return value for $noinline$intEq0: true, expected false.");
+    }
+
+    if ($noinline$intNe0(0)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if (!$noinline$intNe0(42)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if (!$noinline$intNe0(-9000)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+
+    if (!$noinline$longEq0(0L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if ($noinline$longEq0(1L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if ($noinline$longEq0(0x100000000L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if ($noinline$longEq0(0x100000001L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if ($noinline$longEq0(-9000L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+
+    if ($noinline$longNe0(0L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if (!$noinline$longNe0(1L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if (!$noinline$longNe0(0x100000000L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if (!$noinline$longNe0(0x100000001L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if (!$noinline$longNe0(-9000L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+
+    if ($noinline$longEqCst(0L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if ($noinline$longEqCst(-1L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
+    }
+    if (!$noinline$longEqCst(0x0123456789ABCDEFL)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+
+    if (!$noinline$longNeCst(0L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if (!$noinline$longNeCst(-1L)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: false, expected true.");
+    }
+    if ($noinline$longNeCst(0x0123456789ABCDEFL)) {
+      throw new Error("Unexpected return value for $noinline$intNe0: true, expected false.");
     }
   }
 }
