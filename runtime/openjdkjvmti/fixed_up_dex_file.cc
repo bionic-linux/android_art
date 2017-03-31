@@ -125,6 +125,7 @@ std::unique_ptr<FixedUpDexFile> FixedUpDexFile::Create(const art::DexFile& origi
   std::unique_ptr<const art::DexFile> new_dex_file(art::DexFile::Open(
       data.data(),
       data.size(),
+      // This name is temporary and not used for anything.
       /*location*/"Unquickening_dexfile.dex",
       /*location_checksum*/0,
       /*oat_dex_file*/nullptr,

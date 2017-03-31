@@ -16,13 +16,8 @@
 
 class Transform {
   public void sayHi() {
-    // Use lower 'h' to make sure the string will have a different string id
-    // than the transformation (the transformation code is the same except
-    // the actual printed String, which was making the test inacurately passing
-    // in JIT mode when loading the string from the dex cache, as the string ids
-    // of the two different strings were the same).
-    // We know the string ids will be different because lexicographically:
-    // "Goodbye" < "LTransform;" < "hello".
+    // This whole class gets discarded so we just put some marker to ensure we are actually
+    // redefining this class.
     System.out.println("foobar");
   }
 }

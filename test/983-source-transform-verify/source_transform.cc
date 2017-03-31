@@ -44,6 +44,7 @@
 namespace art {
 namespace Test983SourceTransformVerify {
 
+// Testing option to make the CheckDexFileHook not skip the initial load of classes.
 constexpr bool kSkipInitialLoad = true;
 
 // The hook we are using.
@@ -103,7 +104,6 @@ void JNICALL CheckDexFileHook(jvmtiEnv* jvmti_env ATTRIBUTE_UNUSED,
   }
 }
 
-// Get all capabilities except those related to retransformation.
 jint OnLoad(JavaVM* vm,
             char* options ATTRIBUTE_UNUSED,
             void* reserved ATTRIBUTE_UNUSED) {

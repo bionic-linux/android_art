@@ -45,7 +45,8 @@ namespace openjdkjvmti {
 // A holder for a DexFile that has been 'fixed up' to ensure it is fully compliant with the
 // published standard (no internal/quick opcodes, all fields are the defined values, etc). This is
 // used to ensure that agents get a consistent dex file regardless of what version of android they
-// are running on.
+// are running on. Non-conforming dex files can be caused by dex_to_dex compilation and dexlayout
+// optimizations.
 class FixedUpDexFile {
  public:
   static std::unique_ptr<FixedUpDexFile> Create(const art::DexFile& original)
@@ -64,8 +65,8 @@ class FixedUpDexFile {
   }
 
  private:
-  explicit FixedUpDexFile(std::unique_ptr<const art::DexFile> fixed_up_dex_file,
-                          std::vector<unsigned char> data)
+  FixedUpDexFile(std::unique_ptr<const art::DexFile> fixed_up_dex_file,
+                 std::vector<unsigned char> data)
       : dex_file_(std::move(fixed_up_dex_file)),
         data_(std::move(data)) {}
 
