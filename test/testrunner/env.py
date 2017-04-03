@@ -80,7 +80,20 @@ def get_build_var(var_name):
 def get_env(key):
   return env.get(key)
 
-ANDROID_BUILD_TOP = env.get('ANDROID_BUILD_TOP', os.getcwd())
+def _get_android_build_top():
+  path_to_top = env.get('ANDROID_BUILD_TOP')
+  if not path_to_top:
+    # nothing set. try to guess it based on the relative path of this env.py file.
+    this_file_path = os.path.realpath(__file__)
+    path_to_top = os.path.join(os.path.dirname(this_file_path), '../../../')
+    path_to_top = os.path.realpath(path_to_top)
+
+  if not os.path.exists(os.path.join(path_to_top, 'build/envsetup.sh')):
+    raise AssertionError("env.py must be located inside an android source tree")
+
+  return path_to_top
+
+ANDROID_BUILD_TOP = _get_android_build_top()
 
 # Directory used for temporary test files on the host.
 ART_HOST_TEST_DIR = tempfile.mkdtemp(prefix = 'test-art-')
