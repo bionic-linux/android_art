@@ -831,6 +831,7 @@ void CodeGenerator::RecordPcInfo(HInstruction* instruction,
       graph_->IsCompilingOsr() &&
       (inlining_depth == 0)) {
     DCHECK_EQ(info->GetSuspendCheck(), instruction);
+    // XXX
     // We duplicate the stack map as a marker that this stack map can be an OSR entry.
     // Duplicating it avoids having the runtime recognize and skip an OSR stack map.
     DCHECK(info->IsIrreducible());

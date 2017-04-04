@@ -2387,16 +2387,21 @@ void InstructionCodeGeneratorARM::HandleGoto(HInstruction* got, HBasicBlock* suc
   HBasicBlock* block = got->GetBlock();
   HInstruction* previous = got->GetPrevious();
 
-  HLoopInformation* info = block->GetLoopInformation();
-  if (info != nullptr && info->IsBackEdge(*block) && info->HasSuspendCheck()) {
-    codegen_->ClearSpillSlotsFromLoopPhisInStackMap(info->GetSuspendCheck());
-    GenerateSuspendCheck(info->GetSuspendCheck(), successor);
-    return;
+  // Disable emitting suspend checks.
+  // Keep them for the OSR case as CheckLoopEntriesCanBeUsedForOsr/CheckCovers DCHECK fails.
+  if (GetGraph()->IsCompilingOsr()) {
+    HLoopInformation* info = block->GetLoopInformation();
+    if (info != nullptr && info->IsBackEdge(*block) && info->HasSuspendCheck()) {
+      codegen_->ClearSpillSlotsFromLoopPhisInStackMap(info->GetSuspendCheck());
+      GenerateSuspendCheck(info->GetSuspendCheck(), successor);
+      return;
+    }
   }
 
   if (block->IsEntryBlock() && (previous != nullptr) && previous->IsSuspendCheck()) {
     GenerateSuspendCheck(previous->AsSuspendCheck(), nullptr);
   }
+
   if (!codegen_->GoesToNextBlock(got->GetBlock(), successor)) {
     __ b(codegen_->GetLabelOf(successor));
   }
