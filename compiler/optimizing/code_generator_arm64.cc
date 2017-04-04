@@ -3416,18 +3416,25 @@ void InstructionCodeGeneratorARM64::VisitFloatConstant(HFloatConstant* constant 
 
 void InstructionCodeGeneratorARM64::HandleGoto(HInstruction* got, HBasicBlock* successor) {
   DCHECK(!successor->IsExitBlock());
+
   HBasicBlock* block = got->GetBlock();
   HInstruction* previous = got->GetPrevious();
-  HLoopInformation* info = block->GetLoopInformation();
 
-  if (info != nullptr && info->IsBackEdge(*block) && info->HasSuspendCheck()) {
-    codegen_->ClearSpillSlotsFromLoopPhisInStackMap(info->GetSuspendCheck());
-    GenerateSuspendCheck(info->GetSuspendCheck(), successor);
-    return;
+  // Disable emitting suspend checks.
+  // Keep them for the OSR case as CheckLoopEntriesCanBeUsedForOsr/CheckCovers DCHECK fails.
+  if (GetGraph()->IsCompilingOsr()) {
+    HLoopInformation* info = block->GetLoopInformation();
+    if (info != nullptr && info->IsBackEdge(*block) && info->HasSuspendCheck()) {
+      codegen_->ClearSpillSlotsFromLoopPhisInStackMap(info->GetSuspendCheck());
+      GenerateSuspendCheck(info->GetSuspendCheck(), successor);
+      return;
+    }
   }
+
   if (block->IsEntryBlock() && (previous != nullptr) && previous->IsSuspendCheck()) {
     GenerateSuspendCheck(previous->AsSuspendCheck(), nullptr);
   }
+
   if (!codegen_->GoesToNextBlock(block, successor)) {
     __ B(codegen_->GetLabelOf(successor));
   }
