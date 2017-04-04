@@ -5600,7 +5600,9 @@ class HBoundsCheck FINAL : public HExpression<2> {
 class HSuspendCheck FINAL : public HTemplateInstruction<0> {
  public:
   explicit HSuspendCheck(uint32_t dex_pc = kNoDexPc)
-      : HTemplateInstruction(SideEffects::CanTriggerGC(), dex_pc), slow_path_(nullptr) {}
+      : HTemplateInstruction(SideEffects::CanTriggerGC(), dex_pc),
+        slow_path_(nullptr),
+        is_eliminated_(false) {}
 
   bool NeedsEnvironment() const OVERRIDE {
     return true;
@@ -5609,12 +5611,18 @@ class HSuspendCheck FINAL : public HTemplateInstruction<0> {
   void SetSlowPath(SlowPathCode* slow_path) { slow_path_ = slow_path; }
   SlowPathCode* GetSlowPath() const { return slow_path_; }
 
+  bool IsEliminated() const { return is_eliminated_; }
+  void SetEliminated(bool is_eliminated) { is_eliminated_ = is_eliminated; }
+
   DECLARE_INSTRUCTION(SuspendCheck);
 
  private:
   // Only used for code generation, in order to share the same slow path between back edges
   // of a same loop.
   SlowPathCode* slow_path_;
+
+  // If true, do not emit the suspend check code.
+  bool is_eliminated_;
 
   DISALLOW_COPY_AND_ASSIGN(HSuspendCheck);
 };
