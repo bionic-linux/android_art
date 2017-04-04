@@ -203,6 +203,52 @@ void HLoopOptimization::RemoveLoop(LoopNode* node) {
   }
 }
 
+/*
+// All counted loops.
+static bool ShouldEliminateSuspendCheck(HLoopInformation* loop_info,
+                                        InductionVarRange* induction_range) {
+  int64_t trip_count = -1;
+  if (induction_range->IsFinite(loop_info, &trip_count)) {
+    return true;
+  } else {
+    VLOG(compiler) << "SCE : fail non-counted";
+  }
+  return false;
+}
+*/
+
+static constexpr size_t kMaxInstructionsInLoopForSuspendCheckElimination = 1024;
+static constexpr size_t kMaxStaticLoopTripCountForSuspendCheckElimination = 128;
+
+static bool ShouldEliminateSuspendCheck(HLoopInformation* loop_info,
+                                        InductionVarRange* induction_range) {
+  int64_t trip_count = -1;
+  if (induction_range->IsFinite(loop_info, &trip_count)) {
+    // Counted loops
+    if (trip_count >= 0 &&
+        static_cast<size_t>(trip_count) <=
+        kMaxStaticLoopTripCountForSuspendCheckElimination) {
+      // Small trip count
+      size_t instruction_count = 0;
+      for (HBlocksInLoopIterator it(*loop_info); !it.Done(); it.Advance()) {
+        HBasicBlock* block = it.Current();
+        instruction_count += block->GetInstructions().CountSize();
+      }
+      // Small instruction count
+      if (instruction_count <= kMaxInstructionsInLoopForSuspendCheckElimination) {
+        return true;
+      } else {
+        VLOG(compiler) << "SCE : fail instruction_count=" << instruction_count;
+      }
+    } else {
+      VLOG(compiler) << "SCE : fail trip_count=" << trip_count;
+    }
+  } else {
+    VLOG(compiler) << "SCE : fail non-counted";
+  }
+  return false;
+}
+
 void HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
   for ( ; node != nullptr; node = node->next) {
     // Visit inner loops first.
@@ -226,6 +272,24 @@ void HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
     // Optimize inner loop.
     if (node->inner == nullptr) {
       OptimizeInnerLoop(node);
+    }
+
+    // Suspend check elimination.
+    {
+      HLoopInformation* loop_info = node->loop_info;
+      if (loop_info->GetHeader()->GetGraph() != nullptr &&  // loop isn't removed
+          loop_info->HasSuspendCheck()) {
+        VLOG(compiler)
+            << "SCE :"
+            << " dex_pc=" << loop_info->GetSuspendCheck()->GetEnvironment()->GetDexPc()
+            << " method="
+            << loop_info->GetHeader()->GetGraph()->GetDexFile().PrettyMethod(
+                loop_info->GetHeader()->GetGraph()->GetMethodIdx());
+        if (ShouldEliminateSuspendCheck(loop_info, &induction_range_)) {
+          VLOG(compiler) << "SCE : success ";
+          loop_info->GetSuspendCheck()->SetEliminated(true);
+        }
+      }
     }
   }
 }
