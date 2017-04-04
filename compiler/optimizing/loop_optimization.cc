@@ -227,6 +227,17 @@ void HLoopOptimization::TraverseLoopsInnerToOuter(LoopNode* node) {
     if (node->inner == nullptr) {
       OptimizeInnerLoop(node);
     }
+
+    // Suspend check elimination.
+    {
+      HLoopInformation* loop_info = node->loop_info;
+      int64_t trip_count = 0;
+      if (loop_info->GetHeader()->GetGraph() != nullptr &&  // loop isn't removed
+          loop_info->HasSuspendCheck() &&
+          induction_range_.IsFinite(loop_info, &trip_count)) {
+        loop_info->GetSuspendCheck()->SetEliminated(true);
+      }
+    }
   }
 }
 
