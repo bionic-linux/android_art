@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8804238b_44bf4ef7",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1926,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2017-04-05T10:32:23Z",
+      "side": 1,
+      "message": "The code below checks that runtime is non-null. Is the condition always true or should we add runtime !\u003d nullptr too?",
+      "revId": "04bbb5be5b9c0f0b3a72116353d23ea63c8bc5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9facd2a1_44bb76c8",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2017-04-05T10:32:23Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "04bbb5be5b9c0f0b3a72116353d23ea63c8bc5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71b27e7b_280a7267",
+        "filename": "runtime/thread.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2494,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2017-04-05T10:32:23Z",
+      "side": 1,
+      "message": "Not actually relates to this commit but probably it\u0027s worth also to replace Runtime::Current() with runtime (local var defined above). Similar applies to lines 419, 444, 629, 741, 744, 2537.",
+      "revId": "04bbb5be5b9c0f0b3a72116353d23ea63c8bc5e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
