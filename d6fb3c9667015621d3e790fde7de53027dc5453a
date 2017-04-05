@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70f1a217_187a3ca3",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-05T16:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21e2e68_193e8af3",
+      "range": {
+        "startLine": 993,
+        "startChar": 10,
+        "endLine": 993,
+        "endChar": 18
+      },
+      "revId": "d6fb3c9667015621d3e790fde7de53027dc5453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b215507_f791834f",
         "filename": "test/645-checker-abs-simd/src/Main.java",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2017-04-05T12:17:45Z",
       "side": 1,
       "message": "0x80000001 is also en interesting case. Maybe replace the -999?",
+      "revId": "d6fb3c9667015621d3e790fde7de53027dc5453a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd48ac8_db7eb8d0",
+        "filename": "test/645-checker-abs-simd/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-05T16:15:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b215507_f791834f",
       "revId": "d6fb3c9667015621d3e790fde7de53027dc5453a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
