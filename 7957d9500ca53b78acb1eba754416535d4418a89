@@ -16,6 +16,24 @@
       "revId": "7957d9500ca53b78acb1eba754416535d4418a89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "162fb334_7faad0fe",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-06T16:57:25Z",
+      "side": 1,
+      "message": "I use unsigned here because vixl helper CPURegList has unsigned as an argument type.",
+      "parentUuid": "a22dfeb4_1b305af0",
+      "revId": "7957d9500ca53b78acb1eba754416535d4418a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
