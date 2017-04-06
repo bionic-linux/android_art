@@ -46,6 +46,30 @@
       "revId": "2679e49d2aa8a73b5b1b49eaa0b78d46e40f5cba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770585c8_ff8a0808",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-06T15:09:38Z",
+      "side": 1,
+      "message": "It\u0027s a list of tuples...",
+      "parentUuid": "5160ae15_16b88946",
+      "range": {
+        "startLine": 502,
+        "startChar": 24,
+        "endLine": 502,
+        "endChar": 25
+      },
+      "revId": "2679e49d2aa8a73b5b1b49eaa0b78d46e40f5cba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
