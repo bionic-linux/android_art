@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c58193f8_5535f351",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-06T16:53:30Z",
+      "side": 1,
+      "message": "oh, this should be\n\nOnly \"restores\". \n\nI just noticed I made the same typo in my original versions for x86.",
+      "revId": "52ee4406ba5c004ec9e398eef3709c2cec4c6a5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a15193_f8d51e2b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 1
