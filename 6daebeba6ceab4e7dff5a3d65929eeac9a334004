@@ -22,6 +22,30 @@
       "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f2dea2_b047280f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-06T16:38:49Z",
+      "side": 1,
+      "message": "Ah, glad you ask, since the copying happens when the \"map\" is put into the HIR. I will add a comment on that to make sure that is more clear here and there. Thanks.",
+      "parentUuid": "b00d9b48_7e2e7bf2",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 70
+      },
+      "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
