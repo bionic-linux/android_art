@@ -34,6 +34,24 @@
       "revId": "7957d9500ca53b78acb1eba754416535d4418a89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89f75876_c700b951",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-06T17:01:08Z",
+      "side": 1,
+      "message": "Yes, I just checked the prototype and saw the same. I am not sure what our convention is in such cases (Nicolas?), but it is probably ok then.",
+      "parentUuid": "162fb334_7faad0fe",
+      "revId": "7957d9500ca53b78acb1eba754416535d4418a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
