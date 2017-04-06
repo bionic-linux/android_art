@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a22dfeb4_1b305af0",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-06T16:48:34Z",
+      "side": 1,
+      "message": "I don\u0027t think we use this type convention anywhere.\n\nsize_t?",
+      "revId": "7957d9500ca53b78acb1eba754416535d4418a89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
