@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00d9b48_7e2e7bf2",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-06T14:58:51Z",
+      "side": 1,
+      "message": "Can you also mention what happens to the environment? If it\u0027s not copied, please mention that the code generator doesn\u0027t actually generate a call.",
+      "range": {
+        "startLine": 998,
+        "startChar": 0,
+        "endLine": 999,
+        "endChar": 70
+      },
+      "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
