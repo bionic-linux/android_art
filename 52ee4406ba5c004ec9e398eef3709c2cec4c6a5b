@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e89ab78d_45664a06",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-07T09:21:07Z",
+      "side": 1,
+      "message": "Thanks, but it has been already fixed in PS2.",
+      "parentUuid": "2cdff5d1_7b610c56",
+      "revId": "52ee4406ba5c004ec9e398eef3709c2cec4c6a5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a15193_f8d51e2b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 1
