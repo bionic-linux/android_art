@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e125d3f_83688441",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-07T23:53:08Z",
+      "side": 1,
+      "message": "this is the right way of testing termination; at this point you will apply it to outer and inner loops; if we only want to do this to inner loops, moving this into OptimizeInnerLoop would make sense",
+      "revId": "4a487a1511d3606ca857f8fa92736fcf686eea3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
