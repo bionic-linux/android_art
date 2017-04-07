@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2cdff5d1_7b610c56",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-07T02:51:18Z",
+      "side": 1,
+      "message": "Artem, please don\u0027t overlook this comment...",
+      "parentUuid": "c58193f8_5535f351",
+      "revId": "52ee4406ba5c004ec9e398eef3709c2cec4c6a5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9a15193_f8d51e2b",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 1
