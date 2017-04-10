@@ -16,6 +16,24 @@
       "revId": "bfd73a339f1322dbc49725c412cfaeb55387f09a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4417c383_5f3136a1",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-10T21:15:13Z",
+      "side": 1,
+      "message": "Yes, having an instruction-\u003eClone() as well as other HIR related utilities (clone a block, move a block, etc) would greatly simplify not only the vectorizer code, but also other phases and future restructuring we may do",
+      "parentUuid": "2930307d_1dc0af90",
+      "revId": "bfd73a339f1322dbc49725c412cfaeb55387f09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
