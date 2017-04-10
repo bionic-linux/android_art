@@ -143,6 +143,10 @@ class HVecBinaryOperation : public HVecOperation {
                       /*number_of_inputs*/ 2,
                       vector_length,
                       dex_pc) { }
+
+  HInstruction* GetLeft() const { return InputAt(0); }
+  HInstruction* GetRight() const { return InputAt(1); }
+
   DECLARE_ABSTRACT_INSTRUCTION(VecBinaryOperation);
  private:
   DISALLOW_COPY_AND_ASSIGN(HVecBinaryOperation);

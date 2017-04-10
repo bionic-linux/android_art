@@ -226,6 +226,56 @@ class HDataProcWithShifterOp FINAL : public HExpression<2> {
 
 std::ostream& operator<<(std::ostream& os, const HDataProcWithShifterOp::OpKind op);
 
+class HVecMultiplyAccumulate FINAL : public HVecOperation {
+ public:
+  HVecMultiplyAccumulate(ArenaAllocator* arena,
+                         InstructionKind op,
+                         HInstruction* accumulator,
+                         HInstruction* mul_left,
+                         HInstruction* mul_right,
+                         Primitive::Type packed_type,
+                         size_t vector_length,
+                         uint32_t dex_pc = kNoDexPc)
+      : HVecOperation(arena,
+                      packed_type,
+                      SideEffects::None(),
+                      /*number_of_inputs*/ 3,
+                      vector_length,
+                      dex_pc),
+        op_kind_(op) {
+    DCHECK(op == InstructionKind::kAdd || op == InstructionKind::kSub);
+    DCHECK(
+        accumulator->IsVecOperation() && mul_left->IsVecOperation() && mul_right->IsVecOperation());
+    DCHECK_EQ(accumulator->AsVecOperation()->GetPackedType(), packed_type);
+    DCHECK_EQ(mul_left->AsVecOperation()->GetPackedType(), packed_type);
+    DCHECK_EQ(mul_right->AsVecOperation()->GetPackedType(), packed_type);
+
+    SetRawInputAt(kInputAccumulatorIndex, accumulator);
+    SetRawInputAt(kInputMulLeftIndex, mul_left);
+    SetRawInputAt(kInputMulRightIndex, mul_right);
+  }
+
+  static constexpr int kInputAccumulatorIndex = 0;
+  static constexpr int kInputMulLeftIndex = 1;
+  static constexpr int kInputMulRightIndex = 2;
+
+  bool CanBeMoved() const OVERRIDE { return true; }
+  bool InstructionDataEquals(const HInstruction* other) const OVERRIDE {
+    return op_kind_ == other->AsVecMultiplyAccumulate()->op_kind_;
+  }
+
+  InstructionKind GetOpKind() const { return op_kind_; }
+
+  DECLARE_INSTRUCTION(VecMultiplyAccumulate);
+
+ private:
+  // Indicates if this is a MADD or MSUB.
+  const InstructionKind op_kind_;
+
+  DISALLOW_COPY_AND_ASSIGN(HVecMultiplyAccumulate);
+};
+
+
 }  // namespace art
 
 #endif  // ART_COMPILER_OPTIMIZING_NODES_SHARED_H_
