@@ -102,7 +102,6 @@ static jvmtiError GetDexDataForRetransformation(ArtJvmTiEnv* env,
       } else if (orig_dex->IsDexCache()) {
         dex_file = orig_dex->AsDexCache()->GetDexFile();
       } else {
-        DCHECK_EQ(orig_dex->GetClass()->GetPrimitiveType(), art::Primitive::kPrimLong);
         art::ObjPtr<art::mirror::Class> prim_long_class(
             art::Runtime::Current()->GetClassLinker()->GetClassRoot(
                 art::ClassLinker::kPrimitiveLong));
