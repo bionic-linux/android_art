@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2930307d_1dc0af90",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-04-10T21:00:13Z",
+      "side": 1,
+      "message": "Should we have a clone method to do something like this generically and correctly?",
+      "revId": "bfd73a339f1322dbc49725c412cfaeb55387f09a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
