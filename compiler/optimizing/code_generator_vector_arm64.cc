@@ -752,6 +752,65 @@ void InstructionCodeGeneratorARM64::VisitVecStore(HVecStore* instruction) {
   }
 }
 
+void LocationsBuilderARM64::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instr) {
+  LocationSummary* locations = new (GetGraph()->GetArena()) LocationSummary(instr);
+  switch (instr->GetPackedType()) {
+    case Primitive::kPrimByte:
+    case Primitive::kPrimChar:
+    case Primitive::kPrimShort:
+    case Primitive::kPrimInt:
+      locations->SetInAt(
+          HVecMultiplyAccumulate::kInputAccumulatorIndex, Location::RequiresFpuRegister());
+      locations->SetInAt(
+          HVecMultiplyAccumulate::kInputMulLeftIndex, Location::RequiresFpuRegister());
+      locations->SetInAt(
+          HVecMultiplyAccumulate::kInputMulRightIndex, Location::RequiresFpuRegister());
+      DCHECK_EQ(HVecMultiplyAccumulate::kInputAccumulatorIndex, 0);
+      locations->SetOut(Location::SameAsFirstInput());
+      break;
+    default:
+      LOG(FATAL) << "Unsupported SIMD type";
+      UNREACHABLE();
+  }
+}
+
+// Vector MultiplyAccumulate instruction is not affected by Cortex A53's erratum 835769.
+void InstructionCodeGeneratorARM64::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instr) {
+  LocationSummary* locations = instr->GetLocations();
+  VRegister acc = VRegisterFrom(locations->InAt(HVecMultiplyAccumulate::kInputAccumulatorIndex));
+  VRegister left = VRegisterFrom(locations->InAt(HVecMultiplyAccumulate::kInputMulLeftIndex));
+  VRegister right = VRegisterFrom(locations->InAt(HVecMultiplyAccumulate::kInputMulRightIndex));
+  switch (instr->GetPackedType()) {
+    case Primitive::kPrimByte:
+      DCHECK_EQ(16u, instr->GetVectorLength());
+      if (instr->GetOpKind() == HInstruction::kAdd) {
+        __ Mla(acc.V16B(), left.V16B(), right.V16B());
+      } else {
+        __ Mls(acc.V16B(), left.V16B(), right.V16B());
+      }
+      break;
+    case Primitive::kPrimChar:
+    case Primitive::kPrimShort:
+      DCHECK_EQ(8u, instr->GetVectorLength());
+      if (instr->GetOpKind() == HInstruction::kAdd) {
+        __ Mla(acc.V8H(), left.V8H(), right.V8H());
+      } else {
+        __ Mls(acc.V8H(), left.V8H(), right.V8H());
+      }
+      break;
+    case Primitive::kPrimInt:
+      DCHECK_EQ(4u, instr->GetVectorLength());
+      if (instr->GetOpKind() == HInstruction::kAdd) {
+        __ Mla(acc.V4S(), left.V4S(), right.V4S());
+      } else {
+        __ Mls(acc.V4S(), left.V4S(), right.V4S());
+      }
+      break;
+    default:
+      LOG(FATAL) << "Unsupported SIMD type";
+  }
+}
+
 #undef __
 
 }  // namespace arm64

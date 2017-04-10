@@ -801,6 +801,14 @@ void InstructionCodeGeneratorX86::VisitVecStore(HVecStore* instruction) {
   }
 }
 
+void LocationsBuilderX86::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instr) {
+  LOG(FATAL) << "No SIMD for " << instr->GetId();
+}
+
+void InstructionCodeGeneratorX86::VisitVecMultiplyAccumulate(HVecMultiplyAccumulate* instr) {
+  LOG(FATAL) << "No SIMD for " << instr->GetId();
+}
+
 #undef __
 
 }  // namespace x86
