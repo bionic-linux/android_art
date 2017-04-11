@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10b7010f_c7f19bae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-04-11T23:56:22Z",
+      "side": 1,
+      "message": "I\u0027m planning on just waiting until you have your thing in AOSP.",
+      "parentUuid": "073fac14_00095e1c",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "1b451f3180ca971a3b4c6359b47dcb39f0d3620d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990f164b_3fce8c02",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5db4705d_84b00d6e",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-04-11T23:56:22Z",
+      "side": 1,
+      "message": "If we allow app-images then almost every class is pre-loaded by dex2oat which somewhat defeats the point of this test configuration.",
+      "parentUuid": "990f164b_3fce8c02",
+      "range": {
+        "startLine": 150,
+        "startChar": 10,
+        "endLine": 150,
+        "endChar": 39
+      },
+      "revId": "1b451f3180ca971a3b4c6359b47dcb39f0d3620d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa7e4090_121aa520",
         "filename": "test/ti-stress/stress.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-11T23:44:06Z",
       "side": 1,
       "message": "I\u0027m a bit surprised you can just forward the unmodified name - JVMTI uses the semi-descriptor here, right? (ie. java/lang/String without L and ; delimiters)\n\nDexter on the other hand uses a human readable name: java.lang.String\n\nAlso, for inner/nested classes Dexter uses $",
+      "range": {
+        "startLine": 98,
+        "startChar": 14,
+        "endLine": 98,
+        "endChar": 29
+      },
+      "revId": "1b451f3180ca971a3b4c6359b47dcb39f0d3620d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c444c254_171bf3e1",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-04-11T23:56:22Z",
+      "side": 1,
+      "message": "\u003e I\u0027m a bit surprised you can just forward the unmodified name - JVMTI uses the semi-descriptor here, right? (ie. java/lang/String without L and ; delimiters)\n\nIt does. This seems to work.\n\n\u003e Dexter on the other hand uses a human readable name: java.lang.String\n\u003e \n\u003e Also, for inner/nested classes Dexter uses $\n\nI just checked with some random frameworks class and dexter works with the jvmti-style \u0027some/name/of/packages/and/Class$inner\u0027. Maybe it\u0027s due to the way dexter processes it\u0027s input (char replace would let both work).",
+      "parentUuid": "fa7e4090_121aa520",
       "range": {
         "startLine": 98,
         "startChar": 14,
