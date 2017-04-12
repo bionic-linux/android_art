@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "174f2af5_447f6643",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-12T20:39:14Z",
+      "side": 1,
+      "message": "Could say line too long... :-)",
+      "range": {
+        "startLine": 556,
+        "startChar": 100,
+        "endLine": 556,
+        "endChar": 102
+      },
+      "revId": "0ccffc1200eb01eb32b31f547837482494e44b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0697fd_1a4ce8f3",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-12T20:39:14Z",
+      "side": 1,
+      "message": "The advantage of cerr is that it ends up in expected.txt on device. Though I guess you\u0027re still failing down the line, so this is OK?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "0ccffc1200eb01eb32b31f547837482494e44b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
