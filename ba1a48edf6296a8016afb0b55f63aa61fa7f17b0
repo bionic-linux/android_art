@@ -118,6 +118,30 @@
       "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a7bc1c8_fa1c14f4",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-13T14:27:41Z",
+      "side": 1,
+      "message": "Let me rephrase because I wasn\u0027t very clear - I think that some call sites right now expect that the instruction is HLongConstant, and that its value is going to be truncated to 32 bits as well, so the check is bogus for them too.",
+      "parentUuid": "566530bc_c8ec8072",
+      "range": {
+        "startLine": 3637,
+        "startChar": 28,
+        "endLine": 3637,
+        "endChar": 75
+      },
+      "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
