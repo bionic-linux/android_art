@@ -2755,9 +2755,14 @@ void IntrinsicCodeGeneratorARM64::VisitSystemArrayCopy(HInvoke* invoke) {
         // Make sure `tmp` is not IP0, as it is clobbered by
         // ReadBarrierMarkRegX entry points in
         // ReadBarrierSystemArrayCopySlowPathARM64.
+        DCHECK(temps.IsAvailable(ip0));
         temps.Exclude(ip0);
         Register tmp = temps.AcquireW();
         DCHECK_NE(LocationFrom(tmp).reg(), IP0);
+        // Put back IP0 in the pool so that it can be used again as a
+        // scratch register by VIXL macro-instructions (e.g. within
+        // the call to GenSystemArrayCopyAddresses() below).
+        temps.Include(ip0);
 
         // /* int32_t */ monitor = src->monitor_
         __ Ldr(tmp, HeapOperand(src.W(), monitor_offset));
