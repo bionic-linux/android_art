@@ -16,6 +16,24 @@
       "revId": "e7f6cf0cece33eff69264ea5fd31634a6610ade5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04e19395_05a57105",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-13T16:42:56Z",
+      "side": 1,
+      "message": "1. I guess that there is no integral multiply accumulate instruction on intel, right? Before vector instructions introduced target specific IR nodes were placed in nodes_\u003ctarget\u003e.h or into nodes_shared.h (like the scalar MultiplyAccumulate).\n\n2. Will add the comment.",
+      "parentUuid": "e1923b4d_62dc663b",
+      "revId": "e7f6cf0cece33eff69264ea5fd31634a6610ade5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
