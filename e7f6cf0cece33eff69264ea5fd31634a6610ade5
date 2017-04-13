@@ -34,6 +34,24 @@
       "revId": "e7f6cf0cece33eff69264ea5fd31634a6610ade5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a46e8d_2c034345",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-13T16:47:29Z",
+      "side": 1,
+      "message": "I prefer to have all SIMD instructions in node_vector.h. If architectures don\u0027t support them, we will leave them LOG(FATAL) as done for several others (and make sure vectorizer does not use them for that architecture using the mechanism already in place).\n\nSo this is a bit different from nodes_target.",
+      "parentUuid": "04e19395_05a57105",
+      "revId": "e7f6cf0cece33eff69264ea5fd31634a6610ade5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
