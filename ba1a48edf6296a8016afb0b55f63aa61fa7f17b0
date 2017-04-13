@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4db8e701_c6a665c1",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-13T13:56:29Z",
+      "side": 1,
+      "message": "Why not Int64ConstantFrom(in)?",
+      "range": {
+        "startLine": 3637,
+        "startChar": 28,
+        "endLine": 3637,
+        "endChar": 75
+      },
+      "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
