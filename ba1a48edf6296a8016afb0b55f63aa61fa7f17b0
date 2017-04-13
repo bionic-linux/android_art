@@ -46,6 +46,30 @@
       "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8267c4d_23e1598a",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-13T14:10:09Z",
+      "side": 1,
+      "message": "Or alternatively, remove the checks from Int32ConstantFrom()? I looked through the history a bit, and it seems that we added them mainly for the sake of OperandFrom(), but I can\u0027t say right now that in all places that we use Int32ConstantFrom() with a long constant we don\u0027t expect truncation.",
+      "parentUuid": "4db8e701_c6a665c1",
+      "range": {
+        "startLine": 3637,
+        "startChar": 28,
+        "endLine": 3637,
+        "endChar": 75
+      },
+      "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
