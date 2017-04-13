@@ -22,6 +22,30 @@
       "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "003a4c1c_4566b6b4",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-13T14:09:17Z",
+      "side": 1,
+      "message": "I don\u0027t really see why one should be preferred over the other here. I\u0027m using this version to stay in sync with the old backend.",
+      "parentUuid": "4db8e701_c6a665c1",
+      "range": {
+        "startLine": 3637,
+        "startChar": 28,
+        "endLine": 3637,
+        "endChar": 75
+      },
+      "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
