@@ -22,6 +22,30 @@
       "revId": "4c53a04699f3d36de92e280f861aa327db8f051d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ec64329_26c0bdc9",
+        "filename": "test/646-checker-long-const-to-int/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-13T12:59:58Z",
+      "side": 1,
+      "message": "Actually not needed, there is an overload that takes an int.",
+      "parentUuid": "e3475b9f_4c77eef9",
+      "range": {
+        "startLine": 20,
+        "startChar": 23,
+        "endLine": 20,
+        "endChar": 34
+      },
+      "revId": "4c53a04699f3d36de92e280f861aa327db8f051d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
