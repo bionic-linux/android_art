@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1923b4d_62dc663b",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-13T15:38:33Z",
+      "side": 1,
+      "message": "why is this not in nodes_vector.h?\n\nalso, please add top level comment, following the structure I have used for the other vector operations where possible",
+      "revId": "e7f6cf0cece33eff69264ea5fd31634a6610ade5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
