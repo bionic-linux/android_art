@@ -142,6 +142,30 @@
       "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "935f9003_9dcd348c",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3637,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-13T14:34:14Z",
+      "side": 1,
+      "message": "I\u0027m going to submit this as is. I couldn\u0027t find any other caller that would expect the HLongConstant but I\u0027ll leave that cleanup for later.",
+      "parentUuid": "1a7bc1c8_fa1c14f4",
+      "range": {
+        "startLine": 3637,
+        "startChar": 28,
+        "endLine": 3637,
+        "endChar": 75
+      },
+      "revId": "ba1a48edf6296a8016afb0b55f63aa61fa7f17b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
