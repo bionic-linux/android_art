@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "7eaea63a_2940efa5",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T21:17:15Z",
+      "side": 1,
+      "message": "thanks for this idea, I am using the same for the halving add idiom!",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d2f7bc7_736bbaaf",
         "filename": "test/550-checker-multiply-accumulate/src/Main.java",
         "patchSetId": 2
