@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a45479c8_62224f92",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "Bit of a side discussion, I am debating if we should add boolean in these lists for completeness (see my other cl). If there is a SIMD operation, it would make sense to include it, and let the vectorizer itself make the right calls.\n\nBut I can also see the argument for not supporting the unexpected. What do you think?",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93eb6fea_22a49e3a",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "this could use some more explanation for the casual reader",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f65f8e9b_a1b88bfa",
+        "filename": "compiler/optimizing/instruction_simplifier_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "no whiteline",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c07ae367_c036d155",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "Forgive me for being picky, but can you please move this up (in between the binary and memory vector operations). I would like to keep the unary/binary/now ternary/memory order in the file\n\nSame for order in code generators.\n\nI am a strong proponent that code order actually makes things simpler in the long run, so feel strongly about that :-)",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d2f7bc7_736bbaaf",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "here and below, { should be at same line as function def",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1398816_00605abb",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-14T17:00:31Z",
+      "side": 1,
+      "message": "spaces around operators",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
