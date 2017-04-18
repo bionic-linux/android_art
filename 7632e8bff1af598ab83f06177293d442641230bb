@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1fbe1fd6_ec0ae6f1",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "I went back and forth on that a few times, but landed at the same place. Let\u0027s not add the type until it is needed\n\n(as for instructions, if there is a SIMD for a particular type, I don\u0027t mind adding it already for completeness, but I can see either side there too)",
+      "parentUuid": "2e3b1f45_4b312fb2",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93eb6fea_22a49e3a",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2

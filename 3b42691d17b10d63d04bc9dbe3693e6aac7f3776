@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4352cf4_1e5b2d07",
+        "filename": "compiler/optimizing/code_generator_vector_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "note, this must move up to (exactly same order as .h file)",
+      "range": {
+        "startLine": 240,
+        "startChar": 32,
+        "endLine": 240,
+        "endChar": 33
+      },
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0335afb_26ddc98c",
+        "filename": "compiler/optimizing/code_generator_vector_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3757aca_de65cd34",
+        "filename": "compiler/optimizing/code_generator_vector_mips.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6fdaee_e19f3630",
+        "filename": "compiler/optimizing/code_generator_vector_mips64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "here",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8b1b549_f72e05de",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "up",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35fef83a_2c9cbbc4",
+        "filename": "compiler/optimizing/code_generator_vector_x86_64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "up",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a449e2d_f29b02ae",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "move up in same order",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31b3f264_997d7a61",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "no line for consistency",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3e29feb_a5cfafb8",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:29:48Z",
+      "side": 1,
+      "message": "don\u0027t we need vectorizer support for this first?\nIs a patch missing?",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
