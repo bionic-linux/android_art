@@ -62,6 +62,14 @@
 #endif  // USE_HEAP_POISONING
 .endm
 
+.macro POISON_COPY_HEAP_REF rDest, rSrc
+#ifdef USE_HEAP_POISONING
+    neg \rDest, \rSrc
+#else
+    mov \rDest, \rSrc
+#endif  // USE_HEAP_POISONING
+.endm
+
 // Macros to unpoison (negate) the reference for heap poisoning.
 .macro UNPOISON_HEAP_REF rRef
 #ifdef USE_HEAP_POISONING

@@ -431,8 +431,9 @@ std::vector<uint8_t> Arm64RelativePatcher::CompileThunk(const ThunkKey& key) {
       __ Bind(&slow_path);
       MemOperand ldr_address(lr, BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET);
       __ Ldr(ip0.W(), ldr_address);         // Load the LDR (immediate) unsigned offset.
-      __ Ubfx(ip0, ip0, 10, 12);            // Extract the offset.
+      __ Ubfx(ip0.W(), ip0.W(), 10, 12);    // Extract the offset.
       __ Ldr(ip0.W(), MemOperand(base_reg, ip0, LSL, 2));   // Load the reference.
+      // Do not unpoison. With heap poisoning enabled, the entrypoint expects a poisoned reference.
       __ Br(ip1);                           // Jump to the entrypoint.
       if (holder_reg.Is(base_reg)) {
         // Add null check slow path. The stack map is at the address pointed to by LR.
