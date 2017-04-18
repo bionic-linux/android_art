@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e3b1f45_4b312fb2",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "I think that it is a good idea to avoid merging dead code. If the functionality is required by some other future CL (some new vectorizer optimization for example), the patch implementing this functionality could be pushed right before it or together (with a test probably).\n\nBut if you have some other reasons to implement boolean case it could be easily done.",
+      "parentUuid": "a45479c8_62224f92",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93eb6fea_22a49e3a",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-14T17:00:31Z",
       "side": 1,
       "message": "this could use some more explanation for the casual reader",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7228384_117f82bf",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93eb6fea_22a49e3a",
       "revId": "7632e8bff1af598ab83f06177293d442641230bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ea0421f8_c3e7cbf7",
+        "filename": "compiler/optimizing/instruction_simplifier_arm64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65f8e9b_a1b88bfa",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c07ae367_c036d155",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2017-04-14T17:00:31Z",
       "side": 1,
       "message": "Forgive me for being picky, but can you please move this up (in between the binary and memory vector operations). I would like to keep the unary/binary/now ternary/memory order in the file\n\nSame for order in code generators.\n\nI am a strong proponent that code order actually makes things simpler in the long run, so feel strongly about that :-)",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7977f14e_2623ee4f",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "No problem! Done.",
+      "parentUuid": "c07ae367_c036d155",
       "revId": "7632e8bff1af598ab83f06177293d442641230bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "93a41b89_ad28e6ee",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "You\u0027re welcome!",
+      "parentUuid": "7eaea63a_2940efa5",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d2f7bc7_736bbaaf",
         "filename": "test/550-checker-multiply-accumulate/src/Main.java",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "db6eb319_24fbadc2",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d2f7bc7_736bbaaf",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1398816_00605abb",
         "filename": "test/550-checker-multiply-accumulate/src/Main.java",
         "patchSetId": 2
@@ -115,6 +223,24 @@
       "writtenOn": "2017-04-14T17:00:31Z",
       "side": 1,
       "message": "spaces around operators",
+      "revId": "7632e8bff1af598ab83f06177293d442641230bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaae855a_05d71b5e",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-18T10:38:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1398816_00605abb",
       "revId": "7632e8bff1af598ab83f06177293d442641230bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
