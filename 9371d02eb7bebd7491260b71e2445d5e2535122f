@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e445bc9_1f957ab1",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-18T08:56:31Z",
+      "side": 1,
+      "message": "How about moving this to the cases that require it?",
+      "range": {
+        "startLine": 899,
+        "startChar": 0,
+        "endLine": 899,
+        "endChar": 63
+      },
+      "revId": "9371d02eb7bebd7491260b71e2445d5e2535122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d243191_a4dd864b",
+        "filename": "runtime/method_handles.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 931,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-18T08:56:31Z",
+      "side": 1,
+      "message": "I would add the commit message as a comment here, to explain to the reader why field_type is not used.",
+      "range": {
+        "startLine": 931,
+        "startChar": 0,
+        "endLine": 931,
+        "endChar": 75
+      },
+      "revId": "9371d02eb7bebd7491260b71e2445d5e2535122f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
