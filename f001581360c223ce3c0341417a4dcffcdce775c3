@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10f28a30_2593fe27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-18T17:00:43Z",
+      "side": 1,
+      "message": "Is this case covered by an existing test? (Maybe 160-read-barrier-stress?)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c0f2fad_9bf14ffa",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-18T17:00:43Z",
+      "side": 1,
+      "message": "What about adding here the check (that you already added to compiler/optimizing/code_generator_arm64.cc) matching this comment:\n\n  static_assert(BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET \u003d\u003d (kPoisonHeapReferences ? -8 : -4),\n                \"Field LDR must be 1 instruction (4B) before the return address label; \"\n                \" 2 instructions (8B) for heap poisoning.\");\n\n?",
+      "range": {
+        "startLine": 389,
+        "startChar": 47,
+        "endLine": 389,
+        "endChar": 84
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4229b60c_2ce13a69",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3059,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-18T17:00:43Z",
+      "side": 1,
+      "message": "Suggestion: Unconditionally release `temp` here, and DCHECK that `temps` still has at least one free core register when `kPoisonHeapReferences` is true.",
+      "range": {
+        "startLine": 3059,
+        "startChar": 8,
+        "endLine": 3059,
+        "endChar": 28
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
