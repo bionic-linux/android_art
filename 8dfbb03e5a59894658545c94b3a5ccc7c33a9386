@@ -16,6 +16,24 @@
       "revId": "8dfbb03e5a59894658545c94b3a5ccc7c33a9386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9543dff_3aefe815",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-18T10:48:30Z",
+      "side": 1,
+      "message": "I rephrased the comment; hopefully it looks better now.",
+      "parentUuid": "144d959a_3bd83fdb",
+      "revId": "8dfbb03e5a59894658545c94b3a5ccc7c33a9386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
