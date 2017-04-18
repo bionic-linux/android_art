@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "144d959a_3bd83fdb",
+        "filename": "compiler/optimizing/intrinsics_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2764,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-18T10:20:03Z",
+      "side": 1,
+      "message": "I\u0027d also say that having IP0 is *required* by some macro instructions that may be used in GenSystemArrayCopyAddresses.",
+      "revId": "8dfbb03e5a59894658545c94b3a5ccc7c33a9386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
