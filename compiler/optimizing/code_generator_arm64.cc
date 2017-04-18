@@ -90,9 +90,8 @@ static constexpr uint32_t kPackedSwitchCompareJumpThreshold = 7;
 constexpr uint32_t kReferenceLoadMinFarOffset = 16 * KB;
 
 // Flags controlling the use of link-time generated thunks for Baker read barriers.
-// Not yet implemented for heap poisoning.
-constexpr bool kBakerReadBarrierLinkTimeThunksEnableForFields = !kPoisonHeapReferences;
-constexpr bool kBakerReadBarrierLinkTimeThunksEnableForGcRoots = !kPoisonHeapReferences;
+constexpr bool kBakerReadBarrierLinkTimeThunksEnableForFields = true;
+constexpr bool kBakerReadBarrierLinkTimeThunksEnableForGcRoots = true;
 
 // Some instructions have special requirements for a temporary, for example
 // LoadClass/kBssEntry and LoadString/kBssEntry for Baker read barrier require
@@ -6100,10 +6099,12 @@ void CodeGeneratorARM64::GenerateFieldLoadWithBakerReadBarrier(HInstruction* ins
     __ cbnz(ip1, static_cast<int64_t>(0));  // Placeholder, patched at link-time.
     static_assert(BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET == -4,
                   "Field LDR must be 1 instruction (4B) before the return address label.");
-    __ ldr(RegisterFrom(ref, Primitive::kPrimNot), MemOperand(base.X(), offset));
+    Register ref_reg = RegisterFrom(ref, Primitive::kPrimNot);
+    __ ldr(ref_reg, MemOperand(base.X(), offset));
     if (needs_null_check) {
       MaybeRecordImplicitNullCheck(instruction);
     }
+    GetAssembler()->MaybeUnpoisonHeapReference(ref_reg);
     __ Bind(&return_address);
     return;
   }
