@@ -110,6 +110,46 @@
     },
     {
       "key": {
+        "uuid": "ef1b4419_2d11fbba",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:38:43Z",
+      "side": 1,
+      "message": "I find the \"Be careful ... This should not happen\" a bit confusing. Can you please be a bit more precise so the reader is not alarmed.",
+      "range": {
+        "startLine": 316,
+        "startChar": 20,
+        "endLine": 316,
+        "endChar": 25
+      },
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7d4d896_26b8ab1f",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-18T17:38:43Z",
+      "side": 1,
+      "message": "we have GetKind() for that?",
+      "revId": "3b42691d17b10d63d04bc9dbe3693e6aac7f3776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a449e2d_f29b02ae",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 3
