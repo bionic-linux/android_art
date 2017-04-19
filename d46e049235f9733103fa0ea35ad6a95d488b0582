@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c85ba84_a6210c2a",
+        "filename": "compiler/verifier_deps_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-19T13:14:58Z",
+      "side": 1,
+      "message": "Nit: /* expected_is_assignable */ true",
+      "range": {
+        "startLine": 1544,
+        "startChar": 71,
+        "endLine": 1544,
+        "endChar": 75
+      },
+      "revId": "d46e049235f9733103fa0ea35ad6a95d488b0582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b571f753_46320ae1",
+        "filename": "compiler/verifier_deps_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-19T13:14:58Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 1545,
+        "startChar": 71,
+        "endLine": 1545,
+        "endChar": 76
+      },
+      "revId": "d46e049235f9733103fa0ea35ad6a95d488b0582",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
