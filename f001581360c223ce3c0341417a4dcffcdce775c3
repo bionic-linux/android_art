@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b1ec059_571c0bfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-19T09:35:06Z",
+      "side": 1,
+      "message": "Yes, otherwise I wouldn\u0027t have hit that. (Yes, 160-read-barrier-stress.)",
+      "parentUuid": "10f28a30_2593fe27",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c0f2fad_9bf14ffa",
         "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "842bd8fa_6bacec41",
+        "filename": "compiler/linker/arm64/relative_patcher_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-19T09:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0f2fad_9bf14ffa",
+      "range": {
+        "startLine": 389,
+        "startChar": 47,
+        "endLine": 389,
+        "endChar": 84
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4229b60c_2ce13a69",
         "filename": "compiler/optimizing/code_generator_arm64.cc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-18T17:00:43Z",
       "side": 1,
       "message": "Suggestion: Unconditionally release `temp` here, and DCHECK that `temps` still has at least one free core register when `kPoisonHeapReferences` is true.",
+      "range": {
+        "startLine": 3059,
+        "startChar": 8,
+        "endLine": 3059,
+        "endChar": 28
+      },
+      "revId": "f001581360c223ce3c0341417a4dcffcdce775c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab033899_debedded",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3059,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-19T09:35:06Z",
+      "side": 1,
+      "message": "I\u0027ve removed the \"if (kPoisonHeapReferences)\" but the DCHECK() seems rather unnecessary right after we have released a scratch register.",
+      "parentUuid": "4229b60c_2ce13a69",
       "range": {
         "startLine": 3059,
         "startChar": 8,
