@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "641887e5_31817670",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "this should be aligned right after second ( above",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ddf6b0b_42825ba9",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "VECMUL",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f093f83_309a65d3",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "VECADD/SUB",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4769cc7_62394af8",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "VECMULACC",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cbd5fa4_971f10c1",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "HVecMul",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbb52743_ea68de26",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "maybe make the mul_left/mul_right a new DCHECK\n(so it looks less broken)",
+      "range": {
+        "startLine": 576,
+        "startChar": 40,
+        "endLine": 576,
+        "endChar": 41
+      },
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3633c14_64bc52b2",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "white line after method",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dacbd13_916fb8fa",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-19T22:01:51Z",
+      "side": 1,
+      "message": "make new section with\n\nCHECK-NOT VecMul\nCHECK-NOT VecAdd\n\nto ensure it is replaced (and not put next to it)",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
