@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de22713e_e9062b8f",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641887e5_31817670",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ddf6b0b_42825ba9",
         "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-19T22:01:51Z",
       "side": 1,
       "message": "VECMUL",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e749cd95_9c9d8071",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ddf6b0b_42825ba9",
       "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9605d9d1_975b3276",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f093f83_309a65d3",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4769cc7_62394af8",
         "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "656dca8c_bf9bd682",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4769cc7_62394af8",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4cbd5fa4_971f10c1",
         "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2017-04-19T22:01:51Z",
       "side": 1,
       "message": "HVecMul",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d30314_90b38e7f",
+        "filename": "compiler/optimizing/instruction_simplifier_shared.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cbd5fa4_971f10c1",
       "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "a4f6e468_e0d1c82e",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb52743_ea68de26",
+      "range": {
+        "startLine": 576,
+        "startChar": 40,
+        "endLine": 576,
+        "endChar": 41
+      },
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3633c14_64bc52b2",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 4
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "f09c7349_29a8c642",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3633c14_64bc52b2",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dacbd13_916fb8fa",
         "filename": "test/550-checker-multiply-accumulate/src/Main.java",
         "patchSetId": 4
@@ -138,6 +270,24 @@
       "writtenOn": "2017-04-19T22:01:51Z",
       "side": 1,
       "message": "make new section with\n\nCHECK-NOT VecMul\nCHECK-NOT VecAdd\n\nto ensure it is replaced (and not put next to it)",
+      "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ee068e9_172a48d8",
+        "filename": "test/550-checker-multiply-accumulate/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-19T23:47:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dacbd13_916fb8fa",
       "revId": "a3467286d692265a11627dd1e29998fe6759e17f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
