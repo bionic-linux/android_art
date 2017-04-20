@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db846233_433a164b",
+        "filename": "runtime/fault_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-20T11:57:49Z",
+      "side": 1,
+      "message": "What about explicitly initializing `cls` from a null `mirror::Class*` (using HeapReference::FromMirrorPtr) here? This way, you could remove HeapReference\u0027s default constructor.",
+      "range": {
+        "startLine": 82,
+        "startChar": 39,
+        "endLine": 82,
+        "endChar": 43
+      },
+      "revId": "320f56395fd6229503835c9e14930af3e8dfe8d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
