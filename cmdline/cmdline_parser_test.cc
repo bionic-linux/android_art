@@ -333,7 +333,8 @@ TEST_F(CmdlineParserTest, DISABLED_TestXGcOption) {
     EXPECT_SINGLE_PARSE_VALUE(option_all_true, xgc_args_all_true, M::GcOption);
 
     XGcOption option_all_false{};  // NOLINT [readability/braces] [4]
-    option_all_false.collector_type_ = gc::CollectorType::kCollectorTypeMS;
+    option_all_false.collector_type_ = gc::CollectorType::kCollectorTypeCMS;
+    option_all_false.nonconcurrent_ = false;
     option_all_false.verify_pre_gc_heap_ = false;
     option_all_false.verify_pre_sweeping_heap_ = false;
     option_all_false.verify_post_gc_heap_ = false;
@@ -341,7 +342,7 @@ TEST_F(CmdlineParserTest, DISABLED_TestXGcOption) {
     option_all_false.verify_pre_sweeping_rosalloc_ = false;
     option_all_false.verify_post_gc_rosalloc_ = false;
 
-    const char* xgc_args_all_false = "-Xgc:nonconcurrent,"
+    const char* xgc_args_all_false = "-Xgc:concurrent,"
         "nopreverify,nopresweepingverify,nopostverify,nopreverify_rosalloc,"
         "nopresweepingverify_rosalloc,nopostverify_rosalloc,noprecise,noverifycardtable";
 

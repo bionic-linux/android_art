@@ -1100,6 +1100,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
                        runtime_options.GetOrDefault(Opt::LargeObjectThreshold),
                        runtime_options.GetOrDefault(Opt::ParallelGCThreads),
                        runtime_options.GetOrDefault(Opt::ConcGCThreads),
+                       /* enable_concurrent_gc */ !xgc_option.nonconcurrent_,
                        runtime_options.Exists(Opt::LowMemoryMode),
                        runtime_options.GetOrDefault(Opt::LongPauseLogThreshold),
                        runtime_options.GetOrDefault(Opt::LongGCLogThreshold),

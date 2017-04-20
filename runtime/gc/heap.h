@@ -176,6 +176,7 @@ class Heap {
        size_t large_object_threshold,
        size_t parallel_gc_threads,
        size_t conc_gc_threads,
+       bool enable_concurrent_gc,
        bool low_memory_mode,
        size_t long_pause_threshold,
        size_t long_gc_threshold,
@@ -1043,6 +1044,10 @@ class Heap {
         collector_type_ == kCollectorTypeCCBackground;
   }
 
+  bool IsConcurrentGcEnabled() const ALWAYS_INLINE {
+    return enable_concurrent_gc_;
+  }
+
   // Trim the managed and native spaces by releasing unused memory back to the OS.
   void TrimSpaces(Thread* self) REQUIRES(!*gc_complete_lock_);
 
@@ -1207,6 +1212,10 @@ class Heap {
   // When the number of bytes allocated exceeds the footprint TryAllocate returns null indicating
   // a GC should be triggered.
   size_t max_allowed_footprint_;
+
+  // Is concurrent GC enabled? (Note that the only situation where concurrent GC is explicitly
+  // disabled is when generating a boot image, to improve deterministic creation of .art file(s)).
+  const bool enable_concurrent_gc_;
 
   // When num_bytes_allocated_ exceeds this amount then a concurrent GC should be requested so that
   // it completes ahead of an allocation failing.

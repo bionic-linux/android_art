@@ -164,6 +164,7 @@ Heap::Heap(size_t initial_size,
            size_t large_object_threshold,
            size_t parallel_gc_threads,
            size_t conc_gc_threads,
+           bool enable_concurrent_gc,
            bool low_memory_mode,
            size_t long_pause_log_threshold,
            size_t long_gc_log_threshold,
@@ -206,6 +207,7 @@ Heap::Heap(size_t initial_size,
       capacity_(capacity),
       growth_limit_(growth_limit),
       max_allowed_footprint_(initial_size),
+      enable_concurrent_gc_(enable_concurrent_gc),
       concurrent_start_bytes_(std::numeric_limits<size_t>::max()),
       total_bytes_freed_ever_(0),
       total_objects_freed_ever_(0),
@@ -3727,8 +3729,8 @@ void Heap::ConcurrentGC(Thread* self, GcCause cause, bool force_full) {
   if (!Runtime::Current()->IsShuttingDown(self)) {
     // Wait for any GCs currently running to finish.
     if (WaitForGcToComplete(cause, self) == collector::kGcTypeNone) {
-      // If the we can't run the GC type we wanted to run, find the next appropriate one and try that
-      // instead. E.g. can't do partial, so do full instead.
+      // If the we can't run the GC type we wanted to run, find the next appropriate one and try
+      // that instead. E.g. can't do partial, so do full instead.
       collector::GcType next_gc_type = next_gc_type_;
       // If forcing full and next gc type is sticky, override with a non-sticky type.
       if (force_full && next_gc_type == collector::kGcTypeSticky) {

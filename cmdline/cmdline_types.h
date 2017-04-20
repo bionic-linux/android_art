@@ -499,6 +499,7 @@ struct XGcOption {
   // These defaults are used when the command line arguments for -Xgc:
   // are either omitted completely or partially.
   gc::CollectorType collector_type_ = gc::kCollectorTypeDefault;
+  bool nonconcurrent_ = false;
   bool verify_pre_gc_heap_ = false;
   bool verify_pre_sweeping_heap_ = kIsDebugBuild;
   bool verify_post_gc_heap_ = false;
@@ -521,6 +522,19 @@ struct CmdlineType<XGcOption> : CmdlineTypeParser<XGcOption> {
       gc::CollectorType collector_type = ParseCollectorType(gc_option);
       if (collector_type != gc::kCollectorTypeNone) {
         xgc.collector_type_ = collector_type;
+        // Special case for the "nonconcurrent" `collector_type` value.
+        //
+        // In the read barrier configuration, when Runtime::Init
+        // creates a gc::Heap, it sets the foreground and background
+        // collector to CC ones, ignoring the "collector_type" GC
+        // option set above. When compiling a boot image, concurrent
+        // GC behavior is howevener not desirable, as it make .art
+        // file image creation non-deterministic. Therefore, we also
+        // capture the intent of not using concurrent collection in
+        // the "nonconcurrent" GC option.
+        if (gc_option == "nonconcurrent") {
+          xgc.nonconcurrent_ = true;
+        }
       } else if (gc_option == "preverify") {
         xgc.verify_pre_gc_heap_ = true;
       } else if (gc_option == "nopreverify") {
