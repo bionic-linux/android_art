@@ -86,6 +86,9 @@ class MANAGED ObjectReference {
 template<class MirrorType>
 class MANAGED HeapReference : public ObjectReference<kPoisonHeapReferences, MirrorType> {
  public:
+  HeapReference<MirrorType>() REQUIRES_SHARED(Locks::mutator_lock_)
+      : mirror::ObjectReference<kPoisonHeapReferences, MirrorType>(nullptr) {}
+
   static HeapReference<MirrorType> FromMirrorPtr(MirrorType* mirror_ptr)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     return HeapReference<MirrorType>(mirror_ptr);
