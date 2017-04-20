@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b11ff972_cfb4de22",
+        "filename": "cmdline/cmdline_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-20T17:15:44Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 531,
+        "startChar": 26,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "b535116ce515491b50ff98b919ad6b6c126d2fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81c727b2_1d1f8e9c",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 1
