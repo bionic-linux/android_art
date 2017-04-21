@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "77967f16_e236f9a9",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T16:45:24Z",
+      "side": 1,
+      "message": "Ah, thanks for the heads up!",
+      "parentUuid": "a91a62b3_9c76e154",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2939531_0f071265",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
