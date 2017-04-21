@@ -46,6 +46,30 @@
       "revId": "3ed8ec10be0c79e7f7bbe73a754da0daf997b994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e35fa7c_efae5b1a",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2064,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-04-21T18:17:30Z",
+      "side": 1,
+      "message": "I see as this is a direct Mark call. We could have also called Mark directly for java_lang_Object without storing it in a field, I assume..",
+      "parentUuid": "5e619b08_07d2c899",
+      "range": {
+        "startLine": 2063,
+        "startChar": 0,
+        "endLine": 2064,
+        "endChar": 68
+      },
+      "revId": "3ed8ec10be0c79e7f7bbe73a754da0daf997b994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
