@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "627a0c1d_525e0614",
+        "filename": "test/161-final-abstract-class/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-21T12:42:42Z",
+      "side": 1,
+      "message": "Nit: space after \u0027+\u0027.",
+      "range": {
+        "startLine": 40,
+        "startChar": 63,
+        "endLine": 40,
+        "endChar": 64
+      },
+      "revId": "1f590d743dc51bb90a80f1b9f737d131ae2b8ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
