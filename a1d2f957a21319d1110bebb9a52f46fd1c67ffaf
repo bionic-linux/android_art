@@ -16,6 +16,24 @@
       "revId": "a1d2f957a21319d1110bebb9a52f46fd1c67ffaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd364e22_f317fd2a",
+        "filename": "runtime/art_field.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-21T16:39:49Z",
+      "side": 1,
+      "message": "GetDeclaringClass requires a read barrier, which pulls in read-barrier-inl, which pulls in concurrent-copying-inl.",
+      "parentUuid": "9dc496c0_af5df99d",
+      "revId": "a1d2f957a21319d1110bebb9a52f46fd1c67ffaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
