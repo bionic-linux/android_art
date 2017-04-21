@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed15bad8_7761ce39",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1022530
+      },
+      "writtenOn": "2017-04-21T18:00:46Z",
+      "side": 1,
+      "message": "Maybe rephrase this without double negatives for clarity?",
+      "range": {
+        "startLine": 1235,
+        "startChar": 16,
+        "endLine": 1236,
+        "endChar": 52
+      },
+      "revId": "1b8ed9eacafca5cb6fb2298ead28b769714bc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
