@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a947fdf2_c23816c8",
+        "filename": "cmdline/cmdline_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-21T15:38:57Z",
+      "side": 1,
+      "message": "Thanks; that change has been scrapped in PS2.",
+      "parentUuid": "b11ff972_cfb4de22",
+      "range": {
+        "startLine": 531,
+        "startChar": 26,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "b535116ce515491b50ff98b919ad6b6c126d2fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81c727b2_1d1f8e9c",
         "filename": "dex2oat/dex2oat.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-20T16:53:34Z",
       "side": 1,
       "message": "I will update that comment.",
+      "range": {
+        "startLine": 919,
+        "startChar": 13,
+        "endLine": 919,
+        "endChar": 46
+      },
+      "revId": "b535116ce515491b50ff98b919ad6b6c126d2fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b63e3c20_b8bb12ab",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-21T15:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c727b2_1d1f8e9c",
       "range": {
         "startLine": 919,
         "startChar": 13,
