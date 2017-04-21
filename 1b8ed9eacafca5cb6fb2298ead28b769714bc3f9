@@ -22,6 +22,30 @@
       "revId": "1b8ed9eacafca5cb6fb2298ead28b769714bc3f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cb27d2f_a3f46afb",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-04-21T18:07:20Z",
+      "side": 1,
+      "message": "Yes, sounds good to me; rephrased in PS4.",
+      "parentUuid": "ed15bad8_7761ce39",
+      "range": {
+        "startLine": 1235,
+        "startChar": 16,
+        "endLine": 1236,
+        "endChar": 52
+      },
+      "revId": "1b8ed9eacafca5cb6fb2298ead28b769714bc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
