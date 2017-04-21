@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99929bfe_db8f938f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "Test: Build aosp_angler-userdebug (or similar)\nTest: Build aosp_mips64-userdebug\nTest: m test-art-host-gtest (check that these actually build)",
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca8e797b_393d5f24",
+        "filename": "runtime/art_method.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "Enclose in \"if (kCheckDeclaringClassState) { ... }\" to reduce the amount of unreachable code we emit when not enabled.",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 838,
+        "endChar": 3
+      },
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ad46dc6_d599e9d6",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "Align with IsClassClass above?",
+      "range": {
+        "startLine": 349,
+        "startChar": 6,
+        "endLine": 349,
+        "endChar": 18
+      },
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c62bf72f_a915d863",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "Line break before IsStringClass()?",
+      "range": {
+        "startLine": 349,
+        "startChar": 57,
+        "endLine": 349,
+        "endChar": 58
+      },
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68391925_b8572f4a",
+        "filename": "runtime/mirror/class-refvisitor-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "2011 or 2017? (Given that the code has just been moved, I\u0027m not sure which year this should refer to.)",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5156f90e_b5cd116b",
+        "filename": "runtime/mirror/object-refvisitor-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T10:22:06Z",
+      "side": 1,
+      "message": "2011 or 2017?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "12847bdf64d7db0710a3c11a225543fd9bfc7286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
