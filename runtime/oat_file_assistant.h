@@ -47,6 +47,11 @@ class ImageSpace;
 // dex location is in the boot class path.
 class OatFileAssistant {
  public:
+  // The default compile filter to use when optimizing dex file at load time if they
+  // are out of date.
+  static const CompilerFilter::Filter kDefaultCompilerFilterForDexLoading =
+      CompilerFilter::kInterpretOnly;
+
   enum DexOptNeeded {
     // No dexopt should (or can) be done to update the apk/jar.
     // Matches Java: dalvik.system.DexFile.NO_DEXOPT_NEEDED = 0

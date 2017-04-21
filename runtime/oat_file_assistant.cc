@@ -138,12 +138,7 @@ bool OatFileAssistant::Lock(std::string* error_msg) {
   CHECK(error_msg != nullptr);
   CHECK(!flock_.HasFile()) << "OatFileAssistant::Lock already acquired";
 
-  const std::string* oat_file_name = oat_.Filename();
-  if (oat_file_name == nullptr) {
-    *error_msg = "Failed to determine lock file";
-    return false;
-  }
-  std::string lock_file_name = *oat_file_name + ".flock";
+  std::string lock_file_name = dex_location_ + ".flock";
 
   if (!flock_.Init(lock_file_name.c_str(), error_msg)) {
     unlink(lock_file_name.c_str());
@@ -169,7 +164,7 @@ static bool GetRuntimeCompilerFilterOption(CompilerFilter::Filter* filter,
   CHECK(filter != nullptr);
   CHECK(error_msg != nullptr);
 
-  *filter = CompilerFilter::kDefaultCompilerFilter;
+  *filter = OatFileAssistant::kDefaultCompilerFilterForDexLoading;
   for (StringPiece option : Runtime::Current()->GetCompilerOptions()) {
     if (option.starts_with("--compiler-filter=")) {
       const char* compiler_filter_string = option.substr(strlen("--compiler-filter=")).data();
@@ -478,6 +473,105 @@ OatFileAssistant::OatStatus OatFileAssistant::GivenOatFileStatus(const OatFile& 
   return kOatUpToDate;
 }
 
+static bool DexLocationToOdexNames(const std::string& location,
+                                   InstructionSet isa,
+                                   std::string* odex_filename,
+                                   std::string* oat_dir,
+                                   std::string* isa_dir,
+                                   std::string* error_msg) {
+  CHECK(odex_filename != nullptr);
+  CHECK(error_msg != nullptr);
+
+  // The odex file name is formed by replacing the dex_location extension with
+  // .odex and inserting an oat/<isa> directory. For example:
+  //   location = /foo/bar/baz.jar
+  //   odex_location = /foo/bar/oat/<isa>/baz.odex
+
+  // Find the directory portion of the dex location and add the oat/<isa>
+  // directory.
+  size_t pos = location.rfind('/');
+  if (pos == std::string::npos) {
+    *error_msg = "Dex location " + location + " has no directory.";
+    return false;
+  }
+  std::string dir = location.substr(0, pos+1);
+  // Add the oat directory.
+  dir += "oat";
+  if (oat_dir != nullptr) {
+    *oat_dir = dir;
+  }
+  // Add the isa directory
+  dir += "/" + std::string(GetInstructionSetString(isa));
+  if (isa_dir != nullptr) {
+    *isa_dir = dir;
+  }
+
+  // Get the base part of the file without the extension.
+  std::string file = location.substr(pos+1);
+  pos = file.rfind('.');
+  if (pos == std::string::npos) {
+    *error_msg = "Dex location " + location + " has no extension.";
+    return false;
+  }
+  std::string base = file.substr(0, pos);
+
+  *odex_filename = dir + "/" + base + ".odex";
+  return true;
+}
+
+static bool PrepareDirectory(const std::string& dir, std::string* error_msg) {
+  struct stat dir_stat;
+  if (TEMP_FAILURE_RETRY(stat(dir.c_str(), &dir_stat)) == 0) {
+    // The directory exists. Check if it is indeed a directory.
+    if (!S_ISDIR(dir_stat.st_mode)) {
+      *error_msg = dir + " is not a dir";
+      return false;
+    } else {
+      // The dir is already on disk.
+      return true;
+    }
+  }
+
+  // Failed to stat. We need to create the directory.
+  if (errno != ENOENT) {
+    *error_msg = "Could not stat isa dir " + dir + ":" + strerror(errno);
+    return false;
+  }
+
+  mode_t mode = S_IRWXU | S_IXGRP | S_IXOTH;
+  if (mkdir(dir.c_str(), mode) != 0) {
+    *error_msg = "Could not create dir " + dir + ":" + strerror(errno);
+    return false;
+  }
+  if (chmod(dir.c_str(), mode) != 0) {
+    *error_msg = "Could not create the oat dir " + dir + ":" + strerror(errno);
+    return false;
+  }
+  return true;
+}
+
+static bool PrepareOdexDirectories(const std::string& dex_location,
+                                   const std::string& expected_odex_location,
+                                   InstructionSet isa,
+                                   std::string* error_msg) {
+  std::string actual_odex_location;
+  std::string oat_dir;
+  std::string isa_dir;
+  if (!DexLocationToOdexNames(
+        dex_location, isa, &actual_odex_location, &oat_dir, &isa_dir, error_msg)) {
+    return false;
+  }
+  DCHECK_EQ(expected_odex_location, actual_odex_location);
+
+  if (!PrepareDirectory(oat_dir, error_msg)) {
+    return false;
+  }
+  if (!PrepareDirectory(isa_dir, error_msg)) {
+    return false;
+  }
+  return true;
+}
+
 OatFileAssistant::ResultOfAttemptToUpdate
 OatFileAssistant::GenerateOatFile(std::string* error_msg) {
   CHECK(error_msg != nullptr);
@@ -489,13 +583,13 @@ OatFileAssistant::GenerateOatFile(std::string* error_msg) {
     return kUpdateNotAttempted;
   }
 
-  if (oat_.Filename() == nullptr) {
+  if (odex_.Filename() == nullptr) {
     *error_msg = "Generation of oat file for dex location " + dex_location_
       + " not attempted because the oat file name could not be determined.";
     return kUpdateNotAttempted;
   }
-  const std::string& oat_file_name = *oat_.Filename();
-  const std::string& vdex_file_name = ReplaceFileExtension(oat_file_name, "vdex");
+  const std::string& odex_file_name = *odex_.Filename();
+  const std::string& vdex_file_name = ReplaceFileExtension(odex_file_name, "vdex");
 
   // dex2oat ignores missing dex files and doesn't report an error.
   // Check explicitly here so we can detect the error properly.
@@ -505,30 +599,44 @@ OatFileAssistant::GenerateOatFile(std::string* error_msg) {
     return kUpdateNotAttempted;
   }
 
+  struct stat dex_path_stat;
+  if (TEMP_FAILURE_RETRY(stat(dex_location_.c_str(), &dex_path_stat)) != 0) {
+    *error_msg = "Could not access dex location " + dex_location_ + ":" + strerror(errno);
+    return kUpdateNotAttempted;
+  }
+
+  if (!PrepareOdexDirectories(dex_location_, odex_file_name, isa_, error_msg)) {
+    return kUpdateNotAttempted;
+  }
+
+  mode_t file_mode = S_IRUSR | S_IWUSR |
+      (dex_path_stat.st_mode & S_IRGRP) |
+      (dex_path_stat.st_mode & S_IROTH);
+
   std::unique_ptr<File> vdex_file(OS::CreateEmptyFile(vdex_file_name.c_str()));
   if (vdex_file.get() == nullptr) {
-    *error_msg = "Generation of oat file " + oat_file_name
+    *error_msg = "Generation of oat file " + odex_file_name
       + " not attempted because the vdex file " + vdex_file_name
       + " could not be opened.";
     return kUpdateNotAttempted;
   }
 
-  if (fchmod(vdex_file->Fd(), 0644) != 0) {
-    *error_msg = "Generation of oat file " + oat_file_name
+  if (fchmod(vdex_file->Fd(), file_mode) != 0) {
+    *error_msg = "Generation of oat file " + odex_file_name
       + " not attempted because the vdex file " + vdex_file_name
       + " could not be made world readable.";
     return kUpdateNotAttempted;
   }
 
-  std::unique_ptr<File> oat_file(OS::CreateEmptyFile(oat_file_name.c_str()));
+  std::unique_ptr<File> oat_file(OS::CreateEmptyFile(odex_file_name.c_str()));
   if (oat_file.get() == nullptr) {
-    *error_msg = "Generation of oat file " + oat_file_name
+    *error_msg = "Generation of oat file " + odex_file_name
       + " not attempted because the oat file could not be created.";
     return kUpdateNotAttempted;
   }
 
-  if (fchmod(oat_file->Fd(), 0644) != 0) {
-    *error_msg = "Generation of oat file " + oat_file_name
+  if (fchmod(oat_file->Fd(), file_mode) != 0) {
+    *error_msg = "Generation of oat file " + odex_file_name
       + " not attempted because the oat file could not be made world readable.";
     oat_file->Erase();
     return kUpdateNotAttempted;
@@ -538,7 +646,7 @@ OatFileAssistant::GenerateOatFile(std::string* error_msg) {
   args.push_back("--dex-file=" + dex_location_);
   args.push_back("--output-vdex-fd=" + std::to_string(vdex_file->Fd()));
   args.push_back("--oat-fd=" + std::to_string(oat_file->Fd()));
-  args.push_back("--oat-location=" + oat_file_name);
+  args.push_back("--oat-location=" + odex_file_name);
 
   if (!Dex2Oat(args, error_msg)) {
     // Manually delete the oat and vdex files. This ensures there is no garbage
@@ -546,7 +654,7 @@ OatFileAssistant::GenerateOatFile(std::string* error_msg) {
     vdex_file->Erase();
     unlink(vdex_file_name.c_str());
     oat_file->Erase();
-    unlink(oat_file_name.c_str());
+    unlink(odex_file_name.c_str());
     return kUpdateFailed;
   }
 
@@ -557,8 +665,8 @@ OatFileAssistant::GenerateOatFile(std::string* error_msg) {
   }
 
   if (oat_file->FlushCloseOrErase() != 0) {
-    *error_msg = "Unable to close oat file " + oat_file_name;
-    unlink(oat_file_name.c_str());
+    *error_msg = "Unable to close oat file " + odex_file_name;
+    unlink(odex_file_name.c_str());
     return kUpdateFailed;
   }
 
@@ -622,35 +730,7 @@ bool OatFileAssistant::DexLocationToOdexFilename(const std::string& location,
                                                  InstructionSet isa,
                                                  std::string* odex_filename,
                                                  std::string* error_msg) {
-  CHECK(odex_filename != nullptr);
-  CHECK(error_msg != nullptr);
-
-  // The odex file name is formed by replacing the dex_location extension with
-  // .odex and inserting an oat/<isa> directory. For example:
-  //   location = /foo/bar/baz.jar
-  //   odex_location = /foo/bar/oat/<isa>/baz.odex
-
-  // Find the directory portion of the dex location and add the oat/<isa>
-  // directory.
-  size_t pos = location.rfind('/');
-  if (pos == std::string::npos) {
-    *error_msg = "Dex location " + location + " has no directory.";
-    return false;
-  }
-  std::string dir = location.substr(0, pos+1);
-  dir += "oat/" + std::string(GetInstructionSetString(isa));
-
-  // Get the base part of the file without the extension.
-  std::string file = location.substr(pos+1);
-  pos = file.rfind('.');
-  if (pos == std::string::npos) {
-    *error_msg = "Dex location " + location + " has no extension.";
-    return false;
-  }
-  std::string base = file.substr(0, pos);
-
-  *odex_filename = dir + "/" + base + ".odex";
-  return true;
+  return DexLocationToOdexNames(location, isa, odex_filename, nullptr, nullptr, error_msg);
 }
 
 bool OatFileAssistant::DexLocationToOatFilename(const std::string& location,
@@ -751,8 +831,8 @@ const OatFileAssistant::ImageInfo* OatFileAssistant::GetImageInfo() {
 }
 
 OatFileAssistant::OatFileInfo& OatFileAssistant::GetBestInfo() {
-  bool use_oat = oat_.IsUseable() || odex_.Status() == kOatCannotOpen;
-  return use_oat ? oat_ : odex_;
+  bool use_odex = odex_.IsUseable() || oat_.Status() == kOatCannotOpen;
+  return use_odex ? odex_ : oat_;
 }
 
 std::unique_ptr<gc::space::ImageSpace> OatFileAssistant::OpenImageSpace(const OatFile* oat_file) {
