@@ -34,6 +34,24 @@
       "revId": "a1d2f957a21319d1110bebb9a52f46fd1c67ffaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "302f35ab_dfc91378",
+        "filename": "runtime/art_field.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-04-21T17:08:26Z",
+      "side": 1,
+      "message": "Clever, good refactoring :).",
+      "parentUuid": "cd364e22_f317fd2a",
+      "revId": "a1d2f957a21319d1110bebb9a52f46fd1c67ffaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
