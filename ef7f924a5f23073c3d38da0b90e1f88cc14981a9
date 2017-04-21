@@ -22,6 +22,30 @@
       "revId": "ef7f924a5f23073c3d38da0b90e1f88cc14981a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b54925ad_ba5e6f32",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-21T09:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24dda0cc_58bc3e7d",
+      "range": {
+        "startLine": 1547,
+        "startChar": 0,
+        "endLine": 1551,
+        "endChar": 3
+      },
+      "revId": "ef7f924a5f23073c3d38da0b90e1f88cc14981a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
