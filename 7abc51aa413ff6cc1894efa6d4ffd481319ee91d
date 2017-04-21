@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "7d4b7604_95f12b37",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:49:13Z",
+      "side": 1,
+      "message": "What we can do is to share another part of address calculations for a following case:\n\nLoad array[i+4]\nStore array[i+4]",
+      "parentUuid": "39fb2ccf_b11a38d2",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5d8e0_24a7075b",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
