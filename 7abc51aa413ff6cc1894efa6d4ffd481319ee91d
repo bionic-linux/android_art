@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0228aeed_a0ff4778",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "051604f4_9cb3bf21",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ade78fb4_b1edd6cd",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-21T15:58:11Z",
       "side": 1,
       "message": "I hope one day to do it here too; especially when suspend checks are eliminated, we can move stuff out of the loop!",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fb2ccf_b11a38d2",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:43:18Z",
+      "side": 1,
+      "message": "The problem is that with the current state of things (with Suspend checks in the loops) it\u0027s not possible to have shareable Intermediate addresses for SIMD Get/Set in the way we have for scalar Get/Set:\n\nThe target address for an element is:\nelement_address \u003d base_array_address + DataOffset_IMM + index \u003c\u003c shift\n\nFor scalar case we can share \"base_array_address + DataOffset_IMM\" for accesses to the same array and embed \"index \u003c\u003c shift\" into each particular LDR instructions (LDR x0, [x1, x2 LSL #3].\n\nHowever for SIMD case \u0027LDR q-Reg\u0027 instruction only support LSL by 4 which doesn\u0027t let us use the same scheme.",
+      "parentUuid": "ade78fb4_b1edd6cd",
       "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a91a62b3_9c76e154",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:43:18Z",
+      "side": 1,
+      "message": "UseScratchRegisterScope releases all acquired registers in its destructor; using scratch register after that is supposed to be illegal. In VIXL32 there is already a DCHECK for that.",
+      "parentUuid": "aaa5d8e0_24a7075b",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2939531_0f071265",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "f81c974c_6ad45f41",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2939531_0f071265",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11338d68_80ad0047",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2017-04-21T15:58:11Z",
       "side": 1,
       "message": "same dcheck",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6faa6d1c_b6254ef8",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-21T16:43:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11338d68_80ad0047",
       "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
