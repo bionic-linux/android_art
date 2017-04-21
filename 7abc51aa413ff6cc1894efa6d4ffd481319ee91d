@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051604f4_9cb3bf21",
+        "filename": "compiler/optimizing/code_generator_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T15:58:11Z",
+      "side": 1,
+      "message": "may acquire *a* scratch register\n\nor \n\nmay acquire scratch register*s*",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ade78fb4_b1edd6cd",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T15:58:11Z",
+      "side": 1,
+      "message": "I hope one day to do it here too; especially when suspend checks are eliminated, we can move stuff out of the loop!",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa5d8e0_24a7075b",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 809,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T15:58:11Z",
+      "side": 1,
+      "message": "why do you find this better? now both clients have to allocate?",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2939531_0f071265",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T15:58:11Z",
+      "side": 1,
+      "message": "let\u0027s keep a  \n\nDCHECK_LE(2u, instruction-\u003eGetVectorLength());\nDCHECK_LE(instruction-\u003eGetVectorLength(), 16u);\n\nhere",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11338d68_80ad0047",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-04-21T15:58:11Z",
+      "side": 1,
+      "message": "same dcheck",
+      "revId": "7abc51aa413ff6cc1894efa6d4ffd481319ee91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
