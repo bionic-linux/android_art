@@ -45,18 +45,22 @@ void DexoptTest::PostRuntimeCreate() {
 }
 
 void DexoptTest::GenerateOatForTest(const std::string& dex_location,
-                        const std::string& oat_location,
+                        const std::string& oat_location_in,
                         CompilerFilter::Filter filter,
                         bool relocate,
                         bool pic,
                         bool with_alternate_image) {
   std::string dalvik_cache = GetDalvikCache(GetInstructionSetString(kRuntimeISA));
   std::string dalvik_cache_tmp = dalvik_cache + ".redirected";
-
+  std::string oat_location = oat_location_in;
   if (!relocate) {
     // Temporarily redirect the dalvik cache so dex2oat doesn't find the
     // relocated image file.
     ASSERT_EQ(0, rename(dalvik_cache.c_str(), dalvik_cache_tmp.c_str())) << strerror(errno);
+    size_t pos = oat_location.find(dalvik_cache);
+    if (pos != std::string::npos) {
+        oat_location = oat_location.replace(pos, dalvik_cache.length(), dalvik_cache_tmp);
+    }
   }
 
   std::vector<std::string> args;
@@ -90,6 +94,7 @@ void DexoptTest::GenerateOatForTest(const std::string& dex_location,
   if (!relocate) {
     // Restore the dalvik cache if needed.
     ASSERT_EQ(0, rename(dalvik_cache_tmp.c_str(), dalvik_cache.c_str())) << strerror(errno);
+    oat_location = oat_location_in;
   }
 
   // Verify the odex file was generated as expected.

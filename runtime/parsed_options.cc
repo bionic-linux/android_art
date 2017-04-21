@@ -416,7 +416,7 @@ bool ParsedOptions::ProcessSpecialOptions(const RuntimeOptions& options,
 
 // Intended for local changes only.
 static void MaybeOverrideVerbosity() {
-  //  gLogVerbosity.class_linker = true;  // TODO: don't check this in!
+  // gLogVerbosity.class_linker = true;  // TODO: don't check this in!
   //  gLogVerbosity.collector = true;  // TODO: don't check this in!
   //  gLogVerbosity.compiler = true;  // TODO: don't check this in!
   //  gLogVerbosity.deopt = true;  // TODO: don't check this in!
@@ -426,7 +426,7 @@ static void MaybeOverrideVerbosity() {
   //  gLogVerbosity.jit = true;  // TODO: don't check this in!
   //  gLogVerbosity.jni = true;  // TODO: don't check this in!
   //  gLogVerbosity.monitor = true;  // TODO: don't check this in!
-  //  gLogVerbosity.oat = true;  // TODO: don't check this in!
+  // gLogVerbosity.oat = true;  // TODO: don't check this in!
   //  gLogVerbosity.profiler = true;  // TODO: don't check this in!
   //  gLogVerbosity.signals = true;  // TODO: don't check this in!
   //  gLogVerbosity.simulator = true; // TODO: don't check this in!
@@ -637,7 +637,7 @@ void ParsedOptions::Usage(const char* fmt, ...) {
     va_end(ap);
   }
 
-  const char* program = "dalvikvm";
+const char* program = "dalvikvm";
   UsageMessage(stream, "%s: [options] class [argument ...]\n", program);
   UsageMessage(stream, "\n");
   UsageMessage(stream, "The following standard options are supported:\n");
