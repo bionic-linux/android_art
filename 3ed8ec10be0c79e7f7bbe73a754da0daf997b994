@@ -70,6 +70,30 @@
       "revId": "3ed8ec10be0c79e7f7bbe73a754da0daf997b994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0d70e2e_5469a0fa",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2064,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-04-21T18:19:51Z",
+      "side": 1,
+      "message": "Yes, the reason I didn\u0027t do that was a bug where the decoding the global ref read barrier could have caused DCHECK failure if read barriers were disallowed.",
+      "parentUuid": "4e35fa7c_efae5b1a",
+      "range": {
+        "startLine": 2063,
+        "startChar": 0,
+        "endLine": 2064,
+        "endChar": 68
+      },
+      "revId": "3ed8ec10be0c79e7f7bbe73a754da0daf997b994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
