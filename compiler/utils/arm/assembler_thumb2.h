@@ -377,6 +377,10 @@ class Thumb2Assembler FINAL : public ArmAssembler {
     force_32bit_ = true;
   }
 
+  void Allow16Bit() {
+    force_32bit_ = false;
+  }
+
   // Emit an ADR (or a sequence of instructions) to load the jump table address into base_reg. This
   // will generate a fixup.
   JumpTable* CreateJumpTable(std::vector<Label*>&& labels, Register base_reg) OVERRIDE;
@@ -901,6 +905,24 @@ class Thumb2Assembler FINAL : public ArmAssembler {
   uint32_t last_position_adjustment_;
   uint32_t last_old_position_;
   FixupId last_fixup_id_;
+};
+
+class ScopedForce32Bit {
+ public:
+  explicit ScopedForce32Bit(Thumb2Assembler* assembler)
+      : assembler_(assembler), old_force_32bit_(assembler->IsForced32Bit()) {
+    assembler->Force32Bit();
+  }
+
+  ~ScopedForce32Bit() {
+    if (!old_force_32bit_) {
+      assembler_->Allow16Bit();
+    }
+  }
+
+ private:
+  Thumb2Assembler* const assembler_;
+  const bool old_force_32bit_;
 };
 
 }  // namespace arm

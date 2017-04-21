@@ -2146,6 +2146,145 @@ READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg09, r9
 READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg10, r10
 READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg11, r11
 
+.macro FOR_REGISTERS macro_for_register, macro_for_reserved_register
+    \macro_for_register r0
+    \macro_for_register r1
+    \macro_for_register r2
+    \macro_for_register r3
+    \macro_for_register r4        // R4 is reserved for the entrypoint address.
+    \macro_for_register r5
+    \macro_for_register r6
+    \macro_for_register r7
+    \macro_for_register r8
+    \macro_for_register r9
+    \macro_for_register r10
+    \macro_for_register r11
+    \macro_for_reserved_register  // IP is reserved.
+    \macro_for_reserved_register  // SP is reserved.
+    \macro_for_reserved_register  // LR is reserved.
+    \macro_for_reserved_register  // PC is reserved.
+.endm
+
+.macro INTROSPECTION_ARRAY_LOAD index_reg
+    ldr     ip, [ip, \index_reg, lsl #2]                // 4 bytes.
+    b       art_quick_read_barrier_mark_introspection   // Should be 2 bytes, encoding T2.
+    .balign 8                                           // Fill up 8 bytes.
+.endm
+
+.macro MOV_IP_TO_REG_AND_BX_LR reg
+    mov     \reg, ip
+    bx      lr
+.endm
+
+.macro BKPT_FILL_4B
+    bkpt    0
+    bkpt    0
+.endm
+
+.macro BKPT_FILL_8B
+    BKPT_FILL_4B
+    BKPT_FILL_4B
+.endm
+
+.macro READ_BARRIER_MARK_INTROSPECTION_SLOW_PATH ldr_offset
+    push   {r0-r3, r9, lr}            // Save return address and caller-save registers.
+    .cfi_adjust_cfa_offset 24
+    .cfi_rel_offset r0, 0
+    .cfi_rel_offset r1, 4
+    .cfi_rel_offset r2, 8
+    .cfi_rel_offset r3, 12
+    .cfi_rel_offset r9, 24
+    .cfi_rel_offset lr, 28
+
+    vpush {s0-s15}                    // save floating-point caller-save registers
+    .cfi_adjust_cfa_offset 64
+    mov     r0, ip                    // Pass the reference.
+    bl      artReadBarrierMark        // r0 <- artReadBarrierMark(obj)
+    vpop    {s0-s15}                  // restore floating-point registers
+    .cfi_adjust_cfa_offset -64
+
+    // Calculate the return switch case address while we have extra registers available.
+    ldr   r1, [lr, #\ldr_offset]      // Load the instruction.
+    adr   r4, .Lmark_introspection_return_switch
+    ubfx  r1, r1, #12, #4             // Extract the reference register.
+    mov   ip, r0                      // Move reference to ip in preparation for return switch.
+    bfi   r4, r1, #2, #4              // Calculate switch case address.
+    pop   {r0-r3, r9, lr}             // Restore registers.
+    .cfi_adjust_cfa_offset -32
+    .cfi_restore r0
+    .cfi_restore r1
+    .cfi_restore r2
+    .cfi_restore r3
+    .cfi_restore r6
+    .cfi_restore r7
+    .cfi_restore r9
+    .cfi_restore lr
+    bx    r4                          // Jump to the switch case.
+.endm
+
+    // TODO: Comment.
+    .balign 256
+ENTRY art_quick_read_barrier_mark_introspection
+    // At this point, IP contains the reference, R4 can be freely used.
+    // (R4 is reserved for the entrypoint address.)
+    // For heap poisoning, the reference is poisoned, so unpoison it first.
+    UNPOISON_HEAP_REF ip
+    // If reference is null, just return it in the right register.
+    cmp   ip, #0
+    beq   .Lmark_introspection_return
+    // Use R4 as temp and check the mark bit of the reference.
+    ldr   r4, [ip, #MIRROR_OBJECT_LOCK_WORD_OFFSET]
+    tst   r4, #LOCK_WORD_MARK_BIT_MASK_SHIFTED
+    beq   .Lmark_introspection_unmarked
+.Lmark_introspection_return:
+    // Without an extra register for the return switch case address calculation,
+    // we exploit the low 3 bits of the reference in IP and the carry flag to
+    // calculate the switch case address.
+#if OBJECT_ALIGNMENT_MASK != 7
+#error "Unexpected object alignment. Cannot use low 3 bits as a temporary.
+#endif
+    ldr     r4, [lr, #BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET]  // Load the instruction.
+    lsrs    r4, r4, #(12 + 1)         // Extract `ref_reg & 1` to carry flag.
+    bfi     ip, r4, #0, #3            // Extract `ref_reg / 2` to low 3 bits in IP.
+    adr     r4, .Lmark_introspection_return_switch
+    bfi     r4, ip, #3, #3            // Add `(ref_reg / 2) * 8` to the switch case address.
+    it      cs
+    addcs   r4, r4, #4                // Add `(ref_reg & 1) * 4` to the switch case address.
+    bic     ip, ip, #OBJECT_ALIGNMENT_MASK  // Clear the alignment bits in IP.
+    bx      r4                        // Jump to the return switch case.
+
+.Lmark_introspection_unmarked:
+    // Check if the top two bits are one, if this is the case it is a forwarding address.
+#if (LOCK_WORD_STATE_SHIFT != 30) || (LOCK_WORD_STATE_FORWARDING_ADDRESS != 3)
+    // To use "CMP ip, #modified-immediate; BHS", we need the lock word state in
+    // the highest bits and the "forwarding address" state to have all bits set.
+#error "Unexpected lock word state shift or forwarding address state value."
+#endif
+    cmp     r4, #(LOCK_WORD_STATE_FORWARDING_ADDRESS << LOCK_WORD_STATE_SHIFT)
+    bhs     .Lmark_introspection_forwarding_address
+    READ_BARRIER_MARK_INTROSPECTION_SLOW_PATH BAKER_MARK_INTROSPECTION_FIELD_LDR_OFFSET
+
+.Lmark_introspection_forwarding_address:
+    // Shift left by the forwarding address shift. This clears out the state bits since they are
+    // in the top 2 bits of the lock word.
+    lsl     ip, r4, #LOCK_WORD_STATE_FORWARDING_ADDRESS_SHIFT
+    b .Lmark_introspection_return
+
+    .balign 128
+    .hidden art_quick_read_barrier_mark_introspection_gc_roots
+    .global art_quick_read_barrier_mark_introspection_gc_roots
+art_quick_read_barrier_mark_introspection_gc_roots:
+    READ_BARRIER_MARK_INTROSPECTION_SLOW_PATH BAKER_MARK_INTROSPECTION_GC_ROOT_LDR_OFFSET
+    .balign 64
+.Lmark_introspection_return_switch:
+    FOR_REGISTERS MOV_IP_TO_REG_AND_BX_LR, BKPT_FILL_4B
+    .balign 256
+    .hidden art_quick_read_barrier_mark_introspection_arrays
+    .global art_quick_read_barrier_mark_introspection_arrays
+art_quick_read_barrier_mark_introspection_arrays:
+    FOR_REGISTERS INTROSPECTION_ARRAY_LOAD, BKPT_FILL_8B
+END art_quick_read_barrier_mark_introspection
+
 .extern artInvokePolymorphic
 ENTRY art_quick_invoke_polymorphic
     SETUP_SAVE_REFS_AND_ARGS_FRAME r2
