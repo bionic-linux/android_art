@@ -29,6 +29,7 @@
 #include "mirror/array-inl.h"
 #include "oat.h"
 #include "oat_quick_method_header.h"
+#include "read_barrier.h"
 #include "utils/arm64/assembler_arm64.h"
 
 namespace art {
@@ -412,7 +413,7 @@ static void EmitGrayCheckAndFastPath(arm64::Arm64Assembler& assembler,
   // Introduce a dependency on the lock_word including rb_state,
   // to prevent load-load reordering, and without using
   // a memory barrier (which would be more expensive).
-  __ Add(base_reg, base_reg, Operand(vixl::aarch64::ip0, LSR, 32));
+  __ Add(base_reg, base_reg, Operand(ip0, LSR, 32));
   __ Br(lr);          // And return back to the function.
   // Note: The fake dependency is unnecessary for the slow path.
 }
@@ -462,7 +463,7 @@ std::vector<uint8_t> Arm64RelativePatcher::CompileThunk(const ThunkKey& key) {
         // Add null check slow path. The stack map is at the address pointed to by LR.
         __ Bind(&throw_npe);
         int32_t offset = GetThreadOffset<kArm64PointerSize>(kQuickThrowNullPointer).Int32Value();
-        __ Ldr(ip0, MemOperand(vixl::aarch64::x19, offset));
+        __ Ldr(ip0, MemOperand(/* Thread* */ vixl::aarch64::x19, offset));
         __ Br(ip0);
       }
       break;

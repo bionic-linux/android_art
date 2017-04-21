@@ -19,6 +19,7 @@
 
 #include "base/array_ref.h"
 #include "base/bit_field.h"
+#include "base/bit_utils.h"
 #include "linker/arm/relative_patcher_arm_base.h"
 
 namespace art {
@@ -76,14 +77,14 @@ class Arm64RelativePatcher FINAL : public ArmBaseRelativePatcher {
                                    uint32_t patch_offset) OVERRIDE;
 
  protected:
-  static constexpr uint32_t kInvalidEncodedReg = /* sp/zr is invalid */ 31u;
-
   ThunkKey GetBakerReadBarrierKey(const LinkerPatch& patch) OVERRIDE;
   std::vector<uint8_t> CompileThunk(const ThunkKey& key) OVERRIDE;
   uint32_t MaxPositiveDisplacement(ThunkType type) OVERRIDE;
   uint32_t MaxNegativeDisplacement(ThunkType type) OVERRIDE;
 
  private:
+  static constexpr uint32_t kInvalidEncodedReg = /* sp/zr is invalid */ 31u;
+
   static constexpr size_t kBitsForBakerReadBarrierKind =
       MinimumBitsToStore(static_cast<size_t>(BakerReadBarrierKind::kLast));
   static constexpr size_t kBitsForRegister = 5u;
