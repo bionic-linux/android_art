@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a2ec44_02683ea2",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-24T10:59:56Z",
+      "side": 1,
+      "message": "Phrasing is odd: Isn\u0027t that all the GCs we have?",
+      "range": {
+        "startLine": 1235,
+        "startChar": 26,
+        "endLine": 1235,
+        "endChar": 96
+      },
+      "revId": "b81e9e90ee60e602286899fc3fa0048c2fcb1c30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
