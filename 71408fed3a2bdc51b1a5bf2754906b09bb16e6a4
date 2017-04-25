@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96e19b26_c5031694",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "referred",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da52924e_f068a7c9",
+        "filename": "runtime/dexopt_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "You touch it, you align it. :-)",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a48241d2_f65bf058",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "Should this be cwd, then? What about command line usage and relative -cp elements?",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 87
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f3857b1_465116d3",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "A bit unhappy with this forced check up ahead. But I guess it won\u0027t be too visible with the other I/O we\u0027re doing.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eebec912_a4994715",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "What if dex_location_ is in /system? And why should 32-bit and 64-bit be mutually exclusive when compiling?\n\n(This needs a strong comment that it\u0027s unexpected to get here for /system apps.)",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2b566be_3e4f9670",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "Should you still check access mode?",
+      "range": {
+        "startLine": 535,
+        "startChar": 5,
+        "endLine": 536,
+        "endChar": 18
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d680d626_b7d5a46d",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "This seems strange for command-line usage. It will change where things go, probably.",
+      "range": {
+        "startLine": 839,
+        "startChar": 2,
+        "endLine": 847,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "779111f6_420e64e0",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 376,
+        "endChar": 85
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b927dc2_0c5c7d2a",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-25T20:16:20Z",
+      "side": 1,
+      "message": "Stale",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 632,
+        "endChar": 71
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
