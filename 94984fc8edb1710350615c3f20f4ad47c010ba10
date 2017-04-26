@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9063859_9a14f23d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "I would pull this out the if condition on its own line:\n\n  value \u003d AdjustConstantForCondition(value, \u0026copy);\n\nThen the AdjustConstantForCondition() can do other adjustments in future, not only those that change the value to 0. For example, it can change \"\u003c\u003d0xdfff\" to \"\u003c0xe000\" to allow using modified immediate. Other code can be refactored to take advantage of this, see the comment at lines 1857-1866.",
+      "range": {
+        "startLine": 1652,
+        "startChar": 6,
+        "endLine": 1652,
+        "endChar": 46
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8abc82a_6a9538b5",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "We should adjust the value here with the AdjustConstantForCondition() to keep in sync with the GenerateLongTestConstant() and not miss optimization opportunities.",
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fe84360_c30d27bc",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "Note that this adjustment could be moved into AdjustConstantForCondition() but I\u0027m not asking you to do that in this CL.",
+      "range": {
+        "startLine": 1857,
+        "startChar": 13,
+        "endLine": 1866,
+        "endChar": 9
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "625221a0_9b71d714",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "This is unnecessary for correctness if you reorder the SUB+EOR below.",
+      "range": {
+        "startLine": 1932,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 3
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf20742b_e11c225d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "This has no impact on whether SUB encoding T1 can be used.",
+      "range": {
+        "startLine": 1938,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f40dd556_382a9c48",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "GenerateConditionWithZero()?",
+      "range": {
+        "startLine": 2170,
+        "startChar": 10,
+        "endLine": 2170,
+        "endChar": 34
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f6a98cf_c49903cf",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3198,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "Can you inline the IT+MOV into the four callers, so that we do not need this weird dependency across functions?",
+      "range": {
+        "startLine": 3198,
+        "startChar": 8,
+        "endLine": 3198,
+        "endChar": 53
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2549cb4_70e99409",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3222,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "Reorder:\n\n  case kCondGE:\n    __ mvn(out, ShifterOperand(in));\n    in \u003d out;\n    FALLTHROUGH_INTENDED;\n  case kCondLT:",
+      "range": {
+        "startLine": 3217,
+        "startChar": 0,
+        "endLine": 3222,
+        "endChar": 7
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b9ede61_1c4cf080",
+        "filename": "test/409-materialized-condition/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "I think we should test values 0, 1, -1, Integer.MAX_VALUE, Integer.MIN_VALUE and maybe the 42. We could just put these values into an array and have another array with expected outputs.\n\nSimilar for the other tests.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "670bbf3c_fe0db85d",
+        "filename": "test/570-checker-select/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T12:10:54Z",
+      "side": 1,
+      "message": "Test also 1, -1, 0x100000000L, Long.MAX_VALUE, Long.MIN_VALUE.",
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
