@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "be89abc9_bfacef59",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T16:28:52Z",
+      "side": 1,
+      "message": "Let\u0027s leave this for later, when we get rid of the old backend. (Unless you want to add the \"SetCc set_cc \u003d kCcDontCare\" parameter to the old assembler\u0027s LoadImmediate() which should be rather trivial.)",
+      "parentUuid": "210ab699_b548efe0",
+      "range": {
+        "startLine": 1857,
+        "startChar": 13,
+        "endLine": 1866,
+        "endChar": 9
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "625221a0_9b71d714",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -236,6 +260,30 @@
       "side": 1,
       "message": "Definitely not because kCondLE and kCondGT are unreachable cases in GenerateConditionWithZero() (and are meant to be). I can replace the function call with a \"break\", but some other people felt that this way was clearer.",
       "parentUuid": "f40dd556_382a9c48",
+      "range": {
+        "startLine": 2170,
+        "startChar": 10,
+        "endLine": 2170,
+        "endChar": 34
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae6d00a_f0c0d880",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-26T16:28:52Z",
+      "side": 1,
+      "message": "I see. I would prefer a \"break\" but it doesn\u0027t make much difference.",
+      "parentUuid": "4cfd9648_a8568592",
       "range": {
         "startLine": 2170,
         "startChar": 10,
