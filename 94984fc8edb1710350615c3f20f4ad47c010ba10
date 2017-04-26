@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "286805a3_0a3e4748",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-26T15:46:49Z",
+      "side": 1,
+      "message": "So far the intention has been to confine any adjustments to this block (which is the reason the function operates on a copy of the condition), but I agree that it will make it easier to extend the code.",
+      "parentUuid": "d9063859_9a14f23d",
+      "range": {
+        "startLine": 1652,
+        "startChar": 6,
+        "endLine": 1652,
+        "endChar": 46
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8abc82a_6a9538b5",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "553ddb15_e75b5505",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1842,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-26T15:46:49Z",
+      "side": 1,
+      "message": "Oh, yes, 1 is not handled properly.",
+      "parentUuid": "c8abc82a_6a9538b5",
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fe84360_c30d27bc",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2017-04-26T12:10:54Z",
       "side": 1,
       "message": "Note that this adjustment could be moved into AdjustConstantForCondition() but I\u0027m not asking you to do that in this CL.",
+      "range": {
+        "startLine": 1857,
+        "startChar": 13,
+        "endLine": 1866,
+        "endChar": 9
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "210ab699_b548efe0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1866,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-26T15:46:49Z",
+      "side": 1,
+      "message": "I\u0027d rather remove this function completely, i.e. assume that it always returns true. If the VIXL-based backend is the way forward, it can handle all inputs with minimal code changes, i.e. for the CMP + IT + CMP case, it is sufficient to simply add two lines after the first CMP (well, actually it should be made conditional on whether the value is encodable or not):\n\n vixl32::Register temp \u003d temps.Acquire();\n __ Mov(LeaveFlags, temp, Low32Bits(value));\n\nand adjust the second parameter of the second CMP.",
+      "parentUuid": "3fe84360_c30d27bc",
       "range": {
         "startLine": 1857,
         "startChar": 13,
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "e1a5bb7e_b9d11e1e",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1943,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-26T15:46:49Z",
+      "side": 1,
+      "message": "Right, I was using a pair of EORs initialy, and it must have remained from then.",
+      "parentUuid": "bf20742b_e11c225d",
+      "range": {
+        "startLine": 1938,
+        "startChar": 0,
+        "endLine": 1943,
+        "endChar": 3
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f40dd556_382a9c48",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -122,6 +212,30 @@
       "writtenOn": "2017-04-26T12:10:54Z",
       "side": 1,
       "message": "GenerateConditionWithZero()?",
+      "range": {
+        "startLine": 2170,
+        "startChar": 10,
+        "endLine": 2170,
+        "endChar": 34
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cfd9648_a8568592",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-04-26T15:46:49Z",
+      "side": 1,
+      "message": "Definitely not because kCondLE and kCondGT are unreachable cases in GenerateConditionWithZero() (and are meant to be). I can replace the function call with a \"break\", but some other people felt that this way was clearer.",
+      "parentUuid": "f40dd556_382a9c48",
       "range": {
         "startLine": 2170,
         "startChar": 10,
