@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "72b748ce_7d6863bb",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T03:20:36Z",
+      "side": 1,
+      "message": "good point. perhaps getting the real path is better than cwd.",
+      "parentUuid": "a48241d2_f65bf058",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 87
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f3857b1_465116d3",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -82,6 +106,30 @@
       "writtenOn": "2017-04-25T20:16:20Z",
       "side": 1,
       "message": "A bit unhappy with this forced check up ahead. But I guess it won\u0027t be too visible with the other I/O we\u0027re doing.",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b36f8b7f_c99497d6",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T03:20:36Z",
+      "side": 1,
+      "message": "I could cache the value at first use but that\u0027s almost immediately after the object creation (in normal cases).",
+      "parentUuid": "5f3857b1_465116d3",
       "range": {
         "startLine": 102,
         "startChar": 2,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "d580fb65_5b1cf8dc",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T03:20:36Z",
+      "side": 1,
+      "message": "uh, true. I\u0027ll revise this .",
+      "parentUuid": "eebec912_a4994715",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2b566be_3e4f9670",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "6eea90d3_32616e9b",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T03:20:36Z",
+      "side": 1,
+      "message": "It will fail anyway when we try to create the files. Another check seemed unnecessary.",
+      "parentUuid": "e2b566be_3e4f9670",
+      "range": {
+        "startLine": 535,
+        "startChar": 5,
+        "endLine": 536,
+        "endChar": 18
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d680d626_b7d5a46d",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -151,6 +247,30 @@
       "writtenOn": "2017-04-25T20:16:20Z",
       "side": 1,
       "message": "This seems strange for command-line usage. It will change where things go, probably.",
+      "range": {
+        "startLine": 839,
+        "startChar": 2,
+        "endLine": 847,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6ecfa09_d5f32209",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-26T03:20:36Z",
+      "side": 1,
+      "message": "I\u0027ll add some extra comments to make the users aware of the side effects.",
+      "parentUuid": "d680d626_b7d5a46d",
       "range": {
         "startLine": 839,
         "startChar": 2,
