@@ -34,6 +34,24 @@
       "revId": "eac4f281302c8e28622fc86354ce88ec02cf5a12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab9da140_f9e9c2cd",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-04-27T16:32:32Z",
+      "side": 1,
+      "message": "StackHandleScope seems super-special though, it just means there\u0027s some HandleScopes somewhere using it. Isn\u0027t it basically an optimization (i.e. a StackHandleScope\u003cN\u003e is 1 GC root as opposed to N GC roots if we had N StackHandles)?\n\nIf the common case always needs an SHS then I suspect putting it closer to the top would be fine.",
+      "parentUuid": "d755322a_df3fb81f",
+      "revId": "eac4f281302c8e28622fc86354ce88ec02cf5a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
