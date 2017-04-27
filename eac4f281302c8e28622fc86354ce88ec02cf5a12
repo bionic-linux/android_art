@@ -16,6 +16,24 @@
       "revId": "eac4f281302c8e28622fc86354ce88ec02cf5a12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d755322a_df3fb81f",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-04-27T15:48:17Z",
+      "side": 1,
+      "message": "Because of the StackHandleScope. Scoping adds a burden to top-declare all cross-scope variables.\n\n(In general I agree with you, though.)",
+      "parentUuid": "5a0a8654_d6a818e3",
+      "revId": "eac4f281302c8e28622fc86354ce88ec02cf5a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
