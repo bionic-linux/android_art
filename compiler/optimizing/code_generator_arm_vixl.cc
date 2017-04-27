@@ -6299,6 +6299,16 @@ void InstructionCodeGeneratorARMVIXL::VisitIntermediateAddress(HIntermediateAddr
   }
 }
 
+void LocationsBuilderARMVIXL::VisitIntermediateAddressIndex(
+    HIntermediateAddressIndex* instruction ATTRIBUTE_UNUSED) {
+  LOG(FATAL) << "Unreachable";
+}
+
+void InstructionCodeGeneratorARMVIXL::VisitIntermediateAddressIndex(
+    HIntermediateAddressIndex* instruction ATTRIBUTE_UNUSED) {
+  LOG(FATAL) << "Unreachable";
+}
+
 void LocationsBuilderARMVIXL::VisitBoundsCheck(HBoundsCheck* instruction) {
   RegisterSet caller_saves = RegisterSet::Empty();
   InvokeRuntimeCallingConventionARMVIXL calling_convention;

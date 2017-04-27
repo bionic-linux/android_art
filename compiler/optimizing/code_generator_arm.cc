@@ -6260,6 +6260,16 @@ void InstructionCodeGeneratorARM::VisitIntermediateAddress(HIntermediateAddress*
   }
 }
 
+void LocationsBuilderARM::VisitIntermediateAddressIndex(
+    HIntermediateAddressIndex* instruction ATTRIBUTE_UNUSED) {
+  LOG(FATAL) << "Unreachable";
+}
+
+void InstructionCodeGeneratorARM::VisitIntermediateAddressIndex(
+    HIntermediateAddressIndex* instruction ATTRIBUTE_UNUSED) {
+  LOG(FATAL) << "Unreachable";
+}
+
 void LocationsBuilderARM::VisitBoundsCheck(HBoundsCheck* instruction) {
   RegisterSet caller_saves = RegisterSet::Empty();
   InvokeRuntimeCallingConvention calling_convention;

@@ -705,6 +705,10 @@ class HVecLoad FINAL : public HVecMemoryOperation {
     SetRawInputAt(1, index);
     SetPackedFlag<kFieldIsStringCharAt>(is_string_char_at);
   }
+
+  HInstruction* GetArray() const { return InputAt(0); }
+  HInstruction* GetIndex() const { return InputAt(1); }
+
   DECLARE_INSTRUCTION(VecLoad);
 
   bool IsStringCharAt() const { return GetPackedFlag<kFieldIsStringCharAt>(); }
@@ -740,7 +744,12 @@ class HVecStore FINAL : public HVecMemoryOperation {
     SetRawInputAt(1, index);
     SetRawInputAt(2, value);
   }
+
+  HInstruction* GetArray() const { return InputAt(0); }
+  HInstruction* GetIndex() const { return InputAt(1); }
+
   DECLARE_INSTRUCTION(VecStore);
+
  private:
   DISALLOW_COPY_AND_ASSIGN(HVecStore);
 };
