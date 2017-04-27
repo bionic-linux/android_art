@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a0a8654_d6a818e3",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-04-27T14:12:41Z",
+      "side": 1,
+      "message": "Why don\u0027t you just scope mem_map to end here?\n\nI think calling reset/release/etc is poor practice that leads to issues such as the one you just found.",
+      "revId": "eac4f281302c8e28622fc86354ce88ec02cf5a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
