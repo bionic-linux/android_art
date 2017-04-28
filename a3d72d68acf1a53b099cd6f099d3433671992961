@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3caa4b88_dfe1b7ed",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-04-28T11:44:06Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the right way to do this.\n\nFile already has a Close() method that doesn\u0027t flush - why not just call that instead of FlushClose() or FlushCloseOrErase() ?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
