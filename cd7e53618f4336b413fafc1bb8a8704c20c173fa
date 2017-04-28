@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "556773fb_453a1285",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T21:34:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2275759b_86966fd3",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "cd7e53618f4336b413fafc1bb8a8704c20c173fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1865bd4f_8ef99398",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "88eec400_294a9b7b",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T21:34:10Z",
+      "side": 1,
+      "message": "You might be right. It cannot create a file in those location. It only works with fds. Removed.",
+      "parentUuid": "1865bd4f_8ef99398",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 33
+      },
+      "revId": "cd7e53618f4336b413fafc1bb8a8704c20c173fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5658feaf_b3ca6255",
         "filename": "runtime/oat_file_assistant.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-28T14:48:59Z",
       "side": 1,
       "message": "OdexCreation?",
+      "range": {
+        "startLine": 52,
+        "startChar": 67,
+        "endLine": 52,
+        "endChar": 72
+      },
+      "revId": "cd7e53618f4336b413fafc1bb8a8704c20c173fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04809c9c_5baaf5a8",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T21:34:10Z",
+      "side": 1,
+      "message": "Not really creation. In theory the file might there with only extract. Anyway not too fuss about it, so if you strongly want I will change.",
+      "parentUuid": "5658feaf_b3ca6255",
       "range": {
         "startLine": 52,
         "startChar": 67,
