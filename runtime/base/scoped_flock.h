@@ -39,6 +39,12 @@ class ScopedFlock {
   // is returned and no attempt is made to re-acquire the lock.
   //
   // The file is opened with the provided flags.
+  bool Init(const char* filename,
+            int flags,
+            bool block,
+            bool flush_on_close,
+            std::string* error_msg);
+  // Calls Init(filename, flags,block, false, error_msg);
   bool Init(const char* filename, int flags, bool block, std::string* error_msg);
   // Calls Init(filename, O_CREAT | O_RDWR, true, errror_msg)
   bool Init(const char* filename, std::string* error_msg);
@@ -57,6 +63,7 @@ class ScopedFlock {
 
  private:
   std::unique_ptr<File> file_;
+  bool flush_on_close_;
   DISALLOW_COPY_AND_ASSIGN(ScopedFlock);
 };
 
