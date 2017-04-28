@@ -22,6 +22,30 @@
       "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67acff33_d895e9f1",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T21:38:46Z",
+      "side": 1,
+      "message": "Eh, 2 reasons:\n1)  I will have to disable the checks for that to work as Close() verifies the file was flushed.\n2) I\u0027ll need to manually close it all the time before the returns which is a bit annoying. But mostly 1).",
+      "parentUuid": "3caa4b88_dfe1b7ed",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
