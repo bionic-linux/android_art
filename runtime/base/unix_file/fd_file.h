@@ -51,7 +51,8 @@ class FdFile : public RandomAccessFile {
         fd_(other.fd_),
         file_path_(std::move(other.file_path_)),
         auto_close_(other.auto_close_),
-        read_only_mode_(other.read_only_mode_) {
+        read_only_mode_(other.read_only_mode_),
+        flush_disabled_(other.flush_disabled_) {
     other.Release();  // Release the src.
   }
 
@@ -121,6 +122,7 @@ class FdFile : public RandomAccessFile {
     return file_path_;
   }
   void DisableAutoClose();
+  void DisableFlush();
   bool ReadFully(void* buffer, size_t byte_count) WARN_UNUSED;
   bool PreadFully(void* buffer, size_t byte_count, size_t offset) WARN_UNUSED;
   bool WriteFully(const void* buffer, size_t byte_count) WARN_UNUSED;
@@ -178,6 +180,7 @@ class FdFile : public RandomAccessFile {
   std::string file_path_;
   bool auto_close_;
   bool read_only_mode_;
+  bool flush_disabled_;
 
   DISALLOW_COPY_AND_ASSIGN(FdFile);
 };

@@ -120,6 +120,11 @@ bool ProfileCompilationInfo::MergeAndSave(const std::string& filename,
     return false;
   }
 
+  // There's no need to fsync profile data right away. We get many chances
+  // to write it again in case something goes wrong. We can rely on a simple
+  // close(), no sync, and let to the kernel decide when to write to disk.
+  flock.GetFile()->DisableFlush();
+
   int fd = flock.GetFile()->Fd();
 
   // Load the file but keep a copy around to be able to infer if the content has changed.

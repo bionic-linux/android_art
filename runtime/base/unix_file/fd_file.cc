@@ -41,7 +41,7 @@ FdFile::FdFile()
 
 FdFile::FdFile(int fd, bool check_usage)
     : guard_state_(check_usage ? GuardState::kBase : GuardState::kNoCheck),
-      fd_(fd), auto_close_(true), read_only_mode_(false) {
+      fd_(fd), auto_close_(true), read_only_mode_(false), flush_disabled_(false) {
 }
 
 FdFile::FdFile(int fd, const std::string& path, bool check_usage)
@@ -50,11 +50,12 @@ FdFile::FdFile(int fd, const std::string& path, bool check_usage)
 
 FdFile::FdFile(int fd, const std::string& path, bool check_usage, bool read_only_mode)
     : guard_state_(check_usage ? GuardState::kBase : GuardState::kNoCheck),
-      fd_(fd), file_path_(path), auto_close_(true), read_only_mode_(read_only_mode) {
+      fd_(fd), file_path_(path), auto_close_(true), read_only_mode_(read_only_mode),
+      flush_disabled_(false) {
 }
 
 FdFile::FdFile(const std::string& path, int flags, mode_t mode, bool check_usage)
-    : fd_(-1), auto_close_(true) {
+    : fd_(-1), auto_close_(true), flush_disabled_(false) {
   Open(path, flags, mode);
   if (!check_usage || !IsOpened()) {
     guard_state_ = GuardState::kNoCheck;
@@ -127,6 +128,10 @@ void FdFile::DisableAutoClose() {
   auto_close_ = false;
 }
 
+void FdFile::DisableFlush() {
+  flush_disabled_ = true;
+}
+
 bool FdFile::Open(const std::string& path, int flags) {
   return Open(path, flags, 0640);
 }
@@ -172,11 +177,14 @@ int FdFile::Close() {
 
 int FdFile::Flush() {
   DCHECK(!read_only_mode_);
+  int rc = 0;
+  if (!flush_disabled_) {
 #ifdef __linux__
-  int rc = TEMP_FAILURE_RETRY(fdatasync(fd_));
+    rc = TEMP_FAILURE_RETRY(fdatasync(fd_));
 #else
-  int rc = TEMP_FAILURE_RETRY(fsync(fd_));
+    rc = TEMP_FAILURE_RETRY(fsync(fd_));
 #endif
+  }
   moveUp(GuardState::kFlushed, "Flushing closed file.");
   return (rc == -1) ? -errno : rc;
 }
