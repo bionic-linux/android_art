@@ -485,6 +485,27 @@ void DexWriter::WriteClasses() {
   }
 }
 
+void DexWriter::WriteCallSites() {
+  uint32_t call_site_off[1];
+  for (std::unique_ptr<dex_ir::CallSiteId>& call_site_id :
+      header_->GetCollections().CallSiteIds()) {
+    call_site_off[0] = call_site_id->CallSiteItem()->GetOffset();
+    Write(call_site_off, call_site_id->GetSize(), call_site_id->GetOffset());
+  }
+}
+
+void DexWriter::WriteMethodHandles() {
+  uint16_t method_handle_buff[4];
+  for (std::unique_ptr<dex_ir::MethodHandleItem>& method_handle :
+      header_->GetCollections().MethodHandleItems()) {
+    method_handle_buff[0] = static_cast<uint16_t>(method_handle->GetMethodHandleType());
+    method_handle_buff[1] = 0;  // unused.
+    method_handle_buff[2] = method_handle->GetFieldOrMethodId()->GetIndex();
+    method_handle_buff[3] = 0;  // unused.
+    Write(method_handle_buff, method_handle->GetSize(), method_handle->GetOffset());
+  }
+}
+
 struct MapItemContainer {
   MapItemContainer(uint32_t type, uint32_t size, uint32_t offset)
       : type_(type), size_(size), offset_(offset) { }
@@ -527,6 +548,14 @@ void DexWriter::WriteMapItem() {
   if (collection.ClassDefsSize() != 0) {
     queue.push(MapItemContainer(DexFile::kDexTypeClassDefItem, collection.ClassDefsSize(),
         collection.ClassDefsOffset()));
+  }
+  if (collection.CallSiteIdsSize() != 0) {
+    queue.push(MapItemContainer(DexFile::kDexTypeCallSiteIdItem, collection.CallSiteIdsSize(),
+        collection.CallSiteIdsOffset()));
+  }
+  if (collection.MethodHandleItemsSize() != 0) {
+    queue.push(MapItemContainer(DexFile::kDexTypeMethodHandleItem,
+        collection.MethodHandleItemsSize(), collection.MethodHandleItemsOffset()));
   }
 
   // Data section.
@@ -640,6 +669,8 @@ void DexWriter::WriteMemMap() {
   WriteDebugInfoItems();
   WriteCodeItems();
   WriteClasses();
+  WriteCallSites();
+  WriteMethodHandles();
   WriteMapItem();
   WriteHeader();
 }

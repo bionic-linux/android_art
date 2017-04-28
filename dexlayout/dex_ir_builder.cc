@@ -115,6 +115,18 @@ static void CheckAndSetRemainingOffsets(const DexFile& dex_file, Collections* co
         CHECK_EQ(item->size_, collections->ClassDefsSize());
         CHECK_EQ(item->offset_, collections->ClassDefsOffset());
         break;
+      case DexFile::kDexTypeCallSiteIdItem:
+        collections->SetCallSiteIdsOffset(item->offset_);
+        for (uint32_t j = 0; j < dex_file.NumCallSiteIds(); j++) {
+          collections->CreateCallSiteId(dex_file, j);
+        }
+        break;
+      case DexFile::kDexTypeMethodHandleItem:
+        collections->SetMethodHandleItemsOffset(item->offset_);
+        for (uint32_t j = 0; i < dex_file.NumMethodHandles(); j++) {
+          collections->CreateMethodHandleItem(dex_file, j);
+        }
+        break;
       case DexFile::kDexTypeMapList:
         CHECK_EQ(item->size_, 1u);
         CHECK_EQ(item->offset_, disk_header.map_off_);

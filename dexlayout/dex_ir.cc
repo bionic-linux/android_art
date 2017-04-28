@@ -766,6 +766,35 @@ ClassData* Collections::CreateClassData(
   return class_data;
 }
 
+void Collections::CreateCallSiteId(const DexFile& dex_file, uint32_t i) {
+  const DexFile::CallSiteIdItem& disk_call_site_id = dex_file.GetCallSiteId(i);
+  const uint8_t* disk_call_item_ptr = dex_file.Begin() + disk_call_site_id.data_off_;
+  EncodedArrayItem* call_site_item =
+      CreateEncodedArrayItem(disk_call_item_ptr, disk_call_site_id.data_off_);
+
+  CallSiteId* call_site_id = new CallSiteId(call_site_item);
+  call_site_ids_.AddIndexedItem(call_site_id, CallSiteIdsOffset() + i * CallSiteId::ItemSize(), i);
+}
+
+void Collections::CreateMethodHandleItem(const DexFile& dex_file, uint32_t i) {
+  const DexFile::MethodHandleItem& disk_method_handle = dex_file.GetMethodHandle(i);
+  uint16_t index = disk_method_handle.field_or_method_idx_;
+  DexFile::MethodHandleType type =
+      static_cast<DexFile::MethodHandleType>(disk_method_handle.method_handle_type_);
+  bool is_invoke = type == DexFile::MethodHandleType::kInvokeStatic ||
+                   type == DexFile::MethodHandleType::kInvokeInstance ||
+                   type == DexFile::MethodHandleType::kInvokeConstructor;
+  IndexedItem* field_or_method_id;
+  if (is_invoke) {
+    field_or_method_id = GetMethodId(index);
+  } else {
+    field_or_method_id = GetFieldId(index);
+  }
+  MethodHandleItem* method_handle = new MethodHandleItem(type, field_or_method_id);
+  method_handle_items_.AddIndexedItem(
+      method_handle, MethodHandleItemsOffset() + i * MethodHandleItem::ItemSize(), i);
+}
+
 static uint32_t HeaderOffset(const dex_ir::Collections& collections ATTRIBUTE_UNUSED) {
   return 0;
 }
@@ -822,6 +851,16 @@ static const FileSectionDescriptor kFileSectionDescriptors[] = {
     DexFile::kDexTypeClassDefItem,
     &dex_ir::Collections::ClassDefsSize,
     &dex_ir::Collections::ClassDefsOffset
+  }, {
+    "CallSiteId",
+    DexFile::kDexTypeCallSiteIdItem,
+    &dex_ir::Collections::CallSiteIdsSize,
+    &dex_ir::Collections::CallSiteIdsOffset
+  }, {
+    "MethodHandle",
+    DexFile::kDexTypeMethodHandleItem,
+    &dex_ir::Collections::MethodHandleItemsSize,
+    &dex_ir::Collections::MethodHandleItemsOffset
   }, {
     "StringData",
     DexFile::kDexTypeStringDataItem,
