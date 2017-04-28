@@ -117,8 +117,16 @@ bool ProfileCompilationInfo::MergeAndSave(const std::string& filename,
   std::string error;
   if (!flock.Init(filename.c_str(), O_RDWR | O_NOFOLLOW | O_CLOEXEC, /* block */ false, &error)) {
     LOG(WARNING) << "Couldn't lock the profile file " << filename << ": " << error;
+    if (flock.HasFile()) {
+      flock.GetFile()->DisableFlush();
+    }
     return false;
   }
+
+  // There's no need to fsync profile data right away. We get many chances
+  // to write it again in case something goes wrong. We can rely on a simple
+  // close(), no sync, and let to the kernel decide when to write to disk.
+  flock.GetFile()->DisableFlush();
 
   int fd = flock.GetFile()->Fd();
 
