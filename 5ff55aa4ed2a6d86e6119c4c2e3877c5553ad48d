@@ -46,6 +46,30 @@
       "revId": "5ff55aa4ed2a6d86e6119c4c2e3877c5553ad48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eae25279_c31a171c",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-28T19:08:50Z",
+      "side": 1,
+      "message": "There is some mess with scopes in VIXL currently; we are planning to rework them in the future (assembler instructions will be definitely forbidden in EmissionCheckScope). I would recommend to use assembler only in such places (and ExactAssemblyScope) where code layout and particular encoding are required and crucial and try to avoid EmissionCheckScope wherever possible.\n\nSo in this function you can use lower case bind. The only difference between Bind and bind is that Bind may emit some padding for the case:\n\ncbz(\u0026label);\nbind(label);",
+      "parentUuid": "24eb8d84_32019264",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "5ff55aa4ed2a6d86e6119c4c2e3877c5553ad48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
