@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "861a8062_eab99b07",
+        "filename": "runtime/dexopt_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da52924e_f068a7c9",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a48241d2_f65bf058",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -83,6 +107,30 @@
       "side": 1,
       "message": "good point. perhaps getting the real path is better than cwd.",
       "parentUuid": "a48241d2_f65bf058",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 87
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69ac04b3_f735e0a9",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "I extracted the realpath of the dex at the top. If we can\u0027t it means that\u0027s no real point to move forward.\n\nPreviously I don\u0027t think we are doing the right thing if the location is relative.",
+      "parentUuid": "72b748ce_7d6863bb",
       "range": {
         "startLine": 105,
         "startChar": 4,
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "954487b0_7df79e08",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "I analyzed the use case and except OatFileAssistant::GetStatusDump() all the other uses are immediately followed by a call which will need this.\n\nI don\u0027t think it\u0027s worth optimizing for GetStatusDump() so I\u0027ll leave it here for the moment. Let me know if you think other wise.",
+      "parentUuid": "b36f8b7f_c99497d6",
+      "range": {
+        "startLine": 102,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebec912_a4994715",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 5
@@ -177,6 +249,30 @@
       "side": 1,
       "message": "uh, true. I\u0027ll revise this .",
       "parentUuid": "eebec912_a4994715",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baaf9e5d_1fd552f8",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "Added comments.",
+      "parentUuid": "d580fb65_5b1cf8dc",
       "range": {
         "startLine": 144,
         "startChar": 2,
@@ -283,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "14240dfd_26d9d988",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "added a TODO, and we\u0027ll discuss at the team meeting where is the best place to add such docs.",
+      "parentUuid": "a6ecfa09_d5f32209",
+      "range": {
+        "startLine": 839,
+        "startChar": 2,
+        "endLine": 847,
+        "endChar": 3
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "779111f6_420e64e0",
         "filename": "runtime/oat_file_assistant.h",
         "patchSetId": 5
@@ -306,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "ab6e3a73_1362344e",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "it uses the field dex_location_",
+      "parentUuid": "779111f6_420e64e0",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 376,
+        "endChar": 85
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b927dc2_0c5c7d2a",
         "filename": "runtime/oat_file_manager.cc",
         "patchSetId": 5
@@ -317,6 +461,30 @@
       "writtenOn": "2017-04-25T20:16:20Z",
       "side": 1,
       "message": "Stale",
+      "range": {
+        "startLine": 632,
+        "startChar": 2,
+        "endLine": 632,
+        "endChar": 71
+      },
+      "revId": "71408fed3a2bdc51b1a5bf2754906b09bb16e6a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4683b378_a20be28b",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-04-28T01:53:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b927dc2_0c5c7d2a",
       "range": {
         "startLine": 632,
         "startChar": 2,
