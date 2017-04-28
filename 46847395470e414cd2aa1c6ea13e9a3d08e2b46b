@@ -16,6 +16,24 @@
       "revId": "46847395470e414cd2aa1c6ea13e9a3d08e2b46b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3baf43_38f89398",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-04-28T14:05:43Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s the other option. I went with the simplest one since this only affects prebuilts, which gets compiled in parallel anyway.",
+      "parentUuid": "300de036_c9e4c7b3",
+      "revId": "46847395470e414cd2aa1c6ea13e9a3d08e2b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
