@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fad2ccc_25dbb907",
+        "filename": "dexlayout/dex_ir.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-04-28T10:57:18Z",
+      "side": 1,
+      "message": "There are additional invoke kinds in other CLs.\n\nA static_assert that DexFile::MethodHandleType::kLast \u003d\u003d DexFile::MethodHandleType::kInvokeConstructor will ensure this code gets updated too.",
+      "range": {
+        "startLine": 784,
+        "startChar": 2,
+        "endLine": 786,
+        "endChar": 73
+      },
+      "revId": "eab4c4ab6c9fa573e4ad2eb3f87d7ce251af6224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
