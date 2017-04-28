@@ -70,6 +70,30 @@
       "revId": "5ff55aa4ed2a6d86e6119c4c2e3877c5553ad48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b79c5047_7a255aaf",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-04-28T19:14:50Z",
+      "side": 1,
+      "message": "Thanks! I tried using the ExactAssemblyScope in PS6 but hit assertions. I didn\u0027t realize there is a bind() I can use instead of Bind().",
+      "parentUuid": "eae25279_c31a171c",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "5ff55aa4ed2a6d86e6119c4c2e3877c5553ad48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
