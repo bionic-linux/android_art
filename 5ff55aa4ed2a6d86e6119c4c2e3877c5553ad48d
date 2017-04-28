@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10b4522b_674d354b",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-04-28T12:47:32Z",
+      "side": 1,
+      "message": "If you use Assembler instructions (starting with lower case) you should use ExactAssemblyScope instead of EmissionCheckScope.",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "5ff55aa4ed2a6d86e6119c4c2e3877c5553ad48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
