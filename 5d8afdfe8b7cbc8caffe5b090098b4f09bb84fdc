@@ -22,6 +22,30 @@
       "revId": "5d8afdfe8b7cbc8caffe5b090098b4f09bb84fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22433f6f_4e8cada5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-01T18:01:51Z",
+      "side": 1,
+      "message": "I didn\u0027t measure that, but I don\u0027t think it should change. Since the maps are page aligned and 1024 divides 4096(kPageSize) it should not touch any extra pages when we gray the objects. Did you think of a case where the dirty pages might change?",
+      "parentUuid": "70ef38d0_357f5e65",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "5d8afdfe8b7cbc8caffe5b090098b4f09bb84fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
