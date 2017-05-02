@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb02d5cd_581c267c",
+        "filename": "runtime/oat_file_assistant.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-02T10:47:02Z",
+      "side": 1,
+      "message": "GenerateOatFileNoChecks ?",
+      "range": {
+        "startLine": 376,
+        "startChar": 26,
+        "endLine": 376,
+        "endChar": 41
+      },
+      "revId": "c121e76bbc85daea695aee4d60f84703f8266e04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84e06ab4_847d9235",
+        "filename": "runtime/oat_file_assistant_test.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-02T10:47:02Z",
+      "side": 1,
+      "message": "ScopedNonWriteable ? The name still seems a bit kludgy but I can\u0027t suggest anything better...",
+      "range": {
+        "startLine": 48,
+        "startChar": 11,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "c121e76bbc85daea695aee4d60f84703f8266e04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
