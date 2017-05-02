@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "839a53ee_7d7f017f",
+        "filename": "test/648-inline-caches-unresolved/run",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-02T21:42:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4844e590_55313a31",
+      "range": {
+        "startLine": 17,
+        "startChar": 87,
+        "endLine": 17,
+        "endChar": 121
+      },
+      "revId": "56b2719fb8ecef125e33090c4a130363e8aaf6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d984e631_f9ef9e9b",
+        "filename": "test/648-inline-caches-unresolved/run",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-02T21:42:07Z",
+      "side": 1,
+      "message": "We don\u0027t have it on the chrome bots.",
+      "parentUuid": "680d9dbe_ef0bce38",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 86
+      },
+      "revId": "56b2719fb8ecef125e33090c4a130363e8aaf6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7824c19e_8b356d14",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-02T11:23:39Z",
       "side": 1,
       "message": "What happens if they are not there? Please add a comment.",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 51
+      },
+      "revId": "56b2719fb8ecef125e33090c4a130363e8aaf6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64b9758c_506c6dd0",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-02T21:42:07Z",
+      "side": 1,
+      "message": "We log an warning.\n\nIt\u0027s easier to check if it exists instead of trying to explain in a comment :)",
+      "parentUuid": "7824c19e_8b356d14",
       "range": {
         "startLine": 567,
         "startChar": 0,
