@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "3ce9039e_3dec3712",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-03T18:26:24Z",
+      "side": 1,
+      "message": "I actually don\u0027t know what\u0027s the behaviour of fsync on Android if no writes have been made.\n\nI added a check here as well, just to be sure.",
+      "parentUuid": "ae5a7218_18526471",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3caa4b88_dfe1b7ed",
         "filename": "runtime/jit/profile_compilation_info.cc",
         "patchSetId": 1
