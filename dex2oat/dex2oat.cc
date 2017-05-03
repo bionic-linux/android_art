@@ -2434,7 +2434,7 @@ class Dex2Oat FINAL {
       raw_options.push_back(std::make_pair("-Xgc:nonconcurrent", nullptr));
 
       // Also force the free-list implementation for large objects.
-      raw_options.push_back(std::make_pair("-XX:LargeObjectSpace=freelist", nullptr));
+      raw_options.push_back(std::make_pair("-XX:LargeObjectSpace=disabled", nullptr));
 
       // We also need to turn off the nonmoving space. For that, we need to disable HSpace
       // compaction (done above) and ensure that neither foreground nor background collectors
