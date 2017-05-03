@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "6ba3454c_96264b2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T08:47:27Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50cce025_e9edb6f0",
+        "filename": "runtime/base/unix_file/fd_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T08:47:27Z",
+      "side": 1,
+      "message": "Put this in the if?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 56
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae5a7218_18526471",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T08:47:27Z",
+      "side": 1,
+      "message": "What\u0027s the guarantees of a flush happening after the lock?",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3caa4b88_dfe1b7ed",
         "filename": "runtime/jit/profile_compilation_info.cc",
         "patchSetId": 1
