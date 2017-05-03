@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40da425b_4da18639",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T09:36:00Z",
+      "side": 1,
+      "message": "2 more spaces.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5de00d39_2bdf51c2",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T09:36:00Z",
+      "side": 1,
+      "message": "Set?\n\nAlso explain what they are?",
+      "range": {
+        "startLine": 651,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 12
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c068f3d_639511b5",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-03T09:36:00Z",
+      "side": 1,
+      "message": "I\u0027d rephrase this: \"Pick the odex if it exists, or the oat if not\".",
+      "range": {
+        "startLine": 911,
+        "startChar": 5,
+        "endLine": 911,
+        "endChar": 59
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
