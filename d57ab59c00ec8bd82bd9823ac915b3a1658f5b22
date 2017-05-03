@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82e0f354_670bf73c",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-03T17:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40da425b_4da18639",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5de00d39_2bdf51c2",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f6039c9c_436f0288",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-03T17:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de00d39_2bdf51c2",
+      "range": {
+        "startLine": 651,
+        "startChar": 5,
+        "endLine": 651,
+        "endChar": 12
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c068f3d_639511b5",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-03T09:36:00Z",
       "side": 1,
       "message": "I\u0027d rephrase this: \"Pick the odex if it exists, or the oat if not\".",
+      "range": {
+        "startLine": 911,
+        "startChar": 5,
+        "endLine": 911,
+        "endChar": 59
+      },
+      "revId": "d57ab59c00ec8bd82bd9823ac915b3a1658f5b22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "859da118_f6545e69",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-03T17:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c068f3d_639511b5",
       "range": {
         "startLine": 911,
         "startChar": 5,
