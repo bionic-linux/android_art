@@ -211,6 +211,30 @@
       "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e34b4fa_834277be",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-04T03:08:24Z",
+      "side": 1,
+      "message": "That\u0027s what auto-close is for...",
+      "parentUuid": "f156be88_09f2c0e0",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
