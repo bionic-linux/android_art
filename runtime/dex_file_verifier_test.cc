@@ -2090,4 +2090,33 @@ TEST_F(DexFileVerifierTest, InvokeCustomDexSamples) {
   }
 }
 
+
+
+TEST_F(DexFileVerifierTest, BadStaticFieldInitialValuesArray) {
+  static const char kDexBase64[] =
+      "ZGV4CjAzNQBrMi4cCPcMvvXNRw0uI6RRubwMPwgEYXIsAgAAcAAAAHhWNBIAAAAAAAAAAIwBAAAL"
+      "AAAAcAAAAAYAAACcAAAAAQAAALQAAAADAAAAwAAAAAIAAADYAAAAAQAAAOgAAAAkAQAACAEAACAB"
+      "AAAoAQAAMAEAADMBAAA2AQAAOwEAAE8BAABjAQAAZgEAAGkBAABsAQAAAgAAAAMAAAAEAAAABQAA"
+      "AAYAAAAHAAAABwAAAAUAAAAAAAAAAgAAAAgAAAACAAEACQAAAAIABAAKAAAAAgAAAAAAAAADAAAA"
+      "AAAAAAIAAAABAAAAAwAAAAAAAAABAAAAAAAAAHsBAAB0AQAAAQABAAEAAABvAQAABAAAAHAQAQAA"
+      "AA4ABjxpbml0PgAGQS5qYXZhAAFDAAFJAANMQTsAEkxqYXZhL2xhbmcvT2JqZWN0OwASTGphdmEv"
+      "bGFuZy9TdHJpbmc7AAFWAAFjAAFpAAFzAAEABw4AAwNjFwoXCgMAAQAAGAEYARgAgYAEiAIADQAA"
+      "AAAAAAABAAAAAAAAAAEAAAALAAAAcAAAAAIAAAAGAAAAnAAAAAMAAAABAAAAtAAAAAQAAAADAAAA"
+      "wAAAAAUAAAACAAAA2AAAAAYAAAABAAAA6AAAAAEgAAABAAAACAEAAAIgAAALAAAAIAEAAAMgAAAB"
+      "AAAAbwEAAAUgAAABAAAAdAEAAAAgAAABAAAAewEAAAAQAAABAAAAjAEAAA==";
+
+  size_t length;
+  std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
+  CHECK(dex_bytes != nullptr);
+  // Note: `dex_file` will be destroyed before `dex_bytes`.
+  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::string error_msg;
+  EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
+                                       dex_file->Begin(),
+                                       dex_file->Size(),
+                                       "bad static field initial values array",
+                                       /*verify_checksum*/ true,
+                                       &error_msg));
+}
+
 }  // namespace art
