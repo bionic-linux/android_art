@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eeae4aa8_7c8ae56c",
+        "filename": "dexlayout/dexdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-04T21:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8260e1_b1a63349",
+      "revId": "581fc706ca9a9d38d1708d261ac005b7dd3f94d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac8f7b83_0e5e8099",
         "filename": "dexlayout/dexdiag.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-04T21:10:03Z",
       "side": 1,
       "message": "nit: std::string::find over strstr for C++ strings",
+      "revId": "581fc706ca9a9d38d1708d261ac005b7dd3f94d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aea6e0f0_eefeb881",
+        "filename": "dexlayout/dexdiag.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-04T21:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8f7b83_0e5e8099",
       "revId": "581fc706ca9a9d38d1708d261ac005b7dd3f94d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
