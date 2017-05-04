@@ -187,6 +187,30 @@
       "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f156be88_09f2c0e0",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-04T03:00:48Z",
+      "side": 1,
+      "message": "That\u0027s just shifting things around. Don\u0027t really mind but also I don\u0027t see how it is better.  I\u0027d basically lose the check that close is indeed called before destruction.",
+      "parentUuid": "c3483e38_a93f3f55",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
