@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ce46af5b_47f2bda5",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-04T09:58:12Z",
+      "side": 1,
+      "message": "My question isn\u0027t about whether writes have been made. It\u0027s about the integrity of the file if the flush happens after the unlock.",
+      "parentUuid": "3ce9039e_3dec3712",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3caa4b88_dfe1b7ed",
         "filename": "runtime/jit/profile_compilation_info.cc",
         "patchSetId": 1
