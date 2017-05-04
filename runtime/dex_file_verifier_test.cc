@@ -2090,4 +2090,103 @@ TEST_F(DexFileVerifierTest, InvokeCustomDexSamples) {
   }
 }
 
+TEST_F(DexFileVerifierTest, BadStaticFieldInitialValuesArray) {
+  // Generated DEX file version (037) from:
+  //
+  // .class public LBadStaticFieldInitialValuesArray;
+  // .super Ljava/lang/Object;
+  //
+  //  # static fields
+  //  .field static final c:C = 'c'
+  //  .field static final i:I = 0x1
+  //  .field static final s:Ljava/lang/String; = "s"
+  //
+  //  # direct methods
+  //  .method public constructor <init>()V
+  //      .registers 1
+  //      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  //      return-void
+  //  .end method
+  //
+  // Output file was hex edited so that static field "i" has string typing in initial values array.
+  static const char kDexBase64[] =
+      "ZGV4CjAzNQBrMi4cCPcMvvXNRw0uI6RRubwMPwgEYXIsAgAAcAAAAHhWNBIAAAAAAAAAAIwBAAAL"
+      "AAAAcAAAAAYAAACcAAAAAQAAALQAAAADAAAAwAAAAAIAAADYAAAAAQAAAOgAAAAkAQAACAEAACAB"
+      "AAAoAQAAMAEAADMBAAA2AQAAOwEAAE8BAABjAQAAZgEAAGkBAABsAQAAAgAAAAMAAAAEAAAABQAA"
+      "AAYAAAAHAAAABwAAAAUAAAAAAAAAAgAAAAgAAAACAAEACQAAAAIABAAKAAAAAgAAAAAAAAADAAAA"
+      "AAAAAAIAAAABAAAAAwAAAAAAAAABAAAAAAAAAHsBAAB0AQAAAQABAAEAAABvAQAABAAAAHAQAQAA"
+      "AA4ABjxpbml0PgAGQS5qYXZhAAFDAAFJAANMQTsAEkxqYXZhL2xhbmcvT2JqZWN0OwASTGphdmEv"
+      "bGFuZy9TdHJpbmc7AAFWAAFjAAFpAAFzAAEABw4AAwNjFwoXCgMAAQAAGAEYARgAgYAEiAIADQAA"
+      "AAAAAAABAAAAAAAAAAEAAAALAAAAcAAAAAIAAAAGAAAAnAAAAAMAAAABAAAAtAAAAAQAAAADAAAA"
+      "wAAAAAUAAAACAAAA2AAAAAYAAAABAAAA6AAAAAEgAAABAAAACAEAAAIgAAALAAAAIAEAAAMgAAAB"
+      "AAAAbwEAAAUgAAABAAAAdAEAAAAgAAABAAAAewEAAAAQAAABAAAAjAEAAA==";
+
+  size_t length;
+  std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
+  CHECK(dex_bytes != nullptr);
+  // Note: `dex_file` will be destroyed before `dex_bytes`.
+  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::string error_msg;
+  EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
+                                       dex_file->Begin(),
+                                       dex_file->Size(),
+                                       "bad static field initial values array",
+                                       /*verify_checksum*/ true,
+                                       &error_msg));
+}
+
+TEST_F(DexFileVerifierTest, GoodStaticFieldInitialValuesArray) {
+  // Generated DEX file version (037) from:
+  //
+  //  .class public LGoodStaticFieldInitialValuesArray;
+  //  .super Ljava/lang/Object;
+  //
+  //  # static fields
+  //  .field static final b:B = 0x1t
+  //  .field static final c:C = 'c'
+  //  .field static final d:D = 0.6
+  //  .field static final f:F = 0.5f
+  //  .field static final i:I = 0x3
+  //  .field static final j:J = 0x4L
+  //  .field static final l1:Ljava/lang/String;
+  //  .field static final l2:Ljava/lang/String; = "s"
+  //  .field static final s:S = 0x2s
+  //  .field static final z:Z = true
+  //
+  //  # direct methods
+  //  .method public constructor <init>()V
+  //      .registers 1
+  //      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  //      return-void
+  //  .end method
+  static const char kDexBase64[] =
+      "ZGV4CjAzNQD5U5afx6o8RuW6pzwrSSeczk0gT82mCwEQAwAAcAAAAHhWNBIAAAAAAAAAAHACAAAX"
+      "AAAAcAAAAAwAAADMAAAAAQAAAPwAAAAKAAAACAEAAAIAAABYAQAAAQAAAGgBAACIAQAAiAEAAIgB"
+      "AACQAQAAkwEAAJYBAACZAQAAnAEAAJ8BAACiAQAAxwEAANsBAADvAQAA8gEAAPUBAAD4AQAA+wEA"
+      "AP4BAAABAgAABAIAAAcCAAAKAgAADgIAABICAAAVAgAAAQAAAAIAAAADAAAABAAAAAUAAAAGAAAA"
+      "BwAAAAgAAAAJAAAACgAAAAsAAAAMAAAACwAAAAoAAAAAAAAABgAAAA0AAAAGAAEADgAAAAYAAgAP"
+      "AAAABgADABAAAAAGAAQAEQAAAAYABQASAAAABgAIABMAAAAGAAgAFAAAAAYACQAVAAAABgALABYA"
+      "AAAGAAAAAAAAAAcAAAAAAAAABgAAAAEAAAAHAAAAAAAAAP////8AAAAAUAIAABgCAAAGPGluaXQ+"
+      "AAFCAAFDAAFEAAFGAAFJAAFKACNMR29vZFN0YXRpY0ZpZWxkSW5pdGlhbFZhbHVlc0FycmF5OwAS"
+      "TGphdmEvbGFuZy9PYmplY3Q7ABJMamF2YS9sYW5nL1N0cmluZzsAAVMAAVYAAVoAAWIAAWMAAWQA"
+      "AWYAAWkAAWoAAmwxAAJsMgABcwABegAKAAEDY/EzMzMzMzPjPxA/BAMGBB4XFQICPwAAAAAAAAEA"
+      "AQABAAAAAAAAAAQAAABwEAEAAAAOAAoAAQAAGAEYARgBGAEYARgBGAEYARgBGACBgAS4BAAADQAA"
+      "AAAAAAABAAAAAAAAAAEAAAAXAAAAcAAAAAIAAAAMAAAAzAAAAAMAAAABAAAA/AAAAAQAAAAKAAAA"
+      "CAEAAAUAAAACAAAAWAEAAAYAAAABAAAAaAEAAAIgAAAXAAAAiAEAAAUgAAABAAAAGAIAAAMQAAAB"
+      "AAAANAIAAAEgAAABAAAAOAIAAAAgAAABAAAAUAIAAAAQAAABAAAAcAIAAA==";
+
+  size_t length;
+  std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
+  CHECK(dex_bytes != nullptr);
+  // Note: `dex_file` will be destroyed before `dex_bytes`.
+  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::string error_msg;
+  EXPECT_TRUE(DexFileVerifier::Verify(dex_file.get(),
+                                      dex_file->Begin(),
+                                      dex_file->Size(),
+                                      "good static field initial values array",
+                                      /*verify_checksum*/ true,
+                                      &error_msg));
+}
+
 }  // namespace art
