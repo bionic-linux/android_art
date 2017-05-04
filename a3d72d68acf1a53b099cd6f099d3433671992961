@@ -163,6 +163,30 @@
       "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3483e38_a93f3f55",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-04T02:38:14Z",
+      "side": 1,
+      "message": "Not really sure I understand this.\n\nFor FdFile, you should set auto-close and disable checks. That\u0027s the intended API usage here. So add disable-autoflush to ScopedFlock?",
+      "parentUuid": "67acff33_d895e9f1",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
