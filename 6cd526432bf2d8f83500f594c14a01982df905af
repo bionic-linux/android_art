@@ -1,0 +1,757 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc92675_8e23894c",
+        "filename": "compiler/linker/arm/relative_patcher_thumb2_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "4-5? (for T2 encoding)",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8ffc4da_9eebf783",
+        "filename": "compiler/linker/arm/relative_patcher_thumb2_test.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 0xf8500030u?",
+      "range": {
+        "startLine": 62,
+        "startChar": 42,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "199ab066_305d4438",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Document this.",
+      "range": {
+        "startLine": 76,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 41
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25813eb8_cabb9496",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "I\u0027d move `inline` before return type; this seems more in line with the C++ style guide and the rest of the code base.",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfdfb74f_72937581",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e629688e_b11acc19",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 5928,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Int32ConstantFrom?",
+      "range": {
+        "startLine": 5928,
+        "startChar": 34,
+        "endLine": 5928,
+        "endChar": 51
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1576cc01_8b13df30",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 5930,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Is there a case in this code path where the temp count can be null?",
+      "range": {
+        "startLine": 5929,
+        "startChar": 10,
+        "endLine": 5930,
+        "endChar": 96
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57866bab_d30da5ce",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8047,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "32-bit instructions?",
+      "range": {
+        "startLine": 8047,
+        "startChar": 45,
+        "endLine": 8047,
+        "endChar": 56
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb9d3fc_846f651d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8048,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Where is the \"offset \u003e\u003d kReferenceLoadMinFarOffset\" case handled?",
+      "range": {
+        "startLine": 8048,
+        "startChar": 8,
+        "endLine": 8048,
+        "endChar": 54
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23ca39b2_a2aeecaa",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8182,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "32-bit instruction?",
+      "range": {
+        "startLine": 8182,
+        "startChar": 39,
+        "endLine": 8182,
+        "endChar": 50
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f624174_0ce765a0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8183,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8183,
+        "startChar": 22,
+        "endLine": 8183,
+        "endChar": 34
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e80f315_18b56ce1",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8265,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8265,
+        "startChar": 39,
+        "endLine": 8265,
+        "endChar": 50
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20c57f60_ab62911d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8266,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8266,
+        "startChar": 22,
+        "endLine": 8266,
+        "endChar": 34
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68409b0e_6723937c",
+        "filename": "compiler/optimizing/code_generator_arm.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Document this method?",
+      "range": {
+        "startLine": 511,
+        "startChar": 7,
+        "endLine": 511,
+        "endChar": 45
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd26eedc_3a2a8c23",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "I would also add a TODO as a reminder to fix/extend VIXL.",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 80
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8346ad57_8566ca1a",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 5968,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Int32ConstantFrom?",
+      "range": {
+        "startLine": 5968,
+        "startChar": 25,
+        "endLine": 5968,
+        "endChar": 42
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ec5cb54_7ed85fcb",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 5970,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Is there a case in this code path where the temp count can be null?",
+      "range": {
+        "startLine": 5969,
+        "startChar": 10,
+        "endLine": 5970,
+        "endChar": 96
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7d5db3a_974c5abd",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8157,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "32-bit instructions?",
+      "range": {
+        "startLine": 8157,
+        "startChar": 45,
+        "endLine": 8157,
+        "endChar": 57
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bc8cd12_b90a2ee0",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8158,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Where is the \"offset \u003e\u003d kReferenceLoadMinFarOffset\" case handled?",
+      "range": {
+        "startLine": 8158,
+        "startChar": 8,
+        "endLine": 8158,
+        "endChar": 54
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5512d883_eb7e81b1",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8296,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "32-bit instruction?",
+      "range": {
+        "startLine": 8296,
+        "startChar": 39,
+        "endLine": 8296,
+        "endChar": 50
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d74514d_d438a072",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8297,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8297,
+        "startChar": 22,
+        "endLine": 8297,
+        "endChar": 34
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b48990d4_06d8bc59",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8384,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8384,
+        "startChar": 39,
+        "endLine": 8384,
+        "endChar": 50
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2072fde0_7b5e58a0",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8385,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 8385,
+        "startChar": 22,
+        "endLine": 8385,
+        "endChar": 34
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e84f9d3f_fc0378e3",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 597,
+        "startChar": 7,
+        "endLine": 597,
+        "endChar": 45
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd2f02ca_90ecaf00",
+        "filename": "runtime/arch/arm/entrypoints_init_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 101,
+        "startChar": 18,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80b398c4_1ced0f56",
+        "filename": "runtime/arch/arm/entrypoints_init_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "12",
+      "range": {
+        "startLine": 101,
+        "startChar": 91,
+        "endLine": 101,
+        "endChar": 93
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e21b52_2d5607c1",
+        "filename": "runtime/arch/arm/entrypoints_init_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "IP",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2ec76b9_4c3a0367",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2218,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "16?",
+      "range": {
+        "startLine": 2218,
+        "startChar": 24,
+        "endLine": 2218,
+        "endChar": 26
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "876b0263_1f042def",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "20?",
+      "range": {
+        "startLine": 2219,
+        "startChar": 24,
+        "endLine": 2219,
+        "endChar": 26
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec495763_5bc9216d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "0-5?",
+      "range": {
+        "startLine": 2264,
+        "startChar": 7,
+        "endLine": 2264,
+        "endChar": 10
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61530256_9838adcc",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "0-3?",
+      "range": {
+        "startLine": 2265,
+        "startChar": 73,
+        "endLine": 2265,
+        "endChar": 76
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ec2aa16_2d2bc181",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2266,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "4-5?",
+      "range": {
+        "startLine": 2266,
+        "startChar": 40,
+        "endLine": 2266,
+        "endChar": 43
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcfa400c_1420779a",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 11
+      },
+      "lineNbr": 2294,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-04T16:47:36Z",
+      "side": 1,
+      "message": "Should there also be\n\n  Padding to 256 bytes if needed.\n\nafter line 2294?",
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
