@@ -2090,4 +2090,51 @@ TEST_F(DexFileVerifierTest, InvokeCustomDexSamples) {
   }
 }
 
+
+
+TEST_F(DexFileVerifierTest, BadStaticFieldInitialValuesArray) {
+  // Generated DEX file version (037) from:
+  //
+  // .class public LBadStaticFieldInitialValuesArray;
+  // .super Ljava/lang/Object;
+  //
+  //  # static fields
+  //  .field static final c:C = 'c'
+  //  .field static final i:I = 0x1
+  //  .field static final s:Ljava/lang/String; = "s"
+  //
+  //  # direct methods
+  //  .method public constructor <init>()V
+  //      .registers 1
+  //      invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+  //      return-void
+  //  .end method
+  //
+  // Output file was hex edited so that static field "i" has string typing in initial values array.
+  static const char kDexBase64[] =
+      "ZGV4CjAzNQBrMi4cCPcMvvXNRw0uI6RRubwMPwgEYXIsAgAAcAAAAHhWNBIAAAAAAAAAAIwBAAAL"
+      "AAAAcAAAAAYAAACcAAAAAQAAALQAAAADAAAAwAAAAAIAAADYAAAAAQAAAOgAAAAkAQAACAEAACAB"
+      "AAAoAQAAMAEAADMBAAA2AQAAOwEAAE8BAABjAQAAZgEAAGkBAABsAQAAAgAAAAMAAAAEAAAABQAA"
+      "AAYAAAAHAAAABwAAAAUAAAAAAAAAAgAAAAgAAAACAAEACQAAAAIABAAKAAAAAgAAAAAAAAADAAAA"
+      "AAAAAAIAAAABAAAAAwAAAAAAAAABAAAAAAAAAHsBAAB0AQAAAQABAAEAAABvAQAABAAAAHAQAQAA"
+      "AA4ABjxpbml0PgAGQS5qYXZhAAFDAAFJAANMQTsAEkxqYXZhL2xhbmcvT2JqZWN0OwASTGphdmEv"
+      "bGFuZy9TdHJpbmc7AAFWAAFjAAFpAAFzAAEABw4AAwNjFwoXCgMAAQAAGAEYARgAgYAEiAIADQAA"
+      "AAAAAAABAAAAAAAAAAEAAAALAAAAcAAAAAIAAAAGAAAAnAAAAAMAAAABAAAAtAAAAAQAAAADAAAA"
+      "wAAAAAUAAAACAAAA2AAAAAYAAAABAAAA6AAAAAEgAAABAAAACAEAAAIgAAALAAAAIAEAAAMgAAAB"
+      "AAAAbwEAAAUgAAABAAAAdAEAAAAgAAABAAAAewEAAAAQAAABAAAAjAEAAA==";
+
+  size_t length;
+  std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
+  CHECK(dex_bytes != nullptr);
+  // Note: `dex_file` will be destroyed before `dex_bytes`.
+  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::string error_msg;
+  EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
+                                       dex_file->Begin(),
+                                       dex_file->Size(),
+                                       "bad static field initial values array",
+                                       /*verify_checksum*/ true,
+                                       &error_msg));
+}
+
 }  // namespace art
