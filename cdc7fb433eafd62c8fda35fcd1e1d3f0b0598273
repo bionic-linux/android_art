@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "707b22b8_bc8d193e",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8064,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-04T14:06:21Z",
+      "side": 1,
+      "message": "Rename to \"temp2\" now that the parameter is gone?",
+      "range": {
+        "startLine": 8064,
+        "startChar": 11,
+        "endLine": 8064,
+        "endChar": 16
+      },
+      "revId": "cdc7fb433eafd62c8fda35fcd1e1d3f0b0598273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
