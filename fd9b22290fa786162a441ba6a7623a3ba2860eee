@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d864810_155eb63b",
+        "filename": "runtime/dex_file_verifier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-05T00:46:00Z",
+      "side": 1,
+      "message": "No. Rename the function or whatever, but this is just wrong.",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 71
+      },
+      "revId": "fd9b22290fa786162a441ba6a7623a3ba2860eee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
