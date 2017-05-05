@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9b091aa_b2300bf9",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-05T01:27:57Z",
+      "side": 0,
+      "message": "Why is this gone and not replaced?",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 40
+      },
+      "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
