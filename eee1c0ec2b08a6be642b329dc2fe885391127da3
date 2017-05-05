@@ -46,6 +46,30 @@
       "revId": "eee1c0ec2b08a6be642b329dc2fe885391127da3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5da44c2_5e2981be",
+        "filename": "compiler/linker/arm/relative_patcher_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-05T13:30:38Z",
+      "side": 1,
+      "message": "OK, fair enough.",
+      "parentUuid": "d23c7a7e_805d66e5",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 41
+      },
+      "revId": "eee1c0ec2b08a6be642b329dc2fe885391127da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
