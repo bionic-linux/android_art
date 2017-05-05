@@ -22,6 +22,30 @@
       "revId": "cdc7fb433eafd62c8fda35fcd1e1d3f0b0598273",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "847e8f76_5cb9f752",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 8064,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-05T15:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707b22b8_bc8d193e",
+      "range": {
+        "startLine": 8064,
+        "startChar": 11,
+        "endLine": 8064,
+        "endChar": 16
+      },
+      "revId": "cdc7fb433eafd62c8fda35fcd1e1d3f0b0598273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
