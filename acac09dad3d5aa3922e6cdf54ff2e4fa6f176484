@@ -70,6 +70,30 @@
       "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6be2bfa6_deda8527",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-05-05T17:40:02Z",
+      "side": 0,
+      "message": "I mean *output_class_def can be nullptr. I\u0027ll put a check in.",
+      "parentUuid": "228bee1a_e34778a8",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 40
+      },
+      "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
