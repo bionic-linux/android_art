@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8cdcc4f5_b4aa764a",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6265,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c86db888_fbef9807",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7510c842_d448fbd1",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-05T16:12:14Z",
       "side": 1,
       "message": "probably do this before setting index to make sure it is not needed in that way",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "788f1ee2_6b135c2e",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7510c842_d448fbd1",
       "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2d41dcd3_eb191089",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd22157_dca68756",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6fadcc_d6b54872",
         "filename": "test/527-checker-array-access-simd/src/Main.java",
         "patchSetId": 1
@@ -64,6 +118,30 @@
       "writtenOn": "2017-05-05T14:01:57Z",
       "side": 1,
       "message": "Don\u0027t be so strict with the ordering. CHECK-DAG should be the default option, CHECK should be used only when you really want to check the ordering.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 61
+      },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecb24228_837b541d",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6fadcc_d6b54872",
       "range": {
         "startLine": 39,
         "startChar": 0,
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "d4ed4a97_030807da",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fdec433_a84ae68e",
+      "range": {
+        "startLine": 68,
+        "startChar": 98,
+        "endLine": 68,
+        "endChar": 107
+      },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7043165_0f819992",
         "filename": "test/527-checker-array-access-simd/src/Main.java",
         "patchSetId": 1
@@ -110,6 +212,30 @@
       "writtenOn": "2017-05-05T14:01:57Z",
       "side": 1,
       "message": "2",
+      "range": {
+        "startLine": 194,
+        "startChar": 98,
+        "endLine": 194,
+        "endChar": 107
+      },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e8f227c_f3a26c28",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7043165_0f819992",
       "range": {
         "startLine": 194,
         "startChar": 98,
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "22199a1b_609443d5",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8b93366_9e43f4d5",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cda138d4_da93aca4",
         "filename": "test/527-checker-array-access-simd/src/Main.java",
         "patchSetId": 1
@@ -150,6 +294,30 @@
       "writtenOn": "2017-05-05T14:01:57Z",
       "side": 1,
       "message": "Missing checker statements for this method?",
+      "range": {
+        "startLine": 203,
+        "startChar": 20,
+        "endLine": 203,
+        "endChar": 32
+      },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c897a301_5feee566",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-05T17:53:39Z",
+      "side": 1,
+      "message": "Actually there is no need for it:\n1. This is a helper function.\n2. It\u0027s not vectorizable for now.",
+      "parentUuid": "cda138d4_da93aca4",
       "range": {
         "startLine": 203,
         "startChar": 20,
