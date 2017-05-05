@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "700a36f4_266f8859",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 8048,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-05T11:39:18Z",
+      "side": 1,
+      "message": "I see. I think this deserves a comment.",
+      "parentUuid": "a27d973c_c25e4fc1",
+      "range": {
+        "startLine": 8048,
+        "startChar": 8,
+        "endLine": 8048,
+        "endChar": 54
+      },
+      "revId": "6cd526432bf2d8f83500f594c14a01982df905af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ca39b2_a2aeecaa",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 11
