@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "c86db888_fbef9807",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 6265,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T16:12:14Z",
+      "side": 1,
+      "message": "not that it matters a great deal, but this is why I usually use\n\n LOG(FATAL) \u003c\u003c \"Unreachable \" \u003c\u003c instruction-\u003eGetId();\n\n(identifies instruction faster if ever reached, but also avoisd the attribute unused part)",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7510c842_d448fbd1",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T16:12:14Z",
+      "side": 1,
+      "message": "probably do this before setting index to make sure it is not needed in that way",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bd22157_dca68756",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T16:12:14Z",
+      "side": 1,
+      "message": "move these two methods into HVecMemoryOperation and DCHECK on \u003e\u003d2 input arguments. More code sharing between load/store that way.",
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a6fadcc_d6b54872",
         "filename": "test/527-checker-array-access-simd/src/Main.java",
         "patchSetId": 1
@@ -65,6 +116,23 @@
         "endLine": 194,
         "endChar": 107
       },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8b93366_9e43f4d5",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T16:12:14Z",
+      "side": 1,
+      "message": "space after this cast (also below)",
       "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
