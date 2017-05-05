@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "7e1a755a_af2720cd",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-05T00:35:28Z",
+      "side": 1,
+      "message": "I assume that any sane implementation in the kernel would  keep the integrity of the file with respect to the lock ordering. The write/reads should first go to the internal buffers and locking ensure they are serialized. I imagine a lot of things going wrong if the kernel would mess that up. That said, I don\u0027t really know (neither does Elliott). I\u0027ll try to ask around more.\n\nEven so,  assuming that something does go wrong and the file is no longer valid: our reading logic should safely abort and then clear the file.",
+      "parentUuid": "ce46af5b_47f2bda5",
+      "range": {
+        "startLine": 119,
+        "startChar": 30,
+        "endLine": 119,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3caa4b88_dfe1b7ed",
         "filename": "runtime/jit/profile_compilation_info.cc",
         "patchSetId": 1
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "That\u0027s what auto-close is for...",
       "parentUuid": "f156be88_09f2c0e0",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 34
+      },
+      "revId": "a3d72d68acf1a53b099cd6f099d3433671992961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59371c0c_dff6ef7c",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-05-05T00:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e34b4fa_834277be",
       "range": {
         "startLine": 123,
         "startChar": 0,
