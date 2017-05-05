@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30906c15_b953cafa",
+        "filename": "compiler/linker/arm/relative_patcher_thumb2.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-05T12:26:25Z",
+      "side": 1,
+      "message": "I think this probably needs to be conditionally defined based on `ART_USE_OLD_ARM_BACKEND`.",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 41
+      },
+      "revId": "eee1c0ec2b08a6be642b329dc2fe885391127da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
