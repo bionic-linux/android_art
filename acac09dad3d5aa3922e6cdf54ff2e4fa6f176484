@@ -46,6 +46,30 @@
       "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "228bee1a_e34778a8",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-05T04:35:00Z",
+      "side": 0,
+      "message": "That makes no sense to me.\n\nYou\u0027re dereferencing it in line 959. Why would the out var ever be null? If it can be null, it indicates the caller doesn\u0027t want the value? If so, there needs to be a check for that somewhere, and documentation in the header.",
+      "parentUuid": "c1e6cc44_fdc5083c",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 40
+      },
+      "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
