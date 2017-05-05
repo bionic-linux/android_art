@@ -327,6 +327,30 @@
       "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1894fbb1_228787f0",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "But soon it will be! Reductions to the rescue!",
+      "parentUuid": "c897a301_5feee566",
+      "range": {
+        "startLine": 203,
+        "startChar": 20,
+        "endLine": 203,
+        "endChar": 32
+      },
+      "revId": "161dd187eac8ae23b91967f785f7d696023e1025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

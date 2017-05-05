@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "623c5a2d_1e3116f0",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6264,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "same line?",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc28baa8_07996a5d",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6269,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "now on same line?",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f1d741d_e31e77d7",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "is this 2nd location really needed (probably hidden in some call below, so just wondering for my information)",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1b83a16_306fdf95",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6303,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "same line now?",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8099e85a_f57e3142",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6308,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "same",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a044b06_c9e3f54b",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "for string char ats, could we share the compressed/uncompressed cases? perhaps a bit elaborate for this CL of course, but it seems something would be doable there too",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d86dda2_bc3dcae1",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "perhaps a bit overkill, but I always like to mark the Phi with\n\n  Phi      loop:\u003c\u003cLoop:B\\d+\u003e\u003e outer_loop:none\n\nand then use\n\nloop:\u003c\u003cLoop\u003e\u003e      outer_loop:none\n\nafter each instruction in the loop body\n\nbut an optional suggestion if you want to be as pedantic as me, feel free to ignore",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13323a68_9f65246a",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "identation",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a39c01a_4b7ac1d2",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-05T20:15:08Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
