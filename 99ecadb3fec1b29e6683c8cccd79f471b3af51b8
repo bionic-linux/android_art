@@ -46,6 +46,30 @@
       "revId": "99ecadb3fec1b29e6683c8cccd79f471b3af51b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305fcec5_654bd168",
+        "filename": "runtime/dex_file_verifier_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-05T04:36:22Z",
+      "side": 1,
+      "message": "Please also add a positive test that makes sure you can pass all the accepted types. (That was kinda more what I was interested in - to see whether that\u0027s part of this and the mismatch is after matches.)",
+      "parentUuid": "c0f35549_d88e4034",
+      "range": {
+        "startLine": 2095,
+        "startChar": 0,
+        "endLine": 2106,
+        "endChar": 69
+      },
+      "revId": "99ecadb3fec1b29e6683c8cccd79f471b3af51b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
