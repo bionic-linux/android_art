@@ -22,6 +22,30 @@
       "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1e6cc44_fdc5083c",
+        "filename": "runtime/dex_file_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-05-05T02:46:33Z",
+      "side": 0,
+      "message": "Because the output_class_def is null the first time through. I have a DCHECK that it\u0027s non-null after the call.",
+      "parentUuid": "f9b091aa_b2300bf9",
+      "range": {
+        "startLine": 930,
+        "startChar": 2,
+        "endLine": 930,
+        "endChar": 40
+      },
+      "revId": "acac09dad3d5aa3922e6cdf54ff2e4fa6f176484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
