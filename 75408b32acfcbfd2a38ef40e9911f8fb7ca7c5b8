@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e3ae4715_2bc8d6d2",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T15:38:14Z",
+      "side": 1,
+      "message": "I don\u0027t see how - the SUB may need to materialize the constant, so it will clobber IP.",
+      "parentUuid": "4de4056c_8202651d",
+      "range": {
+        "startLine": 1935,
+        "startChar": 0,
+        "endLine": 1941,
+        "endChar": 38
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8a5a0d_9b434587",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 5
