@@ -22,6 +22,30 @@
       "revId": "8ae07b9c6ca75e96c8adf7652ac95b272e8db919",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a95f170b_7f23fd5b",
+        "filename": "test/618-checker-induction/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-08T15:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007ab949_3db9bb8a",
+      "range": {
+        "startLine": 471,
+        "startChar": 39,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "8ae07b9c6ca75e96c8adf7652ac95b272e8db919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
