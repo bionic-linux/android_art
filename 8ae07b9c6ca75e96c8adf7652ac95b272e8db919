@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "007ab949_3db9bb8a",
+        "filename": "test/618-checker-induction/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-08T08:32:08Z",
+      "side": 1,
+      "message": "Maybe add some context what that means?",
+      "range": {
+        "startLine": 471,
+        "startChar": 39,
+        "endLine": 471,
+        "endChar": 48
+      },
+      "revId": "8ae07b9c6ca75e96c8adf7652ac95b272e8db919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
