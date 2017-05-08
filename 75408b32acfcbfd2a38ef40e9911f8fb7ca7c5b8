@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01812bea_14c6a982",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2280,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:49:06Z",
+      "side": 1,
+      "message": "I have just realized that this needs to be fixed to use the (possibly) updated `value`. I\u0027ll wait for any other comments before I push another revision.",
+      "range": {
+        "startLine": 2280,
+        "startChar": 4,
+        "endLine": 2280,
+        "endChar": 46
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
