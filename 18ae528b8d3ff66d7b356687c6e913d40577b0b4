@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6531f949_750b3dc7",
+        "filename": "runtime/base/scoped_flock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-08T08:23:53Z",
+      "side": 1,
+      "message": "document flush_on_close",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 4
+      },
+      "revId": "18ae528b8d3ff66d7b356687c6e913d40577b0b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "590c31c6_d8bf53c4",
+        "filename": "runtime/base/scoped_flock.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-08T08:23:53Z",
+      "side": 1,
+      "message": "missing space \"flags, block\"",
+      "revId": "18ae528b8d3ff66d7b356687c6e913d40577b0b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
