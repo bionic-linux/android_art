@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b5ac87b_aa87e536",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-08T13:34:03Z",
+      "side": 1,
+      "message": "Could  you add a description why?",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 65
+      },
+      "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
