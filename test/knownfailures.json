@@ -677,5 +677,15 @@
         "variant": "debug",
         "description": "Test disabled in debug mode because of dex2oatd timeouts.",
         "bug": "b/33650497"
+    },
+    {
+        "tests": [
+            "639-checker-code-sinking",
+            "640-checker-integer-valueof"
+        ],
+        "description": [
+            "Checker tests that are failing for pictest variant."
+        ],
+        "variant": "optimizing & pictest | speed-profile & pictest"
     }
 ]
