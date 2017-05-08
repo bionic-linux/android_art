@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "3be8d780_77502bad",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "625221a0_9b71d714",
+      "range": {
+        "startLine": 1932,
+        "startChar": 0,
+        "endLine": 1936,
+        "endChar": 3
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf20742b_e11c225d",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -296,6 +320,30 @@
     },
     {
       "key": {
+        "uuid": "857eab1b_f9638734",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2170,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae6d00a_f0c0d880",
+      "range": {
+        "startLine": 2170,
+        "startChar": 10,
+        "endLine": 2170,
+        "endChar": 34
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f6a98cf_c49903cf",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 3
@@ -307,6 +355,30 @@
       "writtenOn": "2017-04-26T12:10:54Z",
       "side": 1,
       "message": "Can you inline the IT+MOV into the four callers, so that we do not need this weird dependency across functions?",
+      "range": {
+        "startLine": 3198,
+        "startChar": 8,
+        "endLine": 3198,
+        "endChar": 53
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "549886ee_b6859355",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3198,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6a98cf_c49903cf",
       "range": {
         "startLine": 3198,
         "startChar": 8,
@@ -342,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "aca1e592_37d37ecc",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3222,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2549cb4_70e99409",
+      "range": {
+        "startLine": 3217,
+        "startChar": 0,
+        "endLine": 3222,
+        "endChar": 7
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b9ede61_1c4cf080",
         "filename": "test/409-materialized-condition/src/Main.java",
         "patchSetId": 3
@@ -365,6 +461,30 @@
     },
     {
       "key": {
+        "uuid": "13b3c85e_a83d6f3a",
+        "filename": "test/409-materialized-condition/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b9ede61_1c4cf080",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 5
+      },
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "670bbf3c_fe0db85d",
         "filename": "test/570-checker-select/src/Main.java",
         "patchSetId": 3
@@ -376,6 +496,24 @@
       "writtenOn": "2017-04-26T12:10:54Z",
       "side": 1,
       "message": "Test also 1, -1, 0x100000000L, Long.MAX_VALUE, Long.MIN_VALUE.",
+      "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e23ae6c_279eb0e0",
+        "filename": "test/570-checker-select/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T14:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670bbf3c_fe0db85d",
       "revId": "94984fc8edb1710350615c3f20f4ad47c010ba10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
