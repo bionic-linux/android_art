@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "482d5e94_20e6ea3c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-08T15:50:53Z",
+      "side": 1,
+      "message": "No, it can be arbitrary - LocationsBuilderARM::HandleCondition() does not impose any restrictions.",
+      "parentUuid": "16127b8c_e88132de",
+      "range": {
+        "startLine": 1935,
+        "startChar": 0,
+        "endLine": 1941,
+        "endChar": 38
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8a5a0d_9b434587",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 5
