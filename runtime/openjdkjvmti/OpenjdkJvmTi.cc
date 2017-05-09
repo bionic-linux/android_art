@@ -436,7 +436,8 @@ class JvmtiFunctions {
 
     art::ScopedObjectAccess soa(jni_env);
     art::ObjPtr<art::mirror::Object> obj = soa.Decode<art::mirror::Object>(object);
-    ArtJvmTiEnv::AsArtJvmTiEnv(env)->object_tag_table->Set(obj.Ptr(), tag);
+    jlong old_tag;
+    ArtJvmTiEnv::AsArtJvmTiEnv(env)->object_tag_table->Set(obj.Ptr(), tag, &old_tag);
 
     return ERR(NONE);
   }

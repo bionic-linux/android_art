@@ -68,10 +68,10 @@ class JvmtiWeakTable : public art::gc::SystemWeakHolder {
 
   // Set the mapping for the given object. Returns true if this overwrites an already existing
   // mapping.
-  virtual bool Set(art::mirror::Object* obj, T tag)
+  bool Set(art::mirror::Object* obj, T tag, /* out */ T* old_tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
-  virtual bool SetLocked(art::mirror::Object* obj, T tag)
+  bool SetLocked(art::mirror::Object* obj, T tag, /* out */ T* old_tag)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_);
 
@@ -97,7 +97,7 @@ class JvmtiWeakTable : public art::gc::SystemWeakHolder {
   }
 
   // Sweep the container. DO NOT CALL MANUALLY.
-  void Sweep(art::IsMarkedVisitor* visitor)
+  void Sweep(art::IsMarkedVisitor* visitor) OVERRIDE
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(!allow_disallow_lock_);
 
@@ -128,15 +128,15 @@ class JvmtiWeakTable : public art::gc::SystemWeakHolder {
   // If DoesHandleNullOnSweep returns true, this function will be called.
   virtual void HandleNullSweep(T tag ATTRIBUTE_UNUSED) {}
 
+  virtual bool SetLocked(art::Thread* self, art::mirror::Object* obj, T tag, /* out */ T* old_tag)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_);
+
+  virtual bool RemoveLocked(art::Thread* self, art::mirror::Object* obj, /* out */ T* tag)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_);
+
  private:
-  bool SetLocked(art::Thread* self, art::mirror::Object* obj, T tag)
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(allow_disallow_lock_);
-
-  bool RemoveLocked(art::Thread* self, art::mirror::Object* obj, /* out */ T* tag)
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(allow_disallow_lock_);
-
   bool GetTagLocked(art::Thread* self, art::mirror::Object* obj, /* out */ T* result)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(allow_disallow_lock_) {

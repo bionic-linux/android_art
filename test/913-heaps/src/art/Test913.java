@@ -261,7 +261,26 @@ public class Test913 {
     checkGetObjectHeapIdInCallback(100000, objClassExpectedHeapId);
     checkGetObjectHeapIdInCallback(100001, 3);
 
+    // Find a way to handle this similary to test 055?
+    // heapIdBenchmark();
+
     extensionTestHolder = null;
+  }
+
+  private static void heapIdBenchmark() {
+    for (int i = 0; i < 1000000; i++) {
+      Object dummy = new Object();
+      extensionTestHolder.add(dummy);
+      setTag(dummy, 2000000 + i);
+    }
+
+    long start = System.nanoTime();
+    for (int i = 0; i < 1000000; i++) {
+      getObjectHeapId(2000000 + i);
+    }
+    long end = System.nanoTime();
+
+    System.out.println(end - start);
   }
 
   private static void runGc() {

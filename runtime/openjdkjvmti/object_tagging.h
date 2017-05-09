@@ -40,6 +40,10 @@
 #include "jvmti_weak_table.h"
 #include "mirror/object.h"
 
+namespace art {
+class Thread;
+}
+
 namespace openjdkjvmti {
 
 struct ArtJvmTiEnv;
@@ -49,13 +53,6 @@ class ObjectTagTable FINAL : public JvmtiWeakTable<jlong> {
  public:
   ObjectTagTable(EventHandler* event_handler, ArtJvmTiEnv* env)
       : event_handler_(event_handler), jvmti_env_(env) {}
-
-  bool Set(art::mirror::Object* obj, jlong tag) OVERRIDE
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(!allow_disallow_lock_);
-  bool SetLocked(art::mirror::Object* obj, jlong tag) OVERRIDE
-      REQUIRES_SHARED(art::Locks::mutator_lock_)
-      REQUIRES(allow_disallow_lock_);
 
   jlong GetTagOrZero(art::mirror::Object* obj)
       REQUIRES_SHARED(art::Locks::mutator_lock_)
@@ -72,13 +69,41 @@ class ObjectTagTable FINAL : public JvmtiWeakTable<jlong> {
     return tmp;
   }
 
+  art::mirror::Object* GetObjectForTag(jlong tag)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(!allow_disallow_lock_);
+
+  // Sweep the container. DO NOT CALL MANUALLY.
+  void Sweep(art::IsMarkedVisitor* visitor) OVERRIDE
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(!allow_disallow_lock_);
+
  protected:
+  bool SetLocked(art::Thread* self,
+                 art::mirror::Object* obj,
+                 jlong tag,
+                 /* out */ jlong* old_tag) OVERRIDE
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_);
+
+  bool RemoveLocked(art::Thread* self, art::mirror::Object* obj, /* out */ jlong* tag) OVERRIDE
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(allow_disallow_lock_);
+
   bool DoesHandleNullOnSweep() OVERRIDE;
   void HandleNullSweep(jlong tag) OVERRIDE;
 
  private:
+  void SweepReverseTable(art::IsMarkedVisitor* visitor)
+      REQUIRES_SHARED(art::Locks::mutator_lock_)
+      REQUIRES(!allow_disallow_lock_);
+
   EventHandler* event_handler_;
   ArtJvmTiEnv* jvmti_env_;
+
+  std::unordered_multimap<jlong, art::GcRoot<art::mirror::Object>> reverse_tagged_objects_
+      GUARDED_BY(allow_disallow_lock_)
+      GUARDED_BY(art::Locks::mutator_lock_);
 };
 
 }  // namespace openjdkjvmti

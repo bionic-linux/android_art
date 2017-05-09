@@ -101,7 +101,8 @@ jint ReportString(art::ObjPtr<art::mirror::Object> obj,
                                                       string_length,
                                                       const_cast<void*>(user_data));
     if (string_tag != saved_string_tag) {
-      tag_table->Set(obj.Ptr(), string_tag);
+      jlong old_tag;
+      tag_table->Set(obj.Ptr(), string_tag, &old_tag);
     }
 
     return result;
@@ -170,7 +171,8 @@ jint ReportPrimitiveArray(art::ObjPtr<art::mirror::Object> obj,
     }
 
     if (array_tag != saved_array_tag) {
-      tag_table->Set(obj.Ptr(), array_tag);
+      jlong old_tag;
+      tag_table->Set(obj.Ptr(), array_tag, &old_tag);
     }
 
     return result;
@@ -435,7 +437,8 @@ class FieldVisitor {
 
     // Store this into the cache.
     tmp.interface_fields = count;
-    gIndexCachingTable.Set(klass.Ptr(), tmp);
+    IndexCache old_cache;
+    gIndexCachingTable.Set(klass.Ptr(), tmp, &old_cache);
 
     return count;
   }
@@ -589,7 +592,8 @@ class ReportPrimitiveField {
                                                         const_cast<void*>(user_data->user_data_));
 
     if (saved_obj_tag != obj_tag) {
-      user_data->tag_table_->Set(src.Ptr(), obj_tag);
+      jlong old_tag;
+      user_data->tag_table_->Set(src.Ptr(), obj_tag, &old_tag);
     }
 
     if ((ret & JVMTI_VISIT_ABORT) != 0) {
@@ -720,7 +724,8 @@ static void IterateThroughHeapObjectCallback(art::mirror::Object* obj, void* arg
                                                       const_cast<void*>(ithd->user_data));
 
   if (tag != saved_tag) {
-    ithd->heap_util->GetTags()->Set(obj, tag);
+    jlong old_tag;
+    ithd->heap_util->GetTags()->Set(obj, tag, &old_tag);
   }
 
   ithd->stop_reports = (ret & JVMTI_VISIT_ABORT) != 0;
@@ -1279,10 +1284,12 @@ class FollowReferencesHelper FINAL {
                                                       const_cast<void*>(user_data_));
 
     if (tag != saved_tag) {
-      tag_table_->Set(referree, tag);
+      jlong old_tag;
+      tag_table_->Set(referree, tag, &old_tag);
     }
     if (referrer_tag != saved_referrer_tag) {
-      tag_table_->Set(referrer, referrer_tag);
+      jlong old_tag;
+      tag_table_->Set(referrer, referrer_tag, &old_tag);
     }
 
     return result;
@@ -1415,7 +1422,7 @@ jvmtiError HeapExtensions::GetObjectHeapId(jvmtiEnv* env, jlong tag, jint* heap_
 
   auto work = [&]() REQUIRES_SHARED(art::Locks::mutator_lock_) {
     ObjectTagTable* tag_table = ArtJvmTiEnv::AsArtJvmTiEnv(env)->object_tag_table.get();
-    art::ObjPtr<art::mirror::Object> obj = tag_table->Find(tag);
+    art::ObjPtr<art::mirror::Object> obj = tag_table->GetObjectForTag(tag);
     if (obj == nullptr) {
       return ERR(NOT_FOUND);
     }

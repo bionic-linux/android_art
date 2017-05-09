@@ -131,26 +131,30 @@ bool JvmtiWeakTable<T>::RemoveLocked(art::Thread* self, art::mirror::Object* obj
 }
 
 template <typename T>
-bool JvmtiWeakTable<T>::Set(art::mirror::Object* obj, T new_tag) {
+bool JvmtiWeakTable<T>::Set(art::mirror::Object* obj, T new_tag, /* out */ T* old_tag) {
   art::Thread* self = art::Thread::Current();
   art::MutexLock mu(self, allow_disallow_lock_);
   Wait(self);
 
-  return SetLocked(self, obj, new_tag);
+  return SetLocked(self, obj, new_tag, old_tag);
 }
 template <typename T>
-bool JvmtiWeakTable<T>::SetLocked(art::mirror::Object* obj, T new_tag) {
+bool JvmtiWeakTable<T>::SetLocked(art::mirror::Object* obj, T new_tag, /* out */ T* old_tag) {
   art::Thread* self = art::Thread::Current();
   allow_disallow_lock_.AssertHeld(self);
   Wait(self);
 
-  return SetLocked(self, obj, new_tag);
+  return SetLocked(self, obj, new_tag, old_tag);
 }
 
 template <typename T>
-bool JvmtiWeakTable<T>::SetLocked(art::Thread* self, art::mirror::Object* obj, T new_tag) {
+bool JvmtiWeakTable<T>::SetLocked(art::Thread* self,
+                                  art::mirror::Object* obj,
+                                  T new_tag,
+                                  /* out */ T* old_tag) {
   auto it = tagged_objects_.find(art::GcRoot<art::mirror::Object>(obj));
   if (it != tagged_objects_.end()) {
+    *old_tag = it->second;
     it->second = new_tag;
     return true;
   }
@@ -165,7 +169,7 @@ bool JvmtiWeakTable<T>::SetLocked(art::Thread* self, art::mirror::Object* obj, T
     UpdateTableWithReadBarrier();
 
     // And try again.
-    return SetLocked(self, obj, new_tag);
+    return SetLocked(self, obj, new_tag, old_tag);
   }
 
   // New element.
