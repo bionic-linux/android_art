@@ -46,6 +46,30 @@
       "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "349b8276_93bcc7fc",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-09T11:40:07Z",
+      "side": 1,
+      "message": "Test 639: Why do we get a different order for PIC? We talked with Nicolas and he will look into that.\n\nTest 640: IntrinsicVisitor::ComputeIntegerValueOfLocations() is pretty clear that it doesn\u0027t support the intrinsic in PIC mode. So, disabling that test is reasonable. The message should be updated to clearly state that the intrinsic is unsupported in PIC mode.",
+      "parentUuid": "27ba00ee_d2ac9d67",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 65
+      },
+      "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
