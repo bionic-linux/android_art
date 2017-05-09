@@ -36,14 +36,21 @@ bool ScopedFlock::Init(const char* filename, int flags, bool block, std::string*
   while (true) {
     if (file_.get() != nullptr) {
       UNUSED(file_->FlushCloseOrErase());  // Ignore result.
+      file_.reset();
     }
-    file_.reset(OS::OpenFileWithFlags(filename, flags));
-    if (file_.get() == nullptr) {
+    std::unique_ptr<File> file(OS::OpenFileWithFlags(filename, flags));
+    if (file.get() == nullptr) {
       *error_msg = StringPrintf("Failed to open file '%s': %s", filename, strerror(errno));
       return false;
     }
+
+    // This is safe because we are not going to make any modifications to
+    // the file that require a Close() or a Flush(). We only use it as proxy
+    // for its descriptor.
+    file->MarkUnchecked();
+
     int operation = block ? LOCK_EX : (LOCK_EX | LOCK_NB);
-    int flock_result = TEMP_FAILURE_RETRY(flock(file_->Fd(), operation));
+    int flock_result = TEMP_FAILURE_RETRY(flock(file->Fd(), operation));
     if (flock_result == EWOULDBLOCK) {
       // File is locked by someone else and we are required not to block;
       return false;
@@ -53,7 +60,7 @@ bool ScopedFlock::Init(const char* filename, int flags, bool block, std::string*
       return false;
     }
     struct stat fstat_stat;
-    int fstat_result = TEMP_FAILURE_RETRY(fstat(file_->Fd(), &fstat_stat));
+    int fstat_result = TEMP_FAILURE_RETRY(fstat(file->Fd(), &fstat_stat));
     if (fstat_result != 0) {
       *error_msg = StringPrintf("Failed to fstat file '%s': %s", filename, strerror(errno));
       return false;
@@ -81,6 +88,8 @@ bool ScopedFlock::Init(const char* filename, int flags, bool block, std::string*
         return false;
       }
     }
+
+    file_.reset(new unix_file::FdFile(file->Release(), true /* check_usage */));
     return true;
   }
 }
