@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e803ce54_06b06064",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-09T17:23:51Z",
+      "side": 1,
+      "message": "Nice try, dude - i\u0027m afraid you\u0027ve played your cards wrong. My original implementation did not have any flushing or closing. It was added in 9433ec60b325b708b9fa87 as part of the changes that introduced state tracking in FdFile. I\u0027m still not convinced it\u0027s this classes responsibility.",
+      "parentUuid": "68658374_64411a9f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 33
+      },
+      "revId": "6166c1f9534a9503e2bfa8fe79be24aac3e68c58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "560d9a64_836b5f72",
         "filename": "runtime/base/scoped_flock.cc",
         "patchSetId": 2
