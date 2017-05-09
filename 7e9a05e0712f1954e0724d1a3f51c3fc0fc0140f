@@ -265,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "a008861b_a57827f4",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-09T21:55:10Z",
+      "side": 1,
+      "message": "I used the style that there are no lines at all if it is just a constructor, but lines as soon as there are other methods. So keeping this linelessness would be in line with my original intent (puns intended).",
+      "parentUuid": "b37b154d_a3d9284b",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d86dda2_bc3dcae1",
         "filename": "test/527-checker-array-access-simd/src/Main.java",
         "patchSetId": 2
