@@ -22,6 +22,30 @@
       "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27ba00ee_d2ac9d67",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2017-05-09T10:22:50Z",
+      "side": 1,
+      "message": "Sure, but can you help me with these comments?\n\nProblem with test 639 is that lines in graph.cfg are not in order like test expects to be. One of the expectations is:\n  /// CHECK-START: void Main.testSimpleUse() code_sinking (after)\n  /// CHECK-NOT:                NewInstance\n  /// CHECK:                    If\n  /// CHECK:                    begin_block\n  /// CHECK: \u003c\u003cError:l\\d+\u003e\u003e     LoadClass class_name:java.lang.Error\n  /// CHECK: \u003c\u003cLoadClass:l\\d+\u003e\u003e LoadClass class_name:java.lang.Object\n  /// CHECK-NOT:                begin_block\n  /// CHECK:                    NewInstance [\u003c\u003cLoadClass\u003e\u003e]\n  /// CHECK-NOT:                begin_block\n  /// CHECK:                    NewInstance [\u003c\u003cError\u003e\u003e]\n  /// CHECK:                    Throw\n\nbut in graph.cfg we get:\n      0 1 l3 LoadClass load_kind:BssEntry class_name:java.lang.Object gen_clinit_check:false needs_access_check:false env:[[_,_,_]] loop:none \u003c|@\n      0 1 l4 NewInstance [l3] env:[[_,_,_]] loop:none \u003c|@\n      0 1 l12 LoadClass load_kind:BssEntry class_name:java.lang.Error gen_clinit_check:false needs_access_check:false env:[[l4,z7,_]] loop:none \u003c|@\n      0 2 l13 NewInstance [l12] env:[[l4,z7,_]] loop:none \u003c|@\n\n\nFor test 640-checker-integer-valueof expectation is:\n  /// CHECK: \u003c\u003cInteger:l\\d+\u003e\u003e     InvokeStaticOrDirect method_name:java.lang.Integer.valueOf intrinsic:IntegerValueOf\n  /// CHECK:                      pAllocObjectInitialized\n  /// CHECK:                      Return [\u003c\u003cInteger\u003e\u003e]\n\nbut in graph.cfg we get:\n      0 1 l4 InvokeStaticOrDirect [i0] dex_file_index:11 method_name:java.lang.Integer.valueOf method_load_kind:dex_cache_pc_relative intrinsic:IntegerValueOf clinit_check:none env:[[_,i0]] loop:none\n0x00000020:         488B3D00010000    \t       movq rdi, [RIP + 0x100]\n0x00000027:                 FF5728    \t       call [rdi + 40]\n \u003c|@\n      0 0 v5 Return [l4] loop:none",
+      "parentUuid": "3b5ac87b_aa87e536",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 65
+      },
+      "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
