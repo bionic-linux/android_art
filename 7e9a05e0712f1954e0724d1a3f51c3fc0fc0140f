@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "113d9036_d054da41",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2661,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-09T21:52:39Z",
+      "side": 1,
+      "message": "I like that better yes, for consistency. Thanks.",
+      "parentUuid": "9c5118f4_7786bcd9",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1b83a16_306fdf95",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 2
@@ -276,6 +294,24 @@
       "side": 1,
       "message": "I\u0027d have followed the advice but:\n1. There is a check (a weaker one of course) through the data dependencies between the phi and instructions.\n2. The lines would be too long.",
       "parentUuid": "8d86dda2_bc3dcae1",
+      "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eca6d382_ed3d7d2c",
+        "filename": "test/527-checker-array-access-simd/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-09T21:52:39Z",
+      "side": 1,
+      "message": "Lines being too long is okay for checker but I am okay not doing this (as long as you are okay with me continuing doing it of course :-)",
+      "parentUuid": "d65081c3_716d8cae",
       "revId": "7e9a05e0712f1954e0724d1a3f51c3fc0fc0140f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
