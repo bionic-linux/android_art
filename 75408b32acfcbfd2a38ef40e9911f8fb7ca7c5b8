@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca1267ff_e84ade7b",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1845,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-09T11:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7acd37f_a8a8bb49",
+      "range": {
+        "startLine": 1845,
+        "startChar": 4,
+        "endLine": 1845,
+        "endChar": 46
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4de4056c_8202651d",
         "filename": "compiler/optimizing/code_generator_arm.cc",
         "patchSetId": 5
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "e3fb1d2a_878b646c",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1941,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-09T11:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd154365_1b2e7237",
+      "range": {
+        "startLine": 1935,
+        "startChar": 0,
+        "endLine": 1941,
+        "endChar": 38
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8a5a0d_9b434587",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 5
@@ -155,6 +203,30 @@
       "writtenOn": "2017-05-08T15:25:34Z",
       "side": 1,
       "message": "Maybe we should have a helper class IfThenScope that has the scope (as either a base class or a member) and emits the IT in the constructor.",
+      "range": {
+        "startLine": 2252,
+        "startChar": 0,
+        "endLine": 2257,
+        "endChar": 22
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "541eda42_cde405e5",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-09T11:49:39Z",
+      "side": 1,
+      "message": "I will leave it as it is for the time being.",
+      "parentUuid": "cf8a5a0d_9b434587",
       "range": {
         "startLine": 2252,
         "startChar": 0,
@@ -201,6 +273,30 @@
       "writtenOn": "2017-05-08T15:25:34Z",
       "side": 1,
       "message": "Define helper function assertEquals(boolean, boolean). No need to stress the \"$noinline$intEq0\", it can be inferred from the line number in the failure message if needed.",
+      "range": {
+        "startLine": 100,
+        "startChar": 6,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "75408b32acfcbfd2a38ef40e9911f8fb7ca7c5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ab69837_c1e4314f",
+        "filename": "test/409-materialized-condition/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1084448
+      },
+      "writtenOn": "2017-05-09T11:49:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d47f6b44_94424b99",
       "range": {
         "startLine": 100,
         "startChar": 6,
