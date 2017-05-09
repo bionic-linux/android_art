@@ -70,6 +70,30 @@
       "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab2e5df1_1a2e31b1",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1067943
+      },
+      "writtenOn": "2017-05-09T12:41:13Z",
+      "side": 1,
+      "message": "Should I disable just 640 in the next PS and leave 639 to Nicolas to check?",
+      "parentUuid": "349b8276_93bcc7fc",
+      "range": {
+        "startLine": 687,
+        "startChar": 0,
+        "endLine": 687,
+        "endChar": 65
+      },
+      "revId": "c000a4b8b91aa813312bdecb5c8f95b80e3178b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
