@@ -18,6 +18,8 @@
 
 #include "common_runtime_test.h"
 
+#include <fcntl.h>
+
 namespace art {
 
 class ScopedFlockTest : public CommonRuntimeTest {};
@@ -35,6 +37,19 @@ TEST_F(ScopedFlockTest, TestLocking) {
                              &error_msg));
 
   ASSERT_FALSE(file_lock.Init("/guaranteed/not/to/exist", &error_msg));
+}
+
+TEST_F(ScopedFlockTest, TestFailedLocking) {
+  ScratchFile scratch_file;
+  std::string error_msg;
+
+  ScopedFlock file_lock;
+  ScopedFlock file_lock2;
+
+  ASSERT_TRUE(file_lock.Init(scratch_file.GetFilename().c_str(),
+                             &error_msg));
+  ASSERT_FALSE(file_lock2.Init(scratch_file.GetFilename().c_str(),
+                               O_RDWR, false /* block */, &error_msg));
 }
 
 }  // namespace art
