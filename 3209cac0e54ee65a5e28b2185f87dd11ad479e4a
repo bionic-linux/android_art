@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "aa2eff98_6176d314",
+        "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-10T21:49:59Z",
+      "side": 1,
+      "message": "By adding a checker test or by actually evaluating doTest and making sure it will propagate the class loading exception?",
+      "parentUuid": "319f89ab_db25ac96",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9846ac3_1ed1e68c",
         "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExOther.java",
         "patchSetId": 1
