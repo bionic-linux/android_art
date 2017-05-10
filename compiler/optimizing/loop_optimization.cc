@@ -869,6 +869,32 @@ bool HLoopOptimization::VectorizeUse(LoopNode* node,
         }
         return false;
       }
+      case Intrinsics::kMathMinIntInt:
+      case Intrinsics::kMathMinLongLong:
+      case Intrinsics::kMathMinFloatFloat:
+      case Intrinsics::kMathMinDoubleDouble:
+      case Intrinsics::kMathMaxIntInt:
+      case Intrinsics::kMathMaxLongLong:
+      case Intrinsics::kMathMaxFloatFloat:
+      case Intrinsics::kMathMaxDoubleDouble: {
+        // Deal with vector restrictions.
+        if (HasVectorRestrictions(restrictions, kNoMinMax) ||
+            HasVectorRestrictions(restrictions, kNoHiBits)) {
+          // TODO: we can do better for some hibits cases.
+          return false;
+        }
+        // Accept MIN/MAX(x, y) for vectorizable operands.
+        HInstruction* opa = instruction->InputAt(0);
+        HInstruction* opb = instruction->InputAt(1);
+        if (VectorizeUse(node, opa, generate_code, type, restrictions) &&
+            VectorizeUse(node, opb, generate_code, type, restrictions)) {
+          if (generate_code) {
+            GenerateVecOp(instruction, vector_map_->Get(opa), vector_map_->Get(opb), type);
+          }
+          return true;
+        }
+        return false;
+      }
       default:
         return false;
     }  // switch
@@ -898,7 +924,7 @@ bool HLoopOptimization::TrySetVectorType(Primitive::Type type, uint64_t* restric
           *restrictions |= kNoDiv;
           return TrySetVectorLength(4);
         case Primitive::kPrimLong:
-          *restrictions |= kNoDiv | kNoMul;
+          *restrictions |= kNoDiv | kNoMul | kNoMinMax;
           return TrySetVectorLength(2);
         case Primitive::kPrimFloat:
           return TrySetVectorLength(4);
@@ -924,7 +950,7 @@ bool HLoopOptimization::TrySetVectorType(Primitive::Type type, uint64_t* restric
             *restrictions |= kNoDiv;
             return TrySetVectorLength(4);
           case Primitive::kPrimLong:
-            *restrictions |= kNoMul | kNoDiv | kNoShr | kNoAbs;
+            *restrictions |= kNoMul | kNoDiv | kNoShr | kNoAbs | kNoMinMax;
             return TrySetVectorLength(2);
           case Primitive::kPrimFloat:
             return TrySetVectorLength(4);
@@ -1107,6 +1133,18 @@ void HLoopOptimization::GenerateVecOp(HInstruction* org,
           case Intrinsics::kMathAbsDouble:
             DCHECK(opb == nullptr);
             vector = new (global_allocator_) HVecAbs(global_allocator_, opa, type, vector_length_);
+            break;
+          case Intrinsics::kMathMinIntInt:
+          case Intrinsics::kMathMinLongLong:
+          case Intrinsics::kMathMinFloatFloat:
+          case Intrinsics::kMathMinDoubleDouble:
+            vector = new (global_allocator_) HVecMin(global_allocator_, opa, opb, type, vector_length_);
+            break;
+          case Intrinsics::kMathMaxIntInt:
+          case Intrinsics::kMathMaxLongLong:
+          case Intrinsics::kMathMaxFloatFloat:
+          case Intrinsics::kMathMaxDoubleDouble:
+            vector = new (global_allocator_) HVecMax(global_allocator_, opa, opb, type, vector_length_);
             break;
           default:
             LOG(FATAL) << "Unsupported SIMD intrinsic";
