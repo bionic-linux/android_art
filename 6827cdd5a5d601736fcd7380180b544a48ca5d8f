@@ -22,6 +22,30 @@
       "revId": "6827cdd5a5d601736fcd7380180b544a48ca5d8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52cc7db5_a4ee38e4",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-05-10T15:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6911f97d_77dc4ff5",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "6827cdd5a5d601736fcd7380180b544a48ca5d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
