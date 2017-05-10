@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14df5163_d939012b",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-10T17:35:14Z",
+      "side": 1,
+      "message": "nit: put this on next line for readability",
+      "revId": "9e671ca713d3fecca5c1ac8921894db450899e8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
