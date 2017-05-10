@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6911f97d_77dc4ff5",
+        "filename": "compiler/optimizing/nodes_shared.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-10T14:21:40Z",
+      "side": 1,
+      "message": "High-level comments please (like lines 122-126)",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "6827cdd5a5d601736fcd7380180b544a48ca5d8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
