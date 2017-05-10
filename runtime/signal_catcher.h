@@ -19,6 +19,8 @@
 
 #include "base/mutex.h"
 
+#include "android-base/unique_fd.h"
+
 namespace art {
 
 class Runtime;
@@ -32,15 +34,17 @@ class Thread;
  */
 class SignalCatcher {
  public:
-  // If |stack_trace_dir| is non empty, traces will be written to a
-  // unique file under that directory.
+  // If |use_tombstoned_stack_trace_fd| is |true|, traces will be
+  // written to a file descriptor provided by tombstoned. The process
+  // will communicate with tombstoned via a unix domain socket. This
+  // mode of stack trace dumping is only supported in an Android
+  // environment.
   //
-  // If |stack_trace_dir| is empty, and |stack_frace_file| is non-empty,
-  // traces will be appended to |stack_trace_file|.
-  //
-  // If both are empty, all traces will be written to the log buffer.
-  explicit SignalCatcher(const std::string& stack_trace_dir,
-                         const std::string& stack_trace_file);
+  // If false, all traces will be dumped to |stack_trace_file| if it's
+  // non-empt. If |stack_trace_file| is empty, all traces will be written
+  // to the log buffer.
+  explicit SignalCatcher(const std::string& stack_trace_file,
+                         const bool use_tombstoned_stack_trace_fd);
   ~SignalCatcher();
 
   void HandleSigQuit() REQUIRES(!Locks::mutator_lock_, !Locks::thread_list_lock_,
@@ -51,15 +55,16 @@ class SignalCatcher {
   // NO_THREAD_SAFETY_ANALYSIS for static function calling into member function with excludes lock.
   static void* Run(void* arg) NO_THREAD_SAFETY_ANALYSIS;
 
-  std::string GetStackTraceFileName();
+  bool OpenStackTraceFile(android::base::unique_fd* tombstone_fd,
+                          android::base::unique_fd* output_fd);
   void HandleSigUsr1();
   void Output(const std::string& s);
   void SetHaltFlag(bool new_value) REQUIRES(!lock_);
   bool ShouldHalt() REQUIRES(!lock_);
   int WaitForSignal(Thread* self, SignalSet& signals) REQUIRES(!lock_);
 
-  std::string stack_trace_dir_;
   std::string stack_trace_file_;
+  const bool use_tombstoned_stack_trace_fd_;
 
   mutable Mutex lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
   ConditionVariable cond_ GUARDED_BY(lock_);

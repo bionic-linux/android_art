@@ -782,7 +782,7 @@ class Runtime {
   ClassLinker* class_linker_;
 
   SignalCatcher* signal_catcher_;
-  std::string stack_trace_dir_;
+  bool use_tombstoned_stack_trace_fd_ = false;
   std::string stack_trace_file_;
 
   std::unique_ptr<JavaVMExt> java_vm_;
