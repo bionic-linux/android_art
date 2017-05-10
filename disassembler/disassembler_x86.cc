@@ -581,8 +581,36 @@ DISASSEMBLER_ENTRY(cmp,
               load = true;
               src_reg_file = dst_reg_file = SSE;
               break;
-            case 0x39:
+            case 0x37:
               opcode1 = "pcmpgtq";
+              prefix[2] = 0;
+              has_modrm = true;
+              load = true;
+              src_reg_file = dst_reg_file = SSE;
+              break;
+            case 0x38:
+              opcode1 = "pminsb";
+              prefix[2] = 0;
+              has_modrm = true;
+              load = true;
+              src_reg_file = dst_reg_file = SSE;
+              break;
+            case 0x39:
+              opcode1 = "pminsd";
+              prefix[2] = 0;
+              has_modrm = true;
+              load = true;
+              src_reg_file = dst_reg_file = SSE;
+              break;
+            case 0x3D:
+              opcode1 = "pmaxsd";
+              prefix[2] = 0;
+              has_modrm = true;
+              load = true;
+              src_reg_file = dst_reg_file = SSE;
+              break;
+            case 0x3C:
+              opcode1 = "pmaxsb";
               prefix[2] = 0;
               has_modrm = true;
               load = true;
@@ -1135,6 +1163,8 @@ DISASSEMBLER_ENTRY(cmp,
         break;
       case 0xE0:
       case 0xE3:
+      case 0xEA:
+      case 0xEE:
         if (prefix[2] == 0x66) {
           src_reg_file = dst_reg_file = SSE;
           prefix[2] = 0;  // clear prefix now it's served its purpose as part of the opcode
@@ -1144,6 +1174,8 @@ DISASSEMBLER_ENTRY(cmp,
         switch (*instr) {
           case 0xE0: opcode1 = "pavgb"; break;
           case 0xE3: opcode1 = "pavgw"; break;
+          case 0xEA: opcode1 = "pminsw"; break;
+          case 0xEE: opcode1 = "pmaxsw"; break;
         }
         prefix[2] = 0;
         has_modrm = true;
