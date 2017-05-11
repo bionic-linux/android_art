@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "bfbc1f0c_a87d2f0a",
+        "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-11T08:56:59Z",
+      "side": 1,
+      "message": "Both?",
+      "parentUuid": "aa2eff98_6176d314",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 2
+      },
+      "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9846ac3_1ed1e68c",
         "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExOther.java",
         "patchSetId": 1
