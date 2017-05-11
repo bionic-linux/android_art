@@ -140,8 +140,8 @@ OatFileAssistant::OatFileAssistant(const char* dex_location,
 
 OatFileAssistant::~OatFileAssistant() {
   // Clean up the lock file.
-  if (flock_.HasFile()) {
-    unlink(flock_.GetFile()->GetPath().c_str());
+  if (flock_.get() != nullptr) {
+    unlink(flock_->GetPath().c_str());
   }
 }
 
@@ -164,7 +164,7 @@ bool OatFileAssistant::IsInBootClassPath() {
 
 bool OatFileAssistant::Lock(std::string* error_msg) {
   CHECK(error_msg != nullptr);
-  CHECK(!flock_.HasFile()) << "OatFileAssistant::Lock already acquired";
+  CHECK(flock_.get() == nullptr) << "OatFileAssistant::Lock already acquired";
 
   // Note the lock will only succeed for secondary dex files and in test
   // environment.
@@ -178,7 +178,8 @@ bool OatFileAssistant::Lock(std::string* error_msg) {
   // to generate oat files anyway.
   std::string lock_file_name = dex_location_ + "." + GetInstructionSetString(isa_) + ".flock";
 
-  if (!flock_.Init(lock_file_name.c_str(), error_msg)) {
+  flock_ = LockedFile::Open(lock_file_name.c_str(), error_msg);
+  if (flock_.get() == nullptr) {
     unlink(lock_file_name.c_str());
     return false;
   }
