@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2ab86c46_1447332e",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T17:36:37Z",
+      "side": 1,
+      "message": "Added the concept of signed/unsigned, so future extensions are clear",
+      "parentUuid": "5f52fb1e_1f5a8d00",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b57c5c_50b80823",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
@@ -293,6 +317,24 @@
       "writtenOn": "2017-05-12T16:59:53Z",
       "side": 1,
       "message": "Why aren\u0027t there loop_optimization after cases? Why aren\u0027t there disassembly after cases?\n\nIt\u0027s neither checking for vector HIR nor SIMD instructions actually being emitted. Am I misunderstanding something?\n\n(Here and in all the other test files)",
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84ce8597_63c46163",
+        "filename": "test/651-checker-byte-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T17:36:37Z",
+      "side": 1,
+      "message": "The narrow test cases need a bit more recognition work in the vectorizer (see the kNoHiBits tests). This is all coming soon, and I tried to keep this CL a bit smaller.",
+      "parentUuid": "79f48ff9_46304511",
       "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
