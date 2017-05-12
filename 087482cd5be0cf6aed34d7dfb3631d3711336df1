@@ -2,6 +2,144 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce980f73_efd04483",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "UMIN",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b57c5c_50b80823",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "UMAX",
+      "range": {
+        "startLine": 517,
+        "startChar": 4,
+        "endLine": 517,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0c8fcb9_dcf007c3",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "PMINUW",
+      "range": {
+        "startLine": 495,
+        "startChar": 4,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed010894_e84a8a92",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "PMAXUW",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73df9b6d_6c46834d",
+        "filename": "compiler/optimizing/code_generator_vector_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "PMINUW",
+      "range": {
+        "startLine": 488,
+        "startChar": 4,
+        "endLine": 488,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2501eb39_68d24428",
+        "filename": "compiler/optimizing/code_generator_vector_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "PMAXUW",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 525,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22d83c27_1548a3dc",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 2
@@ -41,6 +179,75 @@
         "startChar": 0,
         "endLine": 1147,
         "endChar": 104
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0b00bde_ab85fb16",
+        "filename": "test/651-checker-char-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "Given my comments in the codegens, `(char)0xffff` would be a very interesting value to use in addition to the range [0,256).",
+      "range": {
+        "startLine": 55,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 58
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f141cea_b949f29c",
+        "filename": "test/651-checker-double-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "Use Double.doubleToLongBits() to correctly distinguish between +0.0 and -0.0. It returns a canonical representation for all NaNs, so you can drop the special case above.",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84afbb36_30b386ab",
+        "filename": "test/651-checker-float-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T14:09:37Z",
+      "side": 1,
+      "message": "Use Float.floatToIntBits().",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 33
       },
       "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
