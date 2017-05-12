@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d56a11ea_2a97df0f",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T23:48:23Z",
+      "side": 1,
+      "message": "Absolutely, I should have done that initially anyway. Hopefully this new PS is more clear on where I am going with this....",
+      "parentUuid": "91eed93d_627d15f0",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b57c5c_50b80823",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
@@ -493,6 +517,24 @@
       "writtenOn": "2017-05-12T17:38:26Z",
       "side": 1,
       "message": "There\u0027s no disassembly test here? Intentional?",
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3eabc4c_0482101b",
+        "filename": "test/651-checker-int-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T23:48:23Z",
+      "side": 1,
+      "message": "So far I have never added a disassembly test in the checker for any SIMD situation. Do you think we should have those too?",
+      "parentUuid": "fb1165fd_bc544a4d",
       "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
