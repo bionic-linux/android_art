@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "91eed93d_627d15f0",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-12T18:58:40Z",
+      "side": 1,
+      "message": "I\u0027m OK with having them in the code unused for some time. Just ensure that we test the behavior in anticipation of enabling these paths.",
+      "parentUuid": "2ab86c46_1447332e",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b57c5c_50b80823",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
