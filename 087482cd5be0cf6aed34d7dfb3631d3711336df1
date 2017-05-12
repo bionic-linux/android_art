@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e192479_16e1890b",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:20:59Z",
+      "side": 1,
+      "message": "As usual, you are one step ahead :-) In the current CL we will never hit the narrow type case (so I can guess your next comment on removing them?)\n\nNote that the SIMD min/max will get a signed/unsigned attribute and the vectorizer will set that attribute correctly for the narrower type (because it is possible that both char and short are involved in either a signed or unsigned min/max operation depending on the context).\n\nIf you prefer, I can do that in this CL already.",
+      "parentUuid": "ce980f73_efd04483",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b57c5c_50b80823",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
