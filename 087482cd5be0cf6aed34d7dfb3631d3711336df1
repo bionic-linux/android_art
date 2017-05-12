@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5f52fb1e_1f5a8d00",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-12T16:59:53Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "4e192479_16e1890b",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 480,
+        "endChar": 30
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59b57c5c_50b80823",
         "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
         "patchSetId": 2
@@ -252,6 +276,23 @@
         "endLine": 1147,
         "endChar": 104
       },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79f48ff9_46304511",
+        "filename": "test/651-checker-byte-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-12T16:59:53Z",
+      "side": 1,
+      "message": "Why aren\u0027t there loop_optimization after cases? Why aren\u0027t there disassembly after cases?\n\nIt\u0027s neither checking for vector HIR nor SIMD instructions actually being emitted. Am I misunderstanding something?\n\n(Here and in all the other test files)",
       "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
