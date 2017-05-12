@@ -187,6 +187,30 @@
     },
     {
       "key": {
+        "uuid": "c229e529_e5224e0d",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22d83c27_1548a3dc",
+      "range": {
+        "startLine": 1141,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 104
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1c986ef_8c4f4e5c",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 2
@@ -198,6 +222,30 @@
       "writtenOn": "2017-05-12T13:26:19Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1147,
+        "startChar": 0,
+        "endLine": 1147,
+        "endChar": 104
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f316541a_a53321ff",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1c986ef_8c4f4e5c",
       "range": {
         "startLine": 1147,
         "startChar": 0,
@@ -256,6 +304,30 @@
     },
     {
       "key": {
+        "uuid": "65cf9345_83405138",
+        "filename": "test/651-checker-double-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:47:39Z",
+      "side": 1,
+      "message": "Ah yes, I like this!",
+      "parentUuid": "6f141cea_b949f29c",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84afbb36_30b386ab",
         "filename": "test/651-checker-float-simd-minmax/src/Main.java",
         "patchSetId": 2
@@ -279,6 +351,30 @@
     },
     {
       "key": {
+        "uuid": "3769bc5f_806f2c37",
+        "filename": "test/651-checker-float-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:47:39Z",
+      "side": 1,
+      "message": "nice suggestion",
+      "parentUuid": "84afbb36_30b386ab",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76f37baa_10687693",
         "filename": "test/651-checker-long-simd-minmax/src/Main.java",
         "patchSetId": 2
@@ -290,6 +386,30 @@
       "writtenOn": "2017-05-12T13:26:19Z",
       "side": 1,
       "message": "I suggest adding this to the tests where you put TODO, so that you don\u0027t forget to update those tests once you start supporting type conversions.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 23
+      },
+      "revId": "087482cd5be0cf6aed34d7dfb3631d3711336df1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01315631_70b2bb40",
+        "filename": "test/651-checker-long-simd-minmax/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-12T16:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76f37baa_10687693",
       "range": {
         "startLine": 29,
         "startChar": 0,
