@@ -38,50 +38,32 @@ const char* const Instruction::kInstructionNames[] = {
 #undef INSTRUCTION_NAME
 };
 
-Instruction::Format const Instruction::kInstructionFormats[] = {
-#define INSTRUCTION_FORMAT(o, c, p, format, i, a, e, v) format,
-#include "dex_instruction_list.h"
-  DEX_INSTRUCTION_LIST(INSTRUCTION_FORMAT)
-#undef DEX_INSTRUCTION_LIST
-#undef INSTRUCTION_FORMAT
-};
+static_assert(sizeof(Instruction::InstructionDescriptor) == 8u, "Unexpected descriptor size");
 
-Instruction::IndexType const Instruction::kInstructionIndexTypes[] = {
-#define INSTRUCTION_INDEX_TYPE(o, c, p, f, index, a, e, v) index,
+Instruction::InstructionDescriptor const Instruction::kInstructionDescriptors[] = {
+#define INSTRUCTION_DESCR(opcode, c, p, format, index, flags, eflags, vflags) \
+    { vflags, \
+      flags, \
+      format, \
+      index, \
+      (((opcode) == NOP) \
+           ? -1 \
+           : (((format) >= k10x) && ((format) <= k10t)) \
+                 ?  1 \
+                 :  (((format) >= k20t) && ((format) <= k22c)) \
+                        ?  2 \
+                        : (((format) >= k32x) && ((format) <= k3rc)) \
+                              ? 3 \
+                              :  (((format) >= k45cc) && ((format) <= k4rcc)) \
+                                     ? 4 \
+                                     : ((format) == k51l) \
+                                           ? 5 \
+                                           : -1) \
+    },
 #include "dex_instruction_list.h"
-  DEX_INSTRUCTION_LIST(INSTRUCTION_INDEX_TYPE)
+  DEX_INSTRUCTION_LIST(INSTRUCTION_DESCR)
 #undef DEX_INSTRUCTION_LIST
-#undef INSTRUCTION_FLAGS
-};
-
-int const Instruction::kInstructionFlags[] = {
-#define INSTRUCTION_FLAGS(o, c, p, f, i, flags, e, v) flags,
-#include "dex_instruction_list.h"
-  DEX_INSTRUCTION_LIST(INSTRUCTION_FLAGS)
-#undef DEX_INSTRUCTION_LIST
-#undef INSTRUCTION_FLAGS
-};
-
-int const Instruction::kInstructionVerifyFlags[] = {
-#define INSTRUCTION_VERIFY_FLAGS(o, c, p, f, i, a, e, vflags) vflags,
-#include "dex_instruction_list.h"
-  DEX_INSTRUCTION_LIST(INSTRUCTION_VERIFY_FLAGS)
-#undef DEX_INSTRUCTION_LIST
-#undef INSTRUCTION_VERIFY_FLAGS
-};
-
-int const Instruction::kInstructionSizeInCodeUnits[] = {
-#define INSTRUCTION_SIZE(opcode, c, p, format, i, a, e, v) \
-    (((opcode) == NOP) ? -1 : \
-     (((format) >= k10x) && ((format) <= k10t)) ?  1 : \
-     (((format) >= k20t) && ((format) <= k22c)) ?  2 : \
-     (((format) >= k32x) && ((format) <= k3rc)) ?  3 : \
-     (((format) >= k45cc) && ((format) <= k4rcc)) ? 4 : \
-      ((format) == k51l) ?  5 : -1),
-#include "dex_instruction_list.h"
-  DEX_INSTRUCTION_LIST(INSTRUCTION_SIZE)
-#undef DEX_INSTRUCTION_LIST
-#undef INSTRUCTION_SIZE
+#undef INSTRUCTION_DESCR
 };
 
 int32_t Instruction::GetTargetOffset() const {
