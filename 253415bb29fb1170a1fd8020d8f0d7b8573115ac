@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff7a4df3_9308f523",
+        "filename": "compiler/optimizing/code_generator_vector_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-15T18:50:41Z",
+      "side": 1,
+      "message": "Ah, you already knew that of course, but I just verified this too at the doc:\n\nhttp://infocenter.arm.com/help/index.jsp?topic\u003d/com.arm.doc.dui0489e/CJAJIIGG.html",
+      "parentUuid": "dadf13d1_1af2d22f",
+      "range": {
+        "startLine": 501,
+        "startChar": 4,
+        "endLine": 501,
+        "endChar": 45
+      },
+      "revId": "253415bb29fb1170a1fd8020d8f0d7b8573115ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907c4697_83e589a1",
         "filename": "test/651-checker-short-simd-minmax/src/Main.java",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-05-15T10:04:54Z",
       "side": 1,
       "message": "Remove one blank line.",
+      "revId": "253415bb29fb1170a1fd8020d8f0d7b8573115ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93481d69_f92fcc89",
+        "filename": "test/651-checker-short-simd-minmax/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-15T18:50:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907c4697_83e589a1",
       "revId": "253415bb29fb1170a1fd8020d8f0d7b8573115ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
