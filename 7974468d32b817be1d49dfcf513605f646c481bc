@@ -16,6 +16,24 @@
       "revId": "7974468d32b817be1d49dfcf513605f646c481bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d47b12f7_63fabf42",
+        "filename": "compiler/compiled_method.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-16T16:37:30Z",
+      "side": 0,
+      "message": "kType and kString are the absolute address patch types I\u0027m removing.",
+      "parentUuid": "8f6926b9_9d456784",
+      "revId": "7974468d32b817be1d49dfcf513605f646c481bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
