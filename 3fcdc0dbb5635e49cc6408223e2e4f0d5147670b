@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b53f240_efa7bf90",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-16T11:34:15Z",
+      "side": 1,
+      "message": "This looks weird. What about a constexpr function using \"if ... else if ... else if ...\"",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
