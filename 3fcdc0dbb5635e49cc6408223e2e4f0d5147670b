@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5d5ac473_61726a31",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-16T16:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c4a77a6_f6228bde",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c9207e8_b9a663c2",
         "filename": "runtime/dex_instruction.h",
         "patchSetId": 1
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "aca7b67b_6cb8ab42",
+        "filename": "runtime/dex_instruction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-16T16:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9207e8_b9a663c2",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fc756b6_a1c467c1",
         "filename": "runtime/dex_instruction.h",
         "patchSetId": 1
@@ -65,6 +101,24 @@
       "writtenOn": "2017-05-16T16:33:11Z",
       "side": 1,
       "message": "nit: consider static_assert InstructionDescriptor \u003d\u003d uint64",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd925def_83702de5",
+        "filename": "runtime/dex_instruction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-16T16:55:32Z",
+      "side": 1,
+      "message": "Is in the .cc file.",
+      "parentUuid": "7fc756b6_a1c467c1",
       "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
