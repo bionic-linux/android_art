@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8746a0d1_eb390c2f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4715,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-16T13:23:48Z",
+      "side": 1,
+      "message": "Nit: Maybe reverse the condition to avoid the \u0027!\u0027 ?",
+      "range": {
+        "startLine": 4712,
+        "startChar": 2,
+        "endLine": 4715,
+        "endChar": 10
+      },
+      "revId": "45ba1393ae80a0df629e74f6b55948ed5d5558ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
