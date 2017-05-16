@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "466a9f83_fe76cf4e",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-16T17:55:39Z",
+      "side": 1,
+      "message": "Is this recoverable? If not it should have LOG(FATAL) or similar.",
+      "revId": "b3937e31102538baf27a6e9088638c5e3ff1ca34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
