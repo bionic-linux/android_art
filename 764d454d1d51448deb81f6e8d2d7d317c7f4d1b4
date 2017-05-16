@@ -46,6 +46,30 @@
       "revId": "764d454d1d51448deb81f6e8d2d7d317c7f4d1b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ceae2982_91176632",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-16T21:04:40Z",
+      "side": 1,
+      "message": "We\u0027re not compiling PIC apps on device.",
+      "parentUuid": "fa7e2e53_7d97ee62",
+      "range": {
+        "startLine": 183,
+        "startChar": 25,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "764d454d1d51448deb81f6e8d2d7d317c7f4d1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
