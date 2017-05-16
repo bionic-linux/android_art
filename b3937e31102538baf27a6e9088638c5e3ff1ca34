@@ -16,6 +16,24 @@
       "revId": "b3937e31102538baf27a6e9088638c5e3ff1ca34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72bbaeb8_539ae17c",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-16T18:06:25Z",
+      "side": 1,
+      "message": "-1 denotes a slow-path, actually, which will take care of illegal arguments.",
+      "parentUuid": "466a9f83_fe76cf4e",
+      "revId": "b3937e31102538baf27a6e9088638c5e3ff1ca34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
