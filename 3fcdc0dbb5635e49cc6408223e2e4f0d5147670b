@@ -16,6 +16,58 @@
       "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c4a77a6_f6228bde",
+        "filename": "runtime/dex_instruction.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-16T16:33:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "5b53f240_efa7bf90",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c9207e8_b9a663c2",
+        "filename": "runtime/dex_instruction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-16T16:33:11Z",
+      "side": 1,
+      "message": "nit: put the enums under verify_flags for readability since its unclear from this context they are uint8_t (if they were uint32, then there would be padding between flags/format)",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fc756b6_a1c467c1",
+        "filename": "runtime/dex_instruction.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-16T16:33:11Z",
+      "side": 1,
+      "message": "nit: consider static_assert InstructionDescriptor \u003d\u003d uint64",
+      "revId": "3fcdc0dbb5635e49cc6408223e2e4f0d5147670b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
