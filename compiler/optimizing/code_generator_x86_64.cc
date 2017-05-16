@@ -5458,21 +5458,14 @@ HLoadClass::LoadKind CodeGeneratorX86_64::GetSupportedLoadClassKind(
       UNREACHABLE();
     case HLoadClass::LoadKind::kReferrersClass:
       break;
-    case HLoadClass::LoadKind::kBootImageLinkTimeAddress:
-      DCHECK(!GetCompilerOptions().GetCompilePic());
-      // We prefer the always-available RIP-relative address for the x86-64 boot image.
-      return HLoadClass::LoadKind::kBootImageLinkTimePcRelative;
     case HLoadClass::LoadKind::kBootImageLinkTimePcRelative:
-      DCHECK(GetCompilerOptions().GetCompilePic());
-      break;
-    case HLoadClass::LoadKind::kBootImageAddress:
-      break;
     case HLoadClass::LoadKind::kBssEntry:
       DCHECK(!Runtime::Current()->UseJitCompilation());
       break;
     case HLoadClass::LoadKind::kJitTableAddress:
       DCHECK(Runtime::Current()->UseJitCompilation());
       break;
+    case HLoadClass::LoadKind::kBootImageAddress:
     case HLoadClass::LoadKind::kDexCacheViaMethod:
       break;
   }
@@ -5635,21 +5628,14 @@ void InstructionCodeGeneratorX86_64::VisitClinitCheck(HClinitCheck* check) {
 HLoadString::LoadKind CodeGeneratorX86_64::GetSupportedLoadStringKind(
     HLoadString::LoadKind desired_string_load_kind) {
   switch (desired_string_load_kind) {
-    case HLoadString::LoadKind::kBootImageLinkTimeAddress:
-      DCHECK(!GetCompilerOptions().GetCompilePic());
-      // We prefer the always-available RIP-relative address for the x86-64 boot image.
-      return HLoadString::LoadKind::kBootImageLinkTimePcRelative;
     case HLoadString::LoadKind::kBootImageLinkTimePcRelative:
-      DCHECK(GetCompilerOptions().GetCompilePic());
-      break;
-    case HLoadString::LoadKind::kBootImageAddress:
-      break;
     case HLoadString::LoadKind::kBssEntry:
       DCHECK(!Runtime::Current()->UseJitCompilation());
       break;
     case HLoadString::LoadKind::kJitTableAddress:
       DCHECK(Runtime::Current()->UseJitCompilation());
       break;
+    case HLoadString::LoadKind::kBootImageAddress:
     case HLoadString::LoadKind::kDexCacheViaMethod:
       break;
   }
