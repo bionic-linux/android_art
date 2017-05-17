@@ -70,6 +70,30 @@
       "revId": "764d454d1d51448deb81f6e8d2d7d317c7f4d1b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1dfa757_f188e358",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-05-17T09:08:47Z",
+      "side": 1,
+      "message": "Oh right, I forgot about that.",
+      "parentUuid": "ceae2982_91176632",
+      "range": {
+        "startLine": 183,
+        "startChar": 25,
+        "endLine": 183,
+        "endChar": 61
+      },
+      "revId": "764d454d1d51448deb81f6e8d2d7d317c7f4d1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
