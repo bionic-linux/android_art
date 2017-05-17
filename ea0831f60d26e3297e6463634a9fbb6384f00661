@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "5ec0fc4b_f19f2c1d",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1121591
+      },
+      "writtenOn": "2017-05-17T16:36:26Z",
+      "side": 1,
+      "message": "Currently (in 7.0+) this check sequence is invoked every dex2oat:\ndex2oat::Setup-\u003eRuntime::Create-\u003eRuntime::Init-\u003eInternTable::AddImagesStringsToTable-\u003e...-\u003eInternTable::Table::AddTableFromMemory\nThat means any compilation time has an overhead caused by this check. That also affects app launch time for some apps. Those apps load extra dex files during startup.\n\nSome numbers:\nNexus 6P, 7.0 user build --- ~15 ms during each dex2oat (~40k strings checked)\nNexus 6P, 7.1.2+ (inc. O preview and master) user build --- ~40 ms during each dex2oat (~40k strings checked)\nI.e. with the way intern tables are now located in boot image spaces it gives a noticeable slowdown.\n\nAll things considered, is this check still necessary? Wouldn\u0027t it be better to only enable it during debug builds?",
+      "parentUuid": "4a4357e2_77db7072",
+      "range": {
+        "startLine": 360,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_0f6535c0",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
