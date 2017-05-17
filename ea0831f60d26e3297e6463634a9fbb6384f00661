@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "6d93fffa_3abe713c",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-17T16:50:36Z",
+      "side": 1,
+      "message": "It\u0027s less than 10% for small apps, and compared to a FB or GMS Core dex2oat run it\u0027s trivial. Launch time would only be impacted for first launch, and it\u0027s still worlds faster than it was pre-N.\n\nBetter safe than sorry when it costs next to nothing.",
+      "parentUuid": "5ec0fc4b_f19f2c1d",
+      "range": {
+        "startLine": 360,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_0f6535c0",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
