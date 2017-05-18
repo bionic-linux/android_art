@@ -179,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "980761fb_4f704ed0",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1121591
+      },
+      "writtenOn": "2017-05-18T10:08:50Z",
+      "side": 1,
+      "message": "\u003eBetter safe than sorry when it costs next to nothing.\n\nCould not agree more, but isn\u0027t it too safe? The check basically needs to run once after every update of boot\u0027s art files in dalvik-cache. Which happens not too often to say the least. That also means a good chunk of cpu time (i.e. battery charge) is wasted for nothing.",
+      "parentUuid": "6d93fffa_3abe713c",
+      "range": {
+        "startLine": 360,
+        "startChar": 43,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "ea0831f60d26e3297e6463634a9fbb6384f00661",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_0f6535c0",
         "filename": "runtime/intern_table.cc",
         "patchSetId": 5
