@@ -46,6 +46,29 @@
       "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2d1673_f0aa41e6",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-19T13:36:53Z",
+      "side": 1,
+      "message": "Bug: If the invoke has more inputs than arguments, we should use inputs[index] directly instead of looking it up in the vector_map_.\n\nAt this stage there\u0027s no X86/MipsComputeBaseMethodAddress or Arm/MipsDexCacheArraysBase yet but we should fully support the fall-back kind kDexCacheViaMethod which has the HCurrentMethod. Even though we currently use that kind only for mips in a method with graph_-\u003eHasIrreducibleLoops() which this optimization rejects.\n\n(I found this while experimenting with method load kinds for https://android-review.googlesource.com/399312 .)",
+      "range": {
+        "startLine": 1014,
+        "startChar": 43,
+        "endLine": 1014,
+        "endChar": 74
+      },
+      "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
