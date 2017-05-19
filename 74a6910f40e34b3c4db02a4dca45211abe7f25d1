@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a2bb2a1_2552fce6",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-05-19T14:40:54Z",
+      "side": 1,
+      "message": "nit: /* */",
+      "range": {
+        "startLine": 1033,
+        "startChar": 53,
+        "endLine": 1035,
+        "endChar": 60
+      },
+      "revId": "74a6910f40e34b3c4db02a4dca45211abe7f25d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
