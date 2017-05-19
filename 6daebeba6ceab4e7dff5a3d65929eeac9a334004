@@ -93,6 +93,23 @@
       "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "847f65fb_72dc643d",
+        "filename": "test/645-checker-abs-simd/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-19T16:33:50Z",
+      "side": 1,
+      "message": "Why no checker tests?",
+      "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
