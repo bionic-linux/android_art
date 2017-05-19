@@ -69,6 +69,30 @@
       "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f50165_88bf1f97",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-19T14:31:13Z",
+      "side": 1,
+      "message": "Thanks for the headsup.",
+      "parentUuid": "9b2d1673_f0aa41e6",
+      "range": {
+        "startLine": 1014,
+        "startChar": 43,
+        "endLine": 1014,
+        "endChar": 74
+      },
+      "revId": "6daebeba6ceab4e7dff5a3d65929eeac9a334004",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
