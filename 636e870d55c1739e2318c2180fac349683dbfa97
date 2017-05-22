@@ -69,6 +69,24 @@
       "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "458560d0_b825d15c",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-22T18:44:45Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to somehow express \"if they are both narrow and they extend the same way\" ?\n\nMaybe not because the extension thing is a boolean instead of an enum.\n\n\n    ExtensionKind e \u003d GetExtension(a, type, r);\n    ExtensionKind e2 \u003d GetExtension(b, type, s);\n   \n    if (e \u003d\u003d e2 \u0026\u0026 e !\u003d ExtensionKind::None) {\n       *is_unsigned \u003d (e \u003d\u003d ExtensionKind::Zero)\n       return true;\n    }\n\nSomething along these lines? Maybe the enum is a bitset.\n\n(that being said it\u0027s still unclear to me what happens if it can be both zero/sign-extended and what would happen to a non-narrowing type?)",
+      "parentUuid": "8dd78703_4104b94e",
+      "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
