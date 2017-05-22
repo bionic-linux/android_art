@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afc4a427_13c4d0e7",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-22T17:51:33Z",
+      "side": 1,
+      "message": "nit: can you add a clarify comment?\n\n   // (i.e. either both zero-extend or both sign-extend)\n\nAlso what happens if neither of them need an extension? Does it return false or is it always true? If it\u0027s only called for narrow \u0027type\u0027 should there be a DCHECK \u003c int?",
+      "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f41de1c_4580d325",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-05-22T17:51:33Z",
+      "side": 1,
+      "message": "nit: Why not rewrite above in terms of IsNarrowerOperand?",
+      "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
