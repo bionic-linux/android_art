@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4652ac6f_86adc0ff",
+        "filename": "runtime/base/scoped_flock.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-22T12:47:21Z",
+      "side": 1,
+      "message": "Auuuggggggghhhhhhhhhhh - please don\u0027t judge me",
+      "parentUuid": "1c85ac07_9d031a01",
+      "range": {
+        "startLine": 39,
+        "startChar": 51,
+        "endLine": 39,
+        "endChar": 55
+      },
+      "revId": "4ddf4497e0df905ad453eb5f9f62721260ce9103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "698fb92e_1b46951f",
         "filename": "runtime/gc/space/image_space.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-22T12:39:07Z",
       "side": 1,
       "message": "indentation is off",
+      "range": {
+        "startLine": 495,
+        "startChar": 42,
+        "endLine": 497,
+        "endChar": 57
+      },
+      "revId": "4ddf4497e0df905ad453eb5f9f62721260ce9103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93cbca3e_623344ef",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-22T12:47:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698fb92e_1b46951f",
       "range": {
         "startLine": 495,
         "startChar": 42,
