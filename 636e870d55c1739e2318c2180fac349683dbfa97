@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a792e2b1_1799527b",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-22T18:09:21Z",
+      "side": 1,
+      "message": "I will follow up in next CL.\n(and when my desktop is back again :-)",
+      "parentUuid": "afc4a427_13c4d0e7",
+      "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f41de1c_4580d325",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-22T17:51:33Z",
       "side": 1,
       "message": "nit: Why not rewrite above in terms of IsNarrowerOperand?",
+      "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dd78703_4104b94e",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-22T18:09:21Z",
+      "side": 1,
+      "message": "not sure I understand what you mean here",
+      "parentUuid": "1f41de1c_4580d325",
       "revId": "636e870d55c1739e2318c2180fac349683dbfa97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
