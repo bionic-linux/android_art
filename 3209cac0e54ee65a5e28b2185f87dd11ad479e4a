@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "b1b61ae9_3a2a19ae",
+        "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExMain.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-23T22:54:16Z",
+      "side": 1,
+      "message": "nit:-DAG \n\n(you don\u0027t really want to rely on the order too much; this also works well with -NOT, since that forms output groups)",
+      "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "319f89ab_db25ac96",
         "filename": "test/639-checker-code-sinking-classloaders/src-ex/ExMain.java",
         "patchSetId": 1
@@ -124,6 +141,23 @@
       "writtenOn": "2017-05-08T08:16:27Z",
       "side": 1,
       "message": "ditto",
+      "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c1146d_4da7831a",
+        "filename": "test/639-checker-code-sinking-classloaders/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-23T22:54:16Z",
+      "side": 1,
+      "message": "nit: period at end",
       "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
