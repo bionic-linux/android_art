@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "fccd140f_deaf1df8",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-23T15:32:35Z",
+      "side": 1,
+      "message": "Yeah, this was left over from an earlier iteration. We\u0027ll now fail a lot earlier (when parsing command line arguments).",
+      "parentUuid": "3a1732f8_d502f898",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f126bf2f_5fc9b1db",
         "filename": "runtime/signal_catcher.h",
         "patchSetId": 2
