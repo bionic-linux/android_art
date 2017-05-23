@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a611c5a3_b044dd92",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T17:29:29Z",
+      "side": 1,
+      "message": "Missed this one.",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "6201b4ca07a5ba92b22f4faf1f5149c033012b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
