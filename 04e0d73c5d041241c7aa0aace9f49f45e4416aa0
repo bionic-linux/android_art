@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "033f268f_a40c0f9b",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "Spaces.",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 1
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e490d76_045037a5",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1052,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "More idiomatic would be:\n CHECK(!...)",
+      "range": {
+        "startLine": 1049,
+        "startChar": 2,
+        "endLine": 1052,
+        "endChar": 3
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d497604_95efeb4b",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 121,
+        "startChar": 20,
+        "endLine": 121,
+        "endChar": 37
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a1732f8_d502f898",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "There\u0027s an argument to check this in the constructor, rather than here, so the runtime immediately breaks rather than on SIGQUIT.",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f126bf2f_5fc9b1db",
+        "filename": "runtime/signal_catcher.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "(System) library includes before ART includes, or at least sorted.\n\n(But it looks like a forward declaration is enough, anyways?)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d57cacc_fdc14f83",
+        "filename": "runtime/signal_catcher.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:31:00Z",
+      "side": 1,
+      "message": "Please add a comment why this isn\u0027t FdFile (I think it\u0027s OK here, but we prefer our own where possible, for the added checks and lack of conversion operator).",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
