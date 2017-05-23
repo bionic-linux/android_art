@@ -22,6 +22,30 @@
       "revId": "6201b4ca07a5ba92b22f4faf1f5149c033012b98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a225adf5_92e05ce2",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-05-23T18:23:59Z",
+      "side": 1,
+      "message": "Done. I\u0027ve actually removed this message because it feels like the wrong place for it since this class shouldn\u0027t care about where \"use_tombstoned_stack_trace_fd\" comes from. There\u0027s also a proper message in runtime.cc.",
+      "parentUuid": "a611c5a3_b044dd92",
+      "range": {
+        "startLine": 84,
+        "startChar": 10,
+        "endLine": 84,
+        "endChar": 28
+      },
+      "revId": "6201b4ca07a5ba92b22f4faf1f5149c033012b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
