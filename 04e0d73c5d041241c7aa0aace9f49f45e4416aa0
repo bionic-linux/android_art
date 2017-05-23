@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "2df4796f_76366697",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-23T15:35:59Z",
+      "side": 1,
+      "message": "(I saw that, but thought it wasn\u0027t unreasonable to have an isolated self-contained check here, too...)",
+      "parentUuid": "fccd140f_deaf1df8",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "04e0d73c5d041241c7aa0aace9f49f45e4416aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f126bf2f_5fc9b1db",
         "filename": "runtime/signal_catcher.h",
         "patchSetId": 2
