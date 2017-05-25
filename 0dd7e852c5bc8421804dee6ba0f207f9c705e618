@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f77d5946_0f708590",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-25T04:49:10Z",
+      "side": 1,
+      "message": "This will be a purely lexicographical sorting. The tuple could be extended to store the test number, if we\u0027d rather see the tests grouped together (helpful for the default config, where interpreter vs jit vs speed vs speed-profile will be split by this ordering).",
+      "range": {
+        "startLine": 754,
+        "startChar": 23,
+        "endLine": 754,
+        "endChar": 29
+      },
+      "revId": "0dd7e852c5bc8421804dee6ba0f207f9c705e618",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
