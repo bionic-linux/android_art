@@ -407,6 +407,10 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
                                              HBasicBlock* body,
                                              HBasicBlock* exit);
 
+  // Adds a new preheader between the given existing preheader and header in
+  // preparation of adding new control to the existing preheader.
+  HBasicBlock* TransformForSplit(HBasicBlock* pre_header, HBasicBlock* header);
+
   // Removes `block` from the graph. Assumes `block` has been disconnected from
   // other blocks and has no instructions or phis.
   void DeleteDeadEmptyBlock(HBasicBlock* block);

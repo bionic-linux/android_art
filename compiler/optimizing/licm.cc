@@ -78,6 +78,84 @@ static void UpdateLoopPhisIn(HEnvironment* environment, HLoopInformation* info) 
   }
 }
 
+/** Checks if instruction is used outside the given loop. */
+static bool IsUsedOutsideLoop(HLoopInformation* loop_info, HInstruction* instruction) {
+  for (const HUseListNode<HInstruction*>& use : instruction->GetUses()) {
+    if (use.GetUser()->GetBlock()->GetLoopInformation() != loop_info) {
+      return true;
+    }
+  }
+  for (const HUseListNode<HEnvironment*>& env : instruction->GetEnvUses()) {
+    if (env.GetUser()->GetHolder()->GetBlock()->GetLoopInformation() != loop_info) {
+      return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * Hoists an invariant control dependence out of the loop.
+ * Returns true on success.
+ *
+ * Header: <nothing visible, no phi-uses outside loop>
+ *         if (invariant) goto exit
+ *
+ * Example:
+ *    while (true) {                   if (x == 1) return;
+ *      if (x == 1) return;        ->  while (true) {
+ *      .... no def of x ....            ....
+ *    }                                }
+ */
+static bool HoistControlDependence(HGraph* graph, HLoopInformation* loop_info, HIf* if_stmt) {
+  HBasicBlock* true_succ = if_stmt->IfTrueSuccessor();
+  HBasicBlock* false_succ = if_stmt->IfFalseSuccessor();
+  bool is_true_loop = loop_info->Contains(*true_succ);
+  bool is_false_loop = loop_info->Contains(*false_succ);
+  if ((!is_true_loop && is_false_loop) || (is_true_loop & !is_false_loop)) {
+    HBasicBlock* pre_header = loop_info->GetPreHeader();
+    HBasicBlock* header = loop_info->GetHeader();
+    HBasicBlock* exit = is_true_loop ? false_succ : true_succ;
+    HBasicBlock* entry = is_true_loop ? true_succ : false_succ;
+    // Do not apply this optimization if any phis inside the header are
+    // used outside the loop, since this would require repairing the Phi
+    // structure along the hoisted and non-hoisted exits.
+    //
+    // This currently prevents hoisting the a == null tests in
+    //
+    //       for (int i = 0; a == null && i < a.length; i++) {
+    //          reduction += a[i];
+    //       }
+    //
+    // TODO: do this anyway?
+    for (HInstructionIterator it(header->GetPhis()); !it.Done(); it.Advance()) {
+      if (IsUsedOutsideLoop(loop_info, it.Current())) {
+        return false;
+      }
+    }
+    // Remove control from header and merge header with entry if possible.
+    header->AddInstruction(new (graph->GetArena()) HGoto());
+    header->RemoveSuccessor(exit);
+    exit->RemovePredecessor(header);
+    DCHECK_EQ(entry, header->GetSingleSuccessor());
+    if (entry->GetPredecessors().size() == 1u) {
+      header->MergeWith(entry);
+    }
+    // Relink hoisted control.
+    if_stmt->MoveBefore(pre_header->GetLastInstruction(), false);
+    pre_header->RemoveInstruction(pre_header->GetLastInstruction());
+    pre_header->AddSuccessor(exit);
+    if (is_false_loop) {
+      pre_header->SwapSuccessors();
+    }
+    header->RemoveDominatedBlock(exit);
+    pre_header->AddDominatedBlock(exit);
+    exit->SetDominator(pre_header);
+    graph->TransformForSplit(pre_header, header);
+    return true;
+  }
+  return false;
+}
+
 void LICM::Run() {
   DCHECK(side_effects_.HasRun());
 
@@ -90,8 +168,10 @@ void LICM::Run() {
                                                       kArenaAllocLICM);
   }
 
-  // Post order visit to visit inner loops before outer loops.
-  for (HBasicBlock* block : graph_->GetPostOrder()) {
+  // Post order visit to visit inner loops before outer loops
+  // (made safe against inserts/merges to the right).
+  for (size_t i = graph_->GetReversePostOrder().size(); i != 0; i--) {
+    HBasicBlock* block = graph_->GetReversePostOrder()[i - 1];
     if (!block->IsLoopHeader()) {
       // Only visit the loop when we reach the header.
       continue;
@@ -101,12 +181,13 @@ void LICM::Run() {
     SideEffects loop_effects = side_effects_.GetLoopEffects(block);
     HBasicBlock* pre_header = loop_info->GetPreHeader();
 
-    for (HBlocksInLoopIterator it_loop(*loop_info); !it_loop.Done(); it_loop.Advance()) {
+    for (HBlocksInLoopIterator it_loop(*loop_info); !it_loop.Done(); ) {
       HBasicBlock* inner = it_loop.Current();
       DCHECK(inner->IsInLoop());
       if (inner->GetLoopInformation() != loop_info) {
         // Thanks to post order visit, inner loops were already visited.
         DCHECK(visited->IsBitSet(inner->GetBlockId()));
+        it_loop.Advance();
         continue;
       }
       if (kIsDebugBuild) {
@@ -116,6 +197,7 @@ void LICM::Run() {
       if (loop_info->ContainsIrreducibleLoop()) {
         // We cannot licm in an irreducible loop, or in a natural loop containing an
         // irreducible loop.
+        it_loop.Advance();
         continue;
       }
       DCHECK(!loop_info->IsIrreducible());
@@ -148,6 +230,25 @@ void LICM::Run() {
           found_first_non_hoisted_visible_instruction_in_loop = true;
         }
       }
+
+      // Hoist invariant control dependence out of the loop.
+      //   Header: <nothing visible>
+      //           if (invariant) ..
+      // NOTE: even though the optimization may add and merge basic blocks,
+      //       it behaves correctly within the two surrounding block iterators.
+      if (!found_first_non_hoisted_visible_instruction_in_loop &&
+          inner->IsLoopHeader() &&
+          inner->EndsWithIf()) {
+        HIf* if_stmt = inner->GetLastInstruction()->AsIf();
+        if (loop_info->IsDefinedOutOfTheLoop(if_stmt->InputAt(0)) &&
+            HoistControlDependence(graph_, loop_info, if_stmt)) {
+          MaybeRecordStat(MethodCompilationStat::kLoopInvariantMoved);
+          continue;  // try same block again
+        }
+      }
+
+      // Continue.
+      it_loop.Advance();
     }
   }
 }

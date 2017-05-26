@@ -2490,6 +2490,21 @@ HBasicBlock* HGraph::TransformLoopForVectorization(HBasicBlock* header,
   return new_pre_header;
 }
 
+HBasicBlock* HGraph::TransformForSplit(HBasicBlock* pre_header, HBasicBlock* header) {
+  HBasicBlock* new_pre_header = SplitEdge(pre_header, header);
+  new_pre_header->AddInstruction(new (arena_) HGoto(header->GetDexPc()));
+
+  pre_header->ReplaceDominatedBlock(header, new_pre_header);
+  new_pre_header->SetDominator(pre_header);
+  new_pre_header->AddDominatedBlock(header);
+  header->SetDominator(new_pre_header);
+
+  size_t index_of_header = IndexOfElement(reverse_post_order_, header);
+  MakeRoomFor(&reverse_post_order_, 1, index_of_header - 1);
+  reverse_post_order_[index_of_header] = new_pre_header;
+  return new_pre_header;
+}
+
 static void CheckAgainstUpperBound(ReferenceTypeInfo rti, ReferenceTypeInfo upper_bound_rti)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (rti.IsValid()) {
