@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37241741_2797479f",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1760,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-26T21:35:54Z",
+      "side": 1,
+      "message": "unconditionally",
+      "range": {
+        "startLine": 1760,
+        "startChar": 28,
+        "endLine": 1760,
+        "endChar": 44
+      },
+      "revId": "90b4d2f2505d0df7a6d60259aa551a69f7b3ed60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e126cee_564ae380",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1767,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-26T21:35:54Z",
+      "side": 1,
+      "message": "This looks like the only real change here other than some removal of unused arguments, consolidation into methods/constexprs, etc.\n\nSo if this path invokes dexlayout stuff and scribbles the vdex quickening metadata, then the fix seems fine for that much.\n\nHowever, I think there can be two other problems:\n1) if the vdex file contains multiple dex files, layout for an earlier one may corrupt the header (or worse) of a later.\nThis could be fixed if the dex_files_ are mappings that are separate from the file contents in the vdex files.\n2) if layout changes enough ulebs it could actually go beyond the quickening information and corrupt the verification metadata, unless I misunderstand things.  And I don\u0027t understand exactly how you write this information, so this may not be a problem.",
+      "range": {
+        "startLine": 1754,
+        "startChar": 0,
+        "endLine": 1767,
+        "endChar": 61
+      },
+      "revId": "90b4d2f2505d0df7a6d60259aa551a69f7b3ed60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6b4f213_49fa8c51",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-05-26T21:35:54Z",
+      "side": 1,
+      "message": "constexpr?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 6
+      },
+      "revId": "90b4d2f2505d0df7a6d60259aa551a69f7b3ed60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
