@@ -258,6 +258,8 @@ ObjPtr<mirror::String> InternTable::Insert(ObjPtr<mirror::String> s,
     }
     return weak;
   }
+  // TODO DELETE IT!
+  // LOG(ERROR) << "Boot Interned String: " << s->ToModifiedUtf8();
   // No match in the strong table or the weak table. Insert into the strong / weak table.
   return is_strong ? InsertStrong(s) : InsertWeak(s);
 }
