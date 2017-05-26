@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b2849a3_07696109",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Yay, good that we can have strings now!",
+      "range": {
+        "startLine": 2554,
+        "startChar": 11,
+        "endLine": 2554,
+        "endChar": 15
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f0de6b4_08075e92",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Fix sorting order",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 41
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b50bfc3e_523d2827",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Can this actually happen? I think this visitor visits each object exactly once.",
+      "range": {
+        "startLine": 1246,
+        "startChar": 6,
+        "endLine": 1246,
+        "endChar": 25
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "632d68cb_89a03ef8",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Technically we only need to visit native roots for DexCache (for resolved strings). Maybe do that as an optimization?",
+      "range": {
+        "startLine": 1251,
+        "startChar": 25,
+        "endLine": 1251,
+        "endChar": 29
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d21ea9_5345ba85",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1495,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Can you add a scoped trace so we can see how slow this is?",
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f354bb_75d4bfc5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Please try to not use auto if the type is not clear.",
+      "range": {
+        "startLine": 1498,
+        "startChar": 10,
+        "endLine": 1498,
+        "endChar": 14
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7720a7ac_ff0de3c5",
+        "filename": "runtime/intern_table.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "Delete this?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 67
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e1d941_0e92537d",
+        "filename": "test/596-app-images/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-05-26T17:56:16Z",
+      "side": 1,
+      "message": "It seems we are using 2 space indent in this file, can you make these indents consistent?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 8
+      },
+      "revId": "0188cfc4815e2b361fd11b93436c7ef3d111a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
