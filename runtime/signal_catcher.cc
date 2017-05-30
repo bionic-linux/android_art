@@ -117,7 +117,7 @@ bool SignalCatcher::OpenStackTraceFile(android::base::unique_fd* tombstone_fd,
                                        android::base::unique_fd* output_fd) {
   if (use_tombstoned_stack_trace_fd_) {
 #if defined(ART_TARGET_ANDROID)
-    return tombstoned_connect(getpid(), tombstone_fd, output_fd, false /* is_native_crash */);
+    return tombstoned_connect(getpid(), tombstone_fd, output_fd, kDebuggerdJavaBacktrace);
 #else
     UNUSED(tombstone_fd);
     UNUSED(output_fd);
@@ -155,6 +155,7 @@ void SignalCatcher::Output(const std::string& s) {
   if (success) {
     success = file->FlushCloseOrErase() == 0;
   } else {
+    PLOG(ERROR) << "Error writing stack traces to file";
     file->Erase();
   }
 
