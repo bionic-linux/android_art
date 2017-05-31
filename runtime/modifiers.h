@@ -71,6 +71,9 @@ static constexpr uint32_t kAccCompileDontBother =     0x01000000;  // method (ru
 // Set by the verifier for a method that could not be verified to follow structured locking.
 static constexpr uint32_t kAccMustCountLocks =        0x02000000;  // method (runtime)
 
+// Set by the JIT when clearing profiling infos to denote that a method was previously warm.
+static constexpr uint32_t kAccPreviouslyWarm =        0x04000000;  // method (runtime)
+
 // Set by the class linker for a method that has only one implementation for a
 // virtual call.
 static constexpr uint32_t kAccSingleImplementation =  0x08000000;  // method (runtime)

@@ -526,6 +526,13 @@ void JitCodeCache::CopyInlineCacheInto(const InlineCache& ic,
   }
 }
 
+static void ClearMethodCounter(ArtMethod* method, bool was_warm) {
+  if (was_warm) {
+    method->AddAccessFlags(kAccPreviouslyWarm);
+  }
+  method->ClearCounter();
+}
+
 uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
                                           ArtMethod* method,
                                           uint8_t* stack_map,
@@ -600,7 +607,7 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
         // Simply discard the compiled code. Clear the counter so that it may be recompiled later.
         // Hopefully the class hierarchy will be more stable when compilation is retried.
         single_impl_still_valid = false;
-        method->SetCounter(1);
+        ClearMethodCounter(method, /*was_warm*/ false);
         break;
       }
     }
@@ -1070,7 +1077,7 @@ void JitCodeCache::DoCollection(Thread* self, bool collect_profiling_info) {
           // We are going to move this method back to interpreter. Clear the counter now to
           // give it a chance to be hot again, but set it to 1 so that this method can still be
           // considered a startup method in case it's not executed again.
-          info->GetMethod()->SetCounter(1);
+          ClearMethodCounter(info->GetMethod(), /*was_warm*/ true);
         }
       }
     } else if (kIsDebugBuild) {
@@ -1379,7 +1386,7 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method, Thread* self, bool osr
     VLOG(jit) << method->PrettyMethod() << " needs a ProfilingInfo to be compiled";
     // Because the counter is not atomic, there are some rare cases where we may not hit the
     // threshold for creating the ProfilingInfo. Reset the counter now to "correct" this.
-    method->SetCounter(1);
+    ClearMethodCounter(method, /*was_warm*/ false);
     return false;
   }
 
@@ -1436,7 +1443,7 @@ void JitCodeCache::InvalidateCompiledCodeFor(ArtMethod* method,
     // it as a potential startup method.
     Runtime::Current()->GetInstrumentation()->UpdateMethodsCode(
         method, GetQuickToInterpreterBridge());
-    method->SetCounter(1);
+    ClearMethodCounter(method, /*was_warm*/ profiling_info != nullptr);
   } else {
     MutexLock mu(Thread::Current(), lock_);
     auto it = osr_code_map_.find(method);
