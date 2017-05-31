@@ -272,6 +272,24 @@
     },
     {
       "key": {
+        "uuid": "eb4fb587_395bb334",
+        "filename": "test/653-checker-licm-control/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T16:57:35Z",
+      "side": 1,
+      "message": "Do we detect that this particular loop is countable?\n(I can see that it shall have exactly static_cast\u003cuint32_t\u003e(y) iterations.)",
+      "parentUuid": "bd1c429c_d2d51bec",
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a45b8e4a_ad0da574",
         "filename": "test/653-checker-licm-control/src/Main.java",
         "patchSetId": 1
