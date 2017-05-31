@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ad8ddfd2_40cc4837",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-05-31T19:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89da92f7_a76dd742",
+      "range": {
+        "startLine": 1224,
+        "startChar": 6,
+        "endLine": 1224,
+        "endChar": 31
+      },
+      "revId": "397f2402552d29ee4b1a26749641491133b6dd56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bb05766_349a24b7",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -94,6 +118,54 @@
     },
     {
       "key": {
+        "uuid": "3919997e_0aff7f7f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-05-31T19:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b2da351_25a09472",
+      "range": {
+        "startLine": 1228,
+        "startChar": 64,
+        "endLine": 1228,
+        "endChar": 75
+      },
+      "revId": "397f2402552d29ee4b1a26749641491133b6dd56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea35f58e_12e4a3e7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-05-31T19:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bb05766_349a24b7",
+      "range": {
+        "startLine": 1228,
+        "startChar": 77,
+        "endLine": 1228,
+        "endChar": 96
+      },
+      "revId": "397f2402552d29ee4b1a26749641491133b6dd56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8070283a_ad646d1a",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2017-05-30T21:07:35Z",
       "side": 1,
       "message": "Needs documentation.",
+      "range": {
+        "startLine": 1241,
+        "startChar": 6,
+        "endLine": 1241,
+        "endChar": 31
+      },
+      "revId": "397f2402552d29ee4b1a26749641491133b6dd56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a05b9de2_2fd4b53f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-05-31T19:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8070283a_ad646d1a",
       "range": {
         "startLine": 1241,
         "startChar": 6,
