@@ -131,6 +131,29 @@
       "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a45b8e4a_ad0da574",
+        "filename": "test/653-checker-licm-control/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:50:24Z",
+      "side": 1,
+      "message": "What if the conditions are reversed, say\n\n  for (int i \u003d 0; i \u003c n \u0026\u0026 a !\u003d null; ++i) { ... }",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
