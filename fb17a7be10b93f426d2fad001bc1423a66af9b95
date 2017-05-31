@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85748627_5cb19358",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "If the use is in an inner loop, we may return a result that is in conflict with the name of this function.",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67c84dfb_51e76621",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "is_true_loop !\u003d is_false_loop",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af761b20_0c921292",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "/* do_checks */",
+      "range": {
+        "startLine": 144,
+        "startChar": 57,
+        "endLine": 144,
+        "endChar": 58
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd6a0501_eea79db0",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "This is a loop invariant for the loop on line 184.",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d1f1749_2317ef94",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "And this is useless after the `if` above.",
+      "range": {
+        "startLine": 203,
+        "startChar": 6,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2520fa43_3ea328c2",
+        "filename": "test/653-checker-licm-control/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-05-31T10:48:32Z",
+      "side": 1,
+      "message": "Btw, do we eliminate the simplified loop afterwards?",
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
