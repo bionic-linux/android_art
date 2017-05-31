@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d22366a5_5757354c",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "Yes, outside is a bit overloaded wrt inner/outer in a loop nest, although I have used the same terminology elsewhere. What name would have your preference?",
+      "parentUuid": "85748627_5cb19358",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 68
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67c84dfb_51e76621",
         "filename": "compiler/optimizing/licm.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-31T10:48:32Z",
       "side": 1,
       "message": "is_true_loop !\u003d is_false_loop",
+      "range": {
+        "startLine": 114,
+        "startChar": 6,
+        "endLine": 114,
+        "endChar": 73
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "578c4cfd_496dbe46",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "Of course :-)",
+      "parentUuid": "67c84dfb_51e76621",
       "range": {
         "startLine": 114,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "faa7bf9a_2b07afd0",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af761b20_0c921292",
+      "range": {
+        "startLine": 144,
+        "startChar": 57,
+        "endLine": 144,
+        "endChar": 58
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd6a0501_eea79db0",
         "filename": "compiler/optimizing/licm.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-31T10:48:32Z",
       "side": 1,
       "message": "This is a loop invariant for the loop on line 184.",
+      "range": {
+        "startLine": 197,
+        "startChar": 10,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c8417c5_306e35ff",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "Yes. This code was already there, but you are right the logic is a bit convoluted....",
+      "parentUuid": "dd6a0501_eea79db0",
       "range": {
         "startLine": 197,
         "startChar": 10,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6096dba6_25876d27",
+        "filename": "compiler/optimizing/licm.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1f1749_2317ef94",
+      "range": {
+        "startLine": 203,
+        "startChar": 6,
+        "endLine": 203,
+        "endChar": 42
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2520fa43_3ea328c2",
         "filename": "test/653-checker-licm-control/src/Main.java",
         "patchSetId": 1
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "bd1c429c_d2d51bec",
+        "filename": "test/653-checker-licm-control/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "If it becomes countable and has no side effects yes. Will add an example of that too.",
+      "parentUuid": "2520fa43_3ea328c2",
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a45b8e4a_ad0da574",
         "filename": "test/653-checker-licm-control/src/Main.java",
         "patchSetId": 1
@@ -145,6 +283,30 @@
       "writtenOn": "2017-05-31T10:50:24Z",
       "side": 1,
       "message": "What if the conditions are reversed, say\n\n  for (int i \u003d 0; i \u003c n \u0026\u0026 a !\u003d null; ++i) { ... }",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 45
+      },
+      "revId": "fb17a7be10b93f426d2fad001bc1423a66af9b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bde741_e64144dd",
+        "filename": "test/653-checker-licm-control/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-05-31T16:26:39Z",
+      "side": 1,
+      "message": "I see where you are going, but right now it stops at the first loop variant condition to preserve the short circuit logic; detecting and reversing side effect free conditions would be nice, but the major objective of this optimization is to get around the idiom at line 101 and the one in the while loops above (amazingly happens quite a few times in just our core compilation, I can set out stats).",
+      "parentUuid": "a45b8e4a_ad0da574",
       "range": {
         "startLine": 101,
         "startChar": 20,
