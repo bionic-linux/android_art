@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d68ed1ae_a336f313",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-05-31T22:40:57Z",
+      "side": 1,
+      "message": "Remove this part of the comments? Or update them?",
+      "range": {
+        "startLine": 1078,
+        "startChar": 46,
+        "endLine": 1079,
+        "endChar": 73
+      },
+      "revId": "a06b7635fbbefd85c11171961f466a20b20b6a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00e1b9de_d25c219a",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1010108
+      },
+      "writtenOn": "2017-05-31T22:40:57Z",
+      "side": 1,
+      "message": "Remove this too.",
+      "range": {
+        "startLine": 1442,
+        "startChar": 61,
+        "endLine": 1443,
+        "endChar": 40
+      },
+      "revId": "a06b7635fbbefd85c11171961f466a20b20b6a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
