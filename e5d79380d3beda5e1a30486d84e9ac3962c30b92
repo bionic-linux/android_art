@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bed780b_2b1f403a",
+        "filename": "tools/jfuzz/jfuzz.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-06-01T00:14:03Z",
+      "side": 1,
+      "message": "Great! You too congratulations making it this far!\n\nNow, as second part of this exercise, please remove this testing comment and add it at L34 below. Then upload a new PS.\n\nDon\u0027t forget to address this comment in gerrit.",
+      "revId": "e5d79380d3beda5e1a30486d84e9ac3962c30b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
