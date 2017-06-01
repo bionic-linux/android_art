@@ -16,6 +16,24 @@
       "revId": "e5d79380d3beda5e1a30486d84e9ac3962c30b92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "107c4d37_edd474b1",
+        "filename": "tools/jfuzz/jfuzz.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-06-01T00:36:12Z",
+      "side": 1,
+      "message": "Don\u0027t forget to reply to my comment as well in gerrit. I can see that you addressed it by doing the diff on the files, but in general it is useful to have at least a \"Done\" for each.\n\nperhaps you did add a comment, but forgot the hit \"Reply\" at the top level. In that case, you will see \"Draft\" listed next to the files where you have comments that have not been sent out yet.",
+      "parentUuid": "6bed780b_2b1f403a",
+      "revId": "e5d79380d3beda5e1a30486d84e9ac3962c30b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
