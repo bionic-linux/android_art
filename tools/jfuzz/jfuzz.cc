@@ -31,7 +31,7 @@ namespace {
  */
 
 #define EMIT(x) fputs((x)[random0(sizeof(x)/sizeof(const char*))], out_);
-
+/*testing*/
 static constexpr const char* kIncDecOps[]   = { "++", "--" };
 static constexpr const char* kIntUnaryOps[] = { "+", "-", "~" };
 static constexpr const char* kFpUnaryOps[]  = { "+", "-" };
