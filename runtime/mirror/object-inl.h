@@ -26,7 +26,6 @@
 #include "class-inl.h"
 #include "class_flags.h"
 #include "class_linker.h"
-#include "class_loader-inl.h"
 #include "dex_cache-inl.h"
 #include "lock_word-inl.h"
 #include "monitor.h"
