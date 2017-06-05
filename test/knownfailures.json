@@ -680,5 +680,12 @@
             "The java.lang.Integer.valueOf intrinsic is not supported in PIC mode."
         ],
         "variant": "optimizing & pictest | speed-profile & pictest"
+    },
+    {
+	    "tests": "988-clinit",
+	    "description": [
+		    "It tests the initialization, assume all valid classes will be initialized."
+	],
+	"variant": "speed-profile | interp-ac"
     }
 ]

@@ -22,6 +22,7 @@
 #include "jit/jit.h"
 #include "jvalue-inl.h"
 #include "safe_math.h"
+#include "transaction.h"
 
 namespace art {
 namespace interpreter {
@@ -526,6 +527,9 @@ JValue ExecuteSwitchImpl(Thread* self, const DexFile::CodeItem* code_item,
           }
           shadow_frame.SetVRegReference(inst->VRegA_21c(inst_data), obj.Ptr());
           inst = inst->Next_2xx();
+          if (transaction_active) {
+            Runtime::Current()->GetTransaction()->AddNewObject(obj.Ptr());
+          }
         }
         break;
       }
@@ -543,6 +547,9 @@ JValue ExecuteSwitchImpl(Thread* self, const DexFile::CodeItem* code_item,
         } else {
           shadow_frame.SetVRegReference(inst->VRegA_22c(inst_data), obj.Ptr());
           inst = inst->Next_2xx();
+          if (transaction_active) {
+            Runtime::Current()->GetTransaction()->AddNewObject(obj.Ptr());
+          }
         }
         break;
       }

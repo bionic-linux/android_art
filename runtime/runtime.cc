@@ -2073,6 +2073,10 @@ bool Runtime::IsTransactionAborted() const {
   }
 }
 
+Transaction* Runtime::GetTransaction() {
+  return preinitialization_transaction_;
+}
+
 void Runtime::AbortTransactionAndThrowAbortError(Thread* self, const std::string& abort_message) {
   DCHECK(IsAotCompiler());
   DCHECK(IsActiveTransaction());

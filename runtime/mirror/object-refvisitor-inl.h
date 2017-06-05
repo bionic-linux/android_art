@@ -36,6 +36,7 @@ inline void Object::VisitReferences(const Visitor& visitor,
   const uint32_t class_flags = klass->GetClassFlags<kVerifyNone>();
   if (LIKELY(class_flags == kClassFlagNormal)) {
     DCHECK((!klass->IsVariableSize<kVerifyFlags, kReadBarrierOption>()));
+    // LOG(ERROR) << "XC VisitReference " << klass->PrettyClass();
     VisitInstanceFieldsReferences<kVerifyFlags, kReadBarrierOption>(klass, visitor);
     DCHECK((!klass->IsClassClass<kVerifyFlags, kReadBarrierOption>()));
     DCHECK(!klass->IsStringClass());

@@ -32,6 +32,7 @@
 #include "reflection.h"
 #include "reflection-inl.h"
 #include "stack.h"
+#include "transaction.h"
 #include "well_known_classes.h"
 
 namespace art {
@@ -56,6 +57,12 @@ bool DoFieldGet(Thread* self, ShadowFrame& shadow_frame, const Instruction* inst
   ObjPtr<mirror::Object> obj;
   if (is_static) {
     obj = f->GetDeclaringClass();
+    if (Runtime::Current()->IsActiveTransaction() &&
+        Runtime::Current()->GetTransaction()->ReadConstrain(obj.Ptr(), f)) {
+      Runtime::Current()->AbortTransactionAndThrowAbortError(self, "Can't read static fields not "
+          "belong to clinit's class.");
+      return false;
+    }
   } else {
     obj = shadow_frame.GetVRegReference(inst->VRegB_22c(inst_data));
     if (UNLIKELY(obj == nullptr)) {
@@ -497,9 +504,10 @@ void ArtInterpreterToCompiledCodeBridge(Thread* self,
   if (jit != nullptr && caller != nullptr) {
     jit->NotifyInterpreterToCompiledCodeTransition(self, caller);
   }
+  PointerSize pointer_size = Runtime::Current()->GetClassLinker()->GetImagePointerSize();
   method->Invoke(self, shadow_frame->GetVRegArgs(arg_offset),
                  (shadow_frame->NumberOfVRegs() - arg_offset) * sizeof(uint32_t),
-                 result, method->GetInterfaceMethodIfProxy(kRuntimePointerSize)->GetShorty());
+                 result, method->GetInterfaceMethodIfProxy(pointer_size)->GetShorty());
 }
 
 void SetStringInitValueToAllAliases(ShadowFrame* shadow_frame,
@@ -1008,7 +1016,8 @@ static inline bool DoCallCommon(ArtMethod* called_method,
     // we have to retrieve type information from the proxy's method
     // interface method instead (which is dex backed since proxies are never interfaces).
     ArtMethod* method =
-        new_shadow_frame->GetMethod()->GetInterfaceMethodIfProxy(kRuntimePointerSize);
+        new_shadow_frame->GetMethod()->GetInterfaceMethodIfProxy(
+            Runtime::Current()->GetClassLinker()->GetImagePointerSize());
 
     // We need to do runtime check on reference assignment. We need to load the shorty
     // to get the exact type of each reference argument.

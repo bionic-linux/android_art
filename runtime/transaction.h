@@ -21,14 +21,15 @@
 #include "base/mutex.h"
 #include "base/value_object.h"
 #include "dex_file_types.h"
-#include "gc_root.h"
 #include "object_callbacks.h"
+#include "gc_root.h"
 #include "offsets.h"
 #include "primitive.h"
 #include "safe_map.h"
 
 #include <list>
 #include <map>
+#include <unordered_set>
 
 namespace art {
 namespace mirror {
@@ -45,6 +46,7 @@ class Transaction FINAL {
   static constexpr const char* kAbortExceptionSignature = "Ldalvik/system/TransactionAbortError;";
 
   Transaction();
+  explicit Transaction(bool, mirror::Object*);
   ~Transaction();
 
   void Abort(const std::string& abort_message)
@@ -90,7 +92,7 @@ class Transaction FINAL {
                                  MemberOffset field_offset,
                                  mirror::Object* value,
                                  bool is_volatile)
-      REQUIRES(!log_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!log_lock_);
 
   // Record array change.
   void RecordWriteArray(mirror::Array* array, size_t index, uint64_t value)
@@ -122,6 +124,14 @@ class Transaction FINAL {
       REQUIRES(!log_lock_);
 
   void VisitRoots(RootVisitor* visitor)
+      REQUIRES(!log_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  void AddNewObject(mirror::Object*)
+      REQUIRES(!log_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  bool ReadConstrain(mirror::Object*, ArtField*)
       REQUIRES(!log_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -280,6 +290,12 @@ class Transaction FINAL {
       REQUIRES(log_lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void AbortNoLock(const std::string&)
+      REQUIRES(log_lock_);
+
+  void WriteConstrainCheck(mirror::Object *obj, const MemberOffset &)
+      REQUIRES(log_lock_);
+
   const std::string& GetAbortMessage() REQUIRES(!log_lock_);
 
   Mutex log_lock_ ACQUIRED_AFTER(Locks::intern_table_lock_);
@@ -288,7 +304,10 @@ class Transaction FINAL {
   std::list<InternStringLog> intern_string_logs_ GUARDED_BY(log_lock_);
   std::list<ResolveStringLog> resolve_string_logs_ GUARDED_BY(log_lock_);
   bool aborted_ GUARDED_BY(log_lock_);
+  bool app_image_ GUARDED_BY(log_lock_);
   std::string abort_message_ GUARDED_BY(log_lock_);
+  std::unordered_set<mirror::Object*> object_created_ GUARDED_BY(log_lock_);
+  mirror::Object* root_ GUARDED_BY(log_lock_);
 
   DISALLOW_COPY_AND_ASSIGN(Transaction);
 };

@@ -468,6 +468,7 @@ class Runtime {
   void EnterTransactionMode(Transaction* transaction);
   void ExitTransactionMode();
   bool IsTransactionAborted() const;
+  Transaction* GetTransaction();
 
   void AbortTransactionAndThrowAbortError(Thread* self, const std::string& abort_message)
       REQUIRES_SHARED(Locks::mutator_lock_);
