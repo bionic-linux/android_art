@@ -673,11 +673,7 @@ inline uint32_t Class::GetReferenceInstanceOffsets() {
 }
 
 inline void Class::SetClinitThreadId(pid_t new_clinit_thread_id) {
-  if (Runtime::Current()->IsActiveTransaction()) {
-    SetField32<true>(OFFSET_OF_OBJECT_MEMBER(Class, clinit_thread_id_), new_clinit_thread_id);
-  } else {
-    SetField32<false>(OFFSET_OF_OBJECT_MEMBER(Class, clinit_thread_id_), new_clinit_thread_id);
-  }
+  SetField32Transaction(OFFSET_OF_OBJECT_MEMBER(Class, clinit_thread_id_), new_clinit_thread_id);
 }
 
 inline String* Class::GetName() {

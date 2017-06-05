@@ -4900,6 +4900,7 @@ bool ClassLinker::InitializeClass(Thread* self, Handle<mirror::Class> klass,
   if (!self->IsExceptionPending()) {
     ArtMethod* clinit = klass->FindClassInitializer(image_pointer_size_);
     if (clinit != nullptr) {
+      // LOG(ERROR) << "XC Find a clinit: " << clinit->PrettyMethod(true);
       CHECK(can_init_statics);
       JValue result;
       clinit->Invoke(self, nullptr, 0, &result, "V");
@@ -8018,6 +8019,11 @@ mirror::Class* ClassLinker::ResolveType(const DexFile& dex_file,
   }
   if (resolved == nullptr) {
     Thread* self = Thread::Current();
+    if (Runtime::Current()->IsActiveTransaction()) {
+      Runtime::Current()->AbortTransactionAndThrowAbortError(self, "Can't resolve type within "
+          "a transaction.");
+      return nullptr;
+    }
     const char* descriptor = dex_file.StringByTypeIdx(type_idx);
     resolved = FindClass(self, descriptor, class_loader);
     if (resolved != nullptr) {
