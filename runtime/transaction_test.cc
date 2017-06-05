@@ -512,6 +512,9 @@ TEST_F(TransactionTest, ResolveString) {
   EXPECT_TRUE(h_dex_cache->GetResolvedString(string_idx) == nullptr);
   // Do the transaction, then roll back.
   Transaction transaction;
+  // Verify the class before enter transaction mode since VerifyClass doesn't support transaction mode
+  // class_linker_->VerifyClass(soa.Self(), h_klass);
+  // ASSERT_TRUE(h_klass->IsVerified());
   Runtime::Current()->EnterTransactionMode(&transaction);
   bool success = class_linker_->EnsureInitialized(soa.Self(), h_klass, true, true);
   ASSERT_TRUE(success);
