@@ -21,8 +21,8 @@
 #include "base/mutex.h"
 #include "base/value_object.h"
 #include "dex_file_types.h"
-#include "gc_root.h"
 #include "object_callbacks.h"
+#include "gc_root.h"
 #include "offsets.h"
 #include "primitive.h"
 #include "safe_map.h"
@@ -90,7 +90,7 @@ class Transaction FINAL {
                                  MemberOffset field_offset,
                                  mirror::Object* value,
                                  bool is_volatile)
-      REQUIRES(!log_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!log_lock_);
 
   // Record array change.
   void RecordWriteArray(mirror::Array* array, size_t index, uint64_t value)

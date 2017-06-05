@@ -19,10 +19,13 @@
 #include "base/stl_util.h"
 #include "base/logging.h"
 #include "gc/accounting/card_table-inl.h"
+#include "gc_root-inl.h"
 #include "intern_table.h"
 #include "mirror/class-inl.h"
+#include "mirror/dex_cache-inl.h"
 #include "mirror/object-inl.h"
 #include "mirror/object_array-inl.h"
+#include "scoped_thread_state_change-inl.h"
 
 #include <list>
 
@@ -105,6 +108,13 @@ void Transaction::RecordWriteFieldBoolean(mirror::Object* obj,
                                           uint8_t value,
                                           bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.LogBooleanValue(field_offset, value, is_volatile);
@@ -115,6 +125,13 @@ void Transaction::RecordWriteFieldByte(mirror::Object* obj,
                                        int8_t value,
                                        bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.LogByteValue(field_offset, value, is_volatile);
@@ -125,6 +142,13 @@ void Transaction::RecordWriteFieldChar(mirror::Object* obj,
                                        uint16_t value,
                                        bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.LogCharValue(field_offset, value, is_volatile);
@@ -136,6 +160,13 @@ void Transaction::RecordWriteFieldShort(mirror::Object* obj,
                                         int16_t value,
                                         bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.LogShortValue(field_offset, value, is_volatile);
@@ -147,6 +178,13 @@ void Transaction::RecordWriteField32(mirror::Object* obj,
                                      uint32_t value,
                                      bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.Log32BitsValue(field_offset, value, is_volatile);
@@ -157,6 +195,13 @@ void Transaction::RecordWriteField64(mirror::Object* obj,
                                      uint64_t value,
                                      bool is_volatile) {
   DCHECK(obj != nullptr);
+  {
+    ScopedObjectAccess soa(Thread::Current());
+    if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+      Abort("Can't modify boot image during initialization of app image");
+      return;
+    }
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.Log64BitsValue(field_offset, value, is_volatile);
@@ -167,6 +212,10 @@ void Transaction::RecordWriteFieldReference(mirror::Object* obj,
                                             mirror::Object* value,
                                             bool is_volatile) {
   DCHECK(obj != nullptr);
+  if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(obj)) {
+    Abort("Can't modify boot image during initialization of app image");
+    return;
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   ObjectLog& object_log = object_logs_[obj];
   object_log.LogReferenceValue(field_offset, value, is_volatile);
@@ -176,6 +225,10 @@ void Transaction::RecordWriteArray(mirror::Array* array, size_t index, uint64_t 
   DCHECK(array != nullptr);
   DCHECK(array->IsArrayInstance());
   DCHECK(!array->IsObjectArray());
+  if (Runtime::Current()->GetHeap()->ObjectIsInBootImageSpace(array)) {
+    Abort("Can't modify boot image during initialization of app image");
+    return;
+  }
   MutexLock mu(Thread::Current(), log_lock_);
   auto it = array_logs_.find(array);
   if (it == array_logs_.end()) {

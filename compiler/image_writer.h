@@ -493,7 +493,7 @@ class ImageWriter FINAL {
   // early_exit is true if we had a cyclic dependency anywhere down the chain.
   bool PruneAppImageClassInternal(ObjPtr<mirror::Class> klass,
                                   bool* early_exit,
-                                  std::unordered_set<mirror::Class*>* visited)
+                                  std::unordered_set<mirror::Object*>* visited)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   bool IsMultiImage() const {
@@ -630,6 +630,7 @@ class ImageWriter FINAL {
   class PruneClassLoaderClassesVisitor;
   class RegisterBootClassPathClassesVisitor;
   class VisitReferencesVisitor;
+  class ArrayClassReferenceVisitor;
 
   DISALLOW_COPY_AND_ASSIGN(ImageWriter);
 };
