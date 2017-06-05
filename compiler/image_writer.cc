@@ -794,7 +794,11 @@ bool ImageWriter::PruneAppImageClassInternal(
                                                         &my_early_exit,
                                                         visited);
         } else {
-          result = result || PruneAppImageClassInternal(ref->GetClass(),
+          mirror::Class* type = ref->GetClass();
+          if (type == mirror::Method::StaticClass() || type == mirror::Constructor::StaticClass()) {
+            result = true;
+          }
+          result = result || PruneAppImageClassInternal(type,
                                                         &my_early_exit,
                                                         visited);
         }

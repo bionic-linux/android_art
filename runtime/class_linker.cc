@@ -2634,6 +2634,7 @@ mirror::Class* ClassLinker::FindClass(Thread* self,
   ObjPtr<mirror::Class> klass = LookupClass(self, descriptor, hash, class_loader.Get());
   if (klass != nullptr) {
     return EnsureResolved(self, descriptor, klass);
+  } else {
   }
   // Class is not yet loaded.
   if (descriptor[0] != '[' && class_loader == nullptr) {
@@ -2820,6 +2821,12 @@ mirror::Class* ClassLinker::DefineClass(Thread* self,
     // Interface object should get the right size here. Regular class will
     // figure out the right size later and be replaced with one of the right
     // size when the class becomes resolved.
+    // But AllocClass can't work under transaction, abort if not found.
+    if (Runtime::Current()->IsActiveTransaction()) {
+      Runtime::Current()->AbortTransactionAndThrowAbortError(self, "Can't resolve this type "
+          "within a transaction.");
+      return nullptr;
+    }
     klass.Assign(AllocClass(self, SizeOfClassWithoutEmbeddedTables(dex_file, dex_class_def)));
   }
   if (UNLIKELY(klass == nullptr)) {
@@ -4900,6 +4907,7 @@ bool ClassLinker::InitializeClass(Thread* self, Handle<mirror::Class> klass,
   if (!self->IsExceptionPending()) {
     ArtMethod* clinit = klass->FindClassInitializer(image_pointer_size_);
     if (clinit != nullptr) {
+      // LOG(ERROR) << "XC Find a clinit: " << clinit->PrettyMethod(true);
       CHECK(can_init_statics);
       JValue result;
       clinit->Invoke(self, nullptr, 0, &result, "V");
@@ -8017,8 +8025,8 @@ mirror::Class* ClassLinker::ResolveType(const DexFile& dex_file,
     resolved = LookupResolvedType(dex_file, type_idx, dex_cache.Get(), class_loader.Get());
   }
   if (resolved == nullptr) {
-    Thread* self = Thread::Current();
     const char* descriptor = dex_file.StringByTypeIdx(type_idx);
+    Thread* self = Thread::Current();
     resolved = FindClass(self, descriptor, class_loader);
     if (resolved != nullptr) {
       // TODO: we used to throw here if resolved's class loader was not the
