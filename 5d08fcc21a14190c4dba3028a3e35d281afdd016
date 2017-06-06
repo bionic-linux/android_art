@@ -16,6 +16,24 @@
       "revId": "5d08fcc21a14190c4dba3028a3e35d281afdd016",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f051989_b81aa544",
+        "filename": "runtime/gc/heap.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-06T15:03:31Z",
+      "side": 1,
+      "message": "It doesn\u0027t. My best guess is that repeated equivalent typedefs are OK? Like repeated forward declarations?\n\n(I don\u0027t know why this one is a function pointer type, and the other two parts of object_callbacks.h are abstract classes. Honestly, the latter seems better, but I didn\u0027t want to make that larger-scale change here...)",
+      "parentUuid": "e7fbe3a8_fbd0b057",
+      "revId": "5d08fcc21a14190c4dba3028a3e35d281afdd016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
