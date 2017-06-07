@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef16cd22_959fcbfa",
+        "filename": "runtime/dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-07T01:29:56Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 4
+      },
+      "revId": "d8e26cc054542b209971311769e82455d76eb1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d54443_673e6218",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-07T01:29:56Z",
+      "side": 1,
+      "message": "Please keep all of that internal to the DexFileRegistrar. The goal is to *not* change the OatFileManager code, ever.",
+      "range": {
+        "startLine": 744,
+        "startChar": 14,
+        "endLine": 747,
+        "endChar": 80
+      },
+      "revId": "d8e26cc054542b209971311769e82455d76eb1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
