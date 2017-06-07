@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "601c09e2_7ae0bd3c",
+        "filename": "compiler/elf_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-07T23:02:50Z",
+      "side": 0,
+      "message": "Don\u0027t think this is necessary, and in fact hurtful, making two copies...",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 77
+      },
+      "revId": "3b8bbb9927a38561fa37e38d5d9ddcf02608d60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74a8d47d_ca4f9d01",
+        "filename": "compiler/elf_writer_quick.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-07T23:02:50Z",
+      "side": 0,
+      "message": "I think this should be all that\u0027s necessary?",
+      "range": {
+        "startLine": 83,
+        "startChar": 46,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "3b8bbb9927a38561fa37e38d5d9ddcf02608d60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
