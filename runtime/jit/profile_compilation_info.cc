@@ -1244,6 +1244,16 @@ bool ProfileCompilationInfo::ContainsHotMethod(const MethodReference& method_ref
                     method_ref.dex_method_index) != nullptr;
 }
 
+bool ProfileCompilationInfo::ContainsSampledMethod(bool startup,
+                                                   const MethodReference& method_ref) const {
+  const DexFile* dex_file = method_ref.dex_file;
+  const DexFileData* dex_data = FindDexData(GetProfileDexFileKey(dex_file->GetLocation()));
+  if (dex_data == nullptr || !ChecksumMatch(dex_file->GetLocationChecksum(), dex_data->checksum)) {
+    return false;
+  }
+  return dex_data->HasSampledMethod(startup, method_ref.dex_method_index);
+}
+
 const ProfileCompilationInfo::InlineCacheMap*
 ProfileCompilationInfo::FindMethod(const std::string& dex_location,
                                    uint32_t dex_checksum,
