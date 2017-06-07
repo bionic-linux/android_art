@@ -22,6 +22,30 @@
       "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18fa0f8c_6de854d0",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1170749
+      },
+      "writtenOn": "2017-06-07T16:27:55Z",
+      "side": 1,
+      "message": "I changed it because there was a need for a class. Also, I don\u0027t think RegisterDexFile is a good name since it might cause confusion about it poisoning the entire dex file vs. sections of the dex file if looking at a glance.\n\nAre you suggesting that I keep the function call as is and move the DexFileTrackingRegistrar class usage internal to the file its defined in?\n\nAfter this change, I do not see any future changes necessary to this file.",
+      "parentUuid": "916f7ea8_68a18dc8",
+      "range": {
+        "startLine": 744,
+        "startChar": 14,
+        "endLine": 744,
+        "endChar": 83
+      },
+      "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
