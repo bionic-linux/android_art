@@ -46,6 +46,30 @@
       "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90cd385d_68061e0d",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-07T16:31:16Z",
+      "side": 1,
+      "message": "This just looks very weird. You\u0027re constructing and immediately destroying the object. A simple function call would be more Google C++-style, I believe.",
+      "parentUuid": "18fa0f8c_6de854d0",
+      "range": {
+        "startLine": 744,
+        "startChar": 14,
+        "endLine": 744,
+        "endChar": 83
+      },
+      "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
