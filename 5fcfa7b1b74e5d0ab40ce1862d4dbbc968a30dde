@@ -70,6 +70,30 @@
       "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35094fbd_06f8c59d",
+        "filename": "runtime/oat_file_manager.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1170749
+      },
+      "writtenOn": "2017-06-07T16:35:53Z",
+      "side": 1,
+      "message": "Fair point. I\u0027ll go ahead change it back then.",
+      "parentUuid": "90cd385d_68061e0d",
+      "range": {
+        "startLine": 744,
+        "startChar": 14,
+        "endLine": 744,
+        "endChar": 83
+      },
+      "revId": "5fcfa7b1b74e5d0ab40ce1862d4dbbc968a30dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
