@@ -80,7 +80,7 @@ class DebugInfoTask : public Task {
   const InstructionSetFeatures* instruction_set_features_;
   size_t rodata_section_size_;
   size_t text_section_size_;
-  const ArrayRef<const debug::MethodDebugInfo>& method_infos_;
+  const ArrayRef<const debug::MethodDebugInfo> method_infos_;
   std::vector<uint8_t> result_;
 };
 
@@ -98,7 +98,7 @@ class ElfWriterQuick FINAL : public ElfWriter {
                              size_t text_size,
                              size_t bss_size,
                              size_t bss_roots_offset) OVERRIDE;
-  void PrepareDebugInfo(const ArrayRef<const debug::MethodDebugInfo>& method_infos) OVERRIDE;
+  void PrepareDebugInfo(const ArrayRef<const debug::MethodDebugInfo> method_infos) OVERRIDE;
   OutputStream* StartRoData() OVERRIDE;
   void EndRoData(OutputStream* rodata) OVERRIDE;
   OutputStream* StartText() OVERRIDE;
@@ -231,7 +231,7 @@ void ElfWriterQuick<ElfTypes>::WriteDynamicSection() {
 
 template <typename ElfTypes>
 void ElfWriterQuick<ElfTypes>::PrepareDebugInfo(
-    const ArrayRef<const debug::MethodDebugInfo>& method_infos) {
+    const ArrayRef<const debug::MethodDebugInfo> method_infos) {
   if (!method_infos.empty() && compiler_options_->GetGenerateMiniDebugInfo()) {
     // Prepare the mini-debug-info in background while we do other I/O.
     Thread* self = Thread::Current();

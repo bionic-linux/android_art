@@ -56,7 +56,7 @@ class ElfWriter {
                                      size_t text_size,
                                      size_t bss_size,
                                      size_t bss_roots_offset) = 0;
-  virtual void PrepareDebugInfo(const ArrayRef<const debug::MethodDebugInfo>& method_infos) = 0;
+  virtual void PrepareDebugInfo(const ArrayRef<const debug::MethodDebugInfo> method_infos) = 0;
   virtual OutputStream* StartRoData() = 0;
   virtual void EndRoData(OutputStream* rodata) = 0;
   virtual OutputStream* StartText() = 0;
