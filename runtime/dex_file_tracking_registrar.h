@@ -17,15 +17,48 @@
 #ifndef ART_RUNTIME_DEX_FILE_TRACKING_REGISTRAR_H_
 #define ART_RUNTIME_DEX_FILE_TRACKING_REGISTRAR_H_
 
+#include <deque>
+#include <tuple>
+
 #include "dex_file.h"
 
 namespace art {
 namespace dex {
-namespace tracking {
 
-void RegisterDexFile(const DexFile* const dex_file);
+// Class for (un)poisoning various sections of Dex Files
+//
+// This class provides the means to log accesses only of sections whose
+// accesses are needed. All accesses are displayed as stack traces in
+// logcat.
+class DexFileTrackingRegistrar {
+ public:
+  explicit DexFileTrackingRegistrar(const DexFile* const dex_file)
+      : dex_file_(dex_file) {
+  }
+  // Uses data contained inside range_values_ to poison memory through the
+  // memory tool.
+  void SetCurrentRanges();
 
-}  // namespace tracking
+  // Overriding so that range_values_ does not have to be explicitly set.
+  ~DexFileTrackingRegistrar() {
+    SetCurrentRanges();
+  }
+
+  void SetDexFileRegistration(bool should_poison);
+  void SetAllCodeItemRegistration(bool should_poison);
+  // Sets the insns_ section of all code items in dex_file
+  void SetAllInsnsRegistration(bool should_poison);
+  // This function finds the code item of a class based on class name.
+  void SetCodeItemRegistration(const char* class_name, bool should_poison);
+
+ private:
+  // Contains tuples of all ranges of memory that need to be explicitly
+  // (un)poisoned by the memory tool
+  std::deque<std::tuple<const void *, size_t, bool>> range_values_;
+
+  const DexFile* const dex_file_;
+};
+
 }  // namespace dex
 }  // namespace art
 
