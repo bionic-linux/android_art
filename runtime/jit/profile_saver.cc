@@ -90,7 +90,7 @@ void ProfileSaver::Run() {
     }
     total_ms_of_sleep_ += options_.GetSaveResolvedClassesDelayMs();
   }
-  FetchAndCacheResolvedClassesAndMethods();
+  FetchAndCacheResolvedClassesAndMethods(/*startup*/ true);
 
   // Loop for the profiled methods.
   while (!ShuttingDown(self)) {
@@ -129,6 +129,8 @@ void ProfileSaver::Run() {
     if (ShuttingDown(self)) {
       break;
     }
+
+    FetchAndCacheResolvedClassesAndMethods(/*startup*/ false);
 
     uint16_t number_of_new_methods = 0;
     uint64_t start_work = NanoTime();
@@ -220,7 +222,7 @@ class GetMethodsVisitor : public ClassVisitor {
   uint32_t hot_method_sample_threshold_;
 };
 
-void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
+void ProfileSaver::FetchAndCacheResolvedClassesAndMethods(bool startup) {
   ScopedTrace trace(__PRETTY_FUNCTION__);
 
   // Resolve any new registered locations.
@@ -237,17 +239,24 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
                                      gc::kCollectorTypeCriticalSection);
 
     ClassLinker* const class_linker = Runtime::Current()->GetClassLinker();
-    resolved_classes = class_linker->GetResolvedClasses(/*ignore boot classes*/ true);
+    if (startup) {
+      // Only collect startup classes to prevent the app image from getting bloated.
+      resolved_classes = class_linker->GetResolvedClasses(/*ignore boot classes*/ true);
+    }
 
     {
       ScopedTrace trace2("Get hot methods");
+      // For non startup, do not unnecessarily record any methods as hot.
+      const uint32_t threshold = startup
+          ? options_.GetHotStartupMethodSamples() :
+            std::numeric_limits<uint32_t>::max();
       GetMethodsVisitor visitor(&hot_methods,
                                 &startup_methods,
-                                options_.GetHotStartupMethodSamples());
+                                threshold);
       class_linker->VisitClasses(&visitor);
       VLOG(profiler) << "Profile saver recorded " << hot_methods.size() << " hot methods and "
                      << startup_methods.size() << " startup methods with threshold "
-                     << options_.GetHotStartupMethodSamples();
+                     << threshold;
     }
   }
   MutexLock mu(self, *Locks::profiler_lock_);
@@ -258,17 +267,17 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
     const std::string& filename = it.first;
     const std::set<std::string>& locations = it.second;
     std::vector<ProfileMethodInfo> profile_methods_for_location;
-    std::vector<MethodReference> startup_methods_for_locations;
+    std::vector<MethodReference> sampled_methods_for_locations;
     for (const MethodReference& ref : hot_methods) {
       if (locations.find(ref.dex_file->GetBaseLocation()) != locations.end()) {
         profile_methods_for_location.emplace_back(ref.dex_file, ref.dex_method_index);
         // Hot methods are also startup methods since this function is only invoked during startup.
-        startup_methods_for_locations.push_back(ref);
+        sampled_methods_for_locations.push_back(ref);
       }
     }
     for (const MethodReference& ref : startup_methods) {
       if (locations.find(ref.dex_file->GetBaseLocation()) != locations.end()) {
-        startup_methods_for_locations.push_back(ref);
+        sampled_methods_for_locations.push_back(ref);
       }
     }
 
@@ -288,7 +297,7 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
 
     ProfileCompilationInfo* cached_info = info_it->second;
     cached_info->AddMethodsAndClasses(profile_methods_for_location, resolved_classes_for_location);
-    cached_info->AddSampledMethods(/*startup*/ true, startup_methods_for_locations);
+    cached_info->AddSampledMethods(startup, sampled_methods_for_locations);
     total_number_of_profile_entries_cached += resolved_classes_for_location.size();
   }
   max_number_of_profile_entries_cached_ = std::max(
