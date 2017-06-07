@@ -741,7 +741,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
 
             // Register for tracking.
             for (const auto& dex_file : dex_files) {
-              dex::tracking::RegisterDexFile(dex_file.get());
+              dex::DexFileTrackingRegistrar dex_tracking_registrar(dex_file.get());
             }
           } else {
             LOG(INFO) << "Failed to add image file " << temp_error_msg;
@@ -765,7 +765,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
 
       // Register for tracking.
       for (const auto& dex_file : dex_files) {
-        dex::tracking::RegisterDexFile(dex_file.get());
+        dex::DexFileTrackingRegistrar dex_tracking_registrar(dex_file.get());
       }
     }
     if (dex_files.empty()) {
