@@ -29,6 +29,7 @@
 #include "base/stl_util.h"
 #include "base/systrace.h"
 #include "base/time_utils.h"
+#include "class_table-inl.h"
 #include "compiler_filter.h"
 #include "dex_reference_collection.h"
 #include "gc/collector_type.h"
@@ -121,7 +122,7 @@ void ProfileSaver::Run() {
     }
     total_ms_of_sleep_ += options_.GetSaveResolvedClassesDelayMs();
   }
-  FetchAndCacheResolvedClassesAndMethods();
+  FetchAndCacheResolvedClassesAndMethods(/*startup*/ true);
 
   // Loop for the profiled methods.
   while (!ShuttingDown(self)) {
@@ -210,64 +211,6 @@ void ProfileSaver::NotifyJitActivityInternal() {
   }
 }
 
-using MethodReferenceCollection = DexReferenceCollection<uint16_t, ScopedArenaAllocatorAdapter>;
-using TypeReferenceCollection = DexReferenceCollection<dex::TypeIndex,
-                                                       ScopedArenaAllocatorAdapter>;
-
-// Get resolved methods that have a profile info or more than kStartupMethodSamples samples.
-// Excludes native methods and classes in the boot image.
-class GetClassesAndMethodsVisitor : public ClassVisitor {
- public:
-  GetClassesAndMethodsVisitor(MethodReferenceCollection* hot_methods,
-                              MethodReferenceCollection* sampled_methods,
-                              TypeReferenceCollection* resolved_classes,
-                              uint32_t hot_method_sample_threshold,
-                              bool profile_boot_class_path)
-    : hot_methods_(hot_methods),
-      sampled_methods_(sampled_methods),
-      resolved_classes_(resolved_classes),
-      hot_method_sample_threshold_(hot_method_sample_threshold),
-      profile_boot_class_path_(profile_boot_class_path) {}
-
-  virtual bool operator()(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
-    if (klass->IsProxyClass() ||
-        klass->IsArrayClass() ||
-        klass->IsPrimitive() ||
-        !klass->IsResolved() ||
-        klass->IsErroneousResolved() ||
-        (!profile_boot_class_path_ && klass->GetClassLoader() == nullptr)) {
-      return true;
-    }
-    CHECK(klass->GetDexCache() != nullptr) << klass->PrettyClass();
-    resolved_classes_->AddReference(&klass->GetDexFile(), klass->GetDexTypeIndex());
-    for (ArtMethod& method : klass->GetMethods(kRuntimePointerSize)) {
-      if (!method.IsNative()) {
-        DCHECK(!method.IsProxyMethod());
-        const uint16_t counter = method.GetCounter();
-        // Mark startup methods as hot if they have more than hot_method_sample_threshold_ samples.
-        // This means they will get compiled by the compiler driver.
-        if (method.GetProfilingInfo(kRuntimePointerSize) != nullptr ||
-            (method.GetAccessFlags() & kAccPreviouslyWarm) != 0 ||
-            counter >= hot_method_sample_threshold_) {
-          hot_methods_->AddReference(method.GetDexFile(), method.GetDexMethodIndex());
-        } else if (counter != 0) {
-          sampled_methods_->AddReference(method.GetDexFile(), method.GetDexMethodIndex());
-        }
-      } else {
-        CHECK_EQ(method.GetCounter(), 0u);
-      }
-    }
-    return true;
-  }
-
- private:
-  MethodReferenceCollection* const hot_methods_;
-  MethodReferenceCollection* const sampled_methods_;
-  TypeReferenceCollection* const resolved_classes_;
-  uint32_t hot_method_sample_threshold_;
-  const bool profile_boot_class_path_;
-};
-
 class ScopedDefaultPriority {
  public:
   explicit ScopedDefaultPriority(pthread_t thread) : thread_(thread) {
@@ -282,7 +225,50 @@ class ScopedDefaultPriority {
   const pthread_t thread_;
 };
 
-void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
+class GetClassLoadersVisitor : public ClassLoaderVisitor {
+ public:
+  explicit GetClassLoadersVisitor(VariableSizedHandleScope* hs,
+                                  std::vector<Handle<mirror::ClassLoader>>* class_loaders)
+      : hs_(hs),
+        class_loaders_(class_loaders) {}
+
+  void Visit(ObjPtr<mirror::ClassLoader> class_loader)
+      REQUIRES_SHARED(Locks::classlinker_classes_lock_, Locks::mutator_lock_) OVERRIDE {
+    class_loaders_->push_back(hs_->NewHandle(class_loader));
+  }
+
+ private:
+  VariableSizedHandleScope* const hs_;
+  std::vector<Handle<mirror::ClassLoader>>* const class_loaders_;
+};
+
+class GetClassesVisitor {
+ public:
+  explicit GetClassesVisitor(bool profile_boot_class_path,
+                             ScopedArenaVector<ObjPtr<mirror::Class>>* out)
+      : profile_boot_class_path_(profile_boot_class_path),
+        out_(out) {}
+
+  ALWAYS_INLINE bool operator()(ObjPtr<mirror::Class> klass)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (klass->IsProxyClass() ||
+        klass->IsArrayClass() ||
+        klass->IsPrimitive() ||
+        !klass->IsResolved() ||
+        klass->IsErroneousResolved() ||
+        (!profile_boot_class_path_ && klass->GetClassLoader() == nullptr)) {
+      return true;
+    }
+    out_->push_back(klass);
+    return true;
+  }
+
+ private:
+  const bool profile_boot_class_path_;
+  ScopedArenaVector<ObjPtr<mirror::Class>>* const out_;
+};
+
+void ProfileSaver::FetchAndCacheResolvedClassesAndMethods(bool startup) {
   ScopedTrace trace(__PRETTY_FUNCTION__);
   const uint64_t start_time = NanoTime();
 
@@ -291,37 +277,94 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
 
   Thread* const self = Thread::Current();
   Runtime* const runtime = Runtime::Current();
+  ClassLinker* const class_linker = runtime->GetClassLinker();
   ArenaStack stack(runtime->GetArenaPool());
   ScopedArenaAllocator allocator(&stack);
+  using MethodReferenceCollection = DexReferenceCollection<uint16_t, ScopedArenaAllocatorAdapter>;
+  using TypeReferenceCollection = DexReferenceCollection<dex::TypeIndex,
+                                                         ScopedArenaAllocatorAdapter>;
   MethodReferenceCollection hot_methods(allocator.Adapter(), allocator.Adapter());
-  MethodReferenceCollection startup_methods(allocator.Adapter(), allocator.Adapter());
+  MethodReferenceCollection sampled_methods(allocator.Adapter(), allocator.Adapter());
   TypeReferenceCollection resolved_classes(allocator.Adapter(), allocator.Adapter());
   const bool is_low_ram = Runtime::Current()->GetHeap()->IsLowMemoryMode();
-  const size_t hot_threshold = options_.GetHotStartupMethodSamples(is_low_ram);
   pthread_t profiler_pthread;
   {
     MutexLock mu(self, *Locks::profiler_lock_);
     profiler_pthread = profiler_pthread_;
   }
+  const uint32_t hot_method_sample_threshold = startup ?
+      options_.GetHotStartupMethodSamples(is_low_ram) :
+      std::numeric_limits<uint32_t>::max();
   {
     // Restore profile saver thread priority during the GC critical section. This helps prevent
     // priority inversions blocking the GC for long periods of time.
     ScopedDefaultPriority sdp(profiler_pthread);
+    // Do ScopedGCCriticalSection before acquiring mutator lock to prevent priority inversions
+    // on the mutator lock. The case we are trying to prevent is the GC thread trying to suspend all
+    // of the threads but getting stuck on a low priority profile saver thread.
+    // The ScopedGCCriticalSection addresses this by preventing GC from starting until after the
+    // visiting is done. Since the GC is a background thread, blocking it is not a problem.
     ScopedObjectAccess soa(self);
     gc::ScopedGCCriticalSection sgcs(self,
                                      gc::kGcCauseProfileSaver,
                                      gc::kCollectorTypeCriticalSection);
+    VariableSizedHandleScope hs(soa.Self());
+    std::vector<Handle<mirror::ClassLoader>> class_loaders;
+    if (options_.GetProfileBootClassPath()) {
+      // First add the boot class loader since visit classloaders doesn't visit it.
+      class_loaders.push_back(hs.NewHandle<mirror::ClassLoader>(nullptr));
+    }
+    GetClassLoadersVisitor class_loader_visitor(&hs, &class_loaders);
     {
-      ScopedTrace trace2("Get hot methods");
-      GetClassesAndMethodsVisitor visitor(&hot_methods,
-                                          &startup_methods,
-                                          &resolved_classes,
-                                          hot_threshold,
-                                          options_.GetProfileBootClassPath());
-      runtime->GetClassLinker()->VisitClasses(&visitor);
+      {
+        // Read the class loaders into a temporary array to prevent contention problems on the
+        // class_linker_classes_lock.
+        ScopedTrace trace2("Get class loaders");
+        ReaderMutexLock mu(soa.Self(), *Locks::classlinker_classes_lock_);
+        class_linker->VisitClassLoaders(&class_loader_visitor);
+      }
+      ScopedArenaVector<ObjPtr<mirror::Class>> classes(allocator.Adapter());
+      for (Handle<mirror::ClassLoader> class_loader : class_loaders) {
+        ClassTable* table = class_linker->ClassTableForClassLoader(class_loader.Get());
+        if (table == nullptr) {
+          continue;
+        }
+        GetClassesVisitor get_classes_visitor(options_.GetProfileBootClassPath(), &classes);
+        {
+          // Collect the classes into a temporary array to prevent lock contention on the class
+          // table lock. We want to avoid blocking class loading in other threads as much as
+          // possible.
+          ScopedTrace trace3("Visiting class table");
+          table->Visit(get_classes_visitor);
+        }
+        for (ObjPtr<mirror::Class> klass : classes) {
+          if (startup) {
+            // Only record classes for startup (for now).
+            resolved_classes.AddReference(&klass->GetDexFile(), klass->GetDexTypeIndex());
+          }
+          // Visit all of the methods in the class to see which ones were executed.
+          for (ArtMethod& method : klass->GetMethods(kRuntimePointerSize)) {
+            if (!method.IsNative()) {
+              DCHECK(!method.IsProxyMethod());
+              const uint16_t counter = method.GetCounter();
+              // Mark startup methods as hot if they have more than hot_method_sample_threshold
+              // samples. This means they will get compiled by the compiler driver.
+              if (method.GetProfilingInfo(kRuntimePointerSize) != nullptr ||
+                  (method.GetAccessFlags() & kAccPreviouslyWarm) != 0 ||
+                  counter >= hot_method_sample_threshold) {
+                hot_methods.AddReference(method.GetDexFile(), method.GetDexMethodIndex());
+              } else if (counter != 0) {
+                sampled_methods.AddReference(method.GetDexFile(), method.GetDexMethodIndex());
+              }
+            } else {
+              CHECK_EQ(method.GetCounter(), 0u);
+            }
+          }
+        }
+        classes.clear();
+      }
     }
   }
-
   MutexLock mu(self, *Locks::profiler_lock_);
   uint64_t total_number_of_profile_entries_cached = 0;
   using Hotness = ProfileCompilationInfo::MethodHotness;
@@ -329,9 +372,12 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
   for (const auto& it : tracked_dex_base_locations_) {
     std::set<DexCacheResolvedClasses> resolved_classes_for_location;
     const std::string& filename = it.first;
-    auto info_it = profile_cache_.Put(
-        filename,
-        new ProfileCompilationInfo(Runtime::Current()->GetArenaPool()));
+    auto info_it = profile_cache_.find(filename);
+    if (info_it == profile_cache_.end()) {
+      info_it = profile_cache_.Put(
+          filename,
+          new ProfileCompilationInfo(Runtime::Current()->GetArenaPool()));
+    }
     ProfileCompilationInfo* cached_info = info_it->second;
 
     const std::set<std::string>& locations = it.second;
@@ -339,18 +385,20 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
       const DexFile* const dex_file = pair.first;
       if (locations.find(dex_file->GetBaseLocation()) != locations.end()) {
         const MethodReferenceCollection::IndexVector& indices = pair.second;
+        uint8_t flags = Hotness::kFlagHot;
+        flags |= startup ? Hotness::kFlagStartup : Hotness::kFlagPostStartup;
         cached_info->AddMethodsForDex(
-            static_cast<Hotness::Flag>(Hotness::kFlagHot | Hotness::kFlagStartup),
+            static_cast<Hotness::Flag>(flags),
             dex_file,
             indices.begin(),
             indices.end());
       }
     }
-    for (const auto& pair : startup_methods.GetMap()) {
+    for (const auto& pair : sampled_methods.GetMap()) {
       const DexFile* const dex_file = pair.first;
       if (locations.find(dex_file->GetBaseLocation()) != locations.end()) {
         const MethodReferenceCollection::IndexVector& indices = pair.second;
-        cached_info->AddMethodsForDex(Hotness::kFlagStartup,
+        cached_info->AddMethodsForDex(startup ? Hotness::kFlagStartup : Hotness::kFlagPostStartup,
                                       dex_file,
                                       indices.begin(),
                                       indices.end());
@@ -375,8 +423,9 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods() {
       max_number_of_profile_entries_cached_,
       total_number_of_profile_entries_cached);
   VLOG(profiler) << "Profile saver recorded " << hot_methods.NumReferences() << " hot methods and "
-                 << startup_methods.NumReferences() << " startup methods with threshold "
-                 << hot_threshold << " in " << PrettyDuration(NanoTime() - start_time);
+                 << sampled_methods.NumReferences() << " sampled methods with threshold "
+                 << hot_method_sample_threshold << " in "
+                 << PrettyDuration(NanoTime() - start_time);
 }
 
 bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number_of_new_methods) {
@@ -396,6 +445,10 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
   if (number_of_new_methods != nullptr) {
     *number_of_new_methods = 0;
   }
+
+  // We only need to do this once, not once per dex location.
+  // TODO: Figure out a way to only do it when stuff has changed? It takes 30-50ms.
+  FetchAndCacheResolvedClassesAndMethods(/*startup*/ false);
 
   for (const auto& it : tracked_locations) {
     if (!force_save && ShuttingDown(Thread::Current())) {
@@ -442,6 +495,7 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
         total_number_of_skipped_writes_++;
         continue;
       }
+
       if (number_of_new_methods != nullptr) {
         *number_of_new_methods =
             std::max(static_cast<uint16_t>(delta_number_of_methods),
@@ -473,10 +527,11 @@ bool ProfileSaver::ProcessProfilingInfo(bool force_save, /*out*/uint16_t* number
         total_number_of_failed_writes_++;
       }
     }
-    // Trim the maps to madvise the pages used for profile info.
-    // It is unlikely we will need them again in the near feature.
-    Runtime::Current()->GetArenaPool()->TrimMaps();
   }
+
+  // Trim the maps to madvise the pages used for profile info.
+  // It is unlikely we will need them again in the near feature.
+  Runtime::Current()->GetArenaPool()->TrimMaps();
 
   return profile_file_saved;
 }
@@ -713,16 +768,15 @@ void ProfileSaver::ForceProcessProfiles() {
   }
 }
 
-bool ProfileSaver::HasSeenMethod(const std::string& profile,
-                                 const DexFile* dex_file,
-                                 uint16_t method_idx) {
+bool ProfileSaver::HasSeenMethod(const std::string& profile, bool hot, MethodReference ref) {
   MutexLock mu(Thread::Current(), *Locks::profiler_lock_);
   if (instance_ != nullptr) {
     ProfileCompilationInfo info(Runtime::Current()->GetArenaPool());
     if (!info.Load(profile, /*clear_if_invalid*/false)) {
       return false;
     }
-    return info.GetMethodHotness(MethodReference(dex_file, method_idx)).IsInProfile();
+    ProfileCompilationInfo::MethodHotness hotness = info.GetMethodHotness(ref);
+    return hot ? hotness.IsHot() : hotness.IsInProfile();
   }
   return false;
 }
