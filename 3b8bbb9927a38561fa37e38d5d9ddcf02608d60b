@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7304cfd4_438ba394",
+        "filename": "compiler/elf_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-06-07T23:11:42Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "601c09e2_7ae0bd3c",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 77
+      },
+      "revId": "3b8bbb9927a38561fa37e38d5d9ddcf02608d60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74a8d47d_ca4f9d01",
         "filename": "compiler/elf_writer_quick.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-07T23:02:50Z",
       "side": 0,
       "message": "I think this should be all that\u0027s necessary?",
+      "range": {
+        "startLine": 83,
+        "startChar": 46,
+        "endLine": 83,
+        "endChar": 47
+      },
+      "revId": "3b8bbb9927a38561fa37e38d5d9ddcf02608d60b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "752c073c_74af2c8a",
+        "filename": "compiler/elf_writer_quick.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-06-07T23:11:42Z",
+      "side": 0,
+      "message": "You\u0027re right.",
+      "parentUuid": "74a8d47d_ca4f9d01",
       "range": {
         "startLine": 83,
         "startChar": 46,
