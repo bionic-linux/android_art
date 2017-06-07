@@ -97,7 +97,7 @@ class ProfileSaver {
 
   // Fetches the current resolved classes and methods from the ClassLinker and stores them in the
   // profile_cache_ for later save.
-  void FetchAndCacheResolvedClassesAndMethods();
+  void FetchAndCacheResolvedClassesAndMethods(bool startup);
 
   void DumpInfo(std::ostream& os);
 
