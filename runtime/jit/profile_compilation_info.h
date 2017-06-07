@@ -259,9 +259,8 @@ class ProfileCompilationInfo {
                             uint32_t dex_checksum,
                             uint16_t dex_method_index) const;
 
-  // Return true if the method reference iS present and hot in the profiling info.
+  // Return true if the method reference is present and hot in the profiling info.
   bool ContainsHotMethod(const MethodReference& method_ref) const;
-
 
   // Return true if the profile contains a startup or post startup method.
   bool ContainsSampledMethod(bool startup, const MethodReference& method_ref) const;
