@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3ee926a_a8e44466",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-06-08T16:18:07Z",
+      "side": 1,
+      "message": "I want to optimize this stuff to remove transient memory spikes from the vectors, I\u0027ll try to finish that first.",
+      "parentUuid": "4065876c_7c719632",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "837c4d1eaa262c6f5db09d0ee2f8d28a42371c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cad212b_a905105c",
         "filename": "runtime/jit/profile_saver.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-08T14:56:04Z",
       "side": 1,
       "message": "you should decide on the name on this parameters :) They keep changing from on CL to another.",
+      "range": {
+        "startLine": 270,
+        "startChar": 33,
+        "endLine": 270,
+        "endChar": 40
+      },
+      "revId": "837c4d1eaa262c6f5db09d0ee2f8d28a42371c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a0ce79_e52834c3",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-06-08T16:18:07Z",
+      "side": 1,
+      "message": "Well, the purpose changed, so its only fair to change the name :)",
+      "parentUuid": "5cad212b_a905105c",
       "range": {
         "startLine": 270,
         "startChar": 33,
