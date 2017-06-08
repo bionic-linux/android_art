@@ -733,8 +733,17 @@ namespace std {
 
 template <typename T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T>& rhs) {
-os << ::art::ToString(rhs);
-return os;
+  std::ostringstream oss;
+  oss << "[";
+  for (size_t i = 0; i < rhs.size(); ++i) {
+    oss << rhs[i];
+    if (i < rhs.size() - 1) {
+      oss << ", ";
+    }
+  }
+  oss << "]";
+  os << oss.str();
+  return os;
 }
 
 }  // namespace std
