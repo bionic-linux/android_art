@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4065876c_7c719632",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-08T14:56:04Z",
+      "side": 1,
+      "message": "I worry about this and I\u0027d like a cost analysis before getting it. I want to keep the saver as light as possible. \n\nWhat is the cost here? Are there any runtime locks acquired in the process?\n\nThis seems heavy to me and even if we only do it in background we do it  for all running apps. \n\nAlso, keep in mind that this code is executed only when there is JIT activity. So if no methods gets warm, nothing gets executed here.",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 42
+      },
+      "revId": "837c4d1eaa262c6f5db09d0ee2f8d28a42371c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cad212b_a905105c",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-08T14:56:04Z",
+      "side": 1,
+      "message": "you should decide on the name on this parameters :) They keep changing from on CL to another.",
+      "range": {
+        "startLine": 270,
+        "startChar": 33,
+        "endLine": 270,
+        "endChar": 40
+      },
+      "revId": "837c4d1eaa262c6f5db09d0ee2f8d28a42371c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
