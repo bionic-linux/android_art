@@ -39,8 +39,17 @@ public abstract class Mutation {
     this.mutatableCode = mutatableCode;
     this.mutatableCodeIdx = mutatableCode.mutatableCodeIdx;
   }
-
+  /**
+   * overriding getString() method serializes the field of the mutation to string format,
+   * this returns string value because the object is converted to string so that it gets
+   * converted to a storable version.
+   */
   public abstract String getString();
-
+  /**
+   * overriding parseString() method deserializes the string back to the field of mutation.
+   * this returns an array because the array stores the strings that collectively make
+   *  an object
+   * @param elements
+   */
   public abstract void parseString(String[] elements);
 }
