@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06525a3a_0062c0ef",
+        "filename": "runtime/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-09T15:11:49Z",
+      "side": 0,
+      "message": "Was all this other stuff just unused?",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa3345e_7381e04d",
+        "filename": "runtime/base/stl_util.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-09T15:11:49Z",
+      "side": 0,
+      "message": "Seems quite useful, though it should\u0027ve had some SFINAE checks to make this only work for array-like containers.\n\nShame nobody seems to have used this.",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
