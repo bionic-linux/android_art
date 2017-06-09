@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08eac99c_27417015",
+        "filename": "runtime/base/bit_utils_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-09T15:15:09Z",
+      "side": 1,
+      "message": "Can\u0027t say I\u0027m super fond of this helper being in this file. It should be for the iterator itself, not for other helper functions that return an iterator.\n\nI think if including this file is a concern, these 2 helpers could go into an bit_utils-inl file.",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
