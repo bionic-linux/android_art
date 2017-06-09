@@ -34,6 +34,24 @@
       "revId": "b16026c681f40b509c521e1efe98826283f6885d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc8a76fb_31480282",
+        "filename": "runtime/common_runtime_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-09T15:27:02Z",
+      "side": 1,
+      "message": "If it\u0027s dead might as well remove it. Would\u0027ve been useful in other tests maybe, but eh, I think it\u0027s hardcoded to only vectors so its not super useful.",
+      "parentUuid": "8dd6035f_8db42377",
+      "revId": "b16026c681f40b509c521e1efe98826283f6885d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
