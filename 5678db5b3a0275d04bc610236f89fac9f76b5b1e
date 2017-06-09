@@ -88,6 +88,24 @@
       "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3036c817_d94ec474",
+        "filename": "runtime/base/bit_utils_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-09T16:11:07Z",
+      "side": 1,
+      "message": "Even with non-reference usage like this here? Seems unclean.",
+      "parentUuid": "b0b42602_b8271ab0",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
