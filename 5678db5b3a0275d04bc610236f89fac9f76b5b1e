@@ -34,6 +34,24 @@
       "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2db96103_2fb107e9",
+        "filename": "runtime/base/bit_utils_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-09T15:24:47Z",
+      "side": 1,
+      "message": "Ideally the bit_utils.h would have these 2 declarations (also the forward declaration of HighToLow/LowToHighBitBitIterator perhaps), implementation can go into bit_utils-inl.h\n\nIt feels like \"LowToHighBits\" and \"HighToLowBits\" are logically separate from the iterator implementation. It just *happens* to return an iterator to a bits iterator.\n\nAnyway maybe it\u0027s not worth the trouble but I just thought I\u0027d point that out, its an initial impression.",
+      "parentUuid": "64ca1337_280a8ccd",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
