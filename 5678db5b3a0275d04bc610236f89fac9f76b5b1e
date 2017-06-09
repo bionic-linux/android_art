@@ -16,6 +16,24 @@
       "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ca1337_280a8ccd",
+        "filename": "runtime/base/bit_utils_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-09T15:18:22Z",
+      "side": 1,
+      "message": "-inl doesn\u0027t seem right, really, considering you\u0027d still want a declaration in the header (we only violate this for allocator, where I really should have chosen _config, probably).",
+      "parentUuid": "08eac99c_27417015",
+      "revId": "5678db5b3a0275d04bc610236f89fac9f76b5b1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
