@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a9d2cd8_89c2ecf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-06-12T08:42:59Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this is supposed to mean. Isn\u0027t the real problem that the code before your fix imposes weird constraints on the order of command line arguments ? (i.e, that compiler filter is ignored if zip-fd appears before it, and similar...)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "3f686607ab939353e3faa1966485a6fcf4420978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
