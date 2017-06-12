@@ -46,6 +46,30 @@
       "revId": "3f686607ab939353e3faa1966485a6fcf4420978",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7be203d_929ee66c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2017-06-12T09:04:19Z",
+      "side": 1,
+      "message": "Please add a little more detail to the commit message ?",
+      "parentUuid": "919f191a_3d66ee9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 43
+      },
+      "revId": "3f686607ab939353e3faa1966485a6fcf4420978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
