@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3a3dd3bd_452c08b6",
+        "filename": "runtime/jit/profile_compilation_info-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-13T00:46:04Z",
+      "side": 1,
+      "message": "It shouldn\u0027t me, unless it\u0027s called under an important lock in which case we should re-evaluate the design.",
+      "parentUuid": "9bd78719_5542394e",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "9a60d73727aae98dcf7f664e1079575b3cdd7b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb825247_af237e5f",
         "filename": "runtime/jit/profile_compilation_info_test.cc",
         "patchSetId": 1
