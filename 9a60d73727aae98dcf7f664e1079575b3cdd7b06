@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b384cc43_72d524ac",
+        "filename": "runtime/jit/profile_compilation_info-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-06-13T00:43:24Z",
+      "side": 1,
+      "message": "I think agampe is trying to move away from logic in widely imported headers.",
+      "parentUuid": "1416f9cc_99a6574a",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "9a60d73727aae98dcf7f664e1079575b3cdd7b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb825247_af237e5f",
         "filename": "runtime/jit/profile_compilation_info_test.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-13T00:23:15Z",
       "side": 1,
       "message": "This looks miss-placed.",
+      "range": {
+        "startLine": 935,
+        "startChar": 4,
+        "endLine": 935,
+        "endChar": 66
+      },
+      "revId": "9a60d73727aae98dcf7f664e1079575b3cdd7b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8095aa4_f461b472",
+        "filename": "runtime/jit/profile_compilation_info_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-06-13T00:43:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb825247_af237e5f",
       "range": {
         "startLine": 935,
         "startChar": 4,
