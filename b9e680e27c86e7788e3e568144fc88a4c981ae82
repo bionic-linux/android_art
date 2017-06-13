@@ -22,6 +22,30 @@
       "revId": "b9e680e27c86e7788e3e568144fc88a4c981ae82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc18f668_9719f625",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-06-13T03:26:35Z",
+      "side": 1,
+      "message": "That was the average time for maps. Good question about class linker. We probably want to avoid blocking threads doing classloading for too long. The time spent holding the lock was smaller in systrace than 50ms. We can probably read the classloaders into an array then visit without holding the lock.",
+      "parentUuid": "63244632_c21ab57c",
+      "range": {
+        "startLine": 356,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 83
+      },
+      "revId": "b9e680e27c86e7788e3e568144fc88a4c981ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
