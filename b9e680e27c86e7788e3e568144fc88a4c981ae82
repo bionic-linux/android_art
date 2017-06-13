@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63244632_c21ab57c",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-13T03:20:07Z",
+      "side": 1,
+      "message": "This requires classlinker_classes_lock_. Can you comment on the impact of holding the lock in a low priority thread (kProfileSaverPthreadPriority \u003d 9) for 50ms?\n\nIs 50ms the top for big apps?",
+      "range": {
+        "startLine": 356,
+        "startChar": 2,
+        "endLine": 357,
+        "endChar": 83
+      },
+      "revId": "b9e680e27c86e7788e3e568144fc88a4c981ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
