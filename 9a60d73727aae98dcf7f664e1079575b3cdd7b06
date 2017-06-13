@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9bd78719_5542394e",
+        "filename": "runtime/jit/profile_compilation_info-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-13T00:43:56Z",
+      "side": 1,
+      "message": "Can\u0027t we move this to the .cc instead? What\u0027s the argument for this being so performance-sensitive it must be inlined?",
+      "parentUuid": "1416f9cc_99a6574a",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 55
+      },
+      "revId": "9a60d73727aae98dcf7f664e1079575b3cdd7b06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb825247_af237e5f",
         "filename": "runtime/jit/profile_compilation_info_test.cc",
         "patchSetId": 1
