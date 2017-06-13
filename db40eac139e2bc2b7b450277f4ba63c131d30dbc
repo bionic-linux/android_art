@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9f632cc_aea9c6a0",
+        "filename": "runtime/jit/profile_compilation_info-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-13T20:00:15Z",
+      "side": 1,
+      "message": "As discussed you can get rid of this in a follow up.",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "db40eac139e2bc2b7b450277f4ba63c131d30dbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
