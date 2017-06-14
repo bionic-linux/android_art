@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab125f27_0a26b683",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-14T21:02:21Z",
+      "side": 1,
+      "message": "FYI, null (\u003dcurrent) is a valid input to GetThreadInfo. Not sure what the functionality is you want.",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 25
+      },
+      "revId": "bad2f51907b60b0348a88ec832b24b5bcb4d6ae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
