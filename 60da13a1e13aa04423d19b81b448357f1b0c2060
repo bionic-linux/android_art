@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38a36549_f64570d8",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-14T20:58:29Z",
+      "side": 1,
+      "message": "Those aren\u0027t actually exported where we can get at them easily...\n\nI\u0027m not sure it would be cleaner anyway.",
+      "parentUuid": "528c98a1_a400d693",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 22
+      },
+      "revId": "60da13a1e13aa04423d19b81b448357f1b0c2060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f7ca1a1_c4a87f4a",
         "filename": "test/ti-stress/stress.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ee346a80_bce585b0",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-14T20:58:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7ca1a1_c4a87f4a",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 53
+      },
+      "revId": "60da13a1e13aa04423d19b81b448357f1b0c2060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c054a2c5_bd71d24e",
         "filename": "test/ti-stress/stress.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-14T20:39:36Z",
       "side": 1,
       "message": "Could replace this with Valid() and do everything in the constructor. Would avoid the unique_ptr for class_info. No string opinion, though.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "60da13a1e13aa04423d19b81b448357f1b0c2060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e0205f7_e3c3107b",
+        "filename": "test/ti-stress/stress.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-14T20:58:29Z",
+      "side": 1,
+      "message": "\u003e Could replace this with Valid() and do everything in the constructor. Would avoid the unique_ptr for class_info. No string opinion, though.\n\nSince we need to do the GetDeclaringClass call first and that can fail I don\u0027t think we can easily do everything in the constructor without using move stuff. I can do that if you want.",
+      "parentUuid": "c054a2c5_bd71d24e",
       "range": {
         "startLine": 169,
         "startChar": 2,
