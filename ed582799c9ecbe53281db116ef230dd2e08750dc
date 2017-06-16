@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b6b2cb5_44293750",
+        "filename": "test/988-method-trace/src/art/Trace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-16T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b60e713e_fd80d2ec",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "ed582799c9ecbe53281db116ef230dd2e08750dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dc438a0_34f127c8",
         "filename": "test/989-method-trace-throw/src/art/Trace.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-16T22:48:55Z",
       "side": 1,
       "message": "Sort",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "ed582799c9ecbe53281db116ef230dd2e08750dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17fcd29a_be78accd",
+        "filename": "test/989-method-trace-throw/src/art/Trace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-16T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dc438a0_34f127c8",
       "range": {
         "startLine": 20,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e1b6a15b_74adcb80",
+        "filename": "test/990-field-trace/src/art/Trace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-16T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3589bfb_0332b6e5",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "ed582799c9ecbe53281db116ef230dd2e08750dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a677169_153ea1c2",
         "filename": "test/991-field-trace-2/src/art/Test991.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-16T22:48:55Z",
       "side": 1,
       "message": "You\u0027re not consistent. Another file pushes the package below all util classes.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 35
+      },
+      "revId": "ed582799c9ecbe53281db116ef230dd2e08750dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908de501_ceb8f503",
+        "filename": "test/991-field-trace-2/src/art/Test991.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-06-16T23:23:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a677169_153ea1c2",
       "range": {
         "startLine": 22,
         "startChar": 0,
