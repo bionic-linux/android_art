@@ -166,6 +166,24 @@
       "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3cb532b_3f30dbaf",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-16T15:37:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure I really understand?\n\nTo even boot the device with libartd.so we have to shove in \"-Xlib:libartd.so\" somewhere right?\n\nSo why can\u0027t we also shove in \"-Xlibartd.so -XX:DebugCheckLevel\u003dfast\" while we\u0027re doing that?\n\nIt\u0027ll also make it more obvious from code search who is trying to use fast debugs because it will be in a script somewhere.\n----\n\nOr are, we saying that they already have the \"-Xlib:libartd.so\" scripts so by doing the \"fast by default\" we don\u0027t have to update anywhere else?\n\n-----\n\nEither way the reasoning for the default behavior should be encapsulated where we set the default gDebugLevel.",
+      "parentUuid": "29777127_5152ccf5",
+      "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
