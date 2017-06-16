@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "391391bb_add9d29c",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-16T15:12:49Z",
+      "side": 1,
+      "message": "It\u0027s extra special (not that it really means none, because check level none will still do something), so I wanted it to stand out.",
+      "parentUuid": "8fe9280a_bd2dcbba",
+      "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76bfa035_4644d77c",
         "filename": "runtime/parsed_options.cc",
         "patchSetId": 2
@@ -127,6 +145,24 @@
       "writtenOn": "2017-06-16T14:12:35Z",
       "side": 1,
       "message": "I\u0027m not sure about this either way:\n\nIs it hard to make default \"all\" and make people reduce level down to e.g. \"fast\" ?\n\nAlso what about gtest?",
+      "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29777127_5152ccf5",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-16T15:12:49Z",
+      "side": 1,
+      "message": "Nicolas would like a libartd that by default boots the device. That means slow checks can\u0027t be on by default.\n\nYes, gtest is an oversight. I\u0027ll have to change common_runtime_test.",
+      "parentUuid": "e673efb2_f1d23942",
       "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
