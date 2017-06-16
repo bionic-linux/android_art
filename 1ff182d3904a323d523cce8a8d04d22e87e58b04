@@ -238,6 +238,24 @@
       "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03852163_21ec4204",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-16T16:27:51Z",
+      "side": 1,
+      "message": "Vogar doesn\u0027t use libartd.so\n\nart/tools/run-libcore-tests.sh and art/tools/run-jdwp-tests.sh do and should be updated\n\nAnyway you could just search for \"libartd.so\" in code search and update all those places, it will be easier than pointing them out here one by one.",
+      "parentUuid": "39acf2fa_6f6afc41",
+      "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
