@@ -184,6 +184,24 @@
       "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b63360c_65011bc4",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-16T15:58:33Z",
+      "side": 1,
+      "message": "libartd is shoved in by setting a specific system property that defines which runtime library is loaded. Having to add extra-opts separately is not that great.\n\nAgree on adding reasoning to logging.cc.",
+      "parentUuid": "b3cb532b_3f30dbaf",
+      "revId": "1ff182d3904a323d523cce8a8d04d22e87e58b04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
