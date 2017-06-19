@@ -22,6 +22,30 @@
       "revId": "3115e17d4da77550f05279525cffd2a1ad7dc8ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa1109be_acb8059a",
+        "filename": "test/065-mismatched-implements/build",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-19T15:20:40Z",
+      "side": 1,
+      "message": "I asked the owner of desugar and he said it\u0027s WAI.\n\nBasically since desugar *actually* loads the java classes at runtime the ICCE will happen because that\u0027s the correct runtime behavior.",
+      "parentUuid": "2f0f5cdb_fc0e68c7",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "3115e17d4da77550f05279525cffd2a1ad7dc8ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
