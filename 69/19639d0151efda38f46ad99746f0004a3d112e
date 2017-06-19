@@ -1,0 +1,9 @@
+Verified+1: Igor Murashkin <iam@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Orion Hodson <oth@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Igor Murashkin <iam@google.com>
+Submitted-at: Mon, 19 Jun 2017 17:59:32 +0000
+Reviewed-on: https://android-review.googlesource.com/416994
+Project: platform/art
+Branch: refs/heads/master
