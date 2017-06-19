@@ -22,6 +22,30 @@
       "revId": "1d3d952ac659bd5041c600c4045ed850f546a1dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7206b42b_65bffa6a",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-19T14:01:54Z",
+      "side": 1,
+      "message": "dex file version will change behavior (mainly of the verifier), are we ok to set it to the latest?",
+      "parentUuid": "7fcf92da_416e99ae",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 31
+      },
+      "revId": "1d3d952ac659bd5041c600c4045ed850f546a1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
