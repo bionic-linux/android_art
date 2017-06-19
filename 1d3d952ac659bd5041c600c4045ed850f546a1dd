@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fcf92da_416e99ae",
+        "filename": "test/etc/default-build",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-06-19T08:19:06Z",
+      "side": 1,
+      "message": "If this were 26, we might lose the 95x build scripts too. Not sure there\u0027s much benefit keeping this behind an experimental flag at this stage.",
+      "range": {
+        "startLine": 74,
+        "startChar": 28,
+        "endLine": 74,
+        "endChar": 31
+      },
+      "revId": "1d3d952ac659bd5041c600c4045ed850f546a1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
