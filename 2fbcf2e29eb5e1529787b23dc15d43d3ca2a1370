@@ -22,6 +22,30 @@
       "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e4cbd6f_e9d92dfd",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-20T14:57:39Z",
+      "side": 1,
+      "message": "This is pretty integral to this change. I wanted logging to be the central place that can toggle (including Runtime::Init) whether you\u0027re slow or not, instead of parsed_options or w/e. Then this is required to remember where all the flags are.",
+      "parentUuid": "53a361d7_a5f4818c",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
