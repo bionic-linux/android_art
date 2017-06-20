@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53a361d7_a5f4818c",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-06-20T11:48:59Z",
+      "side": 1,
+      "message": "Could we move this to another change? I would argue against it, as I don\u0027t see the need for such low granularity, but that shouldn\u0027t remove the merit of the current change, which I support.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 29
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
