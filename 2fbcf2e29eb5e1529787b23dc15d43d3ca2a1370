@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3af20561_f83923ce",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-06-20T15:38:06Z",
+      "side": 1,
+      "message": "#else (do not emit the code below for release build)",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53a361d7_a5f4818c",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 3
@@ -42,6 +65,52 @@
         "startChar": 0,
         "endLine": 48,
         "endChar": 29
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32d2a304_5b3cc853",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-06-20T15:38:06Z",
+      "side": 1,
+      "message": "Why not\n\n  DECLARE_RUNTIME_DEBUG_FLAG(x) \\\n    static const bool\u0026 x;\n  DEFINE_RUNTIME_DEBUG_FLAG(C, x) \\\n    const bool\u0026 C::x \u003d GetRuntimeDebugFlagReference();\n\n? Then you can drop the std::vector\u003cbool*\u003e and have all the flags as references to the same location. Such an indirection should have only a minor impact on performance.\n\n(Unless you want to allow changing the flags individually which is not the case right now.)",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0ea656c_0b849e02",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-06-20T15:38:06Z",
+      "side": 1,
+      "message": "-XX:SlowDebug\u003d{true|false}",
+      "range": {
+        "startLine": 714,
+        "startChar": 26,
+        "endLine": 714,
+        "endChar": 51
       },
       "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
