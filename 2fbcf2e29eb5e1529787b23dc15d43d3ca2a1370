@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "cc353653_de92e353",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-20T15:40:44Z",
+      "side": 1,
+      "message": "The current registration would be quite trivial to change to support single flag changes (which Narayan just asked about).\n\nNot a strong opinion.",
+      "parentUuid": "32d2a304_5b3cc853",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0ea656c_0b849e02",
         "filename": "runtime/parsed_options.cc",
         "patchSetId": 3
