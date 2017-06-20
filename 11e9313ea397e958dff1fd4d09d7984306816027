@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4b14e17_3a89c88e",
+        "filename": "tools/dexfuzz/src/dexfuzz/program/mutators/InstructionDuplicator1.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-20T02:25:59Z",
+      "side": 1,
+      "message": "Make sure you configure your editor to remove trailing spaces :)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "11e9313ea397e958dff1fd4d09d7984306816027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
