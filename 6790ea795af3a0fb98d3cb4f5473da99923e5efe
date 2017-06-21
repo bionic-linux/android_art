@@ -328,6 +328,24 @@
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc321654_039c21f4",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T17:11:44Z",
+      "side": 1,
+      "message": "Yes, I was talking about DEFINE in particular. \n\nBasically make sure DEFINE(C,x) doesn\u0027t have a typo -- otherwise you might not catch the error until later when building DEBUG version.",
+      "parentUuid": "9c8d98d6_beae7377",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
