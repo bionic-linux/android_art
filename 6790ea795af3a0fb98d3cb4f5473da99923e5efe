@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e07f13f6_608eb740",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T15:51:46Z",
+      "side": 1,
+      "message": "If it\u0027s not a constexpr, I can\u0027t do static_assert on it. It seemed the most reasonable to group it close together.",
+      "parentUuid": "c4bd65b4_29207ca0",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a45c2d6_88f990f2",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e3de8656_6f9463d7",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T15:51:46Z",
+      "side": 1,
+      "message": "vmarko preferred to not generate the code to then be stripped.",
+      "parentUuid": "9a45c2d6_88f990f2",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f275542b_2bbff660",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2017-06-21T15:42:35Z",
       "side": 1,
       "message": "Can it be made static?",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d29d41d0_dff0e0ab",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T15:51:46Z",
+      "side": 1,
+      "message": "Yes, will do.",
+      "parentUuid": "f275542b_2bbff660",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "ab32d036_fb62a66b",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T15:51:46Z",
+      "side": 1,
+      "message": "Only if I \"emit\" the definitions above, which vmarko didn\u0027t like.",
+      "parentUuid": "ddf30eb9_95893dff",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ece1c094_f8e4b27b",
         "filename": "runtime/base/logging.h",
         "patchSetId": 4
@@ -181,6 +253,24 @@
       "side": 1,
       "message": "What do you mean? Isn\u0027t it declared on 87?\n\nI thought the only difference is in NDEBUG it\u0027s static constexpr(false) , in DEBUG it\u0027s a non-const static ?",
       "parentUuid": "38023f74_df3b674d",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31448c42_66e66d51",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T15:51:46Z",
+      "side": 1,
+      "message": "Do you mean add it to the macro so it\u0027s emitted at the flag definition site?",
+      "parentUuid": "c2544897_2c8809de",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
