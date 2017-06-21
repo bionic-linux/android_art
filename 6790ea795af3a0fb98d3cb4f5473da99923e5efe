@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4bd65b4_29207ca0",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "Probably ok to always do this right? We don\u0027t really care about an additional variable when DEBUG is true.",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a45c2d6_88f990f2",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "Not sure you need this, if you make gSlowEnabled static then it will automatically strip the variable if its unused.",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f275542b_2bbff660",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "Can it be made static?",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16de0ea9_39558534",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 4
@@ -19,6 +70,64 @@
         "endLine": 52,
         "endChar": 10
       },
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c973782_171fe035",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "Static variable initialization [outside of templates] across multiple translation units is indeterminately sequenced.\n\nIn other words, one is definitely sequenced-before the other but it is unknown which apriori.\n\nhttp://en.cppreference.com/w/cpp/language/initialization \u003e See \"Ordered Dynamic Initialization\"\n\n----\nAs a sidenote the local static variable (in a function) initialization is guaranteed to be thread-safe but that\u0027s not what matters because the static variable on L54 will be triggered by the global initialization of the debug variables.",
+      "parentUuid": "16de0ea9_39558534",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddf30eb9_95893dff",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "I think you can just use\n\n  if (kIsDebugBuild) { ... } )",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ece1c094_f8e4b27b",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "nit: missing semicolon",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -54,6 +163,24 @@
       "side": 1,
       "message": "C::x will not be declared in that case.",
       "parentUuid": "8e726812_26da4fa6",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2544897_2c8809de",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:42:35Z",
+      "side": 1,
+      "message": "What do you mean? Isn\u0027t it declared on 87?\n\nI thought the only difference is in NDEBUG it\u0027s static constexpr(false) , in DEBUG it\u0027s a non-const static ?",
+      "parentUuid": "38023f74_df3b674d",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
