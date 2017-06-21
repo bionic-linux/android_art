@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "16de0ea9_39558534",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-06-21T08:59:31Z",
+      "side": 1,
+      "message": "Is the C++ standard still silent on whether the initialization of statics can be multi-threaded? The GetFlagPtrs().push_back(flag_ptr) would be racy.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 10
+      },
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e726812_26da4fa6",
         "filename": "runtime/base/logging.h",
         "patchSetId": 4
@@ -13,6 +36,24 @@
       "writtenOn": "2017-06-21T01:08:12Z",
       "side": 1,
       "message": "Should we have something here for NDEBUG case? Maybe like static_assert or something?\n\n  static_assert(sizeof(C::x) \u003d\u003d sizeof(bool), \"invalid debug flag\");\n\nJust to help catch build errors (when building NDEBUG) faster? \n\nI don\u0027t know, might not be worth it. Just throwing out an idea.",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38023f74_df3b674d",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-06-21T08:59:31Z",
+      "side": 1,
+      "message": "C::x will not be declared in that case.",
+      "parentUuid": "8e726812_26da4fa6",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
