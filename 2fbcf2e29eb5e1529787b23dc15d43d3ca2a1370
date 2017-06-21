@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "d8d8e9bc_014a6e9d",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T01:08:12Z",
+      "side": 1,
+      "message": "Personally I prefer this current approach as well (and its probably faster to do a single load than two loads (one of which is dependent) when we do the if-conditions).\n\nThat being said, not a strong opinion either.",
+      "parentUuid": "cc353653_de92e353",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 46
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0ea656c_0b849e02",
         "filename": "runtime/parsed_options.cc",
         "patchSetId": 3

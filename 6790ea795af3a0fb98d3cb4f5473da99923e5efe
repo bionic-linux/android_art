@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e726812_26da4fa6",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T01:08:12Z",
+      "side": 1,
+      "message": "Should we have something here for NDEBUG case? Maybe like static_assert or something?\n\n  static_assert(sizeof(C::x) \u003d\u003d sizeof(bool), \"invalid debug flag\");\n\nJust to help catch build errors (when building NDEBUG) faster? \n\nI don\u0027t know, might not be worth it. Just throwing out an idea.",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
