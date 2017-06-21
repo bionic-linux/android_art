@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f05c74cb_f9ea6c7e",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:54:56Z",
+      "side": 1,
+      "message": "I think you can just use sizeof(flag) \u003d\u003d sizeof(bool) for the static_assert as I suggested in another place. That will work regardless of if its constexpr.",
+      "parentUuid": "e07f13f6_608eb740",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a45c2d6_88f990f2",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "vmarko preferred to not generate the code to then be stripped.",
       "parentUuid": "9a45c2d6_88f990f2",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a019aa77_6546225f",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-21T15:54:56Z",
+      "side": 1,
+      "message": "Vmarko, why? At first glance, it seems it would be cleaner than #Ifndef which we should probably keep to a minimum ?",
+      "parentUuid": "e3de8656_6f9463d7",
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
