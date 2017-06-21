@@ -310,6 +310,24 @@
       "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c8d98d6_beae7377",
+        "filename": "runtime/base/logging.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T16:13:52Z",
+      "side": 1,
+      "message": "I\u0027m hesitant to put this into the DECLARE, because that would increase compile-time for every single compilation unit.\n\nCan I always put it into the DEFINE. If the flag is private, are you still allowed to do sizeof?",
+      "parentUuid": "31448c42_66e66d51",
+      "revId": "6790ea795af3a0fb98d3cb4f5473da99923e5efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
