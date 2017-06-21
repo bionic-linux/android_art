@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93c4379b_067cc3cf",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T01:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3af20561_f83923ce",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 6
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53a361d7_a5f4818c",
         "filename": "runtime/base/logging.cc",
         "patchSetId": 3
@@ -89,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "53a26ab0_fb5a3c13",
+        "filename": "runtime/base/logging.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T01:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "438ed06d_7a6168cb",
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32d2a304_5b3cc853",
         "filename": "runtime/base/logging.h",
         "patchSetId": 3
@@ -147,6 +189,30 @@
       "writtenOn": "2017-06-20T15:38:06Z",
       "side": 1,
       "message": "-XX:SlowDebug\u003d{true|false}",
+      "range": {
+        "startLine": 714,
+        "startChar": 26,
+        "endLine": 714,
+        "endChar": 51
+      },
+      "revId": "2fbcf2e29eb5e1529787b23dc15d43d3ca2a1370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5de8f075_8f79220f",
+        "filename": "runtime/parsed_options.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-21T01:03:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ea656c_0b849e02",
       "range": {
         "startLine": 714,
         "startChar": 26,
