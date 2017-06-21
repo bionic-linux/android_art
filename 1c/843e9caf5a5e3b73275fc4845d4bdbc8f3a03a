@@ -1,0 +1,9 @@
+Autosubmit+1: Igor Murashkin <iam@google.com>
+Code-Review+2: Narayan Kamath <narayan@google.com>
+Verified+1: Igor Murashkin <iam@google.com>
+Presubmit-Ready+1: Igor Murashkin <iam@google.com>
+Submitted-by: Igor Murashkin <iam@google.com>
+Submitted-at: Wed, 21 Jun 2017 18:58:22 +0000
+Reviewed-on: https://android-review.googlesource.com/418169
+Project: platform/art
+Branch: refs/heads/master
