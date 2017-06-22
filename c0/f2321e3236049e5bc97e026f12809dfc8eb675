@@ -1,0 +1,12 @@
+Code-Review+2: Igor Murashkin <iam@google.com>
+Code-Review+1: Andreas Gampe <agampe@google.com>
+Code-Review+2: Orion Hodson <oth@google.com>
+Autosubmit+1: Igor Murashkin <iam@google.com>
+Presubmit-Ready+1: Igor Murashkin <iam@google.com>
+Verified+1: Igor Murashkin <iam@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Igor Murashkin <iam@google.com>
+Submitted-at: Thu, 22 Jun 2017 22:35:53 +0000
+Reviewed-on: https://android-review.googlesource.com/420362
+Project: platform/art
+Branch: refs/heads/master
