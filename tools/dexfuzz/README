@@ -134,6 +134,7 @@ CmpBiasChanger 30
 ConstantValueChanger 70
 ConversionRepeater 50
 FieldFlagChanger 40
+CmpCondChanger30
 InstructionDeleter 40
 InstructionDuplicator 80
 InstructionSwapper 80
