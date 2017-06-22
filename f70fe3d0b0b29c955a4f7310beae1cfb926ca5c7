@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da95062e_5964d00b",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-06-22T20:36:16Z",
+      "side": 1,
+      "message": "Does IsImage also implies IsAppImage?",
+      "range": {
+        "startLine": 1468,
+        "startChar": 48,
+        "endLine": 1468,
+        "endChar": 55
+      },
+      "revId": "f70fe3d0b0b29c955a4f7310beae1cfb926ca5c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
