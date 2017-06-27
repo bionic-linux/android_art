@@ -34,6 +34,24 @@
       "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "232eabaa_4a5899e4",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-27T15:53:31Z",
+      "side": 1,
+      "message": "To clarify:\n\nIt\u0027s WAI to print two instances of JNI_OnUnload? Why is it WAI?",
+      "parentUuid": "6ceb4eb7_f69670ad",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
