@@ -70,6 +70,24 @@
       "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1ad974_20dd7703",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-27T16:24:12Z",
+      "side": 1,
+      "message": "Mathieu, can you elaborate why gcstress prints extra JNI_OnUnload?",
+      "parentUuid": "f9357044_28ca450f",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
