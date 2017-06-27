@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c20931_eebca5af",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-06-27T14:57:48Z",
+      "side": 1,
+      "message": "Just to be confirm this, this is working-as-intended right?",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
