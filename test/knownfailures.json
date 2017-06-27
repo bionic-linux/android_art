@@ -665,5 +665,11 @@
         "description": [ "Flake on gcstress" ],
         "bug": "b/62562923",
         "variant": "gcstress & jit & target"
+    },
+    {
+        "tests": ["656-annotation-lookup-generic-jni"],
+        "description": [ "Extra 'JNI_OnUnload called' statement in output with gcstress" ],
+        "bug": "b/38454151",
+        "variant": "gcstress"
     }
 ]
