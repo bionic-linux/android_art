@@ -52,6 +52,24 @@
       "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9357044_28ca450f",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-06-27T16:00:09Z",
+      "side": 1,
+      "message": "Not, this would not be WAI (and should be flagged by the current patch set of this CL).\n\nSome more context: on most configurations, no \"JNI_OnUnload called\" line is printed (at all); however, on gcstress configurations, this line gets printed at the end.",
+      "parentUuid": "232eabaa_4a5899e4",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
