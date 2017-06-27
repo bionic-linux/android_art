@@ -16,6 +16,24 @@
       "revId": "8020d04235c002b8e73348abf165fa0b3bc3b5f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc22509a_ed3ad350",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-06-27T14:15:02Z",
+      "side": 1,
+      "message": "This is temporary, to reduce buildbot spam. I\u0027m trying to modify the test to address this.",
+      "parentUuid": "978a3192_b2100c28",
+      "revId": "8020d04235c002b8e73348abf165fa0b3bc3b5f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

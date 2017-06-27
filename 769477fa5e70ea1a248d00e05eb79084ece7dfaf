@@ -22,6 +22,30 @@
       "revId": "769477fa5e70ea1a248d00e05eb79084ece7dfaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eac4f1c5_9de43b14",
+        "filename": "test/656-annotation-lookup-generic-jni/info.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-06-27T14:15:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b3a7e2a_5ce096d3",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 14
+      },
+      "revId": "769477fa5e70ea1a248d00e05eb79084ece7dfaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
