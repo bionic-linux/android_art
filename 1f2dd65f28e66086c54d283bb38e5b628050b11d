@@ -88,6 +88,24 @@
       "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "779d40bb_34c1417f",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-27T16:30:36Z",
+      "side": 1,
+      "message": "Best guess: by default we don\u0027t get around to deleting the ClassLoader before we shut down (and thus don\u0027t unload), and gcstress runs an extra GC somewhere?",
+      "parentUuid": "ec1ad974_20dd7703",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
