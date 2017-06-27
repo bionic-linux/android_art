@@ -106,6 +106,24 @@
       "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cc34478_3bd97b8e",
+        "filename": "test/656-annotation-lookup-generic-jni/check",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-06-27T16:32:28Z",
+      "side": 1,
+      "message": "Yes, this is also my interpretation.",
+      "parentUuid": "779d40bb_34c1417f",
+      "revId": "1f2dd65f28e66086c54d283bb38e5b628050b11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
