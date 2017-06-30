@@ -67,7 +67,13 @@ static constexpr ManagedRegister kCalleeSaveRegisters[] = {
     ArmManagedRegister::FromCoreRegister(R5),
     ArmManagedRegister::FromCoreRegister(R6),
     ArmManagedRegister::FromCoreRegister(R7),
+#if defined(USE_READ_BARRIER) && defined(USE_BAKER_READ_BARRIER)
+    // Do not consider R8 (Marking Register) as a callee-save in the case
+    // of Baker read barriers, as it will be overwritten (refreshed) in
+    // the jni method epilogue (see ArmJNIMacroAssembler::RemoveFrame).
+#else
     ArmManagedRegister::FromCoreRegister(R8),
+#endif
     ArmManagedRegister::FromCoreRegister(R10),
     ArmManagedRegister::FromCoreRegister(R11),
     // Hard float registers.
