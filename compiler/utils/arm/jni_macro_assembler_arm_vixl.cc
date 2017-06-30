@@ -136,6 +136,7 @@ void ArmVIXLJNIMacroAssembler::RemoveFrame(size_t frame_size,
   CHECK_GT(frame_size, pop_values * kFramePointerSize);
   DecreaseFrameSize(frame_size - (pop_values * kFramePointerSize));  // handles CFI as well.
 
+  // Pop FP callee saves.
   if (fp_spill_mask != 0) {
     uint32_t first = CTZ(fp_spill_mask);
     // Check that list is contiguous.
@@ -146,7 +147,19 @@ void ArmVIXLJNIMacroAssembler::RemoveFrame(size_t frame_size,
     cfi().RestoreMany(DWARFReg(s0), fp_spill_mask);
   }
 
-  // Pop callee saves and PC.
+  if (kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
+    // Refresh Mark Register.
+    // TODO: Refresh MR only if suspend is taken.
+    ___ Ldr(mr, MemOperand(tr, Thread::IsGcMarkingOffset<kArmPointerSize>().Int32Value()));
+  }
+
+  // Pop core callee saves and PC.
+  // Note: With Baker read barriers, MR (R8) is not considered as a
+  // callee-save register and thus not overwritten by the following
+  // Pop macro-instruction.
+  if (kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
+    DCHECK_EQ(core_spill_mask & (1 << MR), 0) << "core_spill_mask should not contain MR (R8)";
+  }
   ___ Pop(RegisterList(core_spill_mask));
 
   // The CFI should be restored for any code that follows the exit block.
