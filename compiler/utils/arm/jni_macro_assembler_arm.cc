@@ -146,8 +146,8 @@ void ArmJNIMacroAssembler::RemoveFrame(size_t frame_size,
   CHECK_ALIGNED(frame_size, kStackAlignment);
   cfi().RememberState();
 
-  // Compute callee saves to pop and PC.
-  RegList core_spill_mask = 1 << PC;
+  // Compute callee saves to pop and LR.
+  RegList core_spill_mask = 1 << LR;
   uint32_t fp_spill_mask = 0;
   for (const ManagedRegister& reg : callee_save_regs) {
     if (reg.AsArm().IsCoreRegister()) {
@@ -162,14 +162,25 @@ void ArmJNIMacroAssembler::RemoveFrame(size_t frame_size,
   CHECK_GT(frame_size, pop_values * kFramePointerSize);
   DecreaseFrameSize(frame_size - (pop_values * kFramePointerSize));  // handles CFI as well.
 
+  // Pop FP callee saves.
   if (fp_spill_mask != 0) {
     __ vpops(SRegister(CTZ(fp_spill_mask)), POPCOUNT(fp_spill_mask));
     cfi().AdjustCFAOffset(-kFramePointerSize * POPCOUNT(fp_spill_mask));
     cfi().RestoreMany(DWARFReg(SRegister(0)), fp_spill_mask);
   }
 
-  // Pop callee saves and PC.
+  // Pop core callee saves and LR.
   __ PopList(core_spill_mask);
+
+  if (kEmitCompilerReadBarrier && kUseBakerReadBarrier) {
+    // Refresh Mark Register.
+    // TODO: Refresh MR only if suspend is taken.
+    __ LoadFromOffset(
+        kLoadWord, MR, TR, Thread::IsGcMarkingOffset<kArmPointerSize>().Int32Value());
+  }
+
+  // Return to LR.
+  __ bx(LR);
 
   // The CFI should be restored for any code that follows the exit block.
   cfi().RestoreState();
