@@ -79,6 +79,21 @@ class CodegenTargetConfig {
 };
 
 #ifdef ART_ENABLE_CODEGEN_arm
+// Special ARM code generators for codegen testing in a limited code
+// generation environment (i.e. with no runtime support).
+//
+// Note: If we want to exercise certains HIR constructions
+// (e.g. reference field load in Baker read barrier configuration) in
+// codegen tests in the future, we should also:
+// - save the Thread Register (R9) and possibly the Marking Register
+//   (R8) before entering the generated function (both registers are
+//   callee-save in AAPCS);
+// - set these registers to meaningful values before or upon entering
+//   the generated function (so that generated code using them is
+//   correct);
+// - restore their original values before leaving the generated
+//   function.
+
 // Provide our own codegen, that ensures the C calling conventions
 // are preserved. Currently, ART and C do not match as R4 is caller-save
 // in ART, and callee-save in C. Alternatively, we could use or write
@@ -100,6 +115,16 @@ class TestCodeGeneratorARM : public arm::CodeGeneratorARM {
     blocked_core_registers_[arm::R6] = false;
     blocked_core_registers_[arm::R7] = false;
   }
+
+  void GenerateMarkingRegisterCheck(int code ATTRIBUTE_UNUSED,
+                                    Location temp_loc ATTRIBUTE_UNUSED) OVERRIDE {
+    // When turned on, the marking register checks in
+    // CodeGeneratorARM::GenerateMarkingRegisterCheck expects the
+    // Thread Register and the Marking Register to be set to
+    // meaningful values. This is not the case in codegen testing, so
+    // just disable them entirely here (by doing nothing in this
+    // method).
+  }
 };
 
 // A way to test the VIXL32-based code generator on ARM. This will replace
@@ -119,6 +144,16 @@ class TestCodeGeneratorARMVIXL : public arm::CodeGeneratorARMVIXL {
     blocked_core_registers_[arm::R4] = true;
     blocked_core_registers_[arm::R6] = false;
     blocked_core_registers_[arm::R7] = false;
+  }
+
+  void GenerateMarkingRegisterCheck(int code ATTRIBUTE_UNUSED,
+                                    Location temp_loc ATTRIBUTE_UNUSED) OVERRIDE {
+    // When turned on, the marking register checks in
+    // CodeGeneratorARMVIXL::GenerateMarkingRegisterCheck expects the
+    // Thread Register and the Marking Register to be set to
+    // meaningful values. This is not the case in codegen testing, so
+    // just disable them entirely here (by doing nothing in this
+    // method).
   }
 };
 #endif
