@@ -94,6 +94,13 @@ constexpr bool kBakerReadBarrierLinkTimeThunksEnableForGcRoots = true;
 // The reserved entrypoint register for link-time generated thunks.
 const vixl32::Register kBakerCcEntrypointRegister = r4;
 
+// Instrument generated code to generate run-time checks on the status
+// of the Marking Register (MR). This is only meaningful with the
+// Concurrent Collector with Baker read barriers.
+constexpr bool kEnableMarkingRegisterChecks = kIsDebugBuild;
+// Using a base helps identify when we hit Marking Register check breakpoints.
+constexpr int MarkingRegisterCheckBreakCodeBaseCode = 0x10;
+
 #ifdef __
 #error "ARM Codegen VIXL macro-assembler macro already defined."
 #endif
@@ -2690,6 +2697,8 @@ void CodeGeneratorARMVIXL::GenerateFrameEntry() {
     __ Mov(temp, 0);
     GetAssembler()->StoreToOffset(kStoreWord, temp, sp, GetStackOffsetOfShouldDeoptimizeFlag());
   }
+
+  GenerateMarkingRegisterCheck(/* code */ 1);
 }
 
 void CodeGeneratorARMVIXL::GenerateFrameExit() {
@@ -2938,6 +2947,7 @@ void InstructionCodeGeneratorARMVIXL::HandleGoto(HInstruction* got, HBasicBlock*
   }
   if (block->IsEntryBlock() && (previous != nullptr) && previous->IsSuspendCheck()) {
     GenerateSuspendCheck(previous->AsSuspendCheck(), nullptr);
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 2);
   }
   if (!codegen_->GoesToNextBlock(block, successor)) {
     __ B(codegen_->GetLabelOf(successor));
@@ -3655,6 +3665,7 @@ void LocationsBuilderARMVIXL::VisitInvokeUnresolved(HInvokeUnresolved* invoke) {
 
 void InstructionCodeGeneratorARMVIXL::VisitInvokeUnresolved(HInvokeUnresolved* invoke) {
   codegen_->GenerateInvokeUnresolvedRuntimeCall(invoke);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 3);
 }
 
 void LocationsBuilderARMVIXL::VisitInvokeStaticOrDirect(HInvokeStaticOrDirect* invoke) {
@@ -3685,12 +3696,15 @@ void InstructionCodeGeneratorARMVIXL::VisitInvokeStaticOrDirect(HInvokeStaticOrD
   DCHECK(!invoke->IsStaticWithExplicitClinitCheck());
 
   if (TryGenerateIntrinsicCode(invoke, codegen_)) {
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 6);
     return;
   }
 
   LocationSummary* locations = invoke->GetLocations();
   codegen_->GenerateStaticOrDirectCall(
       invoke, locations->HasTemps() ? locations->GetTemp(0) : Location::NoLocation());
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 7);
 }
 
 void LocationsBuilderARMVIXL::HandleInvoke(HInvoke* invoke) {
@@ -3709,11 +3723,14 @@ void LocationsBuilderARMVIXL::VisitInvokeVirtual(HInvokeVirtual* invoke) {
 
 void InstructionCodeGeneratorARMVIXL::VisitInvokeVirtual(HInvokeVirtual* invoke) {
   if (TryGenerateIntrinsicCode(invoke, codegen_)) {
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 8);
     return;
   }
 
   codegen_->GenerateVirtualCall(invoke, invoke->GetLocations()->GetTemp(0));
   DCHECK(!codegen_->IsLeafMethod());
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 9);
 }
 
 void LocationsBuilderARMVIXL::VisitInvokeInterface(HInvokeInterface* invoke) {
@@ -3790,6 +3807,8 @@ void InstructionCodeGeneratorARMVIXL::VisitInvokeInterface(HInvokeInterface* inv
     codegen_->RecordPcInfo(invoke, invoke->GetDexPc());
     DCHECK(!codegen_->IsLeafMethod());
   }
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 4);
 }
 
 void LocationsBuilderARMVIXL::VisitInvokePolymorphic(HInvokePolymorphic* invoke) {
@@ -3798,6 +3817,7 @@ void LocationsBuilderARMVIXL::VisitInvokePolymorphic(HInvokePolymorphic* invoke)
 
 void InstructionCodeGeneratorARMVIXL::VisitInvokePolymorphic(HInvokePolymorphic* invoke) {
   codegen_->GenerateInvokePolymorphicCall(invoke);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 5);
 }
 
 void LocationsBuilderARMVIXL::VisitNeg(HNeg* neg) {
@@ -5329,6 +5349,7 @@ void InstructionCodeGeneratorARMVIXL::VisitNewInstance(HNewInstance* instruction
     codegen_->InvokeRuntime(instruction->GetEntrypoint(), instruction, instruction->GetDexPc());
     CheckEntrypointTypes<kQuickAllocObjectWithChecks, void*, mirror::Class*>();
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 16);
 }
 
 void LocationsBuilderARMVIXL::VisitNewArray(HNewArray* instruction) {
@@ -5348,6 +5369,7 @@ void InstructionCodeGeneratorARMVIXL::VisitNewArray(HNewArray* instruction) {
   codegen_->InvokeRuntime(entrypoint, instruction, instruction->GetDexPc());
   CheckEntrypointTypes<kQuickAllocArrayResolved, void*, mirror::Class*, int32_t>();
   DCHECK(!codegen_->IsLeafMethod());
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 15);
 }
 
 void LocationsBuilderARMVIXL::VisitParameterValue(HParameterValue* instruction) {
@@ -6965,6 +6987,7 @@ void InstructionCodeGeneratorARMVIXL::VisitSuspendCheck(HSuspendCheck* instructi
     return;
   }
   GenerateSuspendCheck(instruction, nullptr);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 17);
 }
 
 void InstructionCodeGeneratorARMVIXL::GenerateSuspendCheck(HSuspendCheck* instruction,
@@ -7326,6 +7349,7 @@ void InstructionCodeGeneratorARMVIXL::VisitLoadClass(HLoadClass* cls) NO_THREAD_
   HLoadClass::LoadKind load_kind = cls->GetLoadKind();
   if (load_kind == HLoadClass::LoadKind::kRuntimeCall) {
     codegen_->GenerateLoadClassRuntimeCall(cls);
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 10);
     return;
   }
   DCHECK(!cls->NeedsAccessCheck());
@@ -7405,6 +7429,7 @@ void InstructionCodeGeneratorARMVIXL::VisitLoadClass(HLoadClass* cls) NO_THREAD_
     } else {
       __ Bind(slow_path->GetExitLabel());
     }
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 11);
   }
 }
 
@@ -7528,6 +7553,7 @@ void InstructionCodeGeneratorARMVIXL::VisitLoadString(HLoadString* load) NO_THRE
       codegen_->AddSlowPath(slow_path);
       __ CompareAndBranchIfZero(out, slow_path->GetEntryLabel());
       __ Bind(slow_path->GetExitLabel());
+      codegen_->GenerateMarkingRegisterCheck(/* code */ 12);
       return;
     }
     case HLoadString::LoadKind::kJitTableAddress: {
@@ -7548,6 +7574,7 @@ void InstructionCodeGeneratorARMVIXL::VisitLoadString(HLoadString* load) NO_THRE
   __ Mov(calling_convention.GetRegisterAt(0), load->GetStringIndex().index_);
   codegen_->InvokeRuntime(kQuickResolveString, load, load->GetDexPc());
   CheckEntrypointTypes<kQuickResolveString, void*, uint32_t>();
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 13);
 }
 
 static int32_t GetExceptionTlsOffset() {
@@ -8146,6 +8173,7 @@ void InstructionCodeGeneratorARMVIXL::VisitMonitorOperation(HMonitorOperation* i
   } else {
     CheckEntrypointTypes<kQuickUnlockObject, void, mirror::Object*>();
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 14);
 }
 
 void LocationsBuilderARMVIXL::VisitAnd(HAnd* instruction) {
@@ -8625,6 +8653,7 @@ void InstructionCodeGeneratorARMVIXL::GenerateGcRootFieldLoad(
     // Note that GC roots are not affected by heap poisoning, thus we
     // do not have to unpoison `root_reg` here.
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 18);
 }
 
 void CodeGeneratorARMVIXL::MaybeAddBakerCcEntrypointTempForFields(LocationSummary* locations) {
@@ -8689,31 +8718,34 @@ void CodeGeneratorARMVIXL::GenerateFieldLoadWithBakerReadBarrier(HInstruction* i
         base.GetCode(), obj.GetCode(), narrow);
     vixl32::Label* bne_label = NewBakerReadBarrierPatch(custom_data);
 
-    vixl::EmissionCheckScope guard(
-        GetVIXLAssembler(),
-        (kPoisonHeapReferences ? 5u : 4u) * vixl32::kMaxInstructionSizeInBytes);
-    vixl32::Label return_address;
-    EmitAdrCode adr(GetVIXLAssembler(), lr, &return_address);
-    __ cmp(mr, Operand(0));
-    EmitPlaceholderBne(this, bne_label);
-    ptrdiff_t old_offset = GetVIXLAssembler()->GetBuffer()->GetCursorOffset();
-    __ ldr(EncodingSize(narrow ? Narrow : Wide), ref_reg, MemOperand(base, offset));
-    if (needs_null_check) {
-      MaybeRecordImplicitNullCheck(instruction);
-    }
-    // Note: We need a specific width for the unpoisoning NEG.
-    if (kPoisonHeapReferences) {
-      if (narrow) {
-        // The only 16-bit encoding is T1 which sets flags outside IT block (i.e. RSBS, not RSB).
-        __ rsbs(EncodingSize(Narrow), ref_reg, ref_reg, Operand(0));
-      } else {
-        __ rsb(EncodingSize(Wide), ref_reg, ref_reg, Operand(0));
+    {
+      vixl::EmissionCheckScope guard(
+          GetVIXLAssembler(),
+          (kPoisonHeapReferences ? 5u : 4u) * vixl32::kMaxInstructionSizeInBytes);
+      vixl32::Label return_address;
+      EmitAdrCode adr(GetVIXLAssembler(), lr, &return_address);
+      __ cmp(mr, Operand(0));
+      EmitPlaceholderBne(this, bne_label);
+      ptrdiff_t old_offset = GetVIXLAssembler()->GetBuffer()->GetCursorOffset();
+      __ ldr(EncodingSize(narrow ? Narrow : Wide), ref_reg, MemOperand(base, offset));
+      if (needs_null_check) {
+        MaybeRecordImplicitNullCheck(instruction);
       }
+      // Note: We need a specific width for the unpoisoning NEG.
+      if (kPoisonHeapReferences) {
+        if (narrow) {
+          // The only 16-bit encoding is T1 which sets flags outside IT block (i.e. RSBS, not RSB).
+          __ rsbs(EncodingSize(Narrow), ref_reg, ref_reg, Operand(0));
+        } else {
+          __ rsb(EncodingSize(Wide), ref_reg, ref_reg, Operand(0));
+        }
+      }
+      __ Bind(&return_address);
+      DCHECK_EQ(old_offset - GetVIXLAssembler()->GetBuffer()->GetCursorOffset(),
+                narrow ? BAKER_MARK_INTROSPECTION_FIELD_LDR_NARROW_OFFSET
+                       : BAKER_MARK_INTROSPECTION_FIELD_LDR_WIDE_OFFSET);
     }
-    __ Bind(&return_address);
-    DCHECK_EQ(old_offset - GetVIXLAssembler()->GetBuffer()->GetCursorOffset(),
-              narrow ? BAKER_MARK_INTROSPECTION_FIELD_LDR_NARROW_OFFSET
-                     : BAKER_MARK_INTROSPECTION_FIELD_LDR_WIDE_OFFSET);
+    GenerateMarkingRegisterCheck(/* code */ 19, /* temp_loc */ LocationFrom(ip));
     return;
   }
 
@@ -8774,23 +8806,26 @@ void CodeGeneratorARMVIXL::GenerateArrayLoadWithBakerReadBarrier(HInstruction* i
     vixl32::Label* bne_label = NewBakerReadBarrierPatch(custom_data);
 
     __ Add(data_reg, obj, Operand(data_offset));
-    vixl::EmissionCheckScope guard(
-        GetVIXLAssembler(),
-        (kPoisonHeapReferences ? 5u : 4u) * vixl32::kMaxInstructionSizeInBytes);
-    vixl32::Label return_address;
-    EmitAdrCode adr(GetVIXLAssembler(), lr, &return_address);
-    __ cmp(mr, Operand(0));
-    EmitPlaceholderBne(this, bne_label);
-    ptrdiff_t old_offset = GetVIXLAssembler()->GetBuffer()->GetCursorOffset();
-    __ ldr(ref_reg, MemOperand(data_reg, index_reg, vixl32::LSL, scale_factor));
-    DCHECK(!needs_null_check);  // The thunk cannot handle the null check.
-    // Note: We need a Wide NEG for the unpoisoning.
-    if (kPoisonHeapReferences) {
-      __ rsb(EncodingSize(Wide), ref_reg, ref_reg, Operand(0));
+    {
+      vixl::EmissionCheckScope guard(
+          GetVIXLAssembler(),
+          (kPoisonHeapReferences ? 5u : 4u) * vixl32::kMaxInstructionSizeInBytes);
+      vixl32::Label return_address;
+      EmitAdrCode adr(GetVIXLAssembler(), lr, &return_address);
+      __ cmp(mr, Operand(0));
+      EmitPlaceholderBne(this, bne_label);
+      ptrdiff_t old_offset = GetVIXLAssembler()->GetBuffer()->GetCursorOffset();
+      __ ldr(ref_reg, MemOperand(data_reg, index_reg, vixl32::LSL, scale_factor));
+      DCHECK(!needs_null_check);  // The thunk cannot handle the null check.
+      // Note: We need a Wide NEG for the unpoisoning.
+      if (kPoisonHeapReferences) {
+        __ rsb(EncodingSize(Wide), ref_reg, ref_reg, Operand(0));
+      }
+      __ Bind(&return_address);
+      DCHECK_EQ(old_offset - GetVIXLAssembler()->GetBuffer()->GetCursorOffset(),
+                BAKER_MARK_INTROSPECTION_ARRAY_LDR_OFFSET);
     }
-    __ Bind(&return_address);
-    DCHECK_EQ(old_offset - GetVIXLAssembler()->GetBuffer()->GetCursorOffset(),
-              BAKER_MARK_INTROSPECTION_ARRAY_LDR_OFFSET);
+    GenerateMarkingRegisterCheck(/* code */ 20, /* temp_loc */ LocationFrom(ip));
     return;
   }
 
@@ -8844,6 +8879,7 @@ void CodeGeneratorARMVIXL::GenerateReferenceLoadWithBakerReadBarrier(HInstructio
   // Fast path: the GC is not marking: just load the reference.
   GenerateRawReferenceLoad(instruction, ref, obj, offset, index, scale_factor, needs_null_check);
   __ Bind(slow_path->GetExitLabel());
+  GenerateMarkingRegisterCheck(/* code */ 21);
 }
 
 void CodeGeneratorARMVIXL::UpdateReferenceFieldWithBakerReadBarrier(HInstruction* instruction,
@@ -8898,6 +8934,7 @@ void CodeGeneratorARMVIXL::UpdateReferenceFieldWithBakerReadBarrier(HInstruction
   // Fast path: the GC is not marking: nothing to do (the field is
   // up-to-date, and we don't need to load the reference).
   __ Bind(slow_path->GetExitLabel());
+  GenerateMarkingRegisterCheck(/* code */ 22);
 }
 
 void CodeGeneratorARMVIXL::GenerateRawReferenceLoad(HInstruction* instruction,
@@ -8957,6 +8994,22 @@ void CodeGeneratorARMVIXL::GenerateRawReferenceLoad(HInstruction* instruction,
 
   // Object* ref = ref_addr->AsMirrorPtr()
   GetAssembler()->MaybeUnpoisonHeapReference(ref_reg);
+}
+
+void CodeGeneratorARMVIXL::GenerateMarkingRegisterCheck(int code, Location temp_loc) {
+  if (kEmitCompilerReadBarrier && kUseBakerReadBarrier && kEnableMarkingRegisterChecks) {
+    UseScratchRegisterScope temps(GetVIXLAssembler());
+    vixl32::Register temp = temp_loc.IsValid() ? RegisterFrom(temp_loc) : temps.Acquire();
+
+    vixl32::Label mr_is_ok;
+    // temp = self.tls32_.is.gc_marking
+    __ Ldr(temp, MemOperand(tr, Thread::IsGcMarkingOffset<kArmPointerSize>().Int32Value()));
+    // Check that mr == self.tls32_.is.gc_marking.
+    __ Cmp(mr, temp);
+    __ B(eq, &mr_is_ok, /* far_target */ false);
+    __ Bkpt(MarkingRegisterCheckBreakCodeBaseCode + code);
+    __ Bind(&mr_is_ok);
+  }
 }
 
 void CodeGeneratorARMVIXL::GenerateReadBarrierSlow(HInstruction* instruction,

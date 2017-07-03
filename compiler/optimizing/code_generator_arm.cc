@@ -84,6 +84,13 @@ constexpr bool kBakerReadBarrierLinkTimeThunksEnableForGcRoots = true;
 // The reserved entrypoint register for link-time generated thunks.
 const Register kBakerCcEntrypointRegister = R4;
 
+// Instrument generated code to generate run-time checks on the status
+// of the Marking Register (MR). This is only meaningful with the
+// Concurrent Collector with Baker read barriers.
+constexpr bool kEnableMarkingRegisterChecks = kIsDebugBuild;
+// Using a base helps identify when we hit Marking Register check breakpoints.
+constexpr int MarkingRegisterCheckBreakCodeBaseCode = 0x10;
+
 // NOLINT on __ macro to suppress wrong warning/fix (misc-macro-parentheses) from clang-tidy.
 #define __ down_cast<ArmAssembler*>(codegen->GetAssembler())->  // NOLINT
 #define QUICK_ENTRY_POINT(x) QUICK_ENTRYPOINT_OFFSET(kArmPointerSize, x).Int32Value()
@@ -2557,6 +2564,8 @@ void CodeGeneratorARM::GenerateFrameEntry() {
     __ mov(IP, ShifterOperand(0));
     __ StoreToOffset(kStoreWord, IP, SP, GetStackOffsetOfShouldDeoptimizeFlag());
   }
+
+  GenerateMarkingRegisterCheck(/* code */ 1);
 }
 
 void CodeGeneratorARM::GenerateFrameExit() {
@@ -2857,6 +2866,7 @@ void InstructionCodeGeneratorARM::HandleGoto(HInstruction* got, HBasicBlock* suc
 
   if (block->IsEntryBlock() && (previous != nullptr) && previous->IsSuspendCheck()) {
     GenerateSuspendCheck(previous->AsSuspendCheck(), nullptr);
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 2);
   }
   if (!codegen_->GoesToNextBlock(got->GetBlock(), successor)) {
     __ b(codegen_->GetLabelOf(successor));
@@ -3573,6 +3583,7 @@ void LocationsBuilderARM::VisitInvokeUnresolved(HInvokeUnresolved* invoke) {
 
 void InstructionCodeGeneratorARM::VisitInvokeUnresolved(HInvokeUnresolved* invoke) {
   codegen_->GenerateInvokeUnresolvedRuntimeCall(invoke);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 3);
 }
 
 void LocationsBuilderARM::VisitInvokeStaticOrDirect(HInvokeStaticOrDirect* invoke) {
@@ -3603,12 +3614,15 @@ void InstructionCodeGeneratorARM::VisitInvokeStaticOrDirect(HInvokeStaticOrDirec
   DCHECK(!invoke->IsStaticWithExplicitClinitCheck());
 
   if (TryGenerateIntrinsicCode(invoke, codegen_)) {
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 6);
     return;
   }
 
   LocationSummary* locations = invoke->GetLocations();
   codegen_->GenerateStaticOrDirectCall(
       invoke, locations->HasTemps() ? locations->GetTemp(0) : Location::NoLocation());
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 7);
 }
 
 void LocationsBuilderARM::HandleInvoke(HInvoke* invoke) {
@@ -3627,11 +3641,14 @@ void LocationsBuilderARM::VisitInvokeVirtual(HInvokeVirtual* invoke) {
 
 void InstructionCodeGeneratorARM::VisitInvokeVirtual(HInvokeVirtual* invoke) {
   if (TryGenerateIntrinsicCode(invoke, codegen_)) {
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 8);
     return;
   }
 
   codegen_->GenerateVirtualCall(invoke, invoke->GetLocations()->GetTemp(0));
   DCHECK(!codegen_->IsLeafMethod());
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 9);
 }
 
 void LocationsBuilderARM::VisitInvokeInterface(HInvokeInterface* invoke) {
@@ -3684,6 +3701,8 @@ void InstructionCodeGeneratorARM::VisitInvokeInterface(HInvokeInterface* invoke)
   __ blx(LR);
   DCHECK(!codegen_->IsLeafMethod());
   codegen_->RecordPcInfo(invoke, invoke->GetDexPc());
+
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 4);
 }
 
 void LocationsBuilderARM::VisitInvokePolymorphic(HInvokePolymorphic* invoke) {
@@ -3692,6 +3711,7 @@ void LocationsBuilderARM::VisitInvokePolymorphic(HInvokePolymorphic* invoke) {
 
 void InstructionCodeGeneratorARM::VisitInvokePolymorphic(HInvokePolymorphic* invoke) {
   codegen_->GenerateInvokePolymorphicCall(invoke);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 5);
 }
 
 void LocationsBuilderARM::VisitNeg(HNeg* neg) {
@@ -5283,6 +5303,7 @@ void InstructionCodeGeneratorARM::VisitNewInstance(HNewInstance* instruction) {
     codegen_->InvokeRuntime(instruction->GetEntrypoint(), instruction, instruction->GetDexPc());
     CheckEntrypointTypes<kQuickAllocObjectWithChecks, void*, mirror::Class*>();
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 16);
 }
 
 void LocationsBuilderARM::VisitNewArray(HNewArray* instruction) {
@@ -5302,6 +5323,7 @@ void InstructionCodeGeneratorARM::VisitNewArray(HNewArray* instruction) {
   codegen_->InvokeRuntime(entrypoint, instruction, instruction->GetDexPc());
   CheckEntrypointTypes<kQuickAllocArrayResolved, void*, mirror::Class*, int32_t>();
   DCHECK(!codegen_->IsLeafMethod());
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 15);
 }
 
 void LocationsBuilderARM::VisitParameterValue(HParameterValue* instruction) {
@@ -6881,6 +6903,7 @@ void InstructionCodeGeneratorARM::VisitSuspendCheck(HSuspendCheck* instruction) 
     return;
   }
   GenerateSuspendCheck(instruction, nullptr);
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 17);
 }
 
 void InstructionCodeGeneratorARM::GenerateSuspendCheck(HSuspendCheck* instruction,
@@ -7218,6 +7241,7 @@ void InstructionCodeGeneratorARM::VisitLoadClass(HLoadClass* cls) NO_THREAD_SAFE
   HLoadClass::LoadKind load_kind = cls->GetLoadKind();
   if (load_kind == HLoadClass::LoadKind::kRuntimeCall) {
     codegen_->GenerateLoadClassRuntimeCall(cls);
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 10);
     return;
   }
   DCHECK(!cls->NeedsAccessCheck());
@@ -7307,6 +7331,7 @@ void InstructionCodeGeneratorARM::VisitLoadClass(HLoadClass* cls) NO_THREAD_SAFE
     } else {
       __ Bind(slow_path->GetExitLabel());
     }
+    codegen_->GenerateMarkingRegisterCheck(/* code */ 11);
   }
 }
 
@@ -7432,6 +7457,7 @@ void InstructionCodeGeneratorARM::VisitLoadString(HLoadString* load) NO_THREAD_S
       codegen_->AddSlowPath(slow_path);
       __ CompareAndBranchIfZero(out, slow_path->GetEntryLabel());
       __ Bind(slow_path->GetExitLabel());
+      codegen_->GenerateMarkingRegisterCheck(/* code */ 12);
       return;
     }
     case HLoadString::LoadKind::kJitTableAddress: {
@@ -7447,12 +7473,13 @@ void InstructionCodeGeneratorARM::VisitLoadString(HLoadString* load) NO_THREAD_S
   }
 
   // TODO: Consider re-adding the compiler code to do string dex cache lookup again.
-  DCHECK(load_kind == HLoadString::LoadKind::kRuntimeCall);
+  DCHECK_EQ(load_kind, HLoadString::LoadKind::kRuntimeCall);
   InvokeRuntimeCallingConvention calling_convention;
   DCHECK_EQ(calling_convention.GetRegisterAt(0), out);
   __ LoadImmediate(calling_convention.GetRegisterAt(0), load->GetStringIndex().index_);
   codegen_->InvokeRuntime(kQuickResolveString, load, load->GetDexPc());
   CheckEntrypointTypes<kQuickResolveString, void*, uint32_t>();
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 13);
 }
 
 static int32_t GetExceptionTlsOffset() {
@@ -8034,6 +8061,7 @@ void InstructionCodeGeneratorARM::VisitMonitorOperation(HMonitorOperation* instr
   } else {
     CheckEntrypointTypes<kQuickUnlockObject, void, mirror::Object*>();
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 14);
 }
 
 void LocationsBuilderARM::VisitAnd(HAnd* instruction) { HandleBitwiseOperation(instruction, AND); }
@@ -8502,6 +8530,7 @@ void InstructionCodeGeneratorARM::GenerateGcRootFieldLoad(HInstruction* instruct
     // Note that GC roots are not affected by heap poisoning, thus we
     // do not have to unpoison `root_reg` here.
   }
+  codegen_->GenerateMarkingRegisterCheck(/* code */ 18);
 }
 
 void CodeGeneratorARM::MaybeAddBakerCcEntrypointTempForFields(LocationSummary* locations) {
@@ -8582,6 +8611,7 @@ void CodeGeneratorARM::GenerateFieldLoadWithBakerReadBarrier(HInstruction* instr
     DCHECK_EQ(old_position - GetAssembler()->GetBuffer()->GetPosition(),
               narrow ? BAKER_MARK_INTROSPECTION_FIELD_LDR_NARROW_OFFSET
                      : BAKER_MARK_INTROSPECTION_FIELD_LDR_WIDE_OFFSET);
+    GenerateMarkingRegisterCheck(/* code */ 19, /* temp_loc */ Location::RegisterLocation(IP));
     return;
   }
 
@@ -8653,6 +8683,7 @@ void CodeGeneratorARM::GenerateArrayLoadWithBakerReadBarrier(HInstruction* instr
     __ Bind(&return_address);
     DCHECK_EQ(old_position - GetAssembler()->GetBuffer()->GetPosition(),
               BAKER_MARK_INTROSPECTION_ARRAY_LDR_OFFSET);
+    GenerateMarkingRegisterCheck(/* code */ 20, /* temp_loc */ Location::RegisterLocation(IP));
     return;
   }
 
@@ -8706,6 +8737,7 @@ void CodeGeneratorARM::GenerateReferenceLoadWithBakerReadBarrier(HInstruction* i
   // Fast path: the GC is not marking: just load the reference.
   GenerateRawReferenceLoad(instruction, ref, obj, offset, index, scale_factor, needs_null_check);
   __ Bind(slow_path->GetExitLabel());
+  GenerateMarkingRegisterCheck(/* code */ 21);
 }
 
 void CodeGeneratorARM::UpdateReferenceFieldWithBakerReadBarrier(HInstruction* instruction,
@@ -8760,6 +8792,7 @@ void CodeGeneratorARM::UpdateReferenceFieldWithBakerReadBarrier(HInstruction* in
   // Fast path: the GC is not marking: nothing to do (the field is
   // up-to-date, and we don't need to load the reference).
   __ Bind(slow_path->GetExitLabel());
+  GenerateMarkingRegisterCheck(/* code */ 22);
 }
 
 void CodeGeneratorARM::GenerateRawReferenceLoad(HInstruction* instruction,
@@ -8802,6 +8835,22 @@ void CodeGeneratorARM::GenerateRawReferenceLoad(HInstruction* instruction,
 
   // Object* ref = ref_addr->AsMirrorPtr()
   __ MaybeUnpoisonHeapReference(ref_reg);
+}
+
+void CodeGeneratorARM::GenerateMarkingRegisterCheck(int code, Location temp_loc) {
+  if (kEmitCompilerReadBarrier && kUseBakerReadBarrier && kEnableMarkingRegisterChecks) {
+    Register temp = temp_loc.IsValid() ? temp_loc.AsRegister<Register>() : IP;
+
+    Label mr_is_ok;
+    // temp = self.tls32_.is.gc_marking
+    __ LoadFromOffset(
+        kLoadWord, temp, TR, Thread::IsGcMarkingOffset<kArmPointerSize>().Int32Value());
+    // Check that mr == self.tls32_.is.gc_marking.
+    __ cmp(MR, ShifterOperand(temp));
+    __ b(&mr_is_ok, EQ);
+    __ bkpt(MarkingRegisterCheckBreakCodeBaseCode + code);
+    __ Bind(&mr_is_ok);
+  }
 }
 
 void CodeGeneratorARM::GenerateReadBarrierSlow(HInstruction* instruction,

@@ -667,6 +667,21 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
                                 ScaleFactor scale_factor,
                                 bool needs_null_check);
 
+  // Emit code checking the status of the Marking Register, and aborting the
+  // program if MR does not match the value stored in the art::Thread object.
+  // Code is only emitted if `kEnableMarkingRegisterChecks` is set to `true`.
+  //
+  // Argument `code` is used to identify the different occurrences of
+  // GenerateMarkingRegisterCheck in the code generator, and is used
+  // together with MarkingRegisterCheckBreakCodeBaseCode to create the
+  // value passed to the BKPT instruction.
+  //
+  // If `temp_loc` is a valid location, it is expected to be a
+  // register and will be used as a temporary to generate code;
+  // otherwise, a temporary will be fetched from the core register
+  // scratch pool.
+  virtual void GenerateMarkingRegisterCheck(int code, Location temp_loc = Location::NoLocation());
+
   // Generate a read barrier for a heap reference within `instruction`
   // using a slow path.
   //
