@@ -78,7 +78,8 @@ std::ostream& operator<<(std::ostream& os, const Condition& rhs) {
 ShifterOperand::ShifterOperand(uint32_t immed)
     : type_(kImmediate), rm_(kNoRegister), rs_(kNoRegister),
       is_rotate_(false), is_shift_(false), shift_(kNoShift), rotate_(0), immed_(immed) {
-  CHECK(immed < (1u << 12) || ArmAssembler::ModifiedImmediate(immed) != kInvalidModifiedImmediate);
+  CHECK(IsUint<12>(immed) || ArmAssembler::ModifiedImmediate(immed) != kInvalidModifiedImmediate)
+      << immed;
 }
 
 
