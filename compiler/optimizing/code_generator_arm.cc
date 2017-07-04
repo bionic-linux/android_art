@@ -2242,7 +2242,18 @@ static void GenerateConditionIntegralOrNonPrimitive(HCondition* cond, CodeGenera
     ShifterOperand operand;
 
     if (right.IsConstant()) {
-      operand = ShifterOperand(value);
+      // For a Thumb-2 SUB{S} instruction, encoding T4 permits values
+      // in the range 0-4095; encoding T3 accepts Thumb modified
+      // immediate constants.
+      if (IsUint<12>(value) || codegen->GetAssembler()->ShifterOperandCanAlwaysHold(value)) {
+        operand = ShifterOperand(value);
+      } else {
+        // Constant `value` cannot be encoded as an immediate value in
+        // ShifterOperand. Load it into register IP and use that
+        // register as operand instead.
+        __ LoadImmediate(IP, value);
+        operand = ShifterOperand(IP);
+      }
     } else if (out == right.AsRegister<Register>()) {
       // Avoid 32-bit instructions if possible.
       operand = ShifterOperand(in);
