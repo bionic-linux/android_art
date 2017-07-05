@@ -46,6 +46,30 @@
       "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b78a95_4b899722",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-05T15:37:43Z",
+      "side": 1,
+      "message": "This is equivalent with the old code.\n\nI\u0027m going to revert this bit anyway because the DCHECK(!referrer-\u003eIsProxyMethod()) doesn\u0027t hold. However, it\u0027s odd that the rest of the function below does not use GetInterfaceMethodIfProxy().",
+      "parentUuid": "96bab13f_ea1883a5",
+      "range": {
+        "startLine": 356,
+        "startChar": 52,
+        "endLine": 356,
+        "endChar": 77
+      },
+      "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
