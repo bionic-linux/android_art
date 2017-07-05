@@ -462,6 +462,21 @@ ArtMethod* Class::FindInterfaceMethod(ObjPtr<DexCache> dex_cache,
   return FindInterfaceMethod(name, signature, pointer_size);
 }
 
+static inline bool IsInheritedDeclaredMethod(ObjPtr<mirror::Class> klass, ArtMethod& method)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  ObjPtr<Class> declaring_class = method.GetDeclaringClass();
+  DCHECK_NE(klass, declaring_class);
+  DCHECK(klass->IsArrayClass() || klass->IsSubClass(declaring_class));
+  uint32_t access_flags = method.GetAccessFlags();
+  if ((access_flags & (kAccPublic | kAccProtected)) != 0) {
+    return true;
+  }
+  if ((access_flags & kAccPrivate) != 0) {
+    return false;
+  }
+  return klass->IsInSamePackage(declaring_class);
+}
+
 template <typename SignatureType>
 static inline ArtMethod* FindClassMethodWithSignature(ObjPtr<Class> this_klass,
                                                       const StringPiece& name,
@@ -483,7 +498,9 @@ static inline ArtMethod* FindClassMethodWithSignature(ObjPtr<Class> this_klass,
   for (; klass != nullptr; klass = klass->GetSuperClass()) {
     DCHECK(!klass->IsProxyClass());
     for (ArtMethod& method : klass->GetDeclaredMethodsSlice(pointer_size)) {
-      if (method.GetName() == name && method.GetSignature() == signature) {
+      if (method.GetName() == name &&
+          method.GetSignature() == signature &&
+          (klass == this_klass || IsInheritedDeclaredMethod(this_klass, method))) {
         return &method;
       }
     }
@@ -555,7 +572,8 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
       for (ArtMethod& method : declared_methods) {
         const DexFile::MethodId& cmp_method_id = dex_file.GetMethodId(method.GetDexMethodIndex());
         if (cmp_method_id.name_idx_ == method_id.name_idx_ &&
-            cmp_method_id.proto_idx_ == method_id.proto_idx_) {
+            cmp_method_id.proto_idx_ == method_id.proto_idx_ &&
+            (klass == this || IsInheritedDeclaredMethod(this, method))) {
           return &method;
         }
       }
@@ -564,7 +582,9 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
         name = dex_file.StringDataByIdx(method_id.name_idx_);
       }
       for (ArtMethod& method : declared_methods) {
-        if (method.GetName() == name && method.GetSignature() == signature) {
+        if (method.GetName() == name &&
+            method.GetSignature() == signature &&
+            (klass == this || IsInheritedDeclaredMethod(this, method))) {
           return &method;
         }
       }

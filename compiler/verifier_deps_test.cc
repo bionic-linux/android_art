@@ -904,20 +904,20 @@ TEST_F(VerifierDepsTest, InvokeDirect_Resolved_DeclaredInSuperclass1) {
   ASSERT_FALSE(VerifyMethod("InvokeDirect_Resolved_DeclaredInSuperclass1"));
   ASSERT_TRUE(HasClass("Ljavax/net/ssl/SSLSocket;", true, "public"));
   ASSERT_TRUE(HasMethod("Ljavax/net/ssl/SSLSocket;",
-                        "checkOldImpl",
-                        "()V",
+                        "getPort",
+                        "()I",
                         /* expect_resolved */ true,
-                        "private",
+                        "public",
                         "Ljava/net/Socket;"));
 }
 
 TEST_F(VerifierDepsTest, InvokeDirect_Resolved_DeclaredInSuperclass2) {
   ASSERT_FALSE(VerifyMethod("InvokeDirect_Resolved_DeclaredInSuperclass2"));
   ASSERT_TRUE(HasMethod("LMySSLSocket;",
-                        "checkOldImpl",
-                        "()V",
+                        "getPort",
+                        "()I",
                         /* expect_resolved */ true,
-                        "private",
+                        "public",
                         "Ljava/net/Socket;"));
 }
 

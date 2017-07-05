@@ -27,5 +27,4 @@ Calling Test6User2.test():
 Caught java.lang.reflect.InvocationTargetException
   caused by java.lang.IncompatibleClassChangeError
 Calling Test7User.test():
-Caught java.lang.reflect.InvocationTargetException
-  caused by java.lang.IllegalAccessError
+Test7Interface.foo()

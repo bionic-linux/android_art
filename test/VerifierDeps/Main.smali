@@ -347,13 +347,13 @@
 
 .method public static InvokeDirect_Resolved_DeclaredInSuperclass1(LMySSLSocket;)V
   .registers 1
-  invoke-direct {p0}, Ljavax/net/ssl/SSLSocket;->checkOldImpl()V
+  invoke-direct {p0}, Ljavax/net/ssl/SSLSocket;->getPort()I
   return-void
 .end method
 
 .method public static InvokeDirect_Resolved_DeclaredInSuperclass2(LMySSLSocket;)V
   .registers 1
-  invoke-direct {p0}, LMySSLSocket;->checkOldImpl()V
+  invoke-direct {p0}, LMySSLSocket;->getPort()I
   return-void
 .end method
 
