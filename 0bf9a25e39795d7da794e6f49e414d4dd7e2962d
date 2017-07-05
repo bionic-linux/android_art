@@ -22,6 +22,30 @@
       "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f599428_049fc4ab",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-05T15:32:47Z",
+      "side": 1,
+      "message": "yes that\u0027s fine.",
+      "parentUuid": "96bab13f_ea1883a5",
+      "range": {
+        "startLine": 356,
+        "startChar": 52,
+        "endLine": 356,
+        "endChar": 77
+      },
+      "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
