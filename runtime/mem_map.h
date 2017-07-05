@@ -25,6 +25,7 @@
 #include <string>
 
 #include "android-base/thread_annotations.h"
+#include "android-base/unique_fd.h"
 
 namespace art {
 
@@ -36,6 +37,8 @@ namespace art {
 #endif
 #define USE_ART_LOW_4G_ALLOCATOR 0
 #endif
+
+using android::base::unique_fd;
 
 #ifdef __linux__
 static constexpr bool kMadviseZeroes = true;
@@ -68,7 +71,8 @@ class MemMap {
                               bool low_4gb,
                               bool reuse,
                               std::string* error_msg,
-                              bool use_ashmem = true);
+                              bool use_ashmem = true,
+                              unique_fd* shmem_fd = nullptr);
 
   // Create placeholder for a region allocated by direct call to mmap.
   // This is useful when we do not have control over the code calling mmap,

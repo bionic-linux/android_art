@@ -250,6 +250,7 @@ class JitCodeCache {
   // Take ownership of maps.
   JitCodeCache(MemMap* code_map,
                MemMap* data_map,
+               MemMap* writeable_code_map,
                size_t initial_code_capacity,
                size_t initial_data_capacity,
                size_t max_capacity,
@@ -341,8 +342,16 @@ class JitCodeCache {
   ConditionVariable lock_cond_ GUARDED_BY(lock_);
   // Whether there is a code cache collection in progress.
   bool collection_in_progress_ GUARDED_BY(lock_);
-  // Mem map which holds code.
-  std::unique_ptr<MemMap> code_map_;
+  // JITting methods obviously requires both write and execute permissions on a region of memory.
+  // We separate the memory mapped view that can write the code from a view that the runtime uses
+  // to execute the code. Having these two views eliminates any single address region having rwx
+  // permissions.  An attacker could still write the writeable address and then execute the
+  // executable address. We allocate the mappings with a random address relationship to each other
+  // which makes the attacker need two addresses rather than just one.
+  // Mem map which holds writable view of code for JIT.
+  std::unique_ptr<MemMap> writable_code_map_;
+  // Mem map which holds code to execute.
+  std::unique_ptr<MemMap> executable_code_map_;
   // Mem map which holds data (stack maps and profiling info).
   std::unique_ptr<MemMap> data_map_;
   // The opaque mspace for allocating code.
