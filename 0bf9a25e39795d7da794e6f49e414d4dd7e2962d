@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96bab13f_ea1883a5",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-05T15:19:43Z",
+      "side": 1,
+      "message": "Is this safe for obsolete methods?",
+      "range": {
+        "startLine": 356,
+        "startChar": 52,
+        "endLine": 356,
+        "endChar": 77
+      },
+      "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
