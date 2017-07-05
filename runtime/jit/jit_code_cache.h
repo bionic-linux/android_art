@@ -250,6 +250,7 @@ class JitCodeCache {
   // Take ownership of maps.
   JitCodeCache(MemMap* code_map,
                MemMap* data_map,
+               MemMap* writeable_code_map,
                size_t initial_code_capacity,
                size_t initial_data_capacity,
                size_t max_capacity,
@@ -341,10 +342,12 @@ class JitCodeCache {
   ConditionVariable lock_cond_ GUARDED_BY(lock_);
   // Whether there is a code cache collection in progress.
   bool collection_in_progress_ GUARDED_BY(lock_);
-  // Mem map which holds code.
+  // Mem map which holds code to execute.
   std::unique_ptr<MemMap> code_map_;
   // Mem map which holds data (stack maps and profiling info).
   std::unique_ptr<MemMap> data_map_;
+  // Mem map which holds writeable view of code for JIT.
+  std::unique_ptr<MemMap> writeable_code_map_;
   // The opaque mspace for allocating code.
   void* code_mspace_ GUARDED_BY(lock_);
   // The opaque mspace for allocating data.

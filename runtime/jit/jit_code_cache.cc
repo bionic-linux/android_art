@@ -50,6 +50,7 @@ static constexpr int kProtCode = PROT_READ | PROT_EXEC;
 
 static constexpr size_t kCodeSizeLogThreshold = 50 * KB;
 static constexpr size_t kStackMapSizeLogThreshold = 50 * KB;
+static constexpr size_t kMaxSpacingPages = 128;
 
 #define CHECKED_MPROTECT(memory, size, prot)                \
   do {                                                      \
@@ -90,6 +91,7 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   // We could do PC-relative addressing to avoid this problem, but that
   // would require reserving code and data area before submitting, which
   // means more windows for the code memory to be RWX.
+  unique_fd writeable_code_fd;
   std::unique_ptr<MemMap> data_map(MemMap::MapAnonymous(
       "data-code-cache", nullptr,
       max_capacity,
@@ -97,7 +99,8 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
       /* low_4gb */ true,
       /* reuse */ false,
       &error_str,
-      use_ashmem));
+      use_ashmem,
+      &writeable_code_fd));
   if (data_map == nullptr) {
     std::ostringstream oss;
     oss << "Failed to create read write cache: " << error_str << " size=" << max_capacity;
@@ -116,24 +119,65 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   DCHECK_EQ(code_size + data_size, max_capacity);
   uint8_t* divider = data_map->Begin() + data_size;
 
-  MemMap* code_map =
-      data_map->RemapAtEnd(divider, "jit-code-cache", kProtAll, &error_str, use_ashmem);
+  std::unique_ptr<MemMap>
+      code_map(data_map->RemapAtEnd(divider, "jit-code-cache", kProtAll, &error_str, use_ashmem));
   if (code_map == nullptr) {
     std::ostringstream oss;
     oss << "Failed to create read write execute cache: " << error_str << " size=" << max_capacity;
     *error_msg = oss.str();
     return nullptr;
   }
+  // Allocate a random padding between the two views of the JIT code cache.
+  // This will be deallocated upon successful startup.
+  std::srand(time(NULL));
+  size_t spacing_size = std::rand() % kMaxSpacingPages;
+  std::unique_ptr<MemMap> spacing_map(MemMap::MapAnonymous(
+      "temporary-spacing",
+      nullptr,
+      spacing_size,
+      kProtData,
+      /* low_4gb */ true,
+      /* reuse */ false,
+      &error_str,
+      use_ashmem));
+  if (spacing_map == nullptr) {
+    std::ostringstream oss;
+    oss << "Failed to create spacing for code cache: " << error_str << " size=" << spacing_size;
+    *error_msg = oss.str();
+    return nullptr;
+  }
+  // Allocate the R/W view.
   DCHECK_EQ(code_map->Begin(), divider);
+  MemMap* writeable_code_map =
+      MemMap::MapFile(code_size,
+                      kProtData,
+                      MAP_PRIVATE | MAP_ANONYMOUS,
+                      writeable_code_fd.get(),
+                      /* start */ data_size,
+                      /* low_4gb */ true,
+                      "jit-writeable-code",
+                      &error_str);
+  if (code_map == nullptr) {
+    std::ostringstream oss;
+    oss << "Failed to create writeable code cache: " << error_str << " size=" << code_size;
+    *error_msg = oss.str();
+    return nullptr;
+  }
   data_size = initial_capacity / 2;
   code_size = initial_capacity - data_size;
   DCHECK_EQ(code_size + data_size, initial_capacity);
-  return new JitCodeCache(
-      code_map, data_map.release(), code_size, data_size, max_capacity, garbage_collect_code);
+  return new JitCodeCache(code_map.release(),
+                          data_map.release(),
+                          writeable_code_map,
+                          code_size,
+                          data_size,
+                          max_capacity,
+                          garbage_collect_code);
 }
 
 JitCodeCache::JitCodeCache(MemMap* code_map,
                            MemMap* data_map,
+                           MemMap* writeable_code_map,
                            size_t initial_code_capacity,
                            size_t initial_data_capacity,
                            size_t max_capacity,
@@ -143,6 +187,7 @@ JitCodeCache::JitCodeCache(MemMap* code_map,
       collection_in_progress_(false),
       code_map_(code_map),
       data_map_(data_map),
+      writeable_code_map_(writeable_code_map),
       max_capacity_(max_capacity),
       current_capacity_(initial_code_capacity + initial_data_capacity),
       code_end_(initial_code_capacity),
