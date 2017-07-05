@@ -293,7 +293,8 @@ MemMap* MemMap::MapAnonymous(const char* name,
                              bool low_4gb,
                              bool reuse,
                              std::string* error_msg,
-                             bool use_ashmem) {
+                             bool use_ashmem,
+                             unique_fd* shmem_fd) {
 #ifndef __LP64__
   UNUSED(low_4gb);
 #endif
@@ -379,6 +380,9 @@ MemMap* MemMap::MapAnonymous(const char* name,
   }
   if (!CheckMapRequest(expected_ptr, actual, page_aligned_byte_count, error_msg)) {
     return nullptr;
+  }
+  if (shmem_fd != nullptr) {
+    shmem_fd->reset(fd.release());
   }
   return new MemMap(name, reinterpret_cast<uint8_t*>(actual), byte_count, actual,
                     page_aligned_byte_count, prot, reuse);
@@ -537,7 +541,7 @@ MemMap::MemMap(const std::string& name, uint8_t* begin, size_t size, void* base_
 }
 
 MemMap* MemMap::RemapAtEnd(uint8_t* new_end, const char* tail_name, int tail_prot,
-                           std::string* error_msg, bool use_ashmem) {
+                           std::string* error_msg, bool use_ashmem, unique_fd* shmem_fd) {
   use_ashmem = use_ashmem && !kIsTargetLinux;
   DCHECK_GE(new_end, Begin());
   DCHECK_LE(new_end, End());
@@ -570,7 +574,7 @@ MemMap* MemMap::RemapAtEnd(uint8_t* new_end, const char* tail_name, int tail_pro
     std::string debug_friendly_name("dalvik-");
     debug_friendly_name += tail_name;
     fd.reset(ashmem_create_region(debug_friendly_name.c_str(), tail_base_size));
-    flags = MAP_PRIVATE | MAP_FIXED;
+    flags = MAP_SHARED | MAP_FIXED;
     if (fd.get() == -1) {
       *error_msg = StringPrintf("ashmem_create_region failed for '%s': %s",
                                 tail_name, strerror(errno));
@@ -603,6 +607,9 @@ MemMap* MemMap::RemapAtEnd(uint8_t* new_end, const char* tail_name, int tail_pro
                               "maps in the log.", tail_base_begin, tail_base_size, tail_prot, flags,
                               fd.get());
     return nullptr;
+  }
+  if (shmem_fd != nullptr) {
+    shmem_fd->reset(fd.release());
   }
   return new MemMap(tail_name, actual, tail_size, actual, tail_base_size, tail_prot, false);
 }
