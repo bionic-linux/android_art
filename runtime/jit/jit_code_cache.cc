@@ -47,9 +47,12 @@ namespace jit {
 static constexpr int kProtAll = PROT_READ | PROT_WRITE | PROT_EXEC;
 static constexpr int kProtData = PROT_READ | PROT_WRITE;
 static constexpr int kProtCode = PROT_READ | PROT_EXEC;
+static constexpr int kProtReadOnly = PROT_READ;
 
 static constexpr size_t kCodeSizeLogThreshold = 50 * KB;
 static constexpr size_t kStackMapSizeLogThreshold = 50 * KB;
+static constexpr size_t kMinMapSpacingPages = 0;
+static constexpr size_t kMaxMapSpacingPages = 128;
 
 #define CHECKED_MPROTECT(memory, size, prot)                \
   do {                                                      \
@@ -90,6 +93,7 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   // We could do PC-relative addressing to avoid this problem, but that
   // would require reserving code and data area before submitting, which
   // means more windows for the code memory to be RWX.
+  unique_fd writable_code_fd;
   std::unique_ptr<MemMap> data_map(MemMap::MapAnonymous(
       "data-code-cache", nullptr,
       max_capacity,
@@ -97,7 +101,8 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
       /* low_4gb */ true,
       /* reuse */ false,
       &error_str,
-      use_ashmem));
+      use_ashmem,
+      &writable_code_fd));
   if (data_map == nullptr) {
     std::ostringstream oss;
     oss << "Failed to create read write cache: " << error_str << " size=" << max_capacity;
@@ -116,23 +121,63 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   DCHECK_EQ(code_size + data_size, max_capacity);
   uint8_t* divider = data_map->Begin() + data_size;
 
-  MemMap* code_map =
-      data_map->RemapAtEnd(divider, "jit-code-cache", kProtAll, &error_str, use_ashmem);
+  std::unique_ptr<MemMap>
+      code_map(data_map->RemapAtEnd(divider, "jit-code-cache", kProtAll, &error_str, use_ashmem));
   if (code_map == nullptr) {
     std::ostringstream oss;
     oss << "Failed to create read write execute cache: " << error_str << " size=" << max_capacity;
     *error_msg = oss.str();
     return nullptr;
   }
+  // Allocate a random padding between the two views of the JIT code cache.
+  // This will be deallocated upon successful startup.
+  size_t spacing_size = GetRandomNumber(kMinMapSpacingPages, kMaxMapSpacingPages);
+  std::unique_ptr<MemMap> spacing_map(MemMap::MapAnonymous(
+      "temporary-spacing",
+      nullptr,
+      spacing_size,
+      kProtData,
+      /* low_4gb */ true,
+      /* reuse */ false,
+      &error_str,
+      use_ashmem));
+  if (spacing_map == nullptr) {
+    std::ostringstream oss;
+    oss << "Failed to create spacing for code cache: " << error_str << " size=" << spacing_size;
+    *error_msg = oss.str();
+    return nullptr;
+  }
+  // Allocate the R/W view.  Mark it as read-only until we need to write to the cache.
   DCHECK_EQ(code_map->Begin(), divider);
+  MemMap* writable_code_map =
+      MemMap::MapFile(code_size,
+                      kProtData,
+                      MAP_PRIVATE | MAP_ANONYMOUS,
+                      writable_code_fd.get(),
+                      /* start */ data_size,
+                      /* low_4gb */ true,
+                      "jit-writable-code",
+                      &error_str);
+  if (code_map == nullptr) {
+    std::ostringstream oss;
+    oss << "Failed to create writable code cache: " << error_str << " size=" << code_size;
+    *error_msg = oss.str();
+    return nullptr;
+  }
   data_size = initial_capacity / 2;
   code_size = initial_capacity - data_size;
   DCHECK_EQ(code_size + data_size, initial_capacity);
-  return new JitCodeCache(
-      code_map, data_map.release(), code_size, data_size, max_capacity, garbage_collect_code);
+  return new JitCodeCache(writable_code_map,
+                          code_map.release(),
+                          data_map.release(),
+                          code_size,
+                          data_size,
+                          max_capacity,
+                          garbage_collect_code);
 }
 
-JitCodeCache::JitCodeCache(MemMap* code_map,
+JitCodeCache::JitCodeCache(MemMap* writable_code_map,
+                           MemMap* executable_code_map,
                            MemMap* data_map,
                            size_t initial_code_capacity,
                            size_t initial_data_capacity,
@@ -141,7 +186,8 @@ JitCodeCache::JitCodeCache(MemMap* code_map,
     : lock_("Jit code cache", kJitCodeCacheLock),
       lock_cond_("Jit code cache condition variable", lock_),
       collection_in_progress_(false),
-      code_map_(code_map),
+      writable_code_map_(writable_code_map),
+      executable_code_map_(executable_code_map),
       data_map_(data_map),
       max_capacity_(max_capacity),
       current_capacity_(initial_code_capacity + initial_data_capacity),
@@ -162,7 +208,7 @@ JitCodeCache::JitCodeCache(MemMap* code_map,
       inline_cache_cond_("Jit inline cache condition variable", lock_) {
 
   DCHECK_GE(max_capacity, initial_code_capacity + initial_data_capacity);
-  code_mspace_ = create_mspace_with_base(code_map_->Begin(), code_end_, false /*locked*/);
+  code_mspace_ = create_mspace_with_base(writable_code_map_->Begin(), code_end_, false /*locked*/);
   data_mspace_ = create_mspace_with_base(data_map_->Begin(), data_end_, false /*locked*/);
 
   if (code_mspace_ == nullptr || data_mspace_ == nullptr) {
@@ -171,7 +217,8 @@ JitCodeCache::JitCodeCache(MemMap* code_map,
 
   SetFootprintLimit(current_capacity_);
 
-  CHECKED_MPROTECT(code_map_->Begin(), code_map_->Size(), kProtCode);
+  CHECKED_MPROTECT(writable_code_map_->Begin(), writable_code_map_->Size(), kProtReadOnly);
+  CHECKED_MPROTECT(executable_code_map_->Begin(), executable_code_map_->Size(), kProtCode);
   CHECKED_MPROTECT(data_map_->Begin(), data_map_->Size(), kProtData);
 
   VLOG(jit) << "Created jit code cache: initial data size="
@@ -181,7 +228,7 @@ JitCodeCache::JitCodeCache(MemMap* code_map,
 }
 
 bool JitCodeCache::ContainsPc(const void* ptr) const {
-  return code_map_->Begin() <= ptr && ptr < code_map_->End();
+  return executable_code_map_->Begin() <= ptr && ptr < executable_code_map_->End();
 }
 
 bool JitCodeCache::ContainsMethod(ArtMethod* method) {
@@ -196,21 +243,26 @@ bool JitCodeCache::ContainsMethod(ArtMethod* method) {
 
 class ScopedCodeCacheWrite : ScopedTrace {
  public:
-  explicit ScopedCodeCacheWrite(MemMap* code_map, bool only_for_tlb_shootdown = false)
+  explicit ScopedCodeCacheWrite(MemMap* writable_code_map, bool only_for_tlb_shootdown = false)
       : ScopedTrace("ScopedCodeCacheWrite"),
-        code_map_(code_map),
+        writable_code_map_(writable_code_map),
         only_for_tlb_shootdown_(only_for_tlb_shootdown) {
     ScopedTrace trace("mprotect all");
     CHECKED_MPROTECT(
-        code_map_->Begin(), only_for_tlb_shootdown_ ? kPageSize : code_map_->Size(), kProtAll);
+        writable_code_map_->Begin(), only_for_tlb_shootdown_ ?
+        kPageSize :
+        writable_code_map_->Size(), kProtData);
   }
   ~ScopedCodeCacheWrite() {
     ScopedTrace trace("mprotect code");
     CHECKED_MPROTECT(
-        code_map_->Begin(), only_for_tlb_shootdown_ ? kPageSize : code_map_->Size(), kProtCode);
+        writable_code_map_->Begin(), only_for_tlb_shootdown_ ?
+        kPageSize :
+        writable_code_map_->Size(), kProtReadOnly);
   }
+
  private:
-  MemMap* const code_map_;
+  MemMap* const writable_code_map_;
 
   // If we're using ScopedCacheWrite only for TLB shootdown, we limit the scope of mprotect to
   // one page.
@@ -408,6 +460,7 @@ void JitCodeCache::SweepRootTables(IsMarkedVisitor* visitor) {
 }
 
 void JitCodeCache::FreeCode(const void* code_ptr) {
+  // TODO(sehr): translate.
   uintptr_t allocation = FromCodeToAllocation(code_ptr);
   // Notify native debugger that we are about to remove the code.
   // It does nothing if we are not using native debugger.
@@ -429,7 +482,7 @@ void JitCodeCache::FreeAllMethodHeaders(
   // so it's possible for the same method_header to start representing
   // different compile code.
   MutexLock mu(Thread::Current(), lock_);
-  ScopedCodeCacheWrite scc(code_map_.get());
+  ScopedCodeCacheWrite scc(writable_code_map_.get());
   for (const OatQuickMethodHeader* method_header : method_headers) {
     FreeCode(method_header->GetCode());
   }
@@ -448,7 +501,7 @@ void JitCodeCache::RemoveMethodsIn(Thread* self, const LinearAlloc& alloc) {
     // with the classlinker_classes_lock_ held, and suspending ourselves could
     // lead to a deadlock.
     {
-      ScopedCodeCacheWrite scc(code_map_.get());
+      ScopedCodeCacheWrite scc(writable_code_map_.get());
       for (auto it = method_code_map_.begin(); it != method_code_map_.end();) {
         if (alloc.ContainsUnsafe(it->second)) {
           method_headers.insert(OatQuickMethodHeader::FromCodePointer(it->first));
@@ -572,16 +625,18 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
     MutexLock mu(self, lock_);
     WaitForPotentialCollectionToComplete(self);
     {
-      ScopedCodeCacheWrite scc(code_map_.get());
+      ScopedCodeCacheWrite scc(writable_code_map_.get());
       memory = AllocateCode(total_size);
       if (memory == nullptr) {
         return nullptr;
       }
-      code_ptr = memory + header_size;
+      uint8_t* writable_ptr = memory + header_size;
+      code_ptr = ToExecutableAddress(writable_ptr);
 
-      std::copy(code, code + code_size, code_ptr);
-      method_header = OatQuickMethodHeader::FromCodePointer(code_ptr);
-      new (method_header) OatQuickMethodHeader(
+      std::copy(code, code + code_size, writable_ptr);
+      OatQuickMethodHeader* writable_method_header =
+          OatQuickMethodHeader::FromCodePointer(writable_ptr);
+      new (writable_method_header) OatQuickMethodHeader(
           code_ptr - stack_map,
           code_ptr - method_info,
           frame_size_in_bytes,
@@ -599,8 +654,11 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
                             reinterpret_cast<char*>(code_ptr + code_size));
       DCHECK(!Runtime::Current()->IsAotCompiler());
       if (has_should_deoptimize_flag) {
-        method_header->SetHasShouldDeoptimizeFlag();
+        writable_method_header->SetHasShouldDeoptimizeFlag();
       }
+      method_header =
+          reinterpret_cast<OatQuickMethodHeader*>(ToExecutableAddress(
+              reinterpret_cast<uint8_t*>(writable_method_header)));
     }
 
     number_of_compilations_++;
@@ -645,7 +703,7 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
     {
       // Flush data cache, as compiled code references literals in it.
       // We also need a TLB shootdown to act as memory barrier across cores.
-      ScopedCodeCacheWrite ccw(code_map_.get(), /* only_for_tlb_shootdown */ true);
+      ScopedCodeCacheWrite ccw(writable_code_map_.get(), /* only_for_tlb_shootdown */ true);
       FlushDataCache(reinterpret_cast<char*>(roots_data),
                      reinterpret_cast<char*>(roots_data + data_size));
     }
@@ -696,10 +754,11 @@ bool JitCodeCache::RemoveMethod(ArtMethod* method, bool release_memory) {
 
   bool in_cache = false;
   {
-    ScopedCodeCacheWrite ccw(code_map_.get());
+    ScopedCodeCacheWrite ccw(writable_code_map_.get());
     for (auto code_iter = method_code_map_.begin(); code_iter != method_code_map_.end();) {
       if (code_iter->second == method) {
         if (release_memory) {
+          // TODO(sehr): translate.
           FreeCode(code_iter->first);
         }
         code_iter = method_code_map_.erase(code_iter);
@@ -754,7 +813,7 @@ void JitCodeCache::NotifyMethodRedefined(ArtMethod* method) {
     profiling_infos_.erase(profile);
   }
   method->SetProfilingInfo(nullptr);
-  ScopedCodeCacheWrite ccw(code_map_.get());
+  ScopedCodeCacheWrite ccw(writable_code_map_.get());
   for (auto code_iter = method_code_map_.begin(); code_iter != method_code_map_.end();) {
     if (code_iter->second == method) {
       FreeCode(code_iter->first);
@@ -948,7 +1007,7 @@ void JitCodeCache::SetFootprintLimit(size_t new_footprint) {
   DCHECK_EQ(per_space_footprint * 2, new_footprint);
   mspace_set_footprint_limit(data_mspace_, per_space_footprint);
   {
-    ScopedCodeCacheWrite scc(code_map_.get());
+    ScopedCodeCacheWrite scc(writable_code_map_.get());
     mspace_set_footprint_limit(code_mspace_, per_space_footprint);
   }
 }
@@ -1026,8 +1085,8 @@ void JitCodeCache::GarbageCollectCache(Thread* self) {
       number_of_collections_++;
       live_bitmap_.reset(CodeCacheBitmap::Create(
           "code-cache-bitmap",
-          reinterpret_cast<uintptr_t>(code_map_->Begin()),
-          reinterpret_cast<uintptr_t>(code_map_->Begin() + current_capacity_ / 2)));
+          reinterpret_cast<uintptr_t>(executable_code_map_->Begin()),
+          reinterpret_cast<uintptr_t>(executable_code_map_->Begin() + current_capacity_ / 2)));
       collection_in_progress_ = true;
     }
   }
@@ -1103,7 +1162,7 @@ void JitCodeCache::RemoveUnmarkedCode(Thread* self) {
   std::unordered_set<OatQuickMethodHeader*> method_headers;
   {
     MutexLock mu(self, lock_);
-    ScopedCodeCacheWrite scc(code_map_.get());
+    ScopedCodeCacheWrite scc(writable_code_map_.get());
     // Iterate over all compiled code and remove entries that are not marked.
     for (auto it = method_code_map_.begin(); it != method_code_map_.end();) {
       const void* code_ptr = it->first;
@@ -1332,7 +1391,7 @@ void* JitCodeCache::MoreCore(const void* mspace, intptr_t increment) NO_THREAD_S
   if (code_mspace_ == mspace) {
     size_t result = code_end_;
     code_end_ += increment;
-    return reinterpret_cast<void*>(result + code_map_->Begin());
+    return reinterpret_cast<void*>(result + executable_code_map_->Begin());
   } else {
     DCHECK_EQ(data_mspace_, mspace);
     size_t result = data_end_;
@@ -1524,8 +1583,9 @@ uint8_t* JitCodeCache::AllocateCode(size_t code_size) {
 }
 
 void JitCodeCache::FreeCode(uint8_t* code) {
-  used_memory_for_code_ -= mspace_usable_size(code);
-  mspace_free(code_mspace_, code);
+  uint8_t* writable_code = ToWritableAddress(code);
+  used_memory_for_code_ -= mspace_usable_size(writable_code);
+  mspace_free(code_mspace_, writable_code);
 }
 
 uint8_t* JitCodeCache::AllocateData(size_t data_size) {
