@@ -70,6 +70,30 @@
       "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7c9675_2683156a",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-05T15:43:12Z",
+      "side": 1,
+      "message": "Sorry for the noise. I forgot Alex had buried a branch in GetDexCache...\n\nI assume the code was correct as-is is because ResolveField and Throw do their own checks for it. It would be interesting to figure out what the right class is in line 376. It sounds reasonable to me that it\u0027s the proxy class, not the interface class itself.",
+      "parentUuid": "78b78a95_4b899722",
+      "range": {
+        "startLine": 356,
+        "startChar": 52,
+        "endLine": 356,
+        "endChar": 77
+      },
+      "revId": "0bf9a25e39795d7da794e6f49e414d4dd7e2962d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
