@@ -282,8 +282,9 @@ int64_t GetFileSizeBytes(const std::string& filename);
 // Sleep forever and never come back.
 NO_RETURN void SleepForever();
 
-inline void FlushInstructionCache(char* begin, char* end) {
-  __builtin___clear_cache(begin, end);
+inline void FlushInstructionCache(const void* start, size_t bytes) {
+  char* begin = static_cast<char*>(const_cast<void*>(start));
+  __builtin___clear_cache(begin, begin + bytes);
 }
 
 inline void FlushDataCache(char* begin, char* end) {

@@ -456,14 +456,18 @@ class ArtMethod FINAL {
     // a read barrier would either prevent unloading the class, or crash the runtime if
     // the GC wants to unload it).
     DCHECK(!IsNative<kWithoutReadBarrier>());
+
+    // LOG(ERROR) << "GetProfilingInfo " << static_cast<void*>(this) << " " << static_cast<void*>(GetDataPtrSize(pointer_size));
     return reinterpret_cast<ProfilingInfo*>(GetDataPtrSize(pointer_size));
   }
 
   ALWAYS_INLINE void SetProfilingInfo(ProfilingInfo* info) {
+    // LOG(ERROR) << "SetProfilingInfo " << static_cast<void*>(this) << " " << static_cast<void*>(info);
     SetDataPtrSize(info, kRuntimePointerSize);
   }
 
   ALWAYS_INLINE void SetProfilingInfoPtrSize(ProfilingInfo* info, PointerSize pointer_size) {
+    // LOG(ERROR) << "SetProfilingInfo " << static_cast<void*>(this) << " " << static_cast<void*>(info);
     SetDataPtrSize(info, pointer_size);
   }
 

@@ -157,6 +157,7 @@ Jit::Jit() : dump_info_on_shutdown_(false),
              invoke_transition_weight_(0) {}
 
 Jit* Jit::Create(JitOptions* options, std::string* error_msg) {
+  // LOG(ERROR) << "Creating JIT";
   DCHECK(options->UseJitCompilation() || options->GetProfileSaverOptions().IsEnabled());
   std::unique_ptr<Jit> jit(new Jit);
   jit->dump_info_on_shutdown_ = options->DumpJitInfoOnShutdown();
@@ -171,6 +172,7 @@ Jit* Jit::Create(JitOptions* options, std::string* error_msg) {
   if (jit->GetCodeCache() == nullptr) {
     return nullptr;
   }
+  // LOG(ERROR) << "Created JIT code cache";
   jit->use_jit_compilation_ = options->UseJitCompilation();
   jit->profile_saver_options_ = options->GetProfileSaverOptions();
   VLOG(jit) << "JIT created with initial_capacity="

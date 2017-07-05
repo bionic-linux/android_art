@@ -71,6 +71,9 @@ class PACKED(4) OatQuickMethodHeader {
   }
 
   uint8_t* GetOptimizedCodeInfoPtr() {
+    // LOG(ERROR) << "GetOptimizedCodeInfoPtr " << static_cast<void*>(this) << " " << code_size_;
+    DCHECK_NE(GetCodeSize(), 0u);
+    DCHECK_NE(vmap_table_offset_, 0u);
     DCHECK(IsOptimized());
     return code_ - vmap_table_offset_;
   }

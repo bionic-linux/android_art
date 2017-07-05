@@ -31,7 +31,9 @@ OatQuickMethodHeader::OatQuickMethodHeader(uint32_t vmap_table_offset,
     : vmap_table_offset_(vmap_table_offset),
       method_info_offset_(method_info_offset),
       frame_info_(frame_size_in_bytes, core_spill_mask, fp_spill_mask),
-      code_size_(code_size) {}
+      code_size_(code_size) {
+  // fprintf(stderr, "OatQuickMethodHeader @%p code_size %u\n", this, code_size);
+}
 
 OatQuickMethodHeader::~OatQuickMethodHeader() {}
 
