@@ -250,6 +250,7 @@ class JitCodeCache {
   // Take ownership of maps.
   JitCodeCache(MemMap* code_map,
                MemMap* data_map,
+               MemMap* writable_code_map,
                size_t initial_code_capacity,
                size_t initial_data_capacity,
                size_t max_capacity,
@@ -335,14 +336,72 @@ class JitCodeCache {
       REQUIRES(!lock_)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  bool IsExecutableAddress(const void* addr) const {
+    if (addr == nullptr) {
+      return true;
+    }
+    if (executable_code_map_->Begin() <= addr &&
+        addr < executable_code_map_->Begin() + executable_code_map_->Size()) {
+      return true;
+    }
+    return false;
+  }
+  bool IsWritableAddress(const void* addr) const {
+    if (addr == nullptr) {
+      return true;
+    }
+    if (writable_code_map_->Begin() <= addr &&
+        addr < writable_code_map_->Begin() + writable_code_map_->Size()) {
+      return true;
+    }
+    return false;
+  }
+  bool IsDataAddress(const void* addr) const {
+    if (addr == nullptr) {
+      return true;
+    }
+    if (data_map_->Begin() <= addr && addr < data_map_->Begin() + data_map_->Size()) {
+      return true;
+    }
+    return false;
+  }
+  uint8_t* ToExecutableAddress(const uint8_t* writable_address) const {
+    CHECK(IsWritableAddress(writable_address));
+    if (writable_address == nullptr) {
+      return nullptr;
+    }
+    ptrdiff_t offset = writable_address - writable_code_map_->Begin();
+    uint8_t* executable_address = executable_code_map_->Begin() + offset;
+    CHECK(IsExecutableAddress(executable_address));
+    return executable_address;
+  }
+  uint8_t* ToWritableAddress(const uint8_t* executable_address) const {
+    CHECK(IsExecutableAddress(executable_address));
+    if (executable_address == nullptr) {
+      return nullptr;
+    }
+    ptrdiff_t offset = executable_address - executable_code_map_->Begin();
+    uint8_t* writable_address = writable_code_map_->Begin() + offset;
+    CHECK(IsWritableAddress(writable_address));
+    return writable_address;
+  }
+
   // Lock for guarding allocations, collections, and the method_code_map_.
   Mutex lock_;
   // Condition to wait on during collection.
   ConditionVariable lock_cond_ GUARDED_BY(lock_);
   // Whether there is a code cache collection in progress.
   bool collection_in_progress_ GUARDED_BY(lock_);
-  // Mem map which holds code.
-  std::unique_ptr<MemMap> code_map_;
+  // JITting methods obviously requires both write and execute permissions on a region of memory.
+  // We separate the memory mapped view that can write the code from a view that the runtime uses
+  // to execute the code. Having these two views eliminates any single address region having rwx
+  // permissions.  An attacker could still write the writable address and then execute the
+  // executable address. We allocate the mappings with a random address relationship to each other
+  // which makes the attacker need two addresses rather than just one.
+  // Mem map which holds writable view of code for JIT.
+  std::unique_ptr<MemMap> writable_code_map_;
+  // Mem map which holds code to execute.
+  std::unique_ptr<MemMap> executable_code_map_;
   // Mem map which holds data (stack maps and profiling info).
   std::unique_ptr<MemMap> data_map_;
   // The opaque mspace for allocating code.

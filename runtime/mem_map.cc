@@ -293,7 +293,8 @@ MemMap* MemMap::MapAnonymous(const char* name,
                              bool low_4gb,
                              bool reuse,
                              std::string* error_msg,
-                             bool use_ashmem) {
+                             bool use_ashmem,
+                             unique_fd* shmem_fd) {
 #ifndef __LP64__
   UNUSED(low_4gb);
 #endif
@@ -379,6 +380,9 @@ MemMap* MemMap::MapAnonymous(const char* name,
   }
   if (!CheckMapRequest(expected_ptr, actual, page_aligned_byte_count, error_msg)) {
     return nullptr;
+  }
+  if (shmem_fd != nullptr) {
+    shmem_fd->reset(fd.release());
   }
   return new MemMap(name, reinterpret_cast<uint8_t*>(actual), byte_count, actual,
                     page_aligned_byte_count, prot, reuse);
