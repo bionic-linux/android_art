@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2a6bbd79_9097e3ee",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-06T01:06:23Z",
+      "side": 1,
+      "message": "I seem to recall that some people got mad when I did this for patchoat. I think the solution was to make and use GetRandomNumber in utils.h (also has bounding)",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fad23d9_ec68e206",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
