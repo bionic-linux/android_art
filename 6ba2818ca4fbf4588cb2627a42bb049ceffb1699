@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a76fe086_7d531a27",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-06T20:44:22Z",
+      "side": 1,
+      "message": "? This needs a better explanation.",
+      "range": {
+        "startLine": 956,
+        "startChar": 30,
+        "endLine": 957,
+        "endChar": 81
+      },
+      "revId": "6ba2818ca4fbf4588cb2627a42bb049ceffb1699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
