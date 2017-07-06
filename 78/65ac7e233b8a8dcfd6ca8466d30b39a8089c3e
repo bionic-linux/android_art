@@ -1,0 +1,10 @@
+Verified+1: Calin Juravle <calin@google.com>
+Autosubmit+1: Calin Juravle <calin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Andreas Gampe <agampe@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Calin Juravle <calin@google.com>
+Submitted-at: Thu, 06 Jul 2017 21:12:53 +0000
+Reviewed-on: https://android-review.googlesource.com/429779
+Project: platform/art
+Branch: refs/heads/master
