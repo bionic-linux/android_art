@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fad23d9_ec68e206",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-06T00:22:53Z",
+      "side": 1,
+      "message": "renaming this to executable_code_map_ will provide better readable to know which one is which.",
+      "range": {
+        "startLine": 346,
+        "startChar": 26,
+        "endLine": 346,
+        "endChar": 35
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fa07273_3cd9147c",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-06T00:22:53Z",
+      "side": 1,
+      "message": "Could you document here or on the top level why we use two maps?",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
