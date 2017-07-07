@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3bf09212_7dd5f36c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-07T16:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a6bbd79_9097e3ee",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fad23d9_ec68e206",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "910eee1b_78fbd3e1",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-07T16:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fad23d9_ec68e206",
+      "range": {
+        "startLine": 346,
+        "startChar": 26,
+        "endLine": 346,
+        "endChar": 35
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fa07273_3cd9147c",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-06T00:22:53Z",
       "side": 1,
       "message": "Could you document here or on the top level why we use two maps?",
+      "range": {
+        "startLine": 350,
+        "startChar": 26,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "6eede08592e6e890de79328c883e94d2c91e7e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac4c6afd_559db71e",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-07T16:12:40Z",
+      "side": 1,
+      "message": "Added before the two views\u0027 map members.",
+      "parentUuid": "2fa07273_3cd9147c",
       "range": {
         "startLine": 350,
         "startChar": 26,
