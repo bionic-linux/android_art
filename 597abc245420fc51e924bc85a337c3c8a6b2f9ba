@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3d3455b_c70897a7",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-07T21:23:38Z",
+      "side": 1,
+      "message": "Add a note here how this interacts with the class table lock and that it may content with loading classes. Explain why it\u0027s ok (e.g. super fast) and what to expect if things go wrong.",
+      "range": {
+        "startLine": 356,
+        "startChar": 3,
+        "endLine": 371,
+        "endChar": 5
+      },
+      "revId": "597abc245420fc51e924bc85a337c3c8a6b2f9ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
