@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d75bdac0_18957145",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-11T15:23:48Z",
+      "side": 1,
+      "message": "BTW, doesn\u0027t it just let you put different art-specific code into src-art directory [with the same class name]? To avoid this whole separate runtime check?",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
