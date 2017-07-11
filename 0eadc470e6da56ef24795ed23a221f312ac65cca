@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcd8a91d_46388f9e",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a534df5b_c6a7f797",
+      "range": {
+        "startLine": 228,
+        "startChar": 6,
+        "endLine": 228,
+        "endChar": 28
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bea8c645_0686c9f6",
         "filename": "runtime/jit/profile_saver.cc",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-11T18:00:58Z",
       "side": 1,
       "message": "ditto.\n\nDoes class unloading interfere with this? Add a comment if yes/no.",
+      "range": {
+        "startLine": 245,
+        "startChar": 6,
+        "endLine": 245,
+        "endChar": 23
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99929ffb_04450b21",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea8c645_0686c9f6",
       "range": {
         "startLine": 245,
         "startChar": 6,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb4ccdb2_71b4465e",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be69fc66_b397f804",
+      "range": {
+        "startLine": 274,
+        "startChar": 12,
+        "endLine": 274,
+        "endChar": 43
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79ad4d38_c7112a50",
         "filename": "runtime/jit/profile_saver.cc",
         "patchSetId": 17
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-11T18:00:58Z",
       "side": 1,
       "message": "Is this still an issue since now we ScopedDefaultPriority?",
+      "range": {
+        "startLine": 287,
+        "startChar": 73,
+        "endLine": 287,
+        "endChar": 92
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78fd22b7_3a0305ae",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Sort of, i\u0027ll fix the comment.",
+      "parentUuid": "79ad4d38_c7112a50",
       "range": {
         "startLine": 287,
         "startChar": 73,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "dfc4248a_fd7ffee8",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1bad40_3229341e",
+      "range": {
+        "startLine": 304,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 5
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50ec084b_36ef0193",
         "filename": "runtime/jit/profile_saver.cc",
         "patchSetId": 17
@@ -128,6 +248,30 @@
       "writtenOn": "2017-07-11T18:00:58Z",
       "side": 1,
       "message": "And since the method ends  after this scope, it looks you don\u0027t need L303 scope at all.",
+      "range": {
+        "startLine": 311,
+        "startChar": 4,
+        "endLine": 311,
+        "endChar": 75
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b951e1f2_e58e168d",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ec084b_36ef0193",
       "range": {
         "startLine": 311,
         "startChar": 4,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "b8d08d3d_6bf434ef",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "323ac72e_c8af9068",
+      "range": {
+        "startLine": 314,
+        "startChar": 6,
+        "endLine": 314,
+        "endChar": 28
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3726960e_76cef652",
         "filename": "runtime/jit/profile_saver.cc",
         "patchSetId": 17
@@ -174,6 +342,30 @@
       "writtenOn": "2017-07-11T18:00:58Z",
       "side": 1,
       "message": "The \"only\" here implies that there should be an else after this branch?",
+      "range": {
+        "startLine": 327,
+        "startChar": 13,
+        "endLine": 327,
+        "endChar": 17
+      },
+      "revId": "0eadc470e6da56ef24795ed23a221f312ac65cca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ad68bb_924fb093",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-11T20:51:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3726960e_76cef652",
       "range": {
         "startLine": 327,
         "startChar": 13,
