@@ -161,6 +161,23 @@
       "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5db82e_7804ffd5",
+        "filename": "test/639-checker-code-sinking-classloaders/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-11T18:41:40Z",
+      "side": 1,
+      "message": "too much indentation",
+      "revId": "3209cac0e54ee65a5e28b2185f87dd11ad479e4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
