@@ -22,6 +22,30 @@
       "revId": "97c46466aea25ab63a99b3d1afc558f0d9f55abb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a200bf66_174a64cf",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 0,
+      "message": "Macro RESTORE_SAVE_REFS_ONLY_FRAME_AND_RETURN was already removed in PS1. Or maybe were you thinking about something else?",
+      "parentUuid": "4dc46584_3cc95a81",
+      "range": {
+        "startLine": 1502,
+        "startChar": 4,
+        "endLine": 1502,
+        "endChar": 43
+      },
+      "revId": "97c46466aea25ab63a99b3d1afc558f0d9f55abb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

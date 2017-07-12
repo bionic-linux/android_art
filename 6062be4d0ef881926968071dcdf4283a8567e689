@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e846debb_918b0e4e",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f1cf20a_c36776b4",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33751144_6184a9ca",
         "filename": "compiler/optimizing/code_generator_arm_vixl.h",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2017-07-12T08:49:16Z",
       "side": 1,
       "message": "Indentation is off.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89f5aca3_bfd6cbb6",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33751144_6184a9ca",
       "range": {
         "startLine": 90,
         "startChar": 0,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "2a0d0583_52a23d9f",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733127e3_741c8fb7",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6148d7e3_51d7572d",
         "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2017-07-12T08:49:16Z",
       "side": 1,
       "message": "Why not removing MR from the core_spill_mask (if that\u0027s the issue), andcontinue only doing PopList(with PC) instead of adding bx(LR)?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44177baf_5fa56c72",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "The `Pop` macro-instruction on line 151 should match the Push macro-instruction on line 74. If we remove LR from `core_spill_mask` in `ArmVIXLJNIMacroAssembler::RemoveFrame`, we need to adjust SP after popping the callee-save registers (to remove LR from the stack) with\n\n  add sp, #4\n\nwhich is a 16-bit Thumb-2 instruction (\"ADD (SP plus immediate), T2 encoding\").\n\nThe `Bx` macro-instruction on line 160  generates\n\n  bx lr\n\nwhich is also a 16-bit Thumb-2 instruction (\"BX, T1 encoding\").\n\nWhich one do you prefer?",
+      "parentUuid": "6148d7e3_51d7572d",
       "range": {
         "startLine": 153,
         "startChar": 0,
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "47dcdcde_50a22ee9",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "Sure; I moved the change to this CL: https://android-review.googlesource.com/#/c/433940/.",
+      "parentUuid": "defba777_03265248",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ebef301_532bfb40",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 4
@@ -110,6 +212,24 @@
       "writtenOn": "2017-07-12T08:49:16Z",
       "side": 1,
       "message": "ditto",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33ca61ce_6952560d",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-07-12T18:13:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebef301_532bfb40",
       "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
