@@ -70,6 +70,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595ea5b0_05fd6246",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-12T15:13:49Z",
+      "side": 1,
+      "message": "So we could probably have\n\n   src-art\\file.java\n   src-ri\\file.java\n\n?\n\nOr are you just suggesting splitting it out into more than 1 file is what\u0027s hiding the divergence?",
+      "parentUuid": "1b8df6ee_541b666f",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
