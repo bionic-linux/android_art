@@ -142,6 +142,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b77270_99402932",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-12T18:16:14Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "4d3d0456_b9858909",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
