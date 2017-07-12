@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dc46584_3cc95a81",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 0,
+      "message": "This is the only user of that macro. Remove it?",
+      "range": {
+        "startLine": 1502,
+        "startChar": 4,
+        "endLine": 1502,
+        "endChar": 43
+      },
+      "revId": "97c46466aea25ab63a99b3d1afc558f0d9f55abb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

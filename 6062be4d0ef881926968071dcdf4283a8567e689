@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f1cf20a_c36776b4",
+        "filename": "compiler/optimizing/code_generator_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "I wouldn\u0027t do any changes in this file. We know this backend has bitrotten. If you don\u0027t have time to remove it this week, I\u0027ll do it next week.",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33751144_6184a9ca",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 55
+      },
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "733127e3_741c8fb7",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "ditto about not changing this file.",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6148d7e3_51d7572d",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "Why not removing MR from the core_spill_mask (if that\u0027s the issue), andcontinue only doing PopList(with PC) instead of adding bx(LR)?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "defba777_03265248",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "Looks like a standalone fix you could do in another CL?",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ebef301_532bfb40",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:49:16Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
