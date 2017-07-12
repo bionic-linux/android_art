@@ -549,6 +549,7 @@ DexFile::DexFile(const uint8_t* base,
   CHECK_ALIGNED(begin_, alignof(Header));
 
   InitializeSectionsFromMapList();
+  InitializeClassIndexes();
 }
 
 DexFile::~DexFile() {
@@ -635,18 +636,26 @@ uint32_t DexFile::Header::GetVersion() const {
   return atoi(version);
 }
 
+void DexFile::InitializeClassIndexes() {
+  size_t num_class_defs = NumClassDefs();
+  for (size_t i = 0; i < num_class_defs; ++i) {
+    const ClassDef& class_def = GetClassDef(i);
+    class_idx_to_idx[class_def.class_idx_] = i;
+  }
+}
+
 const DexFile::ClassDef* DexFile::FindClassDef(dex::TypeIndex type_idx) const {
   size_t num_class_defs = NumClassDefs();
   // Fast path for rare no class defs case.
   if (num_class_defs == 0) {
     return nullptr;
   }
-  for (size_t i = 0; i < num_class_defs; ++i) {
-    const ClassDef& class_def = GetClassDef(i);
-    if (class_def.class_idx_ == type_idx) {
-      return &class_def;
-    }
+
+  auto it = class_idx_to_idx.find(type_idx);
+  if (it != class_idx_to_idx.end()) {
+    return &GetClassDef(it->second);
   }
+
   return nullptr;
 }
 

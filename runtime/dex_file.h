@@ -20,6 +20,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 #include "base/logging.h"
 #include "base/value_object.h"
@@ -1171,6 +1172,10 @@ class DexFile {
   // Initialize section info for sections only found in map. Returns true on success.
   void InitializeSectionsFromMapList();
 
+  // Initialize a map from a class_def.class_idx to the index of the class in
+  // class_defs_.
+  void InitializeClassIndexes();
+
   // The base address of the memory mapping.
   const uint8_t* const begin_;
 
@@ -1225,6 +1230,10 @@ class DexFile {
   // pointer to the OatDexFile it was loaded from. Otherwise oat_dex_file_ is
   // null.
   mutable const OatDexFile* oat_dex_file_;
+
+  // Fast access to the index of a class in class_defs_ from a
+  // class_def.class_idx_.
+  std::unordered_map<dex::TypeIndex, size_t> class_idx_to_idx;
 
   friend class DexFileVerifierTest;
   friend class OatWriter;
