@@ -124,6 +124,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d3d0456_b9858909",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-12T16:37:04Z",
+      "side": 1,
+      "message": "Yes, but if we want to use this interpretation, we should update the comment to clarify the intent.",
+      "parentUuid": "7d151cd7_85ef110e",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
