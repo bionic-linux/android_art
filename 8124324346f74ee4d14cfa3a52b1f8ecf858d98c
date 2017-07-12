@@ -88,6 +88,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07918905_e409d7cb",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-12T15:24:10Z",
+      "side": 1,
+      "message": "Having src-ri/ and src-art/ and requiring the same file names in both would be reasonable. But it\u0027s still at odds with the current _purpose_ of src-art, i.e. \".java files in src-art get compiled with libcore on the bootclasspath\".",
+      "parentUuid": "595ea5b0_05fd6246",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
