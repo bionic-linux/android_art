@@ -16,6 +16,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "702b09a2_b0cd9f9d",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-12T09:38:54Z",
+      "side": 1,
+      "message": "The description says\n\n  # .java files in src-art get compiled with libcore on the bootclasspath\n\nThat\u0027s not what I need here. I want to run the code and have a few cases (currently one) where I want to ignore the RI behavior if run with --jvm.",
+      "parentUuid": "d75bdac0_18957145",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
