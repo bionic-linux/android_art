@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c16f829_bc7ff331",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-12T16:12:20Z",
+      "side": 1,
+      "message": "Ah, I linked to the bug for that reason, but will spell it out in the commit message too.",
+      "parentUuid": "513bf911_39bf249b",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43b81bd1_c3045f86",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "85630316_566900ac",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-12T16:12:20Z",
+      "side": 1,
+      "message": "I actually considered that, also with any eye on forgetting this for future nodes, but then we have a lot of those methods all over the place. I think I prefer having it this way and one of the reason I added nodes_vector_test is that hopefully new node \"developers\" will consider adding the right method.",
+      "parentUuid": "43b81bd1_c3045f86",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01be450a_687fbb01",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2017-07-12T12:11:23Z",
       "side": 1,
       "message": "Maybe it could be a good idea to add  DCHECK(o-\u003eIsVecOperation()) with corresponding types of instructions in all of the similar places.",
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dad13705_0f3f1307",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-12T16:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01be450a_687fbb01",
       "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
