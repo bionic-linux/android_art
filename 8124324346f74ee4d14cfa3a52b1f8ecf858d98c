@@ -34,6 +34,24 @@
       "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "903c658b_8a96fe96",
+        "filename": "test/162-method-resolution/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-12T15:04:54Z",
+      "side": 1,
+      "message": "The theory I was considering was to refactor invokeUserTest to a different file:\n\n   src-art\\invokeUserTest.java -\u003e used with ART\n   src\\invokeUserTest.java -\u003e used with RI\n\nAlthough maybe default-build doesn\u0027t work this way and it will try to build with src-art regardless (if so that\u0027s a bug I should fix)",
+      "parentUuid": "702b09a2_b0cd9f9d",
+      "revId": "8124324346f74ee4d14cfa3a52b1f8ecf858d98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
