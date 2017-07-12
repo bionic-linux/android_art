@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "513bf911_39bf249b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T08:53:04Z",
+      "side": 1,
+      "message": "Could you add a comment how it got fixed?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
