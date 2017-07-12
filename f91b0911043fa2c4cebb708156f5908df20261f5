@@ -22,6 +22,46 @@
       "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43b81bd1_c3045f86",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-07-12T12:11:23Z",
+      "side": 1,
+      "message": "Isn\u0027t it safer to have it false by default and override for those type of instruction that can be moved (this approach is used for non-vector instructions in nodes.h).\n\nIt could help to avoid possible issues when someone adds a new Vector Instruction which is not movable and forgets to override the method.",
+      "range": {
+        "startLine": 103,
+        "startChar": 36,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01be450a_687fbb01",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-07-12T12:11:23Z",
+      "side": 1,
+      "message": "Maybe it could be a good idea to add  DCHECK(o-\u003eIsVecOperation()) with corresponding types of instructions in all of the similar places.",
+      "revId": "f91b0911043fa2c4cebb708156f5908df20261f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
