@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44b791e_4a59aaec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-12T16:45:16Z",
+      "side": 1,
+      "message": "Could you have a PS with the original revert of the revert, and then a PS with the fix? That will simplify the review.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "13335fa6b062e0aeb9b7387b80b7a00b867910dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
