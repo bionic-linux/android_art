@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "bdaf2580_247f87f8",
+        "filename": "compiler/utils/arm/jni_macro_assembler_arm_vixl.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-13T10:37:11Z",
+      "side": 1,
+      "message": "It\u0027s MR I\u0027m suggesting to remove from the mask, not LR.",
+      "parentUuid": "44177baf_5fa56c72",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 21
+      },
+      "revId": "6062be4d0ef881926968071dcdf4283a8567e689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "defba777_03265248",
         "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
         "patchSetId": 4

@@ -46,6 +46,30 @@
       "revId": "97c46466aea25ab63a99b3d1afc558f0d9f55abb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19765841_a873836b",
+        "filename": "runtime/arch/arm/quick_entrypoints_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 1502,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-13T10:37:11Z",
+      "side": 0,
+      "message": "Ah, didn\u0027t realize that :)",
+      "parentUuid": "a200bf66_174a64cf",
+      "range": {
+        "startLine": 1502,
+        "startChar": 4,
+        "endLine": 1502,
+        "endChar": 43
+      },
+      "revId": "97c46466aea25ab63a99b3d1afc558f0d9f55abb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
