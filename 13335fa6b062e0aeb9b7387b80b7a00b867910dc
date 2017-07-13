@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "443ab78d_f43de6d0",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-13T15:42:48Z",
+      "side": 1,
+      "message": "\u003e :-(\n \u003e \n \u003e Two reviewers requested it now, so I will comply. But, imho, this\n \u003e just adds a lot of code clutter with no real benefits.\n\nIt has one benefit: being explicit might avoid the reason for your original revert :)\n\n Proper unit\n \u003e testing new nodes is the right way.\n \u003e \n \u003e Note that InstructionDataEquals() has exactly similar problems. It\n \u003e is wrong to add a new node  new fields and not override the method.\n \u003e Yet nothing prevents this. In fact, I don\u0027t know if you saw it, but\n \u003e this CL fixes a potential bug in Artem\u0027s HVecMultiplyAccumulate\n \u003e where this method did not call the super class (and thus did not\n \u003e take type/vl into account for equality).\n\nRight, though I\u0027m not sure what is the alternative. You have to execute the code of that super method somehow.",
+      "parentUuid": "f2121cb8_8200c212",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "13335fa6b062e0aeb9b7387b80b7a00b867910dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "687084b0_16a4d0ec",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 3
