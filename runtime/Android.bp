@@ -290,6 +290,9 @@ cc_defaults {
             ],
         },
         x86: {
+            // All x86 Android devices and hosts are at least sse4.2/popcount.
+            // Only the x86 emulator (goldfish) may support less.
+            cflags: ["-mssse3", "-msse4.1", "-msse4.2", "-mpopcnt"],
             srcs: [
                 "interpreter/mterp/mterp.cc",
                 "interpreter/mterp/out/mterp_x86.S",
@@ -303,6 +306,9 @@ cc_defaults {
             ],
         },
         x86_64: {
+            // All x86_64 Android devices and hosts are at least sse4.2/popcount.
+            // Only the x86 emulator (goldfish) may support less.
+            cflags: ["-mssse3", "-msse4.1", "-msse4.2", "-mpopcnt"],
             srcs: [
                 // Note that the fault_handler_x86.cc is not a mistake.  This file is
                 // shared between the x86 and x86_64 architectures.
