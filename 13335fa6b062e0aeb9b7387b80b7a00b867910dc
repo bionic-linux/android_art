@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "8f67d547_75a9cc44",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-13T09:38:29Z",
+      "side": 1,
+      "message": "I like Artem\u0027s suggestion to make this false by default, and only override with true for the ones that can move.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "13335fa6b062e0aeb9b7387b80b7a00b867910dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "687084b0_16a4d0ec",
         "filename": "compiler/optimizing/nodes_vector.h",
         "patchSetId": 3
