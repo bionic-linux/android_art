@@ -258,7 +258,7 @@ fi
 # This is for run-jdwp-test.sh which uses this script and has arguments with
 # whitespaces when running on device.
 while [ $# -gt 0 ]; do
-  EXTRA_OPTIONS="$EXTRA_OPTIONS \"$1\""
+  EXTRA_OPTIONS="$EXTRA_OPTIONS '$1'"
   shift
 done
 
