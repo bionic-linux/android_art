@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "153ebb0b_03045695",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T14:49:30Z",
+      "side": 1,
+      "message": "nit: wrap in {} so it\u0027s obvious lambda is not used elsewhere",
+      "revId": "1b2b7985ab16d6b82e353d091a35c0b8860718e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e229adf0_5fceb0cc",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1731,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T14:49:30Z",
+      "side": 1,
+      "message": "nit: wrap in {} so it\u0027s obvious lambda is not used elsewhere",
+      "revId": "1b2b7985ab16d6b82e353d091a35c0b8860718e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22379174_0321fcea",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1800,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T14:49:30Z",
+      "side": 1,
+      "message": "nit: wrap in {} so it\u0027s obvious lambda is not used elsewhere",
+      "revId": "1b2b7985ab16d6b82e353d091a35c0b8860718e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
