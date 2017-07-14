@@ -1010,9 +1010,6 @@ class Heap {
 
   size_t GetPercentFree();
 
-  static void VerificationCallback(mirror::Object* obj, void* arg)
-      REQUIRES_SHARED(Locks::heap_bitmap_lock_);
-
   // Swap the allocation stack with the live stack.
   void SwapStacks() REQUIRES_SHARED(Locks::mutator_lock_);
 

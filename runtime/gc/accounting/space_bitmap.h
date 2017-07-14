@@ -139,8 +139,9 @@ class SpaceBitmap {
 
   // Visits set bits in address order.  The callback is not permitted to change the bitmap bits or
   // max during the traversal.
-  void Walk(ObjectCallback* callback, void* arg)
-      REQUIRES_SHARED(Locks::heap_bitmap_lock_);
+  template <typename Visitor>
+  void Walk(Visitor&& visitor)
+      REQUIRES_SHARED(Locks::heap_bitmap_lock_, Locks::mutator_lock_);
 
   // Walk through the bitmaps in increasing address order, and find the object pointers that
   // correspond to garbage objects.  Call <callback> zero or more times with lists of these object

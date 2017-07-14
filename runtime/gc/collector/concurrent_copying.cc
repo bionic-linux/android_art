@@ -583,23 +583,22 @@ class ConcurrentCopying::VerifyNoMissingCardMarkVisitor {
   ObjPtr<mirror::Object> const holder_;
 };
 
-void ConcurrentCopying::VerifyNoMissingCardMarkCallback(mirror::Object* obj, void* arg) {
-  auto* collector = reinterpret_cast<ConcurrentCopying*>(arg);
-  // Objects not on dirty or aged cards should never have references to newly allocated regions.
-  if (collector->heap_->GetCardTable()->GetCard(obj) == gc::accounting::CardTable::kCardClean) {
-    VerifyNoMissingCardMarkVisitor visitor(collector, /*holder*/ obj);
-    obj->VisitReferences</*kVisitNativeRoots*/true, kVerifyNone, kWithoutReadBarrier>(
-        visitor,
-        visitor);
-  }
-}
-
 void ConcurrentCopying::VerifyNoMissingCardMarks() {
+  auto visitor = [&](mirror::Object* obj)
+      REQUIRES(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_) {
+    // Objects not on dirty or aged cards should never have references to newly allocated regions.
+    if (heap_->GetCardTable()->GetCard(obj) == gc::accounting::CardTable::kCardClean) {
+      VerifyNoMissingCardMarkVisitor internal_visitor(this, /*holder*/ obj);
+      obj->VisitReferences</*kVisitNativeRoots*/true, kVerifyNone, kWithoutReadBarrier>(
+          internal_visitor, internal_visitor);
+    }
+  };
   TimingLogger::ScopedTiming split(__FUNCTION__, GetTimings());
-  region_space_->Walk(&VerifyNoMissingCardMarkCallback, this);
+  region_space_->Walk(visitor);
   {
     ReaderMutexLock rmu(Thread::Current(), *Locks::heap_bitmap_lock_);
-    heap_->GetLiveBitmap()->Walk(&VerifyNoMissingCardMarkCallback, this);
+    heap_->GetLiveBitmap()->Visit(visitor);
   }
 }
 
@@ -1252,7 +1251,21 @@ void ConcurrentCopying::VerifyNoFromSpaceReferences() {
       CHECK(!thread->GetIsGcMarking());
     }
   }
-  VerifyNoFromSpaceRefsObjectVisitor visitor(this);
+
+  auto verify_no_from_space_refs_visitor = [&](mirror::Object* obj)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    CHECK(obj != nullptr);
+    space::RegionSpace* region_space = RegionSpace();
+    CHECK(!region_space->IsInFromSpace(obj)) << "Scanning object " << obj << " in from space";
+    VerifyNoFromSpaceRefsFieldVisitor visitor(this);
+    obj->VisitReferences</*kVisitNativeRoots*/true, kDefaultVerifyFlags, kWithoutReadBarrier>(
+        visitor,
+        visitor);
+    if (kUseBakerReadBarrier) {
+      CHECK_EQ(obj->GetReadBarrierState(), ReadBarrier::WhiteState())
+          << "obj=" << obj << " non-white rb_state " << obj->GetReadBarrierState();
+    }
+  };
   // Roots.
   {
     ReaderMutexLock mu(self, *Locks::heap_bitmap_lock_);
@@ -1260,11 +1273,11 @@ void ConcurrentCopying::VerifyNoFromSpaceReferences() {
     Runtime::Current()->VisitRoots(&ref_visitor);
   }
   // The to-space.
-  region_space_->WalkToSpace(VerifyNoFromSpaceRefsObjectVisitor::ObjectCallback, this);
+  region_space_->WalkToSpace(verify_no_from_space_refs_visitor);
   // Non-moving spaces.
   {
     WriterMutexLock mu(self, *Locks::heap_bitmap_lock_);
-    heap_->GetMarkBitmap()->Visit(visitor);
+    heap_->GetMarkBitmap()->Visit(verify_no_from_space_refs_visitor);
   }
   // The alloc stack.
   {
@@ -1275,7 +1288,7 @@ void ConcurrentCopying::VerifyNoFromSpaceReferences() {
       if (obj != nullptr && obj->GetClass() != nullptr) {
         // TODO: need to call this only if obj is alive?
         ref_visitor(obj);
-        visitor(obj);
+        verify_no_from_space_refs_visitor(obj);
       }
     }
   }

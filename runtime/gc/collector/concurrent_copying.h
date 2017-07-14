@@ -181,9 +181,6 @@ class ConcurrentCopying : public GarbageCollector {
   void VerifyGrayImmuneObjects()
       REQUIRES(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
-  static void VerifyNoMissingCardMarkCallback(mirror::Object* obj, void* arg)
-      REQUIRES(Locks::mutator_lock_)
-      REQUIRES(!mark_stack_lock_);
   void VerifyNoMissingCardMarks()
       REQUIRES(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);

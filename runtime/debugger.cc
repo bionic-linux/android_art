@@ -4835,6 +4835,12 @@ void Dbg::DdmSendHeapSegments(bool native) {
 
   // Send a series of heap segment chunks.
   HeapChunkContext context(what == HPSG_WHAT_MERGED_OBJECTS, native);
+  auto bump_pointer_space_visitor = [&](mirror::Object* obj)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::heap_bitmap_lock_) {
+    const size_t size = RoundUp(obj->SizeOf(), kObjectAlignment);
+    HeapChunkContext::HeapChunkJavaCallback(
+        obj, reinterpret_cast<void*>(reinterpret_cast<uintptr_t>(obj) + size), size, &context);
+  };
   if (native) {
     UNIMPLEMENTED(WARNING) << "Native heap inspection is not supported";
   } else {
@@ -4866,7 +4872,7 @@ void Dbg::DdmSendHeapSegments(bool native) {
           ScopedSuspendAll ssa(__FUNCTION__);
           ReaderMutexLock mu(self, *Locks::heap_bitmap_lock_);
           context.SetChunkOverhead(0);
-          space->AsRegionSpace()->Walk(BumpPointerSpaceCallback, &context);
+          space->AsRegionSpace()->Walk(bump_pointer_space_visitor);
           HeapChunkContext::HeapChunkJavaCallback(nullptr, nullptr, 0, &context);
         }
         heap->DecrementDisableMovingGC(self);
