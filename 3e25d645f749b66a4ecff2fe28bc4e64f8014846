@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b7e5f7a_ebfc48e5",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T14:26:08Z",
+      "side": 1,
+      "message": "This is the problem, it\u0027s not what you fixed down there. eval causes expansion of $ variables.\n\nThe right way here is to duplicate the command line from 119 so it\u0027s both printed and then executed directly without eval.",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
