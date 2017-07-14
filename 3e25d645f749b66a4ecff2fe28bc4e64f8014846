@@ -86,6 +86,24 @@
       "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21688559_6b86adce",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T15:19:03Z",
+      "side": 1,
+      "message": "Up to you, I can upload new patch if you prefer?",
+      "parentUuid": "41abf070_34c81ef5",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
