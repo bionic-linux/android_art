@@ -104,6 +104,24 @@
       "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fe53fb8_5db6e7a5",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-14T15:29:45Z",
+      "side": 1,
+      "message": "Please do. I tried applying both changes you suggested (lines 119 and 260) and instead of\n\n  Unable to locate class \u0027$FOO\u0027\n\nI got\n\n  Unable to locate class \u0027\u0027",
+      "parentUuid": "21688559_6b86adce",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
