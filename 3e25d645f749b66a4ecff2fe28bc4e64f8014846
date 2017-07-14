@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "93fe48d6_6e3cb557",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T16:43:03Z",
+      "side": 1,
+      "message": "Doesn\u0027t work with environment variables\n\n  verbose_run echo hello\n-\u003e works fine\n   verbose_run foo\u003d1 echo hello\n-\u003e foo\u003d1 command not found\n\n   foo\u003d1 verbose_run echo hello\n\n-\u003e works ok but it wouldnt print environment variables as part of the echo on line 113",
+      "parentUuid": "0b5cb77e_36129bbd",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "157a836b_5fea5e05",
         "filename": "tools/art",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Whilst this works, it\u0027s clunky.",
       "parentUuid": "157a836b_5fea5e05",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8b5b1b9_2b80aa2e",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T16:43:03Z",
+      "side": 1,
+      "message": "Agreed, was just suggesting it as an easy fix. I\u0027ll come up with something cleaner that doesn\u0027t use eval.",
+      "parentUuid": "fc93cef7_aba60cf5",
       "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
