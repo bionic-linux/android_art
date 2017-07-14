@@ -461,6 +461,29 @@ ArtMethod* Class::FindInterfaceMethod(ObjPtr<DexCache> dex_cache,
   return FindInterfaceMethod(name, signature, pointer_size);
 }
 
+static inline bool IsInheritedDeclaredMethod(ObjPtr<mirror::Class> klass,
+                                             ObjPtr<mirror::Class> declaring_class,
+                                             ArtMethod& method)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  DCHECK_EQ(declaring_class, method.GetDeclaringClass());
+  DCHECK_NE(klass, declaring_class);
+  DCHECK(klass->IsArrayClass() ? declaring_class->IsObjectClass()
+                               : klass->IsSubClass(declaring_class));
+  uint32_t access_flags = method.GetAccessFlags();
+  if ((access_flags & (kAccPublic | kAccProtected)) != 0) {
+    return true;
+  }
+  if ((access_flags & kAccPrivate) != 0) {
+    return false;
+  }
+  for (; klass != declaring_class; klass = klass->GetSuperClass()) {
+    if (!klass->IsInSamePackage(declaring_class)) {
+      return false;
+    }
+  }
+  return true;
+}
+
 template <typename SignatureType>
 static inline ArtMethod* FindClassMethodWithSignature(ObjPtr<Class> this_klass,
                                                       const StringPiece& name,
@@ -468,32 +491,54 @@ static inline ArtMethod* FindClassMethodWithSignature(ObjPtr<Class> this_klass,
                                                       PointerSize pointer_size)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // Search declared methods first.
-  ObjPtr<Class> klass = this_klass;
-  if (UNLIKELY(klass->IsProxyClass())) {
-    for (ArtMethod& method : klass->GetDeclaredMethodsSlice(pointer_size)) {
+  if (UNLIKELY(this_klass->IsProxyClass())) {
+    DCHECK_EQ(this_klass->GetSuperClass(),
+              WellKnownClasses::ToClass(WellKnownClasses::java_lang_reflect_Proxy));
+    for (ArtMethod& method : this_klass->GetDeclaredMethodsSlice(pointer_size)) {
       ArtMethod* np_method = method.GetInterfaceMethodIfProxy(pointer_size);
       if (np_method->GetName() == name && np_method->GetSignature() == signature) {
         return &method;
       }
     }
-    klass = klass->GetSuperClass();
-    DCHECK_EQ(klass, WellKnownClasses::ToClass(WellKnownClasses::java_lang_reflect_Proxy));
-  }
-  for (; klass != nullptr; klass = klass->GetSuperClass()) {
-    DCHECK(!klass->IsProxyClass());
-    for (ArtMethod& method : klass->GetDeclaredMethodsSlice(pointer_size)) {
+  } else {
+    for (ArtMethod& method : this_klass->GetDeclaredMethodsSlice(pointer_size)) {
       if (method.GetName() == name && method.GetSignature() == signature) {
         return &method;
       }
     }
   }
+
+  // Then search the superclass chain. If we find an inherited method, return it.
+  // If we find a method that's not inherited because of access restrictions,
+  // try to find a method inherited from an interface in copied methods.
+  ObjPtr<Class> klass = this_klass->GetSuperClass();
+  ArtMethod* uninherited_method = nullptr;
+  for (; klass != nullptr; klass = klass->GetSuperClass()) {
+    DCHECK(!klass->IsProxyClass());
+    for (ArtMethod& method : klass->GetDeclaredMethodsSlice(pointer_size)) {
+      if (method.GetName() == name && method.GetSignature() == signature) {
+        if (IsInheritedDeclaredMethod(this_klass, klass, method)) {
+          return &method;
+        }
+        uninherited_method = &method;
+        break;
+      }
+    }
+    if (uninherited_method != nullptr) {
+      break;
+    }
+  }
+
   // Then search copied methods.
+  // If we found a method that's not inherited, stop the search in its declaring class.
+  ObjPtr<Class> end_klass = klass;
+  DCHECK_EQ(uninherited_method != nullptr, end_klass != nullptr);
   klass = this_klass;
   if (UNLIKELY(klass->IsProxyClass())) {
     DCHECK(klass->GetCopiedMethodsSlice(pointer_size).empty());
     klass = klass->GetSuperClass();
   }
-  for (; klass != nullptr; klass = klass->GetSuperClass()) {
+  for (; klass != end_klass; klass = klass->GetSuperClass()) {
     DCHECK(!klass->IsProxyClass());
     for (ArtMethod& method : klass->GetCopiedMethodsSlice(pointer_size)) {
       if (method.GetName() == name && method.GetSignature() == signature) {
@@ -501,7 +546,7 @@ static inline ArtMethod* FindClassMethodWithSignature(ObjPtr<Class> this_klass,
       }
     }
   }
-  return nullptr;
+  return uninherited_method;  // Return the `uninherited_method` if any.
 }
 
 
@@ -523,9 +568,9 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
   // FIXME: Hijacking a proxy class by a custom class loader can break this assumption.
   DCHECK(!IsProxyClass());
 
-  ObjPtr<Class> klass = this;
   // First try to find a declared method by dex_method_idx if we have a dex_cache match.
-  if (GetDexCache() == dex_cache) {
+  ObjPtr<DexCache> this_dex_cache = GetDexCache();
+  if (this_dex_cache == dex_cache) {
     // Lookup is always performed in the class referenced by the MethodId.
     DCHECK_EQ(dex_type_idx_, GetDexFile().GetMethodId(dex_method_idx).class_idx_.index_);
     for (ArtMethod& method : GetDeclaredMethodsSlice(pointer_size)) {
@@ -533,15 +578,30 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
         return &method;
       }
     }
-    klass = GetSuperClass();
   }
   // If not found, we need to search by name and signature.
   const DexFile& dex_file = *dex_cache->GetDexFile();
   const DexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_idx);
   const Signature signature = dex_file.GetMethodSignature(method_id);
   StringPiece name;  // Delay strlen() until actually needed.
-  // Search for declared methods in the remainder of the super-class chain.
+  // If we do not have a dex_cache match, try to find the declared method in this class now.
+  if (this_dex_cache != dex_cache && !GetDeclaredMethodsSlice(pointer_size).empty()) {
+    DCHECK(name.empty());
+    name = dex_file.StringDataByIdx(method_id.name_idx_);
+    for (ArtMethod& method : GetDeclaredMethodsSlice(pointer_size)) {
+      if (method.GetName() == name && method.GetSignature() == signature) {
+        return &method;
+      }
+    }
+  }
+
+  // Then search the superclass chain. If we find an inherited method, return it.
+  // If we find a method that's not inherited because of access restrictions,
+  // try to find a method inherited from an interface in copied methods.
+  ArtMethod* uninherited_method = nullptr;
+  ObjPtr<Class> klass = GetSuperClass();
   for (; klass != nullptr; klass = klass->GetSuperClass()) {
+    ArtMethod* candidate_method = nullptr;
     ArraySlice<ArtMethod> declared_methods = klass->GetDeclaredMethodsSlice(pointer_size);
     if (klass->GetDexCache() == dex_cache) {
       // Matching dex_cache. We cannot compare the `dex_method_idx` anymore because
@@ -550,7 +610,8 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
         const DexFile::MethodId& cmp_method_id = dex_file.GetMethodId(method.GetDexMethodIndex());
         if (cmp_method_id.name_idx_ == method_id.name_idx_ &&
             cmp_method_id.proto_idx_ == method_id.proto_idx_) {
-          return &method;
+          candidate_method = &method;
+          break;
         }
       }
     } else {
@@ -559,14 +620,28 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
       }
       for (ArtMethod& method : declared_methods) {
         if (method.GetName() == name && method.GetSignature() == signature) {
-          return &method;
+          candidate_method = &method;
+          break;
         }
       }
     }
+    if (candidate_method != nullptr) {
+      if (IsInheritedDeclaredMethod(this, klass, *candidate_method)) {
+        return candidate_method;
+      } else {
+        uninherited_method = candidate_method;
+        break;
+      }
+    }
   }
+
+  // Then search copied methods.
+  // If we found a method that's not inherited, stop the search in its declaring class.
+  ObjPtr<Class> end_klass = klass;
+  DCHECK_EQ(uninherited_method != nullptr, end_klass != nullptr);
   // After we have searched the declared methods of the super-class chain,
   // search copied methods which can contain methods from interfaces.
-  for (klass = this; klass != nullptr; klass = klass->GetSuperClass()) {
+  for (klass = this; klass != end_klass; klass = klass->GetSuperClass()) {
     ArraySlice<ArtMethod> copied_methods = klass->GetCopiedMethodsSlice(pointer_size);
     if (!copied_methods.empty() && name.empty()) {
       name = dex_file.StringDataByIdx(method_id.name_idx_);
@@ -577,7 +652,7 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
       }
     }
   }
-  return nullptr;
+  return uninherited_method;  // Return the `uninherited_method` if any.
 }
 
 ArtMethod* Class::FindConstructor(const StringPiece& signature, PointerSize pointer_size) {
