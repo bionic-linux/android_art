@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "157a836b_5fea5e05",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T15:07:21Z",
+      "side": 1,
+      "message": "Anyway, it just needs to change this here:\n\n  if [ \"$VERBOSE\" \u003d \"yes\" ]; then\n   echo ANDROID_DATA\u003d$ANDROID_DATA               \\\n              ANDROID_ROOT\u003d$ANDROID_ROOT               \\\n              LD_LIBRARY_PATH\u003d$LD_LIBRARY_PATH         \\\n              PATH\u003d$ANDROID_ROOT/bin:$PATH             \\\n              LD_USE_LOAD_BIAS\u003d1                       \\\n              $LAUNCH_WRAPPER $ART_BINARY_PATH $lib    \\\n              -XXlib:$LIBART                           \\\n              -Xnorelocate                             \\\n              -Ximage:$ANDROID_ROOT/framework/core.art \\\n              \"$@\"\n   fi\n\n              ANDROID_DATA\u003d$ANDROID_DATA               \\\n              ANDROID_ROOT\u003d$ANDROID_ROOT               \\\n              LD_LIBRARY_PATH\u003d$LD_LIBRARY_PATH         \\\n              PATH\u003d$ANDROID_ROOT/bin:$PATH             \\\n              LD_USE_LOAD_BIAS\u003d1                       \\\n              $LAUNCH_WRAPPER $ART_BINARY_PATH $lib    \\\n              -XXlib:$LIBART                           \\\n              -Xnorelocate                             \\\n              -Ximage:$ANDROID_ROOT/framework/core.art \\\n              \"$@\"\n\nand delete verbose_run",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbbc923c_3517d875",
         "filename": "tools/art",
         "patchSetId": 2
