@@ -22,6 +22,30 @@
       "revId": "b79f4ac55c0bb177f541937d0678f2aa777e1c9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff04788b_9e1ac18e",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-14T15:56:54Z",
+      "side": 1,
+      "message": "Since that is in a separate file, I took the opportunity to document the requirements in this file a bit better.",
+      "parentUuid": "85e4d41f_80d6a156",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 52
+      },
+      "revId": "b79f4ac55c0bb177f541937d0678f2aa777e1c9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
