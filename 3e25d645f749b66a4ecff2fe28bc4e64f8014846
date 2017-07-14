@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "978f5bc1_2b1f36e7",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-14T15:05:28Z",
+      "side": 1,
+      "message": "I know this is where it gets expanded, the comment below also references the evaluation.",
+      "parentUuid": "4b7e5f7a_ebfc48e5",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbbc923c_3517d875",
         "filename": "tools/art",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-14T14:34:12Z",
       "side": 1,
       "message": "As a small aside, this is a bit of a mess because arguments with \"\" will get broken\n\n  ./art ... \u0027arg\"arg\u0027 \n\nwill just cause it to blow up because the \" will be unterminated. (it expands to \"arg\"arg\" for the eval)\n\nAlthough with this PS it will be the other way around that\u0027s broken\n\n  ./art ... \"arg\u0027arg\"\n\n......\n\nproper way to fix is with arrays, and code ends up being shorter too.\n\n  EXTRA_OPTIONS+\u003d(\"$@\")\n  run_art \"${EXTRA_OPTIONS[@]}\"",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41abf070_34c81ef5",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-14T15:05:28Z",
+      "side": 1,
+      "message": "I\u0027m no expert on bash scripting. Feel free to take over.",
+      "parentUuid": "dbbc923c_3517d875",
       "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
