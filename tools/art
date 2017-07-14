@@ -254,11 +254,11 @@ if [ "$JIT_PROFILE" = "yes" ]; then
   EXTRA_OPTIONS="$EXTRA_OPTIONS -Xcompiler-option --profile-file=$PROFILE_PATH"
 fi
 
-# Protect additional arguments in quotes to preserve whitespaces when evaluated.
-# This is for run-jdwp-test.sh which uses this script and has arguments with
-# whitespaces when running on device.
+# Protect additional arguments in quotes to preserve whitespaces (used by
+# run-jdwp-test.sh when running on device), '$' (may be used as part of
+# classpath) and other special characters when evaluated.
 while [ $# -gt 0 ]; do
-  EXTRA_OPTIONS="$EXTRA_OPTIONS \"$1\""
+  EXTRA_OPTIONS="$EXTRA_OPTIONS '$1'"
   shift
 done
 
