@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "2cb1577f_551f619c",
+        "filename": "tools/art",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-14T23:08:23Z",
+      "side": 1,
+      "message": "eval is evil? :)\n\nIt turns out just using \u0027env\u0027 is more than enough here (I didn\u0027t realize we had env on Android, we do but it\u0027s just in a different directory than host env)",
+      "parentUuid": "b3623732_4dbdf9d6",
+      "revId": "3e25d645f749b66a4ecff2fe28bc4e64f8014846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbbc923c_3517d875",
         "filename": "tools/art",
         "patchSetId": 2
