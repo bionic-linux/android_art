@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f634131b_cfd502f5",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1674,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-16T22:06:08Z",
+      "side": 1,
+      "message": "constexpr (here or at the top of the file?)",
+      "range": {
+        "startLine": 1674,
+        "startChar": 6,
+        "endLine": 1674,
+        "endChar": 62
+      },
+      "revId": "452e95269d0f024ac010b7fea7604a0721fb8639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
