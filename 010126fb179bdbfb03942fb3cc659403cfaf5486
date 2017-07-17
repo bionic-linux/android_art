@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f56f424_1cbbc805",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1678,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-17T08:44:28Z",
+      "side": 1,
+      "message": "CompilferFilter::NameOfFilter(kLargeAppFilter).",
+      "range": {
+        "startLine": 1678,
+        "startChar": 53,
+        "endLine": 1678,
+        "endChar": 59
+      },
+      "revId": "010126fb179bdbfb03942fb3cc659403cfaf5486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
