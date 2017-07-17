@@ -22,6 +22,30 @@
       "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231d519f_a34404e5",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T14:47:19Z",
+      "side": 1,
+      "message": "CL17 changes code to append spacing bytes at the end of the region.\n\nWe might also want to prepend a different number of bytes in case the there\u0027s a pattern of the allocator putting the writable pages at a low address.\n\n[ Perhaps the writable code map doesn\u0027t need to be in low_4gb. Ran a complete set of tests with low_4gb \u003d false before CL17. If we had random padding either side of the executable code that\u0027d be harder to guess. ]",
+      "parentUuid": "b6f324dd_b94d74c0",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
