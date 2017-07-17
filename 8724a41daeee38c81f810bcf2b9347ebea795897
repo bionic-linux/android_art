@@ -46,6 +46,30 @@
       "revId": "8724a41daeee38c81f810bcf2b9347ebea795897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ad94e08_256dfc03",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4915,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-17T20:15:29Z",
+      "side": 1,
+      "message": "As we discussed on Friday lets encode the high level logic here instead of \"is it an app image or a boot image\"",
+      "parentUuid": "2614e6e6_02a8566c",
+      "range": {
+        "startLine": 4915,
+        "startChar": 52,
+        "endLine": 4915,
+        "endChar": 105
+      },
+      "revId": "8724a41daeee38c81f810bcf2b9347ebea795897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
