@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a3b9fb_f0dd9fb8",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "Is this an out of thin air value or does it have some rationale behind it? Document.",
+      "range": {
+        "startLine": 56,
+        "startChar": 46,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18fe263e_2bf834cd",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "I think it fits on the same line.\nDocument.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b22dd5_3ee67867",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "Could we document when we are able to use ashmen and when not? What factors influence this?",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa0a828_dee0299c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "There is already documentation stating that the write/read areas are backed by the same memory. Add a line saying if this padding is backed by anything or not.",
+      "range": {
+        "startLine": 185,
+        "startChar": 52,
+        "endLine": 185,
+        "endChar": 76
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e62a30d_f45e3806",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "Document. Convert based on what rules?",
+      "range": {
+        "startLine": 323,
+        "startChar": 13,
+        "endLine": 323,
+        "endChar": 27
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d4826b_3659a6ee",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "This relates to my other comment: this essentially introduces 2 ways of JITing. What\u0027s blocking us to have just one version?",
+      "range": {
+        "startLine": 362,
+        "startChar": 8,
+        "endLine": 362,
+        "endChar": 49
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a0bbe8_5a1a8f71",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-07-17T19:00:34Z",
+      "side": 1,
+      "message": "This conflicts with the comment on L345 which states that the JIT Code Cache is mapped RWX. Either we need more docs or I\u0027m missing something.",
+      "range": {
+        "startLine": 374,
+        "startChar": 27,
+        "endLine": 375,
+        "endChar": 17
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
