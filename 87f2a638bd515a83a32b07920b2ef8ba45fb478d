@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1dcc0b88_55346061",
+        "filename": "runtime/gc/heap-visit-objects-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T23:10:45Z",
+      "side": 1,
+      "message": "Substantially copied, so retaining original year.",
+      "parentUuid": "a2539c3b_f3f59f51",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a882727_46004d2f",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-07-16T23:10:53Z",
       "side": 1,
       "message": "Put on previous line?",
+      "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78df6ed4_b35b415b",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3094,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T23:10:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a882727_46004d2f",
       "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8038501c_1b0eff2d",
+        "filename": "runtime/gc/space/bump_pointer_space-walk-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T23:10:45Z",
+      "side": 1,
+      "message": "Substantially copied, so retaining original year.",
+      "parentUuid": "6d3777ba_ae180048",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9d92122_d42a796c",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 2
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "abb47ca2_96971a68",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T23:10:45Z",
+      "side": 1,
+      "message": "(Was copied from the original) Done",
+      "parentUuid": "e9d92122_d42a796c",
+      "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21fd01db_67c95e69",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 2
@@ -93,6 +177,30 @@
       "writtenOn": "2017-07-16T23:10:53Z",
       "side": 1,
       "message": "Comment for what boolean this is?",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 22
+      },
+      "revId": "87f2a638bd515a83a32b07920b2ef8ba45fb478d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "128d1b74_a40597f3",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-17T23:10:45Z",
+      "side": 1,
+      "message": "(Was copied from the original) Done",
+      "parentUuid": "21fd01db_67c95e69",
       "range": {
         "startLine": 162,
         "startChar": 17,
