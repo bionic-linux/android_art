@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f324dd_b94d74c0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T12:48:02Z",
+      "side": 1,
+      "message": "What is the guarantee the VM page entry allocations are contiguous here?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
