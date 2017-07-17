@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "524942c9_9f355ff6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T08:49:08Z",
+      "side": 1,
+      "message": "extra line.",
+      "revId": "8480b0ab367cefd2035919cbbdfcf2d6f19339c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3c61d0_b606e423",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T08:49:08Z",
+      "side": 1,
+      "message": "It would be richer defensively to use kProtNone (PROT_NONE) here.",
+      "revId": "8480b0ab367cefd2035919cbbdfcf2d6f19339c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90f3524_e8171e01",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T08:49:08Z",
+      "side": 1,
+      "message": "Sometimes we\u0027re CHECKing IsXyzAddress() and others DCHECKing. Give it\u0027s just a bounds check, the code could go all CHECK whilst this is new.",
+      "range": {
+        "startLine": 1583,
+        "startChar": 2,
+        "endLine": 1583,
+        "endChar": 7
+      },
+      "revId": "8480b0ab367cefd2035919cbbdfcf2d6f19339c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d926e3f_618bb294",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T08:49:08Z",
+      "side": 1,
+      "message": "A comment on how/why writable_code_map_ \u003d\u003d nullptr would be good to have.",
+      "revId": "8480b0ab367cefd2035919cbbdfcf2d6f19339c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
