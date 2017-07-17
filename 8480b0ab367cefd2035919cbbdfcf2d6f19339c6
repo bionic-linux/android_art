@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "8260185a_34cae878",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-17T09:07:43Z",
+      "side": 1,
+      "message": "Given that we deallocate this, it\u0027s not an obvious win. [ Pre-coffee comment :-) ]",
+      "parentUuid": "8a3c61d0_b606e423",
+      "revId": "8480b0ab367cefd2035919cbbdfcf2d6f19339c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e90f3524_e8171e01",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 14
