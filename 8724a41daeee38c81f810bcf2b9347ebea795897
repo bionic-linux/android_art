@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d743f9d_b70a1a4c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4915,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-17T18:52:54Z",
+      "side": 1,
+      "message": "This seems like a hack, why does it matter if its app image? What is the high level invariant being enforced?",
+      "range": {
+        "startLine": 4915,
+        "startChar": 52,
+        "endLine": 4915,
+        "endChar": 105
+      },
+      "revId": "8724a41daeee38c81f810bcf2b9347ebea795897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
