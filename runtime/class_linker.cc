@@ -4912,6 +4912,13 @@ bool ClassLinker::InitializeClass(Thread* self, Handle<mirror::Class> klass,
       StackHandleScope<1> hs(self);
       Handle<mirror::Class> handle_scope_super(hs.NewHandle(super_class));
       bool super_initialized = InitializeClass(self, handle_scope_super, can_init_statics, true);
+      if (Runtime::Current()->IsStrictMode()) {
+        if (!handle_scope_super->IsInitialized()) {
+          Runtime::Current()->AbortTransactionAndThrowAbortError(self, "Can't resolve " + klass->PrettyTypeOf()
+              + " because it's superclass is not initialized.");
+          return false;
+        }
+      }
       if (!super_initialized) {
         // The super class was verified ahead of entering initializing, we should only be here if
         // the super class became erroneous due to initialization.
