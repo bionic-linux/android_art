@@ -22,6 +22,30 @@
       "revId": "8724a41daeee38c81f810bcf2b9347ebea795897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2614e6e6_02a8566c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4915,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-17T20:11:08Z",
+      "side": 1,
+      "message": "I\u0027m still trying around to solve this bug. The invariant is \u0027a class can be initialized iff it\u0027s super class is initialized.\u0027\n\nThe original logic allows recursive dependencies be solved by allowing super class having status Initializing be regarded the same as initialized, but now we might abort the initialization for super class after the transaction of the sub class committed.\n\nThis is a simple version to fix the bug, there is a more comprehensive way to solve this but have some problems unsolved.\n\nBoot class is always safe, so this is only used to constrain app image.",
+      "parentUuid": "0d743f9d_b70a1a4c",
+      "range": {
+        "startLine": 4915,
+        "startChar": 52,
+        "endLine": 4915,
+        "endChar": 105
+      },
+      "revId": "8724a41daeee38c81f810bcf2b9347ebea795897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
