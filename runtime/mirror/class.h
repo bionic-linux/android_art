@@ -35,6 +35,8 @@
 #include "stride_iterator.h"
 #include "thread.h"
 #include "utils.h"
+#include "class_bitstring_helper.h"
+#include "instance_of_and_status.h"
 
 namespace art {
 
@@ -125,7 +127,7 @@ class MANAGED Class FINAL : public Object {
   // again at runtime.
   //
   // TODO: Explain the other states
-  enum Status {
+  enum Status : int8_t {
     kStatusRetired = -3,  // Retired, should not be used. Use the newly cloned one instead.
     kStatusErrorResolved = -2,
     kStatusErrorUnresolved = -1,
@@ -144,20 +146,33 @@ class MANAGED Class FINAL : public Object {
     kStatusMax = 12,
   };
 
+  static MemberOffset StatusOffset() {
+    return MemberOffset(OFFSET_OF_OBJECT_MEMBER(Class, status_));
+  }
+
+  // Currently using GetField64Volatile as the atomic read, will change to
+  // std::atomic::load later.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  InstanceOfAndStatus GetInstanceOfAndStatus() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return static_cast<InstanceOfAndStatus>(GetField64Volatile<kVerifyFlags>(StatusOffset()));
+  }
+
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  InstanceOfAndStatus::BitstringState GetBitstringState() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetInstanceOfAndStatus<kVerifyFlags>().GetBitstringState(Depth());
+  }
+
+  bool CasInstanceOfAndStatus(InstanceOfAndStatus old_value, InstanceOfAndStatus new_value)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   Status GetStatus() REQUIRES_SHARED(Locks::mutator_lock_) {
-    static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
-    return static_cast<Status>(
-        GetField32Volatile<kVerifyFlags>(OFFSET_OF_OBJECT_MEMBER(Class, status_)));
+    return static_cast<Status>(GetInstanceOfAndStatus().GetStatus());
   }
 
   // This is static because 'this' may be moved by GC.
   static void SetStatus(Handle<Class> h_this, Status new_status, Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
-
-  static MemberOffset StatusOffset() {
-    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
-  }
 
   // Returns true if the class has been retired.
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
@@ -665,7 +680,10 @@ class MANAGED Class FINAL : public Object {
                                  InvokeType throw_invoke_type)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Fast path of IsSubClass using bitstring prefix matching method.
   bool IsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Slow path of subtype checking.
+  bool SlowIsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Can src be assigned to this class? For example, String can be assigned to Object (by an
   // upcast), however, an Object cannot be assigned to a String as a potentially exception throwing
@@ -673,6 +691,40 @@ class MANAGED Class FINAL : public Object {
   // that extends) another can be assigned to its parent, but not vice-versa. All Classes may assign
   // to themselves. Classes for primitive types may not assign to each other.
   ALWAYS_INLINE bool IsAssignableFrom(ObjPtr<Class> src) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  static MemberOffset BitstringOffset() {
+    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
+  }
+
+  // Initialize a new bitstring to the class itself.
+  void InitializeSelfBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Check if we can assign a new bitstring to the class.
+  bool CanAssignBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Assign a new bitstring to the class itself.
+  void AssignSelfBitstring() REQUIRES_SHARED(Locks::mutator_lock_)
+                             REQUIRES(Locks::bitstring_lock_);
+
+  // Initialize the bitstring and assign the bistring for its super class.
+  void InitializeAndAssignSuperBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Traverse the super class chain to try to initialize bitstring.
+  void EnsureInitializedForTypeCheck() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Set the bitstring.
+  void SetBitstring(uint64_t mask) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Set the bitstring to uninitialized.
+  void MarkForTypeCheckUninitialized() REQUIRES_SHARED(Locks::mutator_lock_) {
+    SetBitstring(0);
+  }
+
+  // Get only the bitstring part.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  uint64_t GetBitstring() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetInstanceOfAndStatus().GetBitstring();
+  }
 
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
            ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
@@ -1479,6 +1531,15 @@ class MANAGED Class FINAL : public Object {
   // Static fields length-prefixed array.
   uint64_t sfields_;
 
+  // Breakdown of the status_:
+  // First 55 bits, storing the bitstring of the class.
+  // The 56-th bit, representing the overflowed status of that node. This bit is set to 1 if and
+  // only if all its upcoming descendants are considered overflowed, which means either the
+  // class itself is in overflowed state, or it has used up all incremental values for children,
+  // so new children will be overflowed.
+  // Last 8 bits, representing the state of class initialization.
+  std::atomic<InstanceOfAndStatus> status_;
+
   // Access flags; low 16 bits are defined by VM spec.
   uint32_t access_flags_;
 
@@ -1521,9 +1582,6 @@ class MANAGED Class FINAL : public Object {
 
   // Bitmap of offsets of ifields.
   uint32_t reference_instance_offsets_;
-
-  // State of class initialization.
-  Status status_;
 
   // The offset of the first virtual method that is copied from an interface. This includes miranda,
   // default, and default-conflict methods. Having a hard limit of ((2 << 16) - 1) for methods

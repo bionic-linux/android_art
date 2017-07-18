@@ -107,6 +107,28 @@ ClassExt* Class::EnsureExtDataPresent(Thread* self) {
   }
 }
 
+// Currently using CasFieldWeakSequentiallyConsistent64 as the atomic read, will change to
+// std::atomic later.
+// Try to set the InstanceOfAndStatus, return true if suceeded.
+bool Class::CasInstanceOfAndStatus(InstanceOfAndStatus old_value,
+                                      InstanceOfAndStatus new_value) {
+  if (Runtime::Current()->IsActiveTransaction()) {
+    return (CasFieldWeakSequentiallyConsistent64<true>
+            (StatusOffset(), old_value.GetData(), new_value.GetData()));
+  } else {
+    return (CasFieldWeakSequentiallyConsistent64<false>
+            (StatusOffset(), old_value.GetData(), new_value.GetData()));
+  }
+}
+
+void Class::SetBitstring(uint64_t mask) {
+  InstanceOfAndStatus old_value, new_value;
+  do {
+    new_value = old_value = GetInstanceOfAndStatus();
+    new_value.SetBitstring(mask);
+  } while (!CasInstanceOfAndStatus(old_value, new_value));
+}
+
 void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
   Status old_status = h_this->GetStatus();
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
@@ -149,12 +171,11 @@ void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
     self->AssertPendingException();
   }
 
-  static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
-  if (Runtime::Current()->IsActiveTransaction()) {
-    h_this->SetField32Volatile<true>(StatusOffset(), new_status);
-  } else {
-    h_this->SetField32Volatile<false>(StatusOffset(), new_status);
-  }
+  InstanceOfAndStatus old_value, new_value;
+  do {
+    new_value = old_value = h_this->GetInstanceOfAndStatus();
+    new_value.SetStatus(new_status);
+  } while (!h_this->CasInstanceOfAndStatus(old_value, new_value));
 
   // Setting the object size alloc fast path needs to be after the status write so that if the
   // alloc path sees a valid object size, we would know that it's initialized as long as it has a
@@ -188,6 +209,150 @@ void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
       }
     }
   }
+}
+
+// Initialize the bitstring for the class itself.
+// Must be called from InitializeBitstring to ensure
+// the super_class is not kBitstringUninitialized.
+// The initial value will be the same as super class,
+// except that the bitstring for current depth is set to 0.
+void Class::InitializeSelfBitstring() {
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  uint64_t cur = 0;
+  if (super_class != nullptr) {
+    cur = super_class->GetBitstring();
+  }
+  InstanceOfAndStatus old_value, new_value;
+  do {
+    new_value = old_value = GetInstanceOfAndStatus();
+    new_value.InitializeBitstring(cur, Depth());
+  } while (!CasInstanceOfAndStatus(old_value, new_value));
+  DCHECK(!new_value.IsUninited());
+}
+
+// Check if we can assign a new bitstring to the class.
+// Hold the bitstring_lock.
+bool Class::CanAssignBitstring() {
+  int depth = Depth();
+  // If the class is too deep then overflow.
+  if (depth > kMaxBitstringDepth) {
+    return false;
+  }
+
+  InstanceOfAndStatus now = GetInstanceOfAndStatus();
+  // Make sure we only assign once for the class java.lang.Object.
+  if (depth == 0) {
+    return !now.IsAssigned(depth);
+  }
+
+  InstanceOfAndStatus parent = GetSuperClass()->GetInstanceOfAndStatus();
+
+  // If the super_class is overflowed, then set this class to be overflowed.
+  if (parent.IsOverflowed(depth)) {
+    if (!now.IsAssigned(depth)) {
+        InstanceOfAndStatus old_value, new_value;
+        do {
+          new_value = old_value = GetInstanceOfAndStatus();
+          new_value.MarkOverflowed();
+        } while (!CasInstanceOfAndStatus(old_value, new_value));
+    }
+    return false;
+  }
+
+  // For all other cases, the class can be assigned a new bitstring if and only if:
+  // 1) The super_class has been assigned a bitstring.
+  // 2) The class was not assigned a bitstring before.
+  // 3) The class is not considered as overflowed.
+  return parent.IsAssigned(depth - 1)
+         && !now.IsAssigned(depth)
+         && !now.IsOverflowed(depth);
+}
+
+// Assign the bitstring to the class.
+// The class will use the current value of its super_class in the range of
+// its own depth, i.e., [BitstringLength[depth-1],BitstringLength[depth])
+// Then increase the value by one and check if an overflow happens.
+// The caller should hold the bitstring_lock.
+void Class::AssignSelfBitstring() {
+  int depth = Depth();
+  if (depth == 0 || depth > kMaxBitstringDepth) {
+    return;
+  }
+
+  DCHECK(GetBitstringState() == InstanceOfAndStatus::BitstringState::kBitstringInitialized);
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  InstanceOfAndStatus parent = super_class->GetInstanceOfAndStatus();
+  InstanceOfAndStatus now = GetInstanceOfAndStatus();
+  DCHECK(parent.GetBitstringState(depth - 1) >=
+         InstanceOfAndStatus::BitstringState::kBitstringAssigned);
+  uint64_t inc = 0;
+  bool suc = true;
+  InstanceOfAndStatus temp;
+
+  // Try to increment the incremental value of super_class bitstring.
+  do {
+    temp = super_class->GetInstanceOfAndStatus();
+    parent = temp;
+    if (parent.CheckChildrenOverflowed(depth - 1)) {
+      suc = false;
+      break;
+    }
+
+    inc = parent.GetIncrementalValue(depth) + 1;
+    if (inc == (uint64_t)1 << (BitstringLength[depth] - BitstringLength[depth - 1])) {
+      parent.SetIncrementalValue(0, depth);
+      parent.MarkOverflowed();
+    } else {
+      parent.SetIncrementalValue(inc, depth);
+    }
+  } while (!super_class->CasInstanceOfAndStatus(temp, parent));
+  // The do-while loop is to prevent two threads change the same super_class bistring value.
+
+  // Try to set the current level bistring value.
+  do {
+    temp = GetInstanceOfAndStatus();
+    now = temp;
+
+    if (suc) {
+      now.SetIncrementalValue(inc - 1, depth);
+      if (depth < kMaxBitstringDepth) {
+        now.SetIncrementalValue(1, depth + 1);
+      }
+    } else {
+      now.MarkOverflowed();
+    }
+  } while (!CasInstanceOfAndStatus(temp, now));
+
+  DCHECK(GetBitstringState() > InstanceOfAndStatus::BitstringState::kBitstringInitialized);
+}
+
+// Initialize the bitstring for klass, will first assign a new bitstring
+// to its super class if assignable and not assigned.
+void Class::InitializeAndAssignSuperBitstring() {
+  MutexLock mu(Thread::Current(), *Locks::bitstring_lock_);
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  if (super_class != nullptr && super_class->CanAssignBitstring()) {
+    super_class->AssignSelfBitstring();
+  }
+  if (GetInstanceOfAndStatus().IsUninited())  {
+    InitializeSelfBitstring();
+  }
+}
+
+// Recursively initialize the bitstring for all classes with a
+// kBitstringUninitialized state along the super_class chain.
+// This method ensures all internal classes (not a leaf node) have
+// kBitstringAssigned/kBitstringOverflowed.
+void Class::EnsureInitializedForTypeCheck() {
+  if (!GetInstanceOfAndStatus().IsUninited()) {
+    return;
+  }
+
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  DCHECK(super_class != nullptr);
+  super_class->EnsureInitializedForTypeCheck();
+
+  InitializeAndAssignSuperBitstring();
 }
 
 void Class::SetDexCache(ObjPtr<DexCache> new_dex_cache) {
