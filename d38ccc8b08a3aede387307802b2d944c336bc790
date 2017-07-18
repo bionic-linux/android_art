@@ -22,6 +22,53 @@
       "revId": "d38ccc8b08a3aede387307802b2d944c336bc790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e84a016c_833295f7",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-18T17:43:16Z",
+      "side": 1,
+      "message": "If there is only one view mapped, it needs to be writable, otherwise, it should only be rx.\n\nChanged to (use_two_mappings ? kProtCode : kProtAll).",
+      "parentUuid": "a41b606e_10ecdd4b",
+      "range": {
+        "startLine": 201,
+        "startChar": 47,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "d38ccc8b08a3aede387307802b2d944c336bc790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec3e1a81_e8f8e4d6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 25
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-18T17:43:16Z",
+      "side": 1,
+      "message": "I think the but declared above affects any potentially dirty cache lines when we take away page write permissions.",
+      "range": {
+        "startLine": 807,
+        "startChar": 6,
+        "endLine": 811,
+        "endChar": 7
+      },
+      "revId": "d38ccc8b08a3aede387307802b2d944c336bc790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
