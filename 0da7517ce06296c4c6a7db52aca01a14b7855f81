@@ -46,6 +46,54 @@
       "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ddef79_0c86a112",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-18T06:52:51Z",
+      "side": 1,
+      "message": "There is no guarantee, but the default allocation will usually be adjacent, unless something is allocated between them.",
+      "parentUuid": "b6f324dd_b94d74c0",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac741fd_f8cd0cb9",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 16
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-07-18T06:52:51Z",
+      "side": 1,
+      "message": "Putting the writable region outside the low 4gb sounds good on 64 bit devices.",
+      "parentUuid": "231d519f_a34404e5",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 144,
+        "endChar": 56
+      },
+      "revId": "0da7517ce06296c4c6a7db52aca01a14b7855f81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
