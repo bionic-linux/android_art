@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "def38e38_31139a12",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Longer term, we can add entropy:\n\n(1) optionally swap positions of the data and executable executable.\n(2) attempt to manually place the writable code at a random address in the space (32-bits or ~48bits).\n(3) guard pages either side of each allocated map here.\n(4) make the executable region not readable on ARM64 (might be too hard to pull off).",
+      "parentUuid": "b251b1d9_0b8288d4",
+      "range": {
+        "startLine": 56,
+        "startChar": 46,
+        "endLine": 56,
+        "endChar": 49
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18fe263e_2bf834cd",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 18
@@ -93,6 +117,30 @@
       "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc00286_ab62cc42",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Marking resolved.",
+      "parentUuid": "ea94e5ca_dc7b6ba7",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "60a08886_f44cd693",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "-",
+      "parentUuid": "eaf032ee_8f01b9b7",
+      "range": {
+        "startLine": 108,
+        "startChar": 26,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa0a828_dee0299c",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 18
@@ -190,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "3debc51f_4863cf0e",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Comment added.",
+      "parentUuid": "963db4fc_7aa6018f",
+      "range": {
+        "startLine": 185,
+        "startChar": 52,
+        "endLine": 185,
+        "endChar": 76
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e62a30d_f45e3806",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 18
@@ -210,6 +306,30 @@
       "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0cd6c8_296f33a0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "2e62a30d_f45e3806",
+      "range": {
+        "startLine": 323,
+        "startChar": 13,
+        "endLine": 323,
+        "endChar": 27
+      },
+      "revId": "2996f7a09759fc937afc63f31bba1fe77e1feeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

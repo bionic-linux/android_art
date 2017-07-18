@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db9a1e44_513c563c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436d30a7_29778dfc",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f4bfba3_57484aea",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 22
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-18T12:37:27Z",
       "side": 1,
       "message": "nit: some ascii art might be nice for this, also showing the length of each region.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0df2ee69_60ad8b52",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4bfba3_57484aea",
       "range": {
         "startLine": 147,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ef46af1f_20983f72",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25f07743_6bbd5413",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 303,
+        "endChar": 47
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a37583ac_b3bb4bc2",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 22
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-18T12:37:27Z",
       "side": 1,
       "message": "I\u0027m fine leaving this for now, but please follow-up on it.",
+      "range": {
+        "startLine": 781,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 73
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44d0750d_a610d24b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T13:47:01Z",
+      "side": 1,
+      "message": "PTAL, I have changed the logic here slightly.\n\nWe need the i-cache flush because the newly allocated code block can lie between existing allocations. The i-cache may have a cache-line that contains part of an existing block so this needs to be blown away, e.g.\n\nPartially used Cache Line |  Unused Cache Line  | Partially used Cache Line\n                    |\u003c----------New Code-------------\u003e|\n\nThe i-cache flush code will also flush the data lines for that region on ARM IIRC.\n\nI wouldn\u0027t have thought we need to flush the writable_ptr region here, but we\u0027ve possibly found we need it.",
+      "parentUuid": "a37583ac_b3bb4bc2",
       "range": {
         "startLine": 781,
         "startChar": 0,
