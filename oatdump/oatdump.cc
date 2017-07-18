@@ -2183,7 +2183,7 @@ class ImageDumper {
       mirror::Class* klass = obj->AsClass();
       os << StringPrintf("%p: java.lang.Class \"%s\" (", obj,
                          mirror::Class::PrettyDescriptor(klass).c_str())
-         << klass->GetStatus() << ")\n";
+         << klass->GetBitstring() << " " << klass->GetStatus() << ")\n";
     } else if (obj_class->IsStringClass()) {
       os << StringPrintf("%p: java.lang.String %s\n", obj,
                          PrintableString(obj->AsString()->ToModifiedUtf8().c_str()).c_str());

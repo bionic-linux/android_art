@@ -2354,6 +2354,12 @@ void ImageWriter::FixupClass(mirror::Class* orig, mirror::Class* copy) {
   FixupClassVisitor visitor(this, copy);
   ObjPtr<mirror::Object>(orig)->VisitReferences(visitor, visitor);
 
+  // The instanceof bitstring could be inconsistent with the ancestors.
+  // So by setting them to "uninitialized", they will be recalculated at runtime.
+  if (compile_app_image_) {
+    copy->MarkForTypeCheckUninitialized();
+  }
+
   // Remove the clinitThreadId. This is required for image determinism.
   copy->SetClinitThreadId(static_cast<pid_t>(0));
 }
