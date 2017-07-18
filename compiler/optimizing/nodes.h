@@ -6316,7 +6316,7 @@ std::ostream& operator<<(std::ostream& os, TypeCheckKind rhs);
 class HInstanceOf FINAL : public HExpression<2> {
  public:
   HInstanceOf(HInstruction* object,
-              HLoadClass* constant,
+              HInstruction* constant,
               TypeCheckKind check_kind,
               uint32_t dex_pc)
       : HExpression(Primitive::kPrimBoolean,

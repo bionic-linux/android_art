@@ -451,6 +451,10 @@ bool ClassLinker::InitWithoutImage(std::vector<std::unique_ptr<const DexFile>> b
                                                          java_lang_Object.Get(),
                                                          java_lang_Object->GetObjectSize(),
                                                          VoidFunctor()));
+  {
+    java_lang_Object->InitializeSelfBitstring();
+    java_lang_Class->InitializeSelfBitstring();
+  }
 
   // Object[] next to hold class roots.
   Handle<mirror::Class> object_array_class(hs.NewHandle(
@@ -2008,6 +2012,7 @@ bool ClassLinker::AddImageSpace(
     for (const ClassTable::TableSlot& root : temp_set) {
       visitor(root.Read());
     }
+
     // forward_dex_cache_arrays is true iff we copied all of the dex cache arrays into the .bss.
     // In this case, madvise away the dex cache arrays section of the image to reduce RAM usage and
     // mark as PROT_NONE to catch any invalid accesses.
@@ -2029,6 +2034,7 @@ bool ClassLinker::AddImageSpace(
     // Insert oat file to class table for visiting .bss GC roots.
     class_table->InsertOatFile(oat_file);
   }
+
   if (added_class_table) {
     WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
     class_table->AddClassSet(std::move(temp_set));
@@ -2930,6 +2936,8 @@ mirror::Class* ClassLinker::DefineClass(Thread* self,
     return nullptr;
   }
   CHECK(klass->IsLoaded());
+
+  // klass.Get()->InitializeAndAssignSuperBitstring(false);
 
   // At this point the class is loaded. Publish a ClassLoad event.
   // Note: this may be a temporary class. It is a listener's responsibility to handle this.
@@ -5322,6 +5330,8 @@ bool ClassLinker::EnsureInitialized(Thread* self,
                                     bool can_init_fields,
                                     bool can_init_parents) {
   DCHECK(c != nullptr);
+  c->InitializeBitstring();
+
   if (c->IsInitialized()) {
     EnsureSkipAccessChecksMethods(c, image_pointer_size_);
     self->AssertNoPendingException();
@@ -5335,6 +5345,7 @@ bool ClassLinker::EnsureInitialized(Thread* self,
   } else {
     self->AssertNoPendingException();
   }
+
   return success;
 }
 
