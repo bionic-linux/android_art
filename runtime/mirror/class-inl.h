@@ -55,7 +55,6 @@ inline uint32_t Class::GetObjectSizeAllocFastPath() {
   return GetField32(ObjectSizeAllocFastPathOffset());
 }
 
-
 template<VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
 inline Class* Class::GetSuperClass() {
   // Can only get super class for loaded classes (hack for when runtime is
@@ -517,6 +516,18 @@ inline bool Class::CheckResolvedMethodAccess(ObjPtr<Class> access_to,
 }
 
 inline bool Class::IsSubClass(ObjPtr<Class> klass) {
+  std::pair<bool, bool> fast =
+    GetInstanceOfAndStatus().IsSubClass(klass->GetInstanceOfAndStatus(), klass->Depth());
+  bool slow = SlowIsSubClass(klass);
+  if (fast.first) {
+    DCHECK(fast.second == slow) << PrettyClass() << " " << Depth();
+    return fast.second;
+  } else {
+    return SlowIsSubClass(klass);
+  }
+}
+
+inline bool Class::SlowIsSubClass(ObjPtr<Class> klass) {
   DCHECK(!IsInterface()) << PrettyClass();
   DCHECK(!IsArrayClass()) << PrettyClass();
   ObjPtr<Class> current = this;
