@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25f07743_6bbd5413",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-18T07:32:36Z",
+      "side": 1,
+      "message": "mem_map-\u003eHasAddress",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 303,
+        "endChar": 47
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
