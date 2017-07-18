@@ -606,6 +606,7 @@ struct ClassOffsets : public CheckOffsets<mirror::Class> {
     addOffset(OFFSETOF_MEMBER(mirror::Class, primitive_type_), "primitiveType");
     addOffset(OFFSETOF_MEMBER(mirror::Class, reference_instance_offsets_),
               "referenceInstanceOffsets");
+    addOffset(OFFSETOF_MEMBER(mirror::Class, status_), "dummyField");
     addOffset(OFFSETOF_MEMBER(mirror::Class, sfields_), "sFields");
     addOffset(OFFSETOF_MEMBER(mirror::Class, status_), "status");
     addOffset(OFFSETOF_MEMBER(mirror::Class, super_class_), "superClass");
