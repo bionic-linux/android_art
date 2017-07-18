@@ -231,10 +231,12 @@ else:
   ART_PHONY_TEST_HOST_SUFFIX = "64"
   ART_2ND_PHONY_TEST_HOST_SUFFIX = "32"
 
-HOST_OUT_EXECUTABLES = os.path.join(ANDROID_BUILD_TOP,
+def setRunTestEnv():
+  HOST_OUT_EXECUTABLES = os.path.join(ANDROID_BUILD_TOP,
                                     _get_build_var("HOST_OUT_EXECUTABLES"))
-os.environ['JACK'] = HOST_OUT_EXECUTABLES + '/jack'
-os.environ['DX'] = HOST_OUT_EXECUTABLES + '/dx'
-os.environ['SMALI'] = HOST_OUT_EXECUTABLES + '/smali'
-os.environ['JASMIN'] = HOST_OUT_EXECUTABLES + '/jasmin'
-os.environ['DXMERGER'] = HOST_OUT_EXECUTABLES + '/dexmerger'
+  os.environ['JACK'] = HOST_OUT_EXECUTABLES + '/jack'
+  if 'DX' not in os.environ:
+    os.environ['DX'] = HOST_OUT_EXECUTABLES + '/dx'
+  os.environ['SMALI'] = HOST_OUT_EXECUTABLES + '/smali'
+  os.environ['JASMIN'] = HOST_OUT_EXECUTABLES + '/jasmin'
+  os.environ['DXMERGER'] = HOST_OUT_EXECUTABLES + '/dexmerger'

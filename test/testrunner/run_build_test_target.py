@@ -93,6 +93,7 @@ if target.has_key('golem'):
     sys.exit(1)
 
 if target.has_key('run-test'):
+  setRunTestEnv()
   run_test_command = [os.path.join(env.ANDROID_BUILD_TOP,
                                    'art/test/testrunner/testrunner.py')]
   run_test_command += target.get('run-test', [])
