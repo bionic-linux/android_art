@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c00a2b1_4505f271",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-07-18T05:42:25Z",
+      "side": 1,
+      "message": "This would allow to override which DX to use. Not sure we want that, but I thought it makes sense.",
+      "range": {
+        "startLine": 238,
+        "startChar": 2,
+        "endLine": 238,
+        "endChar": 28
+      },
+      "revId": "99eb26f3fc9fdca6dcd53e9597fabd603ed005c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
