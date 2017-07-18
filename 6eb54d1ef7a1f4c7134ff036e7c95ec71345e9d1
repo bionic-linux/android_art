@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d465d9a6_4c99a270",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T16:03:43Z",
+      "side": 1,
+      "message": "Changed the comment.\n\nMaybe to stick with generate_debug_info flag as only 1 test tickles that, then host and target are mostly the same here (modulo ashmem implementation).",
+      "parentUuid": "e5db6bbb_6ab7c98c",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 66
+      },
+      "revId": "6eb54d1ef7a1f4c7134ff036e7c95ec71345e9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "970d112f_666d9546",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 23
@@ -45,6 +69,30 @@
       "revId": "6eb54d1ef7a1f4c7134ff036e7c95ec71345e9d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cde819af_758ace1e",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-18T16:03:43Z",
+      "side": 1,
+      "message": "Added sizes, which is all we have, hopefully clearer?",
+      "parentUuid": "970d112f_666d9546",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "6eb54d1ef7a1f4c7134ff036e7c95ec71345e9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
