@@ -35,6 +35,7 @@
 #include "jni.h"
 #include "mirror/class.h"
 #include "verifier/verifier_enums.h"
+#include "class_table.h"
 
 namespace art {
 
