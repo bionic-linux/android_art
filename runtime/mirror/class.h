@@ -36,6 +36,8 @@
 #include "thread.h"
 #include "utils.h"
 
+#include "class_bitstring_helper.h"
+
 namespace art {
 
 class ArtField;
@@ -144,20 +146,19 @@ class MANAGED Class FINAL : public Object {
     kStatusMax = 12,
   };
 
+  static MemberOffset StatusOffset() {
+    return MemberOffset(OFFSET_OF_OBJECT_MEMBER(Class, status_));
+  }
+
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   Status GetStatus() REQUIRES_SHARED(Locks::mutator_lock_) {
-    static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
     return static_cast<Status>(
-        GetField32Volatile<kVerifyFlags>(OFFSET_OF_OBJECT_MEMBER(Class, status_)));
+        (static_cast<int>(GetField64Volatile<kVerifyFlags>(StatusOffset())) << 24) >> 24);
   }
 
   // This is static because 'this' may be moved by GC.
   static void SetStatus(Handle<Class> h_this, Status new_status, Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
-
-  static MemberOffset StatusOffset() {
-    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
-  }
 
   // Returns true if the class has been retired.
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
@@ -665,7 +666,10 @@ class MANAGED Class FINAL : public Object {
                                  InvokeType throw_invoke_type)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Fast pass of IsSubClass using bistring prefix matching method.
   bool IsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Naive method of subtype checking.
+  bool SlowIsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Can src be assigned to this class? For example, String can be assigned to Object (by an
   // upcast), however, an Object cannot be assigned to a String as a potentially exception throwing
@@ -673,6 +677,58 @@ class MANAGED Class FINAL : public Object {
   // that extends) another can be assigned to its parent, but not vice-versa. All Classes may assign
   // to themselves. Classes for primitive types may not assign to each other.
   ALWAYS_INLINE bool IsAssignableFrom(ObjPtr<Class> src) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  static MemberOffset BitstringOffset() {
+    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
+  }
+
+  // Initialize the bitstring.
+  void InitializeBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Check whether the overflow bit is set.
+  bool CheckOverflowedBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Check if the class has been assigned a bitstring.
+  bool CheckAssignedBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Check if we can assign a new bitstring to the class.
+  bool CanAssignBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Assign a new bitstring to the class.
+  void AssignBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Get the prefix bitstring used to subtype check.
+  uint64_t GetBitstringPrefix()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Set the overflow bit to 1.
+  void SetOverflowedChildrenBitstring()
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Set the bitstring.
+  void SetBitstring(uint64_t mask)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Set the whole uint64_t which stores both bitstring and status.
+  void SetBitstring64(uint64_t mask)
+      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(Locks::bitstring_lock_);
+
+  // Get the whole uint64_t which stores both bitstring and status.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  uint64_t GetBitstring64() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetField64Volatile<kVerifyFlags>(BitstringOffset());
+  }
+
+  // Get only the bitstring part.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  uint64_t GetBitstring() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetFirst56Bits(GetField64Volatile<kVerifyFlags>(BitstringOffset()));
+  }
 
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
            ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
@@ -1479,6 +1535,15 @@ class MANAGED Class FINAL : public Object {
   // Static fields length-prefixed array.
   uint64_t sfields_;
 
+  // Breakdown of the status_:
+  // First 55 bits, storing the bitstring of the class.
+  // The 56-th bit, representing the overflowed status of that node. This bit is set to 1 if and
+  // only if all its upcoming descendants are considered overflowed.
+  // Last 8 bits, representing the state of class initialization.
+  // The interpreter part does not require it to be little endian. The code generation part
+  // requires little endian to get status_ work.
+  uint64_t status_;
+
   // Access flags; low 16 bits are defined by VM spec.
   uint32_t access_flags_;
 
@@ -1521,9 +1586,6 @@ class MANAGED Class FINAL : public Object {
 
   // Bitmap of offsets of ifields.
   uint32_t reference_instance_offsets_;
-
-  // State of class initialization.
-  Status status_;
 
   // The offset of the first virtual method that is copied from an interface. This includes miranda,
   // default, and default-conflict methods. Having a hard limit of ((2 << 16) - 1) for methods

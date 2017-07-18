@@ -150,10 +150,15 @@ void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
   }
 
   static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
-  if (Runtime::Current()->IsActiveTransaction()) {
-    h_this->SetField32Volatile<true>(StatusOffset(), new_status);
-  } else {
-    h_this->SetField32Volatile<false>(StatusOffset(), new_status);
+  {
+    MutexLock mu(Thread::Current(), *Locks::bitstring_lock_);
+    if (Runtime::Current()->IsActiveTransaction()) {
+      h_this->SetField64Volatile<true>(StatusOffset(),
+                                       GetUpdatedLast8Bits(h_this->GetBitstring64(), new_status));
+    } else {
+      h_this->SetField64Volatile<false>(StatusOffset(),
+                                        GetUpdatedLast8Bits(h_this->GetBitstring64(), new_status));
+    }
   }
 
   // Setting the object size alloc fast path needs to be after the status write so that if the
@@ -188,6 +193,142 @@ void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
       }
     }
   }
+}
+
+// Initialize the bitstring when loaded, the super_class
+// must be already assgined bitstring or Overflowed.
+// The initial value will be the same as super class,
+// except that the bitstring for current depth is set to 0.
+void Class::InitializeBitstring() {
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  if (super_class != nullptr) {
+    uint64_t cur = super_class->GetBitstring();
+    int dep = super_class->Depth() + 1;
+    if (dep <= kMaxBitstringDepth) {
+      cur = GetUpdatedRangedBits(cur,
+                                 BitstringLength[dep-1],
+                                 BitstringLength[dep],
+                                 0);
+    }
+    SetBitstring(cur);
+  } else {
+    SetBitstring((uint64_t)1 << kFirstLevelOffset);
+  }
+}
+
+// Check whether a class can withhold more children.
+// If so, the overflow bit is set to 1.
+bool Class::CheckOverflowedBitstring() {
+  int dep = Depth();
+  if (dep >= kMaxBitstringDepth) {
+    return true;
+  }
+  return (GetBitstring() >> 8) & 1;
+}
+
+// Check if we can assign a new bitstring to the class.
+bool Class::CanAssignBitstring() {
+  int dep = Depth();
+  // If the class is too deep then overflowed.
+  if (dep > kMaxBitstringDepth) {
+    return false;
+  }
+  // Make sure we only assign once for the class Java.Lang.Object
+  if (dep == 0) {
+    return !CheckAssignedBitstring();
+  }
+
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+
+  // If the super_class is overflowed, then set this class to be overflowed.
+  if (super_class->CheckOverflowedBitstring()) {
+    if (!CheckAssignedBitstring()) {
+      SetOverflowedChildrenBitstring();
+    }
+    return false;
+  }
+
+  // For all other cases, the class can be assigned a new bitstring if and only if:
+  // 1) The super_class has been assigned a bitstring.
+  // 2) The class was not assigned a bitstring before.
+  // 3) The class is not considered as overflowed.
+  return super_class->CheckAssignedBitstring()
+          && !CheckAssignedBitstring()
+          && !CheckOverflowedBitstring();
+}
+
+// Check if the class has been assigned a bitstring.
+bool Class::CheckAssignedBitstring() {
+  int dep = Depth();
+  // If the class is too deep then overflowed.
+  if (dep > kMaxBitstringDepth) {
+    return false;
+  }
+
+  // Check if we have assigned bitstring for Java.Lang.Object.
+  uint64_t current = GetBitstring();
+  if (dep == 0) {
+    return CheckOverflowedBitstring() || ((current >> kFirstLevelOffset) > 0);
+  }
+
+  // All 0 is reserved for overflow.
+  current = GetRangedBits(current, BitstringLength[dep-1], BitstringLength[dep]);
+  return current != 0;
+}
+
+// Assign the bitstring to the class.
+// The class will use the current value of its super_class in the range of
+// its own depth, i.e., [BitstringLength[dep-1],BitstringLength[dep])
+// Then increase the value by one and check if an overflow happens.
+void Class::AssignBitstring() {
+  int dep = Depth();
+  uint64_t thisbitstring = GetBitstring();
+
+  if (dep > kMaxBitstringDepth) {
+    return;
+  }
+  // We need to reserve the value of its potential first child since the
+  // all 0 is reserved for the overflow case.
+  if (dep < kMaxBitstringDepth) {
+    thisbitstring |= (uint64_t)1 << (64 - BitstringLength[dep + 1]);
+  }
+  if (dep == 0) {
+    SetBitstring(thisbitstring);
+    return;
+  }
+
+  ObjPtr<mirror::Class> super_class = GetSuperClass();
+  DCHECK(super_class->CheckAssignedBitstring());
+  DCHECK(!super_class->CheckOverflowedBitstring());
+
+  uint64_t current = GetRangedBits(super_class->GetBitstring(),
+                                   BitstringLength[dep - 1],
+                                   BitstringLength[dep]);
+  DCHECK_NE(current, (uint64_t)0) << "Class:" << PrettyClass();
+
+  // Set the current value of bitstring in this depth.
+  SetBitstring(GetUpdatedRangedBits(thisbitstring,
+                                    BitstringLength[dep - 1],
+                                    BitstringLength[dep],
+                                    current));
+
+  uint64_t super = super_class->GetBitstring();
+  current++;
+
+  // check if overflow happens in the super class.
+  if (current == (uint64_t)1 << (BitstringLength[dep] - BitstringLength[dep - 1])) {
+    super = GetUpdatedRangedBits(super,
+                                 BitstringLength[dep - 1],
+                                 BitstringLength[dep],
+                                 0) | (1 << 8);
+  } else {
+    super = GetUpdatedRangedBits(super,
+                                 BitstringLength[dep - 1],
+                                 BitstringLength[dep],
+                                 current);
+  }
+
+  super_class->SetBitstring(super);
 }
 
 void Class::SetDexCache(ObjPtr<DexCache> new_dex_cache) {

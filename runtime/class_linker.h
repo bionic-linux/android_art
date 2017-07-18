@@ -35,6 +35,7 @@
 #include "jni.h"
 #include "mirror/class.h"
 #include "verifier/verifier_enums.h"
+#include "class_table.h"
 
 namespace art {
 
@@ -150,6 +151,14 @@ class ClassLinker {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_);
 
+  // Traverse the class table in space to reassign the bitstring
+  // to the classes in the appimage.
+  void TraverseClassTable(ObjPtr<mirror::Class> klass,
+                          gc::space::ImageSpace* space,
+                          ClassTable::ClassSet& visited)
+      REQUIRES(!Locks::dex_lock_)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Add an image space to the class linker, may fix up classloader fields and dex cache fields.
   // The dex files that were newly opened for the space are placed in the out argument
   // out_dex_files. Returns true if the operation succeeded.
@@ -195,6 +204,11 @@ class ClassLinker {
   bool IsInitialized() const {
     return init_done_;
   }
+
+  // Initialize the bitstring for klass.
+  void InitializeAndAssignSuperBitstring(ObjPtr<mirror::Class> klass, bool setZero)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!Locks::dex_lock_);
 
   // Define a new a class based on a ClassDef from a DexFile
   mirror::Class* DefineClass(Thread* self,

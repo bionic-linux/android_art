@@ -55,6 +55,26 @@ inline uint32_t Class::GetObjectSizeAllocFastPath() {
   return GetField32(ObjectSizeAllocFastPathOffset());
 }
 
+inline uint64_t Class::GetBitstringPrefix() {
+  DCHECK(CheckAssignedBitstring()) << "Unassigned Bitstring! Class:" << PrettyClass();
+  return GetRangedBits(GetBitstring(), 0 , BitstringLength[Depth()]);
+}
+
+inline void Class::SetOverflowedChildrenBitstring() {
+  SetBitstring(GetBitstring() | (1 << 8));
+}
+
+inline void Class::SetBitstring(uint64_t mask) {
+  SetBitstring64(GetUpdatedFirst56Bits(GetBitstring64() , mask));
+}
+
+inline void Class::SetBitstring64(uint64_t mask) {
+  if (Runtime::Current()->IsActiveTransaction()) {
+    SetField64<true>(BitstringOffset(), mask);
+  } else {
+    SetField64<false>(BitstringOffset(), mask);
+  }
+}
 
 template<VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
 inline Class* Class::GetSuperClass() {
@@ -517,6 +537,19 @@ inline bool Class::CheckResolvedMethodAccess(ObjPtr<Class> access_to,
 }
 
 inline bool Class::IsSubClass(ObjPtr<Class> klass) {
+  MutexLock mu(Thread::Current(), *Locks::bitstring_lock_);
+  if (klass->CheckAssignedBitstring()) {
+    uint64_t prefix = klass->GetBitstringPrefix();
+    uint32_t dep = klass->Depth();
+    uint64_t thisprefix = GetRangedBits(GetBitstring(), 0, BitstringLength[dep]);
+    return thisprefix == prefix;
+  } else {
+    return SlowIsSubClass(klass);
+  }
+}
+
+
+inline bool Class::SlowIsSubClass(ObjPtr<Class> klass) {
   DCHECK(!IsInterface()) << PrettyClass();
   DCHECK(!IsArrayClass()) << PrettyClass();
   ObjPtr<Class> current = this;

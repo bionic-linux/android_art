@@ -447,6 +447,11 @@ bool ClassLinker::InitWithoutImage(std::vector<std::unique_ptr<const DexFile>> b
                                                          java_lang_Object.Get(),
                                                          java_lang_Object->GetObjectSize(),
                                                          VoidFunctor()));
+  {
+    MutexLock mu(Thread::Current(), *Locks::bitstring_lock_);
+    java_lang_Class->SetBitstring(0);
+    java_lang_Object->InitializeBitstring();
+  }
 
   // Object[] next to hold class roots.
   Handle<mirror::Class> object_array_class(hs.NewHandle(
@@ -1757,6 +1762,26 @@ class ImageSanityChecks FINAL {
   std::vector<const ImageSection*> runtime_method_sections_;
 };
 
+// A DFS traverse along the super class chain for the classes showed in
+// space (the appimage). This method will re-assign the bitstrings for these
+// classes from top to bottom. Visited is used to mark the processed classes.
+void ClassLinker::TraverseClassTable(ObjPtr<mirror::Class> klass,
+                                     gc::space::ImageSpace* space,
+                                     ClassTable::ClassSet& visited) {
+  if (klass == nullptr) return;
+
+  if (visited.Find(ClassTable::TableSlot(klass)) != visited.end()
+      || !space->HasAddress(klass.Ptr())) {
+    return;
+  }
+
+  // Process the super class first.
+  TraverseClassTable(klass->GetSuperClass(), space, visited);
+  // Erase the bitstring before setting the new value.
+  InitializeAndAssignSuperBitstring(klass, true);
+  visited.Insert(ClassTable::TableSlot(klass));
+}
+
 bool ClassLinker::AddImageSpace(
     gc::space::ImageSpace* space,
     Handle<mirror::ClassLoader> class_loader,
@@ -1966,6 +1991,7 @@ bool ClassLinker::AddImageSpace(
     temp_set = ClassTable::ClassSet(space->Begin() + class_table_section.Offset(),
                                     /*make copy*/false,
                                     &read_count);
+
     VLOG(image) << "Adding class table classes took " << PrettyDuration(NanoTime() - start_time2);
   }
   if (app_image) {
@@ -1985,6 +2011,15 @@ bool ClassLinker::AddImageSpace(
     for (const ClassTable::TableSlot& root : temp_set) {
       visitor(root.Read());
     }
+
+    // The bitstring of the classes in the appimage is calculated when creating the image.
+    // However, the value may not be consistent with the value in the bootimage. Thus,
+    // We need to re-calculate the bitstrings.
+    auto visited_set = ClassTable::ClassSet();
+    for (auto iter : temp_set) {
+      TraverseClassTable(iter.Read(), space, visited_set);
+    }
+
     // forward_dex_cache_arrays is true iff we copied all of the dex cache arrays into the .bss.
     // In this case, madvise away the dex cache arrays section of the image to reduce RAM usage and
     // mark as PROT_NONE to catch any invalid accesses.
@@ -2006,6 +2041,7 @@ bool ClassLinker::AddImageSpace(
     // Insert oat file to class table for visiting .bss GC roots.
     class_table->InsertOatFile(oat_file);
   }
+
   if (added_class_table) {
     WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
     class_table->AddClassSet(std::move(temp_set));
@@ -2810,6 +2846,25 @@ mirror::Class* ClassLinker::FindClass(Thread* self,
   return result_ptr.Ptr();
 }
 
+
+// Initialize the bitstring for klass, will first assign a new bitstring
+// to its super class if assignable and not assigned.
+// The setZero is to wipe the bitstring for classes loaded in the appimage.
+void ClassLinker::InitializeAndAssignSuperBitstring(ObjPtr<mirror::Class> klass,
+                                                    bool setZero) {
+  MutexLock mu(Thread::Current(), *Locks::bitstring_lock_);
+  ObjPtr<mirror::Class> super_class = klass->GetSuperClass();
+  if (super_class != nullptr && setZero) {
+    klass->SetBitstring(0);
+  }
+  if (super_class != nullptr && super_class->CanAssignBitstring()) {
+    super_class->AssignBitstring();
+  }
+  if (klass->GetBitstring() == 0)  {
+    klass->InitializeBitstring();
+  }
+}
+
 mirror::Class* ClassLinker::DefineClass(Thread* self,
                                         const char* descriptor,
                                         size_t hash,
@@ -2918,6 +2973,8 @@ mirror::Class* ClassLinker::DefineClass(Thread* self,
     return nullptr;
   }
   CHECK(klass->IsLoaded());
+
+  InitializeAndAssignSuperBitstring(klass.Get(), false);
 
   // At this point the class is loaded. Publish a ClassLoad event.
   // Note: this may be a temporary class. It is a listener's responsibility to handle this.
@@ -3877,6 +3934,7 @@ mirror::Class* ClassLinker::CreateArrayClass(Thread* self, const char* descripto
   ImTable* object_imt = java_lang_Object->GetImt(image_pointer_size_);
   new_class->SetImt(object_imt, image_pointer_size_);
   mirror::Class::SetStatus(new_class, mirror::Class::kStatusInitialized, self);
+
   // don't need to set new_class->SetObjectSize(..)
   // because Object::SizeOf delegates to Array::SizeOf
 
