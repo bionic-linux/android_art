@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5db6bbb_6ab7c98c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T13:54:38Z",
+      "side": 1,
+      "message": "Ah this is going too far: we do plan to address this. How about we check kIsTargetBuild to disable?",
+      "range": {
+        "startLine": 103,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 66
+      },
+      "revId": "6eb54d1ef7a1f4c7134ff036e7c95ec71345e9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "970d112f_666d9546",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 23
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T13:54:38Z",
+      "side": 1,
+      "message": "nit: also putting the [begin, end) in terms of local variables in this method could be nice.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "6eb54d1ef7a1f4c7134ff036e7c95ec71345e9d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
