@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0e88f8_4a6d2910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T12:47:59Z",
+      "side": 1,
+      "message": "Things are a bit easier to review if the test is in in the same CL (like fully understanding what the problem is).",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 51
+      },
+      "revId": "5dd632ccf35c27895408ea3826946ff16755b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
