@@ -452,6 +452,10 @@ bool ClassLinker::InitWithoutImage(std::vector<std::unique_ptr<const DexFile>> b
                                                          java_lang_Object->GetObjectSize(),
                                                          VoidFunctor()));
 
+  // Initialize the bitstring for java.lang.Object and java.lang.Class.
+  java_lang_Object->InitializeSelfBitstring();
+  java_lang_Class->InitializeSelfBitstring();
+
   // Object[] next to hold class roots.
   Handle<mirror::Class> object_array_class(hs.NewHandle(
       AllocClass(self, java_lang_Class.Get(),
@@ -1801,11 +1805,19 @@ bool ClassLinker::AddImageSpace(
     for (const ClassTable::TableSlot& root : temp_set) {
       visitor(root.Read());
     }
+
+    // Iterate through the app image, recalculate the bitstring of the classes.
+    // The bitstring in the appimage is set to 0 when writing to the appimage. Thus we need
+    // to recalculate the bitstring in the appimage.
+    for (const ClassTable::TableSlot& root : temp_set) {
+      root.Read()->EnsureInitializedForTypeCheck();
+    }
   }
   if (!oat_file->GetBssGcRoots().empty()) {
     // Insert oat file to class table for visiting .bss GC roots.
     class_table->InsertOatFile(oat_file);
   }
+
   if (added_class_table) {
     WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
     class_table->AddClassSet(std::move(temp_set));
@@ -5112,11 +5124,13 @@ bool ClassLinker::EnsureInitialized(Thread* self,
                                     bool can_init_fields,
                                     bool can_init_parents) {
   DCHECK(c != nullptr);
+
   if (c->IsInitialized()) {
     EnsureSkipAccessChecksMethods(c, image_pointer_size_);
     self->AssertNoPendingException();
     return true;
   }
+  c->EnsureInitializedForTypeCheck();
   const bool success = InitializeClass(self, c, can_init_fields, can_init_parents);
   if (!success) {
     if (can_init_fields && can_init_parents) {
