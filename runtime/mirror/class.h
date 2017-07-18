@@ -36,6 +36,8 @@
 #include "thread.h"
 #include "utils.h"
 
+#include "class_bitstring_helper.h"
+
 namespace art {
 
 class ArtField;
@@ -125,7 +127,7 @@ class MANAGED Class FINAL : public Object {
   // again at runtime.
   //
   // TODO: Explain the other states
-  enum Status {
+  enum Status : int8_t {
     kStatusRetired = -3,  // Retired, should not be used. Use the newly cloned one instead.
     kStatusErrorResolved = -2,
     kStatusErrorUnresolved = -1,
@@ -144,20 +146,166 @@ class MANAGED Class FINAL : public Object {
     kStatusMax = 12,
   };
 
+  // The struct combines the Status byte and the 56-bit bitstring into one structure.
+  struct InstanceOfAndStatus {
+    uint64_t data;
+
+    // The four possible states of the bitstring of each class.
+    // Uninited: We have not done anything on the bitstring.
+    // Inited: The class has inherited its bitstring from its super, should be exactly the same
+    // value except the incremental value of its own depth.
+    // Assigned: The class has been assigend a bitstring.
+    // Overflowed: The class is overflowed, either too wide, too deep, or being an descendant
+    // of an overflowed class.
+    enum State {
+      kBitstringUninited = 0,
+      kBitstringInited = 1,
+      kBitstringAssigend = 2,
+      kBitstringOverflowed = 3,
+    };
+
+    InstanceOfAndStatus() : data(0) {};
+
+    InstanceOfAndStatus(uint64_t value) : data(value) {};
+
+    uint64_t GetData() const {
+      return data;
+    }
+
+    void SetData(uint64_t now) {
+      data = now;
+    }
+
+    uint64_t GetBitstring() const {
+      return GetFirst56Bits(data);
+    }
+
+    int8_t GetStatus() const {
+      return static_cast<int8_t>(GetLast8Bits(data));
+    }
+
+    void SetBitstring(uint64_t now) {
+      data = GetUpdatedFirst56Bits(data, now);
+    }
+
+    void SetStatus(uint64_t now) {
+      data = GetUpdatedLast8Bits(data, now);
+    }
+
+    // Check if the bitstring is assigned.
+    bool CheckAssigned(int dep) const {
+      if (dep > kMaxBitstringDepth) {
+        return false;
+      }
+      if (dep == 0) {
+        return GetBitstring() > 0;
+      }
+      return GetBitsByDepth(data, dep) > 0;
+    }
+
+    // Check if the bitstring is overflowed.
+    bool CheckOverflowed(int dep) const {
+      if (dep > kMaxBitstringDepth) {
+        return true;
+      }
+      if (CheckAssigned(dep)) {
+        return false;
+      }
+      return (data >> 8) & 1;
+    }
+
+    void SetOverflowed() {
+      data |= (1 << 8);
+    }
+
+    // Check if we add a child to the class, will it be overflowed?
+    bool CheckChildrenOverflowed(int dep) {
+      if (dep >= kMaxBitstringDepth) {
+        return true;
+      }
+      return (data >> 8) & 1;
+    }
+
+    // Get the state from the current bitstring.
+    State GetState(int dep) const {
+      // Check Assigend first, since the overflow bit
+      // can be set to 1 if the children overflowed.
+      if (CheckAssigned(dep)) {
+        return kBitstringAssigend;
+      }
+      if (CheckOverflowed(dep)) {
+        return kBitstringOverflowed;
+      }
+      // Note that each bitstring which is intialized will have the non-zero incremental
+      // value reserved for its children, so the initialized bitstring of the depth 1
+      // won't be all zero either.
+      if (GetBitstring() == 0) {
+        return kBitstringUninited;
+      }
+      return kBitstringInited;
+    }
+
+    uint64_t GetIncrementalValue(int dep) {
+      return GetBitsByDepth(data, dep);
+    }
+
+    void SetIncrementalValue(uint64_t inc, int dep) {
+      SetBitstring(GetUpdatedBitsByDepth(data, inc, dep));
+    }
+
+    inline uint64_t GetBitstringPrefix(int dep) {
+      return GetRangedBits(data, 0, BitstringLength[dep]);
+    }
+
+    void InitializeBitstring(uint64_t super, int dep) {
+      if (dep > 0 && dep <= kMaxBitstringDepth) {
+        super = GetUpdatedBitsByDepth(super, 0, dep);
+      }
+      if (dep < kMaxBitstringDepth) {
+        super = GetUpdatedBitsByDepth(super, 1, dep + 1);
+      }
+      SetBitstring(super);
+    }
+
+    // The real IsSubClass fast pass.
+    bool IsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
+      uint32_t dep = klass->Depth();
+      uint64_t prefix = klass->GetInstanceOfAndStatus().GetBitstringPrefix(dep);
+      uint64_t thisprefix = GetBitstringPrefix(dep);
+      return thisprefix == prefix;
+    }
+  };
+
+  static MemberOffset StatusOffset() {
+    return MemberOffset(OFFSET_OF_OBJECT_MEMBER(Class, status_));
+  }
+
+  // Currently using GetField64Volatile as the atomic read, will change to
+  // std::atomic::load later.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  InstanceOfAndStatus GetInstanceOfAndStatus() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return static_cast<InstanceOfAndStatus>(GetField64Volatile<kVerifyFlags>(StatusOffset()));
+  }
+
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  InstanceOfAndStatus::State GetState() REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetInstanceOfAndStatus<kVerifyFlags>().GetState(Depth());
+  }
+
+  void SetInstanceOfAndStatus(const InstanceOfAndStatus& new_value)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  bool TrySetInstanceOfAndStatus(const InstanceOfAndStatus& new_value)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   Status GetStatus() REQUIRES_SHARED(Locks::mutator_lock_) {
-    static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
-    return static_cast<Status>(
-        GetField32Volatile<kVerifyFlags>(OFFSET_OF_OBJECT_MEMBER(Class, status_)));
+    return static_cast<Status>(GetInstanceOfAndStatus().GetStatus());
   }
 
   // This is static because 'this' may be moved by GC.
   static void SetStatus(Handle<Class> h_this, Status new_status, Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
-
-  static MemberOffset StatusOffset() {
-    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
-  }
 
   // Returns true if the class has been retired.
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
@@ -665,7 +813,10 @@ class MANAGED Class FINAL : public Object {
                                  InvokeType throw_invoke_type)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Fast pass of IsSubClass using bitstring prefix matching method.
   bool IsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Naive method of subtype checking.
+  bool SlowIsSubClass(ObjPtr<Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Can src be assigned to this class? For example, String can be assigned to Object (by an
   // upcast), however, an Object cannot be assigned to a String as a potentially exception throwing
@@ -673,6 +824,34 @@ class MANAGED Class FINAL : public Object {
   // that extends) another can be assigned to its parent, but not vice-versa. All Classes may assign
   // to themselves. Classes for primitive types may not assign to each other.
   ALWAYS_INLINE bool IsAssignableFrom(ObjPtr<Class> src) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  static MemberOffset BitstringOffset() {
+    return OFFSET_OF_OBJECT_MEMBER(Class, status_);
+  }
+
+  // Assign a new bitstring to the class itself.
+  void InitializeSelfBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Check if we can assign a new bitstring to the class.
+  bool CanAssignBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Assign a new bitstring to the class itself.
+  void AssignSelfBitstring() REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Initialize and the bitstring assign the bistring for its super class for klass.
+  // the setZero is set to true when re-assign the bitstring for classes loaded from
+  // the appimage. These classes may have previous bitstrings which must be cleared.
+  void InitializeAndAssignSuperBitstring(bool reinitialize) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Set the bitstring.
+  void SetBitstring(uint64_t mask) REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // Get only the bitstring part.
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
+  uint64_t GetBitstring() REQUIRES_SHARED(Locks::mutator_lock_) {
+    InstanceOfAndStatus copy = GetField64Volatile<kVerifyFlags>(BitstringOffset());
+    return copy.GetBitstring();
+  }
 
   template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
            ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
@@ -1479,6 +1658,15 @@ class MANAGED Class FINAL : public Object {
   // Static fields length-prefixed array.
   uint64_t sfields_;
 
+  // Breakdown of the status_:
+  // First 55 bits, storing the bitstring of the class.
+  // The 56-th bit, representing the overflowed status of that node. This bit is set to 1 if and
+  // only if all its upcoming descendants are considered overflowed.
+  // Last 8 bits, representing the state of class initialization.
+  // The interpreter part does not require it to be little endian. The code generation part
+  // requires little endian to get status_ work.
+  std::atomic<InstanceOfAndStatus> status_;
+
   // Access flags; low 16 bits are defined by VM spec.
   uint32_t access_flags_;
 
@@ -1521,9 +1709,6 @@ class MANAGED Class FINAL : public Object {
 
   // Bitmap of offsets of ifields.
   uint32_t reference_instance_offsets_;
-
-  // State of class initialization.
-  Status status_;
 
   // The offset of the first virtual method that is copied from an interface. This includes miranda,
   // default, and default-conflict methods. Having a hard limit of ((2 << 16) - 1) for methods

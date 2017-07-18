@@ -447,6 +447,10 @@ bool ClassLinker::InitWithoutImage(std::vector<std::unique_ptr<const DexFile>> b
                                                          java_lang_Object.Get(),
                                                          java_lang_Object->GetObjectSize(),
                                                          VoidFunctor()));
+  {
+    java_lang_Object->InitializeSelfBitstring();
+    java_lang_Class->InitializeSelfBitstring();
+  }
 
   // Object[] next to hold class roots.
   Handle<mirror::Class> object_array_class(hs.NewHandle(
@@ -1757,6 +1761,36 @@ class ImageSanityChecks FINAL {
   std::vector<const ImageSection*> runtime_method_sections_;
 };
 
+// A DFS traverse along the super class chain for the classes showed in
+// space (the appimage). This method will re-assign the bitstrings for these
+// classes from top to bottom. Visited is used to mark the processed classes.
+void ClassLinker::VisitSuperClasses(ObjPtr<mirror::Class> klass,
+                                    gc::space::ImageSpace* space,
+                                    ClassTable::ClassSet& visited) {
+  if (klass == nullptr) {
+    return;
+  }
+
+  if (visited.Find(ClassTable::TableSlot(klass)) != visited.end() ||
+      !space->HasAddress(klass.Ptr())) {
+    return;
+  }
+
+  // Process the super class first.
+  VisitSuperClasses(klass->GetSuperClass(), space, visited);
+  // Erase the bitstring before setting the new value.
+  klass->InitializeAndAssignSuperBitstring(true);
+  visited.Insert(ClassTable::TableSlot(klass));
+}
+
+void ClassLinker::ReassignAppimageClassBitstring(const ClassTable::ClassSet& image_set,
+                                                 gc::space::ImageSpace* space) {
+  ClassTable::ClassSet visited_set;
+  for (const ClassTable::TableSlot& root : image_set) {
+    VisitSuperClasses(root.Read(), space, visited_set);
+  }
+}
+
 bool ClassLinker::AddImageSpace(
     gc::space::ImageSpace* space,
     Handle<mirror::ClassLoader> class_loader,
@@ -1985,6 +2019,12 @@ bool ClassLinker::AddImageSpace(
     for (const ClassTable::TableSlot& root : temp_set) {
       visitor(root.Read());
     }
+
+    // The bitstring of the classes in the app image is calculated when creating the image.
+    // However, the value may not be consistent with the value in the boot image since we do
+    // not update the boot image accordingly. Thus, we need to re-calculate the bitstrings.
+    ReassignAppimageClassBitstring(temp_set, space);
+
     // forward_dex_cache_arrays is true iff we copied all of the dex cache arrays into the .bss.
     // In this case, madvise away the dex cache arrays section of the image to reduce RAM usage and
     // mark as PROT_NONE to catch any invalid accesses.
@@ -2006,6 +2046,7 @@ bool ClassLinker::AddImageSpace(
     // Insert oat file to class table for visiting .bss GC roots.
     class_table->InsertOatFile(oat_file);
   }
+
   if (added_class_table) {
     WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
     class_table->AddClassSet(std::move(temp_set));
@@ -2918,6 +2959,8 @@ mirror::Class* ClassLinker::DefineClass(Thread* self,
     return nullptr;
   }
   CHECK(klass->IsLoaded());
+
+  klass.Get()->InitializeAndAssignSuperBitstring(false);
 
   // At this point the class is loaded. Publish a ClassLoad event.
   // Note: this may be a temporary class. It is a listener's responsibility to handle this.
