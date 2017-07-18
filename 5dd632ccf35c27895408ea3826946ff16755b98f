@@ -39,6 +39,24 @@
       "revId": "5dd632ccf35c27895408ea3826946ff16755b98f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a50b844_944b0470",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 4915,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-18T18:14:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f033ec3_6c84ed84",
+      "revId": "5dd632ccf35c27895408ea3826946ff16755b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
