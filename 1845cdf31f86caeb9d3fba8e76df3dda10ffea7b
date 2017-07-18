@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "436d30a7_29778dfc",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T12:37:27Z",
+      "side": 1,
+      "message": "Extend the comment to say it\u0027s \u0027perf\u0027 on the host. simpleperf doesn\u0027t understant JIT frames right now (be it using ashmem or not).",
+      "range": {
+        "startLine": 102,
+        "startChar": 5,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f4bfba3_57484aea",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T12:37:27Z",
+      "side": 1,
+      "message": "nit: some ascii art might be nice for this, also showing the length of each region.",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 64
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25f07743_6bbd5413",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 22
@@ -18,6 +64,52 @@
         "startChar": 6,
         "endLine": 303,
         "endChar": 47
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37583ac_b3bb4bc2",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 22
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T12:37:27Z",
+      "side": 1,
+      "message": "I\u0027m fine leaving this for now, but please follow-up on it.",
+      "range": {
+        "startLine": 781,
+        "startChar": 0,
+        "endLine": 786,
+        "endChar": 73
+      },
+      "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "273f7fd7_bc40fa6e",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-18T12:37:27Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 373,
+        "startChar": 8,
+        "endLine": 373,
+        "endChar": 11
       },
       "revId": "1845cdf31f86caeb9d3fba8e76df3dda10ffea7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
