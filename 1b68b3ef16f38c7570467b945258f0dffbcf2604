@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7624b2e_208cb049",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1726,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-19T14:07:33Z",
+      "side": 1,
+      "message": "I think we should avoid getting into this situation. I\u0027ve uploaded https://android-review.googlesource.com/438001 for this.",
+      "range": {
+        "startLine": 1723,
+        "startChar": 0,
+        "endLine": 1726,
+        "endChar": 3
+      },
+      "revId": "1b68b3ef16f38c7570467b945258f0dffbcf2604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
