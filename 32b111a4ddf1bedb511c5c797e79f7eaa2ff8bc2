@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5acd8881_0a9739e9",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-07-19T21:05:03Z",
+      "side": 1,
+      "message": "Please use  \"a if condition else b\" format.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 53
+      },
+      "revId": "32b111a4ddf1bedb511c5c797e79f7eaa2ff8bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
