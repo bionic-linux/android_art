@@ -28,8 +28,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-// This mutation might change the length of an array but can also change the
-// value of the register in every place it is used.
 public class NewArrayLengthChanger extends CodeMutator {
   /**
    * Every CodeMutator has an AssociatedMutation, representing the
@@ -120,12 +118,15 @@ public class NewArrayLengthChanger extends CodeMutator {
     MInsn newInsn = new MInsn();
     newInsn.insn = new Instruction();
     newInsn.insn.info = Instruction.getOpcodeInfo(Opcode.CONST_16);
+    mutatableCode.allocateTemporaryVRegs(1);
+    newArrayInsn.insn.vregB = mutatableCode.getTemporaryVReg(0);
     newInsn.insn.vregA = (int) newArrayInsn.insn.vregB;
     // New length chosen randomly between 1 to 100.
     newInsn.insn.vregB = rng.nextInt(100);
     mutatableCode.insertInstructionAt(newInsn, newArrayInsnIdx);
     Log.info("Changed the length of the array to " + newInsn.insn.vregB);
     stats.incrementStat("Changed length of new array");
+    mutatableCode.finishedUsingTemporaryVRegs();
   }
 
   private boolean isNewArray(MInsn mInsn) {
