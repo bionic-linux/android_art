@@ -1720,6 +1720,10 @@ void JitCodeCache::DoneCompiling(ArtMethod* method, Thread* self ATTRIBUTE_UNUSE
 
 size_t JitCodeCache::GetMemorySizeOfCodePointer(const void* ptr) {
   MutexLock mu(Thread::Current(), lock_);
+  if (!executable_code_map_->HasAddress(ptr)) {
+    DCHECK_EQ(ptr, GetQuickToInterpreterBridge());
+    return 0;
+  }
   CHECK(IsExecutableAddress(ptr));
   return mspace_usable_size(reinterpret_cast<const void*>(FromCodeToAllocation(ptr)));
 }
