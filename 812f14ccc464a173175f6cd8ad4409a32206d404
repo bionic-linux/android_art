@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e2d10d_d3074483",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-20T15:17:22Z",
+      "side": 1,
+      "message": "As discussed, you can drop.",
+      "range": {
+        "startLine": 755,
+        "startChar": 5,
+        "endLine": 755,
+        "endChar": 21
+      },
+      "revId": "812f14ccc464a173175f6cd8ad4409a32206d404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "338d5e19_b739100c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-20T15:17:22Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 758,
+        "startChar": 51,
+        "endLine": 759,
+        "endChar": 68
+      },
+      "revId": "812f14ccc464a173175f6cd8ad4409a32206d404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
