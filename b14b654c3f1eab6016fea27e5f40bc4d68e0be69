@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb686ed3_5367bf0e",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-20T14:48:18Z",
+      "side": 1,
+      "message": "Android O, though I would keep the previous comment about \"some ARMv8 Qualcomm kernels\". Android releases AFAIK don\u0027t control kernel versions.",
+      "range": {
+        "startLine": 755,
+        "startChar": 12,
+        "endLine": 755,
+        "endChar": 13
+      },
+      "revId": "b14b654c3f1eab6016fea27e5f40bc4d68e0be69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82ee6f8d_28e45591",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-20T14:48:18Z",
+      "side": 1,
+      "message": "indentation is off.",
+      "range": {
+        "startLine": 774,
+        "startChar": 41,
+        "endLine": 774,
+        "endChar": 59
+      },
+      "revId": "b14b654c3f1eab6016fea27e5f40bc4d68e0be69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9710b7cb_36dfbc13",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-20T14:48:18Z",
+      "side": 1,
+      "message": "This implies you could still hit the fault, right? What do we do then?",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 779,
+        "endChar": 14
+      },
+      "revId": "b14b654c3f1eab6016fea27e5f40bc4d68e0be69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
