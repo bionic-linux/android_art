@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32e8d958_1b93c109",
+        "filename": "test/660-clinit/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-20T17:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db87808e_79f0b896",
+      "range": {
+        "startLine": 167,
+        "startChar": 17,
+        "endLine": 167,
+        "endChar": 21
+      },
+      "revId": "8ad3b01e58dcde5f9ae44b5ef486ee3a67602127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd181b9_3b6d77c4",
         "filename": "test/660-clinit/src/Main.java",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "89df7efb_e6ee131d",
+        "filename": "test/660-clinit/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-20T17:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd181b9_3b6d77c4",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 16
+      },
+      "revId": "8ad3b01e58dcde5f9ae44b5ef486ee3a67602127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae52632b_b1903e69",
         "filename": "test/660-clinit/src/Main.java",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-20T09:22:14Z",
       "side": 1,
       "message": "Add a commen whether it\u0027s G\u0027s \u003cclinit\u003e, Gs\u0027 or both\u0027 that used to fail.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 22
+      },
+      "revId": "8ad3b01e58dcde5f9ae44b5ef486ee3a67602127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd6092ba_05a7619b",
+        "filename": "test/660-clinit/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-20T17:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae52632b_b1903e69",
       "range": {
         "startLine": 162,
         "startChar": 0,
