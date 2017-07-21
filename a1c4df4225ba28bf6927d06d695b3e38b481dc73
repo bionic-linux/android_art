@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a7351f9_97b16032",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Sorry, I\u0027ve got some issues uploading that, here is the link: https://android-review.googlesource.com/#/c/441753/",
+      "parentUuid": "36a39c69_8947f930",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 70
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9997290f_263cee87",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-07-21T17:08:42Z",
       "side": 1,
       "message": "Needs ARM fixes.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b520479_278c4857",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "9997290f_263cee87",
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -111,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "44c0c122_3dbc7be0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "adad2213_c419c9c1",
+      "range": {
+        "startLine": 1774,
+        "startChar": 4,
+        "endLine": 1774,
+        "endChar": 7
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07e5fe66_dfbfe04f",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -157,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "7feea974_a96ab596",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2977,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "It\u0027s called twice, another one in line 1781",
+      "parentUuid": "582f83f8_b58695a7",
+      "range": {
+        "startLine": 2977,
+        "startChar": 0,
+        "endLine": 2977,
+        "endChar": 56
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "829dd177_92804bed",
         "filename": "runtime/class_linker.h",
         "patchSetId": 1
@@ -168,6 +258,30 @@
       "writtenOn": "2017-07-21T13:23:32Z",
       "side": 1,
       "message": "One line.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 54
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fbc065d_e2b58ce1",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "829dd177_92804bed",
       "range": {
         "startLine": 209,
         "startChar": 0,
@@ -203,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "446b3def_d3d8735f",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "6b2a35ee_7c8d470e",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 145
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "530c577d_1e734ede",
         "filename": "runtime/mirror/class-inl.h",
         "patchSetId": 1
@@ -226,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "4ed594d0_9d4c3d43",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "SetBitstring64 is called and the isActiveTrasaction is checked in that.",
+      "parentUuid": "530c577d_1e734ede",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77a8d43b_5b0a6ded",
         "filename": "runtime/mirror/class-inl.h",
         "patchSetId": 1
@@ -237,6 +399,30 @@
       "writtenOn": "2017-07-21T16:07:46Z",
       "side": 1,
       "message": "Remove this comment.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cea6bd2_94fd1b03",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "77a8d43b_5b0a6ded",
       "range": {
         "startLine": 72,
         "startChar": 0,
@@ -283,6 +469,24 @@
       "writtenOn": "2017-07-21T13:23:32Z",
       "side": 1,
       "message": "revert.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12c5ef5e_3b3c9222",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ba767fb2_201c0ff8",
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -353,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "6e9060c7_f92d3b27",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "But this is the SetStatus method. I don\u0027t get the point by \"move to GetStatus/SetStatus\".",
+      "parentUuid": "ea61e2e6_1c7314ad",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac948ab0_207c047e",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 1
@@ -381,6 +603,30 @@
       "writtenOn": "2017-07-21T16:07:46Z",
       "side": 1,
       "message": "Since you rely on the endianness of this value elsewhere you might want to at least mention it here.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1543,
+        "endChar": 19
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "361de34a_9893a976",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:04:48Z",
+      "side": 1,
+      "message": "Hi, in the interpreter part, I didn\u0027t assume the endianness, you can see I always get it by uint64_t and do bitwise operation on it (the order is guaranteed by C++ I think.)\n\nIn the code generation part, it does require little endian, so I have added the comments.",
+      "parentUuid": "30796c35_bbcbdf6f",
       "range": {
         "startLine": 1543,
         "startChar": 0,
