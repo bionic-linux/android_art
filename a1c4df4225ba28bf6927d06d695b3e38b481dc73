@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "36a39c69_8947f930",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Please upload this change too and put it into a topic so we can see it.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 70
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b003cee_c3e009e9",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "A global lock seems far too heavyweight for a single 64bit field.",
+      "range": {
+        "startLine": 103,
+        "startChar": 2,
+        "endLine": 103,
+        "endChar": 16
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b057e0b0_e2fa26f2",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "582f83f8_b58695a7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2977,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "This seems to be the only use of this function.\n\nWhy do you have the set_zero parameter if it is never used.",
+      "range": {
+        "startLine": 2977,
+        "startChar": 0,
+        "endLine": 2977,
+        "endChar": 56
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "829dd177_92804bed",
         "filename": "runtime/class_linker.h",
         "patchSetId": 1
@@ -91,6 +160,75 @@
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b2a35ee_7c8d470e",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Multiple lines please. 100 columns.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 145
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530c577d_1e734ede",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Why no IsActiveTrasaction here?\n\nIf it cannot happen put a DCHECK in.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77a8d43b_5b0a6ded",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Remove this comment.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -154,6 +292,75 @@
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30796c35_bbcbdf6f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Since you rely on the endianness of this value elsewhere you might want to at least mention it here.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 0,
+        "endLine": 1543,
+        "endChar": 19
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b914e8c8_60656539",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Don\u0027t indent top level namespace contents.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b01132f_08de165b",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "Here and below, art style is 2 space as indentation.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -223,6 +430,46 @@
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5471c32_b5de43ac",
+        "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "This has the look of something generated. If possible just include the generating code and run it in the tests \u0027build\u0027 script.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9004e5a0_1a838339",
+        "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-07-21T16:07:46Z",
+      "side": 1,
+      "message": "spaces not tabs.",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 4
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
