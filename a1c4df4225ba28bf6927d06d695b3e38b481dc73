@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "9997290f_263cee87",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:08:42Z",
+      "side": 1,
+      "message": "Needs ARM fixes.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b003cee_c3e009e9",
         "filename": "runtime/base/mutex.h",
         "patchSetId": 1
@@ -295,6 +312,40 @@
     },
     {
       "key": {
+        "uuid": "ea61e2e6_1c7314ad",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:08:42Z",
+      "side": 1,
+      "message": "Please, move to GetStatus/SetStatus , this is leaking details into another function.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac948ab0_207c047e",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:08:42Z",
+      "side": 1,
+      "message": "Too much cruft added to class.h, can you move them to instanceof_bitstring.h? \n\n   struct InstanceOfBitString {\n     ...\n   }\n   static_assert(sizeof(InstanceOfBitString)) \u003d\u003d sizeof(uint64_t))",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30796c35_bbcbdf6f",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 1
@@ -312,6 +363,23 @@
         "endLine": 1543,
         "endChar": 19
       },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2991741_95435cf5",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:08:42Z",
+      "side": 1,
+      "message": "It should go into runtime/base because runtime/mirror is only for things that have a java.lang.Object equivalent.",
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -407,6 +475,23 @@
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35732511_44a8f58f",
+        "filename": "test/988-TooDeepClassInstanceOf/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:08:42Z",
+      "side": 1,
+      "message": "Test should include checks for too-wide and too-deep overflow cases.\n\ni.e. WouldOverFlowForInstanceOf(A.class, B.class) \u003d\u003e \"a instanceof B\" uses the overflow method.\n\n\nWouldOverFlowForInstanceOf can reach into the runtime with JNI to assert that the bitstring is overflowing or not.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
