@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aeb777e_4cf5682d",
+        "filename": "test/testrunner/env.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T17:34:27Z",
+      "side": 1,
+      "message": "include same comments here as for sh scripts?",
+      "revId": "a953d11d1e5e866ce5a34161d99c5f0cefcfb759",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
