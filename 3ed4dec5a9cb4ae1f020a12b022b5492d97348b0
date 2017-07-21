@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d27de60_524849b3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "As Nicola commented, it\u0027s not necessary to lock it here since it\u0027s during startup and single-threaded. Just add a comment why lock is not necessary.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132797fa_73a8c478",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "Our code still uses the bracket for this case.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4eb2aa7_683ce5a0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2016,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "boot image since we do not update the boot image accordingly.",
+      "range": {
+        "startLine": 2016,
+        "startChar": 70,
+        "endLine": 2016,
+        "endChar": 79
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "230d3e59_bc96c950",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "and assign bitstring for superclass.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ea73d8f_0764b262",
+        "filename": "runtime/class_linker_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "status?",
+      "range": {
+        "startLine": 609,
+        "startChar": 56,
+        "endLine": 609,
+        "endChar": 66
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e655370_347ff803",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "delete.",
+      "range": {
+        "startLine": 68,
+        "startChar": 55,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d5dc8ff_020e9461",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "move this after line 289.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e52d05a9_83aacc18",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "status of the class",
+      "range": {
+        "startLine": 1542,
+        "startChar": 35,
+        "endLine": 1542,
+        "endChar": 64
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d632dbf0_04385d3c",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-07-21T23:17:27Z",
+      "side": 1,
+      "message": "not needed.\n\nAlso add some comments about the rule that non-leaf classes must have its bitstring set/overflowed.",
+      "range": {
+        "startLine": 1544,
+        "startChar": 42,
+        "endLine": 1544,
+        "endChar": 47
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
