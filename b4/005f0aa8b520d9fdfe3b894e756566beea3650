@@ -1,0 +1,10 @@
+Autosubmit+1: Igor Murashkin <iam@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Igor Murashkin <iam@google.com>
+Code-Review+2: David Sehr <sehr@google.com>
+Verified+1: Igor Murashkin <iam@google.com>
+Submitted-by: Igor Murashkin <iam@google.com>
+Submitted-at: Fri, 21 Jul 2017 23:16:08 +0000
+Reviewed-on: https://android-review.googlesource.com/419445
+Project: platform/art
+Branch: refs/heads/master
