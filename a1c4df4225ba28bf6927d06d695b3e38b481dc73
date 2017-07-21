@@ -312,6 +312,30 @@
     },
     {
       "key": {
+        "uuid": "8e4c928b_03d00191",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T21:04:09Z",
+      "side": 1,
+      "message": "One thing I wasn\u0027t sure about was using 8-byte LDR in codegen, but it seems to be ok after discussing with Hans.\n\nARMv8 doc specifically allows for single-copy atomicity for different sizes *unless* there\u0027s 2 concurrent stores of different sizes (i.e. a 64-bit store and a 8-bit load would be ok). On both Aarch32/Aarch64. We might want to double check for ARMv7 doc.\n\nWe just have to be careful never to write to the status as if it was 8-bit.\n\n------\n\nThat being said I think it\u0027s a bit tricky and would require rewriting bitstring code to use more CAS, maybe we should leave that until a follow up CL.\n\nI do agree a global lock is overkill and that could probably be replaced with ObjectLock at a loss of the static analysis.",
+      "parentUuid": "53d31f36_185fbbad",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea61e2e6_1c7314ad",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 1
