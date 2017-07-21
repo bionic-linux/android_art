@@ -540,6 +540,30 @@
     },
     {
       "key": {
+        "uuid": "1d47fcc7_be597da7",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-21T21:15:18Z",
+      "side": 1,
+      "message": "My concerns are that, the lock is not only used for one 64bit bitstring.\nFirst, each IntializeAndAssignSuper call in class_linker will use bitstring of three classes, klass, its super and its super\u0027s super (in super-\u003eAssignBitstring()).\n\nSecond, there are multiple checks in my design to ensure the bitstring is valid (especially in the overflow case). If we narrow down the critical section, the problem would be, we do secure the write operation on the bitstring, but then for example, two threads go into the AssignBitstring() Method at the same time, the two classes share the same super class in the two threads. After one class change the value of the super\u0027s bitstring, then the super class may not be able to hold more children, then the precondition of AssignBitstring() method is not met any more.",
+      "parentUuid": "8e4c928b_03d00191",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea61e2e6_1c7314ad",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 1
