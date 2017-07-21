@@ -564,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "69d0a793_705dad2e",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-21T21:23:12Z",
+      "side": 1,
+      "message": "Maybe change to ReaderWriterMutex for now? Should be quite rare to actually need the write lock.",
+      "parentUuid": "1d47fcc7_be597da7",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea61e2e6_1c7314ad",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 1
