@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b853cb18_6e562618",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-22T00:16:29Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/#/q/topic:%22Bitstring+implementation+for+subtype+checking%22+(status:open+OR+status:merged)",
+      "parentUuid": "7a7351f9_97b16032",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 70
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9997290f_263cee87",
         "filename": "compiler/optimizing/code_generator_x86_64.cc",
         "patchSetId": 1
