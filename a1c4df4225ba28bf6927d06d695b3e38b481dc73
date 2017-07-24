@@ -671,6 +671,23 @@
     },
     {
       "key": {
+        "uuid": "f0559ea2_b3c166be",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T22:37:09Z",
+      "side": 1,
+      "message": "add \"enum Status : uint8_t\" here to force it to 8 bits.",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac948ab0_207c047e",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 1
@@ -682,6 +699,24 @@
       "writtenOn": "2017-07-21T17:08:42Z",
       "side": 1,
       "message": "Too much cruft added to class.h, can you move them to instanceof_bitstring.h? \n\n   struct InstanceOfBitString {\n     ...\n   }\n   static_assert(sizeof(InstanceOfBitString)) \u003d\u003d sizeof(uint64_t))",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c931467_e96ba65e",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T22:37:09Z",
+      "side": 1,
+      "message": "FYI, this is also a nice-to-have to avoid a bunch of magic bit manipulations just to read out the status bits:\n\n   struct InstanceOfBitString {\n     Status status;\n     uint64_t bitstring : (BitSizeOf\u003cuint64_t\u003e() - BitSizeOf\u003cStatus\u003e()) ;\n   };\n   static_assert(sizeof(InstanceOfBitString)) \u003d\u003d sizeof(uint64_t));\n   static_assert(offsetof(InstanceOfBitString, status) \u003d\u003d 0);\n\n\nThen just access them via those fields, it will take care of masking, shifting, etc.\nIn particular loading \u0026class.status_ will still work as the offset for the \u0027InstanceOfBitString::status\u0027 will be 0.\n\n  InstanceOfBitString x;\n  x.status \u003d kStatusLoaded;\n  x.bitstring \u003d UninitializedBitString();\n \netc.",
+      "parentUuid": "ac948ab0_207c047e",
       "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
