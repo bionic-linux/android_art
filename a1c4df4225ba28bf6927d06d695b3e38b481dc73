@@ -612,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "7340d87a_42aefa76",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-24T11:30:36Z",
+      "side": 1,
+      "message": "I\u0027m not concerned as much about SetStatus. But the SubClass check should definitely not lock.",
+      "parentUuid": "69d0a793_705dad2e",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 61
+      },
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea61e2e6_1c7314ad",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 1
