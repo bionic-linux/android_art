@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "d1efa8e5_aa5bfbc7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Explain why this is setting it to 0 but the other one is InitializeBitString.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d27de60_524849b3",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -82,6 +99,24 @@
     },
     {
       "key": {
+        "uuid": "78d6f446_85ae1a31",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Also after looking at how it\u0027s used for app images it should probably take a class_set as the input (not a klass).",
+      "parentUuid": "c7ed3075_39b4bdd2",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132797fa_73a8c478",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -122,6 +157,46 @@
     },
     {
       "key": {
+        "uuid": "f3240fb7_af817741",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: Remove",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a37f8ea_2d62531c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: app image / boot image (add a space)",
+      "range": {
+        "startLine": 2015,
+        "startChar": 43,
+        "endLine": 2015,
+        "endChar": 51
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4eb2aa7_683ce5a0",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -142,6 +217,97 @@
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e10d6e01_fb0ea8c4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: ClassTable::ClassSet visited_set;",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85636a41_1b97e339",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "for (const ClassTable::TableSlot\u0026 root : temp_set)",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26834207_bce00ae0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2854,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: Not sure what this should be called yet, but it sounds like \u0027bool reinitialize\u0027 would be more appropriate since it effectively resets and then does an initialization again.",
+      "range": {
+        "startLine": 2854,
+        "startChar": 57,
+        "endLine": 2854,
+        "endChar": 64
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32afa10b_9bf5bca4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2858,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Why can\u0027t this be done in L2863? If there is ordering requirement then please describe why.\n\n\n  if ((super_class !\u003d nullptr \u0026\u0026 setZero) || klass-\u003eGetBitString() \u003d\u003d 0) {\n    klass-\u003eInitializeBitString();\n  }",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9118e704_2efa8a23",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3937,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: remove",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -340,6 +506,40 @@
     },
     {
       "key": {
+        "uuid": "7562d7c8_a65fab83",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: Poor encapsulation, pass dep-1 and dep here and have GetUpdatedRangeBits do the array lookup.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fccb93e_aa07f892",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "What is this case for ? Object? Add a DCHECK that it\u0027s object then.\n\nBut also I don\u0027t see why Object would need anything since it\u0027s special.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50ac248f_000669c5",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 2
@@ -351,6 +551,80 @@
       "writtenOn": "2017-07-24T17:17:20Z",
       "side": 1,
       "message": "Like the above SetStatusBits helper, this should use another helper\n\n\n    void SetBitstringHelper(Bitstring new_bistring) {\n      std::atomic\u003cInstanceOfAndStatus\u003e* pair_ptr \u003d this + StatusOffset(); // add casts\n      InstanceOfAndStatus old_pair, new_pair;\n       do {\n          old_pair \u003d pair_ptr-\u003eload(std::memory_order::relaxed);\n          new_pair \u003d old_pair;\n          new_pair.SetBitstring(new_bitstring);\n       } while (!pair_ptr-\u003ecompare_exchange_weak(old_pair, new_pair, std::memory_order::relaxed, std::memory_order::relaxed));\n    }\n\nL213, L215 should call this.\n\nMove existing class::SetBitstring into InstanceOfAndStatus::SetBitstring",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4c3c32_f0ca7fdb",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be in class.h because it\u0027s only used by other bitstring functions.\n\nAlso make it const.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296be4a3_b11a3d94",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "What is this \u003e\u003e8 and why does it need a \u0026 1 ?",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45914674_91618804",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "const",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d1d7475_36d87afe",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "java.lang.Object",
+      "range": {
+        "startLine": 268,
+        "startChar": 44,
+        "endLine": 268,
+        "endChar": 62
+      },
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -500,6 +774,80 @@
     },
     {
       "key": {
+        "uuid": "4b610a21_e98c5095",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Seems it\u0027s going about it the wrong way. This should be set from sizeof(BitstringLength).",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac65f233_505a9712",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Not really accurate according to comments, I would\u0027ve expected 0,12,10,10,9 etc here.\n\nIt is storing the index into the LONG right now, not the length. Either rename to e.g. BitstringIndices or change the value being stored.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b03c983_ea4a1b64",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "Why is there 64? It should be 63.",
+      "range": {
+        "startLine": 27,
+        "startChar": 89,
+        "endLine": 27,
+        "endChar": 91
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8de43dab_4c127e29",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "What is kFirstLevelOffset? Document please?",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d11ce0a_1bbbfa72",
         "filename": "runtime/mirror/class_bitstring_helper.h",
         "patchSetId": 2
@@ -511,6 +859,80 @@
       "writtenOn": "2017-07-24T17:17:20Z",
       "side": 1,
       "message": "Add assert that that the levels align to 32-bits (i.e. there exists some sum_of_bits(level0..levelI) \u003d\u003d 32)",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c16927_71f10056",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "I don\u0027t know what this is doing, but maybe you meant to do this instead?\n\n   static_assert(lastLevelLength(BitstringLength) + BitSizeOf\u003cStatus\u003e() \u003d\u003d BitSizeOf\u003cuint64_t\u003e())",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b678180_9604af3b",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "This current abstraction is weird because GetFirst56Bits can just mask off the last 8 bits into 0.\n\n   // don\u0027t do this.\n   inline uint64_t ClearLast8Bits(uint64_t mask) {\n      return (mask \u0026 ~0xff);\n   }\n\nIn fact expressed like that the operation is so trivial it hardly needs a helper to do it.\n\n   static constexpr uint64_t kStatusMask \u003d 0xff;\n\n   int get_first_56_bits \u003d value \u0026 ~kStatusMask;\n   int last_8_bits \u003d value \u0026 kStatusMask;\n\n//////\n\nBut we shouldn\u0027t hardcode 0xff either.\n   \n   static constepxr uint64_t kStatusMask \u003d (1u \u003c\u003c sizeof(Status)) - 1u;",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a150cdd_26207e3f",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "nit: BitSizeOf(cur) in bit_utils.h",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16439b6d_7ce77347",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T18:02:10Z",
+      "side": 1,
+      "message": "We do have runtime/base/bit_utils.h so I recommend moving general functions there (and using helpers there if you can) and keep bitstring-specific functions here.\n\nThis one and L51 are good candidates to be more generalized in bit_utils.h",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
