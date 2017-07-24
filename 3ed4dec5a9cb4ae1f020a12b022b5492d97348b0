@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "c7ed3075_39b4bdd2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "The abstraction here seems wrong. Can you implement a visitor pattern here ?\n\n    template \u003ctypename T\u003e\n    VisitSuperClasses(ObjPtr\u003cmirror::Class\u003e klass,\n                      gc::space::ImageSpace* space,\n                      T\u0026\u0026 visitor) {\n       .....\n       // L1781 becomes visitor(klass);\n    }\n\n    VisitSuperClasses(klass, space,\n                      [this](ObjPtr\u003cmirror::Class\u003e kls) { \n                          InitializeAndAssignSuperBitstring(klass, true); }\n    );",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132797fa_73a8c478",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -82,6 +99,40 @@
     },
     {
       "key": {
+        "uuid": "4d25f955_4d782a8c",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Is it modified? It should be commented /*out*/ then.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378c6de3_c8d60bc6",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Why? Because it takes it?",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "230d3e59_bc96c950",
         "filename": "runtime/class_linker.h",
         "patchSetId": 2
@@ -96,6 +147,46 @@
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec0cdc26_6a7a7868",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "What does this \u0027setZero\u0027 mean? Please document this.",
+      "range": {
+        "startLine": 209,
+        "startChar": 70,
+        "endLine": 209,
+        "endChar": 82
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3457764b_4ab04a91",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Why? Because it takes it?",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -145,6 +236,57 @@
     },
     {
       "key": {
+        "uuid": "33121cd0_844b62d4",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Move this contents to InstanceOfAndStatus::IsSubClass\n\nChange contents to:\n\n    std::atomic\u003cInstanceOfAndStatus\u003e* pair_ptr \u003d this + StatusOffset();\n    InstanceOfAndStatus pair \u003d pair_ptr-\u003eload(std::memory_order_relaxed);\n    \n    if (pair.CheckAssignedBitstring()) {\n        return pair.IsSubclass(klass);\n    } else {\n        return SlowIsSubclass(klass);\n    }",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a15353_95f72e71",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Move to SetStatusBits helper and add the following atomic code instead of using locks:\n\nThe basic understanding here is that we replace the entire \"status_\" field at once [atomically] with a CAS instead of trying to individually mutate bits.\n\nUse release order because it should not give extra ordering guarantees, we only need to prevent word tearing.\n\n    void SetStatusBits(Status status) {\n      std::atomic\u003cInstanceOfAndStatus\u003e* pair_ptr \u003d this + StatusOffset(); // add casts\n\n      InstanceOfAndStatus old_pair, new_pair;\n       do {\n          old_pair \u003d pair_ptr-\u003eload(std::memory_order::relaxed);\n\n          new_pair \u003d old_pair;\n          new_pair.SetStatus(status);\n       } while (!pair_ptr-\u003ecompare_exchange_weak(old_pair, new_pair, std::memory_order::relaxed, std::memory_order::relaxed));\n    }",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50ac248f_000669c5",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Like the above SetStatusBits helper, this should use another helper\n\n\n    void SetBitstringHelper(Bitstring new_bistring) {\n      std::atomic\u003cInstanceOfAndStatus\u003e* pair_ptr \u003d this + StatusOffset(); // add casts\n      InstanceOfAndStatus old_pair, new_pair;\n       do {\n          old_pair \u003d pair_ptr-\u003eload(std::memory_order::relaxed);\n          new_pair \u003d old_pair;\n          new_pair.SetBitstring(new_bitstring);\n       } while (!pair_ptr-\u003ecompare_exchange_weak(old_pair, new_pair, std::memory_order::relaxed, std::memory_order::relaxed));\n    }\n\nL213, L215 should call this.\n\nMove existing class::SetBitstring into InstanceOfAndStatus::SetBitstring",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d5dc8ff_020e9461",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 2
@@ -159,6 +301,23 @@
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c7cd0fa_2eff4e6e",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Don\u0027t hardcode numbers like this, they should come from another function, from a constexpr, offsetof, etc.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -205,6 +364,40 @@
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29305622_dc30e833",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Move to separate struct, InstanceOfAndStatus or similar. We will need this to make it use std::atomic sanely.\n\n  std::atomic\u003cInstanceOfAndStatus\u003e status_;\n\nMove all the helpers you added above into InstanceOfAndStatus.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d11ce0a_1bbbfa72",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-24T17:17:20Z",
+      "side": 1,
+      "message": "Add assert that that the levels align to 32-bits (i.e. there exists some sum_of_bits(level0..levelI) \u003d\u003d 32)",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
