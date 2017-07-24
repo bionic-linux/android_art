@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fcf53c6_1070c17a",
+        "filename": "test/660-byte-short/smali/TestCase.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-07-24T13:53:19Z",
+      "side": 1,
+      "message": "Add `char`?",
+      "revId": "e73244d0c0c8721411827c0f3b7361d665617245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
