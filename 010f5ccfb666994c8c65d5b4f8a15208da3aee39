@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9aee01ea_d86d2c9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-25T08:13:28Z",
+      "side": 1,
+      "message": "Is there logic that aborts the initialization of a compiled class if it required the initialization of a class in a \u003cuses-library\u003e jar?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "010f5ccfb666994c8c65d5b4f8a15208da3aee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
