@@ -506,6 +506,23 @@
     },
     {
       "key": {
+        "uuid": "6238eebe_be03472c",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-25T20:48:48Z",
+      "side": 1,
+      "message": "(See L332 first)\n\n    InstanceOfAndStatus super_instance_of \u003d GetSuperClass()-\u003eGetInstanceOfAndStatus();\n    InstanceOfAndStatus initialized_instance_of \u003d InstanceOfAndStatus::Initialize(super_instance_of, Depth());\n\n\n    TrySet...(initialized_instance_of);",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7562d7c8_a65fab83",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 2
@@ -608,6 +625,23 @@
     },
     {
       "key": {
+        "uuid": "9c1a9bec_a0bb9491",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-25T20:48:48Z",
+      "side": 1,
+      "message": "return GetInstanceOfAndStatus().CheckAssignedBitString(Depth())",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d1d7475_36d87afe",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 2
@@ -645,6 +679,23 @@
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9dcc5f9_406cf6bf",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-25T20:48:48Z",
+      "side": 1,
+      "message": "As discussed offline, if we extract code class.cc into a separate struct, it becomes really easy to use it with atomics:\n\n   // assume these use std::atomic::load relaxed\n   InstanceOfAndStatus GetInstanceOfAndStatus() { ... }\n   // assume this uses std::atomic::weak_compare_and_exchange relaxed\n   bool TrySetInstanceOfAndStatus(InstanceOfAndStatus instanceof) { ... }\n\n   ///\n\n\n   do {\n\n     int depth \u003d Depth();\n     InstanceOfAndStatus instanceOf \u003d GetInstanceOfAndStatus();\n     InstanceOfAndStatus parentInstanceOf \u003d GetSuperClass()-\u003eGetInstanceOfAndStatus();\n \n     uint64_t current \u003d instanceOf.AssignBitstringForSelf(parentInstanceOf, depth);\n     parentInstanceOf.AssignBitStringForSuper(current, depth);\n\n\n   ////\n     CAS fails \u003d TrySetInstanceOfAndStatus(instanceOf);\n     CAS fails \u003d GetSuperClass()-\u003eTrySetInstanceOfAndStatus(parentInstanceOf);\n\n     // not quite sound because this actually requires a DCAS but that\u0027s a separate problem we can address later.\n   } while (CAS fails)\n\n\nThe important point here is that the mutation is isolated to 2 lines of code, making it very easy to see where the concurrent memory accesses are happening.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
