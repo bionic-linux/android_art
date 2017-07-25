@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8778033b_e44918e8",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-25T07:58:40Z",
+      "side": 1,
+      "message": "It\u0027s not just no-image btw (which means no boot image), I think no-dex2oat will also fail.",
+      "revId": "3e37902181035465f3d6e41885b975c4abf819ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
