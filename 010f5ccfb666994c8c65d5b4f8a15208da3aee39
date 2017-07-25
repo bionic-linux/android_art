@@ -22,6 +22,29 @@
       "revId": "010f5ccfb666994c8c65d5b4f8a15208da3aee39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcff346d_41c9ca79",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-07-25T08:33:25Z",
+      "side": 1,
+      "message": "+calin: don\u0027t we have some rudimentary support at least for your current class loader work?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "010f5ccfb666994c8c65d5b4f8a15208da3aee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
