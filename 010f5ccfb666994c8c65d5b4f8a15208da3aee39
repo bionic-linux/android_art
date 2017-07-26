@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4a3bac34_fa5858a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-26T18:29:29Z",
+      "side": 1,
+      "message": "Not yet, that\u0027s currently handled by the image writer pruning. Anything that depends on a uses-library classes should get hopefully pruned.",
+      "parentUuid": "193de8bb_e649a64b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 66
+      },
+      "revId": "010f5ccfb666994c8c65d5b4f8a15208da3aee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcff346d_41c9ca79",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "What is the outcome of attempting to add the status for the uses-libaray case?\n\nIf it\u0027s a crash, you can add a gtest.",
       "parentUuid": "dcff346d_41c9ca79",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "010f5ccfb666994c8c65d5b4f8a15208da3aee39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f78b998b_c2601274",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-07-26T18:29:29Z",
+      "side": 1,
+      "message": "It should have been an abort failure, filed a bug for adding the test.",
+      "parentUuid": "b5b55ce4_2e3541f3",
       "range": {
         "startLine": 13,
         "startChar": 0,
