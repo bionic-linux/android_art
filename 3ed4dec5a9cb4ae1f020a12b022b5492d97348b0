@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5b0f12f_203f89ef",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7435,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not familiar with how to change this in MIPS. You can simply change the method GenerateClassInitializationCheck in the code_generator_mips",
+      "parentUuid": "685c3b7a_10c2d5f8",
+      "range": {
+        "startLine": 7435,
+        "startChar": 33,
+        "endLine": 7435,
+        "endChar": 50
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1efa8e5_aa5bfbc7",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -117,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "a12cb259_813d7357",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1768,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "The InitializeAndAssignSuperBitstring requires mutator_lock, which makes the lambda expression cannot pass compile.",
+      "parentUuid": "c7ed3075_39b4bdd2",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132797fa_73a8c478",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -128,6 +170,24 @@
       "writtenOn": "2017-07-21T23:17:27Z",
       "side": 1,
       "message": "Our code still uses the bracket for this case.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb08953e_488d1c73",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "132797fa_73a8c478",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -157,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "b91e0fc5_caf9b5c9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "cab27d9f_53f5fe41",
+      "range": {
+        "startLine": 1774,
+        "startChar": 6,
+        "endLine": 1774,
+        "endChar": 8
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3240fb7_af817741",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -174,6 +258,24 @@
     },
     {
       "key": {
+        "uuid": "11a06876_c13b1e23",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "f3240fb7_af817741",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a37f8ea_2d62531c",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -185,6 +287,30 @@
       "writtenOn": "2017-07-24T18:02:10Z",
       "side": 1,
       "message": "nit: app image / boot image (add a space)",
+      "range": {
+        "startLine": 2015,
+        "startChar": 43,
+        "endLine": 2015,
+        "endChar": 51
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e65f3171_2b6e624c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "4a37f8ea_2d62531c",
       "range": {
         "startLine": 2015,
         "startChar": 43,
@@ -220,6 +346,30 @@
     },
     {
       "key": {
+        "uuid": "1c170b62_301c6ab5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2016,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "c4eb2aa7_683ce5a0",
+      "range": {
+        "startLine": 2016,
+        "startChar": 70,
+        "endLine": 2016,
+        "endChar": 79
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e10d6e01_fb0ea8c4",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -237,6 +387,24 @@
     },
     {
       "key": {
+        "uuid": "4f9bd4a1_a093041c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "e10d6e01_fb0ea8c4",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85636a41_1b97e339",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -248,6 +416,24 @@
       "writtenOn": "2017-07-24T18:02:10Z",
       "side": 1,
       "message": "for (const ClassTable::TableSlot\u0026 root : temp_set)",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c547ca_6ba687e6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "85636a41_1b97e339",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -277,6 +463,30 @@
     },
     {
       "key": {
+        "uuid": "e85371de_9b49d291",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2854,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "26834207_bce00ae0",
+      "range": {
+        "startLine": 2854,
+        "startChar": 57,
+        "endLine": 2854,
+        "endChar": 64
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32afa10b_9bf5bca4",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -288,6 +498,24 @@
       "writtenOn": "2017-07-24T18:02:10Z",
       "side": 1,
       "message": "Why can\u0027t this be done in L2863? If there is ordering requirement then please describe why.\n\n\n  if ((super_class !\u003d nullptr \u0026\u0026 setZero) || klass-\u003eGetBitString() \u003d\u003d 0) {\n    klass-\u003eInitializeBitString();\n  }",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a7bf95_8b0ccedc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2858,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "32afa10b_9bf5bca4",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -311,6 +539,24 @@
     },
     {
       "key": {
+        "uuid": "72728cea_bf5c4dc6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3937,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "9118e704_2efa8a23",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d25f955_4d782a8c",
         "filename": "runtime/class_linker.h",
         "patchSetId": 2
@@ -322,6 +568,24 @@
       "writtenOn": "2017-07-24T17:17:20Z",
       "side": 1,
       "message": "Is it modified? It should be commented /*out*/ then.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09c1b75_b8fd4bd9",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "4d25f955_4d782a8c",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -345,6 +609,24 @@
     },
     {
       "key": {
+        "uuid": "db2993c0_4b74740d",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "I copied from ClassLinker::DefineClass",
+      "parentUuid": "378c6de3_c8d60bc6",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "230d3e59_bc96c950",
         "filename": "runtime/class_linker.h",
         "patchSetId": 2
@@ -356,6 +638,24 @@
       "writtenOn": "2017-07-21T23:17:27Z",
       "side": 1,
       "message": "and assign bitstring for superclass.",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "612d2c29_c0ec9913",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "230d3e59_bc96c950",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -385,6 +685,30 @@
     },
     {
       "key": {
+        "uuid": "250d6140_f2b2f43d",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "Fixed",
+      "parentUuid": "ec0cdc26_6a7a7868",
+      "range": {
+        "startLine": 209,
+        "startChar": 70,
+        "endLine": 209,
+        "endChar": 82
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3457764b_4ab04a91",
         "filename": "runtime/class_linker.h",
         "patchSetId": 2
@@ -396,6 +720,24 @@
       "writtenOn": "2017-07-24T17:17:20Z",
       "side": 1,
       "message": "Why? Because it takes it?",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1676d793_473e0048",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "I copied from ClassLinker::DefineClass",
+      "parentUuid": "3457764b_4ab04a91",
       "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -449,6 +791,30 @@
     },
     {
       "key": {
+        "uuid": "c72cb230_1c66012e",
+        "filename": "runtime/class_linker_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "c141f18d_daf6cd16",
+      "range": {
+        "startLine": 609,
+        "startChar": 56,
+        "endLine": 609,
+        "endChar": 66
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e655370_347ff803",
         "filename": "runtime/mirror/class-inl.h",
         "patchSetId": 2
@@ -460,6 +826,30 @@
       "writtenOn": "2017-07-21T23:17:27Z",
       "side": 1,
       "message": "delete.",
+      "range": {
+        "startLine": 68,
+        "startChar": 55,
+        "endLine": 68,
+        "endChar": 56
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2733f3c0_8bd1e296",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "3e655370_347ff803",
       "range": {
         "startLine": 68,
         "startChar": 55,
@@ -608,6 +998,24 @@
     },
     {
       "key": {
+        "uuid": "ac2c91c0_0c791bc2",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "The 56-th bit is the overflow bit, and we need an \u0026 1 to get that bit.",
+      "parentUuid": "296be4a3_b11a3d94",
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45914674_91618804",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 2
@@ -739,6 +1147,30 @@
     },
     {
       "key": {
+        "uuid": "2f3f4268_53f6457f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "e47bd191_c57ab279",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 88
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8719edf_699e1954",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 2
@@ -750,6 +1182,30 @@
       "writtenOn": "2017-07-24T17:24:06Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 669,
+        "startChar": 35,
+        "endLine": 669,
+        "endChar": 43
+      },
+      "revId": "3ed4dec5a9cb4ae1f020a12b022b5492d97348b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "462a388a_441d9de6",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-07-26T02:24:10Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "e8719edf_699e1954",
       "range": {
         "startLine": 669,
         "startChar": 35,
