@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51810a2d_63c8bd41",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-27T22:24:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a142432_757d0f7c",
+      "range": {
+        "startLine": 122,
+        "startChar": 42,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c252e876_1f05ec0d",
         "filename": "tools/art",
         "patchSetId": 1
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "e6233707_0e0a021f",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-27T22:24:31Z",
+      "side": 1,
+      "message": "I suppose they aren\u0027t *necessary* but it\u0027s good bash practice to always escape variables , if there\u0027s a space there it would get expanded into 2 array elements, breaking the pattern match.\n\nMaybe the better question is why not just \"$var/*/$var\" (2\"\" not 4\"\") and that\u0027s because it treats the * as a literal on one of the shells.",
+      "parentUuid": "e705302c_52abcd87",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "feb37207_f36f1c39",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-27T22:24:31Z",
+      "side": 1,
+      "message": "Not sure what you mean?\n\nIf you mean:\n\n   local image_files\u003d(pattern) \n\ndoesn\u0027t work on mksh",
+      "parentUuid": "c252e876_1f05ec0d",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6244443f_7efc4fad",
         "filename": "tools/art",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-27T21:49:21Z",
       "side": 1,
       "message": "What causes 0?",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e7ee52_695eab20",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-27T22:24:31Z",
+      "side": 1,
+      "message": "Using bash with nullglob turned on, and when it matches 0 elements (i.e. there are no core.art files at all).\n\nI wanted to make it symmetric but mksh doesn\u0027t have shopt/nullglob.",
+      "parentUuid": "6244443f_7efc4fad",
       "range": {
         "startLine": 133,
         "startChar": 5,
