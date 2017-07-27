@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a142432_757d0f7c",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-27T21:49:21Z",
+      "side": 1,
+      "message": "\u003cisa\u003e or \u003carch\u003e would be clearer here.",
+      "range": {
+        "startLine": 122,
+        "startChar": 42,
+        "endLine": 122,
+        "endChar": 46
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c252e876_1f05ec0d",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-27T21:49:21Z",
+      "side": 1,
+      "message": "How about assigning the pattern to a local variable and then testing if the first element in image_files matches it?",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e705302c_52abcd87",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-27T21:49:21Z",
+      "side": 1,
+      "message": "Are the quotes here necessary?\n\nA comment showing an example of match if found.",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6244443f_7efc4fad",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-27T21:49:21Z",
+      "side": 1,
+      "message": "What causes 0?",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d53d48c_d3123378",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-27T21:49:21Z",
+      "side": 1,
+      "message": "s/that/that a/\n\nrun_art?",
+      "range": {
+        "startLine": 295,
+        "startChar": 24,
+        "endLine": 295,
+        "endChar": 30
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
