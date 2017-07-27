@@ -2457,6 +2457,7 @@ mirror::Object* ConcurrentCopying::IsMarked(mirror::Object* from_ref) {
 }
 
 bool ConcurrentCopying::IsOnAllocStack(mirror::Object* ref) {
+  // TODO: Explain why this is here. What release operation does it pair with?
   QuasiAtomic::ThreadFenceAcquire();
   accounting::ObjectStack* alloc_stack = GetAllocationStack();
   return alloc_stack->Contains(ref);
@@ -2617,9 +2618,7 @@ bool ConcurrentCopying::IsNullOrMarkedHeapReference(mirror::HeapReference<mirror
         }
       } while (!field->CasWeakRelaxed(from_ref, to_ref));
     } else {
-      QuasiAtomic::ThreadFenceRelease();
-      field->Assign(to_ref);
-      QuasiAtomic::ThreadFenceSequentiallyConsistent();
+      field->Assign</* treat as volatile */ true>(to_ref);
     }
   }
   return true;
