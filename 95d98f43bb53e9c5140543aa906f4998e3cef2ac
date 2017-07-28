@@ -143,6 +143,54 @@
     },
     {
       "key": {
+        "uuid": "9b6570b8_ec628ed8",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-28T10:35:21Z",
+      "side": 1,
+      "message": "The question was the latter, color highlighting too subtle in gerrit.",
+      "parentUuid": "e6233707_0e0a021f",
+      "range": {
+        "startLine": 130,
+        "startChar": 35,
+        "endLine": 130,
+        "endChar": 40
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d34b7c5a_5404f18e",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-28T10:35:21Z",
+      "side": 1,
+      "message": "function check_if_boot_image_file_exists() {\n  local image_location_dir\u003d\"$1\"\n  local image_location_name\u003d\"$2\"\n\n  pattern\u003d\"$image_location_dir/\"\u0027*\u0027\"/$image_location_name\"\n  # Breaks if nullglob is set.\n  matches\u003d($pattern)\n\n  [[ \"${matches[0]}\" !\u003d \"$pattern\" ]]\n}",
+      "parentUuid": "feb37207_f36f1c39",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6244443f_7efc4fad",
         "filename": "tools/art",
         "patchSetId": 1
@@ -187,6 +235,30 @@
       "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee81879b_3ede828c",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-28T10:35:21Z",
+      "side": 1,
+      "message": "The script doesn\u0027t set this option and it\u0027s not on by default.",
+      "parentUuid": "99e7ee52_695eab20",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
