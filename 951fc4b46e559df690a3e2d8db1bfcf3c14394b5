@@ -105,6 +105,87 @@
     },
     {
       "key": {
+        "uuid": "07c733f2_b287a4de",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2025,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "I agree, I don\u0027t really like this \"reinitialize\" either since it breaks our bitstring monotonic value transitions.\n\n(i.e. once a value is definitely assigned it is immutable)\n\nLets look into this if we can avoid app image reinitialization?",
+      "parentUuid": "e24aca9c_1125d694",
+      "range": {
+        "startLine": 2024,
+        "startChar": 0,
+        "endLine": 2025,
+        "endChar": 44
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b02a748_c6bba5ca",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2049,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "nit: Delete",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d74c340_b82feeeb",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2963,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "nit: /*reinitialize*/",
+      "range": {
+        "startLine": 2963,
+        "startChar": 49,
+        "endLine": 2963,
+        "endChar": 54
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a80c0fe_3756ffd9",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "This is likely not what we want, it needs to do a\n\n   while(CAS fails)\n     read\n     modify\n   do (/*write*/CAS)\n\nThe modify here can be arbitrary.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "414d80a2_dc7a9b72",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 3
@@ -243,6 +324,57 @@
     },
     {
       "key": {
+        "uuid": "491844d4_b4befe7f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Move this to a separate file, for example runtime/instance_of.h (maybe there is a better place for it?).",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee225d6_ad0484e2",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Use bit-fields:\n\n    Status status;\n    uint64_t data : (BitSizeOf\u003cuint64_t\u003e() - BitSizeOf\u003cStatus\u003e());\n\n    static_assert(sizeof(InstanceOfAndStatus) \u003d\u003d sizeof(uint64_t))\n    static_assert(offsetof(InstanceOfAndStatus, status) \u003d\u003d 0)",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff91b65e_9b3afb6e",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Add state transition diagram",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ad84c95_068107d0",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 3
@@ -335,6 +467,57 @@
     },
     {
       "key": {
+        "uuid": "21fdf779_54fb92f6",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "enum class State",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15a093a6_784c45fb",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Uninitialized",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5165884_816ae65f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Initialized",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be166f1f_36c6d020",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 3
@@ -355,6 +538,224 @@
       "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044af911_4c79977f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Status",
+      "range": {
+        "startLine": 183,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a5de619_01be5285",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "IsAssigned, IsOverflowed, etc.",
+      "range": {
+        "startLine": 196,
+        "startChar": 9,
+        "endLine": 196,
+        "endChar": 22
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f0fba39_39ee11f3",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "int dep -\u003e size_t depth\n\nfor all params",
+      "range": {
+        "startLine": 196,
+        "startChar": 23,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2075a610_581b2959",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "MarkOverflowed",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 22
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1910fc65_bad5e35c",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Assigned",
+      "range": {
+        "startLine": 231,
+        "startChar": 15,
+        "endLine": 231,
+        "endChar": 23
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c096c4_9b0f2ee4",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "initialized",
+      "range": {
+        "startLine": 239,
+        "startChar": 43,
+        "endLine": 239,
+        "endChar": 53
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d54d7ba7_5ffd7362",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Lets call \"Incremental\" -\u003e \"Next\" instead.",
+      "range": {
+        "startLine": 248,
+        "startChar": 13,
+        "endLine": 248,
+        "endChar": 32
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc0a063b_a50ccfb2",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "It\u0027s fine to leave this in class.h, lets not have any usages of \"Class\" in this struct.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e92b24a_1fd68536",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "This can become\n     MemberOffset(OFFSET_OF_OBJECT_MEMBER(Class, status_) + OFFSET_OF_OBJECT_MEMBER(InstanceOfAndStatus, status))\n\nand you can rename status_ to instanceof_and_status_",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc654f38_01838bcd",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "-\u003e GetInstanceOfState\n\nbut also it\u0027s likely we should never use this function directly, because it should read it via GetInstanceOfAndStatus instead.",
+      "range": {
+        "startLine": 291,
+        "startChar": 29,
+        "endLine": 291,
+        "endChar": 37
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -424,6 +825,57 @@
       "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e1b3e03_7c0d11e7",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Move this explanation to InstanceOfAndStatus\n\nThe only thing necessary to explain here is that it stores the instanceof data to do a fast subclass check, the class status, and why it\u0027s atomic.\n\n\n    // Compressed pair encoding of (class Status, instanceof data) into 64-bit.\n    // - The status is e.g. loaded, verified, initialized, etc.\n    // - The instanceof data is used to do a fast-path O(1) IsSubClass check if possible.\n    // Access to it must always go through an atomic to avoid locking/tearing.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9867e35_057dde85",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1667,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "We\u0027re always little endian for android, big endian not supported.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3a2d86c_db4814dd",
+        "filename": "runtime/mirror/class_bitstring_helper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Please take a look at PS2 comments.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -498,6 +950,30 @@
       "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c143910a_75592858",
+        "filename": "test/988-TooDeepClassInstanceOf/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T18:42:10Z",
+      "side": 1,
+      "message": "Zhengkai, maybe go through PS1/PS2 comments make sure they\u0027re all resolved?\n\nYou can use \"new UI\" link at the bottom, it gives a summary if each comment is resolved.",
+      "parentUuid": "b7bcc3ae_5e09d426",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
