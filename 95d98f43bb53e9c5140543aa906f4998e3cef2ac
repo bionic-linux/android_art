@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "69d6bc48_6405f10f",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T14:33:20Z",
+      "side": 1,
+      "message": "With your suggestion on L133 I think we can just remove the array length check and get it down to one \u0027-e\u0027 test. Is that good?",
+      "parentUuid": "d34b7c5a_5404f18e",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6244443f_7efc4fad",
         "filename": "tools/art",
         "patchSetId": 1
@@ -250,6 +274,30 @@
       "side": 1,
       "message": "The script doesn\u0027t set this option and it\u0027s not on by default.",
       "parentUuid": "99e7ee52_695eab20",
+      "range": {
+        "startLine": 133,
+        "startChar": 5,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1a5df4_cafe95eb",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T14:33:20Z",
+      "side": 1,
+      "message": "Ok, good point, it looks like shopt is not inherited when bash scripts are executed as a separate process.\n\nI can just remove this first part leaving only\n\n   [[ -e \"${image_files[0]}\" ]]\n\nwhich should simplify the whole thing",
+      "parentUuid": "ee81879b_3ede828c",
       "range": {
         "startLine": 133,
         "startChar": 5,
