@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f081c7c_14d457f6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4890,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-28T20:03:26Z",
+      "side": 0,
+      "message": "why?",
+      "range": {
+        "startLine": 4890,
+        "startChar": 13,
+        "endLine": 4890,
+        "endChar": 47
+      },
+      "revId": "01c1f4b3930d0568bce47ef13bf04678ade4c76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
