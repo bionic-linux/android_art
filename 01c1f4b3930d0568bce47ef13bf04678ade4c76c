@@ -22,6 +22,30 @@
       "revId": "01c1f4b3930d0568bce47ef13bf04678ade4c76c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "390e6954_316eb6a2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 18
+      },
+      "lineNbr": 4890,
+      "author": {
+        "id": 1167013
+      },
+      "writtenOn": "2017-07-28T22:54:00Z",
+      "side": 0,
+      "message": "Because now it return not only because the superclass is errorneous but also because the superclass is initializing in aot compiler, which causes transaction rollback problem.",
+      "parentUuid": "3f081c7c_14d457f6",
+      "range": {
+        "startLine": 4890,
+        "startChar": 13,
+        "endLine": 4890,
+        "endChar": 47
+      },
+      "revId": "01c1f4b3930d0568bce47ef13bf04678ade4c76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
