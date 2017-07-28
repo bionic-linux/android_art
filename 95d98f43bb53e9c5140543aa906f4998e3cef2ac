@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "edcaf32d_a35a0ee2",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-07-28T15:25:43Z",
+      "side": 1,
+      "message": "Yes. The snippet I enclosed works on bash / mksh and doesn\u0027t need the -e since that\u0027s been established with the glob expansion. Happy either way.",
+      "parentUuid": "69d6bc48_6405f10f",
+      "range": {
+        "startLine": 130,
+        "startChar": 15,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "95d98f43bb53e9c5140543aa906f4998e3cef2ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6244443f_7efc4fad",
         "filename": "tools/art",
         "patchSetId": 1
