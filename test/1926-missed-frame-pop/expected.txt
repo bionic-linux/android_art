@@ -1,0 +1,12 @@
+Ran recurTimes(10) without errors after disabling frame pop event!
+renabling frame pop event with similar stack.
+public static void art.Test1926.recurTimesA(int,java.lang.Runnable) pop. Line=44 exception:false
+Ran recurTimes(10) without errors!
+Ran recurTimes(10) without errors after disabling frame pop event!
+renabling frame pop event with similar stack.
+public static void art.Test1926.recurTimesF(int,java.lang.Runnable) pop. Line=84 exception:false
+Ran recurTimes(10) without errors!
+Ran recurTimes(10) without errors after disabling frame pop event!
+renabling frame pop event with similar stack.
+public static void art.Test1926.recurTimesK(int,java.lang.Runnable) pop. Line=124 exception:false
+Ran recurTimes(10) without errors!

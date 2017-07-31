@@ -98,6 +98,9 @@ class ThreadUtil {
       REQUIRES_SHARED(art::Locks::mutator_lock_)
       REQUIRES(art::Locks::thread_list_lock_);
 
+  static void SuspendCheck(art::Thread* self)
+    REQUIRES(!art::Locks::mutator_lock_, !art::Locks::user_code_suspension_lock_);
+
  private:
   // We need to make sure only one thread tries to suspend threads at a time so we can get the
   // 'suspend-only-once' behavior the spec requires. Internally, ART considers suspension to be a

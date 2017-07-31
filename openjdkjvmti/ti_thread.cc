@@ -413,8 +413,7 @@ static jint GetJavaStateFromInternal(const InternalThreadState& state) {
 }
 
 // Suspends the current thread if it has any suspend requests on it.
-static void SuspendCheck(art::Thread* self)
-    REQUIRES(!art::Locks::mutator_lock_, !art::Locks::user_code_suspension_lock_) {
+void ThreadUtil::SuspendCheck(art::Thread* self) {
   art::ScopedObjectAccess soa(self);
   // Really this is only needed if we are in FastJNI and actually have the mutator_lock_ already.
   self->FullSuspendCheck();
