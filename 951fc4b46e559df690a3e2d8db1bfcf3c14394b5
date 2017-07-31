@@ -129,6 +129,30 @@
     },
     {
       "key": {
+        "uuid": "b2d766e5_b704402a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2025,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T18:45:42Z",
+      "side": 1,
+      "message": "We discussed offline and now think that app image writer should set the bitstring to uninitialized.\n\nThen we can add some logic to ClassLinker::EnsureInitialized to also initialize bitstring there if it\u0027s not already. Then it can recursively initialize the bit string by also initializing all the parents (if necessary).",
+      "parentUuid": "07c733f2_b287a4de",
+      "range": {
+        "startLine": 2024,
+        "startChar": 0,
+        "endLine": 2025,
+        "endChar": 44
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b02a748_c6bba5ca",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 3
@@ -856,6 +880,23 @@
       "writtenOn": "2017-07-28T18:42:10Z",
       "side": 1,
       "message": "We\u0027re always little endian for android, big endian not supported.",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81a99dbe_ccefadcc",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1669,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T18:45:42Z",
+      "side": 1,
+      "message": "Please also add oatdump support to print this.",
       "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
