@@ -1,0 +1,5 @@
+public static void art.Test1918.recurTimesA(int,java.lang.Runnable) pop. Line=44 exception:false
+public static void art.Test1918.recurTimesF(int,java.lang.Runnable) pop. Line=84 exception:false
+public static void art.Test1918.recurTimesK(int,java.lang.Runnable) pop. Line=124 exception:false
+public static void art.Test1918.recurTimesF(int,java.lang.Runnable) pop. Line=83 exception:true
+Caught exception art.Test1918$RecursionError: Unable recur further. Still 90 outstanding!
