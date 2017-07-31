@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db6cf5ce_156c142b",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "period at end of our full line comments.",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d5bc417_1ec81b05",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "this needs a new alignment (indentation)",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d820f937_c0679db6",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "I would use the parameter name here inline (kIsVolatile?) and explain the treat as volatile as an outline comment)",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6080d0c3_87c6e994",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "one per line if it the template no longer fits the line",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecdb773b_b9b7fc15",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "all parameters on newline, or one per line",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5370db8_3e110fb1",
+        "filename": "runtime/mirror/object_reference-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "one parameter per line, aligned the same",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "226eeeae_b15adc6b",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "no commented out code in final version",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52621530_9d4f42e2",
+        "filename": "runtime/read_barrier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-07-31T23:08:13Z",
+      "side": 1,
+      "message": "style",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
