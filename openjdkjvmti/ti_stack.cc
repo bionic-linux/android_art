@@ -824,4 +824,54 @@ jvmtiError StackUtil::GetFrameLocation(jvmtiEnv* env ATTRIBUTE_UNUSED,
   return ERR(NONE);
 }
 
+jvmtiError ThreadUtil::NotifyFramePop(jvmtiEnv* env,
+                                      jthread thread,
+                                      jint depth) {
+#if 1
+  if (depth < 0) {
+    return ERR(ILLEGAL_ARGUMENT);
+  }
+  ArtJvmTiEnv tienv = ArtJvmTiEnv::AsArtJvmTiEnv(env);
+  art::Thread* self = art::Thread::Current();
+  art::Thread* target;
+  do {
+    SuspendCheck(self);
+    art::MutexLock ucsl_mu(self, *art::Locks::user_code_suspension_lock_);
+    {
+      art::MutexLock tscl_mu(self, *art::Locks::thread_suspend_count_lock_);
+      // Make sure we won't be suspended in the middle of holding the thread_suspend_count_lock_ by
+      // a user-code suspension. We retry and do another SuspendCheck to clear this.
+      if (self->GetUserCodeSuspendCount() != 0) {
+        continue;
+      }
+    }
+    // From now on we know we cannot get suspended by user-code.
+    // NB This does a SuspendCheck (during thread state change) so we need to make sure we don't
+    // have the 'suspend_lock' locked here.
+    art::ScopedObjectAccess soa(self);
+    art::MutexLock tll_mu(self, *art::Locks::thread_list_lock_);
+    target = GetNativeThread(thread, soa);
+    if (target == nullptr) {
+      return ERR(INVALID_THREAD);
+    } else if (target != self) {
+      // TODO This is part of the spec but we could easily avoid needing to do it. We would just put
+      // all the logic into a sync-checkpoint.
+      art::MutexLock tscl_mu(self, *art::Locks::thread_suspend_count_lock_);
+      if (target->GetUserCodeSuspendCount() == 0) {
+        return ERR(THREAD_NOT_SUSPENDED);
+      }
+    }
+    // We hold the user_code_suspension_lock_ so the target thread is staying suspended until we are
+    // done (unless it's 'self' in which case we don't care since we aren't going to be returning).
+    // TODO We could likely implement this by marking shadow frames or some other way that doesn't
+    // require full
+  } while (true);
+#else
+  UNUSED(env);
+  UNUSED(thread);
+  UNUSED(depth);
+  return ERR(NOT_IMPLEMENTED);
+#endif
+}
+
 }  // namespace openjdkjvmti

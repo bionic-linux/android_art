@@ -67,6 +67,8 @@ class StackUtil {
                                              const jthread* thread_list,
                                              jint max_frame_count,
                                              jvmtiStackInfo** stack_info_ptr);
+
+  static jvmtiError NotifyFramePop(jvmtiEnv* env, jthread thread, jint depth);
 };
 
 }  // namespace openjdkjvmti
