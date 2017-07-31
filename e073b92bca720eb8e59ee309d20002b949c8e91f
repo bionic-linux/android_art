@@ -104,6 +104,115 @@
     },
     {
       "key": {
+        "uuid": "804d049e_adad7322",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T23:16:56Z",
+      "side": 1,
+      "message": "nit: 2 nouns side-by-side seems weird, why not CompressedPtr ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "939c7343_70162ee0",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T23:16:56Z",
+      "side": 1,
+      "message": "nit: 1 space",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38296fb1_f81826c1",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T23:16:56Z",
+      "side": 1,
+      "message": "nit: I think preferred english is \"Compress\" / \"Decompress\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 31
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "652653d2_8551e65f",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T23:16:56Z",
+      "side": 1,
+      "message": "Why are the methods protected if this is inherited privately?",
+      "range": {
+        "startLine": 103,
+        "startChar": 30,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55f87647_665e7492",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-07-31T23:16:56Z",
+      "side": 1,
+      "message": "(maybe unrelated to this CL)\n\nI think mirror::Object has its own logic also for SetField, SetFieldVolatile, etc, it would be nice to centralize it.",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "226eeeae_b15adc6b",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 1
