@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "154d4571_57df3327",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6cf5ce_156c142b",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d5bc417_1ec81b05",
         "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-31T23:08:13Z",
       "side": 1,
       "message": "this needs a new alignment (indentation)",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a88d7471_1cd0951d",
+        "filename": "runtime/entrypoints/quick/quick_field_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Updated, hopefully roughly as intended.",
+      "parentUuid": "8d5bc417_1ec81b05",
       "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "feaaeb44_6328aae5",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2621,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Good idea, except I actually have no idea how to do the latter. Added a TODO comment instead. Needs a separate investigation. For now I\u0027m just preserving the original intent, I think.",
+      "parentUuid": "d820f937_c0679db6",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6080d0c3_87c6e994",
         "filename": "runtime/interpreter/unstarted_runtime.cc",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2017-07-31T23:08:13Z",
       "side": 1,
       "message": "one per line if it the template no longer fits the line",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ceccaef_6a5af45d",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6080d0c3_87c6e994",
       "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d10b161e_c2c3bc35",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecdb773b_b9b7fc15",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5370db8_3e110fb1",
         "filename": "runtime/mirror/object_reference-inl.h",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "c85ed8f4_97c04d8c",
+        "filename": "runtime/mirror/object_reference-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5370db8_3e110fb1",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804d049e_adad7322",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 1
@@ -115,6 +223,30 @@
       "writtenOn": "2017-07-31T23:16:56Z",
       "side": 1,
       "message": "nit: 2 nouns side-by-side seems weird, why not CompressedPtr ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e869359_333d1b7d",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "It encapsulates no data, but implements static pointer compression functions. It seems odd to call it a pointer, since it isn\u0027t.",
+      "parentUuid": "804d049e_adad7322",
       "range": {
         "startLine": 35,
         "startChar": 6,
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "45f78f9e_70da14bc",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939c7343_70162ee0",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 2
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38296fb1_f81826c1",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 1
@@ -161,6 +317,30 @@
       "writtenOn": "2017-07-31T23:16:56Z",
       "side": 1,
       "message": "nit: I think preferred english is \"Compress\" / \"Decompress\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 31
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42dc4080_904a3021",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "I agree. This preserved the original, but I changed it now.",
+      "parentUuid": "38296fb1_f81826c1",
       "range": {
         "startLine": 44,
         "startChar": 21,
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "df6dab38_674f1f98",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Any reason not to? Making them public seems to convey the wrong intent.",
+      "parentUuid": "652653d2_8551e65f",
+      "range": {
+        "startLine": 103,
+        "startChar": 30,
+        "endLine": 103,
+        "endChar": 44
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55f87647_665e7492",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 1
@@ -207,6 +411,24 @@
       "writtenOn": "2017-07-31T23:16:56Z",
       "side": 1,
       "message": "(maybe unrelated to this CL)\n\nI think mirror::Object has its own logic also for SetField, SetFieldVolatile, etc, it would be nice to centralize it.",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac1e66df_66c5e5ed",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Good question. I have trouble keeping all the layers straight as well. mirror::Object uses ReadBarrier to read, and that relies on HeapReference. Similarly for SetFieldObjectWithoutWriteBarrier, which uses HeapReference::Assign directly. I don\u0027t think there is actual redundancy. I\u0027m not sure whether the layering/naming is optimal, though.",
+      "parentUuid": "55f87647_665e7492",
       "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -230,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "3da05790_31b81949",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Thanks. Forgot to remove that after confirming it compiled without it.",
+      "parentUuid": "226eeeae_b15adc6b",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52621530_9d4f42e2",
         "filename": "runtime/read_barrier.h",
         "patchSetId": 1
@@ -241,6 +481,24 @@
       "writtenOn": "2017-07-31T23:08:13Z",
       "side": 1,
       "message": "style",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d3bce32_4f1b0cd8",
+        "filename": "runtime/read_barrier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-01T22:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52621530_9d4f42e2",
       "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
