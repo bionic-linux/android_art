@@ -259,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "19d408eb_77c13f9f",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-01T23:18:01Z",
+      "side": 1,
+      "message": "Ok, this is more like a mix-in or a trait. Then it SGTM.",
+      "parentUuid": "6e869359_333d1b7d",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "939c7343_70162ee0",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 1
@@ -397,6 +421,23 @@
       "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3be11810_5a1bf801",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-01T23:18:01Z",
+      "side": 1,
+      "message": "It\u0027s currently using inheritance here:\n   class MANAGED HeapReference : PtrCompression\u003ckPoisonHeapReferences, MirrorType\u003e {\n\nMakes it look like real data (either is-a, or has-a relationship)\n\nWhereas a \"using\" would make it more clear it\u0027s just a bunch of helpers:\n\n private:\n   using Compression \u003d PtrCompression\u003ckPoisonHeapReferences, MirrorType\u003e\n  \n public:\n ... function() {\n      return Compression::Decompress(...);\n   }\n\nEspecially since it looks like it\u0027s using \"this-\u003e\" for explicit qualification, it wouldn\u0027t be too much mental overhead to switch to \"UsingName::\"",
+      "revId": "e073b92bca720eb8e59ee309d20002b949c8e91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
