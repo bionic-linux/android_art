@@ -279,6 +279,52 @@
     },
     {
       "key": {
+        "uuid": "46d77c86_8fbeea08",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-01T19:10:08Z",
+      "side": 1,
+      "message": "Move L285-\u003eL296 into InstanceOfAndStatus",
+      "range": {
+        "startLine": 285,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 5
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7921db2f_dde611d1",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-01T19:10:08Z",
+      "side": 1,
+      "message": "Move L302-\u003eL309 into InstanceOfAndStatus",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 5
+      },
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac70f109_a7730e75",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 3
