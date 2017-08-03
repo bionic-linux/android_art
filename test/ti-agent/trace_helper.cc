@@ -455,6 +455,23 @@ extern "C" JNIEXPORT void JNICALL Java_art_Trace_enableTracing(
 
 extern "C" JNIEXPORT void JNICALL Java_art_Trace_disableTracing(
     JNIEnv* env, jclass klass ATTRIBUTE_UNUSED, jthread thr) {
+  TraceData* data = nullptr;
+  if (JvmtiErrorToException(
+      env, jvmti_env, jvmti_env->GetEnvironmentLocalStorage(reinterpret_cast<void**>(&data)))) {
+    return;
+  }
+  // If data is null then we haven't ever enabled tracing so we don't need to do anything.
+  if (data == nullptr) {
+    return;
+  }
+  env->DeleteGlobalRef(data->test_klass);
+  if (env->ExceptionCheck()) {
+    return;
+  }
+  // Clear local storage.
+  if (JvmtiErrorToException(env, jvmti_env, jvmti_env->SetEnvironmentLocalStorage(nullptr))) {
+    return;
+  }
   if (JvmtiErrorToException(env, jvmti_env,
                             jvmti_env->SetEventNotificationMode(JVMTI_DISABLE,
                                                                 JVMTI_EVENT_FIELD_ACCESS,
