@@ -915,6 +915,24 @@
     },
     {
       "key": {
+        "uuid": "c851f007_ab9d53b4",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Just leave it like it is now, we\u0027ll focus on correctness.",
+      "parentUuid": "34cac68d_3798b546",
+      "revId": "a1c4df4225ba28bf6927d06d695b3e38b481dc73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30796c35_bbcbdf6f",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 1

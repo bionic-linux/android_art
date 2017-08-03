@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "789a54b5_2c20bcaa",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Please also add oatdump support to print bitstring.",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fda81d6_9938acbe",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Please rename:\n\n   copy-\u003eMarkInstanceOfUninitialized();\n\nPlease add comments:\n\n   // Do not store the instanceof bitstring for app image classes because \u003cexplanation\u003e,\n   // by setting them to \"uninitialized\" they will be recalculated at runtime.\n\nI forget what the exact reason is so just add it in there \u003cexplanation\u003e",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2213cdcb_6a32097a",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1857a100_7420867a",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abdb9e33_b3b883bc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Delete",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1919024_5566c1fe",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5333,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Please rename:\n\n  c-\u003eEnsureInitializedInstanceOf",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e1aab3_bef6e907",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Not sure why we need this, do you understand Mingyao?",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31a851b_d2398a70",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Document what the 2 bools are.\n\n  // Returns a pair (valid_check, is_sub_class) where:\n  // - valid_check: whether to accept this check or to do a slow path IsSubClass\n  // - is_sub_class: if valid_check is true, then this will return true if \"this\"\n  //                 is a subclass of target.",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c7e4ab3_4909f877",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Don\u0027t need this.",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a8b590_be1c8608",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "This should be a CAS, if someone else initialized while this code is executing then it\u0027s not thread safe.",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fefd83c_b5db5309",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "DCHECK_NE(copy.getState(Depth()), State::Uninited)",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973c7f75_92ac9885",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "This doesn\u0027t make sense, this function should be constant, it shouldn\u0027t mutate SetInstanceOfAndStatus.",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

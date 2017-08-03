@@ -890,6 +890,24 @@
     },
     {
       "key": {
+        "uuid": "76e3dce1_a50dbeec",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T20:27:05Z",
+      "side": 1,
+      "message": "Enum class is our coding convention for new code.",
+      "parentUuid": "4148459f_ba689abe",
+      "revId": "951fc4b46e559df690a3e2d8db1bfcf3c14394b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15a093a6_784c45fb",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 3
