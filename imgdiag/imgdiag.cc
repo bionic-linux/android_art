@@ -333,11 +333,9 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
                         std::vector<uint8_t>* remote_contents,
                         std::vector<uint8_t>* zygote_contents,
                         const backtrace_map_t& boot_map,
-                        const ImageHeader& image_header,
-                        bool dump_dirty_objects)
-      : RegionCommon<mirror::Object>(os, remote_contents, zygote_contents, boot_map, image_header),
-        os_(*os),
-        dump_dirty_objects_(dump_dirty_objects) { }
+                        const ImageHeader& image_header) :
+    RegionCommon<mirror::Object>(os, remote_contents, zygote_contents, boot_map, image_header),
+    os_(*os) { }
 
   void CheckEntrySanity(const uint8_t* current) const
       REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -398,10 +396,7 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
     class_data_[klass].AddDirtyObject(entry, entry_remote);
   }
 
-  void DiffEntryContents(mirror::Object* entry,
-                         uint8_t* remote_bytes,
-                         const uint8_t* base_ptr,
-                         bool log_dirty_objects)
+  void DiffEntryContents(mirror::Object* entry, uint8_t* remote_bytes, const uint8_t* base_ptr)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     const char* tabs = "    ";
     // Attempt to find fields for all dirty bytes.
@@ -458,9 +453,6 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       }
     }
     if (!dirty_static_fields.empty()) {
-      if (dump_dirty_objects_ && log_dirty_objects) {
-        dirty_objects_.insert(entry);
-      }
       os_ << tabs << "Dirty static fields " << dirty_static_fields.size() << "\n";
       for (ArtField* field : dirty_static_fields) {
         os_ << tabs << ArtField::PrettyField(field)
@@ -469,14 +461,6 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       }
     }
     os_ << "\n";
-  }
-
-  void DumpDirtyObjects() REQUIRES_SHARED(Locks::mutator_lock_) {
-    for (mirror::Object* obj : dirty_objects_) {
-      if (obj->IsClass()) {
-        os_ << "Private dirty object: " << obj->AsClass()->PrettyDescriptor() << "\n";
-      }
-    }
   }
 
   void DumpDirtyEntries() REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -608,8 +592,6 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
   };
 
   std::ostream& os_;
-  bool dump_dirty_objects_;
-  std::unordered_set<mirror::Object*> dirty_objects_;
   std::map<mirror::Class*, ClassData> class_data_;
 
   DISALLOW_COPY_AND_ASSIGN(RegionSpecializedBase);
@@ -738,15 +720,9 @@ class RegionData : public RegionSpecializedBase<T> {
              std::vector<uint8_t>* remote_contents,
              std::vector<uint8_t>* zygote_contents,
              const backtrace_map_t& boot_map,
-             const ImageHeader& image_header,
-             bool dump_dirty_objects)
-      : RegionSpecializedBase<T>(os,
-                                 remote_contents,
-                                 zygote_contents,
-                                 boot_map,
-                                 image_header,
-                                 dump_dirty_objects),
-        os_(*os) {
+             const ImageHeader& image_header) :
+    RegionSpecializedBase<T>(os, remote_contents, zygote_contents, boot_map, image_header),
+    os_(*os) {
     CHECK(remote_contents != nullptr);
     CHECK(zygote_contents != nullptr);
   }
@@ -797,8 +773,7 @@ class RegionData : public RegionSpecializedBase<T> {
     DiffDirtyEntries(ProcessType::kRemote,
                      begin_image_ptr,
                      RegionCommon<T>::remote_contents_,
-                     base_ptr,
-                     /*log_dirty_objects*/true);
+                     base_ptr);
     // Print shared dirty after since it's less important.
     if (RegionCommon<T>::GetZygoteDirtyEntryCount() != 0) {
       // We only reach this point if both pids were specified.  Furthermore,
@@ -809,10 +784,8 @@ class RegionData : public RegionSpecializedBase<T> {
       DiffDirtyEntries(ProcessType::kZygote,
                        begin_image_ptr,
                        RegionCommon<T>::zygote_contents_,
-                       begin_image_ptr,
-                       /*log_dirty_objects*/false);
+                       begin_image_ptr);
     }
-    RegionSpecializedBase<T>::DumpDirtyObjects();
     RegionSpecializedBase<T>::DumpDirtyEntries();
     RegionSpecializedBase<T>::DumpFalseDirtyEntries();
     RegionSpecializedBase<T>::DumpCleanEntries();
@@ -824,8 +797,7 @@ class RegionData : public RegionSpecializedBase<T> {
   void DiffDirtyEntries(ProcessType process_type,
                         const uint8_t* begin_image_ptr,
                         std::vector<uint8_t>* contents,
-                        const uint8_t* base_ptr,
-                        bool log_dirty_objects)
+                        const uint8_t* base_ptr)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     os_ << RegionCommon<T>::dirty_entries_.size() << "\n";
     const std::set<T*>& entries =
@@ -836,10 +808,7 @@ class RegionData : public RegionSpecializedBase<T> {
       uint8_t* entry_bytes = reinterpret_cast<uint8_t*>(entry);
       ptrdiff_t offset = entry_bytes - begin_image_ptr;
       uint8_t* remote_bytes = &(*contents)[offset];
-      RegionSpecializedBase<T>::DiffEntryContents(entry,
-                                                  remote_bytes,
-                                                  &base_ptr[offset],
-                                                  log_dirty_objects);
+      RegionSpecializedBase<T>::DiffEntryContents(entry, remote_bytes, &base_ptr[offset]);
     }
   }
 
@@ -903,14 +872,12 @@ class ImgDiagDumper {
                          const ImageHeader& image_header,
                          const std::string& image_location,
                          pid_t image_diff_pid,
-                         pid_t zygote_diff_pid,
-                         bool dump_dirty_objects)
+                         pid_t zygote_diff_pid)
       : os_(os),
         image_header_(image_header),
         image_location_(image_location),
         image_diff_pid_(image_diff_pid),
         zygote_diff_pid_(zygote_diff_pid),
-        dump_dirty_objects_(dump_dirty_objects),
         zygote_pid_only_(false) {}
 
   bool Init() {
@@ -1240,8 +1207,7 @@ class ImgDiagDumper {
                                                   &remote_contents_,
                                                   &zygote_contents_,
                                                   boot_map_,
-                                                  image_header_,
-                                                  dump_dirty_objects_);
+                                                  image_header_);
 
     RemoteProcesses remotes;
     if (zygote_pid_only_) {
@@ -1398,7 +1364,6 @@ class ImgDiagDumper {
   const std::string image_location_;
   pid_t image_diff_pid_;  // Dump image diff against boot.art if pid is non-negative
   pid_t zygote_diff_pid_;  // Dump image diff against zygote boot.art if pid is non-negative
-  bool dump_dirty_objects_;  // Adds dumping of objects that are dirty.
   bool zygote_pid_only_;  // The user only specified a pid for the zygote.
 
   // BacktraceMap used for finding the memory mapping of the image file.
@@ -1426,8 +1391,7 @@ class ImgDiagDumper {
 static int DumpImage(Runtime* runtime,
                      std::ostream* os,
                      pid_t image_diff_pid,
-                     pid_t zygote_diff_pid,
-                     bool dump_dirty_objects) {
+                     pid_t zygote_diff_pid) {
   ScopedObjectAccess soa(Thread::Current());
   gc::Heap* heap = runtime->GetHeap();
   std::vector<gc::space::ImageSpace*> image_spaces = heap->GetBootImageSpaces();
@@ -1443,8 +1407,7 @@ static int DumpImage(Runtime* runtime,
                                   image_header,
                                   image_space->GetImageLocation(),
                                   image_diff_pid,
-                                  zygote_diff_pid,
-                                  dump_dirty_objects);
+                                  zygote_diff_pid);
     if (!img_diag_dumper.Init()) {
       return EXIT_FAILURE;
     }
@@ -1482,8 +1445,6 @@ struct ImgDiagArgs : public CmdlineArgs {
         *error_msg = "Zygote diff pid out of range";
         return kParseError;
       }
-    } else if (option == "--dump-dirty-objects") {
-      dump_dirty_objects_ = true;
     } else {
       return kParseUnknownArgument;
     }
@@ -1536,7 +1497,6 @@ struct ImgDiagArgs : public CmdlineArgs {
         "  --zygote-diff-pid=<pid>: provide the PID of the zygote whose boot.art you want to diff "
         "against.\n"
         "      Example: --zygote-diff-pid=$(pid zygote)\n"
-        "  --dump-dirty-objects: additionally output dirty objects of interest.\n"
         "\n";
 
     return usage;
@@ -1545,7 +1505,6 @@ struct ImgDiagArgs : public CmdlineArgs {
  public:
   pid_t image_diff_pid_ = -1;
   pid_t zygote_diff_pid_ = -1;
-  bool dump_dirty_objects_ = false;
 };
 
 struct ImgDiagMain : public CmdlineMain<ImgDiagArgs> {
@@ -1555,8 +1514,7 @@ struct ImgDiagMain : public CmdlineMain<ImgDiagArgs> {
     return DumpImage(runtime,
                      args_->os_,
                      args_->image_diff_pid_,
-                     args_->zygote_diff_pid_,
-                     args_->dump_dirty_objects_) == EXIT_SUCCESS;
+                     args_->zygote_diff_pid_) == EXIT_SUCCESS;
   }
 };
 
