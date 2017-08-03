@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec777d4c_a2fe1cfc",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2871,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-08-03T05:41:45Z",
+      "side": 0,
+      "message": "Found the problem, this isn\u0027t null initialized, causes ASAN crashes.",
+      "range": {
+        "startLine": 2871,
+        "startChar": 14,
+        "endLine": 2871,
+        "endChar": 43
+      },
+      "revId": "595e89bbcf6c14251ffb652947a2e25427da08c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
