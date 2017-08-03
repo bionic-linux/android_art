@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e3cdc23_1591f628",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-03T15:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ebb943_83f2e825",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "d220b7af5772c35f7d2f69354b7704e61e80c1f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5cf1ad6_cd83f4fa",
         "filename": "test/ti-agent/trace_helper.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d220b7af5772c35f7d2f69354b7704e61e80c1f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0cd020b_7c171ad0",
+        "filename": "test/ti-agent/trace_helper.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-03T15:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5cf1ad6_cd83f4fa",
+      "range": {
+        "startLine": 463,
+        "startChar": 2,
+        "endLine": 465,
+        "endChar": 3
+      },
+      "revId": "d220b7af5772c35f7d2f69354b7704e61e80c1f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
