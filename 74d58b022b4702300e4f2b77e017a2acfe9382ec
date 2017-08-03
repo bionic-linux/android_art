@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71baeb7b_84435381",
+        "filename": "runtime/fault_handler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T17:47:57Z",
+      "side": 1,
+      "message": "What\u0027s supposed to be the difference here?",
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1e13a7c_f71a1262",
+        "filename": "runtime/gc/collector/semi_space.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T17:47:57Z",
+      "side": 1,
+      "message": "nit: Repeat comment from above?",
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d577a3c8_44c98252",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-03T17:47:57Z",
+      "side": 1,
+      "message": "nit: I think just 4 spaces is enough here, not 6, but if someone said otherwise then this is OK as well.",
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
