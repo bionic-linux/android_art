@@ -16,6 +16,24 @@
       "revId": "19fe7a3f73356c6503b014705c1c67ca0be9f747",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57da9352_9acc2588",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 2697,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-08-03T09:24:05Z",
+      "side": 1,
+      "message": "We can\u0027t really use line numbers here, as Encoding T1 for the BKPT instruction only accepts 8-bit immediate values.\n\nAs for enums: isn\u0027t it a bit overkill? When debugging from a specific instance of BKPT instruction, you\u0027d have to look up the enum\u0027s value from its numerical code anyway (unless we annotate disassembly code to show these enum values, but that seems a bit too much…).",
+      "parentUuid": "1b6c8325_01ce7364",
+      "revId": "19fe7a3f73356c6503b014705c1c67ca0be9f747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
