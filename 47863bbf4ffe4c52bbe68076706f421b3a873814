@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15f460af_fd5b7481",
+        "filename": "test/1338-gc-no-los/run",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-08-04T21:40:03Z",
+      "side": 1,
+      "message": "add a new line",
+      "revId": "47863bbf4ffe4c52bbe68076706f421b3a873814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab32384_98b397aa",
+        "filename": "test/1338-gc-no-los/src-art/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-08-04T21:40:03Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "47863bbf4ffe4c52bbe68076706f421b3a873814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
