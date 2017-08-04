@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bdc0619_b50ab74b",
+        "filename": "test/1338-gc-no-los/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-04T19:34:40Z",
+      "side": 1,
+      "message": "You need to have a fallback for RI.",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 65
+      },
+      "revId": "edd19d58157399195734370c8df74afeaf513f31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
