@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b5954eae_a30cdacd",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2447,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-08-04T22:50:41Z",
+      "side": 1,
+      "message": "This condition looks weird. Can you explain?",
+      "range": {
+        "startLine": 2447,
+        "startChar": 12,
+        "endLine": 2447,
+        "endChar": 43
+      },
+      "revId": "47863bbf4ffe4c52bbe68076706f421b3a873814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15f460af_fd5b7481",
         "filename": "test/1338-gc-no-los/run",
         "patchSetId": 3
