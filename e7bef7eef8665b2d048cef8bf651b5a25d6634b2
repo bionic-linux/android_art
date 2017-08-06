@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ef85e08_394a4553",
+        "filename": "test/449-checker-bce/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-06T18:54:11Z",
+      "side": 1,
+      "message": "staticArray",
+      "range": {
+        "startLine": 922,
+        "startChar": 21,
+        "endLine": 922,
+        "endChar": 33
+      },
+      "revId": "e7bef7eef8665b2d048cef8bf651b5a25d6634b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
