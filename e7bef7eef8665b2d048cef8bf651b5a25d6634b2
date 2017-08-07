@@ -2,6 +2,80 @@
   "comments": [
     {
       "key": {
+        "uuid": "31195ba4_adf94763",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-07T17:29:11Z",
+      "side": 1,
+      "message": "1128-1132: I would put this part in the commit message, not necessarily in the code",
+      "revId": "e7bef7eef8665b2d048cef8bf651b5a25d6634b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab294283_1b2a6fdc",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-07T17:29:11Z",
+      "side": 1,
+      "message": "this part needs a right_const \u003d\u003d 0 bail-out to guard against i % 0",
+      "range": {
+        "startLine": 1137,
+        "startChar": 14,
+        "endLine": 1137,
+        "endChar": 25
+      },
+      "revId": "e7bef7eef8665b2d048cef8bf651b5a25d6634b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d726de58_be07956f",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-07T17:29:11Z",
+      "side": 1,
+      "message": "compute abs only once in the constant",
+      "revId": "e7bef7eef8665b2d048cef8bf651b5a25d6634b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5eb746_21aad32f",
+        "filename": "compiler/optimizing/bounds_check_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-07T17:29:11Z",
+      "side": 1,
+      "message": "renumber i30 and up starting at 0",
+      "revId": "e7bef7eef8665b2d048cef8bf651b5a25d6634b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ef85e08_394a4553",
         "filename": "test/449-checker-bce/src/Main.java",
         "patchSetId": 1
