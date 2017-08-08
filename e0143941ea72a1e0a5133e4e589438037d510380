@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "43fe1daf_60d30bb4",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-08T20:56:32Z",
+      "side": 1,
+      "message": "oatdump, #DumpObject method will only print Class::GetStatus and also the name (PrettyDescriptor). Please add the bitstring there.",
+      "parentUuid": "dc9a2c35_0f59c1ab",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fda81d6_9938acbe",
         "filename": "compiler/image_writer.cc",
         "patchSetId": 4
