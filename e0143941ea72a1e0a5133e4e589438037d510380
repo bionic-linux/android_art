@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a2eadb11_f4ca29ef",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43fe1daf_60d30bb4",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fda81d6_9938acbe",
         "filename": "compiler/image_writer.cc",
         "patchSetId": 4
@@ -500,6 +518,30 @@
       "side": 1,
       "message": "I don\u0027t understand, which class load?\n\nbool IsValidCheck(InstanceOfAndStatus target, int dep) {\n  return target.IsAssigned(dep) \u0026\u0026 !IsUnited();\n}\n\nbool IsSubClassInternal(InstanceOfAndStatus target, int dep) {\n  DCHECK(IsValidCheck(target, dep));\n  uint64_t prefix \u003d target.GetBitstringPrefix(dep);\n  uint64_t thisprefix \u003d GetBitstringPrefix(dep);\n  return thisprefix \u003d\u003d prefix;\n  \n}",
       "parentUuid": "67d50ec4_20a2a95a",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f11548c2_0138bbcf",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T22:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55f74f9_71391c3e",
       "range": {
         "startLine": 160,
         "startChar": 2,
