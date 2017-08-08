@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc9a2c35_0f59c1ab",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "The oatwriter only write the status bit, so it already set the bitstring to 0 when printing according to mathieu.",
+      "parentUuid": "789a54b5_2c20bcaa",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fda81d6_9938acbe",
         "filename": "compiler/image_writer.cc",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c40f43f1_05d1025f",
+        "filename": "compiler/image_writer.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fda81d6_9938acbe",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ddfab26_dd875c0f",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2017-08-04T15:13:21Z",
       "side": 1,
       "message": "Why this change?",
+      "range": {
+        "startLine": 6319,
+        "startChar": 0,
+        "endLine": 6319,
+        "endChar": 37
+      },
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c0e9d00_8120827c",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6319,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Incorrectly commit to this patch. Fixed",
+      "parentUuid": "7ddfab26_dd875c0f",
       "range": {
         "startLine": 6319,
         "startChar": 0,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "49c45eb3_cec9c406",
+        "filename": "runtime/base/mutex.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2213cdcb_6a32097a",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1857a100_7420867a",
         "filename": "runtime/base/mutex.h",
         "patchSetId": 4
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "4b97ad2a_a07e37d3",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1857a100_7420867a",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79635e6a_50337514",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 4
@@ -104,6 +200,30 @@
       "writtenOn": "2017-08-04T15:13:21Z",
       "side": 1,
       "message": "Please add comments.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 3
+      },
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cad8d6f_a77c492e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79635e6a_50337514",
       "range": {
         "startLine": 454,
         "startChar": 0,
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "d5c2b975_b99fd49d",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2940,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abdb9e33_b3b883bc",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1919024_5566c1fe",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 4
@@ -147,6 +285,24 @@
       "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab3c9dbd_4e00cd90",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 5333,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1919024_5566c1fe",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "e9a3b93b_ef999786",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e1aab3_bef6e907",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dce9475_052116d5",
         "filename": "runtime/instance_of.h",
         "patchSetId": 4
@@ -178,6 +352,30 @@
       "writtenOn": "2017-08-04T15:13:21Z",
       "side": 1,
       "message": "path",
+      "range": {
+        "startLine": 159,
+        "startChar": 30,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18c11df8_a406ba92",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dce9475_052116d5",
       "range": {
         "startLine": 159,
         "startChar": 30,
@@ -230,6 +428,48 @@
     },
     {
       "key": {
+        "uuid": "b7b6d3c6_41d4f27c",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31a851b_d2398a70",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67d50ec4_20a2a95a",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "I think we better return a pair since this can save class load.",
+      "parentUuid": "4da6c2b1_2a1ffff1",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c7e4ab3_4909f877",
         "filename": "runtime/instance_of.h",
         "patchSetId": 4
@@ -244,6 +484,24 @@
       "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6065f07_b2b44c1c",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7e4ab3_4909f877",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -264,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "a7e16215_d6bc344b",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "SetInstanceOfAndStatus is a CAS",
+      "parentUuid": "45a8b590_be1c8608",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fefd83c_b5db5309",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 4
@@ -281,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "6bf3ad39_3b245541",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fefd83c_b5db5309",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "973c7f75_92ac9885",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 4
@@ -295,6 +589,24 @@
       "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aa0f170_ed351e74",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1209485
+      },
+      "writtenOn": "2017-08-08T18:54:49Z",
+      "side": 1,
+      "message": "It should do it here, or we have no chance to set the overflow bit of this class.",
+      "parentUuid": "973c7f75_92ac9885",
+      "revId": "e0143941ea72a1e0a5133e4e589438037d510380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
