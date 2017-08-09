@@ -111,6 +111,24 @@
     },
     {
       "key": {
+        "uuid": "ffe33b76_f4fc24eb",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2945,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-09T23:04:18Z",
+      "side": 1,
+      "message": "I think this one is redundant, it\u0027s supposed to happen in only two places:\n\n-- app image class visitor\n-- ClassLinker::EnsureInitialized",
+      "parentUuid": "c4afb694_9f50e6e5",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0061bdd9_e3ecb671",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 6
@@ -449,6 +467,30 @@
       "writtenOn": "2017-08-09T08:35:05Z",
       "side": 1,
       "message": "Drop, lots of places in the codebase just assume little endian without comments.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 2,
+        "endLine": 1544,
+        "endChar": 48
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4b0fe2a_d6b226ba",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-09T23:04:18Z",
+      "side": 1,
+      "message": "I asked srhines about this and we only support little endian in Android. We don\u0027t support big endian.",
+      "parentUuid": "f1ebe9d5_a14f1ec2",
       "range": {
         "startLine": 1543,
         "startChar": 2,
