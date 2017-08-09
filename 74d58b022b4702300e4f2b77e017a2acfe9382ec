@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "069cf2cb_b7628693",
+        "filename": "runtime/interpreter/unstarted_runtime.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-09T17:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7afcfc_b9b07a28",
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80b38db9_b456717b",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 3
@@ -94,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "fe5b83b4_448d59f2",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-09T17:49:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80b38db9_b456717b",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 5
+      },
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f01d834_35ea4ea3",
         "filename": "runtime/mirror/object_reference.h",
         "patchSetId": 3
@@ -105,6 +147,30 @@
       "writtenOn": "2017-08-06T20:02:48Z",
       "side": 1,
       "message": "Put on previous line?",
+      "range": {
+        "startLine": 129,
+        "startChar": 6,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "74d58b022b4702300e4f2b77e017a2acfe9382ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49ba4c59_90a68c95",
+        "filename": "runtime/mirror/object_reference.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-09T17:49:46Z",
+      "side": 1,
+      "message": "Done. Also updated a couple of similar cases.",
+      "parentUuid": "2f01d834_35ea4ea3",
       "range": {
         "startLine": 129,
         "startChar": 6,
