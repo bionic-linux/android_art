@@ -1,0 +1,486 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df861c31_c5f59d89",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "... the update of the bitstring ... ?",
+      "range": {
+        "startLine": 648,
+        "startChar": 11,
+        "endLine": 648,
+        "endChar": 24
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcc68cf3_35791722",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Could you add a link (eg buganizer) of how those values got decided?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94f1d624_716d8f7f",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Why the block?",
+      "range": {
+        "startLine": 454,
+        "startChar": 2,
+        "endLine": 454,
+        "endChar": 3
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a45fab8_39b1336c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2019,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Please add a comment.",
+      "range": {
+        "startLine": 2017,
+        "startChar": 0,
+        "endLine": 2019,
+        "endChar": 5
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4afb694_9f50e6e5",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2945,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0061bdd9_e3ecb671",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5338,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Ditto. Why would you need this if you\u0027ve already done it in DefineClass?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be0513cc_fb8d0131",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Why this change? If you need it, could you move this include to a .cc or -inl.h instead?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3c18e23_29bc4887",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "File should be named instance_of_and_status.h",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c5f1195_4c658614",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "deep",
+      "range": {
+        "startLine": 28,
+        "startChar": 69,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10a84a6d_7e8549de",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Nice. Could you add DCHECKs in updates that are you indeed only allowing these transitions?",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7a8c3a7_8cfed69b",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Add a DCHECK(IsValidFastIsSubclass)",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca54d2fc_052c540a",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Move this line 525.",
+      "range": {
+        "startLine": 522,
+        "startChar": 2,
+        "endLine": 522,
+        "endChar": 36
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d0acab9_27406c7b",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "DCHECK_EQ(fast, SlowIsSubClass(klass));",
+      "range": {
+        "startLine": 525,
+        "startChar": 3,
+        "endLine": 525,
+        "endChar": 25
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34fcd43e_0be1277b",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "depth (here and all other places you\u0027re using \u0027dep\u0027)",
+      "range": {
+        "startLine": 236,
+        "startChar": 6,
+        "endLine": 236,
+        "endChar": 9
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "978cc5b2_ccb125c5",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "missing \u0027.\u0027.",
+      "range": {
+        "startLine": 243,
+        "startChar": 59,
+        "endLine": 243,
+        "endChar": 65
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c640d64_53d4ce07",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Add a comment why you need a lock here and not in the other methods.",
+      "range": {
+        "startLine": 323,
+        "startChar": 2,
+        "endLine": 323,
+        "endChar": 59
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "326d478e_80e7a83b",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "path",
+      "range": {
+        "startLine": 686,
+        "startChar": 10,
+        "endLine": 686,
+        "endChar": 14
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94427eeb_a1dd48b3",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Slow",
+      "range": {
+        "startLine": 688,
+        "startChar": 5,
+        "endLine": 688,
+        "endChar": 10
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3153e0a_2dc63178",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Same comment as InitializeSelfBitstring. Please adjust.",
+      "range": {
+        "startLine": 708,
+        "startChar": 3,
+        "endLine": 708,
+        "endChar": 48
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e101f08_f67b9c12",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Grammar.",
+      "range": {
+        "startLine": 711,
+        "startChar": 2,
+        "endLine": 711,
+        "endChar": 84
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ebe9d5_a14f1ec2",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Drop, lots of places in the codebase just assume little endian without comments.",
+      "range": {
+        "startLine": 1543,
+        "startChar": 2,
+        "endLine": 1544,
+        "endChar": 48
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769ef972_cd91ec17",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-09T08:35:05Z",
+      "side": 1,
+      "message": "Why?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
