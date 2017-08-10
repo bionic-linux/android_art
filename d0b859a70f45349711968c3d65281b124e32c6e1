@@ -25,6 +25,63 @@
     },
     {
       "key": {
+        "uuid": "307fc3de_49e49d3b",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Can you add java.lang.Object\u0027s depth? something like \"java.lang.Object is at depth 0\".",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1656c2cf_dcbaa0d5",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Is value 64 used anywhere? seems to me bitstring length can\u0027t be 64.",
+      "range": {
+        "startLine": 26,
+        "startChar": 89,
+        "endLine": 26,
+        "endChar": 91
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6082de2f_019f7724",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Is this value used anywhere?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcc68cf3_35791722",
         "filename": "runtime/class_bitstring_helper.h",
         "patchSetId": 6
@@ -42,6 +99,80 @@
         "endLine": 30,
         "endChar": 53
       },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0622324c_9043e5d8",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Naming is confusing compared to GetLast8Bits() which returns last 8 bits. This is not returning the first 56Bits. Maybe just UpdateFirst56Bits().",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 37
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61c90274_155b72a2",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61f56af2_c3a01e3d",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Add comment.",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5594cf99_4249fd19",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Add comment.",
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -146,6 +277,23 @@
     },
     {
       "key": {
+        "uuid": "a146d3d0_5024ffd6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 5353,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "revert.",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be0513cc_fb8d0131",
         "filename": "runtime/class_linker.h",
         "patchSetId": 6
@@ -186,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "3882f3ee_1df35f0f",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Better call it TypeCheckBitstring instead of InstanceOf. We use it for both instance-of and check-cast.",
+      "parentUuid": "d3c18e23_29bc4887",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c5f1195_4c658614",
         "filename": "runtime/instance_of.h",
         "patchSetId": 6
@@ -202,6 +368,29 @@
         "startChar": 69,
         "endLine": 28,
         "endChar": 73
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53b09d92_b70a7403",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "This state is already removed from the enum below.",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 29
       },
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -226,6 +415,87 @@
         "endLine": 39,
         "endChar": 24
       },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33e1b4b2_8d8ee7b2",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "state 4 is gone. Update.",
+      "parentUuid": "10a84a6d_7e8549de",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83d680ce_353a8326",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "BitstringState to be more specific. State is too similar to Status.",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 18
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb10242c_cda47cde",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Can you add some comments on what this does? Looks like it copys super\u0027s bitstring and clear out the incremental value?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "234d33b6_9b572b30",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "what does this do? initialize the incremental value? can you add some comment?",
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -295,6 +565,23 @@
     },
     {
       "key": {
+        "uuid": "6491d898_4e4d0091",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "if try fails, should you re-fetch the old value to re-calculate new_value?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34fcd43e_0be1277b",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 6
@@ -334,6 +621,69 @@
         "startChar": 59,
         "endLine": 243,
         "endChar": 65
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1de46b8c_59122b1a",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Can now be assigned? If so, seems like a strange state.",
+      "range": {
+        "startLine": 252,
+        "startChar": 9,
+        "endLine": 252,
+        "endChar": 23
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29d944ea_2072d01f",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Looks like we hold the bitstring_lock here?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbf7c3d6_3f290db7",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "Looks like MarkOverflowed() really can mean two things. The one on line 297 means parent runs out of incremental values. The one here means the class itself is overflowed (i.e. can\u0027t get a valid bitstring). We sort of overload the overflow bit, coupled with the bitstring value for its depth, to mean two different things, overflowed or children-overflowed. I think it should be better documented, in the place for overflow bit description, and the place for overflow state description.",
+      "range": {
+        "startLine": 315,
+        "startChar": 10,
+        "endLine": 315,
+        "endChar": 24
       },
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -433,6 +783,23 @@
     },
     {
       "key": {
+        "uuid": "90f053cb_7c9d7492",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "REQUIRES(Locks::bitstring_lock) also?",
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e101f08_f67b9c12",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 6
@@ -449,6 +816,75 @@
         "startChar": 2,
         "endLine": 711,
         "endChar": 84
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fb4b7d3_46729152",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "not needed now.",
+      "range": {
+        "startLine": 712,
+        "startChar": 9,
+        "endLine": 712,
+        "endChar": 16
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2fcb03d_7353b4da",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "ForTypeCheck",
+      "range": {
+        "startLine": 717,
+        "startChar": 24,
+        "endLine": 717,
+        "endChar": 34
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25f61e64_fefbb5cc",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-10T08:05:23Z",
+      "side": 1,
+      "message": "TypeCheck",
+      "range": {
+        "startLine": 723,
+        "startChar": 11,
+        "endLine": 723,
+        "endChar": 21
       },
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
