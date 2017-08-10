@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2adb0239_cbb51e77",
+        "filename": "runtime/fault_handler.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-08-10T03:16:41Z",
+      "side": 1,
+      "message": "I think this broke heap poisoning tests, Cl to fix is here:\nhttps://android-review.googlesource.com/#/c/platform/art/+/455372/",
+      "range": {
+        "startLine": 82,
+        "startChar": 10,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "cc55e1dcdd2ec669c635420468b3cc4c99740f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
