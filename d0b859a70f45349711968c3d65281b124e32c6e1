@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7fcdefd_340972c6",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "Please document exactly how the lock is used, and why the normal class initialization synchronization doesn\u0027t suffice. (Presumably the problem is that the superclass needs to be updated? And this doesn\u0027t deadlock because I never wait for initialization while holding the bitstring_lock_?) Presumably the bitstring stays constant once the class is initialized, so there is no need for the lock in instanceof checks? It\u0027s worth saying all of this explicitly.",
+      "parentUuid": "df861c31_c5f59d89",
+      "range": {
+        "startLine": 648,
+        "startChar": 11,
+        "endLine": 648,
+        "endChar": 24
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "307fc3de_49e49d3b",
         "filename": "runtime/class_bitstring_helper.h",
         "patchSetId": 6
@@ -398,6 +422,29 @@
     },
     {
       "key": {
+        "uuid": "0f6ccf3c_675128cf",
+        "filename": "runtime/instance_of.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "Nit: differentiate",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a84a6d_7e8549de",
         "filename": "runtime/instance_of.h",
         "patchSetId": 6
@@ -565,6 +612,75 @@
     },
     {
       "key": {
+        "uuid": "4a6a330f_4cfd9205",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "This function looks like it should have \"CAS\" in the name? The comment should say what old_value is.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 63
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46aee86c_c57deb51",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "unused",
+      "range": {
+        "startLine": 115,
+        "startChar": 22,
+        "endLine": 115,
+        "endChar": 30
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ba42405_e88a7fb1",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "Why not just just new_value?",
+      "range": {
+        "startLine": 120,
+        "startChar": 50,
+        "endLine": 120,
+        "endChar": 59
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6491d898_4e4d0091",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 6
@@ -707,6 +823,29 @@
         "startChar": 2,
         "endLine": 323,
         "endChar": 59
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f355abca_afbaf122",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "We presumably need acquire memory ordering if we\u0027re interested in the status, and no ordering in the instanceof case? Split them? I presume we invoke this for interpreted instanceof expressions, so performance does matter a little bit?",
+      "range": {
+        "startLine": 157,
+        "startChar": 44,
+        "endLine": 157,
+        "endChar": 76
       },
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -932,6 +1071,29 @@
         "startChar": 2,
         "endLine": 1544,
         "endChar": 48
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cc090eb_24abdfc8",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-12T00:03:10Z",
+      "side": 1,
+      "message": "Mixing std:: and ART atomics is not ideal.",
+      "range": {
+        "startLine": 1545,
+        "startChar": 2,
+        "endLine": 1545,
+        "endChar": 42
       },
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
