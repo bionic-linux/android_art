@@ -16,6 +16,24 @@
       "revId": "4323ba18066a466e2b20e0dde034f8d557656887",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc9cac41_247b4809",
+        "filename": "test/088-monitor-verification/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-14T22:18:31Z",
+      "side": 1,
+      "message": "Yes it forces the method to be jitted if jit compiler is enabled.",
+      "parentUuid": "1b90e53c_83d01ec7",
+      "revId": "4323ba18066a466e2b20e0dde034f8d557656887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
