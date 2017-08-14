@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b90e53c_83d01ec7",
+        "filename": "test/088-monitor-verification/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-14T21:02:43Z",
+      "side": 1,
+      "message": "does this native call do what is says, i.e. force a jit compilation or something else?",
+      "revId": "4323ba18066a466e2b20e0dde034f8d557656887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
