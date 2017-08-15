@@ -1657,6 +1657,54 @@
     },
     {
       "key": {
+        "uuid": "fb9489e0_d1a15574",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-15T22:54:22Z",
+      "side": 1,
+      "message": "I\u0027m still confused about the synchronization model, and it would be good to clarify that (if that wasn\u0027t already fixed).",
+      "parentUuid": "69fdc1d6_e1e71913",
+      "range": {
+        "startLine": 157,
+        "startChar": 44,
+        "endLine": 157,
+        "endChar": 76
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01f86e93_3f4e8b04",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-15T22:54:22Z",
+      "side": 1,
+      "message": "It would be good to document the concurrency assumptions. Assuming a load of the InstanceOf information doesn\u0027t race, GetField64 should be fine. That currently bottoms out to LoadJavaData, which is implemented as relaxed, which is sometimes overkill. That\u0027s probably OK, since we presumably don\u0027t use this in compiled code.",
+      "parentUuid": "69fdc1d6_e1e71913",
+      "range": {
+        "startLine": 157,
+        "startChar": 44,
+        "endLine": 157,
+        "endChar": 76
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326d478e_80e7a83b",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 6
@@ -2103,6 +2151,30 @@
       "side": 1,
       "message": "Agreed, especially since the way we use it is just via the offset and casting. How should we improve this code?",
       "parentUuid": "4cc090eb_24abdfc8",
+      "range": {
+        "startLine": 1545,
+        "startChar": 2,
+        "endLine": 1545,
+        "endChar": 42
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a06f091c_ce9b687d",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-15T22:54:22Z",
+      "side": 1,
+      "message": "Assuming it compiles, I would be tempted to leave the field non-atomic, and rely on the casting. That\u0027s also ugly, not technically correct, etc., but it seems more consistent with the rest of the code. It also gives you an easy option to use an ordinary field access for the instanceof bits, assuming the access can\u0027t race. That potentially avoids jumping through hoops to get 64-bit atomicity on 32-bit platforms, when you don\u0027t need it.\n\nThe standard will probably eventually add atomic_ref to avoid all the dubious casting.\n\nBut I don\u0027t feel strongly about this one way or the other.",
+      "parentUuid": "7b70cd23_4156fef3",
       "range": {
         "startLine": 1545,
         "startChar": 2,
