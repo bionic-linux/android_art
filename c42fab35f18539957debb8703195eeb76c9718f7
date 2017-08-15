@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0965fce5_9a40d366",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-15T14:27:19Z",
+      "side": 1,
+      "message": "nit: Not sure about this, what if we had a helper called CanCheckAssignability (or similarly named)?",
+      "revId": "c42fab35f18539957debb8703195eeb76c9718f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
