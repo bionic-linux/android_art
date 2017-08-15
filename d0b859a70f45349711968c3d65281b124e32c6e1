@@ -853,6 +853,30 @@
     },
     {
       "key": {
+        "uuid": "69fdc1d6_e1e71913",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-15T00:55:20Z",
+      "side": 1,
+      "message": "We don\u0027t have GetField64Relaxed, do you just want to use GetField64 for instance-of case?",
+      "parentUuid": "f355abca_afbaf122",
+      "range": {
+        "startLine": 157,
+        "startChar": 44,
+        "endLine": 157,
+        "endChar": 76
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326d478e_80e7a83b",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 6
@@ -1089,6 +1113,30 @@
       "writtenOn": "2017-08-12T00:03:10Z",
       "side": 1,
       "message": "Mixing std:: and ART atomics is not ideal.",
+      "range": {
+        "startLine": 1545,
+        "startChar": 2,
+        "endLine": 1545,
+        "endChar": 42
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b70cd23_4156fef3",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-15T00:55:20Z",
+      "side": 1,
+      "message": "Agreed, especially since the way we use it is just via the offset and casting. How should we improve this code?",
+      "parentUuid": "4cc090eb_24abdfc8",
       "range": {
         "startLine": 1545,
         "startChar": 2,
