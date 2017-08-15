@@ -16,6 +16,24 @@
       "revId": "c42fab35f18539957debb8703195eeb76c9718f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "048ad425_82f43f44",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-15T14:43:53Z",
+      "side": 1,
+      "message": "I\u0027m not eager to add a single-use helper function. The comment should be enough.\n\n(I\u0027d reconsider if you find another place where the helper should be used.)",
+      "parentUuid": "0965fce5_9a40d366",
+      "revId": "c42fab35f18539957debb8703195eeb76c9718f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
