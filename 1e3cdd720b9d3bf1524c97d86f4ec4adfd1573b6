@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0676a836_2a892050",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "Please add the link to the bug explaining those values in the comments.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 93
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78db3196_6bf7e431",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2016,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "Explain why you need to do this.",
+      "range": {
+        "startLine": 2016,
+        "startChar": 4,
+        "endLine": 2016,
+        "endChar": 79
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "348a027f_67c23fb1",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "See my previous comment: please add DCHECKS when we are doing these transitions.",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e6bfb0_1c2af3ae",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "depth\n\nAlso add a comment what \u0027depth\u0027 is.",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ad9330a_599a7a60",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "Line too long",
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80d5a09e_f854a985",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "This looks off. Can you avoid it?",
+      "range": {
+        "startLine": 631,
+        "startChar": 44,
+        "endLine": 631,
+        "endChar": 72
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5f047f3_a33f0c14",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 639,
+        "startChar": 37,
+        "endLine": 639,
+        "endChar": 46
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae340d6_a6505398",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "Line too long.",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 709,
+        "endChar": 107
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a945b676_06e83935",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 711,
+        "startChar": 73,
+        "endLine": 711,
+        "endChar": 83
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

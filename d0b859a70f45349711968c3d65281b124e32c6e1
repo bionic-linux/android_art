@@ -2159,6 +2159,30 @@
       "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e1c41b3_a2cb56cd",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-15T08:18:35Z",
+      "side": 1,
+      "message": "For all variants?\n\nPlease file a bug and list it here, or remove the test.",
+      "parentUuid": "e3b499f9_ad8d1dba",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 6
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
