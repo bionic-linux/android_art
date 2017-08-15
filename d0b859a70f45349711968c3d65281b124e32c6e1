@@ -2187,6 +2187,30 @@
     },
     {
       "key": {
+        "uuid": "90066823_5af8d772",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-15T23:22:27Z",
+      "side": 1,
+      "message": "SGTM to remove the std::atomic here.\n\n\u003e It also gives you an easy option to use an ordinary field access for the instanceof bits, assuming the access can\u0027t race. That potentially avoids jumping through hoops to get 64-bit atomicity on 32-bit platforms, when you don\u0027t need it.\n\nFWIW, I don\u0027t think we ever access directly via field since field offsets change between 32 and 64-bits.",
+      "parentUuid": "a06f091c_ce9b687d",
+      "range": {
+        "startLine": 1545,
+        "startChar": 2,
+        "endLine": 1545,
+        "endChar": 42
+      },
+      "revId": "d0b859a70f45349711968c3d65281b124e32c6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "769ef972_cd91ec17",
         "filename": "test/knownfailures.json",
         "patchSetId": 6
