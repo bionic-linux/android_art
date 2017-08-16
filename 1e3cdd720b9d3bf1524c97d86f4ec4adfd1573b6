@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "da0b92c8_6f49cc36",
+        "filename": "runtime/base/mutex.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-16T23:22:22Z",
+      "side": 1,
+      "message": "I think we decided that all accesses to the bitstring and status word should be atomic, since the word can continue to be updated as subclasses are added, while instanceof checks are proceeding. Given that all updates have to be done with a CAS loop anyway, is there still a reason for the lock? Is there a case in which multiple accesses need to be atomic as a unit?\n\nCurrently the bitstring assignment code does hold a lock across multiple accesses. But that code seems suboptimal anyway, since the initial checking code seems to overlap with the actual assignment code. They should probably be combined into one \"try to assign\" routine anyway.\n\nMaybe leave for now with a TODO to remove the lock if possible?\n\nI\u0027m mildly nervous about possible deadlocks between this lock and class initialization, but probably only because I don\u0027t understand the interaction enough.",
+      "parentUuid": "e3d68ae5_568c33a7",
+      "range": {
+        "startLine": 653,
+        "startChar": 58,
+        "endLine": 653,
+        "endChar": 91
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0676a836_2a892050",
         "filename": "runtime/class_bitstring_helper.h",
         "patchSetId": 8
@@ -244,6 +268,52 @@
         "startChar": 2,
         "endLine": 126,
         "endChar": 3
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6d88f1_da610361",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-16T23:22:22Z",
+      "side": 1,
+      "message": "Document that we hold bitstring_lock.",
+      "range": {
+        "startLine": 231,
+        "startChar": 1,
+        "endLine": 231,
+        "endChar": 55
+      },
+      "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7d9f498_6c7a584a",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-16T23:22:22Z",
+      "side": 1,
+      "message": "Assuming we keep bitstring_lock, this should expicitly require that the caller holds the lock.",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 268,
+        "endChar": 67
       },
       "revId": "1e3cdd720b9d3bf1524c97d86f4ec4adfd1573b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
