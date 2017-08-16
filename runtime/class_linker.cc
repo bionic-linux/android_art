@@ -4608,6 +4608,25 @@ mirror::Class* ClassLinker::CreateProxyClass(ScopedObjectAccessAlreadyRunnable& 
 
   // sanity checks
   if (kIsDebugBuild) {
+    if (klass->DescriptorEquals("L$Proxy1;")) {
+      size_t num_def = klass->GetProxyInterfaces()->GetLength();
+      size_t num_ifaces = klass->GetIfTableCount();
+      LOG(ERROR) << "Created $Proxy1, def-iface count: " << num_def
+          << ", interface count: " << num_ifaces
+          << " class flags: " << klass->GetClassFlags<kVerifyNone>();
+      for (size_t i = 0; i != num_ifaces; ++i) {
+        ObjPtr<mirror::Class> iface = klass->GetIfTable()->GetInterface(i);
+        LOG(ERROR) << "  #" << i << ": " << iface->PrettyDescriptor()
+            << "@" << iface.Ptr();
+      }
+      for (size_t i = 0; i != num_def; ++i) {
+        ObjPtr<mirror::Class> iface = klass->GetProxyInterfaces()->Get(i);
+        LOG(ERROR)
+            << "  ." << i << ": "  << iface->PrettyDescriptor() << "@" << iface
+            << " LookupByDescriptor:"
+            << ClassTableForClassLoader(iface->GetClassLoader())->LookupByDescriptor(iface);
+      }
+    }
     CHECK(klass->GetIFieldsPtr() == nullptr);
     CheckProxyConstructor(klass->GetDirectMethod(0, image_pointer_size_));
 
