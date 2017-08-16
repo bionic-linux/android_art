@@ -34,6 +34,24 @@
       "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab23ef05_84231918",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T16:08:07Z",
+      "side": 1,
+      "message": "You could add:\nLOCAL_NO_STANDARD_LIBRARIES :\u003d true\nLOCAL_JAVA_LIBRARIES :\u003d core-art core-oj\n\nOr we can add a flag that lets you specify:\nLOCAL_NO_FRAMEWORK_LIBRARIES :\u003d true",
+      "parentUuid": "283e9b09_a6d199b8",
+      "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
