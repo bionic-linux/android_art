@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0244cdb2_c8447f55",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-16T14:32:26Z",
+      "side": 1,
+      "message": "I take it these tests are not being built by any of the buildbots?\n\nIt definitely won\u0027t build there with these new changes since they don\u0027t include frameworks/base in the manifest.",
+      "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
