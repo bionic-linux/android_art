@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d697ab23_8c908f53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-16T14:19:20Z",
+      "side": 1,
+      "message": "Do you want to eventually submit this change? If not, you should probably mark it as such.\n\nThere\u0027s probably a few checks we could keep and submit.",
+      "revId": "f6328602f45cc9abb847ba8dd3cae9602ff958aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
