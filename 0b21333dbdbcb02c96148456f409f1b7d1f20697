@@ -16,6 +16,24 @@
       "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "283e9b09_a6d199b8",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-08-16T15:41:11Z",
+      "side": 1,
+      "message": "The tests are not currently being run on any of the build bots (b/38219110). I\u0027m not sure what gets built by default where. I\u0027ll see if I can figure out how to build with the same manifest used by the build bots and see what happens.",
+      "parentUuid": "0244cdb2_c8447f55",
+      "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
