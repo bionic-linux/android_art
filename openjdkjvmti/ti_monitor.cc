@@ -39,6 +39,7 @@
 #include "art_jvmti.h"
 #include "runtime.h"
 #include "scoped_thread_state_change-inl.h"
+#include "ti_thread.h"
 #include "thread-current-inl.h"
 
 namespace openjdkjvmti {
@@ -51,8 +52,7 @@ namespace openjdkjvmti {
 
 class JvmtiMonitor {
  public:
-  JvmtiMonitor() : owner_(nullptr), count_(0) {
-  }
+  JvmtiMonitor() : owner_(nullptr), count_(0) { }
 
   static bool Destroy(art::Thread* self, JvmtiMonitor* monitor) NO_THREAD_SAFETY_ANALYSIS {
     // Check whether this thread holds the monitor, or nobody does.
@@ -72,6 +72,12 @@ class JvmtiMonitor {
   }
 
   void MonitorEnter(art::Thread* self) NO_THREAD_SAFETY_ANALYSIS {
+    // Perform a suspend-check. The spec doesn't require this but real-world agents depend on this
+    // behavior.
+    do {
+      ThreadUtil::SuspendCheck(self);
+    } while (ThreadUtil::WouldSuspendForUserCode(self));
+
     // Check for recursive enter.
     if (IsOwner(self)) {
       count_++;
@@ -123,7 +129,7 @@ class JvmtiMonitor {
   }
 
  private:
-  bool IsOwner(art::Thread* self) {
+  bool IsOwner(art::Thread* self) const {
     // There's a subtle correctness argument here for a relaxed load outside the critical section.
     // A thread is guaranteed to see either its own latest store or another thread's store. If a
     // thread sees another thread's store than it cannot be holding the lock.
