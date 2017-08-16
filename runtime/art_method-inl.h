@@ -45,6 +45,8 @@
 #include "thread-current-inl.h"
 #include "utils.h"
 
+#include "class_table.h"
+
 namespace art {
 
 template <ReadBarrierOption kReadBarrierOption>
@@ -384,6 +386,64 @@ inline bool ArtMethod::IsProxyMethod() {
   return GetDeclaringClass<kWithoutReadBarrier>()->IsProxyClass();
 }
 
+inline std::string DumpInterfaces(ObjPtr<mirror::Class> klass)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  std::ostringstream oss;
+  const char* separ = "";
+  int32_t iftable_count = klass->GetIfTableCount();
+  ObjPtr<mirror::IfTable> iftable = klass->GetIfTable();
+  for (int32_t i = 0; i < iftable_count; i++) {
+    oss << separ << iftable->GetInterface(i)->PrettyDescriptor()
+        << "/" << iftable->GetInterface(i)->GetClassLoader();
+    separ = ",";
+  }
+  return oss.str();
+}
+
+inline std::string ImplementsDebug(ObjPtr<mirror::Class> this_, ObjPtr<mirror::Class> klass)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  DCHECK(klass != nullptr);
+  DCHECK(klass->IsInterface()) << this_->PrettyClass();
+  // All interfaces implemented directly and by our superclass, and
+  // recursively all super-interfaces of those interfaces, are listed
+  // in iftable_, so we can just do a linear scan through that.
+  int32_t iftable_count = this_->GetIfTableCount();
+  ObjPtr<mirror::IfTable> iftable = this_->GetIfTable();
+  ClassTable* class_table =
+      Runtime::Current()->GetClassLinker()->ClassTableForClassLoader(klass->GetClassLoader());
+  LOG(ERROR) << "ImplementsDebug: " << this_->PrettyDescriptor()
+      << " " << klass->PrettyDescriptor() << "/" << klass->GetClassLoader() << ";" << klass.Ptr()
+      << " iftable_count=" << iftable_count
+      << " LookupByDescriptor: " << class_table->LookupByDescriptor(klass);
+  for (int32_t i = 0; i < iftable_count; i++) {
+    LOG(ERROR) << "  #" << i << ": " << iftable->GetInterface(i)->PrettyDescriptor()
+        << "/" << iftable->GetInterface(i)->GetClassLoader() << ";" << iftable->GetInterface(i);
+    if (iftable->GetInterface(i) == klass) {
+      return "IMPLEMENTS:true";
+    }
+  }
+  return "IMPLEMENTS:false";
+}
+
+inline std::string IsAssignableFromDebug(ObjPtr<mirror::Class> this_, ObjPtr<mirror::Class> src)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  DCHECK(src != nullptr);
+  if (this_ == src) {
+    // Can always assign to things of the same type.
+    return "EQ:true";
+  } else if (this_->IsObjectClass()) {
+    // Can assign any reference to java.lang.Object.
+    return std::string("OBJ:") + (!src->IsPrimitive() ? "true" : "false");
+  } else if (this_->IsInterface()) {
+    return ImplementsDebug(src, this_);
+  } else if (src->IsArrayClass()) {
+    return std::string("ARRAY:???");
+  } else {
+    return std::string("ELSE:") +
+        (!src->IsInterface() && src->IsSubClass(this_) ? "true" : "false");
+  }
+}
+
 inline ArtMethod* ArtMethod::GetInterfaceMethodIfProxy(PointerSize pointer_size) {
   if (LIKELY(!IsProxyMethod())) {
     return this;
@@ -399,6 +459,17 @@ inline ArtMethod* ArtMethod::GetInterfaceMethodIfProxy(PointerSize pointer_size)
     interface_method = Runtime::Current()->GetClassLinker()->FindMethodForProxy(this);
     DCHECK(interface_method != nullptr);
   }
+  // We can check that the proxy class implements the interface only if the proxy class
+  // is resolved, otherwise the interface table is not yet initialized.
+  DCHECK(!GetDeclaringClass()->IsResolved() ||
+         interface_method->GetDeclaringClass()->IsAssignableFrom(GetDeclaringClass()))
+      << GetDeclaringClass()->GetStatus() << " "
+      << (interface_method->GetDeclaringClass()->IsInterface() ? "interface:" : "class:")
+      << interface_method->GetDeclaringClass()->PrettyDescriptor() << "/"
+      << interface_method->GetDeclaringClass()->GetClassLoader() << " "
+      << GetDeclaringClass()->PrettyDescriptor() << "<"
+      << DumpInterfaces(GetDeclaringClass()) << " "
+      << IsAssignableFromDebug(interface_method->GetDeclaringClass(), GetDeclaringClass());
   return interface_method;
 }
 
