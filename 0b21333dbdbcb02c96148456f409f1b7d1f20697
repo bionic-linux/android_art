@@ -52,6 +52,24 @@
       "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9318ca7_a633b1a5",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-08-17T08:59:45Z",
+      "side": 1,
+      "message": "It doesn\u0027t build from the master-art-host manifest regardless because master-art-host doesn\u0027t have external/proguard.\n\nGiven that the ahat tests are not currently being run on any build bots, let me defer the questions of getting them to compile from master-art-host to a later CL (tracked by b/38219110).",
+      "parentUuid": "ab23ef05_84231918",
+      "revId": "0b21333dbdbcb02c96148456f409f1b7d1f20697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
