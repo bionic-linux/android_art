@@ -18,6 +18,7 @@
 
 #include <unistd.h>
 #include <zlib.h>
+#include <queue>
 
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "art_method-inl.h"
@@ -844,29 +845,139 @@ class OatWriter::InitOatClassesMethodVisitor : public DexMethodVisitor {
   size_t compiled_methods_with_code_;
 };
 
-class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
+struct OatWriter::LayoutMethodData {
+  OatClass* oat_class;
+  CompiledMethod* compiled_method;
+  std::string name;
+  MethodReference method_reference;
+  size_t method_offsets_index;
+
+  size_t class_def_index;
+  uint32_t access_flags;
+  const DexFile::CodeItem* code_item;
+
+  bool operator<(const LayoutMethodData& other) const {
+    return name < other.name;
+  }
+};
+
+// Visit every compiled method in order to determine its order within the OAT file.
+// Methods from the same class do not need to be adjacent.
+// TODO: do something useful besides sorting on the name.
+class OatWriter::LayoutCodeMethodVisitor : public OatDexMethodVisitor {
  public:
-  InitCodeMethodVisitor(OatWriter* writer, size_t offset)
-      : OatDexMethodVisitor(writer, offset),
-        debuggable_(writer->GetCompilerDriver()->GetCompilerOptions().GetDebuggable()) {
-    writer_->absolute_patch_locations_.reserve(
-        writer_->compiler_driver_->GetNonRelativeLinkerPatchCount());
+  LayoutCodeMethodVisitor(OatWriter* writer, size_t offset)
+      : OatDexMethodVisitor(writer, offset) {
   }
 
   bool EndClass() OVERRIDE {
     OatDexMethodVisitor::EndClass();
-    if (oat_class_index_ == writer_->oat_classes_.size()) {
-      offset_ = writer_->relative_patcher_->ReserveSpaceEnd(offset_);
-    }
     return true;
   }
 
-  bool VisitMethod(size_t class_def_method_index, const ClassDataItemIterator& it) OVERRIDE
-      REQUIRES_SHARED(Locks::mutator_lock_) {
+  bool VisitMethod(size_t class_def_method_index,
+                   const ClassDataItemIterator& it) OVERRIDE {
+    //  REQUIRES_SHARED(Locks::mutator_lock_)
+
+    Locks::mutator_lock_->AssertNotHeld(Thread::Current());
+    ScopedObjectAccess soa(Thread::Current());
+
     OatClass* oat_class = &writer_->oat_classes_[oat_class_index_];
     CompiledMethod* compiled_method = oat_class->GetCompiledMethod(class_def_method_index);
 
     if (HasCompiledCode(compiled_method)) {
+      // Derived from CompiledMethod.
+      MethodReference method_ref(dex_file_, it.GetMemberIndex());
+      std::string method_name = method_ref.dex_file->PrettyMethod(method_ref.dex_method_index);
+
+      // Handle duplicate methods by pushing them repeatedly.
+      LayoutMethodData method_and_name = {
+          oat_class,
+          compiled_method,
+          method_name,
+          method_ref,
+          method_offsets_index_,
+          class_def_index_,
+          it.GetMethodAccessFlags(),
+          it.GetMethodCodeItem()
+      };
+      ordered_methods_.push(method_and_name);
+
+      method_offsets_index_++;
+
+      // TODO: the order should actually be determined by binning, instead of by sorting by name.
+    }
+
+    return true;
+  }
+
+  std::priority_queue<LayoutMethodData> ReleaseOrderedMethods() {
+    return std::move(ordered_methods_);
+  }
+
+ private:
+  // List of compiled methods, sorted by the pretty name.
+  // Methods can be inserted more than once in case of duplicated methods.
+  std::priority_queue<LayoutMethodData> ordered_methods_;
+};
+
+// Given a method order, reserve the offsets for each CompiledMethod in the OAT file.
+class OatWriter::LayoutReserveOffsetCodeMethodVisitor {
+ public:
+  LayoutReserveOffsetCodeMethodVisitor(OatWriter* writer,
+                                       size_t offset,
+                                       std::priority_queue<LayoutMethodData> ordered_methods)
+      : writer_(writer),
+        offset_(offset),
+        debuggable_(writer->GetCompilerDriver()->GetCompilerOptions().GetDebuggable()),
+        ordered_methods_(std::move(ordered_methods)) {
+    writer_->absolute_patch_locations_.reserve(
+        writer_->compiler_driver_->GetNonRelativeLinkerPatchCount());
+  }
+
+  bool ReserveLayoutOffsets()
+        // REQUIRES_SHARED(Locks::mutator_lock_)
+        NO_THREAD_SAFETY_ANALYSIS {
+
+    Locks::mutator_lock_->AssertNotHeld(Thread::Current());
+    ScopedObjectAccess soa(Thread::Current());
+
+    bool success = true;
+    while (!ordered_methods_.empty()) {
+      const LayoutMethodData& method_data = ordered_methods_.top();
+      if (!VisitMethod(method_data.oat_class,
+                       method_data.compiled_method,
+                       method_data.method_reference,
+                       method_data.method_offsets_index,
+                       method_data.class_def_index,
+                       method_data.access_flags,
+                       method_data.code_item)) {
+        success = false;
+        break;
+      }
+
+      ordered_methods_.pop();
+    }
+
+    // Previously we would reserve space at the end after visiting the last class.
+    // Since the class methods are no longer contiguous, simply reserve space
+    // after we visit the last method.
+    offset_ = writer_->relative_patcher_->ReserveSpaceEnd(offset_);
+
+    return success;
+  }
+
+  bool VisitMethod(OatClass* oat_class,
+                   CompiledMethod* compiled_method,
+                   const MethodReference& method_ref,
+                   uint16_t method_offsets_index_,
+                   size_t class_def_index,
+                   uint32_t access_flags,
+                   const DexFile::CodeItem* code_item)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    DCHECK(HasCompiledCode(compiled_method))
+        << const_cast<MethodReference&>(method_ref).PrettyMethod();
+    {
       // Derived from CompiledMethod.
       uint32_t quick_code_offset = 0;
 
@@ -876,22 +987,21 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
 
       // Deduplicate code arrays if we are not producing debuggable code.
       bool deduped = true;
-      MethodReference method_ref(dex_file_, it.GetMemberIndex());
       if (debuggable_) {
         quick_code_offset = writer_->relative_patcher_->GetOffset(method_ref);
         if (quick_code_offset != 0u) {
           // Duplicate methods, we want the same code for both of them so that the oat writer puts
           // the same code in both ArtMethods so that we do not get different oat code at runtime.
         } else {
-          quick_code_offset = NewQuickCodeOffset(compiled_method, it, thumb_offset);
+          quick_code_offset = NewQuickCodeOffset(compiled_method, method_ref, thumb_offset);
           deduped = false;
         }
       } else {
         quick_code_offset = dedupe_map_.GetOrCreate(
             compiled_method,
-            [this, &deduped, compiled_method, &it, thumb_offset]() {
+            [this, &deduped, compiled_method, &method_ref, thumb_offset]() {
               deduped = false;
-              return NewQuickCodeOffset(compiled_method, it, thumb_offset);
+              return NewQuickCodeOffset(compiled_method, method_ref, thumb_offset);
             });
       }
 
@@ -964,11 +1074,11 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
         // Record debug information for this function if we are doing that.
         debug::MethodDebugInfo info = debug::MethodDebugInfo();
         info.trampoline_name = nullptr;
-        info.dex_file = dex_file_;
-        info.class_def_index = class_def_index_;
-        info.dex_method_index = it.GetMemberIndex();
-        info.access_flags = it.GetMethodAccessFlags();
-        info.code_item = it.GetMethodCodeItem();
+        info.dex_file = method_ref.dex_file;
+        info.class_def_index = class_def_index;
+        info.dex_method_index = method_ref.dex_method_index;
+        info.access_flags = access_flags;
+        info.code_item = code_item;
         info.isa = compiled_method->GetInstructionSet();
         info.deduped = deduped;
         info.is_native_debuggable = compiler_options.GetNativeDebuggable();
@@ -985,10 +1095,13 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
       DCHECK_LT(method_offsets_index_, oat_class->method_offsets_.size());
       OatMethodOffsets* offsets = &oat_class->method_offsets_[method_offsets_index_];
       offsets->code_offset_ = quick_code_offset;
-      ++method_offsets_index_;
     }
 
     return true;
+  }
+
+  size_t GetOffset() const {
+    return offset_;
   }
 
  private:
@@ -1013,15 +1126,19 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
   };
 
   uint32_t NewQuickCodeOffset(CompiledMethod* compiled_method,
-                              const ClassDataItemIterator& it,
+                              const MethodReference& method_ref,
                               uint32_t thumb_offset) {
-    offset_ = writer_->relative_patcher_->ReserveSpace(
-        offset_, compiled_method, MethodReference(dex_file_, it.GetMemberIndex()));
+    offset_ = writer_->relative_patcher_->ReserveSpace(offset_, compiled_method, method_ref);
     offset_ += CodeAlignmentSize(offset_, *compiled_method);
     DCHECK_ALIGNED_PARAM(offset_ + sizeof(OatQuickMethodHeader),
                          GetInstructionSetAlignment(compiled_method->GetInstructionSet()));
     return offset_ + sizeof(OatQuickMethodHeader) + thumb_offset;
   }
+
+  OatWriter* writer_;
+
+  // Offset of the code of the compiled methods.
+  size_t offset_;
 
   // Deduplication is already done on a pointer basis by the compiler driver,
   // so we can simply compare the pointers to find out if things are duplicated.
@@ -1029,6 +1146,10 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
 
   // Cache of compiler's --debuggable option.
   const bool debuggable_;
+
+  // List of compiled methods, sorted by the pretty name.
+  // Methods can be inserted more than once in case of duplicated methods.
+  std::priority_queue<LayoutMethodData> ordered_methods_;
 };
 
 class OatWriter::InitMapMethodVisitor : public OatDexMethodVisitor {
@@ -1902,10 +2023,19 @@ size_t OatWriter::InitOatCodeDexFiles(size_t offset) {
   if (!compiler_driver_->GetCompilerOptions().IsAnyCompilationEnabled()) {
     return offset;
   }
-  InitCodeMethodVisitor code_visitor(this, offset);
-  bool success = VisitDexMethods(&code_visitor);
+  bool success = false;
+
+  LayoutCodeMethodVisitor layout_code_visitor(this, offset);
+  success = VisitDexMethods(&layout_code_visitor);
   DCHECK(success);
-  offset = code_visitor.GetOffset();
+
+  LayoutReserveOffsetCodeMethodVisitor layout_reserve_code_visitor(
+      this,
+      offset,
+      layout_code_visitor.ReleaseOrderedMethods());
+  success = layout_reserve_code_visitor.ReserveLayoutOffsets();
+  DCHECK(success);
+  offset = layout_reserve_code_visitor.GetOffset();
 
   if (HasImage()) {
     InitImageMethodVisitor image_visitor(this, offset, dex_files_);

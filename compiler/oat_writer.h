@@ -258,6 +258,9 @@ class OatWriter {
   class OatDexMethodVisitor;
   class InitBssLayoutMethodVisitor;
   class InitOatClassesMethodVisitor;
+  class LayoutCodeMethodVisitor;
+  class LayoutReserveOffsetCodeMethodVisitor;
+  struct LayoutMethodData;
   class InitCodeMethodVisitor;
   class InitMapMethodVisitor;
   class InitMethodInfoVisitor;
