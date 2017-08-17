@@ -18,6 +18,7 @@
 
 #include <unistd.h>
 #include <zlib.h>
+#include <queue>
 
 #include "arch/arm64/instruction_set_features_arm64.h"
 #include "art_method-inl.h"
@@ -824,18 +825,21 @@ class OatWriter::InitOatClassesMethodVisitor : public DexMethodVisitor {
       }
     }
 
-    writer_->oat_class_headers_.emplace_back(offset_,
-                                             compiled_methods_with_code_,
-                                             compiled_methods_.size(),
-                                             status);
-    OatClassHeader& header = writer_->oat_class_headers_.back();
+    OatClassHeader header(offset_,
+                          compiled_methods_with_code_,
+                          compiled_methods_.size(),
+                          status);
     offset_ += header.SizeOf();
+
     if (writer_->MayHaveCompiledMethods()) {
-      writer_->oat_classes_.emplace_back(compiled_methods_,
-                                         compiled_methods_with_code_,
-                                         header.type_);
-      offset_ += writer_->oat_classes_.back().SizeOf();
+      OatClass oat_class(compiled_methods_,
+                         compiled_methods_with_code_,
+                         header.type_);
+      offset_ += oat_class.SizeOf();
+      writer_->oat_classes_.push_back(std::move(oat_class));
     }
+
+    writer_->oat_class_headers_.push_back(std::move(header));
     return DexMethodVisitor::EndClass();
   }
 
@@ -844,29 +848,248 @@ class OatWriter::InitOatClassesMethodVisitor : public DexMethodVisitor {
   size_t compiled_methods_with_code_;
 };
 
-class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
+struct OatWriter::LayoutMethodData {
+  OatClass* oat_class;
+  CompiledMethod* compiled_method;
+  std::string name;
+  MethodReference method_reference;
+  size_t method_offsets_index;
+
+  size_t class_def_index;
+  uint32_t access_flags;
+  const DexFile::CodeItem* code_item;
+
+  // Can be null if false if there was no debug info.
+  bool has_debug_info;
+  // Index into writer_->method_info_
+  size_t debug_info_idx;
+
+  bool operator<(const LayoutMethodData& other) const {
+    return name < other.name;
+  }
+};
+
+#if 0
+struct OatWriter::OrderedMethodsHeap {
+
+  OrderedMethodsHeap() {
+    std::make_heap(ordered_methods_.begin(), ordered_methods_.end());
+  }
+
+  size_t Get(size_t index) {
+    DCHECK_LT(index, Size());
+    return ordered_methods_[index];
+  }
+
+  size_t Size() {
+    return ordered_methods_.size();
+  }
+
+  std::vector<LayoutMethodData> ordered_methods_;
+};
+#endif
+
+// Given a queue of CompiledMethod in some total order,
+// visit each one in that order.
+class OatWriter::OrderedMethodVisitor {
  public:
-  InitCodeMethodVisitor(OatWriter* writer, size_t offset)
-      : OatDexMethodVisitor(writer, offset),
+  OrderedMethodVisitor(std::priority_queue<LayoutMethodData> ordered_methods)
+      : ordered_methods_(std::move(ordered_methods)) {
+  }
+
+  virtual ~OrderedMethodVisitor() {}
+
+  // Invoke VisitMethod in the order of `ordered_methods`, then invoke VisitComplete.
+  bool Visit() REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (!VisitStart()) {
+      return false;
+    }
+
+    while (!ordered_methods_.empty()) {
+      const LayoutMethodData& method_data = ordered_methods_.top();
+      if (!VisitMethod(method_data.oat_class,
+                       method_data.compiled_method,
+                       method_data.method_reference,
+                       method_data.method_offsets_index,
+                       method_data.class_def_index,
+                       method_data.access_flags,
+                       method_data.code_item,
+                       method_data.has_debug_info,
+                       method_data.debug_info_idx)) {
+        return false;
+      }
+
+      // Since we cannot access a priority_queue without popping,
+      // copy the data into the `out` queue before popping.
+      //
+      // This retains the order of data and we can re-visit all the methods again later.
+      ordered_methods_out_.push(method_data);
+      ordered_methods_.pop();
+    }
+
+    return VisitComplete();
+  }
+
+  // Invoked once at the beginning, prior to visiting anything else.
+  //
+  // Return false to abort further visiting.
+  virtual bool VisitStart() { return true; }
+
+  // Invoked repeatedly in the order specified by `ordered_methods`.
+  //
+  // Return false to short-circuit and to stop visiting further methods.
+  virtual bool VisitMethod(OatClass* oat_class,
+                           CompiledMethod* compiled_method,
+                           const MethodReference& method_ref,
+                           uint16_t method_offsets_index_,
+                           size_t class_def_index,
+                           uint32_t access_flags,
+                           const DexFile::CodeItem* code_item,
+                           bool has_debug_info,
+                           size_t debug_info_idx)
+      REQUIRES_SHARED(Locks::mutator_lock_)  = 0;
+
+  // Invoked once at the end, after every other method has been successfully visited.
+  //
+  // Return false to indicate the overall `Visit` has failed.
+  virtual bool VisitComplete() = 0;
+
+  std::priority_queue<LayoutMethodData> ReleaseOrderedMethods() {
+    return std::move(ordered_methods_out_);
+  }
+
+ private:
+  // List of compiled methods, sorted by the pretty name.
+  // Methods can be inserted more than once in case of duplicated methods.
+  std::priority_queue<LayoutMethodData> ordered_methods_;
+
+  // As methods are iterated over, they are popped from ordered_methods_
+  // and pushed onto ordered_methods_out_.
+  std::priority_queue<LayoutMethodData> ordered_methods_out_;
+};
+
+// Visit every compiled method in order to determine its order within the OAT file.
+// Methods from the same class do not need to be adjacent.
+// TODO: do something useful besides sorting on the name.
+class OatWriter::LayoutCodeMethodVisitor : public OatDexMethodVisitor {
+ public:
+  LayoutCodeMethodVisitor(OatWriter* writer, size_t offset)
+      : OatDexMethodVisitor(writer, offset) {
+  }
+
+  bool EndClass() OVERRIDE {
+    OatDexMethodVisitor::EndClass();
+    return true;
+  }
+
+  bool VisitMethod(size_t class_def_method_index,
+                   const ClassDataItemIterator& it)
+      OVERRIDE
+      REQUIRES_SHARED(Locks::mutator_lock_)  {
+    Locks::mutator_lock_->AssertSharedHeld(Thread::Current());
+
+    OatClass* oat_class = &writer_->oat_classes_[oat_class_index_];
+    CompiledMethod* compiled_method = oat_class->GetCompiledMethod(class_def_method_index);
+
+    if (HasCompiledCode(compiled_method)) {
+      size_t debug_info_idx = 0;
+      bool has_debug_info = false;
+
+      {
+        const CompilerOptions& compiler_options = writer_->compiler_driver_->GetCompilerOptions();
+        ArrayRef<const uint8_t> quick_code = compiled_method->GetQuickCode();
+        uint32_t code_size = quick_code.size() * sizeof(uint8_t);
+
+        // Debug method info must be pushed in the original order
+        // (i.e. all methods from the same class must be adjacent)
+        // ElfCompilationUnitWriter::Write requires this.
+        if (compiler_options.GenerateAnyDebugInfo() && code_size != 0) {
+          debug::MethodDebugInfo info = debug::MethodDebugInfo();
+          writer_->method_info_.push_back(info);
+
+          // The debug info is filled in LayoutReserveOffsetCodeMethodVisitor
+          // once we know the offsets.
+          //
+          // Store the index into writer_->method_info_ since future push-backs
+          // could reallocate and change the underlying data address.
+          debug_info_idx = writer_->method_info_.size() - 1;
+          has_debug_info = true;
+        }
+      }
+
+      // Derived from CompiledMethod.
+      MethodReference method_ref(dex_file_, it.GetMemberIndex());
+      std::string method_name = method_ref.dex_file->PrettyMethod(method_ref.dex_method_index);
+
+      // Handle duplicate methods by pushing them repeatedly.
+      LayoutMethodData method_and_name = {
+          oat_class,
+          compiled_method,
+          method_name,
+          method_ref,
+          method_offsets_index_,
+          class_def_index_,
+          it.GetMethodAccessFlags(),
+          it.GetMethodCodeItem(),
+          has_debug_info,
+          debug_info_idx
+      };
+      ordered_methods_.push(method_and_name);
+
+      method_offsets_index_++;
+
+      // TODO: the order should actually be determined by binning, instead of by sorting by name.
+    }
+
+    return true;
+  }
+
+  std::priority_queue<LayoutMethodData> ReleaseOrderedMethods() {
+    return std::move(ordered_methods_);
+  }
+
+ private:
+  // List of compiled methods, sorted by the pretty name.
+  // Methods can be inserted more than once in case of duplicated methods.
+  std::priority_queue<LayoutMethodData> ordered_methods_;
+};
+
+// Given a method order, reserve the offsets for each CompiledMethod in the OAT file.
+class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisitor {
+ public:
+  LayoutReserveOffsetCodeMethodVisitor(OatWriter* writer,
+                                       size_t offset,
+                                       std::priority_queue<LayoutMethodData> ordered_methods)
+      : OrderedMethodVisitor(std::move(ordered_methods)),
+        writer_(writer),
+        offset_(offset),
         debuggable_(writer->GetCompilerDriver()->GetCompilerOptions().GetDebuggable()) {
     writer_->absolute_patch_locations_.reserve(
         writer_->compiler_driver_->GetNonRelativeLinkerPatchCount());
   }
 
-  bool EndClass() OVERRIDE {
-    OatDexMethodVisitor::EndClass();
-    if (oat_class_index_ == writer_->oat_classes_.size()) {
-      offset_ = writer_->relative_patcher_->ReserveSpaceEnd(offset_);
-    }
+  virtual bool VisitComplete() OVERRIDE {
+    // Previously we would reserve space at the end after visiting the last class.
+    // Since the class methods are no longer contiguous, simply reserve space
+    // after we visit the last method.
+    offset_ = writer_->relative_patcher_->ReserveSpaceEnd(offset_);
     return true;
   }
 
-  bool VisitMethod(size_t class_def_method_index, const ClassDataItemIterator& it) OVERRIDE
+  virtual bool VisitMethod(OatClass* oat_class,
+                           CompiledMethod* compiled_method,
+                           const MethodReference& method_ref,
+                           uint16_t method_offsets_index_,
+                           size_t class_def_index,
+                           uint32_t access_flags,
+                           const DexFile::CodeItem* code_item,
+                           bool has_debug_info,
+                           size_t debug_info_idx)
+      OVERRIDE
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    OatClass* oat_class = &writer_->oat_classes_[oat_class_index_];
-    CompiledMethod* compiled_method = oat_class->GetCompiledMethod(class_def_method_index);
-
-    if (HasCompiledCode(compiled_method)) {
+    DCHECK(HasCompiledCode(compiled_method))
+        << const_cast<MethodReference&>(method_ref).PrettyMethod();
+    {
       // Derived from CompiledMethod.
       uint32_t quick_code_offset = 0;
 
@@ -876,22 +1099,21 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
 
       // Deduplicate code arrays if we are not producing debuggable code.
       bool deduped = true;
-      MethodReference method_ref(dex_file_, it.GetMemberIndex());
       if (debuggable_) {
         quick_code_offset = writer_->relative_patcher_->GetOffset(method_ref);
         if (quick_code_offset != 0u) {
           // Duplicate methods, we want the same code for both of them so that the oat writer puts
           // the same code in both ArtMethods so that we do not get different oat code at runtime.
         } else {
-          quick_code_offset = NewQuickCodeOffset(compiled_method, it, thumb_offset);
+          quick_code_offset = NewQuickCodeOffset(compiled_method, method_ref, thumb_offset);
           deduped = false;
         }
       } else {
         quick_code_offset = dedupe_map_.GetOrCreate(
             compiled_method,
-            [this, &deduped, compiled_method, &it, thumb_offset]() {
+            [this, &deduped, compiled_method, &method_ref, thumb_offset]() {
               deduped = false;
-              return NewQuickCodeOffset(compiled_method, it, thumb_offset);
+              return NewQuickCodeOffset(compiled_method, method_ref, thumb_offset);
             });
       }
 
@@ -960,15 +1182,17 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
       const CompilerOptions& compiler_options = writer_->compiler_driver_->GetCompilerOptions();
       // Exclude quickened dex methods (code_size == 0) since they have no native code.
       if (compiler_options.GenerateAnyDebugInfo() && code_size != 0) {
+        DCHECK(has_debug_info);
+
         bool has_code_info = method_header->IsOptimized();
         // Record debug information for this function if we are doing that.
-        debug::MethodDebugInfo info = debug::MethodDebugInfo();
+        debug::MethodDebugInfo& info = writer_->method_info_[debug_info_idx];
         info.trampoline_name = nullptr;
-        info.dex_file = dex_file_;
-        info.class_def_index = class_def_index_;
-        info.dex_method_index = it.GetMemberIndex();
-        info.access_flags = it.GetMethodAccessFlags();
-        info.code_item = it.GetMethodCodeItem();
+        info.dex_file = method_ref.dex_file;
+        info.class_def_index = class_def_index;
+        info.dex_method_index = method_ref.dex_method_index;
+        info.access_flags = access_flags;
+        info.code_item = code_item;
         info.isa = compiled_method->GetInstructionSet();
         info.deduped = deduped;
         info.is_native_debuggable = compiler_options.GetNativeDebuggable();
@@ -979,16 +1203,20 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
         info.frame_size_in_bytes = compiled_method->GetFrameSizeInBytes();
         info.code_info = has_code_info ? compiled_method->GetVmapTable().data() : nullptr;
         info.cfi = compiled_method->GetCFIInfo();
-        writer_->method_info_.push_back(info);
+      } else {
+        DCHECK(!has_debug_info);
       }
 
       DCHECK_LT(method_offsets_index_, oat_class->method_offsets_.size());
       OatMethodOffsets* offsets = &oat_class->method_offsets_[method_offsets_index_];
       offsets->code_offset_ = quick_code_offset;
-      ++method_offsets_index_;
     }
 
     return true;
+  }
+
+  size_t GetOffset() const {
+    return offset_;
   }
 
  private:
@@ -1013,15 +1241,19 @@ class OatWriter::InitCodeMethodVisitor : public OatDexMethodVisitor {
   };
 
   uint32_t NewQuickCodeOffset(CompiledMethod* compiled_method,
-                              const ClassDataItemIterator& it,
+                              const MethodReference& method_ref,
                               uint32_t thumb_offset) {
-    offset_ = writer_->relative_patcher_->ReserveSpace(
-        offset_, compiled_method, MethodReference(dex_file_, it.GetMemberIndex()));
+    offset_ = writer_->relative_patcher_->ReserveSpace(offset_, compiled_method, method_ref);
     offset_ += CodeAlignmentSize(offset_, *compiled_method);
     DCHECK_ALIGNED_PARAM(offset_ + sizeof(OatQuickMethodHeader),
                          GetInstructionSetAlignment(compiled_method->GetInstructionSet()));
     return offset_ + sizeof(OatQuickMethodHeader) + thumb_offset;
   }
+
+  OatWriter* writer_;
+
+  // Offset of the code of the compiled methods.
+  size_t offset_;
 
   // Deduplication is already done on a pointer basis by the compiler driver,
   // so we can simply compare the pointers to find out if things are duplicated.
@@ -1256,19 +1488,22 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
   std::vector<std::pair<ArtMethod*, ArtMethod*>> methods_to_process_;
 };
 
-class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
+class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor, public OrderedMethodVisitor {
  public:
-  WriteCodeMethodVisitor(OatWriter* writer, OutputStream* out, const size_t file_offset,
-                         size_t relative_offset) SHARED_LOCK_FUNCTION(Locks::mutator_lock_)
+  WriteCodeMethodVisitor(OatWriter* writer,
+                         OutputStream* out,
+                         const size_t file_offset,
+                         size_t relative_offset,
+                         std::priority_queue<LayoutMethodData> ordered_methods)
       : OatDexMethodVisitor(writer, relative_offset),
+        OrderedMethodVisitor(std::move(ordered_methods)),
         pointer_size_(GetInstructionSetPointerSize(writer_->compiler_driver_->GetInstructionSet())),
         class_loader_(writer->HasImage() ? writer->image_writer_->GetClassLoader() : nullptr),
         out_(out),
         file_offset_(file_offset),
-        soa_(Thread::Current()),
-        no_thread_suspension_("OatWriter patching"),
         class_linker_(Runtime::Current()->GetClassLinker()),
-        dex_cache_(nullptr) {
+        dex_cache_(nullptr),
+        no_thread_suspension_("OatWriter patching") {
     patched_code_.reserve(16 * KB);
     if (writer_->HasBootImage()) {
       // If we're creating the image, the address space must be ready so that we can apply patches.
@@ -1276,7 +1511,34 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
     }
   }
 
-  ~WriteCodeMethodVisitor() UNLOCK_FUNCTION(Locks::mutator_lock_) {
+  virtual bool VisitStart() OVERRIDE {
+    return true;
+  }
+
+  virtual bool VisitMethod(OatClass* oat_class,
+                           CompiledMethod* compiled_method,
+                           const MethodReference& method_ref,
+                           uint16_t method_offsets_index_,
+                           size_t class_def_index,
+                           uint32_t access_flags,
+                           const DexFile::CodeItem* code_item,
+                           bool has_debug_info ATTRIBUTE_UNUSED,
+                           size_t debug_info_idx ATTRIBUTE_UNUSED)
+      REQUIRES_SHARED(Locks::mutator_lock_)  {
+    dex_file_ = nullptr;
+    class_def_index_ = DexFile::kDexNoIndex;
+    if (!StartClass(method_ref.dex_file, class_def_index)) {
+      return false;
+    }
+
+    return VisitMethodActual(oat_class,
+                             compiled_method,
+                             method_ref,
+                             method_offsets_index_,
+                             class_def_index,
+                             access_flags,
+                             code_item);
+
   }
 
   bool StartClass(const DexFile* dex_file, size_t class_def_index) OVERRIDE
@@ -1288,6 +1550,15 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
         dex_cache_ = class_linker_->FindDexCache(Thread::Current(), *dex_file);
         DCHECK(dex_cache_ != nullptr);
       }
+    }
+    return true;
+  }
+
+  virtual bool VisitComplete() {
+    offset_ = writer_->relative_patcher_->WriteThunks(out_, offset_);
+    if (UNLIKELY(offset_ == 0u)) {
+      PLOG(ERROR) << "Failed to write final relative call thunks";
+      return false;
     }
     return true;
   }
@@ -1305,11 +1576,21 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
     return result;
   }
 
-  bool VisitMethod(size_t class_def_method_index, const ClassDataItemIterator& it) OVERRIDE
+  bool VisitMethod(size_t class_def_method_index ATTRIBUTE_UNUSED, const ClassDataItemIterator& it ATTRIBUTE_UNUSED) OVERRIDE
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    OatClass* oat_class = &writer_->oat_classes_[oat_class_index_];
-    const CompiledMethod* compiled_method = oat_class->GetCompiledMethod(class_def_method_index);
 
+    LOG(FATAL) << "not implemented";
+    UNREACHABLE();
+  }
+
+  bool VisitMethodActual(OatClass* oat_class,
+                         CompiledMethod* compiled_method,
+                         const MethodReference& method_ref,
+                         uint16_t method_offsets_index_,
+                         size_t class_def_index ATTRIBUTE_UNUSED,
+                         uint32_t access_flags ATTRIBUTE_UNUSED,
+                         const DexFile::CodeItem* code_item ATTRIBUTE_UNUSED)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
     // No thread suspension since dex_cache_ that may get invalidated if that occurs.
     ScopedAssertNoThreadSuspension tsc(__FUNCTION__);
     if (HasCompiledCode(compiled_method)) {
@@ -1324,13 +1605,13 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
       if (method_offsets.code_offset_ > offset_) {
         offset_ = writer_->relative_patcher_->WriteThunks(out, offset_);
         if (offset_ == 0u) {
-          ReportWriteFailure("relative call thunk", it);
+          ReportWriteFailure("relative call thunk", method_ref);
           return false;
         }
         uint32_t alignment_size = CodeAlignmentSize(offset_, *compiled_method);
         if (alignment_size != 0) {
           if (!writer_->WriteCodeAlignment(out, alignment_size)) {
-            ReportWriteFailure("code alignment padding", it);
+            ReportWriteFailure("code alignment padding", method_ref);
             return false;
           }
           offset_ += alignment_size;
@@ -1340,11 +1621,11 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
                              GetInstructionSetAlignment(compiled_method->GetInstructionSet()));
         DCHECK_EQ(method_offsets.code_offset_,
                   offset_ + sizeof(OatQuickMethodHeader) + compiled_method->CodeDelta())
-            << dex_file_->PrettyMethod(it.GetMemberIndex());
+            << dex_file_->PrettyMethod(method_ref.dex_method_index);
         const OatQuickMethodHeader& method_header =
             oat_class->method_headers_[method_offsets_index_];
         if (!out->WriteFully(&method_header, sizeof(method_header))) {
-          ReportWriteFailure("method header", it);
+          ReportWriteFailure("method header", method_ref);
           return false;
         }
         writer_->size_method_header_ += sizeof(method_header);
@@ -1438,7 +1719,7 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
         }
 
         if (!out->WriteFully(quick_code.data(), code_size)) {
-          ReportWriteFailure("method code", it);
+          ReportWriteFailure("method code", method_ref);
           return false;
         }
         writer_->size_code_ += code_size;
@@ -1456,15 +1737,22 @@ class OatWriter::WriteCodeMethodVisitor : public OatDexMethodVisitor {
   ObjPtr<mirror::ClassLoader> class_loader_;
   OutputStream* const out_;
   const size_t file_offset_;
-  const ScopedObjectAccess soa_;
-  const ScopedAssertNoThreadSuspension no_thread_suspension_;
   ClassLinker* const class_linker_;
   ObjPtr<mirror::DexCache> dex_cache_;
   std::vector<uint8_t> patched_code_;
+  const ScopedAssertNoThreadSuspension no_thread_suspension_;
+
+  void ReportWriteFailure(const char* what, const MethodReference& method_ref) {
+    ReportWriteFailure(what, method_ref.dex_method_index);
+  }
 
   void ReportWriteFailure(const char* what, const ClassDataItemIterator& it) {
+    ReportWriteFailure(what, it.GetMemberIndex());
+  }
+
+  void ReportWriteFailure(const char* what, uint32_t method_idx) {
     PLOG(ERROR) << "Failed to write " << what << " for "
-        << dex_file_->PrettyMethod(it.GetMemberIndex()) << " to " << out_->GetLocation();
+        << dex_file_->PrettyMethod(method_idx) << " to " << out_->GetLocation();
   }
 
   ArtMethod* GetTargetMethod(const LinkerPatch& patch)
@@ -1900,12 +2188,41 @@ size_t OatWriter::InitOatCode(size_t offset) {
 
 size_t OatWriter::InitOatCodeDexFiles(size_t offset) {
   if (!compiler_driver_->GetCompilerOptions().IsAnyCompilationEnabled()) {
+    LOG(INFO) << "InitOatCodeDexFiles: OatWriter("
+              << this << "), "
+              << "compilastion is disabled";
+
     return offset;
   }
-  InitCodeMethodVisitor code_visitor(this, offset);
-  bool success = VisitDexMethods(&code_visitor);
-  DCHECK(success);
-  offset = code_visitor.GetOffset();
+  bool success = false;
+
+  {
+    ScopedObjectAccess soa(Thread::Current());
+
+    LayoutCodeMethodVisitor layout_code_visitor(this, offset);
+    success = VisitDexMethods(&layout_code_visitor);
+    DCHECK(success);
+
+    LayoutReserveOffsetCodeMethodVisitor layout_reserve_code_visitor(
+        this,
+        offset,
+        layout_code_visitor.ReleaseOrderedMethods());
+    success = layout_reserve_code_visitor.Visit();
+    DCHECK(success);
+    offset = layout_reserve_code_visitor.GetOffset();
+
+    // Save the method order because the WriteCodeMethodVisitor will need this
+    // order again.
+    DCHECK(ordered_methods_ == nullptr);
+    ordered_methods_.reset(
+        new std::priority_queue<LayoutMethodData>(
+            layout_reserve_code_visitor.ReleaseOrderedMethods()));
+
+    LOG(INFO) << "InitOatCodeDexFiles: OatWriter("
+              << this << "), "
+              << "set ordered methods to "
+              << ordered_methods_.get();
+  }
 
   if (HasImage()) {
     InitImageMethodVisitor image_visitor(this, offset, dex_files_);
@@ -1914,6 +2231,8 @@ size_t OatWriter::InitOatCodeDexFiles(size_t offset) {
     DCHECK(success);
     offset = image_visitor.GetOffset();
   }
+
+
 
   return offset;
 }
@@ -2581,18 +2900,34 @@ size_t OatWriter::WriteCode(OutputStream* out, size_t file_offset, size_t relati
 size_t OatWriter::WriteCodeDexFiles(OutputStream* out,
                                     size_t file_offset,
                                     size_t relative_offset) {
-  #define VISIT(VisitorType)                                              \
-    do {                                                                  \
-      VisitorType visitor(this, out, file_offset, relative_offset);       \
-      if (UNLIKELY(!VisitDexMethods(&visitor))) {                         \
-        return 0;                                                         \
-      }                                                                   \
-      relative_offset = visitor.GetOffset();                              \
-    } while (false)
+  if (!compiler_driver_->GetCompilerOptions().IsAnyCompilationEnabled()) {
+    // As with InitOatCodeDexFiles, also skip the writer if
+    // compilation was disabled.
+    LOG(INFO) << "WriteCodeDexFiles: OatWriter("
+              << this << "), "
+              << "compilation is disabled";
 
-  VISIT(WriteCodeMethodVisitor);
+    return relative_offset;
+  }
+  ScopedObjectAccess soa(Thread::Current());
 
-  #undef VISIT
+  LOG(INFO) << "WriteCodeDexFiles: OatWriter("
+            << this << "), "
+            << "read ordered methods as "
+            << ordered_methods_.get();
+
+  DCHECK(ordered_methods_ != nullptr);
+  std::unique_ptr<std::priority_queue<LayoutMethodData>> ordered_methods_ptr =
+      std::move(ordered_methods_);
+  WriteCodeMethodVisitor visitor(this,
+                                 out,
+                                 file_offset,
+                                 relative_offset,
+                                 std::move(*ordered_methods_ptr));
+  if (UNLIKELY(!visitor.Visit())) {
+    return 0;
+  }
+  relative_offset = visitor.GetOffset();
 
   size_code_alignment_ += relative_patcher_->CodeAlignmentSize();
   size_relative_call_thunks_ += relative_patcher_->RelativeCallThunksSize();
