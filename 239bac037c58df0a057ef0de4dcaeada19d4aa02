@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b21fb75a_4d4ad430",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-23T20:23:37Z",
+      "side": 1,
+      "message": "This path is wrong. It should use prebuilts JDK instead.\n\nFurthermore, can you just have it automatically figure this out instead of having to be passed in explicitly?",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa79ac17_92cc3b61",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-23T20:23:37Z",
+      "side": 1,
+      "message": "nit: lowercase mode\u003d\"ri\"",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860e9802_85e39082",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-23T20:23:37Z",
+      "side": 1,
+      "message": "?",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a425493e_d3bef4e1",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-23T20:23:37Z",
+      "side": 1,
+      "message": "[[]] not [] please",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
