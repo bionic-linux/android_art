@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13757f2b_aadcff5d",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-23T17:08:40Z",
+      "side": 1,
+      "message": "mask \u0026 ~static_cast\u003cuint64_t\u003e(0xff)",
+      "range": {
+        "startLine": 31,
+        "startChar": 9,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a49900b8_f8498677",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-23T17:08:40Z",
+      "side": 1,
+      "message": "old \u0026 ~mask",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad6c6a95_a454c208",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-23T17:08:40Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 12
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5e38308_bafe82fd",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-23T17:08:40Z",
+      "side": 1,
+      "message": "break after the \u0027(\u0027, not before.",
+      "range": {
+        "startLine": 117,
+        "startChar": 12,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95476071_5ec20690",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-08-23T17:08:40Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 72
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
