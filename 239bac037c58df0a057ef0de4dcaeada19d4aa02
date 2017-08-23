@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32a032ad_bd7d0e24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-23T20:59:40Z",
+      "side": 1,
+      "message": "\u003e This path is wrong. It should use prebuilts JDK instead.\n\nThis is just an example. The implementation is likely to be there on unix systems with jdk6 installed and it is unlikely to be the default jdwp implementation (which will probably be the prebuilts one) which is what the point of the example is.\n\n\u003e Furthermore, can you just have it automatically figure this out instead of having to be passed in explicitly?\n\nThe whole point is to be able to run the test on \u0027any\u0027 jdwp implementation.",
+      "parentUuid": "b21fb75a_4d4ad430",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa79ac17_92cc3b61",
         "filename": "tools/run-jdwp-tests.sh",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91c6e1e_973afacc",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-23T20:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa79ac17_92cc3b61",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ca989e8e_d84cd227",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-23T20:59:40Z",
+      "side": 1,
+      "message": "that is the name the jar file is given by our build system.",
+      "parentUuid": "860e9802_85e39082",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a425493e_d3bef4e1",
         "filename": "tools/run-jdwp-tests.sh",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30f4bc6_4bc8e3d6",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-08-23T20:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a425493e_d3bef4e1",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
