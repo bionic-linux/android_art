@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "01eee565_d0b07a75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-23T21:13:58Z",
+      "side": 1,
+      "message": "Ok, my whole objection was to *requiring* this flag, but it looks like it already works without it .",
+      "parentUuid": "32a032ad_bd7d0e24",
+      "revId": "239bac037c58df0a057ef0de4dcaeada19d4aa02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa79ac17_92cc3b61",
         "filename": "tools/run-jdwp-tests.sh",
         "patchSetId": 2
