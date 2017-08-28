@@ -16,6 +16,24 @@
       "revId": "02cb397857c979dffae95e2db2678a72ec407cf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73f07f98_44c3f361",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-28T23:28:39Z",
+      "side": 0,
+      "message": "Previously I wasn\u0027t smart enough to know the existence of VisitInstruction().",
+      "parentUuid": "139229e6_b30442f8",
+      "revId": "02cb397857c979dffae95e2db2678a72ec407cf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

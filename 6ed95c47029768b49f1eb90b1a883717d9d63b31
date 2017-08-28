@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f1fda637_61430a0b",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-28T23:28:39Z",
+      "side": 1,
+      "message": "Added this comment:\n    // By default, VisitXXX() (including VisitPhi()) calls VisitInstruction(),\n    // unless VisitXXX() is overridden. VisitInstanceFieldGet() etc. above\n    // also call CreateReferenceInfoForReferenceType() explicitly.",
+      "parentUuid": "4252dd8d_cca6af11",
+      "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcba1a74_6904ee3a",
         "filename": "compiler/optimizing/load_store_analysis.h",
         "patchSetId": 1
