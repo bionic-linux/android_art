@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51f4778_19bf3453",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-28T22:45:22Z",
+      "side": 1,
+      "message": "just for my understanding, this method is called for all instructions that do not explicitly overwrite the VisitXXX in this file, right?",
+      "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcba1a74_6904ee3a",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-08-28T22:45:22Z",
+      "side": 1,
+      "message": "a monitor operation works on a reference var, right?\nis that accounted for?",
+      "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
