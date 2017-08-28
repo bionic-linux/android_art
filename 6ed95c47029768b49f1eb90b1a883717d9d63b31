@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25465364_d0afb603",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-28T22:54:14Z",
+      "side": 1,
+      "message": "Yes. VisitXXX() calls VisitInstruction(), unless it\u0027s overridden.",
+      "parentUuid": "c51f4778_19bf3453",
+      "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcba1a74_6904ee3a",
         "filename": "compiler/optimizing/load_store_analysis.h",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-28T22:45:22Z",
       "side": 1,
       "message": "a monitor operation works on a reference var, right?\nis that accounted for?",
+      "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65cfc257_4dff5ade",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-28T22:54:14Z",
+      "side": 1,
+      "message": "MonitorOperation doesn\u0027t return reference value. So it\u0027s not related to the VisitInstruction() above.",
+      "parentUuid": "dcba1a74_6904ee3a",
       "revId": "6ed95c47029768b49f1eb90b1a883717d9d63b31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
