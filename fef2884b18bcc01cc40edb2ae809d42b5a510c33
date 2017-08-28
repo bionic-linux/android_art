@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88eff708_44248435",
+        "filename": "compiler/optimizing/load_store_analysis.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-28T23:34:32Z",
+      "side": 1,
+      "message": "Thanks for explaining this.",
+      "revId": "fef2884b18bcc01cc40edb2ae809d42b5a510c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
