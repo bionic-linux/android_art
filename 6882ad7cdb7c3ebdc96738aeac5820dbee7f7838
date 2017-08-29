@@ -48,6 +48,201 @@
     },
     {
       "key": {
+        "uuid": "b0e3abb7_ed35c156",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2017,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "app image",
+      "range": {
+        "startLine": 2017,
+        "startChar": 28,
+        "endLine": 2017,
+        "endChar": 36
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f0cb0cf_a5536392",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2018,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "app image",
+      "range": {
+        "startLine": 2018,
+        "startChar": 43,
+        "endLine": 2018,
+        "endChar": 51
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a2ee50_9cb4598e",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 5368,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "Why here? Please add a comment.",
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6604393e_e2b1c295",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "four",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 13
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9a64f46_61797fcb",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "depth",
+      "range": {
+        "startLine": 73,
+        "startChar": 25,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4eddb652_edadb692",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "depth",
+      "range": {
+        "startLine": 84,
+        "startChar": 27,
+        "endLine": 84,
+        "endChar": 30
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7e30060_8ead771e",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "IsUninitialized",
+      "range": {
+        "startLine": 94,
+        "startChar": 7,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3064bfb_93641ef4",
+        "filename": "runtime/instance_of_and_status.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "depth (here and other methods below).",
+      "range": {
+        "startLine": 103,
+        "startChar": 38,
+        "endLine": 103,
+        "endChar": 41
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa50a932_d983f7cf",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "indentation is off",
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6c6a95_a454c208",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
@@ -111,6 +306,115 @@
         "endLine": 120,
         "endChar": 72
       },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f05c5eb_ac24d6db",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "DCHECK_GE",
+      "range": {
+        "startLine": 286,
+        "startChar": 2,
+        "endLine": 286,
+        "endChar": 8
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afab9417_7187d17f",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "Add a comment when this is called.",
+      "range": {
+        "startLine": 709,
+        "startChar": 2,
+        "endLine": 709,
+        "endChar": 74
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35834e4c_f356956a",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "Add a comment that this method is only for initializing classes in app images.",
+      "range": {
+        "startLine": 712,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 67
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53dad167_d74b1fcc",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "Given we use a magic constant, you can add a DCHECK that the status is indeed uninitialized.",
+      "range": {
+        "startLine": 720,
+        "startChar": 17,
+        "endLine": 720,
+        "endChar": 18
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd149b7f_4c7dc500",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-08-29T11:09:33Z",
+      "side": 1,
+      "message": "Please don\u0027t disable unconditionally and check with Andreas/Alex how to fix it.",
       "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
