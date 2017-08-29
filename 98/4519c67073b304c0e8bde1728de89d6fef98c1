@@ -1,0 +1,10 @@
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+1: Anton Kirilov <anton.kirilov@linaro.org>
+Verified+1: Vladimir Marko <vmarko@google.com>
+Autosubmit+1: Vladimir Marko <vmarko@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 29 Aug 2017 16:08:38 +0000
+Reviewed-on: https://android-review.googlesource.com/465817
+Project: platform/art
+Branch: refs/heads/master
