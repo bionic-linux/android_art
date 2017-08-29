@@ -208,14 +208,18 @@
     },
     {
         "tests": ["597-deopt-busy-loop",
-                  "597-deopt-invoke-stub",
                   "604-hot-static-interface",
                   "612-jit-dex-cache",
                   "613-inlining-dex-cache",
                   "626-set-resolved-string"],
-        "variant": "trace  | stream",
+        "variant": "trace | stream",
         "description": ["These tests expect JIT compilation, which is",
                         "suppressed when tracing."]
+    },
+    {
+        "tests": "597-deopt-invoke-stub",
+        "variant": "optimizing | trace | stream",
+        "description": ["This test requires JIT compilation and no AOT."]
     },
     {
         "tests": "137-cfi",
