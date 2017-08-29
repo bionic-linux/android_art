@@ -16,8 +16,8 @@
 
 public class Main implements Runnable {
     static final int numberOfThreads = 2;
-    volatile static boolean sExitFlag = false;
-    volatile static boolean sEntered = false;
+    static boolean sExitFlag = false;
+    static boolean sEntered = false;
     int threadIndex;
 
     private static native void deoptimizeAll();
@@ -46,8 +46,15 @@ public class Main implements Runnable {
     private static int $noinline$bar() {
         // Should be entered via interpreter bridge.
         assertIsInterpreted();
-        sEntered = true;
-        while (!sExitFlag) {}
+        synchronized (Main.class) {
+            sEntered = true;
+            Main.class.notify();
+            while (!sExitFlag) {
+                try {
+                    Main.class.wait();
+                } catch (Exception e) {}
+            }
+        }
         assertIsInterpreted();
         return 0x1234;
     }
@@ -62,11 +69,18 @@ public class Main implements Runnable {
 
     public void run() {
         if (threadIndex == 0) {
-            while (!sEntered) {
-              Thread.yield();
+            synchronized (Main.class) {
+                while (!sEntered) {
+                    try {
+                        Main.class.wait();
+                    } catch (Exception e) {}
+                }
             }
             deoptimizeAll();
-            sExitFlag = true;
+            synchronized (Main.class) {
+                sExitFlag = true;
+                Main.class.notify();
+            }
         } else {
             ensureJitCompiled(Main.class, "$noinline$foo");
             $noinline$foo();
