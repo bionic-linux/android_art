@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1780ecd7_fa52a25c",
+        "filename": "test/597-deopt-invoke-stub/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-29T23:59:30Z",
+      "side": 1,
+      "message": "Fail conspicuously? There shouldn\u0027t be a legitimate reason for an InterruptedException.",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c21864ef_6ffb3a73",
+        "filename": "test/597-deopt-invoke-stub/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-29T23:59:30Z",
+      "side": 1,
+      "message": "Why?\nIt seems to neither break anything nor do anything useful.",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
