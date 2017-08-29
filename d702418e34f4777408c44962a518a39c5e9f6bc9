@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d44a0e1d_0b5d6587",
+        "filename": "openjdkjvmti/events.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-08-29T19:54:03Z",
+      "side": 1,
+      "message": "Could add a TODO here. We could turn off the listener once the shadow frame vector is drained.",
+      "range": {
+        "startLine": 227,
+        "startChar": 27,
+        "endLine": 227,
+        "endChar": 32
+      },
+      "revId": "d702418e34f4777408c44962a518a39c5e9f6bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d17a82d9_4071d5b1",
+        "filename": "openjdkjvmti/ti_stack.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 999,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-08-29T19:54:03Z",
+      "side": 1,
+      "message": "Single line.",
+      "range": {
+        "startLine": 997,
+        "startChar": 37,
+        "endLine": 999,
+        "endChar": 50
+      },
+      "revId": "d702418e34f4777408c44962a518a39c5e9f6bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f25ac2d8_e8394fe0",
+        "filename": "runtime/instrumentation.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-08-29T19:54:03Z",
+      "side": 1,
+      "message": "Where\u0027s the documentation what this means? Where\u0027s the instrumentation test for this? How is it made sure that there are actually shadow frames up the stack? Should all be commented on somewhere.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 73
+      },
+      "revId": "d702418e34f4777408c44962a518a39c5e9f6bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
