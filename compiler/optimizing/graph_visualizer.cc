@@ -487,6 +487,20 @@ class HGraphVisualizerPrinter : public HGraphDelegateVisitor {
     StartAttributeStream("invoke_type") << "InvokePolymorphic";
   }
 
+  void VisitStaticFieldGet(HStaticFieldGet* sget) OVERRIDE {
+    StartAttributeStream("field_name") <<
+        sget->GetFieldInfo().GetDexFile().PrettyField(sget->GetFieldInfo().GetFieldIndex(),
+                                                      /* with type */ false);
+    StartAttributeStream("field_type") << sget->GetFieldType();
+  }
+
+  void VisitStaticFieldSet(HStaticFieldSet* sset) OVERRIDE {
+    StartAttributeStream("field_name") <<
+        sset->GetFieldInfo().GetDexFile().PrettyField(sset->GetFieldInfo().GetFieldIndex(),
+                                                      /* with type */ false);
+    StartAttributeStream("field_type") << sset->GetFieldType();
+  }
+
   void VisitInstanceFieldGet(HInstanceFieldGet* iget) OVERRIDE {
     StartAttributeStream("field_name") <<
         iget->GetFieldInfo().GetDexFile().PrettyField(iget->GetFieldInfo().GetFieldIndex(),
