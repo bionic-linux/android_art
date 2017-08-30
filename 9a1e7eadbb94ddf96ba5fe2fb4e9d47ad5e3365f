@@ -45,6 +45,23 @@
       "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4ac278c_f93c9f72",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-08-30T00:10:14Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
