@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "152ded64_90b153ba",
+        "filename": "test/597-deopt-invoke-stub/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-30T00:23:26Z",
+      "side": 1,
+      "message": "Well, I have to handle an exception here. The loop is also just a pattern for handling spurious wakeup which is allowed officially.",
+      "parentUuid": "1780ecd7_fa52a25c",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c21864ef_6ffb3a73",
         "filename": "test/597-deopt-invoke-stub/src/Main.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "22d7fd93_501f1e77",
+        "filename": "test/597-deopt-invoke-stub/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-30T00:23:26Z",
+      "side": 1,
+      "message": "Removed. Thanks.",
+      "parentUuid": "c21864ef_6ffb3a73",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4ac278c_f93c9f72",
         "filename": "test/knownfailures.json",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2017-08-30T00:10:14Z",
       "side": 1,
       "message": "Why?",
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea80ea6e_fb9ef39b",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-08-30T00:23:26Z",
+      "side": 1,
+      "message": "Changed to:\n[\"This test requires JIT compilation and no AOT for\", \"testing deoptimizing at quick-to-interpreter bridge.\"]",
+      "parentUuid": "b4ac278c_f93c9f72",
       "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
