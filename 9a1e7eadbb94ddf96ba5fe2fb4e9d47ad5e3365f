@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d2b23355_1bc5e9a5",
+        "filename": "test/597-deopt-invoke-stub/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-08-30T04:43:15Z",
+      "side": 1,
+      "message": "The loop needs to be there. I was just suggesting that the test should fail if you get an exception here. You have to catch InterruptedException, but you\u0027re not expecting one.\n\nSame for the exception catch block below.",
+      "parentUuid": "152ded64_90b153ba",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "9a1e7eadbb94ddf96ba5fe2fb4e9d47ad5e3365f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c21864ef_6ffb3a73",
         "filename": "test/597-deopt-invoke-stub/src/Main.java",
         "patchSetId": 2
