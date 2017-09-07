@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd491bcb_780e86fc",
+        "filename": "compiler/optimizing/loop_optimization_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-09-07T10:51:26Z",
+      "side": 1,
+      "message": "/* stats */",
+      "range": {
+        "startLine": 34,
+        "startChar": 76,
+        "endLine": 34,
+        "endChar": 77
+      },
+      "revId": "b92cc33a7a6a827da577627dc274440ac29652a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
