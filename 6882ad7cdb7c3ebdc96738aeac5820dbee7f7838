@@ -226,6 +226,23 @@
     },
     {
       "key": {
+        "uuid": "02d486ad_c8f684c2",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-07T01:18:14Z",
+      "side": 1,
+      "message": "Very brief note. There\u0027s a race here that needs to be documented in more depth. The fix is thankfully simple to implement.\n\nAs discussed offline (/w mingyao@, hboehm@):\n\nNeed to add fence on writer side:\n\n                       // e.g. parent instanceof Self\n      read source      // e.g. read parent class\n      fence\n      read target      // e.g. read self class\n\nand add the equivalent fence on the writer side (when assigning):\n\n      increment parent\u0027s \"next\" value\n      fence\n      assign self value to old parent next\n\nIn the JITted code the reader side fence becomes a no-op because JIT publication ensures a happens-before in the situations where the data race is not benign.\n\nThis race is not benign only when the object escapes during class initialization.\n\n   // thread (1)\n   class Self {\n      static {\n         global.self \u003d new Self();\n         sleep(INFINITY); // to emphasize the escapiness\n      }\n      // at the end of \u003cclinit\u003e assume bitstring is assigned\n      // (with a release for class status)\n   }\n\n   // thread (2)\n   class Parent extends Self {}\n\n   // thread (3)\n   while(global.self \u003d\u003d null);\n   global.self instanceof Parent; // must return false\n   // no \"acquire\" edge here because there is no HClinitCheck",
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa50a932_d983f7cf",
         "filename": "runtime/mirror/class-inl.h",
         "patchSetId": 10
