@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c17bd3f_4f68a292",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1631,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-09-07T20:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "006c2fae_fd2880d1",
+      "revId": "1636cc1ccf8a4505163d22a8551b41fd3d8b4cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "563ce181_e6f07aca",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3e9da9fa_b7ae0c44",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1638,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-09-07T20:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "563ce181_e6f07aca",
+      "revId": "1636cc1ccf8a4505163d22a8551b41fd3d8b4cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8b199ef_3e891cf2",
         "filename": "runtime/base/bit_utils.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-09-06T16:49:23Z",
       "side": 1,
       "message": "add tests to bit_utils_test",
+      "revId": "1636cc1ccf8a4505163d22a8551b41fd3d8b4cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c17e9e2_5773c643",
+        "filename": "runtime/base/bit_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-09-07T20:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8b199ef_3e891cf2",
       "revId": "1636cc1ccf8a4505163d22a8551b41fd3d8b4cb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
