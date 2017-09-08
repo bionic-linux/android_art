@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "03e8ef11_8e8325e9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-08T20:27:56Z",
+      "side": 1,
+      "message": "Can you add a ScopedTrace here and report how slow it is for apps like Maps, Facebook, and etc? If its too slow we should change the logic to do it async.",
+      "range": {
+        "startLine": 2019,
+        "startChar": 0,
+        "endLine": 2021,
+        "endChar": 5
+      },
+      "revId": "6882ad7cdb7c3ebdc96738aeac5820dbee7f7838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55a2ee50_9cb4598e",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 10
