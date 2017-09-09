@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58ceaa79_aec6238e",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-09-09T17:21:36Z",
+      "side": 1,
+      "message": "Logic needs some refinement, some code fails, probably because uf1 can become 0 too.\n\ndex2oatds F 09-08 18:56:41 339798 339798 loop_optimization.cc:2161] Check failed: unroll_factor \u003e\u003d 1u (unroll_factor\u003d0, 1u\u003d1)",
+      "revId": "f26bb6c74a973fde3d2783ac35324d5ce8def814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
