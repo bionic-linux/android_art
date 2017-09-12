@@ -26,6 +26,7 @@
 #include "dex/dex_file_loader.h"
 #include "handle_scope-inl.h"
 #include "jni_internal.h"
+#include "native/dalvik_system_DexFile.h"
 #include "oat_file_assistant.h"
 #include "obj_ptr-inl.h"
 #include "runtime.h"
@@ -439,22 +440,12 @@ static bool CollectDexFilesFromJavaDexFile(ObjPtr<mirror::Object> java_dex_file,
   if (java_dex_file == nullptr) {
     return true;
   }
-  // On the Java side, the dex files are stored in the cookie field.
-  mirror::LongArray* long_array = cookie_field->GetObject(java_dex_file)->AsLongArray();
-  if (long_array == nullptr) {
-    // This should never happen so log a warning.
-    LOG(ERROR) << "Unexpected null cookie";
-    return false;
-  }
-  int32_t long_array_size = long_array->GetLength();
-  // Index 0 from the long array stores the oat file. The dex files start at index 1.
-  for (int32_t j = 1; j < long_array_size; ++j) {
-    const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
-        long_array->GetWithoutChecks(j)));
+  DexFileCookie* cookie = DexFileCookieFromAddr(cookie_field->GetLong(java_dex_file));
+  for (auto& cp_dex_file : cookie->dex_files) {
     if (cp_dex_file != nullptr && cp_dex_file->NumClassDefs() > 0) {
       // TODO(calin): It's unclear why the dex files with no classes are skipped here and when
       // cp_dex_file can be null.
-      out_dex_files->push_back(cp_dex_file);
+      out_dex_files->push_back(cp_dex_file.get());
     }
   }
   return true;

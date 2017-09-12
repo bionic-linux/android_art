@@ -817,15 +817,14 @@ class RedefinitionDataHolder {
   enum DataSlot : int32_t {
     kSlotSourceClassLoader = 0,
     kSlotJavaDexFile = 1,
-    kSlotNewDexFileCookie = 2,
-    kSlotNewDexCache = 3,
-    kSlotMirrorClass = 4,
-    kSlotOrigDexFile = 5,
-    kSlotOldObsoleteMethods = 6,
-    kSlotOldDexCaches = 7,
+    kSlotNewDexCache = 2,
+    kSlotMirrorClass = 3,
+    kSlotOrigDexFile = 4,
+    kSlotOldObsoleteMethods = 5,
+    kSlotOldDexCaches = 6,
 
     // Must be last one.
-    kNumSlots = 8,
+    kNumSlots = 7,
   };
 
   // This needs to have a HandleScope passed in that is capable of creating a new Handle without
@@ -855,10 +854,6 @@ class RedefinitionDataHolder {
   art::mirror::Object* GetJavaDexFile(jint klass_index) const
       REQUIRES_SHARED(art::Locks::mutator_lock_) {
     return GetSlot(klass_index, kSlotJavaDexFile);
-  }
-  art::mirror::LongArray* GetNewDexFileCookie(jint klass_index) const
-      REQUIRES_SHARED(art::Locks::mutator_lock_) {
-    return art::down_cast<art::mirror::LongArray*>(GetSlot(klass_index, kSlotNewDexFileCookie));
   }
   art::mirror::DexCache* GetNewDexCache(jint klass_index) const
       REQUIRES_SHARED(art::Locks::mutator_lock_) {
@@ -893,10 +888,6 @@ class RedefinitionDataHolder {
   void SetJavaDexFile(jint klass_index, art::mirror::Object* dexfile)
       REQUIRES_SHARED(art::Locks::mutator_lock_) {
     SetSlot(klass_index, kSlotJavaDexFile, dexfile);
-  }
-  void SetNewDexFileCookie(jint klass_index, art::mirror::LongArray* cookie)
-      REQUIRES_SHARED(art::Locks::mutator_lock_) {
-    SetSlot(klass_index, kSlotNewDexFileCookie, cookie);
   }
   void SetNewDexCache(jint klass_index, art::mirror::DexCache* cache)
       REQUIRES_SHARED(art::Locks::mutator_lock_) {
@@ -1018,9 +1009,6 @@ class RedefinitionDataIter {
   art::mirror::Object* GetJavaDexFile() const REQUIRES_SHARED(art::Locks::mutator_lock_) {
     return holder_.GetJavaDexFile(idx_);
   }
-  art::mirror::LongArray* GetNewDexFileCookie() const REQUIRES_SHARED(art::Locks::mutator_lock_) {
-    return holder_.GetNewDexFileCookie(idx_);
-  }
   art::mirror::DexCache* GetNewDexCache() const REQUIRES_SHARED(art::Locks::mutator_lock_) {
     return holder_.GetNewDexCache(idx_);
   }
@@ -1050,10 +1038,6 @@ class RedefinitionDataIter {
   }
   void SetJavaDexFile(art::mirror::Object* dexfile) REQUIRES_SHARED(art::Locks::mutator_lock_) {
     holder_.SetJavaDexFile(idx_, dexfile);
-  }
-  void SetNewDexFileCookie(art::mirror::LongArray* cookie)
-      REQUIRES_SHARED(art::Locks::mutator_lock_) {
-    holder_.SetNewDexFileCookie(idx_, cookie);
   }
   void SetNewDexCache(art::mirror::DexCache* cache) REQUIRES_SHARED(art::Locks::mutator_lock_) {
     holder_.SetNewDexCache(idx_, cache);
@@ -1114,59 +1098,6 @@ bool Redefiner::ClassRedefinition::CheckVerification(const RedefinitionDataIter&
   }
 }
 
-// Looks through the previously allocated cookies to see if we need to update them with another new
-// dexfile. This is so that even if multiple classes with the same classloader are redefined at
-// once they are all added to the classloader.
-bool Redefiner::ClassRedefinition::AllocateAndRememberNewDexFileCookie(
-    art::Handle<art::mirror::ClassLoader> source_class_loader,
-    art::Handle<art::mirror::Object> dex_file_obj,
-    /*out*/RedefinitionDataIter* cur_data) {
-  art::StackHandleScope<2> hs(driver_->self_);
-  art::MutableHandle<art::mirror::LongArray> old_cookie(
-      hs.NewHandle<art::mirror::LongArray>(nullptr));
-  bool has_older_cookie = false;
-  // See if we already have a cookie that a previous redefinition got from the same classloader.
-  for (auto old_data = cur_data->GetHolder().begin(); old_data != *cur_data; ++old_data) {
-    if (old_data.GetSourceClassLoader() == source_class_loader.Get()) {
-      // Since every instance of this classloader should have the same cookie associated with it we
-      // can stop looking here.
-      has_older_cookie = true;
-      old_cookie.Assign(old_data.GetNewDexFileCookie());
-      break;
-    }
-  }
-  if (old_cookie.IsNull()) {
-    // No older cookie. Get it directly from the dex_file_obj
-    // We should not have seen this classloader elsewhere.
-    CHECK(!has_older_cookie);
-    old_cookie.Assign(ClassLoaderHelper::GetDexFileCookie(dex_file_obj));
-  }
-  // Use the old cookie to generate the new one with the new DexFile* added in.
-  art::Handle<art::mirror::LongArray>
-      new_cookie(hs.NewHandle(ClassLoaderHelper::AllocateNewDexFileCookie(driver_->self_,
-                                                                          old_cookie,
-                                                                          dex_file_.get())));
-  // Make sure the allocation worked.
-  if (new_cookie.IsNull()) {
-    return false;
-  }
-
-  // Save the cookie.
-  cur_data->SetNewDexFileCookie(new_cookie.Get());
-  // If there are other copies of this same classloader we need to make sure that we all have the
-  // same cookie.
-  if (has_older_cookie) {
-    for (auto old_data = cur_data->GetHolder().begin(); old_data != *cur_data; ++old_data) {
-      // We will let the GC take care of the cookie we allocated for this one.
-      if (old_data.GetSourceClassLoader() == source_class_loader.Get()) {
-        old_data.SetNewDexFileCookie(new_cookie.Get());
-      }
-    }
-  }
-
-  return true;
-}
-
 bool Redefiner::ClassRedefinition::FinishRemainingAllocations(
     /*out*/RedefinitionDataIter* cur_data) {
   art::ScopedObjectAccessUnchecked soa(driver_->self_);
@@ -1182,13 +1113,6 @@ bool Redefiner::ClassRedefinition::FinishRemainingAllocations(
     cur_data->SetJavaDexFile(dex_file_obj.Get());
     if (dex_file_obj == nullptr) {
       RecordFailure(ERR(INTERNAL), "Unable to find dex file!");
-      return false;
-    }
-    // Allocate the new dex file cookie.
-    if (!AllocateAndRememberNewDexFileCookie(loader, dex_file_obj, cur_data)) {
-      driver_->self_->AssertPendingOOMException();
-      driver_->self_->ClearException();
-      RecordFailure(ERR(OUT_OF_MEMORY), "Unable to allocate dex file array for class loader");
       return false;
     }
   }
@@ -1351,7 +1275,7 @@ jvmtiError Redefiner::Run() {
     art::ScopedAssertNoThreadSuspension nts("Updating runtime objects for redefinition");
     ClassRedefinition& redef = data.GetRedefinition();
     if (data.GetSourceClassLoader() != nullptr) {
-      ClassLoaderHelper::UpdateJavaDexFile(data.GetJavaDexFile(), data.GetNewDexFileCookie());
+      ClassLoaderHelper::UpdateJavaDexFile(data.GetJavaDexFile(), &redef.GetDexFile());
     }
     art::mirror::Class* klass = data.GetMirrorClass();
     // TODO Rewrite so we don't do a stack walk for each and every class.

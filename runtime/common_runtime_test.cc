@@ -644,17 +644,13 @@ std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(
         }
         ObjPtr<mirror::Object> dex_file = dex_file_field->GetObject(element);
         if (dex_file != nullptr) {
-          ObjPtr<mirror::LongArray> long_array = cookie_field->GetObject(dex_file)->AsLongArray();
-          DCHECK(long_array != nullptr);
-          int32_t long_array_size = long_array->GetLength();
-          for (int32_t j = kDexFileIndexStart; j < long_array_size; ++j) {
-            const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
-                long_array->GetWithoutChecks(j)));
+          DexFileCookie* cookie = DexFileCookieFromAddr(cookie_field->GetLong(dex_file));
+          for (auto& cp_dex_file : cookie->dex_files) {
             if (cp_dex_file == nullptr) {
               LOG(WARNING) << "Null DexFile";
               continue;
             }
-            ret.push_back(cp_dex_file);
+            ret.push_back(cp_dex_file.get());
           }
         }
       }

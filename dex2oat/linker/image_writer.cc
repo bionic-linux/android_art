@@ -127,7 +127,7 @@ static void ClearDexFileCookies() REQUIRES_SHARED(Locks::mutator_lock_) {
     if (klass == WellKnownClasses::ToClass(WellKnownClasses::dalvik_system_DexFile)) {
       ArtField* field = jni::DecodeArtField(WellKnownClasses::dalvik_system_DexFile_cookie);
       // Null out the cookie to enable determinism. b/34090128
-      field->SetObject</*kTransactionActive*/false>(obj, nullptr);
+      field->SetLong</*kTransactionActive*/false>(obj, 0);
     }
   };
   Runtime::Current()->GetHeap()->VisitObjects(visitor);

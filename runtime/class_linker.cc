@@ -2457,7 +2457,7 @@ ObjPtr<mirror::Class> ClassLinker::FindClassInBaseDexClassLoaderClassPath(
         jni::DecodeArtField(WellKnownClasses::dalvik_system_DexPathList_dexElements)->
             GetObject(dex_path_list);
     // Loop through each dalvik.system.DexPathList$Element's dalvik.system.DexFile and look
-    // at the mCookie which is a DexFile vector.
+    // at the DexFileCookie.
     if (dex_elements_obj != nullptr) {
       StackHandleScope<1> hs(self);
       Handle<mirror::ObjectArray<mirror::Object>> dex_elements =
@@ -2470,17 +2470,9 @@ ObjPtr<mirror::Class> ClassLinker::FindClassInBaseDexClassLoaderClassPath(
         }
         ObjPtr<mirror::Object> dex_file = dex_file_field->GetObject(element);
         if (dex_file != nullptr) {
-          ObjPtr<mirror::LongArray> long_array = cookie_field->GetObject(dex_file)->AsLongArray();
-          if (long_array == nullptr) {
-            // This should never happen so log a warning.
-            LOG(WARNING) << "Null DexFile::mCookie for " << descriptor;
-            break;
-          }
-          int32_t long_array_size = long_array->GetLength();
-          // First element is the oat file.
-          for (int32_t j = kDexFileIndexStart; j < long_array_size; ++j) {
-            const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
-                long_array->GetWithoutChecks(j)));
+          DexFileCookie* cookie = DexFileCookieFromAddr(cookie_field->GetLong(dex_file));
+          for (auto& cp_dex_file : cookie->dex_files) {
+            CHECK(cp_dex_file);
             const DexFile::ClassDef* dex_class_def =
                 OatDexFile::FindClassDef(*cp_dex_file, descriptor, hash);
             if (dex_class_def != nullptr) {
@@ -7908,17 +7900,10 @@ std::string DescribeLoaders(ObjPtr<mirror::ClassLoader> loader, const char* clas
             ObjPtr<mirror::Object> element = dex_elements->GetWithoutChecks(i);
             ObjPtr<mirror::Object> dex_file =
                 (element != nullptr) ? dex_file_field->GetObject(element) : nullptr;
-            ObjPtr<mirror::LongArray> long_array =
-                (dex_file != nullptr) ? cookie_field->GetObject(dex_file)->AsLongArray() : nullptr;
-            if (long_array != nullptr) {
-              int32_t long_array_size = long_array->GetLength();
-              // First element is the oat file.
-              for (int32_t j = kDexFileIndexStart; j < long_array_size; ++j) {
-                const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(
-                    static_cast<uintptr_t>(long_array->GetWithoutChecks(j)));
-                oss << path_separator << cp_dex_file->GetLocation();
-                path_separator = ":";
-              }
+            DexFileCookie* cookie = DexFileCookieFromAddr(cookie_field->GetLong(dex_file));
+            for (auto& cp_dex_file : cookie->dex_files) {
+              oss << path_separator << cp_dex_file->GetLocation();
+              path_separator = ":";
             }
           }
           oss << ")";
@@ -8764,20 +8749,21 @@ jobject ClassLinker::CreateWellKnownClassLoader(Thread* self,
   for (const DexFile* dex_file : dex_files) {
     StackHandleScope<4> hs2(self);
 
-    // CreateWellKnownClassLoader is only used by gtests and compiler.
-    // Index 0 of h_long_array is supposed to be the oat file but we can leave it null.
-    Handle<mirror::LongArray> h_long_array = hs2.NewHandle(mirror::LongArray::Alloc(
-        self,
-        kDexFileIndexStart + 1));
-    DCHECK(h_long_array != nullptr);
-    h_long_array->Set(kDexFileIndexStart, reinterpret_cast<intptr_t>(dex_file));
+    // Note that we create a dalvik.system.DexFile object here without
+    // registering the native cookie; the native DexFileCookie will never get
+    // cleaned up. This should be acceptable for the unstarted runtime use
+    // case.
+    DexFileCookie* cookie = new DexFileCookie;
 
-    // Note that this creates a finalizable dalvik.system.DexFile object and a corresponding
-    // FinalizerReference which will never get cleaned up without a started runtime.
+    // TODO: Change CreateWellKnownClassLoader to take a vector of unique_ptrs
+    // of DexFile, to more clearly indicate that we are taking ownership of
+    // the dex file here by making a DexFileCookie for it.
+    cookie->dex_files.emplace_back(dex_file);
+
     Handle<mirror::Object> h_dex_file = hs2.NewHandle(
         cookie_field->GetDeclaringClass()->AllocObject(self));
     DCHECK(h_dex_file != nullptr);
-    cookie_field->SetObject<false>(h_dex_file.Get(), h_long_array.Get());
+    cookie_field->SetLong<false>(h_dex_file.Get(), DexFileCookieToAddr(cookie));
 
     Handle<mirror::String> h_file_name = hs2.NewHandle(
         mirror::String::AllocFromModifiedUtf8(self, dex_file->GetLocation().c_str()));

@@ -390,6 +390,7 @@ cc_defaults {
         "664-aget-verifier/aget-verifier.cc",
         "667-jit-jni-stub/jit_jni_stub_test.cc",
         "708-jit-cache-churn/jit.cc",
+        "944-transform-classloaders/transform_classloaders.cc",
     ],
     shared_libs: [
         "libbacktrace",

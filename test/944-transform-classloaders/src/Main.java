@@ -16,6 +16,8 @@
 
 public class Main {
   public static void main(String[] args) throws Exception {
+    System.loadLibrary(args[0]);
+
     art.Test944.run();
   }
 }
