@@ -19,13 +19,31 @@
 
 #include <jni.h>
 #include <unistd.h>
+#include <vector>
 
 namespace art {
 
-constexpr size_t kOatFileIndex = 0;
-constexpr size_t kDexFileIndexStart = 1;
-
 class DexFile;
+class OatFile;
+
+// DexFileCookie is a handle dalvik.system.DexFile uses to access its native
+// oat and dex files. A new DexFileCookie is allocated when a
+// dalvik.system.DexFile object is constructed, and deleted via
+// NativeAllocationRegistry after the dalvik.system.DexFile is garbage
+// collected.
+struct DexFileCookie {
+  // The oat file associated with the dex location. May be null if an oat file
+  // is not available. The oat_file will be unregistered and freed when
+  // the DexFileCookie is freed.
+  const OatFile* oat_file;
+
+  // The dex files associated with the dex location.
+  // These dex files are backed by oat_file if it is available.
+  std::vector<std::unique_ptr<const DexFile>> dex_files;
+};
+
+DexFileCookie* DexFileCookieFromAddr(jlong addr);
+jlong DexFileCookieToAddr(DexFileCookie* cookie);
 
 void register_dalvik_system_DexFile(JNIEnv* env);
 

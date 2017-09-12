@@ -126,18 +126,6 @@ public class Test944 {
     }
   }
 
-  private static boolean arrayContains(long[] arr, long value) {
-    if (arr == null) {
-      return false;
-    }
-    for (int i = 0; i < arr.length; i++) {
-      if (arr[i] == value) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   /**
    * Checks that we can find the dex-file for the given class in its classloader.
    *
@@ -159,9 +147,8 @@ public class Test944 {
     //   if (curDexFile == null) {
     //     continue;
     //   }
-    //   long[] curCookie = (long[])curDexFile.mCookie;
-    //   long[] curInternalCookie = (long[])curDexFile.mInternalCookie;
-    //   if (arrayContains(curCookie, dexFilePtr) || arrayContains(curInternalCookie, dexFilePtr)) {
+    //   long cookie = curDexFile.mNativeCookie;
+    //   if (dexFileContainsPtr(cookie, dexFilePtr)) {
     //     return;
     //   }
     // }
@@ -179,15 +166,13 @@ public class Test944 {
     Field dexFileField = dexPathListElementClass.getDeclaredField("dexFile");
 
     Class<?> dexFileClass = Class.forName("dalvik.system.DexFile");
-    Field dexFileCookieField = dexFileClass.getDeclaredField("mCookie");
-    Field dexFileInternalCookieField = dexFileClass.getDeclaredField("mInternalCookie");
+    Field dexFileCookieField = dexFileClass.getDeclaredField("mNativeCookie");
 
     // Make all the fields accessible
     AccessibleObject.setAccessible(new AccessibleObject[] { pathListField,
                                                             elementArrayField,
                                                             dexFileField,
-                                                            dexFileCookieField,
-                                                            dexFileInternalCookieField }, true);
+                                                            dexFileCookieField}, true);
 
     long dexFilePtr = getDexFilePointer(klass);
 
@@ -217,13 +202,8 @@ public class Test944 {
         continue;
       }
       checkIsInstance(dexFileClass, curDexFile);
-
-      // long[] curCookie = (long[])curDexFile.mCookie;
-      long[] curCookie = (long[])dexFileCookieField.get(curDexFile);
-      // long[] curInternalCookie = (long[])curDexFile.mInternalCookie;
-      long[] curInternalCookie = (long[])dexFileInternalCookieField.get(curDexFile);
-
-      if (arrayContains(curCookie, dexFilePtr) || arrayContains(curInternalCookie, dexFilePtr)) {
+      long cookie = dexFileCookieField.getLong(curDexFile);
+      if (dexFileContainsPtr(cookie, dexFilePtr)) {
         return;
       }
     }
@@ -294,4 +274,7 @@ public class Test944 {
     checkIsInstance(dexCacheClass, dexCacheObject);
     return dexFileField.getLong(dexCacheObject);
   }
+
+  // Returns true if dexFile with cookie contains a dex file with pointer 'ptr'
+  private static native boolean dexFileContainsPtr(long cookie, long ptr);
 }

@@ -287,6 +287,7 @@ art_cc_defaults {
         "909-attach-agent/attach.cc",
         "912-classes/classes_art.cc",
         "936-search-onload/search_onload.cc",
+        "944-transform-classloaders/transform_classloaders.cc",
         "983-source-transform-verify/source_transform.cc",
         "1940-ddms-ext/ddm_ext.cc",
     ],
