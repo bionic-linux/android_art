@@ -19,13 +19,20 @@
 
 #include <jni.h>
 #include <unistd.h>
+#include <vector>
 
 namespace art {
 
-constexpr size_t kOatFileIndex = 0;
-constexpr size_t kDexFileIndexStart = 1;
-
 class DexFile;
+class OatFile;
+
+struct DexFileCookie {
+  const OatFile* oat_file;
+  std::vector<std::unique_ptr<const DexFile>> dex_files;
+};
+
+DexFileCookie* DexFileCookieFromAddr(jlong addr);
+jlong DexFileCookieToAddr(DexFileCookie* cookie);
 
 void register_dalvik_system_DexFile(JNIEnv* env);
 
