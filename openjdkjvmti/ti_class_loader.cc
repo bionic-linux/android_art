@@ -51,10 +51,12 @@
 #include "mirror/class.h"
 #include "mirror/class_ext.h"
 #include "mirror/object.h"
+#include "native/dalvik_system_DexFile.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "object_lock.h"
 #include "runtime.h"
 #include "transform.h"
+#include "well_known_classes.h"
 
 namespace openjdkjvmti {
 
@@ -72,66 +74,20 @@ bool ClassLoaderHelper::AddToClassLoader(art::Thread* self,
   if (java_dex_file_obj.IsNull()) {
     return false;
   }
-  art::Handle<art::mirror::LongArray> old_cookie(hs.NewHandle(GetDexFileCookie(java_dex_file_obj)));
-  art::Handle<art::mirror::LongArray> cookie(hs.NewHandle(
-      AllocateNewDexFileCookie(self, old_cookie, dex_file)));
-  if (cookie.IsNull()) {
+  art::ScopedAssertNoThreadSuspension nts("Updating cookie field in j.l.DexFile object");
+  return UpdateJavaDexFile(java_dex_file_obj.Get(), dex_file);
+}
+
+bool ClassLoaderHelper::UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
+                                          const art::DexFile* dex_file) {
+  art::ArtField* cookie_field = art::jni::DecodeArtField(art::WellKnownClasses::dalvik_system_DexFile_cookie);
+  CHECK(cookie_field != nullptr);
+  art::DexFileCookie* cookie = art::DexFileCookieFromAddr(cookie_field->GetLong(java_dex_file));
+  if (cookie == nullptr) {
     return false;
   }
-  art::ScopedAssertNoThreadSuspension nts("Replacing cookie fields in j.l.DexFile object");
-  UpdateJavaDexFile(java_dex_file_obj.Get(), cookie.Get());
+  cookie->dex_files.emplace(cookie->dex_files.begin(), dex_file);
   return true;
-}
-
-void ClassLoaderHelper::UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
-                                          art::ObjPtr<art::mirror::LongArray> new_cookie) {
-  art::ArtField* internal_cookie_field = java_dex_file->GetClass()->FindDeclaredInstanceField(
-      "mInternalCookie", "Ljava/lang/Object;");
-  art::ArtField* cookie_field = java_dex_file->GetClass()->FindDeclaredInstanceField(
-      "mCookie", "Ljava/lang/Object;");
-  CHECK(internal_cookie_field != nullptr);
-  art::ObjPtr<art::mirror::LongArray> orig_internal_cookie(
-      internal_cookie_field->GetObject(java_dex_file)->AsLongArray());
-  art::ObjPtr<art::mirror::LongArray> orig_cookie(
-      cookie_field->GetObject(java_dex_file)->AsLongArray());
-  internal_cookie_field->SetObject<false>(java_dex_file, new_cookie);
-  if (!orig_cookie.IsNull()) {
-    cookie_field->SetObject<false>(java_dex_file, new_cookie);
-  }
-}
-
-art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::GetDexFileCookie(
-    art::Handle<art::mirror::Object> java_dex_file_obj) {
-  // mCookie is nulled out if the DexFile has been closed but mInternalCookie sticks around until
-  // the object is finalized. Since they always point to the same array if mCookie is not null we
-  // just use the mInternalCookie field. We will update one or both of these fields later.
-  art::ArtField* internal_cookie_field = java_dex_file_obj->GetClass()->FindDeclaredInstanceField(
-      "mInternalCookie", "Ljava/lang/Object;");
-  // TODO Add check that mCookie is either null or same as mInternalCookie
-  CHECK(internal_cookie_field != nullptr);
-  return internal_cookie_field->GetObject(java_dex_file_obj.Get())->AsLongArray();
-}
-
-art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::AllocateNewDexFileCookie(
-    art::Thread* self,
-    art::Handle<art::mirror::LongArray> cookie,
-    const art::DexFile* dex_file) {
-  art::StackHandleScope<1> hs(self);
-  CHECK(cookie != nullptr);
-  CHECK_GE(cookie->GetLength(), 1);
-  art::Handle<art::mirror::LongArray> new_cookie(
-      hs.NewHandle(art::mirror::LongArray::Alloc(self, cookie->GetLength() + 1)));
-  if (new_cookie == nullptr) {
-    self->AssertPendingOOMException();
-    return nullptr;
-  }
-  // Copy the oat-dex field at the start.
-  new_cookie->SetWithoutChecks<false>(0, cookie->GetWithoutChecks(0));
-  // This must match the casts in runtime/native/dalvik_system_DexFile.cc:ConvertDexFilesToJavaArray
-  new_cookie->SetWithoutChecks<false>(
-      1, static_cast<int64_t>(reinterpret_cast<uintptr_t>(dex_file)));
-  new_cookie->Memcpy(2, cookie.Get(), 1, cookie->GetLength() - 1);
-  return new_cookie.Get();
 }
 
 // TODO This should return the actual source java.lang.DexFile object for the klass being loaded.

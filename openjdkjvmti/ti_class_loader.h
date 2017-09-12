@@ -90,8 +90,8 @@ class ClassLoaderHelper {
       art::Handle<art::mirror::LongArray> old_dex_file_cookie,
       const art::DexFile* new_dex_file) REQUIRES_SHARED(art::Locks::mutator_lock_);
 
-  static void UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
-                                art::ObjPtr<art::mirror::LongArray> new_cookie)
+  static bool UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
+                                const art::DexFile* dex_file)
       REQUIRES(art::Roles::uninterruptible_) REQUIRES_SHARED(art::Locks::mutator_lock_);
 };
 

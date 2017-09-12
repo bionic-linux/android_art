@@ -176,10 +176,6 @@ class Redefiner {
     // Checks that the dex file does not modify fields types or modifiers.
     bool CheckSameFields() REQUIRES_SHARED(art::Locks::mutator_lock_);
 
-    void UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
-                           art::ObjPtr<art::mirror::LongArray> new_cookie)
-        REQUIRES(art::Locks::mutator_lock_);
-
     void UpdateFields(art::ObjPtr<art::mirror::Class> mclass)
         REQUIRES(art::Locks::mutator_lock_);
 

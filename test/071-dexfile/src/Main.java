@@ -105,5 +105,45 @@ public class Main {
             String className = e.nextElement();
             System.out.println(className);
         }
+
+        // Make sure we don't crash if the dex file has been closed.
+        Method DexFile_close = DexFile.getMethod("close");
+        DexFile_close.invoke(dexFile);
+
+        try {
+            System.out.println("entries after close...");
+            DexFile_entries.invoke(dexFile);
+        } catch (Exception ex) {
+            // We may or may not get an exception. Just so long as the process
+            // doesn't crash is fine.
+        }
+
+        Method DexFile_getStaticSizeOfDexFile = DexFile.getMethod("getStaticSizeOfDexFile");
+        try {
+            System.out.println("getStaticSizeOfDexFile after close...");
+            DexFile_getStaticSizeOfDexFile.invoke(dexFile);
+        } catch (Exception ex) {
+            // We may or may not get an exception. Just so long as the process
+            // doesn't crash is fine.
+        }
+
+        Method DexFile_loadClass = DexFile.getMethod("loadClass", String.class, ClassLoader.class);
+        try {
+            System.out.println("loadClass after close...");
+            DexFile_loadClass.invoke(dexFile, "Another", Main.class.getClassLoader());
+        } catch (Exception ex) {
+            // We may or may not get an exception. Just so long as the process
+            // doesn't crash is fine.
+        }
+
+        Method DexFile_isBackedByOatFile = DexFile.getDeclaredMethod("isBackedByOatFile");
+        DexFile_isBackedByOatFile.setAccessible(true);
+        try {
+            System.out.println("isBackedByOatFile after close...");
+            DexFile_isBackedByOatFile.invoke(dexFile);
+        } catch (Exception ex) {
+            // We may or may not get an exception. Just so long as the process
+            // doesn't crash is fine.
+        }
     }
 }
