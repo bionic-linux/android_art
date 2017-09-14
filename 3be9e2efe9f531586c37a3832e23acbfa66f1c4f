@@ -22,6 +22,30 @@
       "revId": "3be9e2efe9f531586c37a3832e23acbfa66f1c4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd1cfdb_502c254c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-09-14T15:27:50Z",
+      "side": 1,
+      "message": "(If you wanted to let apps \"feel\" their underlying clean data, why are resources not handled the same way?)",
+      "parentUuid": "82a71595_f3d635c7",
+      "range": {
+        "startLine": 11,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "3be9e2efe9f531586c37a3832e23acbfa66f1c4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
