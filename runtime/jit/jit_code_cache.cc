@@ -282,8 +282,47 @@ bool JitCodeCache::WaitForPotentialCollectionToComplete(Thread* self) {
   return in_collection;
 }
 
+#if defined(__aarch64__)
+
+static size_t GetInstructionSetAlignmentForJitCompiledCode() {
+  static const size_t kArm64InstructionCacheLineSize = 64;
+  // For ARM64, ensure each i-cacheline only has code from at most one
+  // JIT compiled method. The division by 2 is because the JIT
+  // allocates a block consisting of an OatMethodHeader and the
+  // compiled code.  These are both aligned to the value returned from
+  // this function.
+  //
+  // NB The mspace allocator uses boundary tags so there is some
+  // pollution in the memory region because of this.
+  return kArm64InstructionCacheLineSize / 2;
+}
+
+static void InvalidateJitCompiledCode(uint8_t* allocation) {
+  size_t alignment = GetInstructionSetAlignmentForJitCompiledCode();
+  static const uint32_t kArm64IllegalInstruction = 0x00000000;
+  // Write an invalid opcode where the method header began in case it
+  // becomes machine code in a future allocation.
+  *reinterpret_cast<uint32_t*>(allocation) = kArm64IllegalInstruction;
+  // Write an invalid opcode where the machine code began in case it
+  // becomes machine code in a future allocation.
+  *reinterpret_cast<uint32_t*>(allocation + alignment) = kArm64IllegalInstruction;
+}
+
+#else  // __aarch64__
+
+static size_t GetInstructionSetAlignmentForJitCompiledCode() {
+  return GetInstructionSetAlignment(kRuntimeISA);
+}
+
+static void InvalidateJitCompiledCode(uint8_t*) {
+  // Unnecessary, mprotect has the side-effect of invalidating the
+  // instruction pipeline state for our build targets (except ARM64).
+}
+
+#endif  // __aarch64__
+
 static uintptr_t FromCodeToAllocation(const void* code) {
-  size_t alignment = GetInstructionSetAlignment(kRuntimeISA);
+  size_t alignment = GetInstructionSetAlignmentForJitCompiledCode();
   return reinterpret_cast<uintptr_t>(code) - RoundUp(sizeof(OatQuickMethodHeader), alignment);
 }
 
@@ -561,7 +600,7 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
                                           const ArenaSet<ArtMethod*>&
                                               cha_single_implementation_list) {
   DCHECK(stack_map != nullptr);
-  size_t alignment = GetInstructionSetAlignment(kRuntimeISA);
+  size_t alignment = GetInstructionSetAlignmentForJitCompiledCode();
   // Ensure the header ends up at expected instruction alignment.
   size_t header_size = RoundUp(sizeof(OatQuickMethodHeader), alignment);
   size_t total_size = header_size + code_size;
@@ -1508,7 +1547,7 @@ void JitCodeCache::InvalidateCompiledCodeFor(ArtMethod* method,
 }
 
 uint8_t* JitCodeCache::AllocateCode(size_t code_size) {
-  size_t alignment = GetInstructionSetAlignment(kRuntimeISA);
+  size_t alignment = GetInstructionSetAlignmentForJitCompiledCode();
   uint8_t* result = reinterpret_cast<uint8_t*>(
       mspace_memalign(code_mspace_, alignment, code_size));
   size_t header_size = RoundUp(sizeof(OatQuickMethodHeader), alignment);
@@ -1519,6 +1558,7 @@ uint8_t* JitCodeCache::AllocateCode(size_t code_size) {
 }
 
 void JitCodeCache::FreeCode(uint8_t* code) {
+  InvalidateJitCompiledCode(code);
   used_memory_for_code_ -= mspace_usable_size(code);
   mspace_free(code_mspace_, code);
 }
