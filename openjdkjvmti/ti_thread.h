@@ -93,6 +93,9 @@ class ThreadUtil {
                                      const jthread* threads,
                                      jvmtiError* results);
 
+  static jvmtiError StopThread(jvmtiEnv* env, jthread thr, jobject exception);
+  static jvmtiError InterruptThread(jvmtiEnv* env, jthread thr);
+
   static art::Thread* GetNativeThread(jthread thread,
                                       const art::ScopedObjectAccessAlreadyRunnable& soa)
       REQUIRES_SHARED(art::Locks::mutator_lock_)

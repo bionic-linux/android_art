@@ -914,4 +914,65 @@ jvmtiError ThreadUtil::ResumeThreadList(jvmtiEnv* env,
   return OK;
 }
 
+jvmtiError ThreadUtil::StopThread(jvmtiEnv* env ATTRIBUTE_UNUSED,
+                                  jthread thread,
+                                  jobject exception) {
+  art::Thread* self = art::Thread::Current();
+  art::ScopedObjectAccess soa(self);
+  art::StackHandleScope<1> hs(self);
+  if (exception == nullptr) {
+    return ERR(INVALID_OBJECT);
+  }
+  art::ObjPtr<art::mirror::Object> obj(soa.Decode<art::mirror::Object>(exception));
+  if (!obj->GetClass()->IsThrowableClass()) {
+    return ERR(INVALID_OBJECT);
+  }
+  art::Handle<art::mirror::Throwable> exc(hs.NewHandle(obj->AsThrowable()));
+  art::MutexLock tll_mu(self, *art::Locks::thread_list_lock_);
+  art::Thread* target = GetNativeThread(thread, soa);
+  if (target == nullptr && thread == nullptr) {
+    return ERR(INVALID_THREAD);
+  }
+  if (target == nullptr) {
+    return ERR(THREAD_NOT_ALIVE);
+  }
+  struct StopThreadClosure : public art::Closure {
+   public:
+    explicit StopThreadClosure(art::Handle<art::mirror::Throwable> except) : exception_(except) { }
+
+    void Run(art::Thread* me) REQUIRES_SHARED(art::Locks::mutator_lock_) {
+      // Make sure the thread is prepared to notice the exception.
+      art::Runtime::Current()->GetInstrumentation()->InstrumentThreadStack(me);
+      me->SetAsyncException(exception_.Get());
+    }
+
+   private:
+    art::Handle<art::mirror::Throwable> exception_;
+  };
+  StopThreadClosure c(exc);
+  if (target->RequestSynchronousCheckpoint(&c)) {
+    // Wake up the thread if it is sleeping.
+    target->Notify();
+    return OK;
+  } else {
+    // Something went wrong, probably the thread died.
+    return ERR(THREAD_NOT_ALIVE);
+  }
+}
+
+jvmtiError ThreadUtil::InterruptThread(jvmtiEnv* env ATTRIBUTE_UNUSED, jthread thread) {
+  art::Thread* self = art::Thread::Current();
+  art::ScopedObjectAccess soa(self);
+  art::MutexLock tll_mu(self, *art::Locks::thread_list_lock_);
+  art::Thread* target = GetNativeThread(thread, soa);
+  if (target == nullptr && thread == nullptr) {
+    return ERR(INVALID_THREAD);
+  }
+  if (target == nullptr) {
+    return ERR(THREAD_NOT_ALIVE);
+  }
+  target->Interrupt(self);
+  return OK;
+}
+
 }  // namespace openjdkjvmti
