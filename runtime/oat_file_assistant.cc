@@ -702,6 +702,7 @@ OatFileAssistant::ResultOfAttemptToUpdate OatFileAssistant::GenerateOatFileNoChe
     *error_msg = "Generation of oat file " + oat_file_name
       + " not attempted because the vdex file " + vdex_file_name
       + " could not be made world readable.";
+    vdex_file->Erase(/*unlink*/ true);
     return kUpdateNotAttempted;
   }
 
@@ -715,7 +716,7 @@ OatFileAssistant::ResultOfAttemptToUpdate OatFileAssistant::GenerateOatFileNoChe
   if (fchmod(oat_file->Fd(), file_mode) != 0) {
     *error_msg = "Generation of oat file " + oat_file_name
       + " not attempted because the oat file could not be made world readable.";
-    oat_file->Erase();
+    oat_file->Erase(/*unlink*/ true);
     return kUpdateNotAttempted;
   }
 
@@ -733,10 +734,8 @@ OatFileAssistant::ResultOfAttemptToUpdate OatFileAssistant::GenerateOatFileNoChe
   if (!Dex2Oat(args, error_msg)) {
     // Manually delete the oat and vdex files. This ensures there is no garbage
     // left over if the process unexpectedly died.
-    vdex_file->Erase();
-    unlink(vdex_file_name.c_str());
-    oat_file->Erase();
-    unlink(oat_file_name.c_str());
+    vdex_file->Erase(/*unlink*/ true);
+    oat_file->Erase(/*unlink*/ true);
     return kUpdateFailed;
   }
 
