@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83f455a3_2f88fe51",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-09-20T20:43:51Z",
+      "side": 1,
+      "message": "good catch. there are a few other places where we should have  unlinked the file. I added a wrapper around the file to make sure we don\u0027t miss cases.",
+      "parentUuid": "1aabe925_d0fdcfe9",
+      "revId": "e7149f290fed43f484dfd7eefdff254b38b8d331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75eb5ef6_153b5423",
         "filename": "runtime/oat_file_assistant.cc",
         "patchSetId": 1
