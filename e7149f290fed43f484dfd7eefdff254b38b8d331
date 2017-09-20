@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aabe925_d0fdcfe9",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-09-20T20:05:27Z",
+      "side": 1,
+      "message": "How about here for the vdex?",
+      "revId": "e7149f290fed43f484dfd7eefdff254b38b8d331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75eb5ef6_153b5423",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-09-20T20:05:27Z",
+      "side": 1,
+      "message": "And here?",
+      "revId": "e7149f290fed43f484dfd7eefdff254b38b8d331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
