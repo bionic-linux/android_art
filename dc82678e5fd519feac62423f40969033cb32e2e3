@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d675d1_39b2cda5",
+        "filename": "test/1930-monitor-info/src/art/Monitors.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-22T00:24:30Z",
+      "side": 1,
+      "message": "Why does this need to be atomic? Accesses should be protected by the object lock, right?\n\nIf that weren\u0027t the case, I think this would have lost wakeup issues.",
+      "range": {
+        "startLine": 42,
+        "startChar": 21,
+        "endLine": 42,
+        "endChar": 42
+      },
+      "revId": "dc82678e5fd519feac62423f40969033cb32e2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c14b265_c6be8122",
+        "filename": "test/1930-monitor-info/src/art/Monitors.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-22T00:24:30Z",
+      "side": 1,
+      "message": "Should really be adjusted, but probably OK for testing purposes.",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 14
+      },
+      "revId": "dc82678e5fd519feac62423f40969033cb32e2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
