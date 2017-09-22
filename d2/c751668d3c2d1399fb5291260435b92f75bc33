@@ -1,0 +1,8 @@
+Presubmit-Ready+1: Richard Uhler <ruhler@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Verified+1: Richard Uhler <ruhler@google.com>
+Submitted-by: Richard Uhler <ruhler@google.com>
+Submitted-at: Fri, 22 Sep 2017 11:59:03 +0000
+Reviewed-on: https://android-review.googlesource.com/491674
+Project: platform/art
+Branch: refs/heads/master
