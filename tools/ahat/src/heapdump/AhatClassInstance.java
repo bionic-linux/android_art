@@ -123,7 +123,7 @@ public class AhatClassInstance extends AhatInstance {
     }
 
     Value value = getField("value");
-    if (value == null || !value.isAhatInstance()) {
+    if (!value.isAhatInstance()) {
       return null;
     }
 

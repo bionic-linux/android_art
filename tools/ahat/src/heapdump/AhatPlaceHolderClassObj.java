@@ -29,10 +29,6 @@ public class AhatPlaceHolderClassObj extends AhatClassObj {
     baseline.setBaseline(this);
   }
 
-  @Override public Size getSize() {
-    return Size.ZERO;
-  }
-
   @Override public Size getRetainedSize(AhatHeap heap) {
     return Size.ZERO;
   }
