@@ -21,16 +21,15 @@ import com.android.ahat.heapdump.AhatInstance;
 import com.android.ahat.heapdump.AhatSnapshot;
 import com.android.ahat.heapdump.Diff;
 import com.android.ahat.heapdump.FieldValue;
-import com.android.ahat.heapdump.HprofFormatException;
-import com.android.ahat.heapdump.Parser;
 import com.android.ahat.heapdump.Site;
 import com.android.ahat.heapdump.Value;
-import com.android.ahat.proguard.ProguardMap;
+import com.android.tools.perflib.captures.DataBuffer;
+import com.android.tools.perflib.heap.ProguardMap;
+import com.android.tools.perflib.heap.io.InMemoryBuffer;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.ByteBuffer;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -71,9 +70,9 @@ public class TestDump {
   private AhatClassObj mBaselineMain;
 
   /**
-   * Read the named resource into a ByteBuffer.
+   * Read the named resource into a DataBuffer.
    */
-  private static ByteBuffer dataBufferFromResource(String name) throws IOException {
+  private static DataBuffer dataBufferFromResource(String name) throws IOException {
     ClassLoader loader = TestDump.class.getClassLoader();
     InputStream is = loader.getResourceAsStream(name);
     ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -82,7 +81,7 @@ public class TestDump {
     while ((read = is.read(buf)) != -1) {
       baos.write(buf, 0, read);
     }
-    return ByteBuffer.wrap(baos.toByteArray());
+    return new InMemoryBuffer(baos.toByteArray());
   }
 
   /**
@@ -117,24 +116,17 @@ public class TestDump {
       }
     }
 
-    try {
-      ByteBuffer hprof = dataBufferFromResource(mHprofResource);
-      mSnapshot = Parser.parseHeapDump(hprof, map);
-      mMain = findClass(mSnapshot, "Main");
-      assert(mMain != null);
-    } catch (HprofFormatException e) {
-      throw new IOException("Unable to parse heap dump", e);
-    }
+    DataBuffer hprof = dataBufferFromResource(mHprofResource);
+    mSnapshot = AhatSnapshot.fromDataBuffer(hprof, map);
+    mMain = findClass(mSnapshot, "Main");
+    assert(mMain != null);
 
     if (mHprofBaseResource != null) {
-      try {
-        ByteBuffer hprofBase = dataBufferFromResource(mHprofBaseResource);
-        mBaseline = Parser.parseHeapDump(hprofBase, map);
-        mBaselineMain = findClass(mBaseline, "Main");
-        assert(mBaselineMain != null);
-      } catch (HprofFormatException e) {
-        throw new IOException("Unable to parse base heap dump", e);
-      }
+      DataBuffer hprofBase = dataBufferFromResource(mHprofBaseResource);
+      mBaseline = AhatSnapshot.fromDataBuffer(hprofBase, map);
+      mBaselineMain = findClass(mBaseline, "Main");
+      assert(mBaselineMain != null);
+
       Diff.snapshots(mSnapshot, mBaseline);
     }
 

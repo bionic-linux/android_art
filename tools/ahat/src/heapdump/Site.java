@@ -16,7 +16,7 @@
 
 package com.android.ahat.heapdump;
 
-import com.android.ahat.proguard.ProguardMap;
+import com.android.tools.perflib.heap.StackFrame;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -127,27 +127,27 @@ public class Site implements Diffable<Site> {
    *                 inner-most frame. May be null, in which case this site is
    *                 returned.
    */
-  Site getSite(ProguardMap.Frame[] frames) {
+  Site getSite(StackFrame frames[]) {
     return frames == null ? this : getSite(this, frames);
   }
 
-  private static Site getSite(Site site, ProguardMap.Frame[] frames) {
+  private static Site getSite(Site site, StackFrame frames[]) {
     for (int s = frames.length - 1; s >= 0; --s) {
-      ProguardMap.Frame frame = frames[s];
+      StackFrame frame = frames[s];
       Site child = null;
       for (int i = 0; i < site.mChildren.size(); i++) {
         Site curr = site.mChildren.get(i);
-        if (curr.mLineNumber == frame.line
-            && curr.mMethodName.equals(frame.method)
-            && curr.mSignature.equals(frame.signature)
-            && curr.mFilename.equals(frame.filename)) {
+        if (curr.mLineNumber == frame.getLineNumber()
+            && curr.mMethodName.equals(frame.getMethodName())
+            && curr.mSignature.equals(frame.getSignature())
+            && curr.mFilename.equals(frame.getFilename())) {
           child = curr;
           break;
         }
       }
       if (child == null) {
-        child = new Site(site, frame.method, frame.signature,
-            frame.filename, frame.line);
+        child = new Site(site, frame.getMethodName(), frame.getSignature(),
+            frame.getFilename(), frame.getLineNumber());
         site.mChildren.add(child);
       }
       site = child;

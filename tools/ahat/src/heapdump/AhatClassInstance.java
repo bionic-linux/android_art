@@ -16,8 +16,11 @@
 
 package com.android.ahat.heapdump;
 
+import com.android.tools.perflib.heap.ClassInstance;
+import com.android.tools.perflib.heap.Instance;
 import java.awt.image.BufferedImage;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class AhatClassInstance extends AhatInstance {
@@ -31,13 +34,15 @@ public class AhatClassInstance extends AhatInstance {
     super(id);
   }
 
-  void initialize(Value[] fields) {
-    mFields = fields;
-  }
+  @Override void initialize(AhatSnapshot snapshot, Instance inst, Site site) {
+    super.initialize(snapshot, inst, site);
 
-  @Override
-  protected long getExtraJavaSize() {
-    return 0;
+    ClassInstance classInst = (ClassInstance)inst;
+    List<ClassInstance.FieldValue> fieldValues = classInst.getValues();
+    mFields = new Value[fieldValues.size()];
+    for (int i = 0; i < mFields.length; i++) {
+      mFields[i] = snapshot.getValue(fieldValues.get(i).getValue());
+    }
   }
 
   @Override public Value getField(String fieldName) {

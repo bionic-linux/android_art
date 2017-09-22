@@ -25,7 +25,6 @@ import com.android.ahat.heapdump.DiffFields;
 import com.android.ahat.heapdump.DiffedFieldValue;
 import com.android.ahat.heapdump.FieldValue;
 import com.android.ahat.heapdump.PathElement;
-import com.android.ahat.heapdump.RootType;
 import com.android.ahat.heapdump.Site;
 import com.android.ahat.heapdump.Value;
 import java.io.IOException;
@@ -75,13 +74,13 @@ class ObjectHandler implements AhatHandler {
 
     doc.description(DocString.text("Heap"), DocString.text(inst.getHeap().getName()));
 
-    Collection<RootType> rootTypes = inst.getRootTypes();
+    Collection<String> rootTypes = inst.getRootTypes();
     if (rootTypes != null) {
       DocString types = new DocString();
       String comma = "";
-      for (RootType type : rootTypes) {
+      for (String type : rootTypes) {
         types.append(comma);
-        types.append(type.toString());
+        types.append(type);
         comma = ", ";
       }
       doc.description(DocString.text("Root Types"), types);
@@ -176,21 +175,21 @@ class ObjectHandler implements AhatHandler {
       was.append(Summarizer.summarize(previous));
       switch (field.status) {
         case ADDED:
-          doc.row(DocString.text(field.type.name),
+          doc.row(DocString.text(field.type),
                   DocString.text(field.name),
                   Summarizer.summarize(field.current),
                   DocString.added("new"));
           break;
 
         case MATCHED:
-          doc.row(DocString.text(field.type.name),
+          doc.row(DocString.text(field.type),
                   DocString.text(field.name),
                   Summarizer.summarize(field.current),
                   Objects.equals(field.current, previous) ? new DocString() : was);
           break;
 
         case DELETED:
-          doc.row(DocString.text(field.type.name),
+          doc.row(DocString.text(field.type),
                   DocString.text(field.name),
                   DocString.removed("del"),
                   was);
