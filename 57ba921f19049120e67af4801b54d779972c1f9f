@@ -53,6 +53,29 @@
     },
     {
       "key": {
+        "uuid": "f16a53d7_ba268064",
+        "filename": "dexlayout/dex_ir.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-09-25T18:04:04Z",
+      "side": 1,
+      "message": "How confident are you?  A LOG_FATAL?\nIn the next file you have an fprintf.  Something similar?",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 42
+      },
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "769b7515_47f3159f",
         "filename": "runtime/dex_file.h",
         "patchSetId": 1
@@ -115,6 +138,30 @@
       "writtenOn": "2017-09-25T17:55:24Z",
       "side": 1,
       "message": "nit: It\u0027s a bit strange to have this on here, why not just add it to Instruction?\n\nRight now you have to write code with for-iterator loops just to access this. It would be much cleaner to always use the \"for (Instruction : range) { ...}\" syntax .\n\n    for (Instruction\u0026 inst : range) {\n        uint32_t dex_pc \u003d inst.GetDexPC(range.begin());\n    }\n\n----------\n\nMaybe the other option is to iterate over DexPcWithInstruction which could contain both the instruction and the dex pc.\n\n   for (DexPcWithInstruction inst : range) {\n       uint32_t dex_pc \u003d inst-\u003eGetPc();\n       Instruction* inst \u003d inst-\u003eGetInst();\n   }\n\nsomething along those lines?",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe7a143_fb46ec99",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-09-25T18:04:04Z",
+      "side": 1,
+      "message": "+1 to that.",
+      "parentUuid": "c11d7d22_7a3b4886",
       "range": {
         "startLine": 69,
         "startChar": 0,
