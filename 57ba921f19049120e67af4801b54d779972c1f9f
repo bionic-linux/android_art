@@ -277,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "a67cb926_2d91a95f",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-25T22:22:35Z",
+      "side": 1,
+      "message": "Added the check",
+      "parentUuid": "2823a639_a05061f6",
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c11d7d22_7a3b4886",
         "filename": "runtime/dex_instruction_iterator.h",
         "patchSetId": 1
