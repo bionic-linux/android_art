@@ -259,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "2823a639_a05061f6",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-25T22:02:09Z",
+      "side": 1,
+      "message": "Then don\u0027t say it\u0027s a forward_iterator, which you declared it on line 27? It has to adhere to the requirements.\n\nThat being said, it doesn\u0027t add any memory requirements, and you can trust the C++ compiler to optimize the performance because *every single forward iterator will have to have the extra check*.",
+      "parentUuid": "9e35b618_509c4b06",
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c11d7d22_7a3b4886",
         "filename": "runtime/dex_instruction_iterator.h",
         "patchSetId": 1
@@ -327,6 +345,30 @@
       "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfbbbb9e_39cca1b1",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-25T22:02:09Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "b95a7321_2e28428f",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 3
+      },
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
