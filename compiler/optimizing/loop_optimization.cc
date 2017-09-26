@@ -71,6 +71,12 @@ static bool IsEarlyExit(HLoopInformation* loop_info) {
   return false;
 }
 
+// Forward.
+static bool IsZeroExtensionAndGet(HInstruction* instruction,
+                                  Primitive::Type type,
+                                  /*out*/ HInstruction** operand,
+                                  bool to64 = false);
+
 // Detect a sign extension in instruction from the given type. The to64 parameter
 // denotes if result is long, and thus sign extension from int can be included.
 // Returns the promoted operand on success.
@@ -124,9 +130,19 @@ static bool IsSignExtensionAndGet(HInstruction* instruction,
         return false;
     }
   }
-  // Explicit type conversion to long.
-  if (instruction->IsTypeConversion() && instruction->GetType() == Primitive::kPrimLong) {
-    return IsSignExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, /*to64*/ true);
+  // Explicit type conversions.
+  if (instruction->IsTypeConversion()) {
+    Primitive::Type from = instruction->InputAt(0)->GetType();
+    switch (instruction->GetType()) {
+      case Primitive::kPrimLong:
+        return IsSignExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, /*to64*/ true);
+      case Primitive::kPrimShort:
+        return type == Primitive::kPrimChar &&
+               from == Primitive::kPrimChar &&
+               IsZeroExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, to64);
+      default:
+        return false;
+    }
   }
   return false;
 }
@@ -137,7 +153,7 @@ static bool IsSignExtensionAndGet(HInstruction* instruction,
 static bool IsZeroExtensionAndGet(HInstruction* instruction,
                                   Primitive::Type type,
                                   /*out*/ HInstruction** operand,
-                                  bool to64 = false) {
+                                  bool to64) {
   // Accept any already wider constant that would be handled properly by zero
   // extension when represented in the *width* of the given narrower data type
   // (the fact that byte/short/int normally sign extend does not matter here).
@@ -200,9 +216,19 @@ static bool IsZeroExtensionAndGet(HInstruction* instruction,
       }
     }
   }
-  // Explicit type conversion to long.
-  if (instruction->IsTypeConversion() && instruction->GetType() == Primitive::kPrimLong) {
-    return IsZeroExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, /*to64*/ true);
+  // Explicit type conversions.
+  if (instruction->IsTypeConversion()) {
+    Primitive::Type from = instruction->InputAt(0)->GetType();
+    switch (instruction->GetType()) {
+      case Primitive::kPrimLong:
+        return IsZeroExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, /*to64*/ true);
+      case Primitive::kPrimChar:
+        return type == Primitive::kPrimShort &&
+               from == Primitive::kPrimShort &&
+               IsSignExtensionAndGet(instruction->InputAt(0), type, /*out*/ operand, to64);
+      default:
+        return false;
+    }
   }
   return false;
 }
@@ -1884,9 +1910,17 @@ bool HLoopOptimization::VectorizeSADIdiom(LoopNode* node,
   bool is_unsigned = false;
   Primitive::Type sub_type = a->GetType();
   if (a->IsTypeConversion()) {
-    sub_type = a->InputAt(0)->GetType();
+    HInstruction* h = a;
+    while (h->IsTypeConversion()) {
+      h = h->InputAt(0);
+    }
+    sub_type = h->GetType();
   } else if (b->IsTypeConversion()) {
-    sub_type = b->InputAt(0)->GetType();
+    HInstruction* h = a;
+    while (h->IsTypeConversion()) {
+      h = h->InputAt(0);
+    }
+    sub_type = h->GetType();
   }
   if (reduction_type != sub_type &&
       (!IsNarrowerOperands(a, b, sub_type, &r, &s, &is_unsigned) || is_unsigned)) {
