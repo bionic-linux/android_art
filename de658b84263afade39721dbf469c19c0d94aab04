@@ -22,6 +22,30 @@
       "revId": "de658b84263afade39721dbf469c19c0d94aab04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507d0c21_5be7ffff",
+        "filename": "profman/profile_assistant.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-09-26T22:40:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcedffe8_44371720",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 61,
+        "endChar": 43
+      },
+      "revId": "de658b84263afade39721dbf469c19c0d94aab04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
