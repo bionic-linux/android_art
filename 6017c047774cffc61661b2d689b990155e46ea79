@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fa99615_7b380cdd",
+        "filename": "test/660-checker-simd-sad-char/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-09-27T01:17:22Z",
+      "side": 1,
+      "message": "note: I forgot to rename this when making the original test, nothing else changed here but to correctly name these Char instead of Short.",
+      "revId": "6017c047774cffc61661b2d689b990155e46ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
