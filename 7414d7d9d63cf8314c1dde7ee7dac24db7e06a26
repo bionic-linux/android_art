@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "006454e3_7aa66005",
+        "filename": "profman/profile_assistant_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-09-27T23:01:55Z",
+      "side": 1,
+      "message": "alignment",
+      "range": {
+        "startLine": 364,
+        "startChar": 36,
+        "endLine": 364,
+        "endChar": 44
+      },
+      "revId": "7414d7d9d63cf8314c1dde7ee7dac24db7e06a26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
