@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0414ce80_d9e9ce68",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-09-27T10:37:43Z",
+      "side": 1,
+      "message": "declaration",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "2ea9d54a85aa61884ad7cb5f7fc3cf68d8799403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a77645c6_864a2747",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 2
