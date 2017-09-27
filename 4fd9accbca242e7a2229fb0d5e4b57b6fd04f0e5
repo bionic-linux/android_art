@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1491188f_6a4649bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2334dbda_2663965a",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "431e9b8d_e4c74760",
         "filename": "compiler/dex/dex_to_dex_compiler.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-27T10:09:39Z",
       "side": 1,
       "message": "I\u0027d prefer we avoid this pattern.",
+      "range": {
+        "startLine": 378,
+        "startChar": 55,
+        "endLine": 378,
+        "endChar": 57
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1562b0df_6bfae8fa",
+        "filename": "compiler/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431e9b8d_e4c74760",
       "range": {
         "startLine": 378,
         "startChar": 55,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "58dab18f_059ce5bd",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a3a599_60592320",
+      "range": {
+        "startLine": 1082,
+        "startChar": 53,
+        "endLine": 1084,
+        "endChar": 64
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3f5f8b_064bbc59",
         "filename": "runtime/dex_file.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-09-27T10:53:16Z",
       "side": 1,
       "message": "I would expect a function named Instruction() to return an instruction rather than an iterator. This name also kind of conflicts with the name of the class Instruction.\n\nI think we should have a \"const Instruction\u0026 InstructionAt(uint32_t dex_pc) const\" and not over-use the iterator. If needed we can add InstructionIteratorAt().\n\n(The function Instructions() above correctly returns a container of `class Instruction`.)",
+      "range": {
+        "startLine": 303,
+        "startChar": 27,
+        "endLine": 303,
+        "endChar": 38
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a755d95f_3d06caf5",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3f5f8b_064bbc59",
       "range": {
         "startLine": 303,
         "startChar": 27,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ffd978ba_0ce9c496",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ec7ef3_6e15799f",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 12
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fe54027_a05dad3f",
         "filename": "runtime/dex_instruction_iterator.h",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-09-27T10:53:16Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 42,
+        "startChar": 31,
+        "endLine": 42,
+        "endChar": 77
+      },
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b3d8d2_591dc4d0",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "This for the \"singular iterator requirement\". See Igor\u0027s comment in PS1.",
+      "parentUuid": "9fe54027_a05dad3f",
       "range": {
         "startLine": 42,
         "startChar": 31,
@@ -157,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "e7a7b83d_c5e14b2f",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea52bad_40dce7be",
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9032ab95_9f5260cd",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 3
@@ -168,6 +330,24 @@
       "writtenOn": "2017-09-27T10:53:16Z",
       "side": 1,
       "message": "This looks odd (both old and new code).",
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e809d0bf_e5a12df0",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-09-27T18:51:41Z",
+      "side": 1,
+      "message": "This is all behind kDebugVerify, maybe the code is bit rotten.",
+      "parentUuid": "9032ab95_9f5260cd",
       "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
