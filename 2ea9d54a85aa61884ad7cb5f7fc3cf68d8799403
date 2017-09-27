@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c98e557_d51012e8",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-09-27T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0414ce80_d9e9ce68",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 11
+      },
+      "revId": "2ea9d54a85aa61884ad7cb5f7fc3cf68d8799403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a77645c6_864a2747",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-27T10:26:08Z",
       "side": 1,
       "message": "better name?",
+      "range": {
+        "startLine": 1913,
+        "startChar": 18,
+        "endLine": 1913,
+        "endChar": 19
+      },
+      "revId": "2ea9d54a85aa61884ad7cb5f7fc3cf68d8799403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85768a78_c82942e2",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-09-27T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a77645c6_864a2747",
       "range": {
         "startLine": 1913,
         "startChar": 18,
