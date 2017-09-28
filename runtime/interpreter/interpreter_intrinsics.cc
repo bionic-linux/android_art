@@ -470,6 +470,11 @@ bool MterpHandleIntrinsic(ShadowFrame* shadow_frame,
     UNIMPLEMENTED_CASE(ReferenceGetReferent /* ()Ljava/lang/Object; */)
     UNIMPLEMENTED_CASE(IntegerValueOf /* (I)Ljava/lang/Integer; */)
     UNIMPLEMENTED_CASE(ThreadInterrupted /* ()Z */)
+    UNIMPLEMENTED_CASE(VarHandleFullFence /* ()V */)
+    UNIMPLEMENTED_CASE(VarHandleAcquireFence /* ()V */)
+    UNIMPLEMENTED_CASE(VarHandleReleaseFence /* ()V */)
+    UNIMPLEMENTED_CASE(VarHandleLoadLoadFence /* ()V */)
+    UNIMPLEMENTED_CASE(VarHandleStoreStoreFence /* ()V */)
     case Intrinsics::kNone:
       res = false;
       break;
