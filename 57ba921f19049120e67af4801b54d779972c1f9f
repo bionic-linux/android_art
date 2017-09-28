@@ -313,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "c3b9aa6d_301aa5bd",
+        "filename": "runtime/dex_instruction_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T14:51:14Z",
+      "side": 1,
+      "message": "Yes, that makes more sense. Good catch!",
+      "parentUuid": "6128329e_985265c1",
+      "revId": "57ba921f19049120e67af4801b54d779972c1f9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c11d7d22_7a3b4886",
         "filename": "runtime/dex_instruction_iterator.h",
         "patchSetId": 1
