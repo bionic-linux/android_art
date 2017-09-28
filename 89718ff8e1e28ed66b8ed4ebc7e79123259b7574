@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "71c4c71e_e192985d",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T17:18:45Z",
+      "side": 1,
+      "message": "This is consistent with the rest of this file. But doesn\u0027t kWriteSideEffects suffice for all of these? That should prevent reprdering w.r.t. loads and stores, as well as native calls, etc.? These presumably shouldn\u0027t trigger a GC.",
+      "range": {
+        "startLine": 162,
+        "startChar": 59,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da30007_6c877ce4",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 2
@@ -76,6 +99,47 @@
     },
     {
       "key": {
+        "uuid": "da5edc09_e3bb8b6e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T17:18:45Z",
+      "side": 1,
+      "message": "The intent was for kAnyStore to order a load or a store with respect to a later store. Which is what we want here. I think this is OK.",
+      "parentUuid": "09784cb4_eddb38ac",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7677fac_9e22a7c0",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2328,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T17:18:45Z",
+      "side": 1,
+      "message": "I somewhat grudgingly agree this is correct. I think this should never have been exposed, and would almost be tempted to quietly turn it into kAnyStore. But not quite.",
+      "range": {
+        "startLine": 2328,
+        "startChar": 54,
+        "endLine": 2328,
+        "endChar": 65
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bd2b9c6_f6bdcc36",
         "filename": "runtime/interpreter/interpreter_intrinsics.cc",
         "patchSetId": 2
@@ -87,6 +151,24 @@
       "writtenOn": "2017-09-28T16:55:05Z",
       "side": 1,
       "message": "QuasiAtomic::ThreadFenceForConstructor does a DMB ISH ST",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5cae78a_9b714e7a",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T17:18:45Z",
+      "side": 1,
+      "message": "If this is only for the interpreter, does it matter enough to bother? IMO, nobody should be using this anyway. The performance benefit is small, and the resulting code is brittle:\n\ntmp.a \u003d 17;\nStoreStoreFence();\nx \u003d tmp; // Publish tmp\n\nworks. But\ntmp.a \u003d 17;\nassert(tmp.a \u003d\u003d 17);\nStoreStoreFence();\nx \u003d tmp; // Publish tmp\n\nmay break if a is subsequently modified.",
+      "parentUuid": "3bd2b9c6_f6bdcc36",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
