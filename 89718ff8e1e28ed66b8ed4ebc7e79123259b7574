@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b2e3a40e_3f37fd4a",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T20:07:24Z",
+      "side": 1,
+      "message": "I see, yes, there\u0027s a \"depends on GC\" bit and a \"can trigger GC\" bit which we do not need to set for the fences.\n\n   SideEffects::AllWritesAndReads() // could be appropriate here.\n\nThat\u0027s already what HMemoryBarrier uses, so perhaps there\u0027s a disconnect between the intrinsics side-effects and the HMemoryBarrier side-effects?",
+      "parentUuid": "b05a8e11_b8e143a8",
+      "range": {
+        "startLine": 162,
+        "startChar": 59,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da30007_6c877ce4",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 2
@@ -295,6 +319,24 @@
       "side": 1,
       "message": "I think the difference between interpreted and compiled code is fine. We strengthen fences due to implementation preferences all over the place. If we didn\u0027t, the hardware often does anyway.\n\nJust to be clear, the difference here is that ISHLD is an acquire fence, and ISHST is not a release fence. I argued against both LoadLoad and StoreStore, but LoadLoad is benign, and probably completely useless, since it\u0027s basically implemented as acquire everywhere.",
       "parentUuid": "77ca90d2_32ed4627",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88c81c31_64d00899",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T20:07:24Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "8ea42a01_7180200b",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
