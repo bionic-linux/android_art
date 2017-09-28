@@ -117,6 +117,24 @@
     },
     {
       "key": {
+        "uuid": "c27a9adc_a1fe4999",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T17:37:39Z",
+      "side": 1,
+      "message": "Sorry, should\u0027ve noticed we have a separate \u0027kAnyStore\u0027 and a \u0027kStoreStore\u0027. Agreed this is correct.\n\nIMHO the naming is extremely confusing and kAnyStore-\u003ekRelease, kLoadAny-\u003ekAcquire would\u0027ve been saner.",
+      "parentUuid": "da5edc09_e3bb8b6e",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7677fac_9e22a7c0",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -169,6 +187,24 @@
       "side": 1,
       "message": "If this is only for the interpreter, does it matter enough to bother? IMO, nobody should be using this anyway. The performance benefit is small, and the resulting code is brittle:\n\ntmp.a \u003d 17;\nStoreStoreFence();\nx \u003d tmp; // Publish tmp\n\nworks. But\ntmp.a \u003d 17;\nassert(tmp.a \u003d\u003d 17);\nStoreStoreFence();\nx \u003d tmp; // Publish tmp\n\nmay break if a is subsequently modified.",
       "parentUuid": "3bd2b9c6_f6bdcc36",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ca90d2_32ed4627",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T17:37:39Z",
+      "side": 1,
+      "message": "It\u0027s using \"DMB ISHST\" for a StoreStoreFence() the way the intrinsic is lowered in the compiler.\n\nRight now it would get different behavior between interpreted and compiled code.\n------------\n\nI would\u0027ve made the same note about DMBISHLD but the C++ compiler is smart enough to use it there for Acquire.",
+      "parentUuid": "a5cae78a_9b714e7a",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
