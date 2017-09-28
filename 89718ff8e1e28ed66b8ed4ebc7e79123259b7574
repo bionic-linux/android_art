@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9e82c40_02a7cda8",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T17:51:17Z",
+      "side": 1,
+      "message": "Upon looking at this some more, I\u0027m not sure there\u0027s a discernible difference between kAllSideEffects and kWriteSideEffects?\n\nA \"Write\" side effect seems to be equally strong to a \"Write+Read\" side effect, it seems to be mostly a sanity state (a bunch of \u0027reads\u0027 and \u0027writes\u0027 collapsed into one side effect become \u0027read+write\u0027) for debugging/reasoning.\n\n-------\nIt\u0027s also a bit too restrictive for our memory model, there\u0027s no way to encode direction, so we can\u0027t say \"it\u0027s ok to reorder past this, but not prior to this\" (or vice versa). Probably not worth fixing at this time though.",
+      "parentUuid": "71c4c71e_e192985d",
+      "range": {
+        "startLine": 162,
+        "startChar": 59,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da30007_6c877ce4",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 2
