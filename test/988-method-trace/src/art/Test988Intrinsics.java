@@ -41,6 +41,7 @@ class Test988Intrinsics {
     java.lang.String.class.toString();
     java.lang.StringBuffer.class.toString();
     java.lang.StringBuilder.class.toString();
+    java.lang.invoke.VarHandle.class.toString();
   }
 
   static void test() {
@@ -131,5 +132,10 @@ class Test988Intrinsics {
     instance_java_lang_StringBuilder.toString();
     java.lang.Integer.valueOf(0);
     java.lang.Thread.interrupted();
+    java.lang.invoke.VarHandle.fullFence();
+    java.lang.invoke.VarHandle.acquireFence();
+    java.lang.invoke.VarHandle.releaseFence();
+    java.lang.invoke.VarHandle.loadLoadFence();
+    java.lang.invoke.VarHandle.storeStoreFence();
   }
 }
