@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3da30007_6c877ce4",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "Is this too strong? kAllWrites could be used here I think?",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa587ad7_df26fbcd",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "Is this too strong? kAllReads could be used here I think?",
+      "range": {
+        "startLine": 166,
+        "startChar": 65,
+        "endLine": 166,
+        "endChar": 80
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4e9c0f6_2052d97e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2312,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "nit: as these are identical to the VarHandle implementations you could write\n\n   case kUnsafeFullFence:\n   case kVarHandleFullFence:\n\ninstead",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09784cb4_eddb38ac",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "is kAnyStore right here?\n\nIt seems like it wouldn\u0027t wait for LOADs to complete.",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bd2b9c6_f6bdcc36",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "QuasiAtomic::ThreadFenceForConstructor does a DMB ISH ST",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01e58dcf_248dd883",
+        "filename": "test/988-method-trace/gen_srcs.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-28T16:55:05Z",
+      "side": 1,
+      "message": "Can you put a TODO/bug# here? VarHandle is not supposed to be hidden API.",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
