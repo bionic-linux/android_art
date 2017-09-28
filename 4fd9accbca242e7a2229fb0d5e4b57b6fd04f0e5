@@ -351,6 +351,24 @@
       "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9989612e_05b4a954",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-09-28T13:11:23Z",
+      "side": 1,
+      "message": "But you should have kept the \"-1\" for consistency with the log a few lines higher.",
+      "parentUuid": "e809d0bf_e5a12df0",
+      "revId": "4fd9accbca242e7a2229fb0d5e4b57b6fd04f0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
