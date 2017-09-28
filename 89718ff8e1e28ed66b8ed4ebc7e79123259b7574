@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b05a8e11_b8e143a8",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T19:18:13Z",
+      "side": 1,
+      "message": "I thought the difference was that kAllSideEffects implied that a suspend point could be encountered as part of the intrinsic, and hence the state needs to be understandable to the GC? That shouldn\u0027t be true for any fences, at least on modern procesors.",
+      "parentUuid": "b9e82c40_02a7cda8",
+      "range": {
+        "startLine": 162,
+        "startChar": 59,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da30007_6c877ce4",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 2
@@ -77,6 +101,30 @@
       "writtenOn": "2017-09-28T16:55:05Z",
       "side": 1,
       "message": "Is this too strong? kAllReads could be used here I think?",
+      "range": {
+        "startLine": 166,
+        "startChar": 65,
+        "endLine": 166,
+        "endChar": 80
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e744923a_65f8ccc5",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T19:18:13Z",
+      "side": 1,
+      "message": "Agreed, though I remain torn between trying to make this as fast as possible and as slow as possible :-)",
+      "parentUuid": "fa587ad7_df26fbcd",
       "range": {
         "startLine": 166,
         "startChar": 65,
@@ -229,6 +277,24 @@
       "side": 1,
       "message": "It\u0027s using \"DMB ISHST\" for a StoreStoreFence() the way the intrinsic is lowered in the compiler.\n\nRight now it would get different behavior between interpreted and compiled code.\n------------\n\nI would\u0027ve made the same note about DMBISHLD but the C++ compiler is smart enough to use it there for Acquire.",
       "parentUuid": "a5cae78a_9b714e7a",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ea42a01_7180200b",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-28T19:18:13Z",
+      "side": 1,
+      "message": "I think the difference between interpreted and compiled code is fine. We strengthen fences due to implementation preferences all over the place. If we didn\u0027t, the hardware often does anyway.\n\nJust to be clear, the difference here is that ISHLD is an acquire fence, and ISHST is not a release fence. I argued against both LoadLoad and StoreStore, but LoadLoad is benign, and probably completely useless, since it\u0027s basically implemented as acquire everywhere.",
+      "parentUuid": "77ca90d2_32ed4627",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
