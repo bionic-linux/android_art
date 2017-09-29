@@ -262,6 +262,24 @@
     },
     {
       "key": {
+        "uuid": "cbe4b24f_05cb7b6e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2312,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T16:43:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15767786_0c9d62b9",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09784cb4_eddb38ac",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -327,6 +345,24 @@
       "side": 1,
       "message": "It\u0027d also more closely align with the text comments in nodes.h for MemBarrierKind. It might make sense to fold this into the CL. WDYT?",
       "parentUuid": "c27a9adc_a1fe4999",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef443811_f68150e3",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T16:43:54Z",
+      "side": 1,
+      "message": "RE: WDYT?\n\nIf you mean, should we rename to kAcquire and kRelease in this CL? That sounds good to me.",
+      "parentUuid": "c4865647_54056151",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
