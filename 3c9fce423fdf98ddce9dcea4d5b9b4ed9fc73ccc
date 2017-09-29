@@ -188,6 +188,29 @@
       "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "127e98dc_7e3408ba",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:40:39Z",
+      "side": 1,
+      "message": "All of the variable expansions are not space-safe.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
