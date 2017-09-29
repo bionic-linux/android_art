@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "3cec32f8_fff0ffed",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "[[, ]] everywhere",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27202004_066748b8",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "Get it from envsetup or from get_build_var",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6e3e857_531e3454",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "nit: Why do we need this? It won\u0027t even run on Android because we don\u0027t have a /bin/bash.",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc63dcd1_373e29fc",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -19,6 +76,115 @@
         "endLine": 34,
         "endChar": 43
       },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd22875_bcd78575",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "+1\n\nPlease stop hardcoding the paths when there are environment variables to be used.",
+      "parentUuid": "cc63dcd1_373e29fc",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5eea09b_29fdd21c",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "args\u003d(\"$@\")",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378d403c_3f7c1361",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "? ignore unrecognized params? that doesn\u0027t seem good.",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d0c1e88_e1644181",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "args+\u003d(--mode\u003dhost)",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36aa548d_dc755754",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "args+\u003d(--variant\u003dX64)",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c7e259_cf966e30",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-09-29T21:39:29Z",
+      "side": 1,
+      "message": "Don\u0027t copy and paste this. Look at art/tools/art \"verbose_run\" function for an example that does what you want here.",
       "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
