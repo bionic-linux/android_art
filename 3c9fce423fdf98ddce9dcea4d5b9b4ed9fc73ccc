@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "296e98c6_53ef1f16",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "there is not any difference between them for any of the uses here.",
+      "parentUuid": "3cec32f8_fff0ffed",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27202004_066748b8",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b8ed54e8_e518709c",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "It won\u0027t always be set.",
+      "parentUuid": "27202004_066748b8",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6e3e857_531e3454",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-09-29T21:39:29Z",
       "side": 1,
       "message": "nit: Why do we need this? It won\u0027t even run on Android because we don\u0027t have a /bin/bash.",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4297034_913e30f3",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "Just as a nicer error message. cygwin can try to run this.",
+      "parentUuid": "b6e3e857_531e3454",
       "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -106,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "199bcf1c_4c373fbb",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd22875_bcd78575",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5eea09b_29fdd21c",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -140,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "529a1dbc_da09803c",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "this is mostly just to adjust and pass down arguments for run-jdwp-tests.sh which does the same thing for vogar. We do want to ignore unknown arguments they might be for vogar, art, run-jdwp-tests or dalvikvm",
+      "parentUuid": "378d403c_3f7c1361",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d0c1e88_e1644181",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -154,6 +256,24 @@
       "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f97707b5_bc756341",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d0c1e88_e1644181",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "2187dd0d_bacfdc6f",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36aa548d_dc755754",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c7e259_cf966e30",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -191,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "ade94b94_ae739da0",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43c7e259_cf966e30",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "127e98dc_7e3408ba",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -202,6 +358,30 @@
       "writtenOn": "2017-09-29T21:40:39Z",
       "side": 1,
       "message": "All of the variable expansions are not space-safe.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ada0255_c1b8734f",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-09-29T22:03:51Z",
+      "side": 1,
+      "message": "they need to pass through like 3-4 more shell scripts. There is no chance any of this is space safe so I don\u0027t think we need to care.",
+      "parentUuid": "127e98dc_7e3408ba",
       "range": {
         "startLine": 112,
         "startChar": 0,
