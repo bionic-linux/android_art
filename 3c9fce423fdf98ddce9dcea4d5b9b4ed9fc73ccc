@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc63dcd1_373e29fc",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-29T21:31:30Z",
+      "side": 1,
+      "message": "${ANDROID_JAVA_HOME}\n\nThis will still be incorrect when we enable jdk9, it uses a different path without \"jre\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 15,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
