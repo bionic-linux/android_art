@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67bcba69_9306c90c",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-09-29T21:16:59Z",
+      "side": 1,
+      "message": "Comment why you\u0027re looking for it, at all, then?",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 64
+      },
+      "revId": "dc787679ef17ab1fd031777839326789b34373dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1df4eab_b129c733",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-09-29T21:16:59Z",
+      "side": 1,
+      "message": "Format with line breaks.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 201
+      },
+      "revId": "dc787679ef17ab1fd031777839326789b34373dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
