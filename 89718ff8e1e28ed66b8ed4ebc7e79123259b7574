@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "80bd0f72_66d09f69",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "Changed to kWriteSideEffects.",
+      "parentUuid": "b2e3a40e_3f37fd4a",
+      "range": {
+        "startLine": 162,
+        "startChar": 59,
+        "endLine": 162,
+        "endChar": 74
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3da30007_6c877ce4",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 2
@@ -108,6 +132,24 @@
       "writtenOn": "2017-09-28T16:55:05Z",
       "side": 1,
       "message": "Is this too strong? kAllWrites could be used here I think?",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07508020_6d3de79f",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "Changed to kWriteSideEffects.",
+      "parentUuid": "3da30007_6c877ce4",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -161,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "e05be9d1_2c644e7e",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "Changed to kReadSideEffects.",
+      "parentUuid": "e744923a_65f8ccc5",
+      "range": {
+        "startLine": 166,
+        "startChar": 65,
+        "endLine": 166,
+        "endChar": 80
+      },
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4e9c0f6_2052d97e",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -172,6 +238,24 @@
       "writtenOn": "2017-09-28T16:55:05Z",
       "side": 1,
       "message": "nit: as these are identical to the VarHandle implementations you could write\n\n   case kUnsafeFullFence:\n   case kVarHandleFullFence:\n\ninstead",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15767786_0c9d62b9",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2312,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "Yes, though for scrutiny purposes it may be better keeping the overlap between the Unsafe fences and VarHandle fences separate.",
+      "parentUuid": "b4e9c0f6_2052d97e",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -228,6 +312,24 @@
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4865647_54056151",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "It\u0027d also more closely align with the text comments in nodes.h for MemBarrierKind. It might make sense to fold this into the CL. WDYT?",
+      "parentUuid": "c27a9adc_a1fe4999",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -354,6 +456,24 @@
       "writtenOn": "2017-09-28T16:55:05Z",
       "side": 1,
       "message": "Can you put a TODO/bug# here? VarHandle is not supposed to be hidden API.",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62412a37_719528c2",
+        "filename": "test/988-method-trace/gen_srcs.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-09-29T15:58:08Z",
+      "side": 1,
+      "message": "Tests added, removed this.",
+      "parentUuid": "01e58dcf_248dd883",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
