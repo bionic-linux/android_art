@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9c9a96b_3c9a2d33",
+        "filename": "tools/art",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-09-29T20:54:27Z",
+      "side": 1,
+      "message": "I think this should be independent (or must be documented in the help message).",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 23
+      },
+      "revId": "034ff197621c6e7f4079de08f10638c927a53f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
