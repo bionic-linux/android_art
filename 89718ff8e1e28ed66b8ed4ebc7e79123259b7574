@@ -369,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "6b7daecd_4c26c873",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-29T17:08:13Z",
+      "side": 1,
+      "message": "I\u0027m fine with that. It doesn\u0027t seem 100% consistent with kStoreStore, but that inconsistency is now already enshrined by VarHandle.",
+      "parentUuid": "ef443811_f68150e3",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7677fac_9e22a7c0",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2

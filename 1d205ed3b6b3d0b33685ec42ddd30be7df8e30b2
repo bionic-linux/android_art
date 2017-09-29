@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be3e5550_2bde5e63",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-29T17:08:13Z",
+      "side": 1,
+      "message": "Needs to be kWriteSideEffects. It is not OK to advance a load across it.",
+      "range": {
+        "startLine": 163,
+        "startChar": 63,
+        "endLine": 163,
+        "endChar": 68
+      },
+      "revId": "1d205ed3b6b3d0b33685ec42ddd30be7df8e30b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "767d0ad8_005a920d",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-09-29T17:08:13Z",
+      "side": 1,
+      "message": "Same here. I think StoreStore below is the only one that allows movement of loads across it, and hence could be kReadSideEffects.\n\nLoadLoad allows movements of stores across it, but I don\u0027t think we can currently express that without also allowing loads. And that\u0027s definitely not worth fixing now. If we had lots of extra cycles, it would be much more interesting to express the allowed one-way movement across acquire/release.",
+      "range": {
+        "startLine": 165,
+        "startChar": 64,
+        "endLine": 165,
+        "endChar": 68
+      },
+      "revId": "1d205ed3b6b3d0b33685ec42ddd30be7df8e30b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
