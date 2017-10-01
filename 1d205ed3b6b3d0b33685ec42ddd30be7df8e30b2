@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd9def28_1663ae78",
+        "filename": "compiler/intrinsics_list.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-01T13:08:06Z",
+      "side": 1,
+      "message": "Done. I was thinking of this in the wrong way, ie from the CPU not the compiler. Documentation is noticeably scant around all the definitions between k{Read,Write}SideEffects to the scheduler and scheduler graph.",
+      "parentUuid": "81fb721b_e656368f",
+      "range": {
+        "startLine": 163,
+        "startChar": 63,
+        "endLine": 163,
+        "endChar": 68
+      },
+      "revId": "1d205ed3b6b3d0b33685ec42ddd30be7df8e30b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "767d0ad8_005a920d",
         "filename": "compiler/intrinsics_list.h",
         "patchSetId": 3

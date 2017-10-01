@@ -499,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "a3b486b0_fe16fa70",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-01T13:08:06Z",
+      "side": 1,
+      "message": "Per Hans\u0027s first comment, these are dropped for the interpreter.",
+      "parentUuid": "88c81c31_64d00899",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01e58dcf_248dd883",
         "filename": "test/988-method-trace/gen_srcs.py",
         "patchSetId": 2
