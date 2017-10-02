@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "21a18b41_b82e5b79",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-02T18:06:36Z",
+      "side": 1,
+      "message": "I suggest just going along with it for style reasons, but if you really need an explanation:\n\n---\nThat\u0027s factually incorrect.\n\nvarname\u003d\"foo bar\"\n\n  [[ -f $varname ]]\n\nworks correctly if $varname has spaces in it. -\u003e tests if \"foo bar\" is a file.\n\n  [ -f $varname ]\n\nexpands incorrectly, e.g. [ -f foo bar ] -\u003e bash: [: foo: binary operator expected\n\n----\nNotice you have several such uses throughout the file, I did not remark there to wrap it in \"\", because [[ ]] would be enough.",
+      "parentUuid": "296e98c6_53ef1f16",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 4
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27202004_066748b8",
         "filename": "tools/run-prebuilt-libjdwp-tests.sh",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "It won\u0027t always be set.",
       "parentUuid": "27202004_066748b8",
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b601ccac_08ea6163",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-02T18:06:36Z",
+      "side": 1,
+      "message": "It\u0027s explicitly exported in setpaths, which you called on L23",
+      "parentUuid": "b8ed54e8_e518709c",
       "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -382,6 +424,30 @@
       "side": 1,
       "message": "they need to pass through like 3-4 more shell scripts. There is no chance any of this is space safe so I don\u0027t think we need to care.",
       "parentUuid": "127e98dc_7e3408ba",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 29
+      },
+      "revId": "3c9fce423fdf98ddce9dcea4d5b9b4ed9fc73ccc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3e345f_75da7e6a",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-02T18:06:36Z",
+      "side": 1,
+      "message": "Existing scripts being wrong doesn\u0027t mean new scripts need to be wrong?",
+      "parentUuid": "4ada0255_c1b8734f",
       "range": {
         "startLine": 112,
         "startChar": 0,

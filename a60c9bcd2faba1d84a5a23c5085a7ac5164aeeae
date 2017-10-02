@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aedd4c29_4c609850",
+        "filename": "tools/run-prebuilt-libjdwp-tests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-02T18:06:36Z",
+      "side": 1,
+      "message": "Wrong way to expand array\n\n   \"${args[@]}\"\n\nWas this tested? \"$args\" would\u0027ve only expanded the 0th element. Try with host+64-bit.",
+      "range": {
+        "startLine": 112,
+        "startChar": 12,
+        "endLine": 112,
+        "endChar": 17
+      },
+      "revId": "a60c9bcd2faba1d84a5a23c5085a7ac5164aeeae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
