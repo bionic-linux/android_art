@@ -387,6 +387,24 @@
     },
     {
       "key": {
+        "uuid": "589705d0_286aa48b",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2322,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-02T14:02:20Z",
+      "side": 1,
+      "message": "I have left this as-is for now. On reflection, it\u0027s probably best to keep this change small as it\u0027s quite subtle. This can be addressed in a follow-up.",
+      "parentUuid": "6b7daecd_4c26c873",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7677fac_9e22a7c0",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -535,6 +553,24 @@
     },
     {
       "key": {
+        "uuid": "c4e1a0fa_2efae6ae",
+        "filename": "runtime/interpreter/interpreter_intrinsics.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-02T14:02:20Z",
+      "side": 1,
+      "message": "Okay, re-added these.",
+      "parentUuid": "ccb24d11_5ae0020f",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01e58dcf_248dd883",
         "filename": "test/988-method-trace/gen_srcs.py",
         "patchSetId": 2
@@ -564,6 +600,24 @@
       "side": 1,
       "message": "Tests added, removed this.",
       "parentUuid": "01e58dcf_248dd883",
+      "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e702098_4f3fa7e0",
+        "filename": "test/988-method-trace/gen_srcs.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-02T14:02:20Z",
+      "side": 1,
+      "message": "Had to add this back as switching to src-art entails some new expectations that aren\u0027t visibly related to the rest of this CL. TODO added.",
+      "parentUuid": "62412a37_719528c2",
       "revId": "89718ff8e1e28ed66b8ed4ebc7e79123259b7574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
