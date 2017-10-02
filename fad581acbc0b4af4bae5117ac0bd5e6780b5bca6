@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "602340d7_cacc168a",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-02T18:35:17Z",
+      "side": 1,
+      "message": "The default of the non-debug version is unlikely to be desired.",
+      "parentUuid": "77903ea9_70e50308",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "fad581acbc0b4af4bae5117ac0bd5e6780b5bca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aec57ca4_d7911454",
         "filename": "tools/run-jdwp-tests.sh",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-02T09:25:31Z",
       "side": 1,
       "message": "Err, maybe say why you need one then?",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 30
+      },
+      "revId": "fad581acbc0b4af4bae5117ac0bd5e6780b5bca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcedfb69_e5eababe",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-02T18:35:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec57ca4_d7911454",
       "range": {
         "startLine": 198,
         "startChar": 6,
