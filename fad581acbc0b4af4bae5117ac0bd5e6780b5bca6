@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f123b303_7e36bc18",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-04T09:53:55Z",
+      "side": 1,
+      "message": "\u003e The default of the non-debug version is unlikely to be desired.\n\nShould we move to default debug then? I think Andreas wanted that as well.",
+      "parentUuid": "602340d7_cacc168a",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "fad581acbc0b4af4bae5117ac0bd5e6780b5bca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aec57ca4_d7911454",
         "filename": "tools/run-jdwp-tests.sh",
         "patchSetId": 2
