@@ -36,7 +36,8 @@ target_config = {
         'env' : {
             'ANDROID_COMPILE_WITH_JACK' : 'false',
             'ART_USE_READ_BARRIER' : 'true'
-        }
+        },
+        'jobsMax' : 32
     },
 
     # ART run-test configurations
@@ -130,7 +131,8 @@ target_config = {
         'env' : {
             'ART_TEST_DEBUG_GC' : 'true',
             'ART_USE_READ_BARRIER' : 'false'
-        }
+        },
+        'jobsMax' : 32
     },
     'art-ss-gc' : {
         'run-test' : ['--interpreter',
@@ -140,6 +142,8 @@ target_config = {
             'ART_DEFAULT_GC_TYPE' : 'SS',
             'ART_USE_READ_BARRIER' : 'false'
         }
+        ,
+        'jobsMax' : 32
     },
     'art-gss-gc' : {
         'run-test' : ['--interpreter',
@@ -187,7 +191,8 @@ target_config = {
         'run-test' : ['--forcecopy'],
         'env' : {
             'ART_USE_READ_BARRIER' : 'true',
-        }
+        },
+        'jobsMax' : 32
     },
     'art-no-prebuild' : {
         'run-test' : ['--no-prebuild'],
@@ -206,7 +211,8 @@ target_config = {
                       '--no-image'],
         'env' : {
             'ART_USE_READ_BARRIER' : 'true',
-        }
+        },
+        'jobsMax' : 32
     },
     'art-relocate-no-patchoat' : {
         'run-test' : ['--relocate-npatchoat'],
@@ -263,7 +269,8 @@ target_config = {
             'ART_USE_READ_BARRIER' : 'true',
             'ART_READ_BARRIER_TYPE' : 'TABLELOOKUP',
             'ART_HEAP_POISONING' : 'true'
-        }
+        },
+        'jobsMax' : 32
     },
     'art-gtest-ss-gc': {
         'make' :  'test-art-host-gtest',

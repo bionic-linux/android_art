@@ -93,10 +93,12 @@ if target.has_key('golem'):
     sys.exit(1)
 
 if target.has_key('run-test'):
+  jobs = target.get('jobsMax', n_threads)
+  jobs = min(jobs, n_threads)
   run_test_command = [os.path.join(env.ANDROID_BUILD_TOP,
                                    'art/test/testrunner/testrunner.py')]
   run_test_command += target.get('run-test', [])
-  run_test_command += ['-j', str(n_threads)]
+  run_test_command += ['-j', str(jobs)]
   run_test_command += ['-b']
   run_test_command += ['--host']
   run_test_command += ['--verbose']
