@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcc8b09b_29315059",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 7322,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-06T17:07:40Z",
+      "side": 1,
+      "message": "Status is signed.\n\nWe could use an unsigned load and change the BLT below to BNE but that will not reduce the code size as the 16-bit LDRB cannot be used anyway because we\u0027re using the IP register.",
+      "range": {
+        "startLine": 7322,
+        "startChar": 38,
+        "endLine": 7322,
+        "endChar": 46
+      },
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8742f9f2_b5711f0b",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-06T17:07:40Z",
+      "side": 1,
+      "message": "#include \u003cstdint.h\u003e",
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b869b85_853156e2",
+        "filename": "runtime/class_bitstring_helper.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-06T17:07:40Z",
+      "side": 1,
+      "message": "Add blank line.",
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "470d3f10_78867578",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-06T17:07:40Z",
+      "side": 1,
+      "message": "This is already slower than SlowIsSubClass().",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 29
+      },
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76c20b89_3cc6a548",
+        "filename": "test/988-TooWideClassInstanceOf/info.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-06T17:07:40Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
