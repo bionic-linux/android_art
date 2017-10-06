@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Igor Murashkin <iam@google.com>
+Verified+1: Roland Levillain <rpl@google.com>
+Submitted-by: Roland Levillain <rpl@google.com>
+Submitted-at: Fri, 06 Oct 2017 09:37:58 +0000
+Reviewed-on: https://android-review.googlesource.com/429009
+Project: platform/art
+Branch: refs/heads/master
