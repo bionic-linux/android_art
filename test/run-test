@@ -45,6 +45,7 @@ export JAVAC="javac -g -Xlint:-options"
 export RUN="${progdir}/etc/run-test-jar"
 export DEX_LOCATION=/data/run-test/${test_dir}
 export NEED_DEX="true"
+export RUN_64BIT="false"
 export USE_D8="false"
 export USE_JACK="false"
 export USE_DESUGAR="true"
@@ -375,6 +376,7 @@ while true; do
         usage="yes"
         shift
     elif [ "x$1" = "x--64" ]; then
+        RUN_64BIT="true"
         run_args="${run_args} --64"
         suffix64="64"
         shift
