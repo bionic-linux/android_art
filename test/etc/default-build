@@ -113,6 +113,7 @@ JACK_EXPERIMENTAL_ARGS[${DEFAULT_EXPERIMENT}]="-D jack.java.source.version=1.8 -
 declare -A SMALI_EXPERIMENTAL_ARGS
 SMALI_EXPERIMENTAL_ARGS["default-methods"]="--api 24"
 SMALI_EXPERIMENTAL_ARGS["method-handles"]="--api 26"
+SMALI_EXPERIMENTAL_ARGS["var-handles"]="--api 28"
 SMALI_EXPERIMENTAL_ARGS["agents"]="--api 26"
 
 declare -A JAVAC_EXPERIMENTAL_ARGS
