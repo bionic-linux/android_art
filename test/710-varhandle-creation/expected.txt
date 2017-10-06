@@ -1,0 +1,62 @@
+checkInstantiatedVarHandles...
+Checking vz
+Checking vb
+Checking vc
+Checking vs
+Checking vi
+Checking vj
+Checking vf
+Checking vd
+Checking vo
+Checking vfz
+Checking vfb
+Checking vfc
+Checking vfs
+Checking vfi
+Checking vfj
+Checking vff
+Checking vfd
+Checking vfo
+Checking vfss
+Checking vsz
+Checking vsb
+Checking vsc
+Checking vss
+Checking vsi
+Checking vsj
+Checking vsf
+Checking vsd
+Checking vso
+Checking vaz
+Checking vab
+Checking vac
+Checking vas
+Checking vai
+Checking vaj
+Checking vaf
+Checking vad
+Checking vao
+Checking vbaz
+Checking vbab
+Checking vbac
+Checking vbas
+Checking vbai
+Checking vbaj
+Checking vbaf
+Checking vbad
+Checking vbao
+Checking vbbz
+Checking vbbb
+Checking vbbc
+Checking vbbs
+Checking vbbi
+Checking vbbj
+Checking vbbf
+Checking vbbd
+Checking vbbo
+PASS
+checkAccessModes...PASS
+LookupCheckA...PASS
+LookupCheckB...PASS
+UnreflectCheck...PASS
+LookupCheckC...PASS
