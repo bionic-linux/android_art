@@ -1,0 +1,72 @@
+1223,1230c1223,1230
+<   GET                          Y (byte[],int)long
+<   SET                          Y (byte[],int,long)void
+<   GET_VOLATILE                 Y (byte[],int)long
+<   SET_VOLATILE                 Y (byte[],int,long)void
+<   GET_ACQUIRE                  Y (byte[],int)long
+<   SET_RELEASE                  Y (byte[],int,long)void
+<   GET_OPAQUE                   Y (byte[],int)long
+<   SET_OPAQUE                   Y (byte[],int,long)void
+---
+>   GET                          N (byte[],int)long
+>   SET                          N (byte[],int,long)void
+>   GET_VOLATILE                 N (byte[],int)long
+>   SET_VOLATILE                 N (byte[],int,long)void
+>   GET_ACQUIRE                  N (byte[],int)long
+>   SET_RELEASE                  N (byte[],int,long)void
+>   GET_OPAQUE                   N (byte[],int)long
+>   SET_OPAQUE                   N (byte[],int,long)void
+1287,1294c1287,1294
+<   GET                          Y (byte[],int)double
+<   SET                          Y (byte[],int,double)void
+<   GET_VOLATILE                 Y (byte[],int)double
+<   SET_VOLATILE                 Y (byte[],int,double)void
+<   GET_ACQUIRE                  Y (byte[],int)double
+<   SET_RELEASE                  Y (byte[],int,double)void
+<   GET_OPAQUE                   Y (byte[],int)double
+<   SET_OPAQUE                   Y (byte[],int,double)void
+---
+>   GET                          N (byte[],int)double
+>   SET                          N (byte[],int,double)void
+>   GET_VOLATILE                 N (byte[],int)double
+>   SET_VOLATILE                 N (byte[],int,double)void
+>   GET_ACQUIRE                  N (byte[],int)double
+>   SET_RELEASE                  N (byte[],int,double)void
+>   GET_OPAQUE                   N (byte[],int)double
+>   SET_OPAQUE                   N (byte[],int,double)void
+1416,1423c1416,1423
+<   GET                          Y (ByteBuffer,int)long
+<   SET                          Y (ByteBuffer,int,long)void
+<   GET_VOLATILE                 Y (ByteBuffer,int)long
+<   SET_VOLATILE                 Y (ByteBuffer,int,long)void
+<   GET_ACQUIRE                  Y (ByteBuffer,int)long
+<   SET_RELEASE                  Y (ByteBuffer,int,long)void
+<   GET_OPAQUE                   Y (ByteBuffer,int)long
+<   SET_OPAQUE                   Y (ByteBuffer,int,long)void
+---
+>   GET                          N (ByteBuffer,int)long
+>   SET                          N (ByteBuffer,int,long)void
+>   GET_VOLATILE                 N (ByteBuffer,int)long
+>   SET_VOLATILE                 N (ByteBuffer,int,long)void
+>   GET_ACQUIRE                  N (ByteBuffer,int)long
+>   SET_RELEASE                  N (ByteBuffer,int,long)void
+>   GET_OPAQUE                   N (ByteBuffer,int)long
+>   SET_OPAQUE                   N (ByteBuffer,int,long)void
+1480,1487c1480,1487
+<   GET                          Y (ByteBuffer,int)double
+<   SET                          Y (ByteBuffer,int,double)void
+<   GET_VOLATILE                 Y (ByteBuffer,int)double
+<   SET_VOLATILE                 Y (ByteBuffer,int,double)void
+<   GET_ACQUIRE                  Y (ByteBuffer,int)double
+<   SET_RELEASE                  Y (ByteBuffer,int,double)void
+<   GET_OPAQUE                   Y (ByteBuffer,int)double
+<   SET_OPAQUE                   Y (ByteBuffer,int,double)void
+---
+>   GET                          N (ByteBuffer,int)double
+>   SET                          N (ByteBuffer,int,double)void
+>   GET_VOLATILE                 N (ByteBuffer,int)double
+>   SET_VOLATILE                 N (ByteBuffer,int,double)void
+>   GET_ACQUIRE                  N (ByteBuffer,int)double
+>   SET_RELEASE                  N (ByteBuffer,int,double)void
+>   GET_OPAQUE                   N (ByteBuffer,int)double
+>   SET_OPAQUE                   N (ByteBuffer,int,double)void
