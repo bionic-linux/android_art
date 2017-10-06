@@ -22,6 +22,30 @@
       "revId": "4339872a36baa39e95d9d7909139583b870d85fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7952f5d9_e574c6ee",
+        "filename": "dex2oat/dex2oat.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-10-06T19:37:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0c58db_20471bb3",
+      "range": {
+        "startLine": 241,
+        "startChar": 100,
+        "endLine": 241,
+        "endChar": 104
+      },
+      "revId": "4339872a36baa39e95d9d7909139583b870d85fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
