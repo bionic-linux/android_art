@@ -401,7 +401,6 @@ SYMBOL(ExecuteMterpImpl):
 
 
     .global SYMBOL(artMterpAsmInstructionStart)
-    FUNCTION_TYPE(SYMBOL(artMterpAsmInstructionStart))
 SYMBOL(artMterpAsmInstructionStart) = .L_op_nop
     .text
 
@@ -6308,28 +6307,19 @@ SYMBOL(artMterpAsmInstructionStart) = .L_op_nop
 
 /* ------------------------------ */
     .balign 128
-.L_op_unused_fe: /* 0xfe */
-/* File: x86/op_unused_fe.S */
-/* File: x86/unused.S */
-/*
- * Bail to reference interpreter to throw.
- */
+.L_op_const_method_handle: /* 0xfe */
+/* Transfer stub to alternate interpreter */
     jmp     MterpFallback
 
 
 /* ------------------------------ */
     .balign 128
-.L_op_unused_ff: /* 0xff */
-/* File: x86/op_unused_ff.S */
-/* File: x86/unused.S */
-/*
- * Bail to reference interpreter to throw.
- */
+.L_op_const_method_type: /* 0xff */
+/* Transfer stub to alternate interpreter */
     jmp     MterpFallback
 
 
     .balign 128
-    SIZE(SYMBOL(artMterpAsmInstructionStart),SYMBOL(artMterpAsmInstructionStart))
     .global SYMBOL(artMterpAsmInstructionEnd)
 SYMBOL(artMterpAsmInstructionEnd):
 
@@ -6339,18 +6329,14 @@ SYMBOL(artMterpAsmInstructionEnd):
  * ===========================================================================
  */
     .global SYMBOL(artMterpAsmSisterStart)
-    FUNCTION_TYPE(SYMBOL(artMterpAsmSisterStart))
     .text
     .balign 4
 SYMBOL(artMterpAsmSisterStart):
-
-    SIZE(SYMBOL(artMterpAsmSisterStart),SYMBOL(artMterpAsmSisterStart))
     .global SYMBOL(artMterpAsmSisterEnd)
 SYMBOL(artMterpAsmSisterEnd):
 
 
     .global SYMBOL(artMterpAsmAltInstructionStart)
-    FUNCTION_TYPE(SYMBOL(artMterpAsmAltInstructionStart))
     .text
 
 SYMBOL(artMterpAsmAltInstructionStart) = .L_ALT_op_nop
@@ -12452,7 +12438,7 @@ SYMBOL(artMterpAsmAltInstructionStart) = .L_ALT_op_nop
 
 /* ------------------------------ */
     .balign 128
-.L_ALT_op_unused_fe: /* 0xfe */
+.L_ALT_op_const_method_handle: /* 0xfe */
 /* File: x86/alt_stub.S */
 /*
  * Inter-instruction transfer stub.  Call out to MterpCheckBefore to handle
@@ -12476,7 +12462,7 @@ SYMBOL(artMterpAsmAltInstructionStart) = .L_ALT_op_nop
 
 /* ------------------------------ */
     .balign 128
-.L_ALT_op_unused_ff: /* 0xff */
+.L_ALT_op_const_method_type: /* 0xff */
 /* File: x86/alt_stub.S */
 /*
  * Inter-instruction transfer stub.  Call out to MterpCheckBefore to handle
@@ -12499,7 +12485,6 @@ SYMBOL(artMterpAsmAltInstructionStart) = .L_ALT_op_nop
     jmp     .L_op_nop+(255*128)
 
     .balign 128
-    SIZE(SYMBOL(artMterpAsmAltInstructionStart),SYMBOL(artMterpAsmAltInstructionStart))
     .global SYMBOL(artMterpAsmAltInstructionEnd)
 SYMBOL(artMterpAsmAltInstructionEnd):
 /* File: x86/footer.S */
