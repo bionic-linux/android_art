@@ -82,6 +82,30 @@
     },
     {
       "key": {
+        "uuid": "b7c8fd6b_efd58d87",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-06T17:28:47Z",
+      "side": 1,
+      "message": "Right now the \"IsValidFastIsSubclass\" check is dependent on the depth to know which bits to read out.\n\nI think we can , with much cleverness, remove that check by rearranging the bits, but it\u0027s probably not worth it.\n\nThis could be flipped to run \"SlowIsSubclass\" by default and only DCHECK that the \"FastIsSubclass\" returns the same result [if it was valid to run it].",
+      "parentUuid": "470d3f10_78867578",
+      "range": {
+        "startLine": 536,
+        "startChar": 15,
+        "endLine": 536,
+        "endChar": 29
+      },
+      "revId": "ef53c24b7205a240f8b4b7ca1ff2341303f0ac6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76c20b89_3cc6a548",
         "filename": "test/988-TooWideClassInstanceOf/info.txt",
         "patchSetId": 11
