@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ae96785_6a883c7c",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-09T12:32:12Z",
+      "side": 1,
+      "message": "What about \u0027jobs-max\u0027? This looks like the only case in this file where camelCase would be used otherwise.",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "20008b2f9338156dfaf13e9b04dc67133a430a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
