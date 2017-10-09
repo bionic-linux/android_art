@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc3246a8_2185b242",
+        "filename": "test/testrunner/run_build_test_target.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-10-09T21:26:00Z",
+      "side": 1,
+      "message": "The value is not used by run-tests, however, other tests - gtest, golem still uses it. Will add a comment though.",
+      "parentUuid": "272969d8_3b010044",
+      "revId": "76504a8278e0e98d4d33e121db05a24211c5b6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38e789e0_50279916",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-10-09T21:18:22Z",
       "side": 1,
       "message": "Is the leftover printing intentional?",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 54
+      },
+      "revId": "76504a8278e0e98d4d33e121db05a24211c5b6aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "261418f3_92bb4318",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-10-09T21:26:00Z",
+      "side": 1,
+      "message": "Intentionally printing to see the actual concurrency value corresponding to each run.",
+      "parentUuid": "38e789e0_50279916",
       "range": {
         "startLine": 240,
         "startChar": 0,
