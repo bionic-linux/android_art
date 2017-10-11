@@ -25,6 +25,7 @@
 #include "test_env.h"
 
 #include "901-hello-ti-agent/basics.h"
+#include "908-gc-start-finish-b/gc_callbacks.h"
 #include "909-attach-agent/attach.h"
 #include "936-search-onload/search_onload.h"
 #include "983-source-transform-verify/source_transform.h"
@@ -71,6 +72,7 @@ static jint MinimalOnLoad(JavaVM* vm,
 // MinimalOnLoad.
 static AgentLib agents[] = {
   { "901-hello-ti-agent", Test901HelloTi::OnLoad, nullptr },
+  { "908-gc-start-finish-b", Test908GcStartFinishB::OnLoad, nullptr },
   { "909-attach-agent", nullptr, Test909AttachAgent::OnAttach },
   { "916-obsolete-jit", common_redefine::OnLoad, nullptr },
   { "921-hello-failure", common_retransform::OnLoad, nullptr },
