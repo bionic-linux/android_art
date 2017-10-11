@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "726e2dbe_ff2799c8",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-11T16:59:53Z",
+      "side": 1,
+      "message": "How true is this if nobody waits on the semaphore?",
+      "range": {
+        "startLine": 467,
+        "startChar": 49,
+        "endLine": 467,
+        "endChar": 52
+      },
+      "revId": "e669e4bfca288efcfdaa9d4be59e86aa27f5e542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
