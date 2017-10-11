@@ -28,7 +28,7 @@ namespace art {
 class ArtField;
 class ArtMethod;
 struct DexCacheOffsets;
-class DexFile;
+class IDexFile;
 class ImageWriter;
 union JValue;
 class LinearAlloc;
@@ -195,7 +195,7 @@ class MANAGED DexCache FINAL : public Object {
   static void InitializeDexCache(Thread* self,
                                  ObjPtr<mirror::DexCache> dex_cache,
                                  ObjPtr<mirror::String> location,
-                                 const DexFile* dex_file,
+                                 const IDexFile* dex_file,
                                  LinearAlloc* linear_alloc,
                                  PointerSize image_pointer_size)
       REQUIRES_SHARED(Locks::mutator_lock_)
@@ -406,11 +406,11 @@ class MANAGED DexCache FINAL : public Object {
     return GetField32(NumResolvedCallSitesOffset());
   }
 
-  const DexFile* GetDexFile() ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_) {
-    return GetFieldPtr<const DexFile*>(OFFSET_OF_OBJECT_MEMBER(DexCache, dex_file_));
+  const IDexFile* GetDexFile() ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_) {
+    return GetFieldPtr<const IDexFile*>(OFFSET_OF_OBJECT_MEMBER(DexCache, dex_file_));
   }
 
-  void SetDexFile(const DexFile* dex_file) REQUIRES_SHARED(Locks::mutator_lock_) {
+  void SetDexFile(const IDexFile* dex_file) REQUIRES_SHARED(Locks::mutator_lock_) {
     SetFieldPtr<false>(OFFSET_OF_OBJECT_MEMBER(DexCache, dex_file_), dex_file);
   }
 
@@ -444,7 +444,7 @@ class MANAGED DexCache FINAL : public Object {
   uint32_t MethodTypeSlotIndex(uint32_t proto_idx) REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
-  void Init(const DexFile* dex_file,
+  void Init(const IDexFile* dex_file,
             ObjPtr<String> location,
             StringDexCacheType* strings,
             uint32_t num_strings,
@@ -528,7 +528,7 @@ class MANAGED DexCache FINAL : public Object {
   // because of our packing logic for 32 bit fields.
   uint32_t num_resolved_call_sites_;
 
-  uint64_t dex_file_;               // const DexFile*
+  uint64_t dex_file_;               // const IDexFile*
   uint64_t resolved_call_sites_;    // GcRoot<CallSite>* array with num_resolved_call_sites_
                                     // elements.
   uint64_t resolved_fields_;        // std::atomic<FieldDexCachePair>*, array with

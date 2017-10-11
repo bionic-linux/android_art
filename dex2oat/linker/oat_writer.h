@@ -71,7 +71,7 @@ class OutputStream;
 // ...
 // ClassOffsets[D]
 //
-// OatClass[0]       one variable sized OatClass for each of C DexFile::ClassDefs
+// OatClass[0]       one variable sized OatClass for each of C IDexFile::ClassDefs
 // OatClass[1]       contains OatClass entries with class status, offsets to code, etc.
 // ...
 // OatClass[C]
@@ -170,14 +170,14 @@ class OatWriter {
                             bool verify,
                             bool update_input_vdex,
                             /*out*/ std::unique_ptr<MemMap>* opened_dex_files_map,
-                            /*out*/ std::vector<std::unique_ptr<const DexFile>>* opened_dex_files);
+                            /*out*/ std::vector<std::unique_ptr<const IDexFile>>* opened_dex_files);
   bool WriteQuickeningInfo(OutputStream* vdex_out);
   bool WriteVerifierDeps(OutputStream* vdex_out, verifier::VerifierDeps* verifier_deps);
   bool WriteChecksumsAndVdexHeader(OutputStream* vdex_out);
   // Initialize the writer with the given parameters.
   void Initialize(const CompilerDriver* compiler,
                   ImageWriter* image_writer,
-                  const std::vector<const DexFile*>& dex_files) {
+                  const std::vector<const IDexFile*>& dex_files) {
     compiler_driver_ = compiler;
     image_writer_ = image_writer;
     dex_files_ = &dex_files;
@@ -297,7 +297,7 @@ class OatWriter {
   bool OpenDexFiles(File* file,
                     bool verify,
                     /*out*/ std::unique_ptr<MemMap>* opened_dex_files_map,
-                    /*out*/ std::vector<std::unique_ptr<const DexFile>>* opened_dex_files);
+                    /*out*/ std::vector<std::unique_ptr<const IDexFile>>* opened_dex_files);
 
   size_t InitOatHeader(InstructionSet instruction_set,
                        const InstructionSetFeatures* instruction_set_features,
@@ -324,9 +324,9 @@ class OatWriter {
   bool ReadDexFileHeader(File* oat_file, OatDexFile* oat_dex_file);
   bool ValidateDexFileHeader(const uint8_t* raw_header, const char* location);
   bool WriteTypeLookupTables(OutputStream* oat_rodata,
-                             const std::vector<std::unique_ptr<const DexFile>>& opened_dex_files);
+                             const std::vector<std::unique_ptr<const IDexFile>>& opened_dex_files);
   bool WriteDexLayoutSections(OutputStream* oat_rodata,
-                              const std::vector<std::unique_ptr<const DexFile>>& opened_dex_files);
+                              const std::vector<std::unique_ptr<const IDexFile>>& opened_dex_files);
   bool WriteCodeAlignment(OutputStream* out, uint32_t aligned_code_delta);
   bool WriteUpTo16BytesAlignment(OutputStream* out, uint32_t size, uint32_t* stat);
   void SetMultiOatRelativePatcherAdjustment();
@@ -335,10 +335,10 @@ class OatWriter {
   bool MayHaveCompiledMethods() const;
 
   // Find the address of the GcRoot<String> in the InternTable for a boot image string.
-  const uint8_t* LookupBootImageInternTableSlot(const DexFile& dex_file,
+  const uint8_t* LookupBootImageInternTableSlot(const IDexFile& dex_file,
                                                 dex::StringIndex string_idx);
   // Find the address of the ClassTable::TableSlot for a boot image class.
-  const uint8_t* LookupBootImageClassTableSlot(const DexFile& dex_file, dex::TypeIndex type_idx);
+  const uint8_t* LookupBootImageClassTableSlot(const IDexFile& dex_file, dex::TypeIndex type_idx);
 
   enum class WriteState {
     kAddingDexFileSources,
@@ -367,7 +367,7 @@ class OatWriter {
   const bool compiling_boot_image_;
 
   // note OatFile does not take ownership of the DexFiles
-  const std::vector<const DexFile*>* dex_files_;
+  const std::vector<const IDexFile*>* dex_files_;
 
   // Size required for Vdex data structures.
   size_t vdex_size_;
@@ -397,7 +397,7 @@ class OatWriter {
   size_t bss_roots_offset_;
 
   // Map for recording references to ArtMethod entries in .bss.
-  SafeMap<const DexFile*, BitVector> bss_method_entry_references_;
+  SafeMap<const IDexFile*, BitVector> bss_method_entry_references_;
 
   // Map for allocating ArtMethod entries in .bss. Indexed by MethodReference for the target
   // method in the dex file with the "method reference value comparator" for deduplication.

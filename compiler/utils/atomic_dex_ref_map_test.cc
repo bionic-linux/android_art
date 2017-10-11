@@ -19,7 +19,7 @@
 #include <memory>
 
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "method_reference.h"
 #include "scoped_thread_state_change-inl.h"
 
@@ -29,7 +29,7 @@ class AtomicDexRefMapTest : public CommonRuntimeTest {};
 
 TEST_F(AtomicDexRefMapTest, RunTests) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> dex(OpenTestDexFile("Interfaces"));
+  std::unique_ptr<const IDexFile> dex(OpenTestDexFile("Interfaces"));
   ASSERT_TRUE(dex != nullptr);
   using Map = AtomicDexRefMap<MethodReference, int>;
   Map map;

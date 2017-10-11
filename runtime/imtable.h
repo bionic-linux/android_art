@@ -28,7 +28,7 @@
 namespace art {
 
 class ArtMethod;
-class DexFile;
+class IDexFile;
 
 class ImTable {
  public:

@@ -345,7 +345,7 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
 
   void BuildStackMaps(MemoryRegion stack_map_region,
                       MemoryRegion method_info_region,
-                      const DexFile::CodeItem& code_item);
+                      const IDexFile::CodeItem& code_item);
   void ComputeStackMapAndMethodInfoSize(size_t* stack_map_size, size_t* method_info_size);
   size_t GetNumberOfJitRoots() const {
     return jit_string_roots_.size() + jit_class_roots_.size();
@@ -584,10 +584,10 @@ class CodeGenerator : public DeletableArenaObject<kArenaAllocCodeGenerator> {
   // i.e. target method, string, type or code identified by their dex file and index.
   template <typename LabelType>
   struct PatchInfo {
-    PatchInfo(const DexFile& target_dex_file, uint32_t target_index)
+    PatchInfo(const IDexFile& target_dex_file, uint32_t target_index)
         : dex_file(target_dex_file), index(target_index) { }
 
-    const DexFile& dex_file;
+    const IDexFile& dex_file;
     uint32_t index;
     LabelType label;
   };

@@ -29,7 +29,7 @@ namespace art {
 
 namespace interpreter {
   void ArtInterpreterToInterpreterBridge(Thread* self,
-                                        const DexFile::CodeItem* code_item,
+                                        const IDexFile::CodeItem* code_item,
                                         ShadowFrame* shadow_frame,
                                         JValue* result)
      REQUIRES_SHARED(Locks::mutator_lock_);
@@ -42,7 +42,7 @@ namespace interpreter {
 }  // namespace interpreter
 
 inline void PerformCall(Thread* self,
-                        const DexFile::CodeItem* code_item,
+                        const IDexFile::CodeItem* code_item,
                         ArtMethod* caller_method,
                         const size_t first_dest_reg,
                         ShadowFrame* callee_frame,

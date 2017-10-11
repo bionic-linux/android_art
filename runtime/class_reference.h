@@ -24,12 +24,12 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
-// A class is uniquely located by its DexFile and the class_defs_ table index into that DexFile
+// A class is uniquely located by its IDexFile and the class_defs_ table index into that IDexFile
 class ClassReference : public DexFileReference {
  public:
-  ClassReference(const DexFile* file, uint32_t class_def_idx)
+  ClassReference(const IDexFile* file, uint32_t class_def_idx)
      : DexFileReference(file, class_def_idx) {}
 
   uint32_t ClassDefIdx() const {

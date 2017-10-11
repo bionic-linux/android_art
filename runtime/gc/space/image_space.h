@@ -166,7 +166,7 @@ class ImageSpace : public MemMapSpace {
   // Tries to initialize an ImageSpace from the given image path, returning null on error.
   //
   // If validate_oat_file is false (for /system), do not verify that image's OatFile is up-to-date
-  // relative to its DexFile inputs. Otherwise (for /data), validate the inputs and generate the
+  // relative to its IDexFile inputs. Otherwise (for /data), validate the inputs and generate the
   // OatFile in /data/dalvik-cache if necessary. If the oat_file is null, it uses the oat file from
   // the image.
   static std::unique_ptr<ImageSpace> Init(const char* image_filename,

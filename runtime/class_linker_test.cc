@@ -419,17 +419,17 @@ class ClassLinkerTest : public CommonRuntimeTest {
     }
   }
 
-  void AssertDexFile(const DexFile& dex, mirror::ClassLoader* class_loader)
+  void AssertDexFile(const IDexFile& dex, mirror::ClassLoader* class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     // Verify all the classes defined in this file
     for (size_t i = 0; i < dex.NumClassDefs(); i++) {
-      const DexFile::ClassDef& class_def = dex.GetClassDef(i);
+      const IDexFile::ClassDef& class_def = dex.GetClassDef(i);
       const char* descriptor = dex.GetClassDescriptor(class_def);
       AssertDexFileClass(class_loader, descriptor);
     }
     // Verify all the types referenced by this file
     for (size_t i = 0; i < dex.NumTypeIds(); i++) {
-      const DexFile::TypeId& type_id = dex.GetTypeId(dex::TypeIndex(i));
+      const IDexFile::TypeId& type_id = dex.GetTypeId(dex::TypeIndex(i));
       const char* descriptor = dex.GetTypeDescriptor(type_id);
       AssertDexFileClass(class_loader, descriptor);
     }
@@ -814,12 +814,12 @@ TEST_F(ClassLinkerTest, GetDexFiles) {
   ScopedObjectAccess soa(Thread::Current());
 
   jobject jclass_loader = LoadDex("Nested");
-  std::vector<const DexFile*> dex_files(GetDexFiles(jclass_loader));
+  std::vector<const IDexFile*> dex_files(GetDexFiles(jclass_loader));
   ASSERT_EQ(dex_files.size(), 1U);
   EXPECT_TRUE(android::base::EndsWith(dex_files[0]->GetLocation(), "Nested.jar"));
 
   jobject jclass_loader2 = LoadDex("MultiDex");
-  std::vector<const DexFile*> dex_files2(GetDexFiles(jclass_loader2));
+  std::vector<const IDexFile*> dex_files2(GetDexFiles(jclass_loader2));
   ASSERT_EQ(dex_files2.size(), 2U);
   EXPECT_TRUE(android::base::EndsWith(dex_files2[0]->GetLocation(), "MultiDex.jar"));
 }
@@ -916,7 +916,7 @@ TEST_F(ClassLinkerTest, LookupResolvedType) {
   ObjPtr<mirror::Class> klass = class_linker_->FindClass(soa.Self(), "LMyClass;", class_loader);
   dex::TypeIndex type_idx = klass->GetClassDef()->class_idx_;
   ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache();
-  const DexFile& dex_file = klass->GetDexFile();
+  const IDexFile& dex_file = klass->GetDexFile();
   EXPECT_OBJ_PTR_EQ(
       class_linker_->LookupResolvedType(dex_file, type_idx, dex_cache, class_loader.Get()),
       klass);
@@ -938,9 +938,9 @@ TEST_F(ClassLinkerTest, LookupResolvedTypeArray) {
       = class_linker_->FindClass(soa.Self(), "LAllFields;", class_loader);
   ASSERT_OBJ_PTR_NE(all_fields_klass, ObjPtr<mirror::Class>(nullptr));
   Handle<mirror::DexCache> dex_cache = hs.NewHandle(all_fields_klass->GetDexCache());
-  const DexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
   // Get the index of the array class we want to test.
-  const DexFile::TypeId* array_id = dex_file.FindTypeId("[Ljava/lang/Object;");
+  const IDexFile::TypeId* array_id = dex_file.FindTypeId("[Ljava/lang/Object;");
   ASSERT_TRUE(array_id != nullptr);
   dex::TypeIndex array_idx = dex_file.GetIndexForTypeId(*array_id);
   // Check that the array class wasn't resolved yet.
@@ -974,7 +974,7 @@ TEST_F(ClassLinkerTest, LookupResolvedTypeErroneousInit) {
   ASSERT_OBJ_PTR_NE(klass.Get(), ObjPtr<mirror::Class>(nullptr));
   dex::TypeIndex type_idx = klass->GetClassDef()->class_idx_;
   Handle<mirror::DexCache> dex_cache = hs.NewHandle(klass->GetDexCache());
-  const DexFile& dex_file = klass->GetDexFile();
+  const IDexFile& dex_file = klass->GetDexFile();
   EXPECT_OBJ_PTR_EQ(
       class_linker_->LookupResolvedType(dex_file, type_idx, dex_cache.Get(), class_loader.Get()),
       klass.Get());
@@ -1253,7 +1253,7 @@ TEST_F(ClassLinkerTest, ResolveVerifyAndClinit) {
 
   ScopedObjectAccess soa(Thread::Current());
   jobject jclass_loader = LoadDex("StaticsFromCode");
-  const DexFile* dex_file = GetFirstDexFile(jclass_loader);
+  const IDexFile* dex_file = GetFirstDexFile(jclass_loader);
   StackHandleScope<1> hs(soa.Self());
   Handle<mirror::ClassLoader> class_loader(
       hs.NewHandle(soa.Decode<mirror::ClassLoader>(jclass_loader)));
@@ -1263,7 +1263,7 @@ TEST_F(ClassLinkerTest, ResolveVerifyAndClinit) {
       klass->FindClassMethod("getS0", "()Ljava/lang/Object;", kRuntimePointerSize);
   ASSERT_TRUE(getS0 != nullptr);
   ASSERT_TRUE(getS0->IsStatic());
-  const DexFile::TypeId* type_id = dex_file->FindTypeId("LStaticsFromCode;");
+  const IDexFile::TypeId* type_id = dex_file->FindTypeId("LStaticsFromCode;");
   ASSERT_TRUE(type_id != nullptr);
   dex::TypeIndex type_idx = dex_file->GetIndexForTypeId(*type_id);
   mirror::Class* uninit = ResolveVerifyAndClinit(type_idx, clinit, soa.Self(), true, false);
@@ -1460,9 +1460,9 @@ TEST_F(ClassLinkerTest, RegisterDexFileName) {
                                                                               arraysize(data),
                                                                               data)));
   dex_cache->SetLocation(location.Get());
-  const DexFile* old_dex_file = dex_cache->GetDexFile();
+  const IDexFile* old_dex_file = dex_cache->GetDexFile();
 
-  std::unique_ptr<DexFile> dex_file(new NativeDexFile(old_dex_file->Begin(),
+  std::unique_ptr<IDexFile> dex_file(new NativeDexFile(old_dex_file->Begin(),
                                                       old_dex_file->Size(),
                                                       location->ToModifiedUtf8(),
                                                       0u,
@@ -1492,11 +1492,11 @@ TEST_F(ClassLinkerMethodHandlesTest, TestResolveMethodTypes) {
   ASSERT_TRUE(method1 != nullptr);
   ASSERT_FALSE(method1->IsDirect());
 
-  const DexFile& dex_file = *(method1->GetDexFile());
+  const IDexFile& dex_file = *(method1->GetDexFile());
   Handle<mirror::DexCache> dex_cache = hs.NewHandle(
       class_linker_->FindDexCache(Thread::Current(), dex_file));
 
-  const DexFile::MethodId& method1_id = dex_file.GetMethodId(method1->GetDexMethodIndex());
+  const IDexFile::MethodId& method1_id = dex_file.GetMethodId(method1->GetDexMethodIndex());
 
   // This is the MethodType corresponding to the prototype of
   // String MethodTypes# method1(String).
@@ -1527,7 +1527,7 @@ TEST_F(ClassLinkerMethodHandlesTest, TestResolveMethodTypes) {
       kRuntimePointerSize);
   ASSERT_TRUE(method2 != nullptr);
   ASSERT_FALSE(method2->IsDirect());
-  const DexFile::MethodId& method2_id = dex_file.GetMethodId(method2->GetDexMethodIndex());
+  const IDexFile::MethodId& method2_id = dex_file.GetMethodId(method2->GetDexMethodIndex());
   Handle<mirror::MethodType> method2_type = hs.NewHandle(
       class_linker_->ResolveMethodType(dex_file, method2_id.proto_idx_, dex_cache, class_loader));
 

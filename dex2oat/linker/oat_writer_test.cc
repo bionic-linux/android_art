@@ -55,7 +55,7 @@ class OatTest : public CommonCompilerTest {
 
   void CheckMethod(ArtMethod* method,
                    const OatFile::OatMethod& oat_method,
-                   const DexFile& dex_file)
+                   const IDexFile& dex_file)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     const CompiledMethod* compiled_method =
         compiler_driver_->GetCompiledMethod(MethodReference(&dex_file,
@@ -121,14 +121,14 @@ class OatTest : public CommonCompilerTest {
 
   bool WriteElf(File* vdex_file,
                 File* oat_file,
-                const std::vector<const DexFile*>& dex_files,
+                const std::vector<const IDexFile*>& dex_files,
                 SafeMap<std::string, std::string>& key_value_store,
                 bool verify) {
     TimingLogger timings("WriteElf", false, false);
     OatWriter oat_writer(/*compiling_boot_image*/false,
                          &timings,
                          /*profile_compilation_info*/nullptr);
-    for (const DexFile* dex_file : dex_files) {
+    for (const IDexFile* dex_file : dex_files) {
       ArrayRef<const uint8_t> raw_dex_file(
           reinterpret_cast<const uint8_t*>(&dex_file->GetHeader()),
           dex_file->GetHeader().file_size_);
@@ -186,7 +186,7 @@ class OatTest : public CommonCompilerTest {
     elf_writer->Start();
     OutputStream* oat_rodata = elf_writer->StartRoData();
     std::unique_ptr<MemMap> opened_dex_files_map;
-    std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> opened_dex_files;
     if (!oat_writer.WriteAndOpenDexFiles(kIsVdexEnabled ? vdex_file : oat_file,
                                          oat_rodata,
                                          compiler_driver_->GetInstructionSet(),
@@ -201,8 +201,8 @@ class OatTest : public CommonCompilerTest {
 
     Runtime* runtime = Runtime::Current();
     ClassLinker* const class_linker = runtime->GetClassLinker();
-    std::vector<const DexFile*> dex_files;
-    for (const std::unique_ptr<const DexFile>& dex_file : opened_dex_files) {
+    std::vector<const IDexFile*> dex_files;
+    for (const std::unique_ptr<const IDexFile>& dex_file : opened_dex_files) {
       dex_files.push_back(dex_file.get());
       ScopedObjectAccess soa(Thread::Current());
       class_linker->RegisterDexFile(*dex_file, nullptr);
@@ -253,7 +253,7 @@ class OatTest : public CommonCompilerTest {
     }
 
     opened_dex_files_maps_.emplace_back(std::move(opened_dex_files_map));
-    for (std::unique_ptr<const DexFile>& dex_file : opened_dex_files) {
+    for (std::unique_ptr<const IDexFile>& dex_file : opened_dex_files) {
       opened_dex_files_.emplace_back(dex_file.release());
     }
     return true;
@@ -267,7 +267,7 @@ class OatTest : public CommonCompilerTest {
   std::unique_ptr<QuickCompilerCallbacks> callbacks_;
 
   std::vector<std::unique_ptr<MemMap>> opened_dex_files_maps_;
-  std::vector<std::unique_ptr<const DexFile>> opened_dex_files_;
+  std::vector<std::unique_ptr<const IDexFile>> opened_dex_files_;
 };
 
 class ZipBuilder {
@@ -428,7 +428,7 @@ TEST_F(OatTest, WriteRead) {
   ASSERT_EQ("lue.art", std::string(oat_header.GetStoreValueByKey(OatHeader::kImageLocationKey)));
 
   ASSERT_TRUE(java_lang_dex_file_ != nullptr);
-  const DexFile& dex_file = *java_lang_dex_file_;
+  const IDexFile& dex_file = *java_lang_dex_file_;
   uint32_t dex_file_checksum = dex_file.GetLocationChecksum();
   const OatFile::OatDexFile* oat_dex_file = oat_file->GetOatDexFile(dex_file.GetLocation().c_str(),
                                                                     &dex_file_checksum);
@@ -437,7 +437,7 @@ TEST_F(OatTest, WriteRead) {
   ScopedObjectAccess soa(Thread::Current());
   auto pointer_size = class_linker->GetImagePointerSize();
   for (size_t i = 0; i < dex_file.NumClassDefs(); i++) {
-    const DexFile::ClassDef& class_def = dex_file.GetClassDef(i);
+    const IDexFile::ClassDef& class_def = dex_file.GetClassDef(i);
     const uint8_t* class_data = dex_file.GetClassData(class_def);
 
     size_t num_virtual_methods = 0;
@@ -523,11 +523,11 @@ TEST_F(OatTest, EmptyTextSection) {
     class_loader = LoadDex("Main");
   }
   ASSERT_TRUE(class_loader != nullptr);
-  std::vector<const DexFile*> dex_files = GetDexFiles(class_loader);
+  std::vector<const IDexFile*> dex_files = GetDexFiles(class_loader);
   ASSERT_TRUE(!dex_files.empty());
 
   ClassLinker* const class_linker = Runtime::Current()->GetClassLinker();
-  for (const DexFile* dex_file : dex_files) {
+  for (const IDexFile* dex_file : dex_files) {
     ScopedObjectAccess soa(Thread::Current());
     class_linker->RegisterDexFile(*dex_file,
                                   soa.Decode<mirror::ClassLoader>(class_loader).Ptr());
@@ -554,11 +554,11 @@ TEST_F(OatTest, EmptyTextSection) {
             static_cast<size_t>(tmp_oat.GetFile()->GetLength()));
 }
 
-static void MaybeModifyDexFileToFail(bool verify, std::unique_ptr<const DexFile>& data) {
+static void MaybeModifyDexFileToFail(bool verify, std::unique_ptr<const IDexFile>& data) {
   // If in verify mode (= fail the verifier mode), make sure we fail early. We'll fail already
   // because of the missing map, but that may lead to out of bounds reads.
   if (verify) {
-    const_cast<DexFile::Header*>(&data->GetHeader())->checksum_++;
+    const_cast<IDexFile::Header*>(&data->GetHeader())->checksum_++;
   }
 }
 
@@ -571,7 +571,7 @@ void OatTest::TestDexFileInput(bool verify, bool low_4gb, bool use_profile) {
   TestDexFileBuilder builder1;
   builder1.AddField("Lsome.TestClass;", "int", "someField");
   builder1.AddMethod("Lsome.TestClass;", "()I", "foo");
-  std::unique_ptr<const DexFile> dex_file1_data = builder1.Build(dex_file1.GetFilename());
+  std::unique_ptr<const IDexFile> dex_file1_data = builder1.Build(dex_file1.GetFilename());
 
   MaybeModifyDexFileToFail(verify, dex_file1_data);
 
@@ -586,7 +586,7 @@ void OatTest::TestDexFileInput(bool verify, bool low_4gb, bool use_profile) {
   TestDexFileBuilder builder2;
   builder2.AddField("Land.AnotherTestClass;", "boolean", "someOtherField");
   builder2.AddMethod("Land.AnotherTestClass;", "()J", "bar");
-  std::unique_ptr<const DexFile> dex_file2_data = builder2.Build(dex_file2.GetFilename());
+  std::unique_ptr<const IDexFile> dex_file2_data = builder2.Build(dex_file2.GetFilename());
 
   MaybeModifyDexFileToFail(verify, dex_file2_data);
 
@@ -632,9 +632,9 @@ void OatTest::TestDexFileInput(bool verify, bool low_4gb, bool use_profile) {
   }
   ASSERT_TRUE(opened_oat_file != nullptr);
   ASSERT_EQ(2u, opened_oat_file->GetOatDexFiles().size());
-  std::unique_ptr<const DexFile> opened_dex_file1 =
+  std::unique_ptr<const IDexFile> opened_dex_file1 =
       opened_oat_file->GetOatDexFiles()[0]->OpenDexFile(&error_msg);
-  std::unique_ptr<const DexFile> opened_dex_file2 =
+  std::unique_ptr<const IDexFile> opened_dex_file2 =
       opened_oat_file->GetOatDexFiles()[1]->OpenDexFile(&error_msg);
 
   ASSERT_EQ(dex_file1_data->GetHeader().file_size_, opened_dex_file1->GetHeader().file_size_);
@@ -676,7 +676,7 @@ void OatTest::TestZipFileInput(bool verify) {
   TestDexFileBuilder builder1;
   builder1.AddField("Lsome.TestClass;", "long", "someField");
   builder1.AddMethod("Lsome.TestClass;", "()D", "foo");
-  std::unique_ptr<const DexFile> dex_file1_data = builder1.Build(dex_file1.GetFilename());
+  std::unique_ptr<const IDexFile> dex_file1_data = builder1.Build(dex_file1.GetFilename());
 
   MaybeModifyDexFileToFail(verify, dex_file1_data);
 
@@ -694,7 +694,7 @@ void OatTest::TestZipFileInput(bool verify) {
   TestDexFileBuilder builder2;
   builder2.AddField("Land.AnotherTestClass;", "boolean", "someOtherField");
   builder2.AddMethod("Land.AnotherTestClass;", "()J", "bar");
-  std::unique_ptr<const DexFile> dex_file2_data = builder2.Build(dex_file2.GetFilename());
+  std::unique_ptr<const IDexFile> dex_file2_data = builder2.Build(dex_file2.GetFilename());
 
   MaybeModifyDexFileToFail(verify, dex_file2_data);
 
@@ -737,9 +737,9 @@ void OatTest::TestZipFileInput(bool verify) {
                                                              &error_msg));
       ASSERT_TRUE(opened_oat_file != nullptr);
       ASSERT_EQ(2u, opened_oat_file->GetOatDexFiles().size());
-      std::unique_ptr<const DexFile> opened_dex_file1 =
+      std::unique_ptr<const IDexFile> opened_dex_file1 =
           opened_oat_file->GetOatDexFiles()[0]->OpenDexFile(&error_msg);
-      std::unique_ptr<const DexFile> opened_dex_file2 =
+      std::unique_ptr<const IDexFile> opened_dex_file2 =
           opened_oat_file->GetOatDexFiles()[1]->OpenDexFile(&error_msg);
 
       ASSERT_EQ(dex_file1_data->GetHeader().file_size_, opened_dex_file1->GetHeader().file_size_);
@@ -786,9 +786,9 @@ void OatTest::TestZipFileInput(bool verify) {
                                                              &error_msg));
       ASSERT_TRUE(opened_oat_file != nullptr);
       ASSERT_EQ(2u, opened_oat_file->GetOatDexFiles().size());
-      std::unique_ptr<const DexFile> opened_dex_file1 =
+      std::unique_ptr<const IDexFile> opened_dex_file1 =
           opened_oat_file->GetOatDexFiles()[0]->OpenDexFile(&error_msg);
-      std::unique_ptr<const DexFile> opened_dex_file2 =
+      std::unique_ptr<const IDexFile> opened_dex_file2 =
           opened_oat_file->GetOatDexFiles()[1]->OpenDexFile(&error_msg);
 
       ASSERT_EQ(dex_file1_data->GetHeader().file_size_, opened_dex_file1->GetHeader().file_size_);

@@ -28,7 +28,7 @@ namespace mirror {
 }  // namespace mirror
 class ArtField;
 class ArtMethod;
-class DexFile;
+class IDexFile;
 enum InvokeType : uint32_t;
 class Signature;
 class StringPiece;
@@ -38,7 +38,7 @@ class StringPiece;
 void ThrowAbstractMethodError(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;
 
-void ThrowAbstractMethodError(uint32_t method_idx, const DexFile& dex_file)
+void ThrowAbstractMethodError(uint32_t method_idx, const IDexFile& dex_file)
     REQUIRES_SHARED(Locks::mutator_lock_) COLD_ATTR;
 
 // ArithmeticException

@@ -21,7 +21,7 @@
 
 #include "base/macros.h"
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "handle.h"
 
 namespace art {
@@ -139,10 +139,10 @@ class RuntimeCallbacks {
   void ClassPreDefine(const char* descriptor,
                       Handle<mirror::Class> temp_class,
                       Handle<mirror::ClassLoader> loader,
-                      const DexFile& initial_dex_file,
-                      const DexFile::ClassDef& initial_class_def,
-                      /*out*/DexFile const** final_dex_file,
-                      /*out*/DexFile::ClassDef const** final_class_def)
+                      const IDexFile& initial_dex_file,
+                      const IDexFile::ClassDef& initial_class_def,
+                      /*out*/IDexFile const** final_dex_file,
+                      /*out*/IDexFile::ClassDef const** final_class_def)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   void AddMethodCallback(MethodCallback* cb) REQUIRES(Locks::mutator_lock_);

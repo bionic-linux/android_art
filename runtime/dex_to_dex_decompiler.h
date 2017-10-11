@@ -18,7 +18,7 @@
 #define ART_RUNTIME_DEX_TO_DEX_DECOMPILER_H_
 
 #include "base/array_ref.h"
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace art {
 namespace optimizer {
@@ -28,8 +28,8 @@ namespace optimizer {
 // TODO: code_item isn't really a const element, but changing it
 // to non-const has too many repercussions on the code base. We make it
 // consistent with DexToDexCompiler, but we should really change it to
-// DexFile::CodeItem*.
-bool ArtDecompileDEX(const DexFile::CodeItem& code_item,
+// IDexFile::CodeItem*.
+bool ArtDecompileDEX(const IDexFile::CodeItem& code_item,
                      const ArrayRef<const uint8_t>& quickened_data,
                      bool decompile_return_instruction);
 

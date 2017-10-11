@@ -421,10 +421,10 @@ class CodeGeneratorX86 : public CodeGenerator {
   Label* NewTypeBssEntryPatch(HLoadClass* load_class);
   void RecordBootStringPatch(HLoadString* load_string);
   Label* NewStringBssEntryPatch(HLoadString* load_string);
-  Label* NewJitRootStringPatch(const DexFile& dex_file,
+  Label* NewJitRootStringPatch(const IDexFile& dex_file,
                                dex::StringIndex dex_index,
                                Handle<mirror::String> handle);
-  Label* NewJitRootClassPatch(const DexFile& dex_file,
+  Label* NewJitRootClassPatch(const IDexFile& dex_file,
                               dex::TypeIndex dex_index,
                               Handle<mirror::Class> handle);
 
@@ -610,14 +610,14 @@ class CodeGeneratorX86 : public CodeGenerator {
  private:
   struct X86PcRelativePatchInfo : PatchInfo<Label> {
     X86PcRelativePatchInfo(HX86ComputeBaseMethodAddress* address,
-                           const DexFile& target_dex_file,
+                           const IDexFile& target_dex_file,
                            uint32_t target_index)
         : PatchInfo(target_dex_file, target_index),
           method_address(address) {}
     HX86ComputeBaseMethodAddress* method_address;
   };
 
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   void EmitPcRelativeLinkerPatches(const ArenaDeque<X86PcRelativePatchInfo>& infos,
                                    ArenaVector<linker::LinkerPatch>* linker_patches);
 

@@ -27,7 +27,7 @@
 namespace art {
 namespace verifier {
 
-inline const DexFile::CodeItem* MethodVerifier::CodeItem() const {
+inline const IDexFile::CodeItem* MethodVerifier::CodeItem() const {
   return code_item_;
 }
 

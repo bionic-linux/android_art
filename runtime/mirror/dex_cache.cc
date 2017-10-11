@@ -38,7 +38,7 @@ namespace mirror {
 void DexCache::InitializeDexCache(Thread* self,
                                   ObjPtr<mirror::DexCache> dex_cache,
                                   ObjPtr<mirror::String> location,
-                                  const DexFile* dex_file,
+                                  const IDexFile* dex_file,
                                   LinearAlloc* linear_alloc,
                                   PointerSize image_pointer_size) {
   DCHECK(dex_file != nullptr);
@@ -173,7 +173,7 @@ void DexCache::InitializeDexCache(Thread* self,
                   dex_file->NumCallSiteIds());
 }
 
-void DexCache::Init(const DexFile* dex_file,
+void DexCache::Init(const IDexFile* dex_file,
                     ObjPtr<String> location,
                     StringDexCacheType* strings,
                     uint32_t num_strings,

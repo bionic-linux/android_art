@@ -298,20 +298,20 @@ class OptimizingCompiler FINAL : public Compiler {
   explicit OptimizingCompiler(CompilerDriver* driver);
   ~OptimizingCompiler() OVERRIDE;
 
-  bool CanCompileMethod(uint32_t method_idx, const DexFile& dex_file) const OVERRIDE;
+  bool CanCompileMethod(uint32_t method_idx, const IDexFile& dex_file) const OVERRIDE;
 
-  CompiledMethod* Compile(const DexFile::CodeItem* code_item,
+  CompiledMethod* Compile(const IDexFile::CodeItem* code_item,
                           uint32_t access_flags,
                           InvokeType invoke_type,
                           uint16_t class_def_idx,
                           uint32_t method_idx,
                           Handle<mirror::ClassLoader> class_loader,
-                          const DexFile& dex_file,
+                          const IDexFile& dex_file,
                           Handle<mirror::DexCache> dex_cache) const OVERRIDE;
 
   CompiledMethod* JniCompile(uint32_t access_flags,
                              uint32_t method_idx,
-                             const DexFile& dex_file,
+                             const IDexFile& dex_file,
                              JniOptimizationFlags optimization_flags) const OVERRIDE {
     return ArtQuickJniCompileMethod(GetCompilerDriver(),
                                     access_flags,
@@ -356,7 +356,7 @@ class OptimizingCompiler FINAL : public Compiler {
                        CodeVectorAllocator* code_allocator,
                        CodeGenerator* codegen,
                        CompilerDriver* driver,
-                       const DexFile::CodeItem* item) const;
+                       const IDexFile::CodeItem* item) const;
 
   // Try compiling a method and return the code generator used for
   // compiling it.
@@ -368,13 +368,13 @@ class OptimizingCompiler FINAL : public Compiler {
   CodeGenerator* TryCompile(ArenaAllocator* allocator,
                             ArenaStack* arena_stack,
                             CodeVectorAllocator* code_allocator,
-                            const DexFile::CodeItem* code_item,
+                            const IDexFile::CodeItem* code_item,
                             uint32_t access_flags,
                             InvokeType invoke_type,
                             uint16_t class_def_idx,
                             uint32_t method_idx,
                             Handle<mirror::ClassLoader> class_loader,
-                            const DexFile& dex_file,
+                            const IDexFile& dex_file,
                             Handle<mirror::DexCache> dex_cache,
                             ArtMethod* method,
                             bool osr,
@@ -432,7 +432,7 @@ OptimizingCompiler::~OptimizingCompiler() {
 }
 
 bool OptimizingCompiler::CanCompileMethod(uint32_t method_idx ATTRIBUTE_UNUSED,
-                                          const DexFile& dex_file ATTRIBUTE_UNUSED) const {
+                                          const IDexFile& dex_file ATTRIBUTE_UNUSED) const {
   return true;
 }
 
@@ -897,7 +897,7 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
                                          CodeVectorAllocator* code_allocator,
                                          CodeGenerator* codegen,
                                          CompilerDriver* compiler_driver,
-                                         const DexFile::CodeItem* code_item) const {
+                                         const IDexFile::CodeItem* code_item) const {
   ArenaVector<linker::LinkerPatch> linker_patches = EmitAndSortLinkerPatches(codegen);
   ArenaVector<uint8_t> stack_map(allocator->Adapter(kArenaAllocStackMaps));
   ArenaVector<uint8_t> method_info(allocator->Adapter(kArenaAllocStackMaps));
@@ -931,13 +931,13 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
 CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
                                               ArenaStack* arena_stack,
                                               CodeVectorAllocator* code_allocator,
-                                              const DexFile::CodeItem* code_item,
+                                              const IDexFile::CodeItem* code_item,
                                               uint32_t access_flags,
                                               InvokeType invoke_type,
                                               uint16_t class_def_idx,
                                               uint32_t method_idx,
                                               Handle<mirror::ClassLoader> class_loader,
-                                              const DexFile& dex_file,
+                                              const IDexFile& dex_file,
                                               Handle<mirror::DexCache> dex_cache,
                                               ArtMethod* method,
                                               bool osr,
@@ -1095,13 +1095,13 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
   return codegen.release();
 }
 
-CompiledMethod* OptimizingCompiler::Compile(const DexFile::CodeItem* code_item,
+CompiledMethod* OptimizingCompiler::Compile(const IDexFile::CodeItem* code_item,
                                             uint32_t access_flags,
                                             InvokeType invoke_type,
                                             uint16_t class_def_idx,
                                             uint32_t method_idx,
                                             Handle<mirror::ClassLoader> jclass_loader,
-                                            const DexFile& dex_file,
+                                            const IDexFile& dex_file,
                                             Handle<mirror::DexCache> dex_cache) const {
   CompilerDriver* compiler_driver = GetCompilerDriver();
   CompiledMethod* method = nullptr;
@@ -1191,7 +1191,7 @@ bool EncodeArtMethodInInlineInfo(ArtMethod* method ATTRIBUTE_UNUSED) {
   return Runtime::Current() == nullptr || !Runtime::Current()->IsAotCompiler();
 }
 
-bool CanEncodeInlinedMethodInStackMap(const DexFile& caller_dex_file, ArtMethod* callee) {
+bool CanEncodeInlinedMethodInStackMap(const IDexFile& caller_dex_file, ArtMethod* callee) {
   if (!Runtime::Current()->IsAotCompiler()) {
     // JIT can always encode methods in stack maps.
     return true;
@@ -1216,9 +1216,9 @@ bool OptimizingCompiler::JitCompile(Thread* self,
   Handle<mirror::DexCache> dex_cache(hs.NewHandle(method->GetDexCache()));
   DCHECK(method->IsCompilable());
 
-  const DexFile* dex_file = method->GetDexFile();
+  const IDexFile* dex_file = method->GetDexFile();
   const uint16_t class_def_idx = method->GetClassDefIndex();
-  const DexFile::CodeItem* code_item = dex_file->GetCodeItem(method->GetCodeItemOffset());
+  const IDexFile::CodeItem* code_item = dex_file->GetCodeItem(method->GetCodeItemOffset());
   const uint32_t method_idx = method->GetDexMethodIndex();
   const uint32_t access_flags = method->GetAccessFlags();
   const InvokeType invoke_type = method->GetInvokeType();

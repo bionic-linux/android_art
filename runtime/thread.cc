@@ -46,7 +46,7 @@
 #include "base/to_str.h"
 #include "class_linker-inl.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "dex_file_types.h"
 #include "entrypoints/entrypoint_utils.h"
@@ -1791,7 +1791,7 @@ struct StackDumpVisitor : public StackVisitor {
     ObjPtr<mirror::DexCache> dex_cache = c->GetDexCache();
     int line_number = -1;
     if (dex_cache != nullptr) {  // be tolerant of bad input
-      const DexFile* dex_file = dex_cache->GetDexFile();
+      const IDexFile* dex_file = dex_cache->GetDexFile();
       line_number = annotations::GetLineNumFromPC(dex_file, m, GetDexPc(false));
     }
     if (line_number == last_line_number && last_method == m) {
@@ -3146,7 +3146,7 @@ Context* Thread::GetLongJumpContext() {
   return result;
 }
 
-// Note: this visitor may return with a method set, but dex_pc_ being DexFile:kDexNoIndex. This is
+// Note: this visitor may return with a method set, but dex_pc_ being IDexFile:kDexNoIndex. This is
 //       so we don't abort in a special situation (thinlocked monitor) when dumping the Java stack.
 struct CurrentMethodVisitor FINAL : public StackVisitor {
   CurrentMethodVisitor(Thread* thread, Context* context, bool check_suspended, bool abort_on_error)

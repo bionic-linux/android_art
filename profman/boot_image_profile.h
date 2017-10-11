@@ -21,7 +21,7 @@
 #include <memory>
 #include <vector>
 
-#include "dex_file.h"
+#include "idex_file.h"
 #include "jit/profile_compilation_info.h"
 
 namespace art {
@@ -44,7 +44,7 @@ struct BootImageOptions {
 // Merge a bunch of profiles together to generate a boot profile. Classes and methods are added
 // to the out_profile if they meet the options.
 void GenerateBootImageProfile(
-    const std::vector<std::unique_ptr<const DexFile>>& dex_files,
+    const std::vector<std::unique_ptr<const IDexFile>>& dex_files,
     const std::vector<std::unique_ptr<const ProfileCompilationInfo>>& profiles,
     const BootImageOptions& options,
     bool verbose,

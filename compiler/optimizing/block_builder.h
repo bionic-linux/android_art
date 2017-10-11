@@ -19,7 +19,7 @@
 
 #include "base/arena_containers.h"
 #include "base/arena_object.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "nodes.h"
 
 namespace art {
@@ -27,8 +27,8 @@ namespace art {
 class HBasicBlockBuilder : public ValueObject {
  public:
   HBasicBlockBuilder(HGraph* graph,
-                     const DexFile* const dex_file,
-                     const DexFile::CodeItem& code_item)
+                     const IDexFile* const dex_file,
+                     const IDexFile::CodeItem& code_item)
       : arena_(graph->GetAllocator()),
         graph_(graph),
         dex_file_(dex_file),
@@ -74,8 +74,8 @@ class HBasicBlockBuilder : public ValueObject {
   ArenaAllocator* const arena_;
   HGraph* const graph_;
 
-  const DexFile* const dex_file_;
-  const DexFile::CodeItem& code_item_;
+  const IDexFile* const dex_file_;
+  const IDexFile::CodeItem& code_item_;
 
   ArenaVector<HBasicBlock*> branch_targets_;
   ArenaVector<HBasicBlock*> throwing_blocks_;

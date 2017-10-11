@@ -27,8 +27,8 @@
 #include "debug/elf_compilation_unit.h"
 #include "debug/elf_debug_loc_writer.h"
 #include "debug/method_debug_info.h"
-#include "dex_file-inl.h"
-#include "dex_file.h"
+#include "idex_file-inl.h"
+#include "idex_file.h"
 #include "heap_poisoning.h"
 #include "linear_alloc.h"
 #include "linker/elf_builder.h"
@@ -39,9 +39,9 @@
 namespace art {
 namespace debug {
 
-typedef std::vector<DexFile::LocalInfo> LocalInfos;
+typedef std::vector<IDexFile::LocalInfo> LocalInfos;
 
-static void LocalInfoCallback(void* ctx, const DexFile::LocalInfo& entry) {
+static void LocalInfoCallback(void* ctx, const IDexFile::LocalInfo& entry) {
   static_cast<LocalInfos*>(ctx)->push_back(entry);
 }
 
@@ -159,11 +159,11 @@ class ElfCompilationUnitWriter {
     const char* last_dex_class_desc = nullptr;
     for (auto mi : compilation_unit.methods) {
       DCHECK(mi->dex_file != nullptr);
-      const DexFile* dex = mi->dex_file;
-      const DexFile::CodeItem* dex_code = mi->code_item;
-      const DexFile::MethodId& dex_method = dex->GetMethodId(mi->dex_method_index);
-      const DexFile::ProtoId& dex_proto = dex->GetMethodPrototype(dex_method);
-      const DexFile::TypeList* dex_params = dex->GetProtoParameters(dex_proto);
+      const IDexFile* dex = mi->dex_file;
+      const IDexFile::CodeItem* dex_code = mi->code_item;
+      const IDexFile::MethodId& dex_method = dex->GetMethodId(mi->dex_method_index);
+      const IDexFile::ProtoId& dex_proto = dex->GetMethodPrototype(dex_method);
+      const IDexFile::TypeList* dex_params = dex->GetProtoParameters(dex_proto);
       const char* dex_class_desc = dex->GetMethodDeclaringClassDescriptor(dex_method);
       const bool is_static = (mi->access_flags & kAccStatic) != 0;
 
@@ -262,7 +262,7 @@ class ElfCompilationUnitWriter {
                                     mi->dex_method_index,
                                     LocalInfoCallback,
                                     &local_infos)) {
-        for (const DexFile::LocalInfo& var : local_infos) {
+        for (const IDexFile::LocalInfo& var : local_infos) {
           if (var.reg_ < dex_code->registers_size_ - dex_code->ins_size_) {
             info_.StartTag(DW_TAG_variable);
             WriteName(var.name_);

@@ -37,7 +37,7 @@
 namespace art {
 
 class CompilerCallbacks;
-class DexFile;
+class IDexFile;
 struct XGcOption;
 struct BackgroundGcOption;
 

@@ -22,7 +22,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 enum class LayoutType : uint8_t {
   // Layout of things that are randomly used. These should be advised to random access.
@@ -65,7 +65,7 @@ class DexLayoutSection {
     uint32_t offset_ = 0u;
     uint32_t size_ = 0u;
 
-    void Madvise(const DexFile* dex_file, int advice) const;
+    void Madvise(const IDexFile* dex_file, int advice) const;
   };
 
   Subsection parts_[static_cast<size_t>(LayoutType::kLayoutTypeCount)];
@@ -82,7 +82,7 @@ class DexLayoutSections {
 
   // Advise access about the dex file based on layout. The caller is expected to have already
   // madvised to MADV_RANDOM.
-  void Madvise(const DexFile* dex_file, MadviseState state) const;
+  void Madvise(const IDexFile* dex_file, MadviseState state) const;
 
   DexLayoutSection sections_[static_cast<size_t>(SectionType::kSectionCount)];
 };

@@ -20,7 +20,7 @@
 #include "base/unix_file/fd_file.h"
 #include "class_linker-inl.h"
 #include "common_runtime_test.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "handle_scope-inl.h"
 #include "jit/profile_compilation_info.h"
 #include "linear_alloc.h"
@@ -184,7 +184,7 @@ class ProfileCompilationInfoTest : public CommonRuntimeTest {
         const ProfileMethodInfo& pmi) {
     ProfileCompilationInfo::InlineCacheMap* ic_map = CreateInlineCacheMap();
     ProfileCompilationInfo::OfflineProfileMethodInfo offline_pmi(ic_map);
-    SafeMap<DexFile*, uint8_t> dex_map;  // dex files to profile index
+    SafeMap<IDexFile*, uint8_t> dex_map;  // dex files to profile index
     for (const auto& inline_cache : pmi.inline_caches) {
       ProfileCompilationInfo::DexPcData& dex_pc_data =
           ic_map->FindOrAdd(
@@ -193,7 +193,7 @@ class ProfileCompilationInfoTest : public CommonRuntimeTest {
         dex_pc_data.SetIsMissingTypes();
       }
       for (const auto& class_ref : inline_cache.classes) {
-        uint8_t dex_profile_index = dex_map.FindOrAdd(const_cast<DexFile*>(class_ref.dex_file),
+        uint8_t dex_profile_index = dex_map.FindOrAdd(const_cast<IDexFile*>(class_ref.dex_file),
                                                       static_cast<uint8_t>(dex_map.size()))->second;
         dex_pc_data.AddClass(dex_profile_index, class_ref.TypeIndex());
         if (dex_profile_index >= offline_pmi.dex_references.size()) {
@@ -895,7 +895,7 @@ TEST_F(ProfileCompilationInfoTest, SampledMethodsTest) {
 
   // Test bulk adding.
   {
-    std::unique_ptr<const DexFile> dex(OpenTestDexFile("ManyMethods"));
+    std::unique_ptr<const IDexFile> dex(OpenTestDexFile("ManyMethods"));
     ProfileCompilationInfo info;
     std::vector<uint16_t> hot_methods = {1, 3, 5};
     std::vector<uint16_t> startup_methods = {1, 2};

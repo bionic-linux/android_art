@@ -44,7 +44,7 @@
 #include "base/bit_utils.h"
 #include "base/enums.h"
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_annotations.h"
 #include "dex_file_types.h"
 #include "gc_root.h"

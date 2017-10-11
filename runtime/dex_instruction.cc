@@ -23,7 +23,7 @@
 
 #include "android-base/stringprintf.h"
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "utils.h"
 
 namespace art {
@@ -152,7 +152,7 @@ std::string Instruction::DumpHexLE(size_t instr_code_units) const {
   return os.str();
 }
 
-std::string Instruction::DumpString(const DexFile* file) const {
+std::string Instruction::DumpString(const IDexFile* file) const {
   std::ostringstream os;
   const char* opcode = kInstructionNames[Opcode()];
   switch (FormatOf(Opcode())) {

@@ -27,7 +27,7 @@
 #include "base/logging.h"
 #include "base/macros.h"
 #include "base/unix_file/fd_file.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "jit/profile_compilation_info.h"
 #include "method_reference.h"
@@ -61,7 +61,7 @@ class Dex2oatImageTest : public CommonRuntimeTest {
     size_t method_counter = 0;
     size_t class_counter = 0;
     for (const std::string& dex : GetLibCoreDexFileNames()) {
-      std::vector<std::unique_ptr<const DexFile>> dex_files;
+      std::vector<std::unique_ptr<const IDexFile>> dex_files;
       std::string error_msg;
       CHECK(DexFileLoader::Open(dex.c_str(),
                                 dex,
@@ -69,7 +69,7 @@ class Dex2oatImageTest : public CommonRuntimeTest {
                                 &error_msg,
                                 &dex_files))
           << error_msg;
-      for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+      for (const std::unique_ptr<const IDexFile>& dex_file : dex_files) {
         for (size_t i = 0; i < dex_file->NumMethodIds(); ++i) {
           if (++method_counter % method_frequency == 0) {
             method_visitor(MethodReference(dex_file.get(), i));

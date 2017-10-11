@@ -561,11 +561,11 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   // currently emit these 3 instructions together, instruction scheduling could
   // split this sequence apart, so we keep separate labels for each of them.
   struct PcRelativePatchInfo {
-    PcRelativePatchInfo(const DexFile& dex_file, uint32_t off_or_idx)
+    PcRelativePatchInfo(const IDexFile& dex_file, uint32_t off_or_idx)
         : target_dex_file(dex_file), offset_or_index(off_or_idx) { }
     PcRelativePatchInfo(PcRelativePatchInfo&& other) = default;
 
-    const DexFile& target_dex_file;
+    const IDexFile& target_dex_file;
     // Either the dex cache array element offset or the string/type index.
     uint32_t offset_or_index;
     vixl::aarch32::Label movw_label;
@@ -575,11 +575,11 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
 
   PcRelativePatchInfo* NewPcRelativeMethodPatch(MethodReference target_method);
   PcRelativePatchInfo* NewMethodBssEntryPatch(MethodReference target_method);
-  PcRelativePatchInfo* NewPcRelativeTypePatch(const DexFile& dex_file, dex::TypeIndex type_index);
-  PcRelativePatchInfo* NewTypeBssEntryPatch(const DexFile& dex_file, dex::TypeIndex type_index);
-  PcRelativePatchInfo* NewPcRelativeStringPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativeTypePatch(const IDexFile& dex_file, dex::TypeIndex type_index);
+  PcRelativePatchInfo* NewTypeBssEntryPatch(const IDexFile& dex_file, dex::TypeIndex type_index);
+  PcRelativePatchInfo* NewPcRelativeStringPatch(const IDexFile& dex_file,
                                                 dex::StringIndex string_index);
-  PcRelativePatchInfo* NewStringBssEntryPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewStringBssEntryPatch(const IDexFile& dex_file,
                                               dex::StringIndex string_index);
 
   // Add a new baker read barrier patch and return the label to be bound
@@ -587,10 +587,10 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   vixl::aarch32::Label* NewBakerReadBarrierPatch(uint32_t custom_data);
 
   VIXLUInt32Literal* DeduplicateBootImageAddressLiteral(uint32_t address);
-  VIXLUInt32Literal* DeduplicateJitStringLiteral(const DexFile& dex_file,
+  VIXLUInt32Literal* DeduplicateJitStringLiteral(const IDexFile& dex_file,
                                                  dex::StringIndex string_index,
                                                  Handle<mirror::String> handle);
-  VIXLUInt32Literal* DeduplicateJitClassLiteral(const DexFile& dex_file,
+  VIXLUInt32Literal* DeduplicateJitClassLiteral(const IDexFile& dex_file,
                                                 dex::TypeIndex type_index,
                                                 Handle<mirror::Class> handle);
 
@@ -775,10 +775,10 @@ class CodeGeneratorARMVIXL : public CodeGenerator {
   };
 
   VIXLUInt32Literal* DeduplicateUint32Literal(uint32_t value, Uint32ToLiteralMap* map);
-  PcRelativePatchInfo* NewPcRelativePatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativePatch(const IDexFile& dex_file,
                                           uint32_t offset_or_index,
                                           ArenaDeque<PcRelativePatchInfo>* patches);
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   static void EmitPcRelativeLinkerPatches(const ArenaDeque<PcRelativePatchInfo>& infos,
                                           ArenaVector<linker::LinkerPatch>* linker_patches);
 

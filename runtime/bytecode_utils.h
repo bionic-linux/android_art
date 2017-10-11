@@ -18,16 +18,16 @@
 #define ART_RUNTIME_BYTECODE_UTILS_H_
 
 #include "base/arena_object.h"
-#include "dex_file-inl.h"
-#include "dex_file.h"
+#include "idex_file-inl.h"
+#include "idex_file.h"
 #include "dex_instruction-inl.h"
 
 namespace art {
 
 class CodeItemIterator : public ValueObject {
  public:
-  explicit CodeItemIterator(const DexFile::CodeItem& code_item) : CodeItemIterator(code_item, 0u) {}
-  CodeItemIterator(const DexFile::CodeItem& code_item, uint32_t start_dex_pc)
+  explicit CodeItemIterator(const IDexFile::CodeItem& code_item) : CodeItemIterator(code_item, 0u) {}
+  CodeItemIterator(const IDexFile::CodeItem& code_item, uint32_t start_dex_pc)
       : code_ptr_(code_item.insns_ + start_dex_pc),
         code_end_(code_item.insns_ + code_item.insns_size_in_code_units_),
         dex_pc_(start_dex_pc) {}
@@ -164,7 +164,7 @@ class DexSwitchTableIterator {
   size_t index_;
 };
 
-inline const Instruction& GetDexInstructionAt(const DexFile::CodeItem& code_item, uint32_t dex_pc) {
+inline const Instruction& GetDexInstructionAt(const IDexFile::CodeItem& code_item, uint32_t dex_pc) {
   return CodeItemIterator(code_item, dex_pc).CurrentInstruction();
 }
 

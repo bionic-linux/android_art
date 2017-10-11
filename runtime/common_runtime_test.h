@@ -40,7 +40,7 @@ namespace art {
 
 class ClassLinker;
 class CompilerCallbacks;
-class DexFile;
+class IDexFile;
 class JavaVMExt;
 class Runtime;
 typedef std::vector<std::pair<std::string, const void*>> RuntimeOptions;
@@ -135,15 +135,15 @@ class CommonRuntimeTestImpl {
   // File location to core.oat, e.g. $ANDROID_HOST_OUT/system/framework/core.oat
   static std::string GetCoreOatLocation();
 
-  std::unique_ptr<const DexFile> LoadExpectSingleDexFile(const char* location);
+  std::unique_ptr<const IDexFile> LoadExpectSingleDexFile(const char* location);
 
   void ClearDirectory(const char* dirpath, bool recursive = true);
 
   std::string GetTestAndroidRoot();
 
-  std::vector<std::unique_ptr<const DexFile>> OpenTestDexFiles(const char* name);
+  std::vector<std::unique_ptr<const IDexFile>> OpenTestDexFiles(const char* name);
 
-  std::unique_ptr<const DexFile> OpenTestDexFile(const char* name);
+  std::unique_ptr<const IDexFile> OpenTestDexFile(const char* name);
 
   // Loads the test dex file identified by the given dex_name into a PathClassLoader.
   // Returns the created class loader.
@@ -167,18 +167,18 @@ class CommonRuntimeTestImpl {
   // The class_linker_, java_lang_dex_file_, and boot_class_path_ are all
   // owned by the runtime.
   ClassLinker* class_linker_;
-  const DexFile* java_lang_dex_file_;
-  std::vector<const DexFile*> boot_class_path_;
+  const IDexFile* java_lang_dex_file_;
+  std::vector<const IDexFile*> boot_class_path_;
 
   // Get the dex files from a PathClassLoader or DelegateLastClassLoader.
   // This only looks into the current class loader and does not recurse into the parents.
-  std::vector<const DexFile*> GetDexFiles(jobject jclass_loader);
-  std::vector<const DexFile*> GetDexFiles(ScopedObjectAccess& soa,
+  std::vector<const IDexFile*> GetDexFiles(jobject jclass_loader);
+  std::vector<const IDexFile*> GetDexFiles(ScopedObjectAccess& soa,
                                           Handle<mirror::ClassLoader> class_loader)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Get the first dex file from a PathClassLoader. Will abort if it is null.
-  const DexFile* GetFirstDexFile(jobject jclass_loader);
+  const IDexFile* GetFirstDexFile(jobject jclass_loader);
 
   std::unique_ptr<CompilerCallbacks> callbacks_;
 
@@ -193,16 +193,16 @@ class CommonRuntimeTestImpl {
   // Creates the class path string for the given dex files (the list of dex file locations
   // separated by ':').
   std::string CreateClassPath(
-      const std::vector<std::unique_ptr<const DexFile>>& dex_files);
+      const std::vector<std::unique_ptr<const IDexFile>>& dex_files);
   // Same as CreateClassPath but add the dex file checksum after each location. The separator
   // is '*'.
   std::string CreateClassPathWithChecksums(
-      const std::vector<std::unique_ptr<const DexFile>>& dex_files);
+      const std::vector<std::unique_ptr<const IDexFile>>& dex_files);
 
  private:
   static std::string GetCoreFileLocation(const char* suffix);
 
-  std::vector<std::unique_ptr<const DexFile>> loaded_dex_files_;
+  std::vector<std::unique_ptr<const IDexFile>> loaded_dex_files_;
 };
 
 template <typename TestType>

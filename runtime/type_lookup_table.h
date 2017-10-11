@@ -23,7 +23,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 /**
  * TypeLookupTable used to find class_def_idx by class descriptor quickly.
@@ -62,7 +62,7 @@ class TypeLookupTable {
   }
 
   // Method creates lookup table for dex file
-  static std::unique_ptr<TypeLookupTable> Create(const DexFile& dex_file,
+  static std::unique_ptr<TypeLookupTable> Create(const IDexFile& dex_file,
                                                  uint8_t* storage = nullptr);
 
   // Method opens lookup table from binary data. Lookups will traverse strings and other
@@ -119,7 +119,7 @@ class TypeLookupTable {
   static bool SupportedSize(uint32_t num_class_defs);
 
   // Construct from a dex file.
-  explicit TypeLookupTable(const DexFile& dex_file, uint8_t* storage);
+  explicit TypeLookupTable(const IDexFile& dex_file, uint8_t* storage);
 
   // Construct from a dex file with existing data.
   TypeLookupTable(const uint8_t* dex_file_pointer,

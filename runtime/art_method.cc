@@ -25,7 +25,7 @@
 #include "base/stringpiece.h"
 #include "class_linker-inl.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "dex_instruction.h"
 #include "entrypoints/runtime_asm_entrypoints.h"
@@ -128,9 +128,9 @@ mirror::DexCache* ArtMethod::GetObsoleteDexCache() {
 uint16_t ArtMethod::FindObsoleteDexClassDefIndex() {
   DCHECK(!Runtime::Current()->IsAotCompiler()) << PrettyMethod();
   DCHECK(IsObsolete());
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   const dex::TypeIndex declaring_class_type = dex_file->GetMethodId(GetDexMethodIndex()).class_idx_;
-  const DexFile::ClassDef* class_def = dex_file->FindClassDef(declaring_class_type);
+  const IDexFile::ClassDef* class_def = dex_file->FindClassDef(declaring_class_type);
   CHECK(class_def != nullptr);
   return dex_file->GetIndexForClassDef(*class_def);
 }
@@ -141,7 +141,7 @@ mirror::String* ArtMethod::GetNameAsString(Thread* self) {
   Handle<mirror::DexCache> dex_cache(hs.NewHandle(GetDexCache()));
   auto* dex_file = dex_cache->GetDexFile();
   uint32_t dex_method_idx = GetDexMethodIndex();
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(dex_method_idx);
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(dex_method_idx);
   return Runtime::Current()->GetClassLinker()->ResolveString(*dex_file, method_id.name_idx_,
                                                              dex_cache);
 }
@@ -187,14 +187,14 @@ size_t ArtMethod::NumArgRegisters(const StringPiece& shorty) {
 
 bool ArtMethod::HasSameNameAndSignature(ArtMethod* other) {
   ScopedAssertNoThreadSuspension ants("HasSameNameAndSignature");
-  const DexFile* dex_file = GetDexFile();
-  const DexFile::MethodId& mid = dex_file->GetMethodId(GetDexMethodIndex());
+  const IDexFile* dex_file = GetDexFile();
+  const IDexFile::MethodId& mid = dex_file->GetMethodId(GetDexMethodIndex());
   if (GetDexCache() == other->GetDexCache()) {
-    const DexFile::MethodId& mid2 = dex_file->GetMethodId(other->GetDexMethodIndex());
+    const IDexFile::MethodId& mid2 = dex_file->GetMethodId(other->GetDexMethodIndex());
     return mid.name_idx_ == mid2.name_idx_ && mid.proto_idx_ == mid2.proto_idx_;
   }
-  const DexFile* dex_file2 = other->GetDexFile();
-  const DexFile::MethodId& mid2 = dex_file2->GetMethodId(other->GetDexMethodIndex());
+  const IDexFile* dex_file2 = other->GetDexFile();
+  const IDexFile::MethodId& mid2 = dex_file2->GetMethodId(other->GetDexMethodIndex());
   if (!DexFileStringEquals(dex_file, mid.name_idx_, dex_file2, mid2.name_idx_)) {
     return false;  // Name mismatch.
   }
@@ -237,21 +237,21 @@ ArtMethod* ArtMethod::FindOverriddenMethod(PointerSize pointer_size) {
   return result;
 }
 
-uint32_t ArtMethod::FindDexMethodIndexInOtherDexFile(const DexFile& other_dexfile,
+uint32_t ArtMethod::FindDexMethodIndexInOtherDexFile(const IDexFile& other_dexfile,
                                                      uint32_t name_and_signature_idx) {
-  const DexFile* dexfile = GetDexFile();
+  const IDexFile* dexfile = GetDexFile();
   const uint32_t dex_method_idx = GetDexMethodIndex();
-  const DexFile::MethodId& mid = dexfile->GetMethodId(dex_method_idx);
-  const DexFile::MethodId& name_and_sig_mid = other_dexfile.GetMethodId(name_and_signature_idx);
+  const IDexFile::MethodId& mid = dexfile->GetMethodId(dex_method_idx);
+  const IDexFile::MethodId& name_and_sig_mid = other_dexfile.GetMethodId(name_and_signature_idx);
   DCHECK_STREQ(dexfile->GetMethodName(mid), other_dexfile.GetMethodName(name_and_sig_mid));
   DCHECK_EQ(dexfile->GetMethodSignature(mid), other_dexfile.GetMethodSignature(name_and_sig_mid));
   if (dexfile == &other_dexfile) {
     return dex_method_idx;
   }
   const char* mid_declaring_class_descriptor = dexfile->StringByTypeIdx(mid.class_idx_);
-  const DexFile::TypeId* other_type_id = other_dexfile.FindTypeId(mid_declaring_class_descriptor);
+  const IDexFile::TypeId* other_type_id = other_dexfile.FindTypeId(mid_declaring_class_descriptor);
   if (other_type_id != nullptr) {
-    const DexFile::MethodId* other_mid = other_dexfile.FindMethodId(
+    const IDexFile::MethodId* other_mid = other_dexfile.FindMethodId(
         *other_type_id, other_dexfile.GetStringId(name_and_sig_mid.name_idx_),
         other_dexfile.GetProtoId(name_and_sig_mid.proto_idx_));
     if (other_mid != nullptr) {
@@ -263,7 +263,7 @@ uint32_t ArtMethod::FindDexMethodIndexInOtherDexFile(const DexFile& other_dexfil
 
 uint32_t ArtMethod::FindCatchBlock(Handle<mirror::Class> exception_type,
                                    uint32_t dex_pc, bool* has_no_move_exception) {
-  const DexFile::CodeItem* code_item = GetCodeItem();
+  const IDexFile::CodeItem* code_item = GetCodeItem();
   // Set aside the exception while we resolve its type.
   Thread* self = Thread::Current();
   StackHandleScope<1> hs(self);
@@ -417,13 +417,13 @@ bool ArtMethod::IsOverridableByDefaultMethod() {
 
 bool ArtMethod::IsAnnotatedWithFastNative() {
   return IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_FastNative,
-                         DexFile::kDexVisibilityBuild,
+                         IDexFile::kDexVisibilityBuild,
                          /* lookup_in_resolved_boot_classes */ true);
 }
 
 bool ArtMethod::IsAnnotatedWithCriticalNative() {
   return IsAnnotatedWith(WellKnownClasses::dalvik_annotation_optimization_CriticalNative,
-                         DexFile::kDexVisibilityBuild,
+                         IDexFile::kDexVisibilityBuild,
                          /* lookup_in_resolved_boot_classes */ true);
 }
 
@@ -442,10 +442,10 @@ bool ArtMethod::IsAnnotatedWith(jclass klass,
       this, annotation_handle, visibility, lookup_in_resolved_boot_classes);
 }
 
-static uint32_t GetOatMethodIndexFromMethodIndex(const DexFile& dex_file,
+static uint32_t GetOatMethodIndexFromMethodIndex(const IDexFile& dex_file,
                                                  uint16_t class_def_idx,
                                                  uint32_t method_idx) {
-  const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_idx);
+  const IDexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_idx);
   const uint8_t* class_data = dex_file.GetClassData(class_def);
   CHECK(class_data != nullptr);
   ClassDataItemIterator it(dex_file, class_data);
@@ -471,7 +471,7 @@ static uint32_t GetOatMethodIndexFromMethodIndex(const DexFile& dex_file,
   UNREACHABLE();
 }
 
-// We use the method's DexFile and declaring class name to find the OatMethod for an obsolete
+// We use the method's IDexFile and declaring class name to find the OatMethod for an obsolete
 // method.  This is extremely slow but we need it if we want to be able to have obsolete native
 // methods since we need this to find the size of its stack frames.
 //
@@ -482,15 +482,15 @@ static uint32_t GetOatMethodIndexFromMethodIndex(const DexFile& dex_file,
 static const OatFile::OatMethod FindOatMethodFromDexFileFor(ArtMethod* method, bool* found)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(method->IsObsolete() && method->IsNative());
-  const DexFile* dex_file = method->GetDexFile();
+  const IDexFile* dex_file = method->GetDexFile();
 
   // recreate the class_def_index from the descriptor.
   std::string descriptor_storage;
-  const DexFile::TypeId* declaring_class_type_id =
+  const IDexFile::TypeId* declaring_class_type_id =
       dex_file->FindTypeId(method->GetDeclaringClass()->GetDescriptor(&descriptor_storage));
   CHECK(declaring_class_type_id != nullptr);
   dex::TypeIndex declaring_class_type_index = dex_file->GetIndexForTypeId(*declaring_class_type_id);
-  const DexFile::ClassDef* declaring_class_type_def =
+  const IDexFile::ClassDef* declaring_class_type_def =
       dex_file->FindClassDef(declaring_class_type_index);
   CHECK(declaring_class_type_def != nullptr);
   uint16_t declaring_class_def_index = dex_file->GetIndexForClassDef(*declaring_class_type_def);
@@ -561,7 +561,7 @@ bool ArtMethod::EqualParameters(Handle<mirror::ObjectArray<mirror::Class>> param
   auto* dex_file = dex_cache->GetDexFile();
   const auto& method_id = dex_file->GetMethodId(GetDexMethodIndex());
   const auto& proto_id = dex_file->GetMethodPrototype(method_id);
-  const DexFile::TypeList* proto_params = dex_file->GetProtoParameters(proto_id);
+  const IDexFile::TypeList* proto_params = dex_file->GetProtoParameters(proto_id);
   auto count = proto_params != nullptr ? proto_params->Size() : 0u;
   auto param_len = params != nullptr ? params->GetLength() : 0u;
   if (param_len != count) {
@@ -584,7 +584,7 @@ bool ArtMethod::EqualParameters(Handle<mirror::ObjectArray<mirror::Class>> param
 
 const uint8_t* ArtMethod::GetQuickenedInfo(PointerSize pointer_size) {
   if (kIsVdexEnabled) {
-    const DexFile& dex_file = GetDeclaringClass()->GetDexFile();
+    const IDexFile& dex_file = GetDeclaringClass()->GetDexFile();
     const OatFile::OatDexFile* oat_dex_file = dex_file.GetOatDexFile();
     if (oat_dex_file == nullptr || (oat_dex_file->GetOatFile() == nullptr)) {
       return nullptr;

@@ -160,7 +160,7 @@ void QuickExceptionHandler::FindCatch(ObjPtr<mirror::Throwable> exception) {
       LOG(INFO) << "Handler is upcall";
     }
     if (handler_method_ != nullptr) {
-      const DexFile* dex_file = handler_method_->GetDeclaringClass()->GetDexCache()->GetDexFile();
+      const IDexFile* dex_file = handler_method_->GetDeclaringClass()->GetDexCache()->GetDexFile();
       int line_number = annotations::GetLineNumFromPC(dex_file, handler_method_, handler_dex_pc_);
       LOG(INFO) << "Handler: " << handler_method_->PrettyMethod() << " (line: "
                 << line_number << ")";

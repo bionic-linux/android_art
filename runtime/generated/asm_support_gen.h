@@ -47,7 +47,7 @@ DEFINE_CHECK_EQ(static_cast<int32_t>(THREAD_IS_GC_MARKING_OFFSET), (static_cast<
 #define THREAD_CARD_TABLE_OFFSET 136
 DEFINE_CHECK_EQ(static_cast<int32_t>(THREAD_CARD_TABLE_OFFSET), (static_cast<int32_t>(art::Thread:: CardTableOffset<art::kRuntimePointerSize>().Int32Value())))
 #define CODEITEM_INSNS_OFFSET 16
-DEFINE_CHECK_EQ(static_cast<int32_t>(CODEITEM_INSNS_OFFSET), (static_cast<int32_t>(__builtin_offsetof(art::DexFile::CodeItem, insns_))))
+DEFINE_CHECK_EQ(static_cast<int32_t>(CODEITEM_INSNS_OFFSET), (static_cast<int32_t>(__builtin_offsetof(art::IDexFile::CodeItem, insns_))))
 #define MIRROR_CLASS_DEX_CACHE_OFFSET 16
 DEFINE_CHECK_EQ(static_cast<int32_t>(MIRROR_CLASS_DEX_CACHE_OFFSET), (static_cast<int32_t>(art::mirror::Class:: DexCacheOffset().Int32Value())))
 #define MIRROR_DEX_CACHE_RESOLVED_METHODS_OFFSET 48

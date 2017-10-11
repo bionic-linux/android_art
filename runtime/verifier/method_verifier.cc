@@ -30,7 +30,7 @@
 #include "base/time_utils.h"
 #include "class_linker.h"
 #include "compiler_callbacks.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "dex_instruction_utils.h"
 #include "experimental_flags.h"
@@ -148,8 +148,8 @@ FailureKind MethodVerifier::VerifyClass(Thread* self,
   }
   bool early_failure = false;
   std::string failure_message;
-  const DexFile& dex_file = klass->GetDexFile();
-  const DexFile::ClassDef* class_def = klass->GetClassDef();
+  const IDexFile& dex_file = klass->GetDexFile();
+  const IDexFile::ClassDef* class_def = klass->GetClassDef();
   mirror::Class* super = klass->GetSuperClass();
   std::string temp;
   if (super == nullptr && strcmp("Ljava/lang/Object;", klass->GetDescriptor(&temp)) != 0) {
@@ -204,8 +204,8 @@ void MethodVerifier::FailureData::Merge(const MethodVerifier::FailureData& fd) {
 template <bool kDirect>
 MethodVerifier::FailureData MethodVerifier::VerifyMethods(Thread* self,
                                                           ClassLinker* linker,
-                                                          const DexFile* dex_file,
-                                                          const DexFile::ClassDef& class_def,
+                                                          const IDexFile* dex_file,
+                                                          const IDexFile::ClassDef& class_def,
                                                           ClassDataItemIterator* it,
                                                           Handle<mirror::DexCache> dex_cache,
                                                           Handle<mirror::ClassLoader> class_loader,
@@ -276,10 +276,10 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethods(Thread* self,
 }
 
 FailureKind MethodVerifier::VerifyClass(Thread* self,
-                                        const DexFile* dex_file,
+                                        const IDexFile* dex_file,
                                         Handle<mirror::DexCache> dex_cache,
                                         Handle<mirror::ClassLoader> class_loader,
-                                        const DexFile::ClassDef& class_def,
+                                        const IDexFile::ClassDef& class_def,
                                         CompilerCallbacks* callbacks,
                                         bool allow_soft_failures,
                                         HardFailLogMode log_level,
@@ -351,7 +351,7 @@ FailureKind MethodVerifier::VerifyClass(Thread* self,
   }
 }
 
-static bool IsLargeMethod(const DexFile::CodeItem* const code_item) {
+static bool IsLargeMethod(const IDexFile::CodeItem* const code_item) {
   if (code_item == nullptr) {
     return false;
   }
@@ -364,11 +364,11 @@ static bool IsLargeMethod(const DexFile::CodeItem* const code_item) {
 
 MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
                                                          uint32_t method_idx,
-                                                         const DexFile* dex_file,
+                                                         const IDexFile* dex_file,
                                                          Handle<mirror::DexCache> dex_cache,
                                                          Handle<mirror::ClassLoader> class_loader,
-                                                         const DexFile::ClassDef& class_def,
-                                                         const DexFile::CodeItem* code_item,
+                                                         const IDexFile::ClassDef& class_def,
+                                                         const IDexFile::CodeItem* code_item,
                                                          ArtMethod* method,
                                                          uint32_t method_access_flags,
                                                          CompilerCallbacks* callbacks,
@@ -501,11 +501,11 @@ MethodVerifier::FailureData MethodVerifier::VerifyMethod(Thread* self,
 MethodVerifier* MethodVerifier::VerifyMethodAndDump(Thread* self,
                                                     VariableIndentationOutputStream* vios,
                                                     uint32_t dex_method_idx,
-                                                    const DexFile* dex_file,
+                                                    const IDexFile* dex_file,
                                                     Handle<mirror::DexCache> dex_cache,
                                                     Handle<mirror::ClassLoader> class_loader,
-                                                    const DexFile::ClassDef& class_def,
-                                                    const DexFile::CodeItem* code_item,
+                                                    const IDexFile::ClassDef& class_def,
+                                                    const IDexFile::CodeItem* code_item,
                                                     ArtMethod* method,
                                                     uint32_t method_access_flags) {
   MethodVerifier* verifier = new MethodVerifier(self,
@@ -537,11 +537,11 @@ MethodVerifier* MethodVerifier::VerifyMethodAndDump(Thread* self,
 }
 
 MethodVerifier::MethodVerifier(Thread* self,
-                               const DexFile* dex_file,
+                               const IDexFile* dex_file,
                                Handle<mirror::DexCache> dex_cache,
                                Handle<mirror::ClassLoader> class_loader,
-                               const DexFile::ClassDef& class_def,
-                               const DexFile::CodeItem* code_item,
+                               const IDexFile::ClassDef& class_def,
+                               const IDexFile::CodeItem* code_item,
                                uint32_t dex_method_idx,
                                ArtMethod* method,
                                uint32_t method_access_flags,
@@ -616,7 +616,7 @@ void MethodVerifier::FindLocksAtDexPc(ArtMethod* m, uint32_t dex_pc,
   verifier.FindLocksAtDexPc();
 }
 
-static bool HasMonitorEnterInstructions(const DexFile::CodeItem* const code_item) {
+static bool HasMonitorEnterInstructions(const IDexFile::CodeItem* const code_item) {
   for (const Instruction& inst : code_item->Instructions()) {
     if (inst.Opcode() == Instruction::MONITOR_ENTER) {
       return true;
@@ -725,7 +725,7 @@ ArtMethod* MethodVerifier::FindInvokedMethodAtDexPc(uint32_t dex_pc) {
 bool MethodVerifier::Verify() {
   // Some older code doesn't correctly mark constructors as such. Test for this case by looking at
   // the name.
-  const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
+  const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
   const char* method_name = dex_file_->StringDataByIdx(method_id.name_idx_);
   bool instance_constructor_by_name = strcmp("<init>", method_name) == 0;
   bool static_constructor_by_name = strcmp("<clinit>", method_name) == 0;
@@ -838,7 +838,7 @@ bool MethodVerifier::Verify() {
           return false;
         } else {
           uint32_t access_flag_options = kAccPublic;
-          if (dex_file_->GetVersion() >= DexFile::kDefaultMethodsVersion) {
+          if (dex_file_->GetVersion() >= IDexFile::kDefaultMethodsVersion) {
             access_flag_options |= kAccPrivate;
           }
           if (!(method_access_flags_ & access_flag_options)) {
@@ -1032,10 +1032,10 @@ bool MethodVerifier::ScanTryCatchBlocks() {
     return true;
   }
   uint32_t insns_size = code_item_->insns_size_in_code_units_;
-  const DexFile::TryItem* tries = DexFile::GetTryItems(*code_item_, 0);
+  const IDexFile::TryItem* tries = IDexFile::GetTryItems(*code_item_, 0);
 
   for (uint32_t idx = 0; idx < tries_size; idx++) {
-    const DexFile::TryItem* try_item = &tries[idx];
+    const IDexFile::TryItem* try_item = &tries[idx];
     uint32_t start = try_item->start_addr_;
     uint32_t end = start + try_item->insn_count_;
     if ((start >= end) || (start >= insns_size) || (end > insns_size)) {
@@ -1058,7 +1058,7 @@ bool MethodVerifier::ScanTryCatchBlocks() {
     }
   }
   // Iterate over each of the handlers to verify target addresses.
-  const uint8_t* handlers_ptr = DexFile::GetCatchHandlerData(*code_item_, 0);
+  const uint8_t* handlers_ptr = IDexFile::GetCatchHandlerData(*code_item_, 0);
   uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
   ClassLinker* linker = Runtime::Current()->GetClassLinker();
   for (uint32_t idx = 0; idx < handlers_size; idx++) {
@@ -1759,7 +1759,7 @@ bool MethodVerifier::SetTypesFromSignature() {
     cur_arg++;
   }
 
-  const DexFile::ProtoId& proto_id =
+  const IDexFile::ProtoId& proto_id =
       dex_file_->GetMethodPrototype(dex_file_->GetMethodId(dex_method_idx_));
   DexFileParameterIterator iterator(*dex_file_, proto_id);
 
@@ -1998,8 +1998,8 @@ bool MethodVerifier::CodeFlowVerifyMethod() {
 
 // Returns the index of the first final instance field of the given class, or kDexNoIndex if there
 // is no such field.
-static uint32_t GetFirstFinalInstanceFieldIndex(const DexFile& dex_file, dex::TypeIndex type_idx) {
-  const DexFile::ClassDef* class_def = dex_file.FindClassDef(type_idx);
+static uint32_t GetFirstFinalInstanceFieldIndex(const IDexFile& dex_file, dex::TypeIndex type_idx) {
+  const IDexFile::ClassDef* class_def = dex_file.FindClassDef(type_idx);
   DCHECK(class_def != nullptr);
   const uint8_t* class_data = dex_file.GetClassData(*class_def);
   DCHECK(class_data != nullptr);
@@ -2946,7 +2946,7 @@ bool MethodVerifier::CodeFlowVerifyInstruction(uint32_t* start_guess) {
       }
       if (return_type == nullptr) {
         uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-        const DexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+        const IDexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
         dex::TypeIndex return_type_idx =
             dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
         const char* descriptor = dex_file_->StringByTypeIdx(return_type_idx);
@@ -2969,7 +2969,7 @@ bool MethodVerifier::CodeFlowVerifyInstruction(uint32_t* start_guess) {
       const RegType* return_type = nullptr;
       if (called_method == nullptr) {
         uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-        const DexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+        const IDexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
         is_constructor = strcmp("<init>", dex_file_->StringDataByIdx(method_id.name_idx_)) == 0;
         dex::TypeIndex return_type_idx =
             dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
@@ -3047,7 +3047,7 @@ bool MethodVerifier::CodeFlowVerifyInstruction(uint32_t* start_guess) {
         const char* descriptor;
         if (called_method == nullptr) {
           uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-          const DexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+          const IDexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
           dex::TypeIndex return_type_idx =
               dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
           descriptor = dex_file_->StringByTypeIdx(return_type_idx);
@@ -3102,7 +3102,7 @@ bool MethodVerifier::CodeFlowVerifyInstruction(uint32_t* start_guess) {
       const char* descriptor;
       if (abs_method == nullptr) {
         uint32_t method_idx = (is_range) ? inst->VRegB_3rc() : inst->VRegB_35c();
-        const DexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
+        const IDexFile::MethodId& method_id = dex_file_->GetMethodId(method_idx);
         dex::TypeIndex return_type_idx =
             dex_file_->GetProtoId(method_id.proto_idx_).return_type_idx_;
         descriptor = dex_file_->StringByTypeIdx(return_type_idx);
@@ -3168,7 +3168,7 @@ bool MethodVerifier::CodeFlowVerifyInstruction(uint32_t* start_guess) {
       it.Next();  // Skip to name.
       it.Next();  // Skip to method type of the method handle
       const uint32_t proto_idx = static_cast<uint32_t>(it.GetJavaValue().i);
-      const DexFile::ProtoId& proto_id = dex_file_->GetProtoId(proto_idx);
+      const IDexFile::ProtoId& proto_id = dex_file_->GetProtoId(proto_idx);
       DexFileParameterIterator param_it(*dex_file_, proto_id);
       // Treat method as static as it has yet to be determined.
       VerifyInvocationArgsFromIterator(&param_it, inst, METHOD_STATIC, is_range, nullptr);
@@ -3818,7 +3818,7 @@ template const RegType& MethodVerifier::ResolveClass<MethodVerifier::CheckAccess
 const RegType& MethodVerifier::GetCaughtExceptionType() {
   const RegType* common_super = nullptr;
   if (code_item_->tries_size_ != 0) {
-    const uint8_t* handlers_ptr = DexFile::GetCatchHandlerData(*code_item_, 0);
+    const uint8_t* handlers_ptr = IDexFile::GetCatchHandlerData(*code_item_, 0);
     uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
     for (uint32_t i = 0; i < handlers_size; i++) {
       CatchHandlerIterator iterator(handlers_ptr);
@@ -3869,7 +3869,7 @@ const RegType& MethodVerifier::GetCaughtExceptionType() {
 
 ArtMethod* MethodVerifier::ResolveMethodAndCheckAccess(
     uint32_t dex_method_idx, MethodType method_type) {
-  const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx);
+  const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx);
   const RegType& klass_type = ResolveClass<CheckAccess::kYes>(method_id.class_idx_);
   if (klass_type.IsConflict()) {
     std::string append(" in attempt to access method ");
@@ -3958,7 +3958,7 @@ ArtMethod* MethodVerifier::ResolveMethodAndCheckAccess(
     // dex file version is 37 or greater), or invoke-static.
     if (method_type != METHOD_INTERFACE &&
         method_type != METHOD_STATIC &&
-        ((dex_file_->GetVersion() < DexFile::kDefaultMethodsVersion) ||
+        ((dex_file_->GetVersion() < IDexFile::kDefaultMethodsVersion) ||
          method_type != METHOD_DIRECT) &&
         method_type != METHOD_SUPER) {
       Fail(VERIFY_ERROR_CLASS_CHANGE)
@@ -4204,8 +4204,8 @@ bool MethodVerifier::CheckCallSite(uint32_t call_site_idx) {
   uint32_t method_handle_idx = static_cast<uint32_t>(it.GetJavaValue().i);
   it.Next();
 
-  const DexFile::MethodHandleItem& mh = dex_file_->GetMethodHandle(method_handle_idx);
-  if (mh.method_handle_type_ != static_cast<uint16_t>(DexFile::MethodHandleType::kInvokeStatic)) {
+  const IDexFile::MethodHandleItem& mh = dex_file_->GetMethodHandle(method_handle_idx);
+  if (mh.method_handle_type_ != static_cast<uint16_t>(IDexFile::MethodHandleType::kInvokeStatic)) {
     Fail(VERIFY_ERROR_BAD_CLASS_HARD) << "Call site #" << call_site_idx
                                       << " argument 0 method handle type is not InvokeStatic: "
                                       << mh.method_handle_type_;
@@ -4221,7 +4221,7 @@ bool MethodVerifier::CheckCallSite(uint32_t call_site_idx) {
   it.Next();
 
   // Check the bootstrap method handle and remaining arguments.
-  const DexFile::MethodId& method_id = dex_file_->GetMethodId(mh.field_or_method_idx_);
+  const IDexFile::MethodId& method_id = dex_file_->GetMethodId(mh.field_or_method_idx_);
   uint32_t length;
   const char* shorty = dex_file_->GetMethodShorty(method_id, &length);
 
@@ -4323,7 +4323,7 @@ class MethodParamListDescriptorIterator {
  private:
   ArtMethod* res_method_;
   size_t pos_;
-  const DexFile::TypeList* params_;
+  const IDexFile::TypeList* params_;
   const size_t params_size_;
 };
 
@@ -4420,7 +4420,7 @@ bool MethodVerifier::CheckSignaturePolymorphicMethod(ArtMethod* method) {
     return false;
   }
 
-  const DexFile::TypeList* types = method->GetParameterTypeList();
+  const IDexFile::TypeList* types = method->GetParameterTypeList();
   if (types->Size() != 1) {
     Fail(VERIFY_ERROR_BAD_CLASS_HARD)
         << "Signature polymorphic method has too many arguments " << types->Size() << " != 1";
@@ -4585,7 +4585,7 @@ ArtMethod* MethodVerifier::VerifyInvokeVirtualQuickArgs(const Instruction* inst,
    * Process the target method's signature. This signature may or may not
    * have been verified, so we can't assume it's properly formed.
    */
-  const DexFile::TypeList* params = res_method->GetParameterTypeList();
+  const IDexFile::TypeList* params = res_method->GetParameterTypeList();
   size_t params_size = params == nullptr ? 0 : params->Size();
   uint32_t arg[5];
   if (!is_range) {
@@ -4850,7 +4850,7 @@ void MethodVerifier::VerifyAPut(const Instruction* inst,
 }
 
 ArtField* MethodVerifier::GetStaticField(int field_idx) {
-  const DexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
+  const IDexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
   // Check access to class
   const RegType& klass_type = ResolveClass<CheckAccess::kYes>(field_id.class_idx_);
   if (klass_type.IsConflict()) {  // bad class
@@ -4891,7 +4891,7 @@ ArtField* MethodVerifier::GetStaticField(int field_idx) {
 }
 
 ArtField* MethodVerifier::GetInstanceField(const RegType& obj_type, int field_idx) {
-  const DexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
+  const IDexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
   // Check access to class.
   const RegType& klass_type = ResolveClass<CheckAccess::kYes>(field_id.class_idx_);
   if (klass_type.IsConflict()) {
@@ -5051,7 +5051,7 @@ void MethodVerifier::VerifyISFieldAccess(const Instruction* inst, const RegType&
     //
     // Note: see b/34966607. This and above may be changed in the future.
     if (kAccType == FieldAccessType::kAccPut) {
-      const DexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
+      const IDexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
       const char* field_class_descriptor = dex_file_->GetFieldDeclaringClassDescriptor(field_id);
       const RegType* field_class_type = &reg_types_.FromDescriptor(GetClassLoader(),
                                                                    field_class_descriptor,
@@ -5067,7 +5067,7 @@ void MethodVerifier::VerifyISFieldAccess(const Instruction* inst, const RegType&
     }
   }
   if (field_type == nullptr) {
-    const DexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
+    const IDexFile::FieldId& field_id = dex_file_->GetFieldId(field_idx);
     const char* descriptor = dex_file_->GetFieldTypeDescriptor(field_id);
     field_type = &reg_types_.FromDescriptor(GetClassLoader(), descriptor, false);
   }
@@ -5380,8 +5380,8 @@ const RegType& MethodVerifier::GetMethodReturnType() {
       }
     }
     if (return_type_ == nullptr) {
-      const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
-      const DexFile::ProtoId& proto_id = dex_file_->GetMethodPrototype(method_id);
+      const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
+      const IDexFile::ProtoId& proto_id = dex_file_->GetMethodPrototype(method_id);
       dex::TypeIndex return_type_idx = proto_id.return_type_idx_;
       const char* descriptor = dex_file_->GetTypeDescriptor(dex_file_->GetTypeId(return_type_idx));
       return_type_ = &reg_types_.FromDescriptor(GetClassLoader(), descriptor, false);
@@ -5392,7 +5392,7 @@ const RegType& MethodVerifier::GetMethodReturnType() {
 
 const RegType& MethodVerifier::GetDeclaringClass() {
   if (declaring_class_ == nullptr) {
-    const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
+    const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
     const char* descriptor
         = dex_file_->GetTypeDescriptor(dex_file_->GetTypeId(method_id.class_idx_));
     if (mirror_method_ != nullptr) {

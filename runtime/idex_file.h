@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ART_RUNTIME_DEX_FILE_H_
-#define ART_RUNTIME_DEX_FILE_H_
+#ifndef ART_RUNTIME_IDEX_FILE_H_
+#define ART_RUNTIME_IDEX_FILE_H_
 
 #include <memory>
 #include <string>
@@ -42,9 +42,9 @@ class ZipArchive;
 // Dex file is the API that exposes native dex files (ordinary dex files) and CompactDex.
 // Originally, the dex file format used by ART was mostly the same as APKs. The only change was
 // quickened opcodes and layout optimizations.
-// Since ART needs to support both native dex files and CompactDex files, the DexFile interface
+// Since ART needs to support both native dex files and CompactDex files, the IDexFile interface
 // provides an abstraction to facilitate this.
-class DexFile {
+class IDexFile {
  public:
   // Number of bytes in the dex file magic.
   static constexpr size_t kDexMagicSize = 4;
@@ -428,13 +428,13 @@ class DexFile {
   struct AnnotationValue;
 
   // Closes a .dex file.
-  virtual ~DexFile();
+  virtual ~IDexFile();
 
   const std::string& GetLocation() const {
     return location_;
   }
 
-  // For DexFiles directly from .dex files, this is the checksum from the DexFile::Header.
+  // For DexFiles directly from .dex files, this is the checksum from the IDexFile::Header.
   // For DexFiles opened from a zip files, this will be the ZipEntry CRC32 of classes.dex.
   uint32_t GetLocationChecksum() const {
     return location_checksum_;
@@ -550,18 +550,18 @@ class DexFile {
   }
 
   // Looks up a field by its declaring class, name and type
-  const FieldId* FindFieldId(const DexFile::TypeId& declaring_klass,
-                             const DexFile::StringId& name,
-                             const DexFile::TypeId& type) const;
+  const FieldId* FindFieldId(const IDexFile::TypeId& declaring_klass,
+                             const IDexFile::StringId& name,
+                             const IDexFile::TypeId& type) const;
 
-  uint32_t FindCodeItemOffset(const DexFile::ClassDef& class_def,
+  uint32_t FindCodeItemOffset(const IDexFile::ClassDef& class_def,
                               uint32_t dex_method_idx) const;
 
-  static uint32_t GetCodeItemSize(const DexFile::CodeItem& disk_code_item);
+  static uint32_t GetCodeItemSize(const IDexFile::CodeItem& disk_code_item);
 
   // Returns the declaring class descriptor string of a field id.
   const char* GetFieldDeclaringClassDescriptor(const FieldId& field_id) const {
-    const DexFile::TypeId& type_id = GetTypeId(field_id.class_idx_);
+    const IDexFile::TypeId& type_id = GetTypeId(field_id.class_idx_);
     return GetTypeDescriptor(type_id);
   }
 
@@ -590,9 +590,9 @@ class DexFile {
   }
 
   // Looks up a method by its declaring class, name and proto_id
-  const MethodId* FindMethodId(const DexFile::TypeId& declaring_klass,
-                               const DexFile::StringId& name,
-                               const DexFile::ProtoId& signature) const;
+  const MethodId* FindMethodId(const IDexFile::TypeId& declaring_klass,
+                               const IDexFile::StringId& name,
+                               const IDexFile::ProtoId& signature) const;
 
   // Returns the declaring class descriptor string of a method id.
   const char* GetMethodDeclaringClassDescriptor(const MethodId& method_id) const;
@@ -956,7 +956,7 @@ class DexFile {
   std::string PrettyType(dex::TypeIndex type_idx) const;
 
  protected:
-  DexFile(const uint8_t* base,
+  IDexFile(const uint8_t* base,
           size_t size,
           const std::string& location,
           uint32_t location_checksum,
@@ -1031,12 +1031,12 @@ class DexFile {
   friend class OatWriter;
 };
 
-std::ostream& operator<<(std::ostream& os, const DexFile& dex_file);
+std::ostream& operator<<(std::ostream& os, const IDexFile& dex_file);
 
 // Iterate over a dex file's ProtoId's paramters
 class DexFileParameterIterator {
  public:
-  DexFileParameterIterator(const DexFile& dex_file, const DexFile::ProtoId& proto_id)
+  DexFileParameterIterator(const IDexFile& dex_file, const IDexFile::ProtoId& proto_id)
       : dex_file_(dex_file) {
     type_list_ = dex_file_.GetProtoParameters(proto_id);
     if (type_list_ != nullptr) {
@@ -1053,8 +1053,8 @@ class DexFileParameterIterator {
     return dex_file_.StringByTypeIdx(dex::TypeIndex(GetTypeIdx()));
   }
  private:
-  const DexFile& dex_file_;
-  const DexFile::TypeList* type_list_ = nullptr;
+  const IDexFile& dex_file_;
+  const IDexFile::TypeList* type_list_ = nullptr;
   uint32_t size_ = 0;
   uint32_t pos_ = 0;
   DISALLOW_IMPLICIT_CONSTRUCTORS(DexFileParameterIterator);
@@ -1080,22 +1080,22 @@ class Signature : public ValueObject {
   bool operator==(const StringPiece& rhs) const;
 
  private:
-  Signature(const DexFile* dex, const DexFile::ProtoId& proto) : dex_file_(dex), proto_id_(&proto) {
+  Signature(const IDexFile* dex, const IDexFile::ProtoId& proto) : dex_file_(dex), proto_id_(&proto) {
   }
 
   Signature() = default;
 
-  friend class DexFile;
+  friend class IDexFile;
 
-  const DexFile* const dex_file_ = nullptr;
-  const DexFile::ProtoId* const proto_id_ = nullptr;
+  const IDexFile* const dex_file_ = nullptr;
+  const IDexFile::ProtoId* const proto_id_ = nullptr;
 };
 std::ostream& operator<<(std::ostream& os, const Signature& sig);
 
 // Iterate and decode class_data_item
 class ClassDataItemIterator {
  public:
-  ClassDataItemIterator(const DexFile& dex_file, const uint8_t* raw_class_data_item)
+  ClassDataItemIterator(const IDexFile& dex_file, const uint8_t* raw_class_data_item)
       : dex_file_(dex_file), pos_(0), ptr_pos_(raw_class_data_item), last_idx_(0) {
     ReadClassDataHeader();
     if (EndOfInstanceFieldsPos() > 0) {
@@ -1213,8 +1213,8 @@ class ClassDataItemIterator {
   bool MemberIsFinal() const {
     return GetRawMemberAccessFlags() & kAccFinal;
   }
-  ALWAYS_INLINE InvokeType GetMethodInvokeType(const DexFile::ClassDef& class_def) const;
-  const DexFile::CodeItem* GetMethodCodeItem() const {
+  ALWAYS_INLINE InvokeType GetMethodInvokeType(const IDexFile::ClassDef& class_def) const;
+  const IDexFile::CodeItem* GetMethodCodeItem() const {
     return dex_file_.GetCodeItem(method_.code_off_);
   }
   uint32_t GetMethodCodeItemOffset() const {
@@ -1283,7 +1283,7 @@ class ClassDataItemIterator {
   // Read and decode a method from a class_data_item stream into method
   void ReadClassDataMethod();
 
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
   size_t pos_;  // integral number of items passed
   const uint8_t* ptr_pos_;  // pointer into stream of class_data_item
   uint32_t last_idx_;  // last read field or method index to apply delta to
@@ -1292,7 +1292,7 @@ class ClassDataItemIterator {
 
 class EncodedArrayValueIterator {
  public:
-  EncodedArrayValueIterator(const DexFile& dex_file, const uint8_t* array_data);
+  EncodedArrayValueIterator(const IDexFile& dex_file, const uint8_t* array_data);
 
   bool HasNext() const { return pos_ < array_size_; }
 
@@ -1326,7 +1326,7 @@ class EncodedArrayValueIterator {
   static constexpr uint8_t kEncodedValueTypeMask = 0x1f;  // 0b11111
   static constexpr uint8_t kEncodedValueArgShift = 5;
 
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
   size_t array_size_;  // Size of array.
   size_t pos_;  // Current position.
   const uint8_t* ptr_;  // Pointer into encoded data array.
@@ -1340,8 +1340,8 @@ std::ostream& operator<<(std::ostream& os, const EncodedArrayValueIterator::Valu
 
 class EncodedStaticFieldValueIterator : public EncodedArrayValueIterator {
  public:
-  EncodedStaticFieldValueIterator(const DexFile& dex_file,
-                                  const DexFile::ClassDef& class_def)
+  EncodedStaticFieldValueIterator(const IDexFile& dex_file,
+                                  const IDexFile::ClassDef& class_def)
       : EncodedArrayValueIterator(dex_file,
                                   dex_file.GetEncodedStaticFieldValuesArray(class_def))
   {}
@@ -1353,8 +1353,8 @@ std::ostream& operator<<(std::ostream& os, const EncodedStaticFieldValueIterator
 
 class CallSiteArrayValueIterator : public EncodedArrayValueIterator {
  public:
-  CallSiteArrayValueIterator(const DexFile& dex_file,
-                             const DexFile::CallSiteIdItem& call_site_id)
+  CallSiteArrayValueIterator(const IDexFile& dex_file,
+                             const IDexFile::CallSiteIdItem& call_site_id)
       : EncodedArrayValueIterator(dex_file,
                                   dex_file.GetCallSiteEncodedValuesArray(call_site_id))
   {}
@@ -1368,10 +1368,10 @@ std::ostream& operator<<(std::ostream& os, const CallSiteArrayValueIterator::Val
 
 class CatchHandlerIterator {
  public:
-  CatchHandlerIterator(const DexFile::CodeItem& code_item, uint32_t address);
+  CatchHandlerIterator(const IDexFile::CodeItem& code_item, uint32_t address);
 
-  CatchHandlerIterator(const DexFile::CodeItem& code_item,
-                       const DexFile::TryItem& try_item);
+  CatchHandlerIterator(const IDexFile::CodeItem& code_item,
+                       const IDexFile::TryItem& try_item);
 
   explicit CatchHandlerIterator(const uint8_t* handler_data) {
     Init(handler_data);
@@ -1394,7 +1394,7 @@ class CatchHandlerIterator {
   }
 
  private:
-  void Init(const DexFile::CodeItem& code_item, int32_t offset);
+  void Init(const IDexFile::CodeItem& code_item, int32_t offset);
   void Init(const uint8_t* handler_data);
 
   struct CatchHandlerItem {
@@ -1409,4 +1409,4 @@ class CatchHandlerIterator {
 
 }  // namespace art
 
-#endif  // ART_RUNTIME_DEX_FILE_H_
+#endif  // ART_RUNTIME_IDEX_FILE_H_

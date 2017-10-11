@@ -33,7 +33,7 @@ namespace verifier {
   class VerifierDepsTest;
 }  // namespace verifier
 
-class DexFile;
+class IDexFile;
 
 class CompilerOptions FINAL {
  public:
@@ -227,7 +227,7 @@ class CompilerOptions FINAL {
     return abort_on_hard_verifier_failure_;
   }
 
-  const std::vector<const DexFile*>* GetNoInlineFromDexFile() const {
+  const std::vector<const IDexFile*>* GetNoInlineFromDexFile() const {
     return no_inline_from_;
   }
 
@@ -281,7 +281,7 @@ class CompilerOptions FINAL {
   // Dex files from which we should not inline code.
   // This is usually a very short list (i.e. a single dex file), so we
   // prefer vector<> over a lookup-oriented container, such as set<>.
-  const std::vector<const DexFile*>* no_inline_from_;
+  const std::vector<const IDexFile*>* no_inline_from_;
 
   bool boot_image_;
   bool core_image_;

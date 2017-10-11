@@ -25,7 +25,7 @@
 #include "base/callee_save_type.h"
 #include "class_linker.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "dex_instruction-inl.h"
 #include "entrypoints/quick/quick_alloc_entrypoints.h"
@@ -1245,10 +1245,10 @@ struct RuntimeMethodShortyVisitor : public StackVisitor {
         shorty = m->GetInterfaceMethodIfProxy(kRuntimePointerSize)->GetShorty()[0];
         return false;
       }
-      const DexFile::CodeItem* code_item = m->GetCodeItem();
+      const IDexFile::CodeItem* code_item = m->GetCodeItem();
       const Instruction* instr = Instruction::At(&code_item->insns_[GetDexPc()]);
       if (instr->IsInvoke()) {
-        const DexFile* dex_file = m->GetDexFile();
+        const IDexFile* dex_file = m->GetDexFile();
         if (interpreter::IsStringInit(dex_file, instr->VRegB())) {
           // Invoking string init constructor is turned into invoking
           // StringFactory.newStringFromChars() which returns a string.

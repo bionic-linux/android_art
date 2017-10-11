@@ -23,7 +23,7 @@
 #include "compiler_callbacks.h"
 #include "dex/verification_results.h"
 #include "dex/verified_method.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "driver/compiler_driver-inl.h"
 #include "driver/compiler_options.h"
@@ -105,7 +105,7 @@ class VerifierDepsTest : public CommonCompilerTest {
     map->ClearEntries();
   }
 
-  void SetVerifierDeps(const std::vector<const DexFile*>& dex_files) {
+  void SetVerifierDeps(const std::vector<const IDexFile*>& dex_files) {
     verifier_deps_.reset(new verifier::VerifierDeps(dex_files));
     VerifierDepsCompilerCallbacks* callbacks =
         reinterpret_cast<VerifierDepsCompilerCallbacks*>(callbacks_.get());
@@ -122,10 +122,10 @@ class VerifierDepsTest : public CommonCompilerTest {
     StackHandleScope<1> hs(soa->Self());
     Handle<mirror::ClassLoader> loader =
         hs.NewHandle(soa->Decode<mirror::ClassLoader>(class_loader_));
-    for (const DexFile* dex_file : dex_files_) {
+    for (const IDexFile* dex_file : dex_files_) {
       class_linker_->RegisterDexFile(*dex_file, loader.Get());
     }
-    for (const DexFile* dex_file : dex_files_) {
+    for (const IDexFile* dex_file : dex_files_) {
       compiler_driver_->GetVerificationResults()->AddDexFile(dex_file);
     }
     compiler_driver_->SetDexFilesForOatFile(dex_files_);
@@ -147,7 +147,7 @@ class VerifierDepsTest : public CommonCompilerTest {
         hs.NewHandle(soa.Decode<mirror::ClassLoader>(class_loader_)));
     Handle<mirror::DexCache> dex_cache_handle(hs.NewHandle(klass_Main_->GetDexCache()));
 
-    const DexFile::ClassDef* class_def = klass_Main_->GetClassDef();
+    const IDexFile::ClassDef* class_def = klass_Main_->GetClassDef();
     const uint8_t* class_data = primary_dex_file_->GetClassData(*class_def);
     CHECK(class_data != nullptr);
 
@@ -228,10 +228,10 @@ class VerifierDepsTest : public CommonCompilerTest {
     Handle<mirror::ClassLoader> class_loader_handle(
         hs.NewHandle(soa.Decode<mirror::ClassLoader>(class_loader_)));
     MutableHandle<mirror::Class> cls(hs.NewHandle<mirror::Class>(nullptr));
-    for (const DexFile* dex_file : dex_files_) {
+    for (const IDexFile* dex_file : dex_files_) {
       const std::set<dex::TypeIndex>& unverified_classes = deps.GetUnverifiedClasses(*dex_file);
       for (uint32_t i = 0; i < dex_file->NumClassDefs(); ++i) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(i);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(i);
         const char* descriptor = dex_file->GetClassDescriptor(class_def);
         cls.Assign(class_linker_->FindClass(soa.Self(), descriptor, class_loader_handle));
         if (cls == nullptr) {
@@ -250,8 +250,8 @@ class VerifierDepsTest : public CommonCompilerTest {
     return HasUnverifiedClass(cls, *primary_dex_file_);
   }
 
-  bool HasUnverifiedClass(const std::string& cls, const DexFile& dex_file) {
-    const DexFile::TypeId* type_id = dex_file.FindTypeId(cls.c_str());
+  bool HasUnverifiedClass(const std::string& cls, const IDexFile& dex_file) {
+    const IDexFile::TypeId* type_id = dex_file.FindTypeId(cls.c_str());
     DCHECK(type_id != nullptr);
     dex::TypeIndex index = dex_file.GetIndexForTypeId(*type_id);
     for (const auto& dex_dep : verifier_deps_->dex_deps_) {
@@ -270,7 +270,7 @@ class VerifierDepsTest : public CommonCompilerTest {
                      const std::string& expected_source,
                      bool expected_is_assignable) {
     for (auto& dex_dep : verifier_deps_->dex_deps_) {
-      const DexFile& dex_file = *dex_dep.first;
+      const IDexFile& dex_file = *dex_dep.first;
       auto& storage = expected_is_assignable ? dex_dep.second->assignable_types_
                                              : dex_dep.second->unassignable_types_;
       for (auto& entry : storage) {
@@ -330,7 +330,7 @@ class VerifierDepsTest : public CommonCompilerTest {
           continue;
         }
 
-        const DexFile::FieldId& field_id = dex_dep.first->GetFieldId(entry.GetDexFieldIndex());
+        const IDexFile::FieldId& field_id = dex_dep.first->GetFieldId(entry.GetDexFieldIndex());
 
         std::string actual_klass = dex_dep.first->StringByTypeIdx(field_id.class_idx_);
         if (expected_klass != actual_klass) {
@@ -382,7 +382,7 @@ class VerifierDepsTest : public CommonCompilerTest {
           continue;
         }
 
-        const DexFile::MethodId& method_id = dex_dep.first->GetMethodId(entry.GetDexMethodIndex());
+        const IDexFile::MethodId& method_id = dex_dep.first->GetMethodId(entry.GetDexMethodIndex());
 
         std::string actual_klass = dex_dep.first->StringByTypeIdx(method_id.class_idx_);
         if (expected_klass != actual_klass) {
@@ -451,8 +451,8 @@ class VerifierDepsTest : public CommonCompilerTest {
   }
 
   std::unique_ptr<verifier::VerifierDeps> verifier_deps_;
-  std::vector<const DexFile*> dex_files_;
-  const DexFile* primary_dex_file_;
+  std::vector<const IDexFile*> dex_files_;
+  const IDexFile* primary_dex_file_;
   jobject class_loader_;
   mirror::Class* klass_Main_;
 };
@@ -1111,12 +1111,12 @@ TEST_F(VerifierDepsTest, EncodeDecodeMulti) {
   verifier_deps_->Encode(dex_files_, &buffer);
   ASSERT_FALSE(buffer.empty());
 
-  // Create new DexFile, to mess with std::map order: the verifier deps used
+  // Create new IDexFile, to mess with std::map order: the verifier deps used
   // to iterate over the map, which doesn't guarantee insertion order. We fixed
   // this by passing the expected order when encoding/decoding.
-  std::vector<std::unique_ptr<const DexFile>> first_dex_files = OpenTestDexFiles("VerifierDeps");
-  std::vector<std::unique_ptr<const DexFile>> second_dex_files = OpenTestDexFiles("MultiDex");
-  std::vector<const DexFile*> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> first_dex_files = OpenTestDexFiles("VerifierDeps");
+  std::vector<std::unique_ptr<const IDexFile>> second_dex_files = OpenTestDexFiles("MultiDex");
+  std::vector<const IDexFile*> dex_files;
   for (auto& dex_file : first_dex_files) {
     dex_files.push_back(dex_file.get());
   }
@@ -1147,9 +1147,9 @@ TEST_F(VerifierDepsTest, UnverifiedClasses) {
 TEST_F(VerifierDepsTest, UnverifiedOrder) {
   ScopedObjectAccess soa(Thread::Current());
   jobject loader = LoadDex("VerifierDeps");
-  std::vector<const DexFile*> dex_files = GetDexFiles(loader);
+  std::vector<const IDexFile*> dex_files = GetDexFiles(loader);
   ASSERT_GT(dex_files.size(), 0u);
-  const DexFile* dex_file = dex_files[0];
+  const IDexFile* dex_file = dex_files[0];
   VerifierDeps deps1(dex_files);
   Thread* const self = Thread::Current();
   ASSERT_TRUE(self->GetVerifierDeps() == nullptr);

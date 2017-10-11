@@ -1258,7 +1258,7 @@ class ImageSpaceLoader {
           image_header.GetImageRoots<kWithoutReadBarrier>())));
       image_header.RelocateImageObjects(app_image.Delta());
       CHECK_EQ(image_header.GetImageBegin(), target_base);
-      // Fix up dex cache DexFile pointers.
+      // Fix up dex cache IDexFile pointers.
       auto* dex_caches = image_header.GetImageRoot<kWithoutReadBarrier>(ImageHeader::kDexCaches)->
           AsObjectArray<mirror::DexCache, kVerifyNone, kWithoutReadBarrier>();
       for (int32_t i = 0, count = dex_caches->GetLength(); i < count; ++i) {

@@ -36,7 +36,7 @@
 #include "class_linker-inl.h"
 #include "common_dex_operations.h"
 #include "common_throws.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "entrypoints/entrypoint_utils-inl.h"
 #include "handle_scope-inl.h"
@@ -218,7 +218,7 @@ static inline mirror::MethodType* ResolveMethodType(Thread* self,
                                                     ArtMethod* referrer)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  const DexFile* dex_file = referrer->GetDexFile();
+  const IDexFile* dex_file = referrer->GetDexFile();
   StackHandleScope<2> hs(self);
   Handle<mirror::DexCache> dex_cache(hs.NewHandle(referrer->GetDexCache()));
   Handle<mirror::ClassLoader> class_loader(hs.NewHandle(referrer->GetClassLoader()));
@@ -567,9 +567,9 @@ void ArtInterpreterToCompiledCodeBridge(Thread* self,
                                         uint16_t arg_offset,
                                         JValue* result);
 
-static inline bool IsStringInit(const DexFile* dex_file, uint32_t method_idx)
+static inline bool IsStringInit(const IDexFile* dex_file, uint32_t method_idx)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(method_idx);
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(method_idx);
   const char* class_name = dex_file->StringByTypeIdx(method_id.class_idx_);
   const char* method_name = dex_file->GetMethodName(method_id);
   // Instead of calling ResolveMethod() which has suspend point and can trigger

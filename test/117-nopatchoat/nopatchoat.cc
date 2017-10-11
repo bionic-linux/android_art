@@ -15,7 +15,7 @@
  */
 
 #include "class_linker.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "gc/heap.h"
 #include "gc/space/image_space.h"
 #include "mirror/class-inl.h"
@@ -31,7 +31,7 @@ class NoPatchoatTest {
   static const OatFile::OatDexFile* getOatDexFile(jclass cls) {
     ScopedObjectAccess soa(Thread::Current());
     ObjPtr<mirror::Class> klass = soa.Decode<mirror::Class>(cls);
-    const DexFile& dex_file = klass->GetDexFile();
+    const IDexFile& dex_file = klass->GetDexFile();
     return dex_file.GetOatDexFile();
   }
 

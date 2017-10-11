@@ -559,7 +559,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
     return false;
   }
   switch (orig->Type()) {
-    case DexFile::kDexAnnotationByte:
+    case IDexFile::kDexAnnotationByte:
       if (orig->GetByte() != output->GetByte()) {
         *error_msg = StringPrintf("Mismatched encoded byte for annotation at offset %x: %d vs %d.",
                                   orig_offset,
@@ -568,7 +568,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationShort:
+    case IDexFile::kDexAnnotationShort:
       if (orig->GetShort() != output->GetShort()) {
         *error_msg = StringPrintf("Mismatched encoded short for annotation at offset %x: %d vs %d.",
                                   orig_offset,
@@ -577,7 +577,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationChar:
+    case IDexFile::kDexAnnotationChar:
       if (orig->GetChar() != output->GetChar()) {
         *error_msg = StringPrintf("Mismatched encoded char for annotation at offset %x: %c vs %c.",
                                   orig_offset,
@@ -586,7 +586,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationInt:
+    case IDexFile::kDexAnnotationInt:
       if (orig->GetInt() != output->GetInt()) {
         *error_msg = StringPrintf("Mismatched encoded int for annotation at offset %x: %d vs %d.",
                                   orig_offset,
@@ -595,7 +595,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationLong:
+    case IDexFile::kDexAnnotationLong:
       if (orig->GetLong() != output->GetLong()) {
         *error_msg = StringPrintf(
             "Mismatched encoded long for annotation at offset %x: %" PRId64 " vs %" PRId64 ".",
@@ -605,7 +605,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationFloat:
+    case IDexFile::kDexAnnotationFloat:
       // The float value is encoded, so compare as if it's an int.
       if (orig->GetInt() != output->GetInt()) {
         *error_msg = StringPrintf(
@@ -616,7 +616,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationDouble:
+    case IDexFile::kDexAnnotationDouble:
       // The double value is encoded, so compare as if it's a long.
       if (orig->GetLong() != output->GetLong()) {
         *error_msg = StringPrintf(
@@ -628,7 +628,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationString:
+    case IDexFile::kDexAnnotationString:
       if (orig->GetStringId()->GetIndex() != output->GetStringId()->GetIndex()) {
         *error_msg = StringPrintf(
             "Mismatched encoded string for annotation at offset %x: %s vs %s.",
@@ -638,7 +638,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationType:
+    case IDexFile::kDexAnnotationType:
       if (orig->GetTypeId()->GetIndex() != output->GetTypeId()->GetIndex()) {
         *error_msg = StringPrintf("Mismatched encoded type for annotation at offset %x: %u vs %u.",
                                   orig_offset,
@@ -647,8 +647,8 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationField:
-    case DexFile::kDexAnnotationEnum:
+    case IDexFile::kDexAnnotationField:
+    case IDexFile::kDexAnnotationEnum:
       if (orig->GetFieldId()->GetIndex() != output->GetFieldId()->GetIndex()) {
         *error_msg = StringPrintf("Mismatched encoded field for annotation at offset %x: %u vs %u.",
                                   orig_offset,
@@ -657,7 +657,7 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationMethod:
+    case IDexFile::kDexAnnotationMethod:
       if (orig->GetMethodId()->GetIndex() != output->GetMethodId()->GetIndex()) {
         *error_msg = StringPrintf(
             "Mismatched encoded method for annotation at offset %x: %u vs %u.",
@@ -667,12 +667,12 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationArray:
+    case IDexFile::kDexAnnotationArray:
       if (!VerifyEncodedArray(orig->GetEncodedArray(), output->GetEncodedArray(), error_msg)) {
         return false;
       }
       break;
-    case DexFile::kDexAnnotationAnnotation:
+    case IDexFile::kDexAnnotationAnnotation:
       if (!VerifyEncodedAnnotation(orig->GetEncodedAnnotation(),
                                    output->GetEncodedAnnotation(),
                                    orig_offset,
@@ -680,9 +680,9 @@ bool VerifyEncodedValue(dex_ir::EncodedValue* orig,
         return false;
       }
       break;
-    case DexFile::kDexAnnotationNull:
+    case IDexFile::kDexAnnotationNull:
       break;
-    case DexFile::kDexAnnotationBoolean:
+    case IDexFile::kDexAnnotationBoolean:
       if (orig->GetBoolean() != output->GetBoolean()) {
         *error_msg = StringPrintf(
             "Mismatched encoded boolean for annotation at offset %x: %d vs %d.",

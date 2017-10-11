@@ -39,20 +39,20 @@
 #include "jvmti.h"
 
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace openjdkjvmti {
 
-// A holder for a DexFile that has been 'fixed up' to ensure it is fully compliant with the
+// A holder for a IDexFile that has been 'fixed up' to ensure it is fully compliant with the
 // published standard (no internal/quick opcodes, all fields are the defined values, etc). This is
 // used to ensure that agents get a consistent dex file regardless of what version of android they
 // are running on.
 class FixedUpDexFile {
  public:
-  static std::unique_ptr<FixedUpDexFile> Create(const art::DexFile& original)
+  static std::unique_ptr<FixedUpDexFile> Create(const art::IDexFile& original)
       REQUIRES_SHARED(art::Locks::mutator_lock_);
 
-  const art::DexFile& GetDexFile() {
+  const art::IDexFile& GetDexFile() {
     return *dex_file_;
   }
 
@@ -65,13 +65,13 @@ class FixedUpDexFile {
   }
 
  private:
-  explicit FixedUpDexFile(std::unique_ptr<const art::DexFile> fixed_up_dex_file,
+  explicit FixedUpDexFile(std::unique_ptr<const art::IDexFile> fixed_up_dex_file,
                           std::vector<unsigned char> data)
       : dex_file_(std::move(fixed_up_dex_file)),
         data_(std::move(data)) {}
 
-  // the fixed up DexFile
-  std::unique_ptr<const art::DexFile> dex_file_;
+  // the fixed up IDexFile
+  std::unique_ptr<const art::IDexFile> dex_file_;
   // The backing data for dex_file_.
   const std::vector<unsigned char> data_;
 

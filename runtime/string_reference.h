@@ -20,17 +20,17 @@
 #include <stdint.h>
 
 #include "base/logging.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_reference.h"
 #include "dex_file_types.h"
 #include "utf-inl.h"
 
 namespace art {
 
-// A string is located by its DexFile and the string_ids_ table index into that DexFile.
+// A string is located by its IDexFile and the string_ids_ table index into that IDexFile.
 class StringReference : public DexFileReference {
  public:
-  StringReference(const DexFile* file, dex::StringIndex index)
+  StringReference(const IDexFile* file, dex::StringIndex index)
      : DexFileReference(file, index.index_) {}
 
   dex::StringIndex StringIndex() const {

@@ -21,7 +21,7 @@
 #include "builder.h"
 #include "code_generator.h"
 #include "code_generator_x86.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_instruction.h"
 #include "driver/compiler_options.h"
 #include "graph_visualizer.h"

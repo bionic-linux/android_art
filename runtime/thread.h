@@ -83,7 +83,7 @@ class Closure;
 class Context;
 struct DebugInvokeReq;
 class DeoptimizationContextRecord;
-class DexFile;
+class IDexFile;
 class FrameIdToShadowFrame;
 class JavaVMExt;
 struct JNIEnvExt;

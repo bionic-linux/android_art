@@ -27,7 +27,7 @@ mirror::Object* ShadowFrame::GetThisObject() const {
   } else if (m->IsNative()) {
     return GetVRegReference(0);
   } else {
-    const DexFile::CodeItem* code_item = m->GetCodeItem();
+    const IDexFile::CodeItem* code_item = m->GetCodeItem();
     CHECK(code_item != nullptr) << ArtMethod::PrettyMethod(m);
     uint16_t reg = code_item->registers_size_ - code_item->ins_size_;
     return GetVRegReference(reg);

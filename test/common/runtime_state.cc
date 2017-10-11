@@ -19,7 +19,7 @@
 #include "art_method-inl.h"
 #include "base/enums.h"
 #include "base/logging.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "instrumentation.h"
 #include "jit/jit.h"
 #include "jit/jit_code_cache.h"
@@ -55,7 +55,7 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_hasOatFile(JNIEnv* env, jclass c
   ScopedObjectAccess soa(env);
 
   ObjPtr<mirror::Class> klass = soa.Decode<mirror::Class>(cls);
-  const DexFile& dex_file = klass->GetDexFile();
+  const IDexFile& dex_file = klass->GetDexFile();
   const OatFile::OatDexFile* oat_dex_file = dex_file.GetOatDexFile();
   return (oat_dex_file != nullptr) ? JNI_TRUE : JNI_FALSE;
 }
@@ -95,7 +95,7 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_compiledWithOptimizing(JNIEnv* e
   ScopedObjectAccess soa(env);
 
   ObjPtr<mirror::Class> klass = soa.Decode<mirror::Class>(cls);
-  const DexFile& dex_file = klass->GetDexFile();
+  const IDexFile& dex_file = klass->GetDexFile();
   const OatFile::OatDexFile* oat_dex_file = dex_file.GetOatDexFile();
   if (oat_dex_file == nullptr) {
     // Could be JIT, which also uses optimizing, but conservatively say no.

@@ -24,7 +24,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 // Collection of dex references that is more memory efficient than a vector of <dex, index> pairs.
 // Also allows quick lookups of all of the references for a single dex.
@@ -33,19 +33,19 @@ class DexReferenceCollection {
  public:
   using VectorAllocator = Allocator<IndexType>;
   using IndexVector = std::vector<IndexType, VectorAllocator>;
-  using MapAllocator = Allocator<std::pair<const DexFile*, IndexVector>>;
+  using MapAllocator = Allocator<std::pair<const IDexFile*, IndexVector>>;
   using DexFileMap = std::map<
-      const DexFile*,
+      const IDexFile*,
       IndexVector,
-      std::less<const DexFile*>,
-      Allocator<std::pair<const DexFile* const, IndexVector>>>;
+      std::less<const IDexFile*>,
+      Allocator<std::pair<const IDexFile* const, IndexVector>>>;
 
   DexReferenceCollection(const MapAllocator& map_allocator = MapAllocator(),
                          const VectorAllocator& vector_allocator = VectorAllocator())
       : map_(map_allocator),
         vector_allocator_(vector_allocator) {}
 
-  void AddReference(const DexFile* dex, IndexType index) {
+  void AddReference(const IDexFile* dex, IndexType index) {
     GetOrInsertVector(dex)->push_back(index);
   }
 
@@ -63,11 +63,11 @@ class DexReferenceCollection {
 
  private:
   DexFileMap map_;
-  const DexFile* current_dex_file_ = nullptr;
+  const IDexFile* current_dex_file_ = nullptr;
   IndexVector* current_vector_ = nullptr;
   VectorAllocator vector_allocator_;
 
-  ALWAYS_INLINE IndexVector* GetOrInsertVector(const DexFile* dex) {
+  ALWAYS_INLINE IndexVector* GetOrInsertVector(const IDexFile* dex) {
     // Optimize for adding to same vector in succession, the cached dex file and vector aims to
     // prevent map lookups.
     if (UNLIKELY(current_dex_file_ != dex)) {

@@ -24,7 +24,7 @@
 #include "class_linker-inl.h"
 #include "common_compiler_test.h"
 #include "compiler_callbacks.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "gc/heap.h"
 #include "handle_scope-inl.h"
@@ -69,18 +69,18 @@ class CompilerDriverTest : public CommonCompilerTest {
   }
 
   void MakeAllExecutable(jobject class_loader) {
-    const std::vector<const DexFile*> class_path = GetDexFiles(class_loader);
+    const std::vector<const IDexFile*> class_path = GetDexFiles(class_loader);
     for (size_t i = 0; i != class_path.size(); ++i) {
-      const DexFile* dex_file = class_path[i];
+      const IDexFile* dex_file = class_path[i];
       CHECK(dex_file != nullptr);
       MakeDexFileExecutable(class_loader, *dex_file);
     }
   }
 
-  void MakeDexFileExecutable(jobject class_loader, const DexFile& dex_file) {
+  void MakeDexFileExecutable(jobject class_loader, const IDexFile& dex_file) {
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
     for (size_t i = 0; i < dex_file.NumClassDefs(); i++) {
-      const DexFile::ClassDef& class_def = dex_file.GetClassDef(i);
+      const IDexFile::ClassDef& class_def = dex_file.GetClassDef(i);
       const char* descriptor = dex_file.GetClassDescriptor(class_def);
       ScopedObjectAccess soa(Thread::Current());
       StackHandleScope<1> hs(soa.Self());
@@ -98,7 +98,7 @@ class CompilerDriverTest : public CommonCompilerTest {
   JNIEnv* env_;
   jclass class_;
   jmethodID mid_;
-  std::vector<const DexFile*> dex_files_;
+  std::vector<const IDexFile*> dex_files_;
 };
 
 // Disabled due to 10 second runtime on host
@@ -109,7 +109,7 @@ TEST_F(CompilerDriverTest, DISABLED_LARGE_CompileDexLibCore) {
   // All libcore references should resolve
   ScopedObjectAccess soa(Thread::Current());
   ASSERT_TRUE(java_lang_dex_file_ != nullptr);
-  const DexFile& dex = *java_lang_dex_file_;
+  const IDexFile& dex = *java_lang_dex_file_;
   ObjPtr<mirror::DexCache> dex_cache = class_linker_->FindDexCache(soa.Self(), dex);
   EXPECT_EQ(dex.NumStringIds(), dex_cache->NumStrings());
   for (size_t i = 0; i < dex_cache->NumStrings(); i++) {
@@ -204,7 +204,7 @@ TEST_F(CompilerDriverMethodsTest, Selection) {
 
   // Need to enable dex-file writability. Methods rejected to be compiled will run through the
   // dex-to-dex compiler.
-  for (const DexFile* dex_file : GetDexFiles(class_loader)) {
+  for (const IDexFile* dex_file : GetDexFiles(class_loader)) {
     ASSERT_TRUE(dex_file->EnableWrite());
   }
 
@@ -239,10 +239,10 @@ class CompilerDriverProfileTest : public CompilerDriverTest {
  protected:
   ProfileCompilationInfo* GetProfileCompilationInfo() OVERRIDE {
     ScopedObjectAccess soa(Thread::Current());
-    std::vector<std::unique_ptr<const DexFile>> dex_files = OpenTestDexFiles("ProfileTestMultiDex");
+    std::vector<std::unique_ptr<const IDexFile>> dex_files = OpenTestDexFiles("ProfileTestMultiDex");
 
     ProfileCompilationInfo info;
-    for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+    for (const std::unique_ptr<const IDexFile>& dex_file : dex_files) {
       profile_info_.AddMethodIndex(ProfileCompilationInfo::MethodHotness::kFlagHot,
                                    MethodReference(dex_file.get(), 1));
       profile_info_.AddMethodIndex(ProfileCompilationInfo::MethodHotness::kFlagHot,
@@ -313,7 +313,7 @@ TEST_F(CompilerDriverProfileTest, ProfileGuidedCompilation) {
 
   // Need to enable dex-file writability. Methods rejected to be compiled will run through the
   // dex-to-dex compiler.
-  for (const DexFile* dex_file : GetDexFiles(class_loader)) {
+  for (const IDexFile* dex_file : GetDexFiles(class_loader)) {
     ASSERT_TRUE(dex_file->EnableWrite());
   }
 
@@ -372,8 +372,8 @@ TEST_F(CompilerDriverVerifyTest, VerifyCompilation) {
 TEST_F(CompilerDriverVerifyTest, RetryVerifcationStatusCheckVerified) {
   Thread* const self = Thread::Current();
   jobject class_loader;
-  std::vector<const DexFile*> dex_files;
-  const DexFile* dex_file = nullptr;
+  std::vector<const IDexFile*> dex_files;
+  const IDexFile* dex_file = nullptr;
   {
     ScopedObjectAccess soa(self);
     class_loader = LoadDex("ProfileTestMultiDex");

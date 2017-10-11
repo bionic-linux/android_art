@@ -19,7 +19,7 @@
 
 #include "base/macros.h"
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "jvalue.h"
 #include "obj_ptr.h"
 
@@ -32,7 +32,7 @@ namespace interpreter {
 
 template<bool do_access_check, bool transaction_active>
 JValue ExecuteSwitchImpl(Thread* self,
-                         const DexFile::CodeItem* code_item,
+                         const IDexFile::CodeItem* code_item,
                          ShadowFrame& shadow_frame,
                          JValue result_register,
                          bool interpret_one_instruction) REQUIRES_SHARED(Locks::mutator_lock_);

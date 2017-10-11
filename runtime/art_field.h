@@ -29,7 +29,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 class ScopedObjectAccessAlreadyRunnable;
 
 namespace mirror {
@@ -212,7 +212,7 @@ class ArtField FINAL {
 
   ObjPtr<mirror::DexCache> GetDexCache() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile* GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile* GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
 
   GcRoot<mirror::Class>& DeclaringClassRoot() {
     return declaring_class_;
@@ -234,7 +234,7 @@ class ArtField FINAL {
   ObjPtr<mirror::Class> ProxyFindSystemClass(const char* descriptor)
       REQUIRES_SHARED(Locks::mutator_lock_);
   ObjPtr<mirror::String> ResolveGetStringName(Thread* self,
-                                              const DexFile& dex_file,
+                                              const IDexFile& dex_file,
                                               dex::StringIndex string_idx,
                                               ObjPtr<mirror::DexCache> dex_cache)
       REQUIRES_SHARED(Locks::mutator_lock_);

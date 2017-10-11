@@ -27,7 +27,7 @@
 #include "class_loader.h"
 #include "common_throws.h"
 #include "dex_cache.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "gc/heap-inl.h"
 #include "iftable.h"
 #include "invoke_type.h"
@@ -834,7 +834,7 @@ inline bool Class::IsClassClass() {
   return this == java_lang_Class;
 }
 
-inline const DexFile& Class::GetDexFile() {
+inline const IDexFile& Class::GetDexFile() {
   // From-space version is the same as the to-space version since the dex file never changes.
   // Avoiding the read barrier here is important to prevent recursive AssertToSpaceInvariant issues
   // from PrettyTypeOf.
@@ -849,8 +849,8 @@ inline bool Class::DescriptorEquals(const char* match) {
   } else if (IsProxyClass()) {
     return ProxyDescriptorEquals(match);
   } else {
-    const DexFile& dex_file = GetDexFile();
-    const DexFile::TypeId& type_id = dex_file.GetTypeId(GetClassDef()->class_idx_);
+    const IDexFile& dex_file = GetDexFile();
+    const IDexFile::TypeId& type_id = dex_file.GetTypeId(GetClassDef()->class_idx_);
     return strcmp(dex_file.GetTypeDescriptor(type_id), match) == 0;
   }
 }
@@ -912,8 +912,8 @@ inline void Class::InitializeClassVisitor::operator()(ObjPtr<Object> obj,
   ObjPtr<Class> klass = ObjPtr<Class>::DownCast(obj);
   klass->SetClassSize(class_size_);
   klass->SetPrimitiveType(Primitive::kPrimNot);  // Default to not being primitive.
-  klass->SetDexClassDefIndex(DexFile::kDexNoIndex16);  // Default to no valid class def index.
-  klass->SetDexTypeIndex(dex::TypeIndex(DexFile::kDexNoIndex16));  // Default to no valid type
+  klass->SetDexClassDefIndex(IDexFile::kDexNoIndex16);  // Default to no valid class def index.
+  klass->SetDexTypeIndex(dex::TypeIndex(IDexFile::kDexNoIndex16));  // Default to no valid type
                                                                    // index.
   // Default to force slow path until initialized.
   klass->SetObjectSizeAllocFastPath(std::numeric_limits<uint32_t>::max());
@@ -945,7 +945,7 @@ inline uint32_t Class::NumDirectInterfaces() {
     ObjectArray<Class>* interfaces = GetProxyInterfaces();
     return interfaces != nullptr ? interfaces->GetLength() : 0;
   } else {
-    const DexFile::TypeList* interfaces = GetInterfaceTypeList();
+    const IDexFile::TypeList* interfaces = GetInterfaceTypeList();
     if (interfaces == nullptr) {
       return 0;
     } else {

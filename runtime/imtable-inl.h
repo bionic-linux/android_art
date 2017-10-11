@@ -20,7 +20,7 @@
 #include "imtable.h"
 
 #include "art_method-inl.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "utf.h"
 
 namespace art {
@@ -45,8 +45,8 @@ inline void ImTable::GetImtHashComponents(ArtMethod* method,
       return;
     }
 
-    const DexFile* dex_file = method->GetDexFile();
-    const DexFile::MethodId& method_id = dex_file->GetMethodId(method->GetDexMethodIndex());
+    const IDexFile* dex_file = method->GetDexFile();
+    const IDexFile::MethodId& method_id = dex_file->GetMethodId(method->GetDexMethodIndex());
 
     // Class descriptor for the class component.
     *class_hash = ComputeModifiedUtf8Hash(dex_file->GetMethodDeclaringClassDescriptor(method_id));
@@ -54,7 +54,7 @@ inline void ImTable::GetImtHashComponents(ArtMethod* method,
     // Method name for the method component.
     *name_hash = ComputeModifiedUtf8Hash(dex_file->GetMethodName(method_id));
 
-    const DexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
+    const IDexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
 
     // Read the proto for the signature component.
     uint32_t tmp = ComputeModifiedUtf8Hash(
@@ -63,10 +63,10 @@ inline void ImTable::GetImtHashComponents(ArtMethod* method,
     // Mix in the argument types.
     // Note: we could consider just using the shorty. This would be faster, at the price of
     //       potential collisions.
-    const DexFile::TypeList* param_types = dex_file->GetProtoParameters(proto_id);
+    const IDexFile::TypeList* param_types = dex_file->GetProtoParameters(proto_id);
     if (param_types != nullptr) {
       for (size_t i = 0; i != param_types->Size(); ++i) {
-        const DexFile::TypeItem& type = param_types->GetTypeItem(i);
+        const IDexFile::TypeItem& type = param_types->GetTypeItem(i);
         tmp = 31 * tmp + ComputeModifiedUtf8Hash(
             dex_file->GetTypeDescriptor(dex_file->GetTypeId(type.type_idx_)));
       }

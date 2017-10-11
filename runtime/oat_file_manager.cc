@@ -30,7 +30,7 @@
 #include "base/systrace.h"
 #include "class_linker.h"
 #include "class_loader_context.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "dex_file_tracking_registrar.h"
 #include "gc/scoped_gc_critical_section.h"
@@ -160,7 +160,7 @@ std::vector<const OatFile*> OatFileManager::RegisterImageOatFiles(
 
 class TypeIndexInfo {
  public:
-  explicit TypeIndexInfo(const DexFile* dex_file)
+  explicit TypeIndexInfo(const IDexFile* dex_file)
       : type_indexes_(GenerateTypeIndexes(dex_file)),
         iter_(type_indexes_.Indexes().begin()),
         end_(type_indexes_.Indexes().end()) { }
@@ -179,10 +179,10 @@ class TypeIndexInfo {
   }
 
  private:
-  static BitVector GenerateTypeIndexes(const DexFile* dex_file) {
+  static BitVector GenerateTypeIndexes(const IDexFile* dex_file) {
     BitVector type_indexes(/*start_bits*/0, /*expandable*/true, Allocator::GetMallocAllocator());
     for (uint16_t i = 0; i < dex_file->NumClassDefs(); ++i) {
-      const DexFile::ClassDef& class_def = dex_file->GetClassDef(i);
+      const IDexFile::ClassDef& class_def = dex_file->GetClassDef(i);
       uint16_t type_idx = class_def.class_idx_.index_;
       type_indexes.SetBit(type_idx);
     }
@@ -197,7 +197,7 @@ class TypeIndexInfo {
 
 class DexFileAndClassPair : ValueObject {
  public:
-  DexFileAndClassPair(const DexFile* dex_file, TypeIndexInfo* type_info, bool from_loaded_oat)
+  DexFileAndClassPair(const IDexFile* dex_file, TypeIndexInfo* type_info, bool from_loaded_oat)
      : type_info_(type_info),
        dex_file_(dex_file),
        cached_descriptor_(dex_file_->StringByTypeIdx(dex::TypeIndex(*type_info->GetIterator()))),
@@ -236,13 +236,13 @@ class DexFileAndClassPair : ValueObject {
     return from_loaded_oat_;
   }
 
-  const DexFile* GetDexFile() const {
+  const IDexFile* GetDexFile() const {
     return dex_file_;
   }
 
  private:
   TypeIndexInfo* type_info_;
-  const DexFile* dex_file_;
+  const IDexFile* dex_file_;
   const char* cached_descriptor_;
   bool from_loaded_oat_;  // We only need to compare mismatches between what we load now
                           // and what was loaded before. Any old duplicates must have been
@@ -252,11 +252,11 @@ class DexFileAndClassPair : ValueObject {
 
 static void AddDexFilesFromOat(
     const OatFile* oat_file,
-    /*out*/std::vector<const DexFile*>* dex_files,
-    std::vector<std::unique_ptr<const DexFile>>* opened_dex_files) {
+    /*out*/std::vector<const IDexFile*>* dex_files,
+    std::vector<std::unique_ptr<const IDexFile>>* opened_dex_files) {
   for (const OatDexFile* oat_dex_file : oat_file->GetOatDexFiles()) {
     std::string error;
-    std::unique_ptr<const DexFile> dex_file = oat_dex_file->OpenDexFile(&error);
+    std::unique_ptr<const IDexFile> dex_file = oat_dex_file->OpenDexFile(&error);
     if (dex_file == nullptr) {
       LOG(WARNING) << "Could not create dex file from oat file: " << error;
     } else if (dex_file->NumClassDefs() > 0U) {
@@ -274,16 +274,16 @@ static void AddNext(/*inout*/DexFileAndClassPair& original,
   }
 }
 
-static bool CollisionCheck(std::vector<const DexFile*>& dex_files_loaded,
-                           std::vector<const DexFile*>& dex_files_unloaded,
+static bool CollisionCheck(std::vector<const IDexFile*>& dex_files_loaded,
+                           std::vector<const IDexFile*>& dex_files_unloaded,
                            std::string* error_msg /*out*/) {
   // Generate type index information for each dex file.
   std::vector<TypeIndexInfo> loaded_types;
-  for (const DexFile* dex_file : dex_files_loaded) {
+  for (const IDexFile* dex_file : dex_files_loaded) {
     loaded_types.push_back(TypeIndexInfo(dex_file));
   }
   std::vector<TypeIndexInfo> unloaded_types;
-  for (const DexFile* dex_file : dex_files_unloaded) {
+  for (const IDexFile* dex_file : dex_files_unloaded) {
     unloaded_types.push_back(TypeIndexInfo(dex_file));
   }
 
@@ -377,19 +377,19 @@ bool OatFileManager::HasCollisions(const OatFile* oat_file,
 
   // The class loader context does not match. Perform a full duplicate classes check.
 
-  std::vector<const DexFile*> dex_files_loaded = context->FlattenOpenedDexFiles();
+  std::vector<const IDexFile*> dex_files_loaded = context->FlattenOpenedDexFiles();
 
   // Vector that holds the newly opened dex files live, this is done to prevent leaks.
-  std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> opened_dex_files;
 
   ScopedTrace st("Collision check");
   // Add dex files from the oat file to check.
-  std::vector<const DexFile*> dex_files_unloaded;
+  std::vector<const IDexFile*> dex_files_unloaded;
   AddDexFilesFromOat(oat_file, &dex_files_unloaded, &opened_dex_files);
   return CollisionCheck(dex_files_loaded, dex_files_unloaded, error_msg);
 }
 
-std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
+std::vector<std::unique_ptr<const IDexFile>> OatFileManager::OpenDexFilesFromOat(
     const char* dex_location,
     jobject class_loader,
     jobjectArray dex_elements,
@@ -407,10 +407,10 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
 
   std::unique_ptr<ClassLoaderContext> context;
   // If the class_loader is null there's not much we can do. This happens if a dex files is loaded
-  // directly with DexFile APIs instead of using class loaders.
+  // directly with IDexFile APIs instead of using class loaders.
   if (class_loader == nullptr) {
     LOG(WARNING) << "Opening an oat file without a class loader. "
-                 << "Are you using the deprecated DexFile APIs?";
+                 << "Are you using the deprecated IDexFile APIs?";
     context = nullptr;
   } else {
     context = ClassLoaderContext::CreateContextForClassLoader(class_loader, dex_elements);
@@ -467,7 +467,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
     // If the oat file is not on /system, don't use it.
   } else  if ((class_loader != nullptr || dex_elements != nullptr) && oat_file != nullptr) {
     // Prevent oat files from being loaded if no class_loader or dex_elements are provided.
-    // This can happen when the deprecated DexFile.<init>(String) is called directly, and it
+    // This can happen when the deprecated IDexFile.<init>(String) is called directly, and it
     // could load oat files without checking the classpath, which would be incorrect.
     // Take the file only if it has no collisions, or we must take it because of preopting.
     bool accept_oat_file =
@@ -512,7 +512,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
     }
   }
 
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
 
   // Load the dex files from the oat file.
   if (source_oat_file != nullptr) {
@@ -585,7 +585,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
       error_msgs->push_back("Failed to open dex files from " + source_oat_file->GetLocation());
     } else {
       // Opened dex files from an oat file, madvise them to their loaded state.
-       for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+       for (const std::unique_ptr<const IDexFile>& dex_file : dex_files) {
          OatDexFile::MadviseDexFile(*dex_file, MadviseState::kMadviseStateAtLoad);
        }
     }

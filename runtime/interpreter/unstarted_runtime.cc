@@ -1904,7 +1904,7 @@ void UnstartedRuntime::Initialize() {
   tables_initialized_ = true;
 }
 
-void UnstartedRuntime::Invoke(Thread* self, const DexFile::CodeItem* code_item,
+void UnstartedRuntime::Invoke(Thread* self, const IDexFile::CodeItem* code_item,
                               ShadowFrame* shadow_frame, JValue* result, size_t arg_offset) {
   // In a runtime that's not started we intercept certain methods to avoid complicated dependency
   // problems in core libraries.

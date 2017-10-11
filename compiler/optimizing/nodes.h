@@ -30,7 +30,7 @@
 #include "base/transform_array_ref.h"
 #include "data_type.h"
 #include "deoptimization_kind.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "entrypoints/quick/quick_entrypoints_enum.h"
 #include "handle.h"
@@ -92,12 +92,12 @@ static constexpr InvokeType kInvalidInvokeType = static_cast<InvokeType>(-1);
 
 static constexpr uint32_t kNoDexPc = -1;
 
-inline bool IsSameDexFile(const DexFile& lhs, const DexFile& rhs) {
+inline bool IsSameDexFile(const IDexFile& lhs, const IDexFile& rhs) {
   // For the purposes of the compiler, the dex files must actually be the same object
   // if we want to safely treat them as the same. This is especially important for JIT
   // as custom class loaders can open the same underlying file (or memory) multiple
   // times and provide different class resolution but no two class loaders should ever
-  // use the same DexFile object - doing so is an unsupported hack that can lead to
+  // use the same IDexFile object - doing so is an unsupported hack that can lead to
   // all sorts of weird failures.
   return &lhs == &rhs;
 }
@@ -308,7 +308,7 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
  public:
   HGraph(ArenaAllocator* allocator,
          ArenaStack* arena_stack,
-         const DexFile& dex_file,
+         const IDexFile& dex_file,
          uint32_t method_idx,
          InstructionSet instruction_set,
          InvokeType invoke_type = kInvalidInvokeType,
@@ -537,7 +537,7 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
 
   HCurrentMethod* GetCurrentMethod();
 
-  const DexFile& GetDexFile() const {
+  const IDexFile& GetDexFile() const {
     return dex_file_;
   }
 
@@ -697,7 +697,7 @@ class HGraph : public ArenaObject<kArenaAllocGraph> {
   int32_t current_instruction_id_;
 
   // The dex file from which the method is from.
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
 
   // The method index in the dex file.
   const uint32_t method_idx_;
@@ -869,12 +869,12 @@ class TryCatchInformation : public ArenaObject<kArenaAllocTryCatchInfo> {
   explicit TryCatchInformation(const HTryBoundary& try_entry)
       : try_entry_(&try_entry),
         catch_dex_file_(nullptr),
-        catch_type_index_(DexFile::kDexNoIndex16) {
+        catch_type_index_(IDexFile::kDexNoIndex16) {
     DCHECK(try_entry_ != nullptr);
   }
 
   // Catch block information constructor.
-  TryCatchInformation(dex::TypeIndex catch_type_index, const DexFile& dex_file)
+  TryCatchInformation(dex::TypeIndex catch_type_index, const IDexFile& dex_file)
       : try_entry_(nullptr),
         catch_dex_file_(&dex_file),
         catch_type_index_(catch_type_index) {}
@@ -898,7 +898,7 @@ class TryCatchInformation : public ArenaObject<kArenaAllocTryCatchInfo> {
     return catch_type_index_;
   }
 
-  const DexFile& GetCatchDexFile() const {
+  const IDexFile& GetCatchDexFile() const {
     DCHECK(IsCatchBlock());
     return *catch_dex_file_;
   }
@@ -909,7 +909,7 @@ class TryCatchInformation : public ArenaObject<kArenaAllocTryCatchInfo> {
   const HTryBoundary* try_entry_;
 
   // Exception type information. Only set for catch blocks.
-  const DexFile* catch_dex_file_;
+  const IDexFile* catch_dex_file_;
   const dex::TypeIndex catch_type_index_;
 };
 
@@ -3938,7 +3938,7 @@ class HNewInstance FINAL : public HExpression<1> {
   HNewInstance(HInstruction* cls,
                uint32_t dex_pc,
                dex::TypeIndex type_index,
-               const DexFile& dex_file,
+               const IDexFile& dex_file,
                bool finalizable,
                QuickEntrypointEnum entrypoint)
       : HExpression(DataType::Type::kReference, SideEffects::CanTriggerGC(), dex_pc),
@@ -3950,7 +3950,7 @@ class HNewInstance FINAL : public HExpression<1> {
   }
 
   dex::TypeIndex GetTypeIndex() const { return type_index_; }
-  const DexFile& GetDexFile() const { return dex_file_; }
+  const IDexFile& GetDexFile() const { return dex_file_; }
 
   // Calls runtime so needs an environment.
   bool NeedsEnvironment() const OVERRIDE { return true; }
@@ -3992,7 +3992,7 @@ class HNewInstance FINAL : public HExpression<1> {
                 "Too many packed fields.");
 
   const dex::TypeIndex type_index_;
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
   QuickEntrypointEnum entrypoint_;
 
   DISALLOW_COPY_AND_ASSIGN(HNewInstance);
@@ -4351,7 +4351,7 @@ class HInvokeStaticOrDirect FINAL : public HInvoke {
     return dispatch_info_.method_load_data;
   }
 
-  const DexFile& GetDexFileForPcRelativeDexCache() const;
+  const IDexFile& GetDexFileForPcRelativeDexCache() const;
 
   ClinitCheckRequirement GetClinitCheckRequirement() const {
     return GetPackedField<ClinitCheckRequirementField>();
@@ -5098,7 +5098,7 @@ class HRor FINAL : public HBinaryOperation {
 // the calling convention.
 class HParameterValue FINAL : public HExpression<0> {
  public:
-  HParameterValue(const DexFile& dex_file,
+  HParameterValue(const IDexFile& dex_file,
                   dex::TypeIndex type_index,
                   uint8_t index,
                   DataType::Type parameter_type,
@@ -5111,7 +5111,7 @@ class HParameterValue FINAL : public HExpression<0> {
     SetPackedFlag<kFlagCanBeNull>(!is_this);
   }
 
-  const DexFile& GetDexFile() const { return dex_file_; }
+  const IDexFile& GetDexFile() const { return dex_file_; }
   dex::TypeIndex GetTypeIndex() const { return type_index_; }
   uint8_t GetIndex() const { return index_; }
   bool IsThis() const { return GetPackedFlag<kFlagIsThis>(); }
@@ -5129,7 +5129,7 @@ class HParameterValue FINAL : public HExpression<0> {
   static_assert(kNumberOfParameterValuePackedBits <= kMaxNumberOfPackedBits,
                 "Too many packed fields.");
 
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
   const dex::TypeIndex type_index_;
   // The index of this parameter in the parameters list. Must be less
   // than HGraph::number_of_in_vregs_.
@@ -5276,7 +5276,7 @@ class FieldInfo : public ValueObject {
             bool is_volatile,
             uint32_t index,
             uint16_t declaring_class_def_index,
-            const DexFile& dex_file)
+            const IDexFile& dex_file)
       : field_(field),
         field_offset_(field_offset),
         field_type_(field_type),
@@ -5290,7 +5290,7 @@ class FieldInfo : public ValueObject {
   DataType::Type GetFieldType() const { return field_type_; }
   uint32_t GetFieldIndex() const { return index_; }
   uint16_t GetDeclaringClassDefIndex() const { return declaring_class_def_index_;}
-  const DexFile& GetDexFile() const { return dex_file_; }
+  const IDexFile& GetDexFile() const { return dex_file_; }
   bool IsVolatile() const { return is_volatile_; }
 
  private:
@@ -5300,7 +5300,7 @@ class FieldInfo : public ValueObject {
   const bool is_volatile_;
   const uint32_t index_;
   const uint16_t declaring_class_def_index_;
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
 };
 
 class HInstanceFieldGet FINAL : public HExpression<1> {
@@ -5312,7 +5312,7 @@ class HInstanceFieldGet FINAL : public HExpression<1> {
                     bool is_volatile,
                     uint32_t field_idx,
                     uint16_t declaring_class_def_index,
-                    const DexFile& dex_file,
+                    const IDexFile& dex_file,
                     uint32_t dex_pc)
       : HExpression(field_type, SideEffects::FieldReadOfType(field_type, is_volatile), dex_pc),
         field_info_(field,
@@ -5363,7 +5363,7 @@ class HInstanceFieldSet FINAL : public HTemplateInstruction<2> {
                     bool is_volatile,
                     uint32_t field_idx,
                     uint16_t declaring_class_def_index,
-                    const DexFile& dex_file,
+                    const IDexFile& dex_file,
                     uint32_t dex_pc)
       : HTemplateInstruction(SideEffects::FieldWriteOfType(field_type, is_volatile), dex_pc),
         field_info_(field,
@@ -5751,7 +5751,7 @@ class HLoadClass FINAL : public HInstruction {
 
   HLoadClass(HCurrentMethod* current_method,
              dex::TypeIndex type_index,
-             const DexFile& dex_file,
+             const IDexFile& dex_file,
              Handle<mirror::Class> klass,
              bool is_referrers_class,
              uint32_t dex_pc,
@@ -5827,7 +5827,7 @@ class HLoadClass FINAL : public HInstruction {
   }
 
   dex::TypeIndex GetTypeIndex() const { return type_index_; }
-  const DexFile& GetDexFile() const { return dex_file_; }
+  const IDexFile& GetDexFile() const { return dex_file_; }
 
   bool NeedsDexCacheOfDeclaringClass() const OVERRIDE {
     return GetLoadKind() == LoadKind::kRuntimeCall;
@@ -5898,7 +5898,7 @@ class HLoadClass FINAL : public HInstruction {
   // - The dex file where the class is defined. When the load kind can only be
   //   kBssEntry or kRuntimeCall, we cannot emit code for this `HLoadClass`.
   const dex::TypeIndex type_index_;
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
 
   Handle<mirror::Class> klass_;
 
@@ -5953,7 +5953,7 @@ class HLoadString FINAL : public HInstruction {
 
   HLoadString(HCurrentMethod* current_method,
               dex::StringIndex string_index,
-              const DexFile& dex_file,
+              const IDexFile& dex_file,
               uint32_t dex_pc)
       : HInstruction(SideEffectsForArchRuntimeCalls(), dex_pc),
         special_input_(HUserRecord<HInstruction*>(current_method)),
@@ -5968,7 +5968,7 @@ class HLoadString FINAL : public HInstruction {
     return GetPackedField<LoadKindField>();
   }
 
-  const DexFile& GetDexFile() const {
+  const IDexFile& GetDexFile() const {
     return dex_file_;
   }
 
@@ -6044,7 +6044,7 @@ class HLoadString FINAL : public HInstruction {
   HUserRecord<HInstruction*> special_input_;
 
   dex::StringIndex string_index_;
-  const DexFile& dex_file_;
+  const IDexFile& dex_file_;
 
   Handle<mirror::String> string_;
 
@@ -6112,7 +6112,7 @@ class HStaticFieldGet FINAL : public HExpression<1> {
                   bool is_volatile,
                   uint32_t field_idx,
                   uint16_t declaring_class_def_index,
-                  const DexFile& dex_file,
+                  const IDexFile& dex_file,
                   uint32_t dex_pc)
       : HExpression(field_type, SideEffects::FieldReadOfType(field_type, is_volatile), dex_pc),
         field_info_(field,
@@ -6160,7 +6160,7 @@ class HStaticFieldSet FINAL : public HTemplateInstruction<2> {
                   bool is_volatile,
                   uint32_t field_idx,
                   uint16_t declaring_class_def_index,
-                  const DexFile& dex_file,
+                  const IDexFile& dex_file,
                   uint32_t dex_pc)
       : HTemplateInstruction(SideEffects::FieldWriteOfType(field_type, is_volatile), dex_pc),
         field_info_(field,

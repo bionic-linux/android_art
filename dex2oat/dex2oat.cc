@@ -61,7 +61,7 @@
 #include "dex/verification_results.h"
 #include "dex2oat_options.h"
 #include "dex2oat_return_codes.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "driver/compiler_driver.h"
 #include "driver/compiler_options.h"
 #include "driver/compiler_options_map-inl.h"
@@ -644,7 +644,7 @@ class Dex2Oat FINAL {
       // in an orderly fashion. So release the following fields.
       driver_.release();
       image_writer_.release();
-      for (std::unique_ptr<const DexFile>& dex_file : opened_dex_files_) {
+      for (std::unique_ptr<const IDexFile>& dex_file : opened_dex_files_) {
         dex_file.release();
       }
       for (std::unique_ptr<MemMap>& map : opened_dex_files_maps_) {
@@ -1551,7 +1551,7 @@ class Dex2Oat FINAL {
         rodata_.push_back(elf_writers_[i]->StartRoData());
         // Unzip or copy dex files straight to the oat file.
         std::unique_ptr<MemMap> opened_dex_files_map;
-        std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
+        std::vector<std::unique_ptr<const IDexFile>> opened_dex_files;
         // No need to verify the dex file for:
         // 1) Dexlayout since it does the verification. It also may not pass the verification since
         // we don't update the dex checksum.
@@ -1572,7 +1572,7 @@ class Dex2Oat FINAL {
         dex_files_per_oat_file_.push_back(MakeNonOwningPointerVector(opened_dex_files));
         if (opened_dex_files_map != nullptr) {
           opened_dex_files_maps_.push_back(std::move(opened_dex_files_map));
-          for (std::unique_ptr<const DexFile>& dex_file : opened_dex_files) {
+          for (std::unique_ptr<const IDexFile>& dex_file : opened_dex_files) {
             dex_file_oat_index_map_.emplace(dex_file.get(), i);
             opened_dex_files_.push_back(std::move(dex_file));
           }
@@ -1595,7 +1595,7 @@ class Dex2Oat FINAL {
         LOG(INFO) << "Very large app, downgrading to verify.";
         // Note: this change won't be reflected in the key-value store, as that had to be
         //       finalized before loading the dex files. This setup is currently required
-        //       to get the size from the DexFile objects.
+        //       to get the size from the IDexFile objects.
         // TODO: refactor. b/29790079
         compiler_options_->SetCompilerFilter(kLargeAppFilter);
       }
@@ -1679,8 +1679,8 @@ class Dex2Oat FINAL {
   // Doesn't return the class loader since it's not meant to be used for image compilation.
   void CompileDexFilesIndividually() {
     CHECK(!IsImage()) << "Not supported with image";
-    for (const DexFile* dex_file : dex_files_) {
-      std::vector<const DexFile*> dex_files(1u, dex_file);
+    for (const IDexFile* dex_file : dex_files_) {
+      std::vector<const IDexFile*> dex_files(1u, dex_file);
       VLOG(compiler) << "Compiling " << dex_file->GetLocation();
       jobject class_loader = CompileDexFiles(dex_files);
       CHECK(class_loader != nullptr);
@@ -1732,19 +1732,19 @@ class Dex2Oat FINAL {
     }
 
     if (!no_inline_filters.empty()) {
-      std::vector<const DexFile*> class_path_files;
+      std::vector<const IDexFile*> class_path_files;
       if (!IsBootImage()) {
         // The class loader context is used only for apps.
         class_path_files = class_loader_context_->FlattenOpenedDexFiles();
       }
 
-      std::vector<const std::vector<const DexFile*>*> dex_file_vectors = {
+      std::vector<const std::vector<const IDexFile*>*> dex_file_vectors = {
           &class_linker->GetBootClassPath(),
           &class_path_files,
           &dex_files_
       };
-      for (const std::vector<const DexFile*>* dex_file_vector : dex_file_vectors) {
-        for (const DexFile* dex_file : *dex_file_vector) {
+      for (const std::vector<const IDexFile*>* dex_file_vector : dex_file_vectors) {
+        for (const IDexFile* dex_file : *dex_file_vector) {
           for (const std::string& filter : no_inline_filters) {
             // Use dex_file->GetLocation() rather than dex_file->GetBaseLocation(). This
             // allows tests to specify <test-dexfile>!classes2.dex if needed but if the
@@ -1825,7 +1825,7 @@ class Dex2Oat FINAL {
   }
 
   // Create the class loader, use it to compile, and return.
-  jobject CompileDexFiles(const std::vector<const DexFile*>& dex_files) {
+  jobject CompileDexFiles(const std::vector<const IDexFile*>& dex_files) {
     ClassLinker* const class_linker = Runtime::Current()->GetClassLinker();
 
     jobject class_loader = nullptr;
@@ -1968,7 +1968,7 @@ class Dex2Oat FINAL {
     // dex files. The writers were created without those being there yet.
     for (size_t i = 0, size = oat_files_.size(); i != size; ++i) {
       std::unique_ptr<linker::OatWriter>& oat_writer = oat_writers_[i];
-      std::vector<const DexFile*>& dex_files = dex_files_per_oat_file_[i];
+      std::vector<const IDexFile*>& dex_files = dex_files_per_oat_file_[i];
       oat_writer->Initialize(driver_.get(), image_writer_.get(), dex_files);
     }
 
@@ -2266,7 +2266,7 @@ class Dex2Oat FINAL {
   }
 
  private:
-  bool UseSwap(bool is_image, const std::vector<const DexFile*>& dex_files) {
+  bool UseSwap(bool is_image, const std::vector<const IDexFile*>& dex_files) {
     if (is_image) {
       // Don't use swap, we know generation should succeed, and we don't want to slow it down.
       return false;
@@ -2282,7 +2282,7 @@ class Dex2Oat FINAL {
     return dex_files_size >= min_dex_file_cumulative_size_for_swap_;
   }
 
-  bool IsVeryLarge(std::vector<const DexFile*>& dex_files) {
+  bool IsVeryLarge(std::vector<const IDexFile*>& dex_files) {
     size_t dex_files_size = 0;
     for (const auto* dex_file : dex_files) {
       dex_files_size += dex_file->GetHeader().file_size_;
@@ -2451,7 +2451,7 @@ class Dex2Oat FINAL {
 
   void SaveDexInput() {
     for (size_t i = 0; i < dex_files_.size(); ++i) {
-      const DexFile* dex_file = dex_files_[i];
+      const IDexFile* dex_file = dex_files_[i];
       std::string tmp_file_name(StringPrintf("/data/local/tmp/dex2oat.%d.%zd.dex",
                                              getpid(), i));
       std::unique_ptr<File> tmp_file(OS::CreateEmptyFile(tmp_file_name.c_str()));
@@ -2807,7 +2807,7 @@ class Dex2Oat FINAL {
   bool is_host_;
   std::string android_root_;
   // Dex files we are compiling, does not include the class path dex files.
-  std::vector<const DexFile*> dex_files_;
+  std::vector<const IDexFile*> dex_files_;
   std::string no_inline_from_string_;
 
   std::vector<std::unique_ptr<linker::ElfWriter>> elf_writers_;
@@ -2818,10 +2818,10 @@ class Dex2Oat FINAL {
   std::unique_ptr<CompilerDriver> driver_;
 
   std::vector<std::unique_ptr<MemMap>> opened_dex_files_maps_;
-  std::vector<std::unique_ptr<const DexFile>> opened_dex_files_;
+  std::vector<std::unique_ptr<const IDexFile>> opened_dex_files_;
 
   // Note that this might contain pointers owned by class_loader_context_.
-  std::vector<const DexFile*> no_inline_from_dex_files_;
+  std::vector<const IDexFile*> no_inline_from_dex_files_;
 
   bool dump_stats_;
   bool dump_passes_;
@@ -2840,8 +2840,8 @@ class Dex2Oat FINAL {
   std::unique_ptr<ProfileCompilationInfo> profile_compilation_info_;
   TimingLogger* timings_;
   std::unique_ptr<CumulativeLogger> compiler_phases_timings_;
-  std::vector<std::vector<const DexFile*>> dex_files_per_oat_file_;
-  std::unordered_map<const DexFile*, size_t> dex_file_oat_index_map_;
+  std::vector<std::vector<const IDexFile*>> dex_files_per_oat_file_;
+  std::unordered_map<const IDexFile*, size_t> dex_file_oat_index_map_;
 
   // Backing storage.
   std::forward_list<std::string> char_backing_storage_;

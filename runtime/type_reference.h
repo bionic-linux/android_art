@@ -25,12 +25,12 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
-// A type is located by its DexFile and the string_ids_ table index into that DexFile.
+// A type is located by its IDexFile and the string_ids_ table index into that IDexFile.
 class TypeReference : public DexFileReference {
  public:
-  TypeReference(const DexFile* file = nullptr, dex::TypeIndex index = dex::TypeIndex())
+  TypeReference(const IDexFile* file = nullptr, dex::TypeIndex index = dex::TypeIndex())
       : DexFileReference(file, index.index_) {}
 
   dex::TypeIndex TypeIndex() const {

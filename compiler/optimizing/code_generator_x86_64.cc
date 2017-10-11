@@ -1107,7 +1107,7 @@ Label* CodeGeneratorX86_64::NewStringBssEntryPatch(HLoadString* load_string) {
 // for method patch needs to point to the embedded constant which occupies the last 4 bytes.
 constexpr uint32_t kLabelPositionToLiteralOffsetAdjustment = 4u;
 
-template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
 inline void CodeGeneratorX86_64::EmitPcRelativeLinkerPatches(
     const ArenaDeque<PatchInfo<Label>>& infos,
     ArenaVector<linker::LinkerPatch>* linker_patches) {
@@ -5461,7 +5461,7 @@ void LocationsBuilderX86_64::VisitLoadClass(HLoadClass* cls) {
   }
 }
 
-Label* CodeGeneratorX86_64::NewJitRootClassPatch(const DexFile& dex_file,
+Label* CodeGeneratorX86_64::NewJitRootClassPatch(const IDexFile& dex_file,
                                                  dex::TypeIndex dex_index,
                                                  Handle<mirror::Class> handle) {
   jit_class_roots_.Overwrite(
@@ -5627,7 +5627,7 @@ void LocationsBuilderX86_64::VisitLoadString(HLoadString* load) {
   }
 }
 
-Label* CodeGeneratorX86_64::NewJitRootStringPatch(const DexFile& dex_file,
+Label* CodeGeneratorX86_64::NewJitRootStringPatch(const IDexFile& dex_file,
                                                   dex::StringIndex dex_index,
                                                   Handle<mirror::String> handle) {
   jit_string_roots_.Overwrite(

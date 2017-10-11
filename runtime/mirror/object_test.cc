@@ -29,7 +29,7 @@
 #include "class_linker-inl.h"
 #include "class_linker.h"
 #include "common_runtime_test.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "entrypoints/entrypoint_utils-inl.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/heap.h"
@@ -350,22 +350,22 @@ TEST_F(ObjectTest, StaticFieldFromCode) {
   // pretend we are trying to access 'Static.s0' from StaticsFromCode.<clinit>
   ScopedObjectAccess soa(Thread::Current());
   jobject class_loader = LoadDex("StaticsFromCode");
-  const DexFile* dex_file = GetFirstDexFile(class_loader);
+  const IDexFile* dex_file = GetFirstDexFile(class_loader);
 
   StackHandleScope<2> hs(soa.Self());
   Handle<mirror::ClassLoader> loader(hs.NewHandle(soa.Decode<ClassLoader>(class_loader)));
   Class* klass = class_linker_->FindClass(soa.Self(), "LStaticsFromCode;", loader);
   ArtMethod* clinit = klass->FindClassInitializer(kRuntimePointerSize);
-  const DexFile::TypeId* klass_type_id = dex_file->FindTypeId("LStaticsFromCode;");
+  const IDexFile::TypeId* klass_type_id = dex_file->FindTypeId("LStaticsFromCode;");
   ASSERT_TRUE(klass_type_id != nullptr);
 
-  const DexFile::TypeId* type_type_id = dex_file->FindTypeId("Ljava/lang/Object;");
+  const IDexFile::TypeId* type_type_id = dex_file->FindTypeId("Ljava/lang/Object;");
   ASSERT_TRUE(type_type_id != nullptr);
 
-  const DexFile::StringId* name_str_id = dex_file->FindStringId("s0");
+  const IDexFile::StringId* name_str_id = dex_file->FindStringId("s0");
   ASSERT_TRUE(name_str_id != nullptr);
 
-  const DexFile::FieldId* field_id = dex_file->FindFieldId(
+  const IDexFile::FieldId* field_id = dex_file->FindFieldId(
       *klass_type_id, *name_str_id, *type_type_id);
   ASSERT_TRUE(field_id != nullptr);
   uint32_t field_idx = dex_file->GetIndexForFieldId(*field_id);

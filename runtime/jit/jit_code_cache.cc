@@ -1350,7 +1350,7 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
   uint16_t jit_compile_threshold = Runtime::Current()->GetJITOptions()->GetCompileThreshold();
   for (const ProfilingInfo* info : profiling_infos_) {
     ArtMethod* method = info->GetMethod();
-    const DexFile* dex_file = method->GetDexFile();
+    const IDexFile* dex_file = method->GetDexFile();
     const std::string base_location = DexFileLoader::GetBaseLocation(dex_file->GetLocation());
     if (!ContainsElement(dex_base_locations, base_location)) {
       // Skip dex files which are not profiled.
@@ -1387,7 +1387,7 @@ void JitCodeCache::GetProfiledMethods(const std::set<std::string>& dex_base_loca
           continue;
         }
 
-        const DexFile* class_dex_file = nullptr;
+        const IDexFile* class_dex_file = nullptr;
         dex::TypeIndex type_index;
 
         if (cls->GetDexCache() == nullptr) {

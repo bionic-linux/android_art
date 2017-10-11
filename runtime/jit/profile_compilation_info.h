@@ -25,7 +25,7 @@
 #include "base/arena_object.h"
 #include "bit_memory_region.h"
 #include "dex_cache_resolved_classes.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "method_reference.h"
 #include "safe_map.h"
@@ -88,7 +88,7 @@ class ProfileCompilationInfo {
           num_method_ids == other.num_method_ids;
     }
 
-    bool MatchesDex(const DexFile* dex_file) const {
+    bool MatchesDex(const IDexFile* dex_file) const {
       return dex_checksum == dex_file->GetLocationChecksum() &&
            dex_location == GetProfileDexFileKey(dex_file->GetLocation());
     }
@@ -246,7 +246,7 @@ class ProfileCompilationInfo {
   // Add multiple type ids for classes in a single dex file. Iterator is for type_ids not
   // class_defs.
   template <class Iterator>
-  bool AddClassesForDex(const DexFile* dex_file, Iterator index_begin, Iterator index_end) {
+  bool AddClassesForDex(const IDexFile* dex_file, Iterator index_begin, Iterator index_end) {
     DexFileData* data = GetOrAddDexFileData(dex_file);
     if (data == nullptr) {
       return false;
@@ -281,7 +281,7 @@ class ProfileCompilationInfo {
   // GetOrAddDexFileData call.
   template <class Iterator>
   bool AddMethodsForDex(MethodHotness::Flag flags,
-                        const DexFile* dex_file,
+                        const IDexFile* dex_file,
                         Iterator index_begin,
                         Iterator index_end) {
     DexFileData* data = GetOrAddDexFileData(dex_file);
@@ -312,7 +312,7 @@ class ProfileCompilationInfo {
   // - No class id exceeds NumTypeIds corresponding to the dex_file.
   // - For every inline_caches, class_ids does not exceed NumTypeIds corresponding to
   //   the dex_file they are in.
-  bool VerifyProfileData(const std::vector<const DexFile *> &dex_files);
+  bool VerifyProfileData(const std::vector<const IDexFile *> &dex_files);
 
   // Load profile information from the given file
   // If the current profile is non-empty the load will fail.
@@ -347,7 +347,7 @@ class ProfileCompilationInfo {
                                  uint16_t dex_method_index) const;
 
   // Return true if the class's type is present in the profiling info.
-  bool ContainsClass(const DexFile& dex_file, dex::TypeIndex type_idx) const;
+  bool ContainsClass(const IDexFile& dex_file, dex::TypeIndex type_idx) const;
 
   // Return the method data for the given location and index from the profiling info.
   // If the method index is not found or the checksum doesn't match, null is returned.
@@ -361,15 +361,15 @@ class ProfileCompilationInfo {
   // If dex_files is not null then the method indices will be resolved to their
   // names.
   // This is intended for testing and debugging.
-  std::string DumpInfo(const std::vector<std::unique_ptr<const DexFile>>* dex_files,
+  std::string DumpInfo(const std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                        bool print_full_dex_location = true) const;
-  std::string DumpInfo(const std::vector<const DexFile*>* dex_files,
+  std::string DumpInfo(const std::vector<const IDexFile*>* dex_files,
                        bool print_full_dex_location = true) const;
 
   // Return the classes and methods for a given dex file through out args. The out args are the set
   // of class as well as the methods and their associated inline caches. Returns true if the dex
   // file is register and has a matching checksum, false otherwise.
-  bool GetClassesAndMethods(const DexFile& dex_file,
+  bool GetClassesAndMethods(const IDexFile& dex_file,
                             /*out*/std::set<dex::TypeIndex>* class_set,
                             /*out*/std::set<uint16_t>* hot_method_set,
                             /*out*/std::set<uint16_t>* startup_method_set,
@@ -380,7 +380,7 @@ class ProfileCompilationInfo {
 
   // Return the class descriptors for all of the classes in the profiles' class sets.
   std::set<DexCacheResolvedClasses> GetResolvedClasses(
-      const std::vector<const DexFile*>& dex_files_) const;
+      const std::vector<const IDexFile*>& dex_files_) const;
 
   // Return the profile key associated with the given dex location.
   static std::string GetProfileDexFileKey(const std::string& dex_location);
@@ -396,7 +396,7 @@ class ProfileCompilationInfo {
   // Generate a test profile which will randomly contain classes and methods from
   // the provided list of dex files.
   static bool GenerateTestProfile(int fd,
-                                  std::vector<std::unique_ptr<const DexFile>>& dex_files,
+                                  std::vector<std::unique_ptr<const IDexFile>>& dex_files,
                                   uint16_t method_percentage,
                                   uint16_t class_percentage,
                                   uint32_t random_seed);
@@ -408,7 +408,7 @@ class ProfileCompilationInfo {
   ArenaAllocator* GetAllocator() { return &allocator_; }
 
   // Return all of the class descriptors in the profile for a set of dex files.
-  std::unordered_set<std::string> GetClassDescriptors(const std::vector<const DexFile*>& dex_files);
+  std::unordered_set<std::string> GetClassDescriptors(const std::vector<const IDexFile*>& dex_files);
 
  private:
   enum ProfileLoadSatus {
@@ -511,7 +511,7 @@ class ProfileCompilationInfo {
                                    uint32_t checksum,
                                    uint32_t num_method_ids);
 
-  DexFileData* GetOrAddDexFileData(const DexFile* dex_file) {
+  DexFileData* GetOrAddDexFileData(const IDexFile* dex_file) {
     return GetOrAddDexFileData(GetProfileDexFileKey(dex_file->GetLocation()),
                                dex_file->GetLocationChecksum(),
                                dex_file->NumMethodIds());
@@ -546,7 +546,7 @@ class ProfileCompilationInfo {
 
   // Return the dex data associated with the given dex file or null if the profile doesn't contain
   // the key or the checksum mismatches.
-  const DexFileData* FindDexData(const DexFile* dex_file) const;
+  const DexFileData* FindDexData(const IDexFile* dex_file) const;
 
   // Checks if the profile is empty.
   bool IsEmpty() const;

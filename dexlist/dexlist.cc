@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "mem_map.h"
 #include "runtime.h"
@@ -80,7 +80,7 @@ static std::unique_ptr<char[]> descriptorToDot(const char* str) {
  * first line in the method, which *should* correspond to the first
  * entry from the table.  (Could also use "min" here.)
  */
-static bool positionsCb(void* context, const DexFile::PositionInfo& entry) {
+static bool positionsCb(void* context, const IDexFile::PositionInfo& entry) {
   int* pFirstLine = reinterpret_cast<int *>(context);
   if (*pFirstLine == -1) {
     *pFirstLine = entry.line_;
@@ -91,16 +91,16 @@ static bool positionsCb(void* context, const DexFile::PositionInfo& entry) {
 /*
  * Dumps a method.
  */
-static void dumpMethod(const DexFile* pDexFile,
+static void dumpMethod(const IDexFile* pDexFile,
                        const char* fileName, u4 idx, u4 flags ATTRIBUTE_UNUSED,
-                       const DexFile::CodeItem* pCode, u4 codeOffset) {
+                       const IDexFile::CodeItem* pCode, u4 codeOffset) {
   // Abstract and native methods don't get listed.
   if (pCode == nullptr || codeOffset == 0) {
     return;
   }
 
   // Method information.
-  const DexFile::MethodId& pMethodId = pDexFile->GetMethodId(idx);
+  const IDexFile::MethodId& pMethodId = pDexFile->GetMethodId(idx);
   const char* methodName = pDexFile->StringDataByIdx(pMethodId.name_idx_);
   const char* classDescriptor = pDexFile->StringByTypeIdx(pMethodId.class_idx_);
   std::unique_ptr<char[]> className(descriptorToDot(classDescriptor));
@@ -137,8 +137,8 @@ static void dumpMethod(const DexFile* pDexFile,
 /*
  * Runs through all direct and virtual methods in the class.
  */
-void dumpClass(const DexFile* pDexFile, u4 idx) {
-  const DexFile::ClassDef& pClassDef = pDexFile->GetClassDef(idx);
+void dumpClass(const IDexFile* pDexFile, u4 idx) {
+  const IDexFile::ClassDef& pClassDef = pDexFile->GetClassDef(idx);
 
   const char* fileName;
   if (!pClassDef.source_file_idx_.IsValid()) {
@@ -178,7 +178,7 @@ static int processFile(const char* fileName) {
   // all of which are Zip archives with "classes.dex" inside.
   static constexpr bool kVerifyChecksum = true;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   if (!DexFileLoader::Open(fileName, fileName, kVerifyChecksum, &error_msg, &dex_files)) {
     fputs(error_msg.c_str(), stderr);
     fputc('\n', stderr);
@@ -189,7 +189,7 @@ static int processFile(const char* fileName) {
   fprintf(gOutFile, "#%s\n", fileName);
   for (size_t i = 0; i < dex_files.size(); i++) {
     // Iterate over all classes in one dex file.
-    const DexFile* pDexFile = dex_files[i].get();
+    const IDexFile* pDexFile = dex_files[i].get();
     const u4 classDefsSize = pDexFile->GetHeader().class_defs_size_;
     for (u4 idx = 0; idx < classDefsSize; idx++) {
       dumpClass(pDexFile, idx);

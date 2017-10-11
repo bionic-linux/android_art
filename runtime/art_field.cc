@@ -49,7 +49,7 @@ ObjPtr<mirror::Class> ArtField::ProxyFindSystemClass(const char* descriptor) {
 }
 
 ObjPtr<mirror::String> ArtField::ResolveGetStringName(Thread* self,
-                                                      const DexFile& dex_file,
+                                                      const IDexFile& dex_file,
                                                       dex::StringIndex string_idx,
                                                       ObjPtr<mirror::DexCache> dex_cache) {
   StackHandleScope<1> hs(self);

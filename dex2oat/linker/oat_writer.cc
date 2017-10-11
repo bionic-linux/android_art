@@ -33,7 +33,7 @@
 #include "compiled_method-inl.h"
 #include "debug/method_debug_info.h"
 #include "dex/verification_results.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "dex_file_types.h"
 #include "dexlayout.h"
@@ -84,7 +84,7 @@ static constexpr bool kOatWriterForceOatCodeLayout = false;
 
 static constexpr bool kOatWriterDebugOatCodeLayout = false;
 
-typedef DexFile::Header __attribute__((aligned(1))) UnalignedDexFileHeader;
+typedef IDexFile::Header __attribute__((aligned(1))) UnalignedDexFileHeader;
 
 const UnalignedDexFileHeader* AsUnalignedDexFileHeader(const uint8_t* raw_data) {
     return reinterpret_cast<const UnalignedDexFileHeader*>(raw_data);
@@ -512,7 +512,7 @@ bool OatWriter::AddRawDexFileSource(const ArrayRef<const uint8_t>& data,
                                     uint32_t location_checksum,
                                     CreateTypeLookupTable create_type_lookup_table) {
   DCHECK(write_state_ == WriteState::kAddingDexFileSources);
-  if (data.size() < sizeof(DexFile::Header)) {
+  if (data.size() < sizeof(IDexFile::Header)) {
     LOG(ERROR) << "Provided data is shorter than dex file header. size: "
                << data.size() << " File: " << location;
     return false;
@@ -555,7 +555,7 @@ bool OatWriter::WriteAndOpenDexFiles(
     bool verify,
     bool update_input_vdex,
     /*out*/ std::unique_ptr<MemMap>* opened_dex_files_map,
-    /*out*/ std::vector<std::unique_ptr<const DexFile>>* opened_dex_files) {
+    /*out*/ std::vector<std::unique_ptr<const IDexFile>>* opened_dex_files) {
   CHECK(write_state_ == WriteState::kAddingDexFileSources);
 
   // Record the ELF rodata section offset, i.e. the beginning of the OAT data.
@@ -564,7 +564,7 @@ bool OatWriter::WriteAndOpenDexFiles(
   }
 
   std::unique_ptr<MemMap> dex_files_map;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
 
   // Initialize VDEX and OAT headers.
   if (kIsVdexEnabled) {
@@ -688,7 +688,7 @@ class OatWriter::DexMethodVisitor {
         dex_file_(nullptr),
         class_def_index_(dex::kDexNoIndex) {}
 
-  virtual bool StartClass(const DexFile* dex_file, size_t class_def_index) {
+  virtual bool StartClass(const IDexFile* dex_file, size_t class_def_index) {
     DCHECK(dex_file_ == nullptr);
     DCHECK_EQ(class_def_index_, dex::kDexNoIndex);
     dex_file_ = dex_file;
@@ -719,7 +719,7 @@ class OatWriter::DexMethodVisitor {
   size_t offset_;
 
   // The dex file and class def index are set in StartClass().
-  const DexFile* dex_file_;
+  const IDexFile* dex_file_;
   size_t class_def_index_;
 };
 
@@ -730,7 +730,7 @@ class OatWriter::OatDexMethodVisitor : public DexMethodVisitor {
         oat_class_index_(0u),
         method_offsets_index_(0u) {}
 
-  bool StartClass(const DexFile* dex_file, size_t class_def_index) OVERRIDE {
+  bool StartClass(const IDexFile* dex_file, size_t class_def_index) OVERRIDE {
     DexMethodVisitor::StartClass(dex_file, class_def_index);
     if (kIsDebugBuild && writer_->MayHaveCompiledMethods()) {
       // There are no oat classes if there aren't any compiled methods.
@@ -824,7 +824,7 @@ class OatWriter::InitOatClassesMethodVisitor : public DexMethodVisitor {
     DCHECK(num_classes == 0u || IsAligned<4u>(offset));
   }
 
-  bool StartClass(const DexFile* dex_file, size_t class_def_index) OVERRIDE {
+  bool StartClass(const IDexFile* dex_file, size_t class_def_index) OVERRIDE {
     DexMethodVisitor::StartClass(dex_file, class_def_index);
     compiled_methods_.clear();
     compiled_methods_with_code_ = 0u;
@@ -895,7 +895,7 @@ struct OatWriter::OrderedMethodData {
 
   size_t class_def_index;
   uint32_t access_flags;
-  const DexFile::CodeItem* code_item;
+  const IDexFile::CodeItem* code_item;
 
   // A value of -1 denotes missing debug info
   static constexpr size_t kDebugInfoIdxInvalid = static_cast<size_t>(-1);
@@ -1157,7 +1157,7 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
     uint16_t method_offsets_index_ = method_data.method_offsets_index;
     size_t class_def_index = method_data.class_def_index;
     uint32_t access_flags = method_data.access_flags;
-    const DexFile::CodeItem* code_item = method_data.code_item;
+    const IDexFile::CodeItem* code_item = method_data.code_item;
     bool has_debug_info = method_data.HasDebugInfo();
     size_t debug_info_idx = method_data.debug_info_idx;
 
@@ -1448,7 +1448,7 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
  public:
   InitImageMethodVisitor(OatWriter* writer,
                          size_t offset,
-                         const std::vector<const DexFile*>* dex_files)
+                         const std::vector<const IDexFile*>* dex_files)
       : OatDexMethodVisitor(writer, offset),
         pointer_size_(GetInstructionSetPointerSize(writer_->compiler_driver_->GetInstructionSet())),
         class_loader_(writer->HasImage() ? writer->image_writer_->GetClassLoader() : nullptr),
@@ -1460,7 +1460,7 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
   // in the same oat file. If the origin and the copied methods are
   // in different oat files don't touch the copied method.
   // References to other oat files are not supported yet.
-  bool StartClass(const DexFile* dex_file, size_t class_def_index) OVERRIDE
+  bool StartClass(const IDexFile* dex_file, size_t class_def_index) OVERRIDE
       REQUIRES_SHARED(Locks::mutator_lock_) {
     OatDexMethodVisitor::StartClass(dex_file, class_def_index);
     // Skip classes that are not in the image.
@@ -1468,7 +1468,7 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
       return true;
     }
     ObjPtr<mirror::DexCache> dex_cache = class_linker_->FindDexCache(Thread::Current(), *dex_file);
-    const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+    const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
     mirror::Class* klass = dex_cache->GetResolvedType(class_def.class_idx_);
     if (klass != nullptr) {
       for (ArtMethod& method : klass->GetCopiedMethods(pointer_size_)) {
@@ -1558,14 +1558,14 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
 
   // Check whether current class is image class
   bool IsImageClass() {
-    const DexFile::TypeId& type_id =
+    const IDexFile::TypeId& type_id =
         dex_file_->GetTypeId(dex_file_->GetClassDef(class_def_index_).class_idx_);
     const char* class_descriptor = dex_file_->GetTypeDescriptor(type_id);
     return writer_->GetCompilerDriver()->IsImageClass(class_descriptor);
   }
 
   // Check whether specified dex file is in the compiled oat file.
-  bool IsInOatFile(const DexFile* dex_file) {
+  bool IsInOatFile(const IDexFile* dex_file) {
     return ContainsElement(*dex_files_, dex_file);
   }
 
@@ -1586,7 +1586,7 @@ class OatWriter::InitImageMethodVisitor : public OatDexMethodVisitor {
  private:
   const PointerSize pointer_size_;
   ObjPtr<mirror::ClassLoader> class_loader_;
-  const std::vector<const DexFile*>* dex_files_;
+  const std::vector<const IDexFile*>* dex_files_;
   ClassLinker* const class_linker_;
   std::vector<std::pair<ArtMethod*, ArtMethod*>> methods_to_process_;
 };
@@ -1620,7 +1620,7 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
     return true;
   }
 
-  void UpdateDexFileAndDexCache(const DexFile* dex_file)
+  void UpdateDexFileAndDexCache(const IDexFile* dex_file)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     dex_file_ = dex_file;
 
@@ -1823,7 +1823,7 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
 
   // Potentially varies with every different VisitMethod.
   // Used to determine which DexCache to use when finding ArtMethods.
-  const DexFile* dex_file_;
+  const IDexFile* dex_file_;
 
   // Pointer size we are compiling to.
   const PointerSize pointer_size_;
@@ -1878,7 +1878,7 @@ class OatWriter::WriteCodeMethodVisitor : public OrderedMethodVisitor {
     return target_offset;
   }
 
-  ObjPtr<mirror::DexCache> GetDexCache(const DexFile* target_dex_file)
+  ObjPtr<mirror::DexCache> GetDexCache(const IDexFile* target_dex_file)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     return (target_dex_file == dex_file_)
         ? dex_cache_
@@ -2121,14 +2121,14 @@ class OatWriter::WriteMethodInfoVisitor : public OatDexMethodVisitor {
 
 // Visit all methods from all classes in all dex files with the specified visitor.
 bool OatWriter::VisitDexMethods(DexMethodVisitor* visitor) {
-  for (const DexFile* dex_file : *dex_files_) {
+  for (const IDexFile* dex_file : *dex_files_) {
     const size_t class_def_count = dex_file->NumClassDefs();
     for (size_t class_def_index = 0; class_def_index != class_def_count; ++class_def_index) {
       if (UNLIKELY(!visitor->StartClass(dex_file, class_def_index))) {
         return false;
       }
       if (MayHaveCompiledMethods()) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
         const uint8_t* class_data = dex_file->GetClassData(class_def);
         if (class_data != nullptr) {  // ie not an empty class, such as a marker interface
           ClassDataItemIterator it(*dex_file, class_data);
@@ -2230,7 +2230,7 @@ size_t OatWriter::InitOatMaps(size_t offset) {
 size_t OatWriter::InitMethodBssMappings(size_t offset) {
   size_t number_of_dex_files = 0u;
   for (size_t i = 0, size = dex_files_->size(); i != size; ++i) {
-    const DexFile* dex_file = (*dex_files_)[i];
+    const IDexFile* dex_file = (*dex_files_)[i];
     auto it = bss_method_entry_references_.find(dex_file);
     if (it != bss_method_entry_references_.end()) {
       const BitVector& method_indexes = it->second;
@@ -2554,14 +2554,14 @@ class OatWriter::WriteQuickeningIndicesMethodVisitor {
         dex_files_offset_(dex_files_offset),
         offset_map_(offset_map) {}
 
-  bool VisitDexMethods(const std::vector<const DexFile*>& dex_files, const CompilerDriver& driver) {
-    for (const DexFile* dex_file : dex_files) {
+  bool VisitDexMethods(const std::vector<const IDexFile*>& dex_files, const CompilerDriver& driver) {
+    for (const IDexFile* dex_file : dex_files) {
       // Record the offset for this current dex file. It will be written in the vdex file
       // later.
       dex_files_offset_->push_back(indices_offset_ + GetNumberOfWrittenBytes());
       const size_t class_def_count = dex_file->NumClassDefs();
       for (size_t class_def_index = 0; class_def_index != class_def_count; ++class_def_index) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
         const uint8_t* class_data = dex_file->GetClassData(class_def);
         if (class_data == nullptr) {
           continue;
@@ -2941,7 +2941,7 @@ size_t OatWriter::WriteMethodBssMappings(OutputStream* out,
   TimingLogger::ScopedTiming split("WriteMethodBssMappings", timings_);
 
   for (size_t i = 0, size = dex_files_->size(); i != size; ++i) {
-    const DexFile* dex_file = (*dex_files_)[i];
+    const IDexFile* dex_file = (*dex_files_)[i];
     OatDexFile* oat_dex_file = &oat_dex_files_[i];
     auto it = bss_method_entry_references_.find(dex_file);
     if (it != bss_method_entry_references_.end()) {
@@ -3092,8 +3092,8 @@ bool OatWriter::RecordOatDataOffset(OutputStream* out) {
 
 bool OatWriter::ReadDexFileHeader(File* file, OatDexFile* oat_dex_file) {
   // Read the dex file header and perform minimal verification.
-  uint8_t raw_header[sizeof(DexFile::Header)];
-  if (!file->ReadFully(&raw_header, sizeof(DexFile::Header))) {
+  uint8_t raw_header[sizeof(IDexFile::Header)];
+  if (!file->ReadFully(&raw_header, sizeof(IDexFile::Header))) {
     PLOG(ERROR) << "Failed to read dex file header. Actual: "
                 << " File: " << oat_dex_file->GetLocation() << " Output: " << file->GetPath();
     return false;
@@ -3120,7 +3120,7 @@ bool OatWriter::ValidateDexFileHeader(const uint8_t* raw_header, const char* loc
     return false;
   }
   const UnalignedDexFileHeader* header = AsUnalignedDexFileHeader(raw_header);
-  if (header->file_size_ < sizeof(DexFile::Header)) {
+  if (header->file_size_ < sizeof(IDexFile::Header)) {
     LOG(ERROR) << "Dex file header specifies file size insufficient to contain the header."
                << " File: " << location;
     return false;
@@ -3237,7 +3237,7 @@ bool OatWriter::LayoutAndWriteDexFile(OutputStream* out, OatDexFile* oat_dex_fil
   TimingLogger::ScopedTiming split("Dex Layout", timings_);
   std::string error_msg;
   std::string location(oat_dex_file->GetLocation());
-  std::unique_ptr<const DexFile> dex_file;
+  std::unique_ptr<const IDexFile> dex_file;
   if (oat_dex_file->source_.IsZipEntry()) {
     ZipEntry* zip_entry = oat_dex_file->source_.GetZipEntry();
     std::unique_ptr<MemMap> mem_map(
@@ -3330,7 +3330,7 @@ bool OatWriter::WriteDexFile(OutputStream* out,
     return false;
   }
   uint64_t extracted_size = static_cast<uint64_t>(extracted_end - start_offset);
-  if (extracted_size < sizeof(DexFile::Header)) {
+  if (extracted_size < sizeof(IDexFile::Header)) {
     LOG(ERROR) << "Extracted dex file is shorter than dex file header. size: "
                << extracted_size << " File: " << oat_dex_file->GetLocation();
     return false;
@@ -3482,7 +3482,7 @@ bool OatWriter::OpenDexFiles(
     File* file,
     bool verify,
     /*out*/ std::unique_ptr<MemMap>* opened_dex_files_map,
-    /*out*/ std::vector<std::unique_ptr<const DexFile>>* opened_dex_files) {
+    /*out*/ std::vector<std::unique_ptr<const IDexFile>>* opened_dex_files) {
   TimingLogger::ScopedTiming split("OpenDexFiles", timings_);
 
   if (oat_dex_files_.empty()) {
@@ -3508,7 +3508,7 @@ bool OatWriter::OpenDexFiles(
                << " error: " << error_msg;
     return false;
   }
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   for (OatDexFile& oat_dex_file : oat_dex_files_) {
     // Make sure no one messed with input files while we were copying data.
     // At the very least we need consistent file size and number of class definitions.
@@ -3558,7 +3558,7 @@ bool OatWriter::OpenDexFiles(
 
 bool OatWriter::WriteTypeLookupTables(
     OutputStream* oat_rodata,
-    const std::vector<std::unique_ptr<const DexFile>>& opened_dex_files) {
+    const std::vector<std::unique_ptr<const IDexFile>>& opened_dex_files) {
   TimingLogger::ScopedTiming split("WriteTypeLookupTables", timings_);
 
   uint32_t expected_offset = oat_data_offset_ + oat_size_;
@@ -3586,7 +3586,7 @@ bool OatWriter::WriteTypeLookupTables(
 
     // Create the lookup table. When `nullptr` is given as the storage buffer,
     // TypeLookupTable allocates its own and OatDexFile takes ownership.
-    const DexFile& dex_file = *opened_dex_files[i];
+    const IDexFile& dex_file = *opened_dex_files[i];
     {
       std::unique_ptr<TypeLookupTable> type_lookup_table =
           TypeLookupTable::Create(dex_file, /* storage */ nullptr);
@@ -3640,7 +3640,7 @@ bool OatWriter::WriteTypeLookupTables(
 
 bool OatWriter::WriteDexLayoutSections(
     OutputStream* oat_rodata,
-    const std::vector<std::unique_ptr<const DexFile>>& opened_dex_files) {
+    const std::vector<std::unique_ptr<const IDexFile>>& opened_dex_files) {
   TimingLogger::ScopedTiming split(__FUNCTION__, timings_);
 
   if (!kWriteDexLayoutInfo) {
@@ -3966,7 +3966,7 @@ bool OatWriter::OatClass::Write(OatWriter* oat_writer, OutputStream* out) const 
   return true;
 }
 
-const uint8_t* OatWriter::LookupBootImageInternTableSlot(const DexFile& dex_file,
+const uint8_t* OatWriter::LookupBootImageInternTableSlot(const IDexFile& dex_file,
                                                          dex::StringIndex string_idx)
     NO_THREAD_SAFETY_ANALYSIS {  // Single-threaded OatWriter can avoid locking.
   uint32_t utf16_length;
@@ -3986,7 +3986,7 @@ const uint8_t* OatWriter::LookupBootImageInternTableSlot(const DexFile& dex_file
   UNREACHABLE();
 }
 
-const uint8_t* OatWriter::LookupBootImageClassTableSlot(const DexFile& dex_file,
+const uint8_t* OatWriter::LookupBootImageClassTableSlot(const IDexFile& dex_file,
                                                         dex::TypeIndex type_idx)
     NO_THREAD_SAFETY_ANALYSIS {  // Single-threaded OatWriter can avoid locking.
   const char* descriptor = dex_file.StringByTypeIdx(type_idx);

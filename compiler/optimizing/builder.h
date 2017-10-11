@@ -20,8 +20,8 @@
 #include "base/arena_containers.h"
 #include "base/arena_object.h"
 #include "block_builder.h"
-#include "dex_file-inl.h"
-#include "dex_file.h"
+#include "idex_file-inl.h"
+#include "idex_file.h"
 #include "driver/compiler_driver.h"
 #include "driver/dex_compilation_unit.h"
 #include "instruction_builder.h"
@@ -46,7 +46,7 @@ class HGraphBuilder : public ValueObject {
 
   // Only for unit testing.
   HGraphBuilder(HGraph* graph,
-                const DexFile::CodeItem& code_item,
+                const IDexFile::CodeItem& code_item,
                 VariableSizedHandleScope* handles,
                 DataType::Type return_type = DataType::Type::kInt32)
       : graph_(graph),
@@ -83,8 +83,8 @@ class HGraphBuilder : public ValueObject {
   bool SkipCompilation(size_t number_of_branches);
 
   HGraph* const graph_;
-  const DexFile* const dex_file_;
-  const DexFile::CodeItem& code_item_;
+  const IDexFile* const dex_file_;
+  const IDexFile::CodeItem& code_item_;
 
   // The compilation unit of the current method being compiled. Note that
   // it can be an inlined method.

@@ -22,9 +22,9 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
-void DumpMethodCFG(const DexFile* dex_file, uint32_t dex_method_idx, std::ostream& os);
+void DumpMethodCFG(const IDexFile* dex_file, uint32_t dex_method_idx, std::ostream& os);
 
 }  // namespace art
 

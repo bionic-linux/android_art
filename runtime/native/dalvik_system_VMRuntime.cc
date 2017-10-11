@@ -37,7 +37,7 @@ extern "C" void android_set_application_target_sdk_version(uint32_t version);
 #include "class_linker-inl.h"
 #include "common_throws.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/allocator/dlmalloc.h"
@@ -305,7 +305,7 @@ static void PreloadDexCachesResolveString(
   if (!pair.object.IsNull()) {
     return;  // The entry already contains some String.
   }
-  const DexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile* dex_file = dex_cache->GetDexFile();
   const char* utf8 = dex_file->StringDataByIdx(string_idx);
   ObjPtr<mirror::String> string = strings[utf8];
   if (string == nullptr) {
@@ -325,7 +325,7 @@ static void PreloadDexCachesResolveType(Thread* self,
   if (!pair.object.IsNull()) {
     return;  // The entry already contains some Class.
   }
-  const DexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile* dex_file = dex_cache->GetDexFile();
   const char* class_name = dex_file->StringByTypeIdx(type_idx);
   ClassLinker* linker = Runtime::Current()->GetClassLinker();
   ObjPtr<mirror::Class> klass = (class_name[1] == '\0')
@@ -356,8 +356,8 @@ static void PreloadDexCachesResolveField(ObjPtr<mirror::DexCache> dex_cache,
   if (pair.object != nullptr) {
     return;  // The entry already contains some ArtField.
   }
-  const DexFile* dex_file = dex_cache->GetDexFile();
-  const DexFile::FieldId& field_id = dex_file->GetFieldId(field_idx);
+  const IDexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile::FieldId& field_id = dex_file->GetFieldId(field_idx);
   ObjPtr<mirror::Class> klass =
       ClassLinker::LookupResolvedType(field_id.class_idx_, dex_cache, nullptr);
   if (klass == nullptr) {
@@ -382,8 +382,8 @@ static void PreloadDexCachesResolveMethod(ObjPtr<mirror::DexCache> dex_cache, ui
   if (pair.object != nullptr) {
     return;  // The entry already contains some ArtMethod.
   }
-  const DexFile* dex_file = dex_cache->GetDexFile();
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(method_idx);
+  const IDexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(method_idx);
   ObjPtr<mirror::Class> klass =
       ClassLinker::LookupResolvedType(method_id.class_idx_, dex_cache, nullptr);
   if (klass == nullptr) {
@@ -426,9 +426,9 @@ static void PreloadDexCachesStatsTotal(DexCacheStats* total) {
   }
 
   ClassLinker* linker = Runtime::Current()->GetClassLinker();
-  const std::vector<const DexFile*>& boot_class_path = linker->GetBootClassPath();
+  const std::vector<const IDexFile*>& boot_class_path = linker->GetBootClassPath();
   for (size_t i = 0; i< boot_class_path.size(); i++) {
-    const DexFile* dex_file = boot_class_path[i];
+    const IDexFile* dex_file = boot_class_path[i];
     CHECK(dex_file != nullptr);
     total->num_strings += dex_file->NumStringIds();
     total->num_fields += dex_file->NumFieldIds();
@@ -445,7 +445,7 @@ static void PreloadDexCachesStatsFilled(DexCacheStats* filled)
   // TODO: Update for hash-based DexCache arrays.
   ClassLinker* const class_linker = Runtime::Current()->GetClassLinker();
   Thread* const self = Thread::Current();
-  for (const DexFile* dex_file : class_linker->GetBootClassPath()) {
+  for (const IDexFile* dex_file : class_linker->GetBootClassPath()) {
     CHECK(dex_file != nullptr);
     // In fallback mode, not all boot classpath components might be registered, yet.
     if (!class_linker->IsDexFileRegistered(self, *dex_file)) {
@@ -513,9 +513,9 @@ static void VMRuntime_preloadDexCaches(JNIEnv* env, jobject) {
     runtime->GetInternTable()->VisitRoots(&visitor, kVisitRootFlagAllRoots);
   }
 
-  const std::vector<const DexFile*>& boot_class_path = linker->GetBootClassPath();
+  const std::vector<const IDexFile*>& boot_class_path = linker->GetBootClassPath();
   for (size_t i = 0; i < boot_class_path.size(); i++) {
-    const DexFile* dex_file = boot_class_path[i];
+    const IDexFile* dex_file = boot_class_path[i];
     CHECK(dex_file != nullptr);
     ObjPtr<mirror::DexCache> dex_cache = linker->RegisterDexFile(*dex_file, nullptr);
     CHECK(dex_cache != nullptr);  // Boot class path dex caches are never unloaded.
@@ -535,7 +535,7 @@ static void VMRuntime_preloadDexCaches(JNIEnv* env, jobject) {
       for (size_t class_def_index = 0;
            class_def_index < dex_file->NumClassDefs();
            class_def_index++) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
         const uint8_t* class_data = dex_file->GetClassData(class_def);
         if (class_data == nullptr) {
           continue;

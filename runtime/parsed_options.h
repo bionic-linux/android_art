@@ -32,7 +32,7 @@
 namespace art {
 
 class CompilerCallbacks;
-class DexFile;
+class IDexFile;
 struct RuntimeArgumentMap;
 
 typedef std::vector<std::pair<std::string, const void*>> RuntimeOptions;

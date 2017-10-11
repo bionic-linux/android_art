@@ -40,7 +40,7 @@
 #include "art_method.h"
 #include "base/array_slice.h"
 #include "class_linker.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "gc_root-inl.h"
 #include "globals.h"
 #include "jni_env_ext-inl.h"
@@ -72,12 +72,12 @@ class ClassLoaderHelper {
  public:
   static bool AddToClassLoader(art::Thread* self,
                                art::Handle<art::mirror::ClassLoader> loader,
-                               const art::DexFile* dex_file)
+                               const art::IDexFile* dex_file)
       REQUIRES_SHARED(art::Locks::mutator_lock_);
 
-  // Finds a java.lang.DexFile object that is associated with the given ClassLoader. Each of these
-  // j.l.DexFile objects holds several art::DexFile*s in it.
-  // TODO This should return the actual source java.lang.DexFile object for the klass being loaded.
+  // Finds a java.lang.IDexFile object that is associated with the given ClassLoader. Each of these
+  // j.l.IDexFile objects holds several art::IDexFile*s in it.
+  // TODO This should return the actual source java.lang.IDexFile object for the klass being loaded.
   static art::ObjPtr<art::mirror::Object> FindSourceDexFileObject(
       art::Thread* self, art::Handle<art::mirror::ClassLoader> loader)
       REQUIRES_SHARED(art::Locks::mutator_lock_);
@@ -88,7 +88,7 @@ class ClassLoaderHelper {
   static art::ObjPtr<art::mirror::LongArray> AllocateNewDexFileCookie(
       art::Thread* self,
       art::Handle<art::mirror::LongArray> old_dex_file_cookie,
-      const art::DexFile* new_dex_file) REQUIRES_SHARED(art::Locks::mutator_lock_);
+      const art::IDexFile* new_dex_file) REQUIRES_SHARED(art::Locks::mutator_lock_);
 
   static void UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_dex_file,
                                 art::ObjPtr<art::mirror::LongArray> new_cookie)

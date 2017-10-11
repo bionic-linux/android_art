@@ -20,7 +20,7 @@
 #include <stdint.h>
 
 #include "base/arena_object.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "handle.h"
 #include "jni.h"
 
@@ -36,8 +36,8 @@ class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
  public:
   DexCompilationUnit(Handle<mirror::ClassLoader> class_loader,
                      ClassLinker* class_linker,
-                     const DexFile& dex_file,
-                     const DexFile::CodeItem* code_item,
+                     const IDexFile& dex_file,
+                     const IDexFile::CodeItem* code_item,
                      uint16_t class_def_idx,
                      uint32_t method_idx,
                      uint32_t access_flags,
@@ -52,7 +52,7 @@ class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
     return class_linker_;
   }
 
-  const DexFile* GetDexFile() const {
+  const IDexFile* GetDexFile() const {
     return dex_file_;
   }
 
@@ -64,17 +64,17 @@ class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
     return dex_method_idx_;
   }
 
-  const DexFile::CodeItem* GetCodeItem() const {
+  const IDexFile::CodeItem* GetCodeItem() const {
     return code_item_;
   }
 
   const char* GetShorty() const {
-    const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
+    const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
     return dex_file_->GetMethodShorty(method_id);
   }
 
   const char* GetShorty(uint32_t* shorty_len) const {
-    const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
+    const IDexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
     return dex_file_->GetMethodShorty(method_id, shorty_len);
   }
 
@@ -117,9 +117,9 @@ class DexCompilationUnit : public DeletableArenaObject<kArenaAllocMisc> {
 
   ClassLinker* const class_linker_;
 
-  const DexFile* const dex_file_;
+  const IDexFile* const dex_file_;
 
-  const DexFile::CodeItem* const code_item_;
+  const IDexFile::CodeItem* const code_item_;
   const uint16_t class_def_idx_;
   const uint32_t dex_method_idx_;
   const uint32_t access_flags_;

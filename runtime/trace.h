@@ -37,7 +37,7 @@ namespace art {
 
 class ArtField;
 class ArtMethod;
-class DexFile;
+class IDexFile;
 class ShadowFrame;
 class Thread;
 
@@ -320,7 +320,7 @@ class Trace FINAL : public instrumentation::InstrumentationListener {
   // Streaming mode data.
   std::string streaming_file_name_;
   Mutex* streaming_lock_;
-  std::map<const DexFile*, DexIndexBitSet*> seen_methods_;
+  std::map<const IDexFile*, DexIndexBitSet*> seen_methods_;
   std::unique_ptr<ThreadIDBitSet> seen_threads_;
 
   // Bijective map from ArtMethod* to index.

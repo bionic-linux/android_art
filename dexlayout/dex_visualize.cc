@@ -169,7 +169,7 @@ class Dumper {
   }
 
   void DumpMethodItem(dex_ir::MethodItem* method,
-                      const DexFile* dex_file,
+                      const IDexFile* dex_file,
                       int class_index,
                       ProfileCompilationInfo* profile_info) {
     if (profile_info != nullptr) {
@@ -215,23 +215,23 @@ class Dumper {
  private:
   using ColorMapType = std::map<uint16_t, int>;
   const ColorMapType kColorMap = {
-    { DexFile::kDexTypeHeaderItem, 1 },
-    { DexFile::kDexTypeStringIdItem, 2 },
-    { DexFile::kDexTypeTypeIdItem, 3 },
-    { DexFile::kDexTypeProtoIdItem, 4 },
-    { DexFile::kDexTypeFieldIdItem, 5 },
-    { DexFile::kDexTypeMethodIdItem, 6 },
-    { DexFile::kDexTypeClassDefItem, 7 },
-    { DexFile::kDexTypeTypeList, 8 },
-    { DexFile::kDexTypeAnnotationSetRefList, 9 },
-    { DexFile::kDexTypeAnnotationSetItem, 10 },
-    { DexFile::kDexTypeClassDataItem, 11 },
-    { DexFile::kDexTypeCodeItem, 12 },
-    { DexFile::kDexTypeStringDataItem, 13 },
-    { DexFile::kDexTypeDebugInfoItem, 14 },
-    { DexFile::kDexTypeAnnotationItem, 15 },
-    { DexFile::kDexTypeEncodedArrayItem, 16 },
-    { DexFile::kDexTypeAnnotationsDirectoryItem, 16 }
+    { IDexFile::kDexTypeHeaderItem, 1 },
+    { IDexFile::kDexTypeStringIdItem, 2 },
+    { IDexFile::kDexTypeTypeIdItem, 3 },
+    { IDexFile::kDexTypeProtoIdItem, 4 },
+    { IDexFile::kDexTypeFieldIdItem, 5 },
+    { IDexFile::kDexTypeMethodIdItem, 6 },
+    { IDexFile::kDexTypeClassDefItem, 7 },
+    { IDexFile::kDexTypeTypeList, 8 },
+    { IDexFile::kDexTypeAnnotationSetRefList, 9 },
+    { IDexFile::kDexTypeAnnotationSetItem, 10 },
+    { IDexFile::kDexTypeClassDataItem, 11 },
+    { IDexFile::kDexTypeCodeItem, 12 },
+    { IDexFile::kDexTypeStringDataItem, 13 },
+    { IDexFile::kDexTypeDebugInfoItem, 14 },
+    { IDexFile::kDexTypeAnnotationItem, 15 },
+    { IDexFile::kDexTypeEncodedArrayItem, 16 },
+    { IDexFile::kDexTypeAnnotationsDirectoryItem, 16 }
   };
 
   FILE* out_file_;
@@ -245,7 +245,7 @@ class Dumper {
  * If profiling information is present, it dumps only those classes that are marked as hot.
  */
 void VisualizeDexLayout(dex_ir::Header* header,
-                        const DexFile* dex_file,
+                        const IDexFile* dex_file,
                         size_t dex_file_index,
                         ProfileCompilationInfo* profile_info) {
   std::unique_ptr<Dumper> dumper(new Dumper(header));

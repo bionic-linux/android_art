@@ -24,7 +24,7 @@
 #include "base/logging.h"
 #include "class_linker-inl.h"
 #include "common_throws.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "dex_file_types.h"
 #include "gc_root-inl.h"
@@ -176,7 +176,7 @@ inline bool ArtMethod::IsImtUnimplementedMethod() {
   return result;
 }
 
-inline const DexFile* ArtMethod::GetDexFile() {
+inline const IDexFile* ArtMethod::GetDexFile() {
   // It is safe to avoid the read barrier here since the dex file is constant, so if we read the
   // from-space dex file pointer it will be equal to the to-space copy.
   return GetDexCache<kWithoutReadBarrier>()->GetDexFile();
@@ -188,7 +188,7 @@ inline const char* ArtMethod::GetDeclaringClassDescriptor() {
     return "<runtime method>";
   }
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   return dex_file->GetMethodDeclaringClassDescriptor(dex_file->GetMethodId(dex_method_idx));
 }
 
@@ -199,7 +199,7 @@ inline const char* ArtMethod::GetShorty() {
 
 inline const char* ArtMethod::GetShorty(uint32_t* out_length) {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   return dex_file->GetMethodShorty(dex_file->GetMethodId(GetDexMethodIndex()), out_length);
 }
 
@@ -207,7 +207,7 @@ inline const Signature ArtMethod::GetSignature() {
   uint32_t dex_method_idx = GetDexMethodIndex();
   if (dex_method_idx != dex::kDexNoIndex) {
     DCHECK(!IsProxyMethod());
-    const DexFile* dex_file = GetDexFile();
+    const IDexFile* dex_file = GetDexFile();
     return dex_file->GetMethodSignature(dex_file->GetMethodId(dex_method_idx));
   }
   return Signature::NoSignature();
@@ -217,7 +217,7 @@ inline const char* ArtMethod::GetName() {
   uint32_t dex_method_idx = GetDexMethodIndex();
   if (LIKELY(dex_method_idx != dex::kDexNoIndex)) {
     DCHECK(!IsProxyMethod());
-    const DexFile* dex_file = GetDexFile();
+    const IDexFile* dex_file = GetDexFile();
     return dex_file->GetMethodName(dex_file->GetMethodId(dex_method_idx));
   }
   Runtime* const runtime = Runtime::Current();
@@ -242,7 +242,7 @@ inline const char* ArtMethod::GetName() {
   }
 }
 
-inline const DexFile::CodeItem* ArtMethod::GetCodeItem() {
+inline const IDexFile::CodeItem* ArtMethod::GetCodeItem() {
   return GetDexFile()->GetCodeItem(GetCodeItemOffset());
 }
 
@@ -259,16 +259,16 @@ inline int32_t ArtMethod::GetLineNumFromDexPC(uint32_t dex_pc) {
   return annotations::GetLineNumFromPC(GetDexFile(), this, dex_pc);
 }
 
-inline const DexFile::ProtoId& ArtMethod::GetPrototype() {
+inline const IDexFile::ProtoId& ArtMethod::GetPrototype() {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   return dex_file->GetMethodPrototype(dex_file->GetMethodId(GetDexMethodIndex()));
 }
 
-inline const DexFile::TypeList* ArtMethod::GetParameterTypeList() {
+inline const IDexFile::TypeList* ArtMethod::GetParameterTypeList() {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
-  const DexFile::ProtoId& proto = dex_file->GetMethodPrototype(
+  const IDexFile* dex_file = GetDexFile();
+  const IDexFile::ProtoId& proto = dex_file->GetMethodPrototype(
       dex_file->GetMethodId(GetDexMethodIndex()));
   return dex_file->GetProtoParameters(proto);
 }
@@ -287,16 +287,16 @@ inline uint16_t ArtMethod::GetClassDefIndex() {
   }
 }
 
-inline const DexFile::ClassDef& ArtMethod::GetClassDef() {
+inline const IDexFile::ClassDef& ArtMethod::GetClassDef() {
   DCHECK(!IsProxyMethod());
   return GetDexFile()->GetClassDef(GetClassDefIndex());
 }
 
 inline const char* ArtMethod::GetReturnTypeDescriptor() {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(GetDexMethodIndex());
-  const DexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
+  const IDexFile* dex_file = GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(GetDexMethodIndex());
+  const IDexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
   return dex_file->GetTypeDescriptor(dex_file->GetTypeId(proto_id.return_type_idx_));
 }
 
@@ -306,7 +306,7 @@ inline Primitive::Type ArtMethod::GetReturnTypePrimitive() {
 
 inline const char* ArtMethod::GetTypeDescriptorFromTypeIdx(dex::TypeIndex type_idx) {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   return dex_file->GetTypeDescriptor(dex_file->GetTypeId(type_idx));
 }
 
@@ -353,9 +353,9 @@ inline ArtMethod* ArtMethod::GetInterfaceMethodIfProxy(PointerSize pointer_size)
 
 inline dex::TypeIndex ArtMethod::GetReturnTypeIndex() {
   DCHECK(!IsProxyMethod());
-  const DexFile* dex_file = GetDexFile();
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(GetDexMethodIndex());
-  const DexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
+  const IDexFile* dex_file = GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(GetDexMethodIndex());
+  const IDexFile::ProtoId& proto_id = dex_file->GetMethodPrototype(method_id);
   return proto_id.return_type_idx_;
 }
 

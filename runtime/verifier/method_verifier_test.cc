@@ -23,7 +23,7 @@
 
 #include "class_linker-inl.h"
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "scoped_thread_state_change-inl.h"
 #include "utils.h"
 #include "verifier_enums.h"
@@ -53,11 +53,11 @@ class MethodVerifierTest : public CommonRuntimeTest {
     }
   }
 
-  void VerifyDexFile(const DexFile& dex)
+  void VerifyDexFile(const IDexFile& dex)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     // Verify all the classes defined in this file
     for (size_t i = 0; i < dex.NumClassDefs(); i++) {
-      const DexFile::ClassDef& class_def = dex.GetClassDef(i);
+      const IDexFile::ClassDef& class_def = dex.GetClassDef(i);
       const char* descriptor = dex.GetClassDescriptor(class_def);
       VerifyClass(descriptor);
     }

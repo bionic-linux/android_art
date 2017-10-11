@@ -695,7 +695,7 @@ static void CheckCovers(uint32_t dex_pc,
 // dex branch instructions.
 static void CheckLoopEntriesCanBeUsedForOsr(const HGraph& graph,
                                             const CodeInfo& code_info,
-                                            const DexFile::CodeItem& code_item) {
+                                            const IDexFile::CodeItem& code_item) {
   if (graph.HasTryCatch()) {
     // One can write loops through try/catch, which we do not support for OSR anyway.
     return;
@@ -739,7 +739,7 @@ static void CheckLoopEntriesCanBeUsedForOsr(const HGraph& graph,
 
 void CodeGenerator::BuildStackMaps(MemoryRegion stack_map_region,
                                    MemoryRegion method_info_region,
-                                   const DexFile::CodeItem& code_item) {
+                                   const IDexFile::CodeItem& code_item) {
   stack_map_stream_.FillInCodeInfo(stack_map_region);
   stack_map_stream_.FillInMethodInfo(method_info_region);
   if (kIsDebugBuild) {

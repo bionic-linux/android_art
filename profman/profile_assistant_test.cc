@@ -1023,7 +1023,7 @@ TEST_F(ProfileAssistantTest, TestProfileCreateWithInvalidData) {
   ArtMethod* inline_monomorphic = GetVirtualMethod(class_loader,
                                                    "LTestInline;",
                                                    "inlineMonomorphic");
-  const DexFile* dex_file = inline_monomorphic->GetDexFile();
+  const IDexFile* dex_file = inline_monomorphic->GetDexFile();
 
   // Verify that the inline cache contains the invalid type.
   std::unique_ptr<ProfileCompilationInfo::OfflineProfileMethodInfo> pmi =

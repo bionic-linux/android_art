@@ -1635,12 +1635,12 @@ void CodeGeneratorMIPS::AddLocationAsTemp(Location location, LocationSummary* lo
   }
 }
 
-template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
 inline void CodeGeneratorMIPS::EmitPcRelativeLinkerPatches(
     const ArenaDeque<PcRelativePatchInfo>& infos,
     ArenaVector<linker::LinkerPatch>* linker_patches) {
   for (const PcRelativePatchInfo& info : infos) {
-    const DexFile& dex_file = info.target_dex_file;
+    const IDexFile& dex_file = info.target_dex_file;
     size_t offset_or_index = info.offset_or_index;
     DCHECK(info.label.IsBound());
     uint32_t literal_offset = __ GetLabelLocation(&info.label);
@@ -1706,35 +1706,35 @@ CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewMethodBssEntryPatc
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativeTypePatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::TypeIndex type_index,
     const PcRelativePatchInfo* info_high) {
   return NewPcRelativePatch(dex_file, type_index.index_, info_high, &pc_relative_type_patches_);
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewTypeBssEntryPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::TypeIndex type_index,
     const PcRelativePatchInfo* info_high) {
   return NewPcRelativePatch(dex_file, type_index.index_, info_high, &type_bss_entry_patches_);
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativeStringPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::StringIndex string_index,
     const PcRelativePatchInfo* info_high) {
   return NewPcRelativePatch(dex_file, string_index.index_, info_high, &pc_relative_string_patches_);
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewStringBssEntryPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::StringIndex string_index,
     const PcRelativePatchInfo* info_high) {
   return NewPcRelativePatch(dex_file, string_index.index_, info_high, &string_bss_entry_patches_);
 }
 
 CodeGeneratorMIPS::PcRelativePatchInfo* CodeGeneratorMIPS::NewPcRelativePatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     uint32_t offset_or_index,
     const PcRelativePatchInfo* info_high,
     ArenaDeque<PcRelativePatchInfo>* patches) {
@@ -1787,7 +1787,7 @@ void CodeGeneratorMIPS::EmitPcRelativeAddressPlaceholderHigh(PcRelativePatchInfo
 }
 
 CodeGeneratorMIPS::JitPatchInfo* CodeGeneratorMIPS::NewJitRootStringPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::StringIndex dex_index,
     Handle<mirror::String> handle) {
   jit_string_roots_.Overwrite(StringReference(&dex_file, dex_index),
@@ -1797,7 +1797,7 @@ CodeGeneratorMIPS::JitPatchInfo* CodeGeneratorMIPS::NewJitRootStringPatch(
 }
 
 CodeGeneratorMIPS::JitPatchInfo* CodeGeneratorMIPS::NewJitRootClassPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::TypeIndex dex_index,
     Handle<mirror::Class> handle) {
   jit_class_roots_.Overwrite(TypeReference(&dex_file, dex_index),

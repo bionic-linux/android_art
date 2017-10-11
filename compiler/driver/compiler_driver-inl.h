@@ -53,14 +53,14 @@ inline mirror::Class* CompilerDriver::ResolveCompilingMethodsClass(
     Handle<mirror::ClassLoader> class_loader, const DexCompilationUnit* mUnit) {
   DCHECK_EQ(dex_cache->GetDexFile(), mUnit->GetDexFile());
   DCHECK_EQ(class_loader.Get(), mUnit->GetClassLoader().Get());
-  const DexFile::MethodId& referrer_method_id =
+  const IDexFile::MethodId& referrer_method_id =
       mUnit->GetDexFile()->GetMethodId(mUnit->GetDexMethodIndex());
   return ResolveClass(soa, dex_cache, class_loader, referrer_method_id.class_idx_, mUnit);
 }
 
 inline ArtField* CompilerDriver::ResolveFieldWithDexFile(
     const ScopedObjectAccess& soa, Handle<mirror::DexCache> dex_cache,
-    Handle<mirror::ClassLoader> class_loader, const DexFile* dex_file,
+    Handle<mirror::ClassLoader> class_loader, const IDexFile* dex_file,
     uint32_t field_idx, bool is_static) {
   DCHECK_EQ(dex_cache->GetDexFile(), dex_file);
   ArtField* resolved_field = Runtime::Current()->GetClassLinker()->ResolveField(

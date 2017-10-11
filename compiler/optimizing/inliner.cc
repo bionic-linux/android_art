@@ -264,7 +264,7 @@ static ArtMethod* FindVirtualOrInterfaceTarget(HInvoke* invoke, ArtMethod* resol
 }
 
 static uint32_t FindMethodIndexIn(ArtMethod* method,
-                                  const DexFile& dex_file,
+                                  const IDexFile& dex_file,
                                   uint32_t name_and_signature_index)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (IsSameDexFile(*method->GetDexFile(), dex_file)) {
@@ -277,7 +277,7 @@ static uint32_t FindMethodIndexIn(ArtMethod* method,
 static dex::TypeIndex FindClassIndexIn(mirror::Class* cls,
                                        const DexCompilationUnit& compilation_unit)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile& dex_file = *compilation_unit.GetDexFile();
+  const IDexFile& dex_file = *compilation_unit.GetDexFile();
   dex::TypeIndex index;
   if (cls->GetDexCache() == nullptr) {
     DCHECK(cls->IsArrayClass()) << cls->PrettyClass();
@@ -401,7 +401,7 @@ bool HInliner::TryInline(HInvoke* invoke_instruction) {
 
   ScopedObjectAccess soa(Thread::Current());
   uint32_t method_index = invoke_instruction->GetDexMethodIndex();
-  const DexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
+  const IDexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
   LOG_TRY() << caller_dex_file.PrettyMethod(method_index);
 
   ArtMethod* resolved_method = invoke_instruction->GetResolvedMethod();
@@ -501,7 +501,7 @@ bool HInliner::UseOnlyPolymorphicInliningWithNoDeopt() {
   //     We may come from the interpreter and it may have seen different receiver types.
   return Runtime::Current()->IsAotCompiler() || outermost_graph_->IsCompilingOsr();
 }
-bool HInliner::TryInlineFromInlineCache(const DexFile& caller_dex_file,
+bool HInliner::TryInlineFromInlineCache(const IDexFile& caller_dex_file,
                                         HInvoke* invoke_instruction,
                                         ArtMethod* resolved_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -596,7 +596,7 @@ HInliner::InlineCacheType HInliner::GetInlineCacheJIT(
 }
 
 HInliner::InlineCacheType HInliner::GetInlineCacheAOT(
-    const DexFile& caller_dex_file,
+    const IDexFile& caller_dex_file,
     HInvoke* invoke_instruction,
     StackHandleScope<1>* hs,
     /*out*/Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)
@@ -655,7 +655,7 @@ HInliner::InlineCacheType HInliner::ExtractClassesFromOfflineProfile(
         offline_profile.dex_references.size());
   for (size_t i = 0; i < offline_profile.dex_references.size(); i++) {
     bool found = false;
-    for (const DexFile* dex_file : compiler_driver_->GetDexFilesForOatFile()) {
+    for (const IDexFile* dex_file : compiler_driver_->GetDexFilesForOatFile()) {
       if (offline_profile.dex_references[i].MatchesDex(dex_file)) {
         dex_profile_index_to_dex_cache[i] =
             caller_compilation_unit_.GetClassLinker()->FindDexCache(self, *dex_file);
@@ -850,7 +850,7 @@ HInstruction* HInliner::AddTypeGuard(HInstruction* receiver,
     bb_cursor->InsertInstructionBefore(receiver_class, bb_cursor->GetFirstInstruction());
   }
 
-  const DexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
+  const IDexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
   bool is_referrer;
   ArtMethod* outermost_art_method = outermost_graph_->GetArtMethod();
   if (outermost_art_method == nullptr) {
@@ -1234,7 +1234,7 @@ bool HInliner::TryInlineAndReplace(HInvoke* invoke_instruction,
         return false;
       }
 
-      const DexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
+      const IDexFile& caller_dex_file = *caller_compilation_unit_.GetDexFile();
       uint32_t dex_method_index = FindMethodIndexIn(
           method, caller_dex_file, invoke_instruction->GetDexMethodIndex());
       if (dex_method_index == dex::kDexNoIndex) {
@@ -1335,7 +1335,7 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
 
   bool same_dex_file = IsSameDexFile(*outer_compilation_unit_.GetDexFile(), *method->GetDexFile());
 
-  const DexFile::CodeItem* code_item = method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = method->GetCodeItem();
 
   if (code_item == nullptr) {
     LOG_FAIL_NO_STAT()
@@ -1482,7 +1482,7 @@ bool HInliner::TryPatternSubstitution(HInvoke* invoke_instruction,
       // Count valid field indexes.
       size_t number_of_iputs = 0u;
       while (number_of_iputs != arraysize(iput_field_indexes) &&
-          iput_field_indexes[number_of_iputs] != DexFile::kDexNoIndex16) {
+          iput_field_indexes[number_of_iputs] != IDexFile::kDexNoIndex16) {
         // Check that there are no duplicate valid field indexes.
         DCHECK_EQ(0, std::count(iput_field_indexes + number_of_iputs + 1,
                                 iput_field_indexes + arraysize(iput_field_indexes),
@@ -1492,7 +1492,7 @@ bool HInliner::TryPatternSubstitution(HInvoke* invoke_instruction,
       // Check that there are no valid field indexes in the rest of the array.
       DCHECK_EQ(0, std::count_if(iput_field_indexes + number_of_iputs,
                                  iput_field_indexes + arraysize(iput_field_indexes),
-                                 [](uint16_t index) { return index != DexFile::kDexNoIndex16; }));
+                                 [](uint16_t index) { return index != IDexFile::kDexNoIndex16; }));
 
       // Create HInstanceFieldSet for each IPUT that stores non-zero data.
       HInstruction* obj = GetInvokeInputForArgVRegIndex(invoke_instruction, /* this */ 0u);
@@ -1610,8 +1610,8 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
                                        HInstruction** return_replacement) {
   DCHECK(!(resolved_method->IsStatic() && receiver_type.IsValid()));
   ScopedObjectAccess soa(Thread::Current());
-  const DexFile::CodeItem* code_item = resolved_method->GetCodeItem();
-  const DexFile& callee_dex_file = *resolved_method->GetDexFile();
+  const IDexFile::CodeItem* code_item = resolved_method->GetCodeItem();
+  const IDexFile& callee_dex_file = *resolved_method->GetDexFile();
   uint32_t method_index = resolved_method->GetDexMethodIndex();
   ClassLinker* class_linker = caller_compilation_unit_.GetClassLinker();
   Handle<mirror::DexCache> dex_cache = NewHandleIfDifferent(resolved_method->GetDexCache(),
@@ -1878,7 +1878,7 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
 }
 
 void HInliner::RunOptimizations(HGraph* callee_graph,
-                                const DexFile::CodeItem* code_item,
+                                const IDexFile::CodeItem* code_item,
                                 const DexCompilationUnit& dex_compilation_unit) {
   // Note: if the outermost_graph_ is being compiled OSR, we should not run any
   // optimization that could lead to a HDeoptimize. The following optimizations do not.
@@ -1967,7 +1967,7 @@ bool HInliner::ArgumentTypesMoreSpecific(HInvoke* invoke_instruction, ArtMethod*
   // Iterate over the list of parameter types and test whether any of the
   // actual inputs has a more specific reference type than the type declared in
   // the signature.
-  const DexFile::TypeList* param_list = resolved_method->GetParameterTypeList();
+  const IDexFile::TypeList* param_list = resolved_method->GetParameterTypeList();
   for (size_t param_idx = 0,
               input_idx = resolved_method->IsStatic() ? 0 : 1,
               e = (param_list == nullptr ? 0 : param_list->Size());

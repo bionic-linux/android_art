@@ -40,8 +40,8 @@ class HInstructionBuilder : public ValueObject {
   HInstructionBuilder(HGraph* graph,
                       HBasicBlockBuilder* block_builder,
                       SsaBuilder* ssa_builder,
-                      const DexFile* dex_file,
-                      const DexFile::CodeItem& code_item,
+                      const IDexFile* dex_file,
+                      const IDexFile::CodeItem& code_item,
                       DataType::Type return_type,
                       const DexCompilationUnit* dex_compilation_unit,
                       const DexCompilationUnit* outer_compilation_unit,
@@ -236,7 +236,7 @@ class HInstructionBuilder : public ValueObject {
   HLoadClass* BuildLoadClass(dex::TypeIndex type_index, uint32_t dex_pc);
 
   HLoadClass* BuildLoadClass(dex::TypeIndex type_index,
-                             const DexFile& dex_file,
+                             const IDexFile& dex_file,
                              Handle<mirror::Class> klass,
                              uint32_t dex_pc,
                              bool needs_access_check)
@@ -317,8 +317,8 @@ class HInstructionBuilder : public ValueObject {
   VariableSizedHandleScope* handles_;
 
   // The dex file where the method being compiled is, and the bytecode data.
-  const DexFile* const dex_file_;
-  const DexFile::CodeItem& code_item_;
+  const IDexFile* const dex_file_;
+  const IDexFile::CodeItem& code_item_;
 
   // The return type of the method being compiled.
   const DataType::Type return_type_;

@@ -19,7 +19,7 @@
 
 #include "base/enums.h"
 #include "base/logging.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "method_bss_mapping.h"
 
 namespace art {
@@ -30,7 +30,7 @@ class MethodBssMappingEncoder {
  public:
   explicit MethodBssMappingEncoder(PointerSize pointer_size)
       : pointer_size_(static_cast<size_t>(pointer_size)) {
-    entry_.method_index = DexFile::kDexNoIndex16;
+    entry_.method_index = IDexFile::kDexNoIndex16;
     entry_.index_mask = 0u;
     entry_.bss_offset = static_cast<uint32_t>(-1);
   }

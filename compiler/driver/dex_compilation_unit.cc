@@ -23,8 +23,8 @@ namespace art {
 
 DexCompilationUnit::DexCompilationUnit(Handle<mirror::ClassLoader> class_loader,
                                        ClassLinker* class_linker,
-                                       const DexFile& dex_file,
-                                       const DexFile::CodeItem* code_item,
+                                       const IDexFile& dex_file,
+                                       const IDexFile::CodeItem* code_item,
                                        uint16_t class_def_idx,
                                        uint32_t method_idx,
                                        uint32_t access_flags,

@@ -27,14 +27,14 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 class ProfileCompilationInfo;
 namespace dex_ir {
 class Header;
 }  // namespace dex_ir
 
 void VisualizeDexLayout(dex_ir::Header* header,
-                        const DexFile* dex_file,
+                        const IDexFile* dex_file,
                         size_t dex_file_index,
                         ProfileCompilationInfo* profile_info);
 

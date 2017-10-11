@@ -25,7 +25,7 @@
 #include <vector>
 
 #include "base/stl_util.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "leb128.h"
 #include "utf.h"
@@ -195,27 +195,27 @@ class Collections {
   std::map<uint32_t, std::unique_ptr<CodeItem>>& CodeItems() { return code_items_.Collection(); }
   std::map<uint32_t, std::unique_ptr<ClassData>>& ClassDatas() { return class_datas_.Collection(); }
 
-  void CreateStringId(const DexFile& dex_file, uint32_t i);
-  void CreateTypeId(const DexFile& dex_file, uint32_t i);
-  void CreateProtoId(const DexFile& dex_file, uint32_t i);
-  void CreateFieldId(const DexFile& dex_file, uint32_t i);
-  void CreateMethodId(const DexFile& dex_file, uint32_t i);
-  void CreateClassDef(const DexFile& dex_file, uint32_t i);
-  void CreateCallSiteId(const DexFile& dex_file, uint32_t i);
-  void CreateMethodHandleItem(const DexFile& dex_file, uint32_t i);
+  void CreateStringId(const IDexFile& dex_file, uint32_t i);
+  void CreateTypeId(const IDexFile& dex_file, uint32_t i);
+  void CreateProtoId(const IDexFile& dex_file, uint32_t i);
+  void CreateFieldId(const IDexFile& dex_file, uint32_t i);
+  void CreateMethodId(const IDexFile& dex_file, uint32_t i);
+  void CreateClassDef(const IDexFile& dex_file, uint32_t i);
+  void CreateCallSiteId(const IDexFile& dex_file, uint32_t i);
+  void CreateMethodHandleItem(const IDexFile& dex_file, uint32_t i);
 
-  void CreateCallSitesAndMethodHandles(const DexFile& dex_file);
+  void CreateCallSitesAndMethodHandles(const IDexFile& dex_file);
 
-  TypeList* CreateTypeList(const DexFile::TypeList* type_list, uint32_t offset);
+  TypeList* CreateTypeList(const IDexFile::TypeList* type_list, uint32_t offset);
   EncodedArrayItem* CreateEncodedArrayItem(const uint8_t* static_data, uint32_t offset);
-  AnnotationItem* CreateAnnotationItem(const DexFile::AnnotationItem* annotation, uint32_t offset);
-  AnnotationSetItem* CreateAnnotationSetItem(const DexFile& dex_file,
-      const DexFile::AnnotationSetItem* disk_annotations_item, uint32_t offset);
-  AnnotationsDirectoryItem* CreateAnnotationsDirectoryItem(const DexFile& dex_file,
-      const DexFile::AnnotationsDirectoryItem* disk_annotations_item, uint32_t offset);
+  AnnotationItem* CreateAnnotationItem(const IDexFile::AnnotationItem* annotation, uint32_t offset);
+  AnnotationSetItem* CreateAnnotationSetItem(const IDexFile& dex_file,
+      const IDexFile::AnnotationSetItem* disk_annotations_item, uint32_t offset);
+  AnnotationsDirectoryItem* CreateAnnotationsDirectoryItem(const IDexFile& dex_file,
+      const IDexFile::AnnotationsDirectoryItem* disk_annotations_item, uint32_t offset);
   CodeItem* CreateCodeItem(
-      const DexFile& dex_file, const DexFile::CodeItem& disk_code_item, uint32_t offset);
-  ClassData* CreateClassData(const DexFile& dex_file, const uint8_t* encoded_data, uint32_t offset);
+      const IDexFile& dex_file, const IDexFile::CodeItem& disk_code_item, uint32_t offset);
+  ClassData* CreateClassData(const IDexFile& dex_file, const uint8_t* encoded_data, uint32_t offset);
 
   StringId* GetStringId(uint32_t index) {
     CHECK_LT(index, StringIdsSize());
@@ -254,7 +254,7 @@ class Collections {
     return index == dex::kDexNoIndex ? nullptr : GetStringId(index);
   }
   TypeId* GetTypeIdOrNullPtr(uint16_t index) {
-    return index == DexFile::kDexNoIndex16 ? nullptr : GetTypeId(index);
+    return index == IDexFile::kDexNoIndex16 ? nullptr : GetTypeId(index);
   }
 
   uint32_t StringIdsOffset() const { return string_ids_.GetOffset(); }
@@ -327,9 +327,9 @@ class Collections {
   EncodedValue* ReadEncodedValue(const uint8_t** data, uint8_t type, uint8_t length);
   void ReadEncodedValue(const uint8_t** data, uint8_t type, uint8_t length, EncodedValue* item);
 
-  ParameterAnnotation* GenerateParameterAnnotation(const DexFile& dex_file, MethodId* method_id,
-      const DexFile::AnnotationSetRefList* annotation_set_ref_list, uint32_t offset);
-  MethodItem* GenerateMethodItem(const DexFile& dex_file, ClassDataItemIterator& cdii);
+  ParameterAnnotation* GenerateParameterAnnotation(const IDexFile& dex_file, MethodId* method_id,
+      const IDexFile::AnnotationSetRefList* annotation_set_ref_list, uint32_t offset);
+  MethodItem* GenerateMethodItem(const IDexFile& dex_file, ClassDataItemIterator& cdii);
 
   CollectionVector<StringId> string_ids_;
   CollectionVector<TypeId> type_ids_;
@@ -445,7 +445,7 @@ class Header : public Item {
  private:
   uint8_t magic_[8];
   uint32_t checksum_;
-  uint8_t signature_[DexFile::kSha1DigestSize];
+  uint8_t signature_[IDexFile::kSha1DigestSize];
   uint32_t endian_tag_;
   uint32_t file_size_;
   uint32_t header_size_;
@@ -1170,7 +1170,7 @@ class CallSiteId : public IndexedItem {
 
 class MethodHandleItem : public IndexedItem {
  public:
-  MethodHandleItem(DexFile::MethodHandleType method_handle_type, IndexedItem* field_or_method_id)
+  MethodHandleItem(IDexFile::MethodHandleType method_handle_type, IndexedItem* field_or_method_id)
       : method_handle_type_(method_handle_type),
         field_or_method_id_(field_or_method_id) {
     size_ = kMethodHandleItemSize;
@@ -1179,13 +1179,13 @@ class MethodHandleItem : public IndexedItem {
 
   static size_t ItemSize() { return kMethodHandleItemSize; }
 
-  DexFile::MethodHandleType GetMethodHandleType() const { return method_handle_type_; }
+  IDexFile::MethodHandleType GetMethodHandleType() const { return method_handle_type_; }
   IndexedItem* GetFieldOrMethodId() const { return field_or_method_id_; }
 
   void Accept(AbstractDispatcher* dispatch) const { dispatch->Dispatch(this); }
 
  private:
-  DexFile::MethodHandleType method_handle_type_;
+  IDexFile::MethodHandleType method_handle_type_;
   IndexedItem* field_or_method_id_;
 
   DISALLOW_COPY_AND_ASSIGN(MethodHandleItem);
@@ -1214,7 +1214,7 @@ struct DexFileSection {
   DexFileSection(const std::string& name, uint16_t type, uint32_t size, uint32_t offset)
       : name(name), type(type), size(size), offset(offset) { }
   std::string name;
-  // The type (DexFile::MapItemType).
+  // The type (IDexFile::MapItemType).
   uint16_t type;
   // The size (in elements, not bytes).
   uint32_t size;

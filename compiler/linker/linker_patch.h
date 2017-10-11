@@ -26,7 +26,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 namespace linker {
 
@@ -54,7 +54,7 @@ class LinkerPatch {
   };
 
   static LinkerPatch RelativeMethodPatch(size_t literal_offset,
-                                         const DexFile* target_dex_file,
+                                         const IDexFile* target_dex_file,
                                          uint32_t pc_insn_offset,
                                          uint32_t target_method_idx) {
     LinkerPatch patch(literal_offset, Type::kMethodRelative, target_dex_file);
@@ -64,7 +64,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch MethodBssEntryPatch(size_t literal_offset,
-                                         const DexFile* target_dex_file,
+                                         const IDexFile* target_dex_file,
                                          uint32_t pc_insn_offset,
                                          uint32_t target_method_idx) {
     LinkerPatch patch(literal_offset, Type::kMethodBssEntry, target_dex_file);
@@ -74,7 +74,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch CodePatch(size_t literal_offset,
-                               const DexFile* target_dex_file,
+                               const IDexFile* target_dex_file,
                                uint32_t target_method_idx) {
     LinkerPatch patch(literal_offset, Type::kCall, target_dex_file);
     patch.method_idx_ = target_method_idx;
@@ -82,7 +82,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch RelativeCodePatch(size_t literal_offset,
-                                       const DexFile* target_dex_file,
+                                       const IDexFile* target_dex_file,
                                        uint32_t target_method_idx) {
     LinkerPatch patch(literal_offset, Type::kCallRelative, target_dex_file);
     patch.method_idx_ = target_method_idx;
@@ -90,7 +90,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch RelativeTypePatch(size_t literal_offset,
-                                       const DexFile* target_dex_file,
+                                       const IDexFile* target_dex_file,
                                        uint32_t pc_insn_offset,
                                        uint32_t target_type_idx) {
     LinkerPatch patch(literal_offset, Type::kTypeRelative, target_dex_file);
@@ -100,7 +100,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch TypeClassTablePatch(size_t literal_offset,
-                                         const DexFile* target_dex_file,
+                                         const IDexFile* target_dex_file,
                                          uint32_t pc_insn_offset,
                                          uint32_t target_type_idx) {
     LinkerPatch patch(literal_offset, Type::kTypeClassTable, target_dex_file);
@@ -110,7 +110,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch TypeBssEntryPatch(size_t literal_offset,
-                                       const DexFile* target_dex_file,
+                                       const IDexFile* target_dex_file,
                                        uint32_t pc_insn_offset,
                                        uint32_t target_type_idx) {
     LinkerPatch patch(literal_offset, Type::kTypeBssEntry, target_dex_file);
@@ -120,7 +120,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch RelativeStringPatch(size_t literal_offset,
-                                         const DexFile* target_dex_file,
+                                         const IDexFile* target_dex_file,
                                          uint32_t pc_insn_offset,
                                          uint32_t target_string_idx) {
     LinkerPatch patch(literal_offset, Type::kStringRelative, target_dex_file);
@@ -130,7 +130,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch StringInternTablePatch(size_t literal_offset,
-                                            const DexFile* target_dex_file,
+                                            const IDexFile* target_dex_file,
                                             uint32_t pc_insn_offset,
                                             uint32_t target_string_idx) {
     LinkerPatch patch(literal_offset, Type::kStringInternTable, target_dex_file);
@@ -140,7 +140,7 @@ class LinkerPatch {
   }
 
   static LinkerPatch StringBssEntryPatch(size_t literal_offset,
-                                         const DexFile* target_dex_file,
+                                         const IDexFile* target_dex_file,
                                          uint32_t pc_insn_offset,
                                          uint32_t target_string_idx) {
     LinkerPatch patch(literal_offset, Type::kStringBssEntry, target_dex_file);
@@ -195,7 +195,7 @@ class LinkerPatch {
     return MethodReference(target_dex_file_, method_idx_);
   }
 
-  const DexFile* TargetTypeDexFile() const {
+  const IDexFile* TargetTypeDexFile() const {
     DCHECK(patch_type_ == Type::kTypeRelative ||
            patch_type_ == Type::kTypeClassTable ||
            patch_type_ == Type::kTypeBssEntry);
@@ -209,7 +209,7 @@ class LinkerPatch {
     return dex::TypeIndex(type_idx_);
   }
 
-  const DexFile* TargetStringDexFile() const {
+  const IDexFile* TargetStringDexFile() const {
     DCHECK(patch_type_ == Type::kStringRelative ||
            patch_type_ == Type::kStringInternTable ||
            patch_type_ == Type::kStringBssEntry);
@@ -246,7 +246,7 @@ class LinkerPatch {
   }
 
  private:
-  LinkerPatch(size_t literal_offset, Type patch_type, const DexFile* target_dex_file)
+  LinkerPatch(size_t literal_offset, Type patch_type, const IDexFile* target_dex_file)
       : target_dex_file_(target_dex_file),
         literal_offset_(literal_offset),
         patch_type_(patch_type) {
@@ -257,7 +257,7 @@ class LinkerPatch {
     DCHECK(IsUint<24>(literal_offset));
   }
 
-  const DexFile* target_dex_file_;
+  const IDexFile* target_dex_file_;
   // TODO: Clean up naming. Some patched locations are literals but others are not.
   uint32_t literal_offset_ : 24;  // Method code size up to 16MiB.
   Type patch_type_ : 8;

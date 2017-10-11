@@ -31,7 +31,7 @@
 #include "class_linker.h"
 #include "common_throws.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "entrypoints/quick/quick_entrypoints.h"
 #include "gc/scoped_gc_critical_section.h"
 #include "instrumentation.h"
@@ -855,7 +855,7 @@ void Trace::ReadClocks(Thread* thread, uint32_t* thread_clock_diff, uint32_t* wa
 
 bool Trace::RegisterMethod(ArtMethod* method) {
   mirror::DexCache* dex_cache = method->GetDexCache();
-  const DexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile* dex_file = dex_cache->GetDexFile();
   if (seen_methods_.find(dex_file) == seen_methods_.end()) {
     seen_methods_.insert(std::make_pair(dex_file, new DexIndexBitSet()));
   }

@@ -25,7 +25,7 @@
 #include "class_linker-inl.h"
 #include "class_loader.h"
 #include "dex_cache.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "gc/accounting/card_table-inl.h"
 #include "handle_scope-inl.h"
@@ -474,8 +474,8 @@ ArtMethod* Class::FindInterfaceMethod(ObjPtr<DexCache> dex_cache,
                                       uint32_t dex_method_idx,
                                       PointerSize pointer_size) {
   // We always search by name and signature, ignoring the type index in the MethodId.
-  const DexFile& dex_file = *dex_cache->GetDexFile();
-  const DexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_idx);
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_idx);
   StringPiece name = dex_file.StringDataByIdx(method_id.name_idx_);
   const Signature signature = dex_file.GetMethodSignature(method_id);
   return FindInterfaceMethod(name, signature, pointer_size);
@@ -601,8 +601,8 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
     }
   }
   // If not found, we need to search by name and signature.
-  const DexFile& dex_file = *dex_cache->GetDexFile();
-  const DexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_idx);
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file.GetMethodId(dex_method_idx);
   const Signature signature = dex_file.GetMethodSignature(method_id);
   StringPiece name;  // Delay strlen() until actually needed.
   // If we do not have a dex_cache match, try to find the declared method in this class now.
@@ -628,7 +628,7 @@ ArtMethod* Class::FindClassMethod(ObjPtr<DexCache> dex_cache,
       // Matching dex_cache. We cannot compare the `dex_method_idx` anymore because
       // the type index differs, so compare the name index and proto index.
       for (ArtMethod& method : declared_methods) {
-        const DexFile::MethodId& cmp_method_id = dex_file.GetMethodId(method.GetDexMethodIndex());
+        const IDexFile::MethodId& cmp_method_id = dex_file.GetMethodId(method.GetDexMethodIndex());
         if (cmp_method_id.name_idx_ == method_id.name_idx_ &&
             cmp_method_id.proto_idx_ == method_id.proto_idx_) {
           candidate_method = &method;
@@ -981,8 +981,8 @@ const char* Class::GetDescriptor(std::string* storage) {
     *storage = Runtime::Current()->GetClassLinker()->GetDescriptorForProxy(this);
     return storage->c_str();
   } else {
-    const DexFile& dex_file = GetDexFile();
-    const DexFile::TypeId& type_id = dex_file.GetTypeId(GetClassDef()->class_idx_);
+    const IDexFile& dex_file = GetDexFile();
+    const IDexFile::TypeId& type_id = dex_file.GetTypeId(GetClassDef()->class_idx_);
     return dex_file.GetTypeDescriptor(type_id);
   }
 }
@@ -995,9 +995,9 @@ const char* Class::GetArrayDescriptor(std::string* storage) {
   return storage->c_str();
 }
 
-const DexFile::ClassDef* Class::GetClassDef() {
+const IDexFile::ClassDef* Class::GetClassDef() {
   uint16_t class_def_idx = GetDexClassDefIndex();
-  if (class_def_idx == DexFile::kDexNoIndex16) {
+  if (class_def_idx == IDexFile::kDexNoIndex16) {
     return nullptr;
   }
   return &GetDexFile().GetClassDef(class_def_idx);
@@ -1064,8 +1064,8 @@ ObjPtr<Class> Class::GetCommonSuperClass(Handle<Class> klass) {
 }
 
 const char* Class::GetSourceFile() {
-  const DexFile& dex_file = GetDexFile();
-  const DexFile::ClassDef* dex_class_def = GetClassDef();
+  const IDexFile& dex_file = GetDexFile();
+  const IDexFile::ClassDef* dex_class_def = GetClassDef();
   if (dex_class_def == nullptr) {
     // Generated classes have no class def.
     return nullptr;
@@ -1082,8 +1082,8 @@ std::string Class::GetLocation() {
   return "generated class";
 }
 
-const DexFile::TypeList* Class::GetInterfaceTypeList() {
-  const DexFile::ClassDef* class_def = GetClassDef();
+const IDexFile::TypeList* Class::GetInterfaceTypeList() {
+  const IDexFile::ClassDef* class_def = GetClassDef();
   if (class_def == nullptr) {
     return nullptr;
   }
@@ -1222,9 +1222,9 @@ uint32_t Class::Depth() {
   return depth;
 }
 
-dex::TypeIndex Class::FindTypeIndexInOtherDexFile(const DexFile& dex_file) {
+dex::TypeIndex Class::FindTypeIndexInOtherDexFile(const IDexFile& dex_file) {
   std::string temp;
-  const DexFile::TypeId* type_id = dex_file.FindTypeId(GetDescriptor(&temp));
+  const IDexFile::TypeId* type_id = dex_file.FindTypeId(GetDescriptor(&temp));
   return (type_id == nullptr) ? dex::TypeIndex() : dex_file.GetIndexForTypeId(*type_id);
 }
 

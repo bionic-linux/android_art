@@ -23,7 +23,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 // Used by CompilerCallbacks to track verification information from the Runtime.
 template <typename DexFileReferenceType, typename Value>
@@ -47,10 +47,10 @@ class AtomicDexRefMap {
 
   // Dex files must be added before method references belonging to them can be used as keys. Not
   // thread safe.
-  void AddDexFile(const DexFile* dex_file);
-  void AddDexFiles(const std::vector<const DexFile*>& dex_files);
+  void AddDexFile(const IDexFile* dex_file);
+  void AddDexFiles(const std::vector<const IDexFile*>& dex_files);
 
-  bool HaveDexFile(const DexFile* dex_file) const {
+  bool HaveDexFile(const IDexFile* dex_file) const {
     return arrays_.find(dex_file) != arrays_.end();
   }
 
@@ -63,12 +63,12 @@ class AtomicDexRefMap {
  private:
   // Verified methods. The method array is fixed to avoid needing a lock to extend it.
   using ElementArray = dchecked_vector<Atomic<Value>>;
-  using DexFileArrays = SafeMap<const DexFile*, ElementArray>;
+  using DexFileArrays = SafeMap<const IDexFile*, ElementArray>;
 
-  const ElementArray* GetArray(const DexFile* dex_file) const;
-  ElementArray* GetArray(const DexFile* dex_file);
+  const ElementArray* GetArray(const IDexFile* dex_file) const;
+  ElementArray* GetArray(const IDexFile* dex_file);
 
-  static size_t NumberOfDexIndices(const DexFile* dex_file);
+  static size_t NumberOfDexIndices(const IDexFile* dex_file);
 
   DexFileArrays arrays_;
 };

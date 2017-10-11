@@ -106,7 +106,7 @@ void StackMapStream::AddInvoke(InvokeType invoke_type, uint32_t dex_method_index
 void StackMapStream::BeginInlineInfoEntry(ArtMethod* method,
                                           uint32_t dex_pc,
                                           uint32_t num_dex_registers,
-                                          const DexFile* outer_dex_file) {
+                                          const IDexFile* outer_dex_file) {
   DCHECK(!in_inline_frame_);
   in_inline_frame_ = true;
   if (EncodeArtMethodInInlineInfo(method)) {

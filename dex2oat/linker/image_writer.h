@@ -77,7 +77,7 @@ class ImageWriter FINAL {
               bool compile_app_image,
               ImageHeader::StorageMode image_storage_mode,
               const std::vector<const char*>& oat_filenames,
-              const std::unordered_map<const DexFile*, size_t>& dex_file_oat_index_map,
+              const std::unordered_map<const IDexFile*, size_t>& dex_file_oat_index_map,
               const std::unordered_set<std::string>* dirty_image_objects);
 
   bool PrepareImageAddressSpace();
@@ -136,7 +136,7 @@ class ImageWriter FINAL {
   // This "oat_index" is used to retrieve information about the the memory layout
   // of the oat file and its associated image file, needed for link-time patching
   // of references to the image or across oat files.
-  size_t GetOatIndexForDexFile(const DexFile* dex_file) const;
+  size_t GetOatIndexForDexFile(const IDexFile* dex_file) const;
 
   // Get the index of the oat file containing the dex file served by the dex cache.
   size_t GetOatIndexForDexCache(ObjPtr<mirror::DexCache> dex_cache) const
@@ -297,7 +297,7 @@ class ImageWriter FINAL {
     std::unique_ptr<gc::accounting::ContinuousSpaceBitmap> image_bitmap_;
 
     // The start offsets of the dex cache arrays.
-    SafeMap<const DexFile*, size_t> dex_cache_array_starts_;
+    SafeMap<const IDexFile*, size_t> dex_cache_array_starts_;
 
     // Offset from oat_data_begin_ to the stubs.
     uint32_t oat_address_offsets_[kOatAddressCount] = {};
@@ -601,7 +601,7 @@ class ImageWriter FINAL {
   const std::vector<const char*>& oat_filenames_;
 
   // Map of dex files to the indexes of oat files that they were compiled into.
-  const std::unordered_map<const DexFile*, size_t>& dex_file_oat_index_map_;
+  const std::unordered_map<const IDexFile*, size_t>& dex_file_oat_index_map_;
 
   // Set of objects known to be dirty in the image. Can be nullptr if there are none.
   const std::unordered_set<std::string>* dirty_image_objects_;

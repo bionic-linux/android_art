@@ -447,7 +447,7 @@ bool OatFileBase::Setup(const char* abs_dex_location, std::string* error_msg) {
                                 DexSize());
       return false;
     }
-    if (UNLIKELY(DexSize() - dex_file_offset < sizeof(DexFile::Header))) {
+    if (UNLIKELY(DexSize() - dex_file_offset < sizeof(IDexFile::Header))) {
       *error_msg = StringPrintf("In oat file '%s' found OatDexFile #%zu for '%s' with dex file "
                                     "offset %u of %zu but the size of dex file header is %zu",
                                 GetLocation().c_str(),
@@ -455,7 +455,7 @@ bool OatFileBase::Setup(const char* abs_dex_location, std::string* error_msg) {
                                 dex_file_location.c_str(),
                                 dex_file_offset,
                                 DexSize(),
-                                sizeof(DexFile::Header));
+                                sizeof(IDexFile::Header));
       return false;
     }
 
@@ -480,7 +480,7 @@ bool OatFileBase::Setup(const char* abs_dex_location, std::string* error_msg) {
                                 dex_file_pointer);
       return false;
     }
-    const DexFile::Header* header = reinterpret_cast<const DexFile::Header*>(dex_file_pointer);
+    const IDexFile::Header* header = reinterpret_cast<const IDexFile::Header*>(dex_file_pointer);
     if (DexSize() - dex_file_offset < header->file_size_) {
       *error_msg = StringPrintf("In oat file '%s' found OatDexFile #%zu for '%s' with dex file "
                                     "offset %u and size %u truncated at %zu",
@@ -612,7 +612,7 @@ bool OatFileBase::Setup(const char* abs_dex_location, std::string* error_msg) {
         prev_entry = &entry;
       }
       CHECK_LT(prev_entry->method_index,
-               reinterpret_cast<const DexFile::Header*>(dex_file_pointer)->method_ids_size_);
+               reinterpret_cast<const IDexFile::Header*>(dex_file_pointer)->method_ids_size_);
     }
 
     std::string canonical_location =
@@ -1389,8 +1389,8 @@ OatFile::OatDexFile::OatDexFile(const OatFile* oat_file,
       dex_layout_sections_(dex_layout_sections) {
   // Initialize TypeLookupTable.
   if (lookup_table_data_ != nullptr) {
-    // Peek the number of classes from the DexFile.
-    const DexFile::Header* dex_header = reinterpret_cast<const DexFile::Header*>(dex_file_pointer_);
+    // Peek the number of classes from the IDexFile.
+    const IDexFile::Header* dex_header = reinterpret_cast<const IDexFile::Header*>(dex_file_pointer_);
     const uint32_t num_class_defs = dex_header->class_defs_size_;
     if (lookup_table_data_ + TypeLookupTable::RawDataLength(num_class_defs) > GetOatFile()->End()) {
       LOG(WARNING) << "found truncated lookup table in " << dex_file_location_;
@@ -1406,10 +1406,10 @@ OatFile::OatDexFile::OatDexFile(std::unique_ptr<TypeLookupTable>&& lookup_table)
 OatFile::OatDexFile::~OatDexFile() {}
 
 size_t OatFile::OatDexFile::FileSize() const {
-  return reinterpret_cast<const DexFile::Header*>(dex_file_pointer_)->file_size_;
+  return reinterpret_cast<const IDexFile::Header*>(dex_file_pointer_)->file_size_;
 }
 
-std::unique_ptr<const DexFile> OatFile::OatDexFile::OpenDexFile(std::string* error_msg) const {
+std::unique_ptr<const IDexFile> OatFile::OatDexFile::OpenDexFile(std::string* error_msg) const {
   ScopedTrace trace(__PRETTY_FUNCTION__);
   static constexpr bool kVerify = false;
   static constexpr bool kVerifyChecksum = false;
@@ -1470,7 +1470,7 @@ OatFile::OatClass OatFile::OatDexFile::GetOatClass(uint16_t class_def_index) con
                            reinterpret_cast<const OatMethodOffsets*>(methods_pointer));
 }
 
-const DexFile::ClassDef* OatFile::OatDexFile::FindClassDef(const DexFile& dex_file,
+const IDexFile::ClassDef* OatFile::OatDexFile::FindClassDef(const IDexFile& dex_file,
                                                            const char* descriptor,
                                                            size_t hash) {
   const OatFile::OatDexFile* oat_dex_file = dex_file.GetOatDexFile();
@@ -1484,7 +1484,7 @@ const DexFile::ClassDef* OatFile::OatDexFile::FindClassDef(const DexFile& dex_fi
   if (num_class_defs == 0) {
     return nullptr;
   }
-  const DexFile::TypeId* type_id = dex_file.FindTypeId(descriptor);
+  const IDexFile::TypeId* type_id = dex_file.FindTypeId(descriptor);
   if (type_id != nullptr) {
     dex::TypeIndex type_idx = dex_file.GetIndexForTypeId(*type_id);
     return dex_file.FindClassDef(type_idx);
@@ -1493,7 +1493,7 @@ const DexFile::ClassDef* OatFile::OatDexFile::FindClassDef(const DexFile& dex_fi
 }
 
 // Madvise the dex file based on the state we are moving to.
-void OatDexFile::MadviseDexFile(const DexFile& dex_file, MadviseState state) {
+void OatDexFile::MadviseDexFile(const IDexFile& dex_file, MadviseState state) {
   const bool low_ram = Runtime::Current()->GetHeap()->IsLowMemoryMode();
   // TODO: Also do madvise hints for non low ram devices.
   if (!kMadviseDexFileAccesses || !low_ram) {
@@ -1619,10 +1619,10 @@ std::string OatFile::GetClassLoaderContext() const {
   return GetOatHeader().GetStoreValueByKey(OatHeader::kClassPathKey);
 };
 
-OatFile::OatClass OatFile::FindOatClass(const DexFile& dex_file,
+OatFile::OatClass OatFile::FindOatClass(const IDexFile& dex_file,
                                         uint16_t class_def_idx,
                                         bool* found) {
-  DCHECK_NE(class_def_idx, DexFile::kDexNoIndex16);
+  DCHECK_NE(class_def_idx, IDexFile::kDexNoIndex16);
   const OatFile::OatDexFile* oat_dex_file = dex_file.GetOatDexFile();
   if (oat_dex_file == nullptr || oat_dex_file->GetOatFile() == nullptr) {
     *found = false;

@@ -24,7 +24,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 class MemMap;
 class OatDexFile;
 class ZipArchive;
@@ -32,7 +32,7 @@ class ZipArchive;
 // Class that is used to open dex files and deal with corresponding multidex and location logic.
 class DexFileLoader {
  public:
-  // name of the DexFile entry within a zip archive
+  // name of the IDexFile entry within a zip archive
   static constexpr const char* kClassesDex = "classes.dex";
 
   // The separator character in MultiDex locations.
@@ -56,7 +56,7 @@ class DexFileLoader {
   static bool IsMultiDexLocation(const char* location);
 
   // Opens .dex file, backed by existing memory
-  static std::unique_ptr<const DexFile> Open(const uint8_t* base,
+  static std::unique_ptr<const IDexFile> Open(const uint8_t* base,
                                              size_t size,
                                              const std::string& location,
                                              uint32_t location_checksum,
@@ -66,7 +66,7 @@ class DexFileLoader {
                                              std::string* error_msg);
 
   // Opens .dex file that has been memory-mapped by the caller.
-  static std::unique_ptr<const DexFile> Open(const std::string& location,
+  static std::unique_ptr<const IDexFile> Open(const std::string& location,
                                              uint32_t location_checkum,
                                              std::unique_ptr<MemMap> mem_map,
                                              bool verify,
@@ -78,10 +78,10 @@ class DexFileLoader {
                    const std::string& location,
                    bool verify_checksum,
                    std::string* error_msg,
-                   std::vector<std::unique_ptr<const DexFile>>* dex_files);
+                   std::vector<std::unique_ptr<const IDexFile>>* dex_files);
 
   // Open a single dex file from an fd. This function closes the fd.
-  static std::unique_ptr<const DexFile> OpenDex(int fd,
+  static std::unique_ptr<const IDexFile> OpenDex(int fd,
                                                 const std::string& location,
                                                 bool verify_checksum,
                                                 std::string* error_msg);
@@ -91,7 +91,7 @@ class DexFileLoader {
                       const std::string& location,
                       bool verify_checksum,
                       std::string* error_msg,
-                      std::vector<std::unique_ptr<const DexFile>>* dex_files);
+                      std::vector<std::unique_ptr<const IDexFile>>* dex_files);
 
   // Return the name of the index-th classes.dex in a multidex zip file. This is classes.dex for
   // index == 0, and classes{index + 1}.dex else.
@@ -137,7 +137,7 @@ class DexFileLoader {
   }
 
  private:
-  static std::unique_ptr<const DexFile> OpenFile(int fd,
+  static std::unique_ptr<const IDexFile> OpenFile(int fd,
                                                  const std::string& location,
                                                  bool verify,
                                                  bool verify_checksum,
@@ -157,11 +157,11 @@ class DexFileLoader {
                                      const std::string& location,
                                      bool verify_checksum,
                                      std::string* error_msg,
-                                     std::vector<std::unique_ptr<const DexFile>>* dex_files);
+                                     std::vector<std::unique_ptr<const IDexFile>>* dex_files);
 
   // Opens .dex file from the entry_name in a zip archive. error_code is undefined when non-null
   // return.
-  static std::unique_ptr<const DexFile> OpenOneDexFileFromZip(const ZipArchive& zip_archive,
+  static std::unique_ptr<const IDexFile> OpenOneDexFileFromZip(const ZipArchive& zip_archive,
                                                               const char* entry_name,
                                                               const std::string& location,
                                                               bool verify_checksum,
@@ -174,7 +174,7 @@ class DexFileLoader {
     kVerifyFailed
   };
 
-  static std::unique_ptr<DexFile> OpenCommon(const uint8_t* base,
+  static std::unique_ptr<IDexFile> OpenCommon(const uint8_t* base,
                                              size_t size,
                                              const std::string& location,
                                              uint32_t location_checksum,
@@ -186,7 +186,7 @@ class DexFileLoader {
 
 
   // Opens a .dex file at the given address, optionally backed by a MemMap
-  static std::unique_ptr<const DexFile> OpenMemory(const uint8_t* dex_file,
+  static std::unique_ptr<const IDexFile> OpenMemory(const uint8_t* dex_file,
                                                    size_t size,
                                                    const std::string& location,
                                                    uint32_t location_checksum,

@@ -20,7 +20,7 @@
 #include "base/scoped_arena_allocator.h"
 #include "builder.h"
 #include "common_compiler_test.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_instruction.h"
 #include "handle_scope.h"
 #include "nodes.h"
@@ -99,7 +99,7 @@ inline HGraph* CreateGraph(ArenaPoolAndAllocator* pool_and_allocator) {
   return new (pool_and_allocator->GetAllocator()) HGraph(
       pool_and_allocator->GetAllocator(),
       pool_and_allocator->GetArenaStack(),
-      *reinterpret_cast<DexFile*>(pool_and_allocator->GetAllocator()->Alloc(sizeof(DexFile))),
+      *reinterpret_cast<IDexFile*>(pool_and_allocator->GetAllocator()->Alloc(sizeof(IDexFile))),
       /*method_idx*/-1,
       kRuntimeISA);
 }
@@ -123,8 +123,8 @@ class OptimizingUnitTest : public CommonCompilerTest {
 
   // Create a control-flow graph from Dex instructions.
   HGraph* CreateCFG(const uint16_t* data, DataType::Type return_type = DataType::Type::kInt32) {
-    const DexFile::CodeItem* item =
-      reinterpret_cast<const DexFile::CodeItem*>(data);
+    const IDexFile::CodeItem* item =
+      reinterpret_cast<const IDexFile::CodeItem*>(data);
     HGraph* graph = CreateGraph();
 
     {

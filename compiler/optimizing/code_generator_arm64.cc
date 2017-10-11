@@ -366,7 +366,7 @@ class LoadClassSlowPathARM64 : public SlowPathCodeARM64 {
     // For HLoadClass/kBssEntry, store the resolved Class to the BSS entry.
     if (is_load_class_bss_entry) {
       DCHECK(out.IsValid());
-      const DexFile& dex_file = cls_->GetDexFile();
+      const IDexFile& dex_file = cls_->GetDexFile();
       if (call_saves_everything_except_r0_ip0) {
         // The class entry page address was preserved in bss_entry_temp_ thanks to kSaveEverything.
       } else {
@@ -436,7 +436,7 @@ class LoadStringSlowPathARM64 : public SlowPathCodeARM64 {
     RestoreLiveRegisters(codegen, locations);
 
     // Store the resolved String to the BSS entry.
-    const DexFile& dex_file = instruction_->AsLoadString()->GetDexFile();
+    const IDexFile& dex_file = instruction_->AsLoadString()->GetDexFile();
     if (!kUseReadBarrier || kUseBakerReadBarrier) {
       // The string entry page address was preserved in temp_ thanks to kSaveEverything.
     } else {
@@ -4633,21 +4633,21 @@ vixl::aarch64::Label* CodeGeneratorARM64::NewMethodBssEntryPatch(
 }
 
 vixl::aarch64::Label* CodeGeneratorARM64::NewPcRelativeTypePatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::TypeIndex type_index,
     vixl::aarch64::Label* adrp_label) {
   return NewPcRelativePatch(dex_file, type_index.index_, adrp_label, &pc_relative_type_patches_);
 }
 
 vixl::aarch64::Label* CodeGeneratorARM64::NewBssEntryTypePatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::TypeIndex type_index,
     vixl::aarch64::Label* adrp_label) {
   return NewPcRelativePatch(dex_file, type_index.index_, adrp_label, &type_bss_entry_patches_);
 }
 
 vixl::aarch64::Label* CodeGeneratorARM64::NewPcRelativeStringPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::StringIndex string_index,
     vixl::aarch64::Label* adrp_label) {
   return
@@ -4655,7 +4655,7 @@ vixl::aarch64::Label* CodeGeneratorARM64::NewPcRelativeStringPatch(
 }
 
 vixl::aarch64::Label* CodeGeneratorARM64::NewStringBssEntryPatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     dex::StringIndex string_index,
     vixl::aarch64::Label* adrp_label) {
   return NewPcRelativePatch(dex_file, string_index.index_, adrp_label, &string_bss_entry_patches_);
@@ -4667,7 +4667,7 @@ vixl::aarch64::Label* CodeGeneratorARM64::NewBakerReadBarrierPatch(uint32_t cust
 }
 
 vixl::aarch64::Label* CodeGeneratorARM64::NewPcRelativePatch(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     uint32_t offset_or_index,
     vixl::aarch64::Label* adrp_label,
     ArenaDeque<PcRelativePatchInfo>* patches) {
@@ -4686,7 +4686,7 @@ vixl::aarch64::Literal<uint32_t>* CodeGeneratorARM64::DeduplicateBootImageAddres
 }
 
 vixl::aarch64::Literal<uint32_t>* CodeGeneratorARM64::DeduplicateJitStringLiteral(
-    const DexFile& dex_file, dex::StringIndex string_index, Handle<mirror::String> handle) {
+    const IDexFile& dex_file, dex::StringIndex string_index, Handle<mirror::String> handle) {
   jit_string_roots_.Overwrite(StringReference(&dex_file, string_index),
                               reinterpret_cast64<uint64_t>(handle.GetReference()));
   return jit_string_patches_.GetOrCreate(
@@ -4695,7 +4695,7 @@ vixl::aarch64::Literal<uint32_t>* CodeGeneratorARM64::DeduplicateJitStringLitera
 }
 
 vixl::aarch64::Literal<uint32_t>* CodeGeneratorARM64::DeduplicateJitClassLiteral(
-    const DexFile& dex_file, dex::TypeIndex type_index, Handle<mirror::Class> handle) {
+    const IDexFile& dex_file, dex::TypeIndex type_index, Handle<mirror::Class> handle) {
   jit_class_roots_.Overwrite(TypeReference(&dex_file, type_index),
                              reinterpret_cast64<uint64_t>(handle.GetReference()));
   return jit_class_patches_.GetOrCreate(
@@ -4730,7 +4730,7 @@ void CodeGeneratorARM64::EmitLdrOffsetPlaceholder(vixl::aarch64::Label* fixup_la
   __ ldr(out, MemOperand(base, /* offset placeholder */ 0));
 }
 
-template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
 inline void CodeGeneratorARM64::EmitPcRelativeLinkerPatches(
     const ArenaDeque<PcRelativePatchInfo>& infos,
     ArenaVector<linker::LinkerPatch>* linker_patches) {
@@ -4934,7 +4934,7 @@ void InstructionCodeGeneratorARM64::VisitLoadClass(HLoadClass* cls) NO_THREAD_SA
     case HLoadClass::LoadKind::kBootImageLinkTimePcRelative: {
       DCHECK_EQ(read_barrier_option, kWithoutReadBarrier);
       // Add ADRP with its PC-relative type patch.
-      const DexFile& dex_file = cls->GetDexFile();
+      const IDexFile& dex_file = cls->GetDexFile();
       dex::TypeIndex type_index = cls->GetTypeIndex();
       vixl::aarch64::Label* adrp_label = codegen_->NewPcRelativeTypePatch(dex_file, type_index);
       codegen_->EmitAdrpPlaceholder(adrp_label, out.X());
@@ -4955,7 +4955,7 @@ void InstructionCodeGeneratorARM64::VisitLoadClass(HLoadClass* cls) NO_THREAD_SA
     case HLoadClass::LoadKind::kBootImageClassTable: {
       DCHECK(!codegen_->GetCompilerOptions().IsBootImage());
       // Add ADRP with its PC-relative type patch.
-      const DexFile& dex_file = cls->GetDexFile();
+      const IDexFile& dex_file = cls->GetDexFile();
       dex::TypeIndex type_index = cls->GetTypeIndex();
       vixl::aarch64::Label* adrp_label = codegen_->NewPcRelativeTypePatch(dex_file, type_index);
       codegen_->EmitAdrpPlaceholder(adrp_label, out.X());
@@ -4973,7 +4973,7 @@ void InstructionCodeGeneratorARM64::VisitLoadClass(HLoadClass* cls) NO_THREAD_SA
     }
     case HLoadClass::LoadKind::kBssEntry: {
       // Add ADRP with its PC-relative Class .bss entry patch.
-      const DexFile& dex_file = cls->GetDexFile();
+      const IDexFile& dex_file = cls->GetDexFile();
       dex::TypeIndex type_index = cls->GetTypeIndex();
       bss_entry_temp = XRegisterFrom(cls->GetLocations()->GetTemp(0));
       bss_entry_adrp_label = codegen_->NewBssEntryTypePatch(dex_file, type_index);
@@ -5103,7 +5103,7 @@ void InstructionCodeGeneratorARM64::VisitLoadString(HLoadString* load) NO_THREAD
     case HLoadString::LoadKind::kBootImageLinkTimePcRelative: {
       DCHECK(codegen_->GetCompilerOptions().IsBootImage());
       // Add ADRP with its PC-relative String patch.
-      const DexFile& dex_file = load->GetDexFile();
+      const IDexFile& dex_file = load->GetDexFile();
       const dex::StringIndex string_index = load->GetStringIndex();
       vixl::aarch64::Label* adrp_label = codegen_->NewPcRelativeStringPatch(dex_file, string_index);
       codegen_->EmitAdrpPlaceholder(adrp_label, out.X());
@@ -5123,7 +5123,7 @@ void InstructionCodeGeneratorARM64::VisitLoadString(HLoadString* load) NO_THREAD
     case HLoadString::LoadKind::kBootImageInternTable: {
       DCHECK(!codegen_->GetCompilerOptions().IsBootImage());
       // Add ADRP with its PC-relative String patch.
-      const DexFile& dex_file = load->GetDexFile();
+      const IDexFile& dex_file = load->GetDexFile();
       const dex::StringIndex string_index = load->GetStringIndex();
       vixl::aarch64::Label* adrp_label = codegen_->NewPcRelativeStringPatch(dex_file, string_index);
       codegen_->EmitAdrpPlaceholder(adrp_label, out.X());
@@ -5135,7 +5135,7 @@ void InstructionCodeGeneratorARM64::VisitLoadString(HLoadString* load) NO_THREAD
     }
     case HLoadString::LoadKind::kBssEntry: {
       // Add ADRP with its PC-relative String .bss entry patch.
-      const DexFile& dex_file = load->GetDexFile();
+      const IDexFile& dex_file = load->GetDexFile();
       const dex::StringIndex string_index = load->GetStringIndex();
       DCHECK(!codegen_->GetCompilerOptions().IsBootImage());
       Register temp = XRegisterFrom(load->GetLocations()->GetTemp(0));
