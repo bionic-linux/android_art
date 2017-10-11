@@ -33,7 +33,7 @@
 #include "base/unix_file/fd_file.h"
 #include "class_linker-inl.h"
 #include "compiled_method.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "driver/compiler_driver.h"
 #include "elf_file.h"
@@ -431,7 +431,7 @@ void ImageWriter::PrepareDexCacheArraySlots() {
   // Prepare dex cache array starts based on the ordering specified in the CompilerDriver.
   // Set the slot size early to avoid DCHECK() failures in IsImageBinSlotAssigned()
   // when AssignImageBinSlot() assigns their indexes out or order.
-  for (const DexFile* dex_file : compiler_driver_.GetDexFilesForOatFile()) {
+  for (const IDexFile* dex_file : compiler_driver_.GetDexFilesForOatFile()) {
     auto it = dex_file_oat_index_map_.find(dex_file);
     DCHECK(it != dex_file_oat_index_map_.end()) << dex_file->GetLocation();
     ImageInfo& image_info = GetImageInfo(it->second);
@@ -449,7 +449,7 @@ void ImageWriter::PrepareDexCacheArraySlots() {
     if (dex_cache == nullptr || IsInBootImage(dex_cache.Ptr())) {
       continue;
     }
-    const DexFile* dex_file = dex_cache->GetDexFile();
+    const IDexFile* dex_file = dex_cache->GetDexFile();
     CHECK(dex_file_oat_index_map_.find(dex_file) != dex_file_oat_index_map_.end())
         << "Dex cache should have been pruned " << dex_file->GetLocation()
         << "; possibly in class path";
@@ -1028,7 +1028,7 @@ void ImageWriter::PruneAndPreloadDexCache(ObjPtr<mirror::DexCache> dex_cache,
 
   Runtime* runtime = Runtime::Current();
   ClassLinker* class_linker = runtime->GetClassLinker();
-  const DexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
   // Prune methods.
   mirror::MethodDexCacheType* resolved_methods = dex_cache->GetResolvedMethods();
   dex::TypeIndex last_class_idx;  // Initialized to invalid index.
@@ -1045,7 +1045,7 @@ void ImageWriter::PruneAndPreloadDexCache(ObjPtr<mirror::DexCache> dex_cache,
     // Check if the referenced class is in the image. Note that we want to check the referenced
     // class rather than the declaring class to preserve the semantics, i.e. using a MethodId
     // results in resolving the referenced class and that can for example throw OOME.
-    const DexFile::MethodId& method_id = dex_file.GetMethodId(i);
+    const IDexFile::MethodId& method_id = dex_file.GetMethodId(i);
     if (method_id.class_idx_ != last_class_idx) {
       last_class_idx = method_id.class_idx_;
       last_class = class_linker->LookupResolvedType(
@@ -1091,7 +1091,7 @@ void ImageWriter::PruneAndPreloadDexCache(ObjPtr<mirror::DexCache> dex_cache,
     // Check if the referenced class is in the image. Note that we want to check the referenced
     // class rather than the declaring class to preserve the semantics, i.e. using a FieldId
     // results in resolving the referenced class and that can for example throw OOME.
-    const DexFile::FieldId& field_id = dex_file.GetFieldId(i);
+    const IDexFile::FieldId& field_id = dex_file.GetFieldId(i);
     if (field_id.class_idx_ != last_class_idx) {
       last_class_idx = field_id.class_idx_;
       last_class = class_linker->LookupResolvedType(
@@ -1268,9 +1268,9 @@ ObjectArray<Object>* ImageWriter::CreateImageRoots(size_t oat_index) const {
   Handle<Class> object_array_class(hs.NewHandle(
       class_linker->FindSystemClass(self, "[Ljava/lang/Object;")));
 
-  std::unordered_set<const DexFile*> image_dex_files;
+  std::unordered_set<const IDexFile*> image_dex_files;
   for (auto& pair : dex_file_oat_index_map_) {
-    const DexFile* image_dex_file = pair.first;
+    const IDexFile* image_dex_file = pair.first;
     size_t image_oat_index = pair.second;
     if (oat_index == image_oat_index) {
       image_dex_files.insert(image_dex_file);
@@ -1292,7 +1292,7 @@ ObjectArray<Object>* ImageWriter::CreateImageRoots(size_t oat_index) const {
       if (dex_cache == nullptr) {
         continue;
       }
-      const DexFile* dex_file = dex_cache->GetDexFile();
+      const IDexFile* dex_file = dex_cache->GetDexFile();
       if (!IsInBootImage(dex_cache.Ptr())) {
         dex_cache_count += image_dex_files.find(dex_file) != image_dex_files.end() ? 1u : 0u;
       }
@@ -1311,7 +1311,7 @@ ObjectArray<Object>* ImageWriter::CreateImageRoots(size_t oat_index) const {
       if (dex_cache == nullptr) {
         continue;
       }
-      const DexFile* dex_file = dex_cache->GetDexFile();
+      const IDexFile* dex_file = dex_cache->GetDexFile();
       if (!IsInBootImage(dex_cache.Ptr())) {
         non_image_dex_caches += image_dex_files.find(dex_file) != image_dex_files.end() ? 1u : 0u;
       }
@@ -1325,7 +1325,7 @@ ObjectArray<Object>* ImageWriter::CreateImageRoots(size_t oat_index) const {
       if (dex_cache == nullptr) {
         continue;
       }
-      const DexFile* dex_file = dex_cache->GetDexFile();
+      const IDexFile* dex_file = dex_cache->GetDexFile();
       if (!IsInBootImage(dex_cache.Ptr()) &&
           image_dex_files.find(dex_file) != image_dex_files.end()) {
         dex_caches->Set<false>(i, dex_cache.Ptr());
@@ -1714,7 +1714,7 @@ void ImageWriter::CalculateNewObjectOffsets() {
   WorkStack work_stack;
 
   // Special case interned strings to put them in the image they are likely to be resolved from.
-  for (const DexFile* dex_file : compiler_driver_.GetDexFilesForOatFile()) {
+  for (const IDexFile* dex_file : compiler_driver_.GetDexFilesForOatFile()) {
     auto it = dex_file_oat_index_map_.find(dex_file);
     DCHECK(it != dex_file_oat_index_map_.end()) << dex_file->GetLocation();
     const size_t oat_index = it->second;
@@ -2491,7 +2491,7 @@ void ImageWriter::FixupDexCache(mirror::DexCache* orig_dex_cache,
                                            fixup_visitor);
   }
 
-  // Remove the DexFile pointers. They will be fixed up when the runtime loads the oat file. Leaving
+  // Remove the IDexFile pointers. They will be fixed up when the runtime loads the oat file. Leaving
   // compiler pointers in here will make the output non-deterministic.
   copy_dex_cache->SetDexFile(nullptr);
 }
@@ -2710,7 +2710,7 @@ size_t ImageWriter::GetOatIndex(mirror::Object* obj) const {
   return it->second;
 }
 
-size_t ImageWriter::GetOatIndexForDexFile(const DexFile* dex_file) const {
+size_t ImageWriter::GetOatIndexForDexFile(const IDexFile* dex_file) const {
   if (!IsMultiImage()) {
     return GetDefaultOatIndex();
   }
@@ -2784,7 +2784,7 @@ ImageWriter::ImageWriter(
     bool compile_app_image,
     ImageHeader::StorageMode image_storage_mode,
     const std::vector<const char*>& oat_filenames,
-    const std::unordered_map<const DexFile*, size_t>& dex_file_oat_index_map,
+    const std::unordered_map<const IDexFile*, size_t>& dex_file_oat_index_map,
     const std::unordered_set<std::string>* dirty_image_objects)
     : compiler_driver_(compiler_driver),
       global_image_begin_(reinterpret_cast<uint8_t*>(image_begin)),

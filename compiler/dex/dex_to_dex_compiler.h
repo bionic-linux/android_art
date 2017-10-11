@@ -17,7 +17,7 @@
 #ifndef ART_COMPILER_DEX_DEX_TO_DEX_COMPILER_H_
 #define ART_COMPILER_DEX_DEX_TO_DEX_COMPILER_H_
 
-#include "dex_file.h"
+#include "idex_file.h"
 #include "handle.h"
 #include "invoke_type.h"
 
@@ -39,13 +39,13 @@ enum class DexToDexCompilationLevel {
 std::ostream& operator<<(std::ostream& os, const DexToDexCompilationLevel& rhs);
 
 CompiledMethod* ArtCompileDEX(CompilerDriver* driver,
-                              const DexFile::CodeItem* code_item,
+                              const IDexFile::CodeItem* code_item,
                               uint32_t access_flags,
                               InvokeType invoke_type,
                               uint16_t class_def_idx,
                               uint32_t method_idx,
                               Handle<mirror::ClassLoader> class_loader,
-                              const DexFile& dex_file,
+                              const IDexFile& dex_file,
                               DexToDexCompilationLevel dex_to_dex_compilation_level);
 
 }  // namespace optimizer

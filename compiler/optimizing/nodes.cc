@@ -577,7 +577,7 @@ HCurrentMethod* HGraph::GetCurrentMethod() {
 }
 
 const char* HGraph::GetMethodName() const {
-  const DexFile::MethodId& method_id = dex_file_.GetMethodId(method_idx_);
+  const IDexFile::MethodId& method_id = dex_file_.GetMethodId(method_idx_);
   return dex_file_.GetMethodName(method_id);
 }
 
@@ -2715,7 +2715,7 @@ bool HInvoke::NeedsEnvironment() const {
   return !opt.GetDoesNotNeedEnvironment();
 }
 
-const DexFile& HInvokeStaticOrDirect::GetDexFileForPcRelativeDexCache() const {
+const IDexFile& HInvokeStaticOrDirect::GetDexFileForPcRelativeDexCache() const {
   ArtMethod* caller = GetEnvironment()->GetMethod();
   ScopedObjectAccess soa(Thread::Current());
   // `caller` is null for a top-level graph representing a method whose declaring

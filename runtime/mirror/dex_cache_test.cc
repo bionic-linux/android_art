@@ -142,12 +142,12 @@ TEST_F(DexCacheMethodHandlesTest, TestResolvedMethodTypes) {
   ASSERT_TRUE(method2 != nullptr);
   ASSERT_FALSE(method2->IsDirect());
 
-  const DexFile& dex_file = *(method1->GetDexFile());
+  const IDexFile& dex_file = *(method1->GetDexFile());
   Handle<mirror::DexCache> dex_cache = hs.NewHandle(
       class_linker_->FindDexCache(Thread::Current(), dex_file));
 
-  const DexFile::MethodId& method1_id = dex_file.GetMethodId(method1->GetDexMethodIndex());
-  const DexFile::MethodId& method2_id = dex_file.GetMethodId(method2->GetDexMethodIndex());
+  const IDexFile::MethodId& method1_id = dex_file.GetMethodId(method1->GetDexMethodIndex());
+  const IDexFile::MethodId& method2_id = dex_file.GetMethodId(method2->GetDexMethodIndex());
 
   Handle<mirror::MethodType> method1_type = hs.NewHandle(
       class_linker_->ResolveMethodType(dex_file, method1_id.proto_idx_, dex_cache, class_loader));

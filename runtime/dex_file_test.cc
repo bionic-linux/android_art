@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "dex_file.h"
+#include "idex_file.h"
 
 #include <sys/mman.h>
 
@@ -23,7 +23,7 @@
 #include "base/stl_util.h"
 #include "base/unix_file/fd_file.h"
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "mem_map.h"
 #include "os.h"
@@ -37,7 +37,7 @@ class DexFileTest : public CommonRuntimeTest {};
 
 TEST_F(DexFileTest, Open) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> dex(OpenTestDexFile("Nested"));
+  std::unique_ptr<const IDexFile> dex(OpenTestDexFile("Nested"));
   ASSERT_TRUE(dex.get() != nullptr);
 }
 
@@ -228,17 +228,17 @@ static void DecodeAndWriteDexFile(const char* base64, const char* location) {
 
 static bool OpenDexFilesBase64(const char* base64,
                                const char* location,
-                               std::vector<std::unique_ptr<const DexFile>>* dex_files,
+                               std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                                std::string* error_msg) {
   DecodeAndWriteDexFile(base64, location);
 
   // read dex file(s)
   ScopedObjectAccess soa(Thread::Current());
   static constexpr bool kVerifyChecksum = true;
-  std::vector<std::unique_ptr<const DexFile>> tmp;
+  std::vector<std::unique_ptr<const IDexFile>> tmp;
   bool success = DexFileLoader::Open(location, location, kVerifyChecksum, error_msg, &tmp);
   if (success) {
-    for (std::unique_ptr<const DexFile>& dex_file : tmp) {
+    for (std::unique_ptr<const IDexFile>& dex_file : tmp) {
       EXPECT_EQ(PROT_READ, dex_file->GetPermissions());
       EXPECT_TRUE(dex_file->IsReadOnly());
     }
@@ -247,18 +247,18 @@ static bool OpenDexFilesBase64(const char* base64,
   return success;
 }
 
-static std::unique_ptr<const DexFile> OpenDexFileBase64(const char* base64,
+static std::unique_ptr<const IDexFile> OpenDexFileBase64(const char* base64,
                                                         const char* location) {
   // read dex files.
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   bool success = OpenDexFilesBase64(base64, location, &dex_files, &error_msg);
   CHECK(success) << error_msg;
   EXPECT_EQ(1U, dex_files.size());
   return std::move(dex_files[0]);
 }
 
-static std::unique_ptr<const DexFile> OpenDexFileInMemoryBase64(const char* base64,
+static std::unique_ptr<const IDexFile> OpenDexFileInMemoryBase64(const char* base64,
                                                                 const char* location,
                                                                 uint32_t location_checksum,
                                                                 bool expect_success) {
@@ -275,7 +275,7 @@ static std::unique_ptr<const DexFile> OpenDexFileInMemoryBase64(const char* base
                                                       /* reuse */ false,
                                                       &error_message));
   memcpy(region->Begin(), dex_bytes.data(), dex_bytes.size());
-  std::unique_ptr<const DexFile> dex_file(DexFileLoader::Open(location,
+  std::unique_ptr<const IDexFile> dex_file(DexFileLoader::Open(location,
                                                               location_checksum,
                                                               std::move(region),
                                                               /* verify */ true,
@@ -289,18 +289,18 @@ static std::unique_ptr<const DexFile> OpenDexFileInMemoryBase64(const char* base
   return dex_file;
 }
 
-static void ValidateDexFileHeader(std::unique_ptr<const DexFile> dex_file) {
+static void ValidateDexFileHeader(std::unique_ptr<const IDexFile> dex_file) {
   static const uint8_t kExpectedDexFileMagic[8] = {
     /* d */ 0x64, /* e */ 0x64, /* x */ 0x78, /* \n */ 0x0d,
     /* 0 */ 0x30, /* 3 */ 0x33, /* 5 */ 0x35, /* \0 */ 0x00
   };
-  static const uint8_t kExpectedSha1[DexFile::kSha1DigestSize] = {
+  static const uint8_t kExpectedSha1[IDexFile::kSha1DigestSize] = {
     0x7b, 0xb8, 0x0c, 0xd4, 0x1f, 0xd6, 0x1e, 0xc5,
     0x89, 0xe8, 0xbe, 0xe5, 0x18, 0x02, 0x12, 0x18,
     0x2e, 0xf2, 0x8c, 0x3d,
   };
 
-  const DexFile::Header& header = dex_file->GetHeader();
+  const IDexFile::Header& header = dex_file->GetHeader();
   EXPECT_EQ(*kExpectedDexFileMagic, *header.magic_);
   EXPECT_EQ(0x00d87910U, header.checksum_);
   EXPECT_EQ(*kExpectedSha1, *header.signature_);
@@ -328,32 +328,32 @@ static void ValidateDexFileHeader(std::unique_ptr<const DexFile> dex_file) {
 
 TEST_F(DexFileTest, Header) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kRawDex, tmp.GetFilename().c_str()));
+  std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kRawDex, tmp.GetFilename().c_str()));
   ValidateDexFileHeader(std::move(raw));
 }
 
 TEST_F(DexFileTest, HeaderInMemory) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw =
+  std::unique_ptr<const IDexFile> raw =
       OpenDexFileInMemoryBase64(kRawDex, tmp.GetFilename().c_str(), 0x00d87910U, true);
   ValidateDexFileHeader(std::move(raw));
 }
 
 TEST_F(DexFileTest, Version38Accepted) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kRawDex38, tmp.GetFilename().c_str()));
+  std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kRawDex38, tmp.GetFilename().c_str()));
   ASSERT_TRUE(raw.get() != nullptr);
 
-  const DexFile::Header& header = raw->GetHeader();
+  const IDexFile::Header& header = raw->GetHeader();
   EXPECT_EQ(38u, header.GetVersion());
 }
 
 TEST_F(DexFileTest, Version39Accepted) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kRawDex39, tmp.GetFilename().c_str()));
+  std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kRawDex39, tmp.GetFilename().c_str()));
   ASSERT_TRUE(raw.get() != nullptr);
 
-  const DexFile::Header& header = raw->GetHeader();
+  const IDexFile::Header& header = raw->GetHeader();
   EXPECT_EQ(39u, header.GetVersion());
 }
 
@@ -365,7 +365,7 @@ TEST_F(DexFileTest, Version40Rejected) {
   ScopedObjectAccess soa(Thread::Current());
   static constexpr bool kVerifyChecksum = true;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   ASSERT_FALSE(DexFileLoader::Open(location, location, kVerifyChecksum, &error_msg, &dex_files));
 }
 
@@ -377,7 +377,7 @@ TEST_F(DexFileTest, Version41Rejected) {
   ScopedObjectAccess soa(Thread::Current());
   static constexpr bool kVerifyChecksum = true;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   ASSERT_FALSE(DexFileLoader::Open(location, location, kVerifyChecksum, &error_msg, &dex_files));
 }
 
@@ -389,13 +389,13 @@ TEST_F(DexFileTest, ZeroLengthDexRejected) {
   ScopedObjectAccess soa(Thread::Current());
   static constexpr bool kVerifyChecksum = true;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   ASSERT_FALSE(DexFileLoader::Open(location, location, kVerifyChecksum, &error_msg, &dex_files));
 }
 
 TEST_F(DexFileTest, GetLocationChecksum) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> raw(OpenTestDexFile("Main"));
+  std::unique_ptr<const IDexFile> raw(OpenTestDexFile("Main"));
   EXPECT_NE(raw->GetHeader().checksum_, raw->GetLocationChecksum());
 }
 
@@ -419,7 +419,7 @@ TEST_F(DexFileTest, GetMultiDexChecksums) {
                                                   &checksums,
                                                   &error_msg)) << error_msg;
 
-  std::vector<std::unique_ptr<const DexFile>> dexes = OpenTestDexFiles("MultiDex");
+  std::vector<std::unique_ptr<const IDexFile>> dexes = OpenTestDexFiles("MultiDex");
   ASSERT_EQ(2U, dexes.size());
   ASSERT_EQ(2U, checksums.size());
 
@@ -432,27 +432,27 @@ TEST_F(DexFileTest, GetMultiDexChecksums) {
 
 TEST_F(DexFileTest, ClassDefs) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> raw(OpenTestDexFile("Nested"));
+  std::unique_ptr<const IDexFile> raw(OpenTestDexFile("Nested"));
   ASSERT_TRUE(raw.get() != nullptr);
   EXPECT_EQ(3U, raw->NumClassDefs());
 
-  const DexFile::ClassDef& c0 = raw->GetClassDef(0);
+  const IDexFile::ClassDef& c0 = raw->GetClassDef(0);
   EXPECT_STREQ("LNested$1;", raw->GetClassDescriptor(c0));
 
-  const DexFile::ClassDef& c1 = raw->GetClassDef(1);
+  const IDexFile::ClassDef& c1 = raw->GetClassDef(1);
   EXPECT_STREQ("LNested$Inner;", raw->GetClassDescriptor(c1));
 
-  const DexFile::ClassDef& c2 = raw->GetClassDef(2);
+  const IDexFile::ClassDef& c2 = raw->GetClassDef(2);
   EXPECT_STREQ("LNested;", raw->GetClassDescriptor(c2));
 }
 
 TEST_F(DexFileTest, GetMethodSignature) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> raw(OpenTestDexFile("GetMethodSignature"));
+  std::unique_ptr<const IDexFile> raw(OpenTestDexFile("GetMethodSignature"));
   ASSERT_TRUE(raw.get() != nullptr);
   EXPECT_EQ(1U, raw->NumClassDefs());
 
-  const DexFile::ClassDef& class_def = raw->GetClassDef(0);
+  const IDexFile::ClassDef& class_def = raw->GetClassDef(0);
   ASSERT_STREQ("LGetMethodSignature;", raw->GetClassDescriptor(class_def));
 
   const uint8_t* class_data = raw->GetClassData(class_def);
@@ -464,7 +464,7 @@ TEST_F(DexFileTest, GetMethodSignature) {
   // Check the signature for the static initializer.
   {
     ASSERT_EQ(1U, it.NumDirectMethods());
-    const DexFile::MethodId& method_id = raw->GetMethodId(it.GetMemberIndex());
+    const IDexFile::MethodId& method_id = raw->GetMethodId(it.GetMemberIndex());
     const char* name = raw->StringDataByIdx(method_id.name_idx_);
     ASSERT_STREQ("<init>", name);
     std::string signature(raw->GetMethodSignature(method_id).ToString());
@@ -537,7 +537,7 @@ TEST_F(DexFileTest, GetMethodSignature) {
   ASSERT_EQ(arraysize(results), it.NumVirtualMethods());
   for (const Result& r : results) {
     it.Next();
-    const DexFile::MethodId& method_id = raw->GetMethodId(it.GetMemberIndex());
+    const IDexFile::MethodId& method_id = raw->GetMethodId(it.GetMemberIndex());
 
     const char* name = raw->StringDataByIdx(method_id.name_idx_);
     ASSERT_STREQ(r.name, name);
@@ -553,7 +553,7 @@ TEST_F(DexFileTest, GetMethodSignature) {
 
 TEST_F(DexFileTest, FindStringId) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> raw(OpenTestDexFile("GetMethodSignature"));
+  std::unique_ptr<const IDexFile> raw(OpenTestDexFile("GetMethodSignature"));
   ASSERT_TRUE(raw.get() != nullptr);
   EXPECT_EQ(1U, raw->NumClassDefs());
 
@@ -561,7 +561,7 @@ TEST_F(DexFileTest, FindStringId) {
       "D", "I", "J", nullptr };
   for (size_t i = 0; strings[i] != nullptr; i++) {
     const char* str = strings[i];
-    const DexFile::StringId* str_id = raw->FindStringId(str);
+    const IDexFile::StringId* str_id = raw->FindStringId(str);
     const char* dex_str = raw->GetStringData(*str_id);
     EXPECT_STREQ(dex_str, str);
   }
@@ -570,10 +570,10 @@ TEST_F(DexFileTest, FindStringId) {
 TEST_F(DexFileTest, FindTypeId) {
   for (size_t i = 0; i < java_lang_dex_file_->NumTypeIds(); i++) {
     const char* type_str = java_lang_dex_file_->StringByTypeIdx(dex::TypeIndex(i));
-    const DexFile::StringId* type_str_id = java_lang_dex_file_->FindStringId(type_str);
+    const IDexFile::StringId* type_str_id = java_lang_dex_file_->FindStringId(type_str);
     ASSERT_TRUE(type_str_id != nullptr);
     dex::StringIndex type_str_idx = java_lang_dex_file_->GetIndexForStringId(*type_str_id);
-    const DexFile::TypeId* type_id = java_lang_dex_file_->FindTypeId(type_str_idx);
+    const IDexFile::TypeId* type_id = java_lang_dex_file_->FindTypeId(type_str_idx);
     ASSERT_EQ(type_id, java_lang_dex_file_->FindTypeId(type_str));
     ASSERT_TRUE(type_id != nullptr);
     EXPECT_EQ(java_lang_dex_file_->GetIndexForTypeId(*type_id).index_, i);
@@ -582,15 +582,15 @@ TEST_F(DexFileTest, FindTypeId) {
 
 TEST_F(DexFileTest, FindProtoId) {
   for (size_t i = 0; i < java_lang_dex_file_->NumProtoIds(); i++) {
-    const DexFile::ProtoId& to_find = java_lang_dex_file_->GetProtoId(i);
-    const DexFile::TypeList* to_find_tl = java_lang_dex_file_->GetProtoParameters(to_find);
+    const IDexFile::ProtoId& to_find = java_lang_dex_file_->GetProtoId(i);
+    const IDexFile::TypeList* to_find_tl = java_lang_dex_file_->GetProtoParameters(to_find);
     std::vector<dex::TypeIndex> to_find_types;
     if (to_find_tl != nullptr) {
       for (size_t j = 0; j < to_find_tl->Size(); j++) {
         to_find_types.push_back(to_find_tl->GetTypeItem(j).type_idx_);
       }
     }
-    const DexFile::ProtoId* found =
+    const IDexFile::ProtoId* found =
         java_lang_dex_file_->FindProtoId(to_find.return_type_idx_, to_find_types);
     ASSERT_TRUE(found != nullptr);
     EXPECT_EQ(java_lang_dex_file_->GetIndexForProtoId(*found), i);
@@ -599,11 +599,11 @@ TEST_F(DexFileTest, FindProtoId) {
 
 TEST_F(DexFileTest, FindMethodId) {
   for (size_t i = 0; i < java_lang_dex_file_->NumMethodIds(); i++) {
-    const DexFile::MethodId& to_find = java_lang_dex_file_->GetMethodId(i);
-    const DexFile::TypeId& klass = java_lang_dex_file_->GetTypeId(to_find.class_idx_);
-    const DexFile::StringId& name = java_lang_dex_file_->GetStringId(to_find.name_idx_);
-    const DexFile::ProtoId& signature = java_lang_dex_file_->GetProtoId(to_find.proto_idx_);
-    const DexFile::MethodId* found = java_lang_dex_file_->FindMethodId(klass, name, signature);
+    const IDexFile::MethodId& to_find = java_lang_dex_file_->GetMethodId(i);
+    const IDexFile::TypeId& klass = java_lang_dex_file_->GetTypeId(to_find.class_idx_);
+    const IDexFile::StringId& name = java_lang_dex_file_->GetStringId(to_find.name_idx_);
+    const IDexFile::ProtoId& signature = java_lang_dex_file_->GetProtoId(to_find.proto_idx_);
+    const IDexFile::MethodId* found = java_lang_dex_file_->FindMethodId(klass, name, signature);
     ASSERT_TRUE(found != nullptr) << "Didn't find method " << i << ": "
         << java_lang_dex_file_->StringByTypeIdx(to_find.class_idx_) << "."
         << java_lang_dex_file_->GetStringData(name)
@@ -614,11 +614,11 @@ TEST_F(DexFileTest, FindMethodId) {
 
 TEST_F(DexFileTest, FindFieldId) {
   for (size_t i = 0; i < java_lang_dex_file_->NumFieldIds(); i++) {
-    const DexFile::FieldId& to_find = java_lang_dex_file_->GetFieldId(i);
-    const DexFile::TypeId& klass = java_lang_dex_file_->GetTypeId(to_find.class_idx_);
-    const DexFile::StringId& name = java_lang_dex_file_->GetStringId(to_find.name_idx_);
-    const DexFile::TypeId& type = java_lang_dex_file_->GetTypeId(to_find.type_idx_);
-    const DexFile::FieldId* found = java_lang_dex_file_->FindFieldId(klass, name, type);
+    const IDexFile::FieldId& to_find = java_lang_dex_file_->GetFieldId(i);
+    const IDexFile::TypeId& klass = java_lang_dex_file_->GetTypeId(to_find.class_idx_);
+    const IDexFile::StringId& name = java_lang_dex_file_->GetStringId(to_find.name_idx_);
+    const IDexFile::TypeId& type = java_lang_dex_file_->GetTypeId(to_find.type_idx_);
+    const IDexFile::FieldId* found = java_lang_dex_file_->FindFieldId(klass, name, type);
     ASSERT_TRUE(found != nullptr) << "Didn't find field " << i << ": "
         << java_lang_dex_file_->StringByTypeIdx(to_find.type_idx_) << " "
         << java_lang_dex_file_->StringByTypeIdx(to_find.class_idx_) << "."
@@ -677,7 +677,7 @@ TEST(DexFileUtilsTest, GetBaseLocationAndMultiDexSuffix) {
 
 TEST_F(DexFileTest, ZipOpenClassesPresent) {
   ScratchFile tmp;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   std::string error_msg;
   ASSERT_TRUE(OpenDexFilesBase64(kRawZipClassesDexPresent, tmp.GetFilename().c_str(), &dex_files,
                                  &error_msg));
@@ -686,7 +686,7 @@ TEST_F(DexFileTest, ZipOpenClassesPresent) {
 
 TEST_F(DexFileTest, ZipOpenClassesAbsent) {
   ScratchFile tmp;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   std::string error_msg;
   ASSERT_FALSE(OpenDexFilesBase64(kRawZipClassesDexAbsent, tmp.GetFilename().c_str(), &dex_files,
                                   &error_msg));
@@ -695,7 +695,7 @@ TEST_F(DexFileTest, ZipOpenClassesAbsent) {
 
 TEST_F(DexFileTest, ZipOpenThreeDexFiles) {
   ScratchFile tmp;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   std::string error_msg;
   ASSERT_TRUE(OpenDexFilesBase64(kRawZipThreeDexFiles, tmp.GetFilename().c_str(), &dex_files,
                                  &error_msg));
@@ -704,28 +704,28 @@ TEST_F(DexFileTest, ZipOpenThreeDexFiles) {
 
 TEST_F(DexFileTest, OpenDexBadMapOffset) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw =
+  std::unique_ptr<const IDexFile> raw =
       OpenDexFileInMemoryBase64(kRawDexBadMapOffset, tmp.GetFilename().c_str(), 0xb3642819U, false);
   EXPECT_EQ(raw, nullptr);
 }
 
 TEST_F(DexFileTest, GetStringWithNoIndex) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kRawDex, tmp.GetFilename().c_str()));
+  std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kRawDex, tmp.GetFilename().c_str()));
   dex::TypeIndex idx;
   EXPECT_EQ(raw->StringByTypeIdx(idx), nullptr);
 }
 
 static void Callback(void* context ATTRIBUTE_UNUSED,
-                     const DexFile::LocalInfo& entry ATTRIBUTE_UNUSED) {
+                     const IDexFile::LocalInfo& entry ATTRIBUTE_UNUSED) {
 }
 
 TEST_F(DexFileTest, OpenDexDebugInfoLocalNullType) {
   ScratchFile tmp;
-  std::unique_ptr<const DexFile> raw = OpenDexFileInMemoryBase64(
+  std::unique_ptr<const IDexFile> raw = OpenDexFileInMemoryBase64(
       kRawDexDebugInfoLocalNullType, tmp.GetFilename().c_str(), 0xf25f2b38U, true);
-  const DexFile::ClassDef& class_def = raw->GetClassDef(0);
-  const DexFile::CodeItem* code_item = raw->GetCodeItem(raw->FindCodeItemOffset(class_def, 1));
+  const IDexFile::ClassDef& class_def = raw->GetClassDef(0);
+  const IDexFile::CodeItem* code_item = raw->GetCodeItem(raw->FindCodeItemOffset(class_def, 1));
   ASSERT_TRUE(raw->DecodeDebugLocalInfo(code_item, true, 1, Callback, nullptr));
 }
 

@@ -38,7 +38,7 @@
 #include "base/unix_file/fd_file.h"
 #include "boot_image_profile.h"
 #include "bytecode_utils.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_loader.h"
 #include "dex_file_types.h"
 #include "jit/profile_compilation_info.h"
@@ -311,7 +311,7 @@ class ProfMan FINAL {
     return result;
   }
 
-  void OpenApkFilesFromLocations(std::vector<std::unique_ptr<const DexFile>>* dex_files) {
+  void OpenApkFilesFromLocations(std::vector<std::unique_ptr<const IDexFile>>* dex_files) {
     bool use_apk_fd_list = !apks_fd_.empty();
     if (use_apk_fd_list) {
       // Get the APKs from the collection of FDs.
@@ -327,7 +327,7 @@ class ProfMan FINAL {
     static constexpr bool kVerifyChecksum = true;
     for (size_t i = 0; i < dex_locations_.size(); ++i) {
       std::string error_msg;
-      std::vector<std::unique_ptr<const DexFile>> dex_files_for_location;
+      std::vector<std::unique_ptr<const IDexFile>> dex_files_for_location;
       if (use_apk_fd_list) {
         if (DexFileLoader::OpenZip(apks_fd_[i],
                                    dex_locations_[i],
@@ -349,7 +349,7 @@ class ProfMan FINAL {
           continue;
         }
       }
-      for (std::unique_ptr<const DexFile>& dex_file : dex_files_for_location) {
+      for (std::unique_ptr<const IDexFile>& dex_file : dex_files_for_location) {
         dex_files->emplace_back(std::move(dex_file));
       }
     }
@@ -374,7 +374,7 @@ class ProfMan FINAL {
   int DumpOneProfile(const std::string& banner,
                      const std::string& filename,
                      int fd,
-                     const std::vector<std::unique_ptr<const DexFile>>* dex_files,
+                     const std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                      std::string* dump) {
     std::unique_ptr<const ProfileCompilationInfo> info(LoadProfile(filename, fd));
     if (info == nullptr) {
@@ -397,7 +397,7 @@ class ProfMan FINAL {
 
     // Open apk/zip files and and read dex files.
     MemMap::Init();  // for ZipArchive::OpenFromFd
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     OpenApkFilesFromLocations(&dex_files);
     std::string dump;
     // Dump individual profile files.
@@ -458,14 +458,14 @@ class ProfMan FINAL {
   }
 
   bool GetClassNamesAndMethods(int fd,
-                               std::vector<std::unique_ptr<const DexFile>>* dex_files,
+                               std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                                std::set<std::string>* out_lines) {
     ProfileCompilationInfo profile_info;
     if (!profile_info.Load(fd)) {
       LOG(ERROR) << "Cannot load profile info";
       return false;
     }
-    for (const std::unique_ptr<const DexFile>& dex_file : *dex_files) {
+    for (const std::unique_ptr<const IDexFile>& dex_file : *dex_files) {
       std::set<dex::TypeIndex> class_types;
       std::set<uint16_t> hot_methods;
       std::set<uint16_t> startup_methods;
@@ -477,14 +477,14 @@ class ProfMan FINAL {
                                             &startup_methods,
                                             &post_startup_methods)) {
         for (const dex::TypeIndex& type_index : class_types) {
-          const DexFile::TypeId& type_id = dex_file->GetTypeId(type_index);
+          const IDexFile::TypeId& type_id = dex_file->GetTypeId(type_index);
           out_lines->insert(std::string(dex_file->GetTypeDescriptor(type_id)));
         }
         combined_methods = hot_methods;
         combined_methods.insert(startup_methods.begin(), startup_methods.end());
         combined_methods.insert(post_startup_methods.begin(), post_startup_methods.end());
         for (uint16_t dex_method_idx : combined_methods) {
-          const DexFile::MethodId& id = dex_file->GetMethodId(dex_method_idx);
+          const IDexFile::MethodId& id = dex_file->GetMethodId(dex_method_idx);
           std::string signature_string(dex_file->GetMethodSignature(id).ToString());
           std::string type_string(dex_file->GetTypeDescriptor(dex_file->GetTypeId(id.class_idx_)));
           std::string method_name(dex_file->GetMethodName(id));
@@ -510,7 +510,7 @@ class ProfMan FINAL {
   }
 
   bool GetClassNamesAndMethods(const std::string& profile_file,
-                               std::vector<std::unique_ptr<const DexFile>>* dex_files,
+                               std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                                std::set<std::string>* out_lines) {
     int fd = open(profile_file.c_str(), O_RDONLY);
     if (!FdIsValid(fd)) {
@@ -535,7 +535,7 @@ class ProfMan FINAL {
     // Open apk/zip files and and read dex files.
     MemMap::Init();  // for ZipArchive::OpenFromFd
     // Open the dex files to get the names for classes.
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     OpenApkFilesFromLocations(&dex_files);
     // Build a vector of class names from individual profile files.
     std::set<std::string> class_names;
@@ -626,12 +626,12 @@ class ProfMan FINAL {
   // Find class klass_descriptor in the given dex_files and store its reference
   // in the out parameter class_ref.
   // Return true if the definition of the class was found in any of the dex_files.
-  bool FindClass(const std::vector<std::unique_ptr<const DexFile>>& dex_files,
+  bool FindClass(const std::vector<std::unique_ptr<const IDexFile>>& dex_files,
                  const std::string& klass_descriptor,
                  /*out*/TypeReference* class_ref) {
     constexpr uint16_t kInvalidTypeIndex = std::numeric_limits<uint16_t>::max() - 1;
-    for (const std::unique_ptr<const DexFile>& dex_file_ptr : dex_files) {
-      const DexFile* dex_file = dex_file_ptr.get();
+    for (const std::unique_ptr<const IDexFile>& dex_file_ptr : dex_files) {
+      const IDexFile* dex_file = dex_file_ptr.get();
       if (klass_descriptor == kInvalidClassDescriptor) {
         if (kInvalidTypeIndex >= dex_file->NumTypeIds()) {
           // The dex file does not contain all possible type ids which leaves us room
@@ -645,7 +645,7 @@ class ProfMan FINAL {
         }
       }
 
-      const DexFile::TypeId* type_id = dex_file->FindTypeId(klass_descriptor.c_str());
+      const IDexFile::TypeId* type_id = dex_file->FindTypeId(klass_descriptor.c_str());
       if (type_id == nullptr) {
         continue;
       }
@@ -663,7 +663,7 @@ class ProfMan FINAL {
   // Find the method specified by method_spec in the class class_ref.
   uint32_t FindMethodIndex(const TypeReference& class_ref,
                            const std::string& method_spec) {
-    const DexFile* dex_file = class_ref.dex_file;
+    const IDexFile* dex_file = class_ref.dex_file;
     if (method_spec == kInvalidMethod) {
       constexpr uint16_t kInvalidMethodIndex = std::numeric_limits<uint16_t>::max() - 1;
       return kInvalidMethodIndex >= dex_file->NumMethodIds()
@@ -681,7 +681,7 @@ class ProfMan FINAL {
     const std::string& name = name_and_signature[0];
     const std::string& signature = kProfileParsingFirstCharInSignature + name_and_signature[1];
 
-    const DexFile::StringId* name_id = dex_file->FindStringId(name.c_str());
+    const IDexFile::StringId* name_id = dex_file->FindStringId(name.c_str());
     if (name_id == nullptr) {
       LOG(WARNING) << "Could not find name: "  << name;
       return dex::kDexNoIndex;
@@ -692,12 +692,12 @@ class ProfMan FINAL {
       LOG(WARNING) << "Could not create type list" << signature;
       return dex::kDexNoIndex;
     }
-    const DexFile::ProtoId* proto_id = dex_file->FindProtoId(return_type_idx, param_type_idxs);
+    const IDexFile::ProtoId* proto_id = dex_file->FindProtoId(return_type_idx, param_type_idxs);
     if (proto_id == nullptr) {
       LOG(WARNING) << "Could not find proto_id: " << name;
       return dex::kDexNoIndex;
     }
-    const DexFile::MethodId* method_id = dex_file->FindMethodId(
+    const IDexFile::MethodId* method_id = dex_file->FindMethodId(
         dex_file->GetTypeId(class_ref.TypeIndex()), *name_id, *proto_id);
     if (method_id == nullptr) {
       LOG(WARNING) << "Could not find method_id: " << name;
@@ -716,11 +716,11 @@ class ProfMan FINAL {
   bool HasSingleInvoke(const TypeReference& class_ref,
                        uint16_t method_index,
                        /*out*/uint32_t* dex_pc) {
-    const DexFile* dex_file = class_ref.dex_file;
+    const IDexFile* dex_file = class_ref.dex_file;
     uint32_t offset = dex_file->FindCodeItemOffset(
         *dex_file->FindClassDef(class_ref.TypeIndex()),
         method_index);
-    const DexFile::CodeItem* code_item = dex_file->GetCodeItem(offset);
+    const IDexFile::CodeItem* code_item = dex_file->GetCodeItem(offset);
 
     bool found_invoke = false;
     for (CodeItemIterator it(*code_item); !it.Done(); it.Advance()) {
@@ -752,7 +752,7 @@ class ProfMan FINAL {
   // "invalid_class".
   // "LTestInline;->invalid_method".
   // The method and classes are searched only in the given dex files.
-  bool ProcessLine(const std::vector<std::unique_ptr<const DexFile>>& dex_files,
+  bool ProcessLine(const std::vector<std::unique_ptr<const IDexFile>>& dex_files,
                    const std::string& line,
                    /*out*/ProfileCompilationInfo* profile) {
     std::string klass;
@@ -793,7 +793,7 @@ class ProfMan FINAL {
     if (method_str.empty() || method_str == kClassAllMethods) {
       // Start by adding the class.
       std::set<DexCacheResolvedClasses> resolved_class_set;
-      const DexFile* dex_file = class_ref.dex_file;
+      const IDexFile* dex_file = class_ref.dex_file;
       const auto& dex_resolved_classes = resolved_class_set.emplace(
             dex_file->GetLocation(),
             DexFileLoader::GetBaseLocation(dex_file->GetLocation()),
@@ -803,7 +803,7 @@ class ProfMan FINAL {
       std::vector<ProfileMethodInfo> methods;
       if (method_str == kClassAllMethods) {
         // Add all of the methods.
-        const DexFile::ClassDef* class_def = dex_file->FindClassDef(class_ref.TypeIndex());
+        const IDexFile::ClassDef* class_def = dex_file->FindClassDef(class_ref.TypeIndex());
         const uint8_t* class_data = dex_file->GetClassData(*class_def);
         if (class_data != nullptr) {
           ClassDataItemIterator it(*dex_file, class_data);
@@ -939,7 +939,7 @@ class ProfMan FINAL {
             create_profile_from_file_.c_str(), nullptr));  // No post-processing.
 
     // Open the dex files to look up classes and methods.
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     OpenApkFilesFromLocations(&dex_files);
 
     // Process the lines one by one and add the successful ones to the profile.
@@ -971,7 +971,7 @@ class ProfMan FINAL {
       return -1;
     }
     // Open the dex files.
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     OpenApkFilesFromLocations(&dex_files);
     if (dex_files.empty()) {
       PLOG(ERROR) << "Expected dex files for creating boot profile";
@@ -1046,7 +1046,7 @@ class ProfMan FINAL {
       // Initialize MemMap for ZipArchive::OpenFromFd.
       MemMap::Init();
       // Open the dex files to look up classes and methods.
-      std::vector<std::unique_ptr<const DexFile>> dex_files;
+      std::vector<std::unique_ptr<const IDexFile>> dex_files;
       OpenApkFilesFromLocations(&dex_files);
       // Create a random profile file based on the set of dex files.
       result = ProfileCompilationInfo::GenerateTestProfile(profile_test_fd,

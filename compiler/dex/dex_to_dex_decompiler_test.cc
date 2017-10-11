@@ -20,7 +20,7 @@
 #include "common_compiler_test.h"
 #include "compiled_method-inl.h"
 #include "compiler_callbacks.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "driver/compiler_driver.h"
 #include "driver/compiler_options.h"
 #include "handle_scope-inl.h"
@@ -56,11 +56,11 @@ class DexToDexDecompilerTest : public CommonCompilerTest {
       ScopedObjectAccess soa(self);
       original_class_loader = LoadDex(dex_name);
     }
-    const DexFile* original_dex_file = GetDexFiles(original_class_loader)[0];
+    const IDexFile* original_dex_file = GetDexFiles(original_class_loader)[0];
 
     // Load the dex file again and make it writable to quicken them.
     jobject class_loader;
-    const DexFile* updated_dex_file = nullptr;
+    const IDexFile* updated_dex_file = nullptr;
     {
       ScopedObjectAccess soa(self);
       class_loader = LoadDex(dex_name);
@@ -82,7 +82,7 @@ class DexToDexDecompilerTest : public CommonCompilerTest {
 
     // Unquicken the dex file.
     for (uint32_t i = 0; i < updated_dex_file->NumClassDefs(); ++i) {
-      const DexFile::ClassDef& class_def = updated_dex_file->GetClassDef(i);
+      const IDexFile::ClassDef& class_def = updated_dex_file->GetClassDef(i);
       const uint8_t* class_data = updated_dex_file->GetClassData(class_def);
       if (class_data == nullptr) {
         continue;

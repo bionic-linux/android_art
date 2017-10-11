@@ -32,7 +32,7 @@
 #include "base/time_utils.h"
 #include "class_linker-inl.h"
 #include "class_linker.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "dex_file_types.h"
 #include "dex_instruction.h"
@@ -278,7 +278,7 @@ class DebugInstrumentationListener FINAL : public instrumentation::Instrumentati
  private:
   static bool IsReturn(ArtMethod* method, uint32_t dex_pc)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    const DexFile::CodeItem* code_item = method->GetCodeItem();
+    const IDexFile::CodeItem* code_item = method->GetCodeItem();
     const Instruction* instruction = Instruction::At(&code_item->insns_[dex_pc]);
     return instruction->IsReturn();
   }
@@ -1491,7 +1491,7 @@ static uint32_t MangleAccessFlags(uint32_t accessFlags) {
  */
 static uint16_t MangleSlot(uint16_t slot, ArtMethod* m)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   if (code_item == nullptr) {
     // We should not get here for a method without code (native, proxy or abstract). Log it and
     // return the slot as is since all registers are arguments.
@@ -1522,7 +1522,7 @@ static size_t GetMethodNumArgRegistersIncludingThis(ArtMethod* method)
  */
 static uint16_t DemangleSlot(uint16_t slot, ArtMethod* m, JDWP::JdwpError* error)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   if (code_item == nullptr) {
     // We should not get here for a method without code (native, proxy or abstract). Log it and
     // return the slot as is since all registers are arguments.
@@ -1545,7 +1545,7 @@ static uint16_t DemangleSlot(uint16_t slot, ArtMethod* m, JDWP::JdwpError* error
   // Slot is invalid in the method.
   LOG(ERROR) << "Invalid local slot " << slot << " for method " << m->PrettyMethod();
   *error = JDWP::ERR_INVALID_SLOT;
-  return DexFile::kDexNoIndex16;
+  return IDexFile::kDexNoIndex16;
 }
 
 JDWP::JdwpError Dbg::OutputDeclaredFields(JDWP::RefTypeId class_id, bool with_generic,
@@ -1624,7 +1624,7 @@ void Dbg::OutputLineTable(JDWP::RefTypeId, JDWP::MethodId method_id, JDWP::Expan
     int numItems;
     JDWP::ExpandBuf* pReply;
 
-    static bool Callback(void* context, const DexFile::PositionInfo& entry) {
+    static bool Callback(void* context, const IDexFile::PositionInfo& entry) {
       DebugCallbackContext* pContext = reinterpret_cast<DebugCallbackContext*>(context);
       expandBufAdd8BE(pContext->pReply, entry.address_);
       expandBufAdd4BE(pContext->pReply, entry.line_);
@@ -1633,7 +1633,7 @@ void Dbg::OutputLineTable(JDWP::RefTypeId, JDWP::MethodId method_id, JDWP::Expan
     }
   };
   ArtMethod* m = FromMethodId(method_id);
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   uint64_t start, end;
   if (code_item == nullptr) {
     DCHECK(m->IsNative() || m->IsProxyMethod());
@@ -1671,7 +1671,7 @@ void Dbg::OutputVariableTable(JDWP::RefTypeId, JDWP::MethodId method_id, bool wi
     size_t variable_count;
     bool with_generic;
 
-    static void Callback(void* context, const DexFile::LocalInfo& entry)
+    static void Callback(void* context, const IDexFile::LocalInfo& entry)
         REQUIRES_SHARED(Locks::mutator_lock_) {
       DebugCallbackContext* pContext = reinterpret_cast<DebugCallbackContext*>(context);
 
@@ -1712,7 +1712,7 @@ void Dbg::OutputVariableTable(JDWP::RefTypeId, JDWP::MethodId method_id, bool wi
   context.variable_count = 0;
   context.with_generic = with_generic;
 
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   if (code_item != nullptr) {
     m->GetDexFile()->DecodeDebugLocalInfo(
         code_item, m->IsStatic(), m->GetDexMethodIndex(), DebugCallbackContext::Callback,
@@ -1742,7 +1742,7 @@ JDWP::JdwpError Dbg::GetBytecodes(JDWP::RefTypeId, JDWP::MethodId method_id,
   if (m == nullptr) {
     return JDWP::ERR_INVALID_METHODID;
   }
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   size_t byte_count = code_item->insns_size_in_code_units_ * 2;
   const uint8_t* begin = reinterpret_cast<const uint8_t*>(code_item->insns_);
   const uint8_t* end = begin + byte_count;
@@ -2927,7 +2927,7 @@ void Dbg::PostLocationEvent(ArtMethod* m, int dex_pc, mirror::Object* this_objec
   Handle<mirror::Throwable> pending_exception(hs.NewHandle(self->GetException()));
   self->ClearException();
   if (kIsDebugBuild && pending_exception != nullptr) {
-    const DexFile::CodeItem* code_item = location.method->GetCodeItem();
+    const IDexFile::CodeItem* code_item = location.method->GetCodeItem();
     const Instruction* instr = Instruction::At(&code_item->insns_[location.dex_pc]);
     CHECK_EQ(Instruction::MOVE_EXCEPTION, instr->Opcode());
   }
@@ -3783,7 +3783,7 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
       if (!m->IsRuntimeMethod()) {
         ++stack_depth;
         if (method == nullptr) {
-          const DexFile* dex_file = m->GetDexFile();
+          const IDexFile* dex_file = m->GetDexFile();
           method = m;
           if (dex_file != nullptr) {
             line_number = annotations::GetLineNumFromPC(dex_file, m, GetDexPc());
@@ -3805,12 +3805,12 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
   // Find the dex_pc values that correspond to the current line, for line-based single-stepping.
   struct DebugCallbackContext {
     DebugCallbackContext(SingleStepControl* single_step_control_cb,
-                         int32_t line_number_cb, const DexFile::CodeItem* code_item)
+                         int32_t line_number_cb, const IDexFile::CodeItem* code_item)
         : single_step_control_(single_step_control_cb), line_number_(line_number_cb),
           code_item_(code_item), last_pc_valid(false), last_pc(0) {
     }
 
-    static bool Callback(void* raw_context, const DexFile::PositionInfo& entry) {
+    static bool Callback(void* raw_context, const IDexFile::PositionInfo& entry) {
       DebugCallbackContext* context = reinterpret_cast<DebugCallbackContext*>(raw_context);
       if (static_cast<int32_t>(entry.line_) == context->line_number_) {
         if (!context->last_pc_valid) {
@@ -3842,7 +3842,7 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
 
     SingleStepControl* const single_step_control_;
     const int32_t line_number_;
-    const DexFile::CodeItem* const code_item_;
+    const IDexFile::CodeItem* const code_item_;
     bool last_pc_valid;
     uint32_t last_pc;
   };
@@ -3861,7 +3861,7 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
   // Note: if the thread is not running Java code (pure native thread), there is no "current"
   // method on the stack (and no line number either).
   if (m != nullptr && !m->IsNative()) {
-    const DexFile::CodeItem* const code_item = m->GetCodeItem();
+    const IDexFile::CodeItem* const code_item = m->GetCodeItem();
     DebugCallbackContext context(single_step_control, line_number, code_item);
     m->GetDexFile()->DecodeDebugPositionInfo(code_item, DebugCallbackContext::Callback, &context);
   }
@@ -4023,7 +4023,7 @@ JDWP::JdwpError Dbg::PrepareInvokeMethod(uint32_t request_id, JDWP::ObjectId thr
       StackHandleScope<2> hs(soa.Self());
       HandleWrapper<mirror::Object> h_obj(hs.NewHandleWrapper(&receiver));
       HandleWrapper<mirror::Class> h_klass(hs.NewHandleWrapper(&c));
-      const DexFile::TypeList* types = m->GetParameterTypeList();
+      const IDexFile::TypeList* types = m->GetParameterTypeList();
       for (size_t i = 0; i < arg_count; ++i) {
         if (shorty[i + 1] != JdwpTagToShortyChar(arg_types[i])) {
           return JDWP::ERR_ILLEGAL_ARGUMENT;

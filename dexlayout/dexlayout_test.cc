@@ -23,7 +23,7 @@
 
 #include "base/unix_file/fd_file.h"
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "exec_utils.h"
 #include "jit/profile_compilation_info.h"
@@ -321,7 +321,7 @@ class DexLayoutTest : public CommonRuntimeTest {
   void CreateProfile(const std::string& input_dex,
                      const std::string& out_profile,
                      const std::string& dex_location) {
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     std::string error_msg;
     bool result = DexFileLoader::Open(input_dex.c_str(),
                                       input_dex,
@@ -336,7 +336,7 @@ class DexLayoutTest : public CommonRuntimeTest {
     size_t profile_classes = 0;
     ProfileCompilationInfo pfi;
     std::set<DexCacheResolvedClasses> classes;
-    for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+    for (const std::unique_ptr<const IDexFile>& dex_file : dex_files) {
       for (uint32_t i = 0; i < dex_file->NumMethodIds(); i += 2) {
         uint8_t flags = 0u;
 

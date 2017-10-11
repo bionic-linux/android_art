@@ -21,7 +21,7 @@
 
 #include "base/allocator.h"
 #include "base/hash_map.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "safe_map.h"
 
@@ -29,7 +29,7 @@ namespace art {
 
 class DexFileVerifier {
  public:
-  static bool Verify(const DexFile* dex_file,
+  static bool Verify(const IDexFile* dex_file,
                      const uint8_t* begin,
                      size_t size,
                      const char* location,
@@ -41,7 +41,7 @@ class DexFileVerifier {
   }
 
  private:
-  DexFileVerifier(const DexFile* dex_file,
+  DexFileVerifier(const IDexFile* dex_file,
                   const uint8_t* begin,
                   size_t size,
                   const char* location,
@@ -74,7 +74,7 @@ class DexFileVerifier {
   bool CheckMap();
 
   uint32_t ReadUnsignedLittleEndian(uint32_t size);
-  bool CheckAndGetHandlerOffsets(const DexFile::CodeItem* code_item,
+  bool CheckAndGetHandlerOffsets(const IDexFile::CodeItem* code_item,
                                  uint32_t* handler_offsets, uint32_t handlers_size);
   bool CheckClassDataItemField(uint32_t idx,
                                uint32_t access_flags,
@@ -94,8 +94,8 @@ class DexFileVerifier {
                                 uint32_t prev_index,
                                 bool* have_class,
                                 dex::TypeIndex* class_type_index,
-                                const DexFile::ClassDef** class_def);
-  bool CheckStaticFieldTypes(const DexFile::ClassDef* class_def);
+                                const IDexFile::ClassDef** class_def);
+  bool CheckStaticFieldTypes(const IDexFile::ClassDef* class_def);
 
   bool CheckPadding(size_t offset, uint32_t aligned_offset);
   bool CheckEncodedValue();
@@ -109,7 +109,7 @@ class DexFileVerifier {
   bool CheckIntraClassDataItemFields(ClassDataItemIterator* it,
                                      bool* have_class,
                                      dex::TypeIndex* class_type_index,
-                                     const DexFile::ClassDef** class_def);
+                                     const IDexFile::ClassDef** class_def);
   // Check all methods of the given type from the given iterator. Load the class data from the first
   // method, if necessary (and return it), or use the given values.
   template <bool kDirect>
@@ -117,7 +117,7 @@ class DexFileVerifier {
                                       std::unordered_set<uint32_t>* direct_method_indexes,
                                       bool* have_class,
                                       dex::TypeIndex* class_type_index,
-                                      const DexFile::ClassDef** class_def);
+                                      const IDexFile::ClassDef** class_def);
 
   bool CheckIntraCodeItem();
   bool CheckIntraStringDataItem();
@@ -125,9 +125,9 @@ class DexFileVerifier {
   bool CheckIntraAnnotationItem();
   bool CheckIntraAnnotationsDirectoryItem();
 
-  bool CheckIntraSectionIterate(size_t offset, uint32_t count, DexFile::MapItemType type);
-  bool CheckIntraIdSection(size_t offset, uint32_t count, DexFile::MapItemType type);
-  bool CheckIntraDataSection(size_t offset, uint32_t count, DexFile::MapItemType type);
+  bool CheckIntraSectionIterate(size_t offset, uint32_t count, IDexFile::MapItemType type);
+  bool CheckIntraIdSection(size_t offset, uint32_t count, IDexFile::MapItemType type);
+  bool CheckIntraDataSection(size_t offset, uint32_t count, IDexFile::MapItemType type);
   bool CheckIntraSection();
 
   bool CheckOffsetToTypeMap(size_t offset, uint16_t type);
@@ -150,7 +150,7 @@ class DexFileVerifier {
   bool CheckInterClassDataItem();
   bool CheckInterAnnotationsDirectoryItem();
 
-  bool CheckInterSectionIterate(size_t offset, uint32_t count, DexFile::MapItemType type);
+  bool CheckInterSectionIterate(size_t offset, uint32_t count, IDexFile::MapItemType type);
   bool CheckInterSection();
 
   // Load a string by (type) index. Checks whether the index is in bounds, printing the error if
@@ -160,9 +160,9 @@ class DexFileVerifier {
 
   // Load a field/method/proto Id by index. Checks whether the index is in bounds, printing the
   // error if not. If there is an error, null is returned.
-  const DexFile::FieldId* CheckLoadFieldId(uint32_t idx, const char* error_fmt);
-  const DexFile::MethodId* CheckLoadMethodId(uint32_t idx, const char* error_fmt);
-  const DexFile::ProtoId* CheckLoadProtoId(uint32_t idx, const char* error_fmt);
+  const IDexFile::FieldId* CheckLoadFieldId(uint32_t idx, const char* error_fmt);
+  const IDexFile::MethodId* CheckLoadMethodId(uint32_t idx, const char* error_fmt);
+  const IDexFile::ProtoId* CheckLoadProtoId(uint32_t idx, const char* error_fmt);
 
   void ErrorStringPrintf(const char* fmt, ...)
       __attribute__((__format__(__printf__, 2, 3))) COLD_ATTR;
@@ -176,7 +176,7 @@ class DexFileVerifier {
   bool FindClassIndexAndDef(uint32_t index,
                             bool is_field,
                             dex::TypeIndex* class_type_index,
-                            const DexFile::ClassDef** output_class_def);
+                            const IDexFile::ClassDef** output_class_def);
 
   // Check validity of the given access flags, interpreted for a field in the context of a class
   // with the given second access flags.
@@ -198,12 +198,12 @@ class DexFileVerifier {
   // Check validity of given method if it's a constructor or class initializer.
   bool CheckConstructorProperties(uint32_t method_index, uint32_t constructor_flags);
 
-  const DexFile* const dex_file_;
+  const IDexFile* const dex_file_;
   const uint8_t* const begin_;
   const size_t size_;
   const char* const location_;
   const bool verify_checksum_;
-  const DexFile::Header* const header_;
+  const IDexFile::Header* const header_;
 
   struct OffsetTypeMapEmptyFn {
     // Make a hash map slot empty by making the offset 0. Offset 0 is a valid dex file offset that
@@ -249,7 +249,7 @@ class DexFileVerifier {
   std::string failure_reason_;
 
   // Set of type ids for which there are ClassDef elements in the dex file.
-  std::unordered_set<decltype(DexFile::ClassDef::class_idx_)> defined_classes_;
+  std::unordered_set<decltype(IDexFile::ClassDef::class_idx_)> defined_classes_;
 };
 
 }  // namespace art

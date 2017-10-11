@@ -21,8 +21,8 @@
 #include "base/enums.h"
 #include "class_linker.h"
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
-#include "dex_file.h"
+#include "idex_file-inl.h"
+#include "idex_file.h"
 #include "gtest/gtest.h"
 #include "handle_scope-inl.h"
 #include "leb128.h"
@@ -113,7 +113,7 @@ class ExceptionTest : public CommonRuntimeTest {
     method_g_->SetEntryPointFromQuickCompiledCode(code_ptr);
   }
 
-  const DexFile* dex_;
+  const IDexFile* dex_;
 
   std::vector<uint8_t> fake_code_;
   std::vector<uint8_t> fake_header_code_and_maps_;
@@ -127,14 +127,14 @@ class ExceptionTest : public CommonRuntimeTest {
 
 TEST_F(ExceptionTest, FindCatchHandler) {
   ScopedObjectAccess soa(Thread::Current());
-  const DexFile::CodeItem* code_item = dex_->GetCodeItem(method_f_->GetCodeItemOffset());
+  const IDexFile::CodeItem* code_item = dex_->GetCodeItem(method_f_->GetCodeItemOffset());
 
   ASSERT_TRUE(code_item != nullptr);
 
   ASSERT_EQ(2u, code_item->tries_size_);
   ASSERT_NE(0u, code_item->insns_size_in_code_units_);
 
-  const DexFile::TryItem *t0, *t1;
+  const IDexFile::TryItem *t0, *t1;
   t0 = dex_->GetTryItems(*code_item, 0);
   t1 = dex_->GetTryItems(*code_item, 1);
   EXPECT_LE(t0->start_addr_, t1->start_addr_);

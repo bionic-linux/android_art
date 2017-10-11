@@ -100,7 +100,7 @@ class HInliner : public HOptimization {
 
   // Run simple optimizations on `callee_graph`.
   void RunOptimizations(HGraph* callee_graph,
-                        const DexFile::CodeItem* code_item,
+                        const IDexFile::CodeItem* code_item,
                         const DexCompilationUnit& dex_compilation_unit)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -123,7 +123,7 @@ class HInliner : public HOptimization {
 
   // Try inlining the invoke instruction using inline caches.
   bool TryInlineFromInlineCache(
-      const DexFile& caller_dex_file,
+      const IDexFile& caller_dex_file,
       HInvoke* invoke_instruction,
       ArtMethod* resolved_method)
     REQUIRES_SHARED(Locks::mutator_lock_);
@@ -140,7 +140,7 @@ class HInliner : public HOptimization {
   // Try getting the inline cache from AOT offline profile.
   // Return true if the inline cache was successfully allocated and the
   // invoke info was found in the profile info.
-  InlineCacheType GetInlineCacheAOT(const DexFile& caller_dex_file,
+  InlineCacheType GetInlineCacheAOT(const IDexFile& caller_dex_file,
       HInvoke* invoke_instruction,
       StackHandleScope<1>* hs,
       /*out*/Handle<mirror::ObjectArray<mirror::Class>>* inline_cache)

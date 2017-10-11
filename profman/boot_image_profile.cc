@@ -18,7 +18,7 @@
 #include <set>
 
 #include "boot_image_profile.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "method_reference.h"
 #include "type_reference.h"
 
@@ -27,7 +27,7 @@ namespace art {
 using Hotness = ProfileCompilationInfo::MethodHotness;
 
 void GenerateBootImageProfile(
-    const std::vector<std::unique_ptr<const DexFile>>& dex_files,
+    const std::vector<std::unique_ptr<const IDexFile>>& dex_files,
     const std::vector<std::unique_ptr<const ProfileCompilationInfo>>& profiles,
     const BootImageOptions& options,
     bool verbose,
@@ -48,7 +48,7 @@ void GenerateBootImageProfile(
   // Total dirty classes.
   size_t dirty_count = 0;
 
-  for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+  for (const std::unique_ptr<const IDexFile>& dex_file : dex_files) {
     // Inferred classes are classes inferred from method samples.
     std::set<std::pair<const ProfileCompilationInfo*, dex::TypeIndex>> inferred_classes;
     for (size_t i = 0; i < dex_file->NumMethodIds(); ++i) {
@@ -74,7 +74,7 @@ void GenerateBootImageProfile(
     }
     // Walk all of the classes and add them to the profile if they meet the requirements.
     for (size_t i = 0; i < dex_file->NumClassDefs(); ++i) {
-      const DexFile::ClassDef& class_def = dex_file->GetClassDef(i);
+      const IDexFile::ClassDef& class_def = dex_file->GetClassDef(i);
       TypeReference ref(dex_file.get(), class_def.class_idx_);
       bool is_clean = true;
       const uint8_t* class_data = dex_file->GetClassData(class_def);

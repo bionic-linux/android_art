@@ -32,7 +32,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 class Instruction;
 class ProfileCompilationInfo;
 
@@ -78,7 +78,7 @@ class DexLayout {
       : options_(options), info_(info), out_file_(out_file), header_(header) { }
 
   int ProcessFile(const char* file_name);
-  void ProcessDexFile(const char* file_name, const DexFile* dex_file, size_t dex_file_index);
+  void ProcessDexFile(const char* file_name, const IDexFile* dex_file, size_t dex_file_index);
 
   dex_ir::Header* GetHeader() const { return header_; }
   void SetHeader(dex_ir::Header* header) { header_ = header; }
@@ -113,21 +113,21 @@ class DexLayout {
   void DumpSField(uint32_t idx, uint32_t flags, int i, dex_ir::EncodedValue* init);
   void DumpDexFile();
 
-  std::vector<dex_ir::ClassData*> LayoutClassDefsAndClassData(const DexFile* dex_file);
-  int32_t LayoutCodeItems(const DexFile* dex_file,
+  std::vector<dex_ir::ClassData*> LayoutClassDefsAndClassData(const IDexFile* dex_file);
+  int32_t LayoutCodeItems(const IDexFile* dex_file,
                           std::vector<dex_ir::ClassData*> new_class_data_order);
-  void LayoutStringData(const DexFile* dex_file);
+  void LayoutStringData(const IDexFile* dex_file);
   bool IsNextSectionCodeItemAligned(uint32_t offset);
   template<class T> void FixupSection(std::map<uint32_t, std::unique_ptr<T>>& map, uint32_t diff);
   void FixupSections(uint32_t offset, uint32_t diff);
 
   // Creates a new layout for the dex file based on profile info.
   // Currently reorders ClassDefs, ClassDataItems, and CodeItems.
-  void LayoutOutputFile(const DexFile* dex_file);
-  void OutputDexFile(const DexFile* dex_file);
+  void LayoutOutputFile(const IDexFile* dex_file);
+  void OutputDexFile(const IDexFile* dex_file);
 
-  void DumpCFG(const DexFile* dex_file, int idx);
-  void DumpCFG(const DexFile* dex_file, uint32_t dex_method_idx, const DexFile::CodeItem* code);
+  void DumpCFG(const IDexFile* dex_file, int idx);
+  void DumpCFG(const IDexFile* dex_file, uint32_t dex_method_idx, const IDexFile::CodeItem* code);
 
   Options& options_;
   ProfileCompilationInfo* info_;

@@ -78,7 +78,7 @@ namespace openjdkjvmti {
 
 using android::base::StringPrintf;
 
-static std::unique_ptr<const art::DexFile> MakeSingleDexFile(art::Thread* self,
+static std::unique_ptr<const art::IDexFile> MakeSingleDexFile(art::Thread* self,
                                                              const char* descriptor,
                                                              const std::string& orig_location,
                                                              jint final_len,
@@ -98,16 +98,16 @@ static std::unique_ptr<const art::DexFile> MakeSingleDexFile(art::Thread* self,
   }
 
   // Make a dex-file
-  if (map->Size() < sizeof(art::DexFile::Header)) {
+  if (map->Size() < sizeof(art::IDexFile::Header)) {
     LOG(WARNING) << "Could not read dex file header because dex_data was too short";
     art::ThrowClassFormatError(nullptr,
                                "Unable to read transformed dex file of %s",
                                descriptor);
     return nullptr;
   }
-  uint32_t checksum = reinterpret_cast<const art::DexFile::Header*>(map->Begin())->checksum_;
+  uint32_t checksum = reinterpret_cast<const art::IDexFile::Header*>(map->Begin())->checksum_;
   std::string map_name = map->GetName();
-  std::unique_ptr<const art::DexFile> dex_file(art::DexFileLoader::Open(map_name,
+  std::unique_ptr<const art::IDexFile> dex_file(art::DexFileLoader::Open(map_name,
                                                                         checksum,
                                                                         std::move(map),
                                                                         /*verify*/true,
@@ -156,10 +156,10 @@ struct ClassCallback : public art::ClassLoadCallback {
   void ClassPreDefine(const char* descriptor,
                       art::Handle<art::mirror::Class> klass,
                       art::Handle<art::mirror::ClassLoader> class_loader,
-                      const art::DexFile& initial_dex_file,
-                      const art::DexFile::ClassDef& initial_class_def ATTRIBUTE_UNUSED,
-                      /*out*/art::DexFile const** final_dex_file,
-                      /*out*/art::DexFile::ClassDef const** final_class_def)
+                      const art::IDexFile& initial_dex_file,
+                      const art::IDexFile::ClassDef& initial_class_def ATTRIBUTE_UNUSED,
+                      /*out*/art::IDexFile const** final_dex_file,
+                      /*out*/art::IDexFile::ClassDef const** final_class_def)
       OVERRIDE REQUIRES_SHARED(art::Locks::mutator_lock_) {
     bool is_enabled =
         event_handler->IsEventEnabledAnywhere(ArtJvmtiEvent::kClassFileLoadHookRetransformable) ||
@@ -284,7 +284,7 @@ struct ClassCallback : public art::ClassLoadCallback {
         return;
       }
 
-      std::unique_ptr<const art::DexFile> dex_file(MakeSingleDexFile(self,
+      std::unique_ptr<const art::IDexFile> dex_file(MakeSingleDexFile(self,
                                                                      descriptor,
                                                                      initial_dex_file.GetLocation(),
                                                                      final_len,

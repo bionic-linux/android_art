@@ -18,12 +18,12 @@
 
 #include <sys/mman.h>
 
-#include "dex_file.h"
+#include "idex_file.h"
 #include "utils.h"
 
 namespace art {
 
-void DexLayoutSection::Subsection::Madvise(const DexFile* dex_file, int advice) const {
+void DexLayoutSection::Subsection::Madvise(const IDexFile* dex_file, int advice) const {
   DCHECK(dex_file != nullptr);
   DCHECK_LE(size_, dex_file->Size());
   DCHECK_LE(offset_ + size_, dex_file->Size());
@@ -32,7 +32,7 @@ void DexLayoutSection::Subsection::Madvise(const DexFile* dex_file, int advice) 
                                   advice);
 }
 
-void DexLayoutSections::Madvise(const DexFile* dex_file, MadviseState state) const {
+void DexLayoutSections::Madvise(const IDexFile* dex_file, MadviseState state) const {
   // The dex file is already defaulted to random access everywhere.
   for (const DexLayoutSection& section : sections_) {
     switch (state) {

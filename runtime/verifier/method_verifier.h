@@ -25,7 +25,7 @@
 #include "base/macros.h"
 #include "base/scoped_arena_containers.h"
 #include "base/value_object.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "handle.h"
 #include "instruction_flags.h"
@@ -98,10 +98,10 @@ class MethodVerifier {
                                  std::string* error)
       REQUIRES_SHARED(Locks::mutator_lock_);
   static FailureKind VerifyClass(Thread* self,
-                                 const DexFile* dex_file,
+                                 const IDexFile* dex_file,
                                  Handle<mirror::DexCache> dex_cache,
                                  Handle<mirror::ClassLoader> class_loader,
-                                 const DexFile::ClassDef& class_def,
+                                 const IDexFile::ClassDef& class_def,
                                  CompilerCallbacks* callbacks,
                                  bool allow_soft_failures,
                                  HardFailLogMode log_level,
@@ -111,17 +111,17 @@ class MethodVerifier {
   static MethodVerifier* VerifyMethodAndDump(Thread* self,
                                              VariableIndentationOutputStream* vios,
                                              uint32_t method_idx,
-                                             const DexFile* dex_file,
+                                             const IDexFile* dex_file,
                                              Handle<mirror::DexCache> dex_cache,
                                              Handle<mirror::ClassLoader> class_loader,
-                                             const DexFile::ClassDef& class_def,
-                                             const DexFile::CodeItem* code_item, ArtMethod* method,
+                                             const IDexFile::ClassDef& class_def,
+                                             const IDexFile::CodeItem* code_item, ArtMethod* method,
                                              uint32_t method_access_flags)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   uint8_t EncodePcToReferenceMapData() const;
 
-  const DexFile& GetDexFile() const {
+  const IDexFile& GetDexFile() const {
     DCHECK(dex_file_ != nullptr);
     return *dex_file_;
   }
@@ -186,7 +186,7 @@ class MethodVerifier {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Accessors used by the compiler via CompilerCallback
-  const DexFile::CodeItem* CodeItem() const;
+  const IDexFile::CodeItem* CodeItem() const;
   RegisterLine* GetRegLine(uint32_t dex_pc);
   ALWAYS_INLINE const InstructionFlags& GetInstructionFlags(size_t index) const;
   ALWAYS_INLINE InstructionFlags& GetInstructionFlags(size_t index);
@@ -227,11 +227,11 @@ class MethodVerifier {
 
  private:
   MethodVerifier(Thread* self,
-                 const DexFile* dex_file,
+                 const IDexFile* dex_file,
                  Handle<mirror::DexCache> dex_cache,
                  Handle<mirror::ClassLoader> class_loader,
-                 const DexFile::ClassDef& class_def,
-                 const DexFile::CodeItem* code_item,
+                 const IDexFile::ClassDef& class_def,
+                 const IDexFile::CodeItem* code_item,
                  uint32_t method_idx,
                  ArtMethod* method,
                  uint32_t access_flags,
@@ -276,8 +276,8 @@ class MethodVerifier {
   template <bool kDirect>
   static FailureData VerifyMethods(Thread* self,
                                    ClassLinker* linker,
-                                   const DexFile* dex_file,
-                                   const DexFile::ClassDef& class_def,
+                                   const IDexFile* dex_file,
+                                   const IDexFile::ClassDef& class_def,
                                    ClassDataItemIterator* it,
                                    Handle<mirror::DexCache> dex_cache,
                                    Handle<mirror::ClassLoader> class_loader,
@@ -301,11 +301,11 @@ class MethodVerifier {
    */
   static FailureData VerifyMethod(Thread* self,
                                   uint32_t method_idx,
-                                  const DexFile* dex_file,
+                                  const IDexFile* dex_file,
                                   Handle<mirror::DexCache> dex_cache,
                                   Handle<mirror::ClassLoader> class_loader,
-                                  const DexFile::ClassDef& class_def_idx,
-                                  const DexFile::CodeItem* code_item,
+                                  const IDexFile::ClassDef& class_def_idx,
+                                  const IDexFile::CodeItem* code_item,
                                   ArtMethod* method,
                                   uint32_t method_access_flags,
                                   CompilerCallbacks* callbacks,
@@ -732,13 +732,13 @@ class MethodVerifier {
   ArtMethod* mirror_method_ GUARDED_BY(Locks::mutator_lock_);
   const uint32_t method_access_flags_;  // Method's access flags.
   const RegType* return_type_;  // Lazily computed return type of the method.
-  const DexFile* const dex_file_;  // The dex file containing the method.
+  const IDexFile* const dex_file_;  // The dex file containing the method.
   // The dex_cache for the declaring class of the method.
   Handle<mirror::DexCache> dex_cache_ GUARDED_BY(Locks::mutator_lock_);
   // The class loader for the declaring class of the method.
   Handle<mirror::ClassLoader> class_loader_ GUARDED_BY(Locks::mutator_lock_);
-  const DexFile::ClassDef& class_def_;  // The class def of the declaring class of the method.
-  const DexFile::CodeItem* const code_item_;  // The code item containing the code for the method.
+  const IDexFile::ClassDef& class_def_;  // The class def of the declaring class of the method.
+  const IDexFile::CodeItem* const code_item_;  // The code item containing the code for the method.
   const RegType* declaring_class_;  // Lazily computed reg type of the method's declaring class.
   // Instruction widths and flags, one entry per code unit.
   // Owned, but not unique_ptr since insn_flags_ are allocated in arenas.

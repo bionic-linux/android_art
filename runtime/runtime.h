@@ -75,7 +75,7 @@ class ArtMethod;
 enum class CalleeSaveType: uint32_t;
 class ClassLinker;
 class CompilerCallbacks;
-class DexFile;
+class IDexFile;
 class InternTable;
 class IsMarkedVisitor;
 class JavaVMExt;

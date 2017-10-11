@@ -239,7 +239,7 @@ static constexpr InterpreterImplKind kInterpreterImplKind = kMterpImplKind;
 
 static inline JValue Execute(
     Thread* self,
-    const DexFile::CodeItem* code_item,
+    const IDexFile::CodeItem* code_item,
     ShadowFrame& shadow_frame,
     JValue result_register,
     bool stay_in_interpreter = false) REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -382,7 +382,7 @@ void EnterInterpreterFromInvoke(Thread* self,
   }
 
   const char* old_cause = self->StartAssertNoThreadSuspension("EnterInterpreterFromInvoke");
-  const DexFile::CodeItem* code_item = method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = method->GetCodeItem();
   uint16_t num_regs;
   uint16_t num_ins;
   if (code_item != nullptr) {
@@ -492,7 +492,7 @@ void EnterInterpreterFromDeoptimize(Thread* self,
     DCHECK(!shadow_frame->GetMethod()->MustCountLocks());
 
     self->SetTopOfShadowStack(shadow_frame);
-    const DexFile::CodeItem* code_item = shadow_frame->GetMethod()->GetCodeItem();
+    const IDexFile::CodeItem* code_item = shadow_frame->GetMethod()->GetCodeItem();
     const uint32_t dex_pc = shadow_frame->GetDexPC();
     uint32_t new_dex_pc = dex_pc;
     if (UNLIKELY(self->IsExceptionPending())) {
@@ -575,7 +575,7 @@ void EnterInterpreterFromDeoptimize(Thread* self,
   ret_val->SetJ(value.GetJ());
 }
 
-JValue EnterInterpreterFromEntryPoint(Thread* self, const DexFile::CodeItem* code_item,
+JValue EnterInterpreterFromEntryPoint(Thread* self, const IDexFile::CodeItem* code_item,
                                       ShadowFrame* shadow_frame) {
   DCHECK_EQ(self, Thread::Current());
   bool implicit_check = !Runtime::Current()->ExplicitStackOverflowChecks();
@@ -592,7 +592,7 @@ JValue EnterInterpreterFromEntryPoint(Thread* self, const DexFile::CodeItem* cod
 }
 
 void ArtInterpreterToInterpreterBridge(Thread* self,
-                                       const DexFile::CodeItem* code_item,
+                                       const IDexFile::CodeItem* code_item,
                                        ShadowFrame* shadow_frame,
                                        JValue* result) {
   bool implicit_check = !Runtime::Current()->ExplicitStackOverflowChecks();

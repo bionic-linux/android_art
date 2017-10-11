@@ -36,9 +36,9 @@ Compiler* Compiler::Create(CompilerDriver* driver, Compiler::Kind kind) {
   }
 }
 
-bool Compiler::IsPathologicalCase(const DexFile::CodeItem& code_item,
+bool Compiler::IsPathologicalCase(const IDexFile::CodeItem& code_item,
                                   uint32_t method_idx,
-                                  const DexFile& dex_file) {
+                                  const IDexFile& dex_file) {
   /*
    * Skip compilation for pathologically large methods - either by instruction count or num vregs.
    * Dalvik uses 16-bit uints for instruction and register counts.  We'll limit to a quarter

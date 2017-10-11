@@ -39,7 +39,7 @@
 #include "compiled_method.h"
 #include "debug/elf_debug_writer.h"
 #include "debug/method_debug_info.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "disassembler.h"
 #include "gc/accounting/space_bitmap-inl.h"
@@ -102,16 +102,16 @@ const char* image_roots_descriptions_[] = {
 
 // Map is so that we don't allocate multiple dex files for the same OatDexFile.
 static std::map<const OatFile::OatDexFile*,
-                std::unique_ptr<const DexFile>> opened_dex_files;
+                std::unique_ptr<const IDexFile>> opened_dex_files;
 
-const DexFile* OpenDexFile(const OatFile::OatDexFile* oat_dex_file, std::string* error_msg) {
+const IDexFile* OpenDexFile(const OatFile::OatDexFile* oat_dex_file, std::string* error_msg) {
   DCHECK(oat_dex_file != nullptr);
   auto it = opened_dex_files.find(oat_dex_file);
   if (it != opened_dex_files.end()) {
     return it->second.get();
   }
-  const DexFile* ret = oat_dex_file->OpenDexFile(error_msg).release();
-  opened_dex_files.emplace(oat_dex_file, std::unique_ptr<const DexFile>(ret));
+  const IDexFile* ret = oat_dex_file->OpenDexFile(error_msg).release();
+  opened_dex_files.emplace(oat_dex_file, std::unique_ptr<const IDexFile>(ret));
   return ret;
 }
 
@@ -238,7 +238,7 @@ class OatSymbolizer FINAL {
 
   void WalkOatDexFile(const OatFile::OatDexFile* oat_dex_file) {
     std::string error_msg;
-    const DexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
+    const IDexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
     if (dex_file == nullptr) {
       return;
     }
@@ -262,9 +262,9 @@ class OatSymbolizer FINAL {
   }
 
   void WalkOatClass(const OatFile::OatClass& oat_class,
-                    const DexFile& dex_file,
+                    const IDexFile& dex_file,
                     uint32_t class_def_index) {
-    const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_index);
+    const IDexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_index);
     const uint8_t* class_data = dex_file.GetClassData(class_def);
     if (class_data == nullptr) {  // empty class such as a marker interface?
       return;
@@ -286,10 +286,10 @@ class OatSymbolizer FINAL {
   }
 
   void WalkOatMethod(const OatFile::OatMethod& oat_method,
-                     const DexFile& dex_file,
+                     const IDexFile& dex_file,
                      uint32_t class_def_index,
                      uint32_t dex_method_index,
-                     const DexFile::CodeItem* code_item,
+                     const IDexFile::CodeItem* code_item,
                      uint32_t method_access_flags) {
     if ((method_access_flags & kAccAbstract) != 0) {
       // Abstract method, no code.
@@ -514,7 +514,7 @@ class OatDumper {
       const OatFile::OatDexFile* oat_dex_file = oat_dex_files_[i];
       CHECK(oat_dex_file != nullptr);
       std::string error_msg;
-      const DexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
+      const IDexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
       if (dex_file == nullptr) {
         os << "Failed to open dex file '" << oat_dex_file->GetDexFileLocation() << "': "
            << error_msg;
@@ -542,9 +542,9 @@ class OatDumper {
       VdexFile::Header vdex_header = oat_file_.GetVdexFile()->GetHeader();
       if (vdex_header.IsValid()) {
         std::string error_msg;
-        std::vector<const DexFile*> dex_files;
+        std::vector<const IDexFile*> dex_files;
         for (size_t i = 0; i < oat_dex_files_.size(); i++) {
-          const DexFile* dex_file = OpenDexFile(oat_dex_files_[i], &error_msg);
+          const IDexFile* dex_file = OpenDexFile(oat_dex_files_[i], &error_msg);
           if (dex_file == nullptr) {
             os << "Error opening dex file: " << error_msg << std::endl;
             return false;
@@ -609,13 +609,13 @@ class OatDumper {
       const OatFile::OatDexFile* oat_dex_file = oat_dex_files_[i];
       CHECK(oat_dex_file != nullptr);
       std::string error_msg;
-      const DexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
+      const IDexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
       if (dex_file == nullptr) {
         LOG(WARNING) << "Failed to open dex file '" << oat_dex_file->GetDexFileLocation()
             << "': " << error_msg;
       } else {
         const char* descriptor = m->GetDeclaringClassDescriptor();
-        const DexFile::ClassDef* class_def =
+        const IDexFile::ClassDef* class_def =
             OatDexFile::FindClassDef(*dex_file, descriptor, ComputeModifiedUtf8Hash(descriptor));
         if (class_def != nullptr) {
           uint16_t class_def_index = dex_file->GetIndexForClassDef(*class_def);
@@ -787,7 +787,7 @@ class OatDumper {
       const OatFile::OatDexFile* oat_dex_file = oat_dex_files_[i];
       CHECK(oat_dex_file != nullptr);
       std::string error_msg;
-      const DexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
+      const IDexFile* const dex_file = OpenDexFile(oat_dex_file, &error_msg);
       if (dex_file == nullptr) {
         LOG(WARNING) << "Failed to open dex file '" << oat_dex_file->GetDexFileLocation()
             << "': " << error_msg;
@@ -797,7 +797,7 @@ class OatDumper {
       for (size_t class_def_index = 0;
            class_def_index < dex_file->NumClassDefs();
            class_def_index++) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
         const OatFile::OatClass oat_class = oat_dex_file->GetOatClass(class_def_index);
         const uint8_t* class_data = dex_file->GetClassData(class_def);
         if (class_data != nullptr) {
@@ -840,14 +840,14 @@ class OatDumper {
    public:
     DexFileData() {}
 
-    explicit DexFileData(const DexFile& dex_file)
+    explicit DexFileData(const IDexFile& dex_file)
         : num_string_ids_(dex_file.NumStringIds()),
           num_method_ids_(dex_file.NumMethodIds()),
           num_field_ids_(dex_file.NumFieldIds()),
           num_type_ids_(dex_file.NumTypeIds()),
           num_class_defs_(dex_file.NumClassDefs()) {
       for (size_t class_def_index = 0; class_def_index < num_class_defs_; ++class_def_index) {
-        const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_index);
         WalkClass(dex_file, class_def);
       }
     }
@@ -883,7 +883,7 @@ class OatDumper {
       dest.insert(src.begin(), src.end());
     }
 
-    void WalkClass(const DexFile& dex_file, const DexFile::ClassDef& class_def) {
+    void WalkClass(const IDexFile& dex_file, const IDexFile::ClassDef& class_def) {
       const uint8_t* class_data = dex_file.GetClassData(class_def);
       if (class_data == nullptr) {  // empty class such as a marker interface?
         return;
@@ -901,7 +901,7 @@ class OatDumper {
       DCHECK(!it.HasNext());
     }
 
-    void WalkCodeItem(const DexFile& dex_file, const DexFile::CodeItem* code_item) {
+    void WalkCodeItem(const IDexFile& dex_file, const IDexFile::CodeItem* code_item) {
       if (code_item == nullptr) {
         return;
       }
@@ -971,7 +971,7 @@ class OatDumper {
 
     // Create the dex file early. A lot of print-out things depend on it.
     std::string error_msg;
-    const DexFile* const dex_file = OpenDexFile(&oat_dex_file, &error_msg);
+    const IDexFile* const dex_file = OpenDexFile(&oat_dex_file, &error_msg);
     if (dex_file == nullptr) {
       os << "NOT FOUND: " << error_msg << "\n\n";
       os << std::flush;
@@ -993,7 +993,7 @@ class OatDumper {
     for (size_t class_def_index = 0;
          class_def_index < dex_file->NumClassDefs();
          class_def_index++) {
-      const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+      const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
       const char* descriptor = dex_file->GetClassDescriptor(class_def);
 
       // TODO: Support regex
@@ -1028,7 +1028,7 @@ class OatDumper {
     std::string error_msg;
     std::string dex_file_location = oat_dex_file.GetDexFileLocation();
 
-    const DexFile* const dex_file = OpenDexFile(&oat_dex_file, &error_msg);
+    const IDexFile* const dex_file = OpenDexFile(&oat_dex_file, &error_msg);
     if (dex_file == nullptr) {
       os << "Failed to open dex file '" << dex_file_location << "': " << error_msg;
       return false;
@@ -1036,7 +1036,7 @@ class OatDumper {
     size_t fsize = oat_dex_file.FileSize();
 
     // Some quick checks just in case
-    if (fsize == 0 || fsize < sizeof(DexFile::Header)) {
+    if (fsize == 0 || fsize < sizeof(IDexFile::Header)) {
       os << "Invalid dex file\n";
       return false;
     }
@@ -1105,8 +1105,8 @@ class OatDumper {
   }
 
   bool DumpOatClass(VariableIndentationOutputStream* vios,
-                    const OatFile::OatClass& oat_class, const DexFile& dex_file,
-                    const DexFile::ClassDef& class_def, bool* stop_analysis) {
+                    const OatFile::OatClass& oat_class, const IDexFile& dex_file,
+                    const IDexFile::ClassDef& class_def, bool* stop_analysis) {
     bool success = true;
     bool addr_found = false;
     const uint8_t* class_data = dex_file.GetClassData(class_def);
@@ -1154,10 +1154,10 @@ class OatDumper {
   static constexpr uint32_t kMaxCodeSize = 100 * 1000;
 
   bool DumpOatMethod(VariableIndentationOutputStream* vios,
-                     const DexFile::ClassDef& class_def,
+                     const IDexFile::ClassDef& class_def,
                      uint32_t class_method_index,
-                     const OatFile::OatClass& oat_class, const DexFile& dex_file,
-                     uint32_t dex_method_idx, const DexFile::CodeItem* code_item,
+                     const OatFile::OatClass& oat_class, const IDexFile& dex_file,
+                     uint32_t dex_method_idx, const IDexFile::CodeItem* code_item,
                      uint32_t method_access_flags, bool* addr_found) {
     bool success = true;
 
@@ -1389,7 +1389,7 @@ class OatDumper {
   // Display data stored at the the vmap offset of an oat method.
   void DumpVmapData(VariableIndentationOutputStream* vios,
                     const OatFile::OatMethod& oat_method,
-                    const DexFile::CodeItem* code_item) {
+                    const IDexFile::CodeItem* code_item) {
     if (IsMethodGeneratedByOptimizingCompiler(oat_method, code_item)) {
       // The optimizing compiler outputs its CodeInfo data in the vmap table.
       const void* raw_code_info = oat_method.GetVmapTable();
@@ -1414,7 +1414,7 @@ class OatDumper {
   void DumpCodeInfo(VariableIndentationOutputStream* vios,
                     const CodeInfo& code_info,
                     const OatFile::OatMethod& oat_method,
-                    const DexFile::CodeItem& code_item,
+                    const IDexFile::CodeItem& code_item,
                     const MethodInfo& method_info) {
     code_info.Dump(vios,
                    oat_method.GetCodeOffset(),
@@ -1429,7 +1429,7 @@ class OatDumper {
     return static_cast<size_t>(InstructionSetPointerSize(isa)) + out_num * sizeof(uint32_t);
   }
 
-  static uint32_t GetVRegOffsetFromQuickCode(const DexFile::CodeItem* code_item,
+  static uint32_t GetVRegOffsetFromQuickCode(const IDexFile::CodeItem* code_item,
                                              uint32_t core_spills,
                                              uint32_t fp_spills,
                                              size_t frame_size,
@@ -1473,7 +1473,7 @@ class OatDumper {
   }
 
   void DumpVregLocations(std::ostream& os, const OatFile::OatMethod& oat_method,
-                         const DexFile::CodeItem* code_item) {
+                         const IDexFile::CodeItem* code_item) {
     if (code_item != nullptr) {
       size_t num_locals_ins = code_item->registers_size_;
       size_t num_ins = code_item->ins_size_;
@@ -1513,7 +1513,7 @@ class OatDumper {
     }
   }
 
-  void DumpDexCode(std::ostream& os, const DexFile& dex_file, const DexFile::CodeItem* code_item) {
+  void DumpDexCode(std::ostream& os, const IDexFile& dex_file, const IDexFile::CodeItem* code_item) {
     if (code_item != nullptr) {
       IterationRange<DexInstructionIterator> instructions = code_item->Instructions();
       for (auto it = instructions.begin(); it != instructions.end(); ++it) {
@@ -1527,7 +1527,7 @@ class OatDumper {
   // Has `oat_method` -- corresponding to the Dex `code_item` -- been compiled by
   // the optimizing compiler?
   static bool IsMethodGeneratedByOptimizingCompiler(const OatFile::OatMethod& oat_method,
-                                                    const DexFile::CodeItem* code_item) {
+                                                    const IDexFile::CodeItem* code_item) {
     // If the native GC map is null and the Dex `code_item` is not
     // null, then this method has been compiled with the optimizing
     // compiler.
@@ -1539,7 +1539,7 @@ class OatDumper {
   // Has `oat_method` -- corresponding to the Dex `code_item` -- been compiled by
   // the dextodex compiler?
   static bool IsMethodGeneratedByDexToDexCompiler(const OatFile::OatMethod& oat_method,
-                                                  const DexFile::CodeItem* code_item) {
+                                                  const IDexFile::CodeItem* code_item) {
     // If the quick code is null, the Dex `code_item` is not
     // null, and the vmap table is not null, then this method has been compiled
     // with the dextodex compiler.
@@ -1551,9 +1551,9 @@ class OatDumper {
   verifier::MethodVerifier* DumpVerifier(VariableIndentationOutputStream* vios,
                                          StackHandleScope<1>* hs,
                                          uint32_t dex_method_idx,
-                                         const DexFile* dex_file,
-                                         const DexFile::ClassDef& class_def,
-                                         const DexFile::CodeItem* code_item,
+                                         const IDexFile* dex_file,
+                                         const IDexFile::ClassDef& class_def,
+                                         const IDexFile::CodeItem* code_item,
                                          uint32_t method_access_flags) {
     if ((method_access_flags & kAccNative) == 0) {
       ScopedObjectAccess soa(Thread::Current());
@@ -1662,7 +1662,7 @@ class OatDumper {
   };
 
   void DumpCode(VariableIndentationOutputStream* vios,
-                const OatFile::OatMethod& oat_method, const DexFile::CodeItem* code_item,
+                const OatFile::OatMethod& oat_method, const IDexFile::CodeItem* code_item,
                 bool bad_input, size_t code_size) {
     const void* quick_code = oat_method.GetQuickCode();
 
@@ -2389,7 +2389,7 @@ class ImageDumper {
         }
       }
     } else {
-      const DexFile::CodeItem* code_item = method->GetCodeItem();
+      const IDexFile::CodeItem* code_item = method->GetCodeItem();
       size_t dex_instruction_bytes = code_item->insns_size_in_code_units_ * 2;
       stats_.dex_instruction_bytes += dex_instruction_bytes;
 
@@ -2803,7 +2803,7 @@ static int DumpImages(Runtime* runtime, OatDumperOptions* options, std::ostream*
                  << error_msg;
     }
     // Open dex files for the image.
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     if (!runtime->GetClassLinker()->OpenImageDexFiles(space.get(), &dex_files, &error_msg)) {
       LOG(ERROR) << "Failed to open app image dex files " << options->app_image_ << " with error "
                  << error_msg;
@@ -2829,7 +2829,7 @@ static int DumpImages(Runtime* runtime, OatDumperOptions* options, std::ostream*
 
 static jobject InstallOatFile(Runtime* runtime,
                               std::unique_ptr<OatFile> oat_file,
-                              std::vector<const DexFile*>* class_path)
+                              std::vector<const IDexFile*>* class_path)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   Thread* self = Thread::Current();
   CHECK(self != nullptr);
@@ -2842,7 +2842,7 @@ static jobject InstallOatFile(Runtime* runtime,
   runtime->GetOatFileManager().RegisterOatFile(std::move(oat_file));
   for (const OatFile::OatDexFile* odf : oat_file_ptr->GetOatDexFiles()) {
     std::string error_msg;
-    const DexFile* const dex_file = OpenDexFile(odf, &error_msg);
+    const IDexFile* const dex_file = OpenDexFile(odf, &error_msg);
     CHECK(dex_file != nullptr) << error_msg;
     ObjPtr<mirror::DexCache> dex_cache =
         class_linker->RegisterDexFile(*dex_file, nullptr);
@@ -2868,7 +2868,7 @@ static int DumpOatWithRuntime(Runtime* runtime,
   ScopedObjectAccess soa(Thread::Current());
 
   OatFile* oat_file_ptr = oat_file.get();
-  std::vector<const DexFile*> class_path;
+  std::vector<const IDexFile*> class_path;
   jobject class_loader = InstallOatFile(runtime, std::move(oat_file), &class_path);
 
   // Use the class loader while dumping.
@@ -2960,7 +2960,7 @@ class IMTDumper {
     ScopedObjectAccess soa(self);
     StackHandleScope<1> scope(self);
     MutableHandle<mirror::ClassLoader> class_loader = scope.NewHandle<mirror::ClassLoader>(nullptr);
-    std::vector<const DexFile*> class_path;
+    std::vector<const IDexFile*> class_path;
 
     if (oat_filename != nullptr) {
       std::string error_msg;
@@ -3025,7 +3025,7 @@ class IMTDumper {
   }
 
   static bool DumpImtStats(Runtime* runtime,
-                           const std::vector<const DexFile*>& dex_files,
+                           const std::vector<const IDexFile*>& dex_files,
                            Handle<mirror::ClassLoader> h_class_loader)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     size_t without_imt = 0;
@@ -3040,11 +3040,11 @@ class IMTDumper {
     StackHandleScope<1> scope(self);
     MutableHandle<mirror::Class> h_klass(scope.NewHandle<mirror::Class>(nullptr));
 
-    for (const DexFile* dex_file : dex_files) {
+    for (const IDexFile* dex_file : dex_files) {
       for (uint32_t class_def_index = 0;
            class_def_index != dex_file->NumClassDefs();
            ++class_def_index) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(class_def_index);
         const char* descriptor = dex_file->GetClassDescriptor(class_def);
         h_klass.Assign(class_linker->FindClass(self, descriptor, h_class_loader));
         if (h_klass == nullptr) {

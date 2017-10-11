@@ -19,7 +19,7 @@
 #include "callee_save_frame.h"
 #include "class_linker-inl.h"
 #include "class_table-inl.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "entrypoints/entrypoint_utils-inl.h"
 #include "gc/heap.h"
@@ -35,7 +35,7 @@ namespace art {
 static inline void BssWriteBarrier(ArtMethod* outer_method) REQUIRES_SHARED(Locks::mutator_lock_) {
   // For AOT code, we need a write barrier for the class loader that holds the
   // GC roots in the .bss.
-  const DexFile* dex_file = outer_method->GetDexFile();
+  const IDexFile* dex_file = outer_method->GetDexFile();
   if (dex_file != nullptr &&
       dex_file->GetOatDexFile() != nullptr &&
       !dex_file->GetOatDexFile()->GetOatFile()->GetBssGcRoots().empty()) {

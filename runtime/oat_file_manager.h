@@ -36,7 +36,7 @@ class ImageSpace;
 }  // namespace gc
 
 class ClassLoaderContext;
-class DexFile;
+class IDexFile;
 class OatFile;
 
 // Class for dealing with oat file management.
@@ -95,7 +95,7 @@ class OatFileManager {
   // This method should not be called with the mutator_lock_ held, because it
   // could end up starving GC if we need to generate or relocate any oat
   // files.
-  std::vector<std::unique_ptr<const DexFile>> OpenDexFilesFromOat(
+  std::vector<std::unique_ptr<const IDexFile>> OpenDexFilesFromOat(
       const char* dex_location,
       jobject class_loader,
       jobjectArray dex_elements,

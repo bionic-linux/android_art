@@ -28,7 +28,7 @@
 
 #include "base/stringpiece.h"
 
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_ir.h"
 #include "dex_ir_builder.h"
 #ifdef ART_TARGET_ANDROID
@@ -56,26 +56,26 @@ struct DexSectionInfo {
 };
 
 static const std::map<uint16_t, DexSectionInfo> kDexSectionInfoMap = {
-  { DexFile::kDexTypeHeaderItem, { "Header", 'H' } },
-  { DexFile::kDexTypeStringIdItem, { "StringId", 'S' } },
-  { DexFile::kDexTypeTypeIdItem, { "TypeId", 'T' } },
-  { DexFile::kDexTypeProtoIdItem, { "ProtoId", 'P' } },
-  { DexFile::kDexTypeFieldIdItem, { "FieldId", 'F' } },
-  { DexFile::kDexTypeMethodIdItem, { "MethodId", 'M' } },
-  { DexFile::kDexTypeClassDefItem, { "ClassDef", 'C' } },
-  { DexFile::kDexTypeCallSiteIdItem, { "CallSiteId", 'z' } },
-  { DexFile::kDexTypeMethodHandleItem, { "MethodHandle", 'Z' } },
-  { DexFile::kDexTypeMapList, { "TypeMap", 'L' } },
-  { DexFile::kDexTypeTypeList, { "TypeList", 't' } },
-  { DexFile::kDexTypeAnnotationSetRefList, { "AnnotationSetReferenceItem", '1' } },
-  { DexFile::kDexTypeAnnotationSetItem, { "AnnotationSetItem", '2' } },
-  { DexFile::kDexTypeClassDataItem, { "ClassData", 'c' } },
-  { DexFile::kDexTypeCodeItem, { "CodeItem", 'X' } },
-  { DexFile::kDexTypeStringDataItem, { "StringData", 's' } },
-  { DexFile::kDexTypeDebugInfoItem, { "DebugInfo", 'D' } },
-  { DexFile::kDexTypeAnnotationItem, { "AnnotationItem", '3' } },
-  { DexFile::kDexTypeEncodedArrayItem, { "EncodedArrayItem", 'E' } },
-  { DexFile::kDexTypeAnnotationsDirectoryItem, { "AnnotationsDirectoryItem", '4' } }
+  { IDexFile::kDexTypeHeaderItem, { "Header", 'H' } },
+  { IDexFile::kDexTypeStringIdItem, { "StringId", 'S' } },
+  { IDexFile::kDexTypeTypeIdItem, { "TypeId", 'T' } },
+  { IDexFile::kDexTypeProtoIdItem, { "ProtoId", 'P' } },
+  { IDexFile::kDexTypeFieldIdItem, { "FieldId", 'F' } },
+  { IDexFile::kDexTypeMethodIdItem, { "MethodId", 'M' } },
+  { IDexFile::kDexTypeClassDefItem, { "ClassDef", 'C' } },
+  { IDexFile::kDexTypeCallSiteIdItem, { "CallSiteId", 'z' } },
+  { IDexFile::kDexTypeMethodHandleItem, { "MethodHandle", 'Z' } },
+  { IDexFile::kDexTypeMapList, { "TypeMap", 'L' } },
+  { IDexFile::kDexTypeTypeList, { "TypeList", 't' } },
+  { IDexFile::kDexTypeAnnotationSetRefList, { "AnnotationSetReferenceItem", '1' } },
+  { IDexFile::kDexTypeAnnotationSetItem, { "AnnotationSetItem", '2' } },
+  { IDexFile::kDexTypeClassDataItem, { "ClassData", 'c' } },
+  { IDexFile::kDexTypeCodeItem, { "CodeItem", 'X' } },
+  { IDexFile::kDexTypeStringDataItem, { "StringData", 's' } },
+  { IDexFile::kDexTypeDebugInfoItem, { "DebugInfo", 'D' } },
+  { IDexFile::kDexTypeAnnotationItem, { "AnnotationItem", '3' } },
+  { IDexFile::kDexTypeEncodedArrayItem, { "EncodedArrayItem", 'E' } },
+  { IDexFile::kDexTypeAnnotationsDirectoryItem, { "AnnotationsDirectoryItem", '4' } }
 };
 
 class PageCount {
@@ -188,7 +188,7 @@ static uint16_t FindSectionTypeForPage(size_t page,
   }
   // If there's no non-zero sized section with an offset below offset we're looking for, it
   // must be the header.
-  return DexFile::kDexTypeHeaderItem;
+  return IDexFile::kDexTypeHeaderItem;
 }
 
 static void ProcessPageMap(uint64_t* pagemap,
@@ -264,7 +264,7 @@ static void DisplayDexStatistics(size_t start,
 
 static void ProcessOneDexMapping(uint64_t* pagemap,
                                  uint64_t map_start,
-                                 const DexFile* dex_file,
+                                 const IDexFile* dex_file,
                                  uint64_t vdex_start,
                                  Printer* printer) {
   uint64_t dex_file_start = reinterpret_cast<uint64_t>(dex_file->Begin());
@@ -328,7 +328,7 @@ static bool DisplayMappingIfFromVdexFile(pm_map_t* map, Printer* printer) {
     return false;
   }
 
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   if (!vdex->OpenAllDexFiles(&dex_files, &error_msg)) {
     std::cerr << "Dex files could not be opened for "
               << vdex_name

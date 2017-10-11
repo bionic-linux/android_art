@@ -84,7 +84,7 @@ inline mirror::Class* ClassLinker::ResolveType(dex::TypeIndex type_idx, ArtMetho
     ObjPtr<mirror::Class> declaring_class = referrer->GetDeclaringClass();
     Handle<mirror::DexCache> dex_cache(hs.NewHandle(referrer->GetDexCache()));
     Handle<mirror::ClassLoader> class_loader(hs.NewHandle(declaring_class->GetClassLoader()));
-    const DexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
     resolved_type = ResolveType(dex_file, type_idx, dex_cache, class_loader);
   }
   return resolved_type.Ptr();
@@ -113,7 +113,7 @@ inline bool ClassLinker::CheckInvokeClassMismatch(ObjPtr<mirror::DexCache> dex_c
       break;
     }
     case kDirect:
-      if (dex_cache->GetDexFile()->GetVersion() >= DexFile::kDefaultMethodsVersion) {
+      if (dex_cache->GetDexFile()->GetVersion() >= IDexFile::kDefaultMethodsVersion) {
         break;
       }
       FALLTHROUGH_INTENDED;
@@ -147,8 +147,8 @@ inline bool ClassLinker::CheckInvokeClassMismatch(ObjPtr<mirror::DexCache> dex_c
       dex_cache,
       type,
       [this, dex_cache, method_idx, class_loader]() REQUIRES_SHARED(Locks::mutator_lock_) {
-        const DexFile& dex_file = *dex_cache->GetDexFile();
-        const DexFile::MethodId& method_id = dex_file.GetMethodId(method_idx);
+        const IDexFile& dex_file = *dex_cache->GetDexFile();
+        const IDexFile::MethodId& method_id = dex_file.GetMethodId(method_idx);
         ObjPtr<mirror::Class> klass =
             LookupResolvedType(dex_file, method_id.class_idx_, dex_cache, class_loader);
         DCHECK(klass != nullptr);
@@ -162,8 +162,8 @@ inline ArtMethod* ClassLinker::LookupResolvedMethod(uint32_t method_idx,
   PointerSize pointer_size = image_pointer_size_;
   ArtMethod* resolved = dex_cache->GetResolvedMethod(method_idx, pointer_size);
   if (resolved == nullptr) {
-    const DexFile& dex_file = *dex_cache->GetDexFile();
-    const DexFile::MethodId& method_id = dex_file.GetMethodId(method_idx);
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile::MethodId& method_id = dex_file.GetMethodId(method_idx);
     ObjPtr<mirror::Class> klass = LookupResolvedType(method_id.class_idx_, dex_cache, class_loader);
     if (klass != nullptr) {
       if (klass->IsInterface()) {
@@ -236,7 +236,7 @@ inline ArtMethod* ClassLinker::ResolveMethod(Thread* self,
     StackHandleScope<2> hs(self);
     Handle<mirror::DexCache> h_dex_cache(hs.NewHandle(referrer->GetDexCache()));
     Handle<mirror::ClassLoader> h_class_loader(hs.NewHandle(declaring_class->GetClassLoader()));
-    const DexFile* dex_file = h_dex_cache->GetDexFile();
+    const IDexFile* dex_file = h_dex_cache->GetDexFile();
     resolved_method = ResolveMethod<kResolveMode>(*dex_file,
                                                   method_idx,
                                                   h_dex_cache,
@@ -298,7 +298,7 @@ inline ArtField* ClassLinker::ResolveField(uint32_t field_idx,
     StackHandleScope<2> hs(Thread::Current());
     Handle<mirror::DexCache> dex_cache(hs.NewHandle(referrer->GetDexCache()));
     Handle<mirror::ClassLoader> class_loader(hs.NewHandle(declaring_class->GetClassLoader()));
-    const DexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
     resolved_field = ResolveField(dex_file, field_idx, dex_cache, class_loader, is_static);
     // Note: We cannot check here to see whether we added the field to the cache. The type
     //       might be an erroneous class, which results in it being hidden from us.

@@ -28,7 +28,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 class OatFile;
 
 // Utility class which holds the class loader context used during compilation/verification.
@@ -78,7 +78,7 @@ class ClassLoaderContext {
   // Notes:
   //   1) the objects are not completely set up. Do not use this outside of tests and the compiler.
   //   2) should only be called before the first call to OpenDexFiles().
-  jobject CreateClassLoader(const std::vector<const DexFile*>& compilation_sources) const;
+  jobject CreateClassLoader(const std::vector<const IDexFile*>& compilation_sources) const;
 
   // Encodes the context as a string suitable to be added in oat files.
   // (so that it can be read and verified at runtime against the actual class
@@ -96,7 +96,7 @@ class ClassLoaderContext {
 
   // Flattens the opened dex files into the given vector.
   // Should only be called if OpenDexFiles() returned true.
-  std::vector<const DexFile*> FlattenOpenedDexFiles() const;
+  std::vector<const IDexFile*> FlattenOpenedDexFiles() const;
 
   // Verifies that the current context is identical to the context encoded as `context_spec`.
   // Identical means:
@@ -150,7 +150,7 @@ class ClassLoaderContext {
     // May be empty if the checksums are not given when the context is created.
     std::vector<uint32_t> checksums;
     // After OpenDexFiles is called this holds the opened dex files.
-    std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> opened_dex_files;
     // After OpenDexFiles, in case some of the dex files were opened from their oat files
     // this holds the list of opened oat files.
     std::vector<std::unique_ptr<OatFile>> opened_oat_files;

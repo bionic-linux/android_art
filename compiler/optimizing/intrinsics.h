@@ -25,7 +25,7 @@
 namespace art {
 
 class CompilerDriver;
-class DexFile;
+class IDexFile;
 
 // Positive floating-point infinities.
 static constexpr uint32_t kPositiveInfinityFloat = 0x7f800000U;

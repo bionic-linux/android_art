@@ -409,7 +409,7 @@ TEST_F(OatFileAssistantTest, MultiDexOatUpToDate) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(2u, dex_files.size());
 }
@@ -499,7 +499,7 @@ TEST_F(OatFileAssistantTest, RelativeEncodedDexLocation) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(2u, dex_files.size());
 }
@@ -704,7 +704,7 @@ TEST_F(OatFileAssistantTest, StrippedDexOdexNoOat) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -744,7 +744,7 @@ TEST_F(OatFileAssistantTest, StrippedDexOdexOat) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -822,7 +822,7 @@ TEST_F(OatFileAssistantTest, OdexOatOverlap) {
   ASSERT_TRUE(oat_file.get() != nullptr);
 
   EXPECT_FALSE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -874,7 +874,7 @@ TEST_F(OatFileAssistantTest, LoadOatUpToDate) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -902,7 +902,7 @@ TEST_F(OatFileAssistantTest, LoadExecInterpretOnlyOatUpToDate) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_TRUE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -931,7 +931,7 @@ TEST_F(OatFileAssistantTest, LoadNoExecOatUpToDate) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_FALSE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -1065,7 +1065,7 @@ class RaceGenerateTask : public Task {
   void Run(Thread* self ATTRIBUTE_UNUSED) {
     // Load the dex files, and save a pointer to the loaded oat file, so that
     // we can verify only one oat file was loaded for the dex location.
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     std::vector<std::string> error_msgs;
     const OatFile* oat_file = nullptr;
     dex_files = Runtime::Current()->GetOatFileManager().OpenDexFilesFromOat(
@@ -1146,7 +1146,7 @@ TEST_F(OatFileAssistantNoDex2OatTest, LoadDexOdexNoOat) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_FALSE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(1u, dex_files.size());
 }
@@ -1168,7 +1168,7 @@ TEST_F(OatFileAssistantNoDex2OatTest, LoadMultiDexOdexNoOat) {
   std::unique_ptr<OatFile> oat_file = oat_file_assistant.GetBestOatFile();
   ASSERT_TRUE(oat_file.get() != nullptr);
   EXPECT_FALSE(oat_file->IsExecutable());
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   dex_files = oat_file_assistant.LoadDexFiles(*oat_file, dex_location.c_str());
   EXPECT_EQ(2u, dex_files.size());
 }
@@ -1221,7 +1221,7 @@ TEST(OatFileAssistantUtilsTest, DexLocationToOdexFilename) {
         "/foo/bar/baz_noext", kArm, &odex_file, &error_msg));
 }
 
-// Verify the dexopt status values from dalvik.system.DexFile
+// Verify the dexopt status values from dalvik.system.IDexFile
 // match the OatFileAssistant::DexOptStatus values.
 TEST_F(OatFileAssistantTest, DexOptStatusValues) {
   std::pair<OatFileAssistant::DexOptNeeded, const char*> mapping[] = {
@@ -1236,7 +1236,7 @@ TEST_F(OatFileAssistantTest, DexOptStatusValues) {
   StackHandleScope<1> hs(soa.Self());
   ClassLinker* linker = Runtime::Current()->GetClassLinker();
   Handle<mirror::Class> dexfile(
-      hs.NewHandle(linker->FindSystemClass(soa.Self(), "Ldalvik/system/DexFile;")));
+      hs.NewHandle(linker->FindSystemClass(soa.Self(), "Ldalvik/system/IDexFile;")));
   ASSERT_FALSE(dexfile == nullptr);
   linker->EnsureInitialized(soa.Self(), dexfile, true, true);
 

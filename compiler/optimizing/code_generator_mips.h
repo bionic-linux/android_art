@@ -592,7 +592,7 @@ class CodeGeneratorMIPS : public CodeGenerator {
   //     sw    r2, low(r1)    // patch
   //     b     back
   struct PcRelativePatchInfo {
-    PcRelativePatchInfo(const DexFile& dex_file,
+    PcRelativePatchInfo(const IDexFile& dex_file,
                         uint32_t off_or_idx,
                         const PcRelativePatchInfo* info_high)
         : target_dex_file(dex_file),
@@ -601,7 +601,7 @@ class CodeGeneratorMIPS : public CodeGenerator {
           pc_rel_label(),
           patch_info_high(info_high) { }
 
-    const DexFile& target_dex_file;
+    const IDexFile& target_dex_file;
     // Either the dex cache array element offset or the string/type index.
     uint32_t offset_or_index;
     // Label for the instruction to patch.
@@ -624,16 +624,16 @@ class CodeGeneratorMIPS : public CodeGenerator {
                                                 const PcRelativePatchInfo* info_high = nullptr);
   PcRelativePatchInfo* NewMethodBssEntryPatch(MethodReference target_method,
                                               const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewPcRelativeTypePatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativeTypePatch(const IDexFile& dex_file,
                                               dex::TypeIndex type_index,
                                               const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewTypeBssEntryPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewTypeBssEntryPatch(const IDexFile& dex_file,
                                             dex::TypeIndex type_index,
                                             const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewPcRelativeStringPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativeStringPatch(const IDexFile& dex_file,
                                                 dex::StringIndex string_index,
                                                 const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewStringBssEntryPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewStringBssEntryPatch(const IDexFile& dex_file,
                                               dex::StringIndex string_index,
                                               const PcRelativePatchInfo* info_high = nullptr);
   Literal* DeduplicateBootImageAddressLiteral(uint32_t address);
@@ -644,11 +644,11 @@ class CodeGeneratorMIPS : public CodeGenerator {
 
   // The JitPatchInfo is used for JIT string and class loads.
   struct JitPatchInfo {
-    JitPatchInfo(const DexFile& dex_file, uint64_t idx)
+    JitPatchInfo(const IDexFile& dex_file, uint64_t idx)
         : target_dex_file(dex_file), index(idx) { }
     JitPatchInfo(JitPatchInfo&& other) = default;
 
-    const DexFile& target_dex_file;
+    const IDexFile& target_dex_file;
     // String/type index.
     uint64_t index;
     // Label for the instruction loading the most significant half of the address.
@@ -661,10 +661,10 @@ class CodeGeneratorMIPS : public CodeGenerator {
                        const uint8_t* roots_data,
                        const JitPatchInfo& info,
                        uint64_t index_in_table) const;
-  JitPatchInfo* NewJitRootStringPatch(const DexFile& dex_file,
+  JitPatchInfo* NewJitRootStringPatch(const IDexFile& dex_file,
                                       dex::StringIndex dex_index,
                                       Handle<mirror::String> handle);
-  JitPatchInfo* NewJitRootClassPatch(const DexFile& dex_file,
+  JitPatchInfo* NewJitRootClassPatch(const IDexFile& dex_file,
                                      dex::TypeIndex dex_index,
                                      Handle<mirror::Class> handle);
 
@@ -674,12 +674,12 @@ class CodeGeneratorMIPS : public CodeGenerator {
   using Uint32ToLiteralMap = ArenaSafeMap<uint32_t, Literal*>;
 
   Literal* DeduplicateUint32Literal(uint32_t value, Uint32ToLiteralMap* map);
-  PcRelativePatchInfo* NewPcRelativePatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativePatch(const IDexFile& dex_file,
                                           uint32_t offset_or_index,
                                           const PcRelativePatchInfo* info_high,
                                           ArenaDeque<PcRelativePatchInfo>* patches);
 
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   void EmitPcRelativeLinkerPatches(const ArenaDeque<PcRelativePatchInfo>& infos,
                                    ArenaVector<linker::LinkerPatch>* linker_patches);
 

@@ -40,7 +40,7 @@
 #include "art_method.h"
 #include "base/array_ref.h"
 #include "class_linker.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "gc_root-inl.h"
 #include "globals.h"
 #include "jni_env_ext-inl.h"
@@ -103,7 +103,7 @@ class Redefiner {
    public:
     ClassRedefinition(Redefiner* driver,
                       jclass klass,
-                      const art::DexFile* redefined_dex_file,
+                      const art::IDexFile* redefined_dex_file,
                       const char* class_sig,
                       art::ArrayRef<const unsigned char> orig_dex_file)
       REQUIRES_SHARED(art::Locks::mutator_lock_);
@@ -124,7 +124,7 @@ class Redefiner {
     art::mirror::Class* GetMirrorClass() REQUIRES_SHARED(art::Locks::mutator_lock_);
     art::mirror::ClassLoader* GetClassLoader() REQUIRES_SHARED(art::Locks::mutator_lock_);
 
-    const art::DexFile& GetDexFile() {
+    const art::IDexFile& GetDexFile() {
       return *dex_file_;
     }
 
@@ -184,7 +184,7 @@ class Redefiner {
         REQUIRES(art::Locks::mutator_lock_);
 
     void UpdateMethods(art::ObjPtr<art::mirror::Class> mclass,
-                       const art::DexFile::ClassDef& class_def)
+                       const art::IDexFile::ClassDef& class_def)
         REQUIRES(art::Locks::mutator_lock_);
 
     void UpdateClass(art::ObjPtr<art::mirror::Class> mclass,
@@ -204,7 +204,7 @@ class Redefiner {
    private:
     Redefiner* driver_;
     jclass klass_;
-    std::unique_ptr<const art::DexFile> dex_file_;
+    std::unique_ptr<const art::IDexFile> dex_file_;
     std::string class_sig_;
     art::ArrayRef<const unsigned char> original_dex_file_;
   };

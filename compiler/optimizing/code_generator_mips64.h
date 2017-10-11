@@ -571,7 +571,7 @@ class CodeGeneratorMIPS64 : public CodeGenerator {
   //     sw    r2, low(r1)    // patch
   //     bc    back
   struct PcRelativePatchInfo {
-    PcRelativePatchInfo(const DexFile& dex_file,
+    PcRelativePatchInfo(const IDexFile& dex_file,
                         uint32_t off_or_idx,
                         const PcRelativePatchInfo* info_high)
         : target_dex_file(dex_file),
@@ -579,7 +579,7 @@ class CodeGeneratorMIPS64 : public CodeGenerator {
           label(),
           patch_info_high(info_high) { }
 
-    const DexFile& target_dex_file;
+    const IDexFile& target_dex_file;
     // Either the dex cache array element offset or the string/type/method index.
     uint32_t offset_or_index;
     // Label for the instruction to patch.
@@ -596,16 +596,16 @@ class CodeGeneratorMIPS64 : public CodeGenerator {
                                                 const PcRelativePatchInfo* info_high = nullptr);
   PcRelativePatchInfo* NewMethodBssEntryPatch(MethodReference target_method,
                                               const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewPcRelativeTypePatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativeTypePatch(const IDexFile& dex_file,
                                               dex::TypeIndex type_index,
                                               const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewTypeBssEntryPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewTypeBssEntryPatch(const IDexFile& dex_file,
                                             dex::TypeIndex type_index,
                                             const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewPcRelativeStringPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativeStringPatch(const IDexFile& dex_file,
                                                 dex::StringIndex string_index,
                                                 const PcRelativePatchInfo* info_high = nullptr);
-  PcRelativePatchInfo* NewStringBssEntryPatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewStringBssEntryPatch(const IDexFile& dex_file,
                                               dex::StringIndex string_index,
                                               const PcRelativePatchInfo* info_high = nullptr);
   Literal* DeduplicateBootImageAddressLiteral(uint64_t address);
@@ -618,10 +618,10 @@ class CodeGeneratorMIPS64 : public CodeGenerator {
                        const uint8_t* roots_data,
                        const Literal* literal,
                        uint64_t index_in_table) const;
-  Literal* DeduplicateJitStringLiteral(const DexFile& dex_file,
+  Literal* DeduplicateJitStringLiteral(const IDexFile& dex_file,
                                        dex::StringIndex string_index,
                                        Handle<mirror::String> handle);
-  Literal* DeduplicateJitClassLiteral(const DexFile& dex_file,
+  Literal* DeduplicateJitClassLiteral(const IDexFile& dex_file,
                                       dex::TypeIndex type_index,
                                       Handle<mirror::Class> handle);
 
@@ -638,12 +638,12 @@ class CodeGeneratorMIPS64 : public CodeGenerator {
   Literal* DeduplicateUint32Literal(uint32_t value, Uint32ToLiteralMap* map);
   Literal* DeduplicateUint64Literal(uint64_t value);
 
-  PcRelativePatchInfo* NewPcRelativePatch(const DexFile& dex_file,
+  PcRelativePatchInfo* NewPcRelativePatch(const IDexFile& dex_file,
                                           uint32_t offset_or_index,
                                           const PcRelativePatchInfo* info_high,
                                           ArenaDeque<PcRelativePatchInfo>* patches);
 
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   void EmitPcRelativeLinkerPatches(const ArenaDeque<PcRelativePatchInfo>& infos,
                                    ArenaVector<linker::LinkerPatch>* linker_patches);
 

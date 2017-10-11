@@ -43,7 +43,7 @@ namespace art {
 // forward toward kStatusResolved.
 //
 // kStatusIdx: LoadClass populates with Class with information from
-// the DexFile, moving the status to kStatusIdx, indicating that the
+// the IDexFile, moving the status to kStatusIdx, indicating that the
 // Class value in super_class_ has not been populated. The new Class
 // can then be inserted into the classes table.
 //

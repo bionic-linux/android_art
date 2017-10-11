@@ -26,7 +26,7 @@ typedef int8_t int4_t;
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 enum {
   kNumPackedOpcodes = 0x100
@@ -621,7 +621,7 @@ class Instruction {
   }
 
   // Dump decoded version of instruction
-  std::string DumpString(const DexFile*) const;
+  std::string DumpString(const IDexFile*) const;
 
   // Dump code_units worth of this instruction, padding to code_units for shorter instructions
   std::string DumpHex(size_t code_units) const;

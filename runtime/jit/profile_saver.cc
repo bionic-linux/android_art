@@ -414,7 +414,7 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods(bool startup) {
 
     const std::set<std::string>& locations = it.second;
     for (const auto& pair : hot_methods.GetMap()) {
-      const DexFile* const dex_file = pair.first;
+      const IDexFile* const dex_file = pair.first;
       const std::string base_location = DexFileLoader::GetBaseLocation(dex_file->GetLocation());
       if (locations.find(base_location) != locations.end()) {
         const MethodReferenceCollection::IndexVector& indices = pair.second;
@@ -428,7 +428,7 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods(bool startup) {
       }
     }
     for (const auto& pair : sampled_methods.GetMap()) {
-      const DexFile* const dex_file = pair.first;
+      const IDexFile* const dex_file = pair.first;
       const std::string base_location = DexFileLoader::GetBaseLocation(dex_file->GetLocation());
       if (locations.find(base_location) != locations.end()) {
         const MethodReferenceCollection::IndexVector& indices = pair.second;
@@ -439,7 +439,7 @@ void ProfileSaver::FetchAndCacheResolvedClassesAndMethods(bool startup) {
       }
     }
     for (const auto& pair : resolved_classes.GetMap()) {
-      const DexFile* const dex_file = pair.first;
+      const IDexFile* const dex_file = pair.first;
       const std::string base_location = DexFileLoader::GetBaseLocation(dex_file->GetLocation());
       if (locations.find(base_location) != locations.end()) {
         const TypeReferenceCollection::IndexVector& classes = pair.second;
@@ -637,7 +637,7 @@ void ProfileSaver::Start(const ProfileSaverOptions& options,
     for (const std::string& location : code_paths) {
       code_paths_keys.insert(ProfileCompilationInfo::GetProfileDexFileKey(location));
     }
-    for (const DexFile* dex_file : runtime->GetClassLinker()->GetBootClassPath()) {
+    for (const IDexFile* dex_file : runtime->GetClassLinker()->GetBootClassPath()) {
       // Don't check ShouldProfileLocation since the boot class path may be speed compiled.
       const std::string& location = dex_file->GetLocation();
       const std::string key = ProfileCompilationInfo::GetProfileDexFileKey(location);

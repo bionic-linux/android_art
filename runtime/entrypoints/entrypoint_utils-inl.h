@@ -24,7 +24,7 @@
 #include "base/enums.h"
 #include "class_linker-inl.h"
 #include "common_throws.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "entrypoints/quick/callee_save_frame.h"
 #include "handle_scope-inl.h"
 #include "imt_conflict_table.h"
@@ -81,8 +81,8 @@ inline ArtMethod* GetResolvedMethod(ArtMethod* outer_method,
 
   // Lookup the declaring class of the inlined method.
   ObjPtr<mirror::DexCache> dex_cache = caller->GetDexCache();
-  const DexFile* dex_file = dex_cache->GetDexFile();
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(method_index);
+  const IDexFile* dex_file = dex_cache->GetDexFile();
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(method_index);
   ArtMethod* inlined_method = dex_cache->GetResolvedMethod(method_index, kRuntimePointerSize);
   if (inlined_method != nullptr) {
     DCHECK(!inlined_method->IsRuntimeMethod());
@@ -757,7 +757,7 @@ static inline mirror::String* ResolveString(ClassLinker* class_linker,
   if (UNLIKELY(string == nullptr)) {
     StackHandleScope<1> hs(Thread::Current());
     Handle<mirror::DexCache> dex_cache(hs.NewHandle(referrer->GetDexCache()));
-    const DexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
     string = class_linker->ResolveString(dex_file, string_idx, dex_cache);
   }
   return string.Ptr();
@@ -769,7 +769,7 @@ inline mirror::String* ResolveStringFromCode(ArtMethod* referrer, dex::StringInd
   if (UNLIKELY(string == nullptr)) {
     StackHandleScope<1> hs(Thread::Current());
     Handle<mirror::DexCache> dex_cache(hs.NewHandle(referrer->GetDexCache()));
-    const DexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
     string = class_linker->ResolveString(dex_file, string_idx, dex_cache);
   }

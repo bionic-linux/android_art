@@ -23,7 +23,7 @@
 #include "base/enums.h"
 #include "class_linker-inl.h"
 #include "common_throws.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "jni_internal.h"
 #include "mirror/class-inl.h"
@@ -128,7 +128,7 @@ static jobjectArray Class_getInterfacesInternal(JNIEnv* env, jobject javaThis) {
     return soa.AddLocalReference<jobjectArray>(klass->GetProxyInterfaces()->Clone(soa.Self()));
   }
 
-  const DexFile::TypeList* iface_list = klass->GetInterfaceTypeList();
+  const IDexFile::TypeList* iface_list = klass->GetInterfaceTypeList();
   if (iface_list == nullptr) {
     return nullptr;
   }

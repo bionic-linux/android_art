@@ -19,14 +19,14 @@
 
 #include <iosfwd>
 
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace art {
 
 class OatDexFile;
 
 // Native (ordinary) dex file. This is the format that is packaged in APKs and produced by tools.
-class NativeDexFile : public DexFile {
+class NativeDexFile : public IDexFile {
  public:
   static const uint8_t kDexMagic[kDexMagicSize];
   static constexpr size_t kNumDexVersions = 4;
@@ -46,7 +46,7 @@ class NativeDexFile : public DexFile {
                 const std::string& location,
                 uint32_t location_checksum,
                 const OatDexFile* oat_dex_file)
-      : DexFile(base, size, location, location_checksum, oat_dex_file) {}
+      : IDexFile(base, size, location, location_checksum, oat_dex_file) {}
 
   friend class DexFileLoader;
   friend class DexFileVerifierTest;

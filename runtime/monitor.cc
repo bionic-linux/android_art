@@ -26,7 +26,7 @@
 #include "base/systrace.h"
 #include "base/time_utils.h"
 #include "class_linker.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "dex_instruction-inl.h"
 #include "lock_word-inl.h"
@@ -1335,7 +1335,7 @@ void Monitor::VisitLocks(StackVisitor* stack_visitor, void (*callback)(mirror::O
   }
 
   // Is there any reason to believe there's any synchronization in this method?
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   CHECK(code_item != nullptr) << m->PrettyMethod();
   if (code_item->tries_size_ == 0) {
     return;  // No "tries" implies no synchronization, so no held locks to report.

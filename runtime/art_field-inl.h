@@ -21,7 +21,7 @@
 
 #include "base/logging.h"
 #include "class_linker.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc_root-inl.h"
 #include "jvalue.h"
@@ -273,7 +273,7 @@ inline const char* ArtField::GetName() REQUIRES_SHARED(Locks::mutator_lock_) {
     DCHECK_LT(field_index, 2U);
     return field_index == 0 ? "interfaces" : "throws";
   }
-  const DexFile* dex_file = GetDexFile();
+  const IDexFile* dex_file = GetDexFile();
   return dex_file->GetFieldName(dex_file->GetFieldId(field_index));
 }
 
@@ -285,8 +285,8 @@ inline const char* ArtField::GetTypeDescriptor() REQUIRES_SHARED(Locks::mutator_
     // 0 == Class[] interfaces; 1 == Class[][] throws;
     return field_index == 0 ? "[Ljava/lang/Class;" : "[[Ljava/lang/Class;";
   }
-  const DexFile* dex_file = GetDexFile();
-  const DexFile::FieldId& field_id = dex_file->GetFieldId(field_index);
+  const IDexFile* dex_file = GetDexFile();
+  const IDexFile::FieldId& field_id = dex_file->GetFieldId(field_index);
   return dex_file->GetFieldTypeDescriptor(field_id);
 }
 
@@ -309,8 +309,8 @@ inline ObjPtr<mirror::Class> ArtField::GetType() {
     return ProxyFindSystemClass(GetTypeDescriptor());
   }
   auto* dex_cache = declaring_class->GetDexCache();
-  const DexFile* const dex_file = dex_cache->GetDexFile();
-  const DexFile::FieldId& field_id = dex_file->GetFieldId(field_index);
+  const IDexFile* const dex_file = dex_cache->GetDexFile();
+  const IDexFile::FieldId& field_id = dex_file->GetFieldId(field_index);
   ObjPtr<mirror::Class> type = dex_cache->GetResolvedType(field_id.type_idx_);
   if (UNLIKELY(type == nullptr)) {
     ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
@@ -334,7 +334,7 @@ inline ObjPtr<mirror::DexCache> ArtField::GetDexCache() REQUIRES_SHARED(Locks::m
   return GetDeclaringClass()->GetDexCache();
 }
 
-inline const DexFile* ArtField::GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_) {
+inline const IDexFile* ArtField::GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_) {
   return GetDexCache()->GetDexFile();
 }
 

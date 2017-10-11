@@ -21,7 +21,7 @@
 
 #include <type_traits>
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "class_reference.h"
 #include "method_reference.h"
 #include "type_reference.h"
@@ -30,7 +30,7 @@ namespace art {
 
 template <typename DexFileReferenceType, typename Value>
 inline size_t AtomicDexRefMap<DexFileReferenceType, Value>::NumberOfDexIndices(
-    const DexFile* dex_file) {
+    const IDexFile* dex_file) {
   // TODO: Use specialization for this? Not sure if worth it.
   static_assert(std::is_same<DexFileReferenceType, MethodReference>::value ||
                 std::is_same<DexFileReferenceType, ClassReference>::value ||
@@ -75,14 +75,14 @@ inline bool AtomicDexRefMap<DexFileReferenceType, Value>::Get(const DexFileRefer
 }
 
 template <typename DexFileReferenceType, typename Value>
-inline void AtomicDexRefMap<DexFileReferenceType, Value>::AddDexFile(const DexFile* dex_file) {
+inline void AtomicDexRefMap<DexFileReferenceType, Value>::AddDexFile(const IDexFile* dex_file) {
   arrays_.Put(dex_file, std::move(ElementArray(NumberOfDexIndices(dex_file))));
 }
 
 template <typename DexFileReferenceType, typename Value>
 inline void AtomicDexRefMap<DexFileReferenceType, Value>::AddDexFiles(
-    const std::vector<const DexFile*>& dex_files) {
-  for (const DexFile* dex_file : dex_files) {
+    const std::vector<const IDexFile*>& dex_files) {
+  for (const IDexFile* dex_file : dex_files) {
     if (!HaveDexFile(dex_file)) {
       AddDexFile(dex_file);
     }
@@ -91,14 +91,14 @@ inline void AtomicDexRefMap<DexFileReferenceType, Value>::AddDexFiles(
 
 template <typename DexFileReferenceType, typename Value>
 inline typename AtomicDexRefMap<DexFileReferenceType, Value>::ElementArray*
-    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) {
+    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const IDexFile* dex_file) {
   auto it = arrays_.find(dex_file);
   return (it != arrays_.end()) ? &it->second : nullptr;
 }
 
 template <typename DexFileReferenceType, typename Value>
 inline const typename AtomicDexRefMap<DexFileReferenceType, Value>::ElementArray*
-    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const DexFile* dex_file) const {
+    AtomicDexRefMap<DexFileReferenceType, Value>::GetArray(const IDexFile* dex_file) const {
   auto it = arrays_.find(dex_file);
   return (it != arrays_.end()) ? &it->second : nullptr;
 }
@@ -106,7 +106,7 @@ inline const typename AtomicDexRefMap<DexFileReferenceType, Value>::ElementArray
 template <typename DexFileReferenceType, typename Value> template <typename Visitor>
 inline void AtomicDexRefMap<DexFileReferenceType, Value>::Visit(const Visitor& visitor) {
   for (auto& pair : arrays_) {
-    const DexFile* dex_file = pair.first;
+    const IDexFile* dex_file = pair.first;
     const ElementArray& elements = pair.second;
     for (size_t i = 0; i < elements.size(); ++i) {
       visitor(DexFileReference(dex_file, i), elements[i].LoadRelaxed());

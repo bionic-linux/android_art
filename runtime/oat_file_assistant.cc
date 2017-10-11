@@ -318,20 +318,20 @@ std::string OatFileAssistant::GetStatusDump() {
   return status.str();
 }
 
-std::vector<std::unique_ptr<const DexFile>> OatFileAssistant::LoadDexFiles(
+std::vector<std::unique_ptr<const IDexFile>> OatFileAssistant::LoadDexFiles(
     const OatFile &oat_file, const char *dex_location) {
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   if (LoadDexFiles(oat_file, dex_location, &dex_files)) {
     return dex_files;
   } else {
-    return std::vector<std::unique_ptr<const DexFile>>();
+    return std::vector<std::unique_ptr<const IDexFile>>();
   }
 }
 
 bool OatFileAssistant::LoadDexFiles(
     const OatFile &oat_file,
     const std::string& dex_location,
-    std::vector<std::unique_ptr<const DexFile>>* out_dex_files) {
+    std::vector<std::unique_ptr<const IDexFile>>* out_dex_files) {
   // Load the main dex file.
   std::string error_msg;
   const OatFile::OatDexFile* oat_dex_file = oat_file.GetOatDexFile(
@@ -341,7 +341,7 @@ bool OatFileAssistant::LoadDexFiles(
     return false;
   }
 
-  std::unique_ptr<const DexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
+  std::unique_ptr<const IDexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
   if (dex_file.get() == nullptr) {
     LOG(WARNING) << "Failed to open dex file from oat dex file: " << error_msg;
     return false;

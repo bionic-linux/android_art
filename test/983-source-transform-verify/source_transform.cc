@@ -28,7 +28,7 @@
 #include "base/logging.h"
 #include "base/macros.h"
 #include "bytecode_utils.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_loader.h"
 #include "dex_instruction.h"
 #include "jit/jit.h"
@@ -67,7 +67,7 @@ void JNICALL CheckDexFileHook(jvmtiEnv* jvmti_env ATTRIBUTE_UNUSED,
     return;
   }
   std::string error;
-  std::unique_ptr<const DexFile> dex(DexFileLoader::Open(class_data,
+  std::unique_ptr<const IDexFile> dex(DexFileLoader::Open(class_data,
                                                          class_data_len,
                                                          "fake_location.dex",
                                                          /*location_checksum*/ 0,
@@ -80,7 +80,7 @@ void JNICALL CheckDexFileHook(jvmtiEnv* jvmti_env ATTRIBUTE_UNUSED,
     return;
   }
   for (uint32_t i = 0; i < dex->NumClassDefs(); i++) {
-    const DexFile::ClassDef& def = dex->GetClassDef(i);
+    const IDexFile::ClassDef& def = dex->GetClassDef(i);
     const uint8_t* data_item = dex->GetClassData(def);
     if (data_item == nullptr) {
       continue;

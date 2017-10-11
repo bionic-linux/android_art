@@ -897,7 +897,7 @@ void Runtime::StartDaemonThreads() {
 // and open it to get the stored dex file. If the image is the first for a multi-image boot
 // classpath, go on and also open the other images.
 static bool OpenDexFilesFromImage(const std::string& image_location,
-                                  std::vector<std::unique_ptr<const DexFile>>* dex_files,
+                                  std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                                   size_t* failures) {
   DCHECK(dex_files != nullptr) << "OpenDexFilesFromImage: out-param is nullptr";
 
@@ -977,7 +977,7 @@ static bool OpenDexFilesFromImage(const std::string& image_location,
         *failures += 1;
         continue;
       }
-      std::unique_ptr<const DexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
+      std::unique_ptr<const IDexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
       if (dex_file.get() == nullptr) {
         *failures += 1;
       } else {
@@ -1005,7 +1005,7 @@ static bool OpenDexFilesFromImage(const std::string& image_location,
 static size_t OpenDexFiles(const std::vector<std::string>& dex_filenames,
                            const std::vector<std::string>& dex_locations,
                            const std::string& image_location,
-                           std::vector<std::unique_ptr<const DexFile>>* dex_files) {
+                           std::vector<std::unique_ptr<const IDexFile>>* dex_files) {
   DCHECK(dex_files != nullptr) << "OpenDexFiles: out-param is nullptr";
   size_t failure_count = 0;
   if (!image_location.empty() && OpenDexFilesFromImage(image_location, dex_files, &failure_count)) {
@@ -1318,10 +1318,10 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
     }
     if (boot_class_path_string_.empty()) {
       // The bootclasspath is not explicitly specified: construct it from the loaded dex files.
-      const std::vector<const DexFile*>& boot_class_path = GetClassLinker()->GetBootClassPath();
+      const std::vector<const IDexFile*>& boot_class_path = GetClassLinker()->GetBootClassPath();
       std::vector<std::string> dex_locations;
       dex_locations.reserve(boot_class_path.size());
-      for (const DexFile* dex_file : boot_class_path) {
+      for (const IDexFile* dex_file : boot_class_path) {
         dex_locations.push_back(dex_file->GetLocation());
       }
       boot_class_path_string_ = android::base::Join(dex_locations, ':');
@@ -1347,7 +1347,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
       CHECK_EQ(dex_filenames.size(), dex_locations.size());
     }
 
-    std::vector<std::unique_ptr<const DexFile>> boot_class_path;
+    std::vector<std::unique_ptr<const IDexFile>> boot_class_path;
     if (runtime_options.Exists(Opt::BootClassPathDexList)) {
       boot_class_path.swap(*runtime_options.GetOrDefault(Opt::BootClassPathDexList));
     } else {

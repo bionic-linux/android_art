@@ -37,7 +37,7 @@
 #include "art_method.h"
 #include "base/array_ref.h"
 #include "class_linker.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "events-inl.h"
 #include "gc_root-inl.h"
@@ -144,7 +144,7 @@ jvmtiError GetClassLocation(ArtJvmTiEnv* env, jclass klass, /*out*/std::string* 
   art::ScopedObjectAccess soa(jni_env);
   art::StackHandleScope<1> hs(art::Thread::Current());
   art::Handle<art::mirror::Class> hs_klass(hs.NewHandle(soa.Decode<art::mirror::Class>(klass)));
-  const art::DexFile& dex = hs_klass->GetDexFile();
+  const art::IDexFile& dex = hs_klass->GetDexFile();
   *location = dex.GetLocation();
   return OK;
 }

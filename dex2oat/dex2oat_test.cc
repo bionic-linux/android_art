@@ -32,7 +32,7 @@
 #include "bytecode_utils.h"
 #include "dex2oat_environment_test.h"
 #include "dex2oat_return_codes.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "jit/profile_compilation_info.h"
 #include "oat.h"
@@ -551,7 +551,7 @@ class Dex2oatVeryLargeTest : public Dex2oatTest {
       // store cannot be changed, and the original filter is set in stone.
 
       for (const OatDexFile* oat_dex_file : odex_file->GetOatDexFiles()) {
-        std::unique_ptr<const DexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
+        std::unique_ptr<const IDexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
         ASSERT_TRUE(dex_file != nullptr);
         uint32_t class_def_count = dex_file->NumClassDefs();
         ASSERT_LT(class_def_count, std::numeric_limits<uint16_t>::max());
@@ -677,10 +677,10 @@ class Dex2oatLayoutTest : public Dex2oatTest {
     const std::string profile_location = GetScratchDir() + "/primary.prof";
     const char* location = dex_location.c_str();
     std::string error_msg;
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     ASSERT_TRUE(DexFileLoader::Open(location, location, true, &error_msg, &dex_files));
     EXPECT_EQ(dex_files.size(), 1U);
-    std::unique_ptr<const DexFile>& dex_file = dex_files[0];
+    std::unique_ptr<const IDexFile>& dex_file = dex_files[0];
     GenerateProfile(profile_location,
                     dex_location,
                     num_profile_classes,
@@ -811,13 +811,13 @@ class Dex2oatLayoutTest : public Dex2oatTest {
     ASSERT_TRUE(odex_file.get() != nullptr) << error_msg;
 
     const char* location = dex_location.c_str();
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> dex_files;
     ASSERT_TRUE(DexFileLoader::Open(location, location, true, &error_msg, &dex_files));
     EXPECT_EQ(dex_files.size(), 1U);
-    std::unique_ptr<const DexFile>& old_dex_file = dex_files[0];
+    std::unique_ptr<const IDexFile>& old_dex_file = dex_files[0];
 
     for (const OatDexFile* oat_dex_file : odex_file->GetOatDexFiles()) {
-      std::unique_ptr<const DexFile> new_dex_file = oat_dex_file->OpenDexFile(&error_msg);
+      std::unique_ptr<const IDexFile> new_dex_file = oat_dex_file->OpenDexFile(&error_msg);
       ASSERT_TRUE(new_dex_file != nullptr);
       uint32_t class_def_count = new_dex_file->NumClassDefs();
       ASSERT_LT(class_def_count, std::numeric_limits<uint16_t>::max());
@@ -929,9 +929,9 @@ class Dex2oatUnquickenTest : public Dex2oatTest {
 
     // Iterate over the dex files and ensure there is no quickened instruction.
     for (const OatDexFile* oat_dex_file : odex_file->GetOatDexFiles()) {
-      std::unique_ptr<const DexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
+      std::unique_ptr<const IDexFile> dex_file = oat_dex_file->OpenDexFile(&error_msg);
       for (uint32_t i = 0; i < dex_file->NumClassDefs(); ++i) {
-        const DexFile::ClassDef& class_def = dex_file->GetClassDef(i);
+        const IDexFile::ClassDef& class_def = dex_file->GetClassDef(i);
         const uint8_t* class_data = dex_file->GetClassData(class_def);
         if (class_data != nullptr) {
           for (ClassDataItemIterator class_it(*dex_file, class_data);
@@ -1082,7 +1082,7 @@ TEST_F(Dex2oatClassLoaderContextTest, ContextWithTheSourceDexFiles) {
 }
 
 TEST_F(Dex2oatClassLoaderContextTest, ContextWithOtherDexFiles) {
-  std::vector<std::unique_ptr<const DexFile>> dex_files = OpenTestDexFiles("Nested");
+  std::vector<std::unique_ptr<const IDexFile>> dex_files = OpenTestDexFiles("Nested");
 
   std::string context = "PCL[" + dex_files[0]->GetLocation() + "]";
   std::string expected_classpath_key = "PCL[" +
@@ -1120,7 +1120,7 @@ TEST_F(Dex2oatClassLoaderContextTest, ContextWithStrippedDexFilesBackedByOdex) {
     // Open the oat file to get the expected classpath.
     OatFileAssistant oat_file_assistant(stripped_classpath.c_str(), kRuntimeISA, false);
     std::unique_ptr<OatFile> oat_file(oat_file_assistant.GetBestOatFile());
-    std::vector<std::unique_ptr<const DexFile>> oat_dex_files =
+    std::vector<std::unique_ptr<const IDexFile>> oat_dex_files =
         OatFileAssistant::LoadDexFiles(*oat_file, stripped_classpath.c_str());
     expected_classpath_key = "PCL[";
     for (size_t i = 0; i < oat_dex_files.size(); i++) {
@@ -1146,8 +1146,8 @@ TEST_F(Dex2oatClassLoaderContextTest, ContextWithNotExistentDexFiles) {
 }
 
 TEST_F(Dex2oatClassLoaderContextTest, ChainContext) {
-  std::vector<std::unique_ptr<const DexFile>> dex_files1 = OpenTestDexFiles("Nested");
-  std::vector<std::unique_ptr<const DexFile>> dex_files2 = OpenTestDexFiles("MultiDex");
+  std::vector<std::unique_ptr<const IDexFile>> dex_files1 = OpenTestDexFiles("Nested");
+  std::vector<std::unique_ptr<const IDexFile>> dex_files2 = OpenTestDexFiles("MultiDex");
 
   std::string context = "PCL[" + GetTestDexFileName("Nested") + "];" +
       "DLC[" + GetTestDexFileName("MultiDex") + "]";
@@ -1229,15 +1229,15 @@ TEST_F(Dex2oatDeterminism, UnloadCompile) {
 // compilation.
 TEST_F(Dex2oatTest, LayoutSections) {
   using Hotness = ProfileCompilationInfo::MethodHotness;
-  std::unique_ptr<const DexFile> dex(OpenTestDexFile("ManyMethods"));
+  std::unique_ptr<const IDexFile> dex(OpenTestDexFile("ManyMethods"));
   ScratchFile profile_file;
   // We can only layout method indices with code items, figure out which ones have this property
   // first.
   std::vector<uint16_t> methods;
   {
-    const DexFile::TypeId* type_id = dex->FindTypeId("LManyMethods;");
+    const IDexFile::TypeId* type_id = dex->FindTypeId("LManyMethods;");
     dex::TypeIndex type_idx = dex->GetIndexForTypeId(*type_id);
-    const DexFile::ClassDef* class_def = dex->FindClassDef(type_idx);
+    const IDexFile::ClassDef* class_def = dex->FindClassDef(type_idx);
     ClassDataItemIterator it(*dex, dex->GetClassData(*class_def));
     it.SkipAllFields();
     std::set<size_t> code_item_offsets;
@@ -1336,12 +1336,12 @@ TEST_F(Dex2oatTest, LayoutSections) {
 
     // Open the dex file since we need to peek at the code items to verify the layout matches what
     // we expect.
-    std::unique_ptr<const DexFile> dex_file(oat_dex->OpenDexFile(&error_msg));
+    std::unique_ptr<const IDexFile> dex_file(oat_dex->OpenDexFile(&error_msg));
     ASSERT_TRUE(dex_file != nullptr) << error_msg;
-    const DexFile::TypeId* type_id = dex_file->FindTypeId("LManyMethods;");
+    const IDexFile::TypeId* type_id = dex_file->FindTypeId("LManyMethods;");
     ASSERT_TRUE(type_id != nullptr);
     dex::TypeIndex type_idx = dex_file->GetIndexForTypeId(*type_id);
-    const DexFile::ClassDef* class_def = dex_file->FindClassDef(type_idx);
+    const IDexFile::ClassDef* class_def = dex_file->FindClassDef(type_idx);
     ASSERT_TRUE(class_def != nullptr);
 
     // Count how many code items are for each category, there should be at least one per category.

@@ -120,7 +120,7 @@ class InternTable {
   void BroadcastForNewInterns();
 
   // Adds all of the resolved image strings from the image spaces into the intern table. The
-  // advantage of doing this is preventing expensive DexFile::FindStringId calls. Sets
+  // advantage of doing this is preventing expensive IDexFile::FindStringId calls. Sets
   // images_added_to_intern_table_ to true.
   void AddImagesStringsToTable(const std::vector<gc::space::ImageSpace*>& image_spaces)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Locks::intern_table_lock_);

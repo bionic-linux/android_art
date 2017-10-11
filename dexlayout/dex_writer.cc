@@ -130,59 +130,59 @@ size_t DexWriter::WriteEncodedValue(dex_ir::EncodedValue* encoded_value, size_t 
   uint8_t buffer[8];
   int8_t type = encoded_value->Type();
   switch (type) {
-    case DexFile::kDexAnnotationByte:
+    case IDexFile::kDexAnnotationByte:
       length = EncodeIntValue(encoded_value->GetByte(), buffer);
       break;
-    case DexFile::kDexAnnotationShort:
+    case IDexFile::kDexAnnotationShort:
       length = EncodeIntValue(encoded_value->GetShort(), buffer);
       break;
-    case DexFile::kDexAnnotationChar:
+    case IDexFile::kDexAnnotationChar:
       length = EncodeUIntValue(encoded_value->GetChar(), buffer);
       break;
-    case DexFile::kDexAnnotationInt:
+    case IDexFile::kDexAnnotationInt:
       length = EncodeIntValue(encoded_value->GetInt(), buffer);
       break;
-    case DexFile::kDexAnnotationLong:
+    case IDexFile::kDexAnnotationLong:
       length = EncodeLongValue(encoded_value->GetLong(), buffer);
       break;
-    case DexFile::kDexAnnotationFloat:
+    case IDexFile::kDexAnnotationFloat:
       length = EncodeFloatValue(encoded_value->GetFloat(), buffer);
       start = 4 - length;
       break;
-    case DexFile::kDexAnnotationDouble:
+    case IDexFile::kDexAnnotationDouble:
       length = EncodeDoubleValue(encoded_value->GetDouble(), buffer);
       start = 8 - length;
       break;
-    case DexFile::kDexAnnotationMethodType:
+    case IDexFile::kDexAnnotationMethodType:
       length = EncodeUIntValue(encoded_value->GetProtoId()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationMethodHandle:
+    case IDexFile::kDexAnnotationMethodHandle:
       length = EncodeUIntValue(encoded_value->GetMethodHandle()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationString:
+    case IDexFile::kDexAnnotationString:
       length = EncodeUIntValue(encoded_value->GetStringId()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationType:
+    case IDexFile::kDexAnnotationType:
       length = EncodeUIntValue(encoded_value->GetTypeId()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationField:
-    case DexFile::kDexAnnotationEnum:
+    case IDexFile::kDexAnnotationField:
+    case IDexFile::kDexAnnotationEnum:
       length = EncodeUIntValue(encoded_value->GetFieldId()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationMethod:
+    case IDexFile::kDexAnnotationMethod:
       length = EncodeUIntValue(encoded_value->GetMethodId()->GetIndex(), buffer);
       break;
-    case DexFile::kDexAnnotationArray:
+    case IDexFile::kDexAnnotationArray:
       offset += WriteEncodedValueHeader(type, 0, offset);
       offset += WriteEncodedArray(encoded_value->GetEncodedArray()->GetEncodedValues(), offset);
       return offset - original_offset;
-    case DexFile::kDexAnnotationAnnotation:
+    case IDexFile::kDexAnnotationAnnotation:
       offset += WriteEncodedValueHeader(type, 0, offset);
       offset += WriteEncodedAnnotation(encoded_value->GetEncodedAnnotation(), offset);
       return offset - original_offset;
-    case DexFile::kDexAnnotationNull:
+    case IDexFile::kDexAnnotationNull:
       return WriteEncodedValueHeader(type, 0, offset);
-    case DexFile::kDexAnnotationBoolean:
+    case IDexFile::kDexAnnotationBoolean:
       return WriteEncodedValueHeader(type, encoded_value->GetBoolean() ? 1 : 0, offset);
     default:
       return 0;
@@ -532,80 +532,80 @@ void DexWriter::WriteMapItem() {
   std::priority_queue<MapItemContainer> queue;
 
   // Header and index section.
-  queue.push(MapItemContainer(DexFile::kDexTypeHeaderItem, 1, 0));
+  queue.push(MapItemContainer(IDexFile::kDexTypeHeaderItem, 1, 0));
   if (collection.StringIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeStringIdItem, collection.StringIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeStringIdItem, collection.StringIdsSize(),
         collection.StringIdsOffset()));
   }
   if (collection.TypeIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeTypeIdItem, collection.TypeIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeTypeIdItem, collection.TypeIdsSize(),
         collection.TypeIdsOffset()));
   }
   if (collection.ProtoIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeProtoIdItem, collection.ProtoIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeProtoIdItem, collection.ProtoIdsSize(),
         collection.ProtoIdsOffset()));
   }
   if (collection.FieldIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeFieldIdItem, collection.FieldIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeFieldIdItem, collection.FieldIdsSize(),
         collection.FieldIdsOffset()));
   }
   if (collection.MethodIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeMethodIdItem, collection.MethodIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeMethodIdItem, collection.MethodIdsSize(),
         collection.MethodIdsOffset()));
   }
   if (collection.ClassDefsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeClassDefItem, collection.ClassDefsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeClassDefItem, collection.ClassDefsSize(),
         collection.ClassDefsOffset()));
   }
   if (collection.CallSiteIdsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeCallSiteIdItem, collection.CallSiteIdsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeCallSiteIdItem, collection.CallSiteIdsSize(),
         collection.CallSiteIdsOffset()));
   }
   if (collection.MethodHandleItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeMethodHandleItem,
+    queue.push(MapItemContainer(IDexFile::kDexTypeMethodHandleItem,
         collection.MethodHandleItemsSize(), collection.MethodHandleItemsOffset()));
   }
 
   // Data section.
-  queue.push(MapItemContainer(DexFile::kDexTypeMapList, 1, collection.MapListOffset()));
+  queue.push(MapItemContainer(IDexFile::kDexTypeMapList, 1, collection.MapListOffset()));
   if (collection.TypeListsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeTypeList, collection.TypeListsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeTypeList, collection.TypeListsSize(),
         collection.TypeListsOffset()));
   }
   if (collection.AnnotationSetRefListsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeAnnotationSetRefList,
+    queue.push(MapItemContainer(IDexFile::kDexTypeAnnotationSetRefList,
         collection.AnnotationSetRefListsSize(), collection.AnnotationSetRefListsOffset()));
   }
   if (collection.AnnotationSetItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeAnnotationSetItem,
+    queue.push(MapItemContainer(IDexFile::kDexTypeAnnotationSetItem,
         collection.AnnotationSetItemsSize(), collection.AnnotationSetItemsOffset()));
   }
   if (collection.ClassDatasSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeClassDataItem, collection.ClassDatasSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeClassDataItem, collection.ClassDatasSize(),
         collection.ClassDatasOffset()));
   }
   if (collection.CodeItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeCodeItem, collection.CodeItemsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeCodeItem, collection.CodeItemsSize(),
         collection.CodeItemsOffset()));
   }
   if (collection.StringDatasSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeStringDataItem, collection.StringDatasSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeStringDataItem, collection.StringDatasSize(),
         collection.StringDatasOffset()));
   }
   if (collection.DebugInfoItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeDebugInfoItem, collection.DebugInfoItemsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeDebugInfoItem, collection.DebugInfoItemsSize(),
         collection.DebugInfoItemsOffset()));
   }
   if (collection.AnnotationItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeAnnotationItem, collection.AnnotationItemsSize(),
+    queue.push(MapItemContainer(IDexFile::kDexTypeAnnotationItem, collection.AnnotationItemsSize(),
         collection.AnnotationItemsOffset()));
   }
   if (collection.EncodedArrayItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeEncodedArrayItem,
+    queue.push(MapItemContainer(IDexFile::kDexTypeEncodedArrayItem,
         collection.EncodedArrayItemsSize(), collection.EncodedArrayItemsOffset()));
   }
   if (collection.AnnotationsDirectoryItemsSize() != 0) {
-    queue.push(MapItemContainer(DexFile::kDexTypeAnnotationsDirectoryItem,
+    queue.push(MapItemContainer(IDexFile::kDexTypeAnnotationsDirectoryItem,
         collection.AnnotationsDirectoryItemsSize(), collection.AnnotationsDirectoryItemsOffset()));
   }
 

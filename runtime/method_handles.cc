@@ -426,7 +426,7 @@ static inline bool DoCallPolymorphic(ArtMethod* called_method,
                                      JValue* result)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   // Compute method information.
-  const DexFile::CodeItem* code_item = called_method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = called_method->GetCodeItem();
 
   // Number of registers for the callee's call frame. Note that for non-exact
   // invokes, we always derive this information from the callee method. We
@@ -573,7 +573,7 @@ static inline bool DoCallTransform(ArtMethod* called_method,
   // - One for the only method argument (an EmulatedStackFrame).
   static constexpr size_t kNumRegsForTransform = 2;
 
-  const DexFile::CodeItem* code_item = called_method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = called_method->GetCodeItem();
   DCHECK(code_item != nullptr);
   DCHECK_EQ(kNumRegsForTransform, code_item->registers_size_);
   DCHECK_EQ(kNumRegsForTransform, code_item->ins_size_);
@@ -1072,7 +1072,7 @@ bool DoInvokePolymorphicExact(Thread* self,
   }
 
   // Compute method information.
-  const DexFile::CodeItem* code_item = called_method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = called_method->GetCodeItem();
   uint16_t num_regs;
   size_t num_input_regs;
   size_t first_dest_reg;

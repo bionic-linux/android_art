@@ -124,7 +124,7 @@ static jclass VMClassLoader_findLoadedClass(JNIEnv* env, jclass, jobject javaLoa
  * Returns an array of entries from the boot classpath that could contain resources.
  */
 static jobjectArray VMClassLoader_getBootClassPathEntries(JNIEnv* env, jclass) {
-  const std::vector<const DexFile*>& path =
+  const std::vector<const IDexFile*>& path =
       Runtime::Current()->GetClassLinker()->GetBootClassPath();
   jobjectArray array =
       env->NewObjectArray(path.size(), WellKnownClasses::java_lang_String, nullptr);
@@ -133,7 +133,7 @@ static jobjectArray VMClassLoader_getBootClassPathEntries(JNIEnv* env, jclass) {
     return nullptr;
   }
   for (size_t i = 0; i < path.size(); ++i) {
-    const DexFile* dex_file = path[i];
+    const IDexFile* dex_file = path[i];
 
     // For multidex locations, e.g., x.jar!classes2.dex, we want to look into x.jar.
     const std::string location(DexFileLoader::GetBaseLocation(dex_file->GetLocation()));

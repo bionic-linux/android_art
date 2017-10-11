@@ -18,7 +18,7 @@
 #define ART_RUNTIME_INTERPRETER_INTERPRETER_H_
 
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "obj_ptr.h"
 
 namespace art {
@@ -52,11 +52,11 @@ extern void EnterInterpreterFromDeoptimize(Thread* self,
                                            DeoptimizationMethodType method_type)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
-extern JValue EnterInterpreterFromEntryPoint(Thread* self, const DexFile::CodeItem* code_item,
+extern JValue EnterInterpreterFromEntryPoint(Thread* self, const IDexFile::CodeItem* code_item,
                                              ShadowFrame* shadow_frame)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
-void ArtInterpreterToInterpreterBridge(Thread* self, const DexFile::CodeItem* code_item,
+void ArtInterpreterToInterpreterBridge(Thread* self, const IDexFile::CodeItem* code_item,
                                        ShadowFrame* shadow_frame, JValue* result)
     REQUIRES_SHARED(Locks::mutator_lock_);
 

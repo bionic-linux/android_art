@@ -25,7 +25,7 @@ namespace art {
 class ArtMethod;
 class Compiler;
 class CompilerDriver;
-class DexFile;
+class IDexFile;
 
 Compiler* CreateOptimizingCompiler(CompilerDriver* driver);
 
@@ -35,7 +35,7 @@ Compiler* CreateOptimizingCompiler(CompilerDriver* driver);
 bool IsCompilingWithCoreImage();
 
 bool EncodeArtMethodInInlineInfo(ArtMethod* method);
-bool CanEncodeInlinedMethodInStackMap(const DexFile& caller_dex_file, ArtMethod* callee)
+bool CanEncodeInlinedMethodInStackMap(const IDexFile& caller_dex_file, ArtMethod* callee)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
 }  // namespace art

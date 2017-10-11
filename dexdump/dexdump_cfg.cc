@@ -24,14 +24,14 @@
 #include <ostream>
 #include <set>
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 
 namespace art {
 
-static void dumpMethodCFGImpl(const DexFile* dex_file,
+static void dumpMethodCFGImpl(const IDexFile* dex_file,
                               uint32_t dex_method_idx,
-                              const DexFile::CodeItem* code_item,
+                              const IDexFile::CodeItem* code_item,
                               std::ostream& os) {
   os << "digraph {\n";
   os << "  # /* " << dex_file->PrettyMethod(dex_method_idx, true) << " */\n";
@@ -352,16 +352,16 @@ static void dumpMethodCFGImpl(const DexFile* dex_file,
   os << "}\n";
 }
 
-void DumpMethodCFG(const DexFile* dex_file, uint32_t dex_method_idx, std::ostream& os) {
+void DumpMethodCFG(const IDexFile* dex_file, uint32_t dex_method_idx, std::ostream& os) {
   // This is painful, we need to find the code item. That means finding the class, and then
   // iterating the table.
   if (dex_method_idx >= dex_file->NumMethodIds()) {
     os << "Could not find method-idx.";
     return;
   }
-  const DexFile::MethodId& method_id = dex_file->GetMethodId(dex_method_idx);
+  const IDexFile::MethodId& method_id = dex_file->GetMethodId(dex_method_idx);
 
-  const DexFile::ClassDef* class_def = dex_file->FindClassDef(method_id.class_idx_);
+  const IDexFile::ClassDef* class_def = dex_file->FindClassDef(method_id.class_idx_);
   if (class_def == nullptr) {
     os << "Could not find class-def.";
     return;

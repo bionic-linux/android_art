@@ -20,7 +20,7 @@
 #include "base/macros.h"
 #include "builder.h"
 #include "codegen_test_utils.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_instruction.h"
 #include "driver/compiler_options.h"
 #include "nodes.h"

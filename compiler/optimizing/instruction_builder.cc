@@ -362,7 +362,7 @@ void HInstructionBuilder::FindNativeDebugInfoLocations(ArenaBitVector* locations
   // The callback gets called when the line number changes.
   // In other words, it marks the start of new java statement.
   struct Callback {
-    static bool Position(void* ctx, const DexFile::PositionInfo& entry) {
+    static bool Position(void* ctx, const IDexFile::PositionInfo& entry) {
       static_cast<ArenaBitVector*>(ctx)->SetBit(entry.address_);
       return false;
     }
@@ -449,7 +449,7 @@ void HInstructionBuilder::InitializeParameters() {
   uint16_t locals_index = graph_->GetNumberOfLocalVRegs();
   uint16_t parameter_index = 0;
 
-  const DexFile::MethodId& referrer_method_id =
+  const IDexFile::MethodId& referrer_method_id =
       dex_file_->GetMethodId(dex_compilation_unit_->GetDexMethodIndex());
   if (!dex_compilation_unit_->IsStatic()) {
     // Add the implicit 'this' argument, not expressed in the signature.
@@ -466,8 +466,8 @@ void HInstructionBuilder::InitializeParameters() {
     DCHECK(current_this_parameter_ == nullptr);
   }
 
-  const DexFile::ProtoId& proto = dex_file_->GetMethodPrototype(referrer_method_id);
-  const DexFile::TypeList* arg_types = dex_file_->GetProtoParameters(proto);
+  const IDexFile::ProtoId& proto = dex_file_->GetMethodPrototype(referrer_method_id);
+  const IDexFile::TypeList* arg_types = dex_file_->GetProtoParameters(proto);
   for (int i = 0, shorty_pos = 1; i < number_of_parameters; i++) {
     HParameterValue* parameter = new (allocator_) HParameterValue(
         *dex_file_,
@@ -1252,8 +1252,8 @@ bool HInstructionBuilder::HandleStringInit(HInvoke* invoke,
   return true;
 }
 
-static DataType::Type GetFieldAccessType(const DexFile& dex_file, uint16_t field_index) {
-  const DexFile::FieldId& field_id = dex_file.GetFieldId(field_index);
+static DataType::Type GetFieldAccessType(const IDexFile& dex_file, uint16_t field_index) {
+  const IDexFile::FieldId& field_id = dex_file.GetFieldId(field_index);
   const char* type = dex_file.GetFieldTypeDescriptor(field_id);
   return DataType::FromShorty(type[0]);
 }
@@ -1717,7 +1717,7 @@ static TypeCheckKind ComputeTypeCheckKind(Handle<mirror::Class> cls)
 
 HLoadClass* HInstructionBuilder::BuildLoadClass(dex::TypeIndex type_index, uint32_t dex_pc) {
   ScopedObjectAccess soa(Thread::Current());
-  const DexFile& dex_file = *dex_compilation_unit_->GetDexFile();
+  const IDexFile& dex_file = *dex_compilation_unit_->GetDexFile();
   Handle<mirror::ClassLoader> class_loader = dex_compilation_unit_->GetClassLoader();
   Handle<mirror::Class> klass = handles_->NewHandle(compiler_driver_->ResolveClass(
       soa, dex_compilation_unit_->GetDexCache(), class_loader, type_index, dex_compilation_unit_));
@@ -1738,12 +1738,12 @@ HLoadClass* HInstructionBuilder::BuildLoadClass(dex::TypeIndex type_index, uint3
 }
 
 HLoadClass* HInstructionBuilder::BuildLoadClass(dex::TypeIndex type_index,
-                                                const DexFile& dex_file,
+                                                const IDexFile& dex_file,
                                                 Handle<mirror::Class> klass,
                                                 uint32_t dex_pc,
                                                 bool needs_access_check) {
   // Try to find a reference in the compiling dex file.
-  const DexFile* actual_dex_file = &dex_file;
+  const IDexFile* actual_dex_file = &dex_file;
   if (!IsSameDexFile(dex_file, *dex_compilation_unit_->GetDexFile())) {
     dex::TypeIndex local_type_index =
         klass->FindTypeIndexInOtherDexFile(*dex_compilation_unit_->GetDexFile());
@@ -2852,7 +2852,7 @@ ObjPtr<mirror::Class> HInstructionBuilder::LookupResolvedType(
 
 ObjPtr<mirror::Class> HInstructionBuilder::LookupReferrerClass() const {
   // TODO: Cache the result in a Handle<mirror::Class>.
-  const DexFile::MethodId& method_id =
+  const IDexFile::MethodId& method_id =
       dex_compilation_unit_->GetDexFile()->GetMethodId(dex_compilation_unit_->GetDexMethodIndex());
   return LookupResolvedType(method_id.class_idx_, *dex_compilation_unit_);
 }

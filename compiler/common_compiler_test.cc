@@ -48,7 +48,7 @@ void CommonCompilerTest::MakeExecutable(ArtMethod* method) {
   const CompiledMethod* compiled_method = nullptr;
   if (!method->IsAbstract()) {
     mirror::DexCache* dex_cache = method->GetDeclaringClass()->GetDexCache();
-    const DexFile& dex_file = *dex_cache->GetDexFile();
+    const IDexFile& dex_file = *dex_cache->GetDexFile();
     compiled_method =
         compiler_driver_->GetCompiledMethod(MethodReference(&dex_file,
                                                             method->GetDexMethodIndex()));

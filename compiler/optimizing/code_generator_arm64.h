@@ -579,7 +579,7 @@ class CodeGeneratorARM64 : public CodeGenerator {
   // to be bound before the instruction. The instruction will be either the
   // ADRP (pass `adrp_label = null`) or the ADD (pass `adrp_label` pointing
   // to the associated ADRP patch label).
-  vixl::aarch64::Label* NewPcRelativeTypePatch(const DexFile& dex_file,
+  vixl::aarch64::Label* NewPcRelativeTypePatch(const IDexFile& dex_file,
                                                dex::TypeIndex type_index,
                                                vixl::aarch64::Label* adrp_label = nullptr);
 
@@ -587,7 +587,7 @@ class CodeGeneratorARM64 : public CodeGenerator {
   // to be bound before the instruction. The instruction will be either the
   // ADRP (pass `adrp_label = null`) or the ADD (pass `adrp_label` pointing
   // to the associated ADRP patch label).
-  vixl::aarch64::Label* NewBssEntryTypePatch(const DexFile& dex_file,
+  vixl::aarch64::Label* NewBssEntryTypePatch(const IDexFile& dex_file,
                                              dex::TypeIndex type_index,
                                              vixl::aarch64::Label* adrp_label = nullptr);
 
@@ -595,7 +595,7 @@ class CodeGeneratorARM64 : public CodeGenerator {
   // to be bound before the instruction. The instruction will be either the
   // ADRP (pass `adrp_label = null`) or the ADD (pass `adrp_label` pointing
   // to the associated ADRP patch label).
-  vixl::aarch64::Label* NewPcRelativeStringPatch(const DexFile& dex_file,
+  vixl::aarch64::Label* NewPcRelativeStringPatch(const IDexFile& dex_file,
                                                  dex::StringIndex string_index,
                                                  vixl::aarch64::Label* adrp_label = nullptr);
 
@@ -603,7 +603,7 @@ class CodeGeneratorARM64 : public CodeGenerator {
   // to be bound before the instruction. The instruction will be either the
   // ADRP (pass `adrp_label = null`) or the ADD (pass `adrp_label` pointing
   // to the associated ADRP patch label).
-  vixl::aarch64::Label* NewStringBssEntryPatch(const DexFile& dex_file,
+  vixl::aarch64::Label* NewStringBssEntryPatch(const IDexFile& dex_file,
                                                dex::StringIndex string_index,
                                                vixl::aarch64::Label* adrp_label = nullptr);
 
@@ -612,10 +612,10 @@ class CodeGeneratorARM64 : public CodeGenerator {
   vixl::aarch64::Label* NewBakerReadBarrierPatch(uint32_t custom_data);
 
   vixl::aarch64::Literal<uint32_t>* DeduplicateBootImageAddressLiteral(uint64_t address);
-  vixl::aarch64::Literal<uint32_t>* DeduplicateJitStringLiteral(const DexFile& dex_file,
+  vixl::aarch64::Literal<uint32_t>* DeduplicateJitStringLiteral(const IDexFile& dex_file,
                                                                 dex::StringIndex string_index,
                                                                 Handle<mirror::String> handle);
-  vixl::aarch64::Literal<uint32_t>* DeduplicateJitClassLiteral(const DexFile& dex_file,
+  vixl::aarch64::Literal<uint32_t>* DeduplicateJitClassLiteral(const IDexFile& dex_file,
                                                                dex::TypeIndex string_index,
                                                                Handle<mirror::Class> handle);
 
@@ -781,10 +781,10 @@ class CodeGeneratorARM64 : public CodeGenerator {
   // and boot image strings/types. The only difference is the interpretation of the
   // offset_or_index.
   struct PcRelativePatchInfo {
-    PcRelativePatchInfo(const DexFile& dex_file, uint32_t off_or_idx)
+    PcRelativePatchInfo(const IDexFile& dex_file, uint32_t off_or_idx)
         : target_dex_file(dex_file), offset_or_index(off_or_idx), label(), pc_insn_label() { }
 
-    const DexFile& target_dex_file;
+    const IDexFile& target_dex_file;
     // Either the dex cache array element offset or the string/type index.
     uint32_t offset_or_index;
     vixl::aarch64::Label label;
@@ -798,14 +798,14 @@ class CodeGeneratorARM64 : public CodeGenerator {
     uint32_t custom_data;
   };
 
-  vixl::aarch64::Label* NewPcRelativePatch(const DexFile& dex_file,
+  vixl::aarch64::Label* NewPcRelativePatch(const IDexFile& dex_file,
                                            uint32_t offset_or_index,
                                            vixl::aarch64::Label* adrp_label,
                                            ArenaDeque<PcRelativePatchInfo>* patches);
 
   void EmitJumpTables();
 
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   static void EmitPcRelativeLinkerPatches(const ArenaDeque<PcRelativePatchInfo>& infos,
                                           ArenaVector<linker::LinkerPatch>* linker_patches);
 

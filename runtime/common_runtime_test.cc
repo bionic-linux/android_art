@@ -33,7 +33,7 @@
 #include "base/unix_file/fd_file.h"
 #include "class_linker.h"
 #include "compiler_callbacks.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "gc/heap.h"
 #include "gc_root-inl.h"
@@ -367,9 +367,9 @@ std::string CommonRuntimeTestImpl::GetCoreOatLocation() {
   return GetCoreFileLocation("oat");
 }
 
-std::unique_ptr<const DexFile> CommonRuntimeTestImpl::LoadExpectSingleDexFile(
+std::unique_ptr<const IDexFile> CommonRuntimeTestImpl::LoadExpectSingleDexFile(
     const char* location) {
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   std::string error_msg;
   MemMap::Init();
   static constexpr bool kVerifyChecksum = true;
@@ -566,12 +566,12 @@ std::string CommonRuntimeTestImpl::GetTestDexFileName(const char* name) const {
   return filename;
 }
 
-std::vector<std::unique_ptr<const DexFile>> CommonRuntimeTestImpl::OpenTestDexFiles(
+std::vector<std::unique_ptr<const IDexFile>> CommonRuntimeTestImpl::OpenTestDexFiles(
     const char* name) {
   std::string filename = GetTestDexFileName(name);
   static constexpr bool kVerifyChecksum = true;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   bool success = DexFileLoader::Open(
       filename.c_str(), filename.c_str(), kVerifyChecksum, &error_msg, &dex_files);
   CHECK(success) << "Failed to open '" << filename << "': " << error_msg;
@@ -582,13 +582,13 @@ std::vector<std::unique_ptr<const DexFile>> CommonRuntimeTestImpl::OpenTestDexFi
   return dex_files;
 }
 
-std::unique_ptr<const DexFile> CommonRuntimeTestImpl::OpenTestDexFile(const char* name) {
-  std::vector<std::unique_ptr<const DexFile>> vector = OpenTestDexFiles(name);
+std::unique_ptr<const IDexFile> CommonRuntimeTestImpl::OpenTestDexFile(const char* name) {
+  std::vector<std::unique_ptr<const IDexFile>> vector = OpenTestDexFiles(name);
   EXPECT_EQ(1U, vector.size());
   return std::move(vector[0]);
 }
 
-std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(jobject jclass_loader) {
+std::vector<const IDexFile*> CommonRuntimeTestImpl::GetDexFiles(jobject jclass_loader) {
   ScopedObjectAccess soa(Thread::Current());
 
   StackHandleScope<1> hs(soa.Self());
@@ -597,10 +597,10 @@ std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(jobject jclass_lo
   return GetDexFiles(soa, class_loader);
 }
 
-std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(
+std::vector<const IDexFile*> CommonRuntimeTestImpl::GetDexFiles(
     ScopedObjectAccess& soa,
     Handle<mirror::ClassLoader> class_loader) {
-  std::vector<const DexFile*> ret;
+  std::vector<const IDexFile*> ret;
 
   DCHECK(
       (class_loader->GetClass() ==
@@ -621,8 +621,8 @@ std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(
     ObjPtr<mirror::Object> dex_elements_obj =
         jni::DecodeArtField(WellKnownClasses::dalvik_system_DexPathList_dexElements)->
             GetObject(dex_path_list);
-    // Loop through each dalvik.system.DexPathList$Element's dalvik.system.DexFile and look
-    // at the mCookie which is a DexFile vector.
+    // Loop through each dalvik.system.DexPathList$Element's dalvik.system.IDexFile and look
+    // at the mCookie which is a IDexFile vector.
     if (dex_elements_obj != nullptr) {
       StackHandleScope<1> hs(soa.Self());
       Handle<mirror::ObjectArray<mirror::Object>> dex_elements =
@@ -639,10 +639,10 @@ std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(
           DCHECK(long_array != nullptr);
           int32_t long_array_size = long_array->GetLength();
           for (int32_t j = kDexFileIndexStart; j < long_array_size; ++j) {
-            const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
+            const IDexFile* cp_dex_file = reinterpret_cast<const IDexFile*>(static_cast<uintptr_t>(
                 long_array->GetWithoutChecks(j)));
             if (cp_dex_file == nullptr) {
-              LOG(WARNING) << "Null DexFile";
+              LOG(WARNING) << "Null IDexFile";
               continue;
             }
             ret.push_back(cp_dex_file);
@@ -655,19 +655,19 @@ std::vector<const DexFile*> CommonRuntimeTestImpl::GetDexFiles(
   return ret;
 }
 
-const DexFile* CommonRuntimeTestImpl::GetFirstDexFile(jobject jclass_loader) {
-  std::vector<const DexFile*> tmp(GetDexFiles(jclass_loader));
+const IDexFile* CommonRuntimeTestImpl::GetFirstDexFile(jobject jclass_loader) {
+  std::vector<const IDexFile*> tmp(GetDexFiles(jclass_loader));
   DCHECK(!tmp.empty());
-  const DexFile* ret = tmp[0];
+  const IDexFile* ret = tmp[0];
   DCHECK(ret != nullptr);
   return ret;
 }
 
 jobject CommonRuntimeTestImpl::LoadMultiDex(const char* first_dex_name,
                                             const char* second_dex_name) {
-  std::vector<std::unique_ptr<const DexFile>> first_dex_files = OpenTestDexFiles(first_dex_name);
-  std::vector<std::unique_ptr<const DexFile>> second_dex_files = OpenTestDexFiles(second_dex_name);
-  std::vector<const DexFile*> class_path;
+  std::vector<std::unique_ptr<const IDexFile>> first_dex_files = OpenTestDexFiles(first_dex_name);
+  std::vector<std::unique_ptr<const IDexFile>> second_dex_files = OpenTestDexFiles(second_dex_name);
+  std::vector<const IDexFile*> class_path;
   CHECK_NE(0U, first_dex_files.size());
   CHECK_NE(0U, second_dex_files.size());
   for (auto& dex_file : first_dex_files) {
@@ -695,8 +695,8 @@ jobject CommonRuntimeTestImpl::LoadDex(const char* dex_name) {
 jobject CommonRuntimeTestImpl::LoadDexInWellKnownClassLoader(const std::string& dex_name,
                                                              jclass loader_class,
                                                              jobject parent_loader) {
-  std::vector<std::unique_ptr<const DexFile>> dex_files = OpenTestDexFiles(dex_name.c_str());
-  std::vector<const DexFile*> class_path;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files = OpenTestDexFiles(dex_name.c_str());
+  std::vector<const IDexFile*> class_path;
   CHECK_NE(0U, dex_files.size());
   for (auto& dex_file : dex_files) {
     class_path.push_back(dex_file.get());
@@ -765,7 +765,7 @@ std::string CommonRuntimeTestImpl::GetCoreFileLocation(const char* suffix) {
 }
 
 std::string CommonRuntimeTestImpl::CreateClassPath(
-    const std::vector<std::unique_ptr<const DexFile>>& dex_files) {
+    const std::vector<std::unique_ptr<const IDexFile>>& dex_files) {
   CHECK(!dex_files.empty());
   std::string classpath = dex_files[0]->GetLocation();
   for (size_t i = 1; i < dex_files.size(); i++) {
@@ -775,7 +775,7 @@ std::string CommonRuntimeTestImpl::CreateClassPath(
 }
 
 std::string CommonRuntimeTestImpl::CreateClassPathWithChecksums(
-    const std::vector<std::unique_ptr<const DexFile>>& dex_files) {
+    const std::vector<std::unique_ptr<const IDexFile>>& dex_files) {
   CHECK(!dex_files.empty());
   std::string classpath = dex_files[0]->GetLocation() + "*" +
       std::to_string(dex_files[0]->GetLocationChecksum());

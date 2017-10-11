@@ -18,7 +18,7 @@
 #define ART_COMPILER_COMPILER_H_
 
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "os.h"
 
 namespace art {
@@ -58,20 +58,20 @@ class Compiler {
 
   virtual void UnInit() const = 0;
 
-  virtual bool CanCompileMethod(uint32_t method_idx, const DexFile& dex_file) const = 0;
+  virtual bool CanCompileMethod(uint32_t method_idx, const IDexFile& dex_file) const = 0;
 
-  virtual CompiledMethod* Compile(const DexFile::CodeItem* code_item,
+  virtual CompiledMethod* Compile(const IDexFile::CodeItem* code_item,
                                   uint32_t access_flags,
                                   InvokeType invoke_type,
                                   uint16_t class_def_idx,
                                   uint32_t method_idx,
                                   Handle<mirror::ClassLoader> class_loader,
-                                  const DexFile& dex_file,
+                                  const IDexFile& dex_file,
                                   Handle<mirror::DexCache> dex_cache) const = 0;
 
   virtual CompiledMethod* JniCompile(uint32_t access_flags,
                                      uint32_t method_idx,
-                                     const DexFile& dex_file,
+                                     const IDexFile& dex_file,
                                      JniOptimizationFlags optimization_flags) const = 0;
 
   virtual bool JitCompile(Thread* self ATTRIBUTE_UNUSED,
@@ -107,9 +107,9 @@ class Compiler {
 
   // Returns whether the method to compile is such a pathological case that
   // it's not worth compiling.
-  static bool IsPathologicalCase(const DexFile::CodeItem& code_item,
+  static bool IsPathologicalCase(const IDexFile::CodeItem& code_item,
                                  uint32_t method_idx,
-                                 const DexFile& dex_file);
+                                 const IDexFile& dex_file);
 
  protected:
   Compiler(CompilerDriver* driver, uint64_t warning) :

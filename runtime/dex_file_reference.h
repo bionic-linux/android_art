@@ -21,12 +21,12 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 class DexFileReference {
  public:
-  DexFileReference(const DexFile* file, uint32_t idx) : dex_file(file), index(idx) {}
-  const DexFile* dex_file;
+  DexFileReference(const IDexFile* file, uint32_t idx) : dex_file(file), index(idx) {}
+  const IDexFile* dex_file;
   uint32_t index;
 
   struct Comparator {

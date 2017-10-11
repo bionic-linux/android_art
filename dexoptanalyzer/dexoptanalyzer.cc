@@ -19,7 +19,7 @@
 #include "android-base/stringprintf.h"
 #include "android-base/strings.h"
 #include "compiler_filter.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "noop_compiler_callbacks.h"
 #include "oat_file_assistant.h"
 #include "os.h"

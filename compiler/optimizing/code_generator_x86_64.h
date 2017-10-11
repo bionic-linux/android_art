@@ -415,10 +415,10 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   Label* NewTypeBssEntryPatch(HLoadClass* load_class);
   void RecordBootStringPatch(HLoadString* load_string);
   Label* NewStringBssEntryPatch(HLoadString* load_string);
-  Label* NewJitRootStringPatch(const DexFile& dex_file,
+  Label* NewJitRootStringPatch(const IDexFile& dex_file,
                                dex::StringIndex dex_index,
                                Handle<mirror::String> handle);
-  Label* NewJitRootClassPatch(const DexFile& dex_file,
+  Label* NewJitRootClassPatch(const IDexFile& dex_file,
                               dex::TypeIndex dex_index,
                               Handle<mirror::Class> handle);
 
@@ -586,7 +586,7 @@ class CodeGeneratorX86_64 : public CodeGenerator {
   static constexpr int32_t kDummy32BitOffset = 256;
 
  private:
-  template <linker::LinkerPatch (*Factory)(size_t, const DexFile*, uint32_t, uint32_t)>
+  template <linker::LinkerPatch (*Factory)(size_t, const IDexFile*, uint32_t, uint32_t)>
   static void EmitPcRelativeLinkerPatches(const ArenaDeque<PatchInfo<Label>>& infos,
                                           ArenaVector<linker::LinkerPatch>* linker_patches);
 

@@ -23,7 +23,7 @@
 #include "class_linker-inl.h"
 #include "class_linker.h"
 #include "common_throws.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_annotations.h"
 #include "jni_internal.h"
 #include "mirror/class-inl.h"

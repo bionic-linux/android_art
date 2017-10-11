@@ -21,7 +21,7 @@
 #include "base/enums.h"
 #include "class_linker.h"
 #include "common_throws.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "indirect_reference_table-inl.h"
 #include "java_vm_ext.h"
 #include "jni_internal.h"
@@ -222,7 +222,7 @@ class ArgArray {
                                     ArtMethod* m,
                                     Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    const DexFile::TypeList* classes = m->GetParameterTypeList();
+    const IDexFile::TypeList* classes = m->GetParameterTypeList();
     // Set receiver if non-null (method is not static)
     if (receiver != nullptr) {
       Append(receiver);
@@ -363,7 +363,7 @@ class ArgArray {
 
 static void CheckMethodArguments(JavaVMExt* vm, ArtMethod* m, uint32_t* args)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile::TypeList* params = m->GetParameterTypeList();
+  const IDexFile::TypeList* params = m->GetParameterTypeList();
   if (params == nullptr) {
     return;  // No arguments so nothing to check.
   }
@@ -626,7 +626,7 @@ jobject InvokeMethod(const ScopedObjectAccessAlreadyRunnable& soa, jobject javaM
   ObjPtr<mirror::ObjectArray<mirror::Object>> objects =
       soa.Decode<mirror::ObjectArray<mirror::Object>>(javaArgs);
   auto* np_method = m->GetInterfaceMethodIfProxy(kRuntimePointerSize);
-  const DexFile::TypeList* classes = np_method->GetParameterTypeList();
+  const IDexFile::TypeList* classes = np_method->GetParameterTypeList();
   uint32_t classes_size = (classes == nullptr) ? 0 : classes->Size();
   uint32_t arg_count = (objects != nullptr) ? objects->GetLength() : 0;
   if (arg_count != classes_size) {

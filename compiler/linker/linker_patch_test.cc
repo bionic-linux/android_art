@@ -22,8 +22,8 @@ namespace art {
 namespace linker {
 
 TEST(LinkerPatch, LinkerPatchOperators) {
-  const DexFile* dex_file1 = reinterpret_cast<const DexFile*>(1);
-  const DexFile* dex_file2 = reinterpret_cast<const DexFile*>(2);
+  const IDexFile* dex_file1 = reinterpret_cast<const IDexFile*>(1);
+  const IDexFile* dex_file2 = reinterpret_cast<const IDexFile*>(2);
   LinkerPatch patches[] = {
       LinkerPatch::RelativeMethodPatch(16u, dex_file1, 3000u, 1000u),
       LinkerPatch::RelativeMethodPatch(16u, dex_file1, 3001u, 1000u),

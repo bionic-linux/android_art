@@ -134,7 +134,7 @@ class MultiOatRelativePatcherTest : public testing::Test {
 };
 
 TEST_F(MultiOatRelativePatcherTest, Offsets) {
-  const DexFile* dex_file = reinterpret_cast<const DexFile*>(1);
+  const IDexFile* dex_file = reinterpret_cast<const IDexFile*>(1);
   MethodReference ref1(dex_file, 1u);
   MethodReference ref2(dex_file, 2u);
   EXPECT_EQ(0u, patcher_.GetOffset(ref1));
@@ -167,7 +167,7 @@ TEST_F(MultiOatRelativePatcherTest, Offsets) {
 }
 
 TEST_F(MultiOatRelativePatcherTest, OffsetsInReserve) {
-  const DexFile* dex_file = reinterpret_cast<const DexFile*>(1);
+  const IDexFile* dex_file = reinterpret_cast<const IDexFile*>(1);
   MethodReference ref1(dex_file, 1u);
   MethodReference ref2(dex_file, 2u);
   MethodReference ref3(dex_file, 3u);

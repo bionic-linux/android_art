@@ -60,7 +60,7 @@ class VerificationResults {
   bool IsCandidateForCompilation(MethodReference& method_ref, const uint32_t access_flags);
 
   // Add a dex file to enable using the atomic map.
-  void AddDexFile(const DexFile* dex_file) REQUIRES(!verified_methods_lock_);
+  void AddDexFile(const IDexFile* dex_file) REQUIRES(!verified_methods_lock_);
 
  private:
   // Verified methods. The method array is fixed to avoid needing a lock to extend it.

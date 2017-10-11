@@ -1054,9 +1054,9 @@ bool ProfileCompilationInfo::Load(int fd, bool merge_classes) {
   }
 }
 
-bool ProfileCompilationInfo::VerifyProfileData(const std::vector<const DexFile*>& dex_files) {
-  std::unordered_map<std::string, const DexFile*> key_to_dex_file;
-  for (const DexFile* dex_file : dex_files) {
+bool ProfileCompilationInfo::VerifyProfileData(const std::vector<const IDexFile*>& dex_files) {
+  std::unordered_map<std::string, const IDexFile*> key_to_dex_file;
+  for (const IDexFile* dex_file : dex_files) {
     key_to_dex_file.emplace(GetProfileDexFileKey(dex_file->GetLocation()), dex_file);
   }
   for (const DexFileData* dex_data : info_) {
@@ -1065,7 +1065,7 @@ bool ProfileCompilationInfo::VerifyProfileData(const std::vector<const DexFile*>
       // It is okay if profile contains data for additional dex files.
       continue;
     }
-    const DexFile* dex_file = it->second;
+    const IDexFile* dex_file = it->second;
     const std::string& dex_location = dex_file->GetLocation();
     if (!ChecksumMatch(dex_data->checksum, dex_file->GetLocationChecksum())) {
       LOG(ERROR) << "Dex checksum mismatch while verifying profile "
@@ -1116,7 +1116,7 @@ bool ProfileCompilationInfo::VerifyProfileData(const std::vector<const DexFile*>
             // It is okay if profile contains data for additional dex files.
             continue;
           }
-          const DexFile *dex_file_for_inline_cache_check = dex_file_inline_cache_it->second;
+          const IDexFile *dex_file_for_inline_cache_check = dex_file_inline_cache_it->second;
           const std::vector<dex::TypeIndex> &dex_classes = dex_it.second;
           for (size_t i = 0; i < dex_classes.size(); i++) {
             if (dex_classes[i].index_ >= dex_file_for_inline_cache_check->NumTypeIds()) {
@@ -1422,7 +1422,7 @@ bool ProfileCompilationInfo::MergeWith(const ProfileCompilationInfo& other,
 }
 
 const ProfileCompilationInfo::DexFileData* ProfileCompilationInfo::FindDexData(
-    const DexFile* dex_file) const {
+    const IDexFile* dex_file) const {
   return FindDexData(GetProfileDexFileKey(dex_file->GetLocation()),
                      dex_file->GetLocationChecksum());
 }
@@ -1478,7 +1478,7 @@ std::unique_ptr<ProfileCompilationInfo::OfflineProfileMethodInfo> ProfileCompila
 }
 
 
-bool ProfileCompilationInfo::ContainsClass(const DexFile& dex_file, dex::TypeIndex type_idx) const {
+bool ProfileCompilationInfo::ContainsClass(const IDexFile& dex_file, dex::TypeIndex type_idx) const {
   const DexFileData* dex_data = FindDexData(&dex_file);
   if (dex_data != nullptr) {
     const ArenaSet<dex::TypeIndex>& classes = dex_data->class_set;
@@ -1514,14 +1514,14 @@ const std::vector<T*>* MakeNonOwningVector(const std::vector<std::unique_ptr<T>>
 }
 
 std::string ProfileCompilationInfo::DumpInfo(
-    const std::vector<std::unique_ptr<const DexFile>>* dex_files,
+    const std::vector<std::unique_ptr<const IDexFile>>* dex_files,
     bool print_full_dex_location) const {
-  std::unique_ptr<const std::vector<const DexFile*>> non_owning_dex_files(
+  std::unique_ptr<const std::vector<const IDexFile*>> non_owning_dex_files(
       MakeNonOwningVector(dex_files));
   return DumpInfo(non_owning_dex_files.get(), print_full_dex_location);
 }
 
-std::string ProfileCompilationInfo::DumpInfo(const std::vector<const DexFile*>* dex_files,
+std::string ProfileCompilationInfo::DumpInfo(const std::vector<const IDexFile*>* dex_files,
                                              bool print_full_dex_location) const {
   std::ostringstream os;
   if (info_.empty()) {
@@ -1542,7 +1542,7 @@ std::string ProfileCompilationInfo::DumpInfo(const std::vector<const DexFile*>* 
       os << (multidex_suffix.empty() ? kFirstDexFileKeySubstitute : multidex_suffix);
     }
     os << " [index=" << static_cast<uint32_t>(dex_data->profile_index) << "]";
-    const DexFile* dex_file = nullptr;
+    const IDexFile* dex_file = nullptr;
     if (dex_files != nullptr) {
       for (size_t i = 0; i < dex_files->size(); i++) {
         if (dex_data->profile_key == (*dex_files)[i]->GetLocation()) {
@@ -1602,7 +1602,7 @@ std::string ProfileCompilationInfo::DumpInfo(const std::vector<const DexFile*>* 
 }
 
 bool ProfileCompilationInfo::GetClassesAndMethods(
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     /*out*/std::set<dex::TypeIndex>* class_set,
     /*out*/std::set<uint16_t>* hot_method_set,
     /*out*/std::set<uint16_t>* startup_method_set,
@@ -1647,16 +1647,16 @@ bool ProfileCompilationInfo::Equals(const ProfileCompilationInfo& other) {
 }
 
 std::set<DexCacheResolvedClasses> ProfileCompilationInfo::GetResolvedClasses(
-    const std::vector<const DexFile*>& dex_files) const {
-  std::unordered_map<std::string, const DexFile* > key_to_dex_file;
-  for (const DexFile* dex_file : dex_files) {
+    const std::vector<const IDexFile*>& dex_files) const {
+  std::unordered_map<std::string, const IDexFile* > key_to_dex_file;
+  for (const IDexFile* dex_file : dex_files) {
     key_to_dex_file.emplace(GetProfileDexFileKey(dex_file->GetLocation()), dex_file);
   }
   std::set<DexCacheResolvedClasses> ret;
   for (const DexFileData* dex_data : info_) {
     const auto it = key_to_dex_file.find(dex_data->profile_key);
     if (it != key_to_dex_file.end()) {
-      const DexFile* dex_file = it->second;
+      const IDexFile* dex_file = it->second;
       const std::string& dex_location = dex_file->GetLocation();
       if (dex_data->checksum != it->second->GetLocationChecksum()) {
         LOG(ERROR) << "Dex checksum mismatch when getting resolved classes from profile for "
@@ -1733,13 +1733,13 @@ bool ProfileCompilationInfo::GenerateTestProfile(int fd,
 //   probably of 1/(N - i - number of methods/classes needed to add in profile).
 bool ProfileCompilationInfo::GenerateTestProfile(
     int fd,
-    std::vector<std::unique_ptr<const DexFile>>& dex_files,
+    std::vector<std::unique_ptr<const IDexFile>>& dex_files,
     uint16_t method_percentage,
     uint16_t class_percentage,
     uint32_t random_seed) {
   std::srand(random_seed);
   ProfileCompilationInfo info;
-  for (std::unique_ptr<const DexFile>& dex_file : dex_files) {
+  for (std::unique_ptr<const IDexFile>& dex_file : dex_files) {
     const std::string& location = dex_file->GetLocation();
     uint32_t checksum = dex_file->GetLocationChecksum();
 
@@ -1876,9 +1876,9 @@ ProfileCompilationInfo::FindOrAddDexPc(InlineCacheMap* inline_cache, uint32_t de
 }
 
 std::unordered_set<std::string> ProfileCompilationInfo::GetClassDescriptors(
-    const std::vector<const DexFile*>& dex_files) {
+    const std::vector<const IDexFile*>& dex_files) {
   std::unordered_set<std::string> ret;
-  for (const DexFile* dex_file : dex_files) {
+  for (const IDexFile* dex_file : dex_files) {
     const DexFileData* data = FindDexData(dex_file);
     if (data != nullptr) {
       for (dex::TypeIndex type_idx : data->class_set) {
@@ -1888,7 +1888,7 @@ std::unordered_set<std::string> ProfileCompilationInfo::GetClassDescriptors(
               << type_idx.index_ << " in dex " << dex_file->GetLocation();
           return std::unordered_set<std::string>();
         }
-        const DexFile::TypeId& type_id = dex_file->GetTypeId(type_idx);
+        const IDexFile::TypeId& type_id = dex_file->GetTypeId(type_idx);
         ret.insert(dex_file->GetTypeDescriptor(type_id));
       }
     } else {

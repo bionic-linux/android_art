@@ -46,7 +46,7 @@ bool HBasicBlockBuilder::CreateBranchTargets() {
     // where TryBoundary instructions will be inserted later. Other edges which
     // enter/exit the try blocks are a result of branches/switches.
     for (size_t idx = 0; idx < code_item_.tries_size_; ++idx) {
-      const DexFile::TryItem* try_item = DexFile::GetTryItems(code_item_, idx);
+      const IDexFile::TryItem* try_item = IDexFile::GetTryItems(code_item_, idx);
       uint32_t dex_pc_start = try_item->start_addr_;
       uint32_t dex_pc_end = dex_pc_start + try_item->insn_count_;
       MaybeCreateBlockAt(dex_pc_start);
@@ -63,7 +63,7 @@ bool HBasicBlockBuilder::CreateBranchTargets() {
     }
 
     // Create branch targets for exception handlers.
-    const uint8_t* handlers_ptr = DexFile::GetCatchHandlerData(code_item_, 0);
+    const uint8_t* handlers_ptr = IDexFile::GetCatchHandlerData(code_item_, 0);
     uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
     for (uint32_t idx = 0; idx < handlers_size; ++idx) {
       CatchHandlerIterator iterator(handlers_ptr);
@@ -198,9 +198,9 @@ void HBasicBlockBuilder::ConnectBasicBlocks() {
 }
 
 // Returns the TryItem stored for `block` or nullptr if there is no info for it.
-static const DexFile::TryItem* GetTryItem(
+static const IDexFile::TryItem* GetTryItem(
     HBasicBlock* block,
-    const ArenaSafeMap<uint32_t, const DexFile::TryItem*>& try_block_info) {
+    const ArenaSafeMap<uint32_t, const IDexFile::TryItem*>& try_block_info) {
   auto iterator = try_block_info.find(block->GetBlockId());
   return (iterator == try_block_info.end()) ? nullptr : iterator->second;
 }
@@ -210,8 +210,8 @@ static const DexFile::TryItem* GetTryItem(
 // successors matches the order in which runtime exception delivery searches
 // for a handler.
 static void LinkToCatchBlocks(HTryBoundary* try_boundary,
-                              const DexFile::CodeItem& code_item,
-                              const DexFile::TryItem* try_item,
+                              const IDexFile::CodeItem& code_item,
+                              const IDexFile::TryItem* try_item,
                               const ArenaSafeMap<uint32_t, HBasicBlock*>& catch_blocks) {
   for (CatchHandlerIterator it(code_item, *try_item); it.HasNext(); it.Next()) {
     try_boundary->AddExceptionHandler(catch_blocks.Get(it.GetHandlerAddress()));
@@ -253,7 +253,7 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
 
   // Keep a map of all try blocks and their respective TryItems. We do not use
   // the block's pointer but rather its id to ensure deterministic iteration.
-  ArenaSafeMap<uint32_t, const DexFile::TryItem*> try_block_info(
+  ArenaSafeMap<uint32_t, const IDexFile::TryItem*> try_block_info(
       std::less<uint32_t>(), arena_->Adapter(kArenaAllocGraphBuilder));
 
   // Obtain TryItem information for blocks with throwing instructions, and split
@@ -269,10 +269,10 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
     // loop for synchronized blocks.
     if (ContainsElement(throwing_blocks_, block)) {
       // Try to find a TryItem covering the block.
-      const int32_t try_item_idx = DexFile::FindTryItem(code_item_, block->GetDexPc());
+      const int32_t try_item_idx = IDexFile::FindTryItem(code_item_, block->GetDexPc());
       if (try_item_idx != -1) {
         // Block throwing and in a TryItem. Store the try block information.
-        try_block_info.Put(block->GetBlockId(), DexFile::GetTryItems(code_item_, try_item_idx));
+        try_block_info.Put(block->GetBlockId(), IDexFile::GetTryItems(code_item_, try_item_idx));
       }
     }
   }
@@ -283,7 +283,7 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
 
   // Iterate over catch blocks, create artifical landing pads if necessary to
   // simplify the CFG, and set metadata.
-  const uint8_t* handlers_ptr = DexFile::GetCatchHandlerData(code_item_, 0);
+  const uint8_t* handlers_ptr = IDexFile::GetCatchHandlerData(code_item_, 0);
   uint32_t handlers_size = DecodeUnsignedLeb128(&handlers_ptr);
   for (uint32_t idx = 0; idx < handlers_size; ++idx) {
     CatchHandlerIterator iterator(handlers_ptr);
@@ -322,7 +322,7 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
   // that all predecessors are relinked to. This preserves loop headers (b/23895756).
   for (const auto& entry : try_block_info) {
     uint32_t block_id = entry.first;
-    const DexFile::TryItem* try_item = entry.second;
+    const IDexFile::TryItem* try_item = entry.second;
     HBasicBlock* try_block = graph_->GetBlocks()[block_id];
     for (HBasicBlock* predecessor : try_block->GetPredecessors()) {
       if (GetTryItem(predecessor, try_block_info) != try_item) {
@@ -341,7 +341,7 @@ void HBasicBlockBuilder::InsertTryBoundaryBlocks() {
   // the successor is not in the same TryItem.
   for (const auto& entry : try_block_info) {
     uint32_t block_id = entry.first;
-    const DexFile::TryItem* try_item = entry.second;
+    const IDexFile::TryItem* try_item = entry.second;
     HBasicBlock* try_block = graph_->GetBlocks()[block_id];
     // NOTE: Do not use iterators because SplitEdge would invalidate them.
     for (size_t i = 0, e = try_block->GetSuccessors().size(); i < e; ++i) {

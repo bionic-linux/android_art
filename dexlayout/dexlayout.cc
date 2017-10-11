@@ -33,7 +33,7 @@
 
 #include "android-base/stringprintf.h"
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_layout.h"
 #include "dex_file_loader.h"
 #include "dex_file_types.h"
@@ -516,30 +516,30 @@ void DexLayout::DumpEncodedAnnotation(dex_ir::EncodedAnnotation* annotation) {
  */
 void DexLayout::DumpEncodedValue(const dex_ir::EncodedValue* data) {
   switch (data->Type()) {
-    case DexFile::kDexAnnotationByte:
+    case IDexFile::kDexAnnotationByte:
       fprintf(out_file_, "%" PRId8, data->GetByte());
       break;
-    case DexFile::kDexAnnotationShort:
+    case IDexFile::kDexAnnotationShort:
       fprintf(out_file_, "%" PRId16, data->GetShort());
       break;
-    case DexFile::kDexAnnotationChar:
+    case IDexFile::kDexAnnotationChar:
       fprintf(out_file_, "%" PRIu16, data->GetChar());
       break;
-    case DexFile::kDexAnnotationInt:
+    case IDexFile::kDexAnnotationInt:
       fprintf(out_file_, "%" PRId32, data->GetInt());
       break;
-    case DexFile::kDexAnnotationLong:
+    case IDexFile::kDexAnnotationLong:
       fprintf(out_file_, "%" PRId64, data->GetLong());
       break;
-    case DexFile::kDexAnnotationFloat: {
+    case IDexFile::kDexAnnotationFloat: {
       fprintf(out_file_, "%g", data->GetFloat());
       break;
     }
-    case DexFile::kDexAnnotationDouble: {
+    case IDexFile::kDexAnnotationDouble: {
       fprintf(out_file_, "%g", data->GetDouble());
       break;
     }
-    case DexFile::kDexAnnotationString: {
+    case IDexFile::kDexAnnotationString: {
       dex_ir::StringId* string_id = data->GetStringId();
       if (options_.output_format_ == kOutputPlain) {
         DumpEscapedString(string_id->Data(), out_file_);
@@ -548,23 +548,23 @@ void DexLayout::DumpEncodedValue(const dex_ir::EncodedValue* data) {
       }
       break;
     }
-    case DexFile::kDexAnnotationType: {
+    case IDexFile::kDexAnnotationType: {
       dex_ir::TypeId* type_id = data->GetTypeId();
       fputs(type_id->GetStringId()->Data(), out_file_);
       break;
     }
-    case DexFile::kDexAnnotationField:
-    case DexFile::kDexAnnotationEnum: {
+    case IDexFile::kDexAnnotationField:
+    case IDexFile::kDexAnnotationEnum: {
       dex_ir::FieldId* field_id = data->GetFieldId();
       fputs(field_id->Name()->Data(), out_file_);
       break;
     }
-    case DexFile::kDexAnnotationMethod: {
+    case IDexFile::kDexAnnotationMethod: {
       dex_ir::MethodId* method_id = data->GetMethodId();
       fputs(method_id->Name()->Data(), out_file_);
       break;
     }
-    case DexFile::kDexAnnotationArray: {
+    case IDexFile::kDexAnnotationArray: {
       fputc('{', out_file_);
       // Display all elements.
       for (auto& value : *data->GetEncodedArray()->GetEncodedValues()) {
@@ -574,14 +574,14 @@ void DexLayout::DumpEncodedValue(const dex_ir::EncodedValue* data) {
       fputs(" }", out_file_);
       break;
     }
-    case DexFile::kDexAnnotationAnnotation: {
+    case IDexFile::kDexAnnotationAnnotation: {
       DumpEncodedAnnotation(data->GetEncodedAnnotation());
       break;
     }
-    case DexFile::kDexAnnotationNull:
+    case IDexFile::kDexAnnotationNull:
       fputs("null", out_file_);
       break;
-    case DexFile::kDexAnnotationBoolean:
+    case IDexFile::kDexAnnotationBoolean:
       fputs(StrBool(data->GetBoolean()), out_file_);
       break;
     default:
@@ -602,8 +602,8 @@ void DexLayout::DumpFileHeader() {
   fprintf(out_file_, "checksum            : %08x\n", header_->Checksum());
   fprintf(out_file_, "signature           : %02x%02x...%02x%02x\n",
           header_->Signature()[0], header_->Signature()[1],
-          header_->Signature()[DexFile::kSha1DigestSize - 2],
-          header_->Signature()[DexFile::kSha1DigestSize - 1]);
+          header_->Signature()[IDexFile::kSha1DigestSize - 2],
+          header_->Signature()[IDexFile::kSha1DigestSize - 1]);
   fprintf(out_file_, "file_size           : %d\n", header_->FileSize());
   fprintf(out_file_, "header_size         : %d\n", header_->HeaderSize());
   fprintf(out_file_, "link_size           : %d\n", header_->LinkSize());
@@ -643,7 +643,7 @@ void DexLayout::DumpClassDef(int idx) {
   fprintf(out_file_, "access_flags        : %d (0x%04x)\n",
           class_def->GetAccessFlags(), class_def->GetAccessFlags());
   uint32_t superclass_idx =  class_def->Superclass() == nullptr ?
-      DexFile::kDexNoIndex16 : class_def->Superclass()->GetIndex();
+      IDexFile::kDexNoIndex16 : class_def->Superclass()->GetIndex();
   fprintf(out_file_, "superclass_idx      : %d\n", superclass_idx);
   fprintf(out_file_, "interfaces_off      : %d (0x%06x)\n",
           class_def->InterfacesOffset(), class_def->InterfacesOffset());
@@ -704,9 +704,9 @@ void DexLayout::DumpAnnotationSetItem(dex_ir::AnnotationSetItem* set_item) {
     }
     fputs("  ", out_file_);
     switch (annotation->GetVisibility()) {
-      case DexFile::kDexVisibilityBuild:   fputs("VISIBILITY_BUILD ",   out_file_); break;
-      case DexFile::kDexVisibilityRuntime: fputs("VISIBILITY_RUNTIME ", out_file_); break;
-      case DexFile::kDexVisibilitySystem:  fputs("VISIBILITY_SYSTEM ",  out_file_); break;
+      case IDexFile::kDexVisibilityBuild:   fputs("VISIBILITY_BUILD ",   out_file_); break;
+      case IDexFile::kDexVisibilityRuntime: fputs("VISIBILITY_RUNTIME ", out_file_); break;
+      case IDexFile::kDexVisibilitySystem:  fputs("VISIBILITY_SYSTEM ",  out_file_); break;
       default:                             fputs("VISIBILITY_UNKNOWN ", out_file_); break;
     }  // switch
     DumpEncodedAnnotation(annotation->GetAnnotation());
@@ -1498,7 +1498,7 @@ void DexLayout::DumpDexFile() {
   }
 }
 
-std::vector<dex_ir::ClassData*> DexLayout::LayoutClassDefsAndClassData(const DexFile* dex_file) {
+std::vector<dex_ir::ClassData*> DexLayout::LayoutClassDefsAndClassData(const IDexFile* dex_file) {
   std::vector<dex_ir::ClassDef*> new_class_def_order;
   for (std::unique_ptr<dex_ir::ClassDef>& class_def : header_->GetCollections().ClassDefs()) {
     dex::TypeIndex type_idx(class_def->ClassType()->GetIndex());
@@ -1532,7 +1532,7 @@ std::vector<dex_ir::ClassData*> DexLayout::LayoutClassDefsAndClassData(const Dex
   return new_class_data_order;
 }
 
-void DexLayout::LayoutStringData(const DexFile* dex_file) {
+void DexLayout::LayoutStringData(const IDexFile* dex_file) {
   const size_t num_strings = header_->GetCollections().StringIds().size();
   std::vector<bool> is_shorty(num_strings, false);
   std::vector<bool> from_hot_method(num_strings, false);
@@ -1657,7 +1657,7 @@ void DexLayout::LayoutStringData(const DexFile* dex_file) {
 // Orders code items according to specified class data ordering.
 // NOTE: If the section following the code items is byte aligned, the last code item is left in
 // place to preserve alignment. Layout needs an overhaul to handle movement of other sections.
-int32_t DexLayout::LayoutCodeItems(const DexFile* dex_file,
+int32_t DexLayout::LayoutCodeItems(const IDexFile* dex_file,
                                    std::vector<dex_ir::ClassData*> new_class_data_order) {
   // Do not move code items if class data section precedes code item section.
   // ULEB encoding is variable length, causing problems determining the offset of the code items.
@@ -1875,7 +1875,7 @@ void DexLayout::FixupSections(uint32_t offset, uint32_t diff) {
   }
 }
 
-void DexLayout::LayoutOutputFile(const DexFile* dex_file) {
+void DexLayout::LayoutOutputFile(const IDexFile* dex_file) {
   LayoutStringData(dex_file);
   std::vector<dex_ir::ClassData*> new_class_data_order = LayoutClassDefsAndClassData(dex_file);
   int32_t diff = LayoutCodeItems(dex_file, new_class_data_order);
@@ -1885,7 +1885,7 @@ void DexLayout::LayoutOutputFile(const DexFile* dex_file) {
   header_->SetFileSize(header_->FileSize() + diff);
 }
 
-void DexLayout::OutputDexFile(const DexFile* dex_file) {
+void DexLayout::OutputDexFile(const IDexFile* dex_file) {
   const std::string& dex_file_location = dex_file->GetLocation();
   std::string error_msg;
   std::unique_ptr<File> new_file;
@@ -1930,7 +1930,7 @@ void DexLayout::OutputDexFile(const DexFile* dex_file) {
   // Verify the output dex file's structure for debug builds.
   if (kIsDebugBuild) {
     std::string location = "memory mapped file for " + dex_file_location;
-    std::unique_ptr<const DexFile> output_dex_file(DexFileLoader::Open(mem_map_->Begin(),
+    std::unique_ptr<const IDexFile> output_dex_file(DexFileLoader::Open(mem_map_->Begin(),
                                                                        mem_map_->Size(),
                                                                        location,
                                                                        header_->Checksum(),
@@ -1952,7 +1952,7 @@ void DexLayout::OutputDexFile(const DexFile* dex_file) {
  * Dumps the requested sections of the file.
  */
 void DexLayout::ProcessDexFile(const char* file_name,
-                               const DexFile* dex_file,
+                               const IDexFile* dex_file,
                                size_t dex_file_index) {
   std::unique_ptr<dex_ir::Header> header(dex_ir::DexIrBuilder(*dex_file));
   SetHeader(header.get());
@@ -1998,7 +1998,7 @@ int DexLayout::ProcessFile(const char* file_name) {
   // all of which are Zip archives with "classes.dex" inside.
   const bool verify_checksum = !options_.ignore_bad_checksum_;
   std::string error_msg;
-  std::vector<std::unique_ptr<const DexFile>> dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> dex_files;
   if (!DexFileLoader::Open(file_name, file_name, verify_checksum, &error_msg, &dex_files)) {
     // Display returned error message to user. Note that this error behavior
     // differs from the error messages shown by the original Dalvik dexdump.

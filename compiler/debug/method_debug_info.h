@@ -21,18 +21,18 @@
 
 #include "arch/instruction_set.h"
 #include "base/array_ref.h"
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace art {
 namespace debug {
 
 struct MethodDebugInfo {
   std::string trampoline_name;
-  const DexFile* dex_file;  // Native methods (trampolines) do not reference dex file.
+  const IDexFile* dex_file;  // Native methods (trampolines) do not reference dex file.
   size_t class_def_index;
   uint32_t dex_method_index;
   uint32_t access_flags;
-  const DexFile::CodeItem* code_item;
+  const IDexFile::CodeItem* code_item;
   InstructionSet isa;
   bool deduped;
   bool is_native_debuggable;

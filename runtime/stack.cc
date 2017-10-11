@@ -154,7 +154,7 @@ mirror::Object* StackVisitor::GetThisObject() const {
       return cur_shadow_frame_->GetVRegReference(0);
     }
   } else {
-    const DexFile::CodeItem* code_item = m->GetCodeItem();
+    const IDexFile::CodeItem* code_item = m->GetCodeItem();
     if (code_item == nullptr) {
       UNIMPLEMENTED(ERROR) << "Failed to determine this object of abstract or proxy method: "
           << ArtMethod::PrettyMethod(m);
@@ -223,7 +223,7 @@ bool StackVisitor::GetVReg(ArtMethod* m, uint16_t vreg, VRegKind kind, uint32_t*
 bool StackVisitor::GetVRegFromOptimizedCode(ArtMethod* m, uint16_t vreg, VRegKind kind,
                                             uint32_t* val) const {
   DCHECK_EQ(m, GetMethod());
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   DCHECK(code_item != nullptr) << m->PrettyMethod();  // Can't be null or how would we compile
                                                       // its instructions?
   uint16_t number_of_dex_registers = code_item->registers_size_;
@@ -395,7 +395,7 @@ bool StackVisitor::SetVReg(ArtMethod* m,
                            uint16_t vreg,
                            uint32_t new_value,
                            VRegKind kind) {
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   if (code_item == nullptr) {
     return false;
   }
@@ -432,7 +432,7 @@ bool StackVisitor::SetVRegPair(ArtMethod* m,
     LOG(FATAL) << "Expected long or double: kind_lo=" << kind_lo << ", kind_hi=" << kind_hi;
     UNREACHABLE();
   }
-  const DexFile::CodeItem* code_item = m->GetCodeItem();
+  const IDexFile::CodeItem* code_item = m->GetCodeItem();
   if (code_item == nullptr) {
     return false;
   }

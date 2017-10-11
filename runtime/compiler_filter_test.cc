@@ -35,7 +35,7 @@ static void TestSafeModeFilter(CompilerFilter::Filter expected, const std::strin
 }
 
 
-// Verify the dexopt status values from dalvik.system.DexFile
+// Verify the dexopt status values from dalvik.system.IDexFile
 // match the OatFileAssistant::DexOptStatus values.
 TEST(CompilerFilterTest, ParseCompilerFilter) {
   CompilerFilter::Filter filter;

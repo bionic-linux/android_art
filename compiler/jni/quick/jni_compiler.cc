@@ -31,7 +31,7 @@
 #include "class_linker.h"
 #include "compiled_method.h"
 #include "debug/dwarf/debug_frame_opcode_writer.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "driver/compiler_driver.h"
 #include "driver/compiler_options.h"
 #include "entrypoints/quick/quick_entrypoints.h"
@@ -120,7 +120,7 @@ template <PointerSize kPointerSize>
 static CompiledMethod* ArtJniCompileMethodInternal(CompilerDriver* driver,
                                                    uint32_t access_flags,
                                                    uint32_t method_idx,
-                                                   const DexFile& dex_file,
+                                                   const IDexFile& dex_file,
                                                    JniOptimizationFlags optimization_flags) {
   const bool is_native = (access_flags & kAccNative) != 0;
   CHECK(is_native);
@@ -780,7 +780,7 @@ static void SetNativeParameter(JNIMacroAssembler<kPointerSize>* jni_asm,
 CompiledMethod* ArtQuickJniCompileMethod(CompilerDriver* compiler,
                                          uint32_t access_flags,
                                          uint32_t method_idx,
-                                         const DexFile& dex_file,
+                                         const IDexFile& dex_file,
                                          Compiler::JniOptimizationFlags optimization_flags) {
   if (Is64BitInstructionSet(compiler->GetInstructionSet())) {
     return ArtJniCompileMethodInternal<PointerSize::k64>(

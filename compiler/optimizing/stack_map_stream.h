@@ -149,7 +149,7 @@ class StackMapStream : public ValueObject {
   void BeginInlineInfoEntry(ArtMethod* method,
                             uint32_t dex_pc,
                             uint32_t num_dex_registers,
-                            const DexFile* outer_dex_file = nullptr);
+                            const IDexFile* outer_dex_file = nullptr);
   void EndInlineInfoEntry();
 
   size_t GetNumberOfStackMaps() const {

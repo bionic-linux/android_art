@@ -24,7 +24,7 @@
 
 #include "base/logging.h"
 #include "base/unix_file/fd_file.h"
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace art {
 

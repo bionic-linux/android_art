@@ -20,7 +20,7 @@
 #include "art_method-inl.h"
 #include "base/enums.h"
 #include "class_linker-inl.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "dex_instruction.h"
 #include "dex_instruction_utils.h"
@@ -43,7 +43,7 @@ class Matcher {
   typedef bool MatchFn(Matcher* matcher);
 
   template <size_t size>
-  static bool Match(const DexFile::CodeItem* code_item, MatchFn* const (&pattern)[size]);
+  static bool Match(const IDexFile::CodeItem* code_item, MatchFn* const (&pattern)[size]);
 
   // Match and advance.
 
@@ -62,22 +62,22 @@ class Matcher {
   bool IPutOnThis();
 
  private:
-  explicit Matcher(const DexFile::CodeItem* code_item)
+  explicit Matcher(const IDexFile::CodeItem* code_item)
       : code_item_(code_item),
         instruction_(code_item->Instructions().begin()),
         pos_(0u),
         mark_(0u) { }
 
-  static bool DoMatch(const DexFile::CodeItem* code_item, MatchFn* const* pattern, size_t size);
+  static bool DoMatch(const IDexFile::CodeItem* code_item, MatchFn* const* pattern, size_t size);
 
-  const DexFile::CodeItem* const code_item_;
+  const IDexFile::CodeItem* const code_item_;
   DexInstructionIterator instruction_;
   size_t pos_;
   size_t mark_;
 };
 
 template <size_t size>
-bool Matcher::Match(const DexFile::CodeItem* code_item, MatchFn* const (&pattern)[size]) {
+bool Matcher::Match(const IDexFile::CodeItem* code_item, MatchFn* const (&pattern)[size]) {
   return DoMatch(code_item, pattern, size);
 }
 
@@ -127,7 +127,7 @@ bool Matcher::IPutOnThis() {
       instruction_->VRegB_22c() == code_item_->registers_size_ - code_item_->ins_size_;
 }
 
-bool Matcher::DoMatch(const DexFile::CodeItem* code_item, MatchFn* const* pattern, size_t size) {
+bool Matcher::DoMatch(const IDexFile::CodeItem* code_item, MatchFn* const* pattern, size_t size) {
   Matcher matcher(code_item);
   while (matcher.pos_ != size) {
     if (!pattern[matcher.pos_](&matcher)) {
@@ -158,7 +158,7 @@ ArtMethod* GetTargetConstructor(ArtMethod* method, const Instruction* invoke_dir
 
 // Return the forwarded arguments and check that all remaining arguments are zero.
 // If the check fails, return static_cast<size_t>(-1).
-size_t CountForwardedConstructorArguments(const DexFile::CodeItem* code_item,
+size_t CountForwardedConstructorArguments(const IDexFile::CodeItem* code_item,
                                           const Instruction* invoke_direct,
                                           uint16_t zero_vreg_mask) {
   DCHECK_EQ(invoke_direct->Opcode(), Instruction::INVOKE_DIRECT);
@@ -199,7 +199,7 @@ uint16_t GetZeroVRegMask(const Instruction* const0) {
 static constexpr size_t kMaxConstructorIPuts = 3u;
 
 struct ConstructorIPutData {
-  ConstructorIPutData() : field_index(DexFile::kDexNoIndex16), arg(0u) { }
+  ConstructorIPutData() : field_index(IDexFile::kDexNoIndex16), arg(0u) { }
 
   uint16_t field_index;
   uint16_t arg;
@@ -221,7 +221,7 @@ bool RecordConstructorIPut(ArtMethod* method,
   // Remove previous IPUT to the same field, if any. Different field indexes may refer
   // to the same field, so we need to compare resolved fields from the dex cache.
   for (size_t old_pos = 0; old_pos != arraysize(iputs); ++old_pos) {
-    if (iputs[old_pos].field_index == DexFile::kDexNoIndex16) {
+    if (iputs[old_pos].field_index == IDexFile::kDexNoIndex16) {
       break;
     }
     ArtField* f = class_linker->LookupResolvedField(iputs[old_pos].field_index,
@@ -237,7 +237,7 @@ bool RecordConstructorIPut(ArtMethod* method,
   // If the stored value isn't zero, record the IPUT.
   if ((zero_vreg_mask & (1u << new_iput->VRegA_22c())) == 0u) {
     size_t new_pos = 0;
-    while (new_pos != arraysize(iputs) && iputs[new_pos].field_index != DexFile::kDexNoIndex16) {
+    while (new_pos != arraysize(iputs) && iputs[new_pos].field_index != IDexFile::kDexNoIndex16) {
       ++new_pos;
     }
     if (new_pos == arraysize(iputs)) {
@@ -249,7 +249,7 @@ bool RecordConstructorIPut(ArtMethod* method,
   return true;
 }
 
-bool DoAnalyseConstructor(const DexFile::CodeItem* code_item,
+bool DoAnalyseConstructor(const IDexFile::CodeItem* code_item,
                           ArtMethod* method,
                           /*inout*/ ConstructorIPutData (&iputs)[kMaxConstructorIPuts])
     REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -258,7 +258,7 @@ bool DoAnalyseConstructor(const DexFile::CodeItem* code_item,
       iputs,
       iputs + arraysize(iputs),
       [](const ConstructorIPutData& iput_data) {
-        return iput_data.field_index != DexFile::kDexNoIndex16;
+        return iput_data.field_index != IDexFile::kDexNoIndex16;
       }));
 
   // Limit the maximum number of code units we're willing to match.
@@ -324,7 +324,7 @@ bool DoAnalyseConstructor(const DexFile::CodeItem* code_item,
         DCHECK_EQ(target_method->GetCodeItem()->Instructions().begin()->Opcode(),
                   Instruction::RETURN_VOID);
       } else {
-        const DexFile::CodeItem* target_code_item = target_method->GetCodeItem();
+        const IDexFile::CodeItem* target_code_item = target_method->GetCodeItem();
         if (target_code_item == nullptr) {
           return false;  // Native constructor?
         }
@@ -341,7 +341,7 @@ bool DoAnalyseConstructor(const DexFile::CodeItem* code_item,
         std::fill(kept_end, iputs + arraysize(iputs), ConstructorIPutData());
         // If we have any IPUTs from the call, check that the target method is in the same
         // dex file (compare DexCache references), otherwise field_indexes would be bogus.
-        if (iputs[0].field_index != DexFile::kDexNoIndex16 &&
+        if (iputs[0].field_index != IDexFile::kDexNoIndex16 &&
             target_method->GetDexCache() != method->GetDexCache()) {
           return false;
         }
@@ -364,7 +364,7 @@ bool DoAnalyseConstructor(const DexFile::CodeItem* code_item,
 
 }  // anonymous namespace
 
-bool AnalyseConstructor(const DexFile::CodeItem* code_item,
+bool AnalyseConstructor(const IDexFile::CodeItem* code_item,
                         ArtMethod* method,
                         InlineMethod* result)
     REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -373,10 +373,10 @@ bool AnalyseConstructor(const DexFile::CodeItem* code_item,
     return false;
   }
   static_assert(kMaxConstructorIPuts == 3, "Unexpected limit");  // Code below depends on this.
-  DCHECK(iputs[0].field_index != DexFile::kDexNoIndex16 ||
-         iputs[1].field_index == DexFile::kDexNoIndex16);
-  DCHECK(iputs[1].field_index != DexFile::kDexNoIndex16 ||
-         iputs[2].field_index == DexFile::kDexNoIndex16);
+  DCHECK(iputs[0].field_index != IDexFile::kDexNoIndex16 ||
+         iputs[1].field_index == IDexFile::kDexNoIndex16);
+  DCHECK(iputs[1].field_index != IDexFile::kDexNoIndex16 ||
+         iputs[2].field_index == IDexFile::kDexNoIndex16);
 
 #define STORE_IPUT(n)                                                         \
   do {                                                                        \
@@ -428,7 +428,7 @@ static_assert(InlineMethodAnalyser::IGetVariant(Instruction::IGET_SHORT) ==
     InlineMethodAnalyser::IPutVariant(Instruction::IPUT_SHORT), "iget/iput_short variant");
 
 bool InlineMethodAnalyser::AnalyseMethodCode(ArtMethod* method, InlineMethod* result) {
-  const DexFile::CodeItem* code_item = method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = method->GetCodeItem();
   if (code_item == nullptr) {
     // Native or abstract.
     return false;
@@ -440,7 +440,7 @@ bool InlineMethodAnalyser::AnalyseMethodCode(ArtMethod* method, InlineMethod* re
                            result);
 }
 
-bool InlineMethodAnalyser::AnalyseMethodCode(const DexFile::CodeItem* code_item,
+bool InlineMethodAnalyser::AnalyseMethodCode(const IDexFile::CodeItem* code_item,
                                              const MethodReference& method_ref,
                                              bool is_static,
                                              ArtMethod* method,
@@ -509,7 +509,7 @@ bool InlineMethodAnalyser::AnalyseMethodCode(const DexFile::CodeItem* code_item,
 }
 
 bool InlineMethodAnalyser::IsSyntheticAccessor(MethodReference ref) {
-  const DexFile::MethodId& method_id = ref.dex_file->GetMethodId(ref.index);
+  const IDexFile::MethodId& method_id = ref.dex_file->GetMethodId(ref.index);
   const char* method_name = ref.dex_file->GetMethodName(method_id);
   // javac names synthetic accessors "access$nnn",
   // jack names them "-getN", "-putN", "-wrapN".
@@ -517,7 +517,7 @@ bool InlineMethodAnalyser::IsSyntheticAccessor(MethodReference ref) {
       strncmp(method_name, "-", strlen("-")) == 0;
 }
 
-bool InlineMethodAnalyser::AnalyseReturnMethod(const DexFile::CodeItem* code_item,
+bool InlineMethodAnalyser::AnalyseReturnMethod(const IDexFile::CodeItem* code_item,
                                                InlineMethod* result) {
   DexInstructionIterator return_instruction = code_item->Instructions().begin();
   Instruction::Code return_opcode = return_instruction->Opcode();
@@ -539,7 +539,7 @@ bool InlineMethodAnalyser::AnalyseReturnMethod(const DexFile::CodeItem* code_ite
   return true;
 }
 
-bool InlineMethodAnalyser::AnalyseConstMethod(const DexFile::CodeItem* code_item,
+bool InlineMethodAnalyser::AnalyseConstMethod(const IDexFile::CodeItem* code_item,
                                               InlineMethod* result) {
   DexInstructionIterator instruction = code_item->Instructions().begin();
   const Instruction* return_instruction = instruction->Next();
@@ -570,7 +570,7 @@ bool InlineMethodAnalyser::AnalyseConstMethod(const DexFile::CodeItem* code_item
   return true;
 }
 
-bool InlineMethodAnalyser::AnalyseIGetMethod(const DexFile::CodeItem* code_item,
+bool InlineMethodAnalyser::AnalyseIGetMethod(const IDexFile::CodeItem* code_item,
                                              const MethodReference& method_ref,
                                              bool is_static,
                                              ArtMethod* method,
@@ -634,7 +634,7 @@ bool InlineMethodAnalyser::AnalyseIGetMethod(const DexFile::CodeItem* code_item,
   return true;
 }
 
-bool InlineMethodAnalyser::AnalyseIPutMethod(const DexFile::CodeItem* code_item,
+bool InlineMethodAnalyser::AnalyseIPutMethod(const IDexFile::CodeItem* code_item,
                                              const MethodReference& method_ref,
                                              bool is_static,
                                              ArtMethod* method,

@@ -23,7 +23,7 @@
 #include "base/casts.h"
 #include "base/enums.h"
 #include "base/logging.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "gc_root.h"
 #include "modifiers.h"
 #include "obj_ptr.h"
@@ -387,7 +387,7 @@ class ArtMethod FINAL {
   // return dex::kDexNoIndex. The name_and_signature_idx MUST refer to a MethodId with the same
   // name and signature in the other_dexfile, such as the method index used to resolve this method
   // in the other_dexfile.
-  uint32_t FindDexMethodIndexInOtherDexFile(const DexFile& other_dexfile,
+  uint32_t FindDexMethodIndexInOtherDexFile(const IDexFile& other_dexfile,
                                             uint32_t name_and_signature_idx)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -548,7 +548,7 @@ class ArtMethod FINAL {
   template<ReadBarrierOption kReadBarrierOption = kWithReadBarrier, typename RootVisitorType>
   void VisitRoots(RootVisitorType& visitor, PointerSize pointer_size) NO_THREAD_SAFETY_ANALYSIS;
 
-  const DexFile* GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile* GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
 
   const char* GetDeclaringClassDescriptor() REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -562,21 +562,21 @@ class ArtMethod FINAL {
 
   mirror::String* GetNameAsString(Thread* self) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::CodeItem* GetCodeItem() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::CodeItem* GetCodeItem() REQUIRES_SHARED(Locks::mutator_lock_);
 
   bool IsResolvedTypeIdx(dex::TypeIndex type_idx) REQUIRES_SHARED(Locks::mutator_lock_);
 
   int32_t GetLineNumFromDexPC(uint32_t dex_pc) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::ProtoId& GetPrototype() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::ProtoId& GetPrototype() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::TypeList* GetParameterTypeList() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::TypeList* GetParameterTypeList() REQUIRES_SHARED(Locks::mutator_lock_);
 
   const char* GetDeclaringClassSourceFile() REQUIRES_SHARED(Locks::mutator_lock_);
 
   uint16_t GetClassDefIndex() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::ClassDef& GetClassDef() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::ClassDef& GetClassDef() REQUIRES_SHARED(Locks::mutator_lock_);
 
   const char* GetReturnTypeDescriptor() REQUIRES_SHARED(Locks::mutator_lock_);
 

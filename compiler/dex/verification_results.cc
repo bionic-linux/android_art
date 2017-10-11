@@ -146,7 +146,7 @@ bool VerificationResults::IsCandidateForCompilation(MethodReference&,
   return true;
 }
 
-void VerificationResults::AddDexFile(const DexFile* dex_file) {
+void VerificationResults::AddDexFile(const IDexFile* dex_file) {
   atomic_verified_methods_.AddDexFile(dex_file);
   WriterMutexLock mu(Thread::Current(), verified_methods_lock_);
   // There can be some verified methods that are already registered for the dex_file since we set

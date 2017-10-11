@@ -38,7 +38,7 @@
 #include "art_field-inl.h"
 #include "art_jvmti.h"
 #include "base/logging.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "events-inl.h"
 #include "gc/allocation_listener.h"
@@ -60,7 +60,7 @@ namespace openjdkjvmti {
 
 bool ClassLoaderHelper::AddToClassLoader(art::Thread* self,
                                          art::Handle<art::mirror::ClassLoader> loader,
-                                         const art::DexFile* dex_file) {
+                                         const art::IDexFile* dex_file) {
   art::ScopedObjectAccessUnchecked soa(self);
   art::StackHandleScope<3> hs(self);
   if (art::ClassLinker::IsBootClassLoader(soa, loader.Get())) {
@@ -78,7 +78,7 @@ bool ClassLoaderHelper::AddToClassLoader(art::Thread* self,
   if (cookie.IsNull()) {
     return false;
   }
-  art::ScopedAssertNoThreadSuspension nts("Replacing cookie fields in j.l.DexFile object");
+  art::ScopedAssertNoThreadSuspension nts("Replacing cookie fields in j.l.IDexFile object");
   UpdateJavaDexFile(java_dex_file_obj.Get(), cookie.Get());
   return true;
 }
@@ -102,7 +102,7 @@ void ClassLoaderHelper::UpdateJavaDexFile(art::ObjPtr<art::mirror::Object> java_
 
 art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::GetDexFileCookie(
     art::Handle<art::mirror::Object> java_dex_file_obj) {
-  // mCookie is nulled out if the DexFile has been closed but mInternalCookie sticks around until
+  // mCookie is nulled out if the IDexFile has been closed but mInternalCookie sticks around until
   // the object is finalized. Since they always point to the same array if mCookie is not null we
   // just use the mInternalCookie field. We will update one or both of these fields later.
   art::ArtField* internal_cookie_field = java_dex_file_obj->GetClass()->FindDeclaredInstanceField(
@@ -115,7 +115,7 @@ art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::GetDexFileCookie(
 art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::AllocateNewDexFileCookie(
     art::Thread* self,
     art::Handle<art::mirror::LongArray> cookie,
-    const art::DexFile* dex_file) {
+    const art::IDexFile* dex_file) {
   art::StackHandleScope<1> hs(self);
   CHECK(cookie != nullptr);
   CHECK_GE(cookie->GetLength(), 1);
@@ -134,12 +134,12 @@ art::ObjPtr<art::mirror::LongArray> ClassLoaderHelper::AllocateNewDexFileCookie(
   return new_cookie.Get();
 }
 
-// TODO This should return the actual source java.lang.DexFile object for the klass being loaded.
+// TODO This should return the actual source java.lang.IDexFile object for the klass being loaded.
 art::ObjPtr<art::mirror::Object> ClassLoaderHelper::FindSourceDexFileObject(
     art::Thread* self, art::Handle<art::mirror::ClassLoader> loader) {
   const char* dex_path_list_element_array_name = "[Ldalvik/system/DexPathList$Element;";
   const char* dex_path_list_element_name = "Ldalvik/system/DexPathList$Element;";
-  const char* dex_file_name = "Ldalvik/system/DexFile;";
+  const char* dex_file_name = "Ldalvik/system/IDexFile;";
   const char* dex_path_list_name = "Ldalvik/system/DexPathList;";
   const char* dex_class_loader_name = "Ldalvik/system/BaseDexClassLoader;";
 
@@ -191,7 +191,7 @@ art::ObjPtr<art::mirror::Object> ClassLoaderHelper::FindSourceDexFileObject(
   for (size_t i = 0; i < num_elements; i++) {
     art::ObjPtr<art::mirror::Object> current_element = dex_elements_list->Get(i);
     CHECK(!current_element.IsNull());
-    // TODO It would be cleaner to put the art::DexFile into the dalvik.system.DexFile the class
+    // TODO It would be cleaner to put the art::IDexFile into the dalvik.system.IDexFile the class
     // comes from but it is more annoying because we would need to find this class. It is not
     // necessary for proper function since we just need to be in front of the classes old dex file
     // in the path.

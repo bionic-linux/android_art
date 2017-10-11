@@ -24,7 +24,7 @@
 #include "base/stl_util.h"
 #include "class_linker.h"
 #include "class_loader_utils.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_loader.h"
 #include "handle_scope-inl.h"
 #include "jni_internal.h"
@@ -65,7 +65,7 @@ ClassLoaderContext::~ClassLoaderContext() {
       for (std::unique_ptr<OatFile>& oat_file : info.opened_oat_files) {
         oat_file.release();
       }
-      for (std::unique_ptr<const DexFile>& dex_file : info.opened_dex_files) {
+      for (std::unique_ptr<const IDexFile>& dex_file : info.opened_dex_files) {
         dex_file.release();
       }
     }
@@ -241,7 +241,7 @@ bool ClassLoaderContext::OpenDexFiles(InstructionSet isa, const std::string& cla
         // TODO(calin): Use the vdex directly instead of going through the oat file.
         OatFileAssistant oat_file_assistant(location.c_str(), isa, false);
         std::unique_ptr<OatFile> oat_file(oat_file_assistant.GetBestOatFile());
-        std::vector<std::unique_ptr<const DexFile>> oat_dex_files;
+        std::vector<std::unique_ptr<const IDexFile>> oat_dex_files;
         if (oat_file != nullptr &&
             OatFileAssistant::LoadDexFiles(*oat_file, location, &oat_dex_files)) {
           info.opened_oat_files.push_back(std::move(oat_file));
@@ -267,7 +267,7 @@ bool ClassLoaderContext::OpenDexFiles(InstructionSet isa, const std::string& cla
     info.classpath.clear();
     info.checksums.clear();
     for (size_t k = opened_dex_files_index; k < info.opened_dex_files.size(); k++) {
-      std::unique_ptr<const DexFile>& dex = info.opened_dex_files[k];
+      std::unique_ptr<const IDexFile>& dex = info.opened_dex_files[k];
       info.classpath.push_back(dex->GetLocation());
       info.checksums.push_back(dex->GetLocationChecksum());
     }
@@ -337,7 +337,7 @@ std::string ClassLoaderContext::EncodeContext(const std::string& base_dir,
     out << kClassLoaderOpeningMark;
     std::set<std::string> seen_locations;
     for (size_t k = 0; k < info.opened_dex_files.size(); k++) {
-      const std::unique_ptr<const DexFile>& dex_file = info.opened_dex_files[k];
+      const std::unique_ptr<const IDexFile>& dex_file = info.opened_dex_files[k];
       if (for_dex2oat) {
         // dex2oat only needs the base location. It cannot accept multidex locations.
         // So ensure we only add each file once.
@@ -369,7 +369,7 @@ std::string ClassLoaderContext::EncodeContext(const std::string& base_dir,
 }
 
 jobject ClassLoaderContext::CreateClassLoader(
-    const std::vector<const DexFile*>& compilation_sources) const {
+    const std::vector<const IDexFile*>& compilation_sources) const {
   CheckDexFilesOpened("CreateClassLoader");
 
   Thread* self = Thread::Current();
@@ -386,7 +386,7 @@ jobject ClassLoaderContext::CreateClassLoader(
   // needs special handling.
   jobject current_parent = nullptr;  // the starting parent is the BootClassLoader.
   for (size_t i = class_loader_chain_.size() - 1; i > 0; i--) {
-    std::vector<const DexFile*> class_path_files = MakeNonOwningPointerVector(
+    std::vector<const IDexFile*> class_path_files = MakeNonOwningPointerVector(
         class_loader_chain_[i].opened_dex_files);
     current_parent = class_linker->CreateWellKnownClassLoader(
         self,
@@ -399,7 +399,7 @@ jobject ClassLoaderContext::CreateClassLoader(
   // Its classpath comes first, followed by compilation sources. This ensures that whenever
   // we need to resolve classes from it the classpath elements come first.
 
-  std::vector<const DexFile*> first_class_loader_classpath = MakeNonOwningPointerVector(
+  std::vector<const IDexFile*> first_class_loader_classpath = MakeNonOwningPointerVector(
       class_loader_chain_[0].opened_dex_files);
   first_class_loader_classpath.insert(first_class_loader_classpath.end(),
                                     compilation_sources.begin(),
@@ -412,12 +412,12 @@ jobject ClassLoaderContext::CreateClassLoader(
       current_parent);
 }
 
-std::vector<const DexFile*> ClassLoaderContext::FlattenOpenedDexFiles() const {
+std::vector<const IDexFile*> ClassLoaderContext::FlattenOpenedDexFiles() const {
   CheckDexFilesOpened("FlattenOpenedDexFiles");
 
-  std::vector<const DexFile*> result;
+  std::vector<const IDexFile*> result;
   for (const ClassLoaderInfo& info : class_loader_chain_) {
-    for (const std::unique_ptr<const DexFile>& dex_file : info.opened_dex_files) {
+    for (const std::unique_ptr<const IDexFile>& dex_file : info.opened_dex_files) {
       result.push_back(dex_file.get());
     }
   }
@@ -444,7 +444,7 @@ void ClassLoaderContext::CheckDexFilesOpened(const std::string& calling_method) 
 // at least 1 class are collected. If a null java_dex_file is passed this method does nothing.
 static bool CollectDexFilesFromJavaDexFile(ObjPtr<mirror::Object> java_dex_file,
                                            ArtField* const cookie_field,
-                                           std::vector<const DexFile*>* out_dex_files)
+                                           std::vector<const IDexFile*>* out_dex_files)
       REQUIRES_SHARED(Locks::mutator_lock_) {
   if (java_dex_file == nullptr) {
     return true;
@@ -459,7 +459,7 @@ static bool CollectDexFilesFromJavaDexFile(ObjPtr<mirror::Object> java_dex_file,
   int32_t long_array_size = long_array->GetLength();
   // Index 0 from the long array stores the oat file. The dex files start at index 1.
   for (int32_t j = 1; j < long_array_size; ++j) {
-    const DexFile* cp_dex_file = reinterpret_cast<const DexFile*>(static_cast<uintptr_t>(
+    const IDexFile* cp_dex_file = reinterpret_cast<const IDexFile*>(static_cast<uintptr_t>(
         long_array->GetWithoutChecks(j)));
     if (cp_dex_file != nullptr && cp_dex_file->NumClassDefs() > 0) {
       // TODO(calin): It's unclear why the dex files with no classes are skipped here and when
@@ -475,7 +475,7 @@ static bool CollectDexFilesFromJavaDexFile(ObjPtr<mirror::Object> java_dex_file,
 // a null list of dex elements or a null dex element).
 static bool CollectDexFilesFromSupportedClassLoader(ScopedObjectAccessAlreadyRunnable& soa,
                                                     Handle<mirror::ClassLoader> class_loader,
-                                                    std::vector<const DexFile*>* out_dex_files)
+                                                    std::vector<const IDexFile*>* out_dex_files)
       REQUIRES_SHARED(Locks::mutator_lock_) {
   CHECK(IsPathOrDexClassLoader(soa, class_loader) || IsDelegateLastClassLoader(soa, class_loader));
 
@@ -499,8 +499,8 @@ static bool CollectDexFilesFromSupportedClassLoader(ScopedObjectAccessAlreadyRun
   ObjPtr<mirror::Object> dex_elements_obj =
       jni::DecodeArtField(WellKnownClasses::dalvik_system_DexPathList_dexElements)->
           GetObject(dex_path_list);
-  // Loop through each dalvik.system.DexPathList$Element's dalvik.system.DexFile and look
-  // at the mCookie which is a DexFile vector.
+  // Loop through each dalvik.system.DexPathList$Element's dalvik.system.IDexFile and look
+  // at the mCookie which is a IDexFile vector.
   if (dex_elements_obj == nullptr) {
     // TODO(calin): It's unclear if we should just assert here. For now be prepared for the worse
     // and assume we have no elements.
@@ -532,7 +532,7 @@ static bool CollectDexFilesFromSupportedClassLoader(ScopedObjectAccessAlreadyRun
 static bool GetDexFilesFromDexElementsArray(
     ScopedObjectAccessAlreadyRunnable& soa,
     Handle<mirror::ObjectArray<mirror::Object>> dex_elements,
-    std::vector<const DexFile*>* out_dex_files) REQUIRES_SHARED(Locks::mutator_lock_) {
+    std::vector<const IDexFile*>* out_dex_files) REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(dex_elements != nullptr);
 
   ArtField* const cookie_field =
@@ -553,7 +553,7 @@ static bool GetDexFilesFromDexElementsArray(
       continue;
     }
 
-    // We support this being dalvik.system.DexPathList$Element and dalvik.system.DexFile.
+    // We support this being dalvik.system.DexPathList$Element and dalvik.system.IDexFile.
     // TODO(calin): Code caried over oat_file_manager: supporting both classes seem to be
     // a historical glitch. All the java code opens dex files using an array of Elements.
     ObjPtr<mirror::Object> dex_file;
@@ -600,7 +600,7 @@ bool ClassLoaderContext::AddInfoToContextFromClassLoader(
   }
 
   // Inspect the class loader for its dex files.
-  std::vector<const DexFile*> dex_files_loaded;
+  std::vector<const IDexFile*> dex_files_loaded;
   CollectDexFilesFromSupportedClassLoader(soa, class_loader, &dex_files_loaded);
 
   // If we have a dex_elements array extract its dex elements now.
@@ -618,7 +618,7 @@ bool ClassLoaderContext::AddInfoToContextFromClassLoader(
 
   class_loader_chain_.push_back(ClassLoaderContext::ClassLoaderInfo(type));
   ClassLoaderInfo& info = class_loader_chain_.back();
-  for (const DexFile* dex_file : dex_files_loaded) {
+  for (const IDexFile* dex_file : dex_files_loaded) {
     info.classpath.push_back(dex_file->GetLocation());
     info.checksums.push_back(dex_file->GetLocationChecksum());
     info.opened_dex_files.emplace_back(dex_file);

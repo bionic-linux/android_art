@@ -19,7 +19,7 @@
 #include "base/logging.h"
 #include "base/mutex.h"
 #include "bytecode_utils.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "quicken_info.h"
 
@@ -28,7 +28,7 @@ namespace optimizer {
 
 class DexDecompiler {
  public:
-  DexDecompiler(const DexFile::CodeItem& code_item,
+  DexDecompiler(const IDexFile::CodeItem& code_item,
                 const ArrayRef<const uint8_t>& quickened_info,
                 bool decompile_return_instruction)
     : code_item_(code_item),
@@ -57,7 +57,7 @@ class DexDecompiler {
 
   void DecompileNop(Instruction* inst) {
     const uint16_t reference_index = NextIndex();
-    if (reference_index == DexFile::kDexNoIndex16) {
+    if (reference_index == IDexFile::kDexNoIndex16) {
       // This means it was a normal nop and not a check-cast.
       return;
     }
@@ -74,7 +74,7 @@ class DexDecompiler {
     return ret;
   }
 
-  const DexFile::CodeItem& code_item_;
+  const IDexFile::CodeItem& code_item_;
   const QuickenInfoTable quicken_info_;
   const size_t quicken_info_number_of_indices_;
   const bool decompile_return_instruction_;
@@ -192,7 +192,7 @@ bool DexDecompiler::Decompile() {
   return true;
 }
 
-bool ArtDecompileDEX(const DexFile::CodeItem& code_item,
+bool ArtDecompileDEX(const IDexFile::CodeItem& code_item,
                      const ArrayRef<const uint8_t>& quickened_info,
                      bool decompile_return_instruction) {
   if (quickened_info.size() == 0 && !decompile_return_instruction) {

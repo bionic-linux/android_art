@@ -20,7 +20,7 @@
 #include "callee_save_frame.h"
 #include "common_throws.h"
 #include "debugger.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_types.h"
 #include "dex_instruction-inl.h"
 #include "entrypoints/entrypoint_utils-inl.h"
@@ -783,7 +783,7 @@ extern "C" uint64_t artQuickToInterpreterBridge(ArtMethod* method, Thread* self,
   DCHECK(!method->IsNative()) << method->PrettyMethod();
   uint32_t shorty_len = 0;
   ArtMethod* non_proxy_method = method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
-  const DexFile::CodeItem* code_item = non_proxy_method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = non_proxy_method->GetCodeItem();
   DCHECK(code_item != nullptr) << method->PrettyMethod();
   const char* shorty = non_proxy_method->GetShorty(&shorty_len);
 
@@ -1116,7 +1116,7 @@ extern "C" const void* artQuickResolutionTrampoline(
     // code.
     if (!found_stack_map || kIsDebugBuild) {
       uint32_t dex_pc = QuickArgumentVisitor::GetCallingDexPc(sp);
-      const DexFile::CodeItem* code;
+      const IDexFile::CodeItem* code;
       code = caller->GetCodeItem();
       CHECK_LT(dex_pc, code->insns_size_in_code_units_);
       const Instruction& instr = code->InstructionAt(dex_pc);
@@ -2352,7 +2352,7 @@ static TwoWordReturn artInvokeCommon(uint32_t method_idx,
   ArtMethod* caller_method = QuickArgumentVisitor::GetCallingMethod(sp);
   ArtMethod* method = FindMethodFast<type, access_check>(method_idx, this_object, caller_method);
   if (UNLIKELY(method == nullptr)) {
-    const DexFile* dex_file = caller_method->GetDeclaringClass()->GetDexCache()->GetDexFile();
+    const IDexFile* dex_file = caller_method->GetDeclaringClass()->GetDexCache()->GetDexFile();
     uint32_t shorty_len;
     const char* shorty = dex_file->GetMethodShorty(dex_file->GetMethodId(method_idx), &shorty_len);
     {
@@ -2473,7 +2473,7 @@ extern "C" TwoWordReturn artInvokeInterfaceTrampoline(ArtMethod* interface_metho
     // Fetch the dex_method_idx of the target interface method from the caller.
     uint32_t dex_method_idx;
     uint32_t dex_pc = QuickArgumentVisitor::GetCallingDexPc(sp);
-    const DexFile::CodeItem* code_item = caller_method->GetCodeItem();
+    const IDexFile::CodeItem* code_item = caller_method->GetCodeItem();
     DCHECK_LT(dex_pc, code_item->insns_size_in_code_units_);
     const Instruction& instr = code_item->InstructionAt(dex_pc);
     Instruction::Code instr_code = instr.Opcode();
@@ -2487,7 +2487,7 @@ extern "C" TwoWordReturn artInvokeInterfaceTrampoline(ArtMethod* interface_metho
       dex_method_idx = instr.VRegB_3rc();
     }
 
-    const DexFile& dex_file = caller_method->GetDeclaringClass()->GetDexFile();
+    const IDexFile& dex_file = caller_method->GetDeclaringClass()->GetDexFile();
     uint32_t shorty_len;
     const char* shorty = dex_file.GetMethodShorty(dex_file.GetMethodId(dex_method_idx),
                                                   &shorty_len);
@@ -2590,11 +2590,11 @@ extern "C" uintptr_t artInvokePolymorphic(
   // From the instruction, get the |callsite_shorty| and expose arguments on the stack to the GC.
   ArtMethod* caller_method = QuickArgumentVisitor::GetCallingMethod(sp);
   uint32_t dex_pc = QuickArgumentVisitor::GetCallingDexPc(sp);
-  const DexFile::CodeItem* code = caller_method->GetCodeItem();
+  const IDexFile::CodeItem* code = caller_method->GetCodeItem();
   const Instruction& inst = code->InstructionAt(dex_pc);
   DCHECK(inst.Opcode() == Instruction::INVOKE_POLYMORPHIC ||
          inst.Opcode() == Instruction::INVOKE_POLYMORPHIC_RANGE);
-  const DexFile* dex_file = caller_method->GetDexFile();
+  const IDexFile* dex_file = caller_method->GetDexFile();
   const uint32_t proto_idx = inst.VRegH();
   const char* shorty = dex_file->GetShorty(proto_idx);
   const size_t shorty_length = strlen(shorty);

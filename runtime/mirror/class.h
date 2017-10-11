@@ -22,7 +22,7 @@
 #include "base/iteration_range.h"
 #include "class_flags.h"
 #include "class_status.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "gc/allocator_type.h"
 #include "gc_root.h"
@@ -593,7 +593,7 @@ class MANAGED Class FINAL : public Object {
 
   // Can this class access a resolved field?
   // Note that access to field's class is checked and this may require looking up the class
-  // referenced by the FieldId in the DexFile in case the declaring class is inaccessible.
+  // referenced by the FieldId in the IDexFile in case the declaring class is inaccessible.
   bool CanAccessResolvedField(ObjPtr<Class> access_to,
                               ArtField* field,
                               ObjPtr<DexCache> dex_cache,
@@ -607,7 +607,7 @@ class MANAGED Class FINAL : public Object {
 
   // Can this class access a resolved method?
   // Note that access to methods's class is checked and this may require looking up the class
-  // referenced by the MethodId in the DexFile in case the declaring class is inaccessible.
+  // referenced by the MethodId in the IDexFile in case the declaring class is inaccessible.
   bool CanAccessResolvedMethod(ObjPtr<Class> access_to,
                                ArtMethod* resolved_method,
                                ObjPtr<DexCache> dex_cache,
@@ -1128,7 +1128,7 @@ class MANAGED Class FINAL : public Object {
     SetField32Transaction(OFFSET_OF_OBJECT_MEMBER(Class, dex_type_idx_), type_idx.index_);
   }
 
-  dex::TypeIndex FindTypeIndexInOtherDexFile(const DexFile& dex_file)
+  dex::TypeIndex FindTypeIndexInOtherDexFile(const IDexFile& dex_file)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   static Class* GetJavaLangClass() REQUIRES_SHARED(Locks::mutator_lock_) {
@@ -1165,7 +1165,7 @@ class MANAGED Class FINAL : public Object {
 
   bool DescriptorEquals(const char* match) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::ClassDef* GetClassDef() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::ClassDef* GetClassDef() REQUIRES_SHARED(Locks::mutator_lock_);
 
   ALWAYS_INLINE uint32_t NumDirectInterfaces() REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -1186,9 +1186,9 @@ class MANAGED Class FINAL : public Object {
 
   std::string GetLocation() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile& GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile& GetDexFile() REQUIRES_SHARED(Locks::mutator_lock_);
 
-  const DexFile::TypeList* GetInterfaceTypeList() REQUIRES_SHARED(Locks::mutator_lock_);
+  const IDexFile::TypeList* GetInterfaceTypeList() REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Asserts we are initialized or initializing in the given thread.
   void AssertInitializedOrInitializingInThread(Thread* self)

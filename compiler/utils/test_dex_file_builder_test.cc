@@ -16,7 +16,7 @@
 
 #include "test_dex_file_builder.h"
 
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "gtest/gtest.h"
 #include "utils.h"
 
@@ -30,7 +30,7 @@ TEST(TestDexFileBuilderTest, SimpleTest) {
   builder.AddMethod("LTestClass;", "()I", "foo");
   builder.AddMethod("LTestClass;", "(Ljava/lang/Object;[Ljava/lang/Object;)LTestClass;", "bar");
   const char* dex_location = "TestDexFileBuilder/SimpleTest";
-  std::unique_ptr<const DexFile> dex_file(builder.Build(dex_location));
+  std::unique_ptr<const IDexFile> dex_file(builder.Build(dex_location));
   ASSERT_TRUE(dex_file != nullptr);
   EXPECT_STREQ(dex_location, dex_file->GetLocation().c_str());
 

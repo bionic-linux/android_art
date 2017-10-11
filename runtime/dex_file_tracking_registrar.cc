@@ -29,7 +29,7 @@
 #include "base/memory_tool.h"
 
 #include "base/logging.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 
 namespace art {
 namespace dex {
@@ -117,7 +117,7 @@ void DexFileTrackingRegistrar::SetDexSections() {
   }
 }
 
-void RegisterDexFile(const DexFile* dex_file) {
+void RegisterDexFile(const IDexFile* dex_file) {
   DexFileTrackingRegistrar dex_tracking_registrar(dex_file);
   dex_tracking_registrar.SetDexSections();
   dex_tracking_registrar.SetCurrentRanges();
@@ -153,16 +153,16 @@ void DexFileTrackingRegistrar::SetDexFileRegistration(bool should_poison) {
 
 void DexFileTrackingRegistrar::SetAllCodeItemRegistration(bool should_poison) {
   for (size_t classdef_ctr = 0; classdef_ctr < dex_file_->NumClassDefs(); ++classdef_ctr) {
-    const DexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
+    const IDexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
     const uint8_t* class_data = dex_file_->GetClassData(cd);
     if (class_data != nullptr) {
       ClassDataItemIterator cdit(*dex_file_, class_data);
       cdit.SkipAllFields();
       while (cdit.HasNextDirectMethod()) {
-        const DexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
+        const IDexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
         if (code_item != nullptr) {
           const void* code_item_begin = reinterpret_cast<const void*>(code_item);
-          size_t code_item_size = DexFile::GetCodeItemSize(*code_item);
+          size_t code_item_size = IDexFile::GetCodeItemSize(*code_item);
           range_values_.push_back(std::make_tuple(code_item_begin, code_item_size, should_poison));
         }
         cdit.Next();
@@ -173,13 +173,13 @@ void DexFileTrackingRegistrar::SetAllCodeItemRegistration(bool should_poison) {
 
 void DexFileTrackingRegistrar::SetAllCodeItemStartRegistration(bool should_poison) {
   for (size_t classdef_ctr = 0; classdef_ctr < dex_file_->NumClassDefs(); ++classdef_ctr) {
-    const DexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
+    const IDexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
     const uint8_t* class_data = dex_file_->GetClassData(cd);
     if (class_data != nullptr) {
       ClassDataItemIterator cdit(*dex_file_, class_data);
       cdit.SkipAllFields();
       while (cdit.HasNextDirectMethod()) {
-        const DexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
+        const IDexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
         if (code_item != nullptr) {
           const void* code_item_begin = reinterpret_cast<const void*>(code_item);
           size_t code_item_start = reinterpret_cast<size_t>(code_item);
@@ -195,13 +195,13 @@ void DexFileTrackingRegistrar::SetAllCodeItemStartRegistration(bool should_poiso
 
 void DexFileTrackingRegistrar::SetAllInsnsRegistration(bool should_poison) {
   for (size_t classdef_ctr = 0; classdef_ctr < dex_file_->NumClassDefs(); ++classdef_ctr) {
-    const DexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
+    const IDexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
     const uint8_t* class_data = dex_file_->GetClassData(cd);
     if (class_data != nullptr) {
       ClassDataItemIterator cdit(*dex_file_, class_data);
       cdit.SkipAllFields();
       while (cdit.HasNextDirectMethod()) {
-        const DexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
+        const IDexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
         if (code_item != nullptr) {
           const void* insns_begin = reinterpret_cast<const void*>(&code_item->insns_);
           // Member insns_size_in_code_units_ is in 2-byte units
@@ -216,18 +216,18 @@ void DexFileTrackingRegistrar::SetAllInsnsRegistration(bool should_poison) {
 
 void DexFileTrackingRegistrar::SetCodeItemRegistration(const char* class_name, bool should_poison) {
   for (size_t classdef_ctr = 0; classdef_ctr < dex_file_->NumClassDefs(); ++classdef_ctr) {
-    const DexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
+    const IDexFile::ClassDef& cd = dex_file_->GetClassDef(classdef_ctr);
     const uint8_t* class_data = dex_file_->GetClassData(cd);
     if (class_data != nullptr) {
       ClassDataItemIterator cdit(*dex_file_, class_data);
       cdit.SkipAllFields();
       while (cdit.HasNextDirectMethod()) {
-        const DexFile::MethodId& methodid_item = dex_file_->GetMethodId(cdit.GetMemberIndex());
+        const IDexFile::MethodId& methodid_item = dex_file_->GetMethodId(cdit.GetMemberIndex());
         const char * methodid_name = dex_file_->GetMethodName(methodid_item);
-        const DexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
+        const IDexFile::CodeItem* code_item = cdit.GetMethodCodeItem();
         if (code_item != nullptr && strcmp(methodid_name, class_name) == 0) {
           const void* code_item_begin = reinterpret_cast<const void*>(code_item);
-          size_t code_item_size = DexFile::GetCodeItemSize(*code_item);
+          size_t code_item_size = IDexFile::GetCodeItemSize(*code_item);
           range_values_.push_back(std::make_tuple(code_item_begin, code_item_size, should_poison));
         }
         cdit.Next();
@@ -238,7 +238,7 @@ void DexFileTrackingRegistrar::SetCodeItemRegistration(const char* class_name, b
 
 void DexFileTrackingRegistrar::SetAllStringDataStartRegistration(bool should_poison) {
   for (size_t stringid_ctr = 0; stringid_ctr < dex_file_->NumStringIds(); ++stringid_ctr) {
-    const DexFile::StringId & string_id = dex_file_->GetStringId(StringIndex(stringid_ctr));
+    const IDexFile::StringId & string_id = dex_file_->GetStringId(StringIndex(stringid_ctr));
     const void* string_data_begin = reinterpret_cast<const void*>(dex_file_->Begin() + string_id.string_data_off_);
     // Data Section of String Data Item
     const void* string_data_data_begin = reinterpret_cast<const void*>(dex_file_->GetStringData(string_id));
@@ -249,11 +249,11 @@ void DexFileTrackingRegistrar::SetAllStringDataStartRegistration(bool should_poi
 
 void DexFileTrackingRegistrar::SetAllStringDataRegistration(bool should_poison) {
   size_t map_offset = dex_file_->GetHeader().map_off_;
-  auto map_list = reinterpret_cast<const DexFile::MapList*>(dex_file_->Begin() + map_offset);
+  auto map_list = reinterpret_cast<const IDexFile::MapList*>(dex_file_->Begin() + map_offset);
   for (size_t map_ctr = 0; map_ctr < map_list->size_; ++map_ctr) {
-    const DexFile::MapItem& map_item = map_list->list_[map_ctr];
-    if (map_item.type_ == DexFile::kDexTypeStringDataItem) {
-      const DexFile::MapItem& next_map_item = map_list->list_[map_ctr + 1];
+    const IDexFile::MapItem& map_item = map_list->list_[map_ctr];
+    if (map_item.type_ == IDexFile::kDexTypeStringDataItem) {
+      const IDexFile::MapItem& next_map_item = map_list->list_[map_ctr + 1];
       const void* string_data_begin = reinterpret_cast<const void*>(dex_file_->Begin() + map_item.offset_);
       size_t string_data_size = next_map_item.offset_ - map_item.offset_;
       range_values_.push_back(std::make_tuple(string_data_begin, string_data_size, should_poison));

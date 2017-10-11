@@ -27,7 +27,7 @@
 namespace art {
 
 static inline ObjPtr<mirror::DexCache> FindDexCacheWithHint(
-    Thread* self, const DexFile& dex_file, Handle<mirror::DexCache> hint_dex_cache)
+    Thread* self, const IDexFile& dex_file, Handle<mirror::DexCache> hint_dex_cache)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   if (LIKELY(hint_dex_cache->GetDexFile() == &dex_file)) {
     return hint_dex_cache.Get();
@@ -101,7 +101,7 @@ class ReferenceTypePropagation::RTPVisitor : public HGraphDelegateVisitor {
   void VisitNullCheck(HNullCheck* instr) OVERRIDE;
   void UpdateReferenceTypeInfo(HInstruction* instr,
                                dex::TypeIndex type_idx,
-                               const DexFile& dex_file,
+                               const IDexFile& dex_file,
                                bool is_exact);
 
  private:
@@ -519,7 +519,7 @@ void ReferenceTypePropagation::RTPVisitor::SetClassAsTypeInfo(HInstruction* inst
       ClassLinker* cl = Runtime::Current()->GetClassLinker();
       Thread* self = Thread::Current();
       StackHandleScope<2> hs(self);
-      const DexFile& dex_file = *invoke->GetTargetMethod().dex_file;
+      const IDexFile& dex_file = *invoke->GetTargetMethod().dex_file;
       Handle<mirror::DexCache> dex_cache(
           hs.NewHandle(FindDexCacheWithHint(self, dex_file, hint_dex_cache_)));
       // Use a null loader. We should probably use the compiling method's class loader,
@@ -553,7 +553,7 @@ void ReferenceTypePropagation::RTPVisitor::VisitDeoptimize(HDeoptimize* instr) {
 
 void ReferenceTypePropagation::RTPVisitor::UpdateReferenceTypeInfo(HInstruction* instr,
                                                                    dex::TypeIndex type_idx,
-                                                                   const DexFile& dex_file,
+                                                                   const IDexFile& dex_file,
                                                                    bool is_exact) {
   DCHECK_EQ(instr->GetType(), DataType::Type::kReference);
 

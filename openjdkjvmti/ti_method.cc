@@ -138,7 +138,7 @@ jvmtiError MethodUtil::GetBytecodes(jvmtiEnv* env,
   }
 
   art::ScopedObjectAccess soa(art::Thread::Current());
-  const art::DexFile::CodeItem* code_item = art_method->GetCodeItem();
+  const art::IDexFile::CodeItem* code_item = art_method->GetCodeItem();
   if (code_item == nullptr) {
     *size_ptr = 0;
     *bytecode_ptr = nullptr;
@@ -206,8 +206,8 @@ jvmtiError MethodUtil::GetLocalVariableTable(jvmtiEnv* env,
   }
 
   art::ScopedObjectAccess soa(art::Thread::Current());
-  const art::DexFile* dex_file = art_method->GetDexFile();
-  const art::DexFile::CodeItem* code_item = art_method->GetCodeItem();
+  const art::IDexFile* dex_file = art_method->GetDexFile();
+  const art::IDexFile::CodeItem* code_item = art_method->GetCodeItem();
   // TODO code_item == nullptr means that the method is abstract (or native, but we check that
   // earlier). We should check what is returned by the RI in this situation since it's not clear
   // what the appropriate return value is from the spec.
@@ -218,11 +218,11 @@ jvmtiError MethodUtil::GetLocalVariableTable(jvmtiEnv* env,
   struct LocalVariableContext {
     explicit LocalVariableContext(jvmtiEnv* jenv) : env_(jenv), variables_(), err_(OK) {}
 
-    static void Callback(void* raw_ctx, const art::DexFile::LocalInfo& entry) {
+    static void Callback(void* raw_ctx, const art::IDexFile::LocalInfo& entry) {
       reinterpret_cast<LocalVariableContext*>(raw_ctx)->Insert(entry);
     }
 
-    void Insert(const art::DexFile::LocalInfo& entry) {
+    void Insert(const art::IDexFile::LocalInfo& entry) {
       if (err_ != OK) {
         return;
       }
@@ -458,7 +458,7 @@ jvmtiError MethodUtil::GetMethodModifiers(jvmtiEnv* env ATTRIBUTE_UNUSED,
 
 using LineNumberContext = std::vector<jvmtiLineNumberEntry>;
 
-static bool CollectLineNumbers(void* void_context, const art::DexFile::PositionInfo& entry) {
+static bool CollectLineNumbers(void* void_context, const art::IDexFile::PositionInfo& entry) {
   LineNumberContext* context = reinterpret_cast<LineNumberContext*>(void_context);
   jvmtiLineNumberEntry jvmti_entry = { static_cast<jlocation>(entry.address_),
                                        static_cast<jint>(entry.line_) };
@@ -476,8 +476,8 @@ jvmtiError MethodUtil::GetLineNumberTable(jvmtiEnv* env,
   art::ArtMethod* art_method = art::jni::DecodeArtMethod(method);
   DCHECK(!art_method->IsRuntimeMethod());
 
-  const art::DexFile::CodeItem* code_item;
-  const art::DexFile* dex_file;
+  const art::IDexFile::CodeItem* code_item;
+  const art::IDexFile* dex_file;
   {
     art::ScopedObjectAccess soa(art::Thread::Current());
 
@@ -624,8 +624,8 @@ class CommonLocalVariableClosure : public art::Closure {
                          /*out*/std::string* descriptor,
                          /*out*/art::Primitive::Type* type)
       REQUIRES(art::Locks::mutator_lock_) {
-    const art::DexFile* dex_file = method->GetDexFile();
-    const art::DexFile::CodeItem* code_item = method->GetCodeItem();
+    const art::IDexFile* dex_file = method->GetDexFile();
+    const art::IDexFile::CodeItem* code_item = method->GetCodeItem();
     if (dex_file == nullptr || code_item == nullptr) {
       return ERR(OPAQUE_FRAME);
     }
@@ -640,11 +640,11 @@ class CommonLocalVariableClosure : public art::Closure {
         *type_ = art::Primitive::kPrimVoid;
       }
 
-      static void Callback(void* raw_ctx, const art::DexFile::LocalInfo& entry) {
+      static void Callback(void* raw_ctx, const art::IDexFile::LocalInfo& entry) {
         reinterpret_cast<GetLocalVariableInfoContext*>(raw_ctx)->Handle(entry);
       }
 
-      void Handle(const art::DexFile::LocalInfo& entry) {
+      void Handle(const art::IDexFile::LocalInfo& entry) {
         if (found_) {
           return;
         } else if (entry.start_address_ <= pc_ &&

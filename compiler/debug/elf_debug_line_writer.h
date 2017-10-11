@@ -24,16 +24,16 @@
 #include "debug/dwarf/headers.h"
 #include "debug/elf_compilation_unit.h"
 #include "debug/src_map_elem.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "linker/elf_builder.h"
 #include "stack_map.h"
 
 namespace art {
 namespace debug {
 
-typedef std::vector<DexFile::PositionInfo> PositionInfos;
+typedef std::vector<IDexFile::PositionInfo> PositionInfos;
 
-static bool PositionInfoCallback(void* ctx, const DexFile::PositionInfo& entry) {
+static bool PositionInfoCallback(void* ctx, const IDexFile::PositionInfo& entry) {
   static_cast<PositionInfos*>(ctx)->push_back(entry);
   return false;
 }
@@ -157,7 +157,7 @@ class ElfDebugLineWriter {
 
       PositionInfos dex2line_map;
       DCHECK(mi->dex_file != nullptr);
-      const DexFile* dex = mi->dex_file;
+      const IDexFile* dex = mi->dex_file;
       if (!dex->DecodeDebugPositionInfo(mi->code_item, PositionInfoCallback, &dex2line_map)) {
         continue;
       }
@@ -231,7 +231,7 @@ class ElfDebugLineWriter {
               dex2line_map.begin(),
               dex2line_map.end(),
               dex_pc,
-              [](uint32_t address, const DexFile::PositionInfo& entry) {
+              [](uint32_t address, const IDexFile::PositionInfo& entry) {
                   return address < entry.address_;
               });
           // Look for first valid mapping after the prologue.

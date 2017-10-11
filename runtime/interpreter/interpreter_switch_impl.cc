@@ -125,7 +125,7 @@ namespace interpreter {
 // jvmti-agents while handling breakpoint or single step events. We had to move this into its own
 // function because it was making ExecuteSwitchImpl have too large a stack.
 NO_INLINE static bool DoDexPcMoveEvent(Thread* self,
-                                       const DexFile::CodeItem* code_item,
+                                       const IDexFile::CodeItem* code_item,
                                        const ShadowFrame& shadow_frame,
                                        uint32_t dex_pc,
                                        const instrumentation::Instrumentation* instrumentation,
@@ -188,7 +188,7 @@ NO_INLINE static bool SendMethodExitEvents(Thread* self,
 }
 
 template<bool do_access_check, bool transaction_active>
-JValue ExecuteSwitchImpl(Thread* self, const DexFile::CodeItem* code_item,
+JValue ExecuteSwitchImpl(Thread* self, const IDexFile::CodeItem* code_item,
                          ShadowFrame& shadow_frame, JValue result_register,
                          bool interpret_one_instruction) {
   constexpr bool do_assignability_check = do_access_check;
@@ -2484,19 +2484,19 @@ JValue ExecuteSwitchImpl(Thread* self, const DexFile::CodeItem* code_item,
 
 // Explicit definitions of ExecuteSwitchImpl.
 template HOT_ATTR
-JValue ExecuteSwitchImpl<true, false>(Thread* self, const DexFile::CodeItem* code_item,
+JValue ExecuteSwitchImpl<true, false>(Thread* self, const IDexFile::CodeItem* code_item,
                                       ShadowFrame& shadow_frame, JValue result_register,
                                       bool interpret_one_instruction);
 template HOT_ATTR
-JValue ExecuteSwitchImpl<false, false>(Thread* self, const DexFile::CodeItem* code_item,
+JValue ExecuteSwitchImpl<false, false>(Thread* self, const IDexFile::CodeItem* code_item,
                                        ShadowFrame& shadow_frame, JValue result_register,
                                        bool interpret_one_instruction);
 template
-JValue ExecuteSwitchImpl<true, true>(Thread* self, const DexFile::CodeItem* code_item,
+JValue ExecuteSwitchImpl<true, true>(Thread* self, const IDexFile::CodeItem* code_item,
                                      ShadowFrame& shadow_frame, JValue result_register,
                                      bool interpret_one_instruction);
 template
-JValue ExecuteSwitchImpl<false, true>(Thread* self, const DexFile::CodeItem* code_item,
+JValue ExecuteSwitchImpl<false, true>(Thread* self, const IDexFile::CodeItem* code_item,
                                       ShadowFrame& shadow_frame, JValue result_register,
                                       bool interpret_one_instruction);
 

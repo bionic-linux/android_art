@@ -19,7 +19,7 @@
 #include <memory>
 
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "scoped_thread_state_change-inl.h"
 #include "utf-inl.h"
 
@@ -30,7 +30,7 @@ class TypeLookupTableTest : public CommonRuntimeTestWithParam<DescriptorClassDef
 
 TEST_F(TypeLookupTableTest, CreateLookupTable) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> dex_file(OpenTestDexFile("Lookup"));
+  std::unique_ptr<const IDexFile> dex_file(OpenTestDexFile("Lookup"));
   std::unique_ptr<TypeLookupTable> table(TypeLookupTable::Create(*dex_file));
   ASSERT_NE(nullptr, table.get());
   ASSERT_NE(nullptr, table->RawData());
@@ -39,7 +39,7 @@ TEST_F(TypeLookupTableTest, CreateLookupTable) {
 
 TEST_P(TypeLookupTableTest, Find) {
   ScopedObjectAccess soa(Thread::Current());
-  std::unique_ptr<const DexFile> dex_file(OpenTestDexFile("Lookup"));
+  std::unique_ptr<const IDexFile> dex_file(OpenTestDexFile("Lookup"));
   std::unique_ptr<TypeLookupTable> table(TypeLookupTable::Create(*dex_file));
   ASSERT_NE(nullptr, table.get());
   auto pair = GetParam();

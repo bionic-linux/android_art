@@ -55,7 +55,7 @@ static const uintptr_t kRequestedImageBase = ART_BASE_ADDRESS;
 struct CompilationHelper {
   std::vector<std::string> dex_file_locations;
   std::vector<ScratchFile> image_locations;
-  std::vector<std::unique_ptr<const DexFile>> extra_dex_files;
+  std::vector<std::unique_ptr<const IDexFile>> extra_dex_files;
   std::vector<ScratchFile> image_files;
   std::vector<ScratchFile> oat_files;
   std::vector<ScratchFile> vdex_files;
@@ -142,9 +142,9 @@ inline std::vector<size_t> CompilationHelper::GetImageObjectSectionSizes() {
 inline void CompilationHelper::Compile(CompilerDriver* driver,
                                        ImageHeader::StorageMode storage_mode) {
   ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
-  std::vector<const DexFile*> class_path = class_linker->GetBootClassPath();
+  std::vector<const IDexFile*> class_path = class_linker->GetBootClassPath();
 
-  for (const std::unique_ptr<const DexFile>& dex_file : extra_dex_files) {
+  for (const std::unique_ptr<const IDexFile>& dex_file : extra_dex_files) {
     {
       ScopedObjectAccess soa(Thread::Current());
       // Inject in boot class path so that the compiler driver can see it.
@@ -154,7 +154,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
   }
 
   // Enable write for dex2dex.
-  for (const DexFile* dex_file : class_path) {
+  for (const IDexFile* dex_file : class_path) {
     dex_file_locations.push_back(dex_file->GetLocation());
     if (dex_file->IsReadOnly()) {
       dex_file->EnableWrite();
@@ -194,7 +194,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
     vdex_filenames.push_back(vdex_filename);
   }
 
-  std::unordered_map<const DexFile*, size_t> dex_file_to_oat_index_map;
+  std::unordered_map<const IDexFile*, size_t> dex_file_to_oat_index_map;
   std::vector<const char*> oat_filename_vector;
   for (const std::string& file : oat_filenames) {
     oat_filename_vector.push_back(file.c_str());
@@ -204,7 +204,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
     image_filename_vector.push_back(file.c_str());
   }
   size_t image_idx = 0;
-  for (const DexFile* dex_file : class_path) {
+  for (const IDexFile* dex_file : class_path) {
     dex_file_to_oat_index_map.emplace(dex_file, image_idx);
     ++image_idx;
   }
@@ -252,10 +252,10 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
 
       std::vector<OutputStream*> rodata;
       std::vector<std::unique_ptr<MemMap>> opened_dex_files_map;
-      std::vector<std::unique_ptr<const DexFile>> opened_dex_files;
+      std::vector<std::unique_ptr<const IDexFile>> opened_dex_files;
       // Now that we have finalized key_value_store_, start writing the oat file.
       for (size_t i = 0, size = oat_writers.size(); i != size; ++i) {
-        const DexFile* dex_file = class_path[i];
+        const IDexFile* dex_file = class_path[i];
         rodata.push_back(elf_writers[i]->StartRoData());
         ArrayRef<const uint8_t> raw_dex_file(
             reinterpret_cast<const uint8_t*>(&dex_file->GetHeader()),
@@ -265,7 +265,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
                                             dex_file->GetLocationChecksum());
 
         std::unique_ptr<MemMap> cur_opened_dex_files_map;
-        std::vector<std::unique_ptr<const DexFile>> cur_opened_dex_files;
+        std::vector<std::unique_ptr<const IDexFile>> cur_opened_dex_files;
         bool dex_files_ok = oat_writers[i]->WriteAndOpenDexFiles(
             kIsVdexEnabled ? vdex_files[i].GetFile() : oat_files[i].GetFile(),
             rodata.back(),
@@ -280,7 +280,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
 
         if (cur_opened_dex_files_map != nullptr) {
           opened_dex_files_map.push_back(std::move(cur_opened_dex_files_map));
-          for (std::unique_ptr<const DexFile>& cur_dex_file : cur_opened_dex_files) {
+          for (std::unique_ptr<const IDexFile>& cur_dex_file : cur_opened_dex_files) {
             // dex_file_oat_index_map_.emplace(dex_file.get(), i);
             opened_dex_files.push_back(std::move(cur_dex_file));
           }
@@ -306,7 +306,7 @@ inline void CompilationHelper::Compile(CompilerDriver* driver,
                                         driver->GetInstructionSetFeatures());
         OatWriter* const oat_writer = oat_writers[i].get();
         ElfWriter* const elf_writer = elf_writers[i].get();
-        std::vector<const DexFile*> cur_dex_files(1u, class_path[i]);
+        std::vector<const IDexFile*> cur_dex_files(1u, class_path[i]);
         oat_writer->Initialize(driver, writer.get(), cur_dex_files);
         oat_writer->PrepareLayout(&patcher);
         size_t rodata_size = oat_writer->GetOatHeader().GetExecutableOffset();
@@ -456,7 +456,7 @@ inline void ImageTest::TestWriteRead(ImageHeader::StorageMode storage_mode) {
   // We loaded the runtime with an explicit image, so it must exist.
   ASSERT_EQ(heap->GetBootImageSpaces().size(), image_file_sizes.size());
   for (size_t i = 0; i < helper.dex_file_locations.size(); ++i) {
-    std::unique_ptr<const DexFile> dex(
+    std::unique_ptr<const IDexFile> dex(
         LoadExpectSingleDexFile(helper.dex_file_locations[i].c_str()));
     ASSERT_TRUE(dex != nullptr);
     uint64_t image_file_size = image_file_sizes[i];
@@ -478,7 +478,7 @@ inline void ImageTest::TestWriteRead(ImageHeader::StorageMode storage_mode) {
       CHECK_EQ(kRequestedImageBase, reinterpret_cast<uintptr_t>(image_begin));
     }
     for (size_t j = 0; j < dex->NumClassDefs(); ++j) {
-      const DexFile::ClassDef& class_def = dex->GetClassDef(j);
+      const IDexFile::ClassDef& class_def = dex->GetClassDef(j);
       const char* descriptor = dex->GetClassDescriptor(class_def);
       mirror::Class* klass = class_linker_->FindSystemClass(soa.Self(), descriptor);
       EXPECT_TRUE(klass != nullptr) << descriptor;

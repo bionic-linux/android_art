@@ -25,7 +25,7 @@
 #include "base/mutex.h"
 #include "base/stringpiece.h"
 #include "compiler_filter.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_layout.h"
 #include "method_bss_mapping.h"
 #include "mirror/class.h"
@@ -302,7 +302,7 @@ class OatFile {
 
   // Finds the associated oat class for a dex_file and descriptor. Returns an invalid OatClass on
   // error and sets found to false.
-  static OatClass FindOatClass(const DexFile& dex_file, uint16_t class_def_idx, bool* found);
+  static OatClass FindOatClass(const IDexFile& dex_file, uint16_t class_def_idx, bool* found);
 
   VdexFile* GetVdexFile() const {
     return vdex_.get();
@@ -384,11 +384,11 @@ class OatFile {
 // OatDexFile should be an inner class of OatFile. Unfortunately, C++ doesn't
 // support forward declarations of inner classes, and we want to
 // forward-declare OatDexFile so that we can store an opaque pointer to an
-// OatDexFile in DexFile.
+// OatDexFile in IDexFile.
 class OatDexFile FINAL {
  public:
-  // Opens the DexFile referred to by this OatDexFile from within the containing OatFile.
-  std::unique_ptr<const DexFile> OpenDexFile(std::string* error_msg) const;
+  // Opens the IDexFile referred to by this OatDexFile from within the containing OatFile.
+  std::unique_ptr<const IDexFile> OpenDexFile(std::string* error_msg) const;
 
   // May return null if the OatDexFile only contains a type lookup table. This case only happens
   // for the compiler to speed up compilation.
@@ -400,25 +400,25 @@ class OatDexFile FINAL {
     return oat_file_;
   }
 
-  // Returns the size of the DexFile refered to by this OatDexFile.
+  // Returns the size of the IDexFile refered to by this OatDexFile.
   size_t FileSize() const;
 
-  // Returns original path of DexFile that was the source of this OatDexFile.
+  // Returns original path of IDexFile that was the source of this OatDexFile.
   const std::string& GetDexFileLocation() const {
     return dex_file_location_;
   }
 
-  // Returns the canonical location of DexFile that was the source of this OatDexFile.
+  // Returns the canonical location of IDexFile that was the source of this OatDexFile.
   const std::string& GetCanonicalDexFileLocation() const {
     return canonical_dex_file_location_;
   }
 
-  // Returns checksum of original DexFile that was the source of this OatDexFile;
+  // Returns checksum of original IDexFile that was the source of this OatDexFile;
   uint32_t GetDexFileLocationChecksum() const {
     return dex_file_location_checksum_;
   }
 
-  // Returns the OatClass for the class specified by the given DexFile class_def_index.
+  // Returns the OatClass for the class specified by the given IDexFile class_def_index.
   OatFile::OatClass GetOatClass(uint16_t class_def_index) const;
 
   // Returns the offset to the OatClass information. Most callers should use GetOatClass.
@@ -438,12 +438,12 @@ class OatDexFile FINAL {
 
   // Looks up a class definition by its class descriptor. Hash must be
   // ComputeModifiedUtf8Hash(descriptor).
-  static const DexFile::ClassDef* FindClassDef(const DexFile& dex_file,
+  static const IDexFile::ClassDef* FindClassDef(const IDexFile& dex_file,
                                                const char* descriptor,
                                                size_t hash);
 
   // Madvise the dex file based on the state we are moving to.
-  static void MadviseDexFile(const DexFile& dex_file, MadviseState state);
+  static void MadviseDexFile(const IDexFile& dex_file, MadviseState state);
 
   TypeLookupTable* GetTypeLookupTable() const {
     return lookup_table_.get();

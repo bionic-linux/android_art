@@ -26,7 +26,7 @@
 #include "base/macros.h"
 #include "base/unix_file/fd_file.h"
 #include "common_runtime_test.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "dex_file_types.h"
 #include "leb128.h"
@@ -38,17 +38,17 @@
 namespace art {
 
 // Make the Dex file version 37.
-static void MakeDexVersion37(DexFile* dex_file) {
-  size_t offset = OFFSETOF_MEMBER(DexFile::Header, magic_) + 6;
+static void MakeDexVersion37(IDexFile* dex_file) {
+  size_t offset = OFFSETOF_MEMBER(IDexFile::Header, magic_) + 6;
   CHECK_EQ(*(dex_file->Begin() + offset), '5');
   *(const_cast<uint8_t*>(dex_file->Begin()) + offset) = '7';
 }
 
 static void FixUpChecksum(uint8_t* dex_file) {
-  DexFile::Header* header = reinterpret_cast<DexFile::Header*>(dex_file);
+  IDexFile::Header* header = reinterpret_cast<IDexFile::Header*>(dex_file);
   uint32_t expected_size = header->file_size_;
   uint32_t adler_checksum = adler32(0L, Z_NULL, 0);
-  const uint32_t non_sum = sizeof(DexFile::Header::magic_) + sizeof(DexFile::Header::checksum_);
+  const uint32_t non_sum = sizeof(IDexFile::Header::magic_) + sizeof(IDexFile::Header::checksum_);
   const uint8_t* non_sum_ptr = dex_file + non_sum;
   adler_checksum = adler32(adler_checksum, non_sum_ptr, expected_size - non_sum);
   header->checksum_ = adler_checksum;
@@ -56,19 +56,19 @@ static void FixUpChecksum(uint8_t* dex_file) {
 
 class DexFileVerifierTest : public CommonRuntimeTest {
  protected:
-  DexFile* GetDexFile(const uint8_t* dex_bytes, size_t length) {
+  IDexFile* GetDexFile(const uint8_t* dex_bytes, size_t length) {
     return new NativeDexFile(dex_bytes, length, "tmp", 0, nullptr);
   }
 
   void VerifyModification(const char* dex_file_base64_content,
                           const char* location,
-                          const std::function<void(DexFile*)>& f,
+                          const std::function<void(IDexFile*)>& f,
                           const char* expected_error) {
     size_t length;
     std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(dex_file_base64_content, &length));
     CHECK(dex_bytes != nullptr);
     // Note: `dex_file` will be destroyed before `dex_bytes`.
-    std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+    std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
     f(dex_file.get());
     FixUpChecksum(const_cast<uint8_t*>(dex_file->Begin()));
 
@@ -91,7 +91,7 @@ class DexFileVerifierTest : public CommonRuntimeTest {
   }
 };
 
-static std::unique_ptr<const DexFile> OpenDexFileBase64(const char* base64,
+static std::unique_ptr<const IDexFile> OpenDexFileBase64(const char* base64,
                                                         const char* location,
                                                         std::string* error_msg) {
   // decode base64
@@ -113,11 +113,11 @@ static std::unique_ptr<const DexFile> OpenDexFileBase64(const char* base64,
 
   // read dex file
   ScopedObjectAccess soa(Thread::Current());
-  std::vector<std::unique_ptr<const DexFile>> tmp;
+  std::vector<std::unique_ptr<const IDexFile>> tmp;
   bool success = DexFileLoader::Open(location, location, true, error_msg, &tmp);
   CHECK(success) << *error_msg;
   EXPECT_EQ(1U, tmp.size());
-  std::unique_ptr<const DexFile> dex_file = std::move(tmp[0]);
+  std::unique_ptr<const IDexFile> dex_file = std::move(tmp[0]);
   EXPECT_EQ(PROT_READ, dex_file->GetPermissions());
   EXPECT_TRUE(dex_file->IsReadOnly());
   return dex_file;
@@ -147,7 +147,7 @@ static const char kGoodTestDex[] =
 TEST_F(DexFileVerifierTest, GoodDex) {
   ScratchFile tmp;
   std::string error_msg;
-  std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kGoodTestDex, tmp.GetFilename().c_str(),
+  std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kGoodTestDex, tmp.GetFilename().c_str(),
                                                        &error_msg));
   ASSERT_TRUE(raw.get() != nullptr) << error_msg;
 }
@@ -157,8 +157,8 @@ TEST_F(DexFileVerifierTest, MethodId) {
   VerifyModification(
       kGoodTestDex,
       "method_id_class_idx",
-      [](DexFile* dex_file) {
-        DexFile::MethodId* method_id = const_cast<DexFile::MethodId*>(&dex_file->GetMethodId(0));
+      [](IDexFile* dex_file) {
+        IDexFile::MethodId* method_id = const_cast<IDexFile::MethodId*>(&dex_file->GetMethodId(0));
         method_id->class_idx_ = dex::TypeIndex(0xFF);
       },
       "could not find declaring class for direct method index 0");
@@ -167,8 +167,8 @@ TEST_F(DexFileVerifierTest, MethodId) {
   VerifyModification(
       kGoodTestDex,
       "method_id_proto_idx",
-      [](DexFile* dex_file) {
-        DexFile::MethodId* method_id = const_cast<DexFile::MethodId*>(&dex_file->GetMethodId(0));
+      [](IDexFile* dex_file) {
+        IDexFile::MethodId* method_id = const_cast<IDexFile::MethodId*>(&dex_file->GetMethodId(0));
         method_id->proto_idx_ = 0xFF;
       },
       "inter_method_id_item proto_idx");
@@ -177,8 +177,8 @@ TEST_F(DexFileVerifierTest, MethodId) {
   VerifyModification(
       kGoodTestDex,
       "method_id_name_idx",
-      [](DexFile* dex_file) {
-        DexFile::MethodId* method_id = const_cast<DexFile::MethodId*>(&dex_file->GetMethodId(0));
+      [](IDexFile* dex_file) {
+        IDexFile::MethodId* method_id = const_cast<IDexFile::MethodId*>(&dex_file->GetMethodId(0));
         method_id->name_idx_ = dex::StringIndex(0xFF);
       },
       "String index not available for method flags verification");
@@ -226,10 +226,10 @@ static const char kMethodFlagsTestDex[] =
 // Find the method data for the first method with the given name (from class 0). Note: the pointer
 // is to the access flags, so that the caller doesn't have to handle the leb128-encoded method-index
 // delta.
-static const uint8_t* FindMethodData(const DexFile* dex_file,
+static const uint8_t* FindMethodData(const IDexFile* dex_file,
                                      const char* name,
                                      /*out*/ uint32_t* method_idx = nullptr) {
-  const DexFile::ClassDef& class_def = dex_file->GetClassDef(0);
+  const IDexFile::ClassDef& class_def = dex_file->GetClassDef(0);
   const uint8_t* class_data = dex_file->GetClassData(class_def);
 
   ClassDataItemIterator it(*dex_file, class_data);
@@ -251,7 +251,7 @@ static const uint8_t* FindMethodData(const DexFile* dex_file,
   while (it.HasNextDirectMethod() || it.HasNextVirtualMethod()) {
     uint32_t method_index = it.GetMemberIndex();
     dex::StringIndex name_index = dex_file->GetMethodId(method_index).name_idx_;
-    const DexFile::StringId& string_id = dex_file->GetStringId(name_index);
+    const IDexFile::StringId& string_id = dex_file->GetStringId(name_index);
     const char* str = dex_file->GetStringData(string_id);
     if (strcmp(name, str) == 0) {
       if (method_idx != nullptr) {
@@ -269,7 +269,7 @@ static const uint8_t* FindMethodData(const DexFile* dex_file,
 }
 
 // Set the method flags to the given value.
-static void SetMethodFlags(DexFile* dex_file, const char* method, uint32_t mask) {
+static void SetMethodFlags(IDexFile* dex_file, const char* method, uint32_t mask) {
   uint8_t* method_flags_ptr = const_cast<uint8_t*>(FindMethodData(dex_file, method));
   CHECK(method_flags_ptr != nullptr) << method;
 
@@ -286,28 +286,28 @@ static void SetMethodFlags(DexFile* dex_file, const char* method, uint32_t mask)
   *method_flags_ptr = base3;
 }
 
-static uint32_t GetMethodFlags(DexFile* dex_file, const char* method) {
+static uint32_t GetMethodFlags(IDexFile* dex_file, const char* method) {
   const uint8_t* method_flags_ptr = const_cast<uint8_t*>(FindMethodData(dex_file, method));
   CHECK(method_flags_ptr != nullptr) << method;
   return DecodeUnsignedLeb128(&method_flags_ptr);
 }
 
 // Apply the given mask to method flags.
-static void ApplyMaskToMethodFlags(DexFile* dex_file, const char* method, uint32_t mask) {
+static void ApplyMaskToMethodFlags(IDexFile* dex_file, const char* method, uint32_t mask) {
   uint32_t value = GetMethodFlags(dex_file, method);
   value &= mask;
   SetMethodFlags(dex_file, method, value);
 }
 
 // Apply the given mask to method flags.
-static void OrMaskToMethodFlags(DexFile* dex_file, const char* method, uint32_t mask) {
+static void OrMaskToMethodFlags(IDexFile* dex_file, const char* method, uint32_t mask) {
   uint32_t value = GetMethodFlags(dex_file, method);
   value |= mask;
   SetMethodFlags(dex_file, method, value);
 }
 
 // Set code_off to 0 for the method.
-static void RemoveCode(DexFile* dex_file, const char* method) {
+static void RemoveCode(IDexFile* dex_file, const char* method) {
   const uint8_t* ptr = FindMethodData(dex_file, method);
   // Next is flags, pass.
   DecodeUnsignedLeb128(&ptr);
@@ -329,7 +329,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsBase) {
   VerifyModification(
       kMethodFlagsTestDex,
       "method_flags_ok",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
       },
@@ -341,7 +341,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
   VerifyModification(
       kMethodFlagsTestDex,
       "method_flags_missing_constructor_tag_ok",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -356,7 +356,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_constructor_native",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -367,7 +367,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_constructor_abstract",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -378,7 +378,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_constructor_nocode",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -389,7 +389,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_constructor_native_nocode",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           MakeDexVersion37(dex_file);
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
@@ -402,7 +402,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_constructor_abstract_nocode",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           MakeDexVersion37(dex_file);
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
@@ -427,7 +427,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "init_allowed_flags",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -448,7 +448,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "init_one_of_ppp",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -463,7 +463,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
   VerifyModification(
       kMethodFlagsTestDex,
       "init_not_allowed_flags",
-      [&](DexFile* dex_file) {
+      [&](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
@@ -481,7 +481,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsConstructors) {
     VerifyModification(
         kMethodFlagsTestDex,
         "init_not_allowed_flags",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -499,7 +499,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_non_constructor",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -510,7 +510,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_native_with_code",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -521,7 +521,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_abstract_with_code",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -532,7 +532,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_non_abstract_native_no_code",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -553,7 +553,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
       VerifyModification(
           kMethodFlagsTestDex,
           "method_flags_abstract_and_disallowed_no_code",
-          [&](DexFile* dex_file) {
+          [&](IDexFile* dex_file) {
             ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
             ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -584,7 +584,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsMethods) {
       VerifyModification(
           kMethodFlagsTestDex,
           "method_flags_one_of_ppp",
-          [&](DexFile* dex_file) {
+          [&](IDexFile* dex_file) {
             ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
             ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -617,7 +617,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsIgnoredOK) {
     VerifyModification(
         kMethodFlagsTestDex,
         "method_flags_ignored",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToMethodFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -633,7 +633,7 @@ TEST_F(DexFileVerifierTest, B28552165) {
   VerifyModification(
       kMethodFlagsTestDex,
       "b28552165",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         OrMaskToMethodFlags(dex_file, "foo", kAccPublic | kAccProtected);
       },
       "Method may have only one of public/protected/private, LMethodFlags;.foo");
@@ -685,14 +685,14 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_ok",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
       nullptr);
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_ok37",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
@@ -701,7 +701,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccPublic);
@@ -710,7 +710,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -721,7 +721,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_non_abstract",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccAbstract);
@@ -731,7 +731,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_static",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         OrMaskToMethodFlags(dex_file, "foo", kAccStatic);
@@ -740,7 +740,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_private",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccPublic);
@@ -751,7 +751,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccPublic);
@@ -760,7 +760,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -771,7 +771,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_protected",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccPublic);
@@ -781,7 +781,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
   VerifyModification(
       kMethodFlagsInterface,
       "method_flags_interface_protected",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -818,7 +818,7 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
     VerifyModification(
         kMethodFlagsInterface,
         "method_flags_interface_non_abstract",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToMethodFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
           uint32_t mask = ApplyMaskShifted(kInterfaceDisallowed, i);
@@ -839,8 +839,8 @@ TEST_F(DexFileVerifierTest, MethodAccessFlagsInterfaces) {
 // Find the method data for the first method with the given name (from class 0). Note: the pointer
 // is to the access flags, so that the caller doesn't have to handle the leb128-encoded method-index
 // delta.
-static const uint8_t* FindFieldData(const DexFile* dex_file, const char* name) {
-  const DexFile::ClassDef& class_def = dex_file->GetClassDef(0);
+static const uint8_t* FindFieldData(const IDexFile* dex_file, const char* name) {
+  const IDexFile::ClassDef& class_def = dex_file->GetClassDef(0);
   const uint8_t* class_data = dex_file->GetClassData(class_def);
 
   ClassDataItemIterator it(*dex_file, class_data);
@@ -856,7 +856,7 @@ static const uint8_t* FindFieldData(const DexFile* dex_file, const char* name) {
   while (it.HasNextStaticField() || it.HasNextInstanceField()) {
     uint32_t field_index = it.GetMemberIndex();
     dex::StringIndex name_index = dex_file->GetFieldId(field_index).name_idx_;
-    const DexFile::StringId& string_id = dex_file->GetStringId(name_index);
+    const IDexFile::StringId& string_id = dex_file->GetStringId(name_index);
     const char* str = dex_file->GetStringData(string_id);
     if (strcmp(name, str) == 0) {
       DecodeUnsignedLeb128(&trailing);
@@ -871,7 +871,7 @@ static const uint8_t* FindFieldData(const DexFile* dex_file, const char* name) {
 }
 
 // Set the method flags to the given value.
-static void SetFieldFlags(DexFile* dex_file, const char* field, uint32_t mask) {
+static void SetFieldFlags(IDexFile* dex_file, const char* field, uint32_t mask) {
   uint8_t* field_flags_ptr = const_cast<uint8_t*>(FindFieldData(dex_file, field));
   CHECK(field_flags_ptr != nullptr) << field;
 
@@ -888,21 +888,21 @@ static void SetFieldFlags(DexFile* dex_file, const char* field, uint32_t mask) {
   *field_flags_ptr = base3;
 }
 
-static uint32_t GetFieldFlags(DexFile* dex_file, const char* field) {
+static uint32_t GetFieldFlags(IDexFile* dex_file, const char* field) {
   const uint8_t* field_flags_ptr = const_cast<uint8_t*>(FindFieldData(dex_file, field));
   CHECK(field_flags_ptr != nullptr) << field;
   return DecodeUnsignedLeb128(&field_flags_ptr);
 }
 
 // Apply the given mask to method flags.
-static void ApplyMaskToFieldFlags(DexFile* dex_file, const char* field, uint32_t mask) {
+static void ApplyMaskToFieldFlags(IDexFile* dex_file, const char* field, uint32_t mask) {
   uint32_t value = GetFieldFlags(dex_file, field);
   value &= mask;
   SetFieldFlags(dex_file, field, value);
 }
 
 // Apply the given mask to method flags.
-static void OrMaskToFieldFlags(DexFile* dex_file, const char* field, uint32_t mask) {
+static void OrMaskToFieldFlags(IDexFile* dex_file, const char* field, uint32_t mask) {
   uint32_t value = GetFieldFlags(dex_file, field);
   value |= mask;
   SetFieldFlags(dex_file, field, value);
@@ -931,7 +931,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsBase) {
   VerifyModification(
       kFieldFlagsTestDex,
       "field_flags_ok",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
       },
@@ -943,7 +943,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsWrongList) {
   VerifyModification(
       kFieldFlagsTestDex,
       "field_flags_wrong_list",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -953,7 +953,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsWrongList) {
   VerifyModification(
       kFieldFlagsTestDex,
       "field_flags_wrong_list",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
         ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -969,7 +969,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsPPP) {
     VerifyModification(
         kFieldFlagsTestDex,
         "field_flags_non_public",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -985,7 +985,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsPPP) {
       VerifyModification(
            kFieldFlagsTestDex,
            "field_flags_ppp",
-           [&](DexFile* dex_file) {
+           [&](IDexFile* dex_file) {
              ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
              ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -1016,7 +1016,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsIgnoredOK) {
     VerifyModification(
         kFieldFlagsTestDex,
         "field_flags_ignored",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -1032,7 +1032,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsVolatileFinal) {
     VerifyModification(
         kFieldFlagsTestDex,
         "field_flags_final_and_volatile",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
           ApplyMaskToFieldFlags(dex_file, "bar", ~kAccDeclaredSynchronized);
 
@@ -1063,14 +1063,14 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
       nullptr);
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
@@ -1079,7 +1079,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccPublic);
@@ -1088,7 +1088,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_non_public",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -1099,7 +1099,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_non_final",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccFinal);
@@ -1108,7 +1108,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_non_final",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -1119,7 +1119,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_protected",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccPublic);
@@ -1129,7 +1129,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_protected",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -1141,7 +1141,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_private",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccPublic);
@@ -1151,7 +1151,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_private",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -1163,7 +1163,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
   VerifyModification(
       kFieldFlagsInterfaceTestDex,
       "field_flags_interface_synthetic",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
         OrMaskToFieldFlags(dex_file, "foo", kAccSynthetic);
@@ -1192,7 +1192,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
     VerifyModification(
         kFieldFlagsInterfaceTestDex,
         "field_flags_interface_disallowed",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
           uint32_t mask = ApplyMaskShifted(kInterfaceDisallowed, i);
@@ -1206,7 +1206,7 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterface) {
     VerifyModification(
         kFieldFlagsInterfaceTestDex,
         "field_flags_interface_disallowed",
-        [&](DexFile* dex_file) {
+        [&](IDexFile* dex_file) {
           MakeDexVersion37(dex_file);
           ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
 
@@ -1242,14 +1242,14 @@ TEST_F(DexFileVerifierTest, FieldAccessFlagsInterfaceNonStatic) {
   VerifyModification(
       kFieldFlagsInterfaceBadTestDex,
       "field_flags_interface_non_static",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
       nullptr);  // Should be allowed in older dex versions for backwards compatibility.
   VerifyModification(
       kFieldFlagsInterfaceBadTestDex,
       "field_flags_interface_non_static",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         MakeDexVersion37(dex_file);
         ApplyMaskToFieldFlags(dex_file, "foo", ~kAccDeclaredSynchronized);
       },
@@ -1310,7 +1310,7 @@ TEST_F(DexFileVerifierTest, DebugInfoTypeIdxTest) {
     // The input dex file should be good before modification.
     ScratchFile tmp;
     std::string error_msg;
-    std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kDebugInfoTestDex,
+    std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kDebugInfoTestDex,
                                                          tmp.GetFilename().c_str(),
                                                          &error_msg));
     ASSERT_TRUE(raw.get() != nullptr) << error_msg;
@@ -1320,7 +1320,7 @@ TEST_F(DexFileVerifierTest, DebugInfoTypeIdxTest) {
   VerifyModification(
       kDebugInfoTestDex,
       "debug_start_type_idx",
-      [](DexFile* dex_file) {
+      [](IDexFile* dex_file) {
         *(const_cast<uint8_t*>(dex_file->Begin()) + 416) = 0x14U;
       },
       "DBG_START_LOCAL type_idx");
@@ -1332,7 +1332,7 @@ TEST_F(DexFileVerifierTest, SectionAlignment) {
     // uses all sections.
     ScratchFile tmp;
     std::string error_msg;
-    std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kGoodTestDex,
+    std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kGoodTestDex,
                                                          tmp.GetFilename().c_str(),
                                                          &error_msg));
     ASSERT_TRUE(raw.get() != nullptr) << error_msg;
@@ -1344,9 +1344,9 @@ TEST_F(DexFileVerifierTest, SectionAlignment) {
     VerifyModification(
         kGoodTestDex,
         "section_align",
-        [&](DexFile* dex_file) {
-          DexFile::Header* header = const_cast<DexFile::Header*>(
-              reinterpret_cast<const DexFile::Header*>(dex_file->Begin()));
+        [&](IDexFile* dex_file) {
+          IDexFile::Header* header = const_cast<IDexFile::Header*>(
+              reinterpret_cast<const IDexFile::Header*>(dex_file->Begin()));
           uint32_t* off_ptr;
           switch (i) {
             case 0:
@@ -1416,7 +1416,7 @@ TEST_F(DexFileVerifierTest, ProtoOrdering) {
     // The input dex file should be good before modification.
     ScratchFile tmp;
     std::string error_msg;
-    std::unique_ptr<const DexFile> raw(OpenDexFileBase64(kProtoOrderingTestDex,
+    std::unique_ptr<const IDexFile> raw(OpenDexFileBase64(kProtoOrderingTestDex,
                                                          tmp.GetFilename().c_str(),
                                                          &error_msg));
     ASSERT_TRUE(raw.get() != nullptr) << error_msg;
@@ -1428,7 +1428,7 @@ TEST_F(DexFileVerifierTest, ProtoOrdering) {
     VerifyModification(
         kProtoOrderingTestDex,
         "proto_ordering",
-        [i](DexFile* dex_file) {
+        [i](IDexFile* dex_file) {
           uint32_t method_idx;
           const uint8_t* data = FindMethodData(dex_file, "foo", &method_idx);
           CHECK(data != nullptr);
@@ -1440,8 +1440,8 @@ TEST_F(DexFileVerifierTest, ProtoOrdering) {
                    dex_file->GetMethodId(method_idx + 1).proto_idx_);
           // Their return types should be the same.
           uint32_t proto1_idx = dex_file->GetMethodId(method_idx).proto_idx_;
-          const DexFile::ProtoId& proto1 = dex_file->GetProtoId(proto1_idx);
-          const DexFile::ProtoId& proto2 = dex_file->GetProtoId(proto1_idx + 1u);
+          const IDexFile::ProtoId& proto1 = dex_file->GetProtoId(proto1_idx);
+          const IDexFile::ProtoId& proto2 = dex_file->GetProtoId(proto1_idx + 1u);
           CHECK_EQ(proto1.return_type_idx_, proto2.return_type_idx_);
           // And the first should not have any parameters while the second should have some.
           CHECK(!DexFileParameterIterator(*dex_file, proto1).HasNext());
@@ -1483,7 +1483,7 @@ TEST_F(DexFileVerifierTest, ClassExtendsItself) {
   VerifyModification(
       kClassExtendsItselfTestDex,
       "class_extends_itself",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Class with same type idx as its superclass: '0'");
 }
 
@@ -1508,7 +1508,7 @@ TEST_F(DexFileVerifierTest, ClassesExtendOneAnother) {
   VerifyModification(
       kClassesExtendOneAnotherTestDex,
       "classes_extend_one_another",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Invalid class definition ordering: class with type idx: '1' defined before"
       " superclass with type idx: '0'");
 }
@@ -1540,7 +1540,7 @@ TEST_F(DexFileVerifierTest, CircularClassInheritance) {
   VerifyModification(
       kCircularClassInheritanceTestDex,
       "circular_class_inheritance",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Invalid class definition ordering: class with type idx: '1' defined before"
       " superclass with type idx: '0'");
 }
@@ -1563,7 +1563,7 @@ TEST_F(DexFileVerifierTest, InterfaceImplementsItself) {
   VerifyModification(
       kInterfaceImplementsItselfTestDex,
       "interface_implements_itself",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Class with same type idx as implemented interface: '0'");
 }
 
@@ -1591,7 +1591,7 @@ TEST_F(DexFileVerifierTest, InterfacesImplementOneAnother) {
   VerifyModification(
       kInterfacesImplementOneAnotherTestDex,
       "interfaces_implement_one_another",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Invalid class definition ordering: class with type idx: '1' defined before"
       " implemented interface with type idx: '0'");
 }
@@ -1627,7 +1627,7 @@ TEST_F(DexFileVerifierTest, CircularInterfaceImplementation) {
   VerifyModification(
       kCircularInterfaceImplementationTestDex,
       "circular_interface_implementation",
-      [](DexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
+      [](IDexFile* dex_file ATTRIBUTE_UNUSED) { /* empty */ },
       "Invalid class definition ordering: class with type idx: '2' defined before"
       " implemented interface with type idx: '0'");
 }
@@ -1637,7 +1637,7 @@ TEST_F(DexFileVerifierTest, Checksum) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kGoodTestDex, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
 
   // Good checksum: all pass.
@@ -1655,7 +1655,7 @@ TEST_F(DexFileVerifierTest, Checksum) {
                                       &error_msg));
 
   // Bad checksum: !verify_checksum passes verify_checksum fails.
-  DexFile::Header* header = reinterpret_cast<DexFile::Header*>(
+  IDexFile::Header* header = reinterpret_cast<IDexFile::Header*>(
       const_cast<uint8_t*>(dex_file->Begin()));
   header->checksum_ = 0;
   EXPECT_TRUE(DexFileVerifier::Verify(dex_file.get(),
@@ -1709,7 +1709,7 @@ TEST_F(DexFileVerifierTest, BadStaticMethodName) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -1753,7 +1753,7 @@ TEST_F(DexFileVerifierTest, BadVirtualMethodName) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -1797,7 +1797,7 @@ TEST_F(DexFileVerifierTest, BadClinitSignature) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -1841,7 +1841,7 @@ TEST_F(DexFileVerifierTest, BadClinitSignatureAgain) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -1878,7 +1878,7 @@ TEST_F(DexFileVerifierTest, BadInitSignature) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -2081,7 +2081,7 @@ TEST_F(DexFileVerifierTest, InvokeCustomDexSamples) {
     std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kInvokeCustomDexFiles[i], &length));
     CHECK(dex_bytes != nullptr);
     // Note: `dex_file` will be destroyed before `dex_bytes`.
-    std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+    std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
     std::string error_msg;
     EXPECT_TRUE(DexFileVerifier::Verify(dex_file.get(),
                                         dex_file->Begin(),
@@ -2128,7 +2128,7 @@ TEST_F(DexFileVerifierTest, BadStaticFieldInitialValuesArray) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_FALSE(DexFileVerifier::Verify(dex_file.get(),
                                        dex_file->Begin(),
@@ -2184,7 +2184,7 @@ TEST_F(DexFileVerifierTest, GoodStaticFieldInitialValuesArray) {
   std::unique_ptr<uint8_t[]> dex_bytes(DecodeBase64(kDexBase64, &length));
   CHECK(dex_bytes != nullptr);
   // Note: `dex_file` will be destroyed before `dex_bytes`.
-  std::unique_ptr<DexFile> dex_file(GetDexFile(dex_bytes.get(), length));
+  std::unique_ptr<IDexFile> dex_file(GetDexFile(dex_bytes.get(), length));
   std::string error_msg;
   EXPECT_TRUE(DexFileVerifier::Verify(dex_file.get(),
                                       dex_file->Begin(),

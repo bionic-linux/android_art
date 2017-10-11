@@ -24,7 +24,7 @@
 #include "base/mutex.h"
 #include "bytecode_utils.h"
 #include "compiled_method.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "driver/compiler_driver.h"
 #include "driver/dex_compilation_unit.h"
@@ -67,7 +67,7 @@ class DexCompiler {
   }
 
  private:
-  const DexFile& GetDexFile() const {
+  const IDexFile& GetDexFile() const {
     return *unit_.GetDexFile();
   }
 
@@ -196,7 +196,7 @@ void DexCompiler::Compile() {
       case Instruction::NOP:
         // We need to differentiate between check cast inserted NOP and normal NOP, put an invalid
         // index in the map for normal nops. This should be rare in real code.
-        quickened_info_.push_back(QuickenedInfo(dex_pc, DexFile::kDexNoIndex16));
+        quickened_info_.push_back(QuickenedInfo(dex_pc, IDexFile::kDexNoIndex16));
         break;
 
       default:
@@ -328,13 +328,13 @@ void DexCompiler::CompileInvokeVirtual(Instruction* inst, uint32_t dex_pc,
 
 CompiledMethod* ArtCompileDEX(
     CompilerDriver* driver,
-    const DexFile::CodeItem* code_item,
+    const IDexFile::CodeItem* code_item,
     uint32_t access_flags,
     InvokeType invoke_type ATTRIBUTE_UNUSED,
     uint16_t class_def_idx,
     uint32_t method_idx,
     Handle<mirror::ClassLoader> class_loader,
-    const DexFile& dex_file,
+    const IDexFile& dex_file,
     DexToDexCompilationLevel dex_to_dex_compilation_level) {
   DCHECK(driver != nullptr);
   if (dex_to_dex_compilation_level != DexToDexCompilationLevel::kDontDexToDexCompile) {

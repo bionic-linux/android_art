@@ -18,13 +18,13 @@
 
 #if defined(DEFINE_INCLUDE_DEPENDENCIES)
 #include <cstddef>      // offsetof
-#include "dex_file.h"   // art::DexFile
+#include "idex_file.h"   // art::DexFile
 #endif
 
 #include "common.def"        // DEFINE_OFFSET_EXPR
 
 #define DEFINE_CODEITEM_OFFSET(field_name) \
-  DEFINE_OFFSET_EXPR(CodeItem, field_name, int32_t, offsetof(art::DexFile::CodeItem, field_name ## _))
+  DEFINE_OFFSET_EXPR(CodeItem, field_name, int32_t, offsetof(art::IDexFile::CodeItem, field_name ## _))
 
 //                     Field Name
 DEFINE_CODEITEM_OFFSET(insns)

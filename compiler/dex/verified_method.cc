@@ -20,7 +20,7 @@
 #include <memory>
 
 #include "base/logging.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_instruction-inl.h"
 #include "runtime.h"
 #include "verifier/method_verifier-inl.h"

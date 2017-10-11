@@ -23,7 +23,7 @@
 
 #include "base/macros.h"
 #include "base/mutex.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "lock_count_data.h"
 #include "read_barrier.h"
 #include "stack_reference.h"
@@ -146,11 +146,11 @@ class ShadowFrame {
     return &vregs_[i + NumberOfVRegs()];
   }
 
-  void SetCodeItem(const DexFile::CodeItem* code_item) {
+  void SetCodeItem(const IDexFile::CodeItem* code_item) {
     code_item_ = code_item;
   }
 
-  const DexFile::CodeItem* GetCodeItem() const {
+  const IDexFile::CodeItem* GetCodeItem() const {
     return code_item_;
   }
 
@@ -403,7 +403,7 @@ class ShadowFrame {
   ArtMethod* method_;
   JValue* result_register_;
   const uint16_t* dex_pc_ptr_;
-  const DexFile::CodeItem* code_item_;
+  const IDexFile::CodeItem* code_item_;
   LockCountData lock_count_data_;  // This may contain GC roots when lock counting is active.
   const uint32_t number_of_vregs_;
   uint32_t dex_pc_;

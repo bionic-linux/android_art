@@ -24,7 +24,7 @@
 #include "art_method-inl.h"
 #include "base/logging.h"
 #include "class_linker-inl.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_instruction-inl.h"
 #include "invoke_type.h"
 #include "mirror/class-inl.h"
@@ -97,7 +97,7 @@ void ThrowAbstractMethodError(ArtMethod* method) {
                               ArtMethod::PrettyMethod(method).c_str()).c_str());
 }
 
-void ThrowAbstractMethodError(uint32_t method_idx, const DexFile& dex_file) {
+void ThrowAbstractMethodError(uint32_t method_idx, const IDexFile& dex_file) {
   ThrowException("Ljava/lang/AbstractMethodError;", /* referrer */ nullptr,
                  StringPrintf("abstract method \"%s\"",
                               dex_file.PrettyMethod(method_idx,
@@ -405,7 +405,7 @@ void ThrowNullPointerExceptionForFieldAccess(ArtField* field, bool is_read) {
 }
 
 static void ThrowNullPointerExceptionForMethodAccessImpl(uint32_t method_idx,
-                                                         const DexFile& dex_file,
+                                                         const IDexFile& dex_file,
                                                          InvokeType type)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   std::ostringstream msg;
@@ -418,14 +418,14 @@ void ThrowNullPointerExceptionForMethodAccess(uint32_t method_idx,
                                               InvokeType type) {
   ObjPtr<mirror::DexCache> dex_cache =
       Thread::Current()->GetCurrentMethod(nullptr)->GetDeclaringClass()->GetDexCache();
-  const DexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
   ThrowNullPointerExceptionForMethodAccessImpl(method_idx, dex_file, type);
 }
 
 void ThrowNullPointerExceptionForMethodAccess(ArtMethod* method,
                                               InvokeType type) {
   ObjPtr<mirror::DexCache> dex_cache = method->GetDeclaringClass()->GetDexCache();
-  const DexFile& dex_file = *dex_cache->GetDexFile();
+  const IDexFile& dex_file = *dex_cache->GetDexFile();
   ThrowNullPointerExceptionForMethodAccessImpl(method->GetDexMethodIndex(),
                                                dex_file, type);
 }
@@ -546,11 +546,11 @@ static bool IsValidImplicitCheck(uintptr_t addr, ArtMethod* method, const Instru
 void ThrowNullPointerExceptionFromDexPC(bool check_address, uintptr_t addr) {
   uint32_t throw_dex_pc;
   ArtMethod* method = Thread::Current()->GetCurrentMethod(&throw_dex_pc);
-  const DexFile::CodeItem* code = method->GetCodeItem();
+  const IDexFile::CodeItem* code = method->GetCodeItem();
   CHECK_LT(throw_dex_pc, code->insns_size_in_code_units_);
   const Instruction* instr = Instruction::At(&code->insns_[throw_dex_pc]);
   if (check_address && !IsValidImplicitCheck(addr, method, *instr)) {
-    const DexFile* dex_file = method->GetDeclaringClass()->GetDexCache()->GetDexFile();
+    const IDexFile* dex_file = method->GetDeclaringClass()->GetDexCache()->GetDexFile();
     LOG(FATAL) << "Invalid address for an implicit NullPointerException check: "
                << "0x" << std::hex << addr << std::dec
                << ", at "
@@ -699,7 +699,7 @@ void ThrowNullPointerExceptionFromDexPC(bool check_address, uintptr_t addr) {
       break;
     }
     default: {
-      const DexFile* dex_file =
+      const IDexFile* dex_file =
           method->GetDeclaringClass()->GetDexCache()->GetDexFile();
       LOG(FATAL) << "NullPointerException at an unexpected instruction: "
                  << instr->DumpString(dex_file)

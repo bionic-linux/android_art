@@ -33,7 +33,7 @@
 
 #include "base/array_slice.h"
 #include "class_linker-inl.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "fixed_up_dex_file.h"
 #include "handle.h"
 #include "handle_scope-inl.h"
@@ -87,7 +87,7 @@ static jvmtiError GetDexDataForRetransformation(ArtJvmTiEnv* env,
     REQUIRES_SHARED(art::Locks::mutator_lock_) {
   art::StackHandleScope<3> hs(art::Thread::Current());
   art::Handle<art::mirror::ClassExt> ext(hs.NewHandle(klass->GetExtData()));
-  const art::DexFile* dex_file = nullptr;
+  const art::IDexFile* dex_file = nullptr;
   if (!ext.IsNull()) {
     art::Handle<art::mirror::Object> orig_dex(hs.NewHandle(ext->GetOriginalDexFile()));
     if (!orig_dex.IsNull()) {
@@ -115,7 +115,7 @@ static jvmtiError GetDexDataForRetransformation(ArtJvmTiEnv* env,
           // This should never happen.
           return ERR(INTERNAL);
         }
-        dex_file = reinterpret_cast<const art::DexFile*>(static_cast<uintptr_t>(val.GetJ()));
+        dex_file = reinterpret_cast<const art::IDexFile*>(static_cast<uintptr_t>(val.GetJ()));
       }
     }
   }
@@ -156,7 +156,7 @@ jvmtiError ArtClassDefinition::Init(ArtJvmTiEnv* env, jclass klass) {
   } else {
     // We know that we have been redefined at least once (there is an original_dex_file set in
     // the class) so we can just use the current dex file directly.
-    const art::DexFile& dex_file = m_klass->GetDexFile();
+    const art::IDexFile& dex_file = m_klass->GetDexFile();
     original_dex_file_ = art::ArrayRef<const unsigned char>(dex_file.Begin(), dex_file.Size());
   }
   return res;

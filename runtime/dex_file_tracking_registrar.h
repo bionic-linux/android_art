@@ -20,7 +20,7 @@
 #include <deque>
 #include <tuple>
 
-#include "dex_file.h"
+#include "idex_file.h"
 
 namespace art {
 namespace dex {
@@ -33,7 +33,7 @@ namespace tracking {
 // logcat.
 class DexFileTrackingRegistrar {
  public:
-  explicit DexFileTrackingRegistrar(const DexFile* const dex_file)
+  explicit DexFileTrackingRegistrar(const IDexFile* const dex_file)
       : dex_file_(dex_file) {
   }
 
@@ -68,11 +68,11 @@ class DexFileTrackingRegistrar {
   // (un)poisoned by the memory tool.
   std::deque<std::tuple<const void *, size_t, bool>> range_values_;
 
-  const DexFile* const dex_file_;
+  const IDexFile* const dex_file_;
 };
 
 // This function is meant to called externally to use DexfileTrackingRegistrar
-void RegisterDexFile(const DexFile* dex_file);
+void RegisterDexFile(const IDexFile* dex_file);
 
 }  // namespace tracking
 }  // namespace dex

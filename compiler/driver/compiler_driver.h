@@ -31,7 +31,7 @@
 #include "base/timing_logger.h"
 #include "class_reference.h"
 #include "compiler.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_types.h"
 #include "driver/compiled_method_storage.h"
 #include "jit/profile_compilation_info.h"
@@ -105,18 +105,18 @@ class CompilerDriver {
   ~CompilerDriver();
 
   // Set dex files that will be stored in the oat file after being compiled.
-  void SetDexFilesForOatFile(const std::vector<const DexFile*>& dex_files);
+  void SetDexFilesForOatFile(const std::vector<const IDexFile*>& dex_files);
 
   // Set dex files classpath.
-  void SetClasspathDexFiles(const std::vector<const DexFile*>& dex_files);
+  void SetClasspathDexFiles(const std::vector<const IDexFile*>& dex_files);
 
   // Get dex file that will be stored in the oat file after being compiled.
-  ArrayRef<const DexFile* const> GetDexFilesForOatFile() const {
-    return ArrayRef<const DexFile* const>(dex_files_for_oat_file_);
+  ArrayRef<const IDexFile* const> GetDexFilesForOatFile() const {
+    return ArrayRef<const IDexFile* const>(dex_files_for_oat_file_);
   }
 
   void CompileAll(jobject class_loader,
-                  const std::vector<const DexFile*>& dex_files,
+                  const std::vector<const IDexFile*>& dex_files,
                   TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_, !dex_to_dex_references_lock_);
 
@@ -165,7 +165,7 @@ class CompilerDriver {
                          size_t non_relative_linker_patch_count);
 
   void SetRequiresConstructorBarrier(Thread* self,
-                                     const DexFile* dex_file,
+                                     const IDexFile* dex_file,
                                      uint16_t class_def_index,
                                      bool requires)
       REQUIRES(!requires_constructor_barrier_lock_);
@@ -204,7 +204,7 @@ class CompilerDriver {
   //
   // See also QuasiAtomic::ThreadFenceForConstructor().
   bool RequiresConstructorBarrier(Thread* self,
-                                  const DexFile* dex_file,
+                                  const IDexFile* dex_file,
                                   uint16_t class_def_index)
       REQUIRES(!requires_constructor_barrier_lock_);
 
@@ -243,7 +243,7 @@ class CompilerDriver {
   // Resolve a field with a given dex file.
   ArtField* ResolveFieldWithDexFile(
       const ScopedObjectAccess& soa, Handle<mirror::DexCache> dex_cache,
-      Handle<mirror::ClassLoader> class_loader, const DexFile* dex_file,
+      Handle<mirror::ClassLoader> class_loader, const IDexFile* dex_file,
       uint32_t field_idx, bool is_static)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -278,7 +278,7 @@ class CompilerDriver {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
 
-  const VerifiedMethod* GetVerifiedMethod(const DexFile* dex_file, uint32_t method_idx) const;
+  const VerifiedMethod* GetVerifiedMethod(const IDexFile* dex_file, uint32_t method_idx) const;
   bool IsSafeCast(const DexCompilationUnit* mUnit, uint32_t dex_pc);
 
   bool GetSupportBootImageFixup() const {
@@ -336,7 +336,7 @@ class CompilerDriver {
 
   // Checks whether profile guided verification is enabled and if the method should be verified
   // according to the profile file.
-  bool ShouldVerifyClassBasedOnProfile(const DexFile& dex_file, uint16_t class_idx) const;
+  bool ShouldVerifyClassBasedOnProfile(const IDexFile& dex_file, uint16_t class_idx) const;
 
   void RecordClassStatus(const ClassReference& ref, mirror::Class::Status status);
 
@@ -344,7 +344,7 @@ class CompilerDriver {
   // false if the method is not in the verification results (GetVerificationResults).
   bool IsMethodVerifiedWithoutFailures(uint32_t method_idx,
                                        uint16_t class_def_idx,
-                                       const DexFile& dex_file) const;
+                                       const IDexFile& dex_file) const;
 
   // Get memory usage during compilation.
   std::string GetMemoryUsageString(bool extended) const;
@@ -365,7 +365,7 @@ class CompilerDriver {
   bool CanAssumeClassIsLoaded(mirror::Class* klass)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  bool MayInline(const DexFile* inlined_from, const DexFile* inlined_into) const {
+  bool MayInline(const IDexFile* inlined_from, const IDexFile* inlined_into) const {
     if (!kIsTargetBuild) {
       return MayInlineInternal(inlined_from, inlined_into);
     }
@@ -393,7 +393,7 @@ class CompilerDriver {
 
  private:
   void PreCompile(jobject class_loader,
-                  const std::vector<const DexFile*>& dex_files,
+                  const std::vector<const IDexFile*>& dex_files,
                   TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
 
@@ -403,12 +403,12 @@ class CompilerDriver {
   // referenced from code in the dex file following PathClassLoader
   // ordering semantics.
   void Resolve(jobject class_loader,
-               const std::vector<const DexFile*>& dex_files,
+               const std::vector<const IDexFile*>& dex_files,
                TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
   void ResolveDexFile(jobject class_loader,
-                      const DexFile& dex_file,
-                      const std::vector<const DexFile*>& dex_files,
+                      const IDexFile& dex_file,
+                      const std::vector<const IDexFile*>& dex_files,
                       ThreadPool* thread_pool,
                       size_t thread_count,
                       TimingLogger* timings)
@@ -417,62 +417,62 @@ class CompilerDriver {
   // Do fast verification through VerifierDeps if possible. Return whether
   // verification was successful.
   bool FastVerify(jobject class_loader,
-                  const std::vector<const DexFile*>& dex_files,
+                  const std::vector<const IDexFile*>& dex_files,
                   TimingLogger* timings);
 
   void Verify(jobject class_loader,
-              const std::vector<const DexFile*>& dex_files,
+              const std::vector<const IDexFile*>& dex_files,
               TimingLogger* timings);
 
   void VerifyDexFile(jobject class_loader,
-                     const DexFile& dex_file,
-                     const std::vector<const DexFile*>& dex_files,
+                     const IDexFile& dex_file,
+                     const std::vector<const IDexFile*>& dex_files,
                      ThreadPool* thread_pool,
                      size_t thread_count,
                      TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
 
   void SetVerified(jobject class_loader,
-                   const std::vector<const DexFile*>& dex_files,
+                   const std::vector<const IDexFile*>& dex_files,
                    TimingLogger* timings);
   void SetVerifiedDexFile(jobject class_loader,
-                          const DexFile& dex_file,
-                          const std::vector<const DexFile*>& dex_files,
+                          const IDexFile& dex_file,
+                          const std::vector<const IDexFile*>& dex_files,
                           ThreadPool* thread_pool,
                           size_t thread_count,
                           TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
 
   void InitializeClasses(jobject class_loader,
-                         const std::vector<const DexFile*>& dex_files,
+                         const std::vector<const IDexFile*>& dex_files,
                          TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
   void InitializeClasses(jobject class_loader,
-                         const DexFile& dex_file,
-                         const std::vector<const DexFile*>& dex_files,
+                         const IDexFile& dex_file,
+                         const std::vector<const IDexFile*>& dex_files,
                          TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
 
   void UpdateImageClasses(TimingLogger* timings) REQUIRES(!Locks::mutator_lock_);
 
   void Compile(jobject class_loader,
-               const std::vector<const DexFile*>& dex_files,
+               const std::vector<const IDexFile*>& dex_files,
                TimingLogger* timings) REQUIRES(!dex_to_dex_references_lock_);
   void CompileDexFile(jobject class_loader,
-                      const DexFile& dex_file,
-                      const std::vector<const DexFile*>& dex_files,
+                      const IDexFile& dex_file,
+                      const std::vector<const IDexFile*>& dex_files,
                       ThreadPool* thread_pool,
                       size_t thread_count,
                       TimingLogger* timings)
       REQUIRES(!Locks::mutator_lock_);
 
-  bool MayInlineInternal(const DexFile* inlined_from, const DexFile* inlined_into) const;
+  bool MayInlineInternal(const IDexFile* inlined_from, const IDexFile* inlined_into) const;
 
   void InitializeThreadPools();
   void FreeThreadPools();
   void CheckThreadPools();
 
-  bool RequiresConstructorBarrier(const DexFile& dex_file, uint16_t class_def_idx) const;
+  bool RequiresConstructorBarrier(const IDexFile& dex_file, uint16_t class_def_idx) const;
 
   const CompilerOptions* const compiler_options_;
   VerificationResults* const verification_results_;
@@ -544,7 +544,7 @@ class CompilerDriver {
   bool support_boot_image_fixup_;
 
   // List of dex files that will be stored in the oat file.
-  std::vector<const DexFile*> dex_files_for_oat_file_;
+  std::vector<const IDexFile*> dex_files_for_oat_file_;
 
   CompiledMethodStorage compiled_method_storage_;
 

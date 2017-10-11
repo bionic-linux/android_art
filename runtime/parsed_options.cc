@@ -349,7 +349,7 @@ bool ParsedOptions::ProcessSpecialOptions(const RuntimeOptions& options,
     const std::string option(options[i].first);
       // TODO: support -Djava.class.path
     if (option == "bootclasspath") {
-      auto boot_class_path = static_cast<std::vector<std::unique_ptr<const DexFile>>*>(
+      auto boot_class_path = static_cast<std::vector<std::unique_ptr<const IDexFile>>*>(
           const_cast<void*>(options[i].second));
 
       if (runtime_options != nullptr) {

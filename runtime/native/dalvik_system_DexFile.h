@@ -25,7 +25,7 @@ namespace art {
 constexpr size_t kOatFileIndex = 0;
 constexpr size_t kDexFileIndexStart = 1;
 
-class DexFile;
+class IDexFile;
 
 void register_dalvik_system_DexFile(JNIEnv* env);
 

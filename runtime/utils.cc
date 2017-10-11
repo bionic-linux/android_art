@@ -47,7 +47,7 @@
 
 #include "base/stl_util.h"
 #include "base/unix_file/fd_file.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "dex_file_loader.h"
 #include "dex_instruction.h"
 #include "oat_quick_method_header.h"

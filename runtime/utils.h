@@ -162,7 +162,7 @@ std::string GetDalvikCache(const char* subdir);
 void GetDalvikCache(const char* subdir, bool create_if_absent, std::string* dalvik_cache,
                     bool* have_android_data, bool* dalvik_cache_exists, bool* is_global_cache);
 
-// Returns the absolute dalvik-cache path for a DexFile or OatFile. The path returned will be
+// Returns the absolute dalvik-cache path for a IDexFile or OatFile. The path returned will be
 // rooted at cache_location.
 bool GetDalvikCacheFilename(const char* file_location, const char* cache_location,
                             std::string* filename, std::string* error_msg);

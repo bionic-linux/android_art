@@ -29,7 +29,7 @@
 #include "base/to_str.h"
 #include "class_linker-inl.h"
 #include "class_linker.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "gc/space/space.h"
 #include "java_vm_ext.h"
 #include "jni_internal.h"

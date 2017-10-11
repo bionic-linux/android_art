@@ -55,26 +55,26 @@ class OatFileAssistant {
 
   enum DexOptNeeded {
     // No dexopt should (or can) be done to update the apk/jar.
-    // Matches Java: dalvik.system.DexFile.NO_DEXOPT_NEEDED = 0
+    // Matches Java: dalvik.system.IDexFile.NO_DEXOPT_NEEDED = 0
     kNoDexOptNeeded = 0,
 
     // dex2oat should be run to update the apk/jar from scratch.
-    // Matches Java: dalvik.system.DexFile.DEX2OAT_FROM_SCRATCH = 1
+    // Matches Java: dalvik.system.IDexFile.DEX2OAT_FROM_SCRATCH = 1
     kDex2OatFromScratch = 1,
 
     // dex2oat should be run to update the apk/jar because the existing code
     // is out of date with respect to the boot image.
-    // Matches Java: dalvik.system.DexFile.DEX2OAT_FOR_BOOT_IMAGE
+    // Matches Java: dalvik.system.IDexFile.DEX2OAT_FOR_BOOT_IMAGE
     kDex2OatForBootImage = 2,
 
     // dex2oat should be run to update the apk/jar because the existing code
     // is out of date with respect to the target compiler filter.
-    // Matches Java: dalvik.system.DexFile.DEX2OAT_FOR_FILTER
+    // Matches Java: dalvik.system.IDexFile.DEX2OAT_FOR_FILTER
     kDex2OatForFilter = 3,
 
     // dex2oat should be run to update the apk/jar because the existing code
     // is not relocated to match the boot image.
-    // Matches Java: dalvik.system.DexFile.DEX2OAT_FOR_RELOCATION
+    // Matches Java: dalvik.system.IDexFile.DEX2OAT_FOR_RELOCATION
     kDex2OatForRelocation = 4,
   };
 
@@ -222,15 +222,15 @@ class OatFileAssistant {
   //
   // The caller is responsible for freeing the dex_files returned, if any. The
   // dex_files will only remain valid as long as the oat_file is valid.
-  static std::vector<std::unique_ptr<const DexFile>> LoadDexFiles(
+  static std::vector<std::unique_ptr<const IDexFile>> LoadDexFiles(
       const OatFile& oat_file, const char* dex_location);
 
-  // Same as `std::vector<std::unique_ptr<const DexFile>> LoadDexFiles(...)` with the difference:
+  // Same as `std::vector<std::unique_ptr<const IDexFile>> LoadDexFiles(...)` with the difference:
   //   - puts the dex files in the given vector
   //   - returns whether or not all dex files were successfully opened
   static bool LoadDexFiles(const OatFile& oat_file,
                            const std::string& dex_location,
-                           std::vector<std::unique_ptr<const DexFile>>* out_dex_files);
+                           std::vector<std::unique_ptr<const IDexFile>>* out_dex_files);
 
   // Returns true if there are dex files in the original dex location that can
   // be compiled with dex2oat for this dex location.

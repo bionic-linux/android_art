@@ -684,8 +684,8 @@ static ObjPtr<mirror::CallSite> InvokeBootstrapMethod(Thread* self,
                                                       uint32_t call_site_idx)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   ArtMethod* referrer = shadow_frame.GetMethod();
-  const DexFile* dex_file = referrer->GetDexFile();
-  const DexFile::CallSiteIdItem& csi = dex_file->GetCallSiteId(call_site_idx);
+  const IDexFile* dex_file = referrer->GetDexFile();
+  const IDexFile::CallSiteIdItem& csi = dex_file->GetCallSiteId(call_site_idx);
 
   StackHandleScope<10> hs(self);
   Handle<mirror::ClassLoader> class_loader(hs.NewHandle(referrer->GetClassLoader()));
@@ -996,7 +996,7 @@ static inline bool DoCallCommon(ArtMethod* called_method,
   }
 
   // Compute method information.
-  const DexFile::CodeItem* code_item = called_method->GetCodeItem();
+  const IDexFile::CodeItem* code_item = called_method->GetCodeItem();
   // Number of registers for the callee's call frame.
   uint16_t num_regs;
   // Test whether to use the interpreter or compiler entrypoint, and save that result to pass to
@@ -1080,7 +1080,7 @@ static inline bool DoCallCommon(ArtMethod* called_method,
     self->EndAssertNoThreadSuspension(old_cause);
 
     // ArtMethod here is needed to check type information of the call site against the callee.
-    // Type information is retrieved from a DexFile/DexCache for that respective declared method.
+    // Type information is retrieved from a IDexFile/DexCache for that respective declared method.
     //
     // As a special case for proxy methods, which are not dex-backed,
     // we have to retrieve type information from the proxy's method
@@ -1090,7 +1090,7 @@ static inline bool DoCallCommon(ArtMethod* called_method,
 
     // We need to do runtime check on reference assignment. We need to load the shorty
     // to get the exact type of each reference argument.
-    const DexFile::TypeList* params = method->GetParameterTypeList();
+    const IDexFile::TypeList* params = method->GetParameterTypeList();
     uint32_t shorty_len = 0;
     const char* shorty = method->GetShorty(&shorty_len);
 

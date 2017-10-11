@@ -24,7 +24,7 @@
 #include "base/logging.h"
 #include "base/stl_util.h"
 #include "base/unix_file/fd_file.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "dex_file_loader.h"
 #include "dex_to_dex_decompiler.h"
 
@@ -115,7 +115,7 @@ std::unique_ptr<VdexFile> VdexFile::Open(int file_fd,
   }
 
   if (unquicken) {
-    std::vector<std::unique_ptr<const DexFile>> unique_ptr_dex_files;
+    std::vector<std::unique_ptr<const IDexFile>> unique_ptr_dex_files;
     if (!vdex->OpenAllDexFiles(&unique_ptr_dex_files, error_msg)) {
       return nullptr;
     }
@@ -135,7 +135,7 @@ const uint8_t* VdexFile::GetNextDexFileData(const uint8_t* cursor) const {
     return HasDexSection() ? DexBegin() : nullptr;
   } else {
     // Fetch the next dex file. Return null if there is none.
-    const uint8_t* data = cursor + reinterpret_cast<const DexFile::Header*>(cursor)->file_size_;
+    const uint8_t* data = cursor + reinterpret_cast<const IDexFile::Header*>(cursor)->file_size_;
     // Dex files are required to be 4 byte aligned. the OatWriter makes sure they are, see
     // OatWriter::SeekToDexFiles.
     data = AlignUp(data, 4);
@@ -143,17 +143,17 @@ const uint8_t* VdexFile::GetNextDexFileData(const uint8_t* cursor) const {
   }
 }
 
-bool VdexFile::OpenAllDexFiles(std::vector<std::unique_ptr<const DexFile>>* dex_files,
+bool VdexFile::OpenAllDexFiles(std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                                std::string* error_msg) {
   size_t i = 0;
   for (const uint8_t* dex_file_start = GetNextDexFileData(nullptr);
        dex_file_start != nullptr;
        dex_file_start = GetNextDexFileData(dex_file_start), ++i) {
-    size_t size = reinterpret_cast<const DexFile::Header*>(dex_file_start)->file_size_;
+    size_t size = reinterpret_cast<const IDexFile::Header*>(dex_file_start)->file_size_;
     // TODO: Supply the location information for a vdex file.
     static constexpr char kVdexLocation[] = "";
     std::string location = DexFileLoader::GetMultiDexLocation(i, kVdexLocation);
-    std::unique_ptr<const DexFile> dex(DexFileLoader::Open(dex_file_start,
+    std::unique_ptr<const IDexFile> dex(DexFileLoader::Open(dex_file_start,
                                                            size,
                                                            location,
                                                            GetLocationChecksum(i),
@@ -217,7 +217,7 @@ class QuickeningInfoIterator {
   DISALLOW_COPY_AND_ASSIGN(QuickeningInfoIterator);
 };
 
-void VdexFile::Unquicken(const std::vector<const DexFile*>& dex_files,
+void VdexFile::Unquicken(const std::vector<const IDexFile*>& dex_files,
                          const ArrayRef<const uint8_t>& quickening_info) {
   if (quickening_info.size() == 0) {
     // Bail early if there is no quickening info.
@@ -241,7 +241,7 @@ void VdexFile::Unquicken(const std::vector<const DexFile*>& dex_files,
 
 static constexpr uint32_t kNoDexFile = -1;
 
-uint32_t VdexFile::GetDexFileIndex(const DexFile& dex_file) const {
+uint32_t VdexFile::GetDexFileIndex(const IDexFile& dex_file) const {
   uint32_t dex_index = 0;
   for (const uint8_t* dex_file_start = GetNextDexFileData(nullptr);
        dex_file_start != dex_file.Begin();
@@ -254,8 +254,8 @@ uint32_t VdexFile::GetDexFileIndex(const DexFile& dex_file) const {
   return dex_index;
 }
 
-void VdexFile::FullyUnquickenDexFile(const DexFile& target_dex_file,
-                                     const DexFile& original_dex_file) const {
+void VdexFile::FullyUnquickenDexFile(const IDexFile& target_dex_file,
+                                     const IDexFile& original_dex_file) const {
   uint32_t dex_index = GetDexFileIndex(original_dex_file);
   if (dex_index == kNoDexFile) {
     return;
@@ -266,7 +266,7 @@ void VdexFile::FullyUnquickenDexFile(const DexFile& target_dex_file,
   // Iterate over the class definitions. Even if there is no quickening info,
   // we want to unquicken RETURN_VOID_NO_BARRIER instruction.
   for (uint32_t i = 0; i < target_dex_file.NumClassDefs(); ++i) {
-    const DexFile::ClassDef& class_def = target_dex_file.GetClassDef(i);
+    const IDexFile::ClassDef& class_def = target_dex_file.GetClassDef(i);
     const uint8_t* class_data = target_dex_file.GetClassData(class_def);
     if (class_data != nullptr) {
       for (ClassDataItemIterator class_it(target_dex_file, class_data);
@@ -291,7 +291,7 @@ void VdexFile::FullyUnquickenDexFile(const DexFile& target_dex_file,
   }
 }
 
-const uint8_t* VdexFile::GetQuickenedInfoOf(const DexFile& dex_file,
+const uint8_t* VdexFile::GetQuickenedInfoOf(const IDexFile& dex_file,
                                             uint32_t code_item_offset) const {
   if (GetQuickeningInfo().size() == 0) {
     // Bail early if there is no quickening info.

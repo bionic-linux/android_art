@@ -79,7 +79,7 @@ static bool BootImageAOTCanEmbedMethod(ArtMethod* method, CompilerDriver* compil
   ScopedObjectAccess soa(Thread::Current());
   ObjPtr<mirror::Class> klass = method->GetDeclaringClass();
   DCHECK(klass != nullptr);
-  const DexFile& dex_file = klass->GetDexFile();
+  const IDexFile& dex_file = klass->GetDexFile();
   return compiler_driver->IsImageClass(dex_file.StringByTypeIdx(klass->GetDexTypeIndex()));
 }
 
@@ -167,7 +167,7 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(HLoadClass* load_class,
     // locations of target classes. The additional register pressure
     // for using the ArtMethod* should be considered.
   } else {
-    const DexFile& dex_file = load_class->GetDexFile();
+    const IDexFile& dex_file = load_class->GetDexFile();
     dex::TypeIndex type_index = load_class->GetTypeIndex();
 
     bool is_in_boot_image = false;
@@ -240,7 +240,7 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(HLoadClass* load_class,
 void HSharpening::ProcessLoadString(HLoadString* load_string) {
   DCHECK_EQ(load_string->GetLoadKind(), HLoadString::LoadKind::kRuntimeCall);
 
-  const DexFile& dex_file = load_string->GetDexFile();
+  const IDexFile& dex_file = load_string->GetDexFile();
   dex::StringIndex string_index = load_string->GetStringIndex();
 
   HLoadString::LoadKind desired_load_kind = static_cast<HLoadString::LoadKind>(-1);

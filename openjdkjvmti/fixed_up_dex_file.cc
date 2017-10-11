@@ -31,7 +31,7 @@
 
 #include "fixed_up_dex_file.h"
 #include "dex_file_loader.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 
 // Runtime includes.
 #include "dex_to_dex_decompiler.h"
@@ -40,13 +40,13 @@
 
 namespace openjdkjvmti {
 
-static void RecomputeDexChecksum(art::DexFile* dex_file)
+static void RecomputeDexChecksum(art::IDexFile* dex_file)
     REQUIRES_SHARED(art::Locks::mutator_lock_) {
-  reinterpret_cast<art::DexFile::Header*>(const_cast<uint8_t*>(dex_file->Begin()))->checksum_ =
+  reinterpret_cast<art::IDexFile::Header*>(const_cast<uint8_t*>(dex_file->Begin()))->checksum_ =
       dex_file->CalculateChecksum();
 }
 
-static void DoDexUnquicken(const art::DexFile& new_dex_file, const art::DexFile& original_dex_file)
+static void DoDexUnquicken(const art::IDexFile& new_dex_file, const art::IDexFile& original_dex_file)
     REQUIRES_SHARED(art::Locks::mutator_lock_) {
   const art::OatDexFile* oat_dex = original_dex_file.GetOatDexFile();
   if (oat_dex == nullptr) {
@@ -63,13 +63,13 @@ static void DoDexUnquicken(const art::DexFile& new_dex_file, const art::DexFile&
   vdex->FullyUnquickenDexFile(new_dex_file, original_dex_file);
 }
 
-std::unique_ptr<FixedUpDexFile> FixedUpDexFile::Create(const art::DexFile& original) {
+std::unique_ptr<FixedUpDexFile> FixedUpDexFile::Create(const art::IDexFile& original) {
   // Copy the data into mutable memory.
   std::vector<unsigned char> data;
   data.resize(original.Size());
   memcpy(data.data(), original.Begin(), original.Size());
   std::string error;
-  std::unique_ptr<const art::DexFile> new_dex_file(art::DexFileLoader::Open(
+  std::unique_ptr<const art::IDexFile> new_dex_file(art::DexFileLoader::Open(
       data.data(),
       data.size(),
       /*location*/"Unquickening_dexfile.dex",
@@ -84,7 +84,7 @@ std::unique_ptr<FixedUpDexFile> FixedUpDexFile::Create(const art::DexFile& origi
   }
 
   DoDexUnquicken(*new_dex_file, original);
-  RecomputeDexChecksum(const_cast<art::DexFile*>(new_dex_file.get()));
+  RecomputeDexChecksum(const_cast<art::IDexFile*>(new_dex_file.get()));
   std::unique_ptr<FixedUpDexFile> ret(new FixedUpDexFile(std::move(new_dex_file), std::move(data)));
   return ret;
 }

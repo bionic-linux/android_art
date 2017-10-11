@@ -20,7 +20,7 @@
 #include "art_method-inl.h"
 #include "class_linker-inl.h"
 #include "common_runtime_test.h"
-#include "dex_file.h"
+#include "idex_file.h"
 #include "mirror/array-inl.h"
 #include "scoped_thread_state_change-inl.h"
 
@@ -483,12 +483,12 @@ TEST_F(TransactionTest, ResolveString) {
 
   Handle<mirror::DexCache> h_dex_cache(hs.NewHandle(h_klass->GetDexCache()));
   ASSERT_TRUE(h_dex_cache != nullptr);
-  const DexFile* const dex_file = h_dex_cache->GetDexFile();
+  const IDexFile* const dex_file = h_dex_cache->GetDexFile();
   ASSERT_TRUE(dex_file != nullptr);
 
   // Go search the dex file to find the string id of our string.
   static const char* kResolvedString = "ResolvedString";
-  const DexFile::StringId* string_id = dex_file->FindStringId(kResolvedString);
+  const IDexFile::StringId* string_id = dex_file->FindStringId(kResolvedString);
   ASSERT_TRUE(string_id != nullptr);
   dex::StringIndex string_idx = dex_file->GetIndexForStringId(*string_id);
   ASSERT_TRUE(string_idx.IsValid());

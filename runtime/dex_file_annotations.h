@@ -17,7 +17,7 @@
 #ifndef ART_RUNTIME_DEX_FILE_ANNOTATIONS_H_
 #define ART_RUNTIME_DEX_FILE_ANNOTATIONS_H_
 
-#include "dex_file.h"
+#include "idex_file.h"
 
 #include "mirror/object_array.h"
 
@@ -72,7 +72,7 @@ mirror::ObjectArray<mirror::String>* GetSignatureAnnotationForMethod(ArtMethod* 
 // side effect.
 bool IsMethodAnnotationPresent(ArtMethod* method,
                                Handle<mirror::Class> annotation_class,
-                               uint32_t visibility = DexFile::kDexVisibilityRuntime,
+                               uint32_t visibility = IDexFile::kDexVisibilityRuntime,
                                bool lookup_in_resolved_boot_classes = false)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
@@ -103,18 +103,18 @@ bool IsClassAnnotationPresent(Handle<mirror::Class> klass,
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 // Map back from a PC to the line number in a method.
-int32_t GetLineNumFromPC(const DexFile* dex_file, ArtMethod* method, uint32_t rel_pc)
+int32_t GetLineNumFromPC(const IDexFile* dex_file, ArtMethod* method, uint32_t rel_pc)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
 // Annotations iterator.
 class RuntimeEncodedStaticFieldValueIterator : public EncodedStaticFieldValueIterator {
  public:
   // A constructor meant to be called from runtime code.
-  RuntimeEncodedStaticFieldValueIterator(const DexFile& dex_file,
+  RuntimeEncodedStaticFieldValueIterator(const IDexFile& dex_file,
                                          Handle<mirror::DexCache>* dex_cache,
                                          Handle<mirror::ClassLoader>* class_loader,
                                          ClassLinker* linker,
-                                         const DexFile::ClassDef& class_def)
+                                         const IDexFile::ClassDef& class_def)
       REQUIRES_SHARED(Locks::mutator_lock_)
       : EncodedStaticFieldValueIterator(dex_file, class_def),
         dex_cache_(dex_cache),

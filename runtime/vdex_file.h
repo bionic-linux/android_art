@@ -27,7 +27,7 @@
 
 namespace art {
 
-class DexFile;
+class IDexFile;
 
 // VDEX files contain extracted DEX files. The VdexFile class maps the file to
 // memory and provides tools for accessing its individual sections.
@@ -139,20 +139,20 @@ class VdexFile {
   }
 
   // Open all the dex files contained in this vdex file.
-  bool OpenAllDexFiles(std::vector<std::unique_ptr<const DexFile>>* dex_files,
+  bool OpenAllDexFiles(std::vector<std::unique_ptr<const IDexFile>>* dex_files,
                        std::string* error_msg);
 
   // In-place unquicken the given `dex_files` based on `quickening_info`.
-  static void Unquicken(const std::vector<const DexFile*>& dex_files,
+  static void Unquicken(const std::vector<const IDexFile*>& dex_files,
                         const ArrayRef<const uint8_t>& quickening_info);
 
   // Fully unquicken `target_dex_file` based on quickening info stored
   // in this vdex file for `original_dex_file`.
-  void FullyUnquickenDexFile(const DexFile& target_dex_file,
-                             const DexFile& original_dex_file) const;
+  void FullyUnquickenDexFile(const IDexFile& target_dex_file,
+                             const IDexFile& original_dex_file) const;
 
   // Return the quickening info of the given code item.
-  const uint8_t* GetQuickenedInfoOf(const DexFile& dex_file, uint32_t code_item_offset) const;
+  const uint8_t* GetQuickenedInfoOf(const IDexFile& dex_file, uint32_t code_item_offset) const;
 
  private:
   explicit VdexFile(MemMap* mmap) : mmap_(mmap) {}
@@ -173,7 +173,7 @@ class VdexFile {
     return sizeof(VdexChecksum) * GetHeader().GetNumberOfDexFiles();
   }
 
-  uint32_t GetDexFileIndex(const DexFile& dex_file) const;
+  uint32_t GetDexFileIndex(const IDexFile& dex_file) const;
 
   std::unique_ptr<MemMap> mmap_;
 

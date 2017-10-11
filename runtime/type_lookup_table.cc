@@ -20,7 +20,7 @@
 #include <memory>
 
 #include "base/bit_utils.h"
-#include "dex_file-inl.h"
+#include "idex_file-inl.h"
 #include "utf-inl.h"
 #include "utils.h"
 
@@ -50,7 +50,7 @@ bool TypeLookupTable::SupportedSize(uint32_t num_class_defs) {
   return num_class_defs != 0u && num_class_defs <= std::numeric_limits<uint16_t>::max();
 }
 
-std::unique_ptr<TypeLookupTable> TypeLookupTable::Create(const DexFile& dex_file,
+std::unique_ptr<TypeLookupTable> TypeLookupTable::Create(const IDexFile& dex_file,
                                                          uint8_t* storage) {
   const uint32_t num_class_defs = dex_file.NumClassDefs();
   return std::unique_ptr<TypeLookupTable>(SupportedSize(num_class_defs)
@@ -65,7 +65,7 @@ std::unique_ptr<TypeLookupTable> TypeLookupTable::Open(const uint8_t* dex_file_p
       new TypeLookupTable(dex_file_pointer, raw_data, num_class_defs));
 }
 
-TypeLookupTable::TypeLookupTable(const DexFile& dex_file, uint8_t* storage)
+TypeLookupTable::TypeLookupTable(const IDexFile& dex_file, uint8_t* storage)
     : dex_file_begin_(dex_file.Begin()),
       raw_data_length_(RawDataLength(dex_file.NumClassDefs())),
       mask_(CalculateMask(dex_file.NumClassDefs())),
@@ -78,9 +78,9 @@ TypeLookupTable::TypeLookupTable(const DexFile& dex_file, uint8_t* storage)
   // occupied then delay the insertion of the element to the second stage to reduce probing
   // distance.
   for (size_t i = 0; i < dex_file.NumClassDefs(); ++i) {
-    const DexFile::ClassDef& class_def = dex_file.GetClassDef(i);
-    const DexFile::TypeId& type_id = dex_file.GetTypeId(class_def.class_idx_);
-    const DexFile::StringId& str_id = dex_file.GetStringId(type_id.descriptor_idx_);
+    const IDexFile::ClassDef& class_def = dex_file.GetClassDef(i);
+    const IDexFile::TypeId& type_id = dex_file.GetTypeId(class_def.class_idx_);
+    const IDexFile::StringId& str_id = dex_file.GetStringId(type_id.descriptor_idx_);
     const uint32_t hash = ComputeModifiedUtf8Hash(dex_file.GetStringData(str_id));
     Entry entry;
     entry.str_offset = str_id.string_data_off_;
@@ -92,9 +92,9 @@ TypeLookupTable::TypeLookupTable(const DexFile& dex_file, uint8_t* storage)
   // The second stage. The initial position of these elements had a collision. Put these elements
   // into the nearest free cells and link them together by updating next_pos_delta.
   for (uint16_t class_def_idx : conflict_class_defs) {
-    const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_idx);
-    const DexFile::TypeId& type_id = dex_file.GetTypeId(class_def.class_idx_);
-    const DexFile::StringId& str_id = dex_file.GetStringId(type_id.descriptor_idx_);
+    const IDexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_idx);
+    const IDexFile::TypeId& type_id = dex_file.GetTypeId(class_def.class_idx_);
+    const IDexFile::StringId& str_id = dex_file.GetStringId(type_id.descriptor_idx_);
     const uint32_t hash = ComputeModifiedUtf8Hash(dex_file.GetStringData(str_id));
     Entry entry;
     entry.str_offset = str_id.string_data_off_;

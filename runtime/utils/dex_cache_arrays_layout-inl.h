@@ -29,7 +29,7 @@
 namespace art {
 
 inline DexCacheArraysLayout::DexCacheArraysLayout(PointerSize pointer_size,
-                                                  const DexFile::Header& header,
+                                                  const IDexFile::Header& header,
                                                   uint32_t num_call_sites)
     : pointer_size_(pointer_size),
       /* types_offset_ is always 0u, so it's constexpr */
@@ -47,7 +47,7 @@ inline DexCacheArraysLayout::DexCacheArraysLayout(PointerSize pointer_size,
       size_(RoundUp(call_sites_offset_ + CallSitesSize(num_call_sites), Alignment())) {
 }
 
-inline DexCacheArraysLayout::DexCacheArraysLayout(PointerSize pointer_size, const DexFile* dex_file)
+inline DexCacheArraysLayout::DexCacheArraysLayout(PointerSize pointer_size, const IDexFile* dex_file)
     : DexCacheArraysLayout(pointer_size, dex_file->GetHeader(), dex_file->NumCallSiteIds()) {
 }
 

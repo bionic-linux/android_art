@@ -19,7 +19,7 @@
 
 #include "interpreter.h"
 
-#include "dex_file.h"
+#include "idex_file.h"
 #include "jvalue.h"
 
 namespace art {
@@ -48,7 +48,7 @@ class UnstartedRuntime {
   static void Initialize();
 
   static void Invoke(Thread* self,
-                     const DexFile::CodeItem* code_item,
+                     const IDexFile::CodeItem* code_item,
                      ShadowFrame* shadow_frame,
                      JValue* result,
                      size_t arg_offset)
