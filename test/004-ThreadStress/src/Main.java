@@ -462,7 +462,17 @@ public class Main implements Runnable {
             permits = 3;
         }
 
-        return new Semaphore(permits, /* fair */ true);
+        Semaphore semaphore = new Semaphore(permits, /* fair */ true);
+        // Execute Semaphore.acquire (and Semaphore.release) now to
+        // force ahead-of-time initialization of all classes indirectly
+        // used by QueuedWait (e.g. AbstractQueuedSynchronizer$Node).
+        boolean permitAcquired = false;
+        try {
+          semaphore.acquire();
+          semaphore.release();
+        } catch (InterruptedException ignored) {
+        }
+        return semaphore;
     }
 
     public static void runTest(final int numberOfThreads, final int numberOfDaemons,
