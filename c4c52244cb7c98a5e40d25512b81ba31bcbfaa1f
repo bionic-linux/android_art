@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a64a7800_df4760a6",
+        "filename": "test/710-varhandle-creation/expected.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-11T13:38:08Z",
+      "side": 1,
+      "message": "When expected files are this long, I\u0027d really prefer having the checks in the Java file instead (ie assertEquals(String, String)). Otherwise it makes it hard when you get a failure to match the Java line and the expected line.",
+      "revId": "c4c52244cb7c98a5e40d25512b81ba31bcbfaa1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
