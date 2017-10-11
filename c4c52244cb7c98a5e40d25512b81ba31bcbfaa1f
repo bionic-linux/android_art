@@ -16,6 +16,24 @@
       "revId": "c4c52244cb7c98a5e40d25512b81ba31bcbfaa1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23fd800a_c25feac9",
+        "filename": "test/710-varhandle-creation/expected.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-11T21:00:10Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a64a7800_df4760a6",
+      "revId": "c4c52244cb7c98a5e40d25512b81ba31bcbfaa1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
