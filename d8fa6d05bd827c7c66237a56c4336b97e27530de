@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "292bdf3f_63135a0e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-12T20:10:21Z",
+      "side": 1,
+      "message": "Are the tests covering the case one of those two is false or both are false? If yes, which tests?",
+      "range": {
+        "startLine": 1328,
+        "startChar": 10,
+        "endLine": 1329,
+        "endChar": 55
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4ca8a4b_42ed65c0",
+        "filename": "test/458-checker-instruct-simplification/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-12T20:10:21Z",
+      "side": 1,
+      "message": "I\u0027m confused, the code below shows that it is removed.",
+      "range": {
+        "startLine": 2469,
+        "startChar": 1,
+        "endLine": 2470,
+        "endChar": 93
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
