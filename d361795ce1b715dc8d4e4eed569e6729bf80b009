@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b159f4f_aa9214a6",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-12T20:53:59Z",
+      "side": 1,
+      "message": "Good enough for me, even though sleep() is not synchronization. :-) You could use two semaphores or a countdownlatch or ... to make this guaranteed work, if you wanted to.",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 509,
+        "endChar": 53
+      },
+      "revId": "d361795ce1b715dc8d4e4eed569e6729bf80b009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
