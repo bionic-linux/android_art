@@ -46,6 +46,30 @@
       "revId": "e669e4bfca288efcfdaa9d4be59e86aa27f5e542",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72884276_7cf79d72",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-12T17:56:10Z",
+      "side": 1,
+      "message": "I\u0027ve tried to address in PS3 the concerns you raised here; let me know what you think.",
+      "parentUuid": "d9f4dd06_992867ce",
+      "range": {
+        "startLine": 467,
+        "startChar": 49,
+        "endLine": 467,
+        "endChar": 52
+      },
+      "revId": "e669e4bfca288efcfdaa9d4be59e86aa27f5e542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
