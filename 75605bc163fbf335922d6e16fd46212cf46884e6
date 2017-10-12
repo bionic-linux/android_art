@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e667aa8_39cd2462",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T16:09:50Z",
+      "side": 1,
+      "message": "Did you also verify that this test fails prior to http://r.android.com/510196 ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "75605bc163fbf335922d6e16fd46212cf46884e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc308ab_c9eef330",
+        "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T16:09:50Z",
+      "side": 1,
+      "message": "Don\u0027t know if you want to be consistent, but JUnit\u0027s Assert methods are called assertEquals, not assertEqual",
+      "range": {
+        "startLine": 52,
+        "startChar": 27,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "75605bc163fbf335922d6e16fd46212cf46884e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
