@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "aaeb5276_cf45fc2f",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-12T23:50:08Z",
+      "side": 1,
+      "message": "Add a comment that you are moving an explicit type conversion into an implicit type conversion for a type-modified \"terminal load\" here.",
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3aefb053_86df6be5",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-12T23:50:08Z",
+      "side": 1,
+      "message": "we have int8 \u0026 0xff -\u003e uint8 now\ndo we also want\n         uint8 \u0026 0xff -\u003e uint8 (detect useless and)\n\nit is unlikely to occur directly from source, but it may as a result of several rewritings, so it may pay off to include",
+      "range": {
+        "startLine": 1327,
+        "startChar": 83,
+        "endLine": 1327,
+        "endChar": 85
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "292bdf3f_63135a0e",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
