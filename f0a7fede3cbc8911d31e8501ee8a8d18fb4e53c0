@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5c45c32_90ed45dd",
+        "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T17:28:55Z",
+      "side": 1,
+      "message": "Refactor / Change Signature ..., swap the argument order (this way, the call sites will also be updated to swap their order).\n\nTo be consistent with JUnit, \"expected\" should be the first argument to assertEquals().\n\nSame in lines 59, 65",
+      "range": {
+        "startLine": 52,
+        "startChar": 40,
+        "endLine": 52,
+        "endChar": 73
+      },
+      "revId": "f0a7fede3cbc8911d31e8501ee8a8d18fb4e53c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b690a486_57d43bfd",
+        "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T17:28:55Z",
+      "side": 1,
+      "message": "In a separate CL, consider \n\n1.) renaming e -\u003e expected (we follow this naming scheme elsewhere)\n2.) renaming unreachable -\u003e fail",
+      "range": {
+        "startLine": 725,
+        "startChar": 42,
+        "endLine": 725,
+        "endChar": 43
+      },
+      "revId": "f0a7fede3cbc8911d31e8501ee8a8d18fb4e53c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
