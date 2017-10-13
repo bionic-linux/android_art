@@ -746,6 +746,7 @@ void ReferenceTypePropagation::RTPVisitor::VisitCheckCast(HCheckCast* check_cast
 }
 
 void ReferenceTypePropagation::RTPVisitor::VisitPhi(HPhi* phi) {
+  fprintf(stderr, "LOOKING AT %d %d\n", phi->GetId(), phi->IsDead());
   if (phi->IsDead() || phi->GetType() != DataType::Type::kReference) {
     return;
   }
