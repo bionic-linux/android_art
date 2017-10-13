@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9df4e3d1_70465202",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-13T21:05:52Z",
+      "side": 1,
+      "message": "nit: do AsArrayLength once and share with L148, same nit for 64 bit?",
+      "revId": "b2e212fe4cb3b74654db4a0b6f30a6cce2721a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
