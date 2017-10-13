@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ae60d33f_51c1bda8",
+        "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-13T07:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "108e1a3b_71ebef05",
+      "range": {
+        "startLine": 964,
+        "startChar": 28,
+        "endLine": 964,
+        "endChar": 36
+      },
+      "revId": "f0a7fede3cbc8911d31e8501ee8a8d18fb4e53c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12914519_00dbb9ad",
         "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
         "patchSetId": 2
@@ -130,6 +154,30 @@
       "writtenOn": "2017-10-12T20:56:42Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 967,
+        "startChar": 28,
+        "endLine": 967,
+        "endChar": 38
+      },
+      "revId": "f0a7fede3cbc8911d31e8501ee8a8d18fb4e53c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34c67fdf_094a3b0c",
+        "filename": "test/959-invoke-polymorphic-accessors/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-13T07:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12914519_00dbb9ad",
       "range": {
         "startLine": 967,
         "startChar": 28,
