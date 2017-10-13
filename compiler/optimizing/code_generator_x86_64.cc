@@ -205,7 +205,7 @@ class BoundsCheckSlowPathX86_64 : public SlowPathCode {
         length_loc = Location::RegisterLocation(calling_convention.GetRegisterAt(2));
       }
       __ movl(length_loc.AsRegister<CpuRegister>(), array_len);
-      if (mirror::kUseStringCompression) {
+      if (mirror::kUseStringCompression && array_length->AsArrayLength()->IsStringLength()) {
         __ shrl(length_loc.AsRegister<CpuRegister>(), Immediate(1));
       }
     }
