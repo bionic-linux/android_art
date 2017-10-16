@@ -349,38 +349,61 @@ static jint GetJvmtiThreadStateFromInternal(const InternalThreadState& state) {
     jvmti_state |= JVMTI_THREAD_STATE_INTERRUPTED;
   }
 
-  if (internal_thread_state == art::ThreadState::kNative) {
-    jvmti_state |= JVMTI_THREAD_STATE_IN_NATIVE;
+  switch (internal_thread_state) {
+    case art::ThreadState::kRunnable:
+    case art::ThreadState::kWaitingWeakGcRootRead:
+    case art::ThreadState::kSuspended:
+      jvmti_state |= JVMTI_THREAD_STATE_RUNNABLE;
+      break;
+    case art::ThreadState::kNative:
+      jvmti_state |= (JVMTI_THREAD_STATE_IN_NATIVE |
+                      JVMTI_THREAD_STATE_RUNNABLE);
+      break;
+    case art::ThreadState::kBlocked:
+      jvmti_state |= JVMTI_THREAD_STATE_BLOCKED_ON_MONITOR_ENTER;
+      break;
+    case art::ThreadState::kWaiting:
+      jvmti_state |= (JVMTI_THREAD_STATE_WAITING |
+                      JVMTI_THREAD_STATE_WAITING_INDEFINITELY |
+                      JVMTI_THREAD_STATE_IN_OBJECT_WAIT);
+      break;
+    case art::ThreadState::kTimedWaiting:
+      jvmti_state |= (JVMTI_THREAD_STATE_WAITING |
+                      JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT |
+                      JVMTI_THREAD_STATE_IN_OBJECT_WAIT);
+      break;
+    case art::ThreadState::kSleeping:
+      jvmti_state |= (JVMTI_THREAD_STATE_WAITING |
+                      JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT |
+                      JVMTI_THREAD_STATE_SLEEPING);
+      break;
+    // TODO We might want to print warnings if we have the debugger running.
+    case art::ThreadState::kWaitingForDebuggerSend:
+    case art::ThreadState::kWaitingForDebuggerToAttach:
+    case art::ThreadState::kWaitingInMainDebuggerLoop:
+    case art::ThreadState::kWaitingForDebuggerSuspension:
+    case art::ThreadState::kWaitingForLockInflation:
+    case art::ThreadState::kWaitingForTaskProcessor:
+    case art::ThreadState::kWaitingForGcToComplete:
+    case art::ThreadState::kWaitingForCheckPointsToRun:
+    case art::ThreadState::kWaitingPerformingGc:
+    case art::ThreadState::kWaitingForJniOnLoad:
+    case art::ThreadState::kWaitingInMainSignalCatcherLoop:
+    case art::ThreadState::kWaitingForSignalCatcherOutput:
+    case art::ThreadState::kWaitingForDeoptimization:
+    case art::ThreadState::kWaitingForMethodTracingStart:
+    case art::ThreadState::kWaitingForVisitObjects:
+    case art::ThreadState::kWaitingForGetObjectsAllocated:
+    case art::ThreadState::kWaitingForGcThreadFlip:
+      jvmti_state |= (JVMTI_THREAD_STATE_WAITING |
+                      JVMTI_THREAD_STATE_WAITING_INDEFINITELY);
+      break;
+    case art::ThreadState::kStarting:
+    case art::ThreadState::kTerminated:
+      LOG(FATAL) << "Should not be in state " << internal_thread_state;
+      break;
   }
-
-  if (internal_thread_state == art::ThreadState::kRunnable ||
-      internal_thread_state == art::ThreadState::kWaitingWeakGcRootRead ||
-      internal_thread_state == art::ThreadState::kSuspended) {
-    jvmti_state |= JVMTI_THREAD_STATE_RUNNABLE;
-  } else if (internal_thread_state == art::ThreadState::kBlocked) {
-    jvmti_state |= JVMTI_THREAD_STATE_BLOCKED_ON_MONITOR_ENTER;
-  } else {
-    // Should be in waiting state.
-    jvmti_state |= JVMTI_THREAD_STATE_WAITING;
-
-    if (internal_thread_state == art::ThreadState::kTimedWaiting ||
-        internal_thread_state == art::ThreadState::kSleeping) {
-      jvmti_state |= JVMTI_THREAD_STATE_WAITING_WITH_TIMEOUT;
-    } else {
-      jvmti_state |= JVMTI_THREAD_STATE_WAITING_INDEFINITELY;
-    }
-
-    if (internal_thread_state == art::ThreadState::kSleeping) {
-      jvmti_state |= JVMTI_THREAD_STATE_SLEEPING;
-    }
-
-    if (internal_thread_state == art::ThreadState::kTimedWaiting ||
-        internal_thread_state == art::ThreadState::kWaiting) {
-      jvmti_state |= JVMTI_THREAD_STATE_IN_OBJECT_WAIT;
-    }
-
-    // TODO: PARKED. We'll have to inspect the stack.
-  }
+  // TODO: PARKED. We'll have to inspect the stack.
 
   return jvmti_state;
 }
