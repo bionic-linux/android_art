@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7cfccb_43265d32",
+        "filename": "test/646-checker-hadd-alt-byte/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-16T17:58:29Z",
+      "side": 1,
+      "message": "all these FIXME\u0027s should be relatively easy to fix in loop_optimization.cc now (just use the newly introduced unsigned test for zero extension case)?\n\ndo you plan to do that in this CL and fix the fixmes?",
+      "revId": "165d7aec06c2f21b79fab043391a7e9ddce038be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
