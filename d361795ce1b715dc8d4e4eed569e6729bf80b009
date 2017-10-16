@@ -22,6 +22,30 @@
       "revId": "d361795ce1b715dc8d4e4eed569e6729bf80b009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f31a4357_e91deaf6",
+        "filename": "test/004-ThreadStress/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-16T14:18:44Z",
+      "side": 1,
+      "message": "Agreed. :)  I\u0027ve improved this in PS4.",
+      "parentUuid": "3b159f4f_aa9214a6",
+      "range": {
+        "startLine": 508,
+        "startChar": 12,
+        "endLine": 509,
+        "endChar": 53
+      },
+      "revId": "d361795ce1b715dc8d4e4eed569e6729bf80b009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
