@@ -34,6 +34,24 @@
       "revId": "165d7aec06c2f21b79fab043391a7e9ddce038be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4472eff_73aec460",
+        "filename": "test/646-checker-hadd-alt-byte/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-16T18:29:16Z",
+      "side": 1,
+      "message": "Why is that? Is it because GenerateVecMem() does not do the right thing for converted array refs in the scalar cleanup code, or something else?",
+      "parentUuid": "30c3f330_eec95165",
+      "revId": "165d7aec06c2f21b79fab043391a7e9ddce038be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
