@@ -52,6 +52,24 @@
       "revId": "165d7aec06c2f21b79fab043391a7e9ddce038be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae1891d9_96fe789d",
+        "filename": "test/646-checker-hadd-alt-byte/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-16T18:55:29Z",
+      "side": 1,
+      "message": "You seem to know better than me where to look.",
+      "parentUuid": "e4472eff_73aec460",
+      "revId": "165d7aec06c2f21b79fab043391a7e9ddce038be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
