@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "aa1758e0_3b8ca232",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-16T17:22:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaeb5276_cf45fc2f",
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aefb053_86df6be5",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-10-12T23:50:08Z",
       "side": 1,
       "message": "we have int8 \u0026 0xff -\u003e uint8 now\ndo we also want\n         uint8 \u0026 0xff -\u003e uint8 (detect useless and)\n\nit is unlikely to occur directly from source, but it may as a result of several rewritings, so it may pay off to include",
+      "range": {
+        "startLine": 1327,
+        "startChar": 83,
+        "endLine": 1327,
+        "endChar": 85
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27b85474_0065d402",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-16T17:22:24Z",
+      "side": 1,
+      "message": "Added another test with TODO.\n\nI think this should be done by generalizing the \"if (value \u003d\u003d -1)\" above.",
+      "parentUuid": "3aefb053_86df6be5",
       "range": {
         "startLine": 1327,
         "startChar": 83,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "2ba33fe3_4d4238e8",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-16T17:22:24Z",
+      "side": 1,
+      "message": "Added two tests.",
+      "parentUuid": "292bdf3f_63135a0e",
+      "range": {
+        "startLine": 1328,
+        "startChar": 10,
+        "endLine": 1329,
+        "endChar": 55
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4ca8a4b_42ed65c0",
         "filename": "test/458-checker-instruct-simplification/src/Main.java",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2017-10-12T20:10:21Z",
       "side": 1,
       "message": "I\u0027m confused, the code below shows that it is removed.",
+      "range": {
+        "startLine": 2469,
+        "startChar": 1,
+        "endLine": 2470,
+        "endChar": 93
+      },
+      "revId": "d8fa6d05bd827c7c66237a56c4336b97e27530de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95dbe85e_7d9519c5",
+        "filename": "test/458-checker-instruct-simplification/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-16T17:22:24Z",
+      "side": 1,
+      "message": "The \"code\" below is \"//\" instead of \"///\". Would you prefer \"/* ... */\" instead?",
+      "parentUuid": "e4ca8a4b_42ed65c0",
       "range": {
         "startLine": 2469,
         "startChar": 1,
