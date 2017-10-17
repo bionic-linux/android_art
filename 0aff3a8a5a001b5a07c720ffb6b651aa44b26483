@@ -16,6 +16,24 @@
       "revId": "0aff3a8a5a001b5a07c720ffb6b651aa44b26483",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0db7fbb_fa078841",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-17T09:57:06Z",
+      "side": 1,
+      "message": "Huh, I wonder how this didn\u0027t go through.",
+      "parentUuid": "58a56119_4ef01377",
+      "revId": "0aff3a8a5a001b5a07c720ffb6b651aa44b26483",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
