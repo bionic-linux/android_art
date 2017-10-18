@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aef47440_3b6e6a60",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:18:57Z",
+      "side": 1,
+      "message": "You\u0027re including mutex.h. Why forward-declare, then?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
