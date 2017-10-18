@@ -22,6 +22,213 @@
       "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbe714a1_a05c360d",
+        "filename": "openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "This means you should annotate the template declaration with REQUIRES(!...)",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b48e857_6786689f",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on declaration missing.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411d2b87_e5eab9c4",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on declaration missing.",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76ddaee_c48f358b",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on declaration missing.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e12e912_58361524",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on...",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca701de_b3ef3d50",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on...",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7662d5a4_c426bd93",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on...",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0087d673_02550df8",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on...",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5522da7_1f0f264f",
+        "filename": "openjdkjvmti/ti_stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-18T22:22:14Z",
+      "side": 1,
+      "message": "Annotation on...",
+      "range": {
+        "startLine": 1028,
+        "startChar": 6,
+        "endLine": 1028,
+        "endChar": 63
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
