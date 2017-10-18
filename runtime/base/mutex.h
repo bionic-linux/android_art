@@ -101,6 +101,7 @@ enum LockLevel {
   kClassLinkerClassesLock,  // TODO rename.
   kJitCodeCacheLock,
   kCHALock,
+  kBitstringLock,
   kBreakpointLock,
   kMonitorLock,
   kMonitorListLock,
@@ -646,9 +647,17 @@ class Locks {
   // Guards Class Hierarchy Analysis (CHA).
   static Mutex* cha_lock_ ACQUIRED_AFTER(deoptimization_lock_);
 
+  // Guard the update of the bitstring stored in status of each class.
+  // This lock is used in InstanceOfTree methods which are the entrypoint for
+  // any bitstring mutating methods.
+  // The initialization of bitstring may involve the update in the super class chain, thus
+  // we use a lock to protect the update.
+  // In Class::IsSubClass, the lock is not required since it does not update the bitstring.
+  static Mutex* bitstring_lock_ ACQUIRED_AFTER(cha_lock_);
+
   // The thread_list_lock_ guards ThreadList::list_. It is also commonly held to stop threads
   // attaching and detaching.
-  static Mutex* thread_list_lock_ ACQUIRED_AFTER(cha_lock_);
+  static Mutex* thread_list_lock_ ACQUIRED_AFTER(bitstring_lock_);
 
   // Signaled when threads terminate. Used to determine when all non-daemons have terminated.
   static ConditionVariable* thread_exit_cond_ GUARDED_BY(Locks::thread_list_lock_);
