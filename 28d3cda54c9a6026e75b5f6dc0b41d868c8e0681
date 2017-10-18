@@ -16,6 +16,24 @@
       "revId": "28d3cda54c9a6026e75b5f6dc0b41d868c8e0681",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f8e939c_b60a1c27",
+        "filename": "runtime/interpreter/mterp/out/mterp_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2017-10-18T14:54:01Z",
+      "side": 0,
+      "message": "This one was a duplicate.  The live one (which only shows up if you expand the diff) is included in the \"ENTRY\" macro on line 353 (old) or 351 (new).  The cfi_endproc is included in the \"END\" macro on line 12553 (old) or (12244) new.  The cfi_endproc fix for ARM64 is a special case needed because the order of the handlers was rearranged to allow short form branches.  For the rest of the targets, footer.S is the last included file and that\u0027s where the cfi_endproc normally lives.  Because it was not the last file for ARM64, I added a new closing include file to add in the cfi_endproc in the right place.",
+      "parentUuid": "c79065c0_d0d19375",
+      "revId": "28d3cda54c9a6026e75b5f6dc0b41d868c8e0681",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
