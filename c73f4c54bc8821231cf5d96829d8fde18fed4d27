@@ -16,6 +16,24 @@
       "revId": "c73f4c54bc8821231cf5d96829d8fde18fed4d27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ded19f1_d898355b",
+        "filename": "runtime/interpreter/mterp/arm64/header.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1001578
+      },
+      "writtenOn": "2017-10-18T15:31:12Z",
+      "side": 1,
+      "message": "Some of the other #defines in that file clash with ones in header.S.  In particular, there are some register usage differences (for example: xFP and XSELF).",
+      "parentUuid": "25d3362e_88b6f82f",
+      "revId": "c73f4c54bc8821231cf5d96829d8fde18fed4d27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
