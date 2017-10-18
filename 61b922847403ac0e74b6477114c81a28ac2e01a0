@@ -22,6 +22,30 @@
       "revId": "61b922847403ac0e74b6477114c81a28ac2e01a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57376f72_50f3e93f",
+        "filename": "test/645-checker-abs-simd/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-18T15:25:20Z",
+      "side": 1,
+      "message": "FIXME is a stronger version of TODO. Bug assigned to ajcbik.",
+      "parentUuid": "79f693f0_486cc986",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "61b922847403ac0e74b6477114c81a28ac2e01a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
