@@ -51,6 +51,7 @@
 #include "handle_scope-inl.h"
 #include "image.h"
 #include "imt_conflict_table.h"
+#include "instanceof_tree.h"
 #include "jni_internal.h"
 #include "linear_alloc.h"
 #include "lock_word.h"
@@ -2358,6 +2359,14 @@ void ImageWriter::FixupClass(mirror::Class* orig, mirror::Class* copy) {
   orig->FixupNativePointers(copy, target_ptr_size_, NativeLocationVisitor(this));
   FixupClassVisitor visitor(this, copy);
   ObjPtr<mirror::Object>(orig)->VisitReferences(visitor, visitor);
+
+  // The instanceof bitstring could be inconsistent with the ancestors.
+  // So by setting them to "uninitialized", they will be recalculated at runtime.
+  if (compile_app_image_) {
+      // Lock every time to prevent a dcheck failure when we suspend with the lock held.
+      MutexLock bitstring_lock(Thread::Current(), *Locks::bitstring_lock_);
+      InstanceOfTree::ForceUninitialize(copy);
+  }
 
   // Remove the clinitThreadId. This is required for image determinism.
   copy->SetClinitThreadId(static_cast<pid_t>(0));

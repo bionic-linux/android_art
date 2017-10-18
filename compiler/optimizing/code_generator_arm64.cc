@@ -2170,7 +2170,7 @@ void InstructionCodeGeneratorARM64::GenerateClassInitializationCheck(SlowPathCod
   // Even if the initialized flag is set, we need to ensure consistent memory ordering.
   // TODO(vixl): Let the MacroAssembler handle MemOperand.
   __ Add(temp, class_reg, status_offset);
-  __ Ldar(temp, HeapOperand(temp));
+  __ Ldarb(temp, HeapOperand(temp));
   __ Cmp(temp, mirror::Class::kStatusInitialized);
   __ B(lt, slow_path->GetEntryLabel());
   __ Bind(slow_path->GetExitLabel());
