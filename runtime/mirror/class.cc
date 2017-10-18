@@ -29,6 +29,7 @@
 #include "dex_file_annotations.h"
 #include "gc/accounting/card_table-inl.h"
 #include "handle_scope-inl.h"
+#include "instanceof_tree.h"
 #include "method.h"
 #include "object-inl.h"
 #include "object-refvisitor-inl.h"
@@ -41,6 +42,11 @@
 #include "well_known_classes.h"
 
 namespace art {
+
+// TODO: move to own CC file?
+constexpr size_t BitString::kBitSizeAtPosition[BitString::kCapacity];
+constexpr size_t BitString::kCapacity;
+
 namespace mirror {
 
 using android::base::StringPrintf;
@@ -166,12 +172,7 @@ void Class::SetStatus(Handle<Class> h_this, Status new_status, Thread* self) {
     self->AssertPendingException();
   }
 
-  static_assert(sizeof(Status) == sizeof(uint32_t), "Size of status not equal to uint32");
-  if (Runtime::Current()->IsActiveTransaction()) {
-    h_this->SetField32Volatile<true>(StatusOffset(), new_status);
-  } else {
-    h_this->SetField32Volatile<false>(StatusOffset(), new_status);
-  }
+  InstanceOfTree::WriteStatus(h_this.Get(), new_status);
 
   // Setting the object size alloc fast path needs to be after the status write so that if the
   // alloc path sees a valid object size, we would know that it's initialized as long as it has a
