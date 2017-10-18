@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83cc11ff_1b0d6a4e",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-18T12:34:46Z",
+      "side": 1,
+      "message": "nit: maybe put that in its own if to ease readability?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 13,
+        "endLine": 1153,
+        "endChar": 62
+      },
+      "revId": "01e74dd870550840de87e4a94417508eaffd879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6adca3_4f7c50d8",
+        "filename": "test/645-checker-abs-simd/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-18T12:34:46Z",
+      "side": 1,
+      "message": "Looks like Aart will fix those? Can you file a bug and reference it here?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 43
+      },
+      "revId": "01e74dd870550840de87e4a94417508eaffd879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "232da3aa_9211ef84",
+        "filename": "test/646-checker-hadd-alt-byte/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-18T12:34:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 43
+      },
+      "revId": "01e74dd870550840de87e4a94417508eaffd879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b383eeac_01cadb21",
+        "filename": "test/646-checker-hadd-alt-byte/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-18T12:34:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 272,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 43
+      },
+      "revId": "01e74dd870550840de87e4a94417508eaffd879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
