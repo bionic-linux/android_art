@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79f693f0_486cc986",
+        "filename": "test/645-checker-abs-simd/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-18T15:20:26Z",
+      "side": 1,
+      "message": "TODO? (Unless you plan to address this in another patch set?)",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 10
+      },
+      "revId": "61b922847403ac0e74b6477114c81a28ac2e01a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
