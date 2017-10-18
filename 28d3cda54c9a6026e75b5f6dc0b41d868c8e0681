@@ -34,6 +34,24 @@
       "revId": "28d3cda54c9a6026e75b5f6dc0b41d868c8e0681",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b294fcd9_0ea86d4e",
+        "filename": "runtime/interpreter/mterp/out/mterp_arm.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2017-10-18T15:18:50Z",
+      "side": 0,
+      "message": "Ah, I missed the fact this file uses a macro.  Thanks for the clarification.",
+      "parentUuid": "5f8e939c_b60a1c27",
+      "revId": "28d3cda54c9a6026e75b5f6dc0b41d868c8e0681",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
