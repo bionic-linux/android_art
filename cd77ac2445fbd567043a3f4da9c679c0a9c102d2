@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2acf4bf4_0e6f5465",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef47440_3b6e6a60",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 0
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbe714a1_a05c360d",
         "filename": "openjdkjvmti/events-inl.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e689a996_e06c75f5",
+        "filename": "openjdkjvmti/events-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Getting all the includes to work right would be a rather big diff.",
+      "parentUuid": "bbe714a1_a05c360d",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b48e857_6786689f",
         "filename": "openjdkjvmti/ti_breakpoint.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-18T22:22:14Z",
       "side": 1,
       "message": "Annotation on declaration missing.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd8c1631_bc3c0320",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Need to do refactorings to allow this, Will follow in later CL.",
+      "parentUuid": "9b48e857_6786689f",
       "range": {
         "startLine": 66,
         "startChar": 2,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4b52da57_df8c4c49",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "411d2b87_e5eab9c4",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f76ddaee_c48f358b",
         "filename": "openjdkjvmti/ti_breakpoint.cc",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-10-18T22:22:14Z",
       "side": 1,
       "message": "Annotation on declaration missing.",
+      "range": {
+        "startLine": 109,
+        "startChar": 2,
+        "endLine": 109,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0c68e5_e33c8b2b",
+        "filename": "openjdkjvmti/ti_breakpoint.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "f76ddaee_c48f358b",
       "range": {
         "startLine": 109,
         "startChar": 2,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0ea0a65d_10e06958",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e12e912_58361524",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ca701de_b3ef3d50",
         "filename": "openjdkjvmti/ti_field.cc",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "182fa5a5_ee6c82b8",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca701de_b3ef3d50",
+      "range": {
+        "startLine": 209,
+        "startChar": 2,
+        "endLine": 209,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "49c19727_2230e513",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7662d5a4_c426bd93",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0087d673_02550df8",
         "filename": "openjdkjvmti/ti_field.cc",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e231d40_cbc2d3a4",
+        "filename": "openjdkjvmti/ti_field.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-18T23:23:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0087d673_02550df8",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 75
+      },
+      "revId": "cd77ac2445fbd567043a3f4da9c679c0a9c102d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
