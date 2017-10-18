@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c455a4aa_245316d5",
+        "filename": "runtime/interpreter/mterp/out/mterp_arm64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-18T08:40:07Z",
+      "side": 1,
+      "message": "Why not \"ENTRY ExecuteMterpImpl\"?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 17
+      },
+      "revId": "e917c0a2c12e0a7169aace85bb1a15672e159bdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a361d06_d0a3943c",
+        "filename": "runtime/interpreter/mterp/out/mterp_arm64.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 11750,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-18T08:40:07Z",
+      "side": 1,
+      "message": "Why not \"END ExecuteMterpImpl\"?",
+      "range": {
+        "startLine": 11749,
+        "startChar": 0,
+        "endLine": 11750,
+        "endChar": 48
+      },
+      "revId": "e917c0a2c12e0a7169aace85bb1a15672e159bdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
