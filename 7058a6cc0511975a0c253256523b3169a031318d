@@ -22,6 +22,30 @@
       "revId": "7058a6cc0511975a0c253256523b3169a031318d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d448479a_86a0a8d4",
+        "filename": "runtime/dex_file_loader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-19T14:07:54Z",
+      "side": 1,
+      "message": "This sets back my long-suffering effort to get dexdump disentangled from the runtime.  Please pass the flag and don\u0027t include runtime.h in any DexFile* stuff.",
+      "parentUuid": "8ec39266_6e8f89d8",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "7058a6cc0511975a0c253256523b3169a031318d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
