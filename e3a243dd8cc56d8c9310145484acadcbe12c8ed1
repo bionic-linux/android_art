@@ -45,6 +45,75 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f58528_3ae35cb6",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-19T00:59:18Z",
+      "side": 1,
+      "message": "Precompute a table for this?",
+      "range": {
+        "startLine": 177,
+        "startChar": 24,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa61e424_8ba6cf1c",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-19T00:59:18Z",
+      "side": 1,
+      "message": "in-between",
+      "range": {
+        "startLine": 197,
+        "startChar": 37,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4b7afd_b452942f",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-19T00:59:18Z",
+      "side": 1,
+      "message": "Why not a single BitFieldClear?",
+      "range": {
+        "startLine": 250,
+        "startChar": 4,
+        "endLine": 250,
+        "endChar": 52
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
