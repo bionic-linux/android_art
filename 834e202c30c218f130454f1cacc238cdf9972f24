@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8afa6e4d_c362bce9",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-19T00:17:21Z",
+      "side": 1,
+      "message": "Can drop this?",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d911d6d1_9c307b16",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-19T00:17:21Z",
+      "side": 1,
+      "message": "Is this the case for all situations? Lock levels are usually really finicky.",
+      "range": {
+        "startLine": 93,
+        "startChar": 44,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
