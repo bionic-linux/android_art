@@ -651,6 +651,8 @@ class Runtime {
   void AddSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
   void RemoveSystemWeakHolder(gc::AbstractSystemWeakHolder* holder);
 
+  void LoadJvmti();
+
   void AttachAgent(const std::string& agent_arg);
 
   const std::list<ti::Agent>& GetAgents() const {
