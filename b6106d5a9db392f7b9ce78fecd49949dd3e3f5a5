@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d4b0abc_d0e809fb",
+        "filename": "openjdkjvmti/events-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-19T19:48:47Z",
+      "side": 1,
+      "message": "This looks like the answer returned could be obsolete by the time we actually return to the caller. II presume that\u0027s safe?",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 74
+      },
+      "revId": "b6106d5a9db392f7b9ce78fecd49949dd3e3f5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
