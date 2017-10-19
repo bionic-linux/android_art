@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e64da235_7243a6f3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-10-19T00:43:55Z",
+      "side": 1,
+      "message": "Please add a scoped trace so we can track this in systrace.",
+      "range": {
+        "startLine": 1821,
+        "startChar": 6,
+        "endLine": 1824,
+        "endChar": 7
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5285a8a5_d1cf9073",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5156,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2017-10-19T00:43:55Z",
+      "side": 1,
+      "message": "Any numbers to show this won\u0027t regress app startup or other metrics?",
+      "range": {
+        "startLine": 5155,
+        "startChar": 4,
+        "endLine": 5156,
+        "endChar": 56
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
