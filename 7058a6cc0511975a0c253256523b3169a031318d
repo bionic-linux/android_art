@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ec39266_6e8f89d8",
+        "filename": "runtime/dex_file_loader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-19T13:02:34Z",
+      "side": 1,
+      "message": "Other option is to pass down the verify flag from the DexFileLoader users. Let me know what you prefer.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 20
+      },
+      "revId": "7058a6cc0511975a0c253256523b3169a031318d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
