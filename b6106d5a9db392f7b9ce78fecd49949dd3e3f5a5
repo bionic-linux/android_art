@@ -22,6 +22,30 @@
       "revId": "b6106d5a9db392f7b9ce78fecd49949dd3e3f5a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304f6230_54433ad2",
+        "filename": "openjdkjvmti/events-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-19T20:09:28Z",
+      "side": 1,
+      "message": "yeah. Those sorts of races are undefined by the spec.",
+      "parentUuid": "5d4b0abc_d0e809fb",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 74
+      },
+      "revId": "b6106d5a9db392f7b9ce78fecd49949dd3e3f5a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
