@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "040bdcc2_d15146a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-19T16:25:35Z",
+      "side": 1,
+      "message": "We still do breakpoints by moving the entire program into the interpreter meaning we do a lot of extra locks.\n\nOne of the things I\u0027m going to do next is to make it so we only change methods with breakpoints in them to the interpreter. This should make everything much faster.",
+      "parentUuid": "acf07f40_7555e7f8",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8afa6e4d_c362bce9",
         "filename": "openjdkjvmti/art_jvmti.h",
         "patchSetId": 2
@@ -59,6 +83,54 @@
       "writtenOn": "2017-10-19T00:17:21Z",
       "side": 1,
       "message": "Is this the case for all situations? Lock levels are usually really finicky.",
+      "range": {
+        "startLine": 93,
+        "startChar": 44,
+        "endLine": 93,
+        "endChar": 72
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b21a5b_911e5583",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-19T16:25:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afa6e4d_c362bce9",
+      "range": {
+        "startLine": 93,
+        "startChar": 24,
+        "endLine": 93,
+        "endChar": 25
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa4c4506_9424332c",
+        "filename": "openjdkjvmti/art_jvmti.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-19T16:25:35Z",
+      "side": 1,
+      "message": "As far as I can tell it seems to work.\n\nDefault is post classlinker_classes lock which should be far enough down.",
+      "parentUuid": "d911d6d1_9c307b16",
       "range": {
         "startLine": 93,
         "startChar": 44,
