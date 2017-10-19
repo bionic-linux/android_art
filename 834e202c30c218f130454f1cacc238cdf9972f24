@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "acf07f40_7555e7f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-19T01:08:33Z",
+      "side": 1,
+      "message": "That\u0027s a surprisingly large delta. Any explanations?",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 16
+      },
+      "revId": "834e202c30c218f130454f1cacc238cdf9972f24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8afa6e4d_c362bce9",
         "filename": "openjdkjvmti/art_jvmti.h",
         "patchSetId": 2
