@@ -28,6 +28,7 @@
 #include "cdex/compact_dex_file.h"
 #include "dex_file.h"
 #include "dex_file_verifier.h"
+#include "runtime.h"
 #include "standard_dex_file.h"
 #include "zip_archive.h"
 
@@ -201,11 +202,12 @@ bool DexFileLoader::Open(const char* filename,
     return OpenZip(fd.Release(), location, verify_checksum, error_msg, dex_files);
   }
   if (IsMagicValid(magic)) {
-    std::unique_ptr<const DexFile> dex_file(OpenFile(fd.Release(),
-                                                     location,
-                                                     /* verify */ true,
-                                                     verify_checksum,
-                                                     error_msg));
+    std::unique_ptr<const DexFile> dex_file(
+        OpenFile(fd.Release(),
+                 location,
+                 Runtime::Current()->IsVerificationEnabled(),
+                 verify_checksum,
+                 error_msg));
     if (dex_file.get() != nullptr) {
       dex_files->push_back(std::move(dex_file));
       return true;
@@ -222,7 +224,8 @@ std::unique_ptr<const DexFile> DexFileLoader::OpenDex(int fd,
                                                       bool verify_checksum,
                                                       std::string* error_msg) {
   ScopedTrace trace("Open dex file " + std::string(location));
-  return OpenFile(fd, location, true /* verify */, verify_checksum, error_msg);
+  return OpenFile(
+      fd, location, Runtime::Current()->IsVerificationEnabled(), verify_checksum, error_msg);
 }
 
 bool DexFileLoader::OpenZip(int fd,
@@ -357,7 +360,7 @@ std::unique_ptr<const DexFile> DexFileLoader::OpenOneDexFileFromZip(
                                                  location,
                                                  zip_entry->GetCrc32(),
                                                  kNoOatDexFile,
-                                                 /* verify */ true,
+                                                 Runtime::Current()->IsVerificationEnabled(),
                                                  verify_checksum,
                                                  error_msg,
                                                  &verify_result);
