@@ -507,7 +507,9 @@ static void VMDebug_attachAgent(JNIEnv* env, jclass, jstring agent) {
     return;
   }
 
-  if (!Dbg::IsJdwpAllowed()) {
+  Runtime* runtime = Runtime::Current();
+
+  if (!runtime->IsJavaDebuggable()) {
     ScopedObjectAccess soa(env);
     ThrowSecurityException("Can't attach agent, process is not debuggable.");
     return;
@@ -522,7 +524,19 @@ static void VMDebug_attachAgent(JNIEnv* env, jclass, jstring agent) {
     filename = chars.c_str();
   }
 
-  Runtime::Current()->AttachAgent(filename);
+  runtime->AttachAgent(filename);
+}
+
+static void VMDebug_loadJvmti(JNIEnv* env, jclass) {
+  Runtime* runtime = Runtime::Current();
+
+  if (!runtime->IsJavaDebuggable()) {
+    ScopedObjectAccess soa(env);
+    ThrowSecurityException("Can't load jvmti, process is not debuggable.");
+    return;
+  }
+
+  runtime->LoadJvmti();
 }
 
 static JNINativeMethod gMethods[] = {
@@ -559,6 +573,7 @@ static JNINativeMethod gMethods[] = {
   NATIVE_METHOD(VMDebug, getRuntimeStatInternal, "(I)Ljava/lang/String;"),
   NATIVE_METHOD(VMDebug, getRuntimeStatsInternal, "()[Ljava/lang/String;"),
   NATIVE_METHOD(VMDebug, attachAgent, "(Ljava/lang/String;)V"),
+  NATIVE_METHOD(VMDebug, loadJvmti, "()V"),
 };
 
 void register_dalvik_system_VMDebug(JNIEnv* env) {

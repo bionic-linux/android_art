@@ -1510,13 +1510,8 @@ static bool EnsureJvmtiPlugin(Runtime* runtime,
   return true;
 }
 
-// Attach a new agent and add it to the list of runtime agents
-//
-// TODO: once we decide on the threading model for agents,
-//   revisit this and make sure we're doing this on the right thread
-//   (and we synchronize access to any shared data structures like "agents_")
-//
-void Runtime::AttachAgent(const std::string& agent_arg) {
+// Load Jvmti plugin
+void Runtime::LoadJvmti() {
   std::string error_msg;
   if (!EnsureJvmtiPlugin(this, &plugins_, &error_msg)) {
     LOG(WARNING) << "Could not load plugin: " << error_msg;
@@ -1524,10 +1519,19 @@ void Runtime::AttachAgent(const std::string& agent_arg) {
     ThrowIOException("%s", error_msg.c_str());
     return;
   }
+}
 
+// Attach a new agent and add it to the list of runtime agents
+//
+// TODO: once we decide on the threading model for agents,
+//   revisit this and make sure we're doing this on the right thread
+//   (and we synchronize access to any shared data structures like "agents_")
+//
+void Runtime::AttachAgent(const std::string& agent_arg) {
   ti::Agent agent(agent_arg);
 
   int res = 0;
+  std::string error_msg;
   ti::Agent::LoadError result = agent.Attach(&res, &error_msg);
 
   if (result == ti::Agent::kNoError) {
