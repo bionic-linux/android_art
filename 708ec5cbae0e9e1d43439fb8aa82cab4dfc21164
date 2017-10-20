@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "daca1653_d1b4fac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-20T20:51:24Z",
+      "side": 1,
+      "message": "As discussed offline, there may be/is an issue with general code_item sharing and downstream compilation passes.  I\u0027m just fixing the early failures.",
+      "parentUuid": "996856d6_180e6f4a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "708ec5cbae0e9e1d43439fb8aa82cab4dfc21164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e7cb00_dcbcad91",
         "filename": "dexlayout/dexlayout.cc",
         "patchSetId": 1
