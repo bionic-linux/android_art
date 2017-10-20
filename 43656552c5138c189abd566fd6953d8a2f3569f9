@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "116ed7ef_9dbee06c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-20T10:56:06Z",
+      "side": 1,
+      "message": "Test:",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "43656552c5138c189abd566fd6953d8a2f3569f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36398707_c157176d",
+        "filename": "runtime/dex_file_verifier_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-10-20T10:56:06Z",
+      "side": 1,
+      "message": "verify",
+      "range": {
+        "startLine": 118,
+        "startChar": 29,
+        "endLine": 118,
+        "endChar": 35
+      },
+      "revId": "43656552c5138c189abd566fd6953d8a2f3569f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
