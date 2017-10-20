@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b975e42d_34dee528",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "Happy to rename any of these new classes, structs, methods, etc.",
+      "parentUuid": "964f8230_5c74eac0",
+      "range": {
+        "startLine": 2355,
+        "startChar": 6,
+        "endLine": 2355,
+        "endChar": 16
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e64da235_7243a6f3",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -256,6 +280,30 @@
     },
     {
       "key": {
+        "uuid": "1aef9feb_d56c8cf8",
+        "filename": "runtime/instanceof_and_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "All of these terms are described in instanceof.h, is that the problem? What should I say here?",
+      "parentUuid": "4d7e6436_87a8806e",
+      "range": {
+        "startLine": 40,
+        "startChar": 53,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43fc67c5_4251d797",
         "filename": "runtime/instanceof_and_status.h",
         "patchSetId": 1
@@ -279,6 +327,30 @@
     },
     {
       "key": {
+        "uuid": "0d524ccc_ba9fb2e5",
+        "filename": "runtime/instanceof_and_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "What should I say here?",
+      "parentUuid": "43fc67c5_4251d797",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f98c5d5e_34ff3460",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -290,6 +362,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "What\u0027s that? Please define.",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "299cab4c_259c4f8b",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "What should I say here?",
+      "parentUuid": "f98c5d5e_34ff3460",
       "range": {
         "startLine": 28,
         "startChar": 21,
@@ -322,6 +418,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45419313_72c44584",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "I apologize for that, one of the considerations we had collectively was to make it easy to change the tuning data (on line 138), the underlying data size (int32 vs int64), and to change the overall implementation to variable length later if we wanted to.\n\nIs there some action I can take here to make it less generic ?",
+      "parentUuid": "fad0083b_4ccc4719",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 56
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -520,6 +640,30 @@
     },
     {
       "key": {
+        "uuid": "91e382b2_b765f686",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "I attempted to describe this on L216-L218, perhaps there is some better way to rephrase it?\n\nIf this was a suggestion that \"templates are unnecessary\", I could attempt virtualizing it, but I\u0027m not sure if it would succeed. The mirror::Class* functions need to be mocked for testing, but they are all non-virtual.\n\nIf we look at instanceof_tree_test.cc we can see that there\u0027s 0 dependency on an ART runtime there, subsequently it runs the tests very quickly and exhaustively tests every corner case I could think of.",
+      "parentUuid": "b595b0ba_bf05e85f",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "852d49bd_ffcd2afd",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -531,6 +675,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "Why can\u0027t you do it? Runtime::Current()-\u003eIsAotCompiler()",
+      "range": {
+        "startLine": 260,
+        "startChar": 3,
+        "endLine": 260,
+        "endChar": 50
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ed37806_254dd305",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "Absolutely. That\u0027s why it was a TODO :).",
+      "parentUuid": "852d49bd_ffcd2afd",
       "range": {
         "startLine": 260,
         "startChar": 3,
@@ -566,6 +734,30 @@
     },
     {
       "key": {
+        "uuid": "77ebc118_f1459a09",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "What should it be called?",
+      "parentUuid": "1e75d162_a7bf2733",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 26
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9395c855_10a09e2a",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -589,6 +781,30 @@
     },
     {
       "key": {
+        "uuid": "a90064d6_8a399b4f",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "Unfortunately I started out doing this, and looking at GetAccessFlags will fail with DCHECK if it\u0027s early enough in a class\u0027s lifetime.\n\nI discussed offline with Mingyao and it\u0027s harmless to call any of these APIs for an interface class. Since interface classes always root Object, they will only get Initialized.",
+      "parentUuid": "9395c855_10a09e2a",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f1f45a3_2f1137e6",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -600,6 +816,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "Do this in this CL?",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 66
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90b3ad2b_79a6c448",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-20T23:11:29Z",
+      "side": 1,
+      "message": "Yes, all the TODOs were for cleanup I should do in this CL, I just wanted to get this out to review quicker.",
+      "parentUuid": "5f1f45a3_2f1137e6",
       "range": {
         "startLine": 333,
         "startChar": 2,
