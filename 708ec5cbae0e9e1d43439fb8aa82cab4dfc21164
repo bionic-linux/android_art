@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "996856d6_180e6f4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-20T09:23:03Z",
+      "side": 1,
+      "message": "Wait... this isn\u0027t supported by dex2oat, why did we have that optimization in dexlayout in the first place?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 22
+      },
+      "revId": "708ec5cbae0e9e1d43439fb8aa82cab4dfc21164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e7cb00_dcbcad91",
         "filename": "dexlayout/dexlayout.cc",
         "patchSetId": 1
