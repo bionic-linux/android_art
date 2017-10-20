@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51e7cb00_dcbcad91",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-10-20T01:27:28Z",
+      "side": 1,
+      "message": "We should also add test case for this.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 14,
+        "endLine": 1814,
+        "endChar": 29
+      },
+      "revId": "708ec5cbae0e9e1d43439fb8aa82cab4dfc21164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
