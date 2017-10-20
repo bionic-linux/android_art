@@ -1798,6 +1798,7 @@ int32_t DexLayout::LayoutCodeItems(const DexFile* dex_file,
   int32_t total_diff = 0;
   // The relative placement has no effect on correctness; it is used to ensure
   // the layout is deterministic
+  std::unordered_set<dex_ir::CodeItem*> seen_code_items;
   for (size_t index = 0; index < num_layout_types; ++index) {
     const std::unordered_set<dex_ir::CodeItem*>& code_items_set = code_items[index];
     // diff is reset for each class of code items.
@@ -1810,6 +1811,10 @@ int32_t DexLayout::LayoutCodeItems(const DexFile* dex_file,
                                   ? data->DirectMethods()
                                   : data->VirtualMethods())) {
           dex_ir::CodeItem* code_item = method->GetCodeItem();
+          if (seen_code_items.find(code_item) != seen_code_items.end()) {
+            continue;
+          }
+          seen_code_items.insert(code_item);
           if (code_item != nullptr &&
               code_items_set.find(code_item) != code_items_set.end()) {
             diff += UnsignedLeb128Size(code_item_offset)
