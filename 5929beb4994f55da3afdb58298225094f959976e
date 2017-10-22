@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69678e2a_e203e717",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2005,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-22T00:28:48Z",
+      "side": 1,
+      "message": "Why disable here and not the conditional in line 1994?",
+      "range": {
+        "startLine": 2004,
+        "startChar": 4,
+        "endLine": 2005,
+        "endChar": 91
+      },
+      "revId": "5929beb4994f55da3afdb58298225094f959976e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
