@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f86062b8_e28db62b",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-23T09:05:12Z",
+      "side": 1,
+      "message": "1. It\u0027s not at all obvious to me from the choice of names that this is intended to be used as the ANDROID_DATA directory.\n\n2. I have no problem re-using the same directory for generating both ahat-test-dump.hprof and ahat-test-dump-base.hprof, but maybe that causes problems for the build somehow?\n\nIf it doesn\u0027t cause build problems to reuse the same ANDROID_DATA directory for generating both hprof files, could we rename these to:\n  AHAT_TEST_DUMP_ANDROID_DATA_DIR :\u003d $(intermediates.COMMON)/test-dump-android_data\n\nIf it could cause build problems to reuse the same ANDROID_DATA directory... would it cause build problems to generate both heap dumps in the same rule by calling the \u0027art\u0027 script twice in the recipe? Or does that have the same trouble having multiple outputs from one same rule that the proguard map issue had?\n\nIf you think it\u0027s easier or better to have two separate directories, could we rename these to:\n  AHAT_TEST_DUMP_ANDROID_DATA_DIR :\u003d $(intermediates.COMMON)/test-dump-android_data\n  AHAT_TEST_DUMP_BASE_ANDROID_DATA_DIR :\u003d $(intermediates.COMMON)/test-dump-base-android_data",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6a7d477_ea92b553",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-23T09:05:12Z",
+      "side": 1,
+      "message": "It would be nice to have a comment in the makefile somewhere explaining that we need to override ANDROID_DATA to ensure the artifacts from running \u0027art\u0027 don\u0027t pollute the source tree.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 41
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "673fd92a_3f44bded",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-23T09:05:12Z",
+      "side": 1,
+      "message": "Clean up the new variables introduced?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
