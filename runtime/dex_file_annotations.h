@@ -47,6 +47,9 @@ bool IsFieldAnnotationPresent(ArtField* field, Handle<mirror::Class> annotation_
 // Method annotations.
 mirror::Object* GetAnnotationDefaultValue(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_);
+const DexFile::AnnotationSetItem* FindAnnotationSetForMethod(const DexFile& dex_file,
+                                                             const DexFile::ClassDef& class_def,
+                                                             uint32_t method_index);
 mirror::Object* GetAnnotationForMethod(ArtMethod* method, Handle<mirror::Class> annotation_class)
     REQUIRES_SHARED(Locks::mutator_lock_);
 mirror::ObjectArray<mirror::Object>* GetAnnotationsForMethod(ArtMethod* method)
@@ -72,9 +75,16 @@ mirror::ObjectArray<mirror::String>* GetSignatureAnnotationForMethod(ArtMethod* 
 // side effect.
 bool IsMethodAnnotationPresent(ArtMethod* method,
                                Handle<mirror::Class> annotation_class,
-                               uint32_t visibility = DexFile::kDexVisibilityRuntime,
-                               bool lookup_in_resolved_boot_classes = false)
+                               uint32_t visibility = DexFile::kDexVisibilityRuntime)
     REQUIRES_SHARED(Locks::mutator_lock_);
+// Check whether a method from the `dex_file` with the given is `annotation_set`
+// is annotated with @dalvik.annotation.optimization.FastNative with build visibility.
+bool IsFastNativeMethodAnnotationPresent(const DexFile& dex_file,
+                                         const DexFile::AnnotationSetItem& annotation_set);
+// Check whether a method from the `dex_file` with the given is `annotation_set`
+// is annotated with @dalvik.annotation.optimization.CriticalNative with build visibility.
+bool IsCriticalNativeMethodAnnotationPresent(const DexFile& dex_file,
+                                             const DexFile::AnnotationSetItem& annotation_set);
 
 // Class annotations.
 mirror::Object* GetAnnotationForClass(Handle<mirror::Class> klass,

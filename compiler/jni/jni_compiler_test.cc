@@ -2205,8 +2205,8 @@ void JniCompilerTest::NormalNativeImpl() {
   ArtMethod* method = jni::DecodeArtMethod(jmethod_);
   ASSERT_TRUE(method != nullptr);
 
-  EXPECT_FALSE(method->IsAnnotatedWithCriticalNative());
-  EXPECT_FALSE(method->IsAnnotatedWithFastNative());
+  EXPECT_FALSE(method->IsCriticalNative());
+  EXPECT_FALSE(method->IsFastNative());
 }
 
 // TODO: just rename the java functions  to the standard convention and remove duplicated tests
@@ -2227,8 +2227,8 @@ void JniCompilerTest::FastNativeImpl() {
   ArtMethod* method = jni::DecodeArtMethod(jmethod_);
   ASSERT_TRUE(method != nullptr);
 
-  EXPECT_FALSE(method->IsAnnotatedWithCriticalNative());
-  EXPECT_TRUE(method->IsAnnotatedWithFastNative());
+  EXPECT_FALSE(method->IsCriticalNative());
+  EXPECT_TRUE(method->IsFastNative());
 }
 
 // TODO: just rename the java functions  to the standard convention and remove duplicated tests
@@ -2256,8 +2256,8 @@ void JniCompilerTest::CriticalNativeImpl() {
   ArtMethod* method = jni::DecodeArtMethod(jmethod_);
   ASSERT_TRUE(method != nullptr);
 
-  EXPECT_TRUE(method->IsAnnotatedWithCriticalNative());
-  EXPECT_FALSE(method->IsAnnotatedWithFastNative());
+  EXPECT_TRUE(method->IsCriticalNative());
+  EXPECT_FALSE(method->IsFastNative());
 
   EXPECT_EQ(0, gJava_myClassNatives_criticalNative_calls[gCurrentJni]);
   env_->CallStaticVoidMethod(jklass_, jmethod_);

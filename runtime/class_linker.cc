@@ -3265,6 +3265,22 @@ void ClassLinker::LoadMethod(const DexFile& dex_file,
       }
     }
   }
+  if (UNLIKELY((access_flags & kAccNative) != 0u)) {
+    // Check if the native method is annotated with @FastNative or @CriticalNative.
+    const DexFile::AnnotationSetItem* annotation_set =
+        annotations::FindAnnotationSetForMethod(dex_file, dst->GetClassDef(), dex_method_idx);
+    if (annotation_set != nullptr) {
+      if (annotations::IsFastNativeMethodAnnotationPresent(dex_file, *annotation_set)) {
+        access_flags |= kAccFastNative;
+      }
+      if (annotations::IsCriticalNativeMethodAnnotationPresent(dex_file, *annotation_set)) {
+        access_flags |= kAccCriticalNative;
+      }
+      // TODO: Will no longer need this CHECK once we have verifier checking this.
+      CHECK_NE(access_flags & (kAccFastNative | kAccCriticalNative),
+               kAccFastNative | kAccCriticalNative);
+    }
+  }
   dst->SetAccessFlags(access_flags);
 }
 
