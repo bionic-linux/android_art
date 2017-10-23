@@ -256,29 +256,6 @@ const uint8_t* SearchEncodedAnnotation(const DexFile& dex_file,
   return nullptr;
 }
 
-const DexFile::AnnotationSetItem* FindAnnotationSetForMethod(ArtMethod* method)
-    REQUIRES_SHARED(Locks::mutator_lock_) {
-  const DexFile* dex_file = method->GetDexFile();
-  const DexFile::AnnotationsDirectoryItem* annotations_dir =
-      dex_file->GetAnnotationsDirectory(method->GetClassDef());
-  if (annotations_dir == nullptr) {
-    return nullptr;
-  }
-  const DexFile::MethodAnnotationsItem* method_annotations =
-      dex_file->GetMethodAnnotations(annotations_dir);
-  if (method_annotations == nullptr) {
-    return nullptr;
-  }
-  uint32_t method_index = method->GetDexMethodIndex();
-  uint32_t method_count = annotations_dir->methods_size_;
-  for (uint32_t i = 0; i < method_count; ++i) {
-    if (method_annotations[i].method_idx_ == method_index) {
-      return dex_file->GetMethodAnnotationSetItem(method_annotations[i]);
-    }
-  }
-  return nullptr;
-}
-
 const DexFile::ParameterAnnotationsItem* FindAnnotationsItemForMethod(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   const DexFile* dex_file = method->GetDexFile();
@@ -1085,6 +1062,35 @@ mirror::Object* GetAnnotationDefaultValue(ArtMethod* method) {
   return annotation_value.value_.GetL();
 }
 
+const DexFile::AnnotationSetItem* FindAnnotationSetForMethod(const DexFile& dex_file,
+                                                             const DexFile::ClassDef& class_def,
+                                                             uint32_t method_index) {
+  const DexFile::AnnotationsDirectoryItem* annotations_dir =
+      dex_file.GetAnnotationsDirectory(class_def);
+  if (annotations_dir == nullptr) {
+    return nullptr;
+  }
+  const DexFile::MethodAnnotationsItem* method_annotations =
+      dex_file.GetMethodAnnotations(annotations_dir);
+  if (method_annotations == nullptr) {
+    return nullptr;
+  }
+  uint32_t method_count = annotations_dir->methods_size_;
+  for (uint32_t i = 0; i < method_count; ++i) {
+    if (method_annotations[i].method_idx_ == method_index) {
+      return dex_file.GetMethodAnnotationSetItem(method_annotations[i]);
+    }
+  }
+  return nullptr;
+}
+
+static inline const DexFile::AnnotationSetItem* FindAnnotationSetForMethod(ArtMethod* method)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  return FindAnnotationSetForMethod(*method->GetDexFile(),
+                                    method->GetClassDef(),
+                                    method->GetDexMethodIndex());
+}
+
 mirror::Object* GetAnnotationForMethod(ArtMethod* method, Handle<mirror::Class> annotation_class) {
   const DexFile::AnnotationSetItem* annotation_set = FindAnnotationSetForMethod(method);
   if (annotation_set == nullptr) {
@@ -1235,6 +1241,24 @@ bool IsMethodAnnotationPresent(ArtMethod* method,
                                          annotation_class,
                                          lookup_in_resolved_boot_classes);
   return annotation_item != nullptr;
+}
+
+bool IsMethodBuildAnnotationPresent(const DexFile& dex_file,
+                                    const DexFile::AnnotationSetItem* annotation_set,
+                                    const char* annotation_descriptor) {
+  for (uint32_t i = 0; i < annotation_set->size_; ++i) {
+    const DexFile::AnnotationItem* annotation_item = dex_file.GetAnnotationItem(annotation_set, i);
+    if (!IsVisibilityCompatible(annotation_item->visibility_, DexFile::kDexVisibilityBuild)) {
+      continue;
+    }
+    const uint8_t* annotation = annotation_item->annotation_;
+    uint32_t type_index = DecodeUnsignedLeb128(&annotation);
+    const char* descriptor = dex_file.StringByTypeIdx(dex::TypeIndex(type_index));
+    if (strcmp(descriptor, annotation_descriptor) == 0) {
+      return true;
+    }
+  }
+  return false;
 }
 
 mirror::Object* GetAnnotationForClass(Handle<mirror::Class> klass,

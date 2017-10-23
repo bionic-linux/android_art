@@ -46,6 +46,7 @@
 #include "dex/verified_method.h"
 #include "dex_compilation_unit.h"
 #include "dex_file-inl.h"
+#include "dex_file_annotations.h"
 #include "dex_instruction-inl.h"
 #include "driver/compiler_options.h"
 #include "gc/accounting/card_table-inl.h"
@@ -535,34 +536,25 @@ static void CompileMethod(Thread* self,
         InstructionSetHasGenericJniStub(driver->GetInstructionSet())) {
       // Leaving this empty will trigger the generic JNI version
     } else {
-      // Look-up the ArtMethod associated with this code_item (if any)
-      // -- It is later used to lookup any [optimization] annotations for this method.
-      ScopedObjectAccess soa(self);
-
-      // TODO: Lookup annotation from DexFile directly without resolving method.
-      ArtMethod* method =
-          Runtime::Current()->GetClassLinker()->ResolveMethod<ClassLinker::ResolveMode::kNoChecks>(
-              dex_file,
-              method_idx,
-              dex_cache,
-              class_loader,
-              /* referrer */ nullptr,
-              invoke_type);
+      // Look-up the annotation set for the method associated with this code_item (if any).
+      const DexFile::ClassDef& class_def = dex_file.GetClassDef(class_def_idx);
+      const DexFile::AnnotationSetItem* annotation_set =
+          annotations::FindAnnotationSetForMethod(dex_file, class_def, method_idx);
 
       // Query any JNI optimization annotations such as @FastNative or @CriticalNative.
       Compiler::JniOptimizationFlags optimization_flags = Compiler::kNone;
-      if (UNLIKELY(method == nullptr)) {
-        // Failed method resolutions happen very rarely, e.g. ancestor class cannot be resolved.
-        DCHECK(self->IsExceptionPending());
-        self->ClearException();
-      } else if (method->IsAnnotatedWithFastNative()) {
+      if (annotation_set != nullptr) {
+        bool fast_native = annotations::IsMethodBuildAnnotationPresent(
+            dex_file, annotation_set, "Ldalvik/annotation/optimization/FastNative;");
+        bool critical_native = annotations::IsMethodBuildAnnotationPresent(
+            dex_file, annotation_set, "Ldalvik/annotation/optimization/CriticalNative;");
         // TODO: Will no longer need this CHECK once we have verifier checking this.
-        CHECK(!method->IsAnnotatedWithCriticalNative());
-        optimization_flags = Compiler::kFastNative;
-      } else if (method->IsAnnotatedWithCriticalNative()) {
-        // TODO: Will no longer need this CHECK once we have verifier checking this.
-        CHECK(!method->IsAnnotatedWithFastNative());
-        optimization_flags = Compiler::kCriticalNative;
+        CHECK(!fast_native || !critical_native);
+        if (fast_native) {
+          optimization_flags = Compiler::kFastNative;
+        } else if (critical_native) {
+          optimization_flags = Compiler::kCriticalNative;
+        }
       }
 
       compiled_method = driver->GetCompiler()->JniCompile(access_flags,

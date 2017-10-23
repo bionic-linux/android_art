@@ -47,6 +47,9 @@ bool IsFieldAnnotationPresent(ArtField* field, Handle<mirror::Class> annotation_
 // Method annotations.
 mirror::Object* GetAnnotationDefaultValue(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_);
+const DexFile::AnnotationSetItem* FindAnnotationSetForMethod(const DexFile& dex_file,
+                                                             const DexFile::ClassDef& class_def,
+                                                             uint32_t method_index);
 mirror::Object* GetAnnotationForMethod(ArtMethod* method, Handle<mirror::Class> annotation_class)
     REQUIRES_SHARED(Locks::mutator_lock_);
 mirror::ObjectArray<mirror::Object>* GetAnnotationsForMethod(ArtMethod* method)
@@ -75,6 +78,10 @@ bool IsMethodAnnotationPresent(ArtMethod* method,
                                uint32_t visibility = DexFile::kDexVisibilityRuntime,
                                bool lookup_in_resolved_boot_classes = false)
     REQUIRES_SHARED(Locks::mutator_lock_);
+// Check whether `method` is annotated with `annotation_descriptor` with build visibility.
+bool IsMethodBuildAnnotationPresent(const DexFile& dex_file,
+                                    const DexFile::AnnotationSetItem* annotation_set,
+                                    const char* annotation_descriptor);
 
 // Class annotations.
 mirror::Object* GetAnnotationForClass(Handle<mirror::Class> klass,
