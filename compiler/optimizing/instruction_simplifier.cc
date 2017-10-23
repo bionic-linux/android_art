@@ -1253,7 +1253,10 @@ void InstructionSimplifierVisitor::VisitAnd(HAnd* instruction) {
 
   if (input_cst != nullptr) {
     int64_t value = Int64FromConstant(input_cst);
-    if (value == -1) {
+    if (value == -1 ||
+        // Similar cases under zero extension.
+        (value == 0xff && input_other->GetType() == DataType::Type::kUint8) ||
+        (value == 0xffff && input_other->GetType() == DataType::Type::kUint16)) {
       // Replace code looking like
       //    AND dst, src, 0xFFF...FF
       // with

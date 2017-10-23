@@ -2538,6 +2538,20 @@ public class Main {
     return m.instanceCharField & 0x1ffff;
   }
 
+  /// CHECK-START: int Main.$noinline$bug68142795Byte(byte) instruction_simplifier (after)
+  /// CHECK-DAG:      <<Arg:b\d+>>      ParameterValue
+  /// CHECK-DAG:                        Return [<<Arg>>]
+  public static int $noinline$bug68142795Byte(byte b) {
+    return (byte)(0xff & (b & 0xff));
+  }
+
+  /// CHECK-START: int Main.$noinline$bug68142795Short(short) instruction_simplifier (after)
+  /// CHECK-DAG:      <<Arg:s\d+>>      ParameterValue
+  /// CHECK-DAG:                        Return [<<Arg>>]
+  public static int $noinline$bug68142795Short(short b) {
+    return (short)(0xffff & (b & 0xffff));
+  }
+
   public static void main(String[] args) {
     int arg = 123456;
     float floatArg = 123456.125f;
@@ -2772,6 +2786,11 @@ public class Main {
 
     m.instanceCharField = 'x';
     assertIntEquals('x', $noinline$getInstanceCharFieldAnd0x1ffff(m));
+
+    assertIntEquals(0x7f, $noinline$bug68142795Byte((byte) 0x7f));
+    assertIntEquals((byte) 0x80, $noinline$bug68142795Byte((byte) 0x80));
+    assertIntEquals(0x7fff, $noinline$bug68142795Short((short) 0x7fff));
+    assertIntEquals((short) 0x8000, $noinline$bug68142795Short((short) 0x8000));
   }
 
   private static boolean $inline$true() { return true; }
