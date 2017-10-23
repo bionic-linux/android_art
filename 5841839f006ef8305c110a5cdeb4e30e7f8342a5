@@ -16,6 +16,24 @@
       "revId": "5841839f006ef8305c110a5cdeb4e30e7f8342a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95c22ccb_48d95324",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-23T15:35:03Z",
+      "side": 1,
+      "message": "Done.  (With a slight change in wording :-) ).",
+      "parentUuid": "24422996_f1baebea",
+      "revId": "5841839f006ef8305c110a5cdeb4e30e7f8342a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
