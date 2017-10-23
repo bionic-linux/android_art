@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "46a75812_b6b9f323",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "This string literal was previously in just one place, now it\u0027s in two?",
+      "parentUuid": "01f0d9d0_ab597f0c",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f6578e5_d5ede74a",
         "filename": "runtime/art_method.h",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I\u0027ve changed the kAccMiranda flag to overlap the intrinsics flags (making space for kAccCriticalNative) under the assumption that miranda methods shall never be intrinsics.",
       "parentUuid": "7f6578e5_d5ede74a",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed19237d_a6cfba76",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "Ok, can you put what you just said in as a comment?",
+      "parentUuid": "7e8d42bb_7055c4b7",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -107,6 +143,58 @@
     },
     {
       "key": {
+        "uuid": "b5a3c984_5c747cf7",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "There were comments in L311, L315",
+      "parentUuid": "57a7bdb0_7ba12b71",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1fa2e7b_27742ad2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3283,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "This. Same exact code as in compiler_driver.cc",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eaff207_184b7ced",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "There was already a visibility filter in the other method, why did this need a new implementation?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b100273_9adaaaff",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 3
@@ -136,6 +224,24 @@
       "side": 1,
       "message": "IsMiranda() is no longer a simple `GetAccessFlags() \u0026 kAccMiranda`.",
       "parentUuid": "1b100273_9adaaaff",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12249734_07ff6c64",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "Ok, can you put what you just said in as a comment?",
+      "parentUuid": "584fe01a_8f6ecf1d",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -177,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "4b65f3ba_e29c1a0d",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "There is no \"problem here\", its just non-obvious why this change was made.",
+      "parentUuid": "5c5174a1_e0ae13bc",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e60838b3_6fef55f5",
         "filename": "runtime/modifiers.h",
         "patchSetId": 3
@@ -206,6 +330,24 @@
       "side": 1,
       "message": "No, kAccCriticalNative does not overlap with other method flags.",
       "parentUuid": "e60838b3_6fef55f5",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55907979_07c7487a",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T21:07:51Z",
+      "side": 1,
+      "message": "Then what does this change have to do with the miranda flag changes?",
+      "parentUuid": "c65ce036_b3ce08e7",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
