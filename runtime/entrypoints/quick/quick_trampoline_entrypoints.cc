@@ -2180,16 +2180,8 @@ extern "C" TwoWordReturn artQuickGenericJniTrampoline(Thread* self, ArtMethod** 
   self->SetTopOfStack(sp);
   uint32_t shorty_len = 0;
   const char* shorty = called->GetShorty(&shorty_len);
-  // Optimization annotations lookup does not try to resolve classes,
-  // as this may throw an exception, which is not supported by the
-  // Generic JNI trampoline at this stage; instead, method's
-  // annotations' classes are looked up in the bootstrap class
-  // loader's resolved types (which won't trigger an exception).
-  CHECK(!self->IsExceptionPending());
-  bool critical_native = called->IsAnnotatedWithCriticalNative();
-  CHECK(!self->IsExceptionPending());
-  bool fast_native = called->IsAnnotatedWithFastNative();
-  CHECK(!self->IsExceptionPending());
+  bool critical_native = called->IsCriticalNative();
+  bool fast_native = called->IsFastNative();
   bool normal_native = !critical_native && !fast_native;
   // Restore the initial ArtMethod pointer at `*sp`.
   *sp = called;

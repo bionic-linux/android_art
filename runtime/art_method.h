@@ -200,8 +200,10 @@ class ArtMethod FINAL {
   }
 
   bool IsMiranda() {
-    static_assert((kAccMiranda & (kAccIntrinsic | kAccIntrinsicBits)) == 0,
-                  "kAccMiranda conflicts with intrinsic modifier");
+    if (IsIntrinsic()) {
+      // kAccMiranda overlaps with kAccIntrinsicBits.
+      return false;
+    }
     return (GetAccessFlags() & kAccMiranda) != 0;
   }
 
@@ -213,6 +215,7 @@ class ArtMethod FINAL {
 
   bool IsCompilable() {
     if (IsIntrinsic()) {
+      // kAccCompileDontBother overlaps with kAccIntrinsicBits.
       return true;
     }
     return (GetAccessFlags() & kAccCompileDontBother) == 0;
@@ -252,8 +255,17 @@ class ArtMethod FINAL {
     return (GetAccessFlags<kReadBarrierOption>() & kAccNative) != 0;
   }
 
+  // Checks to see if the method was annotated with @dalvik.annotation.optimization.FastNative.
   bool IsFastNative() {
+    // The presence of the annotation is checked by ClassLinker and recorded in access flags.
     constexpr uint32_t mask = kAccFastNative | kAccNative;
+    return (GetAccessFlags() & mask) == mask;
+  }
+
+  // Checks to see if the method was annotated with @dalvik.annotation.optimization.CriticalNative.
+  bool IsCriticalNative() {
+    // The presence of the annotation is checked by ClassLinker and recorded in access flags.
+    constexpr uint32_t mask = kAccCriticalNative | kAccNative;
     return (GetAccessFlags() & mask) == mask;
   }
 
@@ -307,14 +319,6 @@ class ArtMethod FINAL {
   void SetMustCountLocks() {
     AddAccessFlags(kAccMustCountLocks);
   }
-
-  // Checks to see if the method was annotated with @dalvik.annotation.optimization.FastNative
-  // -- Independent of kAccFastNative access flags.
-  bool IsAnnotatedWithFastNative();
-
-  // Checks to see if the method was annotated with @dalvik.annotation.optimization.CriticalNative
-  // -- Unrelated to the GC notion of "critical".
-  bool IsAnnotatedWithCriticalNative();
 
   // Returns true if this method could be overridden by a default method.
   bool IsOverridableByDefaultMethod() REQUIRES_SHARED(Locks::mutator_lock_);
@@ -415,7 +419,7 @@ class ArtMethod FINAL {
 
   // Registers the native method and returns the new entry point. NB The returned entry point might
   // be different from the native_method argument if some MethodCallback modifies it.
-  const void* RegisterNative(const void* native_method, bool is_fast)
+  const void* RegisterNative(const void* native_method)
       REQUIRES_SHARED(Locks::mutator_lock_) WARN_UNUSED;
 
   void UnregisterNative() REQUIRES_SHARED(Locks::mutator_lock_);
@@ -748,11 +752,6 @@ class ArtMethod FINAL {
 
  private:
   uint16_t FindObsoleteDexClassDefIndex() REQUIRES_SHARED(Locks::mutator_lock_);
-
-  // If `lookup_in_resolved_boot_classes` is true, look up any of the
-  // method's annotations' classes in the bootstrap class loader's
-  // resolved types; otherwise, resolve them as a side effect.
-  bool IsAnnotatedWith(jclass klass, uint32_t visibility, bool lookup_in_resolved_boot_classes);
 
   static constexpr size_t PtrSizedFieldsOffset(PointerSize pointer_size) {
     // Round up to pointer size for padding field. Tested in art_method.cc.

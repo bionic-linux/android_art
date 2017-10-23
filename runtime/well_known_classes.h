@@ -45,8 +45,6 @@ struct WellKnownClasses {
 
   static ObjPtr<mirror::Class> ToClass(jclass global_jclass) REQUIRES_SHARED(Locks::mutator_lock_);
 
-  static jclass dalvik_annotation_optimization_CriticalNative;
-  static jclass dalvik_annotation_optimization_FastNative;
   static jclass dalvik_system_BaseDexClassLoader;
   static jclass dalvik_system_DelegateLastClassLoader;
   static jclass dalvik_system_DexClassLoader;
