@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a376c7d0_e352112c",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-23T20:34:33Z",
+      "side": 0,
+      "message": "I did not see this as a rename. These functions used to decode annotations from the dex file while the IsFastNative() just checked access flags.",
+      "parentUuid": "2e0f79f4_2940bcc8",
+      "revId": "9e842d3e7d6102d964178e36e5d596ca91895147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d7c789f_676d5795",
         "filename": "runtime/well_known_classes.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-23T20:19:26Z",
       "side": 0,
       "message": "Why?",
+      "revId": "9e842d3e7d6102d964178e36e5d596ca91895147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551bfb0b_bea3d263",
+        "filename": "runtime/well_known_classes.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-23T20:34:33Z",
+      "side": 0,
+      "message": "Why not? It\u0027s not needed anymore.",
+      "parentUuid": "7d7c789f_676d5795",
       "revId": "9e842d3e7d6102d964178e36e5d596ca91895147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
