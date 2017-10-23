@@ -2529,13 +2529,41 @@ public class Main {
   /// CHECK-DAG:      <<And:i\d+>>      And [<<Get>>,<<Cst1ffff>>]
   /// CHECK-DAG:                        Return [<<And>>]
 
-  // TODO: Simplify this. The And is useless.
-
-  // CHECK-START: int Main.$noinline$getInstanceCharFieldAnd0x1ffff(Main) instruction_simplifier (after)
-  // CHECK-DAG:      <<Get:c\d+>>      InstanceFieldGet
-  // CHECK-DAG:                        Return [<<Get>>]
+  /// CHECK-START: int Main.$noinline$getInstanceCharFieldAnd0x1ffff(Main) instruction_simplifier (after)
+  /// CHECK-DAG:      <<Get:c\d+>>      InstanceFieldGet
+  /// CHECK-DAG:                        Return [<<Get>>]
   public static int $noinline$getInstanceCharFieldAnd0x1ffff(Main m) {
     return m.instanceCharField & 0x1ffff;
+  }
+
+  /// CHECK-START: int Main.$noinline$bug68142795Byte(byte) instruction_simplifier (before)
+  /// CHECK-DAG:      <<Arg:b\d+>>      ParameterValue
+  /// CHECK-DAG:      <<Const:i\d+>>    IntConstant 255
+  /// CHECK-DAG:      <<And1:i\d+>>     And [<<Arg>>,<<Const>>]
+  /// CHECK-DAG:      <<And2:i\d+>>     And [<<And1>>,<<Const>>]
+  /// CHECK-DAG:      <<Conv:b\d+>>     TypeConversion [<<And2>>]
+  /// CHECK-DAG:                        Return [<<Conv>>]
+
+  /// CHECK-START: int Main.$noinline$bug68142795Byte(byte) instruction_simplifier (after)
+  /// CHECK-DAG:      <<Arg:b\d+>>      ParameterValue
+  /// CHECK-DAG:                        Return [<<Arg>>]
+  public static int $noinline$bug68142795Byte(byte b) {
+    return (byte)(0xff & (b & 0xff));
+  }
+
+  /// CHECK-START: int Main.$noinline$bug68142795Short(short) instruction_simplifier (before)
+  /// CHECK-DAG:      <<Arg:s\d+>>      ParameterValue
+  /// CHECK-DAG:      <<Const:i\d+>>    IntConstant 65535
+  /// CHECK-DAG:      <<And1:i\d+>>     And [<<Arg>>,<<Const>>]
+  /// CHECK-DAG:      <<And2:i\d+>>     And [<<And1>>,<<Const>>]
+  /// CHECK-DAG:      <<Conv:s\d+>>     TypeConversion [<<And2>>]
+  /// CHECK-DAG:                        Return [<<Conv>>]
+
+  /// CHECK-START: int Main.$noinline$bug68142795Short(short) instruction_simplifier (after)
+  /// CHECK-DAG:      <<Arg:s\d+>>      ParameterValue
+  /// CHECK-DAG:                        Return [<<Arg>>]
+  public static int $noinline$bug68142795Short(short b) {
+    return (short)(0xffff & (b & 0xffff));
   }
 
   public static void main(String[] args) {
@@ -2772,6 +2800,11 @@ public class Main {
 
     m.instanceCharField = 'x';
     assertIntEquals('x', $noinline$getInstanceCharFieldAnd0x1ffff(m));
+
+    assertIntEquals(0x7f, $noinline$bug68142795Byte((byte) 0x7f));
+    assertIntEquals((byte) 0x80, $noinline$bug68142795Byte((byte) 0x80));
+    assertIntEquals(0x7fff, $noinline$bug68142795Short((short) 0x7fff));
+    assertIntEquals((short) 0x8000, $noinline$bug68142795Short((short) 0x8000));
   }
 
   private static boolean $inline$true() { return true; }
