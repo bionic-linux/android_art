@@ -46,7 +46,8 @@ class PatchOat {
  public:
   static bool Patch(const std::string& image_location,
                     off_t delta,
-                    const std::string& output_directory,
+                    const std::string& output_image_directory,
+                    const std::string& output_image_relocation_directory,
                     InstructionSet isa,
                     TimingLogger* timings);
 
