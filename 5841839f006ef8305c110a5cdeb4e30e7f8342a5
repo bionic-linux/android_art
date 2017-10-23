@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24422996_f1baebea",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1801,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-23T08:20:03Z",
+      "side": 1,
+      "message": "Can you add a comment that while deduping is discouraged, we may see it, and need to handle it in dexlayout?",
+      "revId": "5841839f006ef8305c110a5cdeb4e30e7f8342a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
