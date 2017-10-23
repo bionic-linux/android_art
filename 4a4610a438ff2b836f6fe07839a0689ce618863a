@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28569a19_fa6032fe",
+        "filename": "runtime/image.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-23T19:31:09Z",
+      "side": 1,
+      "message": "This is the first non-numeric version. But since we started to go that way, i\u0027m going to continue with a \u0027B\u0027.",
+      "range": {
+        "startLine": 29,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "4a4610a438ff2b836f6fe07839a0689ce618863a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
