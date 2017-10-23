@@ -26,7 +26,6 @@
 #include "class_linker-inl.h"
 #include "debugger.h"
 #include "dex_file-inl.h"
-#include "dex_file_annotations.h"
 #include "dex_instruction.h"
 #include "entrypoints/runtime_asm_entrypoints.h"
 #include "gc/accounting/card_table-inl.h"
@@ -390,13 +389,9 @@ void ArtMethod::Invoke(Thread* self, uint32_t* args, uint32_t args_size, JValue*
   self->PopManagedStackFragment(fragment);
 }
 
-const void* ArtMethod::RegisterNative(const void* native_method, bool is_fast) {
+const void* ArtMethod::RegisterNative(const void* native_method) {
   CHECK(IsNative()) << PrettyMethod();
-  CHECK(!IsFastNative()) << PrettyMethod();
   CHECK(native_method != nullptr) << PrettyMethod();
-  if (is_fast) {
-    AddAccessFlags(kAccFastNative);
-  }
   void* new_native_method = nullptr;
   Runtime::Current()->GetRuntimeCallbacks()->RegisterNativeMethod(this,
                                                                   native_method,
@@ -406,25 +401,13 @@ const void* ArtMethod::RegisterNative(const void* native_method, bool is_fast) {
 }
 
 void ArtMethod::UnregisterNative() {
-  CHECK(IsNative() && !IsFastNative()) << PrettyMethod();
+  CHECK(IsNative()) << PrettyMethod();
   // restore stub to lookup native pointer via dlsym
   SetEntryPointFromJni(GetJniDlsymLookupStub());
 }
 
 bool ArtMethod::IsOverridableByDefaultMethod() {
   return GetDeclaringClass()->IsInterface();
-}
-
-bool ArtMethod::IsAnnotatedWithFastNative() {
-  ScopedObjectAccess soa(Thread::Current());
-  return annotations::HasFastNativeMethodBuildAnnotation(
-      *GetDexFile(), GetClassDef(), GetDexMethodIndex());
-}
-
-bool ArtMethod::IsAnnotatedWithCriticalNative() {
-  ScopedObjectAccess soa(Thread::Current());
-  return annotations::HasCriticalNativeMethodBuildAnnotation(
-      *GetDexFile(), GetClassDef(), GetDexMethodIndex());
 }
 
 static uint32_t GetOatMethodIndexFromMethodIndex(const DexFile& dex_file,

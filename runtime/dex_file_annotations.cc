@@ -1252,26 +1252,26 @@ static bool IsMethodBuildAnnotationPresent(const DexFile& dex_file,
   return false;
 }
 
-uint32_t HasFastNativeMethodBuildAnnotation(const DexFile& dex_file,
-                                            const DexFile::ClassDef& class_def,
-                                            uint32_t method_index) {
+uint32_t GetNativeMethodAnnotationAccessFlags(const DexFile& dex_file,
+                                              const DexFile::ClassDef& class_def,
+                                              uint32_t method_index) {
+  uint32_t access_flags = 0u;
   const DexFile::AnnotationSetItem* annotation_set =
       FindAnnotationSetForMethod(dex_file, class_def, method_index);
-  return annotation_set != nullptr &&
-         IsMethodBuildAnnotationPresent(dex_file,
-                                        *annotation_set,
-                                        "Ldalvik/annotation/optimization/FastNative;");
-}
-
-uint32_t HasCriticalNativeMethodBuildAnnotation(const DexFile& dex_file,
-                                                const DexFile::ClassDef& class_def,
-                                                uint32_t method_index) {
-  const DexFile::AnnotationSetItem* annotation_set =
-      FindAnnotationSetForMethod(dex_file, class_def, method_index);
-  return annotation_set != nullptr &&
-         IsMethodBuildAnnotationPresent(dex_file,
-                                        *annotation_set,
-                                        "Ldalvik/annotation/optimization/CriticalNative;");
+  if (annotation_set != nullptr) {
+    if (IsMethodBuildAnnotationPresent(dex_file,
+                                       *annotation_set,
+                                       "Ldalvik/annotation/optimization/FastNative;")) {
+      access_flags |= kAccFastNative;
+    }
+    if (IsMethodBuildAnnotationPresent(dex_file,
+                                       *annotation_set,
+                                       "Ldalvik/annotation/optimization/CriticalNative;")) {
+      access_flags |= kAccCriticalNative;
+    }
+    CHECK_NE(access_flags, kAccFastNative | kAccCriticalNative);
+  }
+  return access_flags;
 }
 
 mirror::Object* GetAnnotationForClass(Handle<mirror::Class> klass,
