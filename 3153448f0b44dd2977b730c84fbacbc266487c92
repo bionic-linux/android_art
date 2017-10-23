@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6824b8b7_91208187",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-23T08:59:18Z",
+      "side": 1,
+      "message": "Does this mean the build will fail on a 32-bit architecture? Is dalvikvm64 always the right one to use?",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
