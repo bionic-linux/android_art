@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1a5efc5_c2838f77",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "Why did this get inlined?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6578e5_d5ede74a",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059d1baf_9c44e7e8",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "Please retain comments from before?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b100273_9adaaaff",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2056f3c5_7cf9db2b",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60838b3_6fef55f5",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-23T20:19:26Z",
+      "side": 1,
+      "message": "Is it aliasing some other flags (that is only valid when kAccNative is set)? I assume that\u0027s the case, but these comments don\u0027t make it clear?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
