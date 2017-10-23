@@ -46,6 +46,30 @@
       "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "891f724d_80283e83",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-23T21:54:16Z",
+      "side": 1,
+      "message": "HOST_PREFER_32_BIT ? Some of our build bots still actively use this, and you did convert this into art.go...",
+      "parentUuid": "ef1433ce_5651fae5",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
