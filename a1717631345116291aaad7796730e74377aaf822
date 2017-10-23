@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "635b7cdc_fb78a716",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-23T20:39:27Z",
+      "side": 1,
+      "message": "They can\u0027t use the same directory or they might clobber each other if they run in parallel.  We can combine them into a single rule if you prefer, using .KATI_IMPLICIT_OUTPUTS",
+      "parentUuid": "f86062b8_e28db62b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6a7d477_ea92b553",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
