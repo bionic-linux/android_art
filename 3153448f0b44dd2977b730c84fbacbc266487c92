@@ -22,6 +22,30 @@
       "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef1433ce_5651fae5",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-23T20:37:32Z",
+      "side": 1,
+      "message": "We only support 64-bit build hosts",
+      "parentUuid": "6824b8b7_91208187",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
