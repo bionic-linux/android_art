@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a64ec11_3e255c17",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-24T01:08:18Z",
+      "side": 1,
+      "message": "nit: this does the lookup twice\n\n   auto it \u003d original_code_item_offset.find(code_item);\n   if (it !\u003d .... end()) {\n     original_offset \u003d *it;\n   }\n\nwould do the lookup once",
+      "revId": "a12f058b2ee0523c8e9f48457f70f10d2e1b4abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
