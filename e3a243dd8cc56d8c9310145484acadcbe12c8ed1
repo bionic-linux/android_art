@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d5d03fb_14f842af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T15:05:18Z",
+      "side": 1,
+      "message": "Just https://android-review.googlesource.com/440996 and add some indentation please.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 66
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3c6555_8bac06ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T15:05:18Z",
+      "side": 1,
+      "message": "You\u0027re changing arm/arm64 codegen, so you should also test on some device (at least that it boots). (And I\u0027m afraid AOSP does not boot right now.)\n\nAnd change the mips/mips64 codegens as well though you do not need to test that.",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10a0b4f1_d565ab00",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 1
