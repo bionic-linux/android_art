@@ -16,6 +16,24 @@
       "revId": "a12f058b2ee0523c8e9f48457f70f10d2e1b4abc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75f13cb_81cb50b9",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1822,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-24T03:55:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a64ec11_3e255c17",
+      "revId": "a12f058b2ee0523c8e9f48457f70f10d2e1b4abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
