@@ -22,6 +22,30 @@
       "revId": "4a4610a438ff2b836f6fe07839a0689ce618863a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fc16d5a_2c28f42b",
+        "filename": "runtime/image.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2017-10-24T07:44:00Z",
+      "side": 1,
+      "message": "It\u0027s probably best to have a comment describing what you\u0027d like to make the convention going forward. It seems unlikely that we\u0027ll recycle 04A\\0 whichever path is taken.",
+      "parentUuid": "28569a19_fa6032fe",
+      "range": {
+        "startLine": 29,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "4a4610a438ff2b836f6fe07839a0689ce618863a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
