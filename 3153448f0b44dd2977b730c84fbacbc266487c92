@@ -70,6 +70,30 @@
       "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96d2a8a5_2858b4a6",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-24T12:01:10Z",
+      "side": 1,
+      "message": "I don\u0027t care which version is used to generate the test dumps. If dalvikvm64 will always be available, then always using dalvikvm64 is fine with me.\n\nThat said, is dalvikvm a phony target? Instead of passing --64 to the art script and depending on dalvikvm64, could we just depend on dalvikvm?",
+      "parentUuid": "891f724d_80283e83",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
