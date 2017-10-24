@@ -22,6 +22,30 @@
       "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5e686bf_d76dc254",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T10:26:55Z",
+      "side": 1,
+      "message": "Add Bool and another test:\n\n  public static int $noinline$bug68142795Boolean(boolean b) {\n    int v \u003d b ? 1 : 0;  // Should be simplified to \"b\" after inlining.\n    return (byte)($inline$get255() \u0026 v);\n  }\n\n  public static int $inline$get255() { return 255; }\n\nMaybe express as\n\n  (DataType::IsUnsignedType(input_other-\u003eGetType()) \u0026\u0026\n   ((DataType::MaxValueOfIntegralType(input_other-\u003eGetType()) \u0026 ~value) \u003d\u003d 0))\n\nbut that would require adding Bool to DataType::IsUnsignedType().",
+      "parentUuid": "6ded7620_70d27680",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
