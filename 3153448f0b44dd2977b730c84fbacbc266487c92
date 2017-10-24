@@ -94,6 +94,30 @@
       "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03884f46_4ab60bd8",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-24T19:39:21Z",
+      "side": 1,
+      "message": "This should work then.\n\ndalvikvm is a symlink, and because of the way ninja reads symlinks it has to be an order-only dependency on the dalvikvm64 executable.  That means the dump wouldn\u0027t get updated when dalvikvm64 is updated (which gets updated when libart.so gets updated).",
+      "parentUuid": "96d2a8a5_2858b4a6",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 36
+      },
+      "revId": "3153448f0b44dd2977b730c84fbacbc266487c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
