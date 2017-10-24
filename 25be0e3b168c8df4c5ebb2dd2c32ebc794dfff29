@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da941f53_afd24bb7",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "I guess I can now remove the optimization_flags completely as the information is being passed in access_flags.",
+      "range": {
+        "startLine": 560,
+        "startChar": 58,
+        "endLine": 560,
+        "endChar": 76
+      },
+      "revId": "25be0e3b168c8df4c5ebb2dd2c32ebc794dfff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

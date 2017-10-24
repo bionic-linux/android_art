@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "4cfdcb23_34a8e38e",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 0,
+      "message": "OK then, if we want to consider this a rename I\u0027ll just copy the comments.",
+      "parentUuid": "7a81f718_f99b0e71",
+      "revId": "9e842d3e7d6102d964178e36e5d596ca91895147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d7c789f_676d5795",
         "filename": "runtime/well_known_classes.h",
         "patchSetId": 3

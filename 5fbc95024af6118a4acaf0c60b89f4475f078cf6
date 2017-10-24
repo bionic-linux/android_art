@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "074938e1_d30d9e6f",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "Refactored.",
+      "parentUuid": "46a75812_b6b9f323",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f6578e5_d5ede74a",
         "filename": "runtime/art_method.h",
         "patchSetId": 3
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Ok, can you put what you just said in as a comment?",
       "parentUuid": "7e8d42bb_7055c4b7",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78121d7d_d2afbc0d",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed19237d_a6cfba76",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -161,6 +197,24 @@
     },
     {
       "key": {
+        "uuid": "28002807_343b71a2",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a3c984_5c747cf7",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1fa2e7b_27742ad2",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 3
@@ -178,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "9174d606_5a70bab6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3283,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "Refactored.",
+      "parentUuid": "a1fa2e7b_27742ad2",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4eaff207_184b7ced",
         "filename": "runtime/dex_file_annotations.cc",
         "patchSetId": 3
@@ -189,6 +261,24 @@
       "writtenOn": "2017-10-23T21:07:51Z",
       "side": 1,
       "message": "There was already a visibility filter in the other method, why did this need a new implementation?",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ca2e68_5e8111a3",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "I don\u0027t like mixing the two implementations. That reminds me that I can clean up the other implementation as it no longer needs the extra `lookup_in_resolved_boot_classes` argument. Even the `visibility` argument can be removed but I\u0027ll keep it for the moment.",
+      "parentUuid": "4eaff207_184b7ced",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -248,6 +338,24 @@
     },
     {
       "key": {
+        "uuid": "b80c7c53_dfa55805",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "That comment is now present in IsMiranda(). Why would I want to replicate it in every caller?",
+      "parentUuid": "12249734_07ff6c64",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2056f3c5_7cf9db2b",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 3
@@ -301,6 +409,24 @@
     },
     {
       "key": {
+        "uuid": "6b3977fe_7ecab056",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "It\u0027s very obvious if you remember that kAccMiranda overlaps intrinsic flags.",
+      "parentUuid": "4b65f3ba_e29c1a0d",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e60838b3_6fef55f5",
         "filename": "runtime/modifiers.h",
         "patchSetId": 3
@@ -348,6 +474,24 @@
       "side": 1,
       "message": "Then what does this change have to do with the miranda flag changes?",
       "parentUuid": "c65ce036_b3ce08e7",
+      "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7e71b4_775fac74",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T12:48:19Z",
+      "side": 1,
+      "message": "I do not understand what you\u0027re asking about.\nReference to \"this change\" in a file comment cannot be resolved.",
+      "parentUuid": "55907979_07c7487a",
       "revId": "5fbc95024af6118a4acaf0c60b89f4475f078cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
