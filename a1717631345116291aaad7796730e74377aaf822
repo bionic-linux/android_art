@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "35811d13_0291229d",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-24T11:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86062b8_e28db62b",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6a7d477_ea92b553",
         "filename": "tools/ahat/Android.mk",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2017-10-23T09:05:12Z",
       "side": 1,
       "message": "Clean up the new variables introduced?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 27
+      },
+      "revId": "a1717631345116291aaad7796730e74377aaf822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72bb5acf_9a1e9d7d",
+        "filename": "tools/ahat/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2017-10-24T11:54:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "673fd92a_3f44bded",
       "range": {
         "startLine": 123,
         "startChar": 0,
