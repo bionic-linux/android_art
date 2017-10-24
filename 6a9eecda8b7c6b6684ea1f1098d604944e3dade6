@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ded7620_70d27680",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-24T09:21:22Z",
+      "side": 1,
+      "message": "You should mention this is a requirement for other simplification passes. Why can\u0027t the other simplification bail instead of DCHECK?",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
