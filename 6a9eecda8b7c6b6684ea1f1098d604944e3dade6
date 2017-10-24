@@ -94,6 +94,54 @@
       "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc55c17c_730519fb",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T16:04:14Z",
+      "side": 1,
+      "message": "I intend to clean up that code after this is merged.",
+      "parentUuid": "8db61fba_3ea7c54a",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8a80cdc_f5b821a0",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-24T16:04:14Z",
+      "side": 1,
+      "message": "Yes, I\u0027m OK with Bool being unsigned. (I\u0027m not familiar with the phrase \"2 for 2\".)",
+      "parentUuid": "6b920118_a5244403",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
