@@ -46,6 +46,30 @@
       "revId": "4a4610a438ff2b836f6fe07839a0689ce618863a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f35898_ab5dda30",
+        "filename": "runtime/image.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-24T17:44:05Z",
+      "side": 1,
+      "message": "There should just be a test or static_assert added for this?",
+      "parentUuid": "9fc16d5a_2c28f42b",
+      "range": {
+        "startLine": 29,
+        "startChar": 58,
+        "endLine": 29,
+        "endChar": 59
+      },
+      "revId": "4a4610a438ff2b836f6fe07839a0689ce618863a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
