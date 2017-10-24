@@ -46,6 +46,54 @@
       "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8db61fba_3ea7c54a",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-24T15:57:12Z",
+      "side": 1,
+      "message": "I have added a comment at the place the assumption is made (adding this here would only confuse an otherwise perfectly normal simplification). Vmarko can comment better on why he wanted the check over the bail.",
+      "parentUuid": "6ded7620_70d27680",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b920118_a5244403",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1259,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-10-24T15:57:12Z",
+      "side": 1,
+      "message": "Done, assuming you are okay with bool as unsigned type (does that make me 2 for 2 in my previous review? ;-)",
+      "parentUuid": "d5e686bf_d76dc254",
+      "range": {
+        "startLine": 1257,
+        "startChar": 0,
+        "endLine": 1259,
+        "endChar": 92
+      },
+      "revId": "6a9eecda8b7c6b6684ea1f1098d604944e3dade6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
