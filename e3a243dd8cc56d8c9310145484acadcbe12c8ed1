@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57695e87_5c673a1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-24T15:25:28Z",
+      "side": 1,
+      "message": "Where to add indentation?",
+      "parentUuid": "2d5d03fb_14f842af",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 66
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b3c6555_8bac06ed",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-24T15:05:18Z",
       "side": 1,
       "message": "You\u0027re changing arm/arm64 codegen, so you should also test on some device (at least that it boots). (And I\u0027m afraid AOSP does not boot right now.)\n\nAnd change the mips/mips64 codegens as well though you do not need to test that.",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "882eb7a5_3243e02c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-24T15:25:28Z",
+      "side": 1,
+      "message": "Yes, Mathieu pointed this out last week and that\u0027s all fixed now.\n\nNo point in uploading it yet since I have to clean it up first and I\u0027m still debugging some other races.\n\nThe fix was just 2-3 lines of code anyway, doesn\u0027t really affect the review.",
+      "parentUuid": "9b3c6555_8bac06ed",
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
