@@ -341,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "8782d655_d9f17bbc",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T20:02:38Z",
+      "side": 1,
+      "message": "Mingyao, can you propose a full set of renames (as above) so Nicolas can comment?",
+      "parentUuid": "0132c41e_1b30a738",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -376,6 +400,30 @@
       "side": 1,
       "message": "This also seems unnecessary to me.",
       "parentUuid": "713ad497_99e7f276",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d82cd400_631a7fcc",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T20:02:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "338ab747_05c26471",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -598,6 +646,30 @@
     },
     {
       "key": {
+        "uuid": "4c226016_f734808b",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T20:02:38Z",
+      "side": 1,
+      "message": "It means take a list with 0 in it, [0], then repeat it by (index(K) - N) times. \n\nidx(K) \u003d index(K) i.e. what is the index of K in a string?\n\nIf there\u0027s some better syntax here I can use what should it be?",
+      "parentUuid": "34e9c7ea_0c219ac5",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cef8e035_94401dd5",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -609,6 +681,30 @@
       "writtenOn": "2017-10-25T19:13:23Z",
       "side": 1,
       "message": "What\u0027s CharI?",
+      "range": {
+        "startLine": 126,
+        "startChar": 59,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2d937df_385bf91b",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T20:02:38Z",
+      "side": 1,
+      "message": "Hmm, yes, this seems unfinished.\n\n   forall char in CharI..CharN : char \u003d\u003d 0 AND Char(I-1) !\u003d 0\n\nThat should be satisfied by only one possible subrange [I..N] I think?",
+      "parentUuid": "cef8e035_94401dd5",
       "range": {
         "startLine": 126,
         "startChar": 59,
@@ -1003,6 +1099,30 @@
       "side": 1,
       "message": "The other data-related abstractions look fine to me. But this Tree-thing seems to me an overkill.\nCan we do this:\nThis file is sort of a helper TypeCheckInfoAndStatusHelper, it does things like InitializeOrAssign(), IsInstanceOf() test, etc. I\u0027m fine with one template classT so you can test with a MockClass. The code is completely independent of mirror class or mock class as long as both provide GetSuperclass() and a getter for the status offset.",
       "parentUuid": "91e382b2_b765f686",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141f15b3_01573fc1",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T20:02:38Z",
+      "side": 1,
+      "message": "Nicolas had a similar suggestion, to make all these functions static\n\n  InstanceOfTree::Lookup(klass).EnsureInitialized()\n\n           -\u003e\n\n  InstanceOfTree::EnsureInitialized(klass)\n\nWhich sounds like it should also address the above comment?",
+      "parentUuid": "e98670d3_17e21367",
       "range": {
         "startLine": 219,
         "startChar": 0,
