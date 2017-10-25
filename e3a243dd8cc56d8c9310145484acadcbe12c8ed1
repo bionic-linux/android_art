@@ -365,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "5bcdcd64_3daf613d",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T22:22:23Z",
+      "side": 1,
+      "message": "Ok, here my attempt:\nInstanceOfTree -\u003e SubtypeCheckHelper\nInstanceOf -\u003e SubtypeCheckInfo\nInstanceOfAndStatus -\u003e SubtypeCheckInfoAndStatus\nInstanceOfData -\u003e SubtypeCheckBits",
+      "parentUuid": "8782d655_d9f17bbc",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -658,6 +682,30 @@
       "side": 1,
       "message": "It means take a list with 0 in it, [0], then repeat it by (index(K) - N) times. \n\nidx(K) \u003d index(K) i.e. what is the index of K in a string?\n\nIf there\u0027s some better syntax here I can use what should it be?",
       "parentUuid": "34e9c7ea_0c219ac5",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31ad8c83_9a8d4c4e",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T22:22:23Z",
+      "side": 1,
+      "message": "Is idx(K) less than N or greater than N? If it\u0027s less than, idx(K) -N is a negative number.",
+      "parentUuid": "4c226016_f734808b",
       "range": {
         "startLine": 124,
         "startChar": 4,
