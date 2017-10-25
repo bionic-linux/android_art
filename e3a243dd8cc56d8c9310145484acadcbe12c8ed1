@@ -318,6 +318,29 @@
     },
     {
       "key": {
+        "uuid": "0132c41e_1b30a738",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "SubtypeCheckInfo seems like a more indicative name.",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -329,6 +352,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "This is introducing two new names for one thing. And I find the name confusing.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "338ab747_05c26471",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "This also seems unnecessary to me.",
+      "parentUuid": "713ad497_99e7f276",
       "range": {
         "startLine": 130,
         "startChar": 2,
@@ -528,6 +575,52 @@
     },
     {
       "key": {
+        "uuid": "34e9c7ea_0c219ac5",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "Not clear about this. What\u0027s idx? * means regex repeat? Should it be (N - idx(K)) then?",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cef8e035_94401dd5",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "What\u0027s CharI?",
+      "range": {
+        "startLine": 126,
+        "startChar": 59,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fad0083b_4ccc4719",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -575,6 +668,29 @@
     },
     {
       "key": {
+        "uuid": "2831b1ad_3c720b50",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "DCHECK position against kCapacity?",
+      "range": {
+        "startLine": 155,
+        "startChar": 51,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "692cf163_cf784cd5",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -615,6 +731,53 @@
     },
     {
       "key": {
+        "uuid": "eb396735_86fe7990",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "yeah we can statically define this array and static_assert the diff between each neighboring pair of indices as the corresponding kBitSizeAtPosition.",
+      "parentUuid": "00f58528_3ae35cb6",
+      "range": {
+        "startLine": 177,
+        "startChar": 24,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49b7c12_6c34ba8b",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "length?",
+      "range": {
+        "startLine": 184,
+        "startChar": 19,
+        "endLine": 184,
+        "endChar": 27
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa61e424_8ba6cf1c",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -638,6 +801,23 @@
     },
     {
       "key": {
+        "uuid": "26e32fd6_c886a086",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "Move this to line 202 as i \u003e\u003d 0?",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d579f53_b7e5316a",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -655,6 +835,23 @@
         "endLine": 218,
         "endChar": 41
       },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b57aabcc_30be2464",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "Just return GetBitLengthTotalAtPosition(kCapacity)?",
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -782,6 +979,30 @@
       "side": 1,
       "message": "I attempted to describe this on L216-L218, perhaps there is some better way to rephrase it?\n\nIf this was a suggestion that \"templates are unnecessary\", I could attempt virtualizing it, but I\u0027m not sure if it would succeed. The mirror::Class* functions need to be mocked for testing, but they are all non-virtual.\n\nIf we look at instanceof_tree_test.cc we can see that there\u0027s 0 dependency on an ART runtime there, subsequently it runs the tests very quickly and exhaustively tests every corner case I could think of.",
       "parentUuid": "b595b0ba_bf05e85f",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e98670d3_17e21367",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-25T19:13:23Z",
+      "side": 1,
+      "message": "The other data-related abstractions look fine to me. But this Tree-thing seems to me an overkill.\nCan we do this:\nThis file is sort of a helper TypeCheckInfoAndStatusHelper, it does things like InitializeOrAssign(), IsInstanceOf() test, etc. I\u0027m fine with one template classT so you can test with a MockClass. The code is completely independent of mirror class or mock class as long as both provide GetSuperclass() and a getter for the status offset.",
+      "parentUuid": "91e382b2_b765f686",
       "range": {
         "startLine": 219,
         "startChar": 0,
