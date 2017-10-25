@@ -294,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "cca1c840_aaf51d0a",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-25T15:36:56Z",
+      "side": 1,
+      "message": "As discussed offline, we will rename these structs/classes as follows:\n\n  InstanceOfTree -\u003e TypeHierarchy\n  InstanceOf -\u003e TypeHierarchyEntry\n  InstanceOfAndStatus -\u003e TypeHierarchyAndStatus\n  InstanceOfData -\u003e TypeHierarchyBits",
+      "parentUuid": "382e63e4_992e12ae",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
