@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39c60a9e_d6765736",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "This is for historical reasons, I don\u0027t really care. But this way, we can reuse the bits for flags that do not make sense for native methods. (We could make kAccMiranda|kAccDefaultConflict overlap kAccFastNative|kAccCriticalNative instead of kAccIntrinsicBits.)",
+      "parentUuid": "d229854d_cfb1e785",
+      "range": {
+        "startLine": 261,
+        "startChar": 45,
+        "endLine": 261,
+        "endChar": 57
+      },
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4b64463_09804a9e",
         "filename": "runtime/art_method.h",
         "patchSetId": 7
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "91e10807_8a41373d",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89517bbd_b7e602c0",
+      "range": {
+        "startLine": 1224,
+        "startChar": 61,
+        "endLine": 1224,
+        "endChar": 63
+      },
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab03a9a1_7eba745c",
         "filename": "runtime/dex_file_annotations.cc",
         "patchSetId": 7
@@ -88,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "1b07d1d3_ad81acf1",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "This cannot be compared with class resolution.\n\nIn https://android-review.googlesource.com/423760 we made the decision to only _lookup_ the type in the boot class path. And given that we made sure that the @FastNative/@CriticalNative annotations are always resolved in the boot class path loader in https://android-review.googlesource.com/252426 and https://android-review.googlesource.com/268778 , the strcmp() \u003d\u003d 0 in this CL succeeds iff LookupClass() \u003d\u003d WellKnownClasses::Fast/CriticalNative would succeed before this CL.",
+      "parentUuid": "ab03a9a1_7eba745c",
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbc43167_da8a08ce",
         "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
         "patchSetId": 7
@@ -99,6 +165,30 @@
       "writtenOn": "2017-10-26T15:15:54Z",
       "side": 1,
       "message": "Curious what made your realize it would be good to have a \ncheck? Is it just by reading the code?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e758a4d6_552f9b4a",
+        "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "Reading the code and realizing that we have a missing an optimization opportunity here. We\u0027re penalizing non-synchronized @FastNative because of synchronized @FastNative (is that even used?).",
+      "parentUuid": "dbc43167_da8a08ce",
       "range": {
         "startLine": 71,
         "startChar": 0,

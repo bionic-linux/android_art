@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "42c191cc_04200a00",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9fc3c0_8de48732",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b2b4f34_0ab14d8b",
         "filename": "runtime/modifiers.h",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-26T17:07:03Z",
       "side": 1,
       "message": "Miranda is not an intrinsic, putting it into kAccIntrinsicBits is extremely confusing; is there any alternatives?",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3a6468a_da0ebe23",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-26T18:40:18Z",
+      "side": 1,
+      "message": "You misinterpret the meaning of kAccIntrinsicBits. Please read the comment above (lines 98-99).",
+      "parentUuid": "3b2b4f34_0ab14d8b",
       "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
