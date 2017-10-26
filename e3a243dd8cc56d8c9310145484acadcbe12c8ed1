@@ -413,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "a1e91379_22850d58",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-26T10:21:07Z",
+      "side": 1,
+      "message": "Names lgtm. What\u0027s the difference between SubtypeCheckBits and SubtypeCheckInfoAndStatus?",
+      "parentUuid": "282705a1_91497135",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
