@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35783a04_a373b78f",
+        "filename": "runtime/dex_file.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-26T23:24:35Z",
+      "side": 1,
+      "message": "Agreed and changed.",
+      "parentUuid": "88f7861a_bc9754b4",
+      "range": {
+        "startLine": 1002,
+        "startChar": 2,
+        "endLine": 1004,
+        "endChar": 3
+      },
+      "revId": "b01142f29100757917127aead7b8c342103f8c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "744e8843_fc2fe1ae",
         "filename": "runtime/dex_file_loader.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-26T17:54:26Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 52
+      },
+      "revId": "b01142f29100757917127aead7b8c342103f8c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c739f28_c4db32d8",
+        "filename": "runtime/dex_file_loader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2017-10-26T23:24:35Z",
+      "side": 1,
+      "message": "Damage from a prior attempt.  Removed.",
+      "parentUuid": "744e8843_fc2fe1ae",
       "range": {
         "startLine": 145,
         "startChar": 0,
