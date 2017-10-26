@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce9fc3c0_8de48732",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T17:07:03Z",
+      "side": 1,
+      "message": "Should there be comments here that these flags are only valid if kAccNative is also set?",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b2b4f34_0ab14d8b",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T17:07:03Z",
+      "side": 1,
+      "message": "Miranda is not an intrinsic, putting it into kAccIntrinsicBits is extremely confusing; is there any alternatives?",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

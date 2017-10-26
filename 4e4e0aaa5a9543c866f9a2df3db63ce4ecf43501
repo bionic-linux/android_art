@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "ab03a9a1_7eba745c",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T17:07:03Z",
+      "side": 1,
+      "message": "This is a bit magical to me. How does it ensure that the annotation class that would be resolved is in the bootclasspath?",
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbc43167_da8a08ce",
         "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
         "patchSetId": 7
