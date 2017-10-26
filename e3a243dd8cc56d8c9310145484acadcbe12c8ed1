@@ -509,6 +509,29 @@
     },
     {
       "key": {
+        "uuid": "07465b49_abab294f",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-26T18:28:00Z",
+      "side": 1,
+      "message": "Can you explain informally how Initialized differs from Assigned? You\u0027re talking about class initialization here?\n\nWhat does \"thread-safety invariant\" mean? How is it different from the above?",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -573,6 +596,29 @@
         "startChar": 2,
         "endLine": 130,
         "endChar": 36
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905a6a01_d4364c4f",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-26T18:28:00Z",
+      "side": 1,
+      "message": "This is really a factory function, right? \"Infuse\" seems confusing to me.",
+      "range": {
+        "startLine": 141,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 26
       },
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -755,6 +801,30 @@
       "side": 1,
       "message": "What should I say here?",
       "parentUuid": "f98c5d5e_34ff3460",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d1c92ec_a72f7285",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-26T18:28:00Z",
+      "side": 1,
+      "message": "It\u0027s really a fixed-length string with (compile-time-)variable length characters, right? NBitChar?",
+      "parentUuid": "299cab4c_259c4f8b",
       "range": {
         "startLine": 28,
         "startChar": 21,
@@ -1324,6 +1394,29 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f61f2e6_6ac2f224",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-26T18:28:00Z",
+      "side": 1,
+      "message": "Generally speaking, and this specific discussion aside, I would really like to see some brief statement of requirements or what\u0027s expected from the template parameters.\n\nI would also find it much easier to read if it said up front that it wraps a class of type KlassT, which points to a class that stores the actual instanceof and status information. KlassPT instead to make clear it behaves like a pointer type?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
