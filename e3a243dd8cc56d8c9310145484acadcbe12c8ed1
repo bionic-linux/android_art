@@ -532,6 +532,30 @@
     },
     {
       "key": {
+        "uuid": "6ca280b7_83e97e66",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T22:18:58Z",
+      "side": 1,
+      "message": "I tried to explain it in instanceof_tree.h documentation, do you think it was insufficient there or should I also re-explain it here?\n\n\u003e What does \"thread-safety invariant\" mean? How is it different from the above?\n\nYes, I need to expand this, thanks for the reminder. The subtype operation \"x instanceof y\" needs x \u003e\u003d initialized, y \u003d\u003d assigned.\n\nHowever because of various threading issues we don\u0027t want a bitstring to go through \"several\" initialized values, it could return incorrect results. If parents are always assigned, then initialized children PathToRoot could never race against other (unrelated) parts of the tree\u0027s PathToRoot.\n\nI had a lengthier remark about this in Zhengkai\u0027s CL: https://android-review.googlesource.com/c/platform/art/+/440996/10/runtime/mirror/class-inl.h#520",
+      "parentUuid": "07465b49_abab294f",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -623,6 +647,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d087f64b_0775e655",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T22:18:58Z",
+      "side": 1,
+      "message": "What should I rename to? I tried to go for the antonym of \"Slice\" (which is a well-known term in C++).",
+      "parentUuid": "905a6a01_d4364c4f",
+      "range": {
+        "startLine": 141,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -834,6 +882,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b9f70fb_908fe2b3",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T22:18:58Z",
+      "side": 1,
+      "message": "The BitString itself has compile-time-length characters yes. Logically, BitString[N] returns a type BitChar\u003cBitLenAt[N]\u003e\n\nUnfortunately because we don\u0027t know \u0027N\u0027 at run-time, we have to reify the BitChar\u003c?\u003e by holding the actual length in the struct.\n\n(There\u0027s also an additional wrinkle that in C++ operator[N] can\u0027t return Template\u003cN\u003e, we\u0027d have to define a new operation \u0027get\u003cN\u003e -\u003e Template[N]\u0027 if we wanted to do that)\n\nRather than doing what I described above, I skipped the intermediate reification and simply made BitChar template-less.",
+      "parentUuid": "5d1c92ec_a72f7285",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -1408,6 +1480,30 @@
       "writtenOn": "2017-10-26T18:28:00Z",
       "side": 1,
       "message": "Generally speaking, and this specific discussion aside, I would really like to see some brief statement of requirements or what\u0027s expected from the template parameters.\n\nI would also find it much easier to read if it said up front that it wraps a class of type KlassT, which points to a class that stores the actual instanceof and status information. KlassPT instead to make clear it behaves like a pointer type?",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caedd08a_14959bf7",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T22:18:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f61f2e6_6ac2f224",
       "range": {
         "startLine": 219,
         "startChar": 0,
