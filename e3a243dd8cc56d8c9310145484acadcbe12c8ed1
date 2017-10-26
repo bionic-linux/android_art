@@ -461,6 +461,30 @@
     },
     {
       "key": {
+        "uuid": "781267ef_fea28082",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-10-26T17:56:05Z",
+      "side": 1,
+      "message": "Maybe SubtypeCheckInfoAndStatus should be SubtypeCheckBitsAndStatus. SubtypeCheckInfo is beyond raw bits and contains some additional info.",
+      "parentUuid": "d0c12902_7dbb27b9",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
