@@ -69,6 +69,24 @@
       "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f806b6d_a16222cf",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-26T21:44:26Z",
+      "side": 1,
+      "message": "L98 says \"Continuous sequence of bits used to hold the ordinal of an intrinsic method\"\n\nAre you telling me user-defined methods annotated with @FastNative and @CriticalNative are intrinsic methods?",
+      "parentUuid": "a3a6468a_da0ebe23",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
