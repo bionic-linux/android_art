@@ -142,6 +142,14 @@ class DexFileLoader {
     return (pos == std::string::npos) ? std::string() : location.substr(pos);
   }
 
+  static int GetPermissions(const DexFile& dex_file);
+
+  static bool IsReadOnly(const DexFile& dex_file);
+
+  static bool EnableWrite(const DexFile& dex_file);
+
+  static bool DisableWrite(const DexFile& dex_file);
+
  private:
   static std::unique_ptr<const DexFile> OpenFile(int fd,
                                                  const std::string& location,

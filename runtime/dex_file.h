@@ -984,6 +984,25 @@ class DexFile {
     return false;
   }
 
+  // Some instances of DexFile own the storage referred to by DexFile.  Clients who create
+  // such management do so by subclassing Container.
+  class Container {
+   public:
+    Container() { }
+    virtual ~Container() { }
+    virtual int GetPermissions() = 0;
+    virtual bool IsReadOnly() = 0;
+    virtual bool EnableWrite() = 0;
+    virtual bool DisableWrite() = 0;
+
+   private:
+    DISALLOW_COPY_AND_ASSIGN(Container);
+  };
+
+  void SetContainer(Container* container) {
+    container_.reset(container);
+  }
+
  protected:
   DexFile(const uint8_t* base,
           size_t size,
@@ -1015,7 +1034,7 @@ class DexFile {
   const uint32_t location_checksum_;
 
   // Manages the underlying memory allocation.
-  std::unique_ptr<MemMap> mem_map_;
+  std::unique_ptr<Container> container_;
 
   // Points to the header section.
   const Header* const header_;

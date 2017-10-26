@@ -33,6 +33,50 @@
 
 namespace art {
 
+namespace {
+
+class MemMapContainer : public DexFile::Container {
+ public:
+  explicit MemMapContainer(std::unique_ptr<MemMap>&& mem_map) : mem_map_(std::move(mem_map)) { }
+  virtual ~MemMapContainer() OVERRIDE { }
+
+  int GetPermissions() OVERRIDE {
+    if (mem_map_.get() == nullptr) {
+      return 0;
+    } else {
+      return mem_map_->GetProtect();
+    }
+  }
+
+  bool IsReadOnly() OVERRIDE {
+    return GetPermissions() == PROT_READ;
+  }
+
+  bool EnableWrite() OVERRIDE {
+    CHECK(IsReadOnly());
+    if (mem_map_.get() == nullptr) {
+      return false;
+    } else {
+      return mem_map_->Protect(PROT_READ | PROT_WRITE);
+    }
+  }
+
+  bool DisableWrite() OVERRIDE {
+    CHECK(!IsReadOnly());
+    if (mem_map_.get() == nullptr) {
+      return false;
+    } else {
+      return mem_map_->Protect(PROT_READ);
+    }
+  }
+
+ private:
+  std::unique_ptr<MemMap> mem_map_;
+  DISALLOW_COPY_AND_ASSIGN(MemMapContainer);
+};
+
+}  // namespace
+
 using android::base::StringPrintf;
 
 static constexpr OatDexFile* kNoOatDexFile = nullptr;
@@ -179,7 +223,7 @@ std::unique_ptr<const DexFile> DexFileLoader::Open(const std::string& location,
                                                  verify_checksum,
                                                  error_msg);
   if (dex_file != nullptr) {
-    dex_file->mem_map_ = std::move(map);
+    dex_file->SetContainer(new MemMapContainer(std::move(map)));
   }
   return dex_file;
 }
@@ -298,7 +342,7 @@ std::unique_ptr<const DexFile> DexFileLoader::OpenFile(int fd,
                                                  verify_checksum,
                                                  error_msg);
   if (dex_file != nullptr) {
-    dex_file->mem_map_ = std::move(map);
+    dex_file->SetContainer(new MemMapContainer(std::move(map)));
   }
 
   return dex_file;
@@ -374,7 +418,7 @@ std::unique_ptr<const DexFile> DexFileLoader::OpenOneDexFileFromZip(
     }
     return nullptr;
   }
-  dex_file->mem_map_ = std::move(map);
+  dex_file->SetContainer(new MemMapContainer(std::move(map)));
   if (!dex_file->DisableWrite()) {
     *error_msg = StringPrintf("Failed to make dex file '%s' read only", location.c_str());
     *error_code = ZipOpenErrorCode::kMakeReadOnlyError;
