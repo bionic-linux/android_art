@@ -556,6 +556,30 @@
     },
     {
       "key": {
+        "uuid": "59d258b2_c7b2bda1",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2017-10-26T23:19:59Z",
+      "side": 1,
+      "message": "It\u0027s easy to overlook the documentation in instanceof_tree.h. I would add something like \"which are introduced in  instanceof_tree.h\" after \"these logical states\". That should suffice.",
+      "parentUuid": "6ca280b7_83e97e66",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713ad497_99e7f276",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
