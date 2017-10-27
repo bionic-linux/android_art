@@ -260,7 +260,7 @@ struct SubtypeCheckInfo {
   // Get the current state (Uninitialized, Initialized, Assigned, or Overflowed).
   // See the "SubtypeCheckInfo" documentation above which explains how a state is determined.
   State GetState() const {
-    if (GetBitString() == BitString{}) {  // NOLINT
+    if (GetBitString().IsEmpty()) {
       // Empty bitstring (all 0s) -> uninitialized.
       DCHECK(!bitstring_and_of_.overflow_);
       return kUninitialized;
@@ -274,7 +274,7 @@ struct SubtypeCheckInfo {
     // Either Assigned or Initialized.
     BitString path_to_root = GetPathToRoot();
 
-    DCHECK(!HasNext() || GetNext() != BitStringChar{})  // NOLINT
+    DCHECK(!HasNext() || GetNext() != 0u)  // NOLINT
         << "Expected (Assigned|Initialized) state to have >0 Next value: "
         << GetNext() << " path: " << path_to_root;
 
