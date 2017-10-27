@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f88e1fc_a738a031",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7257,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2017-10-27T21:06:28Z",
+      "side": 1,
+      "message": "Could you please also change kLoadWord to kLoadSignedByte in InstructionCodeGeneratorMIPS::GenerateClassInitializationCheck() and InstructionCodeGeneratorMIPS64::GenerateClassInitializationCheck()?",
+      "range": {
+        "startLine": 7257,
+        "startChar": 33,
+        "endLine": 7257,
+        "endChar": 48
+      },
+      "revId": "575e3d0713c5d376ad5738f992911ca0205a09d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
