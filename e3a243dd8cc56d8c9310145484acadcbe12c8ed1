@@ -509,6 +509,30 @@
     },
     {
       "key": {
+        "uuid": "32250174_698f8c35",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-27T21:30:52Z",
+      "side": 1,
+      "message": "To summarize, these are the renames:\n\n(as stated above)\n\n  InstanceOfAndStatusNew       SubtypeCheckBitsAndStatus\n  InstanceOfData               SubtypeCheckBits\n  InstanceOfTree               SubtypeCheck\n  InstanceOf                   SubtypeCheckInfo\n\n(and also Hans suggested offline)\n  BitChar                      BitStringChar",
+      "parentUuid": "d2cbcab9_ed2c3336",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07465b49_abab294f",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
