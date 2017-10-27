@@ -31,6 +31,7 @@
 #include "gc/heap-inl.h"
 #include "iftable.h"
 #include "invoke_type.h"
+#include "instanceof_tree.h"
 #include "object-inl.h"
 #include "object_array.h"
 #include "read_barrier-inl.h"
@@ -55,7 +56,6 @@ inline uint32_t Class::GetObjectSizeAllocFastPath() {
   DCHECK((!IsVariableSize<kVerifyFlags, kReadBarrierOption>())) << "class=" << PrettyTypeOf();
   return GetField32(ObjectSizeAllocFastPathOffset());
 }
-
 
 template<VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
 inline Class* Class::GetSuperClass() {
@@ -532,6 +532,33 @@ inline bool Class::CheckResolvedMethodAccess(ObjPtr<Class> access_to,
 }
 
 inline bool Class::IsSubClass(ObjPtr<Class> klass) {
+
+  bool slow_path = SlowIsSubClass(klass);
+
+  if (kIsDebugBuild) {
+    InstanceOfTree this_tree = InstanceOfTree::Lookup(this);
+    InstanceOfTree klass_tree = InstanceOfTree::Lookup(klass);
+
+    InstanceOf::Result result = this_tree.IsInstanceOf(klass_tree);
+    if (result != InstanceOf::kUnknownInstanceOf) {
+      InstanceOf::Result slow_result =
+          slow_path ? InstanceOf::kInstanceOf : InstanceOf::kNotInstanceOf;
+      DCHECK_EQ(slow_result, result)
+          << "source: " << PrettyClass() << "target: " << klass->PrettyClass();
+    }
+  }
+
+  // Since the InstanceOfTree::IsInstanceOf needs to lookup the Depth,
+  // it is always O(Depth) in terms of speed to do the check.
+  //
+  // So always do the "slow" linear scan in normal release builds.
+  //
+  // Future note: If we could have the depth in O(1) we could use the 'fast'
+  // method instead as it avoids a loop and a read barrier.
+  return slow_path;
+}
+
+inline bool Class::SlowIsSubClass(ObjPtr<Class> klass) {
   DCHECK(!IsInterface()) << PrettyClass();
   DCHECK(!IsArrayClass()) << PrettyClass();
   ObjPtr<Class> current = this;
