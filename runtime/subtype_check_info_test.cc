@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-#include "instanceof_tree.h"
+#include "subtype_check_info.h"
 
 #include "gtest/gtest.h"
 #include "android-base/logging.h"

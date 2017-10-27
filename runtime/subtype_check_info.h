@@ -172,7 +172,7 @@ struct SubtypeCheckInfo {
           << "Source: " << *this << ", Target: " << target;
     }
 
-    // Note: We could've also used shifts here, as described in instanceof_and_status.h,
+    // Note: We could've also used shifts here, as described in subtype_check_bits_and_status.h,
     // but it doesn't make much of a difference in the Runtime since we aren't trying to optimize
     // for code size.
 
