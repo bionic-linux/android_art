@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Igor Murashkin <iam@google.com>
+Verified+1: Alan Leung <acleung@google.com>
+Submitted-by: Alan Leung <acleung@google.com>
+Submitted-at: Fri, 27 Oct 2017 19:25:00 +0000
+Reviewed-on: https://android-review.googlesource.com/521636
+Project: platform/art
+Branch: refs/heads/master
