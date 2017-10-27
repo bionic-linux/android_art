@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e172d5c_f4c215c7",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-27T00:11:12Z",
+      "side": 1,
+      "message": "Should be runtime-\u003eIsJavaDebuggable(), as *that* is currently the definition. Note that LoadJvmti will do that check (and throw).",
+      "range": {
+        "startLine": 529,
+        "startChar": 7,
+        "endLine": 529,
+        "endChar": 27
+      },
+      "revId": "1457f4adc3bb7da408cc6185eeb45abf3d526564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
