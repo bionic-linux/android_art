@@ -453,6 +453,13 @@ bool ClassLinker::InitWithoutImage(std::vector<std::unique_ptr<const DexFile>> b
                                                          java_lang_Object->GetObjectSize(),
                                                          VoidFunctor()));
 
+  // Initialize the bitstring for java.lang.Object and java.lang.Class.
+  {
+    MutexLock subtype_check_lock(Thread::Current(), *Locks::subtype_check_lock_);
+    SubtypeCheck::Lookup(java_lang_Object.Get()).EnsureInitialized();
+    SubtypeCheck::Lookup(java_lang_Class.Get()).EnsureInitialized();
+  }
+
   // Object[] next to hold class roots.
   Handle<mirror::Class> object_array_class(hs.NewHandle(
       AllocClass(self, java_lang_Class.Get(),
@@ -1806,11 +1813,22 @@ bool ClassLinker::AddImageSpace(
     for (const ClassTable::TableSlot& root : temp_set) {
       visitor(root.Read());
     }
+
+    // Iterate through the app image, recalculate the bitstring of the classes.
+    // The bitstring in the appimage is set to 0 when writing to the appimage. Thus we need
+    // to recalculate the bitstring in the appimage.
+    {
+      MutexLock subtype_check_lock(Thread::Current(), *Locks::subtype_check_lock_);
+      for (const ClassTable::TableSlot& root : temp_set) {
+        SubtypeCheck::Lookup(root.Read()).EnsureInitialized();
+      }
+    }
   }
   if (!oat_file->GetBssGcRoots().empty()) {
     // Insert oat file to class table for visiting .bss GC roots.
     class_table->InsertOatFile(oat_file);
   }
+
   if (added_class_table) {
     WriterMutexLock mu(self, *Locks::classlinker_classes_lock_);
     class_table->AddClassSet(std::move(temp_set));
@@ -5122,10 +5140,21 @@ bool ClassLinker::EnsureInitialized(Thread* self,
                                     bool can_init_fields,
                                     bool can_init_parents) {
   DCHECK(c != nullptr);
+
   if (c->IsInitialized()) {
     EnsureSkipAccessChecksMethods(c, image_pointer_size_);
     self->AssertNoPendingException();
     return true;
+  }
+  // SubtypeCheckInfo::Initialized must happen-before any new-instance for that type.
+  //
+  // Ensure the bitstring is initialized before any of the class initialization
+  // logic occurs. Once a class initializer starts running, objects can
+  // escape into the heap and use the subtype checking code.
+  {
+    MutexLock subtype_check_lock(Thread::Current(), *Locks::subtype_check_lock_);
+    SubtypeCheck::Lookup(c.Get()).EnsureInitialized();
+    // TODO: Avoid taking bitstring lock if we're already initialized.
   }
   const bool success = InitializeClass(self, c, can_init_fields, can_init_parents);
   if (!success) {

@@ -27,7 +27,7 @@ namespace art {
 
 /**
  * SubtypeCheckInfo is a label for the tree data, which is necessary to perform
- * efficient O(1) subtype comparison checks. See also instanceof_tree.h
+ * efficient O(1) subtype comparison checks. See also subtype_check.h
  * for the more general explanation of how the labels are used overall.
  *
  * For convenience, we also store the class depth within an SubtypeCheckInfo, since nearly all
@@ -172,7 +172,7 @@ struct SubtypeCheckInfo {
           << "Source: " << *this << ", Target: " << target;
     }
 
-    // Note: We could've also used shifts here, as described in instanceof_and_status.h,
+    // Note: We could've also used shifts here, as described in subtype_check_bits_and_status.h,
     // but it doesn't make much of a difference in the Runtime since we aren't trying to optimize
     // for code size.
 
