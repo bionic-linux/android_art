@@ -52,36 +52,37 @@ static constexpr uint32_t kAccObsoleteMethod =        0x00040000;  // method (ru
 static constexpr uint32_t kAccSkipAccessChecks =      0x00080000;  // method (dex only)
 // Used by a class to denote that the verifier has attempted to check it at least once.
 static constexpr uint32_t kAccVerificationAttempted = 0x00080000;  // class (runtime)
-static constexpr uint32_t kAccFastNative =            0x00080000;  // method (dex only)
+static constexpr uint32_t kAccFastNative =            0x00080000;  // method (runtime; native only)
+static constexpr uint32_t kAccCriticalNative =        0x00100000;  // method (runtime; native only)
 // This is set by the class linker during LinkInterfaceMethods. It is used by a method to represent
 // that it was copied from its declaring class into another class. All methods marked kAccMiranda
 // and kAccDefaultConflict will have this bit set. Any kAccDefault method contained in the methods_
 // array of a concrete class will also have this bit set.
-static constexpr uint32_t kAccCopied =                0x00100000;  // method (runtime)
-static constexpr uint32_t kAccMiranda =               0x00200000;  // method (dex only)
+static constexpr uint32_t kAccCopied =                0x00200000;  // method (runtime)
 static constexpr uint32_t kAccDefault =               0x00400000;  // method (runtime)
+static constexpr uint32_t kAccMiranda =               0x00800000;  // method (runtime)
 
 // Set by the JIT when clearing profiling infos to denote that a method was previously warm.
-static constexpr uint32_t kAccPreviouslyWarm =        0x00800000;  // method (runtime)
+static constexpr uint32_t kAccPreviouslyWarm =        0x01000000;  // method (runtime)
 
 // This is set by the class linker during LinkInterfaceMethods. Prior to that point we do not know
 // if any particular method needs to be a default conflict. Used to figure out at runtime if
 // invoking this method will throw an exception.
-static constexpr uint32_t kAccDefaultConflict =       0x01000000;  // method (runtime)
+static constexpr uint32_t kAccDefaultConflict =       0x02000000;  // method (runtime)
 
 // Set by the verifier for a method we do not want the compiler to compile.
-static constexpr uint32_t kAccCompileDontBother =     0x02000000;  // method (runtime)
+static constexpr uint32_t kAccCompileDontBother =     0x04000000;  // method (runtime)
 
 // Set by the verifier for a method that could not be verified to follow structured locking.
-static constexpr uint32_t kAccMustCountLocks =        0x04000000;  // method (runtime)
+static constexpr uint32_t kAccMustCountLocks =        0x08000000;  // method (runtime)
 
 // Set by the class linker for a method that has only one implementation for a
 // virtual call.
-static constexpr uint32_t kAccSingleImplementation =  0x08000000;  // method (runtime)
+static constexpr uint32_t kAccSingleImplementation =  0x10000000;  // method (runtime)
 
 // Not currently used, except for intrinsic methods where these bits
 // are part of the intrinsic ordinal.
-static constexpr uint32_t kAccMayBeUnusedBits =       0x70000000;
+static constexpr uint32_t kAccMayBeUnusedBits =       0x60000000;
 
 // Set by the compiler driver when compiling boot classes with instrinsic methods.
 static constexpr uint32_t kAccIntrinsic  =            0x80000000;  // method (runtime)
@@ -97,7 +98,8 @@ static constexpr uint32_t kAccClassIsFinalizable        = 0x80000000;
 // Continuous sequence of bits used to hold the ordinal of an intrinsic method. Flags
 // which overlap are not valid when kAccIntrinsic is set.
 static constexpr uint32_t kAccIntrinsicBits = kAccMayBeUnusedBits | kAccSingleImplementation |
-    kAccMustCountLocks | kAccCompileDontBother | kAccDefaultConflict | kAccPreviouslyWarm;
+    kAccMustCountLocks | kAccCompileDontBother | kAccDefaultConflict | kAccPreviouslyWarm |
+    kAccMiranda;
 
 // Valid (meaningful) bits for a field.
 static constexpr uint32_t kAccValidFieldFlags = kAccPublic | kAccPrivate | kAccProtected |
@@ -106,8 +108,9 @@ static constexpr uint32_t kAccValidFieldFlags = kAccPublic | kAccPrivate | kAccP
 // Valid (meaningful) bits for a method.
 static constexpr uint32_t kAccValidMethodFlags = kAccPublic | kAccPrivate | kAccProtected |
     kAccStatic | kAccFinal | kAccSynchronized | kAccBridge | kAccVarargs | kAccNative |
-    kAccAbstract | kAccStrict | kAccSynthetic | kAccMiranda | kAccConstructor |
-    kAccDeclaredSynchronized | kAccPreviouslyWarm;
+    kAccAbstract | kAccStrict | kAccSynthetic | kAccConstructor | kAccDeclaredSynchronized;
+static_assert(((kAccIntrinsic | kAccIntrinsicBits) & kAccValidMethodFlags) == 0,
+              "Intrinsic bits and valid dex file method access flags must not overlap.");
 
 // Valid (meaningful) bits for a class (not interface).
 // Note 1. These are positive bits. Other bits may have to be zero.
