@@ -22,6 +22,30 @@
       "revId": "575e3d0713c5d376ad5738f992911ca0205a09d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9df7cfe_0c31de0e",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7257,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-27T21:32:01Z",
+      "side": 1,
+      "message": "Yes, vmarko@ also pointed out the same thing. It shall be done.",
+      "parentUuid": "1f88e1fc_a738a031",
+      "range": {
+        "startLine": 7257,
+        "startChar": 33,
+        "endLine": 7257,
+        "endChar": 48
+      },
+      "revId": "575e3d0713c5d376ad5738f992911ca0205a09d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
