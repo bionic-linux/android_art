@@ -22,6 +22,30 @@
       "revId": "1457f4adc3bb7da408cc6185eeb45abf3d526564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec4953f5_c8418712",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-27T00:12:29Z",
+      "side": 1,
+      "message": "VMDebug_attachAgent does this check. We should fix it there too.",
+      "parentUuid": "1e172d5c_f4c215c7",
+      "range": {
+        "startLine": 529,
+        "startChar": 7,
+        "endLine": 529,
+        "endChar": 27
+      },
+      "revId": "1457f4adc3bb7da408cc6185eeb45abf3d526564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
