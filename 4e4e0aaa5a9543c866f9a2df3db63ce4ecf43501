@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ed1d3f02_8e2b7abe",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-27T11:54:45Z",
+      "side": 1,
+      "message": "It\u0027s not so simple, kAccSkipAccessChecks\u003d\u003dkAccFastNative gets in the way.",
+      "parentUuid": "3f0f388c_defd6ace",
+      "range": {
+        "startLine": 261,
+        "startChar": 45,
+        "endLine": 261,
+        "endChar": 57
+      },
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4b64463_09804a9e",
         "filename": "runtime/art_method.h",
         "patchSetId": 7
@@ -196,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "83449ff2_c3800a93",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-27T11:54:45Z",
+      "side": 1,
+      "message": "Maybe it will be easier to understand after I have separated this out to its own CL: https://android-review.googlesource.com/522216 .\n\nOr maybe I should have done it in smaller steps? Such as first changing the \"Lookup(descriptor)\u003d\u003dWellKnownClasses::FastNative\" into \"WellKnownClasses::FastNative-\u003eDescriptorEquals(descriptor)\"?",
+      "parentUuid": "ce5c5f36_f860cf65",
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc43167_da8a08ce",
         "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
         "patchSetId": 7
@@ -255,6 +297,30 @@
       "side": 1,
       "message": "That seems unlikely. non-synchronized fast jni goes to JniMethodFastStart.\n\nDid you mean to say \"we\u0027re penalizing non-synchronized regular JNI because of synchronized @FastNative\" ?",
       "parentUuid": "e758a4d6_552f9b4a",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 76
+      },
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "173b350d_841dc6cd",
+        "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-27T11:54:45Z",
+      "side": 1,
+      "message": "Right, that\u0027s what I meant when I wrote the code.",
+      "parentUuid": "4e88a400_9fb6e21f",
       "range": {
         "startLine": 71,
         "startChar": 0,

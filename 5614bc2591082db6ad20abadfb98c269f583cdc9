@@ -87,6 +87,24 @@
       "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5dc3dde_c31e9d5c",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-10-27T11:54:45Z",
+      "side": 1,
+      "message": "No, how on earth did you come up with that?\n\nJust read the comment again, and don\u0027t forget the second sentence.\n\n(Maybe it should be kAccIntrinsicBits\u003d0x7f800000 as it seems the listing of the unrelated flags here is confusing you.)",
+      "parentUuid": "7f806b6d_a16222cf",
+      "revId": "5614bc2591082db6ad20abadfb98c269f583cdc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
