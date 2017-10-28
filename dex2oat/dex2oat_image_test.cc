@@ -29,6 +29,7 @@
 #include "base/unix_file/fd_file.h"
 #include "dex_file-inl.h"
 #include "dex_file_loader.h"
+#include "file_utils.h"
 #include "jit/profile_compilation_info.h"
 #include "method_reference.h"
 #include "runtime.h"

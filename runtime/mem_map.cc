@@ -35,6 +35,7 @@
 #include "base/allocator.h"
 #include "base/bit_utils.h"
 #include "base/memory_tool.h"
+#include "file_utils.h"
 #include "globals.h"
 #include "utils.h"
 

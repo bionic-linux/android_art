@@ -43,6 +43,7 @@
 #include "base/memory_tool.h"
 #include "base/mutex.h"
 #include "base/unix_file/fd_file.h"
+#include "file_utils.h"
 #include "oat_quick_method_header.h"
 #include "os.h"
 #include "thread-current-inl.h"

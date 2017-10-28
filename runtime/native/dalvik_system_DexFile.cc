@@ -27,6 +27,7 @@
 #include "compiler_filter.h"
 #include "dex_file-inl.h"
 #include "dex_file_loader.h"
+#include "file_utils.h"
 #include "jni_internal.h"
 #include "mirror/class_loader.h"
 #include "mirror/object-inl.h"

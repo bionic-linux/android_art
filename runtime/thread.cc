@@ -51,6 +51,7 @@
 #include "dex_file_types.h"
 #include "entrypoints/entrypoint_utils.h"
 #include "entrypoints/quick/quick_alloc_entrypoints.h"
+#include "file_utils.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/accounting/heap_bitmap-inl.h"
 #include "gc/allocator/rosalloc.h"

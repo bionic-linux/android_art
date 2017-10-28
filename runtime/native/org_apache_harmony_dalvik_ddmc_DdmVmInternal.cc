@@ -19,6 +19,7 @@
 #include "base/logging.h"
 #include "base/mutex.h"
 #include "debugger.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "jni_internal.h"
 #include "native_util.h"

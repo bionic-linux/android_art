@@ -45,6 +45,7 @@
 #include "dex_file_loader.h"
 #include "elf_file.h"
 #include "elf_utils.h"
+#include "file_utils.h"
 #include "gc_root.h"
 #include "gc/space/image_space.h"
 #include "mem_map.h"

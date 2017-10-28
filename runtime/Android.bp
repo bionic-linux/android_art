@@ -66,6 +66,7 @@ cc_defaults {
         "elf_file.cc",
         "exec_utils.cc",
         "fault_handler.cc",
+        "file_utils.cc",
         "gc/allocation_record.cc",
         "gc/allocator/dlmalloc.cc",
         "gc/allocator/rosalloc.cc",

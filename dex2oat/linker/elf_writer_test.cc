@@ -21,6 +21,7 @@
 #include "elf_file.h"
 #include "elf_file_impl.h"
 #include "elf_writer_quick.h"
+#include "file_utils.h"
 #include "linker/elf_builder.h"
 #include "oat.h"
 #include "utils.h"

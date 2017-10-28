@@ -35,6 +35,7 @@
 #include "compiler_callbacks.h"
 #include "dex_file-inl.h"
 #include "dex_file_loader.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "gc_root-inl.h"
 #include "gtest/gtest.h"

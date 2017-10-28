@@ -19,6 +19,7 @@
 #include <sys/mman.h>
 
 #include "dex_file.h"
+#include "file_utils.h"
 #include "utils.h"
 
 namespace art {

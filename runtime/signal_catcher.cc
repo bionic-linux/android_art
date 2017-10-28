@@ -37,6 +37,7 @@
 #include "base/time_utils.h"
 #include "base/unix_file/fd_file.h"
 #include "class_linker.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "jit/profile_saver.h"
 #include "os.h"

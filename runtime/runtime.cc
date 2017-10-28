@@ -72,6 +72,7 @@
 #include "entrypoints/runtime_asm_entrypoints.h"
 #include "experimental_flags.h"
 #include "fault_handler.h"
+#include "file_utils.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/heap.h"
 #include "gc/scoped_gc_critical_section.h"

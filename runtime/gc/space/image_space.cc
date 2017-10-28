@@ -37,6 +37,7 @@
 #include "base/time_utils.h"
 #include "dex_file_loader.h"
 #include "exec_utils.h"
+#include "file_utils.h"
 #include "gc/accounting/space_bitmap-inl.h"
 #include "image-inl.h"
 #include "image_space_fs.h"

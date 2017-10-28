@@ -20,6 +20,7 @@
 #include <sstream>
 
 #include "art_field-inl.h"
+#include "file_utils.h"
 #include "mirror/class-inl.h"
 #include "mirror/object-refvisitor-inl.h"
 

@@ -22,6 +22,7 @@
 #include "base/stl_util.h"
 #include "base/systrace.h"
 #include "debugger.h"
+#include "file_utils.h"
 #include "gc/accounting/atomic_stack.h"
 #include "gc/accounting/heap_bitmap-inl.h"
 #include "gc/accounting/mod_union_table-inl.h"

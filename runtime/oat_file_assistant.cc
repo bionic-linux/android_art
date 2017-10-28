@@ -29,6 +29,7 @@
 #include "compiler_filter.h"
 #include "dex_file_loader.h"
 #include "exec_utils.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "gc/space/image_space.h"
 #include "image.h"

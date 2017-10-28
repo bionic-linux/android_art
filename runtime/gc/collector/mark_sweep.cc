@@ -30,6 +30,7 @@
 #include "base/systrace.h"
 #include "base/time_utils.h"
 #include "base/timing_logger.h"
+#include "file_utils.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/accounting/heap_bitmap-inl.h"
 #include "gc/accounting/mod_union_table.h"

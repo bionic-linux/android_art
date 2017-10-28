@@ -28,6 +28,7 @@
 #include "base/logging.h"
 #include "base/macros.h"
 #include "base/mutex.h"
+#include "file_utils.h"
 #include "native_stack_dump.h"
 #include "runtime.h"
 #include "thread-current-inl.h"

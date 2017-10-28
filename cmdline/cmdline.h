@@ -28,6 +28,7 @@
 
 #include "base/logging.h"
 #include "base/stringpiece.h"
+#include "file_utils.h"
 #include "noop_compiler_callbacks.h"
 #include "runtime.h"
 

@@ -38,6 +38,7 @@
 #include "debugger.h"
 #include "dex_file-inl.h"
 #include "entrypoints/quick/quick_alloc_entrypoints.h"
+#include "file_utils.h"
 #include "gc/accounting/card_table-inl.h"
 #include "gc/accounting/heap_bitmap-inl.h"
 #include "gc/accounting/mod_union_table-inl.h"

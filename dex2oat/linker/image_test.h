@@ -33,6 +33,7 @@
 #include "debug/method_debug_info.h"
 #include "dex/quick_compiler_callbacks.h"
 #include "driver/compiler_options.h"
+#include "file_utils.h"
 #include "gc/space/image_space.h"
 #include "image_writer.h"
 #include "linker/buffered_output_stream.h"

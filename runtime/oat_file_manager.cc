@@ -33,6 +33,7 @@
 #include "dex_file-inl.h"
 #include "dex_file_loader.h"
 #include "dex_file_tracking_registrar.h"
+#include "file_utils.h"
 #include "gc/scoped_gc_critical_section.h"
 #include "gc/space/image_space.h"
 #include "handle_scope-inl.h"

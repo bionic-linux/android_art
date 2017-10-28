@@ -66,6 +66,7 @@
 #include "driver/compiler_options.h"
 #include "driver/compiler_options_map-inl.h"
 #include "elf_file.h"
+#include "file_utils.h"
 #include "gc/space/image_space.h"
 #include "gc/space/space-inl.h"
 #include "gc/verification.h"

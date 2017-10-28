@@ -25,6 +25,7 @@
 #include "base/logging.h"
 #include "base/macros.h"
 #include "base/unix_file/fd_file.h"
+#include "file_utils.h"
 #include "globals.h"
 #include "os.h"
 #include "runtime.h"

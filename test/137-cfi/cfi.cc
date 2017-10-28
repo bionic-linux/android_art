@@ -30,6 +30,7 @@
 
 #include "base/logging.h"
 #include "base/macros.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "gc/space/image_space.h"
 #include "oat_file.h"

@@ -21,6 +21,7 @@
 #include "base/logging.h"
 #include "base/stringpiece.h"
 #include "debugger.h"
+#include "file_utils.h"
 #include "gc/heap.h"
 #include "monitor.h"
 #include "runtime.h"

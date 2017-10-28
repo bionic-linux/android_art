@@ -20,6 +20,7 @@
 #include "common_runtime_test.h"
 
 #include "exec_utils.h"
+#include "file_utils.h"
 #include "oat_file.h"
 #include "os.h"
 
