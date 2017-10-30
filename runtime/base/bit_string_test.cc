@@ -21,16 +21,29 @@
 
 namespace art {
 
-constexpr size_t BitString::kBitSizeAtPosition[BitString::kCapacity];
-constexpr size_t BitString::kCapacity;
+template <typename T, size_t ... kBitSize>
+constexpr size_t art::BitStringTraitsFlexBitLength<T, kBitSize ...>
+    ::kBitSizeAtPosition[art::BitStringTraitsFlexBitLength<T, kBitSize ...>::kCapacity];
 
+template <typename BitStringTraits>
+constexpr std::array<size_t, art::BitString<BitStringTraits>::kCapacity>
+    art::BitString<BitStringTraits>::kBitSizeAtPosition;
+template <typename BitStringTraits>
+constexpr size_t art::BitString<BitStringTraits>::kCapacity;
 };  // namespace art
 
-using namespace art;
+using BitString = art::BitString<art::SubtypeCheckBitStringTraits>;
+using BitStringChar = BitString::Char;
+
+using art::MinimumBitsToStore;
+using art::MinInt;
+using art::MaxInt;
+using art::MaskLeastSignificant;
 
 // These helper functions are only used by the test,
 // so they are not in the main BitString class.
-std::string Stringify(BitString bit_string) {
+template <typename T>
+std::string Stringify(art::BitString<T> bit_string) {
   std::stringstream ss;
   ss << bit_string;
   return ss.str();
@@ -168,3 +181,40 @@ TEST(InstanceOfBitString, Truncate) {
   EXPECT_BITSTRING_STR("BitString[1,2]", MakeBitString({1,2,3}).Truncate(2));
   EXPECT_BITSTRING_STR("BitString[1,2,3]", MakeBitString({1,2,3}).Truncate(3));
 }
+
+template <typename T>
+class FixedBitStringTest : public ::testing::Test {
+};
+
+using art::FixedBitString;
+
+using ::testing::Types;
+typedef Types<uint8_t, uint16_t, uint32_t, uint64_t> Uint2BitStringTypes;
+TYPED_TEST_CASE(FixedBitStringTest, Uint2BitStringTypes);
+
+TYPED_TEST(FixedBitStringTest, Uint2_BitString_Test) {
+  using ST = TypeParam;
+  using Uint2_BitString = FixedBitString<ST, /*kBitSize*/2, 4u>;
+  static_assert(4u == Uint2_BitString::kCapacity, "Uint2_Bitstring wrong capacity");
+  static_assert(8u == Uint2_BitString::GetBitLengthTotalAtPosition(4u), "Uint2_Bitstring wrong bit length total");
+
+  auto MakeChar = [](ST value) {
+    using CharT = typename Uint2_BitString::Char;
+    return CharT(value);
+  };
+
+  Uint2_BitString bs{};
+  bs.SetAt(0, MakeChar(0));
+  bs.SetAt(1, MakeChar(1));
+  bs.SetAt(2, MakeChar(2));
+  bs.SetAt(3, MakeChar(3));
+
+  EXPECT_EQ(static_cast<ST>(0), static_cast<ST>(bs[0])) << bs[0];
+  EXPECT_EQ(static_cast<ST>(1), static_cast<ST>(bs[1])) << bs[1];
+  EXPECT_EQ(static_cast<ST>(2), static_cast<ST>(bs[2])) << bs[2];
+  EXPECT_EQ(static_cast<ST>(3), static_cast<ST>(bs[3])) << bs[3];
+
+  EXPECT_BITSTRING_STR("BitString[0,1,2,3]", bs);
+}
+
+// TODO: more tests with varying # of lengths and capacities.

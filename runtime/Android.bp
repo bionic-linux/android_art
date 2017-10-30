@@ -585,8 +585,6 @@ art_cc_test {
         "indenter_test.cc",
         "indirect_reference_table_test.cc",
         "instrumentation_test.cc",
-        "instanceof_test.cc",
-        "instanceof_tree_test.cc",
         "intern_table_test.cc",
         "interpreter/safe_math_test.cc",
         "interpreter/unstarted_runtime_test.cc",
