@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041b56d2_09d18679",
+        "filename": "runtime/file_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-30T15:02:33Z",
+      "side": 1,
+      "message": "Let\u0027s clean up the base directory. We *do* have art/runtime/utils now (or put it into base).",
+      "revId": "d4f36ec70e954de83422f9d2a4fa906a023d1e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6119103f_2d4eeded",
+        "filename": "runtime/file_utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-10-30T15:02:33Z",
+      "side": 1,
+      "message": "Pretty sure you can delete some of these...",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "d4f36ec70e954de83422f9d2a4fa906a023d1e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
