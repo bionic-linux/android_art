@@ -22,6 +22,30 @@
       "revId": "e875f4c210ce0598e47b6d66ec12cd7c60208844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472c5ced_eec9a718",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-10-30T11:36:50Z",
+      "side": 1,
+      "message": "What\u0027s your rationale?",
+      "parentUuid": "e1f6a105_24adc7a0",
+      "range": {
+        "startLine": 1035,
+        "startChar": 29,
+        "endLine": 1035,
+        "endChar": 73
+      },
+      "revId": "e875f4c210ce0598e47b6d66ec12cd7c60208844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
