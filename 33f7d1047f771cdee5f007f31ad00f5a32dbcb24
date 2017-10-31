@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46cea735_94b90624",
+        "filename": "runtime/base/bit_string_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T14:41:50Z",
+      "side": 1,
+      "message": "Isn\u0027t this doing exactly what you want?\n\nThis lets one specify the size of the bit string (ST) and the bit size and the capacity.",
+      "revId": "33f7d1047f771cdee5f007f31ad00f5a32dbcb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
