@@ -957,6 +957,30 @@
     },
     {
       "key": {
+        "uuid": "e994b144_77822641",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b9f70fb_908fe2b3",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34e9c7ea_0c219ac5",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1052,6 +1076,30 @@
     },
     {
       "key": {
+        "uuid": "6282dc09_eb862a9d",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0c2bd2d_7393cae6",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 60
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cef8e035_94401dd5",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1087,6 +1135,30 @@
       "side": 1,
       "message": "Hmm, yes, this seems unfinished.\n\n   forall char in CharI..CharN : char \u003d\u003d 0 AND Char(I-1) !\u003d 0\n\nThat should be satisfied by only one possible subrange [I..N] I think?",
       "parentUuid": "cef8e035_94401dd5",
+      "range": {
+        "startLine": 126,
+        "startChar": 59,
+        "endLine": 126,
+        "endChar": 64
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65498570_15153312",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2d937df_385bf91b",
       "range": {
         "startLine": 126,
         "startChar": 59,
@@ -1146,6 +1218,30 @@
     },
     {
       "key": {
+        "uuid": "0ef56f8c_37af0943",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "WIP templatize bitstring in separate CL.",
+      "parentUuid": "45419313_72c44584",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 56
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2831b1ad_3c720b50",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1169,6 +1265,30 @@
     },
     {
       "key": {
+        "uuid": "a7124730_72a1b62e",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "I have to double check this, some of this intentionally allow position\u003ekCapacity.",
+      "parentUuid": "2831b1ad_3c720b50",
+      "range": {
+        "startLine": 155,
+        "startChar": 51,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "692cf163_cf784cd5",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1180,6 +1300,24 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "Extra line.",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8b9695c_5a91fe5b",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "692cf163_cf784cd5",
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -1233,6 +1371,30 @@
     },
     {
       "key": {
+        "uuid": "da6703c9_ff8e6923",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "The table can be precomputed with some constexpr functions.\n\nNicolas asked me to templatize bitstring in a separate CL, I have an example of how to precompute a table here: https://android-review.googlesource.com/c/platform/art/+/523798/1/runtime/base/bit_string.h#326\n\nIt also involves using std::array, std::numeric_sequence, and some template metaprogramming. I fear it may be too complicated for this CL.\n\nIs it ok if I precompute the table as part of https://android-review.googlesource.com/c/platform/art/+/523798/ ?",
+      "parentUuid": "eb396735_86fe7990",
+      "range": {
+        "startLine": 177,
+        "startChar": 24,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e49b7c12_6c34ba8b",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1244,6 +1406,30 @@
       "writtenOn": "2017-10-25T19:13:23Z",
       "side": 1,
       "message": "length?",
+      "range": {
+        "startLine": 184,
+        "startChar": 19,
+        "endLine": 184,
+        "endChar": 27
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1be6521_97131958",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49b7c12_6c34ba8b",
       "range": {
         "startLine": 184,
         "startChar": 19,
@@ -1279,6 +1465,30 @@
     },
     {
       "key": {
+        "uuid": "1db05179_b7452000",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa61e424_8ba6cf1c",
+      "range": {
+        "startLine": 197,
+        "startChar": 37,
+        "endLine": 197,
+        "endChar": 46
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26e32fd6_c886a086",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1296,6 +1506,24 @@
     },
     {
       "key": {
+        "uuid": "dc54386d_702a117d",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "i \u003e\u003d 0 is vacuously true for size_t\n\nDid you want\n\n   for (i \u003d kCapacity - 1u; i !\u003d 0; --i) \n\n?",
+      "parentUuid": "26e32fd6_c886a086",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d579f53_b7e5316a",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1307,6 +1535,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "Example of unwanted genericity.",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 41
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69ed4f45_e89c6749",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "(To fix in templatize CL)",
+      "parentUuid": "2d579f53_b7e5316a",
       "range": {
         "startLine": 218,
         "startChar": 2,
@@ -1336,6 +1588,24 @@
     },
     {
       "key": {
+        "uuid": "646c41b1_b1850871",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b57aabcc_30be2464",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f4b7afd_b452942f",
         "filename": "runtime/instanceof_bitstring.h",
         "patchSetId": 1
@@ -1356,6 +1626,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8387703_d3a714d1",
+        "filename": "runtime/instanceof_bitstring.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4b7afd_b452942f",
+      "range": {
+        "startLine": 250,
+        "startChar": 4,
+        "endLine": 250,
+        "endChar": 52
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
