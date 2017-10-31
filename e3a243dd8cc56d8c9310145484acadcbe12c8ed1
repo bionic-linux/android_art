@@ -533,6 +533,30 @@
     },
     {
       "key": {
+        "uuid": "8b3c986c_5e6efeae",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32250174_698f8c35",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 13
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07465b49_abab294f",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -601,6 +625,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b322164d_91a05aad",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d258b2_c7b2bda1",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 43
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -675,6 +723,30 @@
     },
     {
       "key": {
+        "uuid": "c88e1176_2aa004ed",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "d82cd400_631a7fcc",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "905a6a01_d4364c4f",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -722,6 +794,30 @@
     },
     {
       "key": {
+        "uuid": "efc31d61_31b034d2",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Ping?",
+      "parentUuid": "d087f64b_0775e655",
+      "range": {
+        "startLine": 141,
+        "startChar": 20,
+        "endLine": 141,
+        "endChar": 26
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d8a5806_e0e2cb51",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -745,6 +841,30 @@
     },
     {
       "key": {
+        "uuid": "71c80cc2_16397a18",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d8a5806_e0e2cb51",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 183,
+        "endChar": 12
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d57f5e3b_47dd9e15",
         "filename": "runtime/instanceof.h",
         "patchSetId": 1
@@ -756,6 +876,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "References need to be const. Since you\u0027re changing it, make it *.",
+      "range": {
+        "startLine": 216,
+        "startChar": 44,
+        "endLine": 216,
+        "endChar": 61
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312aaa3c_59d8dd26",
+        "filename": "runtime/instanceof.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d57f5e3b_47dd9e15",
       "range": {
         "startLine": 216,
         "startChar": 44,
@@ -815,6 +959,30 @@
     },
     {
       "key": {
+        "uuid": "dfb48d34_6ced9a74",
+        "filename": "runtime/instanceof_and_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Ping?",
+      "parentUuid": "1aef9feb_d56c8cf8",
+      "range": {
+        "startLine": 40,
+        "startChar": 53,
+        "endLine": 40,
+        "endChar": 55
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43fc67c5_4251d797",
         "filename": "runtime/instanceof_and_status.h",
         "patchSetId": 1
@@ -859,6 +1027,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9bde560_c3be2fd6",
+        "filename": "runtime/instanceof_and_status.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Ping?",
+      "parentUuid": "0d524ccc_ba9fb2e5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -1664,6 +1856,24 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "Great tests!",
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f418b18_c5638466",
+        "filename": "runtime/instanceof_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-10-31T22:26:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b8a34673_6d5673ce",
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
