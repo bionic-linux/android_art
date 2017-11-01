@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "865427e3_ac649c4e",
+        "filename": "runtime/base/bit_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T14:38:39Z",
+      "side": 1,
+      "message": "There\u0027s also this, which lets one change the length for each position individually. Is this what you had in mind?\n\nI\u0027m not sure it would be super useful (in general) since presumably most of the time the length is position-agnostic. In fact it actually makes things harder to use since assigning from a wider position to a narrower position becomes illegal.",
+      "revId": "33f7d1047f771cdee5f007f31ad00f5a32dbcb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46cea735_94b90624",
         "filename": "runtime/base/bit_string_test.cc",
         "patchSetId": 1
