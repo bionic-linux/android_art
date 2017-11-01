@@ -238,6 +238,24 @@
     },
     {
       "key": {
+        "uuid": "f1a7be7d_c10c6134",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T14:49:35Z",
+      "side": 1,
+      "message": "Thanks for splitting it up, it\u0027s more clear now.",
+      "parentUuid": "83449ff2_c3800a93",
+      "revId": "4e4e0aaa5a9543c866f9a2df3db63ce4ecf43501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc43167_da8a08ce",
         "filename": "runtime/entrypoints/quick/quick_jni_entrypoints.cc",
         "patchSetId": 7

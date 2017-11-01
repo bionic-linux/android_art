@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "644a78a9_29f876b0",
+        "filename": "runtime/modifiers.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T14:49:35Z",
+      "side": 1,
+      "message": "What is an (intrinsic) \"ordinal\" supposed to mean here?\n\nThis is still causing me cognitive dissonance, do we have really no other choice for which flags to move around?",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "f432ca34c51416a04ce78716de110ac5767903db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
