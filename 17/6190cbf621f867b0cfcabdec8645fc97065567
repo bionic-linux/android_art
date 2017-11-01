@@ -1,0 +1,8 @@
+Code-Review+2: Vladimir Marko <vmarko@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Mathieu Chartier <mathieuc@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Wed, 01 Nov 2017 20:22:20 +0000
+Reviewed-on: https://android-review.googlesource.com/524837
+Project: platform/art
+Branch: refs/heads/master
