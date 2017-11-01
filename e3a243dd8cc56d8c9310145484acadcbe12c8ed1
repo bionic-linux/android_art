@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "f96560ab_a45e8ef6",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2366,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10a0b4f1_d565ab00",
+      "range": {
+        "startLine": 2366,
+        "startChar": 0,
+        "endLine": 2366,
+        "endChar": 6
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "964f8230_5c74eac0",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 1
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "Happy to rename any of these new classes, structs, methods, etc.",
       "parentUuid": "964f8230_5c74eac0",
+      "range": {
+        "startLine": 2355,
+        "startChar": 6,
+        "endLine": 2355,
+        "endChar": 16
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab854835_85b769f9",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b975e42d_34dee528",
       "range": {
         "startLine": 2355,
         "startChar": 6,
@@ -225,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "5f8a018b_ca0adb9c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e50377_a913840d",
+      "range": {
+        "startLine": 1821,
+        "startChar": 6,
+        "endLine": 1824,
+        "endChar": 7
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c615afd2_e6cfe353",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -236,6 +308,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "add a bit more explanation what that means, so that the next reader doesn\u0027t have to read at the full InstanceOfTree implementation.",
+      "range": {
+        "startLine": 5151,
+        "startChar": 16,
+        "endLine": 5151,
+        "endChar": 40
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "247953f5_e6808289",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5151,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c615afd2_e6cfe353",
       "range": {
         "startLine": 5151,
         "startChar": 16,
@@ -268,6 +364,30 @@
       "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02a7b40c_61c3818a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5156,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "This is literally just some UBFX/UBFI and LDAR/LDXAR/STXLR and thats it\n\n   next_value \u003d GetSuperClass()-\u003estatus_ \u0026 CONSTANT_MASK \u003e\u003e CONSTANT_SHIFT\n   this-\u003estatus_ |\u003d (next value \u0026 MASK \u003e\u003e SHIFT)\n   GetSuperClass()-\u003estatus_ \u003d (next_value++ \u0026 MASK \u003e\u003e SHIFT)\n\nWhat do you want to measure exactly?",
+      "parentUuid": "5285a8a5_d1cf9073",
+      "range": {
+        "startLine": 5155,
+        "startChar": 4,
+        "endLine": 5156,
+        "endChar": 56
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

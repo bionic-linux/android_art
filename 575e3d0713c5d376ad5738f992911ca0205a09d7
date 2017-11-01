@@ -46,6 +46,30 @@
       "revId": "575e3d0713c5d376ad5738f992911ca0205a09d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb36338_7bc11d38",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 7257,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9df7cfe_0c31de0e",
+      "range": {
+        "startLine": 7257,
+        "startChar": 33,
+        "endLine": 7257,
+        "endChar": 48
+      },
+      "revId": "575e3d0713c5d376ad5738f992911ca0205a09d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
