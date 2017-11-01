@@ -1903,6 +1903,30 @@
     },
     {
       "key": {
+        "uuid": "ae12c2af_1e4a38ad",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Replaced with $.",
+      "parentUuid": "632d6150_2c4e7400",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 14
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dd02461_c1af27f6",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -1914,6 +1938,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "what\u0027s that? Please provide context.",
+      "range": {
+        "startLine": 216,
+        "startChar": 35,
+        "endLine": 216,
+        "endChar": 64
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4083db8b_ddc06011",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dd02461_c1af27f6",
       "range": {
         "startLine": 216,
         "startChar": 35,
@@ -2068,6 +2116,30 @@
     },
     {
       "key": {
+        "uuid": "59c3f3e1_8bbef9b1",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caedd08a_14959bf7",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 44
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "852d49bd_ffcd2afd",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -2103,6 +2175,30 @@
       "side": 1,
       "message": "Absolutely. That\u0027s why it was a TODO :).",
       "parentUuid": "852d49bd_ffcd2afd",
+      "range": {
+        "startLine": 260,
+        "startChar": 3,
+        "endLine": 260,
+        "endChar": 50
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e679f05_7507d48c",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ed37806_254dd305",
       "range": {
         "startLine": 260,
         "startChar": 3,
@@ -2162,6 +2258,30 @@
     },
     {
       "key": {
+        "uuid": "884d6ded_0c4c4e66",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "(Done)\n\nWe renamed this one to SubtypeCheckBitsAndStatus as discussed offline.",
+      "parentUuid": "77ebc118_f1459a09",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 26
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9395c855_10a09e2a",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -2197,6 +2317,30 @@
       "side": 1,
       "message": "Unfortunately I started out doing this, and looking at GetAccessFlags will fail with DCHECK if it\u0027s early enough in a class\u0027s lifetime.\n\nI discussed offline with Mingyao and it\u0027s harmless to call any of these APIs for an interface class. Since interface classes always root Object, they will only get Initialized.",
       "parentUuid": "9395c855_10a09e2a",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 31
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fa5e00a_6e97a7f9",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Ping for any further actions?",
+      "parentUuid": "a90064d6_8a399b4f",
       "range": {
         "startLine": 330,
         "startChar": 4,
@@ -2256,6 +2400,30 @@
     },
     {
       "key": {
+        "uuid": "1fa4deae_30da5974",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b3ad2b_79a6c448",
+      "range": {
+        "startLine": 333,
+        "startChar": 2,
+        "endLine": 333,
+        "endChar": 66
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "babc7486_30b28d9c",
         "filename": "runtime/instanceof_tree.h",
         "patchSetId": 1
@@ -2267,6 +2435,30 @@
       "writtenOn": "2017-10-19T09:35:37Z",
       "side": 1,
       "message": "This reads odd. Are the comments intended?",
+      "range": {
+        "startLine": 452,
+        "startChar": 3,
+        "endLine": 457,
+        "endChar": 27
+      },
+      "revId": "e3a243dd8cc56d8c9310145484acadcbe12c8ed1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2514c050_7c7d103c",
+        "filename": "runtime/instanceof_tree.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-01T18:26:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "babc7486_30b28d9c",
       "range": {
         "startLine": 452,
         "startChar": 3,
