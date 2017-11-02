@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d360d604_1f945b73",
+        "filename": "runtime/base/bit_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-02T17:18:49Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "4eeafa09_e81182a3",
+      "revId": "33f7d1047f771cdee5f007f31ad00f5a32dbcb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46cea735_94b90624",
         "filename": "runtime/base/bit_string_test.cc",
         "patchSetId": 1
