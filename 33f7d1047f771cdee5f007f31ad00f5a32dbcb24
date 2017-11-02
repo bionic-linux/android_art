@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4eeafa09_e81182a3",
+        "filename": "runtime/base/bit_string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-02T10:12:58Z",
+      "side": 1,
+      "message": "Let\u0027s put this on hold for now, and revive it after the instanceof optimizations get in, sgty?",
+      "parentUuid": "865427e3_ac649c4e",
+      "revId": "33f7d1047f771cdee5f007f31ad00f5a32dbcb24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46cea735_94b90624",
         "filename": "runtime/base/bit_string_test.cc",
         "patchSetId": 1
