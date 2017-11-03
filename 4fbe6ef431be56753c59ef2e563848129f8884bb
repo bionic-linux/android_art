@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c2d9f663_ebd77563",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-03T15:27:19Z",
+      "side": 1,
+      "message": "ClassStatus \u003e\u003d kInitialized \u003d\u003e SubtypeCheck State \u003e\u003d Initialized. So this would be sufficient for the \"source\".\n\nHowever target needs to be \"Assigned\" and we can\u0027t tell that without either looking at the Depth or finding any Child that is Initialized (but that would be even more expensive since our class hierarchy is only an uptree).",
+      "parentUuid": "8da718b9_f11d777f",
+      "range": {
+        "startLine": 549,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 67
+      },
+      "revId": "4fbe6ef431be56753c59ef2e563848129f8884bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5cc317_addcf8de",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 7
