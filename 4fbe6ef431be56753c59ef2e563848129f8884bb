@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "21a0c7fe_5def4df9",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-03T15:34:21Z",
+      "side": 1,
+      "message": "Ah right, and the plan is to only become \"Assigned\" once the compiler sees it for an instanceof/checkcast?",
+      "parentUuid": "c2d9f663_ebd77563",
+      "range": {
+        "startLine": 549,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 67
+      },
+      "revId": "4fbe6ef431be56753c59ef2e563848129f8884bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5cc317_addcf8de",
         "filename": "runtime/mirror/class.h",
         "patchSetId": 7
