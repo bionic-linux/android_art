@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee52cac0_5f30fdf0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-03T14:55:44Z",
+      "side": 1,
+      "message": "It\u0027s \"needed\" because its annotated all the way down to all the helper functions with the lock.\n\nIf you really want we could call a function with NO_THREAD_SAFETY_ANALYSIS but I don\u0027t think Andreas is a fan of that?",
+      "parentUuid": "8d485888_b57cf960",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 81
+      },
+      "revId": "4fbe6ef431be56753c59ef2e563848129f8884bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b55df160_48589cc9",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2017-11-03T14:39:51Z",
       "side": 1,
       "message": "This is news to me. What happened?",
+      "range": {
+        "startLine": 549,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 67
+      },
+      "revId": "4fbe6ef431be56753c59ef2e563848129f8884bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6f92953_27ef4e26",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-03T14:55:44Z",
+      "side": 1,
+      "message": "It\u0027s only a problem for runtime, not for compiler. This was always the case and the comments just point it out now.\n\nWe could give up one more bit to store state explicitly, then we wouldn\u0027t need Depth.\n\n----------\n\nhttps://android-review.googlesource.com/c/platform/art/+/521911/3/runtime/subtype_check_info.h#153\n\nIt has to check that source is \u003e\u003d Initialized and target \u003e\u003d Assigned.\n\nThe way the bitstrings are encoded now we need the Depth() to distinguish Initialized and Assigned state.\n\nFor the compilers the \"target\" check isn\u0027t a problem since they would call \"EnsureAssigned\" on the CHECK-CAST/INSTANCE-OF target during compilation. The \"source\" check isn\u0027t a problem either since SubType::EnsureInitialized happens-before new-instance.",
+      "parentUuid": "ee610e52_bf86318b",
       "range": {
         "startLine": 549,
         "startChar": 2,
