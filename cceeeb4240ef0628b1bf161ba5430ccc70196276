@@ -16,6 +16,98 @@
       "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6d6acf_2cf4f455",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T13:26:37Z",
+      "side": 1,
+      "message": "Is there a short-term plan (in contrast to line 562) to \"optimize\" IsSubclass? If not, I\u0027d drop the SlowIsSubclass method. If yes, please add a comment/TODO.",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 41
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9bdd31f_322dbaa6",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T13:26:37Z",
+      "side": 1,
+      "message": "These NOLINT are annoying. I assume it\u0027s the {}. Could you avoid them? I haven\u0027t seen much of them in our code base.",
+      "range": {
+        "startLine": 217,
+        "startChar": 69,
+        "endLine": 217,
+        "endChar": 78
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bf58f16_1c7bd08d",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T13:26:37Z",
+      "side": 1,
+      "message": ".IsEmpty()",
+      "range": {
+        "startLine": 257,
+        "startChar": 22,
+        "endLine": 257,
+        "endChar": 37
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aebf5e63_65c6ccb9",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T13:26:37Z",
+      "side": 1,
+      "message": "!IsEmpty()",
+      "range": {
+        "startLine": 271,
+        "startChar": 34,
+        "endLine": 271,
+        "endChar": 53
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
