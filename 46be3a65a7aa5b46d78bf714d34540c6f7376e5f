@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "747ad718_325049bc",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T22:38:36Z",
+      "side": 1,
+      "message": "Move this to line 535?",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 59
+      },
+      "revId": "46be3a65a7aa5b46d78bf714d34540c6f7376e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df11d125_08cf72b8",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-06T22:38:36Z",
+      "side": 1,
+      "message": "Remove?",
+      "range": {
+        "startLine": 277,
+        "startChar": 43,
+        "endLine": 277,
+        "endChar": 52
+      },
+      "revId": "46be3a65a7aa5b46d78bf714d34540c6f7376e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
