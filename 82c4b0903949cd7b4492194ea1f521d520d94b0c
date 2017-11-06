@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f6c5152_549fdf9d",
+        "filename": "runtime/interpreter/mterp/mips/footer.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1071873
+      },
+      "writtenOn": "2017-11-06T21:38:05Z",
+      "side": 1,
+      "message": "Optionally\n\n#ifdef MIPS32REVGE6\n    lsa rPC, a1, a0, 1\n#else\n    sll a1, a1, 1\n    addu rPC, a0, a1\n#endif",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 74
+      },
+      "revId": "82c4b0903949cd7b4492194ea1f521d520d94b0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
