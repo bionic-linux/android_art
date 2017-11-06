@@ -137,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "afcc9517_6d3fe279",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T23:24:41Z",
+      "side": 1,
+      "message": "I filed bug b/68951293 so we can use upstream cpplint. It doesn\u0027t warn on \"x{}\" anymore.",
+      "parentUuid": "3c5b67e4_782f0dd9",
+      "range": {
+        "startLine": 217,
+        "startChar": 69,
+        "endLine": 217,
+        "endChar": 78
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bf58f16_1c7bd08d",
         "filename": "runtime/subtype_check_info.h",
         "patchSetId": 8
