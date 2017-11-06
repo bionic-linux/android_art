@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c2a8548_19941b78",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T23:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "747ad718_325049bc",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 573,
+        "endChar": 59
+      },
+      "revId": "46be3a65a7aa5b46d78bf714d34540c6f7376e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df11d125_08cf72b8",
         "filename": "runtime/subtype_check_info.h",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-06T22:38:36Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 277,
+        "startChar": 43,
+        "endLine": 277,
+        "endChar": 52
+      },
+      "revId": "46be3a65a7aa5b46d78bf714d34540c6f7376e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2da73304_4e7c85bc",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T23:44:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df11d125_08cf72b8",
       "range": {
         "startLine": 277,
         "startChar": 43,
