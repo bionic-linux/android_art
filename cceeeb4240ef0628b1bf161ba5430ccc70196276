@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "3d738371_15ed2e9a",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T15:29:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a6d6acf_2cf4f455",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 41
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9bdd31f_322dbaa6",
         "filename": "runtime/subtype_check_info.h",
         "patchSetId": 8
@@ -53,6 +77,30 @@
       "writtenOn": "2017-11-06T13:26:37Z",
       "side": 1,
       "message": "These NOLINT are annoying. I assume it\u0027s the {}. Could you avoid them? I haven\u0027t seen much of them in our code base.",
+      "range": {
+        "startLine": 217,
+        "startChar": 69,
+        "endLine": 217,
+        "endChar": 78
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5b67e4_782f0dd9",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T15:29:19Z",
+      "side": 1,
+      "message": "They\u0027re needed for correctness mostly. It zero-initializes the value.\n\nI can look into seeing what we can do with lint to get rid of the NOLINTs everywhere, I agree its annoying.",
+      "parentUuid": "a9bdd31f_322dbaa6",
       "range": {
         "startLine": 217,
         "startChar": 69,
@@ -108,6 +156,30 @@
       "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd70b1da_f7a2ec47",
+        "filename": "runtime/subtype_check_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-06T15:29:19Z",
+      "side": 1,
+      "message": "Which class do you want IsEmpty to be added to?",
+      "parentUuid": "aebf5e63_65c6ccb9",
+      "range": {
+        "startLine": 271,
+        "startChar": 34,
+        "endLine": 271,
+        "endChar": 53
+      },
+      "revId": "cceeeb4240ef0628b1bf161ba5430ccc70196276",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
