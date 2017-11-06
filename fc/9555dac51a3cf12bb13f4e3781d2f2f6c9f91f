@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Bill Buzbee <buzbee@google.com>
+Verified+1: Mathieu Chartier <mathieuc@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Mon, 06 Nov 2017 17:09:58 +0000
+Reviewed-on: https://android-review.googlesource.com/529455
+Project: platform/art
+Branch: refs/heads/master
