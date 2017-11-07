@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "1baa6bdf_a18265c4",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T15:45:48Z",
+      "side": 1,
+      "message": "BLT and BNE have the same size.\n\nThe only way to reduce code size here would be to rewrite the status so that kStatusInitialized\u003d\u003d0 and use CBNZ. That would require the status to take 8 bits.\n\nOther than that, even if the status is in the top 4 or 5 bits, we can simply load the upper 8 bits and compare with a shifted kStatusInitialized and use BLT, ignoring the lower bits. The code would have exactly the same size as now.",
+      "parentUuid": "75c48df0_4b0d4b67",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
