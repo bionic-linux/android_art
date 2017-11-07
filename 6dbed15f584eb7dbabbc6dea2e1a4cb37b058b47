@@ -169,6 +169,47 @@
     },
     {
       "key": {
+        "uuid": "6ce6c627_b546f48a",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T22:33:42Z",
+      "side": 1,
+      "message": "Another idea is to use class size instead of the status, class size is always 0xFFF...FF if status !\u003d initialized. We use that for new_instance_alloc entrypoints.\n\nThat being said, out of scope for this CL.",
+      "parentUuid": "84fcc1a1_62bf05ce",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75dca2f4_60085b62",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T22:33:42Z",
+      "side": 1,
+      "message": "Done. Blt -\u003e Bne.",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a97be715_4a47510c",
         "filename": "oatdump/oatdump.cc",
         "patchSetId": 10
@@ -180,6 +221,30 @@
       "writtenOn": "2017-11-07T22:14:38Z",
       "side": 1,
       "message": "SUBTYPE_CHECK_BITS",
+      "range": {
+        "startLine": 2353,
+        "startChar": 13,
+        "endLine": 2353,
+        "endChar": 26
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed7d5641_e3960d61",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T22:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97be715_4a47510c",
       "range": {
         "startLine": 2353,
         "startChar": 13,
@@ -304,6 +369,30 @@
     },
     {
       "key": {
+        "uuid": "04846f1e_6d16318d",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T22:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e288b21_dbffbd56",
+      "range": {
+        "startLine": 1486,
+        "startChar": 33,
+        "endLine": 1486,
+        "endChar": 52
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18a555_b208b97d",
         "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
         "patchSetId": 10
@@ -315,6 +404,24 @@
       "writtenOn": "2017-11-07T13:05:52Z",
       "side": 1,
       "message": "Let me repeat myself. All the unused classes are useless if you do not initialize them.",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f321e6a_3b5ce9e4",
+        "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T22:33:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d18a555_b208b97d",
       "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
