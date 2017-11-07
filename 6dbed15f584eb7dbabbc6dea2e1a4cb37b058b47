@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "84fcc1a1_62bf05ce",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T17:14:46Z",
+      "side": 1,
+      "message": "OK to leave that for later.\n\nStatus in the low 4 bits hurts the class initialization check.\n\nStatus in the high 4 bits does not change code size on arm64 and I think it may not hurt the code size on arm32 either if we\u0027re a bit creative. While the straightforward change is to replace LSR+SUB with UBFX+SUB, we also have the option of reordering operations and using SUB+LSL.",
+      "parentUuid": "d4a30e93_b7122e9f",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
