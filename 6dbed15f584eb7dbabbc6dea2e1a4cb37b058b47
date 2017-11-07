@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a9b0e6f7_08cbb0c3",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T15:34:11Z",
+      "side": 1,
+      "message": "UBFX is always available on ARM/ARM64.\n(Though the LSR can be a 16-bit instruction on ARM while UBFX is always 32-bit.)",
+      "parentUuid": "bbf04457_3ea08252",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
