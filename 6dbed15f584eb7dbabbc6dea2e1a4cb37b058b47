@@ -144,6 +144,24 @@
     },
     {
       "key": {
+        "uuid": "6b36eac1_61aa27d2",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T15:37:28Z",
+      "side": 1,
+      "message": "Yes, it\u0027s single-threaded. I don\u0027t expect us to implement multi-threaded transactions anytime soon.",
+      "parentUuid": "a219a83b_8f3b06ac",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18a555_b208b97d",
         "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
         "patchSetId": 10
