@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "a219a83b_8f3b06ac",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T15:33:24Z",
+      "side": 1,
+      "message": "Is it single-threaded for transactions?",
+      "parentUuid": "cae319b8_08d549cb",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18a555_b208b97d",
         "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
         "patchSetId": 10
