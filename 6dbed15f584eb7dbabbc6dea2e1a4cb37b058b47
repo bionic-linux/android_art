@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d4a30e93_b7122e9f",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T15:52:49Z",
+      "side": 1,
+      "message": "If we could do something like\n\n    bitstring OF status\n    31      5 4  3    0\n\nwithout hurting the code size of the ClassInitialization checks, that would be great. I think status now is 15 values, we probably want 5 bits to be future safe. Anyway we could use 1 of the extra 3 bits to store the full state, that would make the runtime checks not need to call Depth() on the fast path.\n\nThat being said I\u0027m not convinced on ARM32 it would remain the same size given the big limitations of thumb encoding, unless you already looked into it?\n\nEither way this seems like a follow up. (I will do minimal fix to BNE in this CL as you recommend).",
+      "parentUuid": "1baa6bdf_a18265c4",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
