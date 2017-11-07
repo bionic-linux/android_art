@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "cae319b8_08d549cb",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T15:28:33Z",
+      "side": 1,
+      "message": "I see, we\u0027re eventually going to the SubtypeCheck\u003c\u003e::CasFieldWeakSequentiallyConsistent32() where we check for a transaction being active. So I guess everything should be OK.",
+      "parentUuid": "107efb8b_719686c0",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18a555_b208b97d",
         "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
         "patchSetId": 10
