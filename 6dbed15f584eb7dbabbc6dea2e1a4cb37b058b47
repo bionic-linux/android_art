@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "107efb8b_719686c0",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T15:21:50Z",
+      "side": 1,
+      "message": "I don\u0027t know. Under the hood it still follows kTransactionActive when setting the 32-bit field. Is there some problem sharing the 24/8bit data?\n\n+Mathieu, what does it mean to \"roll back\" a transaction in this context?",
+      "parentUuid": "492a237e_59667bdf",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d18a555_b208b97d",
         "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
         "patchSetId": 10
