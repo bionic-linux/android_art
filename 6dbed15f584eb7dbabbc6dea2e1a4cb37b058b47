@@ -169,6 +169,29 @@
     },
     {
       "key": {
+        "uuid": "a97be715_4a47510c",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-07T22:14:38Z",
+      "side": 1,
+      "message": "SUBTYPE_CHECK_BITS",
+      "range": {
+        "startLine": 2353,
+        "startChar": 13,
+        "endLine": 2353,
+        "endChar": 26
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
@@ -252,6 +275,29 @@
       "side": 1,
       "message": "Yes, it\u0027s single-threaded. I don\u0027t expect us to implement multi-threaded transactions anytime soon.",
       "parentUuid": "a219a83b_8f3b06ac",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e288b21_dbffbd56",
+        "filename": "runtime/mirror/class.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-07T22:14:38Z",
+      "side": 1,
+      "message": "Fix.",
+      "range": {
+        "startLine": 1486,
+        "startChar": 33,
+        "endLine": 1486,
+        "endChar": 52
+      },
       "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
