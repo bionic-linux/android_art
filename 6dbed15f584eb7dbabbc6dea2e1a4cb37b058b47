@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c019fb32_d254f59b",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T13:05:52Z",
+      "side": 1,
+      "message": "This is unsigned byte. As there is no LDARSB instruction, the conditional branch below should be changed to BNE.\n\n(We could rewrite the status to take the top 5 (or 4) bits instead of the bottom 8.)",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "492a237e_59667bdf",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T13:05:52Z",
+      "side": 1,
+      "message": "Are we losing the ability to roll back the transaction?",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d18a555_b208b97d",
+        "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-07T13:05:52Z",
+      "side": 1,
+      "message": "Let me repeat myself. All the unused classes are useless if you do not initialize them.",
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
