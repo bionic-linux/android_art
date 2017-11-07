@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "75c48df0_4b0d4b67",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T15:38:45Z",
+      "side": 1,
+      "message": "I was asking about BNE vs B though in this ClinitCheck context?\n\nWe already optimized the subtype check code. I shared slides with you incase you missed mtv compiler team\u0027s meeting notes which sent this out. You can see what kind of negative impact it would have if we were to change bit representation.",
+      "parentUuid": "a9b0e6f7_08cbb0c3",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
