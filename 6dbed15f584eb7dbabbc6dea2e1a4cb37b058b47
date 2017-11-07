@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbf04457_3ea08252",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 2173,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-07T15:25:14Z",
+      "side": 1,
+      "message": "Is this going to increase code size? I thought all instructions on ARM64 were the same size?\n\nWe picked the layout with \"bottom 8 bits\" for a reason because that\u0027s the only way the subtype check uses a single right-shift instruction (see commit message).",
+      "parentUuid": "c019fb32_d254f59b",
+      "range": {
+        "startLine": 2173,
+        "startChar": 9,
+        "endLine": 2173,
+        "endChar": 10
+      },
+      "revId": "6dbed15f584eb7dbabbc6dea2e1a4cb37b058b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492a237e_59667bdf",
         "filename": "runtime/mirror/class.cc",
         "patchSetId": 10
