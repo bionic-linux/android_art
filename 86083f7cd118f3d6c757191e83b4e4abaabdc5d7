@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef3b038c_cb2e04f6",
+        "filename": "test/988-TooWideClassInstanceOf/src/Main.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-07T22:50:00Z",
+      "side": 1,
+      "message": "Also make sure it\u0027s compatible with the new too-wide and too-deep configuration.",
+      "revId": "86083f7cd118f3d6c757191e83b4e4abaabdc5d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
