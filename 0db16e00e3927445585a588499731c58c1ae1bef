@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "713d9ca7_43c3d7ab",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-09T13:59:28Z",
+      "side": 0,
+      "message": "Why is this no longer needed? Was it incorrect? Or is it because of your reorganization of access flags in  runtime/modifiers.h?",
+      "range": {
+        "startLine": 632,
+        "startChar": 58,
+        "endLine": 632,
+        "endChar": 83
+      },
+      "revId": "0db16e00e3927445585a588499731c58c1ae1bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d117ab14_0c535d25",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-09T13:59:28Z",
+      "side": 0,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 633,
+        "startChar": 80,
+        "endLine": 633,
+        "endChar": 105
+      },
+      "revId": "0db16e00e3927445585a588499731c58c1ae1bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccbece69_5a62939a",
+        "filename": "profman/boot_image_profile.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-09T13:59:28Z",
+      "side": 0,
+      "message": "Was this incorrect?",
+      "range": {
+        "startLine": 95,
+        "startChar": 40,
+        "endLine": 95,
+        "endChar": 72
+      },
+      "revId": "0db16e00e3927445585a588499731c58c1ae1bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

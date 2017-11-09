@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dab773cb_091d8150",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 15
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-09T13:59:28Z",
+      "side": 1,
+      "message": "Maybe leave a comment somewhere that walking a call stack that includes an activation of this function is broken, until `self-\u003eSetTopOfStack(sp);` is executed (line 2197)?",
+      "range": {
+        "startLine": 2172,
+        "startChar": 25,
+        "endLine": 2172,
+        "endChar": 53
+      },
+      "revId": "79a4ff9beeb04d128a702fdfc3c3742ed8ca1403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
