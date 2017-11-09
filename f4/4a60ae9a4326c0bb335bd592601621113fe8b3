@@ -1,0 +1,10 @@
+Autosubmit+1: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Code-Review+2: Tobias Thierer <tobiast@google.com>
+Code-Review+2: Orion Hodson <oth@google.com>
+Verified+1: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Presubmit-Ready+1: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Thu, 09 Nov 2017 11:18:37 +0000
+Reviewed-on: https://android-review.googlesource.com/531532
+Project: platform/art
+Branch: refs/heads/master
