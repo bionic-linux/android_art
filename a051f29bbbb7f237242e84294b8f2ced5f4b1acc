@@ -382,6 +382,30 @@
     },
     {
       "key": {
+        "uuid": "e20e7036_0811b932",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-10T17:44:09Z",
+      "side": 0,
+      "message": "We\u0027re not exporting these variables? Then what are they for? Seems like vestigial code.",
+      "parentUuid": "c02c8aef_590522b5",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "721079e7_7f6eb90b",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
