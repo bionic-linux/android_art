@@ -358,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "c02c8aef_590522b5",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-11-10T17:34:30Z",
+      "side": 0,
+      "message": "testrunner doesn\u0027t invoke make when called from make except here - https://cs.corp.google.com/android/art/test/testrunner/env.py?sq\u0026l\u003d56.",
+      "parentUuid": "1ed10056_7f8421ab",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "721079e7_7f6eb90b",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
