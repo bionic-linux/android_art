@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "1ed10056_7f8421ab",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-10T17:12:16Z",
+      "side": 0,
+      "message": "Variables set in makefiles are _not_ exposed as environment variables unless you add\nexport ART_TEST_RUN_TEST_2ND_ARCH\n\nRunning testrunner from inside make will fail if it calls make, we prevent recursion.",
+      "parentUuid": "1dc62ef6_e1fab1e9",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "721079e7_7f6eb90b",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
