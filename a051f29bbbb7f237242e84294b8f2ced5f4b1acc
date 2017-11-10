@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "41c626f2_0ded8842",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-11-10T16:29:50Z",
+      "side": 0,
+      "message": "It reads from env var not from makefile.",
+      "parentUuid": "b1e8e960_2d0ba98c",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "468d9a61_7ae44e8d",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5d94beaa_61b8df6d",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-11-10T16:29:50Z",
+      "side": 0,
+      "message": "Though I didn\u0027t see any direct use, but there could be some indirect use of it.",
+      "parentUuid": "853e1bc4_e7998387",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14b95444_1c18c538",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
@@ -154,6 +202,30 @@
       "side": 0,
       "message": "Are you sure? It\u0027s still used by testrunner.",
       "parentUuid": "14b95444_1c18c538",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d59e245_01ff1ab9",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1084268
+      },
+      "writtenOn": "2017-11-10T16:29:50Z",
+      "side": 0,
+      "message": "Same. It does read from makefile. It reads from environment variables.",
+      "parentUuid": "1945ba6a_2f358bcd",
       "range": {
         "startLine": 118,
         "startChar": 0,
