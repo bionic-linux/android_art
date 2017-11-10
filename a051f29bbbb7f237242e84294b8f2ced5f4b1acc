@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "863a1ee8_630a56a1",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-10T16:38:15Z",
+      "side": 0,
+      "message": "Gtest is using it.",
+      "parentUuid": "5d94beaa_61b8df6d",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14b95444_1c18c538",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
@@ -226,6 +250,30 @@
       "side": 0,
       "message": "Same. It does read from makefile. It reads from environment variables.",
       "parentUuid": "1945ba6a_2f358bcd",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 26
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b69aa8b2_5cd55dc1",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2017-11-10T16:38:15Z",
+      "side": 0,
+      "message": "Variables set in makefiles are exposed as environment variables by command run from within a makefile...",
+      "parentUuid": "6d59e245_01ff1ab9",
       "range": {
         "startLine": 118,
         "startChar": 0,
