@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b2e4ba0_5b9877b9",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337f8900_2962e07c",
+      "range": {
+        "startLine": 203,
+        "startChar": 23,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36cbe5db_baaade59",
         "filename": "runtime/art_method.h",
         "patchSetId": 17
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-09T18:58:18Z",
       "side": 1,
       "message": "nit: flag value",
+      "range": {
+        "startLine": 259,
+        "startChar": 26,
+        "endLine": 259,
+        "endChar": 30
+      },
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b70910b_38f576a3",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36cbe5db_baaade59",
       "range": {
         "startLine": 259,
         "startChar": 26,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b73c38c8_a2b4b445",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7998d7_87100412",
+      "range": {
+        "startLine": 268,
+        "startChar": 30,
+        "endLine": 268,
+        "endChar": 34
+      },
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d883f93_3dfd9c7a",
         "filename": "runtime/art_method.h",
         "patchSetId": 17
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-09T18:58:18Z",
       "side": 1,
       "message": "nit: flag value",
+      "range": {
+        "startLine": 291,
+        "startChar": 32,
+        "endLine": 291,
+        "endChar": 36
+      },
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0ea919_f62affe8",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d883f93_3dfd9c7a",
       "range": {
         "startLine": 291,
         "startChar": 32,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0cb6a893_e99c09d2",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1242,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50befd48_431ef20c",
+      "range": {
+        "startLine": 1242,
+        "startChar": 7,
+        "endLine": 1242,
+        "endChar": 22
+      },
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce96c9ca_237e4045",
         "filename": "runtime/dex_file_annotations.cc",
         "patchSetId": 17
@@ -128,6 +248,24 @@
       "writtenOn": "2017-11-09T18:58:18Z",
       "side": 1,
       "message": "nit: if (annotation-set \u003d\u003d nullptr) return",
+      "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7210cc_415567b4",
+        "filename": "runtime/dex_file_annotations.cc",
+        "patchSetId": 17
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-10T08:33:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce96c9ca_237e4045",
       "revId": "decd28d12bfd1d5979cfa3d94eb063b22cfeb034",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
