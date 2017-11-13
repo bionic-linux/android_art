@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "9e7bad0c_3b309818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-13T22:04:59Z",
+      "side": 1,
+      "message": "Wrong bug? This has nothing to do with the OOME from that bug...",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c09617_d8ddb468",
         "filename": "runtime/vdex_file.cc",
         "patchSetId": 2
@@ -68,6 +91,29 @@
       "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81801185_c4c971c9",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4415,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-13T22:04:59Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 4415,
+        "startChar": 4,
+        "endLine": 4415,
+        "endChar": 10
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
