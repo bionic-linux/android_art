@@ -24,9 +24,16 @@
 #include "base/logging.h"
 #include "base/stl_util.h"
 #include "base/unix_file/fd_file.h"
+#include "art_method.h"
 #include "dex_file.h"
 #include "dex_file_loader.h"
 #include "dex_to_dex_decompiler.h"
+
+#include "art_method-inl.h"
+#include "class_linker.h"
+#include "quicken_info.h"
+#include "runtime.h"
+#include "scoped_thread_state_change-inl.h"
 
 namespace art {
 
@@ -345,6 +352,31 @@ const uint8_t* VdexFile::GetQuickenedInfoOf(const DexFile& dex_file,
     }
   }
   return nullptr;
+}
+
+uint16_t VdexFile::GetIndexFromQuickening(ArtMethod* method, uint32_t dex_pc) {
+  // Null check for being defensive.
+  if (method == nullptr) {
+    return DexFile::kDexNoIndex16;
+  }
+  ScopedObjectAccess soa(Thread::Current());
+  const uint8_t* data = method->GetQuickenedInfo(
+      Runtime::Current()->GetClassLinker()->GetImagePointerSize());
+  if (data == nullptr) {
+    return DexFile::kDexNoIndex16;
+  }
+  QuickenInfoTable table(data);
+  uint32_t quicken_index = 0;
+  IterationRange<DexInstructionIterator> instructions = method->GetCodeItem()->Instructions();
+  for (const DexInstructionPcPair& pair : instructions) {
+    if (pair.DexPc() == dex_pc) {
+      return table.GetData(quicken_index);
+    }
+    if (QuickenInfoTable::NeedsIndexForInstruction(&pair.Inst())) {
+      ++quicken_index;
+    }
+  }
+  return DexFile::kDexNoIndex16;
 }
 
 }  // namespace art

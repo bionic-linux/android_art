@@ -27,6 +27,7 @@
 
 namespace art {
 
+class ArtMethod;
 class DexFile;
 
 // VDEX files contain extracted DEX files. The VdexFile class maps the file to
@@ -159,6 +160,8 @@ class VdexFile {
 
   // Return the quickening info of the given code item.
   const uint8_t* GetQuickenedInfoOf(const DexFile& dex_file, uint32_t code_item_offset) const;
+
+  static uint16_t GetIndexFromQuickening(ArtMethod* method, uint32_t dex_pc);
 
  private:
   bool HasDexSection() const {
