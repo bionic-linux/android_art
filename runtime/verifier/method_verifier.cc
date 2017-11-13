@@ -52,6 +52,7 @@
 #include "scoped_thread_state_change-inl.h"
 #include "stack.h"
 #include "utils.h"
+#include "vdex_file.h"
 #include "verifier_compiler_binding.h"
 #include "verifier_deps.h"
 
@@ -557,7 +558,7 @@ MethodVerifier::MethodVerifier(Thread* self,
       reg_table_(allocator_),
       work_insn_idx_(dex::kDexNoIndex),
       dex_method_idx_(dex_method_idx),
-      mirror_method_(method),
+      method_being_verified_(method),
       method_access_flags_(method_access_flags),
       return_type_(nullptr),
       dex_file_(dex_file),
@@ -631,87 +632,6 @@ void MethodVerifier::FindLocksAtDexPc() {
       return;
     }
   }
-}
-
-ArtField* MethodVerifier::FindAccessedFieldAtDexPc(ArtMethod* m, uint32_t dex_pc) {
-  StackHandleScope<2> hs(Thread::Current());
-  Handle<mirror::DexCache> dex_cache(hs.NewHandle(m->GetDexCache()));
-  Handle<mirror::ClassLoader> class_loader(hs.NewHandle(m->GetClassLoader()));
-  MethodVerifier verifier(hs.Self(),
-                          m->GetDexFile(),
-                          dex_cache,
-                          class_loader,
-                          m->GetClassDef(),
-                          m->GetCodeItem(),
-                          m->GetDexMethodIndex(),
-                          m,
-                          m->GetAccessFlags(),
-                          true  /* can_load_classes */,
-                          true  /* allow_soft_failures */,
-                          false /* need_precise_constants */,
-                          false /* verify_to_dump */,
-                          true  /* allow_thread_suspension */);
-  return verifier.FindAccessedFieldAtDexPc(dex_pc);
-}
-
-ArtField* MethodVerifier::FindAccessedFieldAtDexPc(uint32_t dex_pc) {
-  CHECK(code_item_accessor_.HasCodeItem());  // This only makes sense for methods with code.
-
-  // Strictly speaking, we ought to be able to get away with doing a subset of the full method
-  // verification. In practice, the phase we want relies on data structures set up by all the
-  // earlier passes, so we just run the full method verification and bail out early when we've
-  // got what we wanted.
-  bool success = Verify();
-  if (!success) {
-    return nullptr;
-  }
-  RegisterLine* register_line = reg_table_.GetLine(dex_pc);
-  if (register_line == nullptr) {
-    return nullptr;
-  }
-  const Instruction* inst = &code_item_accessor_.InstructionAt(dex_pc);
-  return GetQuickFieldAccess(inst, register_line);
-}
-
-ArtMethod* MethodVerifier::FindInvokedMethodAtDexPc(ArtMethod* m, uint32_t dex_pc) {
-  StackHandleScope<2> hs(Thread::Current());
-  Handle<mirror::DexCache> dex_cache(hs.NewHandle(m->GetDexCache()));
-  Handle<mirror::ClassLoader> class_loader(hs.NewHandle(m->GetClassLoader()));
-  MethodVerifier verifier(hs.Self(),
-                          m->GetDexFile(),
-                          dex_cache,
-                          class_loader,
-                          m->GetClassDef(),
-                          m->GetCodeItem(),
-                          m->GetDexMethodIndex(),
-                          m,
-                          m->GetAccessFlags(),
-                          true  /* can_load_classes */,
-                          true  /* allow_soft_failures */,
-                          false /* need_precise_constants */,
-                          false /* verify_to_dump */,
-                          true  /* allow_thread_suspension */);
-  return verifier.FindInvokedMethodAtDexPc(dex_pc);
-}
-
-ArtMethod* MethodVerifier::FindInvokedMethodAtDexPc(uint32_t dex_pc) {
-  CHECK(code_item_accessor_.HasCodeItem());  // This only makes sense for methods with code.
-
-  // Strictly speaking, we ought to be able to get away with doing a subset of the full method
-  // verification. In practice, the phase we want relies on data structures set up by all the
-  // earlier passes, so we just run the full method verification and bail out early when we've
-  // got what we wanted.
-  bool success = Verify();
-  if (!success) {
-    return nullptr;
-  }
-  RegisterLine* register_line = reg_table_.GetLine(dex_pc);
-  if (register_line == nullptr) {
-    return nullptr;
-  }
-  const Instruction* inst = &code_item_accessor_.InstructionAt(dex_pc);
-  const bool is_range = (inst->Opcode() == Instruction::INVOKE_VIRTUAL_RANGE_QUICK);
-  return GetQuickInvokedMethod(inst, register_line, is_range, false);
 }
 
 bool MethodVerifier::Verify() {
@@ -4469,6 +4389,9 @@ bool MethodVerifier::CheckSignaturePolymorphicReceiver(const Instruction* inst) 
 
 ArtMethod* MethodVerifier::GetQuickInvokedMethod(const Instruction* inst, RegisterLine* reg_line,
                                                  bool is_range, bool allow_failure) {
+  // Note that we could look up the Vdex file to find the offset, but as this code is potentially
+  // handling aborting situations, we just try to compute it ourselves (otherwise this code would
+  // never be exercised).
   if (is_range) {
     DCHECK_EQ(inst->Opcode(), Instruction::INVOKE_VIRTUAL_RANGE_QUICK);
   } else {
@@ -4476,6 +4399,10 @@ ArtMethod* MethodVerifier::GetQuickInvokedMethod(const Instruction* inst, Regist
   }
   const RegType& actual_arg_type = reg_line->GetInvocationThis(this, inst, allow_failure);
   if (!actual_arg_type.HasClass()) {
+    uint16_t method_idx = VdexFile::GetIndexFromQuickening(method_being_verified_, work_insn_idx_);
+    if (method_idx != DexFile::kDexNoIndex16) {
+      return ResolveMethodAndCheckAccess(method_idx, METHOD_VIRTUAL);
+    }
     VLOG(verifier) << "Failed to get mirror::Class* from '" << actual_arg_type << "'";
     return nullptr;
   }
@@ -4506,13 +4433,7 @@ ArtMethod* MethodVerifier::GetQuickInvokedMethod(const Instruction* inst, Regist
                 work_insn_idx_);
     return nullptr;
   }
-  ArtMethod* res_method = dispatch_class->GetVTableEntry(vtable_index, pointer_size);
-  if (self_->IsExceptionPending()) {
-    FailOrAbort(this, allow_failure, "Unexpected exception pending for quickened invoke at ",
-                work_insn_idx_);
-    return nullptr;
-  }
-  return res_method;
+  return dispatch_class->GetVTableEntry(vtable_index, pointer_size);
 }
 
 ArtMethod* MethodVerifier::VerifyInvokeVirtualQuickArgs(const Instruction* inst, bool is_range) {
@@ -5132,20 +5053,34 @@ void MethodVerifier::VerifyISFieldAccess(const Instruction* inst, const RegType&
 }
 
 ArtField* MethodVerifier::GetQuickFieldAccess(const Instruction* inst, RegisterLine* reg_line) {
+  // Note that we could look up the Vdex file to find the offset, but as this code is potentially
+  // handling aborting situations, we just try to compute it ourselves (otherwise this code would
+  // never be exercised).
   DCHECK(IsInstructionIGetQuickOrIPutQuick(inst->Opcode())) << inst->Opcode();
   const RegType& object_type = reg_line->GetRegisterType(this, inst->VRegB_22c());
-  if (!object_type.HasClass()) {
-    VLOG(verifier) << "Failed to get mirror::Class* from '" << object_type << "'";
-    return nullptr;
-  }
   uint32_t field_offset = static_cast<uint32_t>(inst->VRegC_22c());
-  ArtField* const f = ArtField::FindInstanceFieldWithOffset(object_type.GetClass(), field_offset);
-  DCHECK_EQ(f->GetOffset().Uint32Value(), field_offset);
-  if (f == nullptr) {
-    VLOG(verifier) << "Failed to find instance field at offset '" << field_offset
-                   << "' from '" << mirror::Class::PrettyDescriptor(object_type.GetClass()) << "'";
+  if (!object_type.HasClass()) {
+    uint16_t field_idx = VdexFile::GetIndexFromQuickening(method_being_verified_, work_insn_idx_);
+    if (field_idx != DexFile::kDexNoIndex16) {
+      ClassLinker* class_linker = Runtime::Current()->GetClassLinker();
+      ArtField* field =
+          class_linker->ResolveFieldJLS(*dex_file_, field_idx, dex_cache_, class_loader_);
+      if (field != nullptr) {
+        return field;
+      }
+      DCHECK(self_->IsExceptionPending());
+      self_->ClearException();
+    }
+  } else {
+    ArtField* field = ArtField::FindInstanceFieldWithOffset(object_type.GetClass(), field_offset);
+    if (field != nullptr) {
+      CHECK_EQ(field->GetOffset().Uint32Value(), field_offset);
+      return field;
+    }
   }
-  return f;
+  VLOG(verifier) << "Failed to find instance field at offset '" << field_offset
+                 << "' from '" << mirror::Class::PrettyDescriptor(object_type.GetClass()) << "'";
+  return nullptr;
 }
 
 template <MethodVerifier::FieldAccessType kAccType>
@@ -5358,12 +5293,12 @@ InstructionFlags* MethodVerifier::CurrentInsnFlags() {
 
 const RegType& MethodVerifier::GetMethodReturnType() {
   if (return_type_ == nullptr) {
-    if (mirror_method_ != nullptr) {
+    if (method_being_verified_ != nullptr) {
       ObjPtr<mirror::Class> return_type_class = can_load_classes_
-          ? mirror_method_->ResolveReturnType()
-          : mirror_method_->LookupResolvedReturnType();
+          ? method_being_verified_->ResolveReturnType()
+          : method_being_verified_->LookupResolvedReturnType();
       if (return_type_class != nullptr) {
-        return_type_ = &FromClass(mirror_method_->GetReturnTypeDescriptor(),
+        return_type_ = &FromClass(method_being_verified_->GetReturnTypeDescriptor(),
                                   return_type_class.Ptr(),
                                   return_type_class->CannotBeAssignedFromOtherTypes());
       } else {
@@ -5387,8 +5322,8 @@ const RegType& MethodVerifier::GetDeclaringClass() {
     const DexFile::MethodId& method_id = dex_file_->GetMethodId(dex_method_idx_);
     const char* descriptor
         = dex_file_->GetTypeDescriptor(dex_file_->GetTypeId(method_id.class_idx_));
-    if (mirror_method_ != nullptr) {
-      mirror::Class* klass = mirror_method_->GetDeclaringClass();
+    if (method_being_verified_ != nullptr) {
+      mirror::Class* klass = method_being_verified_->GetDeclaringClass();
       declaring_class_ = &FromClass(descriptor, klass, klass->CannotBeAssignedFromOtherTypes());
     } else {
       declaring_class_ = &reg_types_.FromDescriptor(GetClassLoader(), descriptor, false);
