@@ -23,6 +23,7 @@
 
 #include <android-base/logging.h>
 
+#include "art_method.h"
 #include "base/bit_utils.h"
 #include "base/leb128.h"
 #include "base/stl_util.h"
