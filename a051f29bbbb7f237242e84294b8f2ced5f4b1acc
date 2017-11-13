@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "eda4af3c_a8a31336",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-13T11:53:21Z",
+      "side": 0,
+      "message": "It is, see line 138 below:\n\n  # Define the command run on test failure. $(1) is the name of the test. Executed by the shell.\n  # If the test was a top-level make target (e.g. `test-art-host-gtest-codegen_test64`), the command\n  # fails with exit status 1 (returned by the last `grep` statement below).\n  # Otherwise (e.g., if the test was run as a prerequisite of a compound test command, such as\n  # `test-art-host-gtest-codegen_test`), the command does not fail, as this would break rules running\n  # ART_TEST_PREREQ_FINISHED as one of their actions, which expects *all* prerequisites *not* to fail.\n  define ART_TEST_FAILED\n    ( [ -f $(ART_HOST_TEST_DIR)/skipped/$(1) ] || \\\n      (mkdir -p $(ART_HOST_TEST_DIR)/failed/ \u0026\u0026 touch $(ART_HOST_TEST_DIR)/failed/$(1) \u0026\u0026 \\\n        echo $(ART_TEST_KNOWN_FAILING) | grep -q $(1) \\\n          \u0026\u0026 (echo -e \"$(1) \\e[91mKNOWN FAILURE\\e[0m\") \\\n          || (echo -e \"$(1) \\e[91mFAILED\\e[0m\" \u003e\u00262; echo $(MAKECMDGOALS) | grep -q -v $(1))))\n  endef\n\nI think we should keep it.",
+      "parentUuid": "468d9a61_7ae44e8d",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12fa822d_d19f99d9",
         "filename": "build/Android.common_test.mk",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 0,
       "message": "Gtest is using it.",
       "parentUuid": "5d94beaa_61b8df6d",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "a051f29bbbb7f237242e84294b8f2ced5f4b1acc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35b610be_f62351d5",
+        "filename": "build/Android.common_test.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-13T11:53:21Z",
+      "side": 0,
+      "message": "Indeed, see line 143 below:\n\n  ifeq ($(ART_TEST_QUIET),true)\n    ART_TEST_ANNOUNCE_PASS :\u003d ( true )\n    ART_TEST_ANNOUNCE_RUN :\u003d ( true )\n    ART_TEST_ANNOUNCE_SKIP_FAILURE :\u003d ( true )\n    ART_TEST_ANNOUNCE_SKIP_BROKEN :\u003d ( true )\n  else\n    # Note the use of \u0027\u003d\u0027 and not \u0027:\u003d\u0027 is intentional since these are actually functions.\n    ART_TEST_ANNOUNCE_PASS \u003d ( echo -e \"$(1) \\e[92mPASSED\\e[0m\" )\n    ART_TEST_ANNOUNCE_RUN \u003d ( echo -e \"$(1) \\e[95mRUNNING\\e[0m\")\n    ART_TEST_ANNOUNCE_SKIP_FAILURE \u003d ( echo -e \"$(1) \\e[93mSKIPPING DUE TO EARLIER FAILURE\\e[0m\" )\n    ART_TEST_ANNOUNCE_SKIP_BROKEN \u003d ( echo -e \"$(1) \\e[93mSKIPPING BROKEN TEST\\e[0m\" )\n  endif",
+      "parentUuid": "863a1ee8_630a56a1",
       "range": {
         "startLine": 54,
         "startChar": 0,
