@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c165f4dd_283d10f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-13T15:22:31Z",
+      "side": 1,
+      "message": "Any suggestion which specific test would be accurate here?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82c09617_d8ddb468",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-13T15:22:31Z",
+      "side": 1,
+      "message": "This sounds like we should move GetIndexFromQuickening to art_method.cc, but wanted your opinion first.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 43
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef93083c_e9e82eb2",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4405,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-13T15:22:31Z",
+      "side": 1,
+      "message": "I\u0027m happy to also just get rid of the code that tries to infer the ArtMethod from the verifier state. Even though this code is now only for dumping locks, if there\u0027s quickening data but not vdex file we\u0027re in a very very bizarre state.",
+      "range": {
+        "startLine": 4403,
+        "startChar": 0,
+        "endLine": 4405,
+        "endChar": 25
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
