@@ -48,7 +48,7 @@ inline mirror::DexCache* MethodVerifier::GetDexCache() {
 }
 
 inline ArtMethod* MethodVerifier::GetMethod() const {
-  return mirror_method_;
+  return method_being_verified_;
 }
 
 inline MethodReference MethodVerifier::GetMethodReference() const {
