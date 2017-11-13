@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "a86bbf33_67fa5738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-13T22:16:26Z",
+      "side": 1,
+      "message": "It\u0027s the reason I started this CL. It is not fixing it.",
+      "parentUuid": "9e7bad0c_3b309818",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c09617_d8ddb468",
         "filename": "runtime/vdex_file.cc",
         "patchSetId": 2
