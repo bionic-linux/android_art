@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "54a845bc_310562fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-11-13T22:28:08Z",
+      "side": 1,
+      "message": "(Neither Mathieu nor I think it\u0027s a bad CL - but it seems weird to tag it with a bug it has nothing to do with... :-) )",
+      "parentUuid": "a86bbf33_67fa5738",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 13
+      },
+      "revId": "e857d6acc3e682cfe22d6da79b77ed011c547aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c09617_d8ddb468",
         "filename": "runtime/vdex_file.cc",
         "patchSetId": 2
