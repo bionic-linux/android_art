@@ -29,6 +29,7 @@
 
 namespace art {
 
+class ArtMethod;
 class DexFile;
 
 // VDEX files contain extracted DEX files. The VdexFile class maps the file to
