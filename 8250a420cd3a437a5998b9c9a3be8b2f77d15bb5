@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d6665f4_27d0c2cf",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-14T16:08:37Z",
+      "side": 1,
+      "message": "If this fails, we shall have a pending exception and trying to throw another one shall abort in Thread::AssertNoPendingException().",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 54
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e952870_936e457f",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-14T16:08:37Z",
+      "side": 1,
+      "message": "So, this has previously been broken.",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 643,
+        "endChar": 61
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b717cdb_13af951e",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-14T16:08:37Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 657,
+        "startChar": 0,
+        "endLine": 658,
+        "endChar": 54
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ff53f5e_03334e7e",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-14T16:08:37Z",
+      "side": 1,
+      "message": "The caller REQUIRES_SHARED(Locks::mutator_lock_), so this function should require it as well to avoid the SOA.",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf0d93b0_4604107c",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4402,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-14T16:08:37Z",
+      "side": 1,
+      "message": "Check for DexFile::kDexNoIndex16?\nOr CHECK(method_being_verified_ !\u003d nullptr)?",
+      "range": {
+        "startLine": 4402,
+        "startChar": 13,
+        "endLine": 4402,
+        "endChar": 23
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
