@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f01679e_fe1e3afa",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-15T11:41:24Z",
+      "side": 1,
+      "message": "Given we\u0027re dealing with an NPE, I think the assumption here is that the field has already been resolved.",
+      "parentUuid": "6d6665f4_27d0c2cf",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 54
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e952870_936e457f",
         "filename": "runtime/common_throws.cc",
         "patchSetId": 4
@@ -94,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "86b0fc4c_11f6581d",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-15T11:41:24Z",
+      "side": 1,
+      "message": "See my comment on PS2, do you have any opinion?",
+      "parentUuid": "1ff53f5e_03334e7e",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf0d93b0_4604107c",
         "filename": "runtime/verifier/method_verifier.cc",
         "patchSetId": 4
@@ -105,6 +153,30 @@
       "writtenOn": "2017-11-14T16:08:37Z",
       "side": 1,
       "message": "Check for DexFile::kDexNoIndex16?\nOr CHECK(method_being_verified_ !\u003d nullptr)?",
+      "range": {
+        "startLine": 4402,
+        "startChar": 13,
+        "endLine": 4402,
+        "endChar": 23
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ee5ceba_c6c0d192",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4402,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-15T11:41:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0d93b0_4604107c",
       "range": {
         "startLine": 4402,
         "startChar": 13,
