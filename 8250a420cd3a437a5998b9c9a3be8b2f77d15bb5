@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6b673cb0_0a135bff",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-15T14:17:18Z",
+      "side": 1,
+      "message": "Then change it to LookupResolvedField() and DCHECK(field !\u003d nullptr); However, this may not work if the field was resolved at AOT and the class has not been resolved at runtime yet. There is the assumption that it would be resolved the same way at runtime but it may not actually resolve, for example because of OOME. Maybe we should have a regression test for that.",
+      "parentUuid": "1f01679e_fe1e3afa",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 54
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e952870_936e457f",
         "filename": "runtime/common_throws.cc",
         "patchSetId": 4
@@ -130,6 +154,30 @@
       "side": 1,
       "message": "See my comment on PS2, do you have any opinion?",
       "parentUuid": "1ff53f5e_03334e7e",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83fb78ba_1479f6a2",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-15T14:17:18Z",
+      "side": 1,
+      "message": "Split the method? Replace the \"ArtMethod* method\" parameter with code item and quickened info data. Deal with the method-specific stuff (method-\u003eGetQuickenedInfo() and method-\u003eGetCodeItem()) in ArtMethod.",
+      "parentUuid": "86b0fc4c_11f6581d",
       "range": {
         "startLine": 362,
         "startChar": 2,
