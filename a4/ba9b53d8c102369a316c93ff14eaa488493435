@@ -1,0 +1,8 @@
+Presubmit-Ready+1: Alan Leung <acleung@google.com>
+Verified+1: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Thu, 16 Nov 2017 09:17:37 +0000
+Reviewed-on: https://android-review.googlesource.com/539555
+Project: platform/art
+Branch: refs/heads/master
