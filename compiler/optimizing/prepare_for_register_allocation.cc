@@ -71,6 +71,59 @@ void PrepareForRegisterAllocation::VisitBoundType(HBoundType* bound_type) {
   bound_type->GetBlock()->RemoveInstruction(bound_type);
 }
 
+void PrepareForRegisterAllocation::VisitTypeConversion(HTypeConversion* type_conversion) {
+  DataType::Type input_type = type_conversion->GetInputType();
+  DataType::Type result_type = type_conversion->GetResultType();
+  if (!DataType::IsIntegralType(input_type) ||
+      !DataType::IsIntegralType(result_type) ||
+      input_type == DataType::Type::kInt64 ||
+      result_type == DataType::Type::kInt64) {
+    // Non-integer types or may involve more than one register.
+    return;
+  }
+  if (DataType::Size(input_type) > DataType::Size(result_type)) {
+    // Truncating then store is same as doing truncating during store directly.
+  } else {
+    if ((DataType::IsUnsignedType(input_type) && !DataType::IsUnsignedType(result_type)) ||
+        (!DataType::IsUnsignedType(input_type) && DataType::IsUnsignedType(result_type))) {
+      // result_type may have a different value range from input_type. Need to
+      // keep the type conversion.
+      return;
+    } else {
+      // result_type is a sub range of input_type. OK to store directly.
+    }
+  }
+
+  // If the converted value is only used for storing into heap.
+  bool store_value_only = true;
+  for (const HUseListNode<HInstruction*>& use : type_conversion->GetUses()) {
+    HInstruction* instruction = use.GetUser();
+    if (instruction->IsInstanceFieldSet() &&
+        instruction->AsInstanceFieldSet()->GetFieldType() == result_type) {
+      continue;
+    }
+    if (instruction->IsStaticFieldSet() &&
+        instruction->AsStaticFieldSet()->GetFieldType() == result_type) {
+      continue;
+    }
+    if (instruction->IsArraySet() &&
+        instruction->AsArraySet()->GetComponentType() == result_type &&
+        // not index use.
+        instruction->AsArraySet()->InputAt(1) != type_conversion) {
+      continue;
+    }
+    // The use is not as a store value, or the field/element type is not the
+    // same as the result_type, keep the type conversion.
+    store_value_only = false;
+    break;
+  }
+  if (store_value_only) {
+    // Codegen automatically handles the type conversion during the store.
+    type_conversion->ReplaceWith(type_conversion->InputAt(0));
+    type_conversion->GetBlock()->RemoveInstruction(type_conversion);
+  }
+}
+
 void PrepareForRegisterAllocation::VisitArraySet(HArraySet* instruction) {
   HInstruction* value = instruction->GetValue();
   // PrepareForRegisterAllocation::VisitBoundType may have replaced a
