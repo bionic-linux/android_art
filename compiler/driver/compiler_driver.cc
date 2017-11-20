@@ -401,6 +401,11 @@ static optimizer::DexToDexCompilationLevel GetDexToDexCompilationLevel(
     Thread* self, const CompilerDriver& driver, Handle<mirror::ClassLoader> class_loader,
     const DexFile& dex_file, const DexFile::ClassDef& class_def)
     REQUIRES_SHARED(Locks::mutator_lock_) {
+  // If we cannot write to the output dex file (that is when we will use the dex file in
+  // the APK), do not attempt doing any quickening.
+  if (dex_file.GetContainer() != nullptr && dex_file.GetContainer()->IsReadOnly()) {
+    return optimizer::DexToDexCompilationLevel::kDontDexToDexCompile;
+  }
   auto* const runtime = Runtime::Current();
   DCHECK(driver.GetCompilerOptions().IsQuickeningCompilationEnabled());
   const char* descriptor = dex_file.GetClassDescriptor(class_def);
