@@ -28,4 +28,4 @@
 # the memory is dirty (despite being file-backed).
 # (Note: this was reproducible 100% of the time on
 # a target angler device).
-./default-run "$@" --no-dex2oat --sync
+./default-run "$@" --sync
