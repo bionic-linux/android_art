@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37a70b67_8ef143e6",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Added:\n    // Type conversion is needed if non-integer types are involved, or 64-bit\n    // types are involved, which may use different number of registers.",
+      "parentUuid": "d604d4af_6f0586e1",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf82058c_37f262f7",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-22T09:04:51Z",
       "side": 1,
       "message": "GetValue",
+      "range": {
+        "startLine": 1103,
+        "startChar": 29,
+        "endLine": 1103,
+        "endChar": 36
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc19693d_0ddcad12",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf82058c_37f262f7",
       "range": {
         "startLine": 1103,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b6cbd97f_c6cc70c6",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68bd6876_c88ea716",
+      "range": {
+        "startLine": 1108,
+        "startChar": 29,
+        "endLine": 1108,
+        "endChar": 36
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69979e5f_37c438c5",
         "filename": "compiler/optimizing/instruction_simplifier.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-22T09:04:51Z",
       "side": 1,
       "message": "GetIndex",
+      "range": {
+        "startLine": 1114,
+        "startChar": 35,
+        "endLine": 1114,
+        "endChar": 45
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2eb4e39_46aafe83",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69979e5f_37c438c5",
       "range": {
         "startLine": 1114,
         "startChar": 35,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4c3a7a38_58cd790c",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a66c2262_ca415654",
+      "range": {
+        "startLine": 1118,
+        "startChar": 0,
+        "endLine": 1121,
+        "endChar": 10
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd68e361_3c124fe0",
         "filename": "test/711-checker-type-conversion/src/Main.java",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2017-11-22T13:40:56Z",
       "side": 1,
       "message": "Why do you need this? If you want to avoid inlining, use the $noinline$ prefix.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62cdb799_9ae2be14",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Thanks. Changed to $noinline. I somehow remember $opt$noinline previously didn\u0027t prevent inlining and just asserts instead.",
+      "parentUuid": "bd68e361_3c124fe0",
       "range": {
         "startLine": 88,
         "startChar": 0,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "5410c040_60f12af9",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "null check and bounds check. I\u0027ll just keep this form to test array access.",
+      "parentUuid": "f8c7ee43_fb8b0b98",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "729363d2_fe600b51",
         "filename": "test/711-checker-type-conversion/src/Main.java",
         "patchSetId": 2
@@ -197,6 +365,30 @@
       "writtenOn": "2017-11-22T13:40:56Z",
       "side": 1,
       "message": "Why do you need this?",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddb68579_212e3756",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2017-11-22T18:33:35Z",
+      "side": 1,
+      "message": "Not really needed, just to make the code a little bit more realistic instead of doing back-to-back stores.",
+      "parentUuid": "729363d2_fe600b51",
       "range": {
         "startLine": 141,
         "startChar": 8,
