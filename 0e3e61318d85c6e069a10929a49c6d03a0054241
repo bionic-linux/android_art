@@ -137,6 +137,75 @@
       "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd68e361_3c124fe0",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-22T13:40:56Z",
+      "side": 1,
+      "message": "Why do you need this? If you want to avoid inlining, use the $noinline$ prefix.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8c7ee43_fb8b0b98",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-22T13:40:56Z",
+      "side": 1,
+      "message": "I assume this is intended to work around environment use in the BoundsCheck eliminated by static BCE. Maybe we should use fields rather than arrays for this test. Then we do not need to wait until $before_codegen.",
+      "range": {
+        "startLine": 140,
+        "startChar": 4,
+        "endLine": 140,
+        "endChar": 20
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "729363d2_fe600b51",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-22T13:40:56Z",
+      "side": 1,
+      "message": "Why do you need this?",
+      "range": {
+        "startLine": 141,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
