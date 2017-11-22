@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "325e40e7_d8063f8b",
+        "filename": "test/711-checker-type-conversion/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-22T19:04:32Z",
+      "side": 1,
+      "message": "That changed when we started inlining throwing functions and the standard workaround (\"if (doThrow) throw new Error();\") stopped working.",
+      "parentUuid": "62cdb799_9ae2be14",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 25
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8c7ee43_fb8b0b98",
         "filename": "test/711-checker-type-conversion/src/Main.java",
         "patchSetId": 2
