@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d604d4af_6f0586e1",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "Add comments.",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1088,
+        "endChar": 3
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf82058c_37f262f7",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "GetValue",
+      "range": {
+        "startLine": 1103,
+        "startChar": 29,
+        "endLine": 1103,
+        "endChar": 36
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68bd6876_c88ea716",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "GetValue",
+      "range": {
+        "startLine": 1108,
+        "startChar": 29,
+        "endLine": 1108,
+        "endChar": 36
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69979e5f_37c438c5",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "GetIndex",
+      "range": {
+        "startLine": 1114,
+        "startChar": 35,
+        "endLine": 1114,
+        "endChar": 45
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d44713_d8937bdb",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "GetValue",
+      "range": {
+        "startLine": 1115,
+        "startChar": 29,
+        "endLine": 1115,
+        "endChar": 39
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a66c2262_ca415654",
+        "filename": "compiler/optimizing/instruction_simplifier.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-22T09:04:51Z",
+      "side": 1,
+      "message": "Do you want a \"return false\" here?",
+      "range": {
+        "startLine": 1118,
+        "startChar": 0,
+        "endLine": 1121,
+        "endChar": 10
+      },
+      "revId": "0e3e61318d85c6e069a10929a49c6d03a0054241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
