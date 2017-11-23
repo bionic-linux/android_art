@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,24 +14,16 @@
  * limitations under the License.
  */
 
-package com.android.ahat;
+package com.android.amm.debug.jdwp;
 
-import com.android.ahat.heapdump.AhatInstance;
-import com.android.ahat.heapdump.AhatSnapshot;
 import java.io.IOException;
-import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+class JdwpException extends IOException {
+  public JdwpException(String msg) {
+    super(msg);
+  }
 
-public class NativeAllocationTest {
-
-  @Test
-  public void nativeAllocation() throws IOException {
-    TestDump dump = TestDump.getTestDump();
-
-    AhatSnapshot snapshot = dump.getAhatSnapshot();
-    AhatInstance referent = dump.getDumpedAhatInstance("anObject");
-    assertEquals(50000, referent.getSize().getModeledExternalSize());
+  public JdwpException(String msg, Exception cause) {
+    super(msg, cause);
   }
 }
-

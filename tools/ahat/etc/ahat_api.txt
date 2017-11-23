@@ -55,6 +55,7 @@ package com.android.ahat.heapdump {
   public abstract class AhatInstance implements com.android.ahat.heapdump.Diffable com.android.ahat.dominators.DominatorsComputation.Node {
     method public com.android.ahat.heapdump.AhatArrayInstance asArrayInstance();
     method public java.awt.image.BufferedImage asBitmap();
+    method public byte[] asByteArray();
     method public com.android.ahat.heapdump.AhatClassInstance asClassInstance();
     method public com.android.ahat.heapdump.AhatClassObj asClassObj();
     method public java.lang.String asString(int);
@@ -66,6 +67,7 @@ package com.android.ahat.heapdump {
     method public java.lang.String getDexCacheLocation(int);
     method public java.util.List<com.android.ahat.heapdump.AhatInstance> getDominated();
     method public java.lang.Object getDominatorsComputationState();
+    method public java.util.List<com.android.ahat.heapdump.ExternalModel> getExternalModels();
     method public com.android.ahat.heapdump.Value getField(java.lang.String);
     method public java.util.List<com.android.ahat.heapdump.AhatInstance> getHardReverseReferences();
     method public com.android.ahat.heapdump.AhatHeap getHeap();
@@ -100,6 +102,7 @@ package com.android.ahat.heapdump {
     method public com.android.ahat.heapdump.AhatSnapshot getBaseline();
     method public com.android.ahat.heapdump.AhatHeap getHeap(java.lang.String);
     method public java.util.List<com.android.ahat.heapdump.AhatHeap> getHeaps();
+    method public com.android.ahat.heapdump.ExternalModel.Source getModelSource();
     method public com.android.ahat.heapdump.Site getRootSite();
     method public java.util.List<com.android.ahat.heapdump.AhatInstance> getRooted();
     method public com.android.ahat.heapdump.Site getSite(long);
@@ -138,6 +141,19 @@ package com.android.ahat.heapdump {
     enum_constant public static final com.android.ahat.heapdump.DiffedFieldValue.Status ADDED;
     enum_constant public static final com.android.ahat.heapdump.DiffedFieldValue.Status DELETED;
     enum_constant public static final com.android.ahat.heapdump.DiffedFieldValue.Status MATCHED;
+  }
+
+  public class ExternalModel {
+    field public final long size;
+    field public final com.android.ahat.heapdump.AhatInstance source;
+  }
+
+  public static final class ExternalModel.Source extends java.lang.Enum {
+    method public static com.android.ahat.heapdump.ExternalModel.Source valueOf(java.lang.String);
+    method public static final com.android.ahat.heapdump.ExternalModel.Source[] values();
+    enum_constant public static final com.android.ahat.heapdump.ExternalModel.Source ACTIONABLE_MEMORY_METRIC;
+    enum_constant public static final com.android.ahat.heapdump.ExternalModel.Source NONE;
+    enum_constant public static final com.android.ahat.heapdump.ExternalModel.Source REGISTERED_NATIVE;
   }
 
   public class Field {
@@ -219,11 +235,11 @@ package com.android.ahat.heapdump {
   public class Size {
     ctor public Size(long, long);
     method public long getJavaSize();
-    method public long getRegisteredNativeSize();
+    method public long getModeledExternalSize();
     method public long getSize();
     method public boolean isZero();
     method public com.android.ahat.heapdump.Size plus(com.android.ahat.heapdump.Size);
-    method public com.android.ahat.heapdump.Size plusRegisteredNativeSize(long);
+    method public com.android.ahat.heapdump.Size plusModeledExternalSize(long);
     field public static com.android.ahat.heapdump.Size ZERO;
   }
 

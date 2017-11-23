@@ -44,14 +44,15 @@ public abstract class AhatInstance implements Diffable<AhatInstance>,
   // Bit vector of the root types of this object.
   private int mRootTypes;
 
-  // Field initialized via addRegisterednativeSize.
-  private long mRegisteredNativeSize = 0;
+  // Field initialized via addExternalModel.
+  // Set to null if there are no external models.
+  private List<ExternalModel> mExternalModels;
 
   // Fields initialized in computeReverseReferences().
   private AhatInstance mNextInstanceToGcRoot;
   private String mNextInstanceToGcRootField;
-  private ArrayList<AhatInstance> mHardReverseReferences;
-  private ArrayList<AhatInstance> mSoftReverseReferences;
+  private List<AhatInstance> mHardReverseReferences;
+  private List<AhatInstance> mSoftReverseReferences;
 
   // Fields initialized in DominatorsComputation.computeDominators().
   // mDominated - the list of instances immediately dominated by this instance.
@@ -101,7 +102,13 @@ public abstract class AhatInstance implements Diffable<AhatInstance>,
    * @return the shallow size of the object
    */
   public Size getSize() {
-    return new Size(mClassObj.getInstanceSize() + getExtraJavaSize(), mRegisteredNativeSize);
+    long external = 0;
+    if (mExternalModels != null) {
+      for (ExternalModel m : mExternalModels) {
+        external += m.size;
+      }
+    }
+    return new Size(mClassObj.getInstanceSize() + getExtraJavaSize(), external);
   }
 
   /**
@@ -149,10 +156,23 @@ public abstract class AhatInstance implements Diffable<AhatInstance>,
   }
 
   /**
-   * Increment the number of registered native bytes tied to this object.
+   * Add an external model for this instance.
    */
-  void addRegisteredNativeSize(long size) {
-    mRegisteredNativeSize += size;
+  void addExternalModel(long size, AhatInstance source) {
+    if (mExternalModels == null) {
+      mExternalModels = new ArrayList<ExternalModel>();
+    }
+    mExternalModels.add(new ExternalModel(size, source));
+  }
+
+  /**
+   * Returns a list of the external models for this instance.
+   * Returns null if there are no external models for this instance.
+   *
+   * @return list of external models
+   */
+  public List<ExternalModel> getExternalModels() {
+    return mExternalModels;
   }
 
   /**
@@ -562,10 +582,12 @@ public abstract class AhatInstance implements Diffable<AhatInstance>,
   @Override public abstract String toString();
 
   /**
-   * Read the byte[] value from an hprof Instance.
+   * Read the byte[] value from this instance.
    * Returns null if the instance is not a byte array.
+   *
+   * @return the byte[] value of this instance
    */
-  byte[] asByteArray() {
+  public byte[] asByteArray() {
     return null;
   }
 

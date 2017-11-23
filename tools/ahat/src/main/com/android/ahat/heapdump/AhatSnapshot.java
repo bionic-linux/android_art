@@ -36,6 +36,8 @@ public class AhatSnapshot implements Diffable<AhatSnapshot> {
 
   private AhatSnapshot mBaseline = this;
 
+  private ExternalModel.Source mModelSource;
+
   AhatSnapshot(SuperRoot root,
                Instances<AhatInstance> instances,
                List<AhatHeap> heaps,
@@ -45,11 +47,50 @@ public class AhatSnapshot implements Diffable<AhatSnapshot> {
     mHeaps = heaps;
     mRootSite = rootSite;
 
-    // Update registered native allocation size.
-    for (AhatInstance cleaner : mInstances) {
-      AhatInstance.RegisteredNativeAllocation nra = cleaner.asRegisteredNativeAllocation();
-      if (nra != null) {
-        nra.referent.addRegisteredNativeSize(nra.size);
+    // Check if we have an ActionableMemoryMetric snapshot in the heap.
+    mModelSource = ExternalModel.Source.NONE;
+    for (AhatInstance s : mInstances) {
+      if ("com.android.amm.Snapshot".equals(s.getClassName())) {
+        AhatInstance mss = s.getRefField("models");
+        if (mss != null && mss.isArrayInstance()) {
+          AhatArrayInstance mssa = mss.asArrayInstance();
+          for (Value vms : mssa.getValues()) {
+            AhatInstance ms = vms == null ? null : vms.asAhatInstance();
+            if (ms != null) {
+              AhatInstance mis = ms.getRefField("instances");
+              if (mis != null && mis.isArrayInstance()) {
+                AhatArrayInstance misa = mis.asArrayInstance();
+                for (Value vmi : misa.getValues()) {
+                  AhatInstance mi = vmi == null ? null : vmi.asAhatInstance();
+                  if (mi != null) {
+                    Value vs = mi.getField("size");
+                    long size = 0;
+                    if (vs != null && vs.isLong()) {
+                      size = vs.asLong();
+                    }
+                    AhatInstance obj = mi.getRefField("object");
+                    if (obj != null) {
+                      obj.addExternalModel(size, mi);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        mModelSource = ExternalModel.Source.ACTIONABLE_MEMORY_METRIC;
+        break;
+      }
+    }
+
+    if (mModelSource == ExternalModel.Source.NONE) {
+      // Use registered native size as the modeled external size.
+      for (AhatInstance cleaner : mInstances) {
+        AhatInstance.RegisteredNativeAllocation nra = cleaner.asRegisteredNativeAllocation();
+        if (nra != null) {
+          nra.referent.addExternalModel(nra.size, cleaner);
+          mModelSource = ExternalModel.Source.REGISTERED_NATIVE;
+        }
       }
     }
 
@@ -166,6 +207,16 @@ public class AhatSnapshot implements Diffable<AhatSnapshot> {
    */
   public boolean isDiffed() {
     return mBaseline != this;
+  }
+
+  /**
+   * Returns the model source used for determining model external sizes.
+   *
+   * @return model source used in this snapshot
+   * @see ExternalModel.Source
+   */
+  public ExternalModel.Source getModelSource() {
+    return mModelSource;
   }
 
   @Override public AhatSnapshot getBaseline() {

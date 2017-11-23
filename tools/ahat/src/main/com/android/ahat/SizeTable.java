@@ -46,7 +46,7 @@ class SizeTable {
     cols.add(left);
     cols.add(new Column("Java Size", Column.Align.RIGHT));
     cols.add(new Column("Δ", Column.Align.RIGHT, showDiff));
-    cols.add(new Column("Registered Native Size", Column.Align.RIGHT));
+    cols.add(new Column("Modeled External Size", Column.Align.RIGHT));
     cols.add(new Column("Δ", Column.Align.RIGHT, showDiff));
     cols.add(new Column("Total Size", Column.Align.RIGHT));
     cols.add(new Column("Δ", Column.Align.RIGHT, showDiff));
@@ -64,9 +64,9 @@ class SizeTable {
     vals.add(left);
     vals.add(DocString.size(size.getJavaSize(), false));
     vals.add(DocString.delta(false, false, size.getJavaSize(), base.getJavaSize()));
-    vals.add(DocString.size(size.getRegisteredNativeSize(), false));
+    vals.add(DocString.size(size.getModeledExternalSize(), false));
     vals.add(DocString.delta(false, false,
-          size.getRegisteredNativeSize(), base.getRegisteredNativeSize()));
+          size.getModeledExternalSize(), base.getModeledExternalSize()));
     vals.add(DocString.size(size.getSize(), false));
     vals.add(DocString.delta(false, false, size.getSize(), base.getSize()));
     vals.addAll(Arrays.asList(values));
@@ -76,7 +76,7 @@ class SizeTable {
   /**
    * Start a size table without a custom left column.
    *
-   * |Java Size|Native Size|...|Total Size|custom columns...|
+   * |Java Size|Modeled Size|...|Total Size|custom columns...|
    * This should be followed by calls to the 'row' method to fill in the table
    * contents and the 'end' method to end the table.
    *
