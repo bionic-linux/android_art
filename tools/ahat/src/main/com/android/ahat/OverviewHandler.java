@@ -47,6 +47,9 @@ class OverviewHandler implements AhatHandler {
     if (mBaseHprof != null) {
       doc.description(DocString.text("baseline hprof file"), DocString.text(mBaseHprof.toString()));
     }
+    doc.description(
+        DocString.text("Modeled External Size Source"),
+        DocString.text(mSnapshot.getModelSource().toString()));
     doc.end();
 
     doc.section("Bytes Retained by Heap");

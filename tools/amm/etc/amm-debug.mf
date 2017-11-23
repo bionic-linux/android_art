@@ -1,0 +1,4 @@
+Name: amm/
+Implementation-Title: amm
+Implementation-Version: 0.1
+Main-Class: com.android.amm.debug.Main

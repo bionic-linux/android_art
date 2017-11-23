@@ -27,7 +27,7 @@ package com.android.ahat.heapdump;
  */
 public class Size {
   private final long mJavaSize;
-  private final long mRegisteredNativeSize;
+  private final long mModeledExternalSize;
 
   /**
    * An instance of Size with 0 for all categories.
@@ -38,12 +38,12 @@ public class Size {
    * Constructs a new instance of Size.
    *
    * @param javaSize number of bytes in the java category
-   * @param registeredNativeSize number of bytes in the registeredNativeSize
+   * @param modeledExternalSize number of bytes in the modeledExternalSize
    *        category
    */
-  public Size(long javaSize, long registeredNativeSize) {
+  public Size(long javaSize, long modeledExternalSize) {
     mJavaSize = javaSize;
-    mRegisteredNativeSize = registeredNativeSize;
+    mModeledExternalSize = modeledExternalSize;
   }
 
   /**
@@ -52,7 +52,7 @@ public class Size {
    * @return the total size
    */
   public long getSize() {
-    return mJavaSize + mRegisteredNativeSize;
+    return mJavaSize + mModeledExternalSize;
   }
 
   /**
@@ -65,12 +65,12 @@ public class Size {
   }
 
   /**
-   * Returns the size of the registered native category.
+   * Returns the size of the modeled external category.
    *
-   * @return the registered native category size
+   * @return the modeled external category size
    */
-  public long getRegisteredNativeSize() {
-    return mRegisteredNativeSize;
+  public long getModeledExternalSize() {
+    return mModeledExternalSize;
   }
 
   /**
@@ -79,7 +79,7 @@ public class Size {
    * @return true if the size is zero
    */
   public boolean isZero() {
-    return mJavaSize == 0 && mRegisteredNativeSize == 0;
+    return mJavaSize == 0 && mModeledExternalSize == 0;
   }
 
   /**
@@ -95,25 +95,25 @@ public class Size {
       return this;
     } else {
       return new Size(mJavaSize + other.mJavaSize,
-          mRegisteredNativeSize + other.mRegisteredNativeSize);
+          mModeledExternalSize + other.mModeledExternalSize);
     }
   }
 
   /**
-   * Returns a new Size object that has <code>size</code> more registered
-   * native size than this Size object.
+   * Returns a new Size object that has <code>size</code> more modeled
+   * external size than this Size object.
    *
-   * @param size the size to add to the registered native category
+   * @param size the size to add to the modeled external category
    * @return the new size object
    */
-  public Size plusRegisteredNativeSize(long size) {
-    return new Size(mJavaSize, mRegisteredNativeSize + size);
+  public Size plusModeledExternalSize(long size) {
+    return new Size(mJavaSize, mModeledExternalSize + size);
   }
 
   @Override public boolean equals(Object other) {
     if (other instanceof Size) {
       Size s = (Size)other;
-      return mJavaSize == s.mJavaSize && mRegisteredNativeSize == s.mRegisteredNativeSize;
+      return mJavaSize == s.mJavaSize && mModeledExternalSize == s.mModeledExternalSize;
     }
     return false;
   }

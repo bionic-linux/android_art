@@ -17,8 +17,12 @@
 package com.android.ahat.heapdump;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
+import javax.imageio.ImageIO;
 
 /**
  * A typical Java object from a parsed heap dump.
@@ -164,7 +168,7 @@ public class AhatClassInstance extends AhatInstance {
   }
 
   @Override public AhatInstance getAssociatedBitmapInstance() {
-    return getBitmapInfo() == null ? null : this;
+    return asBitmap() == null ? null : this;
   }
 
   @Override public boolean isClassInstance() {
@@ -189,27 +193,38 @@ public class AhatClassInstance extends AhatInstance {
     return field == null ? null : field.asByteArray();
   }
 
-  private static class BitmapInfo {
-    public final int width;
-    public final int height;
-    public final byte[] buffer;
-
-    public BitmapInfo(int width, int height, byte[] buffer) {
-      this.width = width;
-      this.height = height;
-      this.buffer = buffer;
-    }
-  }
-
-  /**
-   * Return bitmap info for this object, or null if no appropriate bitmap
-   * info is available.
-   */
-  private BitmapInfo getBitmapInfo() {
+  @Override public BufferedImage asBitmap() {
     if (!isInstanceOfClass("android.graphics.Bitmap")) {
       return null;
     }
 
+    // See if we have an actionable memory metric bitmap model first, because
+    // that will be the best source for the bitmap image.
+    List<ExternalModel> models = getExternalModels();
+    if (models != null) {
+      for (ExternalModel model : models) {
+        if ("com.android.amm.BitmapModel$Instance".equals(model.source.getClassName())) {
+          AhatInstance png = model.source.getRefField("png");
+          if (png != null) {
+            byte[] data = png.asByteArray();
+            if (data != null) {
+              try {
+                BufferedImage image = ImageIO.read(new ByteArrayInputStream(data));
+                if (image != null) {
+                  return image;
+                }
+              } catch (IOException ioe) {
+                throw new AssertionError("ByteArrayInputStream threw IOException", ioe);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // We didn't find an actionable memory metric bitmap model. See if the
+    // pixel data is Java, assume it is in ARGB_8888 format, and hope for the
+    // best.
     Integer width = getIntField("mWidth", null);
     if (width == null) {
       return null;
@@ -229,30 +244,20 @@ public class AhatClassInstance extends AhatInstance {
       return null;
     }
 
-    return new BitmapInfo(width, height, buffer);
-
-  }
-
-  @Override public BufferedImage asBitmap() {
-    BitmapInfo info = getBitmapInfo();
-    if (info == null) {
-      return null;
-    }
-
     // Convert the raw data to an image
     // Convert BGRA to ABGR
-    int[] abgr = new int[info.height * info.width];
+    int[] abgr = new int[height * width];
     for (int i = 0; i < abgr.length; i++) {
       abgr[i] = (
-          (((int) info.buffer[i * 4 + 3] & 0xFF) << 24)
-          + (((int) info.buffer[i * 4 + 0] & 0xFF) << 16)
-          + (((int) info.buffer[i * 4 + 1] & 0xFF) << 8)
-          + ((int) info.buffer[i * 4 + 2] & 0xFF));
+          (((int) buffer[i * 4 + 3] & 0xFF) << 24)
+          + (((int) buffer[i * 4 + 0] & 0xFF) << 16)
+          + (((int) buffer[i * 4 + 1] & 0xFF) << 8)
+          + ((int) buffer[i * 4 + 2] & 0xFF));
     }
 
     BufferedImage bitmap = new BufferedImage(
-        info.width, info.height, BufferedImage.TYPE_4BYTE_ABGR);
-    bitmap.setRGB(0, 0, info.width, info.height, abgr, 0, info.width);
+        width, height, BufferedImage.TYPE_4BYTE_ABGR);
+    bitmap.setRGB(0, 0, width, height, abgr, 0, width);
     return bitmap;
   }
 

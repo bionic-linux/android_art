@@ -24,6 +24,7 @@ import com.android.ahat.heapdump.AhatInstance;
 import com.android.ahat.heapdump.AhatSnapshot;
 import com.android.ahat.heapdump.DiffFields;
 import com.android.ahat.heapdump.DiffedFieldValue;
+import com.android.ahat.heapdump.ExternalModel;
 import com.android.ahat.heapdump.FieldValue;
 import com.android.ahat.heapdump.PathElement;
 import com.android.ahat.heapdump.RootType;
@@ -89,6 +90,17 @@ class ObjectHandler implements AhatHandler {
         comma = ", ";
       }
       doc.description(DocString.text("Root Types"), types);
+    }
+
+    List<ExternalModel> models = inst.getExternalModels();
+    if (models != null) {
+      DocString description = new DocString();
+      String comma = "";
+      for (ExternalModel model : models) {
+        description.append(comma);
+        description.append(Summarizer.summarize(model.source));
+      }
+      doc.description(DocString.text("External Models"), description);
     }
 
     doc.end();
