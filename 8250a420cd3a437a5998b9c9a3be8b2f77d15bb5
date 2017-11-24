@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "db866148_dc696f82",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-24T14:12:44Z",
+      "side": 1,
+      "message": "I\u0027ll keep it consistent for now by resolving (as you noted line 643), but I\u0027ve filed b/69729089 to fix this.",
+      "parentUuid": "6b673cb0_0a135bff",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 624,
+        "endChar": 54
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e952870_936e457f",
         "filename": "runtime/common_throws.cc",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Split the method? Replace the \"ArtMethod* method\" parameter with code item and quickened info data. Deal with the method-specific stuff (method-\u003eGetQuickenedInfo() and method-\u003eGetCodeItem()) in ArtMethod.",
       "parentUuid": "86b0fc4c_11f6581d",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "8250a420cd3a437a5998b9c9a3be8b2f77d15bb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95e5f275_0aaaa094",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-24T14:12:44Z",
+      "side": 1,
+      "message": "Decided to move all of this to ArtMethod.",
+      "parentUuid": "83fb78ba_1479f6a2",
       "range": {
         "startLine": 362,
         "startChar": 2,
