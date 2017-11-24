@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb4778a_2eb12dd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-24T15:11:52Z",
+      "side": 1,
+      "message": "Why only --64? I think we should test that it works for 32-bit tests as well.",
+      "range": {
+        "startLine": 17,
+        "startChar": 32,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "4a7ab02e4df771b2f3bf989eb8cbdf247178632f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
