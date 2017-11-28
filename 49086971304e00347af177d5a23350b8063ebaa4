@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e6ecbc3_de3cd028",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-28T09:14:00Z",
+      "side": 1,
+      "message": "Is that the right change (compiling intrinsics)? I would have thought https://android-review.googlesource.com/#/c/platform/art/+/543939/ is more likely to have fixed it?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "49086971304e00347af177d5a23350b8063ebaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
