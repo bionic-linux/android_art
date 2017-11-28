@@ -22,6 +22,30 @@
       "revId": "49086971304e00347af177d5a23350b8063ebaa4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d379c50_6e1788f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-11-28T10:16:35Z",
+      "side": 1,
+      "message": "Correct. I guess I have copy-pasted from the wrong tab.",
+      "parentUuid": "5e6ecbc3_de3cd028",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "49086971304e00347af177d5a23350b8063ebaa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
