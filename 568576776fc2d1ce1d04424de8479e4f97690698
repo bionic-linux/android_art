@@ -46,6 +46,30 @@
       "revId": "568576776fc2d1ce1d04424de8479e4f97690698",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e394ec_339d1416",
+        "filename": "test/626-checker-arm64-scratch-register/smali/Smali.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-11-29T22:06:18Z",
+      "side": 1,
+      "message": "./art/test/run-test --64 --optimizing 626-checker-arm64-scratch-register   \n\nOn a bullhead.",
+      "parentUuid": "5076bae3_f56319cb",
+      "range": {
+        "startLine": 1317,
+        "startChar": 43,
+        "endLine": 1317,
+        "endChar": 82
+      },
+      "revId": "568576776fc2d1ce1d04424de8479e4f97690698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
