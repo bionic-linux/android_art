@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6b90a48_7de0f953",
+        "filename": "test/626-checker-arm64-scratch-register/smali/Smali.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-29T10:16:27Z",
+      "side": 1,
+      "message": "Roland, do you remember what that check was for?",
+      "range": {
+        "startLine": 1317,
+        "startChar": 0,
+        "endLine": 1317,
+        "endChar": 83
+      },
+      "revId": "0af383dce5a3db7151a537988930e8e4e0c04cf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
