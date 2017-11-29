@@ -22,6 +22,30 @@
       "revId": "0af383dce5a3db7151a537988930e8e4e0c04cf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f75dd8f7_707e6df2",
+        "filename": "test/626-checker-arm64-scratch-register/smali/Smali.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-11-29T19:51:16Z",
+      "side": 1,
+      "message": "The whole test is a non-regression test for bug 32545705. I initially annotated all the moves in this ParallelMove HIR instruction with the intent to track any change here, which could be possibly related to the ARM64 (no-swap) parallel move resolver and the VIXL scratch pool allocation policy, as they were the source of a couple of issues in the past.\n\nThe Smali implementations from this CL seems to produce code very different from the one in the original test (in https://android-review.googlesource.com/#/c/platform/art/+/317590/4/test/626-checker-arm64-scratch-register/src/Main.java) and I\u0027m not sure it still exercises the original issue.\n\nCould we make the Smali implementation closer to the original, i.e., such that it produces the same ARM64 code?",
+      "parentUuid": "a6b90a48_7de0f953",
+      "range": {
+        "startLine": 1317,
+        "startChar": 0,
+        "endLine": 1317,
+        "endChar": 83
+      },
+      "revId": "0af383dce5a3db7151a537988930e8e4e0c04cf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
