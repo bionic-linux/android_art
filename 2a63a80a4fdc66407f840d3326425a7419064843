@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e0f6943_5f660d6c",
+        "filename": "compiler/debug/elf_debug_loc_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-11-29T14:42:04Z",
+      "side": 1,
+      "message": "I\u0027d be more affirmative:\n\"This can indicate either a bug in the dexer when generating local variable information, or a bug in ART compiler. Please file a bug at go/art-bug)\".",
+      "range": {
+        "startLine": 255,
+        "startChar": 26,
+        "endLine": 255,
+        "endChar": 80
+      },
+      "revId": "2a63a80a4fdc66407f840d3326425a7419064843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
