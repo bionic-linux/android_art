@@ -46,6 +46,30 @@
       "revId": "0af383dce5a3db7151a537988930e8e4e0c04cf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "175b865c_0e0d1e42",
+        "filename": "test/626-checker-arm64-scratch-register/smali/Smali.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-11-29T22:03:29Z",
+      "side": 1,
+      "message": "We already have the previous version above. I added the D8 generated code for completeness. If it is not useful, I say we just remove testD8()?",
+      "parentUuid": "f75dd8f7_707e6df2",
+      "range": {
+        "startLine": 1317,
+        "startChar": 0,
+        "endLine": 1317,
+        "endChar": 83
+      },
+      "revId": "0af383dce5a3db7151a537988930e8e4e0c04cf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
