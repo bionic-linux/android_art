@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ec1e6f1_0084bb8a",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-04T15:15:19Z",
+      "side": 1,
+      "message": "Add DHCECK(environment !\u003d nullptr) ?",
+      "revId": "89fee0079e546a35ee5b7e14e46482699cba9df6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
