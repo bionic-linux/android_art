@@ -32,6 +32,7 @@
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wredundant-decls"
+#define MALLOC_ALIGNMENT 16
 #include "../../external/dlmalloc/malloc.h"
 #pragma GCC diagnostic pop
 

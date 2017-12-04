@@ -977,7 +977,6 @@ class ImageSpaceLoader {
       // The bit for the array contents is different than the bit for the array. Since we may have
       // already visited the array as a long / int array from walking the bitmap without knowing it
       // was a pointer array.
-      static_assert(kObjectAlignment == 8u, "array bit may be in another object");
       mirror::Object* const contents_bit = reinterpret_cast<mirror::Object*>(
           reinterpret_cast<uintptr_t>(array) + kObjectAlignment);
       // If the bit is not set then the contents have not yet been updated.

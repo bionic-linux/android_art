@@ -163,7 +163,7 @@ class BumpPointerSpace FINAL : public ContinuousMemMapAllocSpace {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   // Object alignment within the space.
-  static constexpr size_t kAlignment = 8;
+  static constexpr size_t kAlignment = kObjectAlignment;
 
  protected:
   BumpPointerSpace(const std::string& name, MemMap* mem_map);
@@ -189,7 +189,7 @@ class BumpPointerSpace FINAL : public ContinuousMemMapAllocSpace {
   size_t num_blocks_ GUARDED_BY(block_lock_);
 
  private:
-  struct BlockHeader {
+  struct PACKED(16) BlockHeader {
     size_t size_;  // Size of the block in bytes, does not include the header.
     size_t unused_;  // Ensures alignment of kAlignment.
   };

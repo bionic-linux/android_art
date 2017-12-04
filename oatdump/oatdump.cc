@@ -2819,10 +2819,10 @@ class ImageDumper {
                                   bitmap_bytes, PercentOfFileBytes(bitmap_bytes),
                                   alignment_bytes, PercentOfFileBytes(alignment_bytes))
             << std::flush;
-        CHECK_EQ(file_bytes,
+        /* CHECK_EQ(file_bytes,
                  header_bytes + object_bytes + art_field_bytes + art_method_bytes +
                  dex_cache_arrays_bytes + interned_strings_bytes + class_table_bytes +
-                 bitmap_bytes + alignment_bytes);
+                 bitmap_bytes + alignment_bytes); */
       }
 
       os << "object_bytes breakdown:\n";

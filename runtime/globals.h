@@ -45,7 +45,7 @@ static inline bool CanDoImplicitNullCheckOn(uintptr_t offset) {
 }
 
 // Required object alignment
-static constexpr size_t kObjectAlignmentShift = 3;
+static constexpr size_t kObjectAlignmentShift = 4;
 static constexpr size_t kObjectAlignment = 1u << kObjectAlignmentShift;
 static constexpr size_t kLargeObjectAlignment = kPageSize;
 

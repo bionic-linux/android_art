@@ -106,7 +106,7 @@ DEFINE_CHECK_EQ(static_cast<int32_t>(LOCK_WORD_THIN_LOCK_COUNT_ONE), (static_cas
 DEFINE_CHECK_EQ(static_cast<uint32_t>(LOCK_WORD_STATE_FORWARDING_ADDRESS), (static_cast<uint32_t>(art::LockWord::kStateForwardingAddress)))
 #define LOCK_WORD_STATE_FORWARDING_ADDRESS_OVERFLOW 0x40000000
 DEFINE_CHECK_EQ(static_cast<uint32_t>(LOCK_WORD_STATE_FORWARDING_ADDRESS_OVERFLOW), (static_cast<uint32_t>(art::LockWord::kStateForwardingAddressOverflow)))
-#define LOCK_WORD_STATE_FORWARDING_ADDRESS_SHIFT 0x3
+#define LOCK_WORD_STATE_FORWARDING_ADDRESS_SHIFT 0x4
 DEFINE_CHECK_EQ(static_cast<uint32_t>(LOCK_WORD_STATE_FORWARDING_ADDRESS_SHIFT), (static_cast<uint32_t>(art::LockWord::kForwardingAddressShift)))
 #define LOCK_WORD_GC_STATE_MASK_SHIFTED 0x30000000
 DEFINE_CHECK_EQ(static_cast<uint32_t>(LOCK_WORD_GC_STATE_MASK_SHIFTED), (static_cast<uint32_t>(art::LockWord::kGCStateMaskShifted)))
@@ -120,11 +120,11 @@ DEFINE_CHECK_EQ(static_cast<int32_t>(LOCK_WORD_MARK_BIT_SHIFT), (static_cast<int
 DEFINE_CHECK_EQ(static_cast<uint32_t>(LOCK_WORD_MARK_BIT_MASK_SHIFTED), (static_cast<uint32_t>(art::LockWord::kMarkBitStateMaskShifted)))
 #define STD_MEMORY_ORDER_RELAXED 0
 DEFINE_CHECK_EQ(static_cast<int32_t>(STD_MEMORY_ORDER_RELAXED), (static_cast<int32_t>(std::memory_order_relaxed)))
-#define OBJECT_ALIGNMENT_MASK 0x7
+#define OBJECT_ALIGNMENT_MASK 0xf
 DEFINE_CHECK_EQ(static_cast<size_t>(OBJECT_ALIGNMENT_MASK), (static_cast<size_t>(art::kObjectAlignment - 1)))
-#define OBJECT_ALIGNMENT_MASK_TOGGLED 0xfffffff8
+#define OBJECT_ALIGNMENT_MASK_TOGGLED 0xfffffff0
 DEFINE_CHECK_EQ(static_cast<uint32_t>(OBJECT_ALIGNMENT_MASK_TOGGLED), (static_cast<uint32_t>(~static_cast<uint32_t>(art::kObjectAlignment - 1))))
-#define OBJECT_ALIGNMENT_MASK_TOGGLED64 0xfffffffffffffff8
+#define OBJECT_ALIGNMENT_MASK_TOGGLED64 0xfffffffffffffff0
 DEFINE_CHECK_EQ(static_cast<uint64_t>(OBJECT_ALIGNMENT_MASK_TOGGLED64), (static_cast<uint64_t>(~static_cast<uint64_t>(art::kObjectAlignment - 1))))
 #define ACC_OBSOLETE_METHOD 262144
 DEFINE_CHECK_EQ(static_cast<int32_t>(ACC_OBSOLETE_METHOD), (static_cast<int32_t>(art::kAccObsoleteMethod)))

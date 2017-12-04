@@ -1827,6 +1827,7 @@ void ImageWriter::CalculateNewObjectOffsets() {
         }
         default: {
           // Normal alignment.
+          break;
         }
       }
       image_info.bin_slot_offsets_[i] = bin_offset;
@@ -1841,6 +1842,7 @@ void ImageWriter::CalculateNewObjectOffsets() {
   size_t image_offset = 0;
   for (ImageInfo& image_info : image_infos_) {
     image_info.image_begin_ = global_image_begin_ + image_offset;
+    DCHECK_ALIGNED(image_info.image_begin_, kObjectAlignment);
     image_info.image_offset_ = image_offset;
     ImageSection unused_sections[ImageHeader::kSectionCount];
     image_info.image_size_ =
@@ -2227,6 +2229,8 @@ void ImageWriter::CopyAndFixupObject(Object* obj) {
   DCHECK_LT(offset, image_info.image_end_);
   const auto* src = reinterpret_cast<const uint8_t*>(obj);
 
+  DCHECK_ALIGNED(dst, kObjectAlignment);
+  DCHECK_ALIGNED(src, kObjectAlignment);
   image_info.image_bitmap_->Set(dst);  // Mark the obj as live.
 
   const size_t n = obj->SizeOf();
