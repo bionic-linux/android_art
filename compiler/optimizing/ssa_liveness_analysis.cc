@@ -474,6 +474,9 @@ size_t LiveInterval::NumberOfSpillSlotsNeeded() const {
   // For a SIMD operation, compute the number of needed spill slots.
   // TODO: do through vector type?
   HInstruction* definition = GetParent()->GetDefinedBy();
+
+  // Bug is here: an interval holding a SIMD wide value may be defined not only by a VecOperation
+  // but by a Phi as well. For a phi we can't tell whether it holds a floating point or SIMD value.
   if (definition != nullptr &&
       definition->IsVecOperation() &&
       !definition->IsVecExtractScalar()) {
