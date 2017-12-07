@@ -1,0 +1,3 @@
+Regression test for the compiler's schduler, which used to
+re-order field access in a way that would confuse the runtime
+when validating a NPE.
