@@ -79,8 +79,6 @@ class SchedulingLatencyVisitorARM : public SchedulingLatencyVisitor {
   M(Condition        , unused)                   \
   M(Compare          , unused)                   \
   M(BoundsCheck      , unused)                   \
-  M(InstanceFieldGet , unused)                   \
-  M(InstanceFieldSet , unused)                   \
   M(InstanceOf       , unused)                   \
   M(Invoke           , unused)                   \
   M(LoadString       , unused)                   \
@@ -152,7 +150,7 @@ class HSchedulerARM : public HScheduler {
       FOR_EACH_CONCRETE_INSTRUCTION_ARM(CASE_INSTRUCTION_KIND)
         return true;
       default:
-        return HScheduler::IsSchedulable(instruction);
+        return HScheduler::DefaultIsSchedulable(instruction);
     }
 #undef CASE_INSTRUCTION_KIND
   }
