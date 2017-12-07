@@ -462,7 +462,8 @@ class HScheduler {
   // containing basic block from being scheduled.
   // This method is used to restrict scheduling to instructions that we know are
   // safe to handle.
-  virtual bool IsSchedulable(const HInstruction* instruction) const;
+  bool DefaultIsSchedulable(const HInstruction* instruction) const;
+  virtual bool IsSchedulable(const HInstruction* instruction) const = 0;
   bool IsSchedulable(const HBasicBlock* block) const;
 
   void CalculateLatency(SchedulingNode* node) {
