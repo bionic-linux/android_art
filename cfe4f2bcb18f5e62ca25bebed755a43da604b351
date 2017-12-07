@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03622e01_1fdb3114",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-07T18:35:00Z",
+      "side": 1,
+      "message": "yes good catch. for a Phi we need to check the 2nd input operand to see what feeds in; I will send out a fix. Thanks!\n\nAnd yes, we really need to start working on having SIMD types properly.....",
+      "revId": "cfe4f2bcb18f5e62ca25bebed755a43da604b351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
