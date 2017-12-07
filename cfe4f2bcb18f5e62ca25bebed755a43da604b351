@@ -16,6 +16,24 @@
       "revId": "cfe4f2bcb18f5e62ca25bebed755a43da604b351",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "422b4a82_bcf8c2b0",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2017-12-07T19:17:58Z",
+      "side": 1,
+      "message": "No problem!\nIt would be quite fragile to rely on it, right? In theory (it will not happen now) it could be possible that both inputs are other phis with SIMD values (due to some transformation, etc), which leads to arbitrary depth of finding an original VecOp.\n\nBtw the same problem will occur if we try to query the \"defined_by\" for checking SIMD values live across a call.",
+      "parentUuid": "03622e01_1fdb3114",
+      "revId": "cfe4f2bcb18f5e62ca25bebed755a43da604b351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
