@@ -34,6 +34,24 @@
       "revId": "cfe4f2bcb18f5e62ca25bebed755a43da604b351",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbbb10a8_b061f639",
+        "filename": "compiler/optimizing/ssa_liveness_analysis.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-07T19:23:06Z",
+      "side": 1,
+      "message": "Yes, it is fragile but correct for now. Having true SIMD types is the answer in the long run.\n\nI just send out a fix (for this case).",
+      "parentUuid": "422b4a82_bcf8c2b0",
+      "revId": "cfe4f2bcb18f5e62ca25bebed755a43da604b351",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
