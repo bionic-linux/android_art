@@ -113,10 +113,6 @@ void SchedulingLatencyVisitorARM64::VisitDiv(HDiv* instr) {
   }
 }
 
-void SchedulingLatencyVisitorARM64::VisitInstanceFieldGet(HInstanceFieldGet* ATTRIBUTE_UNUSED) {
-  last_visited_latency_ = kArm64MemoryLoadLatency;
-}
-
 void SchedulingLatencyVisitorARM64::VisitInstanceOf(HInstanceOf* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArm64CallInternalLatency;
   last_visited_latency_ = kArm64IntegerOpLatency;

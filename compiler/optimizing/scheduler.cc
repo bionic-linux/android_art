@@ -654,7 +654,7 @@ void HScheduler::Schedule(HInstruction* instruction) {
   }
 }
 
-bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
+bool HScheduler::DefaultIsSchedulable(const HInstruction* instruction) const {
   // We want to avoid exhaustively listing all instructions, so we first check
   // for instruction categories that we know are safe.
   if (instruction->IsControlFlow() ||
@@ -704,6 +704,10 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
   //    HTryBoundary
   // TODO: Some of the instructions above may be safe to schedule (maybe as
   // scheduling barriers).
+  // TODO: InstanceField{Get,Set} could be scheduled, but the runtime method
+  // ThrowNullPointerExceptionFromDexPC checks whether a NullCheck does match
+  // the field offset references in the dex code. If we reorder field accesses,
+  // that may not be the case anymore.
   return instruction->IsArrayGet() ||
       instruction->IsArraySet() ||
       instruction->IsArrayLength() ||
@@ -713,8 +717,6 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
       instruction->IsClassTableGet() ||
       instruction->IsCurrentMethod() ||
       instruction->IsDivZeroCheck() ||
-      (instruction->IsInstanceFieldGet() && !instruction->AsInstanceFieldGet()->IsVolatile()) ||
-      (instruction->IsInstanceFieldSet() && !instruction->AsInstanceFieldSet()->IsVolatile()) ||
       instruction->IsInstanceOf() ||
       instruction->IsInvokeInterface() ||
       instruction->IsInvokeStaticOrDirect() ||

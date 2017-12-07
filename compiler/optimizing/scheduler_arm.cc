@@ -851,14 +851,6 @@ void SchedulingLatencyVisitorARM::VisitDiv(HDiv* instruction) {
   }
 }
 
-void SchedulingLatencyVisitorARM::VisitInstanceFieldGet(HInstanceFieldGet* instruction) {
-  HandleFieldGetLatencies(instruction, instruction->GetFieldInfo());
-}
-
-void SchedulingLatencyVisitorARM::VisitInstanceFieldSet(HInstanceFieldSet* instruction) {
-  HandleFieldSetLatencies(instruction, instruction->GetFieldInfo());
-}
-
 void SchedulingLatencyVisitorARM::VisitInstanceOf(HInstanceOf* ATTRIBUTE_UNUSED) {
   last_visited_internal_latency_ = kArmCallInternalLatency;
   last_visited_latency_ = kArmIntegerOpLatency;
