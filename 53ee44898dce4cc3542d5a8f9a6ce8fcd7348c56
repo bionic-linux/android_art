@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abfca2ae_d87fe81b",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:05:35Z",
+      "side": 1,
+      "message": "Change doCheck to volatile to prevent the compiler from turning this into an\n\n  if (doCheck) while(true) { ... }",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "910174c4_be054f79",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:05:35Z",
+      "side": 1,
+      "message": "Peeling the first iteration would interfere with this test as it would take the NullCheck out of the loop and we schedule only instructions that are actually inside a loop.",
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95414606_22f525d6",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:05:35Z",
+      "side": 1,
+      "message": "tws",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 8
+      },
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cec7722_a0c11219",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:05:35Z",
+      "side": 1,
+      "message": "tws; remove the entire line.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
