@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "227575bd_46a30f65",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:20:52Z",
+      "side": 1,
+      "message": "It would allow LICM to take the NullCheck out of the loop and we would no longer test the scheduling anymore.\n\nThis is essentially the same concern as below.",
+      "parentUuid": "8a1af637_461c28f0",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "910174c4_be054f79",
         "filename": "test/671-field-schedule/src/Main.java",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Right, though I don\u0027t see how we can prevent this, except a marker $nopeeling$ ?",
       "parentUuid": "910174c4_be054f79",
+      "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "387acbcc_9de55478",
+        "filename": "test/671-field-schedule/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T11:20:52Z",
+      "side": 1,
+      "message": "I can now think of other optimizations that would invalidate this test. I guess we would have to explicitly specify the optimization passes if we wanted to make sure future optimizations do not invalidate this regression test.\n\nIn the end I think it\u0027s OK to submit as is.",
+      "parentUuid": "f3f35a47_8bc81e92",
       "revId": "53ee44898dce4cc3542d5a8f9a6ce8fcd7348c56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
