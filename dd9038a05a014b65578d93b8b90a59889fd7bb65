@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b093b3b_e9063509",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T14:33:06Z",
+      "side": 1,
+      "message": "check",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "dd9038a05a014b65578d93b8b90a59889fd7bb65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fe0b8b0_298b4e6c",
+        "filename": "test/671-npe-field-opts/src/.Main.java.swp",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-08T14:33:06Z",
+      "side": 1,
+      "message": "Remove this file.",
+      "revId": "dd9038a05a014b65578d93b8b90a59889fd7bb65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
