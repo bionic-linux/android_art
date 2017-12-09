@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b8a3379_4ca93570",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-09T13:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66fa3ae4_30886990",
+      "range": {
+        "startLine": 76,
+        "startChar": 10,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "711049bcc77354534ec2e96fa31e221eef514617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14aac72b_bff0526c",
         "filename": "build/Android.gtest.mk",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-08T16:26:19Z",
       "side": 1,
       "message": "Did you really mean to modify the MainStripped rule?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "711049bcc77354534ec2e96fa31e221eef514617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ee83d03e_4996678d",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-09T13:39:04Z",
+      "side": 1,
+      "message": "No, bad copy/paste.",
+      "parentUuid": "14aac72b_bff0526c",
       "range": {
         "startLine": 86,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "24d74955_10cb7eb3",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-09T13:39:04Z",
+      "side": 1,
+      "message": "Bad copy/paste again, fixed.",
+      "parentUuid": "1ae1a9ca_04cc6fd8",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "711049bcc77354534ec2e96fa31e221eef514617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f14dd5fc_2c7bf391",
         "filename": "dex2oat/linker/oat_writer_test.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-08T16:26:19Z",
       "side": 1,
       "message": "Add trailing \"s\".",
+      "range": {
+        "startLine": 189,
+        "startChar": 41,
+        "endLine": 189,
+        "endChar": 61
+      },
+      "revId": "711049bcc77354534ec2e96fa31e221eef514617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcef6f4a_9d5401a7",
+        "filename": "dex2oat/linker/oat_writer_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-09T13:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14dd5fc_2c7bf391",
       "range": {
         "startLine": 189,
         "startChar": 41,
