@@ -22,6 +22,30 @@
       "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f03ab0ab_ed5dfac0",
+        "filename": "test/667-jit-jni-stub/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-11T14:10:44Z",
+      "side": 1,
+      "message": "It\u0027s a bit arbitrary but yes, I decided to give it more time from the point we reach the maximum number of calls above (not during the ramp-up). I\u0027m not very keen on introducing an extra variable.",
+      "parentUuid": "954480e0_b2b7ef5f",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
