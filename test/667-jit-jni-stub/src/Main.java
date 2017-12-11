@@ -141,7 +141,7 @@ public class Main {
       }
       try {
         // Sleep to give a chance for the JIT to compile `hasJit` stub.
-        Thread.sleep(100);
+        Thread.sleep(count >= 12 ? 200 : 100);
       } catch (Exception e) {
         // Ignore
       }
