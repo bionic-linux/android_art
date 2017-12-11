@@ -46,6 +46,30 @@
       "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd93dbb3_7be78d8a",
+        "filename": "test/667-jit-jni-stub/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2017-12-11T14:51:55Z",
+      "side": 1,
+      "message": "I think a constant (with a comment saying that this choice is a bit arbitrary on purpose) would be good here.",
+      "parentUuid": "f03ab0ab_ed5dfac0",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
