@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "954480e0_b2b7ef5f",
+        "filename": "test/667-jit-jni-stub/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-11T13:59:28Z",
+      "side": 1,
+      "message": "where does that 12 come from? Is it related to the 12 line 138? Should you introduce a variable instead?",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
