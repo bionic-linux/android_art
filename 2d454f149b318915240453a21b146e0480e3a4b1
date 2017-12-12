@@ -70,6 +70,30 @@
       "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0e323c7_094cc86f",
+        "filename": "test/667-jit-jni-stub/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2017-12-12T14:27:18Z",
+      "side": 1,
+      "message": "I\u0027ve introduced the constant. But now that the two are tied together, I\u0027m not going to use the word \"arbitrary\" anymore.",
+      "parentUuid": "dd93dbb3_7be78d8a",
+      "range": {
+        "startLine": 144,
+        "startChar": 30,
+        "endLine": 144,
+        "endChar": 32
+      },
+      "revId": "2d454f149b318915240453a21b146e0480e3a4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
