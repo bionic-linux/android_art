@@ -1587,9 +1587,7 @@ std::unique_ptr<ImageSpace> ImageSpace::CreateBootImage(const char* image_locati
     if (!Runtime::Current()->IsImageDex2OatEnabled()) {
       local_error_msg = "Patching disabled.";
     } else if (secondary_image) {
-      // We really want a working image. Prune and restart.
-      PruneDalvikCache(image_isa);
-      _exit(1);
+      local_error_msg = "Cannot patch a secondary image.";
     } else if (ImageCreationAllowed(is_global_cache, image_isa, &local_error_msg)) {
       bool patch_success =
           RelocateImage(image_location, cache_filename.c_str(), image_isa, &local_error_msg);
@@ -1657,34 +1655,33 @@ std::unique_ptr<ImageSpace> ImageSpace::CreateBootImage(const char* image_locati
   return nullptr;
 }
 
-bool ImageSpace::LoadBootImage(const std::string& image_file_name,
-                               const InstructionSet image_instruction_set,
-                               std::vector<space::ImageSpace*>* boot_image_spaces,
-                               uint8_t** oat_file_end) {
+bool ImageSpace::LoadBootImageLoop(const std::string& image_file_name,
+                                   const InstructionSet image_instruction_set,
+                                   std::vector<space::ImageSpace*>* boot_image_spaces,
+                                   uint8_t** oat_file_end,
+                                   /* out */ std::string* error_msg,
+                                   /* out */ std::string* failed_image_name) {
   DCHECK(boot_image_spaces != nullptr);
   DCHECK(boot_image_spaces->empty());
   DCHECK(oat_file_end != nullptr);
   DCHECK_NE(image_instruction_set, InstructionSet::kNone);
-
-  if (image_file_name.empty()) {
-    return false;
-  }
+  DCHECK(error_msg != nullptr);
+  DCHECK(failed_image_name != nullptr);
+  DCHECK(!image_file_name.empty());
 
   // For code reuse, handle this like a work queue.
-  std::vector<std::string> image_file_names;
-  image_file_names.push_back(image_file_name);
+  std::vector<std::string> image_file_names = { image_file_name };
 
   bool error = false;
   uint8_t* oat_file_end_tmp = *oat_file_end;
 
   for (size_t index = 0; index < image_file_names.size(); ++index) {
     std::string& image_name = image_file_names[index];
-    std::string error_msg;
     std::unique_ptr<space::ImageSpace> boot_image_space_uptr = CreateBootImage(
         image_name.c_str(),
         image_instruction_set,
         index > 0,
-        &error_msg);
+        error_msg);
     if (boot_image_space_uptr != nullptr) {
       space::ImageSpace* boot_image_space = boot_image_space_uptr.release();
       boot_image_spaces->push_back(boot_image_space);
@@ -1712,9 +1709,7 @@ bool ImageSpace::LoadBootImage(const std::string& image_file_name,
       }
     } else {
       error = true;
-      LOG(ERROR) << "Could not create image space with image file '" << image_file_name << "'. "
-          << "Attempting to fall back to imageless running. Error was: " << error_msg
-          << "\nAttempted image: " << image_name;
+      *failed_image_name = image_name;
       break;
     }
   }
@@ -1730,6 +1725,49 @@ bool ImageSpace::LoadBootImage(const std::string& image_file_name,
 
   *oat_file_end = oat_file_end_tmp;
   return true;
+}
+
+bool ImageSpace::LoadBootImage(const std::string& image_file_name,
+                               const InstructionSet image_instruction_set,
+                               std::vector<space::ImageSpace*>* boot_image_spaces,
+                               uint8_t** oat_file_end) {
+  DCHECK(boot_image_spaces != nullptr);
+  DCHECK(boot_image_spaces->empty());
+  DCHECK(oat_file_end != nullptr);
+  DCHECK_NE(image_instruction_set, InstructionSet::kNone);
+
+  if (image_file_name.empty()) {
+    return false;
+  }
+
+  std::string error_msg;
+  std::string failed_image_name;
+  if (LIKELY(LoadBootImageLoop(image_file_name,
+                               image_instruction_set,
+                               boot_image_spaces,
+                               oat_file_end,
+                               &error_msg,
+                               &failed_image_name))) {
+    return true;
+  }
+
+  LOG(WARNING) << "Could not create image space with image file '" << image_file_name << "'. "
+               << "Error was: " << error_msg << "\nAttempted image: " << failed_image_name
+               << "\nAttempting second try.";
+
+  if (LIKELY(LoadBootImageLoop(image_file_name,
+                               image_instruction_set,
+                               boot_image_spaces,
+                               oat_file_end,
+                               &error_msg,
+                               &failed_image_name))) {
+    return true;
+  }
+
+  LOG(ERROR) << "Could not create image space with image file '" << image_file_name << "'. "
+             << "Attempting to fall back to imageless running. Error was: " << error_msg
+             << "\nAttempted image: " << failed_image_name;
+  return false;
 }
 
 ImageSpace::~ImageSpace() {
