@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8728d8_a2130abf",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-12-12T20:25:38Z",
+      "side": 1,
+      "message": "be more specific here. I.e. why we would not be able to write to the output dex (perm isues, priv apps which are not allowed dalvik-cache code) etc...",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 13
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ae351c_4ef614a3",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3315,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-12-12T20:25:38Z",
+      "side": 1,
+      "message": "Can we fix this asymmetry?\n\nIt makes it hard to follow that we are actually closing  the sources.",
+      "range": {
+        "startLine": 3311,
+        "startChar": 0,
+        "endLine": 3315,
+        "endChar": 0
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83840f59_a562075e",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-12-12T20:25:38Z",
+      "side": 1,
+      "message": "it\u0027s still UNLIKELY :\u003d)",
+      "range": {
+        "startLine": 608,
+        "startChar": 8,
+        "endLine": 608,
+        "endChar": 23
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
