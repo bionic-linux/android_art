@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6cbc6121_f790d744",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T09:53:02Z",
+      "side": 1,
+      "message": "I\u0027ve looked at the other backends and see arm64 handles SIMD moves, but couldn\u0027t find it for arm32. What\u0027s the code handling it?",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "485f4cdd_35b5aaf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T09:53:02Z",
+      "side": 1,
+      "message": "Fugu doesn\u0027t have this? And/or haven\u0027t we moved host to assume it?",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "885195fb_5bafd7a5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5735,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T09:53:02Z",
+      "side": 1,
+      "message": "How about MoveMemoryToMemory?",
+      "range": {
+        "startLine": 5735,
+        "startChar": 30,
+        "endLine": 5735,
+        "endChar": 42
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24ecbb43_a023905f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5925,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T09:53:02Z",
+      "side": 1,
+      "message": "drop?",
+      "range": {
+        "startLine": 5925,
+        "startChar": 44,
+        "endLine": 5925,
+        "endChar": 46
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
