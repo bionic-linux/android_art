@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "39bcb7a9_878194fe",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3315,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-12-13T18:35:31Z",
+      "side": 1,
+      "message": "yea, I think it will be slightly better.",
+      "parentUuid": "f5e839f3_928388c7",
+      "range": {
+        "startLine": 3311,
+        "startChar": 0,
+        "endLine": 3315,
+        "endChar": 0
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83840f59_a562075e",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 5
@@ -137,6 +161,23 @@
         "endLine": 608,
         "endChar": 23
       },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315254b5_5d8030f1",
+        "filename": "runtime/zip_archive.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2017-12-13T18:35:31Z",
+      "side": 1,
+      "message": "double new line",
       "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
