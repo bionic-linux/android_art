@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f18bc124_583cd289",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-13T18:33:12Z",
+      "side": 1,
+      "message": "yes, mips seems ok, so does arm64. for arm32, we don\u0027t use a wider format than the fp registers already were",
+      "parentUuid": "6cbc6121_f790d744",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "485f4cdd_35b5aaf7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-13T09:53:02Z",
       "side": 1,
       "message": "Fugu doesn\u0027t have this? And/or haven\u0027t we moved host to assume it?",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcc9e9e9_9f4181ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-13T18:33:12Z",
+      "side": 1,
+      "message": "Oh, this was just to test it quickly and reproducible without gcstress and with AOT and on host. We do test this in other settings (which is how we found it).",
+      "parentUuid": "485f4cdd_35b5aaf7",
       "range": {
         "startLine": 14,
         "startChar": 41,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dec2431d_9bafc001",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5735,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-13T18:33:12Z",
+      "side": 1,
+      "message": "Ok, I will rename it back (I renamed it because I found it slightly redundant, the terminology is typically load/store from and to memory and move between registers or memory).",
+      "parentUuid": "885195fb_5bafd7a5",
+      "range": {
+        "startLine": 5735,
+        "startChar": 30,
+        "endLine": 5735,
+        "endChar": 42
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24ecbb43_a023905f",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-13T09:53:02Z",
       "side": 1,
       "message": "drop?",
+      "range": {
+        "startLine": 5925,
+        "startChar": 44,
+        "endLine": 5925,
+        "endChar": 46
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55e59e49_44b880b0",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 5925,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-13T18:33:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ecbb43_a023905f",
       "range": {
         "startLine": 5925,
         "startChar": 44,
