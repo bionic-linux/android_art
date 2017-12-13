@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5da827ff_adb6e8c2",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1672,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T11:16:13Z",
+      "side": 1,
+      "message": "If we go with this CL, the code in that lambda is big enough that I think it really deserves its standalone function.",
+      "range": {
+        "startLine": 1671,
+        "startChar": 2,
+        "endLine": 1672,
+        "endChar": 67
+      },
+      "revId": "3867ce46eb8cce6c961df6fc5f54eec668452a27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
