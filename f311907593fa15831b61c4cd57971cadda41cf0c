@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5991f9af_dbca359d",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T11:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f8728d8_a2130abf",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 13
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0ae351c_4ef614a3",
         "filename": "dex2oat/linker/oat_writer.cc",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f5e839f3_928388c7",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3315,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T11:33:26Z",
+      "side": 1,
+      "message": "The asymetry will still be there line 3678 (adding \"else { CloseSources }\". Though the time at which we close will be the same. Would you prefer that?",
+      "parentUuid": "b0ae351c_4ef614a3",
+      "range": {
+        "startLine": 3311,
+        "startChar": 0,
+        "endLine": 3315,
+        "endChar": 0
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83840f59_a562075e",
         "filename": "runtime/oat_file.cc",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-12T20:25:38Z",
       "side": 1,
       "message": "it\u0027s still UNLIKELY :\u003d)",
+      "range": {
+        "startLine": 608,
+        "startChar": 8,
+        "endLine": 608,
+        "endChar": 23
+      },
+      "revId": "f311907593fa15831b61c4cd57971cadda41cf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59770634_aab2f509",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-13T11:33:26Z",
+      "side": 1,
+      "message": "Right. and I also forgot this check is performance critical :) Done.",
+      "parentUuid": "83840f59_a562075e",
       "range": {
         "startLine": 608,
         "startChar": 8,
