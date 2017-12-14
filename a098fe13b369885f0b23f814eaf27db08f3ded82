@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "bf6e5162_896131d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-14T10:24:04Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m still confused about why this crash isn\u0027t more widely showing up:\n\n1) Why isn\u0027t it showing up on fugu bots?\n2) Why isn\u0027t it showing up on host Chrome bots?\n3) Why is it showing up sporadically only on certain configurations on go/ab?",
+      "parentUuid": "a3a24278_a121d8cd",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "885195fb_5bafd7a5",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
