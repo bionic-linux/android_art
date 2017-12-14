@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "d6086969_6c82683c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2017-12-14T16:26:36Z",
+      "side": 1,
+      "message": "Ok I will investigate that today and keep the bug open until we have satisfactory answers. But in the meanwhile, can this go in, since it fixes the intermittent bug that we are seeing now (and the SIMD paths were clearly missing, no doubt about that :-)",
+      "parentUuid": "bf6e5162_896131d1",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "a098fe13b369885f0b23f814eaf27db08f3ded82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "885195fb_5bafd7a5",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 2
