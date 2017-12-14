@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c33df8e_94f55838",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-14T10:27:10Z",
+      "side": 1,
+      "message": "Could you add the same comment as the commit message here?",
+      "revId": "b8243e04666b693fa503a218a32ed21b3cf0684f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c8c7871_188dd6fd",
+        "filename": "test/testrunner/target_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2017-12-14T10:27:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "b8243e04666b693fa503a218a32ed21b3cf0684f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
