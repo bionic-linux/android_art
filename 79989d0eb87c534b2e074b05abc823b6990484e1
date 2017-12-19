@@ -16,6 +16,24 @@
       "revId": "79989d0eb87c534b2e074b05abc823b6990484e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a457735_6f5d4418",
+        "filename": "runtime/mirror/string-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-19T09:36:21Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "47ccf8e9_9eb872a0",
+      "revId": "79989d0eb87c534b2e074b05abc823b6990484e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
