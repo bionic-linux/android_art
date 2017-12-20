@@ -1,0 +1,10 @@
+Code-Review+2: Andreas Gampe <agampe@google.com>
+Presubmit-Ready+1: Alex Klyubin <klyubin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Alex Klyubin <klyubin@google.com>
+Autosubmit+1: Alex Klyubin <klyubin@google.com>
+Submitted-by: Alex Klyubin <klyubin@google.com>
+Submitted-at: Wed, 20 Dec 2017 17:58:00 +0000
+Reviewed-on: https://android-review.googlesource.com/572622
+Project: platform/art
+Branch: refs/heads/master
