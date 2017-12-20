@@ -1,0 +1,8 @@
+Verified+1: Hans Boehm <hboehm@google.com>
+Code-Review+2: Hans Boehm <hboehm@google.com>
+Presubmit-Ready+1: Hans Boehm <hboehm@google.com>
+Submitted-by: Hans Boehm <hboehm@google.com>
+Submitted-at: Wed, 20 Dec 2017 20:44:09 +0000
+Reviewed-on: https://android-review.googlesource.com/572782
+Project: platform/art
+Branch: refs/heads/master
