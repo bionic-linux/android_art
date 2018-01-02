@@ -18,6 +18,7 @@
 #define ART_COMPILER_DEBUG_ELF_SYMTAB_WRITER_H_
 
 #include <map>
+#include <unordered_map>
 #include <unordered_set>
 
 #include "debug/debug_info.h"
@@ -46,7 +47,9 @@ constexpr const char* kDexFileSymbolName = "$dexfile";
 template <typename ElfTypes>
 static void WriteDebugSymbols(linker::ElfBuilder<ElfTypes>* builder,
                               bool mini_debug_info,
-                              const DebugInfo& debug_info) {
+                              const DebugInfo& debug_info,
+                              std::unordered_map<typename ElfTypes::Addr, uint32_t>& fde_offsets) {
+  using Elf_Sym = typename ElfTypes::Sym;
   uint64_t mapping_symbol_address = std::numeric_limits<uint64_t>::max();
   auto* strtab = builder->GetStrTab();
   auto* symtab = builder->GetSymTab();
@@ -140,8 +143,32 @@ static void WriteDebugSymbols(linker::ElfBuilder<ElfTypes>* builder,
   }
   strtab->End();
 
+  // Symbols must be sorted by address to make the index table valid.
+  symtab->Sort();
+
   // Symbols are buffered and written after names (because they are smaller).
   symtab->WriteCachedSection();
+
+  // Write accelerator table for FDE lookup (one entry per symbol).
+  const std::vector<Elf_Sym>& syms = symtab->GetCachedSymbols();
+  auto symtab_fde = builder->GetSymTabFde();
+  symtab_fde->Start();
+  for (const Elf_Sym& sym : syms) {
+    typename ElfTypes::Word fde_offset = fde_offsets[sym.st_value];
+    symtab_fde->WriteFully(&fde_offset, sizeof(fde_offset));
+  }
+  symtab_fde->End();
+
+  // Write accelerator table for symbol lookup by address (every n'th address).
+  auto symtab_idx = builder->GetSymTabIdx();
+  symtab_idx->Start();
+  for (size_t i = 0; i < syms.size(); i++) {
+    if ((i % linker::ElfBuilder<ElfTypes>::kSymtabIdxPeriod) == 0) {
+      Elf_Sym sym = syms[i];
+      symtab_idx->WriteFully(&sym.st_value, sizeof(sym.st_value));
+    }
+  }
+  symtab_idx->End();
 }
 
 }  // namespace debug

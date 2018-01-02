@@ -50,6 +50,8 @@ namespace linker {
 //   .dynamic                    - Tags which let the linker locate .dynsym.
 //   .strtab                     - Names for .symtab.
 //   .symtab                     - Debug symbols.
+//   .symtab.idx                 - Debug symbols accelerator table (symbol lookup; see below).
+//   .symtab.fde                 - Debug symbols accelerator table (FDE looup; see below).
 //   .eh_frame                   - Unwind information (CFI).
 //   .eh_frame_hdr               - Index of .eh_frame.
 //   .debug_frame                - Unwind information (CFI).
@@ -75,6 +77,14 @@ namespace linker {
 //
 // The debug sections are written last for easier stripping.
 //
+// Debug accelerator tables are used to ensure we can create a backtrace
+// without O(n) scan of all debug symbols (which is necessary in general).
+//  * .symtab.idx stores the address of every n'th symbol in .symtab.
+//    Existence of the section implies that .symtab is sorted by address,
+//    and the entries allow us find the right symbol in .symtab without
+//    touching many parts of the section (important for mini-debug-info).
+//  * .symtab.fde stores FDE offset within .debug_frame for each symbol.
+//
 template <typename ElfTypes>
 class ElfBuilder FINAL {
  public:
@@ -82,6 +92,8 @@ class ElfBuilder FINAL {
   // SHA-1 digest.  Not using SHA_DIGEST_LENGTH from openssl/sha.h to avoid
   // spreading this header dependency for just this single constant.
   static constexpr size_t kBuildIdLen = 20;
+  // Every n'th address from .symtab is stored in the .symtab.idx accelerator table.
+  static constexpr int kSymtabIdxPeriod = 64;
 
   using Elf_Addr = typename ElfTypes::Addr;
   using Elf_Off = typename ElfTypes::Off;
@@ -386,6 +398,15 @@ class ElfBuilder FINAL {
       syms_.push_back(sym);
     }
 
+    // Sort all symbols by absolute virtual memory address.
+    void Sort() {
+      std::sort(syms_.begin(), syms_.end(), [](const Elf_Sym& a, const Elf_Sym b) {
+        return a.st_value < b.st_value;
+      });
+    }
+
+    const std::vector<Elf_Sym>& GetCachedSymbols() { return syms_; }
+
     Elf_Word GetCacheSize() { return syms_.size() * sizeof(Elf_Sym); }
 
     void WriteCachedSection() {
@@ -532,6 +553,10 @@ class ElfBuilder FINAL {
         eh_frame_hdr_(this, ".eh_frame_hdr", SHT_PROGBITS, SHF_ALLOC, nullptr, 0, 4, 0),
         strtab_(this, ".strtab", 0, 1),
         symtab_(this, ".symtab", SHT_SYMTAB, 0, &strtab_),
+        symtab_idx_(this, ".symtab.idx", SHT_PROGBITS, 0, &symtab_, kSymtabIdxPeriod,
+                    sizeof(Elf_Addr), sizeof(Elf_Addr)),
+        symtab_fde_(this, ".symtab.fde", SHT_PROGBITS, 0, &symtab_, 0,
+                    sizeof(Elf_Word), sizeof(Elf_Word)),
         debug_frame_(this, ".debug_frame", SHT_PROGBITS, 0, nullptr, 0, sizeof(Elf_Addr), 0),
         debug_info_(this, ".debug_info", SHT_PROGBITS, 0, nullptr, 0, 1, 0),
         debug_line_(this, ".debug_line", SHT_PROGBITS, 0, nullptr, 0, 1, 0),
@@ -563,6 +588,8 @@ class ElfBuilder FINAL {
   Section* GetDex() { return &dex_; }
   StringSection* GetStrTab() { return &strtab_; }
   SymbolSection* GetSymTab() { return &symtab_; }
+  Section* GetSymTabIdx() { return &symtab_idx_; }
+  Section* GetSymTabFde() { return &symtab_fde_; }
   Section* GetEhFrame() { return &eh_frame_; }
   Section* GetEhFrameHdr() { return &eh_frame_hdr_; }
   Section* GetDebugFrame() { return &debug_frame_; }
@@ -1011,6 +1038,8 @@ class ElfBuilder FINAL {
   Section eh_frame_hdr_;
   StringSection strtab_;
   SymbolSection symtab_;
+  Section symtab_idx_;
+  Section symtab_fde_;
   Section debug_frame_;
   Section debug_info_;
   Section debug_line_;
