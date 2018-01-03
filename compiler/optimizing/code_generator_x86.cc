@@ -4534,6 +4534,15 @@ void CodeGeneratorX86::GenerateStaticOrDirectCall(
     case HInvokeStaticOrDirect::MethodLoadKind::kDirectAddress:
       __ movl(temp.AsRegister<Register>(), Immediate(invoke->GetMethodAddress()));
       break;
+    case HInvokeStaticOrDirect::MethodLoadKind::kBootImageRelRo: {
+      Register base_reg = GetInvokeStaticOrDirectExtraParameter(invoke,
+                                                                temp.AsRegister<Register>());
+      __ movl(temp.AsRegister<Register>(), Address(base_reg, kDummy32BitOffset));
+      RecordBootImageRelRoPatch(
+          invoke->InputAt(invoke->GetSpecialInputIndex())->AsX86ComputeBaseMethodAddress(),
+          invoke->GetDispatchInfo().method_load_data);
+      break;
+    }
     case HInvokeStaticOrDirect::MethodLoadKind::kBssEntry: {
       Register base_reg = GetInvokeStaticOrDirectExtraParameter(invoke,
                                                                 temp.AsRegister<Register>());
@@ -4593,6 +4602,13 @@ void CodeGeneratorX86::GenerateVirtualCall(
   __ call(Address(
       temp, ArtMethod::EntryPointFromQuickCompiledCodeOffset(kX86PointerSize).Int32Value()));
   RecordPcInfo(invoke, invoke->GetDexPc(), slow_path);
+}
+
+void CodeGeneratorX86::RecordBootImageRelRoPatch(HX86ComputeBaseMethodAddress* method_address,
+                                                 uint32_t boot_image_offset) {
+  boot_image_method_patches_.emplace_back(
+      method_address, /* target_dex_file */ nullptr, boot_image_offset);
+  __ Bind(&boot_image_method_patches_.back().label);
 }
 
 void CodeGeneratorX86::RecordBootImageMethodPatch(HInvokeStaticOrDirect* invoke) {
@@ -4664,6 +4680,14 @@ inline void CodeGeneratorX86::EmitPcRelativeLinkerPatches(
   }
 }
 
+linker::LinkerPatch DataBimgRelRoPatchAdapter(size_t literal_offset,
+                                              const DexFile* target_dex_file,
+                                              uint32_t pc_insn_offset,
+                                              uint32_t boot_image_offset) {
+  DCHECK(target_dex_file == nullptr);
+  return linker::LinkerPatch::DataBimgRelRoPatch(literal_offset, pc_insn_offset, boot_image_offset);
+}
+
 void CodeGeneratorX86::EmitLinkerPatches(ArenaVector<linker::LinkerPatch>* linker_patches) {
   DCHECK(linker_patches->empty());
   size_t size =
@@ -4682,7 +4706,8 @@ void CodeGeneratorX86::EmitLinkerPatches(ArenaVector<linker::LinkerPatch>* linke
     EmitPcRelativeLinkerPatches<linker::LinkerPatch::RelativeStringPatch>(
         string_patches_, linker_patches);
   } else {
-    DCHECK(boot_image_method_patches_.empty());
+    EmitPcRelativeLinkerPatches<DataBimgRelRoPatchAdapter>(
+        boot_image_method_patches_, linker_patches);
     EmitPcRelativeLinkerPatches<linker::LinkerPatch::TypeClassTablePatch>(
         boot_image_type_patches_, linker_patches);
     EmitPcRelativeLinkerPatches<linker::LinkerPatch::StringInternTablePatch>(
