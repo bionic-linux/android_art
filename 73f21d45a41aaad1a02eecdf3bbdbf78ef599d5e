@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "132e8bb2_f8b32939",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-04T17:59:19Z",
+      "side": 1,
+      "message": "Done in follow up.",
+      "parentUuid": "f8721ff7_8839ba58",
+      "range": {
+        "startLine": 705,
+        "startChar": 45,
+        "endLine": 705,
+        "endChar": 46
+      },
+      "revId": "73f21d45a41aaad1a02eecdf3bbdbf78ef599d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6013b19d_a43fb5c2",
         "filename": "runtime/dex_to_dex_decompiler.cc",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "01f6c0bc_e48e9bcd",
+        "filename": "runtime/dex_to_dex_decompiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-04T17:59:19Z",
+      "side": 1,
+      "message": "Done in follow up.",
+      "parentUuid": "6013b19d_a43fb5c2",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "73f21d45a41aaad1a02eecdf3bbdbf78ef599d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6064a0f8_bc8388a7",
         "filename": "runtime/dex_to_dex_decompiler.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-04T16:08:54Z",
       "side": 1,
       "message": "\u0026?",
+      "range": {
+        "startLine": 32,
+        "startChar": 34,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "73f21d45a41aaad1a02eecdf3bbdbf78ef599d5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06abe479_87ef96b3",
+        "filename": "runtime/dex_to_dex_decompiler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-04T17:59:19Z",
+      "side": 1,
+      "message": "Done in follow up.",
+      "parentUuid": "6064a0f8_bc8388a7",
       "range": {
         "startLine": 32,
         "startChar": 34,
