@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9128e9b5_dd75fd56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-04T21:11:43Z",
+      "side": 1,
+      "message": "Please change this terminology or refer to the part of the spec implying this (which I think there isn\u0027t).",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "d30c7896fa34990237b0089046e5a559b4d41503",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
