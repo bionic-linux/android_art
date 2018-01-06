@@ -64,6 +64,7 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
   template<bool kForEvac>
   mirror::Object* AllocLarge(size_t num_bytes, size_t* bytes_allocated, size_t* usable_size,
                              size_t* bytes_tl_bulk_allocated) REQUIRES(!region_lock_);
+  template<bool kForEvac>
   void FreeLarge(mirror::Object* large_obj, size_t bytes_allocated) REQUIRES(!region_lock_);
 
   // Return the storage space required by obj.
@@ -532,6 +533,7 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
   uint32_t time_;                  // The time as the number of collections since the startup.
   size_t num_regions_;             // The number of regions in this space.
   size_t num_non_free_regions_;    // The number of non-free regions in this space.
+  size_t num_evac_regions_;        // The number of evan regions allocated during collection.
   std::unique_ptr<Region[]> regions_ GUARDED_BY(region_lock_);
                                    // The pointer to the region array.
   // The upper-bound index of the non-free regions. Used to avoid scanning all regions in
