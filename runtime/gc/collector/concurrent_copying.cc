@@ -1755,8 +1755,9 @@ void ConcurrentCopying::ReclaimPhase() {
     cumulative_bytes_moved_.FetchAndAddRelaxed(to_bytes);
     uint64_t to_objects = objects_moved_.LoadSequentiallyConsistent();
     cumulative_objects_moved_.FetchAndAddRelaxed(to_objects);
+    // It is OK to do a racy read here as it's only for performance dump.
     max_peak_num_non_free_regions_ = std::max(max_peak_num_non_free_regions_,
-                                              region_space_->GetNumNonFreeRegions());
+                                              region_space_->GetRacyNumNonFreeRegions());
     if (kEnableFromSpaceAccountingCheck) {
       CHECK_EQ(from_space_num_objects_at_first_pause_, from_objects + unevac_from_objects);
       CHECK_EQ(from_space_num_bytes_at_first_pause_, from_bytes + unevac_from_bytes);
@@ -2269,7 +2270,7 @@ mirror::Object* ConcurrentCopying::Copy(mirror::Object* from_ref,
   size_t non_moving_space_bytes_allocated = 0U;
   size_t bytes_allocated = 0U;
   size_t dummy;
-  mirror::Object* to_ref = region_space_->AllocNonvirtual<true>(
+  mirror::Object* to_ref = region_space_->AllocNonvirtual</*kForEvac*/ true>(
       region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
   bytes_allocated = region_space_bytes_allocated;
   if (to_ref != nullptr) {
@@ -2341,7 +2342,7 @@ mirror::Object* ConcurrentCopying::Copy(mirror::Object* from_ref,
         DCHECK(region_space_->IsInToSpace(to_ref));
         if (bytes_allocated > space::RegionSpace::kRegionSize) {
           // Free the large alloc.
-          region_space_->FreeLarge(to_ref, bytes_allocated);
+          region_space_->FreeLarge</*kForEvac*/ true>(to_ref, bytes_allocated);
         } else {
           // Record the lost copy for later reuse.
           heap_->num_bytes_allocated_.FetchAndAddSequentiallyConsistent(bytes_allocated);
