@@ -2269,7 +2269,7 @@ mirror::Object* ConcurrentCopying::Copy(mirror::Object* from_ref,
   size_t non_moving_space_bytes_allocated = 0U;
   size_t bytes_allocated = 0U;
   size_t dummy;
-  mirror::Object* to_ref = region_space_->AllocNonvirtual<true>(
+  mirror::Object* to_ref = region_space_->AllocNonvirtual</*kForEvac*/ true>(
       region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
   bytes_allocated = region_space_bytes_allocated;
   if (to_ref != nullptr) {
@@ -2341,7 +2341,7 @@ mirror::Object* ConcurrentCopying::Copy(mirror::Object* from_ref,
         DCHECK(region_space_->IsInToSpace(to_ref));
         if (bytes_allocated > space::RegionSpace::kRegionSize) {
           // Free the large alloc.
-          region_space_->FreeLarge(to_ref, bytes_allocated);
+          region_space_->FreeLarge</*kForEvac*/ true>(to_ref, bytes_allocated);
         } else {
           // Record the lost copy for later reuse.
           heap_->num_bytes_allocated_.FetchAndAddSequentiallyConsistent(bytes_allocated);
