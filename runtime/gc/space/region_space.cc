@@ -90,6 +90,7 @@ RegionSpace::RegionSpace(const std::string& name, MemMap* mem_map)
   CHECK_ALIGNED(mem_map->Begin(), kRegionSize);
   num_regions_ = mem_map_size / kRegionSize;
   num_non_free_regions_ = 0U;
+  num_evac_regions_ = 0U;
   DCHECK_GT(num_regions_, 0U);
   non_free_region_index_limit_ = 0U;
   regions_.reset(new Region[num_regions_]);
@@ -350,6 +351,8 @@ void RegionSpace::ClearFromSpace(uint64_t* cleared_bytes, uint64_t* cleared_obje
   // Update non_free_region_index_limit_.
   SetNonFreeRegionLimit(new_non_free_region_index_limit);
   evac_region_ = nullptr;
+  num_non_free_regions_ += num_evac_regions_;
+  num_evac_regions_ = 0;
 }
 
 void RegionSpace::LogFragmentationAllocFailure(std::ostream& os,
@@ -409,30 +412,6 @@ void RegionSpace::Clear() {
 void RegionSpace::Dump(std::ostream& os) const {
   os << GetName() << " "
       << reinterpret_cast<void*>(Begin()) << "-" << reinterpret_cast<void*>(Limit());
-}
-
-void RegionSpace::FreeLarge(mirror::Object* large_obj, size_t bytes_allocated) {
-  DCHECK(Contains(large_obj));
-  DCHECK_ALIGNED(large_obj, kRegionSize);
-  MutexLock mu(Thread::Current(), region_lock_);
-  uint8_t* begin_addr = reinterpret_cast<uint8_t*>(large_obj);
-  uint8_t* end_addr = AlignUp(reinterpret_cast<uint8_t*>(large_obj) + bytes_allocated, kRegionSize);
-  CHECK_LT(begin_addr, end_addr);
-  for (uint8_t* addr = begin_addr; addr < end_addr; addr += kRegionSize) {
-    Region* reg = RefToRegionLocked(reinterpret_cast<mirror::Object*>(addr));
-    if (addr == begin_addr) {
-      DCHECK(reg->IsLarge());
-    } else {
-      DCHECK(reg->IsLargeTail());
-    }
-    reg->Clear(/*zero_and_release_pages*/true);
-    --num_non_free_regions_;
-  }
-  if (end_addr < Limit()) {
-    // If we aren't at the end of the space, check that the next region is not a large tail.
-    Region* following_reg = RefToRegionLocked(reinterpret_cast<mirror::Object*>(end_addr));
-    DCHECK(!following_reg->IsLargeTail());
-  }
 }
 
 void RegionSpace::DumpRegions(std::ostream& os) {
@@ -572,10 +551,12 @@ RegionSpace::Region* RegionSpace::AllocateRegion(bool for_evac) {
     Region* r = &regions_[i];
     if (r->IsFree()) {
       r->Unfree(this, time_);
-      ++num_non_free_regions_;
-      if (!for_evac) {
+      if (for_evac) {
+        ++num_evac_regions_;
         // Evac doesn't count as newly allocated.
+      } else {
         r->SetNewlyAllocated();
+        ++num_non_free_regions_;
       }
       return r;
     }
