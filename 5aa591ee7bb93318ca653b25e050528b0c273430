@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b64753ee_bd245353",
+        "filename": "test/004-ThreadStress/check",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-08T18:46:40Z",
+      "side": 1,
+      "message": "Unnecessary. WARNING is not printed in run-tests (unless requested).",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 78
+      },
+      "revId": "5aa591ee7bb93318ca653b25e050528b0c273430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
