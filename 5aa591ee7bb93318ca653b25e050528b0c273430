@@ -22,6 +22,30 @@
       "revId": "5aa591ee7bb93318ca653b25e050528b0c273430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b6d5b3_f41333ff",
+        "filename": "test/004-ThreadStress/check",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-08T18:59:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b64753ee_bd245353",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 78
+      },
+      "revId": "5aa591ee7bb93318ca653b25e050528b0c273430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
