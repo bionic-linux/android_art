@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "d87c1c91_f1ad1934",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "Indentation is off.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 40
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1229f31c_3d5ed7f9",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be `--num_evac_regions_`?",
+      "range": {
+        "startLine": 327,
+        "startChar": 6,
+        "endLine": 327,
+        "endChar": 25
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3320a831_eeff2ea7",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "Likewise, shouldn\u0027t this be `--num_non_free_regions_`?",
+      "range": {
+        "startLine": 329,
+        "startChar": 6,
+        "endLine": 329,
+        "endChar": 29
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bb31975_23318272",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "I would invert the condition and the branches of this `if` for clarity.",
+      "range": {
+        "startLine": 554,
+        "startChar": 10,
+        "endLine": 554,
+        "endChar": 19
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d379a625_a5004bdd",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "I\u0027d move this comment into the other branch (the `for_evac` case).",
+      "range": {
+        "startLine": 555,
+        "startChar": 8,
+        "endLine": 555,
+        "endChar": 49
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7071376_9c70022f",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 6
@@ -18,6 +133,75 @@
         "startChar": 19,
         "endLine": 537,
         "endChar": 23
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68f92ca8_9417e823",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "Please also mention that this value is to be null when the GC is not running.",
+      "range": {
+        "startLine": 537,
+        "startChar": 42,
+        "endLine": 537,
+        "endChar": 59
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "435840bb_cd539325",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "I would have the name of this member reflect the fact that this value is only updated and used when the GC is running; rename it as somethinh like `num_evac_regions_during_gc_`?",
+      "range": {
+        "startLine": 538,
+        "startChar": 9,
+        "endLine": 538,
+        "endChar": 26
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3da235_4ab11865",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-08T11:50:13Z",
+      "side": 1,
+      "message": "Also guard `num_regions_` and `num_non_free_regions_` with the `region_lock_`?",
+      "range": {
+        "startLine": 538,
+        "startChar": 27,
+        "endLine": 538,
+        "endChar": 51
       },
       "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
