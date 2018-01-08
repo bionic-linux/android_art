@@ -16,6 +16,24 @@
       "revId": "2c18a34cfed3aa7a91164360d6a7460570eca2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "675cb142_365c6a6d",
+        "filename": "test/623-checker-loop-regressions/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-08T18:45:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96ea5c27_8ec04ed6",
+      "revId": "2c18a34cfed3aa7a91164360d6a7460570eca2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
