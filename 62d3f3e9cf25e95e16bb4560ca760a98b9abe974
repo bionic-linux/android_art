@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3f0e0dd_b2f7f1cc",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-08T21:52:05Z",
+      "side": 1,
+      "message": "Join lines.",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 17
+      },
+      "revId": "62d3f3e9cf25e95e16bb4560ca760a98b9abe974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
