@@ -206,6 +206,54 @@
       "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fe365f4_2d8e1478",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-01-08T19:02:23Z",
+      "side": 1,
+      "message": "Evacuation is done only during GC, so isn\u0027t that self-evident?",
+      "parentUuid": "435840bb_cd539325",
+      "range": {
+        "startLine": 538,
+        "startChar": 9,
+        "endLine": 538,
+        "endChar": 26
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e503ff_33af1a9a",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-01-08T19:02:23Z",
+      "side": 1,
+      "message": "num_regions_ is set only once in RegionSpace constructor. Instead of guarding it, shouldn\u0027t we make it const member?",
+      "parentUuid": "9b3da235_4ab11865",
+      "range": {
+        "startLine": 538,
+        "startChar": 27,
+        "endLine": 538,
+        "endChar": 51
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
