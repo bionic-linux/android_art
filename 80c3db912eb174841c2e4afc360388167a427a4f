@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "178aadfe_242c4a2a",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T19:32:23Z",
+      "side": 1,
+      "message": "Looks like it is.  Done.  The same tests passed, too.",
+      "parentUuid": "0e30e9a0_04d6cab6",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 141,
+        "endChar": 40
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e89e1bc7_8a8cf059",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b5da4d8c_098189ea",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T19:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89e1bc7_8a8cf059",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 5
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e51b9884_12cc1adf",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-09T00:19:10Z",
       "side": 1,
       "message": "creating this by doing a binary diff seems really inefficient. Consider possibly collecting the delta positions while doing the patching.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 25
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c00afc6_f86f7931",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2018-01-09T19:32:23Z",
+      "side": 1,
+      "message": "This is supposed to run at build time and it usually takes less then 300ms on my Z840. Perhaps it\u0027s fine comparing to the possible complexity to collect delta while patching?  WDYT?",
+      "parentUuid": "e51b9884_12cc1adf",
       "range": {
         "startLine": 219,
         "startChar": 0,
