@@ -277,6 +277,30 @@
       "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e268f57_bfc459be",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-09T11:35:11Z",
+      "side": 1,
+      "message": "Agreed, making `num_regions_` a const member would be better (either in this change or in another CL).",
+      "parentUuid": "e4e503ff_33af1a9a",
+      "range": {
+        "startLine": 538,
+        "startChar": 27,
+        "endLine": 538,
+        "endChar": 51
+      },
+      "revId": "28266dda528cbbc68acf77e08887a2c3c67bd76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
