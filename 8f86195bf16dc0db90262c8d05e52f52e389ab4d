@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce0c391f_877aa1d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-09T11:39:49Z",
+      "side": 1,
+      "message": "Nit: We usually use\n\n  Bug:\n\ninstead for this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "8f86195bf16dc0db90262c8d05e52f52e389ab4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75e65a1b_a125a560",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 9
