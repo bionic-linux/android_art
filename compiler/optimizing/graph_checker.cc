@@ -31,7 +31,7 @@ namespace art {
 using android::base::StringPrintf;
 
 static bool IsAllowedToJumpToExitBlock(HInstruction* instruction) {
-  return instruction->IsThrow() || instruction->IsReturn() || instruction->IsReturnVoid();
+  return instruction->AlwaysThrows() || instruction->IsReturn() || instruction->IsReturnVoid();
 }
 
 static bool IsExitTryBoundaryIntoExitBlock(HBasicBlock* block) {

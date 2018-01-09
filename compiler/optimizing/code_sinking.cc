@@ -34,7 +34,7 @@ void CodeSinking::Run() {
   // TODO(ngeoffray): we do not profile branches yet, so use throw instructions
   // as an indicator of an uncommon branch.
   for (HBasicBlock* exit_predecessor : exit->GetPredecessors()) {
-    if (exit_predecessor->GetLastInstruction()->IsThrow()) {
+    if (exit_predecessor->GetLastInstruction()->AlwaysThrows()) {
       SinkCodeToUncommonBranch(exit_predecessor);
     }
   }

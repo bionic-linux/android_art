@@ -1342,6 +1342,30 @@ size_t HInliner::CountRecursiveCallsOf(ArtMethod* method) const {
   return count;
 }
 
+static bool AlwaysThrows(const CodeItemDataAccessor& accessor,
+                         size_t max_code_units) {
+  if (accessor.InsnsSizeInCodeUnits() > max_code_units) {
+    return false;  // don't scan too much
+  }
+  bool throw_seen = false;
+  for (const DexInstructionPcPair& pair : accessor) {
+    switch (pair.Inst().Opcode()) {
+      case Instruction::RETURN:
+      case Instruction::RETURN_VOID:
+      case Instruction::RETURN_WIDE:
+      case Instruction::RETURN_OBJECT:
+      case Instruction::RETURN_VOID_NO_BARRIER:
+        return false;  // found regular control flow back
+      case Instruction::THROW:
+        throw_seen = true;
+        break;
+      default:
+        break;
+    }
+  }
+  return throw_seen;
+}
+
 bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
                                  ArtMethod* method,
                                  ReferenceTypeInfo receiver_type,
@@ -1390,6 +1414,13 @@ bool HInliner::TryBuildAndInline(HInvoke* invoke_instruction,
   }
 
   size_t inline_max_code_units = compiler_driver_->GetCompilerOptions().GetInlineMaxCodeUnits();
+
+  // Now that we have access to the code item, make a best effort to see if this method
+  // always throws an exception (we inspect at most 3 x inline size). If so, mark the invoke.
+  if (AlwaysThrows(accessor, 3 * inline_max_code_units)) {
+    invoke_instruction->SetAlwaysThrows(true);
+  }
+
   if (accessor.InsnsSizeInCodeUnits() > inline_max_code_units) {
     LOG_FAIL(stats_, MethodCompilationStat::kNotInlinedCodeItem)
         << "Method " << method->PrettyMethod()
