@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20dbc9f5_66046a7c",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-09T22:27:49Z",
+      "side": 1,
+      "message": "Nit: The style we use for initialization lists, when all initializers cannot fit on a single line, is to have one per line.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "88708c2768a0506bbb82be5b61c15eb550e9cd24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
