@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75e65a1b_a125a560",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 1758,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-01-09T04:34:23Z",
+      "side": 1,
+      "message": "No it\u0027s not. It just hasn\u0027t broken yet. See my other comment. Again, this  is clearly no worse than the base.\n\nIt looks like we do this once per GC? If so, there\u0027s clearly no performance issue with taking the lock. Is there a deadlock issue?",
+      "range": {
+        "startLine": 1758,
+        "startChar": 4,
+        "endLine": 1758,
+        "endChar": 73
+      },
+      "revId": "8f86195bf16dc0db90262c8d05e52f52e389ab4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2df13e3_be50ffef",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-01-09T04:34:23Z",
+      "side": 1,
+      "message": "This is an improvement, but we just shouldn\u0027t be doing this. If this is sufficiently performance critical, it should be using memory_order_relaxed accesses on an atomic everywhere. If it\u0027s not, we should be acquiring the lock.\n\nThis will probably work in practice, but the racing access to num_non_free_regions falsely promises the compiler that there is no concurrent update. The compiler is perfectly justified in inferring other false information from that, e.g. that certain basic blocks can\u0027t happen in parallel.",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 69
+      },
+      "revId": "8f86195bf16dc0db90262c8d05e52f52e389ab4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
