@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e30e9a0_04d6cab6",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-09T00:19:10Z",
+      "side": 1,
+      "message": "This is just leb128? https://en.wikipedia.org/wiki/LEB128\n\nWe have a leb128 implementation, please use it. #include \"leb128.h\"",
+      "range": {
+        "startLine": 135,
+        "startChar": 7,
+        "endLine": 141,
+        "endChar": 40
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89e1bc7_8a8cf059",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-09T00:19:10Z",
+      "side": 1,
+      "message": "use leb128.h functions please.",
+      "range": {
+        "startLine": 199,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 5
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51b9884_12cc1adf",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-09T00:19:10Z",
+      "side": 1,
+      "message": "creating this by doing a binary diff seems really inefficient. Consider possibly collecting the delta positions while doing the patching.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 25
+      },
+      "revId": "80c3db912eb174841c2e4afc360388167a427a4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
