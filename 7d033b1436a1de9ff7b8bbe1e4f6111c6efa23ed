@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df080d90_c18a49cd",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-10T23:43:48Z",
+      "side": 1,
+      "message": "Note that we could generalize this code and allow other computations as well, which may expose actual dead code; however, not sure how useful that is in practice (and does not happen in code currently under inspection). So, more TBD as needed....",
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
