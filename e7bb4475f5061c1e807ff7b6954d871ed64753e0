@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d479635_d2d4d7a7",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-10T15:19:20Z",
+      "side": 1,
+      "message": "I find this confusing. Are we generating or relocating a relocated file? What is the \u0027relocated\u0027 file for? What is \u0027output\u0027?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 52
+      },
+      "revId": "e7bb4475f5061c1e807ff7b6954d871ed64753e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
