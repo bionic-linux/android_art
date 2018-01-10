@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb292805_40233e94",
+        "filename": "patchoat/patchoat.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-10T16:19:49Z",
+      "side": 1,
+      "message": "Could you expand? What\u0027s the state of \u0027relocated\u0027 when entering this method? What is \u0027output\u0027?",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "f5390ab3f11c899f80095ddfb8a1509714df0fb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
