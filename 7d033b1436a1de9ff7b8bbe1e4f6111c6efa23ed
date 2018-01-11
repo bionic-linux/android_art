@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "626f668f_b4153c2f",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "No we do need it. Linking the throwing method call directly to Exit block is essential to get code sinking working.",
+      "parentUuid": "cdfec21a_4d3e3579",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6c93aae_6050cde5",
         "filename": "compiler/optimizing/dead_code_elimination.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-11T15:06:38Z",
       "side": 1,
       "message": "Add a comment about the order.",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44568f07_b379dd29",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6c93aae_6050cde5",
       "range": {
         "startLine": 172,
         "startChar": 36,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "bbde82bc_ff23745a",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df080d90_c18a49cd",
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "043e5e87_2b738215",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2018-01-11T15:06:38Z",
       "side": 1,
       "message": "Do you want another bit in ArtMethod?",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1367,
+        "endChar": 1
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "033a6ac6_344de84b",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "Yes, if we could avoid this altogether here that would be even better. Do we have code elsewhere that does some pre-analysis?",
+      "parentUuid": "043e5e87_2b738215",
       "range": {
         "startLine": 1345,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "ce4915a2_572eed00",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "Yes, probably. This point was chosen for convenience, but I guess you are suggesting to do this after TryBuildAndInline fails?\n\nNote that if we could get the bit beforehand, this code is not even needed.",
+      "parentUuid": "132bbbd9_af79bdc0",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeb83e4_ed628bb4",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2018-01-11T15:06:38Z",
       "side": 1,
       "message": "This really scares me. I\u0027d much prefer that you add a HGoto after the invoke.",
+      "range": {
+        "startLine": 4180,
+        "startChar": 7,
+        "endLine": 4180,
+        "endChar": 23
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce8abdf7_47f9c4f6",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4180,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T17:38:56Z",
+      "side": 1,
+      "message": "We think alike :-)\n\nI originally also just had throwing method + goto, but amazingly enough, that required more intrusive changes than what I have now (e.g. graph checkers needs to check before goto to see if that throws, code sinking needs to do the same etc).\n\nSo if you prefer I can keep the artificial goto, but it will touch a few more files.....",
+      "parentUuid": "aeeb83e4_ed628bb4",
       "range": {
         "startLine": 4180,
         "startChar": 7,
