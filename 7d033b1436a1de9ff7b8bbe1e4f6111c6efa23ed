@@ -273,6 +273,30 @@
     },
     {
       "key": {
+        "uuid": "5a05cf35_d77ca67a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2018-01-11T19:33:59Z",
+      "side": 1,
+      "message": "There may be multiple targets in the inline cache profile. So it\u0027s like:\n  if (receiver_class \u003d\u003d classA) inline classA.foo()\n  else if (receiver_class \u003d\u003d classB) inline classB.foo()\n  ...\nIf say nothing can be inlined and the original invoke instruction is unchanged, but during the inline attempt we analyze classA.foo() and find it always throws, we mark the original invoke instruction as always-throws. Which is not correct since there may be other foo\u0027s that don\u0027t throw.",
+      "parentUuid": "ec959900_258e1e01",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeb83e4_ed628bb4",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
