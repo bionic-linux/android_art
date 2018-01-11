@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdfec21a_4d3e3579",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-11T15:06:38Z",
+      "side": 1,
+      "message": "You don\u0027t need this for the code sinking optimization, right? Can you move it to another CL?",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 47
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6c93aae_6050cde5",
+        "filename": "compiler/optimizing/dead_code_elimination.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-11T15:06:38Z",
+      "side": 1,
+      "message": "Add a comment about the order.",
+      "range": {
+        "startLine": 172,
+        "startChar": 36,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df080d90_c18a49cd",
         "filename": "compiler/optimizing/dead_code_elimination.cc",
         "patchSetId": 1
@@ -13,6 +59,75 @@
       "writtenOn": "2018-01-10T23:43:48Z",
       "side": 1,
       "message": "Note that we could generalize this code and allow other computations as well, which may expose actual dead code; however, not sure how useful that is in practice (and does not happen in code currently under inspection). So, more TBD as needed....",
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "043e5e87_2b738215",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-11T15:06:38Z",
+      "side": 1,
+      "message": "Do you want another bit in ArtMethod?",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1367,
+        "endChar": 1
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132bbbd9_af79bdc0",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-11T15:06:38Z",
+      "side": 1,
+      "message": "Should you do this only if the heuristics prevent you from inlining?",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeeb83e4_ed628bb4",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4180,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-11T15:06:38Z",
+      "side": 1,
+      "message": "This really scares me. I\u0027d much prefer that you add a HGoto after the invoke.",
+      "range": {
+        "startLine": 4180,
+        "startChar": 7,
+        "endLine": 4180,
+        "endChar": 23
+      },
       "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
