@@ -249,6 +249,30 @@
     },
     {
       "key": {
+        "uuid": "ec959900_258e1e01",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-11T18:59:46Z",
+      "side": 1,
+      "message": "Can you elaborate on this a bit please? At this point, we decided that the method could have been inlined (so target is known exactly). Under what condition can this invoke still have more than one target?",
+      "parentUuid": "d5fd49bc_cd2b5209",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeb83e4_ed628bb4",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
