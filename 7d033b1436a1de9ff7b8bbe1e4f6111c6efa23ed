@@ -225,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "d5fd49bc_cd2b5209",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1043514
+      },
+      "writtenOn": "2018-01-11T18:54:01Z",
+      "side": 1,
+      "message": "The same invoke_instruction can be called multiple times on different target methods, e.g. in TryInlinePolymorphicCall(). This 1-to-n mapping is worrisome since marking invoke_instruction as always-throws based on analyzing one target method is not correct.",
+      "parentUuid": "ce4915a2_572eed00",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aeeb83e4_ed628bb4",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 1
