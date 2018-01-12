@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94a2c1b8_841dfdd1",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-12T17:06:40Z",
+      "side": 1,
+      "message": "Ok, I will undo the requested goto and use a synthetic throw instead. That will minimize changes (well, at least the \n eventually observed changes, i have to undo the goto work again :-)",
+      "parentUuid": "5deee8dc_9906f6c7",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "4926b0eafb1810f6dc7a5001b1d095c13e0f3682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d5469b_d99efe6a",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 3
