@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5abc9315_44ada2e7",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-12T21:30:14Z",
+      "side": 1,
+      "message": "I implemented what you wanted, but noted the (now obvious) drawback that this creates actually assembly code for the synthetic throw at the end (including an ugly environment need). So I actually prefer the GOTO at the end (or making a throwing invoke a control flow statement).\n\nwdyt?",
+      "parentUuid": "94a2c1b8_841dfdd1",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "4926b0eafb1810f6dc7a5001b1d095c13e0f3682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d5469b_d99efe6a",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 3
