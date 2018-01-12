@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18a3b05c_a3a3d1a0",
+        "filename": "compiler/optimizing/code_sinking.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-12T22:04:11Z",
+      "side": 0,
+      "message": "Maybe change this to:\n!exit_predecessor-\u003eGetLastInstruction()-\u003eIsReturn || IsReturnVoid\n\n?",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 57
+      },
+      "revId": "d6c402e3667269df4f9a35cc558815ab6af9fbc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
