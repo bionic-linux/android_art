@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "3a0af7a1_1dce6934",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-12T10:56:52Z",
+      "side": 1,
+      "message": "We used to put whether a method was worth inlining in the modifiers flag, but I removed that. And we are getting short in modifiers flags anyway :)\n\nLet\u0027s see the compile-time impact on go/lem. Inlining is pretty time consuming already, so not sure how much this will contribute. My worry is that this will return true for a very short number of methods, and we are going to waste time on lots of other methods.",
+      "parentUuid": "033a6ac6_344de84b",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1367,
+        "endChar": 1
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132bbbd9_af79bdc0",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 1
@@ -309,6 +333,30 @@
       "side": 1,
       "message": "Ah, yes, that is a good point. I missed the fact that this uses the original invoke and different target methods here. I will move this to a better place, and probably restrict this to static methods only anyway. Thanks!",
       "parentUuid": "5a05cf35_d77ca67a",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa19cf80_ab03ac5d",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-12T10:56:52Z",
+      "side": 1,
+      "message": "Great catch on the polymorphic IC, Mingyao.",
+      "parentUuid": "90779c0e_cc3d4225",
       "range": {
         "startLine": 1418,
         "startChar": 0,
