@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "56cdd793_123b2f05",
+        "filename": "compiler/optimizing/graph_checker.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-12T22:01:23Z",
+      "side": 1,
+      "message": "Oh indeed. Then I agree the Goto is better. Or special-case the code generator for HTrow (no strong prefer on both). But I\u0027d really not want to have HInvoke as a control flow :)",
+      "parentUuid": "5abc9315_44ada2e7",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "4926b0eafb1810f6dc7a5001b1d095c13e0f3682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1d5469b_d99efe6a",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 3
