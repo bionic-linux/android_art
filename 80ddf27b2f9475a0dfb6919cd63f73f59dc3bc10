@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fbd14cd_b89ea851",
+        "filename": "dex2oat/dex2oat_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-12T10:10:00Z",
+      "side": 1,
+      "message": "So this is what ends up being tested right? I agree checking the output isn\u0027t strictly necessary then.",
+      "range": {
+        "startLine": 1007,
+        "startChar": 10,
+        "endLine": 1007,
+        "endChar": 15
+      },
+      "revId": "80ddf27b2f9475a0dfb6919cd63f73f59dc3bc10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
