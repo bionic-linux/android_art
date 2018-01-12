@@ -93,6 +93,30 @@
       "revId": "4926b0eafb1810f6dc7a5001b1d095c13e0f3682",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8289fa3d_da7e2dee",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-12T21:33:43Z",
+      "side": 1,
+      "message": "Will do. Will also write new checker tests for that.",
+      "parentUuid": "a1d5469b_d99efe6a",
+      "range": {
+        "startLine": 477,
+        "startChar": 44,
+        "endLine": 477,
+        "endChar": 56
+      },
+      "revId": "4926b0eafb1810f6dc7a5001b1d095c13e0f3682",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

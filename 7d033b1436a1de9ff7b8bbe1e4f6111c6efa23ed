@@ -202,6 +202,30 @@
     },
     {
       "key": {
+        "uuid": "7660d820_c617f322",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-12T21:33:43Z",
+      "side": 1,
+      "message": "golem does not show any compile-time impact",
+      "parentUuid": "3a0af7a1_1dce6934",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1367,
+        "endChar": 1
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132bbbd9_af79bdc0",
         "filename": "compiler/optimizing/inliner.cc",
         "patchSetId": 1
@@ -357,6 +381,30 @@
       "side": 1,
       "message": "Great catch on the polymorphic IC, Mingyao.",
       "parentUuid": "90779c0e_cc3d4225",
+      "range": {
+        "startLine": 1418,
+        "startChar": 0,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "7d033b1436a1de9ff7b8bbe1e4f6111c6efa23ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef6f1f3b_46b8538a",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-12T21:33:43Z",
+      "side": 1,
+      "message": "Agreed, that would have been a nasty bug to track later.",
+      "parentUuid": "aa19cf80_ab03ac5d",
       "range": {
         "startLine": 1418,
         "startChar": 0,
