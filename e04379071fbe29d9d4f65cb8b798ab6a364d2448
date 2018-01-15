@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e211257c_3c9fae7f",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-15T21:03:59Z",
+      "side": 0,
+      "message": "Why this change? Maybe add a comment in the code that we used to do it, but ...",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 34
+      },
+      "revId": "e04379071fbe29d9d4f65cb8b798ab6a364d2448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c1d094c_ffd57486",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-15T21:03:59Z",
+      "side": 1,
+      "message": "objects",
+      "range": {
+        "startLine": 173,
+        "startChar": 40,
+        "endLine": 173,
+        "endChar": 46
+      },
+      "revId": "1e85b1b57aa1829ee424893c701a8032716393ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
