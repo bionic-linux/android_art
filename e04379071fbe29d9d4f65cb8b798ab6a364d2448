@@ -22,6 +22,30 @@
       "revId": "e04379071fbe29d9d4f65cb8b798ab6a364d2448",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e76d3d5a_dcd4f56a",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-16T10:22:18Z",
+      "side": 0,
+      "message": "This change was introduced in the original Sticky-Bit (Generational) CC collection CL (https://android-review.googlesource.com/#/c/platform/art/+/257901/) and is not present in the current code base. It is mentioned in the commit message (\"Clear the \"newly allocated\" status of regions only when setting them as (evac) from-space and non-evac from-space.\").\n\nI did not add a comment here as this change is a correction of the initial Sticky-Bit CC CL. I prefer to keep things separated, but I am planning to (eventually) submit everything from topic art-sticky-bit-cc (https://android-review.googlesource.com/#/q/topic:art-sticky-bit-cc+(status:open+OR+status:merged)) in one go.",
+      "parentUuid": "e211257c_3c9fae7f",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 34
+      },
+      "revId": "e04379071fbe29d9d4f65cb8b798ab6a364d2448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
