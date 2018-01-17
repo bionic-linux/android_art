@@ -2431,6 +2431,7 @@ mirror::Object* ConcurrentCopying::Copy(mirror::Object* from_ref,
       accounting::ContinuousSpaceBitmap* mark_bitmap =
           heap_mark_bitmap_->GetContinuousSpaceBitmap(to_ref);
       CHECK(mark_bitmap != nullptr);
+      CHECK(!mark_bitmap->AtomicTestAndSet(to_ref));
     }
   }
   DCHECK(to_ref != nullptr);
