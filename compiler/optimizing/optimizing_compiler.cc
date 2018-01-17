@@ -69,6 +69,8 @@ static constexpr size_t kArenaAllocatorMemoryReportThreshold = 8 * MB;
 
 static constexpr const char* kPassNameSeparator = "$";
 
+static constexpr size_t kMaxMethodsPerMiniDebugInfoEntry = 32;
+
 /**
  * Used by the code generator, to allocate the code in a vector.
  */
@@ -382,11 +384,23 @@ class OptimizingCompiler FINAL : public Compiler {
                             PassObserver* pass_observer,
                             VariableSizedHandleScope* handles) const;
 
+  void GenerateJitDebugInfo(debug::MethodDebugInfo method_debug_info,
+                            ArrayRef<uint8_t> stack_map);
+
   std::unique_ptr<OptimizingCompilerStats> compilation_stats_;
 
   std::unique_ptr<std::ostream> visualizer_output_;
 
   mutable Mutex dump_mutex_;  // To synchronize visualizer writing.
+
+  // JIT compiler may create compressed mini-debug-info entries for native tools.
+  // This is small temporary buffer which allows us to group several methods per entry.
+  std::vector<debug::MethodDebugInfo> recent_method_debug_infos_;
+
+  // Temporary buffers to store any data needed for the above field.
+  std::vector<std::unique_ptr<std::vector<uint8_t>>> recent_method_debug_info_data_;
+
+  Mutex recent_method_debug_infos_mutex_;
 
   DISALLOW_COPY_AND_ASSIGN(OptimizingCompiler);
 };
@@ -395,7 +409,8 @@ static const int kMaximumCompilationTimeBeforeWarning = 100; /* ms */
 
 OptimizingCompiler::OptimizingCompiler(CompilerDriver* driver)
     : Compiler(driver, kMaximumCompilationTimeBeforeWarning),
-      dump_mutex_("Visualizer dump lock") {}
+      dump_mutex_("Visualizer dump lock"),
+      recent_method_debug_infos_mutex_("Method debug info generation lock") {}
 
 void OptimizingCompiler::Init() {
   // Enable C1visualizer output. Must be done in Init() because the compiler
@@ -1230,7 +1245,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
       const auto* method_header = reinterpret_cast<const OatQuickMethodHeader*>(code);
       const uintptr_t code_address = reinterpret_cast<uintptr_t>(method_header->GetCode());
       debug::MethodDebugInfo info = {};
-      DCHECK(info.trampoline_name.empty());
+      DCHECK(info.custom_name.empty());
       info.dex_file = dex_file;
       info.class_def_index = class_def_idx;
       info.dex_method_index = method_idx;
@@ -1246,14 +1261,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
       info.frame_size_in_bytes = method_header->GetFrameSizeInBytes();
       info.code_info = nullptr;
       info.cfi = jni_compiled_method.GetCfi();
-      // If both flags are passed, generate full debug info.
-      const bool mini_debug_info = !compiler_options.GetGenerateDebugInfo();
-      std::vector<uint8_t> elf_file = debug::MakeElfFileForJIT(
-          GetCompilerDriver()->GetInstructionSet(),
-          GetCompilerDriver()->GetInstructionSetFeatures(),
-          mini_debug_info,
-          info);
-      CreateJITCodeEntryForAddress(code_address, std::move(elf_file));
+      GenerateJitDebugInfo(info, ArrayRef<uint8_t>());
     }
 
     Runtime::Current()->GetJit()->AddMemoryUsage(method, allocator.BytesUsed());
@@ -1361,7 +1369,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     const auto* method_header = reinterpret_cast<const OatQuickMethodHeader*>(code);
     const uintptr_t code_address = reinterpret_cast<uintptr_t>(method_header->GetCode());
     debug::MethodDebugInfo info = {};
-    DCHECK(info.trampoline_name.empty());
+    DCHECK(info.custom_name.empty());
     info.dex_file = dex_file;
     info.class_def_index = class_def_idx;
     info.dex_method_index = method_idx;
@@ -1377,14 +1385,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     info.frame_size_in_bytes = method_header->GetFrameSizeInBytes();
     info.code_info = stack_map_size == 0 ? nullptr : stack_map_data;
     info.cfi = ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data());
-    // If both flags are passed, generate full debug info.
-    const bool mini_debug_info = !compiler_options.GetGenerateDebugInfo();
-    std::vector<uint8_t> elf_file = debug::MakeElfFileForJIT(
-        GetCompilerDriver()->GetInstructionSet(),
-        GetCompilerDriver()->GetInstructionSetFeatures(),
-        mini_debug_info,
-        info);
-    CreateJITCodeEntryForAddress(code_address, std::move(elf_file));
+    GenerateJitDebugInfo(info, ArrayRef<uint8_t>(stack_map_data, stack_map_size));
   }
 
   Runtime::Current()->GetJit()->AddMemoryUsage(method, allocator.BytesUsed());
@@ -1406,6 +1407,94 @@ bool OptimizingCompiler::JitCompile(Thread* self,
   }
 
   return true;
+}
+
+void OptimizingCompiler::GenerateJitDebugInfo(debug::MethodDebugInfo info,
+                                              ArrayRef<uint8_t> stack_map) {
+  const CompilerOptions& compiler_options = GetCompilerDriver()->GetCompilerOptions();
+  DCHECK(compiler_options.GenerateAnyDebugInfo());
+
+  // If both flags are passed, generate full debug info.
+  const bool mini_debug_info = !compiler_options.GetGenerateDebugInfo();
+
+  // Create entry for the single method that we just compiled.
+  {
+    std::vector<uint8_t> elf_file = debug::MakeElfFileForJIT(
+        GetCompilerDriver()->GetInstructionSet(),
+        GetCompilerDriver()->GetInstructionSetFeatures(),
+        mini_debug_info,
+        ArrayRef<const debug::MethodDebugInfo>(&info, 1));
+    MutexLock mu(Thread::Current(), g_jit_debug_mutex);
+    JITCodeEntry* entry = CreateJITCodeEntry(elf_file);
+    IncrementJITCodeEntryRefcount(entry, info.code_address);
+  }
+
+  // Amortize space overhead by grouping and compressing several methods together.
+  // TODO: This could by done asynchronously on separate thread.
+  if (mini_debug_info && kMaxMethodsPerMiniDebugInfoEntry > 1) {
+    MutexLock mu(Thread::Current(), recent_method_debug_infos_mutex_);
+
+    // We will keep the info around for a little longer,
+    // so we need to extend the lifetime of some fields.
+    info.custom_name = info.dex_file->PrettyMethod(info.dex_method_index,
+                                                   /* with_signature */ false);
+    info.dex_file = nullptr;  // Don't rely on the DexFile.
+    info.code_item = nullptr;  // Don't rely on the bytecode.
+    auto cfi2 = std::make_unique<std::vector<uint8_t>>(info.cfi.begin(), info.cfi.end());
+    info.cfi = ArrayRef<uint8_t>(cfi2->data(), cfi2->size());
+    recent_method_debug_info_data_.push_back(std::move(cfi2));
+    auto stack_map2 = std::make_unique<std::vector<uint8_t>>(stack_map.begin(), stack_map.end());
+    info.code_info = stack_map2->data();
+    recent_method_debug_info_data_.push_back(std::move(stack_map2));
+
+    // Remember the current debug info.
+    recent_method_debug_infos_.push_back(info);
+
+    // Create JITCodeEntry if we have collected enough recent methods.
+    if (recent_method_debug_infos_.size() == kMaxMethodsPerMiniDebugInfoEntry) {
+      // Remove methods which were GCed. This is needed because, in theory,
+      // recent method set may contain multiple methods with the same address.
+      {
+        MutexLock mu2(Thread::Current(), g_jit_debug_mutex);
+        std::vector<debug::MethodDebugInfo> live;
+        live.reserve(recent_method_debug_infos_.size());
+        for (const debug::MethodDebugInfo& mi : recent_method_debug_infos_) {
+          if (GetJITCodeEntry(mi.code_address) != nullptr) {
+            live.push_back(mi);
+          }
+        }
+        recent_method_debug_infos_.swap(live);
+      }
+
+      if (!recent_method_debug_infos_.empty()) {
+        std::vector<uint8_t> elf_file = debug::MakeElfFileForJIT(
+            GetCompilerDriver()->GetInstructionSet(),
+            GetCompilerDriver()->GetInstructionSetFeatures(),
+            mini_debug_info,
+            ArrayRef<const debug::MethodDebugInfo>(recent_method_debug_infos_));
+
+        MutexLock mu2(Thread::Current(), g_jit_debug_mutex);
+        JITCodeEntry* new_entry = CreateJITCodeEntry(elf_file);
+        size_t num_live = 0;
+        for (const debug::MethodDebugInfo& mi : recent_method_debug_infos_) {
+          JITCodeEntry* old_entry = GetJITCodeEntry(mi.code_address);
+          if (old_entry != nullptr) {
+            DecrementJITCodeEntryRefcount(old_entry, mi.code_address);
+            IncrementJITCodeEntryRefcount(new_entry, mi.code_address);
+            num_live++;
+          }
+        }
+        if (num_live == 0) {
+          // Highly unlikely scenario where all methods were GCed while we
+          // were creating and compressing the ELF file.
+          DeleteJITCodeEntry(new_entry);
+        }
+      }
+
+      recent_method_debug_infos_.clear();
+      recent_method_debug_info_data_.clear();
+    }
+  }
 }
 
 }  // namespace art
