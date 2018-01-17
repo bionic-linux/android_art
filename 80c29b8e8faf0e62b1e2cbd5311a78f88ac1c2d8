@@ -22,6 +22,53 @@
       "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4271f14_4097fb6c",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-17T00:28:50Z",
+      "side": 1,
+      "message": "The GC scans objects after they have been copied, this check is verifying that behavior. Newly allocated large objects have their newly allocated boolean cleared in SetFromSpace and should also cause this to pass.",
+      "parentUuid": "48afdd6e_170e949f",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 69
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368ddc78_1a4db1cc",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-17T00:28:50Z",
+      "side": 1,
+      "message": "Can you clarify what case this is? The GC should only process objects in the to-space other than large objects. And those should be handled in SetAsUnevacFromSpace?",
+      "range": {
+        "startLine": 405,
+        "startChar": 30,
+        "endLine": 405,
+        "endChar": 70
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
