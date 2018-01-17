@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f62de161_dc6d9df1",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-01-17T20:30:05Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "5ed85465_b9e7b3e9",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 69
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "368ddc78_1a4db1cc",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 4
