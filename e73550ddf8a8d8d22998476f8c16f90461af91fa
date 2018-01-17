@@ -93,6 +93,30 @@
       "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d824a4f_f26e2984",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T17:02:15Z",
+      "side": 1,
+      "message": "That doesn\u0027t follow. We could just as well specialize libunwind for vendor to not include this functionality. See my worries about what it actually means to make this vendor-available. Are you gonna ensure P libunwind won\u0027t fall over Q cdex and crash (considering how reluctant mathieuc is w/ version number increases)?",
+      "parentUuid": "ad02d4ce_9366a86a",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
