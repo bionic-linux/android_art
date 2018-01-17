@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "082a3764_b8b677a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-01-17T16:59:11Z",
+      "side": 1,
+      "message": "dex_file.h depends on jni.h\nlibutils included it transitively.\nso it is kind of \"remove false dependency\", yes.",
+      "parentUuid": "34f06359_4a5958f4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f0dfd16_d391e98f",
         "filename": "runtime/Android.bp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-17T16:38:08Z",
       "side": 1,
       "message": "I am not sure this is a good idea. Doesn\u0027t this make this vndk-stable - but cdex is intended to change?\n\nWhat does support_system_process below mean? Please comment.",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad02d4ce_9366a86a",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-01-17T16:59:11Z",
+      "side": 1,
+      "message": "The motivation here is to allow dex file reading from libunwind.\n\nAs libunwind is marked vendor_available, the build system requires that all its dependencies as vendor_available as well.\n\nSame for support_system_process (vndksp).  I am not actually sure what the difference is between vndksp and vndk, but the build system enforces that this variant is also available.",
+      "parentUuid": "9f0dfd16_d391e98f",
       "range": {
         "startLine": 81,
         "startChar": 4,
