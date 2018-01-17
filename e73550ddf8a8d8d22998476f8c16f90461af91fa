@@ -117,6 +117,30 @@
       "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2165cee4_5ee2a794",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-01-17T17:14:27Z",
+      "side": 1,
+      "message": "I don\u0027t completely follow all the motivations and implications behind the vendor image, so I would appreciate a bit help here.\n\nI was assuming that in the best case scenario, updating the cdex format would also update this library, and thus it would continue to work, and in the worst case scenario, the it would fail to load in libunwind because of version missmatch, and thus we would lose some symbols, but nothing I would lose sleep over.\n\n\u003e specialize libunwind for vendor to not include this functionality\n\nSure, sounds like a possible approach as well.  Does the build system allow this?\nIs libunwind used much in the vendor image?",
+      "parentUuid": "6d824a4f_f26e2984",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
