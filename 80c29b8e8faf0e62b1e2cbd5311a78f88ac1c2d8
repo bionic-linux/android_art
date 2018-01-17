@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48afdd6e_170e949f",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-01-17T00:00:44Z",
+      "side": 1,
+      "message": "I might be wrong, but isn\u0027t this code syntactically wrong?",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 69
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
