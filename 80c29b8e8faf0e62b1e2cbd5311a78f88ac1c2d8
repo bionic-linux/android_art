@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ed85465_b9e7b3e9",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1599,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-17T19:38:57Z",
+      "side": 1,
+      "message": "Lokesh, if you are wondering about the DCHECK use, it is actually fine. The (D)CHECK* macros expand to a statement that creates an I/O stream object (see https://android.googlesource.com/platform/system/core/+/master/base/include/android-base/logging.h).",
+      "parentUuid": "48afdd6e_170e949f",
+      "range": {
+        "startLine": 1599,
+        "startChar": 2,
+        "endLine": 1599,
+        "endChar": 69
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "368ddc78_1a4db1cc",
         "filename": "runtime/gc/space/region_space.h",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2018-01-17T00:28:50Z",
       "side": 1,
       "message": "Can you clarify what case this is? The GC should only process objects in the to-space other than large objects. And those should be handled in SetAsUnevacFromSpace?",
+      "range": {
+        "startLine": 405,
+        "startChar": 30,
+        "endLine": 405,
+        "endChar": 70
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3e2d833_3cc364a4",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-01-17T19:38:57Z",
+      "side": 1,
+      "message": "Agreed, this comment seems off. Maybe \"processed\" was not the best term, as an (evac) from-space reference should never be pushed on the mark stack and processed by ConcurrentCopying::ProcessMarkStackRef. The GC may however \"encounter\" an (evac) from-space reference when scanning an object\u0027s reference field.\n\nMy intent was to make the removal of the \"newly allocated\" status clearer and more systematic; the invariant here being that there should be no from-space (evac or non-evac) region with the \"newly allocated\" status. This is of course only relevant when the from-space exists (i.e. between the calls to RegionSpace::SetFromSpace and RegionSpace::ClearFromSpace). I\u0027ll try to materialize this invariant in ConcurrentCopying\u0027s code.\n\nI have reworded comments in PS6; let me know what you think.",
+      "parentUuid": "368ddc78_1a4db1cc",
       "range": {
         "startLine": 405,
         "startChar": 30,
