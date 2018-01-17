@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f06359_4a5958f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T16:38:08Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make sense. jni_headers is jni.h, libutils is actual Android-y stuff. This sounds more like \"remove false dependency?\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0dfd16_d391e98f",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-17T16:38:08Z",
+      "side": 1,
+      "message": "I am not sure this is a good idea. Doesn\u0027t this make this vndk-stable - but cdex is intended to change?\n\nWhat does support_system_process below mean? Please comment.",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "e73550ddf8a8d8d22998476f8c16f90461af91fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
