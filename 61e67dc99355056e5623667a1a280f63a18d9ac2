@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff42e834_98b0e7a0",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "/* with_signature */",
+      "range": {
+        "startLine": 1434,
+        "startChar": 73,
+        "endLine": 1434,
+        "endChar": 74
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9893df4d_44c81882",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "What if the JIT GC collected the method and the same code address was reused for new code? (The recent_method_debug_infos_ can contain obsolete code addresses.)",
+      "range": {
+        "startLine": 1460,
+        "startChar": 12,
+        "endLine": 1460,
+        "endChar": 61
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb1c6efb_efa821f9",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "Unnecessary, it\u0027s already present on the declaration in the header file.",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 78,
+        "endChar": 31
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb51eca4_c03e86b0",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "Unnecessary.",
+      "range": {
+        "startLine": 104,
+        "startChar": 45,
+        "endLine": 104,
+        "endChar": 72
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec40dce1_277eb44a",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "GUARDED_BY(g_jit_debug_mutex)?",
+      "range": {
+        "startLine": 124,
+        "startChar": 52,
+        "endLine": 124,
+        "endChar": 70
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8c8c75_386694b6",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "Unnecessary.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 127,
+        "endChar": 31
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "602cbee3_1dc17174",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of emplace() used this way. If the entry already exists, you\u0027ll incur an unnecessary allocation and deallocation.",
+      "range": {
+        "startLine": 128,
+        "startChar": 6,
+        "endLine": 128,
+        "endChar": 60
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2493582a_25a94a7e",
+        "filename": "runtime/jit/debugger_interface.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "Unnecessary.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 31
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "723a62ff_632d25e4",
+        "filename": "runtime/jit/debugger_interface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-18T18:17:16Z",
+      "side": 1,
+      "message": "Typo; also does not match the name in .cc file.",
+      "range": {
+        "startLine": 37,
+        "startChar": 61,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "61e67dc99355056e5623667a1a280f63a18d9ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
