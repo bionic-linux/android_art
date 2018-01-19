@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b346e8fc_fee67981",
+        "filename": "dexdump/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:16:29Z",
+      "side": 1,
+      "message": "The windows work can begin before I get this fixed, btw :-).",
+      "parentUuid": "5598d139_d3b2b454",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0681811b_1efab4bb",
         "filename": "dexdump/dexdump.cc",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d42a54c8_9ab249fb",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:16:29Z",
+      "side": 1,
+      "message": "Debug statement.  Removed.",
+      "parentUuid": "0681811b_1efab4bb",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "838308d8_e01832bd",
         "filename": "dexdump/dexdump_main.cc",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-01-19T22:10:33Z",
       "side": 1,
       "message": "remove?",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a218a3a_9996cd0c",
+        "filename": "dexdump/dexdump_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:16:29Z",
+      "side": 1,
+      "message": "Yes, remove is better than commented out :-(.  Done.",
+      "parentUuid": "838308d8_e01832bd",
       "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
