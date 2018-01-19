@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ec75667_5c978555",
+        "filename": "compiler/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-19T23:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ddbd5bd_97985d8f",
+      "range": {
+        "startLine": 129,
+        "startChar": 15,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f51601d_3a0510ec",
         "filename": "compiler/dex/dex_to_dex_compiler.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-19T22:40:43Z",
       "side": 1,
       "message": "a typedef/using?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fb4003_578f79b1",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-19T23:28:32Z",
+      "side": 1,
+      "message": "I think not using a typedef is cleaner in this case.",
+      "parentUuid": "1f51601d_3a0510ec",
       "range": {
         "startLine": 98,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "79f75e21_758ce71a",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-19T23:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c9a595_179f8705",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9929e093_619be195",
         "filename": "compiler/dex/dex_to_dex_compiler.h",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16f3dcb9_debec870",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-19T23:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9929e093_619be195",
+      "range": {
+        "startLine": 132,
+        "startChar": 19,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
