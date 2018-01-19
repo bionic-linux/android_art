@@ -1,0 +1,9 @@
+Verified+1: David Srbecky <dsrbecky@google.com>
+Autosubmit+1: David Srbecky <dsrbecky@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Vladimir Marko <vmarko@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 19 Jan 2018 14:24:38 +0000
+Reviewed-on: https://android-review.googlesource.com/592954
+Project: platform/art
+Branch: refs/heads/master
