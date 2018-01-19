@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "96bb07da_32ad2416",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:23:50Z",
+      "side": 1,
+      "message": "this has to go too?",
+      "revId": "477ffd10a668e5cb67d5fe711583ef709321ef61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51824511_50472dbd",
         "filename": "dexdump/dexdump_main.cc",
         "patchSetId": 3
