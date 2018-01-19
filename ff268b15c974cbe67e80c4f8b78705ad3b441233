@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5598d139_d3b2b454",
+        "filename": "dexdump/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:10:33Z",
+      "side": 1,
+      "message": "so close :-)",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0681811b_1efab4bb",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:10:33Z",
+      "side": 1,
+      "message": "why this change? was this for own debugging, or does this replace functionality that was in the older lib?",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838308d8_e01832bd",
+        "filename": "dexdump/dexdump_main.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:10:33Z",
+      "side": 1,
+      "message": "remove?",
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
