@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e39d09ae_af4da289",
+        "filename": "runtime/dex/art_dex_file_loader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-19T23:12:50Z",
+      "side": 0,
+      "message": "Why is this removed?",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 59
+      },
+      "revId": "a1744b6e8b0419783f78730b7e692309e3508bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
