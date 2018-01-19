@@ -34,8 +34,13 @@
 
 #include "dexdump.h"
 
+#include <fcntl.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include <sys/mman.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include <iostream>
 #include <memory>
@@ -1820,6 +1825,7 @@ static void dumpCallSite(const DexFile* pDexFile, u4 idx) {
  */
 static void processDexFile(const char* fileName,
                            const DexFile* pDexFile, size_t i, size_t n) {
+  fprintf(stderr, "processing %s at %p, %zd %zd\n", fileName, pDexFile, i, n);
   if (gOptions.verbose) {
     fputs("Opened '", gOutFile);
     fputs(fileName, gOutFile);
@@ -1868,6 +1874,34 @@ static void processDexFile(const char* fileName,
   }
 }
 
+static bool openAndMapFile(const char* fileName,
+                           const uint8_t** base,
+                           size_t* size,
+                           std::string* error_msg) {
+  int fd = open(fileName, O_RDONLY);
+  if (fd < 0) {
+    *error_msg = "open failed";
+    return false;
+  }
+  struct stat st;
+  if (fstat(fd, &st) < 0) {
+    *error_msg = "stat failed";
+    return false;
+  }
+  *size = st.st_size;
+  if (*size == 0) {
+    *error_msg = "size == 0";
+    return false;
+  }
+  void* addr = mmap(nullptr /*addr*/, *size, PROT_READ, MAP_PRIVATE, fd, 0 /*offset*/);
+  if (addr == MAP_FAILED) {
+    *error_msg = "mmap failed";
+    return false;
+  }
+  *base = reinterpret_cast<const uint8_t*>(addr);
+  return true;
+}
+
 /*
  * Processes a single file (either direct .dex or indirect .zip/.jar/.apk).
  */
@@ -1880,17 +1914,24 @@ int processFile(const char* fileName) {
   // all of which are Zip archives with "classes.dex" inside.
   const bool kVerifyChecksum = !gOptions.ignoreBadChecksum;
   std::string error_msg;
-  // TODO: Use DexFileLoader when that is implemented.
-  const ArtDexFileLoader dex_file_loader;
+  const uint8_t* base;
+  size_t size;
+  if (!openAndMapFile(fileName, &base, &size, &error_msg)) {
+    fputs(error_msg.c_str(), stderr);
+    fputc('\n', stderr);
+    return -1;
+  }
+  const DexFileLoader dex_file_loader;
   std::vector<std::unique_ptr<const DexFile>> dex_files;
-  if (!dex_file_loader.Open(
-        fileName, fileName, /* verify */ true, kVerifyChecksum, &error_msg, &dex_files)) {
+  if (!dex_file_loader.OpenAll(
+        base, size, fileName, /*verify*/ true, kVerifyChecksum, &error_msg, &dex_files)) {
     // Display returned error message to user. Note that this error behavior
     // differs from the error messages shown by the original Dalvik dexdump.
     fputs(error_msg.c_str(), stderr);
     fputc('\n', stderr);
     return -1;
   }
+  fprintf(stderr, "Read %zd dex files\n", dex_files.size());
 
   // Success. Either report checksum verification or process
   // all dex files found in given file.
