@@ -30,10 +30,6 @@
 
 #include <android-base/logging.h>
 
-#include <base/logging.h>  // For InitLogging.
-#include "mem_map.h"
-#include "runtime.h"
-
 namespace art {
 
 static const char* gProgName = "dexdump";
@@ -62,8 +58,8 @@ static void usage(void) {
  */
 int dexdumpDriver(int argc, char** argv) {
   // Art specific set up.
-  InitLogging(argv, Runtime::Abort);
-  MemMap::Init();
+  // InitLogging(argv, Runtime::Abort);
+  // MemMap::Init();
 
   // Reset options.
   bool wantUsage = false;
