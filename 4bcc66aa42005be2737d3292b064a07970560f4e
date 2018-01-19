@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ddbd5bd_97985d8f",
+        "filename": "compiler/dex/dex_to_dex_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:40:43Z",
+      "side": 1,
+      "message": "ShouldCompileMethod.",
+      "range": {
+        "startLine": 129,
+        "startChar": 15,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f51601d_3a0510ec",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:40:43Z",
+      "side": 1,
+      "message": "a typedef/using?",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 24
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c9a595_179f8705",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:40:43Z",
+      "side": 1,
+      "message": "executable (no E)",
+      "range": {
+        "startLine": 122,
+        "startChar": 7,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9929e093_619be195",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:40:43Z",
+      "side": 1,
+      "message": "dequickened",
+      "range": {
+        "startLine": 132,
+        "startChar": 19,
+        "endLine": 132,
+        "endChar": 29
+      },
+      "revId": "4bcc66aa42005be2737d3292b064a07970560f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
