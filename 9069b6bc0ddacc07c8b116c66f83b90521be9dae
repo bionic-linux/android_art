@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb390c9_e69d1249",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:44:15Z",
+      "side": 1,
+      "message": "I could initialize base/size to e.g. null/zero to keep some of our other tools happy;\nalso, change order to base/size/error_msg to match parameter order",
+      "revId": "9069b6bc0ddacc07c8b116c66f83b90521be9dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77197bad_e6a9e1e5",
+        "filename": "dexlist/dexlist.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-01-19T22:44:15Z",
+      "side": 1,
+      "message": "same request as in other file",
+      "revId": "9069b6bc0ddacc07c8b116c66f83b90521be9dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
