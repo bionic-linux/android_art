@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6865c54b_980d2c13",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:33:57Z",
+      "side": 1,
+      "message": "I haven\u0027t really looked at that yet.  I hope mingw is what we\u0027re using, and further hope it supports very limited mmap uses.  If not, yes, MapViewOfFile will be here.",
+      "parentUuid": "881cf11d_4188c994",
+      "range": {
+        "startLine": 1896,
+        "startChar": 15,
+        "endLine": 1896,
+        "endChar": 19
+      },
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "838308d8_e01832bd",
         "filename": "dexdump/dexdump_main.cc",
         "patchSetId": 2

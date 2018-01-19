@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4b443773_c8ed5b76",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1933,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:33:57Z",
+      "side": 1,
+      "message": "ugh.  Removed.",
+      "parentUuid": "96bb07da_32ad2416",
+      "revId": "477ffd10a668e5cb67d5fe711583ef709321ef61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51824511_50472dbd",
         "filename": "dexdump/dexdump_main.cc",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2018-01-19T22:20:16Z",
       "side": 1,
       "message": "What is this one for?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "477ffd10a668e5cb67d5fe711583ef709321ef61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2a8028_3910ad67",
+        "filename": "dexdump/dexdump_main.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T22:33:57Z",
+      "side": 1,
+      "message": "Removed that one also.  Good catch.",
+      "parentUuid": "51824511_50472dbd",
       "range": {
         "startLine": 30,
         "startChar": 0,
