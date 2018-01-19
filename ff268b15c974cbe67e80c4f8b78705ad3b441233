@@ -72,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "881cf11d_4188c994",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-19T22:17:31Z",
+      "side": 1,
+      "message": "Will a follow up change to remove use of mmap to enable running dexdump2 on Windows?",
+      "range": {
+        "startLine": 1896,
+        "startChar": 15,
+        "endLine": 1896,
+        "endChar": 19
+      },
+      "revId": "ff268b15c974cbe67e80c4f8b78705ad3b441233",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "838308d8_e01832bd",
         "filename": "dexdump/dexdump_main.cc",
         "patchSetId": 2
