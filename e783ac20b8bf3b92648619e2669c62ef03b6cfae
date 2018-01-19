@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecc41d90_7b64e2e3",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-01-19T17:31:00Z",
+      "side": 1,
+      "message": "This is an value in the map, not an iterator. I prefer \"entry\".",
+      "range": {
+        "startLine": 1463,
+        "startChar": 19,
+        "endLine": 1463,
+        "endChar": 21
+      },
+      "revId": "e783ac20b8bf3b92648619e2669c62ef03b6cfae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
