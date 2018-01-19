@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6991aa5_f9912d08",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-01-19T17:46:40Z",
+      "side": 1,
+      "message": "nit: i don\u0027t feel like these methods add a lot of value",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "89c6056adcfd092a60c6fa3c36d64c4946f0a246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "515b99b0_0eb93577",
+        "filename": "runtime/native/dalvik_system_DexFile.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-01-19T17:46:40Z",
+      "side": 1,
+      "message": "A few comments about the life-cycle of this object (and the relationship with |oat_file| would help.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "89c6056adcfd092a60c6fa3c36d64c4946f0a246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

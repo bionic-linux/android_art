@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744a69dd_f726567b",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2018-01-19T17:46:40Z",
+      "side": 0,
+      "message": "it\u0027s not clear to me why this is no longer necessary",
+      "range": {
+        "startLine": 1115,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 46
+      },
+      "revId": "118c59cf6af50e128d29609c9046a4af15826976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
