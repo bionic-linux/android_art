@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "32ecadc9_1ce1f20a",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1915,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T23:01:23Z",
+      "side": 1,
+      "message": "Good points, both.  Done.",
+      "parentUuid": "dbb390c9_e69d1249",
+      "revId": "9069b6bc0ddacc07c8b116c66f83b90521be9dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77197bad_e6a9e1e5",
         "filename": "dexlist/dexlist.cc",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-19T22:44:15Z",
       "side": 1,
       "message": "same request as in other file",
+      "revId": "9069b6bc0ddacc07c8b116c66f83b90521be9dae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c8d8847_b8ea53d5",
+        "filename": "dexlist/dexlist.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-19T23:01:23Z",
+      "side": 1,
+      "message": "Done here also.",
+      "parentUuid": "77197bad_e6a9e1e5",
       "revId": "9069b6bc0ddacc07c8b116c66f83b90521be9dae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
