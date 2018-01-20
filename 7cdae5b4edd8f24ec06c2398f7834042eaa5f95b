@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e581caa_9bfd299f",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-20T00:19:57Z",
+      "side": 1,
+      "message": "I can\u0027t actually remove either of these because art_dex_file_loader depends on them.  But I should remove dex_file_loader.cc from the sources and add a dependency on libdexfile, but that\u0027s another snipe hunt for dependencies.  Can I come back to these?",
+      "parentUuid": "4f60448b_aa82f183",
+      "range": {
+        "startLine": 451,
+        "startChar": 16,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "7cdae5b4edd8f24ec06c2398f7834042eaa5f95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c11318b_159355c8",
         "filename": "runtime/Android.bp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-19T23:12:50Z",
       "side": 1,
       "message": "Ditto",
+      "range": {
+        "startLine": 475,
+        "startChar": 16,
+        "endLine": 475,
+        "endChar": 32
+      },
+      "revId": "7cdae5b4edd8f24ec06c2398f7834042eaa5f95b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62af8266_68e3c3a1",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-20T00:19:57Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "4c11318b_159355c8",
       "range": {
         "startLine": 475,
         "startChar": 16,
