@@ -22,6 +22,30 @@
       "revId": "a1744b6e8b0419783f78730b7e692309e3508bc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3afca19_bd00166b",
+        "filename": "runtime/dex/art_dex_file_loader.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-20T00:23:20Z",
+      "side": 0,
+      "message": "Fixed.",
+      "parentUuid": "e39d09ae_af4da289",
+      "range": {
+        "startLine": 53,
+        "startChar": 51,
+        "endLine": 53,
+        "endChar": 59
+      },
+      "revId": "a1744b6e8b0419783f78730b7e692309e3508bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
