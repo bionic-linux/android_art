@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "289d0bb4_f2f0b3ec",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T16:33:16Z",
+      "side": 1,
+      "message": "No private members. Why not struct?",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94b1840f_643a0875",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T16:33:16Z",
+      "side": 1,
+      "message": "It\u0027s a strange design to have the State compile instead of the Compiler. Why?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fb3967_6e259313",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T16:33:16Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 162,
+        "startChar": 51,
+        "endLine": 162,
+        "endChar": 52
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e47b849_f9475d39",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T16:33:16Z",
+      "side": 1,
+      "message": "Why.",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 80
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
