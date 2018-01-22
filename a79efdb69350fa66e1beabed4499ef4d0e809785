@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ca21b27_2257cbd5",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2598,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T19:13:29Z",
+      "side": 1,
+      "message": "it\u0027s",
+      "range": {
+        "startLine": 2598,
+        "startChar": 45,
+        "endLine": 2598,
+        "endChar": 48
+      },
+      "revId": "a79efdb69350fa66e1beabed4499ef4d0e809785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
