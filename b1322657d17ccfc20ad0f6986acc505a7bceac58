@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "caa89274_c371faf7",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-22T16:45:46Z",
+      "side": 1,
+      "message": "The main difference is the state is for a single method and the compiler persists to track duplicated code items. I will add a comment.",
+      "parentUuid": "94b1840f_643a0875",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 35
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26fb3967_6e259313",
         "filename": "compiler/dex/dex_to_dex_compiler.h",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "78b641a7_c89bf0e5",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-22T16:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26fb3967_6e259313",
+      "range": {
+        "startLine": 162,
+        "startChar": 51,
+        "endLine": 162,
+        "endChar": 52
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e47b849_f9475d39",
         "filename": "compiler/dex/dex_to_dex_compiler.h",
         "patchSetId": 6
@@ -91,6 +139,30 @@
       "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a11bacf1_9eab4d8d",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-22T16:45:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e47b849_f9475d39",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 80
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
