@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f336f42e_89bcf5c2",
+        "filename": "compiler/dex/dex_to_dex_compiler.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-22T16:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289d0bb4_f2f0b3ec",
+      "range": {
+        "startLine": 77,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 10
+      },
+      "revId": "b1322657d17ccfc20ad0f6986acc505a7bceac58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94b1840f_643a0875",
         "filename": "compiler/dex/dex_to_dex_compiler.h",
         "patchSetId": 6
