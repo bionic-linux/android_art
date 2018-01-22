@@ -22,6 +22,30 @@
       "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524191ab_065ba031",
+        "filename": "dexdump/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-22T21:24:27Z",
+      "side": 1,
+      "message": "I can get it down to \nstatic_libs: [\n       \"libdexfile\",\n       \"libziparchive\",\n       \"libz\",\n       \"liblog\",\n       \"libbase\",\n       \"libutils\",\n   ],\nBut would prefer to do that when I do the Windows CL.",
+      "parentUuid": "fd5d91f1_c252f004",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
