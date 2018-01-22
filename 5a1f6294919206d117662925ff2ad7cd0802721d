@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd5d91f1_c252f004",
+        "filename": "dexdump/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-22T21:04:29Z",
+      "side": 1,
+      "message": "Is this really all necessary?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
