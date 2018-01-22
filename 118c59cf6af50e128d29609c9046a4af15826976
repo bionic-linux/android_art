@@ -22,6 +22,30 @@
       "revId": "118c59cf6af50e128d29609c9046a4af15826976",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb3ce873_041fb062",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-22T16:15:13Z",
+      "side": 0,
+      "message": "I\u0027m hoping Alex will have a chance to take a look and comment.\n\nMy (possibly flawed) understanding is:\n\nIn the old version, to insert a new dex file into the cookie requires allocating a new, larger, cookie array. We need to swap the cookie values in an atomic fashion that does not allow us to allocate them during the swap. This method is used to allocate and save the new cookie array before the atomic update.\n\nIn this new version, we can insert a new dex file into the cookie directly, without allocating a new vector. So we don\u0027t need to allocate and save a new cookie ahead of time.",
+      "parentUuid": "744a69dd_f726567b",
+      "range": {
+        "startLine": 1115,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 46
+      },
+      "revId": "118c59cf6af50e128d29609c9046a4af15826976",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

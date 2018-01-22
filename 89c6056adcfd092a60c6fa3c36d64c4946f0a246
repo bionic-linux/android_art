@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56f22fcb_b7747487",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-22T16:15:13Z",
+      "side": 1,
+      "message": "I introduced these methods because it is difficult for me to remember the appropriate casting procedure to use to convert a jlong to a native pointer and back. This way I can reuse the method rather than worry about it in a dozen different places, and if I make a mistake, its easy to fix everywhere later.",
+      "parentUuid": "c6991aa5_f9912d08",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "89c6056adcfd092a60c6fa3c36d64c4946f0a246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "515b99b0_0eb93577",
         "filename": "runtime/native/dalvik_system_DexFile.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-19T17:46:40Z",
       "side": 1,
       "message": "A few comments about the life-cycle of this object (and the relationship with |oat_file| would help.",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "89c6056adcfd092a60c6fa3c36d64c4946f0a246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "544cdbc1_a39b8135",
+        "filename": "runtime/native/dalvik_system_DexFile.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-22T16:15:13Z",
+      "side": 1,
+      "message": "Better now?",
+      "parentUuid": "515b99b0_0eb93577",
       "range": {
         "startLine": 30,
         "startChar": 2,
