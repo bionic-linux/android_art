@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c450ea35_fe29e044",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-23T13:54:36Z",
+      "side": 1,
+      "message": "a",
+      "range": {
+        "startLine": 398,
+        "startChar": 12,
+        "endLine": 398,
+        "endChar": 13
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab089d04_51fc9cb2",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-23T13:54:36Z",
+      "side": 1,
+      "message": "Why do you still have this?",
+      "range": {
+        "startLine": 1422,
+        "startChar": 0,
+        "endLine": 1431,
+        "endChar": 3
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
