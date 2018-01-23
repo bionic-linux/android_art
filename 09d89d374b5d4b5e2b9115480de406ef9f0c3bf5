@@ -22,6 +22,30 @@
       "revId": "09d89d374b5d4b5e2b9115480de406ef9f0c3bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04dbf98f_5834f3ba",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1249526
+      },
+      "writtenOn": "2018-01-23T23:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34380745_7d0ec20c",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 30
+      },
+      "revId": "09d89d374b5d4b5e2b9115480de406ef9f0c3bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
