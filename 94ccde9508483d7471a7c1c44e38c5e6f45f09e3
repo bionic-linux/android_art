@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55e030b7_f9ffb9b6",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T18:42:19Z",
+      "side": 1,
+      "message": "put these in file_utils.cc please",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 1
+      },
+      "revId": "94ccde9508483d7471a7c1c44e38c5e6f45f09e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "656d0160_02b86543",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T18:42:19Z",
+      "side": 1,
+      "message": "Maybe use GetDalvikCacheFilename in runtime/base/file_utils.h and other functions.",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 0
+      },
+      "revId": "94ccde9508483d7471a7c1c44e38c5e6f45f09e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d10e1c63_c3b50975",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T18:42:19Z",
+      "side": 1,
+      "message": "--verify here?",
+      "range": {
+        "startLine": 1134,
+        "startChar": 0,
+        "endLine": 1134,
+        "endChar": 17
+      },
+      "revId": "94ccde9508483d7471a7c1c44e38c5e6f45f09e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
