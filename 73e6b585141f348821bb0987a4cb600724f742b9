@@ -45,6 +45,30 @@
       "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5320c592_a3361e1a",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-01-23T15:27:16Z",
+      "side": 1,
+      "message": "This one generates entry with the single method, which might be immediately needed.\n\nThe code below will group those when we accumulate enough methods.",
+      "parentUuid": "ab089d04_51fc9cb2",
+      "range": {
+        "startLine": 1422,
+        "startChar": 0,
+        "endLine": 1431,
+        "endChar": 3
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
