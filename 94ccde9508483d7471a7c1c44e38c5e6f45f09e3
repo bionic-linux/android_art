@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b32ff86_196fd2cb",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-23T18:54:04Z",
+      "side": 1,
+      "message": "Use android-base/file.h stuff for this. No need duplicate.",
+      "parentUuid": "55e030b7_f9ffb9b6",
+      "range": {
+        "startLine": 594,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 1
+      },
+      "revId": "94ccde9508483d7471a7c1c44e38c5e6f45f09e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "656d0160_02b86543",
         "filename": "patchoat/patchoat.cc",
         "patchSetId": 4
