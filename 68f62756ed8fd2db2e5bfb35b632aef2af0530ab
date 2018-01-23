@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "d84097b2_228f0313",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8760,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-23T23:39:33Z",
+      "side": 1,
+      "message": "I think you have to do this change *now*. CommonRuntimeTestImpl::LoadDexInWellKnownClassLoader doesn\u0027t give up ownership.",
+      "range": {
+        "startLine": 8758,
+        "startChar": 0,
+        "endLine": 8760,
+        "endChar": 58
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f643f4e_96ec509f",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-23T23:39:33Z",
+      "side": 1,
+      "message": "Please extend your comment. You\u0027re adding a severe check here (this was conservatively passed before), and I need convincing that you don\u0027t break any app hacks.",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7148ecf9_96328e25",
         "filename": "test/944-transform-classloaders/src/Main.java",
         "patchSetId": 5
