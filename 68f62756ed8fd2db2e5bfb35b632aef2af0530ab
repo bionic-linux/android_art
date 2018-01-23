@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eea30bb6_924e76cc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2474,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T23:23:35Z",
+      "side": 1,
+      "message": "nit: const DexFile*",
+      "range": {
+        "startLine": 2474,
+        "startChar": 15,
+        "endLine": 2474,
+        "endChar": 19
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4b0914_4e8e7802",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T23:23:35Z",
+      "side": 1,
+      "message": "nit: cp_dex_file !\u003d nullptr",
+      "range": {
+        "startLine": 2475,
+        "startChar": 18,
+        "endLine": 2475,
+        "endChar": 29
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7148ecf9_96328e25",
+        "filename": "test/944-transform-classloaders/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T23:23:35Z",
+      "side": 1,
+      "message": "Not needed if you put the c-code into libtiagent",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7722fd8b_587166b9",
+        "filename": "test/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T23:23:35Z",
+      "side": 1,
+      "message": "Don\u0027t add this into libarttest instead put it into libtiagent (starting line 276) that is for jvmti stuff that is art-specific.\n\nWhen you do that you can also remove the change to 944/src/Main.java",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 63
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
