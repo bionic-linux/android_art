@@ -1,0 +1,10 @@
+Verified+1: Vladimir Marko <vmarko@google.com>
+Code-Review+2: Roland Levillain <rpl@google.com>
+Code-Review+1: Artem Serov <artem.serov@linaro.org>
+Autosubmit+1: Vladimir Marko <vmarko@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 23 Jan 2018 20:45:35 +0000
+Reviewed-on: https://android-review.googlesource.com/596993
+Project: platform/art
+Branch: refs/heads/master
