@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34380745_7d0ec20c",
+        "filename": "patchoat/patchoat.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-01-23T23:10:04Z",
+      "side": 1,
+      "message": "Why don\u0027t you have a \u0027success \u003d false; break\u0027 here?\n\nalso, nit: LOG(ERROR) \u003c\u003c \"Failed to find relocated image file name: \" \u003c\u003c error_msg;",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 30
+      },
+      "revId": "09d89d374b5d4b5e2b9115480de406ef9f0c3bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
