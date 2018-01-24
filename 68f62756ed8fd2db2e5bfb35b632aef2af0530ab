@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b09f0a0d_60e2cf3c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2474,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "It is a unique_ptr. Otherwise done.",
+      "parentUuid": "eea30bb6_924e76cc",
+      "range": {
+        "startLine": 2474,
+        "startChar": 15,
+        "endLine": 2474,
+        "endChar": 19
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad4b0914_4e8e7802",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-23T23:23:35Z",
       "side": 1,
       "message": "nit: cp_dex_file !\u003d nullptr",
+      "range": {
+        "startLine": 2475,
+        "startChar": 18,
+        "endLine": 2475,
+        "endChar": 29
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35dd385e_d50b4cdc",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2475,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4b0914_4e8e7802",
       "range": {
         "startLine": 2475,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "873642ac_37b0d843",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 8760,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "You\u0027re right. All callers of this function retain ownership of the dex files, which means we cannot take ownership of the dex files here.\n\nIn practice we aren\u0027t really taking ownership here because we leak the DexFileCookie. I originally thought we were leaking the dex files before, but if that\u0027s not the case, then maybe it\u0027s not acceptable to leak the DexFileCookie?\n\nEither it\u0027s okay to leak the DexFileCookie here, in which case I need to clean up the documentation to make it clear what\u0027s going on. Or I need to come up with a better story for managing the life cycle of the DexFileCookie and associated dex files in this case.",
+      "parentUuid": "d84097b2_228f0313",
+      "range": {
+        "startLine": 8758,
+        "startChar": 0,
+        "endLine": 8760,
+        "endChar": 58
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f643f4e_96ec509f",
         "filename": "runtime/native/dalvik_system_DexFile.cc",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2018-01-23T23:39:33Z",
       "side": 1,
       "message": "Please extend your comment. You\u0027re adding a severe check here (this was conservatively passed before), and I need convincing that you don\u0027t break any app hacks.",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cabc11a_a8981b2c",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "You\u0027re right. This use to be a Java AssertionError that would be caught, logged, and otherwise ignored.\n\nI\u0027ve changed this to a LOG(WARNING) to match the previous behavior.",
+      "parentUuid": "9f643f4e_96ec509f",
       "range": {
         "startLine": 72,
         "startChar": 8,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8e6e7532_e51a5091",
+        "filename": "test/944-transform-classloaders/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7148ecf9_96328e25",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7722fd8b_587166b9",
         "filename": "test/Android.bp",
         "patchSetId": 5
@@ -128,6 +248,30 @@
       "writtenOn": "2018-01-23T23:23:35Z",
       "side": 1,
       "message": "Don\u0027t add this into libarttest instead put it into libtiagent (starting line 276) that is for jvmti stuff that is art-specific.\n\nWhen you do that you can also remove the change to 944/src/Main.java",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 63
+      },
+      "revId": "68f62756ed8fd2db2e5bfb35b632aef2af0530ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4df9f4a_79a090c0",
+        "filename": "test/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-01-24T10:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7722fd8b_587166b9",
       "range": {
         "startLine": 393,
         "startChar": 0,
