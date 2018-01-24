@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b566b14_97860294",
+        "filename": "runtime/art_method-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-24T12:55:46Z",
+      "side": 1,
+      "message": "on how ?",
+      "range": {
+        "startLine": 417,
+        "startChar": 46,
+        "endLine": 417,
+        "endChar": 49
+      },
+      "revId": "c73eece239e2761b779e57696eeba2bd6ccef2a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
