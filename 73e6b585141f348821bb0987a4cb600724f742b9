@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "89af6f42_2cf2d623",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-24T13:10:47Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c450ea35_fe29e044",
         "filename": "compiler/optimizing/optimizing_compiler.cc",
         "patchSetId": 6
@@ -18,6 +41,29 @@
         "startChar": 12,
         "endLine": 398,
         "endChar": 13
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67d9d810_cfb5e519",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-24T13:10:47Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 404,
+        "startChar": 2,
+        "endLine": 404,
+        "endChar": 41
       },
       "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -60,6 +106,30 @@
       "side": 1,
       "message": "This one generates entry with the single method, which might be immediately needed.\n\nThe code below will group those when we accumulate enough methods.",
       "parentUuid": "ab089d04_51fc9cb2",
+      "range": {
+        "startLine": 1422,
+        "startChar": 0,
+        "endLine": 1431,
+        "endChar": 3
+      },
+      "revId": "73e6b585141f348821bb0987a4cb600724f742b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40466daf_25c9f0a9",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-24T13:10:47Z",
+      "side": 1,
+      "message": "So the code line 1483 will remove this? Please add more comments.",
+      "parentUuid": "5320c592_a3361e1a",
       "range": {
         "startLine": 1422,
         "startChar": 0,
