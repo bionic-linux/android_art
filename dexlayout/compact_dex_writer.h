@@ -107,6 +107,7 @@ class CompactDexWriter : public DexWriter {
     VectorSection main_section_;
     VectorSection data_section_;
     Deduper code_item_dedupe_;
+    Deduper data_item_dedupe_;
 
     friend class CompactDexWriter;
   };
@@ -124,6 +125,8 @@ class CompactDexWriter : public DexWriter {
 
   uint32_t WriteCodeItem(Stream* stream, dex_ir::CodeItem* code_item, bool reserve_only) OVERRIDE;
 
+  void WriteStringData(Stream* stream, dex_ir::StringData* string_data) OVERRIDE;
+
   void SortDebugInfosByMethodIndex();
 
   CompactDexLevel GetCompactDexLevel() const;
@@ -140,6 +143,7 @@ class CompactDexWriter : public DexWriter {
 
   // State for where we are deduping.
   Deduper* code_item_dedupe_ = nullptr;
+  Deduper* data_item_dedupe_ = nullptr;
 
   DISALLOW_COPY_AND_ASSIGN(CompactDexWriter);
 };

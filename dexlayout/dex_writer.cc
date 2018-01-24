@@ -254,15 +254,19 @@ uint32_t DexWriter::WriteStringIds(Stream* stream, bool reserve_only) {
   return stream->Tell() - start;
 }
 
+void DexWriter::WriteStringData(Stream* stream, dex_ir::StringData* string_data) {
+  ProcessOffset(stream, string_data);
+  stream->AlignTo(SectionAlignment(DexFile::kDexTypeStringDataItem));
+  stream->WriteUleb128(CountModifiedUtf8Chars(string_data->Data()));
+  stream->Write(string_data->Data(), strlen(string_data->Data()));
+  // Skip null terminator (already zeroed out, no need to write).
+  stream->Skip(1);
+}
+
 uint32_t DexWriter::WriteStringDatas(Stream* stream) {
   const uint32_t start = stream->Tell();
   for (std::unique_ptr<dex_ir::StringData>& string_data : header_->GetCollections().StringDatas()) {
-    ProcessOffset(stream, string_data.get());
-    stream->AlignTo(SectionAlignment(DexFile::kDexTypeStringDataItem));
-    stream->WriteUleb128(CountModifiedUtf8Chars(string_data->Data()));
-    stream->Write(string_data->Data(), strlen(string_data->Data()));
-    // Skip null terminator (already zeroed out, no need to write).
-    stream->Skip(1);
+    WriteStringData(stream, string_data.get());
   }
   if (compute_offsets_ && start != stream->Tell()) {
     header_->GetCollections().SetStringDatasOffset(start);

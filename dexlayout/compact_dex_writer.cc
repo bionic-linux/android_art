@@ -34,7 +34,8 @@ CompactDexLevel CompactDexWriter::GetCompactDexLevel() const {
 }
 
 CompactDexWriter::Container::Container(bool dedupe_code_items)
-    : code_item_dedupe_(dedupe_code_items, &data_section_) {}
+    : code_item_dedupe_(dedupe_code_items, &data_section_),
+      data_item_dedupe_(/*dedupe*/ true, &data_section_) {}
 
 uint32_t CompactDexWriter::WriteDebugInfoOffsetTable(Stream* stream) {
   const uint32_t start_offset = stream->Tell();
@@ -284,6 +285,25 @@ size_t CompactDexWriter::GetHeaderSize() const {
   return sizeof(CompactDexFile::Header);
 }
 
+void CompactDexWriter::WriteStringData(Stream* stream, dex_ir::StringData* string_data) {
+  const uint32_t start_offset = stream->Tell();
+  ProcessOffset(stream, string_data);
+  stream->AlignTo(SectionAlignment(DexFile::kDexTypeStringDataItem));
+  stream->WriteUleb128(CountModifiedUtf8Chars(string_data->Data()));
+  stream->Write(string_data->Data(), strlen(string_data->Data()));
+  // Skip null terminator (already zeroed out, no need to write).
+  stream->Skip(1);
+  const uint32_t offset = data_item_dedupe_->Dedupe(start_offset,
+                                                    stream->Tell(),
+                                                    string_data->GetOffset());
+  if (offset != Deduper::kDidNotDedupe) {
+    string_data->SetOffset(offset);
+    stream->Clear(start_offset, stream->Tell() - start_offset);
+    // Undo the offset for all that we wrote since we deduped.
+    stream->Seek(start_offset);
+  }
+}
+
 void CompactDexWriter::Write(DexContainer* output)  {
   CHECK(output->IsCompactDexContainer());
   Container* const container = down_cast<Container*>(output);
@@ -299,6 +319,7 @@ void CompactDexWriter::Write(DexContainer* output)  {
       static_cast<uint32_t>(output->GetDataSection()->Size()),
       kDataSectionAlignment));
   code_item_dedupe_ = &container->code_item_dedupe_;
+  data_item_dedupe_ = &container->data_item_dedupe_;
 
   // Starting offset is right after the header.
   main_stream->Seek(GetHeaderSize());
