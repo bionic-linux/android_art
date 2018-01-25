@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e219ecf0_f44b9802",
+        "filename": "dexlayout/compact_dex_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-25T01:39:06Z",
+      "side": 1,
+      "message": "these don\u0027t match.  Fix.",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 95
+      },
+      "revId": "24f7f4bdf5df785c200eb892c7dbdf2bc84814d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
