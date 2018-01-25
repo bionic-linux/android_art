@@ -22,6 +22,30 @@
       "revId": "24f7f4bdf5df785c200eb892c7dbdf2bc84814d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d253bd2_4b91feb5",
+        "filename": "dexlayout/compact_dex_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-25T18:15:34Z",
+      "side": 1,
+      "message": "Will fix the comment in a follow up CL.",
+      "parentUuid": "e219ecf0_f44b9802",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 95
+      },
+      "revId": "24f7f4bdf5df785c200eb892c7dbdf2bc84814d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
