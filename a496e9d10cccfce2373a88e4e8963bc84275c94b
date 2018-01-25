@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03ec655d_53bc0b1e",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-25T14:32:07Z",
+      "side": 1,
+      "message": "Add high-level comment? Or you could make this an internal function next to its user.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 1
+      },
+      "revId": "a496e9d10cccfce2373a88e4e8963bc84275c94b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52d6fb30_e235f2a2",
+        "filename": "runtime/jit/profile_compilation_info.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1263,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-01-25T14:32:07Z",
+      "side": 1,
+      "message": "Make this the default value for the argument, to avoid the null check?",
+      "range": {
+        "startLine": 1263,
+        "startChar": 64,
+        "endLine": 1263,
+        "endChar": 80
+      },
+      "revId": "a496e9d10cccfce2373a88e4e8963bc84275c94b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
