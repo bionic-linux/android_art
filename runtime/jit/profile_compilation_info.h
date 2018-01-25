@@ -306,7 +306,11 @@ class ProfileCompilationInfo {
   // Load or Merge profile information from the given file descriptor.
   // If the current profile is non-empty the load will fail.
   // If merge_classes is set to false, classes will not be merged/loaded.
-  bool Load(int fd, bool merge_classes = true);
+  // If filter_fn is not null, it will be used to filter out profile data belonging
+  // to dex file which do not comply with the filter
+  // (i.e. for which filter_fn(dex_location, dex_checksum) is false).
+  using ProfileLoadFilterFn = std::function<bool(const std::string&, uint32_t)>;
+  bool Load(int fd, bool merge_classes = true, ProfileLoadFilterFn* filter_fn = nullptr);
 
   // Verify integrity of the profile file with the provided dex files.
   // If there exists a DexData object which maps to a dex_file, then it verifies that:
@@ -459,12 +463,19 @@ class ProfileCompilationInfo {
           class_set(std::less<dex::TypeIndex>(), allocator->Adapter(kArenaAllocProfile)),
           num_method_ids(num_methods),
           bitmap_storage(allocator->Adapter(kArenaAllocProfile)) {
-      const size_t num_bits = num_method_ids * kBitmapIndexCount;
-      bitmap_storage.resize(RoundUp(num_bits, kBitsPerByte) / kBitsPerByte);
+      bitmap_storage.resize(ComputeBitmapStorage(num_method_ids));
       if (!bitmap_storage.empty()) {
         method_bitmap =
-            BitMemoryRegion(MemoryRegion(&bitmap_storage[0], bitmap_storage.size()), 0, num_bits);
+            BitMemoryRegion(MemoryRegion(
+                &bitmap_storage[0], bitmap_storage.size()), 0, ComputeBitmapBits(num_method_ids));
       }
+    }
+
+    static size_t ComputeBitmapBits(uint32_t num_method_ids) {
+      return num_method_ids * kBitmapIndexCount;
+    }
+    static size_t ComputeBitmapStorage(uint32_t num_method_ids) {
+      return RoundUp(ComputeBitmapBits(num_method_ids), kBitsPerByte) / kBitsPerByte;
     }
 
     bool operator==(const DexFileData& other) const {
@@ -692,7 +703,8 @@ class ProfileCompilationInfo {
   // Entry point for profile loding functionality.
   ProfileLoadStatus LoadInternal(int32_t fd,
                                  std::string* error,
-                                 bool merge_classes = true);
+                                 bool merge_classes = true,
+                                 ProfileLoadFilterFn* filter_fn = nullptr);
 
   // Read the profile header from the given fd and store the number of profile
   // lines into number_of_dex_files.
@@ -736,6 +748,7 @@ class ProfileCompilationInfo {
   // The method generates mapping of profile indices while merging a new profile
   // data into current data. It returns true, if the mapping was successful.
   bool RemapProfileIndex(const std::vector<ProfileLineHeader>& profile_line_headers,
+                         ProfileLoadFilterFn& filter_fn,
                          /*out*/SafeMap<uint8_t, uint8_t>* dex_profile_index_remap);
 
   // Read the inline cache encoding from line_bufer into inline_cache.
