@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "348b6d06_4af8e6d0",
+        "filename": "runtime/dex/descriptors_names.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-01-26T02:18:35Z",
+      "side": 1,
+      "message": "Are these copied from somewhere? If so is it possible to remove the source?",
+      "revId": "83755843589a81c015947a79ab647fb3d974365e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
