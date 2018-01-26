@@ -32,7 +32,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#include "dex/code_item_accessors-no_art-inl.h"
+#include "dex/code_item_accessors-inl.h"
 #include "dex/dex_file-inl.h"
 #include "dex/dex_file_loader.h"
 
