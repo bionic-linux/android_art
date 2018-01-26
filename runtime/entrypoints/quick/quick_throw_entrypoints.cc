@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include "art_method-inl.h"
 #include "callee_save_frame.h"
 #include "dex/code_item_accessors-inl.h"
 #include "dex/dex_instruction-inl.h"
@@ -120,7 +121,7 @@ extern "C" NO_RETURN void artThrowClassCastException(mirror::Class* dest_type,
     visitor.WalkStack();
     DCHECK(visitor.caller != nullptr);
     uint32_t dex_pc = visitor.GetDexPc();
-    CodeItemDataAccessor accessor(visitor.caller);
+    CodeItemDataAccessor accessor(visitor.caller->DexInstructionData());
     const Instruction& check_cast = accessor.InstructionAt(dex_pc);
     DCHECK_EQ(check_cast.Opcode(), Instruction::CHECK_CAST);
     dex::TypeIndex type_index(check_cast.VRegB_21c());

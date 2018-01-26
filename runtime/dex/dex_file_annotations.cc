@@ -23,7 +23,7 @@
 #include "art_field-inl.h"
 #include "art_method-inl.h"
 #include "class_linker-inl.h"
-#include "dex_file-inl.h"
+#include "dex/dex_file-inl.h"
 #include "jni_internal.h"
 #include "jvalue-inl.h"
 #include "mirror/field.h"
@@ -1559,7 +1559,7 @@ int32_t GetLineNumFromPC(const DexFile* dex_file, ArtMethod* method, uint32_t re
     return -2;
   }
 
-  CodeItemDebugInfoAccessor accessor(method);
+  CodeItemDebugInfoAccessor accessor(method->DexInstructionDebugInfo());
   DCHECK(accessor.HasCodeItem()) << method->PrettyMethod() << " " << dex_file->GetLocation();
 
   // A method with no line number info should return -1
