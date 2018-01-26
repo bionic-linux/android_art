@@ -16,6 +16,24 @@
       "revId": "83755843589a81c015947a79ab647fb3d974365e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44779462_d752acf8",
+        "filename": "runtime/dex/descriptors_names.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-01-26T23:40:23Z",
+      "side": 1,
+      "message": "This fragment used to be part of utils.cc.  I removed them from there.",
+      "parentUuid": "348b6d06_4af8e6d0",
+      "revId": "83755843589a81c015947a79ab647fb3d974365e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
