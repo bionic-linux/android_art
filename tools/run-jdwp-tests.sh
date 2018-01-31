@@ -211,6 +211,9 @@ else
   if [[ "x$with_jdwp_path" != "x" ]]; then
     vm_args="${vm_args} --vm-arg -Djpda.settings.debuggeeAgentArgument=-agentpath:${agent_wrapper}"
     vm_args="${vm_args} --vm-arg -Djpda.settings.debuggeeAgentName=${with_jdwp_path}"
+  else
+    # Need to enable the internal jdwp implementation.
+    vm_args="${vm_args} --vm-arg -XjdwpProvider:internal"
   fi
   vm_args="$vm_args --vm-arg -Xcompiler-option --vm-arg --debuggable"
   # Make sure the debuggee doesn't clean up what the debugger has generated.
