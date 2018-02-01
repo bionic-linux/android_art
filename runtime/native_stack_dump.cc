@@ -387,6 +387,9 @@ void DumpKernelStack(std::ostream& os, pid_t tid, const char* prefix, bool inclu
   Split(kernel_stack, '\n', &kernel_stack_frames);
   // We skip the last stack frame because it's always equivalent to "[<ffffffff>] 0xffffffff",
   // which looking at the source appears to be the kernel's way of saying "that's all, folks!".
+  if (kernel_stack_frames.empty()) {
+    return;
+  }
   kernel_stack_frames.pop_back();
   for (size_t i = 0; i < kernel_stack_frames.size(); ++i) {
     // Turn "[<ffffffff8109156d>] futex_wait_queue_me+0xcd/0x110"
