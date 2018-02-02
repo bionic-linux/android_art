@@ -16,6 +16,29 @@
       "revId": "ee40126ebcb95d4c2f9597473fd3c400cd36ea0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c764695_ff1b855b",
+        "filename": "runtime/native_stack_dump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-02T01:34:19Z",
+      "side": 1,
+      "message": "This should be above the comment (as it pertains to line 393).",
+      "range": {
+        "startLine": 390,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 3
+      },
+      "revId": "ee40126ebcb95d4c2f9597473fd3c400cd36ea0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
