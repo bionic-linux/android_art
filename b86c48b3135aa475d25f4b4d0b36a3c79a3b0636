@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfd0c57e_01b81c87",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-02T22:34:43Z",
+      "side": 1,
+      "message": "Isn\u0027t that too restrictive? I thought we do compile methods for classes that have RetryVerification, if they don\u0027t contain certain errors?",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 48
+      },
+      "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
