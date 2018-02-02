@@ -394,8 +394,14 @@ ArtMethod* HInliner::TryCHADevirtualization(ArtMethod* resolved_method) {
 
 static bool AlwaysThrows(ArtMethod* method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  CodeItemDataAccessor accessor(method->DexInstructionData());
+  DCHECK(method != nullptr);
+  // Skip unverified methods. Nothing to see here, move along!
+  if (!method->IsCompilable() ||
+      !method->GetDeclaringClass()->IsVerified()) {
+    return false;
+  }
   // Skip native methods, methods with try blocks, and methods that are too large.
+  CodeItemDataAccessor accessor(method->DexInstructionData());
   if (!accessor.HasCodeItem() ||
       accessor.TriesSize() != 0 ||
       accessor.InsnsSizeInCodeUnits() > kMaximumNumberOfTotalInstructions) {
