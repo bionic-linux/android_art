@@ -22,6 +22,30 @@
       "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a5ff16_dc77c0ce",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-02T22:39:25Z",
+      "side": 1,
+      "message": "This is just for the \"always throws\" analysis on the bytecode if we decide to not inline a method, so it is all a matter of how aggressive we want to be.",
+      "parentUuid": "cfd0c57e_01b81c87",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 48
+      },
+      "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
