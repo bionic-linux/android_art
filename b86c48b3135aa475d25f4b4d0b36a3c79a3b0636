@@ -46,6 +46,30 @@
       "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "122afb78_7428fc52",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-04T21:52:10Z",
+      "side": 1,
+      "message": "How about moving to a helper method the lines 1459-1463 of this file and calling it here too?",
+      "parentUuid": "80a5ff16_dc77c0ce",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 48
+      },
+      "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
