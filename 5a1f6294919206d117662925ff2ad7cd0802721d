@@ -46,6 +46,40 @@
       "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e83cb69b_08edbacf",
+        "filename": "dexdump/dexdump.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2018-02-05T14:11:26Z",
+      "side": 1,
+      "message": "Same as in https://android-review.googlesource.com/c/platform/art/+/594493/7/dexlist/dexlist.cc#191",
+      "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8e10ab_0f6ef2ae",
+        "filename": "dexlist/dexlist.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1084139
+      },
+      "writtenOn": "2018-02-05T14:11:26Z",
+      "side": 1,
+      "message": "How about closing fd (after mmap and in case of a check fail above)?\nI know that the file is opened just once in this utility, so not a big deal.\nBut it might worth to close such resources anyway to keep static analyzers calm.",
+      "revId": "5a1f6294919206d117662925ff2ad7cd0802721d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
