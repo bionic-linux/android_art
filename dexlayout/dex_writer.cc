@@ -470,6 +470,7 @@ void DexWriter::WriteAnnotationsDirectories(Stream* stream) {
 void DexWriter::WriteDebugInfoItem(Stream* stream, dex_ir::DebugInfoItem* debug_info) {
   stream->AlignTo(SectionAlignment(DexFile::kDexTypeDebugInfoItem));
   ProcessOffset(stream, debug_info);
+  stream->WriteUleb128(debug_info->GetDebugInfoLineStart());
   stream->Write(debug_info->GetDebugInfo(), debug_info->GetDebugInfoSize());
 }
 

@@ -1,4 +1,4 @@
-/*
+    /*
  * Copyright (C) 2016 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,8 +44,7 @@ static uint64_t ReadVarWidth(const uint8_t** data, uint8_t length, bool sign_ext
 
 static uint32_t GetDebugInfoStreamSize(const uint8_t* debug_info_stream) {
   const uint8_t* stream = debug_info_stream;
-  DecodeUnsignedLeb128(&stream);  // line_start
-  uint32_t parameters_size = DecodeUnsignedLeb128(&stream);
+  const uint32_t parameters_size = DecodeUnsignedLeb128(&stream);
   for (uint32_t i = 0; i < parameters_size; ++i) {
     DecodeUnsignedLeb128P1(&stream);  // Parameter name.
   }
@@ -574,15 +573,16 @@ CodeItem* Collections::DedupeOrCreateCodeItem(const DexFile& dex_file,
   }
   CodeItemDebugInfoAccessor accessor(dex_file, disk_code_item, dex_method_index);
   const uint32_t debug_info_offset = accessor.DebugInfoOffset();
+  const uint32_t debug_info_start = accessor.DebugInfoStart();
 
   // Create the offsets pair and dedupe based on it.
-  std::pair<uint32_t, uint32_t> offsets_pair(offset, debug_info_offset);
+  std::pair<uint32_t, uint32_t> offsets_pair(offset, debug_info_start);
   auto existing = code_items_map_.find(offsets_pair);
   if (existing != code_items_map_.end()) {
     return existing->second;
   }
 
-  const uint8_t* debug_info_stream = dex_file.GetDebugInfoStream(debug_info_offset);
+  const uint8_t* debug_info_stream = dex_file.GetDebugInfoStream(debug_info_start);
   DebugInfoItem* debug_info = nullptr;
   if (debug_info_stream != nullptr) {
     debug_info = debug_info_items_map_.GetExistingObject(debug_info_offset);
@@ -590,7 +590,9 @@ CodeItem* Collections::DedupeOrCreateCodeItem(const DexFile& dex_file,
       uint32_t debug_info_size = GetDebugInfoStreamSize(debug_info_stream);
       uint8_t* debug_info_buffer = new uint8_t[debug_info_size];
       memcpy(debug_info_buffer, debug_info_stream, debug_info_size);
-      debug_info = new DebugInfoItem(debug_info_size, debug_info_buffer);
+      debug_info = new DebugInfoItem(debug_info_size,
+                                     debug_info_buffer,
+                                     accessor.DebugInfoLineStart());
       AddItem(debug_info_items_map_, debug_info_items_, debug_info, debug_info_offset);
     }
   }

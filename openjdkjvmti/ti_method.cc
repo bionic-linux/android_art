@@ -486,8 +486,7 @@ jvmtiError MethodUtil::GetLineNumberTable(jvmtiEnv* env,
   }
 
   LineNumberContext context;
-  bool success = dex_file->DecodeDebugPositionInfo(
-      accessor.DebugInfoOffset(), CollectLineNumbers, &context);
+  bool success = accessor.DecodeDebugPositionInfo(CollectLineNumbers, &context);
   if (!success) {
     return ERR(ABSENT_INFORMATION);
   }
@@ -661,7 +660,7 @@ class CommonLocalVariableClosure : public art::Closure {
     if (!dex_file->DecodeDebugLocalInfo(accessor.RegistersSize(),
                                         accessor.InsSize(),
                                         accessor.InsnsSizeInCodeUnits(),
-                                        accessor.DebugInfoOffset(),
+                                        accessor.DebugInfoStart(),
                                         method->IsStatic(),
                                         method->GetDexMethodIndex(),
                                         GetLocalVariableInfoContext::Callback,

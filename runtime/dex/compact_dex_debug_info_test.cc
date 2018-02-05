@@ -33,6 +33,7 @@ TEST(CompactDexDebugInfoTest, TestBuildAndAccess) {
       std::numeric_limits<uint32_t>::max() - kDebugInfoMinOffset, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12,
   };
+  std::vector<uint32_t> line_starts = offsets;
   // Add some large offset since the debug info section will never be that close to the beginning
   // of the file.
   for (uint32_t& offset : offsets) {
@@ -45,6 +46,7 @@ TEST(CompactDexDebugInfoTest, TestBuildAndAccess) {
   uint32_t base_offset = 0;
   uint32_t table_offset = 0;
   CompactDexDebugInfoOffsetTable::Build(offsets,
+                                        line_starts,
                                         /*out*/ &data,
                                         /*out*/ &base_offset,
                                         /*out*/ &table_offset);
@@ -72,7 +74,9 @@ TEST(CompactDexDebugInfoTest, TestBuildAndAccess) {
                                                     base_offset,
                                                     table_offset);
   for (size_t i = 0; i < offsets.size(); ++i) {
-    EXPECT_EQ(offsets[i], accessor.GetDebugInfoOffset(i));
+    uint32_t line_start = 0u;
+    EXPECT_EQ(offsets[i], accessor.GetDebugInfoOffset(i, &line_start));
+    EXPECT_EQ(line_starts[i], line_start);
   }
 
   // Sort to produce a try and produce a smaller table. This happens because the leb diff is smaller
@@ -80,6 +84,7 @@ TEST(CompactDexDebugInfoTest, TestBuildAndAccess) {
   std::sort(offsets.begin(), offsets.end());
   std::vector<uint8_t> sorted_data;
   CompactDexDebugInfoOffsetTable::Build(offsets,
+                                        line_starts,
                                         /*out*/ &sorted_data,
                                         /*out*/ &base_offset,
                                         /*out*/ &table_offset);

@@ -1211,7 +1211,7 @@ static void dumpCode(const DexFile* pDexFile, u4 idx, u4 flags,
   // Positions and locals table in the debug info.
   bool is_static = (flags & kAccStatic) != 0;
   fprintf(gOutFile, "      positions     : \n");
-  pDexFile->DecodeDebugPositionInfo(accessor.DebugInfoOffset(), dumpPositionsCb, nullptr);
+  accessor.DecodeDebugPositionInfo(dumpPositionsCb, nullptr);
   fprintf(gOutFile, "      locals        : \n");
   accessor.DecodeDebugLocalInfo(is_static, idx, dumpLocalsCb, nullptr);
 }

@@ -42,7 +42,9 @@ class CompactDexDebugInfoOffsetTable {
              uint32_t debug_info_table_offset);
 
     // Return the debug info for a method index (or 0 if it doesn't have one).
-    uint32_t GetDebugInfoOffset(uint32_t method_idx) const;
+    // Also returns the corresponding line start.
+    uint32_t GetDebugInfoOffset(uint32_t method_idx,
+                                uint32_t* out_line_start) const;
 
    private:
     const uint32_t* const table_;
@@ -52,6 +54,7 @@ class CompactDexDebugInfoOffsetTable {
 
   // Returned offsets are all relative to debug_info_offsets.
   static void Build(const std::vector<uint32_t>& debug_info_offsets,
+                    const std::vector<uint32_t>& debug_info_line_starts,
                     std::vector<uint8_t>* out_data,
                     uint32_t* out_min_offset,
                     uint32_t* out_table_offset);

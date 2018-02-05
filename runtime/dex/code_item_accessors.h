@@ -147,11 +147,23 @@ class CodeItemDebugInfoAccessor : public CodeItemDataAccessor {
     return debug_info_offset_;
   }
 
+  uint32_t DebugInfoStart() const {
+    return debug_info_start_;
+  }
+
+  uint32_t DebugInfoLineStart() const {
+    return debug_info_line_start_;
+  }
+
   template<typename NewLocalCallback>
   bool DecodeDebugLocalInfo(bool is_static,
                             uint32_t method_idx,
                             NewLocalCallback new_local,
                             void* context) const;
+
+  template<typename DexDebugNewPosition>
+  bool DecodeDebugPositionInfo(DexDebugNewPosition position_functor,
+                               void* context) const;
 
  protected:
   ALWAYS_INLINE void Init(const CompactDexFile::CodeItem& code_item, uint32_t dex_method_index);
@@ -160,6 +172,8 @@ class CodeItemDebugInfoAccessor : public CodeItemDataAccessor {
  private:
   const DexFile* dex_file_ = nullptr;
   uint32_t debug_info_offset_ = 0u;
+  uint32_t debug_info_start_ = 0u;
+  uint32_t debug_info_line_start_ = 0u;
 };
 
 }  // namespace art

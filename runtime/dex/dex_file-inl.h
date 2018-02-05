@@ -253,7 +253,6 @@ bool DexFile::DecodeDebugLocalInfo(const uint8_t* stream,
     arg_reg++;
   }
 
-  DecodeUnsignedLeb128(&stream);  // Line.
   uint32_t parameters_size = DecodeUnsignedLeb128(&stream);
   uint32_t i;
   if (parameters_size != arg_descriptors.size()) {
@@ -419,6 +418,7 @@ bool DexFile::DecodeDebugLocalInfo(uint32_t registers_size,
 
 template<typename DexDebugNewPosition, typename IndexToStringData>
 bool DexFile::DecodeDebugPositionInfo(const uint8_t* stream,
+                                      const uint32_t line_start,
                                       IndexToStringData index_to_string_data,
                                       DexDebugNewPosition position_functor,
                                       void* context) {
@@ -427,7 +427,7 @@ bool DexFile::DecodeDebugPositionInfo(const uint8_t* stream,
   }
 
   PositionInfo entry = PositionInfo();
-  entry.line_ = DecodeUnsignedLeb128(&stream);
+  entry.line_ = line_start;
   uint32_t parameters_size = DecodeUnsignedLeb128(&stream);
   for (uint32_t i = 0; i < parameters_size; ++i) {
     DecodeUnsignedLeb128P1(&stream);  // Parameter name.
@@ -487,9 +487,11 @@ bool DexFile::DecodeDebugPositionInfo(const uint8_t* stream,
 
 template<typename DexDebugNewPosition>
 bool DexFile::DecodeDebugPositionInfo(uint32_t debug_info_offset,
+                                      const uint32_t line_start,
                                       DexDebugNewPosition position_functor,
                                       void* context) const {
   return DecodeDebugPositionInfo(GetDebugInfoStream(debug_info_offset),
+                                 line_start,
                                  [this](uint32_t idx) {
                                    return StringDataByIdx(dex::StringIndex(idx));
                                  },

@@ -42,6 +42,7 @@ uint32_t CompactDexWriter::WriteDebugInfoOffsetTable(Stream* stream) {
   const dex_ir::Collections& collections = header_->GetCollections();
   // Debug offsets for method indexes. 0 means no debug info.
   std::vector<uint32_t> debug_info_offsets(collections.MethodIdsSize(), 0u);
+  std::vector<uint32_t> debug_info_line_starts(collections.MethodIdsSize(), 0u);
 
   static constexpr InvokeType invoke_types[] = {
     kDirect,
@@ -60,13 +61,20 @@ uint32_t CompactDexWriter::WriteDebugInfoOffsetTable(Stream* stream) {
                                 : class_data->VirtualMethods())) {
         const dex_ir::MethodId* method_id = method->GetMethodId();
         dex_ir::CodeItem* code_item = method->GetCodeItem();
-        if (code_item != nullptr && code_item->DebugInfo() != nullptr) {
-          const uint32_t debug_info_offset = code_item->DebugInfo()->GetOffset();
+        if (code_item == nullptr) {
+          continue;
+        }
+        dex_ir::DebugInfoItem* debug_info = code_item->DebugInfo();
+        if (debug_info != nullptr) {
+          const uint32_t debug_info_offset = debug_info->GetOffset();
+          const uint32_t debug_info_line_start = debug_info->GetDebugInfoLineStart();
           const uint32_t method_idx = method_id->GetIndex();
           if (debug_info_offsets[method_idx] != 0u) {
             CHECK_EQ(debug_info_offset, debug_info_offsets[method_idx]);
+            CHECK_EQ(debug_info_line_start, debug_info_line_starts[method_idx]);
           }
           debug_info_offsets[method_idx] = debug_info_offset;
+          debug_info_line_starts[method_idx] = debug_info_line_start;
         }
       }
     }
@@ -76,6 +84,7 @@ uint32_t CompactDexWriter::WriteDebugInfoOffsetTable(Stream* stream) {
   debug_info_base_ = 0u;
   debug_info_offsets_table_offset_ = 0u;
   CompactDexDebugInfoOffsetTable::Build(debug_info_offsets,
+                                        debug_info_line_starts,
                                         &data,
                                         &debug_info_base_,
                                         &debug_info_offsets_table_offset_);
@@ -94,7 +103,9 @@ uint32_t CompactDexWriter::WriteDebugInfoOffsetTable(Stream* stream) {
                                                       debug_info_offsets_table_offset_);
 
     for (size_t i = 0; i < debug_info_offsets.size(); ++i) {
-      CHECK_EQ(accessor.GetDebugInfoOffset(i), debug_info_offsets[i]);
+      uint32_t line_start = 0u;
+      CHECK_EQ(accessor.GetDebugInfoOffset(i, &line_start), debug_info_offsets[i]);
+      CHECK_EQ(line_start, debug_info_line_starts[i]);
     }
     uint64_t end_time = NanoTime();
     VLOG(dex) << "Average lookup time (ns) for debug info offsets: "
