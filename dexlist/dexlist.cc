@@ -128,7 +128,7 @@ static void dumpMethod(const DexFile* pDexFile,
 
   // Find the first line.
   int firstLine = -1;
-  pDexFile->DecodeDebugPositionInfo(accessor.DebugInfoOffset(), positionsCb, &firstLine);
+  accessor.DecodeDebugPositionInfo(positionsCb, &firstLine);
 
   // Method signature.
   const Signature signature = pDexFile->GetMethodSignature(pMethodId);

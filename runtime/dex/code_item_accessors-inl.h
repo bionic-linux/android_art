@@ -175,12 +175,19 @@ inline void CodeItemDebugInfoAccessor::Init(const DexFile& dex_file,
 inline void CodeItemDebugInfoAccessor::Init(const CompactDexFile::CodeItem& code_item,
                                             uint32_t dex_method_index) {
   debug_info_offset_ = down_cast<const CompactDexFile*>(dex_file_)->GetDebugInfoOffset(
-      dex_method_index);
+      dex_method_index,
+      &debug_info_line_start_);
+  debug_info_start_ = debug_info_offset_;
   CodeItemDataAccessor::Init(code_item);
 }
 
 inline void CodeItemDebugInfoAccessor::Init(const StandardDexFile::CodeItem& code_item) {
   debug_info_offset_ = code_item.debug_info_off_;
+  const uint8_t* debug_info_ptr = dex_file_->GetDebugInfoStream(debug_info_offset_);
+  if (debug_info_ptr != nullptr) {
+    debug_info_line_start_ = DecodeUnsignedLeb128(&debug_info_ptr);
+    debug_info_start_ = debug_info_ptr - dex_file_->DataBegin();
+  }
   CodeItemDataAccessor::Init(code_item);
 }
 
@@ -192,11 +199,22 @@ inline bool CodeItemDebugInfoAccessor::DecodeDebugLocalInfo(bool is_static,
   return dex_file_->DecodeDebugLocalInfo(RegistersSize(),
                                          InsSize(),
                                          InsnsSizeInCodeUnits(),
-                                         DebugInfoOffset(),
+                                         DebugInfoStart(),
                                          is_static,
                                          method_idx,
                                          new_local,
                                          context);
+}
+
+template<typename DexDebugNewPosition>
+inline bool CodeItemDebugInfoAccessor::DecodeDebugPositionInfo(
+    DexDebugNewPosition position_functor,
+    void* context) const {
+  return dex_file_->DecodeDebugPositionInfo(
+      DebugInfoStart(),
+      debug_info_line_start_,
+      position_functor,
+      context);
 }
 
 }  // namespace art

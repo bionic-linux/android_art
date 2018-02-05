@@ -900,6 +900,12 @@ bool VerifyDebugInfo(dex_ir::DebugInfoItem* orig,
     *error_msg = "DebugInfoSize disagreed.";
     return false;
   }
+  if (orig->GetDebugInfoLineStart() != output->GetDebugInfoLineStart()) {
+    *error_msg = StringPrintf("Debug info line start disagreed %d vs %d",
+                              orig->GetDebugInfoLineStart(),
+                              output->GetDebugInfoLineStart());
+    return false;
+  }
   uint8_t* orig_data = orig->GetDebugInfo();
   uint8_t* output_data = output->GetDebugInfo();
   if ((orig_data == nullptr && output_data != nullptr) ||

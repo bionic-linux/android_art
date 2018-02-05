@@ -1110,15 +1110,23 @@ class CodeItem : public Item {
 
 class DebugInfoItem : public Item {
  public:
-  DebugInfoItem(uint32_t debug_info_size, uint8_t* debug_info)
-     : debug_info_size_(debug_info_size), debug_info_(debug_info) { }
+  DebugInfoItem(uint32_t debug_info_size,
+                uint8_t* debug_info,
+                uint32_t debug_info_line_start)
+     : debug_info_size_(debug_info_size),
+       debug_info_(debug_info),
+       debug_info_line_start_(debug_info_line_start) {}
 
   uint32_t GetDebugInfoSize() const { return debug_info_size_; }
   uint8_t* GetDebugInfo() const { return debug_info_.get(); }
+  uint32_t GetDebugInfoLineStart() const {
+    return debug_info_line_start_;
+  }
 
  private:
   uint32_t debug_info_size_;
   std::unique_ptr<uint8_t[]> debug_info_;
+  uint32_t debug_info_line_start_;
 
   DISALLOW_COPY_AND_ASSIGN(DebugInfoItem);
 };

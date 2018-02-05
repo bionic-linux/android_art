@@ -259,8 +259,9 @@ class CompactDexFile : public DexFile {
 
   uint32_t GetCodeItemSize(const DexFile::CodeItem& item) const OVERRIDE;
 
-  uint32_t GetDebugInfoOffset(uint32_t dex_method_index) const {
-    return debug_info_offsets_.GetDebugInfoOffset(dex_method_index);
+  uint32_t GetDebugInfoOffset(uint32_t dex_method_index,
+                              uint32_t* debug_info_line_start) const {
+    return debug_info_offsets_.GetDebugInfoOffset(dex_method_index, debug_info_line_start);
   }
 
   static uint32_t CalculateChecksum(const uint8_t* base_begin,

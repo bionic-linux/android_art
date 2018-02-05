@@ -900,11 +900,13 @@ class DexFile {
   // Returns false if there is no debugging information or if it cannot be decoded.
   template<typename DexDebugNewPosition, typename IndexToStringData>
   static bool DecodeDebugPositionInfo(const uint8_t* stream,
+                                      uint32_t line_start,
                                       IndexToStringData index_to_string_data,
                                       DexDebugNewPosition position_functor,
                                       void* context);
   template<typename DexDebugNewPosition>
   bool DecodeDebugPositionInfo(uint32_t debug_info_offset,
+                               uint32_t line_start,
                                DexDebugNewPosition position_functor,
                                void* context) const;
 

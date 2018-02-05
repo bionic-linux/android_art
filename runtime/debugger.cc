@@ -1699,9 +1699,7 @@ void Dbg::OutputLineTable(JDWP::RefTypeId, JDWP::MethodId method_id, JDWP::Expan
   context.pReply = pReply;
 
   if (accessor.HasCodeItem()) {
-    m->GetDexFile()->DecodeDebugPositionInfo(accessor.DebugInfoOffset(),
-                                             DebugCallbackContext::Callback,
-                                             &context);
+    accessor.DecodeDebugPositionInfo(DebugCallbackContext::Callback, &context);
   }
 
   JDWP::Set4BE(expandBufGetBuffer(pReply) + numLinesOffset, context.numItems);
@@ -1761,7 +1759,7 @@ void Dbg::OutputVariableTable(JDWP::RefTypeId, JDWP::MethodId method_id, bool wi
     m->GetDexFile()->DecodeDebugLocalInfo(accessor.RegistersSize(),
                                           accessor.InsSize(),
                                           accessor.InsnsSizeInCodeUnits(),
-                                          accessor.DebugInfoOffset(),
+                                          accessor.DebugInfoStart(),
                                           m->IsStatic(),
                                           m->GetDexMethodIndex(),
                                           DebugCallbackContext::Callback,
@@ -3910,9 +3908,7 @@ JDWP::JdwpError Dbg::ConfigureStep(JDWP::ObjectId thread_id, JDWP::JdwpStepSize 
   if (m != nullptr && !m->IsNative()) {
     CodeItemDebugInfoAccessor accessor(m->DexInstructionDebugInfo());
     DebugCallbackContext context(single_step_control, line_number, accessor.InsnsSizeInCodeUnits());
-    m->GetDexFile()->DecodeDebugPositionInfo(accessor.DebugInfoOffset(),
-                                             DebugCallbackContext::Callback,
-                                             &context);
+    accessor.DecodeDebugPositionInfo(DebugCallbackContext::Callback, &context);
   }
 
   // Activate single-step in the thread.

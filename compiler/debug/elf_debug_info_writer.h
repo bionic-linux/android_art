@@ -52,9 +52,8 @@ static std::vector<const char*> GetParamNames(const MethodDebugInfo* mi) {
   CodeItemDebugInfoAccessor accessor(*mi->dex_file, mi->code_item, mi->dex_method_index);
   if (accessor.HasCodeItem()) {
     DCHECK(mi->dex_file != nullptr);
-    const uint8_t* stream = mi->dex_file->GetDebugInfoStream(accessor.DebugInfoOffset());
+    const uint8_t* stream = mi->dex_file->GetDebugInfoStream(accessor.DebugInfoStart());
     if (stream != nullptr) {
-      DecodeUnsignedLeb128(&stream);  // line.
       uint32_t parameters_size = DecodeUnsignedLeb128(&stream);
       for (uint32_t i = 0; i < parameters_size; ++i) {
         uint32_t id = DecodeUnsignedLeb128P1(&stream);

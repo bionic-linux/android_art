@@ -1132,6 +1132,7 @@ void DexLayout::DumpCode(uint32_t idx,
   fprintf(out_file_, "      positions     : \n");
   if (debug_info != nullptr) {
     DexFile::DecodeDebugPositionInfo(debug_info->GetDebugInfo(),
+                                     debug_info->GetDebugInfoLineStart(),
                                      [this](uint32_t idx) {
                                        return StringDataByIdx(idx, this->header_->GetCollections());
                                      },

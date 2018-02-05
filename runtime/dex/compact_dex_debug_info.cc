@@ -30,7 +30,9 @@ CompactDexDebugInfoOffsetTable::Accessor::Accessor(const uint8_t* data_begin,
       debug_info_base_(debug_info_base),
       data_begin_(data_begin) {}
 
-uint32_t CompactDexDebugInfoOffsetTable::Accessor::GetDebugInfoOffset(uint32_t method_idx) const {
+uint32_t CompactDexDebugInfoOffsetTable::Accessor::GetDebugInfoOffset(
+    uint32_t method_idx,
+    uint32_t* out_line_start) const {
   const uint32_t offset = table_[method_idx / kElementsPerIndex];
   const size_t bit_index = method_idx % kElementsPerIndex;
 
@@ -48,14 +50,18 @@ uint32_t CompactDexDebugInfoOffsetTable::Accessor::GetDebugInfoOffset(uint32_t m
   size_t count = POPCOUNT(static_cast<uintptr_t>(bit_mask) << (kBitsPerIntPtrT - 1 - bit_index));
   DCHECK_GT(count, 0u);
   uint32_t current_offset = debug_info_base_;
+  uint32_t line_start = 0;
   do {
     current_offset += DecodeUnsignedLeb128(&block);
+    line_start += DecodeUnsignedLeb128(&block);
     --count;
   } while (count > 0);
+  *out_line_start = line_start;
   return current_offset;
 }
 
 void CompactDexDebugInfoOffsetTable::Build(const std::vector<uint32_t>& debug_info_offsets,
+                                           const std::vector<uint32_t>& debug_info_line_starts,
                                            std::vector<uint8_t>* out_data,
                                            uint32_t* out_min_offset,
                                            uint32_t* out_table_offset) {
@@ -93,13 +99,19 @@ void CompactDexDebugInfoOffsetTable::Build(const std::vector<uint32_t>& debug_in
     out_data->push_back(static_cast<uint8_t>(bit_mask));
 
     // Write debug info offsets relative to the current offset.
-    uint32_t current_offset = *out_min_offset;
+    uint32_t prev_offset = *out_min_offset;
+    uint32_t prev_line_start = 0u;
     for (size_t i = 0; i < block_size; ++i) {
-      const uint32_t debug_info_offset = debug_info_offsets[block_start + i];
+      const uint32_t index = block_start + i;
+      const uint32_t debug_info_offset = debug_info_offsets[index];
       if (debug_info_offset != 0u) {
-        uint32_t delta = debug_info_offset - current_offset;
+        const uint32_t line_start = debug_info_line_starts[index];
+        const uint32_t delta = debug_info_offset - prev_offset;
+        const uint32_t line_delta = line_start - prev_line_start;
         EncodeUnsignedLeb128(out_data, delta);
-        current_offset = debug_info_offset;
+        EncodeUnsignedLeb128(out_data, line_delta);
+        prev_offset = debug_info_offset;
+        prev_line_start = line_start;
       }
     }
 
