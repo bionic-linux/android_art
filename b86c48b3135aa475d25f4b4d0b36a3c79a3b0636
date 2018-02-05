@@ -70,6 +70,30 @@
       "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6efa108b_befa9a26",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-05T17:19:41Z",
+      "side": 1,
+      "message": "Sounds good! Done!",
+      "parentUuid": "122afb78_7428fc52",
+      "range": {
+        "startLine": 400,
+        "startChar": 5,
+        "endLine": 400,
+        "endChar": 48
+      },
+      "revId": "b86c48b3135aa475d25f4b4d0b36a3c79a3b0636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
