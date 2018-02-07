@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c5e4a55_0d298ec8",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-07T19:26:29Z",
+      "side": 1,
+      "message": "annd -\u003e and",
+      "revId": "ff87b3a79f84b39ec2a5d3bb448f58f829ddcd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d404af7e_c4960dc0",
+        "filename": "runtime/dex/dex_file_loader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-07T19:26:29Z",
+      "side": 1,
+      "message": "can size \u003d\u003d 0 here?",
+      "revId": "ff87b3a79f84b39ec2a5d3bb448f58f829ddcd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
