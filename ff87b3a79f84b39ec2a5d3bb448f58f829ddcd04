@@ -33,6 +33,24 @@
       "revId": "ff87b3a79f84b39ec2a5d3bb448f58f829ddcd04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a8c8a2_00ac4d7b",
+        "filename": "runtime/dex/dex_file_loader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-02-07T19:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d404af7e_c4960dc0",
+      "revId": "ff87b3a79f84b39ec2a5d3bb448f58f829ddcd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
