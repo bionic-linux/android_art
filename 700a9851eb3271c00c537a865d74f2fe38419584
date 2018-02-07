@@ -34,6 +34,24 @@
       "revId": "700a9851eb3271c00c537a865d74f2fe38419584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c38a993f_401b70ee",
+        "filename": "runtime/dex/dex_file_loader.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-07T19:37:22Z",
+      "side": 1,
+      "message": "Ai, my mistake. I need stronger classes.",
+      "parentUuid": "76eb0869_8d98e818",
+      "revId": "700a9851eb3271c00c537a865d74f2fe38419584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
