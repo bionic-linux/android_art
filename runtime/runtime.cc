@@ -1178,7 +1178,8 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // (b) Zygote forked a new process that is not exempt (see ZygoteHooks).
   // TODO(dbrazdil): Turn the NoHiddenApiChecks negative flag into a positive one
   // to clean up this logic.
-  do_hidden_api_checks_ = IsAotCompiler() && !runtime_options.Exists(Opt::NoHiddenApiChecks);
+  do_hidden_api_checks_ =
+      kIsTargetBuild && IsAotCompiler() && !runtime_options.Exists(Opt::NoHiddenApiChecks);
   DCHECK(!is_zygote_ || !do_hidden_api_checks_)
       << "Zygote should not be started with hidden API checks";
 
