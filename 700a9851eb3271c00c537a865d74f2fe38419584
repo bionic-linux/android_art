@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dce195c9_85f99718",
+        "filename": "runtime/dex/dex_file_loader.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-07T19:35:00Z",
+      "side": 1,
+      "message": "since dex_file remains null here, this message will always be overwritten by L353?\neither return nullptr too, or just piggy back on error below",
+      "revId": "700a9851eb3271c00c537a865d74f2fe38419584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
