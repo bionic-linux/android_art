@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2416b5b_51d50054",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-07T09:36:23Z",
+      "side": 1,
+      "message": "Given there are some configurations where we compile the boot image / system server on device, you probably want to handle this too?",
+      "range": {
+        "startLine": 1182,
+        "startChar": 5,
+        "endLine": 1182,
+        "endChar": 20
+      },
+      "revId": "4a7271554f01b3d39c93ceaff34cc8837bfad184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
