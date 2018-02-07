@@ -22,6 +22,30 @@
       "revId": "4a7271554f01b3d39c93ceaff34cc8837bfad184",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98c0ccc6_fc562f0c",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1182,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-02-07T15:34:23Z",
+      "side": 1,
+      "message": "Oh, so we can tell with the boot image from the compiler callbacks and system server compilation will pass down the flag (https://cs.corp.google.com/android/frameworks/base/core/java/com/android/internal/os/ZygoteInit.java?rcl\u003d349f1487fe06e87c1e8480b1d6b9f79f8e01e243\u0026l\u003d575), right?\n\nI will need to refactor this ASAP, this is way too complicated.",
+      "parentUuid": "d2416b5b_51d50054",
+      "range": {
+        "startLine": 1182,
+        "startChar": 5,
+        "endLine": 1182,
+        "endChar": 20
+      },
+      "revId": "4a7271554f01b3d39c93ceaff34cc8837bfad184",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
