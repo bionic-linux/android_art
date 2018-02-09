@@ -22,6 +22,30 @@
       "revId": "b17bd0738a072a41ff28aa3e3b6d30f5d0b47b4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f28fbc41_8ee96627",
+        "filename": "runtime/dex/art_dex_file_loader_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-02-09T17:33:21Z",
+      "side": 1,
+      "message": "I made it ArtDexFileLoaderTest and the corresponding one DexFileLoaderTest.  Thanks for catching this.",
+      "parentUuid": "cccd3e82_cbac80e6",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "b17bd0738a072a41ff28aa3e3b6d30f5d0b47b4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
