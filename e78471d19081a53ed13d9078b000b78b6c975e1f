@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0fbb22_201bf6b0",
+        "filename": "compiler/exception_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2018-02-09T09:24:11Z",
+      "side": 1,
+      "message": "Right now this might not always hold for D8. We might move const instructions (e.g. for locals initialized before first use) up before the first instruction representing the actual code. For the actual code used for this test this does not happen, so this is OK.\n\nWe might consider keeping line info on the first instruction if the input had that on the first byte code.\n\nWe have seen examples from the Kotlin compiler, where the preamble code they generate does not have line information, and the first line position is seen at a later byte code in the input.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "e78471d19081a53ed13d9078b000b78b6c975e1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
