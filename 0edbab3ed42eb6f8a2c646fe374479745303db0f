@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd291beb_3947db50",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-09T10:37:55Z",
+      "side": 1,
+      "message": "Could you add a big fat comment here that the dex files we\u0027re loading might not be matching the oat files, so we need to be defensive, and eg check the number of expected files. But that once we load the oat file, we will reject the it as the checksums won\u0027t match (and point to the .cc code that does the rejection).",
+      "revId": "0edbab3ed42eb6f8a2c646fe374479745303db0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
