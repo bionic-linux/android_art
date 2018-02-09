@@ -16,6 +16,24 @@
       "revId": "0edbab3ed42eb6f8a2c646fe374479745303db0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f11d1ddc_c09fc04b",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-09T16:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd291beb_3947db50",
+      "revId": "0edbab3ed42eb6f8a2c646fe374479745303db0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
