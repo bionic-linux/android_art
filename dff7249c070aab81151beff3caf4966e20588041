@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b4ab58b_a0d13e76",
+        "filename": "tools/amm/test/jni/ammtest.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-09T11:30:59Z",
+      "side": 1,
+      "message": "Missing copyright.",
+      "revId": "dff7249c070aab81151beff3caf4966e20588041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
