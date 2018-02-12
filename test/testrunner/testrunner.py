@@ -662,6 +662,9 @@ def get_disabled_test_info():
     tests = failure.get('tests', [])
     if isinstance(tests, str):
       tests = [tests]
+    elif not tests:
+      tests += RUN_TEST_SET
+
     patterns = failure.get("test_patterns", [])
     if (not isinstance(patterns, list)):
       raise ValueError("test_patters is not a list in %s" % failure)
