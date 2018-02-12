@@ -22,6 +22,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 public class Main {
+    static final String THIS_DEX_FILE = System.getenv("DEX_LOCATION") + "/141-class-unload.jar";
     static final String DEX_FILE = System.getenv("DEX_LOCATION") + "/141-class-unload-ex.jar";
     static final String LIBRARY_SEARCH_PATH = System.getProperty("java.library.path");
     static String nativeLibraryName;
@@ -49,9 +50,50 @@ public class Main {
             testOatFilesUnloaded(getPid());
             // Test that objects keep class loader live for sticky GC.
             testStickyUnload(constructor);
+            // Test that copied methods are correctly held live across class loaders.
+            // This needs to be last.
+            testCopiedMethodClassLoader(constructor);
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
+    }
+
+    private static native boolean isCopiedMethod(Object obj);
+    private static native Method returnCopiedMethod(Class cls);
+    
+    private static WeakReference<ClassLoader> createWeakChildLoader(Constructor<?> constructor)
+            throws Exception {
+        // Create the parent class loader using the other dex to get the copied method copied to the
+        // child class loader.
+        ClassLoader parentLoader = (ClassLoader) constructor.newInstance(
+                DEX_FILE, LIBRARY_SEARCH_PATH, null);
+        parentLoader.loadClass("Interface");
+        ClassLoader childLoader = (ClassLoader) constructor.newInstance(
+                THIS_DEX_FILE, LIBRARY_SEARCH_PATH, parentLoader);
+        return new WeakReference(childLoader);
+    }
+
+    private static Method getCopiedMethod(WeakReference<ClassLoader> childLoader) throws Exception {
+        ClassLoader loader = childLoader.get();
+        Class<?> implementor = loader.loadClass("Implementor");
+        return returnCopiedMethod(implementor);
+    }
+    
+    private static void testCopiedMethodClassLoader(Constructor<?> constructor) throws Exception {
+        System.loadLibrary(nativeLibraryName);
+        WeakReference<ClassLoader> childLoader = createWeakChildLoader(constructor);
+        Method copiedMethod = getCopiedMethod(childLoader);
+        if (!isCopiedMethod(copiedMethod)) {
+            throw new AssertionError("Expected copied method");
+        }
+        stopJit();
+        doUnloading();
+        System.out.println("Child loader was unloaded " + (childLoader.get() == null));
+        // copiedMethod.invoke(null);
+        copiedMethod = null;
+        doUnloading();
+        System.out.println("Child loader was unloaded " + (childLoader.get() == null));
+        startJit();
     }
 
     private static void testOatFilesUnloaded(int pid) throws Exception {
@@ -157,7 +199,7 @@ public class Main {
     private static void testNoUnloadInstance(Constructor<?> constructor) throws Exception {
         Pair p = testNoUnloadInstanceHelper(constructor);
         doUnloading();
-        // If the class loader was unloded too early due to races, just pass the test.
+        // If the class loader was unloded too  early due to races, just pass the test.
         boolean isNull = p.classLoader.get() == null;
         System.out.println("loader null " + isNull);
     }

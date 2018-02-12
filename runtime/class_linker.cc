@@ -9038,6 +9038,22 @@ mirror::Class* ClassLinker::GetHoldingClassOfCopiedMethod(ArtMethod* method) {
   return visitor.holder_.Ptr();
 }
 
+ObjPtr<mirror::ClassLoader> ClassLinker::GetHoldingClassLoader(void* linear_alloc_address) {
+  Thread* const self = Thread::Current();
+  ReaderMutexLock rmu(self, *Locks::classlinker_classes_lock_);
+  for (const ClassLoaderData& data : class_loaders_) {
+    // Need to use DecodeJObject so that we get null for cleared JNI weak globals.
+    ObjPtr<mirror::ClassLoader> class_loader = ObjPtr<mirror::ClassLoader>::DownCast(
+        self->DecodeJObject(data.weak_root));
+    if (class_loader != nullptr && data.allocator->Contains(linear_alloc_address)) {
+      return class_loader;
+    }
+  }
+  // Either in zygote space, image space, or bootstrap class loader linear alloc. Return null since
+  // we don't need to hold anything live.
+  return nullptr;
+}
+
 mirror::IfTable* ClassLinker::AllocIfTable(Thread* self, size_t ifcount) {
   return down_cast<mirror::IfTable*>(
       mirror::IfTable::Alloc(self,

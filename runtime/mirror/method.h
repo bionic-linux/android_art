@@ -21,6 +21,9 @@
 #include "gc_root.h"
 
 namespace art {
+
+struct MethodOffsets;
+
 namespace mirror {
 
 class Class;
@@ -51,9 +54,17 @@ class MANAGED Method : public Executable {
   static void VisitRoots(RootVisitor* visitor) REQUIRES_SHARED(Locks::mutator_lock_);
 
  private:
+  static MemberOffset HoldingClassLoaderOffset() {
+    return MemberOffset(OFFSETOF_MEMBER(Method, holding_class_loader_));
+  }
+
+  // In the case where the method is a copied method, we need to keep the holding class loader live.
+  HeapReference<mirror::ClassLoader> holding_class_loader_;
+
   static GcRoot<Class> static_class_;  // java.lang.reflect.Method.class.
   static GcRoot<Class> array_class_;  // [java.lang.reflect.Method.class.
 
+  friend struct art::MethodOffsets;  // for verifying offset information
   DISALLOW_COPY_AND_ASSIGN(Method);
 };
 

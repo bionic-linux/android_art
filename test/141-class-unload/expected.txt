@@ -23,3 +23,5 @@ JNI_OnUnload called
 JNI_OnLoad called
 Number of loaded unload-ex maps 0
 Too small false
+Child loader was unloaded false
+Child loader was unloaded true

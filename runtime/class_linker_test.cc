@@ -40,6 +40,7 @@
 #include "mirror/emulated_stack_frame.h"
 #include "mirror/executable.h"
 #include "mirror/field.h"
+#include "mirror/method.h"
 #include "mirror/method_handle_impl.h"
 #include "mirror/method_handles_lookup.h"
 #include "mirror/method_type.h"
@@ -723,6 +724,12 @@ struct ExecutableOffsets : public CheckOffsets<mirror::Executable> {
   }
 };
 
+struct MethodOffsets : public CheckOffsets<mirror::Method> {
+  MethodOffsets() : CheckOffsets<mirror::Method>(false, "Ljava/lang/reflect/Method;") {
+    addOffset(OFFSETOF_MEMBER(mirror::Method, holding_class_loader_), "holdingClassLoader");
+  }
+};
+
 struct MethodTypeOffsets : public CheckOffsets<mirror::MethodType> {
   MethodTypeOffsets() : CheckOffsets<mirror::MethodType>(
       false, "Ljava/lang/invoke/MethodType;") {
@@ -836,6 +843,7 @@ TEST_F(ClassLinkerTest, ValidateFieldOrderOfJavaCppUnionClasses) {
   EXPECT_TRUE(AccessibleObjectOffsets().Check());
   EXPECT_TRUE(FieldOffsets().Check());
   EXPECT_TRUE(ExecutableOffsets().Check());
+  EXPECT_TRUE(MethodOffsets().Check());
   EXPECT_TRUE(MethodTypeOffsets().Check());
   EXPECT_TRUE(MethodHandleOffsets().Check());
   EXPECT_TRUE(MethodHandleImplOffsets().Check());
