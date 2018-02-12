@@ -665,6 +665,9 @@ class ClassLinker {
   mirror::Class* GetHoldingClassOfCopiedMethod(ArtMethod* method)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  ObjPtr<mirror::ClassLoader> GetHoldingClassLoader(void* linear_alloc_address)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Returns null if not found.
   // This returns a pointer to the class-table, without requiring any locking - including the
   // boot class-table. It is the caller's responsibility to access this under lock, if required.

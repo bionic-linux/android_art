@@ -58,6 +58,18 @@ Method* Method::CreateFromArtMethod(Thread* self, ArtMethod* method) {
   if (LIKELY(ret != nullptr)) {
     ObjPtr<Executable>(ret)->
         CreateFromArtMethod<kPointerSize, kTransactionActive>(method);
+    if (UNLIKELY(method->IsCopied())) {
+      Runtime* const runtime = Runtime::Current();
+      ObjPtr<mirror::ClassLoader> holding_class_loader =
+          runtime->GetClassLinker()->GetHoldingClassLoader(method);
+      if (runtime->IsActiveTransaction()) {
+        ret->SetFieldObject</*kTransactionActive*/ true>(HoldingClassLoaderOffset(),
+                                                         holding_class_loader);
+      } else {
+        ret->SetFieldObject</*kTransactionActive*/ false>(HoldingClassLoaderOffset(),
+                                                          holding_class_loader);
+      }
+    }
   }
   return ret.Ptr();
 }

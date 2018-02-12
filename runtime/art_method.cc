@@ -87,6 +87,13 @@ ArtMethod* ArtMethod::GetNonObsoleteMethod() {
   }
 }
 
+ObjPtr<mirror::ClassLoader> ArtMethod::GetHoldingClassLoader() {
+  if (LIKELY(!IsCopied())) {
+    return GetClassLoader();
+  }
+  return Runtime::Current()->GetClassLinker()->GetHoldingClassLoader(this);
+}
+
 ArtMethod* ArtMethod::GetSingleImplementation(PointerSize pointer_size) {
   if (!IsAbstract()) {
     // A non-abstract's single implementation is itself.

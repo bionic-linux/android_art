@@ -89,6 +89,10 @@ class ArtMethod FINAL {
   template <ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
   ALWAYS_INLINE mirror::Class* GetDeclaringClass() REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Return the holding class loader keeping the method live, this may not be the same as the
+  // declaring class loader for copied methods.
+  ObjPtr<mirror::ClassLoader> GetHoldingClassLoader() REQUIRES_SHARED(Locks::mutator_lock_);
+
   template <ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
   ALWAYS_INLINE mirror::Class* GetDeclaringClassUnchecked()
       REQUIRES_SHARED(Locks::mutator_lock_);
