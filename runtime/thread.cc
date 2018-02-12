@@ -2559,9 +2559,9 @@ class BuildInternalStackTraceVisitor : public StackVisitor {
         trace_methods_and_pcs->GetLength() / 2 + count_,
         dex_pc,
         pointer_size_);
-    // Save the declaring class of the method to ensure that the declaring classes of the methods
-    // do not get unloaded while the stack trace is live.
-    trace_->Set(count_ + 1, method->GetDeclaringClass());
+    // Save the holding class loader of the method to ensure that holding (and declaring classes) of
+    // the methods do not get unloaded while the stack trace is live.
+    trace_->Set(count_ + 1, method->GetHoldingClassLoader());
     ++count_;
   }
 
