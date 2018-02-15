@@ -355,6 +355,11 @@ class InstructionCodeGeneratorMIPS : public InstructionCodeGenerator {
   void GenConditionalMoveR2(HSelect* select);
   void GenConditionalMoveR6(HSelect* select);
 
+  void GenerateAbsFP(LocationSummary* locations,
+                     bool is64bit,
+                     bool isR2OrNewer,
+                     bool isR6);
+
   MipsAssembler* const assembler_;
   CodeGeneratorMIPS* const codegen_;
 
