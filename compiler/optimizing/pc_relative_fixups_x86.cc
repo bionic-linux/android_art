@@ -238,6 +238,8 @@ class PCRelativeHandlerVisitor : public HGraphVisitor {
       case Intrinsics::kMathMaxFloatFloat:
       case Intrinsics::kMathMinDoubleDouble:
       case Intrinsics::kMathMinFloatFloat:
+        LOG(FATAL) << "Unreachable min/max/abs";
+        UNREACHABLE();
       case Intrinsics::kMathRoundFloat:
         if (!base_added) {
           DCHECK(invoke_static_or_direct != nullptr);
