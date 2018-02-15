@@ -232,12 +232,14 @@ class PCRelativeHandlerVisitor : public HGraphVisitor {
 
     // These intrinsics need the constant area.
     switch (invoke->GetIntrinsic()) {
-      case Intrinsics::kMathAbsDouble:
-      case Intrinsics::kMathAbsFloat:
-      case Intrinsics::kMathMaxDoubleDouble:
-      case Intrinsics::kMathMaxFloatFloat:
-      case Intrinsics::kMathMinDoubleDouble:
       case Intrinsics::kMathMinFloatFloat:
+      case Intrinsics::kMathMinDoubleDouble:
+      case Intrinsics::kMathMaxFloatFloat:
+      case Intrinsics::kMathMaxDoubleDouble:
+      case Intrinsics::kMathAbsFloat:
+      case Intrinsics::kMathAbsDouble:
+        LOG(FATAL) << "Unreachable min/max/abs";
+        UNREACHABLE();
       case Intrinsics::kMathRoundFloat:
         if (!base_added) {
           DCHECK(invoke_static_or_direct != nullptr);
