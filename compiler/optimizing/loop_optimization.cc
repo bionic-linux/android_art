@@ -34,7 +34,7 @@ namespace art {
 static constexpr bool kEnableVectorization = true;
 
 // Enables scalar loop unrolling in the loop optimizer.
-static constexpr bool kEnableScalarPeelingUnrolling = false;
+static constexpr bool kEnableScalarPeelingUnrolling = true;
 
 // No loop unrolling factor (just one copy of the loop-body).
 static constexpr uint32_t kNoUnrollingFactor = 1;
