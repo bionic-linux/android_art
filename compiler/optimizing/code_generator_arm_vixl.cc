@@ -4690,6 +4690,127 @@ void InstructionCodeGeneratorARMVIXL::VisitRem(HRem* rem) {
   }
 }
 
+static void CreateMinMaxLocations(ArenaAllocator* allocator, HBinaryOperation* minmax) {
+  LocationSummary* locations = new (allocator) LocationSummary(minmax);
+  switch (minmax->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+    default:
+      LOG(FATAL) << "Unexpected type for HMinMax " << minmax->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorARMVIXL::GenerateMinMax(
+    LocationSummary* locations, bool is_min, bool is_long) {
+}
+
+void InstructionCodeGeneratorARMVIXL::GenerateMinMaxFP(
+    LocationSummary* locations, bool is_min, bool is_double) {
+}
+
+void LocationsBuilderAMRVIXL::VisitMin(HMin* min) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), min);
+}
+
+void InstructionCodeGeneratorAMRVIXL::VisitMin(HMin* min) {
+  switch (min->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMin " << min->GetResultType();
+  }
+}
+
+void LocationsBuilderAMRVIXL::VisitMax(HMax* max) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), max);
+}
+
+void InstructionCodeGeneratorAMRVIXL::VisitMax(HMax* max) {
+  switch (max->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMax " << max->GetResultType();
+  }
+}
+
+void LocationsBuilderARMVIXL::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(abs);
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetOut(Location::RequiresRegister(), Location::kNoOutputOverlap);
+      locations->AddTemp(Location::RequiresRegister());
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for abs operation " << abs->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorARMVIXL::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = abs->GetLocations();
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32: {
+      vixl32::Register in_reg = RegisterFrom(locations->InAt(0));
+      vixl32::Register out_reg = RegisterFrom(locations->Out());
+      vixl32::Register mask = RegisterFrom(locations->GetTemp(0));
+      __ Asr(mask, in_reg, 31);
+      __ Add(out_reg, in_reg, mask);
+      __ Eor(out_reg, mask, out_reg);
+      break;
+    }
+    case DataType::Type::kInt64: {
+      Location in = locations->InAt(0);
+      vixl32::Register in_reg_lo = LowRegisterFrom(in);
+      vixl32::Register in_reg_hi = HighRegisterFrom(in);
+      Location output = locations->Out();
+      vixl32::Register out_reg_lo = LowRegisterFrom(output);
+      vixl32::Register out_reg_hi = HighRegisterFrom(output);
+      DCHECK(!out_reg_lo.Is(in_reg_hi)) << "Diagonal overlap unexpected.";
+      vixl32::Register mask = RegisterFrom(locations->GetTemp(0));
+      __ Asr(mask, in_reg_hi, 31);
+      __ Adds(out_reg_lo, in_reg_lo, mask);
+      __ Adc(out_reg_hi, in_reg_hi, mask);
+      __ Eor(out_reg_lo, mask, out_reg_lo);
+      __ Eor(out_reg_hi, mask, out_reg_hi);
+      break;
+    }
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      __ Vabs(OutputVRegister(abs), InputVRegisterAt(abs, 0));
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for abs operation " << abs->GetResultType();
+  }
+}
 
 void LocationsBuilderARMVIXL::VisitDivZeroCheck(HDivZeroCheck* instruction) {
   LocationSummary* locations = codegen_->CreateThrowingSlowPathLocations(instruction);

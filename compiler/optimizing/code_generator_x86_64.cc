@@ -3822,6 +3822,251 @@ void InstructionCodeGeneratorX86_64::VisitRem(HRem* rem) {
   }
 }
 
+static void CreateMinMaxLocations(ArenaAllocator* allocator, HBinaryOperation* minmax) {
+  LocationSummary* locations = new (allocator) LocationSummary(minmax);
+  switch (minmax->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetInAt(1, Location::RequiresRegister());
+      locations->SetOut(Location::SameAsFirstInput());
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetInAt(1, Location::RequiresFpuRegister());
+      // The following is sub-optimal, but all we can do for now. It would be fine to also accept
+      // the second input to be the output (we can simply swap inputs).
+      locations->SetOut(Location::SameAsFirstInput());
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMinMax " << minmax->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorX86_64::GenerateMinMax(
+    LocationSummary* locations, bool is_min, bool is_long) {
+  Location op1_loc = locations->InAt(0);
+  Location op2_loc = locations->InAt(1);
+
+  // Shortcut for same input locations.
+  if (op1_loc.Equals(op2_loc)) {
+    // Can return immediately, as op1_loc == out_loc.
+    // Note: if we ever support separate registers, e.g., output into memory, we need to check for
+    //       a copy here.
+    DCHECK(locations->Out().Equals(op1_loc));
+    return;
+  }
+
+  CpuRegister out = locations->Out().AsRegister<CpuRegister>();
+  CpuRegister op2 = op2_loc.AsRegister<CpuRegister>();
+
+  //  (out := op1)
+  //  out <=? op2
+  //  if out is min jmp done
+  //  out := op2
+  // done:
+
+  if (is_long) {
+    __ cmpq(out, op2);
+  } else {
+    __ cmpl(out, op2);
+  }
+
+  __ cmov(is_min ? Condition::kGreater : Condition::kLess, out, op2, is_long);
+}
+
+void InstructionCodeGeneratorX86_64::GenerateMinMaxFP(
+    LocationSummary* locations, bool is_min, bool is_double) {
+  Location op1_loc = locations->InAt(0);
+  Location op2_loc = locations->InAt(1);
+  Location out_loc = locations->Out();
+  XmmRegister out = out_loc.AsFpuRegister<XmmRegister>();
+
+  // Shortcut for same input locations.
+  if (op1_loc.Equals(op2_loc)) {
+    DCHECK(out_loc.Equals(op1_loc));
+    return;
+  }
+
+  //  (out := op1)
+  //  out <=? op2
+  //  if Nan jmp Nan_label
+  //  if out is min jmp done
+  //  if op2 is min jmp op2_label
+  //  handle -0/+0
+  //  jmp done
+  // Nan_label:
+  //  out := NaN
+  // op2_label:
+  //  out := op2
+  // done:
+  //
+  // This removes one jmp, but needs to copy one input (op1) to out.
+  //
+  // TODO: This is straight from Quick. Make NaN an out-of-line slowpath?
+
+  XmmRegister op2 = op2_loc.AsFpuRegister<XmmRegister>();
+
+  NearLabel nan, done, op2_label;
+  if (is_double) {
+    __ ucomisd(out, op2);
+  } else {
+    __ ucomiss(out, op2);
+  }
+
+  __ j(Condition::kParityEven, &nan);
+
+  __ j(is_min ? Condition::kAbove : Condition::kBelow, &op2_label);
+  __ j(is_min ? Condition::kBelow : Condition::kAbove, &done);
+
+  // Handle 0.0/-0.0.
+  if (is_min) {
+    if (is_double) {
+      __ orpd(out, op2);
+    } else {
+      __ orps(out, op2);
+    }
+  } else {
+    if (is_double) {
+      __ andpd(out, op2);
+    } else {
+      __ andps(out, op2);
+    }
+  }
+  __ jmp(&done);
+
+  // NaN handling.
+  __ Bind(&nan);
+  if (is_double) {
+    __ movsd(out, codegen_->LiteralInt64Address(INT64_C(0x7FF8000000000000)));
+  } else {
+    __ movss(out, codegen_->LiteralInt32Address(INT32_C(0x7FC00000)));
+  }
+  __ jmp(&done);
+
+  // out := op2;
+  __ Bind(&op2_label);
+  if (is_double) {
+    __ movsd(out, op2);
+  } else {
+    __ movss(out, op2);
+  }
+
+  // Done.
+  __ Bind(&done);
+}
+
+void LocationsBuilderX86_64::VisitMin(HMin* min) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), min);
+}
+
+void InstructionCodeGeneratorX86_64::VisitMin(HMin* min) {
+  switch (min->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMin " << min->GetResultType();
+  }
+}
+
+void LocationsBuilderX86_64::VisitMax(HMax* max) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), max);
+}
+
+void InstructionCodeGeneratorX86_64::VisitMax(HMax* max) {
+  switch (max->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMax " << max->GetResultType();
+  }
+}
+
+void LocationsBuilderX86_64::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(abs);
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetOut(Location::SameAsFirstInput());
+      locations->AddTemp(Location::RequiresRegister());
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetOut(Location::SameAsFirstInput());
+      locations->AddTemp(Location::RequiresFpuRegister());
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HAbs " << abs->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorX86_64::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = abs->GetLocations();
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32: {
+      CpuRegister out = locations->Out().AsRegister<CpuRegister>();
+      CpuRegister mask = locations->GetTemp(0).AsRegister<CpuRegister>();
+      // Create mask.
+      __ movl(mask, out);
+      __ sarl(mask, Immediate(31));
+      // Add mask.
+      __ addl(out, mask);
+      __ xorl(out, mask);
+      break;
+    }
+    case DataType::Type::kInt64: {
+      CpuRegister out = locations->Out().AsRegister<CpuRegister>();
+      CpuRegister mask = locations->GetTemp(0).AsRegister<CpuRegister>();
+      // Create mask.
+      __ movq(mask, out);
+      __ sarq(mask, Immediate(63));
+      // Add mask.
+      __ addq(out, mask);
+      __ xorq(out, mask);
+      break;
+    }
+    case DataType::Type::kFloat32: {
+      XmmRegister out = locations->Out().AsFpuRegister<XmmRegister>();
+      XmmRegister mask = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
+      __ movss(mask, codegen_->LiteralInt32Address(INT32_C(0x7FFFFFFF)));
+      __ andps(out, mask);
+      break;
+    }
+    case DataType::Type::kFloat64: {
+      XmmRegister out = locations->Out().AsFpuRegister<XmmRegister>();
+      XmmRegister mask = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
+      __ movsd(mask, codegen_->LiteralInt64Address(INT64_C(0x7FFFFFFFFFFFFFFF)));
+      __ andpd(out, mask);
+      break;
+    }
+    default:
+      LOG(FATAL) << "Unexpected type for HAbs " << abs->GetResultType();
+  }
+}
+
 void LocationsBuilderX86_64::VisitDivZeroCheck(HDivZeroCheck* instruction) {
   LocationSummary* locations = codegen_->CreateThrowingSlowPathLocations(instruction);
   locations->SetInAt(0, Location::Any());
