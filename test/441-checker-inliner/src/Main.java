@@ -152,9 +152,12 @@ public class Main {
   /// CHECK-DAG:     <<Result:i\d+>>      InvokeStaticOrDirect
   /// CHECK-DAG:                          Return [<<Result>>]
 
+  //
+  // Intrinsic directly simplified into Abs.
+  //
   /// CHECK-START: int Main.InlinedIntrinsicsAreStillIntrinsic() inliner (after)
   /// CHECK-DAG:     <<ConstMinus1:i\d+>> IntConstant -1
-  /// CHECK-DAG:     <<Result:i\d+>>      InvokeStaticOrDirect intrinsic:MathAbsInt
+  /// CHECK-DAG:     <<Result:i\d+>>      Abs [<<ConstMinus1>>]
   /// CHECK-DAG:                          Return [<<Result>>]
 
   public static int InlinedIntrinsicsAreStillIntrinsic() {
