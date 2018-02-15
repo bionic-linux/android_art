@@ -222,6 +222,9 @@ class InstructionCodeGeneratorX86_64 : public InstructionCodeGenerator {
                       bool value_can_be_null);
   void HandleFieldGet(HInstruction* instruction, const FieldInfo& field_info);
 
+  void GenerateMinMax(LocationSummary* locations, bool is_min, bool is_long);
+  void GenerateMinMaxFP(LocationSummary* locations, bool is_min, bool is_double);
+
   // Generate a heap reference load using one register `out`:
   //
   //   out <- *(out + offset)

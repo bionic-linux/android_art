@@ -78,6 +78,7 @@ using helpers::OutputFPRegister;
 using helpers::OutputRegister;
 using helpers::QRegisterFrom;
 using helpers::RegisterFrom;
+using helpers::SRegisterFrom;
 using helpers::StackOperandFrom;
 using helpers::VIXLRegCodeFromART;
 using helpers::WRegisterFrom;
@@ -5463,6 +5464,142 @@ void InstructionCodeGeneratorARM64::VisitRem(HRem* rem) {
     default:
       LOG(FATAL) << "Unexpected rem type " << type;
       UNREACHABLE();
+  }
+}
+
+static void CreateMinMaxLocations(ArenaAllocator* allocator, HBinaryOperation* minmax) {
+  LocationSummary* locations = new (allocator) LocationSummary(minmax);
+  switch (minmax->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetInAt(1, Location::RequiresRegister());
+      locations->SetOut(Location::RequiresRegister(), Location::kNoOutputOverlap);
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetInAt(1, Location::RequiresFpuRegister());
+      locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMinMax " << minmax->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorARM64::GenerateMinMax(
+    LocationSummary* locations, bool is_min, bool is_long) {
+  Location op1 = locations->InAt(0);
+  Location op2 = locations->InAt(1);
+  Location out = locations->Out();
+
+  Register op1_reg = is_long ? XRegisterFrom(op1) : WRegisterFrom(op1);
+  Register op2_reg = is_long ? XRegisterFrom(op2) : WRegisterFrom(op2);
+  Register out_reg = is_long ? XRegisterFrom(out) : WRegisterFrom(out);
+
+  __ Cmp(op1_reg, op2_reg);
+  __ Csel(out_reg, op1_reg, op2_reg, is_min ? lt : gt);
+}
+
+void InstructionCodeGeneratorARM64::GenerateMinMaxFP(
+    LocationSummary* locations, bool is_min, bool is_double) {
+  Location op1 = locations->InAt(0);
+  Location op2 = locations->InAt(1);
+  Location out = locations->Out();
+
+  FPRegister op1_reg = is_double ? DRegisterFrom(op1) : SRegisterFrom(op1);
+  FPRegister op2_reg = is_double ? DRegisterFrom(op2) : SRegisterFrom(op2);
+  FPRegister out_reg = is_double ? DRegisterFrom(out) : SRegisterFrom(out);
+  if (is_min) {
+    __ Fmin(out_reg, op1_reg, op2_reg);
+  } else {
+    __ Fmax(out_reg, op1_reg, op2_reg);
+  }
+}
+
+void LocationsBuilderARM64::VisitMin(HMin* min) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), min);
+}
+
+void InstructionCodeGeneratorARM64::VisitMin(HMin* min) {
+  switch (min->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(min->GetLocations(), /* is_min */ true, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(min->GetLocations(), /* is_min */ true, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMin " << min->GetResultType();
+  }
+}
+
+void LocationsBuilderARM64::VisitMax(HMax* max) {
+  CreateMinMaxLocations(GetGraph()->GetAllocator(), max);
+}
+
+void InstructionCodeGeneratorARM64::VisitMax(HMax* max) {
+  switch (max->GetResultType()) {
+    case DataType::Type::kInt32:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ false);
+      break;
+    case DataType::Type::kInt64:
+      GenerateMinMax(max->GetLocations(), /* is_min */ false, /* is_long */ true);
+      break;
+    case DataType::Type::kFloat32:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ false);
+      break;
+    case DataType::Type::kFloat64:
+      GenerateMinMaxFP(max->GetLocations(), /* is_min */ false, /* is_double */ true);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for HMax " << max->GetResultType();
+  }
+}
+
+void LocationsBuilderARM64::VisitAbs(HAbs* abs) {
+  LocationSummary* locations = new (GetGraph()->GetAllocator()) LocationSummary(abs);
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64:
+      locations->SetInAt(0, Location::RequiresRegister());
+      locations->SetOut(Location::RequiresRegister(), Location::kNoOutputOverlap);
+      break;
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64:
+      locations->SetInAt(0, Location::RequiresFpuRegister());
+      locations->SetOut(Location::RequiresFpuRegister(), Location::kNoOutputOverlap);
+      break;
+    default:
+      LOG(FATAL) << "Unexpected type for abs operation " << abs->GetResultType();
+  }
+}
+
+void InstructionCodeGeneratorARM64::VisitAbs(HAbs* abs) {
+  switch (abs->GetResultType()) {
+    case DataType::Type::kInt32:
+    case DataType::Type::kInt64: {
+      Register in_reg = InputRegisterAt(abs, 0);
+      Register out_reg = OutputRegister(abs);
+      __ Cmp(in_reg, Operand(0));
+      __ Cneg(out_reg, in_reg, lt);
+      break;
+    }
+    case DataType::Type::kFloat32:
+    case DataType::Type::kFloat64: {
+      FPRegister in_reg = InputFPRegisterAt(abs, 0);
+      FPRegister out_reg = OutputFPRegister(abs);
+      __ Fabs(out_reg, in_reg);
+      break;
+    }
+    default:
+      LOG(FATAL) << "Unexpected type for abs operation " << abs->GetResultType();
   }
 }
 
