@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ba4cb18_498977e8",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 5491,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-16T16:54:52Z",
+      "side": 1,
+      "message": "I will make that change.",
+      "parentUuid": "4839f99c_46e5d74b",
+      "range": {
+        "startLine": 5491,
+        "startChar": 32,
+        "endLine": 5491,
+        "endChar": 57
+      },
+      "revId": "e20ed5962bc2d1e2a0d1994809c80b151df50cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "632e0e41_b568d0f0",
         "filename": "compiler/optimizing/code_generator_x86.cc",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-16T11:25:04Z",
       "side": 1,
       "message": "__ cmpl(output_lo, op2_lo)\n\n\"The comparison is performed by subtracting the second operand from the first operand and then setting the status flags in the same manner as the SUB instruction.\"",
+      "range": {
+        "startLine": 3866,
+        "startChar": 0,
+        "endLine": 3868,
+        "endChar": 26
+      },
+      "revId": "e20ed5962bc2d1e2a0d1994809c80b151df50cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b0952e_a258b04f",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 3868,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-02-16T16:54:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632e0e41_b568d0f0",
       "range": {
         "startLine": 3866,
         "startChar": 0,
