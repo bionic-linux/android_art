@@ -347,6 +347,7 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(const uint8_t* base,
                                       oat_dex_file,
                                       container));
   } else {
+    delete container;
     *error_msg = "Invalid or truncated dex file";
   }
   if (dex_file == nullptr) {
