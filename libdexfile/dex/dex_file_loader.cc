@@ -313,7 +313,7 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(const uint8_t* base,
                                                    bool verify,
                                                    bool verify_checksum,
                                                    std::string* error_msg,
-                                                   DexFileContainer* container,
+                                                   std::unique_ptr<DexFileContainer> container,
                                                    VerifyResult* verify_result) {
   if (verify_result != nullptr) {
     *verify_result = VerifyResult::kVerifyNotAttempted;
@@ -328,7 +328,7 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(const uint8_t* base,
                                        location,
                                        location_checksum,
                                        oat_dex_file,
-                                       container));
+                                       std::move(container)));
   } else if (size >= sizeof(CompactDexFile::Header) && CompactDexFile::IsMagicValid(base)) {
     if (data_base == nullptr) {
       // TODO: Is there a clean way to support both an explicit data section and reading the one
@@ -345,7 +345,7 @@ std::unique_ptr<DexFile> DexFileLoader::OpenCommon(const uint8_t* base,
                                       location,
                                       location_checksum,
                                       oat_dex_file,
-                                      container));
+                                      std::move(container)));
   } else {
     *error_msg = "Invalid or truncated dex file";
   }
@@ -413,7 +413,7 @@ std::unique_ptr<const DexFile> DexFileLoader::OpenOneDexFileFromZip(
                                                        verify,
                                                        verify_checksum,
                                                        error_msg,
-                                                       new VectorContainer(std::move(map)),
+                                                       std::make_unique<VectorContainer>(std::move(map)),
                                                        &verify_result);
   if (dex_file == nullptr) {
     if (verify_result == VerifyResult::kVerifyNotAttempted) {
