@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "902d9043_15c8a5cd",
+        "filename": "libdexfile/dex/dex_file_loader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-02-18T21:17:11Z",
+      "side": 1,
+      "message": "We should change the API to be unique_ptr instead IMO.",
+      "range": {
+        "startLine": 316,
+        "startChar": 51,
+        "endLine": 316,
+        "endChar": 78
+      },
+      "revId": "d3a214999ce07435c372729442a8a4dfa52d919e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
