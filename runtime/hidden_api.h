@@ -17,12 +17,41 @@
 #ifndef ART_RUNTIME_HIDDEN_API_H_
 #define ART_RUNTIME_HIDDEN_API_H_
 
+#include "art_field.h"
+#include "art_method.h"
 #include "dex/hidden_api_access_flags.h"
+#include "mirror/class.h"
 #include "reflection.h"
 #include "runtime.h"
 
 namespace art {
 namespace hiddenapi {
+
+// Hidden API enforcement policy
+// This must be kept in sync with ApplicationInfo.ApiEnforcementPolicy in
+// frameworks/base/core/java/android/content/pm/ApplicationInfo.java
+enum class ApiEnforcementPolicy {
+  kNone                 = 0,
+  kAllLists             = 1,  // ban anything but whitelist
+  kDarkGreyAndBlackList = 2,  // ban dark grey & blacklist
+  kBlacklistOnly        = 3,  // ban blacklist violations only
+  kMax = kBlacklistOnly,
+};
+
+// The logic below in GetMemberAction relies on equality of values in the enums ApiEnforcementPolicy
+// and HiddenApiAccessFlags::ApiList. Assert that this is the case.
+static_assert(
+    static_cast<int>(ApiEnforcementPolicy::kNone) == static_cast<int>(HiddenApiAccessFlags::kWhitelist),
+    "Mismatch between ApiEnforcementPolicy and ApiList enums");
+static_assert(
+    static_cast<int>(ApiEnforcementPolicy::kAllLists) == static_cast<int>(HiddenApiAccessFlags::kLightGreylist),
+    "Mismatch between ApiEnforcementPolicy and ApiList enums");
+static_assert(
+    static_cast<int>(ApiEnforcementPolicy::kDarkGreyAndBlackList) == static_cast<int>(HiddenApiAccessFlags::kDarkGreylist),
+    "Mismatch between ApiEnforcementPolicy and ApiList enums");
+static_assert(
+    static_cast<int>(ApiEnforcementPolicy::kBlacklistOnly) == static_cast<int>(HiddenApiAccessFlags::kBlacklist),
+    "Mismatch between ApiEnforcementPolicy and ApiList enums");
 
 enum Action {
   kAllow,
@@ -49,15 +78,22 @@ inline std::ostream& operator<<(std::ostream& os, AccessMethod value) {
 }
 
 inline Action GetMemberAction(uint32_t access_flags) {
-  switch (HiddenApiAccessFlags::DecodeFromRuntime(access_flags)) {
-    case HiddenApiAccessFlags::kWhitelist:
-      return kAllow;
-    case HiddenApiAccessFlags::kLightGreylist:
-      return kAllowButWarn;
-    case HiddenApiAccessFlags::kDarkGreylist:
-      return kAllowButWarnAndToast;
-    case HiddenApiAccessFlags::kBlacklist:
-      return kDeny;
+  ApiEnforcementPolicy policy = Runtime::Current()->GetHiddenApiEnforcementPolicy();
+  if (policy == ApiEnforcementPolicy::kNone) {
+    // Exit early. Nothing to enforce.
+    return kAllow;
+  }
+
+  HiddenApiAccessFlags::ApiList api_list = HiddenApiAccessFlags::DecodeFromRuntime(access_flags);
+  if (api_list == HiddenApiAccessFlags::kWhitelist) {
+    return kAllow;
+  }
+  if (static_cast<int>(policy) > static_cast<int>(api_list)) {
+    return api_list == HiddenApiAccessFlags::kDarkGreylist
+        ? kAllowButWarnAndToast
+        : kAllowButWarn;
+  } else {
+    return kDeny;
   }
 }
 
@@ -96,12 +132,6 @@ inline bool ShouldBlockAccessToMember(T* member,
                                       AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(member != nullptr);
-  Runtime* runtime = Runtime::Current();
-
-  if (!runtime->AreHiddenApiChecksEnabled()) {
-    // Exit early. Nothing to enforce.
-    return false;
-  }
 
   Action action = GetMemberAction(member->GetAccessFlags());
   if (action == kAllow) {
@@ -122,13 +152,15 @@ inline bool ShouldBlockAccessToMember(T* member,
   // We do this regardless of whether we block the access or not.
   WarnAboutMemberAccess(member, access_method);
 
-  // Block access if on blacklist.
+  // Block access
   if (action == kDeny) {
     return true;
   }
 
   // Allow access to this member but print a warning.
   DCHECK(action == kAllowButWarn || action == kAllowButWarnAndToast);
+
+  Runtime* runtime = Runtime::Current();
 
   // Depending on a runtime flag, we might move the member into whitelist and
   // skip the warning the next time the member is accessed.
@@ -139,7 +171,7 @@ inline bool ShouldBlockAccessToMember(T* member,
 
   // If this action requires a UI warning, set the appropriate flag.
   if (action == kAllowButWarnAndToast || runtime->ShouldAlwaysSetHiddenApiWarningFlag()) {
-    Runtime::Current()->SetPendingHiddenApiWarning(true);
+    runtime->SetPendingHiddenApiWarning(true);
   }
 
   return false;
@@ -149,11 +181,6 @@ inline bool ShouldBlockAccessToMember(T* member,
 // This function should be called on statically linked uses of hidden API.
 inline bool ShouldBlockAccessToMember(uint32_t access_flags, mirror::Class* caller)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  if (!Runtime::Current()->AreHiddenApiChecksEnabled()) {
-    // Exit early. Nothing to enforce.
-    return false;
-  }
-
   // Only continue if we want to deny access. Warnings are *not* printed.
   if (GetMemberAction(access_flags) != kDeny) {
     return false;
