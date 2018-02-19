@@ -22,6 +22,30 @@
       "revId": "d3a214999ce07435c372729442a8a4dfa52d919e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93a89b4a_8f54d4fa",
+        "filename": "libdexfile/dex/dex_file_loader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-02-19T05:58:15Z",
+      "side": 1,
+      "message": "Yeah, I like that more, too.",
+      "parentUuid": "902d9043_15c8a5cd",
+      "range": {
+        "startLine": 316,
+        "startChar": 51,
+        "endLine": 316,
+        "endChar": 78
+      },
+      "revId": "d3a214999ce07435c372729442a8a4dfa52d919e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
