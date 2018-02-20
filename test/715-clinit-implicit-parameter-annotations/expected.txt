@@ -1,0 +1,57 @@
+Main
+ public Main()
+Main$1LocalClass
+ Main$1LocalClass(int)
+  Parameter [0]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+Main$Inner
+ Main$Inner(Main,int,java.lang.String)
+  Parameter [0]:     AnnotationA.IsPresent : No
+  Parameter [1]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+  Parameter [2]:     AnnotationA.IsPresent : No
+ Main$Inner(Main,int,java.lang.String,boolean)
+  Parameter [0]:     AnnotationA.IsPresent : No
+  Parameter [1]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+  Parameter [2]:     AnnotationA.IsPresent : No
+  Parameter [3]:    Indexed : @Main$AnnotationB(value=x)
+    Array : @Main$AnnotationB(value=x)
+     AnnotationA.IsPresent : No
+Main$StaticInner
+ Main$StaticInner(int,java.lang.String)
+  Parameter [0]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+  Parameter [1]:     AnnotationA.IsPresent : No
+ Main$StaticInner(int,java.lang.String,boolean)
+  Parameter [0]:    Indexed : @Main$AnnotationB(value=foo)
+    Array : @Main$AnnotationB(value=foo)
+     AnnotationA.IsPresent : No
+  Parameter [1]:     AnnotationA.IsPresent : No
+  Parameter [2]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+Main$ImportantNumber
+ private Main$ImportantNumber(java.lang.String,int,double)
+  Parameter [0]:     AnnotationA.IsPresent : No
+  Parameter [1]:     AnnotationA.IsPresent : No
+  Parameter [2]:    Indexed : @Main$AnnotationA()
+    Array : @Main$AnnotationA()
+     AnnotationA.IsPresent : Yes
+ private Main$ImportantNumber(java.lang.String,int,double,boolean)
+  Parameter [0]:     AnnotationA.IsPresent : No
+  Parameter [1]:     AnnotationA.IsPresent : No
+  Parameter [2]:    Indexed : @Main$AnnotationB(value=x)
+    Array : @Main$AnnotationB(value=x)
+     AnnotationA.IsPresent : No
+  Parameter [3]:    Indexed : @Main$AnnotationB(value=y)
+    Array : @Main$AnnotationB(value=y)
+     AnnotationA.IsPresent : No
+Main$BinaryNumber
+ private Main$BinaryNumber(java.lang.String,int)
+  Parameter [0]:     AnnotationA.IsPresent : No
+  Parameter [1]:     AnnotationA.IsPresent : No
