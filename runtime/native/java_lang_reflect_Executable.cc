@@ -70,7 +70,6 @@ static jobjectArray Executable_getSignatureAnnotation(JNIEnv* env, jobject javaM
   if (method->GetDeclaringClass()->IsProxyClass()) {
     return nullptr;
   }
-  StackHandleScope<1> hs(soa.Self());
   return soa.AddLocalReference<jobjectArray>(annotations::GetSignatureAnnotationForMethod(method));
 }
 
@@ -80,9 +79,69 @@ static jobjectArray Executable_getParameterAnnotationsNative(JNIEnv* env, jobjec
   ArtMethod* method = ArtMethod::FromReflectedMethod(soa, javaMethod);
   if (method->IsProxyMethod()) {
     return nullptr;
-  } else {
-    return soa.AddLocalReference<jobjectArray>(annotations::GetParameterAnnotations(method));
   }
+
+  StackHandleScope<4> hs(soa.Self());
+  Handle<mirror::ObjectArray<mirror::Object>> annotations =
+      hs.NewHandle(annotations::GetParameterAnnotations(method));
+  if (!method->IsConstructor() ||
+      annotations.IsNull() ||
+      annotations->GetLength() == static_cast<int>(method->GetNumberOfParameters())) {
+    return soa.AddLocalReference<jobjectArray>(annotations.Get());
+  }
+
+  // If declaring class is local, do not pad parameter annotations.
+  Handle<mirror::Class> declaring_class = hs.NewHandle(method->GetDeclaringClass());
+  if (annotations::GetEnclosingMethod(declaring_class) != nullptr ||
+      declaring_class->IsEnum()) {
+    return soa.AddLocalReference<jobjectArray>(annotations.Get());
+  }
+
+  // Constructors are special as they may have implicit parameters
+  // when classes are nested, and for enum classes, and also anonymous
+  // classes. In these cases, the number of annotations may not match
+  // the number of parameters as dexer's typically do not account for
+  // this.
+  Handle<mirror::ObjectArray<mirror::Object>> resized_annotations = hs.NewHandle(
+      mirror::ObjectArray<mirror::Object>::Alloc(
+          soa.Self(),
+          annotations->GetClass(),
+          static_cast<int>(method->GetNumberOfParameters())));
+  if (resized_annotations.IsNull()) {
+    soa.Self()->AssertNoPendingException();
+    return nullptr;
+  }
+
+  static constexpr bool kTransactionActive = false;
+  const int32_t offset = resized_annotations->GetLength() - annotations->GetLength();
+  if (offset > 0) {
+    // Workaround for dexers (d8/dx) that do not insert annotations
+    // for implicit parameters (b/68033708).
+    ObjPtr<mirror::Class> annotation_array_class =
+        soa.Decode<mirror::Class>(WellKnownClasses::java_lang_annotation_Annotation__array);
+    Handle<mirror::ObjectArray<mirror::Object>> empty_annotations = hs.NewHandle(
+        mirror::ObjectArray<mirror::Object>::Alloc(soa.Self(), annotation_array_class, 0));
+    if (empty_annotations.IsNull()) {
+      soa.Self()->AssertNoPendingException();
+      return nullptr;
+    }
+    for (int i = 0; i < offset; ++i) {
+      resized_annotations->SetWithoutChecks<kTransactionActive>(i, empty_annotations.Get());
+    }
+    for (int i = 0; i < annotations->GetLength(); ++i) {
+      ObjPtr<mirror::Object> annotation = annotations->GetWithoutChecks(i);
+      resized_annotations->SetWithoutChecks<kTransactionActive>(i + offset, annotation);
+    }
+  } else {
+    // Workaround for Jack (defunct) erroneously inserting annotations
+    // for local classes (b/68033708).
+    DCHECK_LT(offset, 0);
+    for (int i = 0; i < resized_annotations->GetLength(); ++i) {
+      ObjPtr<mirror::Object> annotation = annotations->GetWithoutChecks(i - offset);
+      resized_annotations->SetWithoutChecks<kTransactionActive>(i, annotation);
+    }
+  }
+  return soa.AddLocalReference<jobjectArray>(resized_annotations.Get());
 }
 
 static jobjectArray Executable_getParameters0(JNIEnv* env, jobject javaMethod) {

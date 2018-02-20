@@ -58,6 +58,36 @@ static jobject Parameter_getAnnotationNative(JNIEnv* env,
     return nullptr;
   }
 
+  uint32_t annotated_parameter_count = annotations::GetNumberOfAnnotatedMethodParameters(method);
+  if (annotated_parameter_count == 0u) {
+    return nullptr;
+  }
+
+  // For constructors with implicit arguments, we may need to adjust
+  // annotation positions based on whether the implicit parameters are
+  // expected to known and not just a compiler implementation detail.
+  if (method->IsConstructor()) {
+    StackHandleScope<1> hs(soa.Self());
+    // If declaring class is local, do not pad parameter annotations.
+    Handle<mirror::Class> declaring_class = hs.NewHandle(method->GetDeclaringClass());
+    if (annotations::GetEnclosingMethod(declaring_class) == nullptr && !declaring_class->IsEnum()) {
+      if (annotated_parameter_count <= parameter_count) {
+        // Workaround for dexer not inserting annotation state for implicit parameters (b/68033708).
+        uint32_t skip_count = parameter_count - annotated_parameter_count;
+        DCHECK_GE(2u, skip_count);
+        if (parameterIndex < static_cast<jint>(skip_count)) {
+          return nullptr;
+        }
+        parameterIndex -= skip_count;
+      } else {
+        // Workaround for Jack erroneously inserting implicit parameter for local classes
+        // (b/68033708).
+        DCHECK_EQ(1u, annotated_parameter_count - parameter_count);
+        parameterIndex += static_cast<jint>(annotated_parameter_count - parameter_count);
+      }
+    }
+  }
+
   StackHandleScope<1> hs(soa.Self());
   Handle<mirror::Class> klass(hs.NewHandle(soa.Decode<mirror::Class>(annotationType)));
   return soa.AddLocalReference<jobject>(
@@ -65,9 +95,10 @@ static jobject Parameter_getAnnotationNative(JNIEnv* env,
 }
 
 static JNINativeMethod gMethods[] = {
-  FAST_NATIVE_METHOD(Parameter,
-                getAnnotationNative,
-                "(Ljava/lang/reflect/Executable;ILjava/lang/Class;)Ljava/lang/annotation/Annotation;"),
+  FAST_NATIVE_METHOD(
+      Parameter,
+      getAnnotationNative,
+      "(Ljava/lang/reflect/Executable;ILjava/lang/Class;)Ljava/lang/annotation/Annotation;"),
 };
 
 void register_java_lang_reflect_Parameter(JNIEnv* env) {
