@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e20575b7_34b89542",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-02-21T17:36:37Z",
+      "side": 1,
+      "message": "Why not static?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 47
+      },
+      "revId": "cb5125d8a3a50e738e29163cf0debcb61219f70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4722dc99_3ac53f45",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-02-21T17:36:37Z",
+      "side": 1,
+      "message": "Is there any way we can just say c++-max. I doubt this will remain our target for too long.",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "cb5125d8a3a50e738e29163cf0debcb61219f70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
