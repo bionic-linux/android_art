@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b917c1a_a5a7cf3f",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-21T17:43:30Z",
+      "side": 1,
+      "message": "Libz is already available in the NDK as a shared library. Didn\u0027t make sense to add an NDK-compiled static version.",
+      "parentUuid": "e20575b7_34b89542",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 345,
+        "endChar": 47
+      },
+      "revId": "cb5125d8a3a50e738e29163cf0debcb61219f70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4722dc99_3ac53f45",
         "filename": "test/Android.bp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cb5125d8a3a50e738e29163cf0debcb61219f70b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2425658c_66077435",
+        "filename": "test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-21T17:43:30Z",
+      "side": 1,
+      "message": "I don\u0027t think there is. However moves the code along will find out when the compiler isn\u0027t happy anymore...",
+      "parentUuid": "4722dc99_3ac53f45",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 21
+      },
+      "revId": "cb5125d8a3a50e738e29163cf0debcb61219f70b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
