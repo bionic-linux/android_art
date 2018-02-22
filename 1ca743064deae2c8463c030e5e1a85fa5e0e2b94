@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a26dbaf9_8c027788",
+        "filename": "test/676-resolve-field-type/src-ex/ChildClass.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-22T15:19:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab31e455_f016d5cb",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "1ca743064deae2c8463c030e5e1a85fa5e0e2b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "750c2420_76aff12b",
         "filename": "test/676-resolve-field-type/src-ex/ChildClass.java",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-22T15:11:21Z",
       "side": 1,
       "message": "We check for the presence of try blocks (`synchronized` creates implicit try blocks).",
+      "revId": "1ca743064deae2c8463c030e5e1a85fa5e0e2b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a887d88_35a060e0",
+        "filename": "test/676-resolve-field-type/src-ex/ChildClass.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-22T15:19:05Z",
+      "side": 1,
+      "message": "Comment added.",
+      "parentUuid": "750c2420_76aff12b",
       "revId": "1ca743064deae2c8463c030e5e1a85fa5e0e2b94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
