@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888684cc_d1fd1842",
+        "filename": "test/119-noimage-patchoat/run",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-02-23T17:56:24Z",
+      "side": 1,
+      "message": "Actually, this is wrong; sorry, let me fix this…",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 31
+      },
+      "revId": "313845c0e602301f0c1941f6973ac6d79d6a40ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
