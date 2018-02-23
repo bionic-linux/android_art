@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e80f203_80763070",
+        "filename": "test/119-noimage-patchoat/run",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-02-23T17:40:45Z",
+      "side": 1,
+      "message": "Maybe\n\n    (test $return_status2 -ne 0) \u0026\u0026",
+      "range": {
+        "startLine": 56,
+        "startChar": 26,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "60dbda69ba7fcc5f8f5a1da7f2331e1f8e26d4a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
