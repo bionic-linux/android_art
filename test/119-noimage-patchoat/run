@@ -52,4 +52,5 @@ ${RUN} ${flags} ${BPATH}
 return_status4=$?
 
 # Make sure we don't silently ignore an early failure.
-(exit $return_status1) && (exit $return_status2) && (exit $return_status3) && (exit $return_status4)
+# Note that the second run is expected to fail.
+(exit $return_status1) && (exit $return_status2) || (exit $return_status3) && (exit $return_status4)
