@@ -22,6 +22,30 @@
       "revId": "60dbda69ba7fcc5f8f5a1da7f2331e1f8e26d4a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7305c97_8843b322",
+        "filename": "test/119-noimage-patchoat/run",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-02-23T17:51:59Z",
+      "side": 1,
+      "message": "Right, otherwise we would silently ignore an expected success of the second run.",
+      "parentUuid": "6e80f203_80763070",
+      "range": {
+        "startLine": 56,
+        "startChar": 26,
+        "endLine": 56,
+        "endChar": 51
+      },
+      "revId": "60dbda69ba7fcc5f8f5a1da7f2331e1f8e26d4a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
