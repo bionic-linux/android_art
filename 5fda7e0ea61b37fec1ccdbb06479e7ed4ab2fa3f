@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8454d195_a958f11a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3961,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-02-23T08:19:41Z",
+      "side": 1,
+      "message": "You sure want to use a temp register here?\nWe could define a __LoadIntConstant.",
+      "range": {
+        "startLine": 3959,
+        "startChar": 4,
+        "endLine": 3961,
+        "endChar": 27
+      },
+      "revId": "5fda7e0ea61b37fec1ccdbb06479e7ed4ab2fa3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
