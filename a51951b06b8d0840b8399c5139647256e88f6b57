@@ -22,6 +22,30 @@
       "revId": "a51951b06b8d0840b8399c5139647256e88f6b57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3456252_be98419f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-02-27T23:17:07Z",
+      "side": 1,
+      "message": "Are you sure? I didn\u0027t manage to follow, but I thought there were other issues for the gcstress config.",
+      "parentUuid": "f172e61f_18ddfb7f",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 77
+      },
+      "revId": "a51951b06b8d0840b8399c5139647256e88f6b57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
