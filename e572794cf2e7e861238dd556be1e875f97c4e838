@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1880249_28cab9fd",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-27T02:03:34Z",
+      "side": 1,
+      "message": "This is a weird diff, and doesn\u0027t like like it belongs to this CL.",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 23
+      },
+      "revId": "e572794cf2e7e861238dd556be1e875f97c4e838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
