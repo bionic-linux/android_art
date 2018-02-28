@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d95fbffc_36336dce",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-28T15:32:02Z",
+      "side": 1,
+      "message": "No need if it\u0027s WAI.",
+      "range": {
+        "startLine": 691,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 22
+      },
+      "revId": "f5ace181025c870a4a4bac76f7dda5ae7c6f2eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aeb56076_c25b1560",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-02-28T15:32:02Z",
+      "side": 1,
+      "message": "No need if it\u0027s WAI.",
+      "range": {
+        "startLine": 699,
+        "startChar": 14,
+        "endLine": 699,
+        "endChar": 15
+      },
+      "revId": "f5ace181025c870a4a4bac76f7dda5ae7c6f2eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
