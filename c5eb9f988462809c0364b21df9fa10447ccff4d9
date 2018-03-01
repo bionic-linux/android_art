@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2a597f7_b674d329",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4721,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-01T21:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4ad21e1_5647d2b8",
+      "range": {
+        "startLine": 4719,
+        "startChar": 0,
+        "endLine": 4721,
+        "endChar": 37
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cb3cad8_2f875e19",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-01T13:07:09Z",
       "side": 1,
       "message": "Exchange operands of EORs to allow using the T1 encoding.",
+      "range": {
+        "startLine": 4736,
+        "startChar": 0,
+        "endLine": 4737,
+        "endChar": 43
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88089dd4_3211991e",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4737,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-01T21:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb3cad8_2f875e19",
       "range": {
         "startLine": 4736,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98e5cc81_e237136a",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-01T21:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25031257_884327e3",
+      "range": {
+        "startLine": 3885,
+        "startChar": 6,
+        "endLine": 3885,
+        "endChar": 61
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05efba30_2cebc1b0",
         "filename": "compiler/optimizing/nodes.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "359de83e_4d1382d0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5034,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-01T21:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05efba30_2cebc1b0",
+      "range": {
+        "startLine": 5034,
+        "startChar": 33,
+        "endLine": 5034,
+        "endChar": 34
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "487c0bc6_93c14eca",
         "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-03-01T13:07:09Z",
       "side": 1,
       "message": "Remove.",
+      "range": {
+        "startLine": 237,
+        "startChar": 35,
+        "endLine": 237,
+        "endChar": 43
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73c6a448_0ce42dee",
+        "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-01T21:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "487c0bc6_93c14eca",
       "range": {
         "startLine": 237,
         "startChar": 35,
