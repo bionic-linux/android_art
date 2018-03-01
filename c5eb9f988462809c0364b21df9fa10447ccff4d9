@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ad21e1_5647d2b8",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4721,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-01T13:07:09Z",
+      "side": 1,
+      "message": "At least exchange the operands of EOR to allow using the T1 encoding if out_reg and mask are both low reg.\n\nAnother option would be\n\n  RSBS out_reg, in_reg, #0\n  IT MI\n  MOVMI out_reg, in_reg\n\nwithout the unnecessary temporary but with kOutputOverlap. (One could keep kNoOutputOverlap and add special handling if in_reg.Is(out_reg), such as replacing MOVMI with RSBMI .,.,#0 for low reg and using IP for high reg.)",
+      "range": {
+        "startLine": 4719,
+        "startChar": 0,
+        "endLine": 4721,
+        "endChar": 37
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cb3cad8_2f875e19",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4737,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-01T13:07:09Z",
+      "side": 1,
+      "message": "Exchange operands of EORs to allow using the T1 encoding.",
+      "range": {
+        "startLine": 4736,
+        "startChar": 0,
+        "endLine": 4737,
+        "endChar": 43
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25031257_884327e3",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3885,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-01T13:07:09Z",
+      "side": 1,
+      "message": "Add \"TODO: Use a constant from the constant table.\" This would require an extra input, namely HX86ComputeBaseMethodAddress or HX86LoadFromConstantTable. We could allow an extra input in HAbs or introduce an HX86AbsFP for this.\n\nNote that LoadLongConstant(XmmRegister dst, int64_t value) does not emit correct CFI data. Neither did the old code path for ABS without HX86ComputeBaseMethodAddress but that path was essentially unused because we were always adding the HX86ComputeBaseMethodAddress since https://android-review.googlesource.com/325425 .",
+      "range": {
+        "startLine": 3885,
+        "startChar": 6,
+        "endLine": 3885,
+        "endChar": 61
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05efba30_2cebc1b0",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5034,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-01T13:07:09Z",
+      "side": 1,
+      "message": "Unnecessary parameter, this can all be done with S instead of B.",
+      "range": {
+        "startLine": 5034,
+        "startChar": 33,
+        "endLine": 5034,
+        "endChar": 34
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "487c0bc6_93c14eca",
+        "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-01T13:07:09Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 237,
+        "startChar": 35,
+        "endLine": 237,
+        "endChar": 43
+      },
+      "revId": "c5eb9f988462809c0364b21df9fa10447ccff4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
