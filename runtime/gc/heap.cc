@@ -382,10 +382,10 @@ Heap::Heap(size_t initial_size,
     const char* space_name = is_zygote ? kZygoteSpaceName : kNonMovingSpaceName;
     // Reserve the non moving mem map before the other two since it needs to be at a specific
     // address.
-    non_moving_space_mem_map.reset(
-        MemMap::MapAnonymous(space_name, requested_alloc_space_begin,
-                             non_moving_space_capacity, PROT_READ | PROT_WRITE, true, false,
-                             &error_str));
+    non_moving_space_mem_map.reset(MapAnonymousPreferredAddress(space_name,
+                                                                requested_alloc_space_begin,
+                                                                non_moving_space_capacity,
+                                                                &error_str));
     CHECK(non_moving_space_mem_map != nullptr) << error_str;
     // Try to reserve virtual memory at a lower address if we have a separate non moving space.
     request_begin = kPreferredAllocSpaceBegin + non_moving_space_capacity;
