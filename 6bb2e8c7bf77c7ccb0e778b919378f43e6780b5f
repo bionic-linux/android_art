@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d23037a_b2310328",
+        "filename": "runtime/native/java_lang_reflect_Executable.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-05T14:38:05Z",
+      "side": 1,
+      "message": "Why? Please add a comment.",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 30
+      },
+      "revId": "6bb2e8c7bf77c7ccb0e778b919378f43e6780b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ebba0fb_af155588",
+        "filename": "runtime/native/java_lang_reflect_Executable.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-05T14:38:05Z",
+      "side": 1,
+      "message": "return null if \"annotations\" is null?",
+      "range": {
+        "startLine": 90,
+        "startChar": 11,
+        "endLine": 90,
+        "endChar": 66
+      },
+      "revId": "6bb2e8c7bf77c7ccb0e778b919378f43e6780b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
