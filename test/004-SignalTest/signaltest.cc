@@ -104,8 +104,12 @@ bool compare_sigaction(const struct sigaction* lhs, const struct sigaction* rhs)
   // naive memcmp of the entire struct.
   return memcmp(&lhs->sa_mask, &rhs->sa_mask, sizeof(lhs->sa_mask)) == 0 &&
          lhs->sa_sigaction == rhs->sa_sigaction &&
+#if defined(SA_RESTORER)
          lhs->sa_flags == rhs->sa_flags &&
          lhs->sa_restorer == rhs->sa_restorer;
+#else
+         lhs->sa_flags == rhs->sa_flags;
+#endif
 }
 
 extern "C" JNIEXPORT void JNICALL Java_Main_initSignalTest(JNIEnv*, jclass) {
