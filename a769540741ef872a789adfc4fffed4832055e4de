@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5219eca_f8946f13",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-06T09:51:33Z",
+      "side": 1,
+      "message": "nit: it -\u003e the JIT ?",
+      "range": {
+        "startLine": 1447,
+        "startChar": 98,
+        "endLine": 1447,
+        "endChar": 100
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48652474_78e5eb31",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-06T09:51:33Z",
+      "side": 1,
+      "message": "Move this to line 1457.",
+      "range": {
+        "startLine": 1450,
+        "startChar": 0,
+        "endLine": 1451,
+        "endChar": 24
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "490c2f7f_1eb8a39c",
+        "filename": "test/1949-short-dex-file/src/art/Redefinition.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-06T09:51:33Z",
+      "side": 1,
+      "message": "2018?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a777856b_46a65d63",
         "filename": "test/1949-short-dex-file/src/art/Test1949.java",
         "patchSetId": 2
