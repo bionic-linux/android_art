@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b15e9719_d63e4151",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-06T22:26:44Z",
+      "side": 1,
+      "message": "Nice.",
+      "parentUuid": "724e25ab_f6d8b618",
+      "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd47931_c2b8b1b5",
         "filename": "compiler/optimizing/code_generator_mips64.cc",
         "patchSetId": 11
@@ -48,6 +66,30 @@
       "writtenOn": "2018-03-06T22:20:51Z",
       "side": 1,
       "message": "Remove the comment.",
+      "range": {
+        "startLine": 6690,
+        "startChar": 0,
+        "endLine": 6691,
+        "endChar": 86
+      },
+      "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "601abdb4_e2a3fa9d",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 6691,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-06T22:26:44Z",
+      "side": 1,
+      "message": "Will do (and the parameter) ;-)\n\nThanks!",
+      "parentUuid": "3cd47931_c2b8b1b5",
       "range": {
         "startLine": 6690,
         "startChar": 0,
