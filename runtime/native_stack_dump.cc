@@ -32,6 +32,7 @@
 #include <vector>
 
 #include <linux/unistd.h>
+#include <poll.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <sys/time.h>
@@ -133,7 +134,7 @@ static std::unique_ptr<Addr2linePipe> Connect(const std::string& name, const cha
   }
 }
 
-static void Drain(size_t expected,
+static bool Drain(size_t expected,
                   const char* prefix,
                   std::unique_ptr<Addr2linePipe>* pipe /* inout */,
                   std::ostream& os) {
@@ -145,43 +146,29 @@ static void Drain(size_t expected,
   bool prefix_written = false;
 
   for (;;) {
-    constexpr uint32_t kWaitTimeExpectedMicros = 500 * 1000;
-    constexpr uint32_t kWaitTimeUnexpectedMicros = 50 * 1000;
+    constexpr uint32_t kWaitTimeExpectedMilli = 500;
+    constexpr uint32_t kWaitTimeUnexpectedMilli = 50;
 
-    struct timeval tv;
-    tv.tv_sec = 0;
-    tv.tv_usec = expected > 0 ? kWaitTimeExpectedMicros : kWaitTimeUnexpectedMicros;
-
-    fd_set rfds;
-    FD_ZERO(&rfds);
-    FD_SET(in, &rfds);
-
-    int retval = TEMP_FAILURE_RETRY(select(in + 1, &rfds, nullptr, nullptr, &tv));
-
-    if (retval < 0) {
-      // Other side may have crashed or other errors.
+    int timeout = expected > 0 ? kWaitTimeExpectedMilli : kWaitTimeUnexpectedMilli;
+    struct pollfd read_fd{in, POLLIN, 0};
+    int retval = TEMP_FAILURE_RETRY(poll(&read_fd, 1, timeout));
+    if (retval != 1 || !(read_fd.revents & POLLIN)) {
+      // No data to read.
       pipe->reset();
-      return;
+      return false;
     }
-
-    if (retval == 0) {
-      // Timeout.
-      return;
-    }
-
-    DCHECK_EQ(retval, 1);
 
     constexpr size_t kMaxBuffer = 128;  // Relatively small buffer. Should be OK as we're on an
     // alt stack, but just to be sure...
     char buffer[kMaxBuffer];
     memset(buffer, 0, kMaxBuffer);
     int bytes_read = TEMP_FAILURE_RETRY(read(in, buffer, kMaxBuffer - 1));
-
-    if (bytes_read < 0) {
+    if (bytes_read <= 0) {
       // This should not really happen...
       pipe->reset();
-      return;
+      return false;
     }
+    buffer[bytes_read] = '\0';
 
     char* tmp = buffer;
     while (*tmp != 0) {
@@ -204,8 +191,8 @@ static void Drain(size_t expected,
         prefix_written = false;
         (*pipe)->odd = !(*pipe)->odd;
 
-        if (expected > 0) {
-          expected--;
+        if (expected > 0 && --expected == 0) {
+          return true;
         }
       }
     }
@@ -258,7 +245,9 @@ static void Addr2line(const std::string& map_src,
   }
 
   // Now drain (expecting two lines).
-  Drain(2U, prefix, pipe, os);
+  if (!Drain(2U, prefix, pipe, os)) {
+    pipe->reset();
+  }
 }
 
 static bool RunCommand(const std::string& cmd) {
