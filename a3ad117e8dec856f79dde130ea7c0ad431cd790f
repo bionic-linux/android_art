@@ -16,6 +16,47 @@
       "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "724e25ab_f6d8b618",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2018-03-06T22:20:51Z",
+      "side": 1,
+      "message": "On MIPS64 32-bit integers (signed and unsigned) must be sign-extended to 64 bits and so a signed 32-bit int is indistinguishable from a same-valued 64-bit int.\n\nThe comparing instructions slt[i][u] work on the whole register, meaning they work equally well for 32-bit and 64-bit ints. Conditional moves (seleqz/selnez) also move/copy entire registers.\n\nSo, no need for vastly different implementations on MIPS64.\n\nUnexpected beauty. [It breaks though when you start using short 32-bit addresses on MIPS64, which must obviously be zero-extended if you want to access memory between 2G and 4G; IOW, you need to know whether your 32-bit int is an int or an address]",
+      "parentUuid": "809fc821_6ec9da80",
+      "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cd47931_c2b8b1b5",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 6691,
+      "author": {
+        "id": 1057043
+      },
+      "writtenOn": "2018-03-06T22:20:51Z",
+      "side": 1,
+      "message": "Remove the comment.",
+      "range": {
+        "startLine": 6690,
+        "startChar": 0,
+        "endLine": 6691,
+        "endChar": 86
+      },
+      "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
