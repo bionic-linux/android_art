@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "809fc821_6ec9da80",
+        "filename": "compiler/optimizing/code_generator_mips64.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 6668,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-06T21:33:45Z",
+      "side": 1,
+      "message": "MIPS Team: please note, I am leaving this the same as the original intrinsics code, but not using int/long seems wrong. Please follow up.",
+      "revId": "a3ad117e8dec856f79dde130ea7c0ad431cd790f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
