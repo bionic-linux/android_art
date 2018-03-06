@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a777856b_46a65d63",
+        "filename": "test/1949-short-dex-file/src/art/Test1949.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-06T02:38:01Z",
+      "side": 1,
+      "message": "Please put a general comment about the setup of the methods (describing naming requirements etc).",
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
