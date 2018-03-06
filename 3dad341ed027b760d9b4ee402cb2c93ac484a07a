@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34272cc5_25b4cc2f",
+        "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-06T13:52:55Z",
+      "side": 1,
+      "message": "Could you replace this with \"Abs intrinsic should have been replaced with a HAbs node\" ?",
+      "range": {
+        "startLine": 237,
+        "startChar": 23,
+        "endLine": 237,
+        "endChar": 38
+      },
+      "revId": "3dad341ed027b760d9b4ee402cb2c93ac484a07a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
