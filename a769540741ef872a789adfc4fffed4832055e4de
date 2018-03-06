@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0426e716_2cc9cd8c",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-03-06T17:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5219eca_f8946f13",
+      "range": {
+        "startLine": 1447,
+        "startChar": 98,
+        "endLine": 1447,
+        "endChar": 100
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48652474_78e5eb31",
         "filename": "openjdkjvmti/ti_redefine.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-06T09:51:33Z",
       "side": 1,
       "message": "Move this to line 1457.",
+      "range": {
+        "startLine": 1450,
+        "startChar": 0,
+        "endLine": 1451,
+        "endChar": 24
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e99eb04_bc94d3a3",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-03-06T17:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48652474_78e5eb31",
       "range": {
         "startLine": 1450,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d26d9ee2_da43e65e",
+        "filename": "test/1949-short-dex-file/src/art/Redefinition.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-03-06T17:41:19Z",
+      "side": 1,
+      "message": "This is copied from other tests so we can use this test in CTS. While changing this wouldn\u0027t cause any problems it\u0027s probably better to keep all the files identical.",
+      "parentUuid": "490c2f7f_1eb8a39c",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a777856b_46a65d63",
         "filename": "test/1949-short-dex-file/src/art/Test1949.java",
         "patchSetId": 2
@@ -85,6 +157,24 @@
       "revId": "a769540741ef872a789adfc4fffed4832055e4de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f082ef9d_06270e84",
+        "filename": "test/1949-short-dex-file/src/art/Test1949.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-03-06T17:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a777856b_46a65d63",
+      "revId": "a769540741ef872a789adfc4fffed4832055e4de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
