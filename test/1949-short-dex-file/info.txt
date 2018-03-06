@@ -1,0 +1,4 @@
+Tests the fix for b/74116990
+
+The JIT was reading into incorrect dex files during class redefinition if a
+native method was present.
