@@ -2,6 +2,190 @@
   "comments": [
     {
       "key": {
+        "uuid": "0a26f500_938db512",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 5506,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Use RegisterFrom(., type).",
+      "range": {
+        "startLine": 5494,
+        "startChar": 0,
+        "endLine": 5506,
+        "endChar": 3
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60bcee58_5a936118",
+        "filename": "compiler/optimizing/code_generator_arm64.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 5531,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Use FPRegisterFrom(., type).\n\nAnd then merge GenerateMinMaxFP() into GenerateMinMax() and use a switch there and simplify VisitMin/Max().",
+      "range": {
+        "startLine": 5519,
+        "startChar": 0,
+        "endLine": 5531,
+        "endChar": 3
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce093942_deacfdc6",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4725,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Each of these variables is used exactly once, so these can be \"inlined\" into the lines that define register variables below.",
+      "range": {
+        "startLine": 4723,
+        "startChar": 0,
+        "endLine": 4725,
+        "endChar": 38
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0d6d7e6_d9fc97ba",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4740,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Can we avoid the deprecated ITE? Something like\n\n  if (out.Is(op2)) {\n    std::swap(op1, op2);  // Simplifies the code below.\n  }\n  __ Cmp(op1, op2);\n  if (!out.Is(op1)) {\n    __ Mov(LeaveFlags, out, op1);\n  }\n  {\n    ExactAssemblyScope aas(GetVIXLAssembler(),\n                           2 * kMaxInstructionSizeInBytes,\n                           CodeBufferCheckScope::kMaximumSize);\n\n    __ it(is_min ? ge : le);\n    __ mov(is_min ? ge : le, out, op2);\n  }\n\nor use SameAsFirstInput().",
+      "range": {
+        "startLine": 4738,
+        "startChar": 0,
+        "endLine": 4740,
+        "endChar": 39
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a490c8eb_559317a1",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4837,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Looking at the MinMaxDouble, we could avoid this for is_min\u003d\u003dtrue and simply __ Bind(\u0026nan) at the \"handle op1 \u003d\u003d op2\" That would slow down the NaN case but improve \u003d\u003d (one less branch). OTOH, do we want a canonical NaN?",
+      "range": {
+        "startLine": 4832,
+        "startChar": 1,
+        "endLine": 4837,
+        "endChar": 22
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da7a168a_3a79c4d5",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "Do we want a canonical NaN?",
+      "range": {
+        "startLine": 4886,
+        "startChar": 0,
+        "endLine": 4888,
+        "endChar": 57
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ddb3466_2dd01b34",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3965,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "What about using the ARM approach and replacing this with ORPD/ORPS? Or do we want a canonical NaN and replace the ARM implementation?\n\n(If keeping this, add the \"TODO: Use a constant from the constant table (requires extra input).\" comment to the kFloat64 branch.)",
+      "range": {
+        "startLine": 3959,
+        "startChar": 0,
+        "endLine": 3965,
+        "endChar": 3
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77cffd18_f040c549",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 3996,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T16:56:10Z",
+      "side": 1,
+      "message": "If you define HandleMinMax(HBinaryOperation* minmax, bool is_min), you can deduplicate this switch with the one below (all architectures).",
+      "range": {
+        "startLine": 3985,
+        "startChar": 0,
+        "endLine": 3996,
+        "endChar": 3
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d30e456a_bb74e605",
         "filename": "compiler/optimizing/intrinsics_x86.cc",
         "patchSetId": 14
