@@ -22,6 +22,30 @@
       "revId": "f4863531ad53f734efcdb9dff5cf80b2545cab1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6081917d_81496812",
+        "filename": "test/004-SignalTest/signaltest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1238728
+      },
+      "writtenOn": "2018-03-07T09:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab68bf8_3724232d",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "f4863531ad53f734efcdb9dff5cf80b2545cab1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
