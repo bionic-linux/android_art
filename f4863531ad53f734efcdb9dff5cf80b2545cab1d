@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eab68bf8_3724232d",
+        "filename": "test/004-SignalTest/signaltest.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-03-07T07:49:21Z",
+      "side": 1,
+      "message": "this is pretty ugly, I think it\u0027d be better to just do something along the lines of:\n\n  #if defined(SA_RESTORER)\n    if (lhs-\u003esa_restorer !\u003d rhs-\u003esa_restorer) {\n        return false;\n    }\n  #endif\n    return memcmp(...) \u0026\u0026 ...;",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "f4863531ad53f734efcdb9dff5cf80b2545cab1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
