@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b143ee6d_f07cbb04",
+        "filename": "dex2oat/linker/elf_writer_quick.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T11:45:32Z",
+      "side": 1,
+      "message": "We need \"typename ElfBuilder\u003cElfTypes\u003e::Section\". Do you want that spelled out?",
+      "parentUuid": "cafe9620_ad5604ea",
+      "range": {
+        "startLine": 253,
+        "startChar": 2,
+        "endLine": 253,
+        "endChar": 6
+      },
+      "revId": "4a0cd55c9f91f0b59c9131b3ae38d8b02d9158b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "142bb6c7_94ae522c",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0314a593_568a4293",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 3386,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T11:45:32Z",
+      "side": 1,
+      "message": "It should be \"unprotect\" as we\u0027re changing from R to RW and then back to R. (These pages are never X.)",
+      "parentUuid": "142bb6c7_94ae522c",
+      "range": {
+        "startLine": 3386,
+        "startChar": 49,
+        "endLine": 3386,
+        "endChar": 51
+      },
+      "revId": "4a0cd55c9f91f0b59c9131b3ae38d8b02d9158b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90a33b5a_e1ca68a6",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-07T11:31:36Z",
       "side": 1,
       "message": "Why not doing this in oat_file.cc?",
+      "range": {
+        "startLine": 3392,
+        "startChar": 0,
+        "endLine": 3394,
+        "endChar": 7
+      },
+      "revId": "4a0cd55c9f91f0b59c9131b3ae38d8b02d9158b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45ee0c9e_a079b260",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 3394,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-07T11:45:32Z",
+      "side": 1,
+      "message": "This way we avoid dirtying the pages if no dex file from the oat file is ever registered.",
+      "parentUuid": "90a33b5a_e1ca68a6",
       "range": {
         "startLine": 3392,
         "startChar": 0,
