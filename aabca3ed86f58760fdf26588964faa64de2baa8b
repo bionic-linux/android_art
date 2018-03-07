@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "f5ab2340_dd7f5ed3",
+        "filename": "compiler/optimizing/intrinsics_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-07T17:06:18Z",
+      "side": 1,
+      "message": "Good catch! Yes, and removed.",
+      "parentUuid": "d30e456a_bb74e605",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "153e92a9_586e066b",
         "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
         "patchSetId": 14
@@ -220,6 +244,30 @@
       "writtenOn": "2018-03-07T11:13:22Z",
       "side": 1,
       "message": "Please add: \"Intrinsics calls should have been lowered to IR nodes by instruction simplifier\".",
+      "range": {
+        "startLine": 241,
+        "startChar": 23,
+        "endLine": 241,
+        "endChar": 46
+      },
+      "revId": "aabca3ed86f58760fdf26588964faa64de2baa8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75f630cb_d72445f9",
+        "filename": "compiler/optimizing/pc_relative_fixups_x86.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-03-07T17:06:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "153e92a9_586e066b",
       "range": {
         "startLine": 241,
         "startChar": 23,
