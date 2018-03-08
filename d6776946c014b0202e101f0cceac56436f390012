@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dcc9063f_75d6a1ef",
+        "filename": "compiler/linker/linker_patch.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-08T10:47:39Z",
+      "side": 1,
+      "message": "The necessary operator\u003c\u003c has not been declared yet. That\u0027s also the reason why the other functions do not have \" \u003c\u003c patch_type_\". (I don\u0027t want to move them to the end of the file.)",
+      "parentUuid": "ab79ce23_549582ba",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e171fb_c11ecec1",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6bfbfe17_66c15f3b",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 9165,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-08T10:47:39Z",
+      "side": 1,
+      "message": "Added a short comment, but not mentioning methods as the next CL is using this for classes and strings and there is no reason why this cannot be used for other objects. For example the Integer.valueOf() intrinsic could use it for PIC; it currently defers to the Java implementation.",
+      "parentUuid": "41e171fb_c11ecec1",
+      "range": {
+        "startLine": 9165,
+        "startChar": 2,
+        "endLine": 9165,
+        "endChar": 37
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4f3d73c_693563db",
         "filename": "dex2oat/linker/oat_writer.cc",
         "patchSetId": 12
@@ -59,6 +107,30 @@
       "writtenOn": "2018-03-07T19:00:12Z",
       "side": 1,
       "message": "Nit: Replace with:\n\n  data.data()\n\n?",
+      "range": {
+        "startLine": 3423,
+        "startChar": 23,
+        "endLine": 3423,
+        "endChar": 31
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f50f42d_c92d9013",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-08T10:47:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f3d73c_693563db",
       "range": {
         "startLine": 3423,
         "startChar": 23,
