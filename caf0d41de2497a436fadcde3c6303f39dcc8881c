@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4584b6b0_4bbc187b",
+        "filename": "tools/hiddenapi/find_api_violations.pl",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-08T16:33:45Z",
+      "side": 1,
+      "message": "Missing copyright",
+      "revId": "caf0d41de2497a436fadcde3c6303f39dcc8881c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
