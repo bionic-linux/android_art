@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bd77cfad_e5cbcb18",
+        "filename": "compiler/linker/linker_patch.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-03-08T17:44:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dcc9063f_75d6a1ef",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 10
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41e171fb_c11ecec1",
         "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
         "patchSetId": 12
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "92762462_2a56f51a",
+        "filename": "compiler/optimizing/code_generator_arm_vixl.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 9165,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-03-08T17:44:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6bfbfe17_66c15f3b",
+      "range": {
+        "startLine": 9165,
+        "startChar": 2,
+        "endLine": 9165,
+        "endChar": 37
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4f3d73c_693563db",
         "filename": "dex2oat/linker/oat_writer.cc",
         "patchSetId": 12
@@ -140,6 +188,30 @@
       "revId": "d6776946c014b0202e101f0cceac56436f390012",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc631d42_aa4bbc28",
+        "filename": "dex2oat/linker/oat_writer.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-03-08T17:44:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4f50f42d_c92d9013",
+      "range": {
+        "startLine": 3423,
+        "startChar": 23,
+        "endLine": 3423,
+        "endChar": 31
+      },
+      "revId": "d6776946c014b0202e101f0cceac56436f390012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
