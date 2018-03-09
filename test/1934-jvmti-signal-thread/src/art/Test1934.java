@@ -25,6 +25,8 @@ public class Test1934 {
   public static final boolean PRINT_STACK_TRACE = false;
 
   public static void run() throws Exception {
+    ensureClassesLoaded();
+
     System.out.println("Interrupt before start");
     testInterruptBeforeStart();
 
@@ -51,6 +53,15 @@ public class Test1934 {
 
     System.out.println("Stop in native");
     testStopInNative();
+  }
+
+  private static void ensureInitialized(Class c) { c.getName(); }
+  private static void ensureClassesLoaded() {
+    // Depending on timing this class might (or might not) be loaded during testing of Stop. If it
+    // is and the StopThread occurs inside of it we will get a ExceptionInInitializerError which is
+    // not what we are looking for. In order to avoid this ever happening simply initialize the
+    // class that can cause it early.
+    ensureInitialized(java.util.concurrent.locks.LockSupport.class);
   }
 
   public static void testStopBeforeStart() throws Exception {
