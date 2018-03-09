@@ -2085,14 +2085,6 @@ class Dex2Oat FINAL {
                                              oat_writer->GetOatDataOffset(),
                                              oat_writer->GetOatSize());
         }
-
-        if (IsBootImage()) {
-          // Have the image_file_location_oat_checksum_ for boot oat files
-          // depend on the contents of all the boot oat files. This way only
-          // the primary image checksum needs to be checked to determine
-          // whether any of the images are out of date.
-          image_file_location_oat_checksum_ ^= oat_writer->GetOatHeader().GetChecksum();
-        }
       }
 
       for (size_t i = 0, size = oat_files_.size(); i != size; ++i) {
@@ -2130,6 +2122,20 @@ class Dex2Oat FINAL {
           }
           elf_writer->EndDataBimgRelRo(data_bimg_rel_ro);
         }
+
+        if (IsBootImage()) {
+          // Have the image_file_location_oat_checksum_ for boot oat files
+          // depend on the contents of all the boot oat files. This way only
+          // the primary image checksum needs to be checked to determine
+          // whether any of the images are out of date.
+          image_file_location_oat_checksum_ ^= oat_writer->GetOatHeader().GetChecksum();
+        }
+      }
+
+      for (size_t i = 0, size = oat_files_.size(); i != size; ++i) {
+        std::unique_ptr<File>& oat_file = oat_files_[i];
+        std::unique_ptr<linker::ElfWriter>& elf_writer = elf_writers_[i];
+        std::unique_ptr<linker::OatWriter>& oat_writer = oat_writers_[i];
 
         if (!oat_writer->WriteHeader(elf_writer->GetStream(),
                                      image_file_location_oat_checksum_,
