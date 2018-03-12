@@ -22,6 +22,30 @@
       "revId": "9ef1e694e07677b5edec8df2bd2fdd13d3604c59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43706d2c_4f8b3741",
+        "filename": "test/1934-jvmti-signal-thread/src/art/Test1934.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-03-12T15:47:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d205f7ab_0cd4c8ad",
+      "range": {
+        "startLine": 58,
+        "startChar": 51,
+        "endLine": 58,
+        "endChar": 63
+      },
+      "revId": "9ef1e694e07677b5edec8df2bd2fdd13d3604c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
