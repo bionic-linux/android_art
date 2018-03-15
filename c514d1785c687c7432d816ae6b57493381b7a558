@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39ce0f8b_1fbe871e",
+        "filename": "test/979-const-method-handle/src/transformer/ConstantTransformer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-03-15T23:26:15Z",
+      "side": 1,
+      "message": "Consider moving this out of src.",
+      "revId": "c514d1785c687c7432d816ae6b57493381b7a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
