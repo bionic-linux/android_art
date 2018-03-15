@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1737842a_e5167d9d",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "This shall throw if it fails, so you need to clear the exception before line 653.",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "128994cc_60d3bf17",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdd81015_1acc33e9",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "Remove (unused in the entire file).",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52a958c6_3390c9d3",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "Remove (unused in the entire file).",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21e158f4_2b066d91",
+        "filename": "runtime/verifier/method_verifier.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "Fits on one line. (Rename to GetQuickAccessedField()?)",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 44
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb036926_073937cb",
+        "filename": "test/678-quickening/src-art/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "Misleading: MethodVerifier::FindLocksAtDexPc() also looks for a MONITOR_ENTER before doing verification.",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1f338a9_fcac7ab5",
+        "filename": "test/678-quickening/src-art/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-15T18:25:10Z",
+      "side": 1,
+      "message": "With the current fix, you\u0027d get a hard failure here, so we won\u0027t crash but if the code was in a synchronized block after this instruction, we would not find that block\u0027s lock.",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
