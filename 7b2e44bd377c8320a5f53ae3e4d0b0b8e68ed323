@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec9a0d70_7400bc10",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1737842a_e5167d9d",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "128994cc_60d3bf17",
         "filename": "runtime/common_throws.cc",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "bda782f0_38f9b203",
+        "filename": "runtime/common_throws.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "128994cc_60d3bf17",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdd81015_1acc33e9",
         "filename": "runtime/vdex_file.cc",
         "patchSetId": 9
@@ -47,6 +83,30 @@
       "writtenOn": "2018-03-15T18:25:10Z",
       "side": 1,
       "message": "Remove (unused in the entire file).",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1efe7ea1_72f4a131",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdd81015_1acc33e9",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a31221b4_c237538b",
+        "filename": "runtime/vdex_file.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a958c6_3390c9d3",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 16
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21e158f4_2b066d91",
         "filename": "runtime/verifier/method_verifier.h",
         "patchSetId": 9
@@ -93,6 +177,30 @@
       "writtenOn": "2018-03-15T18:25:10Z",
       "side": 1,
       "message": "Fits on one line. (Rename to GetQuickAccessedField()?)",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 44
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ffbdd18_da2ec45d",
+        "filename": "runtime/verifier/method_verifier.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21e158f4_2b066d91",
       "range": {
         "startLine": 217,
         "startChar": 0,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c29974c3_ab02aabc",
+        "filename": "test/678-quickening/src-art/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb036926_073937cb",
+      "range": {
+        "startLine": 30,
+        "startChar": 22,
+        "endLine": 30,
+        "endChar": 63
+      },
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1f338a9_fcac7ab5",
         "filename": "test/678-quickening/src-art/Main.java",
         "patchSetId": 9
@@ -139,6 +271,24 @@
       "writtenOn": "2018-03-15T18:25:10Z",
       "side": 1,
       "message": "With the current fix, you\u0027d get a hard failure here, so we won\u0027t crash but if the code was in a synchronized block after this instruction, we would not find that block\u0027s lock.",
+      "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d9dc333_2b58237f",
+        "filename": "test/678-quickening/src-art/Main.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T10:01:06Z",
+      "side": 1,
+      "message": "Yes, thanks for catching this. After this lands, I\u0027ll upload a CL to handle nops and the unresolved quickened fields/methods leading to hard fail, as we discussed.",
+      "parentUuid": "a1f338a9_fcac7ab5",
       "revId": "7b2e44bd377c8320a5f53ae3e4d0b0b8e68ed323",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
