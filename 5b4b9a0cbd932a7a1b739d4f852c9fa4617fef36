@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82106767_96bbd390",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-03-16T11:06:01Z",
+      "side": 1,
+      "message": "Sort of unrelated changes?",
+      "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
