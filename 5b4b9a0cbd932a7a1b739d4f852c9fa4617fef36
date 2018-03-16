@@ -51,6 +51,24 @@
       "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42350b1a_94c8308f",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-16T17:13:53Z",
+      "side": 1,
+      "message": "The value of that pointer is unlikely to add any value.",
+      "parentUuid": "7feee2ac_39b158d9",
+      "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
