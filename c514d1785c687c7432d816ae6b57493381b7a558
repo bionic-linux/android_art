@@ -110,6 +110,24 @@
       "revId": "c514d1785c687c7432d816ae6b57493381b7a558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66bc8752_38a8aaa9",
+        "filename": "test/979-const-method-handle/src/transformer/ConstantTransformer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-03-16T14:56:40Z",
+      "side": 1,
+      "message": "Done. Moved both the transformer and annotations out of src/",
+      "parentUuid": "39ce0f8b_1fbe871e",
+      "revId": "c514d1785c687c7432d816ae6b57493381b7a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
