@@ -16,6 +16,24 @@
       "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b43ccb9_ae8efe4a",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-16T11:43:18Z",
+      "side": 1,
+      "message": "Yes and no. Moving the variables to the point where they are needed is an unrelated cleanup but fits nicely with the new TODO comment. And the TODO comment suggests a simplification using the same approach as taken by the new debugging code.",
+      "parentUuid": "82106767_96bbd390",
+      "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
