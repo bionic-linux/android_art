@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "317fb135_395efa81",
+        "filename": "test/979-const-method-handle/src/annotations/ConstantMethodHandle.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-03-16T13:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b559837e_3da28b9e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "c514d1785c687c7432d816ae6b57493381b7a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16d63979_bd9c0225",
         "filename": "test/979-const-method-handle/src/annotations/ConstantMethodType.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-16T10:47:13Z",
       "side": 1,
       "message": "Update",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 3
+      },
+      "revId": "c514d1785c687c7432d816ae6b57493381b7a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79e8753f_fec41319",
+        "filename": "test/979-const-method-handle/src/annotations/ConstantMethodType.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-03-16T13:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16d63979_bd9c0225",
       "range": {
         "startLine": 24,
         "startChar": 0,
