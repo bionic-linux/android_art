@@ -34,6 +34,23 @@
       "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7feee2ac_39b158d9",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-03-16T16:50:28Z",
+      "side": 1,
+      "message": "CHECK_EQ?",
+      "revId": "5b4b9a0cbd932a7a1b739d4f852c9fa4617fef36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
