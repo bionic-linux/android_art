@@ -47,10 +47,10 @@
 #include "dex/dex_file.h"
 #include "dex/dex_file_loader.h"
 #include "dex/dex_file_types.h"
+#include "dex/type_reference.h"
 #include "jit/profile_compilation_info.h"
 #include "profile_assistant.h"
 #include "runtime.h"
-#include "type_reference.h"
 #include "zip_archive.h"
 
 namespace art {
