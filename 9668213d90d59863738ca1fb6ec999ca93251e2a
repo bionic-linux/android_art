@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "115e8bc1_533d70f7",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-03-21T20:38:39Z",
+      "side": 1,
+      "message": "Please include help\u003d\"...usage details...\"",
+      "revId": "9668213d90d59863738ca1fb6ec999ca93251e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
