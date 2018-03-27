@@ -1197,11 +1197,11 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
   // (b) Zygote forked a new process that is not exempt (see ZygoteHooks).
   bool do_hidden_api_checks = runtime_options.Exists(Opt::HiddenApiChecks);
   DCHECK(!is_zygote_ || !do_hidden_api_checks);
-  // TODO pass the actual enforcement policy in, rather than just a single bit.
-  // As is, we're encoding some logic here about which specific policy to use, which would be better
-  // controlled by the framework.
+  // If hidden API checks are enabled, use the strictest enforcement policy here. This will cause
+  // all hidden API usages to fail verification, so that we can detect everything at runtime and
+  // apply the right policy there.
   hidden_api_policy_ = do_hidden_api_checks
-      ? hiddenapi::EnforcementPolicy::kBlacklistOnly
+      ? hiddenapi::EnforcementPolicy::kAllLists
       : hiddenapi::EnforcementPolicy::kNoChecks;
 
   no_sig_chain_ = runtime_options.Exists(Opt::NoSigChain);
