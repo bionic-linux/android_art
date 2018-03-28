@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eef7fd72_ab19ff62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-03-28T12:24:41Z",
+      "side": 1,
+      "message": "Also mention bug 27185632?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 3
+      },
+      "revId": "642e9d8249be5aff68022cabdc8ba576a57ff8d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
