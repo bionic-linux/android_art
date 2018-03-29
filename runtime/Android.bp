@@ -483,6 +483,25 @@ art_cc_library {
             },
         },
     },
+    pgo: {
+        instrumentation: true,
+        benchmarks: ["art_runtime"],
+        cflags: [
+            "-DART_PGO_INSTRUMENTATION",
+        ],
+    },
+    arch: {
+        arm64: {
+            pgo: {
+                profile_file: "art/experimental/art_runtime_arm64.profdata",
+            },
+        },
+        arm: {
+            pgo: {
+                profile_file: "art/experimental/art_runtime_arm.profdata",
+            },
+        },
+    },
 }
 
 art_cc_library {
