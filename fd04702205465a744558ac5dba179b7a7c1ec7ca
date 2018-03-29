@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d8c874d_eaf9bd71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-03-29T08:32:05Z",
+      "side": 1,
+      "message": "Next time revert through gerrit, please. That automatically adds the \"This reverts commit ...\" line, reports on the CL being reverted and allows comparing against the raw revert.",
+      "revId": "fd04702205465a744558ac5dba179b7a7c1ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
