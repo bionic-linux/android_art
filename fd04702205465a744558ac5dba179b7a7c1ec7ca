@@ -16,6 +16,24 @@
       "revId": "fd04702205465a744558ac5dba179b7a7c1ec7ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b18832_b5d80364",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2018-03-30T20:21:10Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/art/+/653460",
+      "parentUuid": "1d8c874d_eaf9bd71",
+      "revId": "fd04702205465a744558ac5dba179b7a7c1ec7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
