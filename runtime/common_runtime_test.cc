@@ -27,9 +27,11 @@
 #include <unicode/uvernum.h>
 
 #include "art_field-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/file_utils.h"
 #include "base/logging.h"
 #include "base/macros.h"
+#include "base/mem_map.h"
 #include "base/mutex.h"
 #include "base/os.h"
 #include "base/runtime_debug.h"
@@ -49,7 +51,6 @@
 #include "interpreter/unstarted_runtime.h"
 #include "java_vm_ext.h"
 #include "jni_internal.h"
-#include "mem_map.h"
 #include "mirror/class-inl.h"
 #include "mirror/class_loader.h"
 #include "native/dalvik_system_DexFile.h"
@@ -309,7 +310,7 @@ std::unique_ptr<const DexFile> CommonRuntimeTestImpl::LoadExpectSingleDexFile(
     const char* location) {
   std::vector<std::unique_ptr<const DexFile>> dex_files;
   std::string error_msg;
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
   static constexpr bool kVerifyChecksum = true;
   const ArtDexFileLoader dex_file_loader;
   if (!dex_file_loader.Open(

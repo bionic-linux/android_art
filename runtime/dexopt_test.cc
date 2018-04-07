@@ -20,13 +20,14 @@
 #include <backtrace/BacktraceMap.h>
 #include <gtest/gtest.h>
 
+#include "base/art_mem_map_contract.h"
 #include "base/file_utils.h"
+#include "base/mem_map.h"
 #include "common_runtime_test.h"
 #include "compiler_callbacks.h"
 #include "dex2oat_environment_test.h"
 #include "dexopt_test.h"
 #include "gc/space/image_space.h"
-#include "mem_map.h"
 
 namespace art {
 void DexoptTest::SetUp() {
@@ -226,7 +227,7 @@ bool DexoptTest::PreRelocateImage(const std::string& image_location, std::string
 }
 
 void DexoptTest::ReserveImageSpace() {
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
 
   // Ensure a chunk of memory is reserved for the image space.
   // The reservation_end includes room for the main space that has to come

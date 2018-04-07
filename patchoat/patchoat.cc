@@ -31,6 +31,7 @@
 
 #include "art_field-inl.h"
 #include "art_method-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/dumpable.h"
 #include "base/file_utils.h"
 #include "base/leb128.h"
@@ -1200,7 +1201,7 @@ static int patchoat_verify_image(TimingLogger& timings,
 static int patchoat(int argc, char **argv) {
   Locks::Init();
   InitLogging(argv, Runtime::Abort);
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
   const bool debug = kIsDebugBuild;
   orig_argc = argc;
   orig_argv = argv;

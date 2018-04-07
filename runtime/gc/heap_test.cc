@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include "base/art_mem_map_contract.h"
 #include "class_linker-inl.h"
 #include "common_runtime_test.h"
 #include "gc/accounting/card_table-inl.h"
@@ -30,7 +31,7 @@ namespace gc {
 class HeapTest : public CommonRuntimeTest {
  public:
   void SetUp() OVERRIDE {
-    MemMap::Init();
+    MemMap::Init(new ArtMemMapContract());
     std::string error_msg;
     // Reserve the preferred address to force the heap to use another one for testing.
     reserved_.reset(MemMap::MapAnonymous("ReserveMap",
