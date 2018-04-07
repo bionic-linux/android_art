@@ -19,6 +19,7 @@
 #include "arch/instruction_set_features.h"
 #include "art_field-inl.h"
 #include "art_method-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/callee_save_type.h"
 #include "base/enums.h"
 #include "base/utils.h"
@@ -287,7 +288,7 @@ void CommonCompilerTest::ReserveImageSpace() {
   // Reserve where the image will be loaded up front so that other parts of test set up don't
   // accidentally end up colliding with the fixed memory address when we need to load the image.
   std::string error_msg;
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
   image_reservation_.reset(MemMap::MapAnonymous("image reservation",
                                                 reinterpret_cast<uint8_t*>(ART_BASE_ADDRESS),
                                                 (size_t)120 * 1024 * 1024,  // 120MB

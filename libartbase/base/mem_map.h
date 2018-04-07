@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-#ifndef ART_RUNTIME_MEM_MAP_H_
-#define ART_RUNTIME_MEM_MAP_H_
+#ifndef ART_LIBARTBASE_BASE_MEM_MAP_H_
+#define ART_LIBARTBASE_BASE_MEM_MAP_H_
 
 #include <stddef.h>
 #include <sys/types.h>
@@ -25,6 +25,7 @@
 #include <string>
 
 #include "android-base/thread_annotations.h"
+#include "base/macros.h"
 
 namespace art {
 
@@ -46,6 +47,28 @@ static constexpr bool kMadviseZeroes = false;
 // present.
 #define HAVE_MREMAP_SYSCALL false
 #endif
+
+// Interface used by MemMap to check consistency.
+class MemMapContract {
+ public:
+  MemMapContract() { }
+  virtual ~MemMapContract() { }
+
+  virtual bool ContainedWithinExistingMap(uintptr_t begin ATTRIBUTE_UNUSED,
+                                          uintptr_t end ATTRIBUTE_UNUSED,
+                                          std::string* error_msg ATTRIBUTE_UNUSED) {
+    return false;
+  }
+
+  virtual bool CheckNonOverlapping(uintptr_t expected ATTRIBUTE_UNUSED,
+                                   uintptr_t limit ATTRIBUTE_UNUSED,
+                                   std::string* error_detail ATTRIBUTE_UNUSED) {
+    return true;
+  }
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(MemMapContract);
+};
 
 // Used to keep track of mmap segments.
 //
@@ -212,7 +235,9 @@ class MemMap {
   // Init and Shutdown are NOT thread safe.
   // Both may be called multiple times and MemMap objects may be created any
   // time after the first call to Init and before the first call to Shutodwn.
-  static void Init() REQUIRES(!MemMap::mem_maps_lock_);
+  // Init takes ownership of contract object.
+  static void Init(MemMapContract* contract = new MemMapContract())
+      REQUIRES(!MemMap::mem_maps_lock_);
   static void Shutdown() REQUIRES(!MemMap::mem_maps_lock_);
 
   // If the map is PROT_READ, try to read each page of the map to check it is in fact readable (not
@@ -297,4 +322,4 @@ void ZeroAndReleasePages(void* address, size_t length);
 
 }  // namespace art
 
-#endif  // ART_RUNTIME_MEM_MAP_H_
+#endif  // ART_LIBARTBASE_BASE_MEM_MAP_H_
