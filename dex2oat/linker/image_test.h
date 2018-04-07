@@ -26,6 +26,7 @@
 #include "android-base/stringprintf.h"
 
 #include "art_method-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/file_utils.h"
 #include "base/unix_file/fd_file.h"
 #include "base/utils.h"
@@ -439,7 +440,7 @@ inline void ImageTest::TestWriteRead(ImageHeader::StorageMode storage_mode) {
   runtime_.reset();
   java_lang_dex_file_ = nullptr;
 
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
 
   RuntimeOptions options;
   std::string image("-Ximage:");

@@ -41,6 +41,7 @@
 #include "arch/instruction_set_features.h"
 #include "arch/mips/instruction_set_features_mips.h"
 #include "art_method-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/callee_save_type.h"
 #include "base/dumpable.h"
 #include "base/file_utils.h"
@@ -55,6 +56,7 @@
 #include "base/timing_logger.h"
 #include "base/unix_file/fd_file.h"
 #include "base/utils.h"
+#include "base/zip_archive.h"
 #include "class_linker.h"
 #include "class_loader_context.h"
 #include "cmdline_parser.h"
@@ -98,7 +100,6 @@
 #include "vdex_file.h"
 #include "verifier/verifier_deps.h"
 #include "well_known_classes.h"
-#include "zip_archive.h"
 
 namespace art {
 
@@ -3094,7 +3095,7 @@ static dex2oat::ReturnCode Dex2oat(int argc, char** argv) {
     }
   }
 
-  art::MemMap::Init();  // For ZipEntry::ExtractToMemMap, and vdex.
+  art::MemMap::Init(new ArtMemMapContract());  // For ZipEntry::ExtractToMemMap, and vdex.
 
   // Check early that the result of compilation can be written
   if (!dex2oat->OpenFile()) {

@@ -58,6 +58,7 @@
 #include "asm_support_check.h"
 #include "base/aborting.h"
 #include "base/arena_allocator.h"
+#include "base/art_mem_map_contract.h"
 #include "base/atomic.h"
 #include "base/dumpable.h"
 #include "base/enums.h"
@@ -1109,7 +1110,7 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
     android::base::SetLogger(android::base::StderrLogger);
   }
 
-  MemMap::Init();
+  MemMap::Init(new ArtMemMapContract());
 
   // Try to reserve a dedicated fault page. This is allocated for clobbered registers and sentinels.
   // If we cannot reserve it, log a warning.

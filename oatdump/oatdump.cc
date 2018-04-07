@@ -33,6 +33,7 @@
 #include "arch/instruction_set_features.h"
 #include "art_field-inl.h"
 #include "art_method-inl.h"
+#include "base/art_mem_map_contract.h"
 #include "base/bit_utils_iterator.h"
 #include "base/os.h"
 #include "base/safe_map.h"
@@ -3866,7 +3867,7 @@ struct OatdumpMain : public CmdlineMain<OatdumpArgs> {
     CHECK(args_ != nullptr);
     CHECK(args_->oat_filename_ != nullptr);
 
-    MemMap::Init();
+    MemMap::Init(new ArtMemMapContract());
 
     if (args_->symbolize_) {
       // ELF has special kind of section called SHT_NOBITS which allows us to create
