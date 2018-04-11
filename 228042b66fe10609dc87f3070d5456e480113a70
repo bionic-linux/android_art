@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b527354e_8bf0939f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-04-11T11:02:21Z",
+      "side": 1,
+      "message": "The crash we\u0027ve seen comes from a simple synchronized method:\n\n  0000: monitor-enter v5\n  0001: ...\n  ...\n  0049: monitor-exit v5\n  004a: return-void\n  004b: move-exception v6\n  004c: monitor-exit v5\n  004d: throw v6\n      catches       : 1\n        0x0001 - 0x004b\n          \u003cany\u003e -\u003e 0x004b\n\nI do not understand where a double-typed Phi with a single input comes from; it has no uses and 3 environment uses. The only Phi I would expect here is the v5 typed as a reference and having plenty of inputs corresponding to the many throwing instructions in between monitor-enter and monitor-exit. There is not a single dex instruction using a \"double\".\n\nI guess we\u0027re just fixing symptoms of an unrelated problem.",
+      "revId": "228042b66fe10609dc87f3070d5456e480113a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
