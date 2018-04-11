@@ -16,6 +16,24 @@
       "revId": "228042b66fe10609dc87f3070d5456e480113a70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42ee7267_375441de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-04-11T13:46:24Z",
+      "side": 1,
+      "message": "I was looking at the wrong method. The bytecode is obfuscated and I checked only the method name which is not unique.\n\nNote that the crash occurs only with --debuggable.\n\nWe\u0027re crashing for this piece of code:\n\n  0008: monitor-enter v4\n  0009: float-to-double v0, v5\n  000a: iput-wide v0, v4, [...]  // v4\u003dthis; no null check?\n  000c: monitor-exit v2\n  000d: goto 0011 // +0004\n  000e: move-exception v3\n  000f: monitor-exit v2  // no null check?\n  0010: throw v3\n  0011: return-void\n      catches       : 2\n        0x0009 - 0x000d\n          \u003cany\u003e -\u003e 0x000e\n        0x000e - 0x0010\n          \u003cany\u003e -\u003e 0x000e\n\nWe consider HMonitorOperation/kExit as non-throwing and I would have expected the HInstructionBuilder to omit HNullCheck on `this`, so what throwing instruction is there in the try blocks?\n\nAt the codegen time (when we crash) the catch block has two predecessors. The first contains instructions from the start of the method until the HMonitorOperation/kEnter/dex_pc\u003d8 and HTryBoundary/dex_pc\u003d9. The second predecessor contains HNativeDebugInfo/dex_pc\u003d9, HTypeConversion/dex_pc\u003d9, HInstanceFieldSet/dex_pc\u003d10, HNativeDebugInfo/dex_pc\u003d12, HMonitorOperation/kExit/dex_pc\u003d12, HTryBoundary/dex_pc\u003d13.",
+      "parentUuid": "b527354e_8bf0939f",
+      "revId": "228042b66fe10609dc87f3070d5456e480113a70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
