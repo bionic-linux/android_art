@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "241ffaa1_d0a076fe",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-04-11T18:01:09Z",
+      "side": 1,
+      "message": "Add some details like \u0027consistency of what?\u0027",
+      "range": {
+        "startLine": 51,
+        "startChar": 37,
+        "endLine": 51,
+        "endChar": 48
+      },
+      "revId": "c0a5a93a0aa627440a846d05834a00a097d34b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ba523d_42a39bd2",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-04-11T18:01:09Z",
+      "side": 1,
+      "message": "If this is intended to perform check Maybe rename to MemMapConsistencyChecker or something similar? Contract is pretty vague and MemMap does not extend this class which makes the name \"Contract\" a bit sketchy.",
+      "range": {
+        "startLine": 52,
+        "startChar": 6,
+        "endLine": 52,
+        "endChar": 20
+      },
+      "revId": "c0a5a93a0aa627440a846d05834a00a097d34b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1178bce6_f64332bd",
+        "filename": "runtime/base/art_mem_map_contract.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-04-11T18:01:09Z",
+      "side": 1,
+      "message": "is there any other class implementing this?",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "c0a5a93a0aa627440a846d05834a00a097d34b4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
