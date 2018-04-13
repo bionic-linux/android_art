@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "820ce156_de67aa25",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-04-13T00:59:44Z",
+      "side": 1,
+      "message": "Revert as well...",
+      "range": {
+        "startLine": 216,
+        "startChar": 2,
+        "endLine": 216,
+        "endChar": 45
+      },
+      "revId": "50986b11c95d32c156f36d69781e62bbfafa3df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
