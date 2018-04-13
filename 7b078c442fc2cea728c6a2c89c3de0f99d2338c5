@@ -22,6 +22,30 @@
       "revId": "7b078c442fc2cea728c6a2c89c3de0f99d2338c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1779d9f3_26dc7d0c",
+        "filename": "test/682-double-catch-phi/smali/DoubleCatchPhi.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-04-13T16:42:16Z",
+      "side": 1,
+      "message": "Yes, none of this was essential, and neither where the methods below. Stripped to the bare minimum now.",
+      "parentUuid": "a732203f_d04dc406",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "7b078c442fc2cea728c6a2c89c3de0f99d2338c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
