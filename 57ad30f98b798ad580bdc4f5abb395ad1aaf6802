@@ -22,6 +22,30 @@
       "revId": "57ad30f98b798ad580bdc4f5abb395ad1aaf6802",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57229f9b_68a43a38",
+        "filename": "test/682-double-catch-phi/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-04-13T17:03:31Z",
+      "side": 1,
+      "message": "Ah, good catch. We really should generalize the --jvm change for our smali tests. But done.",
+      "parentUuid": "ec684f0d_cfd7a29c",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "57ad30f98b798ad580bdc4f5abb395ad1aaf6802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
