@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a732203f_d04dc406",
+        "filename": "test/682-double-catch-phi/smali/DoubleCatchPhi.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-04-13T16:35:50Z",
+      "side": 1,
+      "message": "Optional: Remove these and check if it\u0027s still a good repro case.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 64
+      },
+      "revId": "7b078c442fc2cea728c6a2c89c3de0f99d2338c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
