@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec684f0d_cfd7a29c",
+        "filename": "test/682-double-catch-phi/src/Main.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-04-13T16:46:15Z",
+      "side": 1,
+      "message": "Shall fail for --jvm where we shall ignore smali files.\n\nEither add the test to knownfailures.json or check\n\n    System.getProperty(\"java.vm.name\").equals(\"Dalvik\");\n\nas we do in other tests.\n\nAdd Test: stanza with --jvm.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 49
+      },
+      "revId": "57ad30f98b798ad580bdc4f5abb395ad1aaf6802",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
