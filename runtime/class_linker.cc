@@ -1892,6 +1892,13 @@ bool ClassLinker::AddImageSpace(
     class_table->AddClassSet(std::move(temp_set));
   }
 
+  if (app_image && GetClassHierarchyAnalysis() != nullptr) {
+    ScopedTrace trace("Adding class table to CHA");
+    // May cause thread suspension, so do it after having added the class table to have the GC
+    // visit the objects if required. Just pass the whole class table for now.
+    GetClassHierarchyAnalysis()->UpdateAfterAddingClassTable(class_table);
+  }
+
   if (kIsDebugBuild && app_image) {
     // This verification needs to happen after the classes have been added to the class loader.
     // Since it ensures classes are in the class table.

@@ -29,6 +29,7 @@
 namespace art {
 
 class ArtMethod;
+class ClassTable;
 class LinearAlloc;
 
 /**
@@ -124,13 +125,16 @@ class ClassHierarchyAnalysis {
   // Update CHA info for methods that `klass` overrides, after loading `klass`.
   void UpdateAfterLoadingOf(Handle<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
 
+  // Update CHA info for methods that `klass` overrides, after loading `klass`.
+  void UpdateAfterAddingClassTable(ClassTable* table) REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Remove all of the dependencies for a linear allocator. This is called when dex cache unloading
   // occurs.
   void RemoveDependenciesForLinearAlloc(const LinearAlloc* linear_alloc)
       REQUIRES(!Locks::cha_lock_);
 
  private:
-  void InitSingleImplementationFlag(Handle<mirror::Class> klass,
+  void InitSingleImplementationFlag(ObjPtr<mirror::Class> klass,
                                     ArtMethod* method,
                                     PointerSize pointer_size)
       REQUIRES_SHARED(Locks::mutator_lock_);
@@ -142,7 +146,7 @@ class ClassHierarchyAnalysis {
   // Append methods that should have their single-implementation flag invalidated
   // to `invalidated_single_impl_methods`.
   void CheckVirtualMethodSingleImplementationInfo(
-      Handle<mirror::Class> klass,
+      ObjPtr<mirror::Class> klass,
       ArtMethod* virtual_method,
       ArtMethod* method_in_super,
       std::unordered_set<ArtMethod*>& invalidated_single_impl_methods,
@@ -155,13 +159,19 @@ class ClassHierarchyAnalysis {
   // Append `interface_method` to `invalidated_single_impl_methods`
   // if `interface_method` gets a new implementation.
   void CheckInterfaceMethodSingleImplementationInfo(
-      Handle<mirror::Class> klass,
+      ObjPtr<mirror::Class> klass,
       ArtMethod* interface_method,
       ArtMethod* implementation_method,
       std::unordered_set<ArtMethod*>& invalidated_single_impl_methods,
       PointerSize pointer_size)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  void GetMethodsToInvalidate(
+      ObjPtr<mirror::Class> klass,
+      std::unordered_set<ArtMethod*>* invalidated_single_impl_methods)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
+  // May cause thread suspension from running checkpoints.
   void InvalidateSingleImplementationMethods(
       std::unordered_set<ArtMethod*>& invalidated_single_impl_methods)
       REQUIRES_SHARED(Locks::mutator_lock_);

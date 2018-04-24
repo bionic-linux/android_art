@@ -18,6 +18,7 @@
 
 #include "art_method-inl.h"
 #include "base/logging.h"  // For VLOG
+#include "class_table-inl.h"
 #include "jit/jit.h"
 #include "jit/jit_code_cache.h"
 #include "linear_alloc.h"
@@ -323,7 +324,7 @@ static void VerifyNonSingleImplementation(mirror::Class* verify_class,
 }
 
 void ClassHierarchyAnalysis::CheckVirtualMethodSingleImplementationInfo(
-    Handle<mirror::Class> klass,
+    ObjPtr<mirror::Class> klass,
     ArtMethod* virtual_method,
     ArtMethod* method_in_super,
     std::unordered_set<ArtMethod*>& invalidated_single_impl_methods,
@@ -338,7 +339,7 @@ void ClassHierarchyAnalysis::CheckVirtualMethodSingleImplementationInfo(
   // be supplied by klass.
   DCHECK(virtual_method == method_in_super ||
          virtual_method->IsCopied() ||
-         virtual_method->GetDeclaringClass() == klass.Get());
+         virtual_method->GetDeclaringClass() == klass);
 
   // To make updating single-implementation flags simple, we always maintain the following
   // invariant:
@@ -469,7 +470,7 @@ void ClassHierarchyAnalysis::CheckVirtualMethodSingleImplementationInfo(
 }
 
 void ClassHierarchyAnalysis::CheckInterfaceMethodSingleImplementationInfo(
-    Handle<mirror::Class> klass,
+    ObjPtr<mirror::Class> klass,
     ArtMethod* interface_method,
     ArtMethod* implementation_method,
     std::unordered_set<ArtMethod*>& invalidated_single_impl_methods,
@@ -517,10 +518,10 @@ void ClassHierarchyAnalysis::CheckInterfaceMethodSingleImplementationInfo(
   invalidated_single_impl_methods.insert(interface_method);
 }
 
-void ClassHierarchyAnalysis::InitSingleImplementationFlag(Handle<mirror::Class> klass,
+void ClassHierarchyAnalysis::InitSingleImplementationFlag(ObjPtr<mirror::Class> klass,
                                                           ArtMethod* method,
                                                           PointerSize pointer_size) {
-  DCHECK(method->IsCopied() || method->GetDeclaringClass() == klass.Get());
+  DCHECK(method->IsCopied() || method->GetDeclaringClass() == klass);
   if (klass->IsFinal() || method->IsFinal()) {
     // Final classes or methods do not need CHA for devirtualization.
     // This frees up modifier bits for intrinsics which currently are only
@@ -551,7 +552,10 @@ void ClassHierarchyAnalysis::InitSingleImplementationFlag(Handle<mirror::Class> 
   }
 }
 
-void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
+void ClassHierarchyAnalysis::GetMethodsToInvalidate(
+    ObjPtr<mirror::Class> klass,
+    std::unordered_set<ArtMethod*>* invalidated_single_impl_methods) {
+  ScopedAssertNoThreadSuspension ants(__FUNCTION__);
   PointerSize image_pointer_size = Runtime::Current()->GetClassLinker()->GetImagePointerSize();
   if (klass->IsInterface()) {
     for (ArtMethod& method : klass->GetDeclaredVirtualMethods(image_pointer_size)) {
@@ -566,10 +570,6 @@ void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
     return;
   }
 
-  // Keeps track of all methods whose single-implementation assumption
-  // is invalidated by linking `klass`.
-  std::unordered_set<ArtMethod*> invalidated_single_impl_methods;
-
   // Do an entry-by-entry comparison of vtable contents with super's vtable.
   for (int32_t i = 0; i < super_class->GetVTableLength(); ++i) {
     ArtMethod* method = klass->GetVTableEntry(i, image_pointer_size);
@@ -582,7 +582,7 @@ void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
         CheckVirtualMethodSingleImplementationInfo(klass,
                                                    method,
                                                    method_in_super,
-                                                   invalidated_single_impl_methods,
+                                                   *invalidated_single_impl_methods,
                                                    image_pointer_size);
       }
       continue;
@@ -591,7 +591,7 @@ void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
     CheckVirtualMethodSingleImplementationInfo(klass,
                                                method,
                                                method_in_super,
-                                               invalidated_single_impl_methods,
+                                               *invalidated_single_impl_methods,
                                                image_pointer_size);
   }
   // For new virtual methods that don't override.
@@ -614,12 +614,18 @@ void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
         CheckInterfaceMethodSingleImplementationInfo(klass,
                                                      interface_method,
                                                      implementation_method,
-                                                     invalidated_single_impl_methods,
+                                                     *invalidated_single_impl_methods,
                                                      image_pointer_size);
       }
     }
   }
+}
 
+void ClassHierarchyAnalysis::UpdateAfterLoadingOf(Handle<mirror::Class> klass) {
+  // Keeps track of all methods whose single-implementation assumption
+  // is invalidated by linking `klass`.
+  std::unordered_set<ArtMethod*> invalidated_single_impl_methods;
+  GetMethodsToInvalidate(klass.Get(), &invalidated_single_impl_methods);
   InvalidateSingleImplementationMethods(invalidated_single_impl_methods);
 }
 
@@ -695,6 +701,18 @@ void ClassHierarchyAnalysis::RemoveDependenciesForLinearAlloc(const LinearAlloc*
       ++it;
     }
   }
+}
+
+void ClassHierarchyAnalysis::UpdateAfterAddingClassTable(ClassTable* table) {
+  std::unordered_set<ArtMethod*> invalidated_single_impl_methods;
+  DCHECK(table != nullptr);
+  table->Visit([&](ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
+    GetMethodsToInvalidate(klass, &invalidated_single_impl_methods);
+    return true;  // Keep visiting.
+  });
+  // Invalidate the methods outside of the visitor since we want to avoid thread suspension until
+  // after the visit.
+  InvalidateSingleImplementationMethods(invalidated_single_impl_methods);
 }
 
 }  // namespace art
