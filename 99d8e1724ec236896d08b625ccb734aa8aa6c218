@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e423f8a_eb6a1851",
+        "filename": "test/1935-get-set-current-frame-jit/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-04-27T21:53:42Z",
+      "side": 1,
+      "message": "I would prefer we ensure that on entry we\u0027re not already JITed or so (Main.isInterpreted should be an invariant in the beginning). Nicolas, do we have any good infrastructure to do that?",
+      "range": {
+        "startLine": 79,
+        "startChar": 30,
+        "endLine": 79,
+        "endChar": 50
+      },
+      "revId": "99d8e1724ec236896d08b625ccb734aa8aa6c218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
