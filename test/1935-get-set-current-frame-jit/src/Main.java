@@ -51,10 +51,12 @@ public class Main {
     private volatile boolean continueBusyLoop;
     private volatile boolean inBusyLoop;
     private final boolean expectOsr;
-    public IntRunner(boolean expectOsr) {
+    private final boolean allowJit;
+    public IntRunner(boolean expectOsr, boolean allowJit) {
       this.continueBusyLoop = true;
       this.inBusyLoop = false;
       this.expectOsr = expectOsr;
+      this.allowJit = allowJit;
     }
     public void run() {
       int TARGET = 42;
@@ -73,6 +75,9 @@ public class Main {
       // Set local will also push us to interpreter but the get local may remain in compiled code.
       if (hasJit()) {
         boolean inOsr = Main.isInOsrCode("run");
+        if (allowJit) {
+            inOsr = inOsr || !Main.isInterpreted();
+        }
         if (expectOsr && !inOsr) {
           throw new Error(
               "Expected to be in OSR but was not. interpreter: " + Main.isInterpreted());
@@ -91,8 +96,9 @@ public class Main {
 
   public static void runGet() throws Exception {
     Method target = IntRunner.class.getDeclaredMethod("run");
-    // Get Int
-    IntRunner int_runner = new IntRunner(true);
+    // Get Int. If we are very lucky/unlucky the jit can finish before we actually start running the
+    // 'run' method so we will never be in OSR. This is fine.
+    IntRunner int_runner = new IntRunner(true, true);
     Thread target_get = new Thread(int_runner, "GetLocalInt - Target");
     target_get.start();
     int_runner.waitForBusyLoopStart();
@@ -121,8 +127,8 @@ public class Main {
 
   public static void runSet() throws Exception {
     Method target = IntRunner.class.getDeclaredMethod("run");
-    // Set Int
-    IntRunner int_runner = new IntRunner(false);
+    // Set Int. Even if we start out in JIT code somehow we should be pushed out of it.
+    IntRunner int_runner = new IntRunner(false, false);
     Thread target_set = new Thread(int_runner, "SetLocalInt - Target");
     target_set.start();
     int_runner.waitForBusyLoopStart();
