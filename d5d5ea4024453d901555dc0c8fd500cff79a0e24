@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "12bf57bd_e20d3520",
+        "filename": "runtime/arch/x86_64/thread_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-04-27T17:20:06Z",
+      "side": 1,
+      "message": "Please move this to the top. We prefer not to include files inside a namespace etc.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "d5d5ea4024453d901555dc0c8fd500cff79a0e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80005a39_4588d733",
         "filename": "runtime/arch/x86_64/thread_x86_64.cc",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 2,
         "endLine": 48,
         "endChar": 10
+      },
+      "revId": "d5d5ea4024453d901555dc0c8fd500cff79a0e24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44d3c3a_25178fea",
+        "filename": "runtime/arch/x86_64/thread_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-04-27T17:20:06Z",
+      "side": 1,
+      "message": "ART style (for anything not 4 years old) is to either have everything on one line (may be the wrapped second line), or one arg per line.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 39
       },
       "revId": "d5d5ea4024453d901555dc0c8fd500cff79a0e24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
