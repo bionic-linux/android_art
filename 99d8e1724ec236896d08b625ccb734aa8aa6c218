@@ -22,6 +22,30 @@
       "revId": "99d8e1724ec236896d08b625ccb734aa8aa6c218",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662fe6e8_4d5a483c",
+        "filename": "test/1935-get-set-current-frame-jit/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-27T22:16:56Z",
+      "side": 1,
+      "message": "Done. Changed test to check that we are not in JIT at the start and force it by stopping the jit until the actual test code begins running.",
+      "parentUuid": "3e423f8a_eb6a1851",
+      "range": {
+        "startLine": 79,
+        "startChar": 30,
+        "endLine": 79,
+        "endChar": 50
+      },
+      "revId": "99d8e1724ec236896d08b625ccb734aa8aa6c218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
