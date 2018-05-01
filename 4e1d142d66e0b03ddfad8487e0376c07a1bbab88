@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a987f072_9d5cdaf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-05-01T17:01:10Z",
+      "side": 1,
+      "message": "Make this message a bit more precise. Since we only have Arm64LoopHelper right now, this effectively enables scalar peeling/unrolling for ARM64 right now.",
+      "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a14d182b_2b7a68a6",
+        "filename": "test/482-checker-loop-back-edge-use/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-05-01T17:01:10Z",
+      "side": 1,
+      "message": "I would like to see Nicolas\u0027 input on this too. Since these are still relatively high level optimizations, we should probably enable them for all archs to avoid getting too many different paths through the HL part of our compiler (I think I know how Nicolas feels about that :-)",
+      "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
