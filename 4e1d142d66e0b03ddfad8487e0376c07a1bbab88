@@ -33,6 +33,24 @@
       "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab98772e_caf26e6e",
+        "filename": "test/482-checker-loop-back-edge-use/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-02T14:47:06Z",
+      "side": 1,
+      "message": "I agree - what\u0027s the reason we don\u0027t enable it for all archs?",
+      "parentUuid": "a14d182b_2b7a68a6",
+      "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
