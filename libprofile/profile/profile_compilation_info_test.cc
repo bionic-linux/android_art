@@ -1339,4 +1339,15 @@ TEST_F(ProfileCompilationInfoTest, FilteredLoadingWithClasses) {
   ASSERT_TRUE(loaded_info.Equals(expected_info));
 }
 
+
+TEST_F(ProfileCompilationInfoTest, ClearData) {
+  ProfileCompilationInfo info;
+  for (uint16_t i = 0; i < 10; i++) {
+    ASSERT_TRUE(AddMethod("dex_location1", /* checksum */ 1, /* method_idx */ i, &info));
+  }
+  ASSERT_FALSE(IsEmpty(info));
+  info.ClearData();
+  ASSERT_TRUE(IsEmpty(info));
+}
+
 }  // namespace art
