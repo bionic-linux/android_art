@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0be95c2_0995fb85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-09T10:15:53Z",
+      "side": 1,
+      "message": "Please use another word, as \"obsolete dex files\" has a meaning in jmvti. \"Out-of date\"? \"Replaced\" ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "8a257d37ac20ee809965cdfd433502d0c0b38949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
