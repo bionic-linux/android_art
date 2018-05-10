@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9138cde0_70e6f64f",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-05-10T22:15:58Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "5714c5ef_8efa8f9e",
+      "range": {
+        "startLine": 132,
+        "startChar": 13,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "b8770eef708c7beee4a808f28f6a2755db82bc02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f13ffa4_62657c12",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-10T21:55:42Z",
       "side": 1,
       "message": "Should we just: PrintFileToLog(\"/proc/self/maps\", LogSeverity::WARNING);\n\nMaybe guarded by kIsDebugBuild... the other use cases are somewhat inconsistent.",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 62
+      },
+      "revId": "b8770eef708c7beee4a808f28f6a2755db82bc02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "302bc9b2_0c74fa8a",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-05-10T22:15:58Z",
+      "side": 1,
+      "message": "I added as suggested.  Thanks.  I now feel there really is no reason to retain BacktraceMap here.",
+      "parentUuid": "4f13ffa4_62657c12",
       "range": {
         "startLine": 195,
         "startChar": 4,
