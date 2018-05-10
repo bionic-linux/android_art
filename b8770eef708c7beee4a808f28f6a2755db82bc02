@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5714c5ef_8efa8f9e",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-05-10T21:55:42Z",
+      "side": 1,
+      "message": "For the record, due to the removal, this will now trigger DCHECK in case where we are trying to reallocate part of existing mmap, but we actually see no such exsting mmap in gMaps.\n\nI consider this is good thing. It seems to me that such case is unexpected, and we indeed want to catch it.",
+      "range": {
+        "startLine": 132,
+        "startChar": 13,
+        "endLine": 132,
+        "endChar": 39
+      },
+      "revId": "b8770eef708c7beee4a808f28f6a2755db82bc02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f13ffa4_62657c12",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-05-10T21:55:42Z",
+      "side": 1,
+      "message": "Should we just: PrintFileToLog(\"/proc/self/maps\", LogSeverity::WARNING);\n\nMaybe guarded by kIsDebugBuild... the other use cases are somewhat inconsistent.",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 62
+      },
+      "revId": "b8770eef708c7beee4a808f28f6a2755db82bc02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
