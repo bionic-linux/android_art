@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3acbd5e_4ee043f3",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-05-11T16:03:56Z",
+      "side": 0,
+      "message": "This was weird. We pass \"reuse \u003d true\" when we expect the memory to be contained in one of *our* mappings recorded in gMaps and checked above.",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "42805fa0afeefbc4fd4e3339940582bdda9c77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
