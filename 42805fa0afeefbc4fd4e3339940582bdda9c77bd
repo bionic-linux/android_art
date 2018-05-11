@@ -22,6 +22,30 @@
       "revId": "42805fa0afeefbc4fd4e3339940582bdda9c77bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44b77e2_8386a57a",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2018-05-11T16:48:56Z",
+      "side": 0,
+      "message": "Yes, this was allowing passes where it should have failed, as David pointed out...",
+      "parentUuid": "f3acbd5e_4ee043f3",
+      "range": {
+        "startLine": 178,
+        "startChar": 6,
+        "endLine": 178,
+        "endChar": 18
+      },
+      "revId": "42805fa0afeefbc4fd4e3339940582bdda9c77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
