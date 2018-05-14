@@ -22,6 +22,30 @@
       "revId": "b4f9d0718afbf1ef76fbcda0c675f40fab0eab99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f605473a_2336b194",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-14T18:31:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c67935a_8c729eae",
+      "range": {
+        "startLine": 863,
+        "startChar": 2,
+        "endLine": 863,
+        "endChar": 66
+      },
+      "revId": "b4f9d0718afbf1ef76fbcda0c675f40fab0eab99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
