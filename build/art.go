@@ -66,7 +66,7 @@ func globalFlags(ctx android.BaseContext) ([]string, []string) {
 			"-DART_READ_BARRIER_TYPE_IS_"+barrierType+"=1")
 	}
 
-  cdexLevel := envDefault(ctx, "ART_DEFAULT_COMPACT_DEX_LEVEL", "none")
+  cdexLevel := envDefault(ctx, "ART_DEFAULT_COMPACT_DEX_LEVEL", "fast")
   cflags = append(cflags, "-DART_DEFAULT_COMPACT_DEX_LEVEL="+cdexLevel)
 
 	// We need larger stack overflow guards for ASAN, as the compiled code will have
@@ -101,6 +101,10 @@ func globalFlags(ctx android.BaseContext) ([]string, []string) {
 	if envTrue(ctx, "ART_MIPS32_CHECK_ALIGNMENT") {
 		// Enable the use of MIPS32 CHECK_ALIGNMENT macro for debugging purposes
 		asflags = append(asflags, "-DART_MIPS32_CHECK_ALIGNMENT")
+	}
+
+	if envTrueOrDefault(ctx, "USE_D8_DESUGAR") {
+		cflags = append(cflags, "-DUSE_D8_DESUGAR=1")
 	}
 
 	return cflags, asflags
@@ -365,4 +369,8 @@ func envTrue(ctx android.BaseContext, key string) bool {
 
 func envFalse(ctx android.BaseContext, key string) bool {
 	return ctx.AConfig().Getenv(key) == "false"
+}
+
+func envTrueOrDefault(ctx android.BaseContext, key string) bool {
+	return ctx.AConfig().Getenv(key) != "false"
 }

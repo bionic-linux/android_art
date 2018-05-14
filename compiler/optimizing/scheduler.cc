@@ -667,7 +667,8 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
   // HUnaryOperation (or HBinaryOperation), check in debug mode that we have
   // the exhaustive lists here.
   if (instruction->IsUnaryOperation()) {
-    DCHECK(instruction->IsBooleanNot() ||
+    DCHECK(instruction->IsAbs() ||
+           instruction->IsBooleanNot() ||
            instruction->IsNot() ||
            instruction->IsNeg()) << "unexpected instruction " << instruction->DebugName();
     return true;
@@ -678,6 +679,8 @@ bool HScheduler::IsSchedulable(const HInstruction* instruction) const {
            instruction->IsCompare() ||
            instruction->IsCondition() ||
            instruction->IsDiv() ||
+           instruction->IsMin() ||
+           instruction->IsMax() ||
            instruction->IsMul() ||
            instruction->IsOr() ||
            instruction->IsRem() ||
@@ -771,7 +774,7 @@ bool HScheduler::IsSchedulingBarrier(const HInstruction* instr) const {
       instr->IsSuspendCheck();
 }
 
-void HInstructionScheduling::Run(bool only_optimize_loop_blocks,
+bool HInstructionScheduling::Run(bool only_optimize_loop_blocks,
                                  bool schedule_randomly) {
 #if defined(ART_ENABLE_CODEGEN_arm64) || defined(ART_ENABLE_CODEGEN_arm)
   // Phase-local allocator that allocates scheduler internal data structures like
@@ -811,6 +814,7 @@ void HInstructionScheduling::Run(bool only_optimize_loop_blocks,
     default:
       break;
   }
+  return true;
 }
 
 }  // namespace art

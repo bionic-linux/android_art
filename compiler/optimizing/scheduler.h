@@ -462,6 +462,11 @@ class HScheduler {
   // containing basic block from being scheduled.
   // This method is used to restrict scheduling to instructions that we know are
   // safe to handle.
+  //
+  // For newly introduced instructions by default HScheduler::IsSchedulable returns false.
+  // HScheduler${ARCH}::IsSchedulable can be overridden to return true for an instruction (see
+  // scheduler_arm64.h for example) if it is safe to schedule it; in this case one *must* also
+  // look at/update HScheduler${ARCH}::IsSchedulingBarrier for this instruction.
   virtual bool IsSchedulable(const HInstruction* instruction) const;
   bool IsSchedulable(const HBasicBlock* block) const;
 
@@ -503,10 +508,11 @@ class HInstructionScheduling : public HOptimization {
         codegen_(cg),
         instruction_set_(instruction_set) {}
 
-  void Run() {
-    Run(/*only_optimize_loop_blocks*/ true, /*schedule_randomly*/ false);
+  bool Run() OVERRIDE {
+    return Run(/*only_optimize_loop_blocks*/ true, /*schedule_randomly*/ false);
   }
-  void Run(bool only_optimize_loop_blocks, bool schedule_randomly);
+
+  bool Run(bool only_optimize_loop_blocks, bool schedule_randomly);
 
   static constexpr const char* kInstructionSchedulingPassName = "scheduler";
 

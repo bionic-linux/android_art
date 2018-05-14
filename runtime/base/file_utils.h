@@ -28,7 +28,6 @@
 namespace art {
 
 bool ReadFileToString(const std::string& file_name, std::string* result);
-bool PrintFileToLog(const std::string& file_name, android::base::LogSeverity level);
 
 // Find $ANDROID_ROOT, /system, or abort.
 std::string GetAndroidRoot();
@@ -65,10 +64,6 @@ std::string GetSystemImageFilename(const char* location, InstructionSet isa);
 // Returns the vdex filename for the given oat filename.
 std::string GetVdexFilename(const std::string& oat_filename);
 
-// Returns true if the file exists.
-bool FileExists(const std::string& filename);
-bool FileExistsAndNotEmpty(const std::string& filename);
-
 // Returns `filename` with the text after the last occurrence of '.' replaced with
 // `extension`. If `filename` does not contain a period, returns a string containing `filename`,
 // a period, and `new_extension`.
@@ -76,11 +71,11 @@ bool FileExistsAndNotEmpty(const std::string& filename);
 //          ReplaceFileExtension("foo", "abc") == "foo.abc"
 std::string ReplaceFileExtension(const std::string& filename, const std::string& new_extension);
 
-// Return the file size in bytes or -1 if the file does not exists.
-int64_t GetFileSizeBytes(const std::string& filename);
+// Return whether the location is on system (i.e. android root).
+bool LocationIsOnSystem(const char* location);
 
-// Madvise the largest page aligned region within begin and end.
-int MadviseLargestPageAlignedRegion(const uint8_t* begin, const uint8_t* end, int advice);
+// Return whether the location is on system/framework (i.e. android_root/framework).
+bool LocationIsOnSystemFramework(const char* location);
 
 }  // namespace art
 

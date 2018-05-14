@@ -40,6 +40,8 @@ art_cc_binary {
     defaults: ["profman-defaults"],
     shared_libs: [
         "libart",
+        "libprofile",
+        "libdexfile",
     ],
 }
 
@@ -51,6 +53,8 @@ art_cc_binary {
     ],
     shared_libs: [
         "libartd",
+        "libprofiled",
+        "libdexfiled",
     ],
 }
 
@@ -58,6 +62,9 @@ art_cc_test {
     name: "art_profman_tests",
     defaults: [
         "art_gtest_defaults",
+    ],
+    shared_libs: [
+        "libprofiled",
     ],
     srcs: ["profile_assistant_test.cc"],
 }
