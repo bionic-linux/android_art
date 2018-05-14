@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c67935a_8c729eae",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-05-14T18:21:19Z",
+      "side": 1,
+      "message": "not something that is usually expected: so document what use case this covers.",
+      "range": {
+        "startLine": 863,
+        "startChar": 2,
+        "endLine": 863,
+        "endChar": 66
+      },
+      "revId": "b4f9d0718afbf1ef76fbcda0c675f40fab0eab99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
