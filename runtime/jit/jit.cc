@@ -23,14 +23,17 @@
 #include "base/logging.h"  // For VLOG.
 #include "base/memory_tool.h"
 #include "base/runtime_debug.h"
+#include "base/utils.h"
 #include "debugger.h"
 #include "entrypoints/runtime_asm_entrypoints.h"
 #include "interpreter/interpreter.h"
-#include "java_vm_ext.h"
 #include "jit_code_cache.h"
+#include "jni/java_vm_ext.h"
+#include "mirror/method_handle_impl.h"
+#include "mirror/var_handle.h"
 #include "oat_file_manager.h"
 #include "oat_quick_method_header.h"
-#include "profile_compilation_info.h"
+#include "profile/profile_compilation_info.h"
 #include "profile_saver.h"
 #include "runtime.h"
 #include "runtime_options.h"
@@ -38,7 +41,6 @@
 #include "stack_map.h"
 #include "thread-inl.h"
 #include "thread_list.h"
-#include "utils.h"
 
 namespace art {
 namespace jit {
@@ -183,10 +185,12 @@ Jit* Jit::Create(JitOptions* options, std::string* error_msg) {
   if (jit_compiler_handle_ == nullptr && !LoadCompiler(error_msg)) {
     return nullptr;
   }
+  bool code_cache_only_for_profile_data = !options->UseJitCompilation();
   jit->code_cache_.reset(JitCodeCache::Create(
       options->GetCodeCacheInitialCapacity(),
       options->GetCodeCacheMaxCapacity(),
       jit->generate_debug_info_,
+      code_cache_only_for_profile_data,
       error_msg));
   if (jit->GetCodeCache() == nullptr) {
     return nullptr;
@@ -467,7 +471,8 @@ bool Jit::MaybeDoOnStackReplacement(Thread* thread,
   // Fetch some data before looking up for an OSR method. We don't want thread
   // suspension once we hold an OSR method, as the JIT code cache could delete the OSR
   // method while we are being suspended.
-  const size_t number_of_vregs = method->GetCodeItem()->registers_size_;
+  CodeItemDataAccessor accessor(method->DexInstructionData());
+  const size_t number_of_vregs = accessor.RegistersSize();
   const char* shorty = method->GetShorty();
   std::string method_name(VLOG_IS_ON(jit) ? method->PrettyMethod() : "");
   void** memory = nullptr;
@@ -637,15 +642,37 @@ class JitCompileTask FINAL : public Task {
   DISALLOW_IMPLICIT_CONSTRUCTORS(JitCompileTask);
 };
 
+static bool IgnoreSamplesForMethod(ArtMethod* method) REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (method->IsClassInitializer() || !method->IsCompilable()) {
+    // We do not want to compile such methods.
+    return true;
+  }
+  if (method->IsNative()) {
+    ObjPtr<mirror::Class> klass = method->GetDeclaringClass();
+    if (klass == mirror::MethodHandle::StaticClass() || klass == mirror::VarHandle::StaticClass()) {
+      // MethodHandle and VarHandle invocation methods are required to throw an
+      // UnsupportedOperationException if invoked reflectively. We achieve this by having native
+      // implementations that arise the exception. We need to disable JIT compilation of these JNI
+      // methods as it can lead to transitioning between JIT compiled JNI stubs and generic JNI
+      // stubs. Since these stubs have different stack representations we can then crash in stack
+      // walking (b/78151261).
+      return true;
+    }
+  }
+  return false;
+}
+
 void Jit::AddSamples(Thread* self, ArtMethod* method, uint16_t count, bool with_backedges) {
   if (thread_pool_ == nullptr) {
     // Should only see this when shutting down.
     DCHECK(Runtime::Current()->IsShuttingDown(self));
     return;
   }
-
-  if (method->IsClassInitializer() || !method->IsCompilable()) {
-    // We do not want to compile such methods.
+  if (IgnoreSamplesForMethod(method)) {
+    return;
+  }
+  if (hot_method_threshold_ == 0) {
+    // Tests might request JIT on first use (compiled synchronously in the interpreter).
     return;
   }
   DCHECK(thread_pool_ != nullptr);
@@ -712,10 +739,15 @@ void Jit::AddSamples(Thread* self, ArtMethod* method, uint16_t count, bool with_
 void Jit::MethodEntered(Thread* thread, ArtMethod* method) {
   Runtime* runtime = Runtime::Current();
   if (UNLIKELY(runtime->UseJitCompilation() && runtime->GetJit()->JitAtFirstUse())) {
-    // The compiler requires a ProfilingInfo object.
-    ProfilingInfo::Create(thread, method, /* retry_allocation */ true);
-    JitCompileTask compile_task(method, JitCompileTask::kCompile);
-    compile_task.Run(thread);
+    ArtMethod* np_method = method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
+    if (np_method->IsCompilable()) {
+      if (!np_method->IsNative()) {
+        // The compiler requires a ProfilingInfo object for non-native methods.
+        ProfilingInfo::Create(thread, np_method, /* retry_allocation */ true);
+      }
+      JitCompileTask compile_task(method, JitCompileTask::kCompile);
+      compile_task.Run(thread);
+    }
     return;
   }
 

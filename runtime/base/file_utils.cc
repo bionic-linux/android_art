@@ -17,10 +17,7 @@
 #include "file_utils.h"
 
 #include <inttypes.h>
-#include <pthread.h>
-#include <sys/mman.h>  // For madvise
 #include <sys/stat.h>
-#include <sys/syscall.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
@@ -45,15 +42,12 @@
 #include "android-base/stringprintf.h"
 #include "android-base/strings.h"
 
+#include "base/bit_utils.h"
+#include "base/globals.h"
+#include "base/os.h"
 #include "base/stl_util.h"
 #include "base/unix_file/fd_file.h"
-#include "dex_file-inl.h"
-#include "dex_file_loader.h"
-#include "dex_instruction.h"
-#include "oat_quick_method_header.h"
-#include "os.h"
-#include "scoped_thread_state_change-inl.h"
-#include "utf-inl.h"
+#include "dex/dex_file_loader.h"
 
 #if defined(__APPLE__)
 #include <crt_externs.h>
@@ -86,59 +80,6 @@ bool ReadFileToString(const std::string& file_name, std::string* result) {
       return true;
     }
     result->append(&buf[0], n);
-  }
-}
-
-bool PrintFileToLog(const std::string& file_name, android::base::LogSeverity level) {
-  File file(file_name, O_RDONLY, false);
-  if (!file.IsOpened()) {
-    return false;
-  }
-
-  constexpr size_t kBufSize = 256;  // Small buffer. Avoid stack overflow and stack size warnings.
-  char buf[kBufSize + 1];           // +1 for terminator.
-  size_t filled_to = 0;
-  while (true) {
-    DCHECK_LT(filled_to, kBufSize);
-    int64_t n = TEMP_FAILURE_RETRY(read(file.Fd(), &buf[filled_to], kBufSize - filled_to));
-    if (n <= 0) {
-      // Print the rest of the buffer, if it exists.
-      if (filled_to > 0) {
-        buf[filled_to] = 0;
-        LOG(level) << buf;
-      }
-      return n == 0;
-    }
-    // Scan for '\n'.
-    size_t i = filled_to;
-    bool found_newline = false;
-    for (; i < filled_to + n; ++i) {
-      if (buf[i] == '\n') {
-        // Found a line break, that's something to print now.
-        buf[i] = 0;
-        LOG(level) << buf;
-        // Copy the rest to the front.
-        if (i + 1 < filled_to + n) {
-          memmove(&buf[0], &buf[i + 1], filled_to + n - i - 1);
-          filled_to = filled_to + n - i - 1;
-        } else {
-          filled_to = 0;
-        }
-        found_newline = true;
-        break;
-      }
-    }
-    if (found_newline) {
-      continue;
-    } else {
-      filled_to += n;
-      // Check if we must flush now.
-      if (filled_to == kBufSize) {
-        buf[kBufSize] = 0;
-        LOG(level) << buf;
-        filled_to = 0;
-      }
-    }
   }
 }
 
@@ -311,46 +252,30 @@ std::string GetSystemImageFilename(const char* location, const InstructionSet is
   return filename;
 }
 
-bool FileExists(const std::string& filename) {
-  struct stat buffer;
-  return stat(filename.c_str(), &buffer) == 0;
-}
-
-bool FileExistsAndNotEmpty(const std::string& filename) {
-  struct stat buffer;
-  if (stat(filename.c_str(), &buffer) != 0) {
-    return false;
-  }
-  return buffer.st_size > 0;
-}
-
 std::string ReplaceFileExtension(const std::string& filename, const std::string& new_extension) {
-  const size_t last_ext = filename.find_last_of('.');
-  if (last_ext == std::string::npos) {
+  const size_t last_ext = filename.find_last_of("./");
+  if (last_ext == std::string::npos || filename[last_ext] != '.') {
     return filename + "." + new_extension;
   } else {
     return filename.substr(0, last_ext + 1) + new_extension;
   }
 }
 
-int64_t GetFileSizeBytes(const std::string& filename) {
-  struct stat stat_buf;
-  int rc = stat(filename.c_str(), &stat_buf);
-  return rc == 0 ? stat_buf.st_size : -1;
+bool LocationIsOnSystem(const char* path) {
+  UniqueCPtr<const char[]> full_path(realpath(path, nullptr));
+  return path != nullptr && android::base::StartsWith(full_path.get(), GetAndroidRoot().c_str());
 }
 
-int MadviseLargestPageAlignedRegion(const uint8_t* begin, const uint8_t* end, int advice) {
-  DCHECK_LE(begin, end);
-  begin = AlignUp(begin, kPageSize);
-  end = AlignDown(end, kPageSize);
-  if (begin < end) {
-    int result = madvise(const_cast<uint8_t*>(begin), end - begin, advice);
-    if (result != 0) {
-      PLOG(WARNING) << "madvise failed " << result;
-    }
-    return result;
+bool LocationIsOnSystemFramework(const char* full_path) {
+  std::string error_msg;
+  std::string root_path = GetAndroidRootSafe(&error_msg);
+  if (root_path.empty()) {
+    // Could not find Android root.
+    // TODO(dbrazdil): change to stricter GetAndroidRoot() once b/76452688 is resolved.
+    return false;
   }
-  return 0;
+  std::string framework_path = root_path + "/framework/";
+  return android::base::StartsWith(full_path, framework_path);
 }
 
 }  // namespace art
