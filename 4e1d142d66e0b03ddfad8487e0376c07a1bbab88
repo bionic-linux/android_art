@@ -51,6 +51,24 @@
       "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e52013d_63e458ac",
+        "filename": "test/482-checker-loop-back-edge-use/src/Main.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-05-15T18:30:31Z",
+      "side": 1,
+      "message": "Addressed by enabling basic peeling and unrolling heuristics for all targets.",
+      "parentUuid": "ab98772e_caf26e6e",
+      "revId": "4e1d142d66e0b03ddfad8487e0376c07a1bbab88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
