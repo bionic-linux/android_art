@@ -47,6 +47,10 @@ class CodeItemInstructionAccessor {
     return insns_size_in_code_units_;
   }
 
+  uint32_t InsnsSizeInBytes() const {
+    return insns_size_in_code_units_ * 2;  // Dex code units are 2 bytes each.
+  }
+
   const uint16_t* Insns() const {
     return insns_;
   }
