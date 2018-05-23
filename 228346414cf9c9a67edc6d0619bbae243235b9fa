@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a227c9c_813723aa",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-23T17:55:21Z",
+      "side": 1,
+      "message": "Currently you can use VisitMethodsAndFields with VoidFunctor for methods to accomplish this, I\u0027ll add an extra helper in a follow up CL though.",
+      "parentUuid": "83793bd4_2d076ed2",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7f3da2c_375bbe47",
         "filename": "libdexfile/dex/class_accessor.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30facc8c_cab6c01c",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-23T17:55:21Z",
+      "side": 1,
+      "message": "Will replace with GetDescriptor in a follow up.",
+      "parentUuid": "f7f3da2c_375bbe47",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
