@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c238eaae_76d78ac9",
+        "filename": "libdexfile/dex/class_iterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-23T08:44:59Z",
+      "side": 1,
+      "message": "private",
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b6a8064_2dfeebb8",
+        "filename": "libdexfile/dex/code_item_accessors.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-23T08:44:59Z",
+      "side": 1,
+      "message": "This reads odd as a byte is 8. Can you add a comment?",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
