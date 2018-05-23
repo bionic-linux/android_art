@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "83793bd4_2d076ed2",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1250302
+      },
+      "writtenOn": "2018-05-23T16:53:53Z",
+      "side": 1,
+      "message": "Should\u0027ve asked this last time, but why is there no VisitFields method?",
+      "range": {
+        "startLine": 103,
+        "startChar": 7,
+        "endLine": 103,
+        "endChar": 19
+      },
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f3da2c_375bbe47",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1250302
+      },
+      "writtenOn": "2018-05-23T16:53:53Z",
+      "side": 1,
+      "message": "Consider expanding on this",
+      "range": {
+        "startLine": 126,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 20
+      },
+      "revId": "228346414cf9c9a67edc6d0619bbae243235b9fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c238eaae_76d78ac9",
         "filename": "libdexfile/dex/class_iterator.h",
         "patchSetId": 1
