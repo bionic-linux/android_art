@@ -22,6 +22,30 @@
       "revId": "5c69b3d0a0b25115d5c4eb90a71eb8777d08a121",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b184a69_0430b267",
+        "filename": "libdexfile/dex/code_item_accessors.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-23T18:51:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7dc5d50_bed6986b",
+      "range": {
+        "startLine": 51,
+        "startChar": 39,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "5c69b3d0a0b25115d5c4eb90a71eb8777d08a121",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
