@@ -68,6 +68,7 @@ class VarHandle;
   M(kJavaLangReflectFieldArrayClass,        "[Ljava/lang/reflect/Field;")                 \
   M(kJavaLangReflectMethodArrayClass,       "[Ljava/lang/reflect/Method;")                \
   M(kJavaLangInvokeCallSite,                "Ljava/lang/invoke/CallSite;")                \
+  M(kJavaLangInvokeMethodHandle,            "Ljava/lang/invoke/MethodHandle;")            \
   M(kJavaLangInvokeMethodHandleImpl,        "Ljava/lang/invoke/MethodHandleImpl;")        \
   M(kJavaLangInvokeMethodHandlesLookup,     "Ljava/lang/invoke/MethodHandles$Lookup;")    \
   M(kJavaLangInvokeMethodType,              "Ljava/lang/invoke/MethodType;")              \
@@ -170,6 +171,7 @@ SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::ObjectArray<mirror::Field>, kJavaLangRefl
 SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::ObjectArray<mirror::Method>,
                                kJavaLangReflectMethodArrayClass);
 SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::CallSite, kJavaLangInvokeCallSite);
+SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::MethodHandle, kJavaLangInvokeMethodHandle);
 SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::MethodHandleImpl, kJavaLangInvokeMethodHandleImpl);
 SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::MethodHandlesLookup, kJavaLangInvokeMethodHandlesLookup);
 SPECIALIZE_CLASS_ROOT_SELECTOR(mirror::MethodType, kJavaLangInvokeMethodType);
