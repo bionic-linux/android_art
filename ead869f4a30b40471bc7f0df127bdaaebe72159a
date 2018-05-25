@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08e36e7a_b296c80c",
+        "filename": "runtime/image.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-05-25T10:43:34Z",
+      "side": 1,
+      "message": "The ClassRoot array in the image has an extra element. I\u0027ve mention that in the commit message, PS2.",
+      "parentUuid": "ccb6ab84_baaefe1d",
+      "range": {
+        "startLine": 29,
+        "startChar": 73,
+        "endLine": 29,
+        "endChar": 98
+      },
+      "revId": "ead869f4a30b40471bc7f0df127bdaaebe72159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1047f8_e75d39b2",
         "filename": "runtime/interpreter/interpreter_common.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ead869f4a30b40471bc7f0df127bdaaebe72159a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c6a4c9_a0e6ef3e",
+        "filename": "runtime/interpreter/interpreter_common.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-05-25T10:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee1047f8_e75d39b2",
+      "range": {
+        "startLine": 1132,
+        "startChar": 2,
+        "endLine": 1133,
+        "endChar": 54
+      },
+      "revId": "ead869f4a30b40471bc7f0df127bdaaebe72159a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
