@@ -52,6 +52,24 @@
       "revId": "63bcd91ed1da8859c745a1a1234deddcf4582ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368030b2_018adef3",
+        "filename": "test/458-checker-instruct-simplification/smali/SmaliTests2.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1263609
+      },
+      "writtenOn": "2018-05-25T10:25:37Z",
+      "side": 1,
+      "message": "Done, moved checkers here and also for $noinline$NotNotBool directly above the test case.",
+      "parentUuid": "02c21f81_b4e1d014",
+      "revId": "63bcd91ed1da8859c745a1a1234deddcf4582ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
