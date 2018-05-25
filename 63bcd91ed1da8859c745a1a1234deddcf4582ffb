@@ -34,6 +34,24 @@
       "revId": "63bcd91ed1da8859c745a1a1234deddcf4582ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c21f81_b4e1d014",
+        "filename": "test/458-checker-instruct-simplification/smali/SmaliTests2.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-25T10:17:34Z",
+      "side": 1,
+      "message": "Yes, please make checker lines next to where they apply.",
+      "parentUuid": "b00dc6bf_8d588f09",
+      "revId": "63bcd91ed1da8859c745a1a1234deddcf4582ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
