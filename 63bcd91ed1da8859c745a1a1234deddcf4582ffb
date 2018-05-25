@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cc0a665_218753f9",
+        "filename": "test/458-checker-instruct-simplification/smali/SmaliTests2.smali",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-25T09:31:14Z",
+      "side": 1,
+      "message": "Didn\u0027t this method had checker instructions?",
+      "revId": "63bcd91ed1da8859c745a1a1234deddcf4582ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
