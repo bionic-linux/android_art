@@ -20,6 +20,7 @@
 #include "base/utils.h"
 #include "code_item_accessors.h"
 #include "dex_file.h"
+#include "hidden_api_access_flags.h"
 #include "invoke_type.h"
 #include "method_reference.h"
 #include "modifiers.h"
@@ -38,7 +39,11 @@ class ClassAccessor {
     }
 
     uint32_t GetAccessFlags() const {
-      return access_flags_;
+      return HiddenApiAccessFlags::RemoveFromDex(access_flags_);
+    }
+
+    HiddenApiAccessFlags::ApiList DecodeHiddenAccessFlags() const {
+      return HiddenApiAccessFlags::DecodeFromDex(access_flags_);
     }
 
     bool IsFinal() const {
@@ -121,14 +126,20 @@ class ClassAccessor {
       return dex_file_;
     }
 
+    bool IsStatic() const {
+     return is_static_;
+    }
+
    private:
     const uint8_t* Read(const uint8_t* ptr);
 
     void NextSection() {
       index_ = 0u;
+      is_static_ = false;
     }
 
     const DexFile& dex_file_;
+    bool is_static_ = true;
     friend class ClassAccessor;
   };
 
@@ -197,6 +208,9 @@ class ClassAccessor {
       return !(*this < rhs);
     }
 
+    // Unhide the hidden API access flags at the iterator position. TODO: Deprecate.
+    void UnHideAccessFlags();
+
    private:
     // Read data at current position.
     void ReadData() {
@@ -252,8 +266,20 @@ class ClassAccessor {
   // Return the iteration range for all the fields.
   IterationRange<DataIterator<Field>> GetFields() const;
 
+  // Return the iteration range for all the static fields.
+  IterationRange<DataIterator<Field>> GetStaticFields() const;
+
+  // Return the iteration range for all the instance fields.
+  IterationRange<DataIterator<Field>> GetInstanceFields() const;
+
   // Return the iteration range for all the methods.
   IterationRange<DataIterator<Method>> GetMethods() const;
+
+  // Return the iteration range for the direct methods.
+  IterationRange<DataIterator<Method>> GetDirectMethods() const;
+
+  // Return the iteration range for the virtual methods.
+  IterationRange<DataIterator<Method>> GetVirtualMethods() const;
 
   uint32_t NumStaticFields() const {
     return num_static_fields_;
@@ -261,6 +287,10 @@ class ClassAccessor {
 
   uint32_t NumInstanceFields() const {
     return num_instance_fields_;
+  }
+
+  uint32_t NumFields() const {
+    return num_static_fields_ + num_instance_fields_;
   }
 
   uint32_t NumDirectMethods() const {
@@ -293,6 +323,12 @@ class ClassAccessor {
                               const Visitor& visitor,
                               const uint8_t* ptr,
                               DataType* data) const NO_THREAD_SAFETY_ANALYSIS;
+
+  // Return an iteration range for the first <count> fields.
+  IterationRange<DataIterator<Field>> GetFieldsInternal(size_t count) const;
+
+  // Return an iteration range for the first <count> methods.
+  IterationRange<DataIterator<Method>> GetMethodsInternal(size_t count) const;
 
   const DexFile& dex_file_;
   const dex::TypeIndex descriptor_index_ = {};

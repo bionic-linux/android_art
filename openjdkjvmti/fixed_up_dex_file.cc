@@ -31,6 +31,7 @@
 
 #include "base/leb128.h"
 #include "fixed_up_dex_file.h"
+#include "dex/class_accessor-inl.h"
 #include "dex/dex_file-inl.h"
 #include "dex/dex_file_loader.h"
 #include "dex/dex_file_verifier.h"
@@ -51,14 +52,14 @@ static void RecomputeDexChecksum(art::DexFile* dex_file) {
 }
 
 static void UnhideApis(const art::DexFile& target_dex_file) {
-  for (uint32_t i = 0; i < target_dex_file.NumClassDefs(); ++i) {
-    const uint8_t* class_data = target_dex_file.GetClassData(target_dex_file.GetClassDef(i));
-    if (class_data != nullptr) {
-      for (art::ClassDataItemIterator class_it(target_dex_file, class_data);
-           class_it.HasNext();
-           class_it.Next()) {
-        art::DexFile::UnHideAccessFlags(class_it);
-      }
+  for (art::ClassAccessor accessor : target_dex_file.GetClasses()) {
+    auto fields = accessor.GetFields();
+    auto methods = accessor.GetMethods();
+    for (auto it = fields.begin(); it != fields.end(); ++it) {
+      it.UnHideAccessFlags();
+    }
+    for (auto it = methods.begin(); it != methods.end(); ++it) {
+      it.UnHideAccessFlags();
     }
   }
 }

@@ -119,23 +119,66 @@ inline const DexFile::CodeItem* ClassAccessor::Method::GetCodeItem() const {
   return dex_file_.GetCodeItem(code_off_);
 }
 
-inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>> ClassAccessor::GetFields()
-    const {
-  const uint32_t limit = num_static_fields_ + num_instance_fields_;
-  return { DataIterator<Field>(dex_file_, 0u, num_static_fields_, limit, ptr_pos_),
-           DataIterator<Field>(dex_file_, limit, num_static_fields_, limit, ptr_pos_) };
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>>
+    ClassAccessor::GetFieldsInternal(size_t count) const {
+  return { DataIterator<Field>(dex_file_, 0u, num_static_fields_, count, ptr_pos_),
+           DataIterator<Field>(dex_file_, count, num_static_fields_, count, ptr_pos_) };
 }
 
+// Return an iteration range for the first <count> methods.
 inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Method>>
-    ClassAccessor::GetMethods() const {
+    ClassAccessor::GetMethodsInternal(size_t count) const {
   // Skip over the fields.
   Field field(dex_file_);
   const size_t skip_count = num_static_fields_ + num_instance_fields_;
   const uint8_t* ptr_pos = VisitMembers(skip_count, VoidFunctor(), ptr_pos_, &field);
-  // Return the iterator pair for all the methods.
-  const uint32_t limit = num_direct_methods_ + num_virtual_methods_;
-  return { DataIterator<Method>(dex_file_, 0u, num_direct_methods_, limit, ptr_pos),
-           DataIterator<Method>(dex_file_, limit, num_direct_methods_, limit, ptr_pos) };
+  // Return the iterator pair.
+  return { DataIterator<Method>(dex_file_, 0u, num_direct_methods_, count, ptr_pos),
+           DataIterator<Method>(dex_file_, count, num_direct_methods_, count, ptr_pos) };
+}
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>> ClassAccessor::GetFields()
+    const {
+  return GetFieldsInternal(num_static_fields_ + num_instance_fields_);
+}
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>>
+    ClassAccessor::GetStaticFields() const {
+  return GetFieldsInternal(num_static_fields_);
+}
+
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>>
+    ClassAccessor::GetInstanceFields() const {
+  IterationRange<ClassAccessor::DataIterator<ClassAccessor::Field>> fields = GetFields();
+  // Skip the static fields.
+  return { std::next(fields.begin(), NumStaticFields()), fields.end() };
+}
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Method>>
+    ClassAccessor::GetMethods() const {
+  return GetMethodsInternal(NumMethods());
+}
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Method>>
+    ClassAccessor::GetDirectMethods() const {
+  return GetMethodsInternal(NumDirectMethods());
+}
+
+inline IterationRange<ClassAccessor::DataIterator<ClassAccessor::Method>>
+    ClassAccessor::GetVirtualMethods() const {
+  IterationRange<DataIterator<Method>> methods = GetMethods();
+  // Skip the direct fields.
+  return { std::next(methods.begin(), NumDirectMethods()), methods.end() };
+}
+
+template <typename DataType>
+void ClassAccessor::DataIterator<DataType>::UnHideAccessFlags() {
+  static_assert(std::is_same<DataType, Method>::value || std::is_same<DataType, Field>::value,
+                "must be Method or Field");
+  DexFile::UnHideAccessFlags(const_cast<uint8_t*>(ptr_pos_),
+                             data_.GetAccessFlags(),
+                             std::is_same<DataType, Method>::value);
 }
 
 }  // namespace art
