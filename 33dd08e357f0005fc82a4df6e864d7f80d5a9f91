@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd1658de_6f02f5e6",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "MoveToInstanceFieldsSection ?",
+      "range": {
+        "startLine": 136,
+        "startChar": 9,
+        "endLine": 136,
+        "endChar": 20
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1613a091_7444fd5c",
+        "filename": "openjdkjvmti/fixed_up_dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "Range loop?",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fc69c3a_b85242ea",
+        "filename": "openjdkjvmti/fixed_up_dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "ditto?",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "053cf174_ab1ed236",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3127,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "Why not the ranged loops?",
+      "range": {
+        "startLine": 3127,
+        "startChar": 4,
+        "endLine": 3127,
+        "endChar": 39
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb80d85e_be3b97c3",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "Range loops?",
+      "range": {
+        "startLine": 289,
+        "startChar": 9,
+        "endLine": 291,
+        "endChar": 12
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b859e178_377417ce",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-05-30T12:52:31Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 59
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
