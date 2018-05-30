@@ -1251,7 +1251,9 @@ ArtMethod* Class::GetDeclaredConstructor(
 
 uint32_t Class::Depth() {
   uint32_t depth = 0;
-  for (ObjPtr<Class> klass = this; klass->GetSuperClass() != nullptr; klass = klass->GetSuperClass()) {
+  for (ObjPtr<Class> klass = this;
+       klass->GetSuperClass() != nullptr;
+       klass = klass->GetSuperClass()) {
     depth++;
   }
   return depth;
