@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d4d3338_6a6375c8",
+        "filename": "libdexfile/dex/class_accessor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "The iterator requires the same name for both fields and methods, I\u0027ll add a comment.",
+      "parentUuid": "fd1658de_6f02f5e6",
+      "range": {
+        "startLine": 136,
+        "startChar": 9,
+        "endLine": 136,
+        "endChar": 20
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1613a091_7444fd5c",
         "filename": "openjdkjvmti/fixed_up_dex_file.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-30T12:52:31Z",
       "side": 1,
       "message": "Range loop?",
+      "range": {
+        "startLine": 58,
+        "startChar": 9,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4b82390_315b6f87",
+        "filename": "openjdkjvmti/fixed_up_dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1613a091_7444fd5c",
       "range": {
         "startLine": 58,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "50f1bd9c_7a262847",
+        "filename": "openjdkjvmti/fixed_up_dex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc69c3a_b85242ea",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 62
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "053cf174_ab1ed236",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-05-30T12:52:31Z",
       "side": 1,
       "message": "Why not the ranged loops?",
+      "range": {
+        "startLine": 3127,
+        "startChar": 4,
+        "endLine": 3127,
+        "endChar": 39
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77e2bf75_88f19ca3",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3127,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "They are a bit slower since seeking to the methods skips over the static fields. I\u0027ll add a comment.",
+      "parentUuid": "053cf174_ab1ed236",
       "range": {
         "startLine": 3127,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7fb56077_2819034f",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "Would need to record the data_ptr in each Method/Field, but that should be OK I think.",
+      "parentUuid": "fb80d85e_be3b97c3",
+      "range": {
+        "startLine": 289,
+        "startChar": 9,
+        "endLine": 291,
+        "endChar": 12
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b859e178_377417ce",
         "filename": "runtime/vdex_file.cc",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2018-05-30T12:52:31Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 59
+      },
+      "revId": "33dd08e357f0005fc82a4df6e864d7f80d5a9f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4735df22_ab2292d5",
+        "filename": "runtime/vdex_file.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-30T18:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b859e178_377417ce",
       "range": {
         "startLine": 307,
         "startChar": 0,
