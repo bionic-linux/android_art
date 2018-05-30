@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7caeb1f_f18372c4",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-05-30T17:21:15Z",
+      "side": 1,
+      "message": "This should not have been part of this CL; will remove in next patch set.",
+      "range": {
+        "startLine": 734,
+        "startChar": 67,
+        "endLine": 734,
+        "endChar": 87
+      },
+      "revId": "c4313fc34659f17b747eede5998dfb24e5bb050b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
