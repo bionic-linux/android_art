@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2205a4f_5ab97a76",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-05-31T09:11:08Z",
+      "side": 1,
+      "message": "Using cls would allow 1-liner? Or klass/super with:\nfor (ObjPtr\u003cClass\u003e super \u003d GetSuperClass(); super !\u003d nullptr; super \u003d super-\u003eGetSuperClass()) {\n  depth++;\n}",
+      "range": {
+        "startLine": 1254,
+        "startChar": 21,
+        "endLine": 1254,
+        "endChar": 26
+      },
+      "revId": "9cbc65a78aabee6884b10985219f1e88e3cb7236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
