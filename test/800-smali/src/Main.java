@@ -182,6 +182,8 @@ public class Main {
                 new IncompatibleClassChangeError(), null));
         testCases.add(new TestCase("b/30458218", "B30458218", "run", null, null, null));
         testCases.add(new TestCase("b/31313170", "B31313170", "run", null, null, 0));
+        testCases.add(new TestCase("ConstClassAliasing", "ConstClassAliasing", "run", null, null,
+                null));
     }
 
     public void runTests() {
