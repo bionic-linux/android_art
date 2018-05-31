@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32006943_fcfe5828",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-31T18:28:01Z",
+      "side": 0,
+      "message": "I don\u0027t think it\u0027s particularly valuable, but I\u0027ll re-add it.",
+      "parentUuid": "96213008_5e60a594",
+      "range": {
+        "startLine": 2918,
+        "startChar": 2,
+        "endLine": 2918,
+        "endChar": 60
+      },
+      "revId": "4556aad2691b776dae811429d3b9394e797e526d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66ac1584_b5c131d7",
         "filename": "runtime/class_linker.cc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4556aad2691b776dae811429d3b9394e797e526d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b525d0_042e0eb4",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-05-31T18:28:01Z",
+      "side": 0,
+      "message": "Good idea.",
+      "parentUuid": "66ac1584_b5c131d7",
+      "range": {
+        "startLine": 3040,
+        "startChar": 2,
+        "endLine": 3042,
+        "endChar": 3
+      },
+      "revId": "4556aad2691b776dae811429d3b9394e797e526d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
