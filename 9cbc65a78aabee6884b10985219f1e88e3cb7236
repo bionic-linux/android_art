@@ -22,6 +22,30 @@
       "revId": "9cbc65a78aabee6884b10985219f1e88e3cb7236",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a4be5d_6e127b46",
+        "filename": "runtime/mirror/class.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1254,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-05-31T11:49:09Z",
+      "side": 1,
+      "message": "Thanks for the suggestions; I went with the renaming to `cls`.",
+      "parentUuid": "b2205a4f_5ab97a76",
+      "range": {
+        "startLine": 1254,
+        "startChar": 21,
+        "endLine": 1254,
+        "endChar": 26
+      },
+      "revId": "9cbc65a78aabee6884b10985219f1e88e3cb7236",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
