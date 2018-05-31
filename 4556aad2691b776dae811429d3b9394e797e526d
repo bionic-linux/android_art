@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96213008_5e60a594",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2918,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-05-31T17:39:54Z",
+      "side": 0,
+      "message": "You lost this invariant?",
+      "range": {
+        "startLine": 2918,
+        "startChar": 2,
+        "endLine": 2918,
+        "endChar": 60
+      },
+      "revId": "4556aad2691b776dae811429d3b9394e797e526d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ac1584_b5c131d7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3042,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-05-31T17:39:54Z",
+      "side": 0,
+      "message": "What is the performance impact of removing this? Also looks like it would allocate empty arrays now? Maybe move this into the new LoadClass?",
+      "range": {
+        "startLine": 3040,
+        "startChar": 2,
+        "endLine": 3042,
+        "endChar": 3
+      },
+      "revId": "4556aad2691b776dae811429d3b9394e797e526d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
