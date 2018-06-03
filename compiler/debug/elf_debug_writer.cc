@@ -41,11 +41,20 @@ void WriteDebugInfo(linker::ElfBuilder<ElfTypes>* builder,
                     const DebugInfo& debug_info,
                     dwarf::CFIFormat cfi_format,
                     bool write_oat_patches) {
-  // Write .strtab and .symtab.
-  WriteDebugSymbols(builder, false /* mini-debug-info */, debug_info);
+  std::unordered_map<typename ElfTypes::Addr, uint32_t> fde_offsets;
 
   // Write .debug_frame.
-  WriteCFISection(builder, debug_info.compiled_methods, cfi_format, write_oat_patches);
+  WriteCFISection(builder,
+                  debug_info.compiled_methods,
+                  cfi_format,
+                  write_oat_patches,
+                  &fde_offsets);
+
+  // Write .strtab and .symtab.
+  WriteDebugSymbols(builder,
+                    false /* mini-debug-info */,
+                    debug_info,
+                    &fde_offsets);
 
   // Group the methods into compilation units based on class.
   std::unordered_map<const DexFile::ClassDef*, ElfCompilationUnit> class_to_compilation_unit;
@@ -169,11 +178,15 @@ static std::vector<uint8_t> MakeElfFileForJITInternal(
       // The compression is great help for multiple methods but it is not worth it for a
       // single method due to the overheads so skip the compression here for performance.
       builder->GetText()->AllocateVirtualMemory(min_address, max_address - min_address);
-      WriteDebugSymbols(builder.get(), true /* mini-debug-info */, debug_info);
+      WriteDebugSymbols(builder.get(),
+                        true /* mini-debug-info */,
+                        debug_info,
+                        nullptr /* fde_offsets */);
       WriteCFISection(builder.get(),
                       debug_info.compiled_methods,
                       dwarf::DW_DEBUG_FRAME_FORMAT,
-                      false /* write_oat_paches */);
+                      false /* write_oat_paches */,
+                      nullptr /* fde_offsets */);
     }
   } else {
     builder->GetText()->AllocateVirtualMemory(min_address, max_address - min_address);
