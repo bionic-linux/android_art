@@ -18,6 +18,7 @@
 #define ART_COMPILER_DEBUG_ELF_GNU_DEBUGDATA_WRITER_H_
 
 #include <vector>
+#include <unordered_map>
 
 #include "arch/instruction_set.h"
 #include "linker/elf_builder.h"
@@ -96,11 +97,16 @@ static std::vector<uint8_t> MakeMiniDebugInfoInternal(
   if (dex_section_size != 0) {
     builder->GetDex()->AllocateVirtualMemory(dex_section_address, dex_section_size);
   }
-  WriteDebugSymbols(builder.get(), true /* mini-debug-info */, debug_info);
+  std::unordered_map<typename ElfTypes::Addr, uint32_t> fde_offsets;
   WriteCFISection(builder.get(),
                   debug_info.compiled_methods,
                   dwarf::DW_DEBUG_FRAME_FORMAT,
-                  false /* write_oat_paches */);
+                  false /* write_oat_paches */,
+                  &fde_offsets);
+  WriteDebugSymbols(builder.get(),
+                    true /* mini-debug-info */,
+                    debug_info,
+                    &fde_offsets);
   builder->End();
   CHECK(builder->Good());
   std::vector<uint8_t> compressed_buffer;
