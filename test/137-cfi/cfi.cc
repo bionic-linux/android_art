@@ -54,15 +54,18 @@ static void CauseSegfault() {
 #endif
 }
 
-extern "C" JNIEXPORT jboolean JNICALL Java_Main_sleep(JNIEnv*, jobject, jint, jboolean, jdouble) {
-  // Keep pausing.
-  struct timespec ts = { .tv_sec = 100, .tv_nsec = 0 };
-  printf("Going to sleep\n");
-  for (;;) {
-    // Use nanosleep since it gets to the system call quickly and doesn't
-    // have any points at which an unwind will fail.
-    nanosleep(&ts, nullptr);
+extern "C" JNIEXPORT jint JNICALL Java_Main_forkSecondary(JNIEnv*, jobject) {
+  pid_t pid = fork();
+  if (pid == 0) {
+    // The child process just keeps waiting to be backtraced.
+    for (;;) {
+      // Use nanosleep since it gets to the system call quickly and doesn't
+      // have any points at which an unwind will fail.
+      struct timespec ts = { .tv_sec = 100, .tv_nsec = 0 };
+      nanosleep(&ts, nullptr);
+    }
   }
+  return pid;
 }
 
 // Helper to look for a sequence in the stack trace.
@@ -107,15 +110,8 @@ static void MoreErrorInfo(pid_t pid, bool sig_quit_on_fail) {
 }
 #endif
 
-extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindInProcess(
-    JNIEnv*,
-    jobject,
-    jboolean,
-    jint,
-    jboolean) {
+extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindInProcess(JNIEnv*, jobject) {
 #if __linux__
-  // TODO: What to do on Valgrind?
-
   std::unique_ptr<Backtrace> bt(Backtrace::Create(BACKTRACE_CURRENT_PROCESS, GetTid()));
   if (!bt->Unwind(0, nullptr)) {
     printf("Cannot unwind in process.\n");
@@ -132,7 +128,7 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindInProcess(
   std::vector<std::string> seq = {
       "Java_Main_unwindInProcess",                   // This function.
       "java.util.Arrays.binarySearch0",              // Framework method.
-      "Base.runBase",                                // Method in other dex file.
+      "Base.runTest",                                // Method in other dex file.
       "Main.main"                                    // The Java entry method.
   };
 
@@ -185,13 +181,8 @@ int wait_for_sigstop(pid_t tid, int* total_sleep_time_usec, bool* detach_failed 
 }
 #endif
 
-extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindOtherProcess(
-    JNIEnv*,
-    jobject,
-    jboolean,
-    jint pid_int) {
+extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindOtherProcess(JNIEnv*, jobject, jint pid_int) {
 #if __linux__
-  // TODO: What to do on Valgrind?
   pid_t pid = static_cast<pid_t>(pid_int);
 
   // OK, this is painful. debuggerd uses ptrace to unwind other processes.
@@ -227,9 +218,9 @@ extern "C" JNIEXPORT jboolean JNICALL Java_Main_unwindOtherProcess(
     // See comment in unwindInProcess for non-exact stack matching.
     // "mini-debug-info" does not include parameters to save space.
     std::vector<std::string> seq = {
-        "Java_Main_sleep",                           // The sleep function in the other process.
+        "Java_Main_forkSecondary",                   // The sleep function in the other process.
         "java.util.Arrays.binarySearch0",            // Framework method.
-        "Base.runBase",                              // Method in other dex file.
+        "Base.runTest",                              // Method in other dex file.
         "Main.main"                                  // The Java entry method.
     };
 

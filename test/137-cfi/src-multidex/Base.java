@@ -15,8 +15,12 @@
  */
 
 public abstract class Base {
-  abstract public void runImpl();
-  public void runBase() {
-    runImpl();
+  public void runTest(String[] args) throws Exception {
+    if (args == null) {
+      // Try to prevent inlining of the method by throwing exception.
+      throw new Exception("args must not be null");
+    }
+    test(args);
   }
+  abstract public void test(String[] args);
 }
