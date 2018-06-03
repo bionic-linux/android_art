@@ -17,9 +17,12 @@
 #ifndef ART_COMPILER_DEBUG_ELF_DEBUG_FRAME_WRITER_H_
 #define ART_COMPILER_DEBUG_ELF_DEBUG_FRAME_WRITER_H_
 
+#include <algorithm>
+#include <unordered_map>
 #include <vector>
 
 #include "arch/instruction_set.h"
+#include "compiled_method.h"
 #include "debug/dwarf/debug_frame_opcode_writer.h"
 #include "debug/dwarf/dwarf_constants.h"
 #include "debug/dwarf/headers.h"
@@ -171,7 +174,8 @@ template<typename ElfTypes>
 void WriteCFISection(linker::ElfBuilder<ElfTypes>* builder,
                      const ArrayRef<const MethodDebugInfo>& method_infos,
                      dwarf::CFIFormat format,
-                     bool write_oat_patches) {
+                     bool write_oat_patches,
+                     std::unordered_map<typename ElfTypes::Addr, uint32_t>* fde_offsets) {
   CHECK(format == dwarf::DW_DEBUG_FRAME_FORMAT || format == dwarf::DW_EH_FRAME_FORMAT);
   typedef typename ElfTypes::Addr Elf_Addr;
 
@@ -228,6 +232,10 @@ void WriteCFISection(linker::ElfBuilder<ElfTypes>* builder,
       if (format == dwarf::DW_EH_FRAME_FORMAT) {
         binary_search_table.push_back(dchecked_integral_cast<uint32_t>(code_address));
         binary_search_table.push_back(dchecked_integral_cast<uint32_t>(buffer_address));
+      }
+      if (fde_offsets != nullptr) {
+        int delta = CompiledMethod::CodeDelta(mi->isa);
+        fde_offsets->emplace(code_address + delta, buffer_address);
       }
       WriteFDE(is64bit, cfi_address, cie_address,
                code_address, mi->code_size,
