@@ -36,13 +36,13 @@ class DexRegisterLocation {
     kInRegisterHigh,     // vreg is in high 32 bits of a core physical register.
     kInFpuRegister,      // vreg is in low 32 bits of an FPU register.
     kInFpuRegisterHigh,  // vreg is in high 32 bits of an FPU register.
+    kInvalid,            // only used internally during register map decoding.
   };
 
   DexRegisterLocation(Kind kind, int32_t value) : kind_(kind), value_(value) {}
 
-  static DexRegisterLocation None() {
-    return DexRegisterLocation(Kind::kNone, 0);
-  }
+  static DexRegisterLocation None() { return DexRegisterLocation(Kind::kNone, 0); }
+  static DexRegisterLocation Invalid() { return DexRegisterLocation(Kind::kInvalid, 0); }
 
   bool IsLive() const { return kind_ != Kind::kNone; }
 
