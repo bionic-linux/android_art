@@ -493,8 +493,7 @@ bool Jit::MaybeDoOnStackReplacement(Thread* thread,
 
     // We found a stack map, now fill the frame with dex register values from the interpreter's
     // shadow frame.
-    DexRegisterMap vreg_map =
-        code_info.GetDexRegisterMapOf(stack_map, number_of_vregs);
+    DexRegisterMap vreg_map = code_info.GetDexRegisterMapOf(stack_map);
 
     frame_size = osr_method->GetFrameSizeInBytes();
 

@@ -81,8 +81,7 @@ TEST(StackMapTest, Test1) {
   ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask));
 
   ASSERT_TRUE(stack_map.HasDexRegisterMap());
-  DexRegisterMap dex_register_map =
-      code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+  DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
   ASSERT_TRUE(dex_register_map.IsDexRegisterLive(0));
   ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
   ASSERT_EQ(2u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -170,8 +169,7 @@ TEST(StackMapTest, Test2) {
     ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask1));
 
     ASSERT_TRUE(stack_map.HasDexRegisterMap());
-    DexRegisterMap dex_register_map =
-        code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+    DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(0));
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
     ASSERT_EQ(2u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -209,8 +207,7 @@ TEST(StackMapTest, Test2) {
     ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask2));
 
     ASSERT_TRUE(stack_map.HasDexRegisterMap());
-    DexRegisterMap dex_register_map =
-        code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+    DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(0));
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
     ASSERT_EQ(2u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -242,8 +239,7 @@ TEST(StackMapTest, Test2) {
     ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask3));
 
     ASSERT_TRUE(stack_map.HasDexRegisterMap());
-    DexRegisterMap dex_register_map =
-        code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+    DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(0));
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
     ASSERT_EQ(2u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -275,8 +271,7 @@ TEST(StackMapTest, Test2) {
     ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask4));
 
     ASSERT_TRUE(stack_map.HasDexRegisterMap());
-    DexRegisterMap dex_register_map =
-        code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+    DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(0));
     ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
     ASSERT_EQ(2u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -341,7 +336,7 @@ TEST(StackMapTest, TestDeduplicateInlineInfoDexRegisterMap) {
     ASSERT_TRUE(CheckStackMask(code_info, stack_map, sp_mask1));
 
     ASSERT_TRUE(stack_map.HasDexRegisterMap());
-    DexRegisterMap map(code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers));
+    DexRegisterMap map(code_info.GetDexRegisterMapOf(stack_map));
     ASSERT_TRUE(map.IsDexRegisterLive(0));
     ASSERT_TRUE(map.IsDexRegisterLive(1));
     ASSERT_EQ(2u, map.GetNumberOfLiveDexRegisters());
@@ -392,8 +387,7 @@ TEST(StackMapTest, TestNonLiveDexRegisters) {
   ASSERT_EQ(0x3u, code_info.GetRegisterMaskOf(stack_map));
 
   ASSERT_TRUE(stack_map.HasDexRegisterMap());
-  DexRegisterMap dex_register_map =
-      code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+  DexRegisterMap dex_register_map = code_info.GetDexRegisterMapOf(stack_map);
   ASSERT_FALSE(dex_register_map.IsDexRegisterLive(0));
   ASSERT_TRUE(dex_register_map.IsDexRegisterLive(1));
   ASSERT_EQ(1u, dex_register_map.GetNumberOfLiveDexRegisters());
@@ -442,19 +436,19 @@ TEST(StackMapTest, TestShareDexRegisterMap) {
 
   // Verify first stack map.
   StackMap sm0 = ci.GetStackMapAt(0);
-  DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm0, number_of_dex_registers);
+  DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm0);
   ASSERT_EQ(0, dex_registers0.GetMachineRegister(0));
   ASSERT_EQ(-2, dex_registers0.GetConstant(1));
 
   // Verify second stack map.
   StackMap sm1 = ci.GetStackMapAt(1);
-  DexRegisterMap dex_registers1 = ci.GetDexRegisterMapOf(sm1, number_of_dex_registers);
+  DexRegisterMap dex_registers1 = ci.GetDexRegisterMapOf(sm1);
   ASSERT_EQ(0, dex_registers1.GetMachineRegister(0));
   ASSERT_EQ(-2, dex_registers1.GetConstant(1));
 
   // Verify third stack map.
   StackMap sm2 = ci.GetStackMapAt(2);
-  DexRegisterMap dex_registers2 = ci.GetDexRegisterMapOf(sm2, number_of_dex_registers);
+  DexRegisterMap dex_registers2 = ci.GetDexRegisterMapOf(sm2);
   ASSERT_EQ(2, dex_registers2.GetMachineRegister(0));
   ASSERT_EQ(-2, dex_registers2.GetConstant(1));
 
@@ -590,7 +584,7 @@ TEST(StackMapTest, InlineTest) {
     // Verify first stack map.
     StackMap sm0 = ci.GetStackMapAt(0);
 
-    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm0, 2);
+    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm0);
     ASSERT_EQ(0, dex_registers0.GetStackOffsetInBytes(0));
     ASSERT_EQ(4, dex_registers0.GetConstant(1));
 
@@ -601,10 +595,10 @@ TEST(StackMapTest, InlineTest) {
     ASSERT_EQ(3u, if0.GetDexPcAtDepth(1));
     ASSERT_TRUE(if0.EncodesArtMethodAtDepth(1));
 
-    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(0, sm0, 1);
+    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(0, sm0);
     ASSERT_EQ(8, dex_registers1.GetStackOffsetInBytes(0));
 
-    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(1, sm0, 3);
+    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(1, sm0);
     ASSERT_EQ(16, dex_registers2.GetStackOffsetInBytes(0));
     ASSERT_EQ(20, dex_registers2.GetConstant(1));
     ASSERT_EQ(15, dex_registers2.GetMachineRegister(2));
@@ -614,7 +608,7 @@ TEST(StackMapTest, InlineTest) {
     // Verify second stack map.
     StackMap sm1 = ci.GetStackMapAt(1);
 
-    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm1, 2);
+    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm1);
     ASSERT_EQ(56, dex_registers0.GetStackOffsetInBytes(0));
     ASSERT_EQ(0, dex_registers0.GetConstant(1));
 
@@ -627,10 +621,10 @@ TEST(StackMapTest, InlineTest) {
     ASSERT_EQ(5u, if1.GetDexPcAtDepth(2));
     ASSERT_TRUE(if1.EncodesArtMethodAtDepth(2));
 
-    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(0, sm1, 1);
+    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(0, sm1);
     ASSERT_EQ(12, dex_registers1.GetStackOffsetInBytes(0));
 
-    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(1, sm1, 3);
+    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(1, sm1);
     ASSERT_EQ(80, dex_registers2.GetStackOffsetInBytes(0));
     ASSERT_EQ(10, dex_registers2.GetConstant(1));
     ASSERT_EQ(5, dex_registers2.GetMachineRegister(2));
@@ -640,7 +634,7 @@ TEST(StackMapTest, InlineTest) {
     // Verify third stack map.
     StackMap sm2 = ci.GetStackMapAt(2);
 
-    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm2, 2);
+    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm2);
     ASSERT_FALSE(dex_registers0.IsDexRegisterLive(0));
     ASSERT_EQ(4, dex_registers0.GetConstant(1));
     ASSERT_FALSE(sm2.HasInlineInfo());
@@ -650,7 +644,7 @@ TEST(StackMapTest, InlineTest) {
     // Verify fourth stack map.
     StackMap sm3 = ci.GetStackMapAt(3);
 
-    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm3, 2);
+    DexRegisterMap dex_registers0 = ci.GetDexRegisterMapOf(sm3);
     ASSERT_EQ(56, dex_registers0.GetStackOffsetInBytes(0));
     ASSERT_EQ(0, dex_registers0.GetConstant(1));
 
@@ -663,10 +657,10 @@ TEST(StackMapTest, InlineTest) {
     ASSERT_EQ(10u, if2.GetDexPcAtDepth(2));
     ASSERT_TRUE(if2.EncodesArtMethodAtDepth(2));
 
-    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(1, sm3, 1);
+    DexRegisterMap dex_registers1 = ci.GetDexRegisterMapAtDepth(1, sm3);
     ASSERT_EQ(2, dex_registers1.GetMachineRegister(0));
 
-    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(2, sm3, 2);
+    DexRegisterMap dex_registers2 = ci.GetDexRegisterMapAtDepth(2, sm3);
     ASSERT_FALSE(dex_registers2.IsDexRegisterLive(0));
     ASSERT_EQ(3, dex_registers2.GetMachineRegister(1));
   }

@@ -237,10 +237,8 @@ bool StackVisitor::GetVRegFromOptimizedCode(ArtMethod* m, uint16_t vreg, VRegKin
   size_t depth_in_stack_map = current_inlining_depth_ - 1;
 
   DexRegisterMap dex_register_map = IsInInlinedFrame()
-      ? code_info.GetDexRegisterMapAtDepth(depth_in_stack_map,
-                                           stack_map,
-                                           number_of_dex_registers)
-      : code_info.GetDexRegisterMapOf(stack_map, number_of_dex_registers);
+      ? code_info.GetDexRegisterMapAtDepth(depth_in_stack_map, stack_map)
+      : code_info.GetDexRegisterMapOf(stack_map);
 
   if (!dex_register_map.IsValid()) {
     return false;

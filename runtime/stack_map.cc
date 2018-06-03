@@ -163,7 +163,6 @@ static void DumpTable(VariableIndentationOutputStream* vios,
 
 void CodeInfo::Dump(VariableIndentationOutputStream* vios,
                     uint32_t code_offset,
-                    uint16_t num_dex_registers,
                     bool verbose,
                     InstructionSet instruction_set,
                     const MethodInfo& method_info) const {
@@ -185,7 +184,7 @@ void CodeInfo::Dump(VariableIndentationOutputStream* vios,
   if (verbose) {
     for (size_t i = 0; i < GetNumberOfStackMaps(); ++i) {
       StackMap stack_map = GetStackMapAt(i);
-      stack_map.Dump(vios, *this, method_info, code_offset, num_dex_registers, instruction_set);
+      stack_map.Dump(vios, *this, method_info, code_offset, instruction_set);
     }
   }
 }
@@ -194,7 +193,6 @@ void StackMap::Dump(VariableIndentationOutputStream* vios,
                     const CodeInfo& code_info,
                     const MethodInfo& method_info,
                     uint32_t code_offset,
-                    uint16_t number_of_dex_registers,
                     InstructionSet instruction_set) const {
   const uint32_t pc_offset = GetNativePcOffset(instruction_set);
   vios->Stream()
@@ -210,21 +208,17 @@ void StackMap::Dump(VariableIndentationOutputStream* vios,
     vios->Stream() << stack_mask.LoadBit(e - i - 1);
   }
   vios->Stream() << ")\n";
-  DumpDexRegisterMap(vios, code_info.GetDexRegisterMapOf(*this, number_of_dex_registers));
+  DumpDexRegisterMap(vios, code_info.GetDexRegisterMapOf(*this));
   if (HasInlineInfo()) {
     InlineInfo inline_info = code_info.GetInlineInfoOf(*this);
-    // We do not know the length of the dex register maps of inlined frames
-    // at this level, so we just pass null to `InlineInfo::Dump` to tell
-    // it not to look at these maps.
-    inline_info.Dump(vios, code_info, *this, method_info, nullptr);
+    inline_info.Dump(vios, code_info, *this, method_info);
   }
 }
 
 void InlineInfo::Dump(VariableIndentationOutputStream* vios,
                       const CodeInfo& code_info,
                       const StackMap& stack_map,
-                      const MethodInfo& method_info,
-                      uint16_t number_of_dex_registers[]) const {
+                      const MethodInfo& method_info) const {
   for (size_t i = 0; i < GetDepth(); ++i) {
     vios->Stream()
         << "InlineInfo[" << Row() + i << "]"
@@ -240,10 +234,7 @@ void InlineInfo::Dump(VariableIndentationOutputStream* vios,
           << ", method_index=" << GetMethodIndexAtDepth(method_info, i);
     }
     vios->Stream() << ")\n";
-    if (number_of_dex_registers != nullptr) {
-      uint16_t vregs = number_of_dex_registers[i];
-      DumpDexRegisterMap(vios, code_info.GetDexRegisterMapAtDepth(i, stack_map, vregs));
-    }
+    DumpDexRegisterMap(vios, code_info.GetDexRegisterMapAtDepth(i, stack_map));
   }
 }
 

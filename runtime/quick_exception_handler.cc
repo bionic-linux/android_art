@@ -230,8 +230,7 @@ void QuickExceptionHandler::SetCatchEnvironmentForOptimizedHandler(StackVisitor*
   // Find stack map of the catch block.
   StackMap catch_stack_map = code_info.GetCatchStackMapForDexPc(GetHandlerDexPc());
   DCHECK(catch_stack_map.IsValid());
-  DexRegisterMap catch_vreg_map =
-      code_info.GetDexRegisterMapOf(catch_stack_map, number_of_vregs);
+  DexRegisterMap catch_vreg_map = code_info.GetDexRegisterMapOf(catch_stack_map);
   if (!catch_vreg_map.IsValid() || !catch_vreg_map.HasAnyLiveDexRegisters()) {
     return;
   }
@@ -240,8 +239,7 @@ void QuickExceptionHandler::SetCatchEnvironmentForOptimizedHandler(StackVisitor*
   StackMap throw_stack_map =
       code_info.GetStackMapForNativePcOffset(stack_visitor->GetNativePcOffset());
   DCHECK(throw_stack_map.IsValid());
-  DexRegisterMap throw_vreg_map =
-      code_info.GetDexRegisterMapOf(throw_stack_map, number_of_vregs);
+  DexRegisterMap throw_vreg_map = code_info.GetDexRegisterMapOf(throw_stack_map);
   DCHECK(throw_vreg_map.IsValid());
 
   // Copy values between them.
@@ -405,10 +403,8 @@ class DeoptimizeStackVisitor FINAL : public StackVisitor {
     uint32_t register_mask = code_info.GetRegisterMaskOf(stack_map);
     BitMemoryRegion stack_mask = code_info.GetStackMaskOf(stack_map);
     DexRegisterMap vreg_map = IsInInlinedFrame()
-        ? code_info.GetDexRegisterMapAtDepth(GetCurrentInliningDepth() - 1,
-                                             stack_map,
-                                             number_of_vregs)
-        : code_info.GetDexRegisterMapOf(stack_map, number_of_vregs);
+        ? code_info.GetDexRegisterMapAtDepth(GetCurrentInliningDepth() - 1, stack_map)
+        : code_info.GetDexRegisterMapOf(stack_map);
 
     if (!vreg_map.IsValid()) {
       return;
