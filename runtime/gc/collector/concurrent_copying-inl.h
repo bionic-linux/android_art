@@ -75,25 +75,34 @@ inline mirror::Object* ConcurrentCopying::MarkImmuneSpace(mirror::Object* ref) {
     // in the thread flip on behalf of suspended threads (when gc_grays_immune_objects_ is
     // true). Also, a mutator doesn't (need to) gray an immune object after GC has updated all
     // immune space objects (when updated_all_immune_objects_ is true).
-    if (kIsDebugBuild) {
-      if (Thread::Current() == thread_running_gc_) {
-        DCHECK(!kGrayImmuneObject ||
-               updated_all_immune_objects_.load(std::memory_order_relaxed) ||
-               gc_grays_immune_objects_);
-      } else {
-        DCHECK(kGrayImmuneObject);
+    //  if (kIsDebugBuild) {
+    //    if (Thread::Current() == thread_running_gc_) {
+    //      DCHECK(!kGrayImmuneObject ||
+    //             updated_all_immune_objects_.load(std::memory_order_relaxed) ||
+    //             gc_grays_immune_objects_);
+    //    } else {
+    //      DCHECK(kGrayImmuneObject);
+    //    }
+    //  }
+    if (kGrayImmuneObject) {
+      ReaderMutexLock mu(Thread::Current(), immune_mark_set_lock_);
+      if (/* updated_all_immune_objects_.load(std::memory_order_relaxed) || */
+          immune_mark_set_.find(ref) != immune_mark_set_.end()) {
+        return ref;
       }
-    }
-    if (!kGrayImmuneObject || updated_all_immune_objects_.load(std::memory_order_relaxed)) {
+    } else {
       return ref;
     }
+
     // This may or may not succeed, which is ok because the object may already be gray.
-    bool success = ref->AtomicSetReadBarrierState(/* expected_rb_state */ ReadBarrier::WhiteState(),
-                                                  /* rb_state */ ReadBarrier::GrayState());
-    if (success) {
-      MutexLock mu(Thread::Current(), immune_gray_stack_lock_);
-      immune_gray_stack_.push_back(ref);
-    }
+    /* bool success = */
+    ref->AtomicSetReadBarrierState(/* expected_rb_state */ ReadBarrier::WhiteState(),
+                                   /* rb_state */ ReadBarrier::GrayState());
+    PushOntoMarkStack(ref);
+    //  if (success) {
+    //    MutexLock mu(Thread::Current(), immune_gray_stack_lock_);
+    //    immune_gray_stack_.push_back(ref);
+    //  }
   }
   return ref;
 }
