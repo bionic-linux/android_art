@@ -48,6 +48,7 @@
 #include "runtime.h"
 #include "thread-inl.h"
 #include "thread_list.h"
+#include "image-inl.h"
 
 using ::art::mirror::Object;
 
@@ -337,6 +338,15 @@ void SemiSpace::MarkReachableObjects() {
     live_stack->Reset();
   }
   for (auto& space : heap_->GetContinuousSpaces()) {
+    if (space->IsImageSpace()) {
+      gc::space::ImageSpace* image = space->AsImageSpace();
+      if (image != nullptr) {
+        mirror::ObjectArray<mirror::Object>* image_root =
+            image->GetImageHeader().GetImageRoots<kWithoutReadBarrier>();
+        ScanObject(image_root);
+      }
+      continue;
+    }
     // If the space is immune then we need to mark the references to other spaces.
     accounting::ModUnionTable* table = heap_->FindModUnionTableFromSpace(space);
     if (table != nullptr) {
