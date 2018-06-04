@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8f34374_1c4bf70b",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-04T21:13:02Z",
+      "side": 1,
+      "message": "I think this is the part causing problems. Since the live bitmap \u003d\u003d mark bitmap for the image space, the SemiSpace GC will never mark other objects in the image. This in turn causes them to not get scanned and probably causes dangling pointer errors.\n\nMaybe consider also adding a mark set/bitmap here to handle marking objects in the image space?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 349,
+        "endChar": 5
+      },
+      "revId": "274d3158127c72432fce6a495a5cfae9d175059c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
