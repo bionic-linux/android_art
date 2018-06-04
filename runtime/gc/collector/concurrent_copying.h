@@ -26,6 +26,7 @@
 #include "offsets.h"
 
 #include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 namespace art {
@@ -264,7 +265,8 @@ class ConcurrentCopying : public GarbageCollector {
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_);
   template<bool kGrayImmuneObject>
   ALWAYS_INLINE mirror::Object* MarkImmuneSpace(mirror::Object* from_ref)
-      REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!immune_gray_stack_lock_);
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!immune_gray_stack_lock_, !mark_stack_lock_);
   void PushOntoFalseGrayStack(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
   void ProcessFalseGrayStack() REQUIRES_SHARED(Locks::mutator_lock_)
@@ -363,6 +365,8 @@ class ConcurrentCopying : public GarbageCollector {
   bool gc_grays_immune_objects_;
   Mutex immune_gray_stack_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
   std::vector<mirror::Object*> immune_gray_stack_ GUARDED_BY(immune_gray_stack_lock_);
+  ReaderWriterMutex immune_mark_set_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
+  std::unordered_set<mirror::Object*> immune_mark_set_ GUARDED_BY(immune_mark_set_lock_);
 
   // Class of java.lang.Object. Filled in from WellKnownClasses in FlipCallback. Must
   // be filled in before flipping thread roots so that FillDummyObject can run. Not
