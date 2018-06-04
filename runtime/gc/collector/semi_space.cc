@@ -48,6 +48,7 @@
 #include "runtime.h"
 #include "thread-inl.h"
 #include "thread_list.h"
+#include "image-inl.h"
 
 using ::art::mirror::Object;
 
@@ -337,6 +338,15 @@ void SemiSpace::MarkReachableObjects() {
     live_stack->Reset();
   }
   for (auto& space : heap_->GetContinuousSpaces()) {
+    if (space->IsImageSpace()) {
+      gc::space::ImageSpace* image = space->AsImageSpace();
+      if (image != nullptr) {
+        mirror::ObjectArray<mirror::Object>* image_root =
+            image->GetImageHeader().GetImageRoots<kWithoutReadBarrier>();
+        ScanObject(image_root);
+      }
+      continue;
+    }
     // If the space is immune then we need to mark the references to other spaces.
     accounting::ModUnionTable* table = heap_->FindModUnionTableFromSpace(space);
     if (table != nullptr) {
@@ -761,10 +771,12 @@ mirror::Object* SemiSpace::IsMarked(mirror::Object* obj) {
   if (from_space_->HasAddress(obj)) {
     // Returns either the forwarding address or null.
     return GetForwardingAddressInFromSpace(obj);
-  } else if (collect_from_space_only_ ||
-             immune_spaces_.IsInImmuneRegion(obj) ||
-             to_space_->HasAddress(obj)) {
+  } else if (to_space_->HasAddress(obj)) {
     return obj;  // Already forwarded, must be marked.
+  } else if (immune_spaces_.ContainsObject(obj)) {
+    return immune_mark_set_.find(obj) != immune_mark_set_.end() ? obj : nullptr;
+  } else if (collect_from_space_only_) {
+    return obj;
   }
   return mark_bitmap_->Test(obj) ? obj : nullptr;
 }
@@ -843,6 +855,7 @@ void SemiSpace::FinishPhase() {
       collect_from_space_only_ = true;
     }
   }
+  immune_mark_set_.clear();
   // Clear all of the spaces' mark bitmaps.
   WriterMutexLock mu(Thread::Current(), *Locks::heap_bitmap_lock_);
   heap_->ClearMarkedObjects();

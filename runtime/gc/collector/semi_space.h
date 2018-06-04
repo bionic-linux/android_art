@@ -18,6 +18,7 @@
 #define ART_RUNTIME_GC_COLLECTOR_SEMI_SPACE_H_
 
 #include <memory>
+#include <unordered_set>
 
 #include "base/atomic.h"
 #include "base/macros.h"
@@ -218,6 +219,8 @@ class SemiSpace : public GarbageCollector {
   space::ContinuousMemMapAllocSpace* from_space_;
   // Cached mark bitmap as an optimization.
   accounting::HeapBitmap* mark_bitmap_;
+
+  std::unordered_set<mirror::Object*> immune_mark_set_;
 
   Thread* self_;
 
