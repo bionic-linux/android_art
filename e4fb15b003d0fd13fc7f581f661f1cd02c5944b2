@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c66ed971_fd0b0583",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "Comments please.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 3
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63e7bb6_5242e93b",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "Add a comment.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 3
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9b5470a_a8b9b236",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "Add a comment about what this loop does.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 62
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a3ea4fd_6cdc6ca7",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "2 more spaces",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 6
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bde55b6_08828638",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 6
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b8ff618_d0c18c61",
+        "filename": "compiler/optimizing/stack_map_stream.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "Add a comment with TODO: make it const.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 34
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8b48ee3_36fa2c60",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "You can drop this.",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 10
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95872fa4_4511a802",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "kNumberOfDexRegisters?",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 222,
+        "endChar": 20
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c90b13_2c5362eb",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "GetNumberOf... ?",
+      "range": {
+        "startLine": 264,
+        "startChar": 11,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37bcf216_342e3bfd",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "Add a comment depth 0 is first inlinee.",
+      "range": {
+        "startLine": 429,
+        "startChar": 6,
+        "endLine": 429,
+        "endChar": 99
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a210e570_d18b148f",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "spaces",
+      "range": {
+        "startLine": 429,
+        "startChar": 74,
+        "endLine": 429,
+        "endChar": 75
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132ed366_d25ac23b",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "(depth !\u003d 0)",
+      "range": {
+        "startLine": 429,
+        "startChar": 23,
+        "endLine": 429,
+        "endChar": 28
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0255f9f3_b30ba112",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-05T14:02:00Z",
+      "side": 1,
+      "message": "number_of_dex_registers_ ?",
+      "range": {
+        "startLine": 563,
+        "startChar": 11,
+        "endLine": 563,
+        "endChar": 29
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
