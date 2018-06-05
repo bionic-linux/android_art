@@ -22,6 +22,30 @@
       "revId": "274d3158127c72432fce6a495a5cfae9d175059c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a4a4a05_52382d0d",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-05T02:28:31Z",
+      "side": 1,
+      "message": "I\u0027ve made the change by introducing an unordered_set here too. Now the device fails to boot with \u0027Illegal class access\" error.\nI still have to go through the recent change thoroughly.",
+      "parentUuid": "a8f34374_1c4bf70b",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 349,
+        "endChar": 5
+      },
+      "revId": "274d3158127c72432fce6a495a5cfae9d175059c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
