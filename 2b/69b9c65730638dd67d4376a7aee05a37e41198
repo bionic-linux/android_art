@@ -1,0 +1,12 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Mathieu Chartier <mathieuc@google.com>
+Code-Review+1: Lokesh Gidra <lokeshgidra@google.com>
+Code-Review+2: David Sehr <sehr@google.com>
+Code-Review+1: Randy Jeong <randy.jeong@samsung.com>
+Code-Review+1: Ivan Maidanski <i.maidanski@samsung.com>
+Code-Review+1: Roland Levillain <rpl@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Tue, 05 Jun 2018 21:08:14 +0000
+Reviewed-on: https://android-review.googlesource.com/692442
+Project: platform/art
+Branch: refs/heads/master
