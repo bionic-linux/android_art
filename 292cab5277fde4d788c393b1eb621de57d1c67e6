@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4d0dea_0a695bd7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3411,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-05T21:37:41Z",
+      "side": 1,
+      "message": "Consider SCOPED_TRACE and printing the dex file location.",
+      "range": {
+        "startLine": 3411,
+        "startChar": 2,
+        "endLine": 3411,
+        "endChar": 34
+      },
+      "revId": "292cab5277fde4d788c393b1eb621de57d1c67e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
