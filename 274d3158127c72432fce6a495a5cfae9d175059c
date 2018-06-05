@@ -46,6 +46,30 @@
       "revId": "274d3158127c72432fce6a495a5cfae9d175059c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eea3576_803719fa",
+        "filename": "runtime/gc/collector/semi_space.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-05T17:50:19Z",
+      "side": 1,
+      "message": "I have gone through the change, but couldn\u0027t find anything missing. Over to you.",
+      "parentUuid": "1a4a4a05_52382d0d",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 349,
+        "endChar": 5
+      },
+      "revId": "274d3158127c72432fce6a495a5cfae9d175059c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
