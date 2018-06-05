@@ -46,6 +46,30 @@
       "revId": "292cab5277fde4d788c393b1eb621de57d1c67e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "350f7f0f_22ea20e6",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3411,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-05T22:36:15Z",
+      "side": 1,
+      "message": "No, that\u0027s not what I meant.\n\nSCOPED_TRACE \u003c\u003c __FUNCTION__ \u003c\u003c \" \" \u003c\u003c dex_file.GetLocation()",
+      "parentUuid": "c5919364_ae431fe2",
+      "range": {
+        "startLine": 3411,
+        "startChar": 2,
+        "endLine": 3411,
+        "endChar": 34
+      },
+      "revId": "292cab5277fde4d788c393b1eb621de57d1c67e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
