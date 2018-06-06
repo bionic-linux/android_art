@@ -284,6 +284,52 @@
     },
     {
       "key": {
+        "uuid": "7f732c27_1fc91efd",
+        "filename": "runtime/dex_register_location.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "Why not \"\u003d -2\" (and reorder to the beginning)?",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96df22b4_7d83d796",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "1u",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8b48ee3_36fa2c60",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -328,6 +374,29 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8716475a_6cbc95dd",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "using iterator \u003d dchecked_vector\u003cDexRegisterLocation\u003e::iterator;",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -422,6 +491,46 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fa6d022_b3d7a01b",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "/* first_dex_register */",
+      "range": {
+        "startLine": 418,
+        "startChar": 43,
+        "endLine": 418,
+        "endChar": 44
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452a3add_4f1040d7",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "DCHECK_EQ(vregs, map.size());",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -563,6 +672,40 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "685e5d85_6f8cc2d7",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "DCHECK(vregs, maps.size());",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2968fb53_d1b7e04d",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T13:46:23Z",
+      "side": 1,
+      "message": "Note: This could be supplied externally, reducing the storage needs (same for inlined frames) but that would make stack map validation reliant on external data. I think it\u0027s better to keep this here and add the DCHECK() suggested above.",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
