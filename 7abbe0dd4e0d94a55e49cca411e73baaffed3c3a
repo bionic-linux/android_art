@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a4ea938_8bf136a5",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-06T11:37:04Z",
+      "side": 1,
+      "message": "Nit: Long line.",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 105
+      },
+      "revId": "7abbe0dd4e0d94a55e49cca411e73baaffed3c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
