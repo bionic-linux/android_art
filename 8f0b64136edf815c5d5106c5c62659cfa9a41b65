@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "c4eabba8_7f3d4e47",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T16:44:25Z",
+      "side": 1,
+      "message": "Not all calls are equal. The tail call would presumably be very cheap. You could try and look at the disassembly of libart.so .",
+      "parentUuid": "2d58d836_6715db65",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eada09f9_d267f483",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4

@@ -46,6 +46,30 @@
       "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db26e715_e06ed075",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T16:44:25Z",
+      "side": 1,
+      "message": "There\u0027s a DCHECK_LE() rather than DCHECK_LT() in CodeInfo::DecodeDexRegisterMap(). You can still decode the stack map at index 0 if stack_map_index\u003d\u003dkMaxDexRegisterMapSearchDistance. The DCHECK_LE() is not evaluated for s\u003d-1.\n\nThe comparison below would start treating values at index 0 as old from kMaxDexRegisterMapSearchDistance+1. Note that the stack map is inserted into stack_maps_ after CreateDexRegisterMap().",
+      "parentUuid": "96826e75_2b46d8fe",
+      "range": {
+        "startLine": 207,
+        "startChar": 66,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
