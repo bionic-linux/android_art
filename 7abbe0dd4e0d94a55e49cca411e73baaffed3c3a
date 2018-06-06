@@ -22,6 +22,30 @@
       "revId": "7abbe0dd4e0d94a55e49cca411e73baaffed3c3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c12f0b_bc79b1f3",
+        "filename": "test/800-smali/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1121591
+      },
+      "writtenOn": "2018-06-06T12:29:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4ea938_8bf136a5",
+      "range": {
+        "startLine": 185,
+        "startChar": 8,
+        "endLine": 185,
+        "endChar": 105
+      },
+      "revId": "7abbe0dd4e0d94a55e49cca411e73baaffed3c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
