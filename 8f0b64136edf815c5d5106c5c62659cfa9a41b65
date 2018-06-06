@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cad678a_82ef0c3f",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c496bca_d0138096",
+      "range": {
+        "startLine": 215,
+        "startChar": 54,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a711236_5b93791a",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "c6a95b74_22789468",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:06:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a711236_5b93791a",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4de4fc7b_ec0e45f5",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0783edaf_1ff06367",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:06:29Z",
+      "side": 1,
+      "message": "The DecodeDexRegisterMap is in .cc file because it is pretty heavy weight.\nThis is almost just a wrapper, I want to keep in inline.",
+      "parentUuid": "4de4fc7b_ec0e45f5",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "925b9a0e_65ae38d2",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:06:29Z",
+      "side": 1,
+      "message": "Read the comment above ;-)",
+      "parentUuid": "eada09f9_d267f483",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 80
+      },
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a4d70a8_61370afe",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e428a5_396acf45",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:06:29Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "9a4d70a8_61370afe",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
