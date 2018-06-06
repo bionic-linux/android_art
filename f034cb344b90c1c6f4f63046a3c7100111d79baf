@@ -70,6 +70,53 @@
       "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ba25d0_611b8034",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T18:31:31Z",
+      "side": 1,
+      "message": "Ohhh... I think you are right.  But I find it a bit mind boggling.  I did it, but...",
+      "parentUuid": "db26e715_e06ed075",
+      "range": {
+        "startLine": 207,
+        "startChar": 66,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e01599f7_1eef3ee6",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T18:31:31Z",
+      "side": 1,
+      "message": "I added +1 here which means the index 0 is no longer special.\n\n(it is as if CreateDexRegisterMap() was called after adding the stack_map into stack maps)",
+      "range": {
+        "startLine": 214,
+        "startChar": 13,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

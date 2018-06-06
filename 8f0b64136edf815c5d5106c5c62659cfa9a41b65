@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "26f5020e_e1b1f692",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T18:31:31Z",
+      "side": 1,
+      "message": "We agree to disagree :-)\n\nIn principle, I agree with the sentiment (which is why I have been moving some of the code to the .cc file).\n\nHowever, I just have much less trust in compilers.  The results is returned by value and it is pretty heavy object.  The compiler absolutely should optimize it away, but I am still not taking my chances :-)  Even if I verify the assembly now, I wouldn\u0027t trust the next version.",
+      "parentUuid": "c4eabba8_7f3d4e47",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eada09f9_d267f483",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4
