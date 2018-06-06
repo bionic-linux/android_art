@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "2d58d836_6715db65",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:28:26Z",
+      "side": 1,
+      "message": "But then we would have the cost of two calls.",
+      "parentUuid": "8862fbe9_49a9727a",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eada09f9_d267f483",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4

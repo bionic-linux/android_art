@@ -22,6 +22,30 @@
       "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96826e75_2b46d8fe",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T16:28:26Z",
+      "side": 1,
+      "message": "I think we can, if we change to comparison below back to \"\u003e\u003d\", otherwise it is off-by-one bug.",
+      "parentUuid": "cae3da94_814a9056",
+      "range": {
+        "startLine": 207,
+        "startChar": 66,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
