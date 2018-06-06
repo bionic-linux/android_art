@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c496bca_d0138096",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:36:55Z",
+      "side": 1,
+      "message": "Change this to \"\u003e\" or change the the DCHECK_LE() in CodeInfo::DecodeDexRegisterMap() to DCHECK_LT().",
+      "range": {
+        "startLine": 215,
+        "startChar": 54,
+        "endLine": 215,
+        "endChar": 56
+      },
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a711236_5b93791a",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:36:55Z",
+      "side": 1,
+      "message": "Add a comment that if you change this, you also need to change the oat version.",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de4fc7b_ec0e45f5",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:36:55Z",
+      "side": 1,
+      "message": "Maybe move the implementation to the .cc file? (DecodeDexRegisterMap() is already there.)",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eada09f9_d267f483",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:36:55Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we accumulate this for all the upper levels? (Add tests for two-level inlining.)",
+      "range": {
+        "startLine": 375,
+        "startChar": 12,
+        "endLine": 375,
+        "endChar": 80
+      },
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4d70a8_61370afe",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:36:55Z",
+      "side": 1,
+      "message": "Maybe move the implementation to the .cc file?",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
