@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "8862fbe9_49a9727a",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T16:16:38Z",
+      "side": 1,
+      "message": "If the common path is to call the DecodeDexRegisterMap(), then there is no benefit to keeping this inline as we\u0027ll have to pay the cost of the call anyway. So I\u0027d prefer to avoid the code size cost of inlining this.",
+      "parentUuid": "0783edaf_1ff06367",
+      "revId": "8f0b64136edf815c5d5106c5c62659cfa9a41b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eada09f9_d267f483",
         "filename": "runtime/stack_map.h",
         "patchSetId": 4

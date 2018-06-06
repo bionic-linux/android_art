@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cae3da94_814a9056",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T16:16:38Z",
+      "side": 1,
+      "message": "Can we change this to 0u? I think the decoding would be fine.",
+      "range": {
+        "startLine": 207,
+        "startChar": 66,
+        "endLine": 207,
+        "endChar": 68
+      },
+      "revId": "f034cb344b90c1c6f4f63046a3c7100111d79baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
