@@ -46,6 +46,30 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da08dfa_005604df",
+        "filename": "runtime/check_reference_map_visitor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T19:47:14Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "8566da1c_dc108e98",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
