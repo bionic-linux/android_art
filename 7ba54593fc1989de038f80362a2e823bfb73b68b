@@ -22,6 +22,30 @@
       "revId": "7ba54593fc1989de038f80362a2e823bfb73b68b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a4b0a60_f2568a49",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T12:19:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a7e376_57450c1e",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "7ba54593fc1989de038f80362a2e823bfb73b68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
