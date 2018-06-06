@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b65614d9_6265298b",
+        "filename": "runtime/check_reference_map_visitor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:05:48Z",
+      "side": 0,
+      "message": "@vmarko : I could make this into a DCHECK below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
