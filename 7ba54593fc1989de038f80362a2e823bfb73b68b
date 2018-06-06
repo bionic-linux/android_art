@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5a7e376_57450c1e",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-06T07:24:52Z",
+      "side": 1,
+      "message": "You can do table_ \u003d nullptr; and row_ \u003d -1; below if you want.",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "7ba54593fc1989de038f80362a2e823bfb73b68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
