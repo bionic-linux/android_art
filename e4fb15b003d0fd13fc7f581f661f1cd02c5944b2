@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "1c77fa60_d16ba2a0",
+        "filename": "runtime/dex_register_location.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f732c27_1fc91efd",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96df22b4_7d83d796",
         "filename": "runtime/stack_map.cc",
         "patchSetId": 1
@@ -327,6 +351,30 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a62cb7c_c51e0bd8",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96df22b4_7d83d796",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 17
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -397,6 +445,30 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35e50d1_124844a6",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "It might also refer to std::array::data()",
+      "parentUuid": "8716475a_6cbc95dd",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -517,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "bf0e6bdb_2e705235",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fa6d022_b3d7a01b",
+      "range": {
+        "startLine": 418,
+        "startChar": 43,
+        "endLine": 418,
+        "endChar": 44
+      },
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "452a3add_4f1040d7",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -531,6 +627,24 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19de5e7_357a508d",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "The vregs is not always provided, and it dies in the next CL.",
+      "parentUuid": "452a3add_4f1040d7",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -692,6 +806,24 @@
     },
     {
       "key": {
+        "uuid": "99bd7dc3_8ad08063",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "685e5d85_6f8cc2d7",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2968fb53_d1b7e04d",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -706,6 +838,24 @@
       "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a313cec6_77b5b3a6",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-06T14:03:26Z",
+      "side": 1,
+      "message": "Yeah, considering the negligible delta, I prefer the added safety.",
+      "parentUuid": "2968fb53_d1b7e04d",
+      "revId": "e4fb15b003d0fd13fc7f581f661f1cd02c5944b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
