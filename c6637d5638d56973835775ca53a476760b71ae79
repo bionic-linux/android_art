@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a601ec_0215ee65",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:40:51Z",
+      "side": 1,
+      "message": "DCHECK() the size?",
+      "revId": "c6637d5638d56973835775ca53a476760b71ae79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d31775b_f4b6a66e",
+        "filename": "runtime/quick_exception_handler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:40:51Z",
+      "side": 1,
+      "message": "DCHECK() the size here and below?",
+      "revId": "c6637d5638d56973835775ca53a476760b71ae79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db144fe_f9f9f798",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-06T14:40:51Z",
+      "side": 1,
+      "message": "DCHECK() size?",
+      "revId": "c6637d5638d56973835775ca53a476760b71ae79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
