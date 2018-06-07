@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1303a18c_1722234c",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-07T08:34:17Z",
+      "side": 1,
+      "message": "Looks like easy to miss :) You might want to comment what distance is.",
+      "range": {
+        "startLine": 214,
+        "startChar": 43,
+        "endLine": 214,
+        "endChar": 46
+      },
+      "revId": "bec73e7176ee4ec64dfb3397c8469ad33bce1f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad43cdb1_7cdebd8b",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-07T08:34:17Z",
+      "side": 1,
+      "message": "isn\u0027t this outermost method, based on our discussion?",
+      "range": {
+        "startLine": 377,
+        "startChar": 31,
+        "endLine": 377,
+        "endChar": 48
+      },
+      "revId": "bec73e7176ee4ec64dfb3397c8469ad33bce1f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
