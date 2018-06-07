@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "11ef8e9d_a59f9ac7",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-07T10:41:03Z",
+      "side": 1,
+      "message": "I believe the +1 is indeed unnecessary, I am just erring on the safe side.\n\nI added DCHECK to ensure distance\u003e0.\n\nAnd I specified kMaxDexRegisterMapSearchDistance\u003d\u003d0 means all masks fully specified.\n(which holds since: distance \u003e kMaxDexRegisterMapSearchDistance is always true in that case)",
+      "parentUuid": "3d9d816e_c48923a3",
+      "range": {
+        "startLine": 214,
+        "startChar": 43,
+        "endLine": 214,
+        "endChar": 46
+      },
+      "revId": "bec73e7176ee4ec64dfb3397c8469ad33bce1f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad43cdb1_7cdebd8b",
         "filename": "runtime/stack_map.h",
         "patchSetId": 6
