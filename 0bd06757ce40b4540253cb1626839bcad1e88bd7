@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "380ef6d6_cc115669",
+        "filename": "tools/ahat/src/main/com/android/ahat/dominators/DominatorsComputation.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1042885
+      },
+      "writtenOn": "2018-06-12T09:46:25Z",
+      "side": 1,
+      "message": "I think naming this maxReachableId would make things a little clearer below.",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 21
+      },
+      "revId": "0bd06757ce40b4540253cb1626839bcad1e88bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
