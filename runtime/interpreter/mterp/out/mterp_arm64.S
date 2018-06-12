@@ -166,6 +166,11 @@ codes.
  */
 .macro FETCH_ADVANCE_INST count
     ldrh    wINST, [xPC, #((\count)*2)]!
+    mov     x16, 1000
+    cmp     xPC, x16                      // compare (vA, vB)
+    beq     1f
+    add     x16, x16, x2
+    1:
 .endm
 
 /*
