@@ -21,6 +21,7 @@
 
 #include <android-base/file.h>
 
+#include "dexanalyze_bytecode.h"
 #include "dexanalyze_experiments.h"
 #include "dex/code_item_accessors-inl.h"
 #include "dex/dex_file.h"
@@ -28,6 +29,7 @@
 #include "dex/dex_instruction-inl.h"
 
 namespace art {
+namespace dexanalyze {
 
 class DexAnalyze {
   static constexpr int kExitCodeUsageError = 1;
@@ -65,6 +67,8 @@ class DexAnalyze {
         if (arg == "-i") {
           verify_checksum_ = false;
           run_dex_file_verifier_ = false;
+        } else if (arg == "-d") {
+          dump_ = true;
         } else if (arg == "-a") {
           run_all_experiments_ = true;
         } else if (arg == "-count-indices") {
@@ -73,6 +77,8 @@ class DexAnalyze {
           exp_analyze_strings_ = true;
         } else if (arg == "-analyze-debug-info") {
           exp_debug_info_ = true;
+        } else if (arg == "-new-bytecode") {
+          exp_bytecode_ = true;
         } else if (arg == "-d") {
           dump_per_input_dex_ = true;
         } else if (!arg.empty() && arg[0] == '-') {
@@ -88,6 +94,7 @@ class DexAnalyze {
       return 0;
     }
 
+    bool dump_ = false;
     bool verify_checksum_ = true;
     bool run_dex_file_verifier_ = true;
     bool dump_per_input_dex_ = false;
@@ -95,6 +102,7 @@ class DexAnalyze {
     bool exp_code_metrics_ = false;
     bool exp_analyze_strings_ = false;
     bool exp_debug_info_ = false;
+    bool exp_bytecode_ = false;
     bool run_all_experiments_ = false;
     std::vector<std::string> filenames_;
   };
@@ -113,6 +121,12 @@ class DexAnalyze {
       }
       if (options->run_all_experiments_ || options->exp_debug_info_) {
         experiments_.emplace_back(new AnalyzeDebugInfo);
+      }
+      if (options->run_all_experiments_ || options->exp_bytecode_) {
+        experiments_.emplace_back(new NewRegisterInstructions);
+      }
+      for (const std::unique_ptr<Experiment>& experiment : experiments_) {
+        experiment->dump_ = options->dump_;
       }
     }
 
@@ -188,9 +202,10 @@ class DexAnalyze {
   }
 };
 
+}  // namespace dexanalyze
 }  // namespace art
 
 int main(int argc, char** argv) {
-  return art::DexAnalyze::Run(argc, argv);
+  return art::dexanalyze::DexAnalyze::Run(argc, argv);
 }
 
