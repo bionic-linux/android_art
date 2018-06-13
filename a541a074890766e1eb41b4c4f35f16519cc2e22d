@@ -22,6 +22,30 @@
       "revId": "a541a074890766e1eb41b4c4f35f16519cc2e22d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f066d0e3_927d24cf",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-13T14:12:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd9daeae_1e93f2c4",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "a541a074890766e1eb41b4c4f35f16519cc2e22d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
