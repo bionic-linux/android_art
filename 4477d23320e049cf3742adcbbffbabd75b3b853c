@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8cce5fcc_b898f523",
+        "filename": "compiler/linker/elf_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-14T16:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46afb372_19c11a0d",
+      "range": {
+        "startLine": 53,
+        "startChar": 72,
+        "endLine": 53,
+        "endChar": 77
+      },
+      "revId": "4477d23320e049cf3742adcbbffbabd75b3b853c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94787719_464753e3",
         "filename": "compiler/linker/elf_builder.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "4477d23320e049cf3742adcbbffbabd75b3b853c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc61f516_997bbe7a",
+        "filename": "compiler/linker/elf_builder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-14T16:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94787719_464753e3",
+      "range": {
+        "startLine": 84,
+        "startChar": 33,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "4477d23320e049cf3742adcbbffbabd75b3b853c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
