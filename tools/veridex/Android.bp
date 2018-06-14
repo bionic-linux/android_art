@@ -32,6 +32,7 @@ cc_binary {
         "libutils",
         "libz",
         "libziparchive",
+        "libfilemap",
     ],
     stl: "libc++_static",
     header_libs: [

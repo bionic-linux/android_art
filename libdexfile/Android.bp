@@ -44,7 +44,7 @@ cc_defaults {
                 "libz",
             ],
             shared_libs: [
-                "libutils",
+                 "libfilemap",
             ],
         },
         host: {
