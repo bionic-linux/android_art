@@ -22,6 +22,30 @@
       "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748e0d78_83328f07",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-15T19:44:19Z",
+      "side": 1,
+      "message": "Checking for validity is finicky on the Java side. I\u0027m fine with the result being \"FAIL\" below.",
+      "parentUuid": "aa8031c6_76833bf3",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
