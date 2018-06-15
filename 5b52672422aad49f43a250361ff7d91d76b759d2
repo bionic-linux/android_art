@@ -69,6 +69,30 @@
       "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855e9336_76d888f8",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-15T19:47:37Z",
+      "side": 1,
+      "message": "My worry was that the code in unwindOtherProcess() does a kill(pid) call if the seize fails. I think that\u0027s okay, and the chance of failure should be low.\n\nIf everyone is fine with that, I\u0027m fine with that.",
+      "parentUuid": "748e0d78_83328f07",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
