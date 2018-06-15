@@ -93,6 +93,30 @@
       "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa8bd17_d7542f38",
+        "filename": "test/137-cfi/src/Main.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-15T21:07:41Z",
+      "side": 1,
+      "message": "I added LOG(FATAL) inside the method, so it should hopefully never return invalid pid.\n\nUltimately, unless there is PASS printed to the expected stdout, the test will fail.",
+      "parentUuid": "855e9336_76d888f8",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
