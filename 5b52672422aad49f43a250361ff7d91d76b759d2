@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "95c90628_b5321595",
+        "filename": "test/137-cfi/cfi.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-15T19:45:37Z",
+      "side": 1,
+      "message": "That\u0027s already in line 23?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "5b52672422aad49f43a250361ff7d91d76b759d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa8031c6_76833bf3",
         "filename": "test/137-cfi/src/Main.java",
         "patchSetId": 4
