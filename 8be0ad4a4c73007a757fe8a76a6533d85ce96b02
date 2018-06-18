@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cec8c8d4_7b094b04",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2018-06-18T15:58:07Z",
+      "side": 1,
+      "message": "(if you change \"r\" to \"\\r\\x1b[0K\" instead, it\u0027ll erase the current line, even if something longer was printed.)",
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b92644f0_f02b85ab",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2018-06-18T15:58:07Z",
+      "side": 1,
+      "message": "\"!\u003d\" ??",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c934920_ea119b9b",
+        "filename": "tools/ahat/src/main/com/android/ahat/progress/Progress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2018-06-18T15:58:07Z",
+      "side": 1,
+      "message": "nit: \"default ... {advance(1);}\"?",
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
