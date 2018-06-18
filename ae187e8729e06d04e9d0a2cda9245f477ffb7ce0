@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a672445_615f4977",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1042885
+      },
+      "writtenOn": "2018-06-18T12:24:36Z",
+      "side": 1,
+      "message": "There\u0027s a no-argument version of println() that just prints a newline, no need for the empty string here.",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "ae187e8729e06d04e9d0a2cda9245f477ffb7ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c36b369e_8eaebf1a",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1042885
+      },
+      "writtenOn": "2018-06-18T12:24:36Z",
+      "side": 1,
+      "message": "If you want to be really safe, you should check that the argument wasn\u0027t null and throw NullPointerException if it was (better here than later in parseInternal()), but I don\u0027t know how worried about that you are in ahat.",
+      "revId": "ae187e8729e06d04e9d0a2cda9245f477ffb7ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
