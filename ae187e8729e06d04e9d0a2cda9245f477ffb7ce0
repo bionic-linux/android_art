@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8a8a098_d80e2b34",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-18T15:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a672445_615f4977",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "ae187e8729e06d04e9d0a2cda9245f477ffb7ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c36b369e_8eaebf1a",
         "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "ae187e8729e06d04e9d0a2cda9245f477ffb7ce0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93616975_328f14d1",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-18T15:12:46Z",
+      "side": 1,
+      "message": "Done here and for the map option as well.",
+      "parentUuid": "c36b369e_8eaebf1a",
+      "revId": "ae187e8729e06d04e9d0a2cda9245f477ffb7ce0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
