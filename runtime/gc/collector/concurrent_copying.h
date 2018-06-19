@@ -118,7 +118,14 @@ class ConcurrentCopying : public GarbageCollector {
                                      MemberOffset offset = MemberOffset(0))
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
-  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref)
+  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref,
+                                                    Thread* self = nullptr)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  // Scan through the holder object in read barrier for reducing amount of time
+  // objects remain gray.
+  mirror::Object* ProcessHolderFromReadBarrier(mirror::Object* holder,
+                                               mirror::Object* from_ref)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
   bool IsMarking() const {
@@ -155,12 +162,20 @@ class ConcurrentCopying : public GarbageCollector {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
   // Scan the reference fields of object `to_ref`.
-  void Scan(mirror::Object* to_ref) REQUIRES_SHARED(Locks::mutator_lock_)
+  template<bool kGrayImmuneObject = false, bool kFromGCThread = true>
+  void Scan(Thread* const self, mirror::Object* to_ref)
+      REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
   // Process a field.
-  void Process(mirror::Object* obj, MemberOffset offset)
+  template<bool kGrayImmuneObject, bool kFromGCThread>
+  void Process(Thread* const self, mirror::Object* obj, MemberOffset offset)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_ , !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  // Process a gray object.
+  template<bool kGrayImmuneObject, bool kFromGCThread>
+  bool BlackenGrayObject(Thread* const self, mirror::Object* obj)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_);
   virtual void VisitRoots(mirror::Object*** roots, size_t count, const RootInfo& info)
       OVERRIDE REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
@@ -394,7 +409,7 @@ class ConcurrentCopying : public GarbageCollector {
   template <bool kConcurrent> class GrayImmuneObjectVisitor;
   class ImmuneSpaceScanObjVisitor;
   class LostCopyVisitor;
-  class RefFieldsVisitor;
+  template <bool kGrayImmuneObject, bool kFromGCThread> class RefFieldsVisitor;
   class RevokeThreadLocalMarkStackCheckpoint;
   class ScopedGcGraysImmuneObjects;
   class ThreadFlipVisitor;
