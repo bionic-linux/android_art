@@ -314,13 +314,13 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
     void Init(size_t idx, uint8_t* begin, uint8_t* end) {
       idx_ = idx;
       begin_ = begin;
-      top_.store(begin, std::memory_order_relaxed);
+      SetTop(begin);
       end_ = end;
       state_ = RegionState::kRegionStateFree;
       type_ = RegionType::kRegionTypeNone;
       objects_allocated_.store(0, std::memory_order_relaxed);
       alloc_time_ = 0;
-      live_bytes_ = static_cast<size_t>(-1);
+      SetLiveBytes(static_cast<size_t>(-1));
       is_newly_allocated_ = false;
       is_a_tlab_ = false;
       thread_ = nullptr;
@@ -425,7 +425,7 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
     void SetAsFromSpace() {
       DCHECK(!IsFree() && IsInToSpace());
       type_ = RegionType::kRegionTypeFromSpace;
-      live_bytes_ = static_cast<size_t>(-1);
+      SetLiveBytes(static_cast<size_t>(-1));
     }
 
     // Set this region as unevacuated from-space. At the end of the
@@ -435,7 +435,7 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
     void SetAsUnevacFromSpace() {
       DCHECK(!IsFree() && IsInToSpace());
       type_ = RegionType::kRegionTypeUnevacFromSpace;
-      live_bytes_ = 0U;
+      SetLiveBytes(0U);
     }
 
     // Set this region as to-space. Used by RegionSpace::ClearFromSpace.
@@ -451,11 +451,12 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
     void AddLiveBytes(size_t live_bytes) {
       DCHECK(IsInUnevacFromSpace());
       DCHECK(!IsLargeTail());
-      DCHECK_NE(live_bytes_, static_cast<size_t>(-1));
+      DCHECK_NE(LiveBytes(), static_cast<size_t>(-1));
       // For large allocations, we always consider all bytes in the
       // regions live.
-      live_bytes_ += IsLarge() ? Top() - begin_ : live_bytes;
-      DCHECK_LE(live_bytes_, BytesAllocated());
+      const size_t bytes_to_add = IsLarge() ? Top() - begin_ : live_bytes;
+      size_t prev_live_bytes = live_bytes_.fetch_add(bytes_to_add, std::memory_order_relaxed);
+      DCHECK_LE(prev_live_bytes + bytes_to_add, BytesAllocated());
     }
 
     bool AllAllocatedBytesAreLive() const {
@@ -463,7 +464,11 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
     }
 
     size_t LiveBytes() const {
-      return live_bytes_;
+      return live_bytes_.load(std::memory_order_relaxed);
+    }
+
+    void SetLiveBytes(size_t live_bytes) {
+      live_bytes_.store(live_bytes, std::memory_order_relaxed);
     }
 
     size_t BytesAllocated() const;
@@ -503,7 +508,7 @@ class RegionSpace FINAL : public ContinuousMemMapAllocSpace {
 
    private:
     size_t idx_;                        // The region's index in the region space.
-    size_t live_bytes_;                 // The live bytes. Used to compute the live percent.
+    Atomic<size_t> live_bytes_;         // The live bytes. Used to compute the live percent.
     uint8_t* begin_;                    // The begin address of the region.
     Thread* thread_;                    // The owning thread if it's a tlab.
     // Note that `top_` can be higher than `end_` in the case of a

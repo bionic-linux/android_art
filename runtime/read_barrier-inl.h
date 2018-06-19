@@ -60,7 +60,13 @@ inline MirrorType* ReadBarrier::Barrier(
       MirrorType* old_ref = ref;
       if (is_gray) {
         // Slow-path.
-        ref = reinterpret_cast<MirrorType*>(Mark(ref));
+        ref = reinterpret_cast<MirrorType*>(ProcessHolder(obj, ref));
+        // ref will be null when holder is scanned through as ref will be
+        // processed as part of the scan and not separately, except when we
+        // reach here via GetReferent(). Therefore, we re-read it here.
+        if (ref == nullptr) {
+          ref = ref_addr->template AsMirrorPtr<kIsVolatile>();
+        }
         // If kAlwaysUpdateField is true, update the field atomically. This may fail if mutator
         // updates before us, but it's OK.
         if (kAlwaysUpdateField && ref != old_ref) {
@@ -246,6 +252,11 @@ inline void ReadBarrier::AssertToSpaceInvariant(GcRootSource* gc_root_source,
 
 inline mirror::Object* ReadBarrier::Mark(mirror::Object* obj) {
   return Runtime::Current()->GetHeap()->ConcurrentCopyingCollector()->MarkFromReadBarrier(obj);
+}
+
+inline mirror::Object* ReadBarrier::ProcessHolder(mirror::Object* obj, mirror::Object* ref) {
+  return Runtime::Current()->GetHeap()
+      ->ConcurrentCopyingCollector()->ProcessHolderFromReadBarrier(obj, ref);
 }
 
 inline bool ReadBarrier::IsGray(mirror::Object* obj, uintptr_t* fake_address_dependency) {
