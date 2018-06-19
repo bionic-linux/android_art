@@ -6954,6 +6954,7 @@ void CodeGeneratorARM64::CompileBakerReadBarrierThunk(Arm64Assembler& assembler,
       LoadReadBarrierMarkIntrospectionEntrypoint(assembler, ip1);
       __ Ubfx(ip0.W(), ip0.W(), 10, 12);    // Extract the offset.
       __ Ldr(ip0.W(), MemOperand(base_reg, ip0, LSL, 2));   // Load the reference.
+      __ Mov(mr, base_reg);    // For self-healing read barrier
       // Do not unpoison. With heap poisoning enabled, the entrypoint expects a poisoned reference.
       __ Br(ip1);                           // Jump to the entrypoint.
       break;
@@ -6980,6 +6981,7 @@ void CodeGeneratorARM64::CompileBakerReadBarrierThunk(Arm64Assembler& assembler,
       __ Bfi(ip1, ip0, 3, 6);               // Insert ip0 to the entrypoint address to create
                                             // a switch case target based on the index register.
       __ Mov(ip0, base_reg);                // Move the base register to ip0.
+      __ Sub(mr, base_reg, data_offset);    // holder for self-healing read barrier
       __ Br(ip1);                           // Jump to the entrypoint's array switch case.
       break;
     }
@@ -7010,6 +7012,7 @@ void CodeGeneratorARM64::CompileBakerReadBarrierThunk(Arm64Assembler& assembler,
       // art_quick_read_barrier_mark_introspection_gc_roots.
       __ Add(ip1, ip1, Operand(BAKER_MARK_INTROSPECTION_GC_ROOT_ENTRYPOINT_OFFSET));
       __ Mov(ip0.W(), root_reg);
+      __ Mov(mr, 0);  // For self-healing read barrier
       __ Br(ip1);
       __ Bind(&forwarding_address);
       __ Lsl(root_reg, ip0.W(), LockWord::kForwardingAddressShift);

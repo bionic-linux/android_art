@@ -38,6 +38,7 @@
 // Only used with the Concurrent Copying (CC) garbage
 // collector, with the Baker read barrier configuration.
 #define wMR w20
+#define xMR x20
 #endif
 
 .macro ENTRY name

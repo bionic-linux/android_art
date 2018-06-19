@@ -101,6 +101,11 @@ class ReadBarrier {
 
   // ALWAYS_INLINE on this caused a performance regression b/26744236.
   static mirror::Object* Mark(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
+  // Default value of 0 for ref_offset is fine because we have lockword there.
+  static mirror::Object* ProcessHolder(mirror::Object* obj,
+                                       mirror::Object* holder,
+                                       MemberOffset ref_offset = MemberOffset(0))
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   static constexpr uint32_t WhiteState() {
     return white_state_;

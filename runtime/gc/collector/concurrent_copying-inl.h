@@ -39,8 +39,10 @@ inline mirror::Object* ConcurrentCopying::MarkUnevacFromSpaceRegion(
   // to gray even though the object has already been marked through. This happens if a mutator
   // thread gets preempted before the AtomicSetReadBarrierState below, GC marks through the
   // object (changes it from white to gray and back to white), and the thread runs and
-  // incorrectly changes it from white to gray. If this happens, the object will get added to the
-  // mark stack again and get changed back to white after it is processed.
+  // incorrectly changes it from white to gray. If this happens, we will detect
+  // this at the end of this function by rechecking if the corresponding bit is
+  // set in the bitmap and change rb_state back to White as ref is guaranteed to be scanned
+  // through by now.
   if (kUseBakerReadBarrier) {
     // Test the bitmap first to avoid graying an object that has already been marked through most
     // of the time.
@@ -64,6 +66,11 @@ inline mirror::Object* ConcurrentCopying::MarkUnevacFromSpaceRegion(
     // Newly marked.
     if (kUseBakerReadBarrier) {
       DCHECK_EQ(ref->GetReadBarrierState(), ReadBarrier::GrayState());
+      std::atomic_thread_fence(std::memory_order_acquire);
+      if (bitmap->Test(ref)) {
+        ref->AtomicSetReadBarrierState(ReadBarrier::GrayState(), ReadBarrier::WhiteState());
+        return ref;
+      }
     }
     PushOntoMarkStack(self, ref);
   }
@@ -164,9 +171,14 @@ inline mirror::Object* ConcurrentCopying::Mark(Thread* const self,
   }
 }
 
-inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* from_ref) {
+inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* from_ref,
+                                                              Thread* self) {
   mirror::Object* ret;
-  Thread* const self = Thread::Current();
+  if (self == nullptr) {
+    self = Thread::Current();
+  } else {
+    DCHECK_EQ(self, Thread::Current());
+  }
   // We can get here before marking starts since we gray immune objects before the marking phase.
   if (from_ref == nullptr || !self->GetIsGcMarking()) {
     return from_ref;

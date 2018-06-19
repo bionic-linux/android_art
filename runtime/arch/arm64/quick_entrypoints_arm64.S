@@ -2671,7 +2671,7 @@ READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg29, w29, x29
 
 .macro MOV_WIP0_TO_WREG_AND_BL_LR reg
     mov   \reg, wIP0
-    br    lr  // Do not use RET as we do not enter the entrypoint with "BL".
+    b     .Lmark_introspection_exit
 .endm
 
 .macro READ_BARRIER_MARK_INTROSPECTION_SLOW_PATH ldr_offset
@@ -2706,8 +2706,9 @@ READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg29, w29, x29
     stp   d28, d29, [sp, #320]
     stp   d30, d31, [sp, #336]
 
-    mov   x0, xIP0
-    bl    artReadBarrierMark          // artReadBarrierMark(obj)
+    mov   x0, xIP0                     // Pass obj
+    mov   x1, xMR                      // Pass holder (for self-healing read barrier)
+    bl    artReadBarrierProcessHolder  // artReadBarrierProcessHolder(obj, holder)
     mov   xIP0, x0
 
     // Restore core regs, except x0 and x1 as the return register switch case
@@ -2734,11 +2735,11 @@ READ_BARRIER_MARK_REG art_quick_read_barrier_mark_reg29, w29, x29
     ldp   d26, d27, [sp, #304]
     ldp   d28, d29, [sp, #320]
     ldp   d30, d31, [sp, #336]
-
-    ldr   x0, [lr, #\ldr_offset]      // Load the instruction.
-    adr   xIP1, .Lmark_introspection_return_switch
-    bfi   xIP1, x0, #3, #5            // Calculate switch case address.
     RESTORE_TWO_REGS_DECREASE_FRAME x0, x1, 352
+
+    ldr   xMR, [lr, #\ldr_offset]      // Load the instruction.
+    adr   xIP1, .Lmark_introspection_return_switch
+    bfi   xIP1, xMR, #3, #5            // Calculate switch case address.
     br    xIP1
 .endm
 
@@ -2840,6 +2841,9 @@ art_quick_read_barrier_mark_introspection_arrays:
     .global art_quick_read_barrier_mark_introspection_gc_roots
 art_quick_read_barrier_mark_introspection_gc_roots:
     READ_BARRIER_MARK_INTROSPECTION_SLOW_PATH BAKER_MARK_INTROSPECTION_GC_ROOT_LDR_OFFSET
+.Lmark_introspection_exit:
+    REFRESH_MARKING_REGISTER          // Restore marking register (for self-healing read barrier)
+    br    lr                          // Do not use RET as we do not enter the entrypoint with "BL".
 END art_quick_read_barrier_mark_introspection
 
 .extern artInvokePolymorphic

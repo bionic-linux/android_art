@@ -118,7 +118,15 @@ class ConcurrentCopying : public GarbageCollector {
                                      MemberOffset offset = MemberOffset(0))
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
-  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref)
+  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref,
+                                                    Thread* self = nullptr)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  // Scan through the holder object in read barrier for reducing amount of time
+  // objects remain gray.
+  mirror::Object* ProcessHolderFromReadBarrier(mirror::Object* holder,
+                                               mirror::Object* from_ref,
+                                               MemberOffset ref_offset)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
   bool IsMarking() const {
@@ -155,12 +163,23 @@ class ConcurrentCopying : public GarbageCollector {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
   // Scan the reference fields of object `to_ref`.
-  void Scan(mirror::Object* to_ref) REQUIRES_SHARED(Locks::mutator_lock_)
+  template<bool kGrayImmuneObject = false, bool kFromGCThread = true>
+  void Scan(Thread* const self, mirror::Object* to_ref)
+      REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
   // Process a field.
-  void Process(mirror::Object* obj, MemberOffset offset)
+  template<bool kGrayImmuneObject, bool kFromGCThread>
+  void Process(Thread* const self, mirror::Object* obj, MemberOffset offset)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_ , !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  // Marks black an object, which involves scanning and graying children.
+  // Multiple threads may call this function on the same object, but the race is
+  // handled in calling functions. The function returns whether it scanned the
+  // object or not.
+  template<bool kGrayImmuneObject, bool kFromGCThread>
+  bool MarkThroughGrayObject(Thread* const self, mirror::Object* obj)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_);
   virtual void VisitRoots(mirror::Object*** roots, size_t count, const RootInfo& info)
       OVERRIDE REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
@@ -271,11 +290,6 @@ class ConcurrentCopying : public GarbageCollector {
   ALWAYS_INLINE mirror::Object* MarkImmuneSpace(Thread* const self,
                                                 mirror::Object* from_ref)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!immune_gray_stack_lock_);
-  void PushOntoFalseGrayStack(Thread* const self, mirror::Object* obj)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!mark_stack_lock_);
-  void ProcessFalseGrayStack() REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!mark_stack_lock_);
   void ScanImmuneObject(mirror::Object* obj)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!mark_stack_lock_);
   mirror::Object* MarkFromReadBarrierWithMeasurements(Thread* const self,
@@ -303,7 +317,6 @@ class ConcurrentCopying : public GarbageCollector {
   // (see use case in ConcurrentCopying::MarkFromReadBarrier).
   bool rb_mark_bit_stack_full_;
 
-  std::vector<mirror::Object*> false_gray_stack_ GUARDED_BY(mark_stack_lock_);
   Mutex mark_stack_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
   std::vector<accounting::ObjectStack*> revoked_mark_stacks_
       GUARDED_BY(mark_stack_lock_);
@@ -394,7 +407,7 @@ class ConcurrentCopying : public GarbageCollector {
   template <bool kConcurrent> class GrayImmuneObjectVisitor;
   class ImmuneSpaceScanObjVisitor;
   class LostCopyVisitor;
-  class RefFieldsVisitor;
+  template <bool kGrayImmuneObject, bool kFromGCThread> class RefFieldsVisitor;
   class RevokeThreadLocalMarkStackCheckpoint;
   class ScopedGcGraysImmuneObjects;
   class ThreadFlipVisitor;

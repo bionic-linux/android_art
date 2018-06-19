@@ -94,7 +94,8 @@ extern void ReadBarrierJni(mirror::CompressedReference<mirror::Object>* handle_o
 // an object that is referenced by a field of a gray object.
 extern "C" mirror::Object* artReadBarrierMark(mirror::Object* obj)
     REQUIRES_SHARED(Locks::mutator_lock_) HOT_ATTR;
-
+extern "C" mirror::Object* artReadBarrierProcessHolder(mirror::Object* obj, mirror::Object* holder)
+    REQUIRES_SHARED(Locks::mutator_lock_) HOT_ATTR;
 // Read barrier entrypoint for heap references.
 // This is the read barrier slow path for instance and static fields
 // and reference type arrays.

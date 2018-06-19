@@ -388,6 +388,12 @@ extern "C" mirror::Object* artReadBarrierMark(mirror::Object* obj) {
   return ReadBarrier::Mark(obj);
 }
 
+extern "C" mirror::Object* artReadBarrierProcessHolder(mirror::Object* obj,
+                                                       mirror::Object* holder) {
+  DCHECK(kEmitCompilerReadBarrier);
+  return ReadBarrier::ProcessHolder(obj, holder);
+}
+
 extern "C" mirror::Object* artReadBarrierSlow(mirror::Object* ref ATTRIBUTE_UNUSED,
                                               mirror::Object* obj,
                                               uint32_t offset) {
