@@ -74,18 +74,22 @@ inline void Object::VisitReferences(const Visitor& visitor,
       // String still has instance fields for reflection purposes but these don't exist in
       // actual string instances.
       if (!klass->IsStringClass()) {
-        size_t total_reference_instance_fields = 0;
-        ObjPtr<Class> super_class = klass;
-        do {
-          total_reference_instance_fields += super_class->NumReferenceInstanceFields();
-          super_class = super_class->GetSuperClass<kVerifyFlags, kReadBarrierOption>();
-        } while (super_class != nullptr);
         // The only reference field should be the object's class. This field is handled at the
         // beginning of the function.
-        CHECK_EQ(total_reference_instance_fields, 1u);
+        CHECK_EQ((TotalReferenceInstanceFields<kVerifyFlags, kReadBarrierOption>(klass)), 1u);
       }
     }
   }
+}
+
+template <VerifyObjectFlags kVerifyFlags, ReadBarrierOption kReadBarrierOption>
+inline size_t Object::TotalReferenceInstanceFields(ObjPtr<Class> klass) {
+  size_t total_reference_instance_fields = 0;
+  while (klass != nullptr) {
+    total_reference_instance_fields += klass->NumReferenceInstanceFields();
+    klass = klass->GetSuperClass<kVerifyFlags, kReadBarrierOption>();
+  }
+  return total_reference_instance_fields;
 }
 
 }  // namespace mirror
