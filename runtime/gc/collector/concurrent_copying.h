@@ -118,7 +118,12 @@ class ConcurrentCopying : public GarbageCollector {
                                      MemberOffset offset = MemberOffset(0))
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
-  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref)
+  ALWAYS_INLINE mirror::Object* MarkFromReadBarrier(mirror::Object* from_ref,
+                                                    Thread* self = nullptr)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  mirror::Object* ProcessHolderFromReadBarrier(mirror::Object* holder,
+                                               mirror::Object* from_ref)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
   bool IsMarking() const {
@@ -154,11 +159,14 @@ class ConcurrentCopying : public GarbageCollector {
                        MemberOffset offset)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_, !skipped_blocks_lock_, !immune_gray_stack_lock_);
+  template<bool kGrayImmuneObject = false, bool kFromGCThread = true>
   // Scan the reference fields of object `to_ref`.
-  void Scan(mirror::Object* to_ref) REQUIRES_SHARED(Locks::mutator_lock_)
+  void Scan(Thread* const self, mirror::Object* to_ref)
+      REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_);
+  template<bool kGrayImmuneObject, bool kFromGCThread>
   // Process a field.
-  void Process(mirror::Object* obj, MemberOffset offset)
+  void Process(Thread* const self, mirror::Object* obj, MemberOffset offset)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!mark_stack_lock_ , !skipped_blocks_lock_, !immune_gray_stack_lock_);
   virtual void VisitRoots(mirror::Object*** roots, size_t count, const RootInfo& info)
@@ -305,6 +313,7 @@ class ConcurrentCopying : public GarbageCollector {
 
   std::vector<mirror::Object*> false_gray_stack_ GUARDED_BY(mark_stack_lock_);
   Mutex mark_stack_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
+  Mutex add_live_bytes_lock_ DEFAULT_MUTEX_ACQUIRED_AFTER;
   std::vector<accounting::ObjectStack*> revoked_mark_stacks_
       GUARDED_BY(mark_stack_lock_);
   static constexpr size_t kMarkStackSize = kPageSize;
@@ -394,7 +403,7 @@ class ConcurrentCopying : public GarbageCollector {
   template <bool kConcurrent> class GrayImmuneObjectVisitor;
   class ImmuneSpaceScanObjVisitor;
   class LostCopyVisitor;
-  class RefFieldsVisitor;
+  template <bool kGrayImmuneObject, bool kFromGCThread> class RefFieldsVisitor;
   class RevokeThreadLocalMarkStackCheckpoint;
   class ScopedGcGraysImmuneObjects;
   class ThreadFlipVisitor;
