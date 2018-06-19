@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3834aac3_d35c2b1a",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-19T18:25:32Z",
+      "side": 1,
+      "message": "Maybe also log something in the logcat?",
+      "range": {
+        "startLine": 858,
+        "startChar": 6,
+        "endLine": 858,
+        "endChar": 34
+      },
+      "revId": "6d06d6c7c690508e9be35a440cddd7cdb6152efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
