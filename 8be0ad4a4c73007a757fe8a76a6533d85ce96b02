@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "58766095_637c7bae",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-19T08:53:03Z",
+      "side": 1,
+      "message": "Thanks for pointing this out. I don\u0027t really want to overwrite what was there previously, if anything. I consider it a misuse of AsciiProgress to not position System.out on a new line before using it.\n\nI\u0027ll leave the \\r as is and add documentation for the suggested use. There is currently only one user of the progress bar anyway, and it does the right thing.",
+      "parentUuid": "cec8c8d4_7b094b04",
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b92644f0_f02b85ab",
         "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2072678c_170c2ead",
+        "filename": "tools/ahat/src/main/com/android/ahat/AsciiProgress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-19T08:53:03Z",
+      "side": 1,
+      "message": "Good catch. I meant to assert that we didn\u0027t have a current phase in progress: this.description \u003d\u003d null;",
+      "parentUuid": "b92644f0_f02b85ab",
+      "range": {
+        "startLine": 36,
+        "startChar": 23,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c934920_ea119b9b",
         "filename": "tools/ahat/src/main/com/android/ahat/progress/Progress.java",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2018-06-18T15:58:07Z",
       "side": 1,
       "message": "nit: \"default ... {advance(1);}\"?",
+      "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07375e5c_25752d0c",
+        "filename": "tools/ahat/src/main/com/android/ahat/progress/Progress.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-19T08:53:03Z",
+      "side": 1,
+      "message": "Done.\n\nNote, this means I can no longer specify -source 1.7 when compiling ahat. That\u0027s fine with me, because I think ahat requires Java 1.8 APIs anyway (b/68842538).",
+      "parentUuid": "6c934920_ea119b9b",
       "revId": "8be0ad4a4c73007a757fe8a76a6533d85ce96b02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
