@@ -175,22 +175,23 @@ inline bool RegionSpace::Region::ShouldBeEvacuated() {
   if (is_newly_allocated_) {
     result = true;
   } else {
-    bool is_live_percent_valid = (live_bytes_ != static_cast<size_t>(-1));
+    const size_t live_bytes = LiveBytes();
+    bool is_live_percent_valid = (live_bytes != static_cast<size_t>(-1));
     if (is_live_percent_valid) {
       DCHECK(IsInToSpace());
       DCHECK(!IsLargeTail());
-      DCHECK_NE(live_bytes_, static_cast<size_t>(-1));
-      DCHECK_LE(live_bytes_, BytesAllocated());
+      DCHECK_NE(live_bytes, static_cast<size_t>(-1));
+      DCHECK_LE(live_bytes, BytesAllocated());
       const size_t bytes_allocated = RoundUp(BytesAllocated(), kRegionSize);
-      DCHECK_LE(live_bytes_, bytes_allocated);
+      DCHECK_LE(live_bytes, bytes_allocated);
       if (IsAllocated()) {
         // Side node: live_percent == 0 does not necessarily mean
         // there's no live objects due to rounding (there may be a
         // few).
-        result = (live_bytes_ * 100U < kEvacuateLivePercentThreshold * bytes_allocated);
+        result = (live_bytes * 100U < kEvacuateLivePercentThreshold * bytes_allocated);
       } else {
         DCHECK(IsLarge());
-        result = (live_bytes_ == 0U);
+        result = (live_bytes == 0U);
       }
     } else {
       result = false;
@@ -638,7 +639,7 @@ void RegionSpace::Region::Dump(std::ostream& os) const {
      << " type=" << type_
      << " objects_allocated=" << objects_allocated_
      << " alloc_time=" << alloc_time_
-     << " live_bytes=" << live_bytes_
+     << " live_bytes=" << LiveBytes()
      << " is_newly_allocated=" << std::boolalpha << is_newly_allocated_ << std::noboolalpha
      << " is_a_tlab=" << std::boolalpha << is_a_tlab_ << std::noboolalpha
      << " thread=" << thread_ << '\n';
@@ -664,7 +665,7 @@ void RegionSpace::Region::Clear(bool zero_and_release_pages) {
   type_ = RegionType::kRegionTypeNone;
   objects_allocated_.store(0, std::memory_order_relaxed);
   alloc_time_ = 0;
-  live_bytes_ = static_cast<size_t>(-1);
+  SetLiveBytes(static_cast<size_t>(-1));
   if (zero_and_release_pages) {
     ZeroAndProtectRegion(begin_, end_);
   }
