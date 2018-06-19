@@ -101,6 +101,9 @@ class ReadBarrier {
 
   // ALWAYS_INLINE on this caused a performance regression b/26744236.
   static mirror::Object* Mark(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
+  static mirror::Object* ProcessHolder(mirror::Object* holder,
+                                       mirror::Object* ref)
+      REQUIRES_SHARED(Locks::mutator_lock_);
 
   static constexpr uint32_t WhiteState() {
     return white_state_;

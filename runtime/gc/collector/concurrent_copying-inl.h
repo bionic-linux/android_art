@@ -164,9 +164,12 @@ inline mirror::Object* ConcurrentCopying::Mark(Thread* const self,
   }
 }
 
-inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* from_ref) {
+inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* from_ref,
+                                                              Thread* self) {
   mirror::Object* ret;
-  Thread* const self = Thread::Current();
+  if (self == nullptr) {
+    self = Thread::Current();
+  }
   // We can get here before marking starts since we gray immune objects before the marking phase.
   if (from_ref == nullptr || !self->GetIsGcMarking()) {
     return from_ref;
