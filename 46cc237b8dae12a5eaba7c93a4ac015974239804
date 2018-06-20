@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43676031_bd6a89b6",
+        "filename": "runtime/mirror/object-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-20T18:13:55Z",
+      "side": 1,
+      "message": "Put it inline to be consistent with other code?",
+      "range": {
+        "startLine": 156,
+        "startChar": 29,
+        "endLine": 156,
+        "endChar": 59
+      },
+      "revId": "46cc237b8dae12a5eaba7c93a4ac015974239804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56925705_b05960a4",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-20T18:13:55Z",
+      "side": 1,
+      "message": "Why not call it just \"Verify?\" \"This\" is kinda implied by it being an instance method...\n\n(I guess you could counterargue with the flags check, but...)",
+      "range": {
+        "startLine": 772,
+        "startChar": 27,
+        "endLine": 772,
+        "endChar": 31
+      },
+      "revId": "46cc237b8dae12a5eaba7c93a4ac015974239804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91200dcd_6a73c857",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-20T18:13:55Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 779,
+        "startChar": 15,
+        "endLine": 779,
+        "endChar": 16
+      },
+      "revId": "46cc237b8dae12a5eaba7c93a4ac015974239804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7559d215_9fb5cf82",
+        "filename": "runtime/mirror/object.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-06-20T18:13:55Z",
+      "side": 1,
+      "message": "static?",
+      "range": {
+        "startLine": 786,
+        "startChar": 15,
+        "endLine": 786,
+        "endChar": 16
+      },
+      "revId": "46cc237b8dae12a5eaba7c93a4ac015974239804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
