@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "970bfb9f_ada5dbbc",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-20T08:43:51Z",
+      "side": 1,
+      "message": "Indentation is off here.",
+      "revId": "605c89d8c5c8f70a7bf84f8c99cd8afba2011ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "add540b0_bc275f14",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-20T08:43:51Z",
+      "side": 1,
+      "message": "Move the \"template \u003c...\u003e\" below the comment.",
+      "revId": "605c89d8c5c8f70a7bf84f8c99cd8afba2011ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b878f18_bed8480b",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-20T08:43:51Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "605c89d8c5c8f70a7bf84f8c99cd8afba2011ac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
