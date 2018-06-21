@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c08f69_92a02eca",
+        "filename": "runtime/write_barrier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-21T13:50:48Z",
+      "side": 1,
+      "message": "a reference field",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "88ea61ef73d4c670ae6188f60e1d07bb8befc895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884342b5_f893ce7d",
+        "filename": "runtime/write_barrier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-21T13:50:48Z",
+      "side": 1,
+      "message": "a reference field",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "88ea61ef73d4c670ae6188f60e1d07bb8befc895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33798901_f6a66fe1",
+        "filename": "runtime/write_barrier.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-21T13:50:48Z",
+      "side": 1,
+      "message": "every reference field",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "88ea61ef73d4c670ae6188f60e1d07bb8befc895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
