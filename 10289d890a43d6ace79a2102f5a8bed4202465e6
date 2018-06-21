@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13e7f174_20423ff7",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-21T18:35:24Z",
+      "side": 1,
+      "message": "Isn\u0027t there a race condition here where the self-healing lock word change could happen after the conditional then abort below?",
+      "range": {
+        "startLine": 1520,
+        "startChar": 4,
+        "endLine": 1523,
+        "endChar": 5
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d555281_e95ddee0",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-21T18:35:24Z",
+      "side": 1,
+      "message": "Add comment why we don\u0027t care that the CAS succeeds.",
+      "range": {
+        "startLine": 1562,
+        "startChar": 14,
+        "endLine": 1562,
+        "endChar": 39
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20445c1_d5f8a61a",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-21T18:35:24Z",
+      "side": 1,
+      "message": "Any way to remove duplicated code between here and ProcessMarkStackRef?",
+      "range": {
+        "startLine": 1608,
+        "startChar": 4,
+        "endLine": 1628,
+        "endChar": 5
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840bdd49_b05636f8",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-06-21T18:35:24Z",
+      "side": 1,
+      "message": "I guess this has an assumption that nobody will have a custom reference with the referent also being stored in another field?",
+      "range": {
+        "startLine": 1636,
+        "startChar": 10,
+        "endLine": 1636,
+        "endChar": 30
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
