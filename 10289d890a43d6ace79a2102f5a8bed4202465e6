@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4cf16a4c_ac3d2132",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-21T21:07:57Z",
+      "side": 1,
+      "message": "Thanks a lot for pointing it out. You are right, there is a race and it could affect in live_bytes accounting for unevac-regions. Otherwise, it could lead to same object being scanned twice. I have fixed it in the latest patch.",
+      "parentUuid": "13e7f174_20423ff7",
+      "range": {
+        "startLine": 1520,
+        "startChar": 4,
+        "endLine": 1523,
+        "endChar": 5
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d555281_e95ddee0",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e54ad0_8f01f0e7",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-21T21:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d555281_e95ddee0",
+      "range": {
+        "startLine": 1562,
+        "startChar": 14,
+        "endLine": 1562,
+        "endChar": 39
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ff93dff9_8ba58296",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-21T21:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b20445c1_d5f8a61a",
+      "range": {
+        "startLine": 1608,
+        "startChar": 4,
+        "endLine": 1628,
+        "endChar": 5
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "840bdd49_b05636f8",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeb5ab00_eb192299",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1636,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-21T21:07:57Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the assumption. It can be made fool proof by passing in ref_addr and comparing it with referent\u0027s address. I\u0027ll take of before merging.",
+      "parentUuid": "840bdd49_b05636f8",
+      "range": {
+        "startLine": 1636,
+        "startChar": 10,
+        "endLine": 1636,
+        "endChar": 30
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
