@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "77dd68fe_eb010cff",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1523,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-21T21:14:32Z",
+      "side": 1,
+      "message": "Actually, I was wrong about issue with live_bytes accounting. Even that won\u0027t happen due to AtomicTestAndSet. I have added comment explaining this in latest patch.",
+      "parentUuid": "4cf16a4c_ac3d2132",
+      "range": {
+        "startLine": 1520,
+        "startChar": 4,
+        "endLine": 1523,
+        "endChar": 5
+      },
+      "revId": "10289d890a43d6ace79a2102f5a8bed4202465e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d555281_e95ddee0",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 4
