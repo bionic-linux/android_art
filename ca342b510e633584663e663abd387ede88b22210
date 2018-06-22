@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "89b8a540_f989adec",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "Presumably the code in the outermost else block (lines 1645–1652) should only be executed if the holder is an instance of Reference (i.e., if `(class_flags \u0026 mirror::kClassFlagReference) !\u003d 0`)? If so, could this code be rewritten as:\n\n  if (UNLIKELY((class_flags \u0026 mirror::kClassFlagReference) !\u003d 0)) {\n    mirror::Reference* reference \u003d holder-\u003eAsReference\u003ckVerifyNone, kWithoutReadBarrier\u003e();\n    mirror::Object* referent \u003d reference-\u003eGetReferent\u003ckWithoutReadBarrier\u003e();\n    if (UNLIKELY(referent !\u003d nullptr \u0026\u0026 !IsInToSpace(referent))) {\n      // If the read barrier was called from GetReferent(), then we should mark the referent too.\n      if (from_ref \u003d\u003d referent) {\n        ret \u003d Mark(self, from_ref);\n        if (kUseBakerReadBarrier) {\n          holder-\u003eAtomicSetReadBarrierState\u003cstd::memory_order_release\u003e(ReadBarrier::GrayState(),\n                                                                       ReadBarrier::WhiteState());\n        }\n      } else {\n        // Leave this reference gray in the queue so that GetReferent() will trigger a read\n        // barrier. We will change it to white later in ReferenceQueue::DequeuePendingReference().\n        DCHECK(reference-\u003eGetPendingNext\u003ckWithoutReadBarrier\u003e() !\u003d nullptr)\n            \u003c\u003c \"Left unenqueued ref gray \" \u003c\u003c holder;\n      }\n    } else {\n      // We may occasionally leave a reference white in the queue if its referent happens to be\n      // concurrently marked after the Scan() call above has enqueued the Reference, in which\n      // case the above IsInToSpace() evaluates to true and we change the color from gray to white\n      // here in this else block.\n      if (kUseBakerReadBarrier) {\n        holder-\u003eAtomicSetReadBarrierState\u003cstd::memory_order_release\u003e(ReadBarrier::GrayState(),\n                                                                     ReadBarrier::WhiteState());\n      }\n    }\n  }",
+      "parentUuid": "b48c53d1_51132342",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1628,
+        "endChar": 55
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "067a1065_4974833f",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 3
@@ -848,6 +872,30 @@
     },
     {
       "key": {
+        "uuid": "e9ee7019_c078e48c",
+        "filename": "runtime/mirror/object-refvisitor-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "I see. I\u0027d add\n\n  DCHECK_EQ(klass, GetClass\u003ckVerifyFlags, kReadBarrierOption\u003e());\n\nhere then.",
+      "parentUuid": "97c250fe_64069fb9",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 70
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ed061d_c0899163",
         "filename": "runtime/mirror/object-refvisitor-inl.h",
         "patchSetId": 3
@@ -930,6 +978,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "aca95852_8275bf06",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b703050_b19ded6a",
+        "filename": "runtime/read_barrier-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "I see. What about including this at the end of ProcessHolderFromReadBarrier (I guess you\u0027d have to pass it `ref_addr` as argument too)?\n\nOtherwise, I think the fact that ProcessHolderFromReadBarrier can return a null reference should be documented.",
+      "parentUuid": "525e2335_63aa8596",
       "range": {
         "startLine": 64,
         "startChar": 0,

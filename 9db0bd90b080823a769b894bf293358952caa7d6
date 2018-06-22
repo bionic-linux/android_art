@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfca08d0_7682c285",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "What about:\n\n  Lost the race to mark `obj` in the bitmap to another thread; do not scan `obj`.\n\n?",
+      "range": {
+        "startLine": 1532,
+        "startChar": 9,
+        "endLine": 1532,
+        "endChar": 24
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307449f2_c547a9e6",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the return value of `BlackenGrayObject` be used here too?",
+      "range": {
+        "startLine": 1549,
+        "startChar": 2,
+        "endLine": 1549,
+        "endChar": 19
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6ca464_066e49c0",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "What about:\n\n  // Mark a gray object through, i.e., scan it and mark it black.\n  // Several threads can race to mark the same object through, but only one\n  // can win: return whether this thread won the race.\n\n?",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b2ff85_cd1b2c16",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-22T16:11:28Z",
+      "side": 1,
+      "message": "What about `MarkGrayObjectThrough`?",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
