@@ -449,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "1cfeabdf_35837f97",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b8a540_f989adec",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1628,
+        "endChar": 55
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "067a1065_4974833f",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 3
@@ -896,6 +920,30 @@
     },
     {
       "key": {
+        "uuid": "3cc0e780_65a66f67",
+        "filename": "runtime/mirror/object-refvisitor-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "When I tried adding this DCHECK, it start failing, and rightly so. klass passed in from VisitReferences() is fetched before visitor() is called on the class. So when the DCHECK gets it again, Class is possibly moved to to-space and hence DCHECK fails.",
+      "parentUuid": "e9ee7019_c078e48c",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 70
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ed061d_c0899163",
         "filename": "runtime/mirror/object-refvisitor-inl.h",
         "patchSetId": 3
@@ -1002,6 +1050,30 @@
       "side": 1,
       "message": "I see. What about including this at the end of ProcessHolderFromReadBarrier (I guess you\u0027d have to pass it `ref_addr` as argument too)?\n\nOtherwise, I think the fact that ProcessHolderFromReadBarrier can return a null reference should be documented.",
       "parentUuid": "525e2335_63aa8596",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e564fbd9_806de09b",
+        "filename": "runtime/read_barrier-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Added a comment for ProcessHolderFromReadBarrier",
+      "parentUuid": "3b703050_b19ded6a",
       "range": {
         "startLine": 64,
         "startChar": 0,

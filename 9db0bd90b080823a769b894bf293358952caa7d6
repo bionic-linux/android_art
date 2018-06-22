@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db1f5ebb_1eecdb4c",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfca08d0_7682c285",
+      "range": {
+        "startLine": 1532,
+        "startChar": 9,
+        "endLine": 1532,
+        "endChar": 24
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "307449f2_c547a9e6",
         "filename": "runtime/gc/collector/concurrent_copying.cc",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f24f34a6_8a1d4ae3",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Thanks for pointing it out. It should be otherwise read-barrier state may be set to white prematurely. Fixed.",
+      "parentUuid": "307449f2_c547a9e6",
+      "range": {
+        "startLine": 1549,
+        "startChar": 2,
+        "endLine": 1549,
+        "endChar": 19
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2e39dd5b_7d5de5ff",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d6ca464_066e49c0",
+      "range": {
+        "startLine": 174,
+        "startChar": 2,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74b2ff85_cd1b2c16",
         "filename": "runtime/gc/collector/concurrent_copying.h",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383ef0e6_9eced39d",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-06-22T20:34:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74b2ff85_cd1b2c16",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 176,
+        "endChar": 24
+      },
+      "revId": "9db0bd90b080823a769b894bf293358952caa7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
