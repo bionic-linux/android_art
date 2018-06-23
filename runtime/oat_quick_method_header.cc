@@ -42,6 +42,9 @@ uint32_t OatQuickMethodHeader::ToDexPc(ArtMethod* method,
   uint32_t sought_offset = pc - reinterpret_cast<uintptr_t>(entry_point);
   if (IsOptimized()) {
     CodeInfo code_info(this);
+    if (code_info.GetNumberOfStackMaps() == 0) {
+      return dex::kDexNoIndex;  // JNI methods have CodeInfo, but no stack maps.
+    }
     StackMap stack_map = code_info.GetStackMapForNativePcOffset(sought_offset);
     if (stack_map.IsValid()) {
       return stack_map.GetDexPc();
