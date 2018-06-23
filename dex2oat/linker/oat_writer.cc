@@ -1317,7 +1317,6 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
     DCHECK_LT(method_offsets_index_, oat_class->method_headers_.size());
     OatQuickMethodHeader* method_header = &oat_class->method_headers_[method_offsets_index_];
     uint32_t vmap_table_offset = method_header->GetVmapTableOffset();
-    uint32_t method_info_offset = method_header->GetMethodInfoOffset();
     // The code offset was 0 when the mapping/vmap table offset was set, so it's set
     // to 0-offset and we need to adjust it by code_offset.
     uint32_t code_offset = quick_code_offset - thumb_offset;
@@ -1328,19 +1327,7 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
       vmap_table_offset += code_offset;
       DCHECK_LT(vmap_table_offset, code_offset);
     }
-    if (method_info_offset != 0u) {
-      method_info_offset += code_offset;
-      DCHECK_LT(method_info_offset, code_offset);
-    }
-    uint32_t frame_size_in_bytes = compiled_method->GetFrameSizeInBytes();
-    uint32_t core_spill_mask = compiled_method->GetCoreSpillMask();
-    uint32_t fp_spill_mask = compiled_method->GetFpSpillMask();
-    *method_header = OatQuickMethodHeader(vmap_table_offset,
-                                          method_info_offset,
-                                          frame_size_in_bytes,
-                                          core_spill_mask,
-                                          fp_spill_mask,
-                                          code_size);
+    *method_header = OatQuickMethodHeader(vmap_table_offset, code_size);
 
     if (!deduped) {
       // Update offsets. (Checksum is updated when writing.)
@@ -1360,8 +1347,9 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
     // Exclude quickened dex methods (code_size == 0) since they have no native code.
     if (generate_debug_info_ && code_size != 0) {
       DCHECK(has_debug_info);
+      const uint8_t* code_info = compiled_method->GetVmapTable().data();
+      DCHECK(code_info != nullptr);
 
-      bool has_code_info = method_header->IsOptimized();
       // Record debug information for this function if we are doing that.
       debug::MethodDebugInfo& info = writer_->method_info_[debug_info_idx];
       DCHECK(info.custom_name.empty());
@@ -1378,8 +1366,8 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
       info.is_code_address_text_relative = true;
       info.code_address = code_offset - executable_offset_;
       info.code_size = code_size;
-      info.frame_size_in_bytes = compiled_method->GetFrameSizeInBytes();
-      info.code_info = has_code_info ? compiled_method->GetVmapTable().data() : nullptr;
+      info.frame_size_in_bytes = CodeInfo::DecodeFrameInfo(code_info).FrameSizeInBytes();
+      info.code_info = code_info;
       info.cfi = compiled_method->GetCFIInfo();
     } else {
       DCHECK(!has_debug_info);
@@ -1422,9 +1410,6 @@ class OatWriter::LayoutReserveOffsetCodeMethodVisitor : public OrderedMethodVisi
       // If the code is the same, all other fields are likely to be the same as well.
       if (UNLIKELY(lhs->GetVmapTable().data() != rhs->GetVmapTable().data())) {
         return lhs->GetVmapTable().data() < rhs->GetVmapTable().data();
-      }
-      if (UNLIKELY(lhs->GetMethodInfo().data() != rhs->GetMethodInfo().data())) {
-        return lhs->GetMethodInfo().data() < rhs->GetMethodInfo().data();
       }
       if (UNLIKELY(lhs->GetPatches().data() != rhs->GetPatches().data())) {
         return lhs->GetPatches().data() < rhs->GetPatches().data();
