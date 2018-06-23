@@ -725,13 +725,6 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
       GetCompilerDriver(),
       codegen->GetInstructionSet(),
       code_allocator->GetMemory(),
-      // Follow Quick's behavior and set the frame size to zero if it is
-      // considered "empty" (see the definition of
-      // art::CodeGenerator::HasEmptyFrame).
-      codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
-      codegen->GetCoreSpillMask(),
-      codegen->GetFpuSpillMask(),
-      ArrayRef<const uint8_t>(),  // Method info.
       ArrayRef<const uint8_t>(stack_map),
       ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data()),
       ArrayRef<const linker::LinkerPatch>(linker_patches));
@@ -1171,16 +1164,11 @@ CompiledMethod* OptimizingCompiler::JniCompile(uint32_t access_flags,
   MaybeRecordStat(compilation_stats_.get(), MethodCompilationStat::kCompiledNativeStub);
 
   ArenaVector<uint8_t> stack_map(allocator.Adapter(kArenaAllocStackMaps));
-  ArenaVector<uint8_t> method_info(allocator.Adapter(kArenaAllocStackMaps));
   CreateJniStackMap(&arena_stack, jni_compiled_method, &stack_map);
   return CompiledMethod::SwapAllocCompiledMethod(
       GetCompilerDriver(),
       jni_compiled_method.GetInstructionSet(),
       jni_compiled_method.GetCode(),
-      jni_compiled_method.GetFrameSize(),
-      jni_compiled_method.GetCoreSpillMask(),
-      jni_compiled_method.GetFpSpillMask(),
-      ArrayRef<const uint8_t>(method_info),
       ArrayRef<const uint8_t>(stack_map),
       jni_compiled_method.GetCfi(),
       /* patches */ ArrayRef<const linker::LinkerPatch>());
@@ -1265,9 +1253,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
         method,
         stack_map_data,
         roots_data,
-        jni_compiled_method.GetFrameSize(),
-        jni_compiled_method.GetCoreSpillMask(),
-        jni_compiled_method.GetFpSpillMask(),
         jni_compiled_method.GetCode().data(),
         jni_compiled_method.GetCode().size(),
         data_size,
@@ -1377,9 +1362,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
       method,
       stack_map_data,
       roots_data,
-      codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
-      codegen->GetCoreSpillMask(),
-      codegen->GetFpuSpillMask(),
       code_allocator.GetMemory().data(),
       code_allocator.GetMemory().size(),
       data_size,
