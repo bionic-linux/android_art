@@ -215,8 +215,7 @@ static void WriteDebugLocEntry(const MethodDebugInfo* method_info,
       const Kind kind = reg_loc.GetKind();
       const int32_t value = reg_loc.GetValue();
       if (kind == Kind::kInStack) {
-        // The stack offset is relative to SP. Make it relative to CFA.
-        expr.WriteOpFbreg(value - method_info->frame_size_in_bytes);
+        expr.WriteOpFbreg(value);  // We have made the offset relative to CFA.
         if (piece == 0 && reg_hi.GetKind() == Kind::kInStack &&
             reg_hi.GetValue() == value + 4) {
           break;  // the high word is correctly implied by the low word.
