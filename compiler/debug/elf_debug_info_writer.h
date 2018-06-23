@@ -208,9 +208,16 @@ class ElfCompilationUnitWriter {
       std::vector<DexRegisterMap> dex_reg_maps;
       if (accessor.HasCodeItem() && mi->code_info != nullptr) {
         code_info.reset(new CodeInfo(mi->code_info));
+        uint32_t frame_size_in_bytes = code_info->GetMethodHeader().GetFrameSizeInBytes();
         for (size_t s = 0; s < code_info->GetNumberOfStackMaps(); ++s) {
           const StackMap stack_map = code_info->GetStackMapAt(s);
-          dex_reg_maps.push_back(code_info->GetDexRegisterMapOf(stack_map));
+          dex_reg_maps.emplace_back(code_info->GetDexRegisterMapOf(stack_map));
+          for (DexRegisterLocation& loc : dex_reg_maps.back()) {
+            if (loc.GetKind() == DexRegisterLocation::Kind::kInStack) {
+              // The stack offset is relative to SP. Make it relative to CFA.
+              loc = DexRegisterLocation(loc.GetKind(), loc.GetValue() - frame_size_in_bytes);
+            }
+          }
         }
       }
 
