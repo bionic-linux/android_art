@@ -726,12 +726,6 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
       GetCompilerDriver(),
       codegen->GetInstructionSet(),
       code_allocator->GetMemory(),
-      // Follow Quick's behavior and set the frame size to zero if it is
-      // considered "empty" (see the definition of
-      // art::CodeGenerator::HasEmptyFrame).
-      codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
-      codegen->GetCoreSpillMask(),
-      codegen->GetFpuSpillMask(),
       ArrayRef<const uint8_t>(method_info),
       ArrayRef<const uint8_t>(stack_map),
       ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data()),
@@ -1185,9 +1179,6 @@ CompiledMethod* OptimizingCompiler::JniCompile(uint32_t access_flags,
       GetCompilerDriver(),
       jni_compiled_method.GetInstructionSet(),
       jni_compiled_method.GetCode(),
-      jni_compiled_method.GetFrameSize(),
-      jni_compiled_method.GetCoreSpillMask(),
-      jni_compiled_method.GetFpSpillMask(),
       ArrayRef<const uint8_t>(method_info),
       ArrayRef<const uint8_t>(stack_map),
       jni_compiled_method.GetCfi(),
@@ -1277,9 +1268,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
         stack_map_data,
         method_info_data,
         roots_data,
-        jni_compiled_method.GetFrameSize(),
-        jni_compiled_method.GetCoreSpillMask(),
-        jni_compiled_method.GetFpSpillMask(),
         jni_compiled_method.GetCode().data(),
         jni_compiled_method.GetCode().size(),
         data_size,
@@ -1309,7 +1297,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
       info.is_code_address_text_relative = false;
       info.code_address = code_address;
       info.code_size = jni_compiled_method.GetCode().size();
-      info.frame_size_in_bytes = method_header->GetFrameSizeInBytes();
       info.code_info = nullptr;
       info.cfi = jni_compiled_method.GetCfi();
       GenerateJitDebugInfo(method, info);
@@ -1397,9 +1384,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
       stack_map_data,
       method_info_data,
       roots_data,
-      codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
-      codegen->GetCoreSpillMask(),
-      codegen->GetFpuSpillMask(),
       code_allocator.GetMemory().data(),
       code_allocator.GetMemory().size(),
       data_size,
@@ -1432,7 +1416,6 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     info.is_code_address_text_relative = false;
     info.code_address = code_address;
     info.code_size = code_allocator.GetMemory().size();
-    info.frame_size_in_bytes = method_header->GetFrameSizeInBytes();
     info.code_info = stack_map_size == 0 ? nullptr : stack_map_data;
     info.cfi = ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data());
     GenerateJitDebugInfo(method, info);

@@ -325,7 +325,6 @@ class OatSymbolizer FINAL {
     info.is_code_address_text_relative = true;
     info.code_address = reinterpret_cast<uintptr_t>(code_address);
     info.code_size = method_header->GetCodeSize();
-    info.frame_size_in_bytes = method_header->GetFrameSizeInBytes();
     info.code_info = info.is_optimized ? method_header->GetOptimizedCodeInfoPtr() : nullptr;
     info.cfi = ArrayRef<uint8_t>();
     method_debug_infos_.push_back(info);
