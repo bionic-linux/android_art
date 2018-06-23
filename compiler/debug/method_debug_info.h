@@ -40,7 +40,6 @@ struct MethodDebugInfo {
   bool is_code_address_text_relative;  // Is the address offset from start of .text section?
   uint64_t code_address;
   uint32_t code_size;
-  uint32_t frame_size_in_bytes;
   const void* code_info;
   ArrayRef<const uint8_t> cfi;
 };
