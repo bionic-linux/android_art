@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54eb4bc0_4e7e24f1",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-25T13:49:53Z",
+      "side": 1,
+      "message": "If I understand Mathieu\u0027s comment and your comment in PS4 (https://android-review.googlesource.com/c/platform/art/+/707385/4/runtime/gc/collector/concurrent_copying.cc#1636) correctly, this needs to be addressed before this CL is merged, otherwise this may invalidate instances of custom reference classes, right?",
+      "range": {
+        "startLine": 1628,
+        "startChar": 10,
+        "endLine": 1629,
+        "endChar": 40
+      },
+      "revId": "a7df4eb3cab909d6f8bed98be79b6572881a359f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abbd307_b4818531",
+        "filename": "runtime/gc/collector/concurrent_copying.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-25T13:49:53Z",
+      "side": 1,
+      "message": "I\u0027d be more specific here, and have something like here:\n\n  Either return the marked (to-space) reference corresponding to `from_ref`, or a null pointer.",
+      "range": {
+        "startLine": 126,
+        "startChar": 26,
+        "endLine": 126,
+        "endChar": 47
+      },
+      "revId": "a7df4eb3cab909d6f8bed98be79b6572881a359f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

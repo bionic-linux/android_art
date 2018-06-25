@@ -944,6 +944,30 @@
     },
     {
       "key": {
+        "uuid": "35472db4_86c608a0",
+        "filename": "runtime/mirror/object-refvisitor-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-25T13:49:53Z",
+      "side": 1,
+      "message": "Right, makes sense. What about:\n\n  DCHECK_EQ(ReadBarrier::Mark(klass), ReadBarrier:Mark(klass_));\n\nthen?",
+      "parentUuid": "3cc0e780_65a66f67",
+      "range": {
+        "startLine": 86,
+        "startChar": 51,
+        "endLine": 86,
+        "endChar": 70
+      },
+      "revId": "ca342b510e633584663e663abd387ede88b22210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ed061d_c0899163",
         "filename": "runtime/mirror/object-refvisitor-inl.h",
         "patchSetId": 3
