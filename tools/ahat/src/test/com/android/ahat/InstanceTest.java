@@ -21,6 +21,7 @@ import com.android.ahat.heapdump.AhatHeap;
 import com.android.ahat.heapdump.AhatInstance;
 import com.android.ahat.heapdump.AhatSnapshot;
 import com.android.ahat.heapdump.PathElement;
+import com.android.ahat.heapdump.Reachability;
 import com.android.ahat.heapdump.Size;
 import com.android.ahat.heapdump.Value;
 import java.io.IOException;
@@ -216,7 +217,28 @@ public class InstanceTest {
     AhatInstance ref = dump.getDumpedAhatInstance("aSoftReference");
     AhatInstance referent = ref.getReferent();
     assertNotNull(referent);
+    assertEquals(Reachability.SOFT, referent.getReachability());
     assertTrue(referent.isWeaklyReachable());
+  }
+
+  @Test
+  public void reachability() throws IOException {
+    TestDump dump = TestDump.getTestDump();
+    AhatInstance strong1 = dump.getDumpedAhatInstance("reachabilityReferenceChain");
+    AhatInstance soft1 = strong1.getField("referent").asAhatInstance();
+    AhatInstance strong2 = soft1.getField("referent").asAhatInstance();
+    AhatInstance weak1 = strong2.getField("referent").asAhatInstance();
+    AhatInstance soft2 = weak1.getField("referent").asAhatInstance();
+    AhatInstance phantom1 = soft2.getField("referent").asAhatInstance();
+    AhatInstance obj = phantom1.getField("referent").asAhatInstance();
+
+    assertEquals(Reachability.STRONG, strong1.getReachability());
+    assertEquals(Reachability.STRONG, soft1.getReachability());
+    assertEquals(Reachability.SOFT, strong2.getReachability());
+    assertEquals(Reachability.SOFT, weak1.getReachability());
+    assertEquals(Reachability.WEAK, soft2.getReachability());
+    assertEquals(Reachability.WEAK, phantom1.getReachability());
+    assertEquals(Reachability.PHANTOM, obj.getReachability());
   }
 
   @Test
@@ -388,6 +410,7 @@ public class InstanceTest {
 
     // We had a bug in the past where weak references to GC roots caused the
     // roots to be incorrectly be considered weakly reachable.
+    assertEquals(Reachability.STRONG, root.getReachability());
     assertTrue(root.isStronglyReachable());
     assertFalse(root.isWeaklyReachable());
   }
@@ -403,6 +426,9 @@ public class InstanceTest {
     AhatInstance weak2 = weak1.getField("referent").asAhatInstance();
     AhatInstance weak3 = weak2.getField("referent").asAhatInstance();
     assertTrue(ref.isStronglyReachable());
+    assertEquals(Reachability.SOFT, weak1.getReachability());
+    assertEquals(Reachability.SOFT, weak2.getReachability());
+    assertEquals(Reachability.SOFT, weak3.getReachability());
     assertTrue(weak1.isWeaklyReachable());
     assertTrue(weak2.isWeaklyReachable());
     assertTrue(weak3.isWeaklyReachable());
@@ -414,6 +440,8 @@ public class InstanceTest {
     AhatInstance obj = dump.getDumpedAhatInstance("anObject");
     AhatInstance ref = dump.getDumpedAhatInstance("aReference");
     AhatInstance weak = dump.getDumpedAhatInstance("aWeakReference");
+    assertTrue(obj.getReverseReferences().contains(ref));
+    assertTrue(obj.getReverseReferences().contains(weak));
     assertTrue(obj.getHardReverseReferences().contains(ref));
     assertFalse(obj.getHardReverseReferences().contains(weak));
     assertFalse(obj.getSoftReverseReferences().contains(ref));

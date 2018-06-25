@@ -136,6 +136,7 @@ public class DumpedStuff extends SuperDumpedStuff {
   public WeakReference aWeakReference = new WeakReference(anObject, referenceQueue);
   public WeakReference aNullReferentReference = new WeakReference(null, referenceQueue);
   public SoftReference aSoftReference = new SoftReference(new Object());
+  public Reference reachabilityReferenceChain;
   public byte[] bigArray;
   public ObjectTree[] gcPathArray = new ObjectTree[]{null, null,
     new ObjectTree(
@@ -157,4 +158,15 @@ public class DumpedStuff extends SuperDumpedStuff {
   public int[] modifiedArray;
   public Object objectAllocatedAtKnownSite;
   public Object objectAllocatedAtKnownSubSite;
+
+  // Allocate those objects that we need to not be GC'd before taking the heap
+  // dump.
+  public void shouldNotGc() {
+    reachabilityReferenceChain = new Reference(
+        new SoftReference(
+        new Reference(
+        new WeakReference(
+        new SoftReference(
+        new PhantomReference(new Object(), referenceQueue))))));
+  }
 }
