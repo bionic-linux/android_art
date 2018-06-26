@@ -22,6 +22,30 @@
       "revId": "d2fe4c21648e5b6f0773845941a3c240b92162e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccb58aa2_9f53cfb8",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-06-26T16:31:56Z",
+      "side": 1,
+      "message": "A todo. Although the resolution might just be that we don\u0027t care that the results are somewhat strange if you do something as bizarre as trace a non-debuggable app. For now though I just keep the historical behavior.",
+      "parentUuid": "3a9b5000_f7dd6d43",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 78
+      },
+      "revId": "d2fe4c21648e5b6f0773845941a3c240b92162e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
