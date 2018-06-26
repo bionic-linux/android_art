@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3936e0_6a875764",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-26T17:41:03Z",
+      "side": 1,
+      "message": "Why clear() instead of the DCHECK()?",
+      "range": {
+        "startLine": 326,
+        "startChar": 2,
+        "endLine": 326,
+        "endChar": 15
+      },
+      "revId": "145a0488ebb04489e2354c9c1f16b84a6caf7767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a3ca17_7f6a5474",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-26T17:41:03Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 348,
+        "startChar": 40,
+        "endLine": 348,
+        "endChar": 41
+      },
+      "revId": "145a0488ebb04489e2354c9c1f16b84a6caf7767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
