@@ -314,8 +314,6 @@ void StackMapStream::FillInMethodInfo(MemoryRegion region) {
 }
 
 size_t StackMapStream::PrepareForFillIn() {
-  DCHECK_EQ(out_.size(), 0u);
-
   // Read the stack masks now. The compiler might have updated them.
   for (size_t i = 0; i < lazy_stack_masks_.size(); i++) {
     BitVector* stack_mask = lazy_stack_masks_[i];
@@ -325,6 +323,7 @@ size_t StackMapStream::PrepareForFillIn() {
     }
   }
 
+  out_.clear();
   EncodeUnsignedLeb128(&out_, frame_size_in_bytes_);
   EncodeUnsignedLeb128(&out_, core_spill_mask_);
   EncodeUnsignedLeb128(&out_, fp_spill_mask_);
@@ -339,22 +338,24 @@ size_t StackMapStream::PrepareForFillIn() {
   dex_register_maps_.Encode(out);
   dex_register_catalog_.Encode(out);
 
-  return UnsignedLeb128Size(out_.size()) +  out_.size();
+  return out_.size();
 }
 
 void StackMapStream::FillInCodeInfo(MemoryRegion region) {
   DCHECK(in_stack_map_ == false) << "Mismatched Begin/End calls";
   DCHECK(in_inline_info_ == false) << "Mismatched Begin/End calls";
   DCHECK_NE(0u, out_.size()) << "PrepareForFillIn not called before FillIn";
-  DCHECK_EQ(region.size(), UnsignedLeb128Size(out_.size()) +  out_.size());
+  DCHECK_EQ(region.size(), out_.size());;
 
-  uint8_t* ptr = EncodeUnsignedLeb128(region.begin(), out_.size());
-  region.CopyFromVector(ptr - region.begin(), out_);
+  region.CopyFromVector(0, out_);
+
+  // Verify that we can load the CodeInfo and check some essentials.
+  CodeInfo code_info(region);
+  CHECK_EQ(code_info.Size(), out_.size());
+  CHECK_EQ(code_info.GetNumberOfStackMaps(), stack_maps_.size());
 
   // Verify all written data (usually only in debug builds).
   if (kVerifyStackMaps) {
-    CodeInfo code_info(region);
-    CHECK_EQ(code_info.GetNumberOfStackMaps(), stack_maps_.size());
     for (const auto& dcheck : dchecks_) {
       dcheck(code_info);
     }
