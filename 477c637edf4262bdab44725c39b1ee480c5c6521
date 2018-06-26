@@ -22,6 +22,30 @@
       "revId": "477c637edf4262bdab44725c39b1ee480c5c6521",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cd09a46_a03f239f",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 15
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-06-26T21:59:50Z",
+      "side": 1,
+      "message": "Agreed. My plan is to replace the code exercised by the \u0027trace\u0027 config with one that uses the new trampolines I\u0027m working on which avoid the need to update the instrumentation stack (due to the way the data is reported I think this should be doable. We will need to leave stream as is but since AFAIK literally nothing uses it this doesn\u0027t seem like that big a deal).",
+      "parentUuid": "242ac797_5ae2645f",
+      "range": {
+        "startLine": 199,
+        "startChar": 24,
+        "endLine": 203,
+        "endChar": 52
+      },
+      "revId": "477c637edf4262bdab44725c39b1ee480c5c6521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
