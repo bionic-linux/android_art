@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a9b5000_f7dd6d43",
+        "filename": "runtime/trace.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-26T14:49:44Z",
+      "side": 1,
+      "message": "So is that a TODO or do we plan on sticking with it? It does mean instrumentation stubs is only for debuggable, which simplifies the jit GC story.",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 78
+      },
+      "revId": "d2fe4c21648e5b6f0773845941a3c240b92162e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
