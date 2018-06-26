@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b86770_974d8cae",
+        "filename": "runtime/stack_map.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-26T17:47:38Z",
+      "side": 1,
+      "message": "Note that we could have a better encoding for these.\nframe_size_in_bytes_ is a multiple of kStackAlignment.\ncore_spill_mask could be encoded to move LR to the bottom bit (architecture-specific).\nWe could keep the Varint encoding for number_of_dex_registers_.\n\nBut keep it as is for this CL.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "f6ba5b316b51d0fb9f91cb51a42e51dfeee62ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
