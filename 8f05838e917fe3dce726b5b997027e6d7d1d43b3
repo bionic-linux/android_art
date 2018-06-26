@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0215b5f7_a5e95a8e",
+        "filename": "compiler/debug/elf_debug_info_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "Done (reverted)",
+      "parentUuid": "fce4da45_665a3ac3",
+      "range": {
+        "startLine": 214,
+        "startChar": 23,
+        "endLine": 214,
+        "endChar": 35
+      },
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed1643c3_0e8b2d76",
         "filename": "compiler/debug/elf_debug_info_writer.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe13c33b_bef7fad7",
+        "filename": "compiler/debug/elf_debug_info_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "Done (reverted)",
+      "parentUuid": "ed1643c3_0e8b2d76",
+      "range": {
+        "startLine": 215,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 11
+      },
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6ab0a54a_0f498f6f",
+        "filename": "compiler/optimizing/code_generator.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aec2181f_820d4f1b",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 0
+      },
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "145f3f7a_e1e1db0a",
         "filename": "compiler/optimizing/stack_map_stream.cc",
         "patchSetId": 2
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "9967726f_9a601045",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "I do anticipate such use, but I am willing to get there in smaller steps...",
+      "parentUuid": "145f3f7a_e1e1db0a",
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72a5032f_5b7e8711",
         "filename": "runtime/stack_map.h",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaff6ce2_1917d8f0",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "Needed in the file, it was transitively included before.",
+      "parentUuid": "72a5032f_5b7e8711",
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -125,6 +233,30 @@
       "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6465036a_81c96f9c",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-26T15:52:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fcd8c0d_b3cad9a7",
+      "range": {
+        "startLine": 479,
+        "startChar": 2,
+        "endLine": 479,
+        "endChar": 24
+      },
+      "revId": "8f05838e917fe3dce726b5b997027e6d7d1d43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
