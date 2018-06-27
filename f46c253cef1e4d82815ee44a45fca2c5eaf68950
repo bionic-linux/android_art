@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a8855c1_36481a47",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-27T09:58:31Z",
+      "side": 1,
+      "message": "Why don\u0027t you use the same as non-JNI method and use codegen-\u003eComputeStackMapAndMethodInfoSize(\u0026stack_map_size, \u0026method_info_size);?",
+      "range": {
+        "startLine": 1270,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 69
+      },
+      "revId": "f46c253cef1e4d82815ee44a45fca2c5eaf68950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "427a9aaf_8d42752f",
+        "filename": "runtime/oat_quick_method_header.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-27T09:58:31Z",
+      "side": 1,
+      "message": "There\u0027s a bit of technical debt here. I think you can now do:\n\nif (method-\u003eIsNative()) {\n  ...\n} else {\n  DHCECK(IsOptimized());\n  ...\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "f46c253cef1e4d82815ee44a45fca2c5eaf68950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
