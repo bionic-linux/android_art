@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13341ab5_8dd56b83",
+        "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1042885
+      },
+      "writtenOn": "2018-06-27T10:32:43Z",
+      "side": 1,
+      "message": "I\u0027d recommend changing all the \"weak\"s to \"soft\"s in this test case, otherwise it reads really weirdly, since you no longer use \"weak\" to refer to soft references in the API.",
+      "revId": "79348e58c5fe6dac6f46971918b1a07dca105431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
