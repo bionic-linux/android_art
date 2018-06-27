@@ -22,6 +22,30 @@
       "revId": "9a529c2846360fee5f62f2758cc7872aee77e712",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018fbec0_0fb6f302",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-06-27T10:49:27Z",
+      "side": 1,
+      "message": "Bug filed against dexter/slicer \u0026 new entry in knownfailures.\n\nWe\u0027ve flirted with different expectations during the d8 move, but it\u0027s painful to maintain the expectations this way and it\u0027s perhaps the path best not taken.",
+      "parentUuid": "be8e58d3_fb3bdb24",
+      "range": {
+        "startLine": 452,
+        "startChar": 71,
+        "endLine": 452,
+        "endChar": 87
+      },
+      "revId": "9a529c2846360fee5f62f2758cc7872aee77e712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
