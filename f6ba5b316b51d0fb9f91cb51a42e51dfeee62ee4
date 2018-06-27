@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "acebd7d5_a3f2a8d7",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-27T10:03:56Z",
+      "side": 1,
+      "message": "Given BeginMethod can be called with frame_size_in_bytes \u003d 0, should you change the default of frame_size_in_bytes_ ?",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "f6ba5b316b51d0fb9f91cb51a42e51dfeee62ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33b86770_974d8cae",
         "filename": "runtime/stack_map.cc",
         "patchSetId": 3
