@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04855c6b_52010999",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-27T10:52:26Z",
+      "side": 1,
+      "message": "Change to ArenaStack* to reduce the code in the callers. Use a local ScopedArenaAllocator to release the allocated memory when CreateJniStackMap() returns. (Even though callers do not reuse that memory before destroying the ArenaStack.)",
+      "range": {
+        "startLine": 1112,
+        "startChar": 23,
+        "endLine": 1112,
+        "endChar": 54
+      },
+      "revId": "9a1dba5df3e953bc67f1e572c060c1b1f9913830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
