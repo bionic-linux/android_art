@@ -442,11 +442,12 @@
     },
     {
         "tests": [
-            "132-daemon-locks-shutdown",
-            "607-daemon-stress",
-            "602-deoptimizeable",
+            "083-compiler-regressions",
             "121-simple-suspend-check",
-            "083-compiler-regressions"
+            "132-daemon-locks-shutdown",
+            "602-deoptimizeable",
+            "607-daemon-stress",
+            "638-no-line-number"
         ],
         "description": ["Tests that have failed on redefine stress for unknown reasons"],
         "bug": "b/73177368",
