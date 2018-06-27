@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0957b523_c06db0dd",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-27T12:36:02Z",
+      "side": 1,
+      "message": "Nit: Fit on a single line.",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 55
+      },
+      "revId": "a043111e3a2c09b549708a6227a1f54d91da76aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387714b8_fb595fd2",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 935,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-06-27T12:36:02Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 933,
+        "startChar": 0,
+        "endLine": 935,
+        "endChar": 55
+      },
+      "revId": "a043111e3a2c09b549708a6227a1f54d91da76aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
