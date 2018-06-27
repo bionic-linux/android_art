@@ -22,6 +22,23 @@
       "revId": "9a1dba5df3e953bc67f1e572c060c1b1f9913830",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a67604_a0d093e3",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-27T10:52:27Z",
+      "side": 1,
+      "message": "Please add a comment why we\u0027re creating data structure. As discussed, that comment could be just for code simplicity and sharing CreateJniStackMap.",
+      "revId": "9a1dba5df3e953bc67f1e572c060c1b1f9913830",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
