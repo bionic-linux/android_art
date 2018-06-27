@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6c4cf61_82911f42",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-06-27T10:33:46Z",
+      "side": 1,
+      "message": "You\u0027re increasing the CodeInfo size. Can you quantify the impact?\n\n(InvokeInfos are disabled and as such 0 rows in invoke_infos_ guarantee that the invoke_infos_ row widths are not encoded. However, the stack_maps_ is usually non-empty, so the stack_maps_ row widths are encoded.)",
+      "range": {
+        "startLine": 124,
+        "startChar": 41,
+        "endLine": 124,
+        "endChar": 42
+      },
+      "revId": "fbb0f3813141b99bb77b0a84043af545c0d9210b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
