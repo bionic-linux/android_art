@@ -16,6 +16,24 @@
       "revId": "79348e58c5fe6dac6f46971918b1a07dca105431",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1ff1ff0_f544ee4b",
+        "filename": "tools/ahat/src/test/com/android/ahat/InstanceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2018-06-27T11:46:19Z",
+      "side": 1,
+      "message": "Yeah, the inconsistent use of the terms weak/soft, strong/hard in ahat is unfortunate now.\n\nI updated the names used in the test case.",
+      "parentUuid": "13341ab5_8dd56b83",
+      "revId": "79348e58c5fe6dac6f46971918b1a07dca105431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
