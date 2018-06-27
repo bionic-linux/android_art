@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbdba556_1c3e989d",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1271,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-27T10:38:15Z",
+      "side": 1,
+      "message": "As discussed - there is no codegen here :-/",
+      "parentUuid": "9a8855c1_36481a47",
+      "range": {
+        "startLine": 1270,
+        "startChar": 0,
+        "endLine": 1271,
+        "endChar": 69
+      },
+      "revId": "f46c253cef1e4d82815ee44a45fca2c5eaf68950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "427a9aaf_8d42752f",
         "filename": "runtime/oat_quick_method_header.cc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f46c253cef1e4d82815ee44a45fca2c5eaf68950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8eaf85_d068904b",
+        "filename": "runtime/oat_quick_method_header.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-06-27T10:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427a9aaf_8d42752f",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 3
+      },
+      "revId": "f46c253cef1e4d82815ee44a45fca2c5eaf68950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
