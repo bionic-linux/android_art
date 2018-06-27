@@ -22,6 +22,30 @@
       "revId": "69b88feb6f1fbb6732920bb0b68b047c34cdf10c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76cc8c45_ef6f0bc7",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-06-27T10:57:41Z",
+      "side": 1,
+      "message": "doh! Done, done, done :-)",
+      "parentUuid": "b2b9beb6_7f06e59c",
+      "range": {
+        "startLine": 459,
+        "startChar": 35,
+        "endLine": 459,
+        "endChar": 36
+      },
+      "revId": "69b88feb6f1fbb6732920bb0b68b047c34cdf10c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
