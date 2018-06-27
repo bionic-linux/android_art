@@ -807,13 +807,10 @@ TEST(StackMapTest, TestInvokeInfo) {
   EXPECT_TRUE(invoke3.IsValid());
   EXPECT_EQ(invoke1.GetInvokeType(), kSuper);
   EXPECT_EQ(invoke1.GetMethodIndex(method_info), 1u);
-  EXPECT_EQ(invoke1.GetNativePcOffset(kRuntimeISA), 4u * kPcAlign);
   EXPECT_EQ(invoke2.GetInvokeType(), kStatic);
   EXPECT_EQ(invoke2.GetMethodIndex(method_info), 3u);
-  EXPECT_EQ(invoke2.GetNativePcOffset(kRuntimeISA), 8u * kPcAlign);
   EXPECT_EQ(invoke3.GetInvokeType(), kDirect);
   EXPECT_EQ(invoke3.GetMethodIndex(method_info), 65535u);
-  EXPECT_EQ(invoke3.GetNativePcOffset(kRuntimeISA), 16u * kPcAlign);
 }
 
 }  // namespace art

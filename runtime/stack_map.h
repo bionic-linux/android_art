@@ -121,7 +121,7 @@ class DexRegisterMap {
  * - Knowing the inlining information,
  * - Knowing the values of dex registers.
  */
-class StackMap : public BitTableAccessor<8> {
+class StackMap : public BitTableAccessor<9> {
  public:
   enum Kind {
     Default = -1,
@@ -135,9 +135,10 @@ class StackMap : public BitTableAccessor<8> {
   BIT_TABLE_COLUMN(2, DexPc)
   BIT_TABLE_COLUMN(3, RegisterMaskIndex)
   BIT_TABLE_COLUMN(4, StackMaskIndex)
-  BIT_TABLE_COLUMN(5, InlineInfoIndex)
-  BIT_TABLE_COLUMN(6, DexRegisterMaskIndex)
-  BIT_TABLE_COLUMN(7, DexRegisterMapIndex)
+  BIT_TABLE_COLUMN(5, InvokeInfoIndex)
+  BIT_TABLE_COLUMN(6, InlineInfoIndex)
+  BIT_TABLE_COLUMN(7, DexRegisterMaskIndex)
+  BIT_TABLE_COLUMN(8, DexRegisterMapIndex)
 
   ALWAYS_INLINE uint32_t GetNativePcOffset(InstructionSet instruction_set) const {
     return UnpackNativePc(GetPackedNativePc(), instruction_set);
@@ -208,16 +209,11 @@ class InlineInfo : public BitTableAccessor<6> {
             const MethodInfo& method_info) const;
 };
 
-class InvokeInfo : public BitTableAccessor<3> {
+class InvokeInfo : public BitTableAccessor<2> {
  public:
   BIT_TABLE_HEADER()
-  BIT_TABLE_COLUMN(0, PackedNativePc)
-  BIT_TABLE_COLUMN(1, InvokeType)
-  BIT_TABLE_COLUMN(2, MethodInfoIndex)
-
-  ALWAYS_INLINE uint32_t GetNativePcOffset(InstructionSet instruction_set) const {
-    return StackMap::UnpackNativePc(GetPackedNativePc(), instruction_set);
-  }
+  BIT_TABLE_COLUMN(0, InvokeType)
+  BIT_TABLE_COLUMN(1, MethodInfoIndex)
 
   uint32_t GetMethodIndex(MethodInfo method_info) const {
     return method_info.GetMethodIndex(GetMethodInfoIndex());
@@ -415,11 +411,9 @@ class CodeInfo {
   StackMap GetStackMapForNativePcOffset(uint32_t pc, InstructionSet isa = kRuntimeISA) const;
 
   InvokeInfo GetInvokeInfoForNativePcOffset(uint32_t native_pc_offset) {
-    for (size_t index = 0; index < invoke_infos_.NumRows(); index++) {
-      InvokeInfo item = GetInvokeInfo(index);
-      if (item.GetNativePcOffset(kRuntimeISA) == native_pc_offset) {
-        return item;
-      }
+    StackMap stack_map = GetStackMapForNativePcOffset(native_pc_offset);
+    if (stack_map.IsValid()) {
+      return invoke_infos_.GetRow(stack_map.GetInvokeInfoIndex());
     }
     return invoke_infos_.GetInvalidRow();
   }
