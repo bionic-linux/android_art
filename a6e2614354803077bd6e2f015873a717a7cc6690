@@ -22,6 +22,30 @@
       "revId": "a6e2614354803077bd6e2f015873a717a7cc6690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04864185_20f55c3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-06-27T11:12:38Z",
+      "side": 1,
+      "message": "My original approach was iterative: first to implement some PoC that works and is tested, then to extend it.\n\nNow there are still some non-clonable instructions: some of them are non-clonable semantically, some of them are never be cloned at the moment thus not tested (all \"throw\" related), some of them are to be made clonable (like HVecInstructions when refactoring loop_vectorizer code to benefit from SuperblockCloner).",
+      "parentUuid": "0d021fd8_da9e61cd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "a6e2614354803077bd6e2f015873a717a7cc6690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
