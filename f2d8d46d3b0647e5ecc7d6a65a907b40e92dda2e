@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db724bf3_bc75860f",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-06-27T10:40:31Z",
+      "side": 1,
+      "message": "Can you rename this Int64FromLocation?",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "f2d8d46d3b0647e5ecc7d6a65a907b40e92dda2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
