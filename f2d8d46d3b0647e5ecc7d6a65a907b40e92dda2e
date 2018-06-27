@@ -22,6 +22,30 @@
       "revId": "f2d8d46d3b0647e5ecc7d6a65a907b40e92dda2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d229a8_9820a59a",
+        "filename": "compiler/optimizing/common_arm64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-06-27T11:13:52Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "db724bf3_bc75860f",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 32
+      },
+      "revId": "f2d8d46d3b0647e5ecc7d6a65a907b40e92dda2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
