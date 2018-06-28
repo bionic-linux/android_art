@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "121f2b99_e3c21285",
+        "filename": "compiler/debug/elf_debug_frame_writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-06-28T21:32:20Z",
+      "side": 1,
+      "message": "Need \u003calgorithm\u003e too for std::stable_sort/std::lexicographical_compare.",
+      "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b271b7e_4ff29404",
         "filename": "compiler/debug/elf_debug_frame_writer.h",
         "patchSetId": 5
