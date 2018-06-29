@@ -140,6 +140,54 @@
     },
     {
       "key": {
+        "uuid": "acd5ef38_5f3db823",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-06-29T16:00:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d5973a9_14946475",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 3
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e649125_8bd3d2f3",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1074526
+      },
+      "writtenOn": "2018-06-29T16:00:46Z",
+      "side": 1,
+      "message": "Just curious if we have a planning path forward supporting AVX?",
+      "parentUuid": "b419503d_3b1d8147",
+      "range": {
+        "startLine": 439,
+        "startChar": 7,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e9c3879_d9248a8e",
         "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
         "patchSetId": 1
