@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9abbfab9_cb1f1417",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b696fc8a_6a65ed93",
+      "range": {
+        "startLine": 1134,
+        "startChar": 7,
+        "endLine": 1134,
+        "endChar": 8
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bdad0c9_fb5408ac",
         "filename": "compiler/optimizing/code_generator_vector_x86.cc",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-29T13:03:52Z",
       "side": 1,
       "message": "Lines too long (should fit in 100).",
+      "range": {
+        "startLine": 1153,
+        "startChar": 0,
+        "endLine": 1155,
+        "endChar": 116
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e106e53_b2b67944",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0bdad0c9_fb5408ac",
       "range": {
         "startLine": 1153,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1329f62c_c922032d",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Done, but curious to know the pitfalls.",
+      "parentUuid": "c69da805_a9946563",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90572e54_e6a89056",
         "filename": "compiler/optimizing/instruction_simplifier_x86.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-29T13:03:52Z",
       "side": 1,
       "message": "Align this with HOptimization above.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29062b71_64ea80ee",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90572e54_e6a89056",
       "range": {
         "startLine": 31,
         "startChar": 6,
@@ -188,6 +284,54 @@
     },
     {
       "key": {
+        "uuid": "9f3b9a34_339142f5",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Added a reference link to corresponding intel reference sets.",
+      "parentUuid": "6e649125_8bd3d2f3",
+      "range": {
+        "startLine": 439,
+        "startChar": 7,
+        "endLine": 439,
+        "endChar": 10
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e5d03a_d79497ef",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "Thanks Aart. \nWill reply on AVX plan in email.",
+      "parentUuid": "acd5ef38_5f3db823",
+      "range": {
+        "startLine": 439,
+        "startChar": 2,
+        "endLine": 439,
+        "endChar": 3
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e9c3879_d9248a8e",
         "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
         "patchSetId": 1
@@ -199,6 +343,30 @@
       "writtenOn": "2018-06-29T13:03:52Z",
       "side": 1,
       "message": "Where is that being checked in the compiler?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 45
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12c336d_adafa560",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-02T09:41:46Z",
+      "side": 1,
+      "message": "runtime/arch/x86/instruction_set_features_x86.h has bool HasAVX2 (...)\nand we are using it in simplifier compiler/optimizing/instruction_simplifier_x86.cc:40:",
+      "parentUuid": "6e9c3879_d9248a8e",
       "range": {
         "startLine": 108,
         "startChar": 0,
