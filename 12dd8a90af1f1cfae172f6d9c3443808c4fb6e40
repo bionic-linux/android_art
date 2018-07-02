@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c1a4a7f_573dce8c",
+        "filename": "tools/dexanalyze/dexanalyze_bytecode.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2018-07-02T13:28:18Z",
+      "side": 1,
+      "message": "Naive drive-by comment: I just wanted to confirm we intended both \u0027in_reg\u0027 and \u0027out_reg\u0027 to be set to the exact same thing, and we didn\u0027t intend to use \"inst-\u003eVRegA_22c()\" for one of these.",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 45
+      },
+      "revId": "12dd8a90af1f1cfae172f6d9c3443808c4fb6e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
