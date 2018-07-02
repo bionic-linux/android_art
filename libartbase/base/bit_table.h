@@ -26,6 +26,7 @@
 
 #include "base/bit_memory_region.h"
 #include "base/casts.h"
+#include "base/iteration_range.h"
 #include "base/memory_region.h"
 #include "base/scoped_arena_containers.h"
 #include "base/stl_util.h"
@@ -235,6 +236,29 @@ typename BitTable<Accessor>::const_iterator operator+(
     typename BitTable<Accessor>::const_iterator a) {
   return a + n;
 }
+
+template<typename Accessor>
+class BitTableRange : public IterationRange<typename BitTable<Accessor>::const_iterator> {
+ public:
+  typedef typename BitTable<Accessor>::const_iterator const_iterator;
+
+  using IterationRange<const_iterator>::IterationRange;
+  BitTableRange() : IterationRange<const_iterator>(const_iterator(), const_iterator()) { }
+
+  bool empty() const { return this->begin() == this->end(); }
+  size_t count() const { return this->end() - this->begin(); }
+  Accessor at(size_t index) const { return *(this->begin() + index); }
+
+  Accessor back() const {
+    DCHECK(!empty());
+    return *(this->end() - 1);
+  }
+
+  void pop_back() {
+    DCHECK(!empty());
+    --this->last_;
+  }
+};
 
 // Helper class for encoding BitTable. It can optionally de-duplicate the inputs.
 template<uint32_t kNumColumns>
