@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c10a0be0_50becbba",
+        "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-07-02T10:47:13Z",
+      "side": 1,
+      "message": "For readability. Having it in its own variable is still fine BTW.",
+      "parentUuid": "1329f62c_c922032d",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 6
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90572e54_e6a89056",
         "filename": "compiler/optimizing/instruction_simplifier_x86.h",
         "patchSetId": 1
