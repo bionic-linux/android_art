@@ -46,6 +46,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78d3e2e_e6b487b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-07-02T18:12:23Z",
+      "side": 1,
+      "message": "We are not aware of issues in this area.\n\nCould you please clarify what is your expectation and what you think it\u0027s not working?\n\n(As it is, this CL should not go in)",
+      "parentUuid": "e5d1e41f_d5a46df6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
