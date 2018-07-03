@@ -142,6 +142,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a08f716_2fb8d37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-07-03T14:33:07Z",
+      "side": 1,
+      "message": "In order for the command to work the file must first be used. That means that the app needs to load it with standard class loaders (DexClassLoader, PathClassLoader or DelegateLastClassLoader). If the app uses custom class loaders the file might not be discovered/processed by the platform.\n\nYou can use \u0027adb shell dumpsys package dexopt\u0027 command to see what the platform know about each app\u0027s dex files.",
+      "parentUuid": "846bae9e_a2e2a697",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
