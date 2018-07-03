@@ -118,6 +118,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846bae9e_a2e2a697",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1206688
+      },
+      "writtenOn": "2018-07-03T14:25:53Z",
+      "side": 1,
+      "message": "We still get the same results after added --secondary-dex.\nDid I do something wrong?\n\nTest results:\n$ adb shell cmd package compile --secondary-dex -m speed -f com.tencent.mm\nSuccess\n\n$ adb.exe -s 0123456789ABCDEF  shell find /data/data -name \u0027*.odex\u0027\n/data/data/com.tencent.mm/tinker/patch-9e1ea20f/dex/oat/arm/tinker_classN.odex\n/data/data/com.tencent.mm/app_xwalk_155/extracted_xwalkcore/oat/arm/classes.odex\n\nadb.exe -s 0123456789ABCDEF  shell oatdump --header-only --oat-file\u003d/data/data/com.tencent.mm/tinker/patch-9e1ea20f/dex/oat/arm/tinker_classN.odex\noat: /data/data/com.tencent.mm/tinker/patch-9e1ea20f/dex/oat/arm/tinker_classN.odex, compiler-filter \u003d quicken\nadb.exe -s 0123456789ABCDEF  shell oatdump --header-only --oat-file\u003d/data/data/com.tencent.mm/app_xwalk_155/extracted_xwalkcore/oat/arm/classes.odex\noat: /data/data/com.tencent.mm/app_xwalk_155/extracted_xwalkcore/oat/arm/classes.odex, compiler-filter \u003d quicken",
+      "parentUuid": "33112017_66feefaa",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
