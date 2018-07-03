@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "f6800d8f_75eebe76",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "size",
+      "range": {
+        "startLine": 249,
+        "startChar": 9,
+        "endLine": 249,
+        "endChar": 14
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4afcb599_bf6de851",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "operator[]\n\nWe\u0027re not using C++ exceptions and std::vector\u003c\u003e::at() is specified as throwing std::out_of_range, so we should not use \"at()\" anywhere.",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 13
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a7cef21_bca49e55",
         "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
         "patchSetId": 1
@@ -41,6 +87,121 @@
         "startChar": 37,
         "endLine": 49,
         "endChar": 61
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faa60472_e8b52b57",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "Pull this out of the block that limits the lifetime of `inline_info`.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8569614_089c80bf",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "Maybe add explicit type?",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 10
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579e6986_98e43e29",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "Explicit type?",
+      "range": {
+        "startLine": 348,
+        "startChar": 6,
+        "endLine": 348,
+        "endChar": 10
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47359bb_588e3033",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "Explicit type?",
+      "range": {
+        "startLine": 1238,
+        "startChar": 2,
+        "endLine": 1238,
+        "endChar": 6
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c64c8efb_493d08e7",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "This is unnecessary.",
+      "range": {
+        "startLine": 1239,
+        "startChar": 2,
+        "endLine": 1239,
+        "endChar": 30
       },
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -110,6 +271,29 @@
         "startChar": 0,
         "endLine": 314,
         "endChar": 36
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c77b87d_f912f8aa",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-03T10:17:56Z",
+      "side": 1,
+      "message": "const\u0026",
+      "range": {
+        "startLine": 301,
+        "startChar": 16,
+        "endLine": 301,
+        "endChar": 34
       },
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
