@@ -94,6 +94,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33112017_66feefaa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-07-03T09:01:03Z",
+      "side": 1,
+      "message": "\u003e \u003e\u003eCould you please clarify what is your expectation\n\u003e For example, Wechat apk\u0027s \"/data/data/com.tencent.mm/tinker/patch-9e1ea20f/dex/oat/arm/tinker_classN.odex\" should be compiled with speed or speed-profile rather than quicken.\n\nIt will be compiled speed-profile after the background dameon kicks in.\n\n\u003e \n\u003e \u003e\u003ewhat you think it\u0027s not working\n\u003e As this commit message, Plugin dex(/data/data/pkg_path/*.odex) of these APKs were compiled with quicken even though we used \"adb shell cmd package compile -m speed -f package_name\".\n\u003e We expected these APKs should be compiled with speed after we used \"adb shell cmd package compile -m speed -f package_name\".\n\nI believe this will only compile the primary base apk. You need to add --secondary-dex to your command.\n\n\u003e \n\u003e Wechat apk link:\n\u003e https://wechat.en.uptodown.com/android",
+      "parentUuid": "f6d894ee_eb4f571a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
