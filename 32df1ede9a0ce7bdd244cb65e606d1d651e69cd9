@@ -334,6 +334,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b4a3161_e408578b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-07-04T12:30:24Z",
+      "side": 1,
+      "message": "We\u0027re tracking it by disabling it (as you noticed).\n\nYes, the APK companies should use fully supported class loaders like PathClassLoader, which means ART will do all its optimizations then.",
+      "parentUuid": "da8e498f_8611e604",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
