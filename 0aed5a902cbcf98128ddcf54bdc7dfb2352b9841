@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a554bd72_7b48ce6a",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:58:06Z",
+      "side": 1,
+      "message": "Count do, but the use of [] operator requires non-const.",
+      "parentUuid": "4cb5159f_a496c92c",
+      "range": {
+        "startLine": 56,
+        "startChar": 30,
+        "endLine": 56,
+        "endChar": 96
+      },
+      "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af282c12_5b656805",
         "filename": "compiler/debug/elf_symtab_writer.h",
         "patchSetId": 5
@@ -121,6 +145,24 @@
       "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aef508e_b8e27484",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:58:06Z",
+      "side": 1,
+      "message": "I added a comment to make it clear non-exiting are acceptable.",
+      "parentUuid": "af282c12_5b656805",
+      "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
