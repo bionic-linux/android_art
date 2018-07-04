@@ -310,6 +310,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8e498f_8611e604",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1206688
+      },
+      "writtenOn": "2018-07-04T12:09:16Z",
+      "side": 1,
+      "message": "Do you mean that dex2oat can compile the problem dex successfully and the problem AOT will cause runtime crash?\nThis sounds like an issue. Do you track it?\nIf the issue result is runtime crash, this will be an APPIOT issue which is a solid reason to ask APK companies fixing it.",
+      "parentUuid": "39025cb3_d5a93a7d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
