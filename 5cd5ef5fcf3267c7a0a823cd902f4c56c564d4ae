@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00489ca7_73f886c1",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T13:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f09427_766fb37d",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 60
+      },
+      "revId": "5cd5ef5fcf3267c7a0a823cd902f4c56c564d4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2e0f7e_e1f4fb65",
         "filename": "libartbase/base/bit_table.h",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "5cd5ef5fcf3267c7a0a823cd902f4c56c564d4ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227362bd_f27ad9bf",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T13:23:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea2e0f7e_e1f4fb65",
+      "revId": "5cd5ef5fcf3267c7a0a823cd902f4c56c564d4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
