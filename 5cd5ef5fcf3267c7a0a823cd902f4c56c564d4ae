@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f09427_766fb37d",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-04T13:11:24Z",
+      "side": 1,
+      "message": "These should DCHECK() that the row_ is valid.",
+      "range": {
+        "startLine": 211,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 60
+      },
+      "revId": "5cd5ef5fcf3267c7a0a823cd902f4c56c564d4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2e0f7e_e1f4fb65",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-04T13:11:24Z",
+      "side": 1,
+      "message": "This should DCHECK() that the index is valid. Do no rely on the operator*() to DCHECK() that as the range can be smaller.",
+      "revId": "5cd5ef5fcf3267c7a0a823cd902f4c56c564d4ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
