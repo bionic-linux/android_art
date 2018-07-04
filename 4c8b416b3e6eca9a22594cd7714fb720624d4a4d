@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b91f137f_e04e3d53",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17433bad_d013b46d",
+      "range": {
+        "startLine": 288,
+        "startChar": 99,
+        "endLine": 288,
+        "endChar": 100
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6800d8f_75eebe76",
         "filename": "libartbase/base/bit_table.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70870d0_d79efc8a",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6800d8f_75eebe76",
+      "range": {
+        "startLine": 249,
+        "startChar": 9,
+        "endLine": 249,
+        "endChar": 14
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d510dd33_fe95f4a2",
+        "filename": "libartbase/base/bit_table.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afcb599_bf6de851",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 13
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a7cef21_bca49e55",
         "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f1db19e_cd9d6a00",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a7cef21_bca49e55",
+      "range": {
+        "startLine": 49,
+        "startChar": 37,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "50a2f909_ba437432",
+        "filename": "runtime/entrypoints/entrypoint_utils-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done. Ouch, double thanks!",
+      "parentUuid": "faa60472_e8b52b57",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8569614_089c80bf",
         "filename": "runtime/entrypoints/entrypoint_utils.cc",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90f35e2d_9ee3c749",
+        "filename": "runtime/entrypoints/entrypoint_utils.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8569614_089c80bf",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 10
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a2bbe021_3299a11e",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579e6986_98e43e29",
+      "range": {
+        "startLine": 348,
+        "startChar": 6,
+        "endLine": 348,
+        "endChar": 10
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f47359bb_588e3033",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be504a4b_20c1dd4b",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f47359bb_588e3033",
+      "range": {
+        "startLine": 1238,
+        "startChar": 2,
+        "endLine": 1238,
+        "endChar": 6
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "24c56be0_1ae57520",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c64c8efb_493d08e7",
+      "range": {
+        "startLine": 1239,
+        "startChar": 2,
+        "endLine": 1239,
+        "endChar": 30
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5246caac_f96e27ee",
         "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88a5815a_59eecf15",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5246caac_f96e27ee",
+      "range": {
+        "startLine": 1260,
+        "startChar": 0,
+        "endLine": 1261,
+        "endChar": 0
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "4ae70800_49c24a30",
+        "filename": "runtime/stack.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20595b0e_21cc5d10",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7962fa17_93b6c541",
         "filename": "runtime/stack.h",
         "patchSetId": 1
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "68e20860_9e300481",
+        "filename": "runtime/stack.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7962fa17_93b6c541",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 36
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c77b87d_f912f8aa",
         "filename": "runtime/stack_map.h",
         "patchSetId": 1
@@ -298,6 +586,30 @@
       "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66ddd7e_ed1bc0d5",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-04T12:52:36Z",
+      "side": 1,
+      "message": "Done. Ops, thanks!",
+      "parentUuid": "1c77b87d_f912f8aa",
+      "range": {
+        "startLine": 301,
+        "startChar": 16,
+        "endLine": 301,
+        "endChar": 34
+      },
+      "revId": "4c8b416b3e6eca9a22594cd7714fb720624d4a4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
