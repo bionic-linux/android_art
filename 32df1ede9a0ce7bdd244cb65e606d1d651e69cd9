@@ -166,6 +166,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec7e265_4fff3afb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1206688
+      },
+      "writtenOn": "2018-07-04T01:56:35Z",
+      "side": 1,
+      "message": "\u003e If the app uses custom class loaders the file might not be discovered/processed by the platform.\n\nDoes have methods which can resolve the case? \nThese dex files of custom class loader might cause app launch time bad.\nIf we can optimize all dex files, app launch time will get improvement.\n\nPrimary base.apk is speed indeed.\n$ adb shell dumpsys package dexopt\n  [com.tencent.mm]\n    path: /data/app/com.tencent.mm-rAd8lIXAPHDN_1brnXbwuA\u003d\u003d/base.apk\n      arm: /data/app/com.tencent.mm-rAd8lIXAPHDN_1brnXbwuA\u003d\u003d/oat/arm/base.odex[status\u003dkOatUpToDate, compilation_filter\u003ds\n      peed]",
+      "parentUuid": "5a08f716_2fb8d37f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
