@@ -262,6 +262,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b96bdac0_b2d8d0d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1206688
+      },
+      "writtenOn": "2018-07-04T11:25:51Z",
+      "side": 1,
+      "message": "Does \"the AOT code crash\" mean dex2oat?\nIf it is dex2oat crash, the result is the app can\u0027t get correct dex code to execute, and then the app crash, right?\nJiagu may be the case. Most China APK contained Jiagu. To ask these APK companies don\u0027t use Jiagu that is difficult.\nCould we do both optimizing all secondary dex files and handling \"the AOT code crash\"?",
+      "parentUuid": "380dad18_f55dfd80",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
