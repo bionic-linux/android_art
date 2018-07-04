@@ -214,6 +214,30 @@
       "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45469d11_443df229",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1206688
+      },
+      "writtenOn": "2018-07-04T08:35:25Z",
+      "side": 1,
+      "message": "\u003e AOT and custom class loaders are inherently unsafe, and we prefer correctness.\n\nWe agreed your point. May we know about the unsafe issue?\nIf we know the unsafe issue detail, we can report to APK company and ask them to fix the issues.",
+      "parentUuid": "280765db_68439cd5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "32df1ede9a0ce7bdd244cb65e606d1d651e69cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
