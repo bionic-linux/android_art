@@ -81,6 +81,46 @@
       "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cb5159f_a496c92c",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-07-04T10:13:16Z",
+      "side": 1,
+      "message": "Maybe it should be \u0027const unordered_map *\u0027 if it is not supposed to be modified?",
+      "range": {
+        "startLine": 56,
+        "startChar": 30,
+        "endLine": 56,
+        "endChar": 96
+      },
+      "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af282c12_5b656805",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-07-04T10:13:16Z",
+      "side": 1,
+      "message": "What about to have a check before getting an offset:\nDCHECK(fde_offsets-\u003ecount(sym.st_value) !\u003d 0);",
+      "revId": "0aed5a902cbcf98128ddcf54bdc7dfb2352b9841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
