@@ -1,0 +1,7 @@
+Presubmit-Ready+1: Yohei Yukawa <yukawa@google.com>
+Build-Cop-Override+1: Yohei Yukawa <yukawa@google.com>
+Submitted-by: Yohei Yukawa <yukawa@google.com>
+Submitted-at: Thu, 05 Jul 2018 01:40:43 +0000
+Reviewed-on: https://android-review.googlesource.com/713484
+Project: platform/art
+Branch: refs/heads/master
