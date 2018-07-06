@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78dd613e_88f515a4",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-06T17:00:10Z",
+      "side": 1,
+      "message": "Style issue, trying not to exceed 100 characters per line. I could have a line break right after \"ImageHeader(\" instead, see PS4.",
+      "parentUuid": "061705d4_a6e7e13d",
+      "range": {
+        "startLine": 1998,
+        "startChar": 2,
+        "endLine": 1998,
+        "endChar": 52
+      },
+      "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bb2c804_ad540224",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c24ad5_69165dc5",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2976,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-06T17:00:10Z",
+      "side": 1,
+      "message": "Changed to CopyAndFixupReference() to align with CopyAndFixupPointer(). Inlined the CopyReference() as it was used only once.",
+      "parentUuid": "7bb2c804_ad540224",
+      "range": {
+        "startLine": 2976,
+        "startChar": 22,
+        "endLine": 2976,
+        "endChar": 40
+      },
+      "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
