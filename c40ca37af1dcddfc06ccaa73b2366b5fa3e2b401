@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d79a2d0_f6fee937",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2034,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-07-06T12:27:27Z",
+      "side": 1,
+      "message": "Is that intentionally left over? If yes, maybe explain why you can\u0027t do it just now?",
+      "range": {
+        "startLine": 2034,
+        "startChar": 2,
+        "endLine": 2034,
+        "endChar": 10
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43a111ca_f9a75dc9",
+        "filename": "dex2oat/linker/image_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-07-06T12:27:27Z",
+      "side": 1,
+      "message": "CopyAndRecordReference?",
+      "range": {
+        "startLine": 614,
+        "startChar": 7,
+        "endLine": 614,
+        "endChar": 22
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
