@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "51272d23_f965c8f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-07-06T14:49:43Z",
+      "side": 1,
+      "message": "patchoat?",
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d79a2d0_f6fee937",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 2
@@ -25,6 +42,29 @@
     },
     {
       "key": {
+        "uuid": "8e6c307d_964ff271",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2568,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-07-06T14:49:43Z",
+      "side": 1,
+      "message": "This code is similar to the codes in lines 2548–2557; refactor it in a new template method?",
+      "range": {
+        "startLine": 2559,
+        "startChar": 0,
+        "endLine": 2568,
+        "endChar": 5
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43a111ca_f9a75dc9",
         "filename": "dex2oat/linker/image_writer.h",
         "patchSetId": 2
@@ -41,6 +81,75 @@
         "startChar": 7,
         "endLine": 614,
         "endChar": 22
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108af439_c81221b2",
+        "filename": "libartbase/base/casts.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-07-06T14:49:43Z",
+      "side": 1,
+      "message": "Should this comment be above this method?",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 73
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a66299_ed61a2a8",
+        "filename": "libartbase/base/casts.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-07-06T14:49:43Z",
+      "side": 1,
+      "message": "Ditto?",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 73
+      },
+      "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba12413_204398f9",
+        "filename": "runtime/mirror/class-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-07-06T14:49:43Z",
+      "side": 1,
+      "message": "I couldn\u0027t find anything in the C++ style guide about named lambdas, but I think we are using lower case names in other places in ART.",
+      "range": {
+        "startLine": 1073,
+        "startChar": 7,
+        "endLine": 1073,
+        "endChar": 18
       },
       "revId": "c40ca37af1dcddfc06ccaa73b2366b5fa3e2b401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
