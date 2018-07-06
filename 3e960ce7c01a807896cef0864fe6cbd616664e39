@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fefed1d0_e1db9f26",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-07-06T10:46:24Z",
+      "side": 1,
+      "message": "\u00270\u0027 fde offset means no FDE record, doesn\u0027t it? Is this correctly handled in the search algorithm during unwinding? Any tests? If the search algorithm ignores them maybe there is no need to store them.",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 83
+      },
+      "revId": "3e960ce7c01a807896cef0864fe6cbd616664e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673c0613_711919e0",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-07-06T10:46:24Z",
+      "side": 1,
+      "message": "Just to check:\nIn the map a key is code_address + CompiledMethod::CodeDelta. CompiledMethod::CodeDelta is non-zero only for Thumb2. Is sym.st_value adjusted according to CodeDelta? I don\u0027t see anything like an adjustment in places where symtab-\u003eAdd happens.",
+      "range": {
+        "startLine": 135,
+        "startChar": 58,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "3e960ce7c01a807896cef0864fe6cbd616664e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
