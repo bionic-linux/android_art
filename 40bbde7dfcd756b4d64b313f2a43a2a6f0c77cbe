@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c8a186ba_21e81f36",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-07-06T17:05:59Z",
+      "side": 1,
+      "message": "You didn\u0027t have to change it back. I was just trying to understand what had gotten longer...",
+      "parentUuid": "78dd613e_88f515a4",
+      "range": {
+        "startLine": 1998,
+        "startChar": 2,
+        "endLine": 1998,
+        "endChar": 52
+      },
+      "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bb2c804_ad540224",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 3
