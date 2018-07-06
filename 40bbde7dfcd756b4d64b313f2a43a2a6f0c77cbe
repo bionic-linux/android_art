@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "061705d4_a6e7e13d",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1998,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-07-06T16:06:08Z",
+      "side": 1,
+      "message": "Curiosity: is there a technical reason for this?",
+      "range": {
+        "startLine": 1998,
+        "startChar": 2,
+        "endLine": 1998,
+        "endChar": 52
+      },
+      "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb2c804_ad540224",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2976,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-07-06T16:06:08Z",
+      "side": 1,
+      "message": "Is there a reason for this explicit naming (besides some lexical distinction to the function w/o oat_index below)? It seems a little bit inconsistent compared to, e.g., CopyAndFixupPointer, which also records but doesn\u0027t have it in its name. Should the naming maybe be reversed (the one below be \"WithoutRecording?\"",
+      "range": {
+        "startLine": 2976,
+        "startChar": 22,
+        "endLine": 2976,
+        "endChar": 40
+      },
+      "revId": "40bbde7dfcd756b4d64b313f2a43a2a6f0c77cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
