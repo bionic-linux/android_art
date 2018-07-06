@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "069f4c8f_f9f7ed05",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-06T11:28:14Z",
+      "side": 1,
+      "message": "The data is not used in unwind yet.  (I need the data first before tying to implement that)\nFor the time being, I checked the output manually.\n\nWe still need to store (the rare) zeros.  There needs to be exact 1:1 mapping between symtab entries and this table.",
+      "parentUuid": "fefed1d0_e1db9f26",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 83
+      },
+      "revId": "3e960ce7c01a807896cef0864fe6cbd616664e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "673c0613_711919e0",
         "filename": "compiler/debug/elf_symtab_writer.h",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "3e960ce7c01a807896cef0864fe6cbd616664e39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e34839db_f50c40c2",
+        "filename": "compiler/debug/elf_symtab_writer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-06T11:28:14Z",
+      "side": 1,
+      "message": "The key in the map is already adjusted.",
+      "parentUuid": "673c0613_711919e0",
+      "range": {
+        "startLine": 135,
+        "startChar": 58,
+        "endLine": 135,
+        "endChar": 70
+      },
+      "revId": "3e960ce7c01a807896cef0864fe6cbd616664e39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
