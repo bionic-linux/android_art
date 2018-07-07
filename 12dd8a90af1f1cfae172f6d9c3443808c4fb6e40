@@ -22,6 +22,30 @@
       "revId": "12dd8a90af1f1cfae172f6d9c3443808c4fb6e40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb518773_d4f81c53",
+        "filename": "tools/dexanalyze/dexanalyze_bytecode.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-07-07T21:13:58Z",
+      "side": 1,
+      "message": "I think you\u0027re right, it should be VRegA_22c. Thanks!",
+      "parentUuid": "7c1a4a7f_573dce8c",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 386,
+        "endChar": 45
+      },
+      "revId": "12dd8a90af1f1cfae172f6d9c3443808c4fb6e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
