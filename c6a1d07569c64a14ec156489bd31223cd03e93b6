@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e22a095_c692ea21",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "ArrayRef\u003c\u003e",
+      "range": {
+        "startLine": 92,
+        "startChar": 23,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771a737d_5dab6529",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "ArrayRef\u003c\u003e::SubArray()",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1081dd9_273498af",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "We should DCHECK_ALIGNED(tmp.size(), sizeof(uint32_t)) if we want to read uint32_t this way.",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 83
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49e0b2a7_d6738c4f",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "We do not need to record the decoded sizes. We just need to copy this chunk of memory. If uncompressed size 0 is illegal, we could just go backward to recognize the index padding; otherwise we need to do the DecodeUnsignedLeb128()s to find out the size of the index but we may actually copy the encoded rather than decoded data.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 79
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02280070_00007dc7",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "tmp.begin(), tmp.end()",
+      "range": {
+        "startLine": 131,
+        "startChar": 28,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1e4ff7_dae52a88",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a105c2_7bcb0342",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-07-12T13:50:36Z",
+      "side": 1,
+      "message": "What about moving XzCompress() and XzCompressChunk() to a .cc file?",
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
