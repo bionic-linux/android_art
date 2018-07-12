@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc9b08eb_d2056dec",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-07-12T17:40:28Z",
+      "side": 1,
+      "message": "It seems to me that this should be much more careful about assumed rounding behavior. I think most MultiplyAccumulate instructions will not be usable by autovectorized code, due to the absence of intermediate rounding of the multiply results. If x*y is approximately -a, so that the leading bits cancel, this can make a large difference in the result. The Java spec is clear that the x*y needs to be rounded.\n\nThis part is clearly a preexisting issue.",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 59
+      },
+      "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
