@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "ca6a229c_7f4bdb94",
+        "filename": "compiler/optimizing/code_generator_vector_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-07-12T10:02:31Z",
+      "side": 1,
+      "message": "Does using those fused multiply instructions satisfy Java requirements (IEEE 754) on floating point operations (e.g. single rounding for mul and add vs two consecutive rounding)?",
+      "range": {
+        "startLine": 1141,
+        "startChar": 11,
+        "endLine": 1141,
+        "endChar": 22
+      },
+      "revId": "70d06f3374c29433bd908f6162ee775e0db71527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c69da805_a9946563",
         "filename": "compiler/optimizing/instruction_simplifier_x86.cc",
         "patchSetId": 1
