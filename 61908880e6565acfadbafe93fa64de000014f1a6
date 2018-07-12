@@ -22,6 +22,30 @@
       "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c88fd90_15586082",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-07-12T17:54:05Z",
+      "side": 1,
+      "message": "HVecMultiplyAccumulate is a valid instruction for integer types though (and is successfully used on arm64 via MLA and MLS).",
+      "parentUuid": "fc9b08eb_d2056dec",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 59
+      },
+      "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
