@@ -46,6 +46,30 @@
       "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df855ab9_0d7a67dd",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1176264
+      },
+      "writtenOn": "2018-07-13T06:28:17Z",
+      "side": 1,
+      "message": "I am not sure if x86 has integer vector MAC instructions. But since the HIR currently lacks intermediate rounding for floats, are we going to put a caveat there?",
+      "parentUuid": "3c88fd90_15586082",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 59
+      },
+      "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
