@@ -70,6 +70,30 @@
       "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7c2216_506fe42b",
+        "filename": "compiler/optimizing/nodes_vector.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-07-13T16:33:57Z",
+      "side": 1,
+      "message": "I\u0027ll generate a small CL with a clarification for the comment.",
+      "parentUuid": "df855ab9_0d7a67dd",
+      "range": {
+        "startLine": 934,
+        "startChar": 0,
+        "endLine": 934,
+        "endChar": 59
+      },
+      "revId": "61908880e6565acfadbafe93fa64de000014f1a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
