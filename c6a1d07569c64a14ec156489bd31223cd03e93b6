@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78828fab_e3de804b",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e22a095_c692ea21",
+      "range": {
+        "startLine": 92,
+        "startChar": 23,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "771a737d_5dab6529",
         "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d5cf5e1_69815a64",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "771a737d_5dab6529",
+      "range": {
+        "startLine": 101,
+        "startChar": 20,
+        "endLine": 101,
+        "endChar": 65
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a0f50d8e_b6b25a3a",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1081dd9_273498af",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 83
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49e0b2a7_d6738c4f",
         "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa958305_f25ef31a",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "True, but either of those approaches is more complicated then the current one.",
+      "parentUuid": "49e0b2a7_d6738c4f",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 112,
+        "endChar": 79
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a2b2251d_7fa890e4",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02280070_00007dc7",
+      "range": {
+        "startLine": 131,
+        "startChar": 28,
+        "endLine": 131,
+        "endChar": 63
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb1e4ff7_dae52a88",
         "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "50d052c4_ef84b492",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb1e4ff7_dae52a88",
+      "range": {
+        "startLine": 142,
+        "startChar": 28,
+        "endLine": 142,
+        "endChar": 63
+      },
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19a105c2_7bcb0342",
         "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
         "patchSetId": 2
@@ -154,6 +298,24 @@
       "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7654dcda_0bc5a429",
+        "filename": "compiler/debug/elf_gnu_debugdata_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-13T14:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19a105c2_7bcb0342",
+      "revId": "c6a1d07569c64a14ec156489bd31223cd03e93b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
