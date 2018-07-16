@@ -25,7 +25,6 @@
 #include "base/scoped_arena_containers.h"
 #include "base/value_object.h"
 #include "dex_register_location.h"
-#include "method_info.h"
 #include "nodes.h"
 #include "stack_map.h"
 
@@ -46,8 +45,8 @@ class StackMapStream : public ValueObject {
         dex_register_masks_(allocator),
         dex_register_maps_(allocator),
         dex_register_catalog_(allocator),
-        out_(allocator->Adapter(kArenaAllocStackMapStream)),
         method_infos_(allocator),
+        out_(allocator->Adapter(kArenaAllocStackMapStream)),
         lazy_stack_masks_(allocator->Adapter(kArenaAllocStackMapStream)),
         current_stack_map_(),
         current_inline_infos_(allocator->Adapter(kArenaAllocStackMapStream)),
@@ -92,9 +91,6 @@ class StackMapStream : public ValueObject {
   // Returns the size (in bytes) needed to store this stream.
   size_t PrepareForFillIn();
   void FillInCodeInfo(MemoryRegion region);
-  void FillInMethodInfo(MemoryRegion region);
-
-  size_t ComputeMethodInfoSize() const;
 
  private:
   static constexpr uint32_t kNoValue = -1;
@@ -113,9 +109,8 @@ class StackMapStream : public ValueObject {
   BitmapTableBuilder dex_register_masks_;
   BitTableBuilder<MaskInfo> dex_register_maps_;
   BitTableBuilder<DexRegisterInfo> dex_register_catalog_;
+  BitTableBuilder<MethodInfo> method_infos_;
   ScopedArenaVector<uint8_t> out_;
-
-  BitTableBuilderBase<1> method_infos_;
 
   ScopedArenaVector<BitVector*> lazy_stack_masks_;
 

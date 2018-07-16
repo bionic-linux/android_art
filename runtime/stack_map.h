@@ -28,7 +28,6 @@
 #include "base/memory_region.h"
 #include "dex/dex_file_types.h"
 #include "dex_register_location.h"
-#include "method_info.h"
 #include "quick/quick_method_frame_info.h"
 
 namespace art {
@@ -164,7 +163,6 @@ class StackMap : public BitTableAccessor<8> {
 
   void Dump(VariableIndentationOutputStream* vios,
             const CodeInfo& code_info,
-            const MethodInfo& method_info,
             uint32_t code_offset,
             InstructionSet instruction_set) const;
 };
@@ -188,10 +186,6 @@ class InlineInfo : public BitTableAccessor<6> {
   static constexpr uint32_t kLast = -1;
   static constexpr uint32_t kMore = 0;
 
-  uint32_t GetMethodIndex(const MethodInfo& method_info) const {
-    return method_info.GetMethodIndex(GetMethodInfoIndex());
-  }
-
   bool EncodesArtMethod() const {
     return HasArtMethodLo();
   }
@@ -204,8 +198,7 @@ class InlineInfo : public BitTableAccessor<6> {
 
   void Dump(VariableIndentationOutputStream* vios,
             const CodeInfo& info,
-            const StackMap& stack_map,
-            const MethodInfo& method_info) const;
+            const StackMap& stack_map) const;
 };
 
 class MaskInfo : public BitTableAccessor<1> {
@@ -260,6 +253,14 @@ class RegisterMask : public BitTableAccessor<2> {
   ALWAYS_INLINE uint32_t GetMask() const {
     return GetValue() << GetShift();
   }
+};
+
+// Method indices are not very dedup friendly.
+// Separating them greatly improves dedup efficiency of the other tables.
+class MethodInfo : public BitTableAccessor<1> {
+ public:
+  BIT_TABLE_HEADER()
+  BIT_TABLE_COLUMN(0, MethodIndex)
 };
 
 /**
@@ -320,6 +321,10 @@ class CodeInfo {
 
   uint32_t GetNumberOfStackMaps() const {
     return stack_maps_.NumRows();
+  }
+
+  uint32_t GetMethodIndexOf(InlineInfo inline_info) const {
+    return method_infos_.GetRow(inline_info.GetMethodInfoIndex()).GetMethodIndex();
   }
 
   ALWAYS_INLINE DexRegisterMap GetDexRegisterMapOf(StackMap stack_map) const {
@@ -398,8 +403,7 @@ class CodeInfo {
   void Dump(VariableIndentationOutputStream* vios,
             uint32_t code_offset,
             bool verbose,
-            InstructionSet instruction_set,
-            const MethodInfo& method_info) const;
+            InstructionSet instruction_set) const;
 
   // Accumulate code info size statistics into the given Stats tree.
   void AddSizeStats(/*out*/ Stats* parent) const;
@@ -442,6 +446,7 @@ class CodeInfo {
   BitTable<MaskInfo> dex_register_masks_;
   BitTable<DexRegisterMapInfo> dex_register_maps_;
   BitTable<DexRegisterInfo> dex_register_catalog_;
+  BitTable<MethodInfo> method_infos_;
   uint32_t size_in_bits_;
 };
 
