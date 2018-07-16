@@ -62,6 +62,7 @@ void CodeInfo::Decode(const uint8_t* data) {
   DecodeTable(dex_register_masks_, reader, data);
   DecodeTable(dex_register_maps_, reader, data);
   DecodeTable(dex_register_catalog_, reader, data);
+  DecodeTable(method_infos_, reader, data);
   size_in_bits_ = (data - begin) * kBitsPerByte + reader.GetBitOffset();
 }
 
@@ -99,6 +100,7 @@ size_t CodeInfo::Dedupe(std::vector<uint8_t>* out, const uint8_t* in, DedupeMap&
   DedupeTable<MaskInfo>(writer, reader, dedupe_map);
   DedupeTable<DexRegisterMapInfo>(writer, reader, dedupe_map);
   DedupeTable<DexRegisterInfo>(writer, reader, dedupe_map);
+  DedupeTable<MethodInfo>(writer, reader, dedupe_map);
   return result;
 }
 
@@ -212,6 +214,7 @@ void CodeInfo::AddSizeStats(/*out*/ Stats* parent) const {
   AddTableSizeStats<MaskInfo>("DexRegisterMasks", dex_register_masks_, stats);
   AddTableSizeStats<DexRegisterMapInfo>("DexRegisterMaps", dex_register_maps_, stats);
   AddTableSizeStats<DexRegisterInfo>("DexRegisterCatalog", dex_register_catalog_, stats);
+  AddTableSizeStats<MethodInfo>("MethodInfo", method_infos_, stats);
 }
 
 void DexRegisterMap::Dump(VariableIndentationOutputStream* vios) const {
@@ -266,8 +269,7 @@ static void DumpTable(VariableIndentationOutputStream* vios,
 void CodeInfo::Dump(VariableIndentationOutputStream* vios,
                     uint32_t code_offset,
                     bool verbose,
-                    InstructionSet instruction_set,
-                    const MethodInfo& method_info) const {
+                    InstructionSet instruction_set) const {
   vios->Stream() << "CodeInfo\n";
   ScopedIndentation indent1(vios);
   DumpTable<StackMap>(vios, "StackMaps", stack_maps_, verbose);
@@ -277,18 +279,18 @@ void CodeInfo::Dump(VariableIndentationOutputStream* vios,
   DumpTable<MaskInfo>(vios, "DexRegisterMasks", dex_register_masks_, verbose, true /* is_mask */);
   DumpTable<DexRegisterMapInfo>(vios, "DexRegisterMaps", dex_register_maps_, verbose);
   DumpTable<DexRegisterInfo>(vios, "DexRegisterCatalog", dex_register_catalog_, verbose);
+  DumpTable<MethodInfo>(vios, "MethodInfo", method_infos_, verbose);
 
   // Display stack maps along with (live) Dex register maps.
   if (verbose) {
     for (StackMap stack_map : stack_maps_) {
-      stack_map.Dump(vios, *this, method_info, code_offset, instruction_set);
+      stack_map.Dump(vios, *this, code_offset, instruction_set);
     }
   }
 }
 
 void StackMap::Dump(VariableIndentationOutputStream* vios,
                     const CodeInfo& code_info,
-                    const MethodInfo& method_info,
                     uint32_t code_offset,
                     InstructionSet instruction_set) const {
   const uint32_t pc_offset = GetNativePcOffset(instruction_set);
@@ -307,14 +309,13 @@ void StackMap::Dump(VariableIndentationOutputStream* vios,
   vios->Stream() << ")\n";
   code_info.GetDexRegisterMapOf(*this).Dump(vios);
   for (InlineInfo inline_info : code_info.GetInlineInfosOf(*this)) {
-    inline_info.Dump(vios, code_info, *this, method_info);
+    inline_info.Dump(vios, code_info, *this);
   }
 }
 
 void InlineInfo::Dump(VariableIndentationOutputStream* vios,
                       const CodeInfo& code_info,
-                      const StackMap& stack_map,
-                      const MethodInfo& method_info) const {
+                      const StackMap& stack_map) const {
   uint32_t depth = Row() - stack_map.GetInlineInfoIndex();
   vios->Stream()
       << "InlineInfo[" << Row() << "]"
@@ -327,7 +328,7 @@ void InlineInfo::Dump(VariableIndentationOutputStream* vios,
   } else {
     vios->Stream()
         << std::dec
-        << ", method_index=" << GetMethodIndex(method_info);
+        << ", method_index=" << code_info.GetMethodIndexOf(*this);
   }
   vios->Stream() << ")\n";
   code_info.GetInlineDexRegisterMapOf(stack_map, *this).Dump(vios);

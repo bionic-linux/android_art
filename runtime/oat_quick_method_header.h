@@ -20,7 +20,6 @@
 #include "arch/instruction_set.h"
 #include "base/macros.h"
 #include "base/utils.h"
-#include "method_info.h"
 #include "quick/quick_method_frame_info.h"
 #include "stack_map.h"
 
@@ -81,10 +80,6 @@ class PACKED(4) OatQuickMethodHeader {
   uint8_t* GetOptimizedMethodInfoPtr() {
     DCHECK(IsOptimized());
     return code_ - method_info_offset_;
-  }
-
-  MethodInfo GetOptimizedMethodInfo() const {
-    return MethodInfo(reinterpret_cast<const uint8_t*>(GetOptimizedMethodInfoPtr()));
   }
 
   const uint8_t* GetCode() const {

@@ -196,7 +196,7 @@ void StackMapStream::BeginInlineInfoEntry(ArtMethod* method,
       if (encode_art_method) {
         CHECK_EQ(inline_info.GetArtMethod(), method);
       } else {
-        CHECK_EQ(method_infos_[inline_info.GetMethodInfoIndex()][0],
+        CHECK_EQ(code_info.GetMethodIndexOf(inline_info),
                  method->GetDexMethodIndexUnchecked());
       }
     });
@@ -275,24 +275,6 @@ void StackMapStream::CreateDexRegisterMap() {
   }
 }
 
-void StackMapStream::FillInMethodInfo(MemoryRegion region) {
-  {
-    MethodInfo info(region.begin(), method_infos_.size());
-    for (size_t i = 0; i < method_infos_.size(); ++i) {
-      info.SetMethodIndex(i, method_infos_[i][0]);
-    }
-  }
-  if (kVerifyStackMaps) {
-    // Check the data matches.
-    MethodInfo info(region.begin());
-    const size_t count = info.NumMethodIndices();
-    DCHECK_EQ(count, method_infos_.size());
-    for (size_t i = 0; i < count; ++i) {
-      DCHECK_EQ(info.GetMethodIndex(i), method_infos_[i][0]);
-    }
-  }
-}
-
 template<typename Writer, typename Builder>
 ALWAYS_INLINE static void EncodeTable(Writer& out, const Builder& bit_table) {
   out.WriteBit(false);  // Is not deduped.
@@ -323,6 +305,7 @@ size_t StackMapStream::PrepareForFillIn() {
   EncodeTable(out, dex_register_masks_);
   EncodeTable(out, dex_register_maps_);
   EncodeTable(out, dex_register_catalog_);
+  EncodeTable(out, method_infos_);
 
   return out_.size();
 }
@@ -346,11 +329,6 @@ void StackMapStream::FillInCodeInfo(MemoryRegion region) {
       dcheck(code_info);
     }
   }
-}
-
-size_t StackMapStream::ComputeMethodInfoSize() const {
-  DCHECK_NE(0u, out_.size()) << "PrepareForFillIn not called before " << __FUNCTION__;
-  return MethodInfo::ComputeSize(method_infos_.size());
 }
 
 }  // namespace art

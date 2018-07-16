@@ -715,11 +715,10 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
   ArenaVector<uint8_t> method_info(allocator->Adapter(kArenaAllocStackMaps));
   size_t stack_map_size = 0;
   size_t method_info_size = 0;
-  codegen->ComputeStackMapAndMethodInfoSize(&stack_map_size, &method_info_size);
+  codegen->ComputeStackMapSize(&stack_map_size);
   stack_map.resize(stack_map_size);
   method_info.resize(method_info_size);
   codegen->BuildStackMaps(MemoryRegion(stack_map.data(), stack_map.size()),
-                          MemoryRegion(method_info.data(), method_info.size()),
                           code_item_for_osr_check);
 
   CompiledMethod* compiled_method = CompiledMethod::SwapAllocCompiledMethod(
@@ -732,7 +731,7 @@ CompiledMethod* OptimizingCompiler::Emit(ArenaAllocator* allocator,
       codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
       codegen->GetCoreSpillMask(),
       codegen->GetFpuSpillMask(),
-      ArrayRef<const uint8_t>(method_info),
+      ArrayRef<const uint8_t>(),  // Method info.
       ArrayRef<const uint8_t>(stack_map),
       ArrayRef<const uint8_t>(*codegen->GetAssembler()->cfi().data()),
       ArrayRef<const linker::LinkerPatch>(linker_patches));
@@ -1107,8 +1106,7 @@ CompiledMethod* OptimizingCompiler::Compile(const DexFile::CodeItem* code_item,
 
 static void CreateJniStackMap(ArenaStack* arena_stack,
                               const JniCompiledMethod& jni_compiled_method,
-                              /* out */ ArenaVector<uint8_t>* stack_map,
-                              /* out */ ArenaVector<uint8_t>* method_info) {
+                              /* out */ ArenaVector<uint8_t>* stack_map) {
   ScopedArenaAllocator allocator(arena_stack);
   StackMapStream stack_map_stream(&allocator, jni_compiled_method.GetInstructionSet());
   stack_map_stream.BeginMethod(
@@ -1118,9 +1116,7 @@ static void CreateJniStackMap(ArenaStack* arena_stack,
       /* num_dex_registers */ 0);
   stack_map_stream.EndMethod();
   stack_map->resize(stack_map_stream.PrepareForFillIn());
-  method_info->resize(stack_map_stream.ComputeMethodInfoSize());
   stack_map_stream.FillInCodeInfo(MemoryRegion(stack_map->data(), stack_map->size()));
-  stack_map_stream.FillInMethodInfo(MemoryRegion(method_info->data(), method_info->size()));
 }
 
 CompiledMethod* OptimizingCompiler::JniCompile(uint32_t access_flags,
@@ -1176,7 +1172,7 @@ CompiledMethod* OptimizingCompiler::JniCompile(uint32_t access_flags,
 
   ArenaVector<uint8_t> stack_map(allocator.Adapter(kArenaAllocStackMaps));
   ArenaVector<uint8_t> method_info(allocator.Adapter(kArenaAllocStackMaps));
-  CreateJniStackMap(&arena_stack, jni_compiled_method, &stack_map, &method_info);
+  CreateJniStackMap(&arena_stack, jni_compiled_method, &stack_map);
   return CompiledMethod::SwapAllocCompiledMethod(
       GetCompilerDriver(),
       jni_compiled_method.GetInstructionSet(),
@@ -1246,34 +1242,28 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     ArenaSet<ArtMethod*, std::less<ArtMethod*>> cha_single_implementation_list(
         allocator.Adapter(kArenaAllocCHA));
     ArenaVector<uint8_t> stack_map(allocator.Adapter(kArenaAllocStackMaps));
-    ArenaVector<uint8_t> method_info(allocator.Adapter(kArenaAllocStackMaps));
     ArenaStack arena_stack(runtime->GetJitArenaPool());
     // StackMapStream is large and it does not fit into this frame, so we need helper method.
     // TODO: Try to avoid the extra memory copy that results from this.
-    CreateJniStackMap(&arena_stack, jni_compiled_method, &stack_map, &method_info);
+    CreateJniStackMap(&arena_stack, jni_compiled_method, &stack_map);
     uint8_t* stack_map_data = nullptr;
-    uint8_t* method_info_data = nullptr;
     uint8_t* roots_data = nullptr;
     uint32_t data_size = code_cache->ReserveData(self,
                                                  stack_map.size(),
-                                                 method_info.size(),
                                                  /* number_of_roots */ 0,
                                                  method,
                                                  &stack_map_data,
-                                                 &method_info_data,
                                                  &roots_data);
     if (stack_map_data == nullptr || roots_data == nullptr) {
       MaybeRecordStat(compilation_stats_.get(), MethodCompilationStat::kJitOutOfMemoryForCommit);
       return false;
     }
     memcpy(stack_map_data, stack_map.data(), stack_map.size());
-    memcpy(method_info_data, method_info.data(), method_info.size());
 
     const void* code = code_cache->CommitCode(
         self,
         method,
         stack_map_data,
-        method_info_data,
         roots_data,
         jni_compiled_method.GetFrameSize(),
         jni_compiled_method.GetCoreSpillMask(),
@@ -1352,8 +1342,7 @@ bool OptimizingCompiler::JitCompile(Thread* self,
   }
 
   size_t stack_map_size = 0;
-  size_t method_info_size = 0;
-  codegen->ComputeStackMapAndMethodInfoSize(&stack_map_size, &method_info_size);
+  codegen->ComputeStackMapSize(&stack_map_size);
   size_t number_of_roots = codegen->GetNumberOfJitRoots();
   // We allocate an object array to ensure the JIT roots that we will collect in EmitJitRoots
   // will be visible by the GC between EmitLiterals and CommitCode. Once CommitCode is
@@ -1369,30 +1358,24 @@ bool OptimizingCompiler::JitCompile(Thread* self,
     return false;
   }
   uint8_t* stack_map_data = nullptr;
-  uint8_t* method_info_data = nullptr;
   uint8_t* roots_data = nullptr;
   uint32_t data_size = code_cache->ReserveData(self,
                                                stack_map_size,
-                                               method_info_size,
                                                number_of_roots,
                                                method,
                                                &stack_map_data,
-                                               &method_info_data,
                                                &roots_data);
   if (stack_map_data == nullptr || roots_data == nullptr) {
     MaybeRecordStat(compilation_stats_.get(), MethodCompilationStat::kJitOutOfMemoryForCommit);
     return false;
   }
-  codegen->BuildStackMaps(MemoryRegion(stack_map_data, stack_map_size),
-                          MemoryRegion(method_info_data, method_info_size),
-                          code_item);
+  codegen->BuildStackMaps(MemoryRegion(stack_map_data, stack_map_size), code_item);
   codegen->EmitJitRoots(code_allocator.GetData(), roots, roots_data);
 
   const void* code = code_cache->CommitCode(
       self,
       method,
       stack_map_data,
-      method_info_data,
       roots_data,
       codegen->HasEmptyFrame() ? 0 : codegen->GetFrameSize(),
       codegen->GetCoreSpillMask(),
