@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bcf89711_fa542a77",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-19T14:25:50Z",
+      "side": 1,
+      "message": "I separated the clean up to the follow up CLs.",
+      "parentUuid": "e96d782b_480af0ce",
+      "range": {
+        "startLine": 734,
+        "startChar": 0,
+        "endLine": 735,
+        "endChar": 0
+      },
+      "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43ebda5b_e2d476c3",
         "filename": "compiler/optimizing/stack_map_stream.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad103c8_4e56b924",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-19T14:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ebda5b_e2d476c3",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 55
+      },
+      "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "543f3c1f_47bc2470",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-19T14:25:50Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "dcd223e1_ff37f83a",
+      "range": {
+        "startLine": 798,
+        "startChar": 10,
+        "endLine": 798,
+        "endChar": 31
+      },
+      "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0704b72_b37bcceb",
         "filename": "runtime/oat_quick_method_header.h",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c446a142_2c8e8e6f",
+        "filename": "runtime/oat_quick_method_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-07-19T14:25:50Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "d0704b72_b37bcceb",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "ec13ee54a7e27a5578897e59324393040c90ef63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
