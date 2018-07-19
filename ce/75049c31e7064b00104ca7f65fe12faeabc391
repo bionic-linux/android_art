@@ -1,0 +1,11 @@
+Code-Review+1: Ivan Maidanski <i.maidanski@samsung.com>
+Code-Review+1: Randy Jeong <randy.jeong@samsung.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Verified+1: Nicolas Geoffray <ngeoffray@google.com>
+Autosubmit+1: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 19 Jul 2018 16:22:26 +0000
+Reviewed-on: https://android-review.googlesource.com/717006
+Project: platform/art
+Branch: refs/heads/master
