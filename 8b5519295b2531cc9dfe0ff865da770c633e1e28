@@ -22,6 +22,30 @@
       "revId": "8b5519295b2531cc9dfe0ff865da770c633e1e28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f377a14c_f86053be",
+        "filename": "libdexfile/dex/art_dex_file_loader_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-07-27T17:17:36Z",
+      "side": 1,
+      "message": "Doesn\u0027t really make a difference, but I\u0027ll reorder it.",
+      "parentUuid": "9124368b_42decbf7",
+      "range": {
+        "startLine": 131,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 39
+      },
+      "revId": "8b5519295b2531cc9dfe0ff865da770c633e1e28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
