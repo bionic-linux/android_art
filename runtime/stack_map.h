@@ -416,10 +416,11 @@ class CodeInfo {
   void AddSizeStats(/*out*/ Stats* parent) const;
 
   ALWAYS_INLINE static QuickMethodFrameInfo DecodeFrameInfo(const uint8_t* data) {
+    BitMemoryReader reader(data);
     return QuickMethodFrameInfo(
-        DecodeUnsignedLeb128(&data),
-        DecodeUnsignedLeb128(&data),
-        DecodeUnsignedLeb128(&data));
+        DecodeVarintBits(reader),
+        DecodeVarintBits(reader),
+        DecodeVarintBits(reader));
   }
 
   typedef std::map<BitMemoryRegion, uint32_t, BitMemoryRegion::Less> DedupeMap;
