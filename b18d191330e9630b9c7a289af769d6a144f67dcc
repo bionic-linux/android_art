@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "29a5f777_827bc8d9",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:06:33Z",
+      "side": 1,
+      "message": "The parent in testOverrideMethodWithBridge is package protected - do you think I need a private one too?",
+      "parentUuid": "fae2e99f_9638e1d2",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5099f886_99c2734c",
         "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
         "patchSetId": 3
