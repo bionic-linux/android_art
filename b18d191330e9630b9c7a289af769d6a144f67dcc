@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd178f4_b4724592",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-08-01T16:04:32Z",
+      "side": 1,
+      "message": "included",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31721603_6a930a8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-08-01T16:04:32Z",
+      "side": 1,
+      "message": "build",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae2e99f_9638e1d2",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-08-01T16:04:32Z",
+      "side": 1,
+      "message": "Not planning to test the bridges for methods in private parents?",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5099f886_99c2734c",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-08-01T16:04:32Z",
+      "side": 1,
+      "message": "nit: 2 empty lines",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
