@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dde185be_4f2eb162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd178f4_b4724592",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31721603_6a930a8b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2206fa_7e5f7345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31721603_6a930a8b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -77,6 +125,24 @@
       "side": 1,
       "message": "The parent in testOverrideMethodWithBridge is package protected - do you think I need a private one too?",
       "parentUuid": "fae2e99f_9638e1d2",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62ed79e_10dcaf63",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:08:02Z",
+      "side": 1,
+      "message": "I guess the method is protected. I will add another test case, \u0027tis easy to do.",
+      "parentUuid": "29a5f777_827bc8d9",
       "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
