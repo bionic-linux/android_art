@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d22c84e_82f1b636",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-01T15:13:40Z",
+      "side": 1,
+      "message": "This is a bad encoding as only leaf methods shall fit into the short 4-bit encoding. However, if we just divide the frame size by kStackAlignment, most methods\u0027 frame size should fit.",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 46
+      },
+      "revId": "302b1a3bbf01887d23baee47297520a6a030c161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f36f85e_2e133c0a",
+        "filename": "compiler/optimizing/stack_map_stream.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-01T15:13:40Z",
+      "side": 1,
+      "message": "This is a poor encoding as well but the only proper improvement I can think of is shuffling the bits with an architecture-dependent function. On ARM, LR would go to the lowest bit, then callee-save registers and then caller-saves (which should not be recorded unless we introduce methods with custom ABI; this differs from register masks where we\u0027re already using entrypoints with custom ABI).",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 297,
+        "endChar": 42
+      },
+      "revId": "302b1a3bbf01887d23baee47297520a6a030c161",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
