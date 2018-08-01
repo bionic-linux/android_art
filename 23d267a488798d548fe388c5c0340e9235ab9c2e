@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac52e200_92f239d5",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-01T12:47:01Z",
+      "side": 1,
+      "message": "Can you make an experiment to see if this indirection is still useful? Maybe we should store the method index directly.",
+      "range": {
+        "startLine": 180,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "23d267a488798d548fe388c5c0340e9235ab9c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
