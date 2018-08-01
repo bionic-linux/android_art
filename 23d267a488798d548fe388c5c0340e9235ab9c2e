@@ -22,6 +22,30 @@
       "revId": "23d267a488798d548fe388c5c0340e9235ab9c2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a9c1340_23bd478b",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-08-01T14:25:21Z",
+      "side": 1,
+      "message": "The indirection saves 0.2%.",
+      "parentUuid": "ac52e200_92f239d5",
+      "range": {
+        "startLine": 180,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "23d267a488798d548fe388c5c0340e9235ab9c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
