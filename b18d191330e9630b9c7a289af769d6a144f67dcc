@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "7268b0fb_61f41813",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:50:13Z",
+      "side": 1,
+      "message": "Added another test case for the other bridge method case we saw. I think the interface is necessary. See testBridgeMethodsFromInterface",
+      "parentUuid": "d62ed79e_10dcaf63",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5099f886_99c2734c",
         "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
         "patchSetId": 3
@@ -163,6 +181,24 @@
       "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c90c25e_0b28c4fb",
+        "filename": "tools/class2greylist/test/src/com/android/javac/AnnotationVisitorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-08-01T16:50:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5099f886_99c2734c",
+      "revId": "b18d191330e9630b9c7a289af769d6a144f67dcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
