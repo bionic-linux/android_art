@@ -70,6 +70,30 @@
       "revId": "23d267a488798d548fe388c5c0340e9235ab9c2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d89ef2_a90ef93f",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-01T14:29:05Z",
+      "side": 1,
+      "message": "OK, let\u0027s keep it for now.",
+      "parentUuid": "ad1e72a5_23de2b3e",
+      "range": {
+        "startLine": 180,
+        "startChar": 22,
+        "endLine": 180,
+        "endChar": 37
+      },
+      "revId": "23d267a488798d548fe388c5c0340e9235ab9c2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
