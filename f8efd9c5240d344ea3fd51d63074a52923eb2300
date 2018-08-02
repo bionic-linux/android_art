@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5147c9b3_3dfaa153",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-02T15:19:34Z",
+      "side": 1,
+      "message": "Please revert the main commit message to the old one.",
+      "revId": "f8efd9c5240d344ea3fd51d63074a52923eb2300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00357e8_178b2ded",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-02T15:19:34Z",
+      "side": 1,
+      "message": "I\u0027d prefer:\n\nThe Java change also removes an unused field (threadStatus) from the\nThread, so update the 913-heaps test\u0027s extected.txt to account for that.\n\n(Nothing \"broke\" yet because the Java CL was not submitted, the topic shall be submitted together.)",
+      "revId": "f8efd9c5240d344ea3fd51d63074a52923eb2300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
