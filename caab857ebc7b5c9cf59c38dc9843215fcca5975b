@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9377754b_9613c135",
+        "filename": "runtime/stack_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-02T10:23:19Z",
+      "side": 1,
+      "message": "\"Decode packed_frame_size_ and unpack.\"",
+      "range": {
+        "startLine": 421,
+        "startChar": 55,
+        "endLine": 421,
+        "endChar": 56
+      },
+      "revId": "caab857ebc7b5c9cf59c38dc9843215fcca5975b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
