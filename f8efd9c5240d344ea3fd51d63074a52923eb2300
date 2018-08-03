@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3545976_2d2735b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2018-08-03T09:27:29Z",
+      "side": 1,
+      "message": "I changed it because after the second and third fixes it was no longer an accurate summary of the changes made but I have reverted it as asked.",
+      "parentUuid": "5147c9b3_3dfaa153",
+      "revId": "f8efd9c5240d344ea3fd51d63074a52923eb2300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e00357e8_178b2ded",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "f8efd9c5240d344ea3fd51d63074a52923eb2300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08050e13_f5dd4d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2018-08-03T09:27:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00357e8_178b2ded",
+      "revId": "f8efd9c5240d344ea3fd51d63074a52923eb2300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
