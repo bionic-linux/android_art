@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f93f5e2_1c441aa4",
+        "filename": "runtime/native/java_lang_Thread.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2018-08-03T14:59:15Z",
+      "side": 1,
+      "message": "Can this be FAST_NATIVE_METHOD?  Will need annotating on the Java side too.",
+      "range": {
+        "startLine": 205,
+        "startChar": 2,
+        "endLine": 205,
+        "endChar": 15
+      },
+      "revId": "69431282cef6223e10bf1ca43524bdc91adfb9ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
