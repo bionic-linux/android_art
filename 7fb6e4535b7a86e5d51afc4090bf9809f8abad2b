@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "282bbaa5_4b67f303",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-06T12:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30849dc3_b84c3c07",
+      "range": {
+        "startLine": 317,
+        "startChar": 14,
+        "endLine": 317,
+        "endChar": 15
+      },
+      "revId": "7fb6e4535b7a86e5d51afc4090bf9809f8abad2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87f0a0f8_16d84ae5",
         "filename": "test/563-checker-fakestring/smali/TestCase.smali",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-06T09:30:06Z",
       "side": 1,
       "message": "Did you mean the boolean argument p1?",
+      "range": {
+        "startLine": 319,
+        "startChar": 10,
+        "endLine": 319,
+        "endChar": 12
+      },
+      "revId": "7fb6e4535b7a86e5d51afc4090bf9809f8abad2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a94fdcc_42175db6",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-06T12:10:03Z",
+      "side": 1,
+      "message": "Ah yes, thanks good catch. Done. I\u0027ve also added code in Main.java to invoke the method.",
+      "parentUuid": "87f0a0f8_16d84ae5",
       "range": {
         "startLine": 319,
         "startChar": 10,
