@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "30849dc3_b84c3c07",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-06T12:07:29Z",
+      "side": 1,
+      "message": "4?",
+      "range": {
+        "startLine": 317,
+        "startChar": 14,
+        "endLine": 317,
+        "endChar": 15
+      },
+      "revId": "7fb6e4535b7a86e5d51afc4090bf9809f8abad2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87f0a0f8_16d84ae5",
         "filename": "test/563-checker-fakestring/smali/TestCase.smali",
         "patchSetId": 2
