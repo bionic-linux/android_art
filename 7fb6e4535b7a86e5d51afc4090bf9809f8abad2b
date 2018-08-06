@@ -93,6 +93,30 @@
       "revId": "7fb6e4535b7a86e5d51afc4090bf9809f8abad2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6d5cdd_0cf3599a",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-06T12:14:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a94fdcc_42175db6",
+      "range": {
+        "startLine": 319,
+        "startChar": 10,
+        "endLine": 319,
+        "endChar": 12
+      },
+      "revId": "7fb6e4535b7a86e5d51afc4090bf9809f8abad2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
