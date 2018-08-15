@@ -2885,7 +2885,7 @@ mirror::Object* ConcurrentCopying::MarkNonMoving(Thread* const self,
     // The sticky-bit CC collector is only compatible with Baker-style read barriers.
     DCHECK(kUseBakerReadBarrier);
     // Not done scanning, use AtomicSetReadBarrierPointer.
-    if (!done_scanning_) {
+    if (!done_scanning_.load(std::memory_order_relaxed)) {
       // Since the mark bitmap is still filled in from last GC, we can not use that or else the
       // mutator may see references to the from space. Instead, use the Baker pointer itself as
       // the mark bit.
