@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d76cb33_24ccb8c0",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-08-15T21:39:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the full logic here, but the change doesn\u0027t immediately look correct to me. Without at least a memory_order_acquire here (and a memory_order_release on the store), this won\u0027t guarantee that the effect of the scanning is visible here. AFAICT, you\u0027re relying on scanning completion, i.e. the fact that scanning effects are already fully visible, in the code below.\n\nYou probably don\u0027t need memory_order_seq_cst here. But on ARMv8.0,there\u0027s not really a difference. There is on x86, and if we start supporting later ARMv8.x instructions.",
+      "range": {
+        "startLine": 2887,
+        "startChar": 8,
+        "endLine": 2887,
+        "endChar": 56
+      },
+      "revId": "5b64593776f88d4165256f875e55c6061a00de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
