@@ -890,6 +890,12 @@ void ConcurrentCopying::MarkingPhase() {
       }
       // Scan all of the objects on dirty cards in unevac from space, and non moving space. These
       // are from previous GCs and may reference things in the from space.
+      //
+      // Note that we do not need to process the large-object space (the only discontinuous space)
+      // as it contains only large string objects and large primitive array objects, that have no
+      // reference to other objects, except their class. Since the String class and primitive array
+      // classes are all expected to be in the boot image (which is an immune space), there is no
+      // need to scan these large objects.
       Runtime::Current()->GetHeap()->GetCardTable()->Scan<false>(
           space->GetMarkBitmap(),
           space->Begin(),
