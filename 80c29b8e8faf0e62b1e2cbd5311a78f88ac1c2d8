@@ -141,6 +141,30 @@
       "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e571b294_d30489c2",
+        "filename": "runtime/gc/space/region_space.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-16T15:18:52Z",
+      "side": 1,
+      "message": "Addressed in PS6.",
+      "parentUuid": "f3e2d833_3cc364a4",
+      "range": {
+        "startLine": 405,
+        "startChar": 30,
+        "endLine": 405,
+        "endChar": 70
+      },
+      "revId": "80c29b8e8faf0e62b1e2cbd5311a78f88ac1c2d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
