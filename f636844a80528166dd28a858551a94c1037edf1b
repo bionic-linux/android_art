@@ -16,6 +16,24 @@
       "revId": "f636844a80528166dd28a858551a94c1037edf1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e82065_83da2275",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2517,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-16T16:55:49Z",
+      "side": 1,
+      "message": "Did you mean a comment like this:\n\n  // Mark this live object in the heap bitmap as it is in the\n  // non-moving space. Note that objects in the region space\n  // (moving space) are handled differently, and marked (in the\n  // region space bitmap) in ConcurrentCopying::ProcessMarkStackRef\n  // if needed.\n\n?",
+      "parentUuid": "e093c822_0cc775d1",
+      "revId": "f636844a80528166dd28a858551a94c1037edf1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
