@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Vladimir Marko <vmarko@google.com>
+Verified+1: Tamas Kenez <tamaskenez@google.com>
+Submitted-by: Tamas Kenez <tamaskenez@google.com>
+Submitted-at: Thu, 16 Aug 2018 09:39:29 +0000
+Reviewed-on: https://android-review.googlesource.com/731518
+Project: platform/art
+Branch: refs/heads/master
