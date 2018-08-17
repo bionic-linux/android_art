@@ -70,6 +70,30 @@
       "revId": "5b64593776f88d4165256f875e55c6061a00de35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266bf16f_72dee79a",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-08-17T17:01:27Z",
+      "side": 1,
+      "message": "I would be surprised if the store in InitialPhase really needs to be a release store. As you say, done_scanning_ shouldn\u0027t be concurrently accessible, so some other ordering mechanism already has to be in place. But the cost of overconstraining it once per GC is certainly not going to be measurable.\n\nOther than that, I agree, and +2\u0027ed the other CL.",
+      "parentUuid": "87756613_dbb3fb18",
+      "range": {
+        "startLine": 2887,
+        "startChar": 8,
+        "endLine": 2887,
+        "endChar": 56
+      },
+      "revId": "5b64593776f88d4165256f875e55c6061a00de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
