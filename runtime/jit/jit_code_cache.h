@@ -92,7 +92,7 @@ class JitCodeCache {
   // in the out arg error_msg.
   static JitCodeCache* Create(size_t initial_capacity,
                               size_t max_capacity,
-                              bool generate_debug_info,
+                              bool use_debug_name,
                               bool used_only_for_profile_data,
                               std::string* error_msg);
   ~JitCodeCache();

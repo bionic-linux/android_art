@@ -162,7 +162,7 @@ class JitCodeCache::JniStubData {
 
 JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
                                    size_t max_capacity,
-                                   bool generate_debug_info,
+                                   bool use_debug_name,
                                    bool used_only_for_profile_data,
                                    std::string* error_msg) {
   ScopedTrace trace(__PRETTY_FUNCTION__);
@@ -171,12 +171,12 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   // Generating debug information is for using the Linux perf tool on
   // host which does not work with ashmem.
   // Also, targets linux and fuchsia do not support ashmem.
-  bool use_ashmem = !generate_debug_info && !kIsTargetLinux && !kIsTargetFuchsia;
+  use_debug_name = use_debug_name && !kIsTargetLinux && !kIsTargetFuchsia;
 
   // With 'perf', we want a 1-1 mapping between an address and a method.
   // We aren't able to keep method pointers live during the instrumentation method entry trampoline
   // so we will just disable jit-gc if we are doing that.
-  bool garbage_collect_code = !generate_debug_info &&
+  bool garbage_collect_code = !use_debug_name &&
       !Runtime::Current()->GetInstrumentation()->AreExitStubsInstalled();
 
   // We need to have 32 bit offsets from method headers in code cache which point to things
@@ -213,7 +213,7 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
       /* low_4gb */ true,
       /* reuse */ false,
       &error_str,
-      use_ashmem);
+      use_debug_name);
   if (!data_map.IsValid()) {
     std::ostringstream oss;
     oss << "Failed to create read write cache: " << error_str << " size=" << max_capacity;
@@ -233,7 +233,7 @@ JitCodeCache* JitCodeCache::Create(size_t initial_capacity,
   uint8_t* divider = data_map.Begin() + data_size;
 
   MemMap code_map = data_map.RemapAtEnd(
-      divider, "jit-code-cache", memmap_flags_prot_code | PROT_WRITE, &error_str, use_ashmem);
+      divider, "jit-code-cache", memmap_flags_prot_code | PROT_WRITE, &error_str, use_debug_name);
   if (!code_map.IsValid()) {
     std::ostringstream oss;
     oss << "Failed to create read write execute cache: " << error_str << " size=" << max_capacity;
