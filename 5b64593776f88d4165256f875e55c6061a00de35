@@ -22,6 +22,30 @@
       "revId": "5b64593776f88d4165256f875e55c6061a00de35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dcdb9d0_34956785",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-17T15:05:03Z",
+      "side": 1,
+      "message": "Here is a bit of context:\n\n1. `done_scanning_` is an Atomic\u003cbool\u003e member variable of class `ConcurrentCopying`.\n2. This variable is set to `false` with memory_order_relaxed by the GC thread in `InitialPhase`, before marking (this variable cannot be concurrently accessed at that stage).\n3. At the beginning of the marking phase starts (after the initial phase):\n  3.1. GC thread executes `MarkingPhase` and scans dirty cards.\n  3.2. Mutator threads run with read barriers enabled and thus may mark some references.\n  3.3. Both GC thread and mutator threads may execute methods reading `done_scanning_` and executing some code if that variable is `false` (`MarkNonMoving`, `MarkUnevacFromSpaceRegion`, `IsMarkedInUnevacFromSpace`); I\u0027m pretty sure all code after the read operation from `done_scanning_` should not be reordered before that read.\n4. When the GC thread is done scanning cards, it sets `done_scanning_` to true with `std::memory_order_seq_cst`; any thread executing any of the methods mentioned in 3.3 shall stop running the code depending on `!done_scanning_`.\n\nMy intuition is that:\n* The write operations to `ConcurrentCopying::done_scanning_` in 2. and 4. above should be done `std::memory_order_release`.\n* The read operations from `ConcurrentCopying::done_scanning_` in 3.3. should be done with `std::memory_order_acquire`.\n\nHans, would that make sense?\n\n(Also, maybe we should inverse the semantics of `ConcurrentCopying::done_scanning_` and rename it to something like `ConcurrentCopying::scanning_cards_`.)",
+      "parentUuid": "1d76cb33_24ccb8c0",
+      "range": {
+        "startLine": 2887,
+        "startChar": 8,
+        "endLine": 2887,
+        "endChar": 56
+      },
+      "revId": "5b64593776f88d4165256f875e55c6061a00de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
