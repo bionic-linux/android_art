@@ -94,6 +94,30 @@
       "revId": "5b64593776f88d4165256f875e55c6061a00de35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f68bdeb_2095085f",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-17T17:16:35Z",
+      "side": 1,
+      "message": "Thanks for the confirmation Hans!",
+      "parentUuid": "266bf16f_72dee79a",
+      "range": {
+        "startLine": 2887,
+        "startChar": 8,
+        "endLine": 2887,
+        "endChar": 56
+      },
+      "revId": "5b64593776f88d4165256f875e55c6061a00de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
