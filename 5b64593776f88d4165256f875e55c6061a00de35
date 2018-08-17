@@ -46,6 +46,30 @@
       "revId": "5b64593776f88d4165256f875e55c6061a00de35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87756613_dbb3fb18",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2887,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-17T16:55:39Z",
+      "side": 1,
+      "message": "\u003e My intuition is that:\n\u003e * The write operations to `ConcurrentCopying::done_scanning_` in 2. and 4. above should be done `std::memory_order_release`.\n\u003e * The read operations from `ConcurrentCopying::done_scanning_` in 3.3. should be done with `std::memory_order_acquire`.\n\nI\u0027ve implemented this proposal here: https://android-review.googlesource.com/c/platform/art/+/734112 (I\u0027ll abandon this CL if that other CL is merged).",
+      "parentUuid": "2dcdb9d0_34956785",
+      "range": {
+        "startLine": 2887,
+        "startChar": 8,
+        "endLine": 2887,
+        "endChar": 56
+      },
+      "revId": "5b64593776f88d4165256f875e55c6061a00de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
