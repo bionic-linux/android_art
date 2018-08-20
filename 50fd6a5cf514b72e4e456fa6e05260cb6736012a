@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bc75688_c7cf5f67",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-20T16:45:47Z",
+      "side": 1,
+      "message": "There are cases where we don\u0027t run with an image. Can you comment on that mode too?",
+      "range": {
+        "startLine": 897,
+        "startChar": 57,
+        "endLine": 899,
+        "endChar": 42
+      },
+      "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
