@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b50311ec_30537124",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-21T12:40:48Z",
+      "side": 1,
+      "message": "Maybe refactor this part with a method like this:\n\n  static void ReassignInGMaps(MemMap\u0026 memmap1, MemMap\u0026 memmap2) {\n    if (memmap1.IsValid()) {\n      auto memmap1_it \u003d GetGMapsEntry(memmap1);\n      DCHECK(memmap1_it !\u003d gMaps-\u003eend());\n      DCHECK_EQ(memmap1_it-\u003esecond, \u0026memmap1);\n      memmap1_it-\u003esecond \u003d \u0026memmap2;\n    }\n  }\n\n[…]\n\n  ReassignInGMaps(this, other);\n  ReassignInGMaps(other, this);\n\n?",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 5
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8463ee9a_ca8434d5",
         "filename": "libartbase/base/mem_map.h",
         "patchSetId": 2
@@ -105,6 +128,98 @@
       "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb45e310_24f00e0d",
+        "filename": "libdexfile/dex/art_dex_file_loader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-21T12:40:48Z",
+      "side": 1,
+      "message": "Move the definition of `size` from line 199 above this line and use it here?",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 16
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bbdb17_c9befc1d",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-21T12:40:48Z",
+      "side": 1,
+      "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 5
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14eab5d_2e55cef5",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-21T12:40:48Z",
+      "side": 1,
+      "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 811,
+        "startChar": 30,
+        "endLine": 811,
+        "endChar": 31
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00534be2_c85bc6af",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-21T12:40:48Z",
+      "side": 1,
+      "message": "Nit: Move argument to its own line.",
+      "range": {
+        "startLine": 353,
+        "startChar": 57,
+        "endLine": 353,
+        "endChar": 62
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
