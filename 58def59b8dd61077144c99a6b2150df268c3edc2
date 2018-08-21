@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e7954465_6d10ca7f",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:28:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c513b337_d82c36a2",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b35e713_3b53a2e4",
         "filename": "libartbase/base/mem_map.h",
         "patchSetId": 2
@@ -63,6 +87,24 @@
       "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426cf003_10909ef5",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:28:17Z",
+      "side": 1,
+      "message": "std::optional\u003c\u003e adds another unnecessary bool and extra verbosity so I\u0027ve got a mild preference for the current approach.\n\nAnd we didn\u0027t upgrade to C++17 yet. I\u0027m surprised that \"#include \u003coptional\u003e\" compiles but using std::optional\u003c\u003e does not.",
+      "parentUuid": "0b35e713_3b53a2e4",
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
