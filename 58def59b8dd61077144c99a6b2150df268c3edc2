@@ -22,6 +22,47 @@
       "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c513b337_d82c36a2",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-08-21T01:18:45Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "8463ee9a_ca8434d5",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 28
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b35e713_3b53a2e4",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2018-08-21T01:18:45Z",
+      "side": 1,
+      "message": "Why do we need this valid/invalid?\n\nstd::optional\u003cMemMap\u003e would do the same thing and it doesn\u0027t have any indirection.",
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
