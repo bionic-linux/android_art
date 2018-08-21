@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c903c1d_bb7892ec",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:54:14Z",
+      "side": 1,
+      "message": "I\u0027d rather not. The case where one of the maps is a \"reuse\" map with the same base_begin_ as the other map would be very weird. (I\u0027m not very fond of the gMaps bookkeeping in general and would like to see it removed.)",
+      "parentUuid": "b50311ec_30537124",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 5
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8463ee9a_ca8434d5",
         "filename": "libartbase/base/mem_map.h",
         "patchSetId": 2
@@ -154,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "e39df7b7_d48757cc",
+        "filename": "libdexfile/dex/art_dex_file_loader.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb45e310_24f00e0d",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 16
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2bbdb17_c9befc1d",
         "filename": "runtime/gc/accounting/bitmap.h",
         "patchSetId": 2
@@ -174,6 +222,30 @@
       "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fe4022_3c5b9151",
+        "filename": "runtime/gc/accounting/bitmap.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2bbdb17_c9befc1d",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 5
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +272,30 @@
     },
     {
       "key": {
+        "uuid": "477716cc_e51a33d6",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f14eab5d_2e55cef5",
+      "range": {
+        "startLine": 811,
+        "startChar": 30,
+        "endLine": 811,
+        "endChar": 31
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00534be2_c85bc6af",
         "filename": "runtime/gc/space/large_object_space.cc",
         "patchSetId": 2
@@ -220,6 +316,30 @@
       "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca776de_64e64156",
+        "filename": "runtime/gc/space/large_object_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-21T12:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00534be2_c85bc6af",
+      "range": {
+        "startLine": 353,
+        "startChar": 57,
+        "endLine": 353,
+        "endChar": 62
+      },
+      "revId": "58def59b8dd61077144c99a6b2150df268c3edc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
