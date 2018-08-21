@@ -84,6 +84,7 @@ extern "C" JNIEXPORT void JNICALL Java_art_Test905_enableFreeTracking(
 extern "C" JNIEXPORT jlongArray JNICALL Java_art_Test905_getCollectedTags(
     JNIEnv* env, jclass klass ATTRIBUTE_UNUSED, jint index) {
   std::vector<jlong>& tags = (index == 0) ? collected_tags1 : collected_tags2;
+  sort(tags.begin(), tags.end());
   jlongArray ret = env->NewLongArray(tags.size());
   if (ret == nullptr) {
     return ret;
