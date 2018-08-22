@@ -478,6 +478,30 @@
     },
     {
       "key": {
+        "uuid": "6637c629_231c56cd",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T21:31:48Z",
+      "side": 1,
+      "message": "Yes, the name will still be heap-allocated. Or, to be more precise, the it-\u003efirst.c_str() call below will still return valid memory that will remain valid as long as it-\u003efirst lives and doesn\u0027t move, and that\u0027s true regardless of whether you inserted the map entry via std::move or by copy. (It\u0027s legal for an implementation to employ some kind of short string optimization.)",
+      "parentUuid": "6182505c_44aa2efb",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec940ab2_2fa65fe2",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
