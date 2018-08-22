@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "90b26164_d31151a1",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T21:15:02Z",
+      "side": 1,
+      "message": "The name already _already_ a maximum size: NAME_MAX, which is 255. The kernel won\u0027t report more than that number of characters of the name, so having a name longer than NAME_MAX is pointless. Realistically, are we going to have long names anyway?",
+      "parentUuid": "e77d0958_ee11ff90",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73897966_be5e5848",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "That\u0027s an awful lot of stack space though. Is it really worth preventing heap allocation by sacrificing stack like that?\n\nI could try the std::move, that\u0027s fine with me.",
       "parentUuid": "750bd937_2a4af9b7",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d2314d_af785e99",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T21:15:02Z",
+      "side": 1,
+      "message": "256 bytes is 32 machine words. That\u0027s not a lot of stack space. Besides, talking to the heap needs global synchronization much of the time. The stack, not at all.",
+      "parentUuid": "a8f3ea5f_fa8f545a",
       "range": {
         "startLine": 268,
         "startChar": 46,
