@@ -16,6 +16,24 @@
       "revId": "e691016fe373edb6a9ccd0e4833d2e2b1c9bc7ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6515fbe2_cd424808",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T23:06:13Z",
+      "side": 1,
+      "message": "If you leave it, wrap it in an ifndef.",
+      "parentUuid": "00521a49_07e8a03c",
+      "revId": "e691016fe373edb6a9ccd0e4833d2e2b1c9bc7ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
