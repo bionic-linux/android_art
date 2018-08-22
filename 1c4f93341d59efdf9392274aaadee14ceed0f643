@@ -22,6 +22,30 @@
       "revId": "1c4f93341d59efdf9392274aaadee14ceed0f643",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c58347a0_c64220d0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T18:09:40Z",
+      "side": 0,
+      "message": "Ok, if its unrelated, then I\u0027ll change it to:\n\nbool use_debug_name \u003d !kIsTargetLinux \u0026\u0026 !kIsTargetFuchsia;\n\nand delete that comment and the dependency on generate_debug_info.",
+      "parentUuid": "ba00a072_15c3ee90",
+      "range": {
+        "startLine": 174,
+        "startChar": 7,
+        "endLine": 174,
+        "endChar": 40
+      },
+      "revId": "1c4f93341d59efdf9392274aaadee14ceed0f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
