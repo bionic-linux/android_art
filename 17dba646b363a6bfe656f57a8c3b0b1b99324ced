@@ -454,6 +454,30 @@
     },
     {
       "key": {
+        "uuid": "a9e3f047_b825fe99",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T21:31:34Z",
+      "side": 1,
+      "message": "I don\u0027t the map\u0027s internal implementation, sorry.. If you know it could you share, I thought the map would be creating a new storage space for the key itself, making copies of it. So after the function returns, the key will still be allocated. You are right the std::move shouldn\u0027t change that assumption... (and I\u0027m hoping the assumption itself is true). Anyway, I have no shame in admitting I don\u0027t know C++ much and this thread is the exact reason why I don\u0027t like it so much :-D",
+      "parentUuid": "6182505c_44aa2efb",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec940ab2_2fa65fe2",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
