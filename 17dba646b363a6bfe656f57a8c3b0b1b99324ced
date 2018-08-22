@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "1ba0c78c_723458cf",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T21:20:33Z",
+      "side": 1,
+      "message": "Am I allowed to say \"future patches welcomed\" here? :-D. Just that I already tested this bit a whole tonne already. I can bet that this is much lighter than creating a full named ashmem region anyway..",
+      "parentUuid": "99d2314d_af785e99",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec940ab2_2fa65fe2",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -450,6 +474,30 @@
       "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7b79406_0a953314",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T21:20:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a08d2d_3d0b91bb",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
