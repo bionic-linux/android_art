@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f8ef0761_2d942984",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:07:38Z",
+      "side": 1,
+      "message": "May be we can change this to a DCHECK ? I\u0027ll update the patch",
+      "parentUuid": "0fb6546f_2bf4a9e9",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2b54a42_963b2fde",
         "filename": "libartbase/base/mem_map.h",
         "patchSetId": 6
