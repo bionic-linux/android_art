@@ -430,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "6182505c_44aa2efb",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T21:27:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand your concern. How would moving from an automatic-storage std::string into the map cause memory invalidation? The map is _already_ moving the std::pair you\u0027re building into the map, so if moving breaks things, the code is already broken.",
+      "parentUuid": "859cfaaa_f91f8a94",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec940ab2_2fa65fe2",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
