@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "c7938164_368e9e10",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T20:16:27Z",
+      "side": 1,
+      "message": "std::string stores its payload on the heap.",
+      "parentUuid": "0a4ae314_0c5c5d26",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73897966_be5e5848",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "This sentence is not very clear. I couldn\u0027t parse it.",
       "parentUuid": "73897966_be5e5848",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "750bd937_2a4af9b7",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T20:16:27Z",
+      "side": 1,
+      "message": "std::string owns some bytes of memory. When you build it in the first place, on line 263, you heap-allocate that memory. Then you potentially allocate more memory on line 264. The code here, as written, makes *another* heap allocation, a copy of debug_friendly_name, for use in constructing the pair. If you std::move the string into std::make_pair, you can reuse the memory allocation you\u0027ve already made.\n\nBut we shouldn\u0027t even bother with the heap allocation in the already-present case. If you instead write char debug_friendly_name[256] and use snprintf (or use your favorite bit of code) to build up the proposed name on the stack, then you can search the map using this stack string (in C++14 and above) without having to construct a temporary std::string, with its heap payload, just to throw it away in the case that the desired string is already in the map.",
+      "parentUuid": "384e286b_fb641e28",
       "range": {
         "startLine": 268,
         "startChar": 46,
@@ -248,6 +296,30 @@
       "writtenOn": "2018-08-22T20:07:38Z",
       "side": 1,
       "message": "May be we can change this to a DCHECK ? I\u0027ll update the patch",
+      "parentUuid": "0fb6546f_2bf4a9e9",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d73afff_291077cd",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T20:16:27Z",
+      "side": 1,
+      "message": "But on other OSes, it won\u0027t even *compile*, since the prctl function won\u0027t even exist.",
       "parentUuid": "0fb6546f_2bf4a9e9",
       "range": {
         "startLine": 272,
