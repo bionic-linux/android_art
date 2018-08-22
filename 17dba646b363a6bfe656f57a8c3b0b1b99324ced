@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d818350f_8cad2b7e",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "ifdef __linux__?",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef775751_4825814b",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "#ifndef, just in case we do start defining the constant in the uapi headers. I use the ifndef approach in all my code whenever I duplicate Linux constant definitions.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ebeef82_3792effd",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "map supports heterogeneous lookup. You might want to construct the name locally, on the stack, and do heap allocation only in the case where you actually want to insert into the map.",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73897966_be5e5848",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "std::move. There\u0027s no reason to copy the string. (But see above.)",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec940ab2_2fa65fe2",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "Again, #ifdef __linux__ ?",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2b54a42_963b2fde",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2018-08-22T19:31:04Z",
+      "side": 1,
+      "message": "Nit: use a more descriptive name. Under a casual reading, it\u0027s not clear whether \"size\" is the size of the map or the size of the name string!",
+      "range": {
+        "startLine": 118,
+        "startChar": 67,
+        "endLine": 118,
+        "endChar": 71
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
