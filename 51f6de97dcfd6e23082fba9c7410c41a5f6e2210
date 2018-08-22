@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9895d4e_9eab47ab",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-22T10:01:52Z",
+      "side": 1,
+      "message": "Add GUARDED_BY and high-level comment about the field.",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "51f6de97dcfd6e23082fba9c7410c41a5f6e2210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1639e1e7_28e92a34",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-22T10:01:52Z",
+      "side": 1,
+      "message": "nit: we would put the star next to the type.",
+      "range": {
+        "startLine": 118,
+        "startChar": 31,
+        "endLine": 118,
+        "endChar": 33
+      },
+      "revId": "51f6de97dcfd6e23082fba9c7410c41a5f6e2210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3987669d_9578f28e",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-22T10:01:52Z",
+      "side": 1,
+      "message": "No, this should still be called generate_debug_info (it\u0027s unrelated to ashmem).",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "51f6de97dcfd6e23082fba9c7410c41a5f6e2210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
