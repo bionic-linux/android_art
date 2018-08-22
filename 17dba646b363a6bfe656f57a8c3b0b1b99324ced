@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00d07e40_67d2812b",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "sure, I think we should do that",
+      "parentUuid": "d818350f_8cad2b7e",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef775751_4825814b",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-22T19:31:04Z",
       "side": 1,
       "message": "#ifndef, just in case we do start defining the constant in the uapi headers. I use the ifndef approach in all my code whenever I duplicate Linux constant definitions.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 18
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fff9bfd_5a821ead",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "Elliott just merged uapi changes so I\u0027ll just remove them",
+      "parentUuid": "ef775751_4825814b",
       "range": {
         "startLine": 48,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0a4ae314_0c5c5d26",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "I didn\u0027t follow. The temporary name used to consult the map is on the stack. The heap allocation happens only when you insert something.\n\nwhy there be heap allocation happening for the \u0027find\u0027 ?",
+      "parentUuid": "7ebeef82_3792effd",
+      "range": {
+        "startLine": 265,
+        "startChar": 26,
+        "endLine": 265,
+        "endChar": 30
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73897966_be5e5848",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-08-22T19:31:04Z",
       "side": 1,
       "message": "std::move. There\u0027s no reason to copy the string. (But see above.)",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384e286b_fb641e28",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "This sentence is not very clear. I couldn\u0027t parse it.",
+      "parentUuid": "73897966_be5e5848",
       "range": {
         "startLine": 268,
         "startChar": 46,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0fb6546f_2bf4a9e9",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "This path will never be called for other OS\u0027s.",
+      "parentUuid": "ec940ab2_2fa65fe2",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2b54a42_963b2fde",
         "filename": "libartbase/base/mem_map.h",
         "patchSetId": 6
@@ -128,6 +248,30 @@
       "writtenOn": "2018-08-22T19:31:04Z",
       "side": 1,
       "message": "Nit: use a more descriptive name. Under a casual reading, it\u0027s not clear whether \"size\" is the size of the map or the size of the name string!",
+      "range": {
+        "startLine": 118,
+        "startChar": 67,
+        "endLine": 118,
+        "endChar": 71
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e668fb2_fc65a0a1",
+        "filename": "libartbase/base/mem_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T20:01:00Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "b2b54a42_963b2fde",
       "range": {
         "startLine": 118,
         "startChar": 67,
