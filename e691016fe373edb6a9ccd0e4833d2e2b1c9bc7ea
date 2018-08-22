@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00521a49_07e8a03c",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T21:58:47Z",
+      "side": 1,
+      "message": "I left this here, because I wasn\u0027t sure presubmits will pass without enh@\u0027s change that moves into UAPI header. I will remove it in the future.",
+      "revId": "e691016fe373edb6a9ccd0e4833d2e2b1c9bc7ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
