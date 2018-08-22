@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9eb74376_1fe81ecb",
+        "filename": "runtime/thread_list.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-08-22T02:27:25Z",
+      "side": 1,
+      "message": "Are you calling usleep with 0 to simulate \u0027yield\u0027 and not sleep as such? If so, then do you think it\u0027ll help given that as per the bug hci_thread is RT? AFAIK, an RT runnable thread will immediately take over the CPU without yielding to a lower priority thread.",
+      "range": {
+        "startLine": 1481,
+        "startChar": 6,
+        "endLine": 1481,
+        "endChar": 16
+      },
+      "revId": "73a96d60a67f0135834bb0a1758a6b93eccb2a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
