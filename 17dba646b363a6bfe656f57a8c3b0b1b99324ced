@@ -406,6 +406,30 @@
     },
     {
       "key": {
+        "uuid": "77b2d69d_892cb613",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-22T21:26:13Z",
+      "side": 1,
+      "message": "If I do this, will the name still be allocated on the heap after the function returns?\n\n debugStrMap.insert(std::make_pair(std::move(debug_friendly_name), 1))).first;",
+      "parentUuid": "859cfaaa_f91f8a94",
+      "range": {
+        "startLine": 268,
+        "startChar": 46,
+        "endLine": 268,
+        "endChar": 65
+      },
+      "revId": "17dba646b363a6bfe656f57a8c3b0b1b99324ced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec940ab2_2fa65fe2",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 6
