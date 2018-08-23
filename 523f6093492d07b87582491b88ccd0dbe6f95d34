@@ -16,6 +16,24 @@
       "revId": "523f6093492d07b87582491b88ccd0dbe6f95d34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b7aaad_de1431e8",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-23T20:16:43Z",
+      "side": 1,
+      "message": "I don\u0027t feel strongly about it either way. I\u0027ll change it",
+      "parentUuid": "86e29e27_1db7297a",
+      "revId": "523f6093492d07b87582491b88ccd0dbe6f95d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
