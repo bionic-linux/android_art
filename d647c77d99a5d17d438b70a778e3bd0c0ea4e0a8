@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c91bab2_6f434f71",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-23T19:22:02Z",
+      "side": 1,
+      "message": "delete this?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "d647c77d99a5d17d438b70a778e3bd0c0ea4e0a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c025f66_c9667696",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-23T19:22:02Z",
+      "side": 1,
+      "message": "and s/__linux__/PR_SET_VMA/ here?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 287,
+        "endChar": 0
+      },
+      "revId": "d647c77d99a5d17d438b70a778e3bd0c0ea4e0a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
