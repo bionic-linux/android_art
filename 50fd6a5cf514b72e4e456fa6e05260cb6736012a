@@ -22,6 +22,30 @@
       "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130d14bf_b0d82964",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-23T14:20:53Z",
+      "side": 1,
+      "message": "There could theoretically be a problem here in the case where we are running without an image, if the following were to happen:\n1. The image-less runtime starts up.\n2. A full collection happens. (Note that the first collection has to be a full one, as a sticky-bit (young-generation) collection requires the heap bitmap from the previous collection.)\n3. The java.lang.String class is loaded and allocated in a newly-allocated region of the region space (main space).\n4. A large string is allocated in the large-object space and has its `klass_` field point to the String class object allocated in #3. The card corresponding to this large string object is *not* dirtied (see Heap::AllocObjectWithAllocator and Object::SetClass).\n5. A sticky-bit (young-generation) collection starts: the region containing the String class object is newly-allocated, thus marked as to-be-evacuated.\n6. The large string object from #4 is not visited during the dirty card scanning as i. it is in the large-object space, which is not visited; and ii. its card is not dirty anyway (see #4).\n7. The String class object is moved during GC, and the original object in the from-space is cleared.\n8. Problem: The `klass_` field of the large string object is now a stale reference to the old (cleared) String class object.\n\nIn practice, I don\u0027t think this can happen, as the String class instanciation will probably be instantiated before any garbage collection (i.e. #2 cannot happen before #3) – and likewise for primitive array classes — so the only cases where the String class object will move afterwards are full collections, where the whole heap is traced, which does not use the card table logic discussed here.\n\nI\u0027ll add a comment for the image-less case.",
+      "parentUuid": "9bc75688_c7cf5f67",
+      "range": {
+        "startLine": 897,
+        "startChar": 57,
+        "endLine": 899,
+        "endChar": 42
+      },
+      "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
