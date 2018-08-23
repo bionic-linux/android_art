@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86e29e27_1db7297a",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-08-23T19:36:24Z",
+      "side": 1,
+      "message": "iirc the ART folks always use braces.\n\n(i\u0027m surprised they don\u0027t have a .clang-format file.)",
+      "revId": "523f6093492d07b87582491b88ccd0dbe6f95d34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
