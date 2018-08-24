@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b5b589f_7b82f29a",
+        "filename": "tools/dexanalyze/dexanalyze_bytecode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1250302
+      },
+      "writtenOn": "2018-08-24T18:24:06Z",
+      "side": 1,
+      "message": "Does a range-based for loop work here?",
+      "revId": "cd2edfc99c07e958cd926ae61a74ee01a32666a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
