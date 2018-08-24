@@ -70,6 +70,30 @@
       "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6f35857_9d3425db",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-08-24T20:53:01Z",
+      "side": 1,
+      "message": "\u003e Done in PS11.\n\u003e \n\u003e I also uploaded a change that makes these classes non-movable in the image-less case here: https://android-review.googlesource.com/c/platform/art/+/737437.\n\nCouple of issues here:\n1) In case of image-less execution, wouldn\u0027t the primitive classes be loaded as and when an object of that type is created? And if so, then it is possible that class object is created after the first GC. So, in the scenario you described, #2 can happen before #3.\n2) This will also be a problem once you introduce the ageing concept.\n\nDue to these issues it does make sense to have the primitive classes in non-movable space. In that case the comment needs to be appropriately changed.",
+      "parentUuid": "3995680c_f50c61a3",
+      "range": {
+        "startLine": 897,
+        "startChar": 57,
+        "endLine": 899,
+        "endChar": 42
+      },
+      "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
