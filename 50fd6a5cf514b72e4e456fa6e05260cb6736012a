@@ -46,6 +46,30 @@
       "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3995680c_f50c61a3",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-24T13:29:37Z",
+      "side": 1,
+      "message": "Done in PS11.\n\nI also uploaded a change that makes these classes non-movable in the image-less case here: https://android-review.googlesource.com/c/platform/art/+/737437.",
+      "parentUuid": "130d14bf_b0d82964",
+      "range": {
+        "startLine": 897,
+        "startChar": 57,
+        "endLine": 899,
+        "endChar": 42
+      },
+      "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
