@@ -357,6 +357,30 @@
     },
     {
       "key": {
+        "uuid": "c863ee68_8b4e1b1c",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T22:56:21Z",
+      "side": 1,
+      "message": "I meant what happens if PR_SET_VMA is defined, but the kernel doesn\u0027t support it. Does the prctl just return -1 or is the behavior not predictable? I\u0027d like to simplify the condition as much as possible under the assumption that the Android kernel patch will be upstreamed eventually.",
+      "parentUuid": "4b340b39_ebf135a3",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7655cc_fc5bf276",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
