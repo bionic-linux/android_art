@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5b6f9aa8_a728e9a4",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-24T22:38:40Z",
+      "side": 1,
+      "message": "With the host emulation you want, we\u0027ll have to keep this for now.",
+      "parentUuid": "d47e513b_47794b4d",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 27
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42c46a33_a7a5d78a",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
@@ -273,6 +297,54 @@
       "writtenOn": "2018-08-24T22:30:21Z",
       "side": 1,
       "message": "What happens if you call the prctl and the call is unsupported? Should this all be the check in line 280, so there\u0027s no work to do once \"upstream\" kernels support set-vma?",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb0f3a8_ce392441",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-24T22:38:40Z",
+      "side": 1,
+      "message": "Well its too late now, I spent the last 30 minutes adding it back for you. :D\n\nI think its still useful if you want to see the contents of the maps on the host-only tests (if any)...\n\nare you suggesting I nuke it and don\u0027t create file-backed maps at all?",
+      "parentUuid": "2831f071_981a8840",
+      "range": {
+        "startLine": 258,
+        "startChar": 44,
+        "endLine": 258,
+        "endChar": 59
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b340b39_ebf135a3",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-24T22:38:40Z",
+      "side": 1,
+      "message": "If its an Android kernel then it will support it, if its not an Android kernel - then somebody set the wrong KIsTarget* flags which ended up calling here. If its an Android kernel that doesn\u0027t support it, then the vendor or whoever screwed up the merge down from the common kernel (which will make this and other places that call this prctl lose the functionality)",
+      "parentUuid": "6905ac82_b3b9bef7",
       "range": {
         "startLine": 258,
         "startChar": 6,
