@@ -16,6 +16,47 @@
       "revId": "cd2edfc99c07e958cd926ae61a74ee01a32666a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c94c535e_d496452d",
+        "filename": "tools/dexanalyze/dexanalyze_bytecode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-08-24T20:32:23Z",
+      "side": 1,
+      "message": "Will fix",
+      "parentUuid": "7b5b589f_7b82f29a",
+      "revId": "cd2edfc99c07e958cd926ae61a74ee01a32666a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b708deb7_ada7e243",
+        "filename": "tools/dexanalyze/dexanalyze_bytecode.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-08-24T20:32:23Z",
+      "side": 1,
+      "message": "Hmm, will also fix this indentation error in a follow up.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 57
+      },
+      "revId": "cd2edfc99c07e958cd926ae61a74ee01a32666a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
