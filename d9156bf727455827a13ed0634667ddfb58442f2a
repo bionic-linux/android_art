@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "5b4defa0_26c86974",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T21:49:58Z",
+      "side": 1,
+      "message": "*We* use it. We run lots and lots of host tests, and have facilities to dump maps (e.g., for issues with heaps). It\u0027s immensely helpful to understand what regions constitute what.\n\nI\u0027m not against dumping ashmem, but support for named host regions - and if it\u0027s emulated like libcutils does it (and we relied on) is IMHO important.",
+      "parentUuid": "d3cdf85b_c8613cdf",
+      "range": {
+        "startLine": 258,
+        "startChar": 44,
+        "endLine": 258,
+        "endChar": 59
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7655cc_fc5bf276",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
