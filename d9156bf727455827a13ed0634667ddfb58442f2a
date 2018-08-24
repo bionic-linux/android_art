@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "2a9d811b_03dbf24c",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-24T21:59:48Z",
+      "side": 1,
+      "message": "By the way, for host-only emulation, the name is being ignored, the only benefit is you get to see the data in the map:\n\nint ashmem_create_region(const char* /*ignored*/, size_t size) {",
+      "parentUuid": "4860a4c8_23acb01c",
+      "range": {
+        "startLine": 258,
+        "startChar": 44,
+        "endLine": 258,
+        "endChar": 59
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7655cc_fc5bf276",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
