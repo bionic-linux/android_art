@@ -238,6 +238,53 @@
     },
     {
       "key": {
+        "uuid": "2831f071_981a8840",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T22:30:21Z",
+      "side": 1,
+      "message": "Hm. I wonder whether we lost our own facility earlier. I do remember us having had named mmaps through tmp file names. So ignore, I guess.",
+      "parentUuid": "2a9d811b_03dbf24c",
+      "range": {
+        "startLine": 258,
+        "startChar": 44,
+        "endLine": 258,
+        "endChar": 59
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6905ac82_b3b9bef7",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T22:30:21Z",
+      "side": 1,
+      "message": "What happens if you call the prctl and the call is unsupported? Should this all be the check in line 280, so there\u0027s no work to do once \"upstream\" kernels support set-vma?",
+      "range": {
+        "startLine": 258,
+        "startChar": 6,
+        "endLine": 258,
+        "endChar": 20
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7655cc_fc5bf276",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
