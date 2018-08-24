@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98907ee8_2abdf3a6",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T23:39:51Z",
+      "side": 1,
+      "message": "Could consider removing this, too, but I don\u0027t care. One question raised here would be Mac host build. You probably need to put the whole body in an ifdef linux?",
+      "range": {
+        "startLine": 253,
+        "startChar": 27,
+        "endLine": 253,
+        "endChar": 41
+      },
+      "revId": "9567e90406fc70472cb9e4e98d2f6b20d4d0fc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a62ca234_3459aa21",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T23:39:51Z",
+      "side": 1,
+      "message": "Move to previous line and end with period.",
+      "range": {
+        "startLine": 258,
+        "startChar": 5,
+        "endLine": 258,
+        "endChar": 26
+      },
+      "revId": "9567e90406fc70472cb9e4e98d2f6b20d4d0fc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b0abdb6_09b1fc70",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-08-24T23:39:51Z",
+      "side": 1,
+      "message": "End with period.",
+      "range": {
+        "startLine": 273,
+        "startChar": 43,
+        "endLine": 273,
+        "endChar": 44
+      },
+      "revId": "9567e90406fc70472cb9e4e98d2f6b20d4d0fc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
