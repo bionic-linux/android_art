@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "d3cdf85b_c8613cdf",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-24T21:38:51Z",
+      "side": 1,
+      "message": "That is true. I can mention that in the CL if you want. I wasn\u0027t sure if this was used, and was also thinking who really depends on that on the host side. Most if not all hosts don\u0027t even have ashmem enabled by default (like my host). Ashmem is only for Android, and for Android kernels we already have a prctl.\n\nIn the future, the prctl could be upstreamed (I have planned for that) and then all Linux systems including hosts can have the needed prctl.",
+      "parentUuid": "42c46a33_a7a5d78a",
+      "range": {
+        "startLine": 258,
+        "startChar": 44,
+        "endLine": 258,
+        "endChar": 59
+      },
+      "revId": "d9156bf727455827a13ed0634667ddfb58442f2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f7655cc_fc5bf276",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 11
