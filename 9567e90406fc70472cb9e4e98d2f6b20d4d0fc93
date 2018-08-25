@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a77a1ff7_208d5c89",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-25T00:09:58Z",
+      "side": 1,
+      "message": "Ok I additionally wrapped prctl with __linux__",
+      "parentUuid": "98907ee8_2abdf3a6",
+      "range": {
+        "startLine": 253,
+        "startChar": 27,
+        "endLine": 253,
+        "endChar": 41
+      },
+      "revId": "9567e90406fc70472cb9e4e98d2f6b20d4d0fc93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a62ca234_3459aa21",
         "filename": "libartbase/base/mem_map.cc",
         "patchSetId": 13
