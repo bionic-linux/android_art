@@ -22,6 +22,30 @@
       "revId": "abeb7cb1d6fe7f57869efcea86a2e2ab433b80db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a79cc18_44ab1f94",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 12
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-28T19:23:29Z",
+      "side": 1,
+      "message": "I was wanting to keep this comment as-is (also because we\u0027re PR +2\u0027d). I can shorten it if when/posting another rev.",
+      "parentUuid": "4bb23d86_f160ab81",
+      "range": {
+        "startLine": 263,
+        "startChar": 5,
+        "endLine": 263,
+        "endChar": 57
+      },
+      "revId": "abeb7cb1d6fe7f57869efcea86a2e2ab433b80db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
