@@ -94,6 +94,30 @@
       "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6318e609_345fe18c",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-28T15:08:50Z",
+      "side": 1,
+      "message": "In the image-less case, the String and primitive array classes are (forcibly) loaded very early in when the runtime initializes – ahead of any instanciation of these classes (see the logic in art::ClassLinker::InitWithoutImage). Put differently, #3 is happening really close to #1, making it very unlikely for #2 to happen in-between. And as far as I understand, those classes are never unloaded.\n\nIn practice, I don\u0027t think there should be any problem; however it is better to make things clean, hence the followup-up CL (https://android-review.googlesource.com/c/platform/art/+/737437), which also adjusts this comment.",
+      "parentUuid": "f6f35857_9d3425db",
+      "range": {
+        "startLine": 897,
+        "startChar": 57,
+        "endLine": 899,
+        "endChar": 42
+      },
+      "revId": "50fd6a5cf514b72e4e456fa6e05260cb6736012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
