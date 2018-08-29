@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf7e635_eca7f7e0",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-08-29T16:42:17Z",
+      "side": 1,
+      "message": "UNUSED(map_ptr, size);",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 15
+      },
+      "revId": "42e28e3131b4823d2f6e6ebc1e90981a054d2459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
