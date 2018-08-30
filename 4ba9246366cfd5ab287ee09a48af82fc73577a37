@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ae84a4d_877907e0",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-08-30T18:33:39Z",
+      "side": 1,
+      "message": "Since it is a correctness issue, I think something being unlikely is not enough. If you are certain that it cannot happen then please rephrase it to \"which cannot happen\".",
+      "range": {
+        "startLine": 904,
+        "startChar": 23,
+        "endLine": 904,
+        "endChar": 41
+      },
+      "revId": "4ba9246366cfd5ab287ee09a48af82fc73577a37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
