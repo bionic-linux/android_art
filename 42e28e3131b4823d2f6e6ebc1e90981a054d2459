@@ -46,6 +46,30 @@
       "revId": "42e28e3131b4823d2f6e6ebc1e90981a054d2459",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd71957e_f5823b93",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-08-30T17:34:32Z",
+      "side": 1,
+      "message": "Generally in Art, if the new PS only has small changes like this it is fine to do self +2.\n\nPlease fix this before submitting. Doing it in a follow up makes it harder to revert if we need to.",
+      "parentUuid": "e82d7eca_4c526d6f",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 15
+      },
+      "revId": "42e28e3131b4823d2f6e6ebc1e90981a054d2459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
