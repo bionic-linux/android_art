@@ -22,6 +22,30 @@
       "revId": "42e28e3131b4823d2f6e6ebc1e90981a054d2459",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82d7eca_4c526d6f",
+        "filename": "libartbase/base/mem_map.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1124848
+      },
+      "writtenOn": "2018-08-30T17:27:27Z",
+      "side": 1,
+      "message": "That\u0027s cosmetic and since I have PV+1 and CR+2 on all the patches, I suggest sending a follow up patch to do that, so that I can submit this patch now (they have undergone several rounds of reviews).",
+      "parentUuid": "bcf7e635_eca7f7e0",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 15
+      },
+      "revId": "42e28e3131b4823d2f6e6ebc1e90981a054d2459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
