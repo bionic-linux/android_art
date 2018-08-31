@@ -22,6 +22,30 @@
       "revId": "4ba9246366cfd5ab287ee09a48af82fc73577a37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865c00bb_38b022eb",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-08-31T08:35:03Z",
+      "side": 1,
+      "message": "I\u0027m not certain that it cannot happen, but:\n- I don\u0027t think we ship image-less configurations;\n- I haven\u0027t managed to create a test case that would hit that problem.\n\nIn practice, we haven\u0027t seen (and probably won\u0027t see) this issue happening. If this issue were to happen, we would spot it quickly, as the run-time would not even start.\n\nThe proposed fix is in the follow-up CL (https://android-review.googlesource.com/c/platform/art/+/737437), but I thought it made sense to have one CL expose the (theoretical) issue and another (attempt to) fix it.",
+      "parentUuid": "8ae84a4d_877907e0",
+      "range": {
+        "startLine": 904,
+        "startChar": 23,
+        "endLine": 904,
+        "endChar": 41
+      },
+      "revId": "4ba9246366cfd5ab287ee09a48af82fc73577a37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
