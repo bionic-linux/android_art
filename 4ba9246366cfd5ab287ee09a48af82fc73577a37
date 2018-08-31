@@ -46,6 +46,30 @@
       "revId": "4ba9246366cfd5ab287ee09a48af82fc73577a37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b17abea_b91ac7f9",
+        "filename": "runtime/gc/collector/concurrent_copying.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-08-31T09:22:42Z",
+      "side": 1,
+      "message": "We don\u0027t ship imageless configuration, but running imageless is something that *can happen* on a production device.",
+      "parentUuid": "865c00bb_38b022eb",
+      "range": {
+        "startLine": 904,
+        "startChar": 23,
+        "endLine": 904,
+        "endChar": 41
+      },
+      "revId": "4ba9246366cfd5ab287ee09a48af82fc73577a37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
