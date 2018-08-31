@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Vladimir Marko <vmarko@google.com>
+Code-Review+2: Mathieu Chartier <mathieuc@google.com>
+Code-Review+2: Roland Levillain <rpl@google.com>
+Verified+1: Vladimir Marko <vmarko@google.com>
+Autosubmit+1: Vladimir Marko <vmarko@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Fri, 31 Aug 2018 18:21:13 +0000
+Reviewed-on: https://android-review.googlesource.com/743604
+Project: platform/art
+Branch: refs/heads/master
