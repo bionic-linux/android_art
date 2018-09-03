@@ -1302,6 +1302,8 @@ TEST(OatFileAssistantUtilsTest, DexLocationToOdexFilename) {
         "nopath.jar", InstructionSet::kArm, &odex_file, &error_msg));
   EXPECT_FALSE(OatFileAssistant::DexLocationToOdexFilename(
         "/foo/bar/baz_noext", InstructionSet::kArm, &odex_file, &error_msg));
+  EXPECT_FALSE(OatFileAssistant::DexLocationToOdexFilename(
+        "/foo/bar/.jar", InstructionSet::kArm, &odex_file, &error_msg));
 }
 
 // Verify the dexopt status values from dalvik.system.DexFile
