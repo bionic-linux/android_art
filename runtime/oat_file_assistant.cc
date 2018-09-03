@@ -523,6 +523,10 @@ static bool DexLocationToOdexNames(const std::string& location,
     return false;
   }
   std::string base = file.substr(0, pos);
+  if (base.length() == 0) {
+    *error_msg = "Dex location " + location + " has no filename.";
+    return false;
+  }
 
   *odex_filename = dir + "/" + base + ".odex";
   return true;
