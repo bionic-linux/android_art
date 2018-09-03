@@ -22,6 +22,30 @@
       "revId": "b320031434be6131421ca1c137121bf2140f12ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04825022_66f88da9",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-03T09:10:33Z",
+      "side": 1,
+      "message": "OK reading again your commit message this looks like what you intended :)\n\nCould you add a test in oat_file_assistant_test that tests this?",
+      "parentUuid": "58d3fe39_c59bb79e",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "b320031434be6131421ca1c137121bf2140f12ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
