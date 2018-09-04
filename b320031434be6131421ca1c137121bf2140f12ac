@@ -46,6 +46,30 @@
       "revId": "b320031434be6131421ca1c137121bf2140f12ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219fac0c_a277965d",
+        "filename": "runtime/oat_file_assistant.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1061696
+      },
+      "writtenOn": "2018-09-04T00:17:20Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "04825022_66f88da9",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 3
+      },
+      "revId": "b320031434be6131421ca1c137121bf2140f12ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
