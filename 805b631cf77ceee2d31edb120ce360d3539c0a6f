@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "4b8e6f33_2ce9772b",
+        "filename": "test/623-checker-loop-regressions/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-09-05T14:52:31Z",
+      "side": 1,
+      "message": "Maybe also add a Checker stanza for x86-64?",
+      "range": {
+        "startLine": 310,
+        "startChar": 18,
+        "endLine": 310,
+        "endChar": 23
+      },
+      "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1291700d_35923607",
         "filename": "test/623-checker-loop-regressions/src/Main.java",
         "patchSetId": 5
