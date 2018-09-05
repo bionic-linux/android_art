@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9e70f307_0b84412f",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-09-05T14:47:42Z",
+      "side": 1,
+      "message": "\"(int) s.charAt(.)\" is an implicit conversion, the value does not change.\n\nThe LoopOptimization is not playing nicely with the signed/unsigned type but it shall not merge a narrowing conversion into HVecLoad, so the \"(short)\" is the only weird case we need to handle.",
+      "parentUuid": "010fd87b_e2caeb1e",
+      "range": {
+        "startLine": 1208,
+        "startChar": 37,
+        "endLine": 1208,
+        "endChar": 56
+      },
+      "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1291700d_35923607",
         "filename": "test/623-checker-loop-regressions/src/Main.java",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a2f959_7a0e3383",
+        "filename": "test/623-checker-loop-regressions/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-09-05T14:47:42Z",
+      "side": 1,
+      "message": "ARM has the kNoStringCharAt restriction (i.e. the vectorization is not implemented).\nx86/x86-64 depends on \"features-\u003eAsX86InstructionSetFeatures()-\u003eHasSSE4_1()\".",
+      "parentUuid": "1291700d_35923607",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 60
+      },
+      "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
