@@ -68,15 +68,20 @@ if [[ $mode == "host" ]]; then
   make_command+=" dx-tests"
   mode_suffix="-host"
 elif [[ $mode == "target" ]]; then
-  if [[ -z "$TARGET_PRODUCT" ]]; then
-    echo 'TARGET_PRODUCT environment variable is empty; did you forget to run `lunch`?'
+  if [[ -z "${ANDROID_PRODUCT_OUT}" ]]; then
+    echo 'ANDROID_PRODUCT_OUT environment variable is empty; did you forget to run `lunch`?'
     exit 1
   fi
   make_command="make $j_arg $extra_args $showcommands build-art-target-tests $common_targets"
   make_command+=" libjavacrypto-target libnetd_client-target linker toybox toolbox sh"
   make_command+=" debuggerd su"
   make_command+=" ${out_dir}/host/linux-x86/bin/adb libstdc++ "
-  make_command+=" ${out_dir}/target/product/${TARGET_PRODUCT}/system/etc/public.libraries.txt"
+  system_etc_abs_path="${ANDROID_PRODUCT_OUT}"/system/etc
+  if [[ ! -d "${system_etc_abs_path}" ]]; then
+    mkdir -p "${system_etc_abs_path}"
+  fi
+  system_etc_rel_path=$(realpath --relative-to="${ANDROID_BUILD_TOP}" "${system_etc_abs_path}")
+  make_command+=" ${system_etc_rel_path}/public.libraries.txt"
   if [[ -n "$ART_TEST_CHROOT" ]]; then
     # These targets are needed for the chroot environment.
     make_command+=" crash_dump event-log-tags"
