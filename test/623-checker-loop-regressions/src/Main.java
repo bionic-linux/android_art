@@ -286,7 +286,7 @@ public class Main {
   /// CHECK-DAG: ArrayGet loop:<<Loop:B\d+>> outer_loop:none
   /// CHECK-DAG: ArraySet loop:<<Loop>>      outer_loop:none
   //
-  /// CHECK-START-ARM: void Main.string2Bytes(char[], java.lang.String) loop_optimization (after)
+  /// CHECK-START-{ARM,X86,X86_64}: void Main.string2Bytes(char[], java.lang.String) loop_optimization (after)
   /// CHECK-NOT: VecLoad
   //
   /// CHECK-START-ARM64: void Main.string2Bytes(char[], java.lang.String) loop_optimization (after)
@@ -301,6 +301,19 @@ public class Main {
     int min = Math.min(a.length, b.length());
     for (int i = 0; i < min; i++) {
       a[i] = b.charAt(i);
+    }
+  }
+
+  /// CHECK-START-{ARM,X86,X86_64}: void Main.$noinline$stringToShorts(short[], java.lang.String) loop_optimization (after)
+  /// CHECK-NOT: VecLoad
+
+  /// CHECK-START-ARM64: void Main.$noinline$stringToShorts(short[], java.lang.String) loop_optimization (after)
+  /// CHECK-DAG: VecLoad  loop:<<Loop:B\d+>> outer_loop:none
+  /// CHECK-DAG: VecStore loop:<<Loop>>      outer_loop:none
+  private static void $noinline$stringToShorts(short[] dest, String src) {
+    int min = Math.min(dest.length, src.length());
+    for (int i = 0; i < min; ++i) {
+      dest[i] = (short) src.charAt(i);
     }
   }
 
@@ -682,6 +695,13 @@ public class Main {
     string2Bytes(aa, cc);
     for (int i = 0; i < aa.length; i++) {
       expectEquals(aa[i], cc.charAt(i));
+    }
+
+    short[] s2s = new short[12];
+    $noinline$stringToShorts(s2s, "abcdefghijkl");
+    expectEquals(12, s2s.length);
+    for (int i = 0; i < s2s.length; ++i) {
+      expectEquals((short) "abcdefghijkl".charAt(i), s2s[i]);
     }
 
     envUsesInCond();
