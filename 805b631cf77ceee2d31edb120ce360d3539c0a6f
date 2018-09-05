@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "010fd87b_e2caeb1e",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-05T14:23:51Z",
+      "side": 1,
+      "message": "why not:\n(int) s.charAt(.)\n\n(and friends) ?",
+      "range": {
+        "startLine": 1208,
+        "startChar": 37,
+        "endLine": 1208,
+        "endChar": 56
+      },
+      "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1291700d_35923607",
+        "filename": "test/623-checker-loop-regressions/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-05T14:23:51Z",
+      "side": 1,
+      "message": "Should you update this? The fix seems to apply for all codegens but arm?",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 60
+      },
+      "revId": "805b631cf77ceee2d31edb120ce360d3539c0a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
