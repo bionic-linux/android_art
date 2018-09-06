@@ -311,6 +311,7 @@ unspecified registers or condition codes.
     .cfi_endproc
     .size \name, .-\name
 .endm
+
 /*
  * Copyright (C) 2016 The Android Open Source Project
  *
@@ -393,6 +394,7 @@ ENTRY ExecuteMterpImpl
     .global artMterpAsmInstructionStart
 artMterpAsmInstructionStart = .L_op_nop
     .text
+
 /* ------------------------------ */
     .balign 128
 .L_op_nop: /* 0x00 */
@@ -2699,7 +2701,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_static: /* 0x71 */
@@ -2723,8 +2724,6 @@ artMterpAsmInstructionStart = .L_op_nop
     bne     MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
-
 
 /* ------------------------------ */
     .balign 128
@@ -2793,7 +2792,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_super_range: /* 0x75 */
@@ -2817,7 +2815,6 @@ artMterpAsmInstructionStart = .L_op_nop
     bne     MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -2843,7 +2840,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_static_range: /* 0x77 */
@@ -2868,7 +2864,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_interface_range: /* 0x78 */
@@ -2892,7 +2887,6 @@ artMterpAsmInstructionStart = .L_op_nop
     bne     MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -3240,7 +3234,6 @@ constvalop_long_to_double:
     GOTO_OPCODE ip                      @ jump to next instruction
     /* 9-10 instructions */
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_float_to_double: /* 0x89 */
@@ -3308,7 +3301,6 @@ constvalop_long_to_double:
     stmia   r9, {r0-r1}                 @ vAA<- r0/r1
     GOTO_OPCODE ip                      @ jump to next instruction
     /* 10-11 instructions */
-
 
 /* ------------------------------ */
     .balign 128
@@ -4668,7 +4660,6 @@ constvalop_long_to_double:
     GOTO_OPCODE ip                      @ jump to next instruction
     /* 10-13 instructions */
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_rem_int_2addr: /* 0xb4 */
@@ -4702,7 +4693,6 @@ constvalop_long_to_double:
     SET_VREG r1, r9                     @ vAA<- r1
     GOTO_OPCODE ip                      @ jump to next instruction
     /* 10-13 instructions */
-
 
 /* ------------------------------ */
     .balign 128
@@ -6342,7 +6332,6 @@ constvalop_long_to_double:
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_virtual_range_quick: /* 0xea */
@@ -6366,7 +6355,6 @@ constvalop_long_to_double:
     bne     MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -6664,7 +6652,6 @@ constvalop_long_to_double:
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_const_method_handle: /* 0xfe */
@@ -6748,6 +6735,7 @@ f2l_maybeNaN:
     mov     r0, #0
     mov     r1, #0
     bx      lr                          @ return 0 for NaN
+
 /*
  * Convert the double in r0/r1 to a long in r0/r1.
  *
@@ -6789,6 +6777,7 @@ artMterpAsmSisterEnd:
     .global artMterpAsmAltInstructionStart
 artMterpAsmAltInstructionStart = .L_ALT_op_nop
     .text
+
 /* ------------------------------ */
     .balign 128
 .L_ALT_op_nop: /* 0x00 */
@@ -11147,6 +11136,7 @@ artMterpAsmAltInstructionStart = .L_ALT_op_nop
     .hidden artMterpAsmAltInstructionEnd
     .global artMterpAsmAltInstructionEnd
 artMterpAsmAltInstructionEnd:
+
 /*
  * ===========================================================================
  *  Common subroutines and data

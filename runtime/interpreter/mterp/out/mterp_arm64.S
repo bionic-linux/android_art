@@ -352,6 +352,7 @@ codes.
     .cfi_endproc
     .size \name, .-\name
 .endm
+
 /*
  * Copyright (C) 2016 The Android Open Source Project
  *
@@ -424,6 +425,7 @@ ENTRY ExecuteMterpImpl
     .global artMterpAsmInstructionStart
 artMterpAsmInstructionStart = .L_op_nop
     .text
+
 /* ------------------------------ */
     .balign 128
 .L_op_nop: /* 0x00 */
@@ -2594,7 +2596,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_static: /* 0x71 */
@@ -2616,8 +2617,6 @@ artMterpAsmInstructionStart = .L_op_nop
     cbnz    w0, MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
-
 
 /* ------------------------------ */
     .balign 128
@@ -2685,7 +2684,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_super_range: /* 0x75 */
@@ -2707,7 +2705,6 @@ artMterpAsmInstructionStart = .L_op_nop
     cbnz    w0, MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -2731,7 +2728,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_static_range: /* 0x77 */
@@ -2754,7 +2750,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_interface_range: /* 0x78 */
@@ -2776,7 +2771,6 @@ artMterpAsmInstructionStart = .L_op_nop
     cbnz    w0, MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -5887,7 +5881,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_virtual_range_quick: /* 0xea */
@@ -5909,7 +5902,6 @@ artMterpAsmInstructionStart = .L_op_nop
     cbnz    w0, MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -6165,7 +6157,6 @@ artMterpAsmInstructionStart = .L_op_nop
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
 
-
 /* ------------------------------ */
     .balign 128
 .L_op_invoke_custom_range: /* 0xfd */
@@ -6187,7 +6178,6 @@ artMterpAsmInstructionStart = .L_op_nop
     cbnz    w0, MterpFallback
     GET_INST_OPCODE ip
     GOTO_OPCODE ip
-
 
 /* ------------------------------ */
     .balign 128
@@ -6247,6 +6237,7 @@ artMterpAsmSisterStart:
     .hidden artMterpAsmSisterEnd
     .global artMterpAsmSisterEnd
 artMterpAsmSisterEnd:
+
 /*
  * ===========================================================================
  *  Common subroutines and data
@@ -6551,12 +6542,12 @@ MterpProfileActive:
     RESTORE_TWO_REGS_DECREASE_FRAME xPROFILE, x27, 80
     ret
 
-
     .type artMterpAsmAltInstructionStart, #object
     .hidden artMterpAsmAltInstructionStart
     .global artMterpAsmAltInstructionStart
 artMterpAsmAltInstructionStart = .L_ALT_op_nop
     .text
+
 /* ------------------------------ */
     .balign 128
 .L_ALT_op_nop: /* 0x00 */
@@ -10659,6 +10650,7 @@ artMterpAsmAltInstructionStart = .L_ALT_op_nop
     .hidden artMterpAsmAltInstructionEnd
     .global artMterpAsmAltInstructionEnd
 artMterpAsmAltInstructionEnd:
+
 // Close out the cfi info.  We're treating mterp as a single function.
 
 END ExecuteMterpImpl
