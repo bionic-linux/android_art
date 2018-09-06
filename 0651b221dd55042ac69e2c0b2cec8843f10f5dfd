@@ -22,6 +22,30 @@
       "revId": "0651b221dd55042ac69e2c0b2cec8843f10f5dfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2560abee_15740996",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-09-06T10:46:31Z",
+      "side": 0,
+      "message": "This was the first thing I tried. It does not work. This means somewhere in Makefiles a path relative to ANDROID_BUILD_TOP is used. Where it is, I don\u0027t know. I could not find it quickly.",
+      "parentUuid": "e957e6da_5ceb1ba5",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "0651b221dd55042ac69e2c0b2cec8843f10f5dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
