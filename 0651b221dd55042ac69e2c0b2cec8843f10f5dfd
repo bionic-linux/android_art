@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e957e6da_5ceb1ba5",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-06T08:56:09Z",
+      "side": 0,
+      "message": "Why is it not enough to replace this with ANDROID_PRODUCT_OUT ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 18,
+        "endLine": 79,
+        "endChar": 61
+      },
+      "revId": "0651b221dd55042ac69e2c0b2cec8843f10f5dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
