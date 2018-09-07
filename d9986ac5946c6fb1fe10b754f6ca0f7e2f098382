@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "441bdab8_4fa78dfa",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-09-07T09:22:35Z",
+      "side": 1,
+      "message": "We should assert that the String.class is non-moveable here. Such assertion shall serve as a reminder if someone tries to make it moveable again.",
+      "revId": "d9986ac5946c6fb1fe10b754f6ca0f7e2f098382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
