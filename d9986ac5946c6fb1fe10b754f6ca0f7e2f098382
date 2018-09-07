@@ -16,6 +16,24 @@
       "revId": "d9986ac5946c6fb1fe10b754f6ca0f7e2f098382",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79971c7d_8f0dc06e",
+        "filename": "compiler/optimizing/intrinsics_arm_vixl.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-09-07T13:32:43Z",
+      "side": 1,
+      "message": "Good idea; done in this follow-up CL: https://android-review.googlesource.com/c/platform/art/+/750670.",
+      "parentUuid": "441bdab8_4fa78dfa",
+      "revId": "d9986ac5946c6fb1fe10b754f6ca0f7e2f098382",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
