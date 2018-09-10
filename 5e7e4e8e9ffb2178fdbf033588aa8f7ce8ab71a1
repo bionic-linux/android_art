@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d0bf52a_46070beb",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-10T09:55:05Z",
+      "side": 1,
+      "message": "new_num_bytes_allocated",
+      "range": {
+        "startLine": 417,
+        "startChar": 19,
+        "endLine": 417,
+        "endChar": 41
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1275cb60_dc70e0c7",
+        "filename": "runtime/gc/racing_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-10T09:55:05Z",
+      "side": 1,
+      "message": "kIsDebugBuild ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
