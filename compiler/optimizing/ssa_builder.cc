@@ -470,10 +470,17 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
           DCHECK(found_instance == current);
         }
       } else if (current->IsPhi()) {
-        // Push all inputs to the worklist. Those should be Phis or NewInstance.
-        for (HInstruction* input : current->GetInputs()) {
-          DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
-          worklist.push_back(input);
+        if (current->AsPhi()->IsCatchPhi() && !current->HasUses()) {
+          DCHECK(!invoke->StrictlyDominates(current));
+          // The inputs of that catch phi are anything that alias with the same dex register.
+          // If there's any use of the phi, that means it passed the verifier and no other
+          // instruction can alias with the string.
+        } else {
+          // Push all inputs to the worklist. Those should be Phis or NewInstance.
+          for (HInstruction* input : current->GetInputs()) {
+            DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
+            worklist.push_back(input);
+          }
         }
       } else {
         // The verifier prevents any other DEX uses of the uninitialized string.
