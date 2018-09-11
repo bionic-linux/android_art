@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1048d61_efe4e879",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-09-11T23:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0bf52a_46070beb",
+      "range": {
+        "startLine": 417,
+        "startChar": 19,
+        "endLine": 417,
+        "endChar": 41
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ba77e80_17c8a299",
         "filename": "runtime/gc/heap.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d0b58f_e1eaf10a",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-09-11T23:56:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ba77e80_17c8a299",
+      "range": {
+        "startLine": 1587,
+        "startChar": 2,
+        "endLine": 1587,
+        "endChar": 12
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -91,6 +139,54 @@
       "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37df8a6d_f5734025",
+        "filename": "runtime/gc/racing_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-09-11T23:56:01Z",
+      "side": 1,
+      "message": "kIsDebugBuild tests defined(NDEBUG) \u0026\u0026 !defined(__CLION_IDE__)\n\nkEnableDchecks tests defined(NDEBUG) \u0026\u0026 !defined(__clang_analyzer__)\n\nSince DCHECK normally uses kEnableDChecks, and they don\u0027t seem to be quite the same, I\u0027m inclined to leave it as is. But I don\u0027t understand the rationale for the distinction here, if there is one. Or is there a reason to avoid using android::base here?",
+      "parentUuid": "1275cb60_dc70e0c7",
+      "range": {
+        "startLine": 29,
+        "startChar": 6,
+        "endLine": 29,
+        "endChar": 38
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9ae87e8_9793450c",
+        "filename": "runtime/gc/racing_check.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-09-11T23:56:01Z",
+      "side": 1,
+      "message": "Definitely! Thanks. Done.",
+      "parentUuid": "453d95c5_78e3ec0e",
+      "range": {
+        "startLine": 29,
+        "startChar": 46,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
