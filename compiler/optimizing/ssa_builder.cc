@@ -488,7 +488,13 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
       for (const HUseListNode<HInstruction*>& use : current->GetUses()) {
         HInstruction* user = use.GetUser();
         DCHECK(user->IsPhi() || user->IsEqual() || user->IsNotEqual()) << user->DebugName();
-        worklist.push_back(user);
+        if (user->IsPhi() && user->AsPhi()->IsCatchPhi() && !user->HasUses()) {
+          DCHECK(!invoke->StrictlyDominates(user));
+          // No need to add the user in the worklist. The inputs of that catch phi
+          // are anything that alias with the same dex register.
+        } else {
+          worklist.push_back(user);
+        }
       }
     } while (!worklist.empty());
     seen_instructions.clear();
