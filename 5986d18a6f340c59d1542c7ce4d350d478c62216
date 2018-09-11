@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2615dd0b_8f7e63b0",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-09-11T10:22:24Z",
+      "side": 1,
+      "message": "Could you change this or add another test case where the catch phi is used by an equals? Probably best to exercise this a bit more thoroughly.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 16
+      },
+      "revId": "5986d18a6f340c59d1542c7ce4d350d478c62216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
