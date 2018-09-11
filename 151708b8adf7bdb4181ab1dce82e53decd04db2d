@@ -46,6 +46,30 @@
       "revId": "151708b8adf7bdb4181ab1dce82e53decd04db2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5586697_34839d46",
+        "filename": "runtime/ti/agent.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-11T23:34:58Z",
+      "side": 1,
+      "message": "Native-bridge will never be supported most likely.\n\nJust put a comment that the value is ignored because the most relevant error is that native bridge is unsupported.",
+      "parentUuid": "ab2e26a8_dde74e22",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 77
+      },
+      "revId": "151708b8adf7bdb4181ab1dce82e53decd04db2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
