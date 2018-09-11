@@ -46,6 +46,30 @@
       "revId": "155704341cc5eb4d5cc440b0a4fd43c255339da1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a435ac6b_ee50450d",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-09-11T14:23:06Z",
+      "side": 1,
+      "message": "Ooooooh, I think I get it now. This is just for \"bogus\" catch phis which have no uses. Didn\u0027t notice the HasUses. So if it does have uses, we want to explore?\n\nAnd yeah, I would move it to line 474. Looks neater.",
+      "parentUuid": "272f64d1_5ef8eb39",
+      "range": {
+        "startLine": 493,
+        "startChar": 54,
+        "endLine": 494,
+        "endChar": 63
+      },
+      "revId": "155704341cc5eb4d5cc440b0a4fd43c255339da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
