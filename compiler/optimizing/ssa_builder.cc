@@ -470,10 +470,16 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
           DCHECK(found_instance == current);
         }
       } else if (current->IsPhi()) {
-        // Push all inputs to the worklist. Those should be Phis or NewInstance.
-        for (HInstruction* input : current->GetInputs()) {
-          DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
-          worklist.push_back(input);
+        if (current->AsPhi()->IsCatchPhi()) {
+          // No need to add the inputs of a catch phi in the worklist. Those inputs are
+          // only there for typing reasons, and only used for the runtime to set their value
+          // for landing in a catch block.
+        } else {
+          // Push all inputs to the worklist. Those should be Phis or NewInstance.
+          for (HInstruction* input : current->GetInputs()) {
+            DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
+            worklist.push_back(input);
+          }
         }
       } else {
         // The verifier prevents any other DEX uses of the uninitialized string.
@@ -488,7 +494,10 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
       for (const HUseListNode<HInstruction*>& use : current->GetUses()) {
         HInstruction* user = use.GetUser();
         DCHECK(user->IsPhi() || user->IsEqual() || user->IsNotEqual()) << user->DebugName();
-        worklist.push_back(user);
+        if (user->IsPhi() && user->AsPhi()->IsCatchPhi()) {
+        } else {
+          worklist.push_back(user);
+        }
       }
     } while (!worklist.empty());
     seen_instructions.clear();
