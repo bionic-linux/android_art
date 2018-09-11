@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a00500c_183ac209",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-09-11T13:25:06Z",
+      "side": 1,
+      "message": "Why is that? This loop is iterating over the remaining users, so the input of the catch phi is `current`",
+      "range": {
+        "startLine": 493,
+        "startChar": 54,
+        "endLine": 494,
+        "endChar": 63
+      },
+      "revId": "155704341cc5eb4d5cc440b0a4fd43c255339da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
