@@ -470,6 +470,7 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
           DCHECK(found_instance == current);
         }
       } else if (current->IsPhi()) {
+        DCHECK(!current->AsPhi()->IsCatchPhi());
         // Push all inputs to the worklist. Those should be Phis or NewInstance.
         for (HInstruction* input : current->GetInputs()) {
           DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
@@ -485,10 +486,23 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
       // Push all users to the worklist. Now that we have replaced
       // the uses dominated by the invokes, the remaining users should only
       // be Phi, or Equal/NotEqual.
-      for (const HUseListNode<HInstruction*>& use : current->GetUses()) {
-        HInstruction* user = use.GetUser();
+      const HUseList<HInstruction*>& uses = current->GetUses();
+      for (auto it = uses.begin(), end = uses.end(); it != end; /* ++it below */) {
+        HInstruction* user = it->GetUser();
+        size_t index = it->GetIndex();
+        // Increment `it` now because `*it` may disappear thanks to user->ReplaceInput().
+        ++it;
         DCHECK(user->IsPhi() || user->IsEqual() || user->IsNotEqual()) << user->DebugName();
-        worklist.push_back(user);
+        if (user->IsPhi() && user->AsPhi()->IsCatchPhi()) {
+          DCHECK(!invoke->StrictlyDominates(user));
+          // No need to add the inputs of a catch phi in the worklist. Those inputs are
+          // only there for typing reasons, and only used for the runtime to set their value
+          // for landing in a catch block.
+          // We replace the use with null to avoid keeping the string allocation.
+          user->ReplaceInput(graph_->GetNullConstant(), index);
+        } else {
+          worklist.push_back(user);
+        }
       }
     } while (!worklist.empty());
     seen_instructions.clear();

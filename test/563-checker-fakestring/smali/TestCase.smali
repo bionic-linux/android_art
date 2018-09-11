@@ -337,3 +337,34 @@
    return-object v0
 
 .end method
+
+.method public static stringAndCatch([BZ)Ljava/lang/Object;
+   .registers 4
+
+   const v0, 0x0
+
+   :try_start_a
+   new-instance v0, Ljava/lang/String;
+
+   # Loop
+   :loop_header
+   if-eqz p1, :loop_exit
+   goto :loop_header
+
+   :loop_exit
+   const-string v1, "UTF8"
+   invoke-direct {v0, p0, v1}, Ljava/lang/String;-><init>([BLjava/lang/String;)V
+   goto : exit
+   :try_end_a
+   .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_a
+
+   :catch_a
+   # Initially, we create a catch phi with the potential uninitalized string, which used to
+   # trip the compiler. However, using that catch phi is an error caught by the verifier, so
+   # having the phi is benign.
+   const v0, 0x0
+
+   :exit
+   return-object v0
+
+.end method
