@@ -446,16 +446,6 @@ jvmtiError MethodUtil::GetMethodModifiers(jvmtiEnv* env ATTRIBUTE_UNUSED,
   return ERR(NONE);
 }
 
-using LineNumberContext = std::vector<jvmtiLineNumberEntry>;
-
-static bool CollectLineNumbers(void* void_context, const art::DexFile::PositionInfo& entry) {
-  LineNumberContext* context = reinterpret_cast<LineNumberContext*>(void_context);
-  jvmtiLineNumberEntry jvmti_entry = { static_cast<jlocation>(entry.address_),
-                                       static_cast<jint>(entry.line_) };
-  context->push_back(jvmti_entry);
-  return false;  // Collect all, no early exit.
-}
-
 jvmtiError MethodUtil::GetLineNumberTable(jvmtiEnv* env,
                                           jmethodID method,
                                           jint* entry_count_ptr,
@@ -486,7 +476,11 @@ jvmtiError MethodUtil::GetLineNumberTable(jvmtiEnv* env,
     DCHECK(accessor.HasCodeItem()) << art_method->PrettyMethod() << " " << dex_file->GetLocation();
   }
 
-  LineNumberContext context;
+  std::vector<jvmtiLineNumberEntry> context;
+  accessor.DecodeDebugPositionInfo([&](const DexFile::PositionInfo& entry) {
+    context->emplace_back(static_cast<jlocation>(entry.address_), static_cast<jint>(entry.line_));
+    return false;
+  });
   bool success = dex_file->DecodeDebugPositionInfo(
       accessor.DebugInfoOffset(), CollectLineNumbers, &context);
   if (!success) {
