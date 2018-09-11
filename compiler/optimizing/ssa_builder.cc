@@ -470,6 +470,7 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
           DCHECK(found_instance == current);
         }
       } else if (current->IsPhi()) {
+        DCHECK(!current->AsPhi()->IsCatchPhi());
         // Push all inputs to the worklist. Those should be Phis or NewInstance.
         for (HInstruction* input : current->GetInputs()) {
           DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
@@ -488,7 +489,13 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
       for (const HUseListNode<HInstruction*>& use : current->GetUses()) {
         HInstruction* user = use.GetUser();
         DCHECK(user->IsPhi() || user->IsEqual() || user->IsNotEqual()) << user->DebugName();
-        worklist.push_back(user);
+        if (user->IsPhi() && user->AsPhi()->IsCatchPhi()) {
+          // No need to add the inputs of a catch phi in the worklist. Those inputs are
+          // only there for typing reasons, and only used for the runtime to set their value
+          // for landing in a catch block.
+        } else {
+          worklist.push_back(user);
+        }
       }
     } while (!worklist.empty());
     seen_instructions.clear();
