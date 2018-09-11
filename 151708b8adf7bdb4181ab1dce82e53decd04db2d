@@ -22,6 +22,30 @@
       "revId": "151708b8adf7bdb4181ab1dce82e53decd04db2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2e26a8_dde74e22",
+        "filename": "runtime/ti/agent.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2018-09-11T23:21:44Z",
+      "side": 1,
+      "message": "It does not make much sense to handle the error here, mostly because native bridge is not supported in this use-case atm.\n\nI suspect this part is going to change once native bridge is supported?",
+      "parentUuid": "94991664_4eeeb694",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 77
+      },
+      "revId": "151708b8adf7bdb4181ab1dce82e53decd04db2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
