@@ -22,6 +22,30 @@
       "revId": "155704341cc5eb4d5cc440b0a4fd43c255339da1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "272f64d1_5ef8eb39",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-11T13:38:31Z",
+      "side": 1,
+      "message": "If the catch phi goes into the worklist, its inputs will be analyzed line 474. This is what this code is avoiding (note: we could move the checkline 491 to  line 474 if you feel it\u0027s clearer there).",
+      "parentUuid": "9a00500c_183ac209",
+      "range": {
+        "startLine": 493,
+        "startChar": 54,
+        "endLine": 494,
+        "endChar": 63
+      },
+      "revId": "155704341cc5eb4d5cc440b0a4fd43c255339da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
