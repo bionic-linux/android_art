@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7bcb9ce4_80c8d73e",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-11T11:39:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc91ab32_d16f1948",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 14
+      },
+      "revId": "5986d18a6f340c59d1542c7ce4d350d478c62216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2615dd0b_8f7e63b0",
         "filename": "test/563-checker-fakestring/smali/TestCase.smali",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5986d18a6f340c59d1542c7ce4d350d478c62216",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed142bc_6f2aba07",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-11T11:39:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2615dd0b_8f7e63b0",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 16
+      },
+      "revId": "5986d18a6f340c59d1542c7ce4d350d478c62216",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
