@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "0ba77e80_17c8a299",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-09-11T13:00:33Z",
+      "side": 1,
+      "message": "Nit: Indentation is off.",
+      "range": {
+        "startLine": 1587,
+        "startChar": 2,
+        "endLine": 1587,
+        "endChar": 12
+      },
+      "revId": "5e7e4e8e9ffb2178fdbf033588aa8f7ce8ab71a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1275cb60_dc70e0c7",
         "filename": "runtime/gc/racing_check.h",
         "patchSetId": 1
