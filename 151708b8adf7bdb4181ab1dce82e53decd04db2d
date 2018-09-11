@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94991664_4eeeb694",
+        "filename": "runtime/ti/agent.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-09-11T23:17:19Z",
+      "side": 1,
+      "message": "Doesn\u0027t make much sense if you override just the line below?",
+      "range": {
+        "startLine": 137,
+        "startChar": 68,
+        "endLine": 137,
+        "endChar": 77
+      },
+      "revId": "151708b8adf7bdb4181ab1dce82e53decd04db2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
