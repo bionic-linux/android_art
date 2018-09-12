@@ -16,6 +16,8 @@
 
 #include "ssa_builder.h"
 
+#include "base/arena_bit_vector.h"
+#include "base/bit_vector-inl.h"
 #include "data_type-inl.h"
 #include "dex/bytecode_utils.h"
 #include "mirror/class-inl.h"
@@ -444,14 +446,27 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
   ScopedArenaHashSet<HInstruction*> seen_instructions(
       local_allocator_->Adapter(kArenaAllocGraphBuilder));
   ScopedArenaVector<HInstruction*> worklist(local_allocator_->Adapter(kArenaAllocGraphBuilder));
+  ArenaBitVector maybe_post_dominated(
+      local_allocator_, graph_->GetBlocks().size(), /* expandable */ false);
 
-  // Iterate over all inputs and uses of the phi, recursively, until all related instructions
-  // have been visited.
   for (const auto& pair : uninitialized_string_phis_) {
     HPhi* string_phi = pair.first;
     HInvoke* invoke = pair.second;
     worklist.push_back(string_phi);
     HNewInstance* found_instance = nullptr;
+
+    // Create a superset of blocks that the invoke post dominate. We do not have a post dominator
+    // analysis, so we need to approximate. For handling String.<init> that's OK, as the verifier
+    // has ensured only initialized strings can have regular (non-phi, non-equal) uses.
+    maybe_post_dominated.ClearAllBits();
+    for (HBasicBlock* block : graph_->GetReversePostOrder()) {
+      maybe_post_dominated.SetBit(block->GetBlockId());
+      if (block == invoke->GetBlock()) {
+        break;
+      }
+    }
+    // Replace with the invoke instruction all phis related to the new instance
+    // post dominated by the invoke.
     do {
       HInstruction* current = worklist.back();
       worklist.pop_back();
@@ -470,10 +485,23 @@ void SsaBuilder::ReplaceUninitializedStringPhis() {
           DCHECK(found_instance == current);
         }
       } else if (current->IsPhi()) {
-        // Push all inputs to the worklist. Those should be Phis or NewInstance.
-        for (HInstruction* input : current->GetInputs()) {
-          DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
-          worklist.push_back(input);
+        if (maybe_post_dominated.IsBitSet(current->GetBlock()->GetBlockId())) {
+          // Push all inputs to the worklist. Those should be Phis or NewInstance.
+          for (HInstruction* input : current->GetInputs()) {
+            DCHECK(input->IsPhi() || input->IsNewInstance()) << input->DebugName();
+            worklist.push_back(input);
+          }
+        } else {
+          // If the invoke does not post dominate the instruction, we know we are not
+          // going to replace dominated uses of the instruction with the invoke.
+          // We should also not visit the inputs of that phi as they may be unrelated to
+          // String itself.
+          if (kIsDebugBuild) {
+            for (const HUseListNode<HInstruction*>& use : current->GetUses()) {
+              DCHECK(!invoke->StrictlyDominates(use.GetUser()));
+            }
+          }
+          continue;
         }
       } else {
         // The verifier prevents any other DEX uses of the uninitialized string.
