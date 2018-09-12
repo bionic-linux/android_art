@@ -128,6 +128,7 @@ enum GraphAnalysisResult {
   kAnalysisInvalidBytecode,
   kAnalysisFailThrowCatchLoop,
   kAnalysisFailAmbiguousArrayOp,
+  kAnalysisFailIrreducibleLoopAndStringInit,
   kAnalysisSuccess,
 };
 
@@ -4534,8 +4535,7 @@ class HInvokeStaticOrDirect final : public HInvoke {
                 allocator,
                 number_of_arguments,
                 // There is potentially one extra argument for the HCurrentMethod node, and
-                // potentially one other if the clinit check is explicit, and potentially
-                // one other if the method is a string factory.
+                // potentially one other if the clinit check is explicit.
                 (NeedsCurrentMethodInput(dispatch_info.method_load_kind) ? 1u : 0u) +
                     (clinit_check_requirement == ClinitCheckRequirement::kExplicit ? 1u : 0u),
                 return_type,
