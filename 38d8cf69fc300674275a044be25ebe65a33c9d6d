@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "95351f4d_4ca52688",
+        "filename": "compiler/debug/elf_debug_line_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-09-12T18:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e29fe1a_5e1c6c56",
+      "range": {
+        "startLine": 156,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 6
+      },
+      "revId": "38d8cf69fc300674275a044be25ebe65a33c9d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b33c063a_8a70fce3",
         "filename": "dexlayout/dexlayout.cc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "38d8cf69fc300674275a044be25ebe65a33c9d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d6af3b_dc692815",
+        "filename": "dexlayout/dexlayout.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-09-12T18:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33c063a_8a70fce3",
+      "range": {
+        "startLine": 1107,
+        "startChar": 58,
+        "endLine": 1107,
+        "endChar": 84
+      },
+      "revId": "38d8cf69fc300674275a044be25ebe65a33c9d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
