@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e1d3be84_b20be633",
+        "filename": "compiler/debug/elf_debug_line_writer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-09-12T18:34:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43f46c91_8563fddd",
+      "range": {
+        "startLine": 156,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 6
+      },
+      "revId": "38d8cf69fc300674275a044be25ebe65a33c9d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b33c063a_8a70fce3",
         "filename": "dexlayout/dexlayout.cc",
         "patchSetId": 2
