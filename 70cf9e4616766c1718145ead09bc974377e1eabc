@@ -46,6 +46,30 @@
       "revId": "70cf9e4616766c1718145ead09bc974377e1eabc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "667823c2_298b6851",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2018-09-18T17:28:49Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7597be5d_d60eabbf",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "70cf9e4616766c1718145ead09bc974377e1eabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
