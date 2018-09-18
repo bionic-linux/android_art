@@ -22,6 +22,30 @@
       "revId": "70cf9e4616766c1718145ead09bc974377e1eabc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7597be5d_d60eabbf",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-09-18T16:53:36Z",
+      "side": 0,
+      "message": "We just talked about this issue with Lokesh, and he reminded me that the test would also fail on non-JIT modes too, so I would just add this:\n\n  \"env_vars\": {\"ART_DEFAULT_GC_TYPE\": \"GSS\"},\n\nhere.",
+      "parentUuid": "45732146_03ed50b8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "70cf9e4616766c1718145ead09bc974377e1eabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
