@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45732146_03ed50b8",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-09-18T09:19:08Z",
+      "side": 0,
+      "message": "Instead of removing the whole stanza, I would blacklist the test only on the failing configurations by adding this:\n\n  \"variant\": \"jit\",\n  \"env_vars\": {\"ART_DEFAULT_GC_TYPE\": \"GSS\"},",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 6
+      },
+      "revId": "70cf9e4616766c1718145ead09bc974377e1eabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
