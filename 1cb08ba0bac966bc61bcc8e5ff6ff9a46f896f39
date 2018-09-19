@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8acaf2b8_67cccb1f",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1440dae_cde164c5",
+      "range": {
+        "startLine": 63,
+        "startChar": 42,
+        "endLine": 63,
+        "endChar": 55
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f1abc17_2831d127",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff1315c6_806137ab",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "It would be to just hope the load happens on the first one. It would all still work but be less consistent.",
+      "parentUuid": "6f1abc17_2831d127",
+      "range": {
+        "startLine": 82,
+        "startChar": 36,
+        "endLine": 82,
+        "endChar": 37
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "21714597_d3227c30",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Class preparation is a part of class-loading, the class-linker causes this to be invoked at the appropriate time. The jit can cause classes to be loaded during compilation (NB arguably it shouldn\u0027t really be doing this from a strict correctness standpoint but it\u0027s extremely hard to observe so it\u0027s not a big deal).",
+      "parentUuid": "689b5c5a_d3472b82",
+      "range": {
+        "startLine": 226,
+        "startChar": 13,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17e2ced_69b45f40",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd4895b_1e059a29",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "yes Barrier will DCHECK that it\u0027s at 0 during shutdown so we need to call Pass once and only once at startup.",
+      "parentUuid": "e17e2ced_69b45f40",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 3
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "91c68a4c_304a4cbf",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59bb24a5_65dafcef",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 95
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b82c258_0a59bda5",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d91c6fe7_baffd747",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b82c258_0a59bda5",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 18
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b63b9d_286ba334",
         "filename": "test/1952-bad-jit-suspend/check",
         "patchSetId": 5
@@ -160,6 +304,30 @@
       "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca2bc07c_fb2479a5",
+        "filename": "test/1952-bad-jit-suspend/check",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "yeah but that\u0027s somewhat non-obvious.",
+      "parentUuid": "d0b63b9d_286ba334",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "13871d85_e45b32a8",
+        "filename": "test/1952-bad-jit-suspend/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6c9c774_99f3b544",
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8587cd5_512bbc57",
         "filename": "test/1952-bad-jit-suspend/src/Main.java",
         "patchSetId": 5
@@ -226,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "98af4461_9a08e27e",
+        "filename": "test/1952-bad-jit-suspend/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8587cd5_512bbc57",
+      "range": {
+        "startLine": 798,
+        "startChar": 28,
+        "endLine": 798,
+        "endChar": 43
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11062f88_cca04305",
         "filename": "test/1952-bad-jit-suspend/src/Main.java",
         "patchSetId": 5
@@ -246,6 +456,30 @@
       "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60609403_dee0bd44",
+        "filename": "test/1952-bad-jit-suspend/src/Main.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T16:22:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11062f88_cca04305",
+      "range": {
+        "startLine": 799,
+        "startChar": 28,
+        "endLine": 799,
+        "endChar": 47
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
