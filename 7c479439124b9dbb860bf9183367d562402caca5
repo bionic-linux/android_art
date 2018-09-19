@@ -16,6 +16,24 @@
       "revId": "7c479439124b9dbb860bf9183367d562402caca5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a683031_bc59a3e0",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T22:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92327835_46fcc08c",
+      "revId": "7c479439124b9dbb860bf9183367d562402caca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

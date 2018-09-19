@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "6b899a08_ba974988",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-19T22:59:21Z",
+      "side": 1,
+      "message": "that would be one way to solve the issue.\n\nI\u0027m not sure it\u0027s a good idea though. I suspect that many hot methods might have classes that are only loaded in very rare circumstances (for example custom exception wrapper or helper classes). Doing this could prevent quite a lot from being compiled ever.",
+      "parentUuid": "713c24be_8579c920",
+      "range": {
+        "startLine": 226,
+        "startChar": 13,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17e2ced_69b45f40",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
