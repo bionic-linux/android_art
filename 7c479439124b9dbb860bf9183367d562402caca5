@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92327835_46fcc08c",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-19T16:38:51Z",
+      "side": 1,
+      "message": "nit: explain also the reason for sched_yield?",
+      "revId": "7c479439124b9dbb860bf9183367d562402caca5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
