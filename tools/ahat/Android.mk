@@ -39,18 +39,6 @@ AHAT_JAR := $(LOCAL_BUILT_MODULE)
 AHAT_API := $(INTERNAL_PLATFORM_AHAT_API_FILE)
 AHAT_REMOVED_API := $(INTERNAL_PLATFORM_AHAT_REMOVED_API_FILE)
 
-$(eval $(call check-api, \
-  ahat-check-api, \
-  $(LOCAL_PATH)/etc/ahat_api.txt, \
-  $(AHAT_API), \
-  $(LOCAL_PATH)/etc/ahat_removed_api.txt, \
-  $(AHAT_REMOVED_API), \
-  -error 2 -error 3 -error 4 -error 5 -error 6 -error 7 -error 8 -error 9 -error 10 -error 11 \
-    -error 12 -error 13 -error 14 -error 15 -error 16 -error 17 -error 18 -error 19 -error 20 \
-    -error 21 -error 23 -error 24 -error 25 -error 26 -error 27, \
-  cat $(LOCAL_PATH)/etc/ahat_api_msg.txt, \
-  $(AHAT_JAR),))
-
 .PHONY: ahat-update-api
 ahat-update-api: PRIVATE_AHAT_API := $(AHAT_API)
 ahat-update-api: PRIVATE_AHAT_REMOVED_API := $(AHAT_REMOVED_API)
