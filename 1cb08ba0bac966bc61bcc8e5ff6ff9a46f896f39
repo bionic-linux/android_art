@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "b4f75791_dac0375c",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-09-20T17:11:36Z",
+      "side": 1,
+      "message": "NB We will also need to make the jit not go in and out of kRunnable to make this work which will probably include rewriting some of the commit-code path.",
+      "parentUuid": "d597a23a_58a6a109",
+      "range": {
+        "startLine": 226,
+        "startChar": 13,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17e2ced_69b45f40",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
