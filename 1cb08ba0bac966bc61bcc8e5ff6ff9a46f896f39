@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "0a00ead0_58ed0e6a",
+        "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-09-20T10:04:31Z",
+      "side": 1,
+      "message": "The compiler can compile in the absence of classes. It should/will actually be better, as a class not loaded at time of compilation means that path hasn\u0027t been executed, and we can assume it\u0027s dead code and deoptimize if not.\n\nHow about we move to this solution instead? Should we move this discussion in an email thread / bug?",
+      "parentUuid": "6b899a08_ba974988",
+      "range": {
+        "startLine": 226,
+        "startChar": 13,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "1cb08ba0bac966bc61bcc8e5ff6ff9a46f896f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e17e2ced_69b45f40",
         "filename": "test/1952-bad-jit-suspend/bad_suspend.cc",
         "patchSetId": 5
