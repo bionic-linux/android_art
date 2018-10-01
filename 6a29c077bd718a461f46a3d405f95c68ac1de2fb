@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21b404eb_cff056da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-01T13:20:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2af58507_e156498d",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6cc0010_f2e90092",
         "filename": "compiler/optimizing/ssa_builder.cc",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-01T12:54:47Z",
       "side": 1,
       "message": "Was it needed to change the implementation of this function or did you just simplify this?",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 68
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c266ff18_6689d1ad",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-01T13:20:44Z",
+      "side": 1,
+      "message": "I needed to change it, as the invariant that the debug check lines 429-437 checks don\u0027t hold anymore. The ReplaceEnvUsedDominatedBy line 447 of this CL breaks it.",
+      "parentUuid": "a6cc0010_f2e90092",
       "range": {
         "startLine": 420,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3c2ae2c7_57a54096",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-01T13:20:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67326acb_8af1baed",
+      "range": {
+        "startLine": 436,
+        "startChar": 18,
+        "endLine": 436,
+        "endChar": 24
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "297f9e5d_d3ef1959",
         "filename": "compiler/optimizing/ssa_builder.cc",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8e1db202_6c2620af",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-01T13:20:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297f9e5d_d3ef1959",
+      "range": {
+        "startLine": 442,
+        "startChar": 6,
+        "endLine": 442,
+        "endChar": 10
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40a90c4f_802a2163",
         "filename": "test/563-checker-fakestring/smali/TestCase.smali",
         "patchSetId": 6
@@ -108,6 +204,24 @@
       "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48599d52_8a10ba45",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-01T13:20:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40a90c4f_802a2163",
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
