@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2af58507_e156498d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-10-01T12:54:47Z",
+      "side": 1,
+      "message": "input",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6cc0010_f2e90092",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-10-01T12:54:47Z",
+      "side": 1,
+      "message": "Was it needed to change the implementation of this function or did you just simplify this?",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 68
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67326acb_8af1baed",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-10-01T12:54:47Z",
+      "side": 1,
+      "message": "nit: some other name, like \u0027str\u0027? string is recognized by some IDEs as type",
+      "range": {
+        "startLine": 436,
+        "startChar": 18,
+        "endLine": 436,
+        "endChar": 24
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "297f9e5d_d3ef1959",
+        "filename": "compiler/optimizing/ssa_builder.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-10-01T12:54:47Z",
+      "side": 1,
+      "message": "Either remove the else branch or move 446-448 inside it as well",
+      "range": {
+        "startLine": 442,
+        "startChar": 6,
+        "endLine": 442,
+        "endChar": 10
+      },
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a90c4f_802a2163",
+        "filename": "test/563-checker-fakestring/smali/TestCase.smali",
+        "patchSetId": 6
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2018-10-01T12:54:47Z",
+      "side": 1,
+      "message": "two empty lines",
+      "revId": "6a29c077bd718a461f46a3d405f95c68ac1de2fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
