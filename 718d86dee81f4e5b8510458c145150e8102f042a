@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "254faeca_e9b7749d",
+        "filename": "libartbase/base/bit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-10-03T11:03:14Z",
+      "side": 1,
+      "message": "Suggestion: byte_wise_data?",
+      "range": {
+        "startLine": 90,
+        "startChar": 13,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "718d86dee81f4e5b8510458c145150e8102f042a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
