@@ -46,6 +46,30 @@
       "revId": "718d86dee81f4e5b8510458c145150e8102f042a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45ccdfa1_d9446d34",
+        "filename": "libartbase/base/bit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2018-10-03T11:10:43Z",
+      "side": 1,
+      "message": "That sounds like Hungarian notation to me, which is not necessarily any more clear to me...",
+      "parentUuid": "94e6ca3f_f62f19a8",
+      "range": {
+        "startLine": 90,
+        "startChar": 13,
+        "endLine": 90,
+        "endChar": 17
+      },
+      "revId": "718d86dee81f4e5b8510458c145150e8102f042a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
