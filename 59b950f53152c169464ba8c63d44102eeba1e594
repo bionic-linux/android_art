@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b231155a_053e8122",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-09T08:26:57Z",
+      "side": 1,
+      "message": "nit: Add a TODO: prevent none JIT threads to run compilation.",
+      "revId": "59b950f53152c169464ba8c63d44102eeba1e594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
