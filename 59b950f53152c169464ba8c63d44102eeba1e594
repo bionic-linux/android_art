@@ -16,6 +16,24 @@
       "revId": "59b950f53152c169464ba8c63d44102eeba1e594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99166985_25784b56",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-10-09T18:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b231155a_053e8122",
+      "revId": "59b950f53152c169464ba8c63d44102eeba1e594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
