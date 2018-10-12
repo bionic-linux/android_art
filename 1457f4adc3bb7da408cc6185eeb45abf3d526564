@@ -46,6 +46,30 @@
       "revId": "1457f4adc3bb7da408cc6185eeb45abf3d526564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ed27d6f_e2b757e9",
+        "filename": "runtime/native/dalvik_system_VMDebug.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1084818
+      },
+      "writtenOn": "2018-10-12T17:10:54Z",
+      "side": 1,
+      "message": "Change is abandoned",
+      "parentUuid": "ec4953f5_c8418712",
+      "range": {
+        "startLine": 529,
+        "startChar": 7,
+        "endLine": 529,
+        "endChar": 27
+      },
+      "revId": "1457f4adc3bb7da408cc6185eeb45abf3d526564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
