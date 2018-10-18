@@ -17,6 +17,8 @@
 #include "dalvik_system_VMDebug.h"
 
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include <unistd.h>
 
 #include <sstream>
@@ -43,6 +45,7 @@
 #include "nativehelper/scoped_local_ref.h"
 #include "nativehelper/scoped_utf_chars.h"
 #include "scoped_fast_native_object_access-inl.h"
+#include "ti/agent.h"
 #include "trace.h"
 #include "well_known_classes.h"
 
@@ -563,10 +566,17 @@ static jobjectArray VMDebug_getRuntimeStatsInternal(JNIEnv* env, jclass) {
   return result;
 }
 
-static void VMDebug_nativeAttachAgent(JNIEnv* env, jclass, jstring agent, jobject classloader) {
+static void VMDebug_nativeAttachAgent(
+    JNIEnv* env, jclass, jint fd, jstring agent, jstring args, jobject classloader) {
   if (agent == nullptr) {
     ScopedObjectAccess soa(env);
     ThrowNullPointerException("agent is null");
+    return;
+  }
+
+  if (args == nullptr) {
+    ScopedObjectAccess soa(env);
+    ThrowNullPointerException("args is null");
     return;
   }
 
@@ -576,16 +586,30 @@ static void VMDebug_nativeAttachAgent(JNIEnv* env, jclass, jstring agent, jobjec
     return;
   }
 
+  struct stat statbuf{};
+  if (fstat(fd, &statbuf) != 0) {
+    ScopedObjectAccess soa(env);
+    ThrowIOException("%d does not appear to be a valid file-descriptor: %s", fd, strerror(errno));
+    return;
+  }
+
   std::string filename;
+  std::string args_str;
   {
-    ScopedUtfChars chars(env, agent);
+    ScopedUtfChars name_chars(env, agent);
     if (env->ExceptionCheck()) {
       return;
     }
-    filename = chars.c_str();
+    ScopedUtfChars args_chars(env, args);
+    if (env->ExceptionCheck()) {
+      return;
+    }
+    filename = name_chars.c_str();
+    args_str = args_chars.c_str();
   }
 
-  Runtime::Current()->AttachAgent(env, filename, classloader);
+  ti::AgentSpec spec(fd, filename, args_str);
+  Runtime::Current()->AttachAgent(env, spec, classloader);
 }
 
 static void VMDebug_allowHiddenApiReflectionFrom(JNIEnv* env, jclass, jclass j_caller) {
@@ -641,7 +665,7 @@ static JNINativeMethod gMethods[] = {
   FAST_NATIVE_METHOD(VMDebug, threadCpuTimeNanos, "()J"),
   NATIVE_METHOD(VMDebug, getRuntimeStatInternal, "(I)Ljava/lang/String;"),
   NATIVE_METHOD(VMDebug, getRuntimeStatsInternal, "()[Ljava/lang/String;"),
-  NATIVE_METHOD(VMDebug, nativeAttachAgent, "(Ljava/lang/String;Ljava/lang/ClassLoader;)V"),
+  NATIVE_METHOD(VMDebug, nativeAttachAgent, "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/ClassLoader;)V"),
   NATIVE_METHOD(VMDebug, allowHiddenApiReflectionFrom, "(Ljava/lang/Class;)V"),
 };
 

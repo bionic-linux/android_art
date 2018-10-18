@@ -23,6 +23,7 @@
 #include <memory>
 
 #include "base/logging.h"
+#include "base/unix_file/fd_file.h"
 
 namespace art {
 namespace ti {
@@ -38,6 +39,9 @@ enum LoadError {
 class AgentSpec {
  public:
   explicit AgentSpec(const std::string& arg);
+  AgentSpec(int agent_fd, const std::string& name, const std::string& arg)
+    : file_fd_(agent_fd), name_(name), args_(arg) { }
+
 
   const std::string& GetName() const {
     return name_;
@@ -53,28 +57,29 @@ class AgentSpec {
 
   std::unique_ptr<Agent> Load(/*out*/jint* call_res,
                               /*out*/LoadError* error,
-                              /*out*/std::string* error_msg);
+                              /*out*/std::string* error_msg) const;
 
   // Tries to attach the agent using its OnAttach method. Returns true on success.
   std::unique_ptr<Agent> Attach(JNIEnv* env,
                                 jobject class_loader,
                                 /*out*/jint* call_res,
                                 /*out*/LoadError* error,
-                                /*out*/std::string* error_msg);
+                                /*out*/std::string* error_msg) const;
 
  private:
   std::unique_ptr<Agent> DoDlOpen(JNIEnv* env,
                                   jobject class_loader,
                                   /*out*/LoadError* error,
-                                  /*out*/std::string* error_msg);
+                                  /*out*/std::string* error_msg) const;
 
   std::unique_ptr<Agent> DoLoadHelper(JNIEnv* env,
                                       bool attaching,
                                       jobject class_loader,
                                       /*out*/jint* call_res,
                                       /*out*/LoadError* error,
-                                      /*out*/std::string* error_msg);
+                                      /*out*/std::string* error_msg) const;
 
+  int file_fd_ = -1;
   std::string name_;
   std::string args_;
 

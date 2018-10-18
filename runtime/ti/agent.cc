@@ -16,6 +16,16 @@
 
 #include "agent.h"
 
+#include <sstream>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+#ifdef ART_TARGET_ANDROID
+#include <android/dlext.h>
+#endif
+
 #include "android-base/stringprintf.h"
 #include "nativehelper/scoped_local_ref.h"
 #include "nativeloader/native_loader.h"
@@ -47,7 +57,7 @@ AgentSpec::AgentSpec(const std::string& arg) {
 
 std::unique_ptr<Agent> AgentSpec::Load(/*out*/jint* call_res,
                                        /*out*/LoadError* error,
-                                       /*out*/std::string* error_msg) {
+                                       /*out*/std::string* error_msg) const {
   VLOG(agents) << "Loading agent: " << name_ << " " << args_;
   return DoLoadHelper(nullptr, false, nullptr, call_res, error, error_msg);
 }
@@ -57,7 +67,7 @@ std::unique_ptr<Agent> AgentSpec::Attach(JNIEnv* env,
                                          jobject class_loader,
                                          /*out*/jint* call_res,
                                          /*out*/LoadError* error,
-                                         /*out*/std::string* error_msg) {
+                                         /*out*/std::string* error_msg) const {
   VLOG(agents) << "Attaching agent: " << name_ << " " << args_;
   return DoLoadHelper(env, true, class_loader, call_res, error, error_msg);
 }
@@ -69,7 +79,7 @@ std::unique_ptr<Agent> AgentSpec::DoLoadHelper(JNIEnv* env,
                                                jobject class_loader,
                                                /*out*/jint* call_res,
                                                /*out*/LoadError* error,
-                                               /*out*/std::string* error_msg) {
+                                               /*out*/std::string* error_msg) const {
   ScopedThreadStateChange stsc(Thread::Current(), ThreadState::kNative);
   DCHECK(call_res != nullptr);
   DCHECK(error_msg != nullptr);
@@ -105,32 +115,55 @@ std::unique_ptr<Agent> AgentSpec::DoLoadHelper(JNIEnv* env,
   return agent;
 }
 
+// TODO Reorganize this whole path.
 std::unique_ptr<Agent> AgentSpec::DoDlOpen(JNIEnv* env,
                                            jobject class_loader,
                                            /*out*/LoadError* error,
-                                           /*out*/std::string* error_msg) {
+                                           /*out*/std::string* error_msg) const {
   DCHECK(error_msg != nullptr);
-
-  ScopedLocalRef<jstring> library_path(env,
-                                       class_loader == nullptr
-                                           ? nullptr
-                                           : JavaVMExt::GetLibrarySearchPath(env, class_loader));
-
-  bool needs_native_bridge = false;
+  void* dlopen_handle;
   std::string nativeloader_error_msg;
-  void* dlopen_handle = android::OpenNativeLibrary(env,
-                                                   Runtime::Current()->GetTargetSdkVersion(),
-                                                   name_.c_str(),
-                                                   class_loader,
-                                                   library_path.get(),
-                                                   &needs_native_bridge,
-                                                   &nativeloader_error_msg);
-  if (dlopen_handle == nullptr) {
-    *error_msg = StringPrintf("Unable to dlopen %s: %s",
-                              name_.c_str(),
-                              nativeloader_error_msg.c_str());
-    *error = kLoadingError;
+  bool needs_native_bridge = false;
+  if (file_fd_ != -1) {
+#ifdef ART_TARGET_ANDROID
+    android_dlextinfo dl_ext{
+      .flags = ANDROID_DLEXT_USE_LIBRARY_FD,
+      .library_fd = file_fd_,
+    };
+    dlopen_handle = android_dlopen_ext(name_.c_str(), RTLD_LAZY, &dl_ext);
+    if (dlopen_handle == nullptr) {
+      *error_msg = StringPrintf("Unable to dlopen %s [fd: %d]: %s",
+                                name_.c_str(),
+                                file_fd_,
+                                dlerror());
+      *error = kLoadingError;
+      return nullptr;
+    }
+#else
+    *error = LoadError::kLoadingError;
+    *error_msg = "Cannot do fd-dlopen on host targets!";
     return nullptr;
+#endif
+  } else {
+    ScopedLocalRef<jstring> library_path(env,
+                                        class_loader == nullptr
+                                            ? nullptr
+                                            : JavaVMExt::GetLibrarySearchPath(env, class_loader));
+
+    dlopen_handle = android::OpenNativeLibrary(env,
+                                               Runtime::Current()->GetTargetSdkVersion(),
+                                               name_.c_str(),
+                                               class_loader,
+                                               library_path.get(),
+                                               &needs_native_bridge,
+                                               &nativeloader_error_msg);
+    if (dlopen_handle == nullptr) {
+      *error_msg = StringPrintf("Unable to dlopen %s: %s",
+                                name_.c_str(),
+                                nativeloader_error_msg.c_str());
+      *error = kLoadingError;
+      return nullptr;
+    }
   }
   if (needs_native_bridge) {
     // TODO: Consider support?

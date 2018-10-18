@@ -1724,7 +1724,7 @@ static bool EnsureJvmtiPlugin(Runtime* runtime,
 //   revisit this and make sure we're doing this on the right thread
 //   (and we synchronize access to any shared data structures like "agents_")
 //
-void Runtime::AttachAgent(JNIEnv* env, const std::string& agent_arg, jobject class_loader) {
+void Runtime::AttachAgent(JNIEnv* env, const ti::AgentSpec& agent_spec, jobject class_loader) {
   std::string error_msg;
   if (!EnsureJvmtiPlugin(this, &plugins_, &error_msg)) {
     LOG(WARNING) << "Could not load plugin: " << error_msg;
@@ -1732,8 +1732,6 @@ void Runtime::AttachAgent(JNIEnv* env, const std::string& agent_arg, jobject cla
     ThrowIOException("%s", error_msg.c_str());
     return;
   }
-
-  ti::AgentSpec agent_spec(agent_arg);
 
   int res = 0;
   ti::LoadError error;

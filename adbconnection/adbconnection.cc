@@ -30,6 +30,7 @@
 #include "runtime-inl.h"
 #include "runtime_callbacks.h"
 #include "scoped_thread_state_change-inl.h"
+#include "ti/agent.h"
 #include "well_known_classes.h"
 
 #include "jdwp/jdwp_priv.h"
@@ -827,7 +828,7 @@ void AdbConnectionState::AttachJdwpAgent(art::Thread* self) {
   art::Runtime* runtime = art::Runtime::Current();
   self->AssertNoPendingException();
   runtime->AttachAgent(/* env= */ nullptr,
-                       MakeAgentArg(),
+                       art::ti::AgentSpec(MakeAgentArg()),
                        /* class_loader= */ nullptr);
   if (self->IsExceptionPending()) {
     LOG(ERROR) << "Failed to load agent " << agent_name_;
