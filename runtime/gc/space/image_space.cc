@@ -2254,8 +2254,8 @@ bool ImageSpace::LoadBootImage(
     std::string local_error_msg;
     bool check_space = CheckSpace(dalvik_cache, &local_error_msg);
     if (!check_space) {
-      LOG(WARNING) << local_error_msg << " Preemptively pruning the dalvik cache.";
-      PruneDalvikCache(image_isa);
+      LOG(WARNING) << local_error_msg << " Preemptively pruning the dalvik cache except for boot files";
+      PruneDalvikCache(image_isa, true);
 
       // Re-evaluate the image.
       loader.FindImageFiles();

@@ -42,7 +42,7 @@ namespace impl {
 
 // Delete the directory and its (regular or link) contents. If the recurse flag is true, delete
 // sub-directories recursively.
-static void DeleteDirectoryContents(const std::string& dir, bool recurse) {
+static void DeleteDirectoryContents(const std::string& dir, bool recurse, const std::string& exclude_prefix) {
   if (!OS::DirectoryExists(dir.c_str())) {
     return;
   }
@@ -62,7 +62,7 @@ static void DeleteDirectoryContents(const std::string& dir, bool recurse) {
     if (de->d_type != DT_REG && de->d_type != DT_LNK) {
       if (de->d_type == DT_DIR) {
         if (recurse) {
-          DeleteDirectoryContents(file, recurse);
+          DeleteDirectoryContents(file, recurse, exclude_prefix);
           // Try to rmdir the directory.
           if (rmdir(file.c_str()) != 0) {
             PLOG(ERROR) << "Unable to rmdir " << file;
@@ -72,13 +72,18 @@ static void DeleteDirectoryContents(const std::string& dir, bool recurse) {
         LOG(WARNING) << "Unexpected file type of " << std::hex << de->d_type << " encountered.";
       }
     } else {
-      // Try to unlink the file.
-      if (unlink(file.c_str()) != 0) {
+      if (!exclude_prefix.empty() && android::base::StartsWith(name, exclude_prefix.c_str())) {
+        LOG(INFO) << "Ignore delete for " << file;
+      } else if (unlink(file.c_str()) != 0) {
         PLOG(ERROR) << "Unable to unlink " << file;
       }
     }
   }
   CHECK_EQ(0, closedir(c_dir)) << "Unable to close directory.";
+}
+
+static void DeleteDirectoryContents(const std::string& dir, bool recurse) {
+  DeleteDirectoryContents(dir, recurse, "");
 }
 
 }  // namespace impl
@@ -88,19 +93,28 @@ static void DeleteDirectoryContents(const std::string& dir, bool recurse) {
 // out-of-date. We also don't really care if this fails since it is just a convenience.
 // Adapted from prune_dex_cache(const char* subdir) in frameworks/native/cmds/installd/commands.c
 // Note this should only be used during first boot.
-static void PruneDalvikCache(InstructionSet isa) {
+static void PruneDalvikCache(InstructionSet isa, bool without_boot) {
   CHECK_NE(isa, InstructionSet::kNone);
   // Prune the base /data/dalvik-cache.
   // Note: GetDalvikCache may return the empty string if the directory doesn't
   // exist. It is safe to pass "" to DeleteDirectoryContents, so this is okay.
   impl::DeleteDirectoryContents(GetDalvikCache("."), false);
   // Prune /data/dalvik-cache/<isa>.
-  impl::DeleteDirectoryContents(GetDalvikCache(GetInstructionSetString(isa)), false);
+  if (without_boot) {
+    const std::string exclude_prefix = "system@framework@boot";
+    impl::DeleteDirectoryContents(GetDalvikCache(GetInstructionSetString(isa)), false, exclude_prefix);
+  } else {
+    impl::DeleteDirectoryContents(GetDalvikCache(GetInstructionSetString(isa)), false);
 
-  // Be defensive. There should be a runtime created here, but this may be called in a test.
-  if (Runtime::Current() != nullptr) {
-    Runtime::Current()->SetPrunedDalvikCache(true);
+    // Be defensive. There should be a runtime created here, but this may be called in a test.
+    if (Runtime::Current() != nullptr) {
+      Runtime::Current()->SetPrunedDalvikCache(true);
+    }
   }
+}
+
+static void PruneDalvikCache(InstructionSet isa) {
+  PruneDalvikCache(isa, false);
 }
 
 // We write out an empty file to the zygote's ISA specific cache dir at the start of
