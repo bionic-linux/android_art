@@ -719,6 +719,7 @@ void CompilerDriver::ResolveConstStrings(const std::vector<const DexFile*>& dex_
 
   for (const DexFile* dex_file : dex_files) {
     dex_cache.Assign(class_linker->FindDexCache(soa.Self(), *dex_file));
+    dex_cache->AddPreResolvedStringsArray();
     TimingLogger::ScopedTiming t("Resolve const-string Strings", timings);
 
     for (ClassAccessor accessor : dex_file->GetClasses()) {

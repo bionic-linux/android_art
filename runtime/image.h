@@ -236,6 +236,7 @@ class PACKED(4) ImageHeader {
     kSectionInternedStrings,
     kSectionClassTable,
     kSectionStringReferenceOffsets,
+    kSectionMetadata,
     kSectionImageBitmap,
     kSectionCount,  // Number of elements in enum.
   };
@@ -291,6 +292,10 @@ class PACKED(4) ImageHeader {
 
   const ImageSection& GetImageStringReferenceOffsetsSection() const {
     return GetImageSection(kSectionStringReferenceOffsets);
+  }
+
+  const ImageSection& GetMetadataSection() const {
+    return GetImageSection(kSectionMetadata);
   }
 
   const ImageSection& GetImageBitmapSection() const {
