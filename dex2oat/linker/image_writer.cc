@@ -436,6 +436,20 @@ std::vector<ImageWriter::RefInfoPair> ImageWriter::CollectStringReferenceInfo() 
           }
         }
 
+        // Visit all of the preinitialized strings.
+        GcRoot<mirror::String>* preresolved_strings = dex_cache->GetPreResolvedStrings();
+        for (size_t idx = 0; idx < dex_cache->NumPreResolvedStrings(); ++idx) {
+          GcRoot<mirror::String>* string = &dex_cache->GetPreResolvedStrings()[idx];
+          if (IsValidAppImageStringReference(string->Read<kWithoutReadBarrier>())) {
+            ++new_native_ref_counter;
+
+            // Note: The offset can't currently be distinguished from the other string array.
+            uint32_t string_vector_offset = idx * sizeof(preresolved_strings[0]);
+            visitor.string_ref_info_.emplace_back(object.Ptr(),
+                                                  SetNativeRefTag(string_vector_offset));
+          }
+        }
+
         CHECK_EQ(visitor.GetDexCacheStringRefCounter(), new_native_ref_counter);
       } else {
         object->VisitReferences</* kVisitNativeRoots */ false,
@@ -837,15 +851,27 @@ void ImageWriter::PrepareDexCacheArraySlots() {
     DCHECK_EQ(dex_file->NumStringIds() != 0u, dex_cache->GetStrings() != nullptr);
     AddDexCacheArrayRelocation(dex_cache->GetStrings(), start + layout.StringsOffset(), oat_index);
 
-    if (dex_cache->GetResolvedMethodTypes() != nullptr) {
-      AddDexCacheArrayRelocation(dex_cache->GetResolvedMethodTypes(),
-                                 start + layout.MethodTypesOffset(),
-                                 oat_index);
-    }
-    if (dex_cache->GetResolvedCallSites() != nullptr) {
-      AddDexCacheArrayRelocation(dex_cache->GetResolvedCallSites(),
-                                 start + layout.CallSitesOffset(),
-                                 oat_index);
+    AddDexCacheArrayRelocation(dex_cache->GetResolvedMethodTypes(),
+                               start + layout.MethodTypesOffset(),
+                               oat_index);
+    AddDexCacheArrayRelocation(dex_cache->GetResolvedCallSites(),
+                                start + layout.CallSitesOffset(),
+                                oat_index);
+
+    // Preresolved strings aren't part of the special layout.
+    GcRoot<mirror::String>* preresolved_strings = dex_cache->GetPreResolvedStrings();
+    if (preresolved_strings != nullptr) {
+      DCHECK(!IsInBootImage(preresolved_strings));
+      // Add the array to the metadata section.
+      const size_t count = dex_cache->NumPreResolvedStrings();
+      auto bin = BinTypeForNativeRelocationType(NativeObjectRelocationType::kGcRootPointer);
+      for (size_t i = 0; i < count; ++i) {
+        native_object_relocations_.emplace(&preresolved_strings[i],
+            NativeObjectRelocation { oat_index,
+                                     image_info.GetBinSlotSize(bin),
+                                     NativeObjectRelocationType::kGcRootPointer });
+        image_info.IncrementBinSlotSize(bin, sizeof(GcRoot<mirror::Object>));
+      }
     }
   }
 }
@@ -2525,6 +2551,12 @@ void ImageWriter::CopyAndFixupNativeData(size_t oat_index) {
             new(dest)ImtConflictTable(orig_table->NumEntries(target_ptr_size_), target_ptr_size_));
         break;
       }
+      case NativeObjectRelocationType::kGcRootPointer: {
+        auto* orig_pointer = reinterpret_cast<GcRoot<mirror::Object>*>(pair.first);
+        auto* dest_pointer = reinterpret_cast<GcRoot<mirror::Object>*>(dest);
+        CopyAndFixupReference(dest_pointer->AddressWithoutBarrier(), orig_pointer->Read());
+        break;
+      }
     }
   }
   // Fixup the image method roots.
@@ -2945,6 +2977,12 @@ void ImageWriter::FixupDexCache(DexCache* orig_dex_cache, DexCache* copy_dex_cac
                                                copy_dex_cache,
                                                DexCache::ResolvedCallSitesOffset(),
                                                orig_dex_cache->NumResolvedCallSites());
+  if (orig_dex_cache->GetPreResolvedStrings() != nullptr) {
+    CopyAndFixupPointer(copy_dex_cache,
+                        DexCache::PreResolvedStringsOffset(),
+                        orig_dex_cache->GetPreResolvedStrings(),
+                        PointerSize::k64);
+  }
 
   // Remove the DexFile pointers. They will be fixed up when the runtime loads the oat file. Leaving
   // compiler pointers in here will make the output non-deterministic.
@@ -3158,6 +3196,8 @@ ImageWriter::Bin ImageWriter::BinTypeForNativeRelocationType(NativeObjectRelocat
       return Bin::kImTable;
     case NativeObjectRelocationType::kIMTConflictTable:
       return Bin::kIMTConflictTable;
+    case NativeObjectRelocationType::kGcRootPointer:
+      return Bin::kMetadata;
   }
   UNREACHABLE();
 }
