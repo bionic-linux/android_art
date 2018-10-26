@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b498f50_053235d1",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2376,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2018-10-26T19:57:03Z",
+      "side": 1,
+      "message": "Is there a variable name you could use for the sizeof() call instead of the type?",
+      "revId": "97c7f4934d4e19189f6189d0d5e135fbcadcae32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
