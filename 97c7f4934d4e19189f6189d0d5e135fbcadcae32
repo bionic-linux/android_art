@@ -16,6 +16,24 @@
       "revId": "97c7f4934d4e19189f6189d0d5e135fbcadcae32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3723b768_99603bb0",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 2376,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-10-29T14:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b498f50_053235d1",
+      "revId": "97c7f4934d4e19189f6189d0d5e135fbcadcae32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
