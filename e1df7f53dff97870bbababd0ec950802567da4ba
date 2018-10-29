@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce060c54_3c223389",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "Add an encoding example in the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f4d7e5_0d92eb78",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "I think while(){} reads better then do {} while(); and you can use any here. Up to you though :)",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78fb9c9_b8767ce0",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "update the comment here to include the new format.",
+      "range": {
+        "startLine": 110,
+        "startChar": 27,
+        "endLine": 110,
+        "endChar": 99
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fa35f7_c8f238aa",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "same comment for while() {} vs  do {} while {}. (more so for long while blocks :)",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 9
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56980ece_dfe78b88",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "document",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ff2c60_8cdb5616",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "looks a bit unsafe. Add some assertions or return null if the index is greater than the chain size.",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f692c450_23e20a25",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "document",
+      "range": {
+        "startLine": 246,
+        "startChar": 7,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "551509fe_8c0750a8",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-29T19:58:57Z",
+      "side": 1,
+      "message": "could you move out args at the end, and make them a pointer?",
+      "range": {
+        "startLine": 247,
+        "startChar": 29,
+        "endLine": 247,
+        "endChar": 53
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
