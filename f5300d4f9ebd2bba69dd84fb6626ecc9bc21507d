@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "874f0772_90d51853",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 2445,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-10-29T21:16:11Z",
+      "side": 1,
+      "message": "Gratuitous change...",
+      "range": {
+        "startLine": 2423,
+        "startChar": 0,
+        "endLine": 2445,
+        "endChar": 33
+      },
+      "revId": "f5300d4f9ebd2bba69dd84fb6626ecc9bc21507d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
