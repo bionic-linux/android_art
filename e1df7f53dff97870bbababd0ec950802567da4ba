@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "960c72fd_4b6ef3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce060c54_3c223389",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 56
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9f4d7e5_0d92eb78",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-29T19:58:57Z",
       "side": 1,
       "message": "I think while(){} reads better then do {} while(); and you can use any here. Up to you though :)",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e6bd10_eee5922a",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done (though it adds one check when we know it\u0027s not needed, but I get the readability argument :))",
+      "parentUuid": "a9f4d7e5_0d92eb78",
       "range": {
         "startLine": 93,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3bc60794_d0d2c426",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f78fb9c9_b8767ce0",
+      "range": {
+        "startLine": 110,
+        "startChar": 27,
+        "endLine": 110,
+        "endChar": 99
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57fa35f7_c8f238aa",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12820abf_2b4b4d56",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57fa35f7_c8f238aa",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 335,
+        "endChar": 9
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "2a402674_d470e564",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56980ece_dfe78b88",
+      "range": {
+        "startLine": 185,
+        "startChar": 19,
+        "endLine": 185,
+        "endChar": 28
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ff2c60_8cdb5616",
         "filename": "runtime/class_loader_context.h",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b73a97e_3c9a1685",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ff2c60_8cdb5616",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 5
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "ef80f98b_69fd5c71",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f692c450_23e20a25",
+      "range": {
+        "startLine": 246,
+        "startChar": 7,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "551509fe_8c0750a8",
         "filename": "runtime/class_loader_context.h",
         "patchSetId": 2
@@ -183,6 +351,30 @@
       "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2a4dd8_59de0f06",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-10-29T21:55:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "551509fe_8c0750a8",
+      "range": {
+        "startLine": 247,
+        "startChar": 29,
+        "endLine": 247,
+        "endChar": 53
+      },
+      "revId": "e1df7f53dff97870bbababd0ec950802567da4ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
