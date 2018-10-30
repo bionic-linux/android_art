@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23223f83_b5119094",
+        "filename": "runtime/class_loader_context_test.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-30T01:37:32Z",
+      "side": 1,
+      "message": "add a few more tests for:\n- failure case (e.g.PCL[a.dex:b.dex]{rubbish_data})\n- empty case (PCL[a.dex:b.dex]{})\n- context match / mismatch (with SL)",
+      "range": {
+        "startLine": 261,
+        "startChar": 31,
+        "endLine": 261,
+        "endChar": 51
+      },
+      "revId": "1fe692acf236568455bbe9ef35114bc5aa3e0ce1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
