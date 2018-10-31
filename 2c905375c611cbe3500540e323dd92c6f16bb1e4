@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e655e75_dcc3a478",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-31T22:38:09Z",
+      "side": 1,
+      "message": "This is actually quite hard to read. I don\u0027t have concrete steps to improve but some suggestions:\n\n1) for each if/else/nested loop add a comment which part of the class loader spec is parsing.\ne.g.\n// full path: PCL[..]{PCL[]...}\nor\n// only shared lib: {PCL[]...}\nor\n// only a class loader PCL[...].\n\n2) maybe some nested ifs can be extracted in helpers.",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "2c905375c611cbe3500540e323dd92c6f16bb1e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f2c2197_57055172",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-10-31T22:38:09Z",
+      "side": 1,
+      "message": "kClassLoaderSeparator",
+      "range": {
+        "startLine": 275,
+        "startChar": 67,
+        "endLine": 275,
+        "endChar": 68
+      },
+      "revId": "2c905375c611cbe3500540e323dd92c6f16bb1e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
