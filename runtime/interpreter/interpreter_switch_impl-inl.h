@@ -160,7 +160,7 @@ class InstructionHandler {
   }
 
   // Code to run before each dex instruction.
-  ALWAYS_INLINE WARN_UNUSED bool PreambleSave(JValue* save_ref)
+  ALWAYS_INLINE WARN_UNUSED bool Preamble()
       REQUIRES_SHARED(Locks::mutator_lock_) {
     /* We need to put this before & after the instrumentation to avoid having to put in a */
     /* post-script macro.                                                                 */
@@ -168,6 +168,9 @@ class InstructionHandler {
       return false;
     }
     if (UNLIKELY(instrumentation->HasDexPcListeners())) {
+      uint8_t opcode = inst->Opcode(inst_data);
+      bool is_move_result_object = (opcode == Instruction::MOVE_RESULT_OBJECT);
+      JValue* save_ref = is_move_result_object ? &ctx->result_register : nullptr;
       if (UNLIKELY(!DoDexPcMoveEvent(self,
                                      Accessor(),
                                      shadow_frame,
@@ -2587,16 +2590,24 @@ ATTRIBUTE_NO_SANITIZE_ADDRESS void ExecuteSwitchImplCpp(SwitchImplContext* ctx) 
     shadow_frame.SetDexPC(dex_pc);
     TraceExecution(shadow_frame, inst, dex_pc);
     inst_data = inst->Fetch16(0);
+    {
+      bool exit = false;
+      InstructionHandler<do_access_check, transaction_active> handler(
+          ctx, instrumentation, self, shadow_frame, dex_pc, inst, inst_data, exit);
+      if (!handler.Preamble()) {
+        if (UNLIKELY(exit)) {
+          return;
+        }
+        continue;
+      }
+    }
     switch (inst->Opcode(inst_data)) {
 #define OPCODE_CASE(OPCODE, OPCODE_NAME, pname, f, i, a, e, v)                                    \
       case OPCODE: {                                                                              \
         bool exit = false;                                                                        \
         InstructionHandler<do_access_check, transaction_active> handler(                          \
             ctx, instrumentation, self, shadow_frame, dex_pc, inst, inst_data, exit);             \
-        constexpr bool is_move_result_object = (OPCODE == Instruction::MOVE_RESULT_OBJECT);       \
-        if (handler.PreambleSave(is_move_result_object ? &ctx->result_register : nullptr)) {      \
-          handler.OPCODE_NAME();                                                                  \
-        }                                                                                         \
+        handler.OPCODE_NAME();                                                                    \
         /* TODO: Advance 'inst' here, instead of explicitly in each handler */                    \
         if (UNLIKELY(exit)) {                                                                     \
           return;                                                                                 \
