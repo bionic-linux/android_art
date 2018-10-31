@@ -822,13 +822,7 @@ inline void ConcurrentCopying::ScanImmuneObject(mirror::Object* obj) {
   DCHECK(obj != nullptr);
   DCHECK(immune_spaces_.ContainsObject(obj));
   // Update the fields without graying it or pushing it onto the mark stack.
-  if (kEnableGenerationalConcurrentCopyingCollection && young_gen_) {
-    // Young GC does not care about references to unevac space. It is safe to not gray these as
-    // long as scan immune objects happens after scanning the dirty cards.
-    Scan<true>(obj);
-  } else {
-    Scan<false>(obj);
-  }
+  Scan(obj);
 }
 
 class ConcurrentCopying::ImmuneSpaceScanObjVisitor {
@@ -924,7 +918,7 @@ void ConcurrentCopying::MarkingPhase() {
                 LOG(FATAL) << "Scanning " << obj << " not in unevac space";
               }
             }
-            Scan<true>(obj);
+            Scan(obj);
           },
           accounting::CardTable::kCardDirty - 1);
     }
@@ -1673,10 +1667,8 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
       if (kEnableGenerationalConcurrentCopyingCollection && young_gen_) {
         CHECK(region_space_->IsLargeObject(to_ref));
         region_space_->ZeroLiveBytesForLargeObject(to_ref);
-        Scan<true>(to_ref);
-      } else {
-        Scan<false>(to_ref);
       }
+      Scan(to_ref);
       // Only add to the live bytes if the object was not already marked and we are not the young
       // GC.
       add_to_live_bytes = true;
@@ -1688,11 +1680,7 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
         region_space_bitmap_->Set(to_ref);
       }
     }
-    if (kEnableGenerationalConcurrentCopyingCollection && young_gen_) {
-      Scan<true>(to_ref);
-    } else {
-      Scan<false>(to_ref);
-    }
+    Scan(to_ref);
   }
   if (kUseBakerReadBarrier) {
     DCHECK(to_ref->GetReadBarrierState() == ReadBarrier::GrayState())
@@ -2417,19 +2405,15 @@ void ConcurrentCopying::AssertToSpaceInvariantInNonMovingSpace(mirror::Object* o
 }
 
 // Used to scan ref fields of an object.
-template <bool kNoUnEvac>
 class ConcurrentCopying::RefFieldsVisitor {
  public:
   explicit RefFieldsVisitor(ConcurrentCopying* collector, Thread* const thread)
-      : collector_(collector), thread_(thread) {
-    // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-    DCHECK(kEnableGenerationalConcurrentCopyingCollection || !kNoUnEvac);
-  }
+      : collector_(collector), thread_(thread) {}
 
   void operator()(mirror::Object* obj, MemberOffset offset, bool /* is_static */)
       const ALWAYS_INLINE REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES_SHARED(Locks::heap_bitmap_lock_) {
-    collector_->Process<kNoUnEvac>(obj, offset);
+    collector_->Process(obj, offset);
   }
 
   void operator()(ObjPtr<mirror::Class> klass, ObjPtr<mirror::Reference> ref) const
@@ -2457,10 +2441,7 @@ class ConcurrentCopying::RefFieldsVisitor {
   Thread* const thread_;
 };
 
-template <bool kNoUnEvac>
 inline void ConcurrentCopying::Scan(mirror::Object* to_ref) {
-  // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-  DCHECK(kEnableGenerationalConcurrentCopyingCollection || !kNoUnEvac);
   if (kDisallowReadBarrierDuringScan && !Runtime::Current()->IsActiveTransaction()) {
     // Avoid all read barriers during visit references to help performance.
     // Don't do this in transaction mode because we may read the old value of an field which may
@@ -2469,7 +2450,7 @@ inline void ConcurrentCopying::Scan(mirror::Object* to_ref) {
   }
   DCHECK(!region_space_->IsInFromSpace(to_ref));
   DCHECK_EQ(Thread::Current(), thread_running_gc_);
-  RefFieldsVisitor<kNoUnEvac> visitor(this, thread_running_gc_);
+  RefFieldsVisitor visitor(this, thread_running_gc_);
   // Disable the read barrier for a performance reason.
   to_ref->VisitReferences</*kVisitNativeRoots=*/true, kDefaultVerifyFlags, kWithoutReadBarrier>(
       visitor, visitor);
@@ -2478,14 +2459,11 @@ inline void ConcurrentCopying::Scan(mirror::Object* to_ref) {
   }
 }
 
-template <bool kNoUnEvac>
 inline void ConcurrentCopying::Process(mirror::Object* obj, MemberOffset offset) {
-  // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-  DCHECK(kEnableGenerationalConcurrentCopyingCollection || !kNoUnEvac);
   DCHECK_EQ(Thread::Current(), thread_running_gc_);
   mirror::Object* ref = obj->GetFieldObject<
       mirror::Object, kVerifyNone, kWithoutReadBarrier, false>(offset);
-  mirror::Object* to_ref = Mark</*kGrayImmuneObject=*/false, kNoUnEvac, /*kFromGCThread=*/true>(
+  mirror::Object* to_ref = Mark</*kGrayImmuneObject=*/false, /*kFromGCThread=*/true>(
       thread_running_gc_,
       ref,
       /*holder=*/ obj,
@@ -3178,8 +3156,8 @@ mirror::Object* ConcurrentCopying::MarkFromReadBarrierWithMeasurements(Thread* c
   ScopedTrace tr(__FUNCTION__);
   const uint64_t start_time = measure_read_barrier_slow_path_ ? NanoTime() : 0u;
   mirror::Object* ret =
-      Mark</*kGrayImmuneObject=*/true, /*kNoUnEvac=*/false, /*kFromGCThread=*/false>(self,
-                                                                                     from_ref);
+      Mark</*kGrayImmuneObject=*/true, /*kFromGCThread=*/false>(self,
+                                                                from_ref);
   if (measure_read_barrier_slow_path_) {
     rb_slow_path_ns_.fetch_add(NanoTime() - start_time, std::memory_order_relaxed);
   }

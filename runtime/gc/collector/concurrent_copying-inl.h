@@ -123,13 +123,11 @@ inline mirror::Object* ConcurrentCopying::MarkImmuneSpace(Thread* const self,
   return ref;
 }
 
-template<bool kGrayImmuneObject, bool kNoUnEvac, bool kFromGCThread>
+template<bool kGrayImmuneObject, bool kFromGCThread>
 inline mirror::Object* ConcurrentCopying::Mark(Thread* const self,
                                                mirror::Object* from_ref,
                                                mirror::Object* holder,
                                                MemberOffset offset) {
-  // Cannot have `kNoUnEvac` when Generational CC collection is disabled.
-  DCHECK(kEnableGenerationalConcurrentCopyingCollection || !kNoUnEvac);
   if (from_ref == nullptr) {
     return nullptr;
   }
@@ -171,14 +169,6 @@ inline mirror::Object* ConcurrentCopying::Mark(Thread* const self,
         return to_ref;
       }
       case space::RegionSpace::RegionType::kRegionTypeUnevacFromSpace:
-        if (kEnableGenerationalConcurrentCopyingCollection
-            && kNoUnEvac
-            && !region_space_->IsLargeObject(from_ref)) {
-          if (!kFromGCThread) {
-            DCHECK(IsMarkedInUnevacFromSpace(from_ref)) << "Returning unmarked object to mutator";
-          }
-          return from_ref;
-        }
         return MarkUnevacFromSpaceRegion(self, from_ref, region_space_bitmap_);
       default:
         // The reference is in an unused region. Remove memory protection from
@@ -209,8 +199,8 @@ inline mirror::Object* ConcurrentCopying::MarkFromReadBarrier(mirror::Object* fr
   if (UNLIKELY(mark_from_read_barrier_measurements_)) {
     ret = MarkFromReadBarrierWithMeasurements(self, from_ref);
   } else {
-    ret = Mark</*kGrayImmuneObject=*/true, /*kNoUnEvac=*/false, /*kFromGCThread=*/false>(self,
-                                                                                         from_ref);
+    ret = Mark</*kGrayImmuneObject=*/true, /*kFromGCThread=*/false>(self,
+                                                                    from_ref);
   }
   // Only set the mark bit for baker barrier.
   if (kUseBakerReadBarrier && LIKELY(!rb_mark_bit_stack_full_ && ret->AtomicSetMarkBit(0, 1))) {
