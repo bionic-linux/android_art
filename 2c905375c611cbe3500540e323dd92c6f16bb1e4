@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "979ff2d2_eab27cd7",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-11-01T11:55:41Z",
+      "side": 1,
+      "message": "Done for the comments. I\u0027ve changed a nested if/else due to early return. I find separating into helps may make the reading harder as it\u0027s all regexp logic of getting rid of the nesting, which is about what this method is about.",
+      "parentUuid": "5e655e75_dcc3a478",
+      "range": {
+        "startLine": 232,
+        "startChar": 2,
+        "endLine": 232,
+        "endChar": 28
+      },
+      "revId": "2c905375c611cbe3500540e323dd92c6f16bb1e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f2c2197_57055172",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "2c905375c611cbe3500540e323dd92c6f16bb1e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9cbe4d4_cfd3d7c6",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-11-01T11:55:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2c2197_57055172",
+      "range": {
+        "startLine": 275,
+        "startChar": 67,
+        "endLine": 275,
+        "endChar": 68
+      },
+      "revId": "2c905375c611cbe3500540e323dd92c6f16bb1e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
