@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c88792f_e0e1d7c5",
+        "filename": "compiler/driver/compiler_options_map.def",
+        "patchSetId": 8
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-11-02T14:48:03Z",
+      "side": 1,
+      "message": "This is so WRONG! We\u0027re using dex2oatd to produce the prebuilt boot image, so the feature was immediately enabled for the boot image. Default values for non-debug options should never depend on kIsDebugBuild.",
+      "range": {
+        "startLine": 55,
+        "startChar": 79,
+        "endLine": 55,
+        "endChar": 92
+      },
+      "revId": "1ca718ec2de53fb5ef2a9211bfcc921311775c90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
