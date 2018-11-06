@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4db980fb_c11789bd",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3642,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-11-06T14:48:42Z",
+      "side": 1,
+      "message": "nit: somehow, using \"if\" for void ternary expressions makes it easier for me to read",
+      "range": {
+        "startLine": 3642,
+        "startChar": 10,
+        "endLine": 3642,
+        "endChar": 16
+      },
+      "revId": "979c851f378d67913dd8ac026ea4aa041f185218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efca38a7_be28908f",
+        "filename": "compiler/optimizing/code_generator_x86_64.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3785,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-11-06T14:48:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 3785,
+        "startChar": 6,
+        "endLine": 3785,
+        "endChar": 12
+      },
+      "revId": "979c851f378d67913dd8ac026ea4aa041f185218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
