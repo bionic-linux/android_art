@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3091d78c_8da61f95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-07T21:49:09Z",
+      "side": 1,
+      "message": "Extend the commit message about *what exactly* this is actually testing (e.g., in this case, lack of inlining to allow overwriting methods).",
+      "revId": "a5a233080b8af46f253fb6de1f061127a5c7ed89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
