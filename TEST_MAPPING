@@ -1,0 +1,35 @@
+{
+  "presubmit": [
+    {
+      "name": "CtsLibcoreCorePlatformApiTestCases"
+    },
+    {
+      "name": "CtsLibcoreJsr166TestCases"
+    },
+    {
+      "name": "CtsLibcoreTestCases",
+      "options": [
+        {
+          "core-expectation": "/virtualdeviceknownfailures.txt"
+        }
+      ]
+    },
+    {
+      "name": "CtsLibcoreOjTestCases"
+    },
+    {
+      "name": "CtsLibcoreSimpleMModuleTestCases"
+    }
+  ],
+  "imports": [
+    {
+      "path": "cts/tests/jdwp"
+    },
+    {
+      "path": "cts/hostsidetests/jvmti"
+    },
+    {
+      "path": "cts/tools/vm-tests-tf"
+    }
+  ]
+}
