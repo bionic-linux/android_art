@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8d71c2_27abd9c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-11-08T11:00:59Z",
+      "side": 1,
+      "message": "Does the frame size of the interpreter method change significantly?",
+      "revId": "49abe35bec126e5dfa49314438529289bd19f3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012f6b52_6cf42629",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2594,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-11-08T11:00:59Z",
+      "side": 1,
+      "message": "exit_loop",
+      "range": {
+        "startLine": 2594,
+        "startChar": 11,
+        "endLine": 2594,
+        "endChar": 15
+      },
+      "revId": "49abe35bec126e5dfa49314438529289bd19f3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
