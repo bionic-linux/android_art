@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cb961c2_404bcee1",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2605,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-08T17:08:05Z",
+      "side": 1,
+      "message": "Can we simplify this for readability? Make it an enum return value? The side-effects stuff is very brittle and not very readable.",
+      "range": {
+        "startLine": 2597,
+        "startChar": 6,
+        "endLine": 2605,
+        "endChar": 7
+      },
+      "revId": "a4a96afd95e0819f4f35ece733e9a0731355d0d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
