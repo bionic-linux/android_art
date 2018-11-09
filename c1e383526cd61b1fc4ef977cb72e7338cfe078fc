@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea9c270_8759cc0b",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3522,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-11-09T10:42:50Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this can be done a single instruction:\n\n  __ leal(tmp, Address(out, static_cast\u003cint32_t\u003e(~(abs_imm-1)));\n\nThe entire snippet could also be reordered to avoid a testl() and jmp():\n\n  __ movl(out, numerator);\n  __ andl(out, Immediate(abs_imm-1));\n  __ j(Condition::kZero, \u0026done);\n  __ leal(tmp, Address(out, static_cast\u003cint32_t\u003e(~(abs_imm-1)));\n  __ testl(numerator, numerator);\n  __ cmovl(Condition::kLess, out, tmp);\n  __ Bind(\u0026done);\n\nAnother option (also applicable to x86-64 where leal() cannot be used) is\n\n  __ movl(out, numerator);\n  __ andl(out, Immediate(abs_imm-1));\n  __ j(Condition::kZero, \u0026done);\n  __ movl(tmp, numerator);\n  __ sarl(tmp, 31);\n  __ shll(tmp, WhichPowerOf2(abs_imm));\n  __ orl(out, tmp);\n  __ Bind(\u0026done);",
+      "range": {
+        "startLine": 3520,
+        "startChar": 2,
+        "endLine": 3522,
+        "endChar": 19
+      },
+      "revId": "c1e383526cd61b1fc4ef977cb72e7338cfe078fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
