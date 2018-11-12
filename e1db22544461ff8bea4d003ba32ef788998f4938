@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6a45a59_b8970519",
+        "filename": "test/411-checker-hdiv-hrem-pow2/src/RemTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-11-12T15:42:11Z",
+      "side": 1,
+      "message": "Remove trailing whitespace.",
+      "range": {
+        "startLine": 320,
+        "startChar": 27,
+        "endLine": 320,
+        "endChar": 28
+      },
+      "revId": "e1db22544461ff8bea4d003ba32ef788998f4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
