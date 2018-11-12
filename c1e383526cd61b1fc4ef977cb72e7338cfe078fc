@@ -22,6 +22,30 @@
       "revId": "c1e383526cd61b1fc4ef977cb72e7338cfe078fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6d3b1f_8273efbd",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3522,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2018-11-12T15:26:11Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "1ea9c270_8759cc0b",
+      "range": {
+        "startLine": 3520,
+        "startChar": 2,
+        "endLine": 3522,
+        "endChar": 19
+      },
+      "revId": "c1e383526cd61b1fc4ef977cb72e7338cfe078fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
