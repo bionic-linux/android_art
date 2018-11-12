@@ -22,6 +22,30 @@
       "revId": "e1db22544461ff8bea4d003ba32ef788998f4938",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6efb00b_fbaef7a4",
+        "filename": "test/411-checker-hdiv-hrem-pow2/src/RemTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2018-11-12T15:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a45a59_b8970519",
+      "range": {
+        "startLine": 320,
+        "startChar": 27,
+        "endLine": 320,
+        "endChar": 28
+      },
+      "revId": "e1db22544461ff8bea4d003ba32ef788998f4938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
