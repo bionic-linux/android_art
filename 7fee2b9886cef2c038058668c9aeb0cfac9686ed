@@ -34,6 +34,24 @@
       "revId": "7fee2b9886cef2c038058668c9aeb0cfac9686ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fe836fe_f9a4df06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-28T17:58:55Z",
+      "side": 1,
+      "message": "https://bugs.llvm.org/enter_bug.cgi?product\u003dclang-tools-extra is the canonical location, although you may not be able to easily sign up for an account these days. If that is the case, you might be best off filing a regular buganizer bug in the clang-tidy component.",
+      "parentUuid": "678e3b9e_c15c407d",
+      "revId": "7fee2b9886cef2c038058668c9aeb0cfac9686ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
