@@ -22,6 +22,30 @@
       "revId": "5206bd192727003f40cd0d8ab1ec10fc55172200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb448534_14675e8e",
+        "filename": "test/913-heaps/heaps.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-28T20:27:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dde310cc_4db4748b",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 56
+      },
+      "revId": "5206bd192727003f40cd0d8ab1ec10fc55172200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
