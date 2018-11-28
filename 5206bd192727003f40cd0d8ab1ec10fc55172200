@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dde310cc_4db4748b",
+        "filename": "test/913-heaps/heaps.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-11-28T20:23:02Z",
+      "side": 1,
+      "message": "Can you add comments about what these mean? And also, that we are going to filter out objects based on the kThreadTag because...",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 56
+      },
+      "revId": "5206bd192727003f40cd0d8ab1ec10fc55172200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
