@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d0f9488_511a4928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-11-28T16:29:47Z",
+      "side": 1,
+      "message": "C++14 doesn\u0027t like this change and suggests `const auto\u0026` or `const std::pair\u003cconst std::string, bool\u003e` instead. for now i\u0027ll just put this in the same topic, but if you folks prefer one of the two alternatives that should work for both C++14 and C++17 i can do that instead (but make it clear which one!).",
+      "revId": "7fee2b9886cef2c038058668c9aeb0cfac9686ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
