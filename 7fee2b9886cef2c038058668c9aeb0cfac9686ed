@@ -16,6 +16,24 @@
       "revId": "7fee2b9886cef2c038058668c9aeb0cfac9686ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678e3b9e_c15c407d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-11-28T17:27:49Z",
+      "side": 1,
+      "message": "Where do I file bugs on the mess that is tidy? I\u0027ve went through everything reported before (before making it errors...).",
+      "parentUuid": "6d0f9488_511a4928",
+      "revId": "7fee2b9886cef2c038058668c9aeb0cfac9686ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
