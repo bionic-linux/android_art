@@ -196,6 +196,6 @@ esac
 echo "Running tests for the following test packages:"
 echo ${working_packages[@]} | tr " " "\n"
 
-cmd="vogar $vogar_args $expectations $(cparg $DEPS) ${working_packages[@]}"
+cmd="vogar $vogar_args $expectations $(cparg $DEPS) libcore.java.lang.reflect.ClassLoaderReflectionTest#testFieldGenericType"
 echo "Running $cmd"
 eval $cmd
