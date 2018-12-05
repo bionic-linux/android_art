@@ -828,6 +828,14 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
   }
 
   CodeItemDebugInfoAccessor code_item_accessor(dex_file, code_item, method_idx);
+
+  dex::TypeIndex class_type_idx = dex_file.GetMethodId(method_idx).class_idx_;
+  // TODO: Is there a better way? Can we get it from method?
+  const dex::ClassDef* containing_class = dex_file.FindClassDef(class_type_idx);
+  DCHECK(containing_class != nullptr);
+  bool dead_reference_safe =
+      annotations::HasDeadReferenceSafeAnnotation(dex_file, *containing_class)
+      && !annotations::MethodContainsRSensitiveAccess(dex_file, *containing_class, method_idx);
   HGraph* graph = new (allocator) HGraph(
       allocator,
       arena_stack,
@@ -835,6 +843,7 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
       method_idx,
       compiler_options.GetInstructionSet(),
       kInvalidInvokeType,
+      dead_reference_safe,
       compiler_driver->GetCompilerOptions().GetDebuggable(),
       osr);
 
