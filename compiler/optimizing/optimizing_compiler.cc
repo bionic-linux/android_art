@@ -828,6 +828,28 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
   }
 
   CodeItemDebugInfoAccessor code_item_accessor(dex_file, code_item, method_idx);
+
+  bool dead_reference_safe;
+  ArrayRef<const uint8_t> interpreter_metadata;
+  // For AOT compilation, we may not get a method, for example if its class is erroneous.
+  // JIT should always have a method.
+  DCHECK(Runtime::Current()->IsAotCompiler() || method != nullptr);
+  if (method != nullptr) {
+    const dex::ClassDef* containing_class;
+    {
+      ScopedObjectAccess soa(Thread::Current());
+      containing_class = &method->GetClassDef();
+      interpreter_metadata = method->GetQuickenedInfo();
+    }
+    // MethodContainsRSensitiveAccess is currently slow, but HasDeadReferenceSafeAnnotation()
+    // is currently rarely true.
+    dead_reference_safe =
+        annotations::HasDeadReferenceSafeAnnotation(dex_file, *containing_class)
+        && !annotations::MethodContainsRSensitiveAccess(dex_file, *containing_class, method_idx);
+  } else {
+    dead_reference_safe = false;
+  }
+
   HGraph* graph = new (allocator) HGraph(
       allocator,
       arena_stack,
@@ -835,17 +857,12 @@ CodeGenerator* OptimizingCompiler::TryCompile(ArenaAllocator* allocator,
       method_idx,
       compiler_options.GetInstructionSet(),
       kInvalidInvokeType,
+      dead_reference_safe,
       compiler_driver->GetCompilerOptions().GetDebuggable(),
-      osr);
+      /* osr= */ osr);
 
-  ArrayRef<const uint8_t> interpreter_metadata;
-  // For AOT compilation, we may not get a method, for example if its class is erroneous.
-  // JIT should always have a method.
-  DCHECK(Runtime::Current()->IsAotCompiler() || method != nullptr);
   if (method != nullptr) {
     graph->SetArtMethod(method);
-    ScopedObjectAccess soa(Thread::Current());
-    interpreter_metadata = method->GetQuickenedInfo();
   }
 
   std::unique_ptr<CodeGenerator> codegen(
@@ -963,6 +980,7 @@ CodeGenerator* OptimizingCompiler::TryCompileIntrinsic(
       method_idx,
       compiler_options.GetInstructionSet(),
       kInvalidInvokeType,
+      /* dead_reference_safe= */ true,  // Intrinsics don't affect dead reference safety.
       compiler_options.GetDebuggable(),
       /* osr= */ false);
 
