@@ -79,6 +79,7 @@ bool IsMethodAnnotationPresent(ArtMethod* method,
                                Handle<mirror::Class> annotation_class,
                                uint32_t visibility = DexFile::kDexVisibilityRuntime)
     REQUIRES_SHARED(Locks::mutator_lock_);
+
 // Check whether a method from the `dex_file` with the given `method_index`
 // is annotated with @dalvik.annotation.optimization.FastNative or
 // @dalvik.annotation.optimization.CriticalNative with build visibility.
@@ -86,6 +87,26 @@ bool IsMethodAnnotationPresent(ArtMethod* method,
 uint32_t GetNativeMethodAnnotationAccessFlags(const DexFile& dex_file,
                                               const DexFile::ClassDef& class_def,
                                               uint32_t method_index);
+// Is the field from the `dex_file` with the given `field_index`
+// annotated with @dalvik.annotation.optimization.ReachabilitySensitive?
+bool FieldIsReachabilitySensitive(const DexFile& dex_file,
+                                  const DexFile::ClassDef& class_def,
+                                  uint32_t field_index);
+// Is the method from the `dex_file` with the given `method_index`
+// annotated with @dalvik.annotation.optimization.ReachabilitySensitive?
+bool MethodIsReachabilitySensitive(const DexFile& dex_file,
+                                   const DexFile::ClassDef& class_def,
+                                   uint32_t method_index);
+// Does the method from the `dex_file` with the given `method_index`
+// contain an access to a field annotated with
+// @dalvik.annotation.optimization.ReachabilitySensitive, or a call to a method
+// with that annotation?
+bool MethodContainsRSensitiveAccess(const DexFile& dex_file,
+                                    const DexFile::ClassDef& class_def,
+                                    uint32_t method_index);
+// Is the given class annotated with @dalvik.annotation.optimization.DeadReferenceSafe?
+bool HasDeadReferenceSafeAnnotation(const DexFile& dex_file,
+                                    const DexFile::ClassDef& class_def);
 
 // Class annotations.
 ObjPtr<mirror::Object> GetAnnotationForClass(Handle<mirror::Class> klass,

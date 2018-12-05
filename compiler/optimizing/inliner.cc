@@ -1788,6 +1788,12 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
     invoke_type = kVirtual;
   }
 
+  bool caller_dead_reference_safe = graph_->IsDeadReferenceSafe();
+  const DexFile::ClassDef& callee_class = resolved_method->GetClassDef();
+  bool callee_dead_reference_safe =
+      annotations::HasDeadReferenceSafeAnnotation(callee_dex_file, callee_class)
+      && !annotations::MethodContainsRSensitiveAccess(callee_dex_file, callee_class, method_index);
+
   const int32_t caller_instruction_counter = graph_->GetCurrentInstructionId();
   HGraph* callee_graph = new (graph_->GetAllocator()) HGraph(
       graph_->GetAllocator(),
@@ -1796,6 +1802,7 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
       method_index,
       codegen_->GetCompilerOptions().GetInstructionSet(),
       invoke_type,
+      callee_dead_reference_safe,
       graph_->IsDebuggable(),
       /* osr */ false,
       caller_instruction_counter);
@@ -2020,6 +2027,10 @@ bool HInliner::TryBuildAndInlineHelper(HInvoke* invoke_instruction,
   if (stats_ != nullptr) {
     DCHECK(inline_stats_ != nullptr);
     inline_stats_->AddTo(stats_);
+  }
+
+  if (caller_dead_reference_safe && !callee_dead_reference_safe) {
+    graph_->MarkDeadReferenceUnsafe();
   }
 
   return true;
