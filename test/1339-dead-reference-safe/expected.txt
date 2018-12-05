@@ -1,0 +1,4 @@
+Finalized 4 objects
+Loop finalized 5 objects
+SensitiveLoop finalized 4 objects
+FencedLoop finalized 4 objects
