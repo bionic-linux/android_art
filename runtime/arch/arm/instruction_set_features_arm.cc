@@ -53,7 +53,6 @@ ArmFeaturesUniquePtr ArmInstructionSetFeatures::FromVariant(
       "cortex-a75",
       "cortex-a76",
       "exynos-m1",
-      "denver",
       "kryo"
   };
   bool has_armv8a = FindVariantInArray(arm_variants_with_armv8a,
