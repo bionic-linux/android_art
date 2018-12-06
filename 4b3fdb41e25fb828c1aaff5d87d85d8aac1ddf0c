@@ -22,6 +22,30 @@
       "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ed9e0e_f5b2a90d",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T14:05:49Z",
+      "side": 1,
+      "message": "For compiler, this is data guiding the compilation (inlining), so it definitely belongs to the CompilerOptions. (Same as image_classes_ which guides what we emit for HLoadClass.)",
+      "parentUuid": "e758ec78_1393218f",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
