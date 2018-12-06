@@ -46,6 +46,30 @@
       "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d762b1bc_093715b2",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T14:07:39Z",
+      "side": 1,
+      "message": "image_classes_ also do not come exclusively from the command line, they are updated by the CompilerDriver::PreCompile() as exposed by this CL.",
+      "parentUuid": "31ed9e0e_f5b2a90d",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
