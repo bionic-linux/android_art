@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6269f2b7_b40b9abf",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-12-06T14:53:56Z",
+      "side": 1,
+      "message": "could be static?",
+      "range": {
+        "startLine": 206,
+        "startChar": 4,
+        "endLine": 206,
+        "endChar": 11
+      },
+      "revId": "e4c04971f34f97b856bbbbe0d76a3a7f1b312eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bcbbc78_167b23c5",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-12-06T14:53:56Z",
+      "side": 1,
+      "message": "more in keeping with the builder pattern is this returns the build itself\n\nThen can do:\n\n  return addRepeatedAnnotationHandlers(...).build()\n\nabove",
+      "range": {
+        "startLine": 206,
+        "startChar": 12,
+        "endLine": 206,
+        "endChar": 16
+      },
+      "revId": "e4c04971f34f97b856bbbbe0d76a3a7f1b312eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52c6bae_f2259c61",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-12-06T14:53:56Z",
+      "side": 1,
+      "message": "line too long",
+      "revId": "e4c04971f34f97b856bbbbe0d76a3a7f1b312eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
