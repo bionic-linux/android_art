@@ -94,6 +94,30 @@
       "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e86cc4a_9b136fb6",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-12-06T16:12:26Z",
+      "side": 1,
+      "message": "I agree with Nicolas. Those are not options, those are derived values guiding the compilation. I would not even call them inputs.\n\nI\u0027d prefer if we (eventually) don\u0027t mix them, and rather create another container. CompilerState or CompilerRuntimeState would make sense to me.\n\n(The other option being to bite the bullet and store that data in the runtime state, e.g., in the ClassExt.)",
+      "parentUuid": "9b0caaa2_a860b951",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
