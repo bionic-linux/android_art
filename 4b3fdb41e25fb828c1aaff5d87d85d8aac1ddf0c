@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e758ec78_1393218f",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-06T13:54:32Z",
+      "side": 1,
+      "message": "Aren\u0027t you abusing what compiler options are about (eg to me mostly coming from the command line). Can\u0027t we put the verification results in the compiler callbacks?",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
