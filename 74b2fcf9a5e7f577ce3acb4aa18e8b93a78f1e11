@@ -22,6 +22,30 @@
       "revId": "74b2fcf9a5e7f577ce3acb4aa18e8b93a78f1e11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ce482b0_23b8bd53",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-06T22:58:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9cd8cf5_b764f326",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "74b2fcf9a5e7f577ce3acb4aa18e8b93a78f1e11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
