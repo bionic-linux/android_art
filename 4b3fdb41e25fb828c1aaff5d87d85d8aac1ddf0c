@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65bfd4f4_7e7ccb30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae01b457_ea3bcad6",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f738c3c8_5fe2d46c",
         "filename": "compiler/common_compiler_test.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03289c10_59e4749b",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f738c3c8_5fe2d46c",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 15
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9a33fe85_cc8291e0",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea3f9216_cb03b20b",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 15
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2907129_d0f6f123",
         "filename": "compiler/common_compiler_test.cc",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef58fb4c_91874b6d",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2907129_d0f6f123",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 369,
+        "endChar": 13
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3a1b0e63_fbc4312a",
+        "filename": "compiler/common_compiler_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1865ee18_8486b1c2",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 13
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f3be901_ef53d32c",
         "filename": "compiler/common_compiler_test.h",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2018-12-06T16:21:48Z",
       "side": 1,
       "message": "Document this new member?",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 26
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7591aa_62dc0940",
+        "filename": "compiler/common_compiler_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "I think the name is sufficient documentation for the member itself. All uses are documented.",
+      "parentUuid": "3f3be901_ef53d32c",
       "range": {
         "startLine": 126,
         "startChar": 8,
@@ -247,6 +391,30 @@
       "side": 1,
       "message": "I agree with Nicolas. Those are not options, those are derived values guiding the compilation. I would not even call them inputs.\n\nI\u0027d prefer if we (eventually) don\u0027t mix them, and rather create another container. CompilerState or CompilerRuntimeState would make sense to me.\n\n(The other option being to bite the bullet and store that data in the runtime state, e.g., in the ClassExt.)",
       "parentUuid": "9b0caaa2_a860b951",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 51
+      },
+      "revId": "4b3fdb41e25fb828c1aaff5d87d85d8aac1ddf0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7eed81_65bc2b08",
+        "filename": "compiler/driver/compiler_options.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-06T16:38:44Z",
+      "side": 1,
+      "message": "I agree that storing this information in the ClassExt would be better. But that would be a much bigger change than this.",
+      "parentUuid": "7e86cc4a_9b136fb6",
       "range": {
         "startLine": 396,
         "startChar": 0,
