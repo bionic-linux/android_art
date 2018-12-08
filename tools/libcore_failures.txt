@@ -157,6 +157,7 @@
 {
   description: "Missing resource in classpath",
   result: EXEC_FAILED,
+  modes: [device],
   names: ["libcore.java.util.prefs.OldAbstractPreferencesTest#testClear",
           "libcore.java.util.prefs.OldAbstractPreferencesTest#testExportNode",
           "libcore.java.util.prefs.OldAbstractPreferencesTest#testExportSubtree",
@@ -186,8 +187,7 @@
           "org.apache.harmony.tests.java.util.prefs.AbstractPreferencesTest#testExportSubtree",
           "org.apache.harmony.tests.java.util.prefs.AbstractPreferencesTest#testFlush",
           "org.apache.harmony.tests.java.util.prefs.AbstractPreferencesTest#testSync",
-          "org.apache.harmony.tests.java.util.prefs.FilePreferencesImplTest#testPutGet"],
-  bug: 120526172
+          "org.apache.harmony.tests.java.util.prefs.FilePreferencesImplTest#testPutGet"]
 },
 {
   description: "Only work with --mode=activity",
