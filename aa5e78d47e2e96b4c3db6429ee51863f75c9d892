@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b1dfdd0_c97db105",
+        "filename": "tools/build_linux_bionic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-12-11T20:10:32Z",
+      "side": 1,
+      "message": "add a top level comment about what the script does and how it needs to be invoked.",
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd5121b9_71e0e96d",
+        "filename": "tools/build_linux_bionic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-12-11T20:10:32Z",
+      "side": 1,
+      "message": "is this a known issue for Colin/Dan?",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebe092c_fb0da12e",
+        "filename": "tools/dist_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2018-12-11T20:10:32Z",
+      "side": 1,
+      "message": "add top level comment on what the script is doing and how it needs to be invoked.\n\nAlso, maybe rename this script to dist_linux_bionic?",
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
