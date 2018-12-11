@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73d113be_a61fabf5",
+        "filename": "tools/build_linux_bionic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-11T21:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b1dfdd0_c97db105",
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd5121b9_71e0e96d",
         "filename": "tools/build_linux_bionic.sh",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "766c03c6_fc7609c0",
+        "filename": "tools/build_linux_bionic.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-11T21:09:19Z",
+      "side": 1,
+      "message": "This actually isn\u0027t needed at all.",
+      "parentUuid": "bd5121b9_71e0e96d",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bebe092c_fb0da12e",
         "filename": "tools/dist_soong.sh",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0a9902_31d5c758",
+        "filename": "tools/dist_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-11T21:09:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bebe092c_fb0da12e",
+      "revId": "aa5e78d47e2e96b4c3db6429ee51863f75c9d892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
