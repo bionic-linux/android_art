@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd0037ab_cd7f9da3",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T18:19:43Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1314,
+        "startChar": 82,
+        "endLine": 1314,
+        "endChar": 91
+      },
+      "revId": "8569a9ac44d3b5dd4c8f6913e09639d8b3bde520",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
