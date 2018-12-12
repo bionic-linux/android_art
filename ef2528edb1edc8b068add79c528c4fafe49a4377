@@ -22,6 +22,30 @@
       "revId": "ef2528edb1edc8b068add79c528c4fafe49a4377",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591b8c5e_255136c8",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2018-12-12T18:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525590ea_2c951ffe",
+      "range": {
+        "startLine": 1310,
+        "startChar": 10,
+        "endLine": 1312,
+        "endChar": 65
+      },
+      "revId": "ef2528edb1edc8b068add79c528c4fafe49a4377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
