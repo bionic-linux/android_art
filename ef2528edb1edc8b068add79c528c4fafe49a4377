@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "525590ea_2c951ffe",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T18:13:08Z",
+      "side": 1,
+      "message": "Remove or update. We\u0027re not using ClassTable::ReadFromMemory() anymore, we\u0027re just constructing a ClassTable::ClassSet.",
+      "range": {
+        "startLine": 1310,
+        "startChar": 10,
+        "endLine": 1312,
+        "endChar": 65
+      },
+      "revId": "ef2528edb1edc8b068add79c528c4fafe49a4377",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
