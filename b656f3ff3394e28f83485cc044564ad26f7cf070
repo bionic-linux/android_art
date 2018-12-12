@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b5ad587_62711d82",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T17:48:47Z",
+      "side": 1,
+      "message": "Why do we need this?",
+      "range": {
+        "startLine": 1314,
+        "startChar": 10,
+        "endLine": 1314,
+        "endChar": 83
+      },
+      "revId": "b656f3ff3394e28f83485cc044564ad26f7cf070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d800399a_32cef3e2",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T17:48:47Z",
+      "side": 1,
+      "message": "Remove? (And the related comment above.)",
+      "range": {
+        "startLine": 1315,
+        "startChar": 10,
+        "endLine": 1316,
+        "endChar": 83
+      },
+      "revId": "b656f3ff3394e28f83485cc044564ad26f7cf070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298198ab_7dbf4ad0",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T17:48:47Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of function calls with side effects inside CHECK(). I\u0027d prefer storing the result in a bool.",
+      "range": {
+        "startLine": 1327,
+        "startChar": 18,
+        "endLine": 1327,
+        "endChar": 45
+      },
+      "revId": "b656f3ff3394e28f83485cc044564ad26f7cf070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8cc413f_36792a1d",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-12T17:48:47Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1338,
+        "startChar": 70,
+        "endLine": 1338,
+        "endChar": 77
+      },
+      "revId": "b656f3ff3394e28f83485cc044564ad26f7cf070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
