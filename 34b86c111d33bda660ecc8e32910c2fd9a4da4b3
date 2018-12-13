@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5126c82e_f2e47b00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-13T13:15:14Z",
+      "side": 1,
+      "message": "Add a comment what fixed it.",
+      "revId": "34b86c111d33bda660ecc8e32910c2fd9a4da4b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad5a9aef_e5da18ea",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-13T13:15:14Z",
+      "side": 1,
+      "message": "DCHECK_LE(threshold, ::max()) \u003c\u003c \"JIT...\"",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 3
+      },
+      "revId": "34b86c111d33bda660ecc8e32910c2fd9a4da4b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c7c116e_0dc1ac4c",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-13T13:15:14Z",
+      "side": 1,
+      "message": "Add high-level comment.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 55
+      },
+      "revId": "34b86c111d33bda660ecc8e32910c2fd9a4da4b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
