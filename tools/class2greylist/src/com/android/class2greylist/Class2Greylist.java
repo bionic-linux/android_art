@@ -34,10 +34,12 @@ import org.apache.commons.cli.ParseException;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Build time tool for extracting a list of members from jar files that have the @UsedByApps
@@ -67,7 +69,6 @@ public class Class2Greylist {
     }
 
     private final Status mStatus;
-    private final String mPublicApiListFile;
     private final String mCsvFlagsFile;
     private final String mCsvMetadataFile;
     private final String[] mJarFiles;
@@ -77,10 +78,11 @@ public class Class2Greylist {
     public static void main(String[] args) {
         Options options = new Options();
         options.addOption(OptionBuilder
-                .withLongOpt("public-api-list")
+                .withLongOpt("stub-api-flags")
                 .hasArgs(1)
-                .withDescription("Public API list file. Used to de-dupe bridge methods.")
-                .create("p"));
+                .withDescription("CSV file with API flags generated from public API stubs. " +
+                        "Used to de-dupe bridge methods.")
+                .create("s"));
         options.addOption(OptionBuilder
                 .withLongOpt("write-flags-csv")
                 .hasArgs(1)
@@ -139,7 +141,7 @@ public class Class2Greylist {
             try {
                 Class2Greylist c2gl = new Class2Greylist(
                         status,
-                        cmd.getOptionValue('p', null),
+                        cmd.getOptionValue('s', null),
                         cmd.getOptionValue('w', null),
                         cmd.getOptionValue('c', null),
                         jarFiles);
@@ -158,11 +160,10 @@ public class Class2Greylist {
     }
 
     @VisibleForTesting
-    Class2Greylist(Status status, String publicApiListFile, String csvFlagsFile,
+    Class2Greylist(Status status, String stubApiFlagsFile, String csvFlagsFile,
             String csvMetadataFile, String[] jarFiles)
             throws IOException {
         mStatus = status;
-        mPublicApiListFile = publicApiListFile;
         mCsvFlagsFile = csvFlagsFile;
         mCsvMetadataFile = csvMetadataFile;
         mJarFiles = jarFiles;
@@ -172,9 +173,13 @@ public class Class2Greylist {
             mOutput = new HiddenapiFlagsWriter(mCsvFlagsFile);
         }
 
-        if (mPublicApiListFile != null) {
-            mPublicApis = Sets.newHashSet(
-                    Files.readLines(new File(mPublicApiListFile), Charset.forName("UTF-8")));
+        if (stubApiFlagsFile != null) {
+            mPublicApis =
+                    Files.readLines(new File(stubApiFlagsFile), Charset.forName("UTF-8")).stream()
+                        .map(s -> s.split(","))
+                        .filter(s -> Arrays.asList(s).contains(FLAG_WHITELIST))
+                        .map(s -> s[0])
+                        .collect(Collectors.toSet());
         } else {
             mPublicApis = Collections.emptySet();
         }
