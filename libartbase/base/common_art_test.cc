@@ -339,6 +339,7 @@ std::vector<std::string> CommonArtTestImpl::GetLibCoreDexFileNames() {
       "core-simple",
       "okhttp",
       "bouncycastle",
+      "apache-xml",
       // Additional modules.
       "conscrypt",
   };
