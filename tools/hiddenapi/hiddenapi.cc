@@ -82,6 +82,9 @@ NO_RETURN static void Usage(const char* fmt, ...) {
   UsageError("    --no-force-assign-all:");
   UsageError("        Disable check that all dex entries have been assigned a flag");
   UsageError("");
+  UsageError("    --core-platform:");
+  UsageError("        These dex files were compiled with the \"core_platform\" build flag.");
+  UsageError("");
   UsageError("  Command \"list\": dump lists of public and private API");
   UsageError("    --boot-dex=<filename>: dex file which belongs to boot class path");
   UsageError("    --public-stub-classpath=<filenames>:");
@@ -550,7 +553,7 @@ class Hierarchy final {
 // Builder of dex section containing hiddenapi flags.
 class HiddenapiItemBuilder final {
  public:
-  explicit HiddenapiItemBuilder(const DexFile& dex_file)
+  explicit HiddenapiItemBuilder(const DexFile& dex_file, uint32_t dex_modifiers_)
       : num_classdefs_(dex_file.NumClassDefs()),
         next_class_def_idx_(0u),
         class_def_has_non_zero_flags_(false),
@@ -562,7 +565,7 @@ class HiddenapiItemBuilder final {
     dex::HiddenapiItem* header = GetHeader();
     header->size_ = GetCurrentDataSize();
     header->header_size_ = header->class_data_offset_ = sizeof(dex::HiddenapiItem);
-    header->dex_modifiers_ = 0u;
+    header->dex_modifiers_ = dex_modifiers_;
   }
 
   // Notify the builder that new flags for the next class def
@@ -868,7 +871,7 @@ class DexFileEditor final {
 
 class HiddenApi final {
  public:
-  HiddenApi() : force_assign_all_(true) {}
+  HiddenApi() : force_assign_all_(true), dex_modifiers_(0u) {}
 
   void Run(int argc, char** argv) {
     switch (ParseArgs(argc, argv)) {
@@ -905,6 +908,8 @@ class HiddenApi final {
             api_flags_path_ = option.substr(strlen("--api-flags=")).ToString();
           } else if (option == "--no-force-assign-all") {
             force_assign_all_ = false;
+          } else if (option == "--core-platform") {
+            dex_modifiers_ |= dex::HiddenapiItem::kMod_CorePlatform;
           } else {
             Usage("Unknown argument '%s'", option.data());
           }
@@ -958,7 +963,7 @@ class HiddenApi final {
       CHECK_EQ(input_dex_files.size(), 1u);
       const DexFile& input_dex = *input_dex_files[0];
 
-      HiddenapiItemBuilder builder(input_dex);
+      HiddenapiItemBuilder builder(input_dex, dex_modifiers_);
       boot_classpath.ForEachDexClass([&](const DexClass& boot_class) {
         builder.BeginClassDef(boot_class.GetClassDefIndex());
         if (boot_class.GetData() != nullptr) {
@@ -1103,6 +1108,8 @@ class HiddenApi final {
   // Whether to check that all dex entries have been assigned flags.
   // Defaults to true.
   bool force_assign_all_;
+
+  uint32_t dex_modifiers_;
 
   // Paths to DEX files which should be processed.
   std::vector<std::string> boot_dex_paths_;
