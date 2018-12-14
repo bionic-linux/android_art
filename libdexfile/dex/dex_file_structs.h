@@ -271,25 +271,33 @@ struct AnnotationItem {
   DISALLOW_COPY_AND_ASSIGN(AnnotationItem);
 };
 
-struct HiddenapiClassData {
-  uint32_t size_;             // total size of the item
-  uint32_t flags_offset_[1];  // array of offsets from the beginning of this item,
-                              // indexed by class def index
+struct HiddenapiItem {
+  uint32_t size_ = 0;               // total size of the item
+  uint32_t header_size_ = 0;        // size of header data
+  uint32_t dex_modifiers_ = 0;      // bit vector of modifiers for this dex file
+  uint32_t class_data_offset_ = 0;  // offset to start of per-class data
+
+  // Modifier denoting that this dex file is a member of core platform.
+  static constexpr uint32_t kMod_CorePlatform = 1 << 0;
+
+  uint32_t GetDataOffsetForClass(uint32_t class_def_idx) const {
+    return GetPointer<uint32_t>(class_data_offset_)[class_def_idx];
+  }
 
   // Returns a pointer to the beginning of a uleb128-stream of hiddenapi
   // flags for a class def of given index. Values are in the same order
   // as fields/methods in the class data. Returns null if the class does
   // not have class data.
-  const uint8_t* GetFlagsPointer(uint32_t class_def_idx) const {
-    if (flags_offset_[class_def_idx] == 0) {
-      return nullptr;
-    } else {
-      return reinterpret_cast<const uint8_t*>(this) + flags_offset_[class_def_idx];
-    }
+  const uint8_t* GetDataForClass(uint32_t class_def_idx) const {
+    uint32_t offset = GetDataOffsetForClass(class_def_idx);
+    return (offset == 0) ? nullptr : GetPointer<uint8_t>(offset);
   }
 
  private:
-  DISALLOW_COPY_AND_ASSIGN(HiddenapiClassData);
+  template<typename T>
+  const T* GetPointer(uint32_t off) const {
+    return reinterpret_cast<const T*>(reinterpret_cast<const uint8_t*>(this) + off);
+  }
 };
 
 }  // namespace dex
