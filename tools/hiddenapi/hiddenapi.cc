@@ -548,15 +548,21 @@ class Hierarchy final {
 };
 
 // Builder of dex section containing hiddenapi flags.
-class HiddenapiClassDataBuilder final {
+class HiddenapiItemBuilder final {
  public:
-  explicit HiddenapiClassDataBuilder(const DexFile& dex_file)
+  explicit HiddenapiItemBuilder(const DexFile& dex_file)
       : num_classdefs_(dex_file.NumClassDefs()),
         next_class_def_idx_(0u),
         class_def_has_non_zero_flags_(false),
         dex_file_has_non_zero_flags_(false),
-        data_(sizeof(uint32_t) * (num_classdefs_ + 1), 0u) {
-    *GetSizeField() = GetCurrentDataSize();
+        data_(sizeof(dex::HiddenapiItem) + (sizeof(uint32_t) * num_classdefs_), 0u) {
+    // Assume malloc() aligns allocated memory to at least uint32_t.
+    CHECK(IsAligned<sizeof(uint32_t)>(data_.data()));
+
+    dex::HiddenapiItem* header = GetHeader();
+    header->size_ = GetCurrentDataSize();
+    header->header_size_ = header->class_data_offset_ = sizeof(dex::HiddenapiItem);
+    header->dex_modifiers_ = 0u;
   }
 
   // Notify the builder that new flags for the next class def
@@ -592,7 +598,7 @@ class HiddenapiClassDataBuilder final {
       if (dex_file_has_non_zero_flags_) {
         // This was the last class def and we have generated non-zero hiddenapi
         // flags. Update total size in the header.
-        *GetSizeField() = GetCurrentDataSize();
+        GetHeader()->size_ = GetCurrentDataSize();
       } else {
         // This was the last class def and we have not generated any non-zero
         // hiddenapi flags. Clear all the data.
@@ -617,16 +623,17 @@ class HiddenapiClassDataBuilder final {
   }
 
  private:
-  // Returns pointer to the size field in the header of this dex section.
-  uint32_t* GetSizeField() {
-    // Assume malloc() aligns allocated memory to at least uint32_t.
-    CHECK(IsAligned<sizeof(uint32_t)>(data_.data()));
-    return reinterpret_cast<uint32_t*>(data_.data());
+  template<typename T>
+  T* GetPointer(uint32_t offset) {
+    return reinterpret_cast<T*>(reinterpret_cast<uint8_t*>(data_.data()) + offset);
   }
+
+  dex::HiddenapiItem* GetHeader() { return GetPointer<dex::HiddenapiItem>(0); }
 
   // Returns pointer to array of offsets (indexed by class def indices) in the
   // header of this dex section.
-  uint32_t* GetOffsetArray() { return &GetSizeField()[1]; }
+  uint32_t* GetOffsetArray() { return GetPointer<uint32_t>(GetHeader()->class_data_offset_); }
+
   uint32_t GetCurrentDataSize() const { return data_.size(); }
 
   // Number of class defs in this dex file.
@@ -645,23 +652,23 @@ class HiddenapiClassDataBuilder final {
   std::vector<uint8_t> data_;
 };
 
-// Edits a dex file, inserting a new HiddenapiClassData section.
+// Edits a dex file, inserting a new HiddenapiItem section.
 class DexFileEditor final {
  public:
-  DexFileEditor(const DexFile& old_dex, const std::vector<uint8_t>& hiddenapi_class_data)
+  DexFileEditor(const DexFile& old_dex, const std::vector<uint8_t>& hiddenapi_item)
       : old_dex_(old_dex),
-        hiddenapi_class_data_(hiddenapi_class_data),
+        hiddenapi_item_(hiddenapi_item),
         loaded_dex_header_(nullptr),
         loaded_dex_maplist_(nullptr) {}
 
-  // Copies dex file into a backing data vector, appends the given HiddenapiClassData
+  // Copies dex file into a backing data vector, appends the given HiddenapiItem
   // and updates the MapList.
   void Encode() {
     // We do not support non-standard dex encodings, e.g. compact dex.
     CHECK(old_dex_.IsStandardDexFile());
 
     // If there are no data to append, copy the old dex file and return.
-    if (hiddenapi_class_data_.empty()) {
+    if (hiddenapi_item_.empty()) {
       AllocateMemory(old_dex_.Size());
       Append(old_dex_.Begin(), old_dex_.Size(), /* update_header= */ false);
       return;
@@ -671,13 +678,13 @@ class DexFileEditor final {
     const dex::MapList* old_map = old_dex_.GetMapList();
     CHECK_LT(old_map->size_, std::numeric_limits<uint32_t>::max());
 
-    // Compute the size of the new dex file. We append the HiddenapiClassData,
+    // Compute the size of the new dex file. We append the HiddenapiItem,
     // one MapItem and possibly some padding to align the new MapList.
     CHECK(IsAligned<kMapListAlignment>(old_dex_.Size()))
         << "End of input dex file is not 4-byte aligned, possibly because its MapList is not "
         << "at the end of the file.";
     size_t size_delta =
-        RoundUp(hiddenapi_class_data_.size(), kMapListAlignment) + sizeof(dex::MapItem);
+        RoundUp(hiddenapi_item_.size(), kMapListAlignment) + sizeof(dex::MapItem);
     size_t new_size = old_dex_.Size() + size_delta;
     AllocateMemory(new_size);
 
@@ -693,10 +700,10 @@ class DexFileEditor final {
     // it into padding.
     RemoveOldMapList();
 
-    // Append HiddenapiClassData.
-    size_t payload_offset = AppendHiddenapiClassData();
+    // Append HiddenapiItem.
+    size_t payload_offset = AppendHiddenapiItem();
 
-    // Wrute new MapList with an entry for HiddenapiClassData.
+    // Wrute new MapList with an entry for HiddenapiItem.
     CreateMapListWithNewItem(payload_offset);
 
     // Check that the pre-computed size matches the actual size.
@@ -724,7 +731,7 @@ class DexFileEditor final {
 
  private:
   static constexpr size_t kMapListAlignment = 4u;
-  static constexpr size_t kHiddenapiClassDataAlignment = 4u;
+  static constexpr size_t kHiddenapiItemAlignment = 4u;
 
   void ReloadDex(bool verify) {
     std::string error_msg;
@@ -762,7 +769,7 @@ class DexFileEditor final {
     data_.clear();
     data_.resize(total_size);
     CHECK(IsAligned<kMapListAlignment>(data_.data()));
-    CHECK(IsAligned<kHiddenapiClassDataAlignment>(data_.data()));
+    CHECK(IsAligned<kHiddenapiItemAlignment>(data_.data()));
     offset_ = 0;
   }
 
@@ -830,17 +837,17 @@ class DexFileEditor final {
     Append(&new_item, sizeof(dex::MapItem));
 
     // Change penultimate entry to point to metadata.
-    old_item.type_ = DexFile::kDexTypeHiddenapiClassData;
+    old_item.type_ = DexFile::kDexTypeHiddenapiItem;
     old_item.size_ = 1u;  // there is only one section
     old_item.offset_ = payload_offset;
   }
 
-  size_t AppendHiddenapiClassData() {
+  size_t AppendHiddenapiItem() {
     size_t payload_offset = offset_;
-    CHECK_EQ(kMapListAlignment, kHiddenapiClassDataAlignment);
-    CHECK(IsAligned<kHiddenapiClassDataAlignment>(payload_offset))
+    CHECK_EQ(kMapListAlignment, kHiddenapiItemAlignment);
+    CHECK(IsAligned<kHiddenapiItemAlignment>(payload_offset))
         << "Should not need to align the section, previous data was already aligned";
-    Append(hiddenapi_class_data_.data(), hiddenapi_class_data_.size());
+    Append(hiddenapi_item_.data(), hiddenapi_item_.size());
     return payload_offset;
   }
 
@@ -849,7 +856,7 @@ class DexFileEditor final {
   }
 
   const DexFile& old_dex_;
-  const std::vector<uint8_t>& hiddenapi_class_data_;
+  const std::vector<uint8_t>& hiddenapi_item_;
 
   std::vector<uint8_t> data_;
   size_t offset_;
@@ -941,7 +948,7 @@ class HiddenApi final {
     // Load dex signatures.
     std::map<std::string, ApiList> api_list = OpenApiFile(api_flags_path_);
 
-    // Iterate over input dex files and insert HiddenapiClassData sections.
+    // Iterate over input dex files and insert HiddenapiItem sections.
     for (size_t i = 0; i < boot_dex_paths_.size(); ++i) {
       const std::string& input_path = boot_dex_paths_[i];
       const std::string& output_path = output_dex_paths_[i];
@@ -951,7 +958,7 @@ class HiddenApi final {
       CHECK_EQ(input_dex_files.size(), 1u);
       const DexFile& input_dex = *input_dex_files[0];
 
-      HiddenapiClassDataBuilder builder(input_dex);
+      HiddenapiItemBuilder builder(input_dex);
       boot_classpath.ForEachDexClass([&](const DexClass& boot_class) {
         builder.BeginClassDef(boot_class.GetClassDefIndex());
         if (boot_class.GetData() != nullptr) {
