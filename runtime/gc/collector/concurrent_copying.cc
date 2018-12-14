@@ -1068,6 +1068,20 @@ void ConcurrentCopying::MarkingPhase() {
     DisableMarking();
     CheckEmptyMarkStack();
   }
+  {
+    auto floating_garbage_bytes = region_space_->GetFloatingGarbageInBytes();
+    if (young_gen_) {
+      LOG(INFO) << "CC minor GC floating garbage bytes: "
+                << PrettySize(floating_garbage_bytes);
+    } else {
+      // TODO: whole heap or mere region space
+      auto bytes_allocated = region_space_->GetBytesAllocated();
+      LOG(INFO) << "CC major GC floating garbage bytes: "
+                << PrettySize(floating_garbage_bytes)
+                << " out of used bytes in region space"
+                << "(" << static_cast<float>(floating_garbage_bytes) / bytes_allocated << ")";
+    }
+  }
 
   if (kIsDebugBuild) {
     MutexLock mu(self, *Locks::thread_list_lock_);

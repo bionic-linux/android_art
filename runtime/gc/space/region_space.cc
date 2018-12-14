@@ -286,6 +286,21 @@ void RegionSpace::ZeroLiveBytesForLargeObject(mirror::Object* obj) {
   }
 }
 
+uint64_t RegionSpace::GetFloatingGarbageInBytes() {
+  MutexLock mu(Thread::Current(), region_lock_);
+  uint64_t floating_garbage_bytes = 0U;
+  const size_t iter_limit = kUseTableLookupReadBarrier
+      ? num_regions_
+      : std::min(num_regions_, non_free_region_index_limit_);
+  for (size_t i = 0; i < iter_limit; ++i) {
+    Region* r = &regions_[i];
+    if (r->IsInUnevacFromSpace()) {
+      floating_garbage_bytes += r->BytesAllocated() - r->live_bytes_;
+    }
+  }
+  return floating_garbage_bytes;
+}
+
 // Determine which regions to evacuate and mark them as
 // from-space. Mark the rest as unevacuated from-space.
 void RegionSpace::SetFromSpace(accounting::ReadBarrierTable* rb_table,

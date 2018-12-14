@@ -281,6 +281,8 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
   // objects.
   void ZeroLiveBytesForLargeObject(mirror::Object* obj) REQUIRES_SHARED(Locks::mutator_lock_);
 
+  uint64_t GetFloatingGarbageInBytes() REQUIRES(!region_lock_);
+
   // Determine which regions to evacuate and tag them as
   // from-space. Tag the rest as unevacuated from-space.
   void SetFromSpace(accounting::ReadBarrierTable* rb_table,
