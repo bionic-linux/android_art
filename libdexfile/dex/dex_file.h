@@ -753,13 +753,11 @@ class DexFile {
   ALWAYS_INLINE const StandardDexFile* AsStandardDexFile() const;
   ALWAYS_INLINE const CompactDexFile* AsCompactDexFile() const;
 
-  ALWAYS_INLINE bool IsPlatformDexFile() const {
-    return is_platform_dex_;
-  }
+  ALWAYS_INLINE bool IsPlatformDexFile() const { return is_platform_dex_; }
+  ALWAYS_INLINE void SetIsPlatformDexFile() { is_platform_dex_ = true; }
 
-  ALWAYS_INLINE void SetIsPlatformDexFile() {
-    is_platform_dex_ = true;
-  }
+  ALWAYS_INLINE bool IsCorePlatformDexFile() const { return is_core_platform_dex_; }
+  ALWAYS_INLINE void SetIsCorePlatformDexFile() { is_core_platform_dex_ = true; }
 
   bool IsInMainSection(const void* addr) const {
     return Begin() <= addr && addr < Begin() + Size();
@@ -875,6 +873,8 @@ class DexFile {
 
   // If the dex file is located in /system/framework/.
   bool is_platform_dex_;
+
+  bool is_core_platform_dex_;
 
   friend class DexFileLoader;
   friend class DexFileVerifierTest;

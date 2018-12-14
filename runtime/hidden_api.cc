@@ -67,6 +67,19 @@ static inline std::ostream& operator<<(std::ostream& os, AccessMethod value) {
   return os;
 }
 
+static inline std::ostream& operator<<(std::ostream& os, const AccessContext& value)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (!value.GetClass().IsNull()) {
+    std::string tmp;
+    os << value.GetClass()->GetDescriptor(&tmp);
+  } else if (value.GetDexFile() != nullptr) {
+    os << value.GetDexFile()->GetLocation();
+  } else {
+    os << "<unknown_caller>";
+  }
+  return os;
+}
+
 namespace detail {
 
 // Do not change the values of items in this enum, as they are written to the
@@ -357,18 +370,39 @@ uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_) {
 }
 
 template<typename T>
-bool ShouldDenyAccessToMemberImpl(T* member,
-                                  hiddenapi::ApiList api_list,
-                                  AccessMethod access_method) {
+void MaybeReportCorePlatformApiViolation(T* member,
+                                         AccessMethod access_method,
+                                         const AccessContext& caller_context) {
+  if (access_method == AccessMethod::kNone) {
+    return;
+  }
+
+  MemberSignature sig(member);
+  LOG(ERROR) << "CorePlatformApi violation: " << Dumpable<MemberSignature>(sig)
+             << " from " << caller_context << " using " << access_method;
+}
+
+template<typename T>
+bool ShouldDenyAccessToMemberImpl(T* member, AccessMethod access_method) {
   DCHECK(member != nullptr);
 
   Runtime* runtime = Runtime::Current();
   EnforcementPolicy policy = runtime->GetHiddenApiEnforcementPolicy();
 
+  if (policy == EnforcementPolicy::kDisabled) {
+    return false;
+  }
+
+  // Decode hidden API access flags from the dex file.
+  // This is an O(N) operation scaling with the number of fields/methods
+  // in the class. Only do this on slow path and only do it once.
+  ApiList api_list = ApiList::FromDexFlags(detail::GetDexFlags(member));
+  DCHECK(api_list.IsValid());
+
   const bool deny_access =
       (policy == EnforcementPolicy::kEnabled) &&
-      IsSdkVersionSetAndMoreThan(runtime->GetTargetSdkVersion(),
-                                 api_list.GetMaxAllowedSdkVersion());
+      !IsSdkVersionSetAndLessThan(runtime->GetTargetSdkVersion(),
+                                  api_list.GetMaxAllowedSdkVersion());
 
   MemberSignature member_signature(member);
 
@@ -412,14 +446,15 @@ bool ShouldDenyAccessToMemberImpl(T* member,
   return deny_access;
 }
 
-// Need to instantiate this.
-template uint32_t GetDexFlags<ArtField>(ArtField* member);
-template uint32_t GetDexFlags<ArtMethod>(ArtMethod* member);
-template bool ShouldDenyAccessToMemberImpl<ArtField>(ArtField* member,
-                                                     hiddenapi::ApiList api_list,
-                                                     AccessMethod access_method);
+// Need to instantiate these.
+template void MaybeReportCorePlatformApiViolation(ArtField* member,
+                                                  AccessMethod access_method,
+                                                  const AccessContext& caller_context);
+template void MaybeReportCorePlatformApiViolation(ArtMethod* member,
+                                                  AccessMethod access_method,
+                                                  const AccessContext& caller_context);
+template bool ShouldDenyAccessToMemberImpl<ArtField>(ArtField* member, AccessMethod access_method);
 template bool ShouldDenyAccessToMemberImpl<ArtMethod>(ArtMethod* member,
-                                                      hiddenapi::ApiList api_list,
                                                       AccessMethod access_method);
 }  // namespace detail
 
