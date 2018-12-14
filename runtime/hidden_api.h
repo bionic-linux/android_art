@@ -54,48 +54,79 @@ enum class AccessMethod {
 
 struct AccessContext {
  public:
-  explicit AccessContext(bool is_trusted) : is_trusted_(is_trusted) {}
+  explicit AccessContext(bool is_trusted)
+      : context_group_(is_trusted ? Group::kTrusted : Group::kUntrusted) {}
 
-  explicit AccessContext(ObjPtr<mirror::Class> klass) : is_trusted_(GetIsTrusted(klass)) {}
+  explicit AccessContext(ObjPtr<mirror::Class> klass)
+      : klass_(klass),
+        dex_file_(GetDexFile(klass_->GetDexCache())),
+        context_group_(GetContextGroup(klass_, dex_file_)) {}
 
   AccessContext(ObjPtr<mirror::ClassLoader> class_loader, ObjPtr<mirror::DexCache> dex_cache)
-      : is_trusted_(GetIsTrusted(class_loader, dex_cache)) {}
+      : klass_(nullptr),
+        dex_file_(GetDexFile(dex_cache)),
+        context_group_(GetContextGroup(class_loader, dex_file_)) {}
 
-  bool IsTrusted() const { return is_trusted_; }
+  ALWAYS_INLINE
+  bool CanAlwaysAccess(const AccessContext& other) const {
+    return static_cast<uint32_t>(context_group_) <= static_cast<uint32_t>(other.context_group_);
+  }
+
+  bool IsCorePlatform() const { return context_group_ == Group::kCorePlatform; }
+  bool IsPlatform() const { return context_group_ == Group::kPlatform; }
+
+  const ObjPtr<mirror::Class> GetClass() const { return klass_; }
+  const DexFile* GetDexFile() const { return dex_file_; }
 
  private:
-  static bool GetIsTrusted(ObjPtr<mirror::ClassLoader> class_loader,
-                           ObjPtr<mirror::DexCache> dex_cache)
+  enum class Group : uint32_t {
+    kTrusted = 0,
+    kCorePlatform = kTrusted,
+    kPlatform,
+    kUntrusted,
+  };
+
+  static const DexFile* GetDexFile(ObjPtr<mirror::DexCache> dex_cache)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    return dex_cache.IsNull() ? nullptr : dex_cache->GetDexFile();
+  }
+
+  static Group GetContextGroup(ObjPtr<mirror::ClassLoader> class_loader, const DexFile* dex_file)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     // Trust if the caller is in is boot class loader.
     if (class_loader.IsNull()) {
-      return true;
+      return (dex_file != nullptr && dex_file->IsCorePlatformDexFile())
+          ? Group::kCorePlatform : Group::kPlatform;
     }
 
     // Trust if caller is in a platform dex file.
-    if (!dex_cache.IsNull()) {
-      const DexFile* dex_file = dex_cache->GetDexFile();
-      if (dex_file != nullptr && dex_file->IsPlatformDexFile()) {
-        return true;
-      }
+    if (dex_file != nullptr && dex_file->IsPlatformDexFile()) {
+      return Group::kPlatform;
     }
 
-    return false;
+    return Group::kUntrusted;
   }
 
-  static bool GetIsTrusted(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
+  static Group GetContextGroup(ObjPtr<mirror::Class> klass, const DexFile* dex_file)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
     DCHECK(!klass.IsNull());
 
-    if (klass->ShouldSkipHiddenApiChecks() && Runtime::Current()->IsJavaDebuggable()) {
+    // Check other aspects of the context.
+    Group group = GetContextGroup(klass->GetClassLoader(), dex_file);
+
+    if (group == Group::kUntrusted &&
+        klass->ShouldSkipHiddenApiChecks() &&
+        Runtime::Current()->IsJavaDebuggable()) {
       // Class is known, it is marked trusted and we are in debuggable mode.
-      return true;
+      group = Group::kTrusted;
     }
 
-    // Check other aspects of the context.
-    return GetIsTrusted(klass->GetClassLoader(), klass->GetDexCache());
+    return group;
   }
 
-  bool is_trusted_;
+  const ObjPtr<mirror::Class> klass_;
+  const DexFile* dex_file_;
+  const Group context_group_;
 };
 
 class ScopedHiddenApiEnforcementPolicySetting {
@@ -167,6 +198,12 @@ class MemberSignature {
 // NB: This is an O(N) operation, linear with the number of members in the class def.
 template<typename T>
 uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_);
+
+template<typename T>
+void MaybeReportCorePlatformApiViolation(T* member,
+                                         AccessMethod access_method,
+                                         const AccessContext& caller_context)
+    REQUIRES_SHARED(Locks::mutator_lock_);
 
 template<typename T>
 bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod access_method)
@@ -309,10 +346,11 @@ inline bool ShouldDenyAccessToMember(T* member,
                                      AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(member != nullptr);
+  const uint32_t runtime_flags = GetRuntimeFlags(member);
 
   // Exit early if member is public API. This flag is also set for non-boot class
   // path fields/methods.
-  if ((GetRuntimeFlags(member) & kAccPublicApi) != 0) {
+  if ((runtime_flags & kAccPublicApi) != 0) {
     return false;
   }
 
@@ -321,9 +359,21 @@ inline bool ShouldDenyAccessToMember(T* member,
     return false;
   }
 
+  const AccessContext caller_context = fn_get_access_context();
+  const AccessContext member_context(member->GetDeclaringClass());
+
   // Check if caller is exempted from access checks.
   // This can be *very* expensive. Save it for last.
-  if (fn_get_access_context().IsTrusted()) {
+  if (caller_context.CanAlwaysAccess(member_context)) {
+    return false;
+  }
+
+  if (caller_context.IsPlatform() && member_context.IsCorePlatform()) {
+    if ((runtime_flags & kAccCorePlatformApi) != 0) {
+      return false;
+    }
+
+    detail::MaybeReportCorePlatformApiViolation(member, access_method, caller_context);
     return false;
   }
 
