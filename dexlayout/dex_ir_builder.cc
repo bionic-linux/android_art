@@ -171,7 +171,7 @@ class BuilderMaps {
   void AddAnnotationsFromMapListSection(const DexFile& dex_file,
                                         uint32_t start_offset,
                                         uint32_t count);
-  void AddHiddenapiClassDataFromMapListSection(const DexFile& dex_file, uint32_t offset);
+  void AddHiddenapiItemFromMapListSection(const DexFile& dex_file, uint32_t offset);
 
   void CheckAndSetRemainingOffsets(const DexFile& dex_file, const Options& options);
 
@@ -410,9 +410,9 @@ void BuilderMaps::CheckAndSetRemainingOffsets(const DexFile& dex_file, const Opt
       case DexFile::kDexTypeAnnotationsDirectoryItem:
         header_->AnnotationsDirectoryItems().SetOffset(item->offset_);
         break;
-      case DexFile::kDexTypeHiddenapiClassData:
+      case DexFile::kDexTypeHiddenapiItem:
         header_->HiddenapiClassDatas().SetOffset(item->offset_);
-        AddHiddenapiClassDataFromMapListSection(dex_file, item->offset_);
+        AddHiddenapiItemFromMapListSection(dex_file, item->offset_);
         break;
       default:
         LOG(ERROR) << "Unknown map list item type.";
@@ -630,16 +630,14 @@ void BuilderMaps::AddAnnotationsFromMapListSection(const DexFile& dex_file,
   }
 }
 
-void BuilderMaps::AddHiddenapiClassDataFromMapListSection(const DexFile& dex_file,
-                                                          uint32_t offset) {
-  const DexFile::HiddenapiClassData* hiddenapi_class_data =
-      dex_file.GetHiddenapiClassDataAtOffset(offset);
-  DCHECK(hiddenapi_class_data == dex_file.GetHiddenapiClassData());
+void BuilderMaps::AddHiddenapiItemFromMapListSection(const DexFile& dex_file,  uint32_t offset) {
+  const DexFile::HiddenapiItem* hiddenapi_item = dex_file.GetHiddenapiItemAtOffset(offset);
+  DCHECK(hiddenapi_item == dex_file.GetHiddenapiItem());
 
   for (auto& class_def : header_->ClassDefs()) {
     uint32_t index = class_def->GetIndex();
     ClassData* class_data = class_def->GetClassData();
-    const uint8_t* ptr = hiddenapi_class_data->GetFlagsPointer(index);
+    const uint8_t* ptr = hiddenapi_item->GetDataForClass(index);
 
     std::unique_ptr<HiddenapiFlagsMap> flags = nullptr;
     if (ptr != nullptr) {
@@ -661,7 +659,7 @@ void BuilderMaps::AddHiddenapiClassDataFromMapListSection(const DexFile& dex_fil
 
     CreateAndAddIndexedItem(header_->HiddenapiClassDatas(),
                             header_->HiddenapiClassDatas().GetOffset() +
-                                hiddenapi_class_data->flags_offset_[index],
+                                hiddenapi_item->GetDataOffsetForClass(index),
                             index,
                             class_def.get(),
                             std::move(flags));

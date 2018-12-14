@@ -133,7 +133,7 @@ class DexFile {
     kDexTypeAnnotationItem           = 0x2004,
     kDexTypeEncodedArrayItem         = 0x2005,
     kDexTypeAnnotationsDirectoryItem = 0x2006,
-    kDexTypeHiddenapiClassData       = 0xF000,
+    kDexTypeHiddenapiItem            = 0xF000,
   };
 
   struct MapItem {
@@ -421,25 +421,33 @@ class DexFile {
     DISALLOW_COPY_AND_ASSIGN(AnnotationItem);
   };
 
-  struct HiddenapiClassData {
-    uint32_t size_;             // total size of the item
-    uint32_t flags_offset_[1];  // array of offsets from the beginning of this item,
-                                // indexed by class def index
+  struct HiddenapiItem {
+    uint32_t size_ = 0;               // total size of the item
+    uint32_t header_size_ = 0;        // size of header data
+    uint32_t dex_modifiers_ = 0;      // bit vector of modifiers for this dex file
+    uint32_t class_data_offset_ = 0;  // offset to start of per-class data
+
+    // Modifier denoting that this dex file is a member of core platform.
+    static constexpr uint32_t kMod_CorePlatform = 1 << 0;
+
+    uint32_t GetDataOffsetForClass(uint32_t class_def_idx) const {
+      return GetPointer<uint32_t>(class_data_offset_)[class_def_idx];
+    }
 
     // Returns a pointer to the beginning of a uleb128-stream of hiddenapi
     // flags for a class def of given index. Values are in the same order
     // as fields/methods in the class data. Returns null if the class does
     // not have class data.
-    const uint8_t* GetFlagsPointer(uint32_t class_def_idx) const {
-      if (flags_offset_[class_def_idx] == 0) {
-        return nullptr;
-      } else {
-        return reinterpret_cast<const uint8_t*>(this) + flags_offset_[class_def_idx];
-      }
+    const uint8_t* GetDataForClass(uint32_t class_def_idx) const {
+      uint32_t offset = GetDataOffsetForClass(class_def_idx);
+      return (offset == 0) ? nullptr : GetPointer<uint8_t>(offset);
     }
 
    private:
-    DISALLOW_COPY_AND_ASSIGN(HiddenapiClassData);
+    template<typename T>
+    const T* GetPointer(uint32_t off) const {
+      return reinterpret_cast<const T*>(reinterpret_cast<const uint8_t*>(this) + off);
+    }
   };
 
   enum AnnotationResultStyle {  // private
@@ -862,12 +870,12 @@ class DexFile {
     return DataPointer<AnnotationItem>(offset);
   }
 
-  ALWAYS_INLINE const HiddenapiClassData* GetHiddenapiClassDataAtOffset(uint32_t offset) const {
-    return DataPointer<HiddenapiClassData>(offset);
+  ALWAYS_INLINE const HiddenapiItem* GetHiddenapiItemAtOffset(uint32_t offset) const {
+    return DataPointer<HiddenapiItem>(offset);
   }
 
-  ALWAYS_INLINE const HiddenapiClassData* GetHiddenapiClassData() const {
-    return hiddenapi_class_data_;
+  ALWAYS_INLINE const HiddenapiItem* GetHiddenapiItem() const {
+    return hiddenapi_item_;
   }
 
   const AnnotationItem* GetAnnotationItem(const AnnotationSetItem* set_item, uint32_t index) const {
@@ -1109,7 +1117,7 @@ class DexFile {
 
   // Points to the base of the hiddenapi class data item_, or nullptr if the dex
   // file does not have one.
-  const HiddenapiClassData* hiddenapi_class_data_;
+  const HiddenapiItem* hiddenapi_item_;
 
   // If this dex file was loaded from an oat file, oat_dex_file_ contains a
   // pointer to the OatDexFile it was loaded from. Otherwise oat_dex_file_ is
