@@ -837,7 +837,7 @@ static void DexFile_setTrusted(JNIEnv* env, jclass, jobject j_cookie) {
   }
 
   for (const DexFile* dex_file : dex_files) {
-    const_cast<DexFile*>(dex_file)->SetIsPlatformDexFile();
+    const_cast<DexFile*>(dex_file)->SetHiddenapiDomain(hiddenapi::Domain::kCorePlatform);
   }
 }
 

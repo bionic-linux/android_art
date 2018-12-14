@@ -52,50 +52,81 @@ enum class AccessMethod {
   kLinking,
 };
 
-struct AccessContext {
+class AccessContext {
  public:
-  explicit AccessContext(bool is_trusted) : is_trusted_(is_trusted) {}
-
-  explicit AccessContext(ObjPtr<mirror::Class> klass) : is_trusted_(GetIsTrusted(klass)) {}
+  explicit AccessContext(bool is_trusted)
+      : klass_(nullptr),
+        dex_file_(nullptr),
+        domain_(Init(is_trusted)) {}
 
   AccessContext(ObjPtr<mirror::ClassLoader> class_loader, ObjPtr<mirror::DexCache> dex_cache)
-      : is_trusted_(GetIsTrusted(class_loader, dex_cache)) {}
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      : klass_(nullptr),
+        dex_file_(GetDexFileFromDexCache(dex_cache)),
+        domain_(Init(class_loader, dex_file_)) {}
 
-  bool IsTrusted() const { return is_trusted_; }
+  explicit AccessContext(ObjPtr<mirror::Class> klass)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      : klass_(klass),
+        dex_file_(GetDexFileFromDexCache(klass->GetDexCache())),
+        domain_(Init(klass, dex_file_)) {}
+
+  ObjPtr<mirror::Class> GetClass() const { return klass_; }
+  const DexFile* GetDexFile() const { return dex_file_; }
+  Domain GetDomain() const { return domain_; }
+
+  bool IsUntrustedDomain() const { return domain_ == kUntrustedDomain; }
+
+  bool CanAlwaysAccess(const AccessContext& callee) const {
+    return static_cast<uint32_t>(domain_) <= static_cast<uint32_t>(callee.domain_);
+  }
 
  private:
-  static bool GetIsTrusted(ObjPtr<mirror::ClassLoader> class_loader,
-                           ObjPtr<mirror::DexCache> dex_cache)
+  static constexpr Domain kFullyTrustedDomain = Domain::kCorePlatform;
+  static constexpr Domain kUntrustedDomain = Domain::kApplication;
+
+  static const DexFile* GetDexFileFromDexCache(ObjPtr<mirror::DexCache> dex_cache)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    // Trust if the caller is in is boot class loader.
-    if (class_loader.IsNull()) {
-      return true;
-    }
-
-    // Trust if caller is in a platform dex file.
-    if (!dex_cache.IsNull()) {
-      const DexFile* dex_file = dex_cache->GetDexFile();
-      if (dex_file != nullptr && dex_file->IsPlatformDexFile()) {
-        return true;
-      }
-    }
-
-    return false;
+    return dex_cache.IsNull() ? nullptr : dex_cache->GetDexFile();
   }
 
-  static bool GetIsTrusted(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_) {
-    DCHECK(!klass.IsNull());
+  static Domain Init(bool is_trusted) {
+    return is_trusted ? kFullyTrustedDomain : kUntrustedDomain;
+  }
 
-    if (klass->ShouldSkipHiddenApiChecks() && Runtime::Current()->IsJavaDebuggable()) {
-      // Class is known, it is marked trusted and we are in debuggable mode.
-      return true;
+  static Domain Init(ObjPtr<mirror::ClassLoader> class_loader, const DexFile* dex_file)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    if (dex_file == nullptr) {
+      return Init(/* is_trusted= */ class_loader.IsNull());
     }
 
+    Domain dex_domain = dex_file->GetHiddenapiDomain();
+    if (class_loader.IsNull() && dex_domain == kUntrustedDomain) {
+      LOG(WARNING) << "DexFile " << dex_file->GetLocation() << " is in boot classpath "
+                   << "but is assigned untrusted domain";
+      dex_domain = Domain::kPlatform;
+    }
+    return dex_domain;
+  }
+
+  static Domain Init(ObjPtr<mirror::Class> klass, const DexFile* dex_file)
+      REQUIRES_SHARED(Locks::mutator_lock_) {
     // Check other aspects of the context.
-    return GetIsTrusted(klass->GetClassLoader(), klass->GetDexCache());
+    Domain domain = Init(klass->GetClassLoader(), dex_file);
+
+    if (domain == kUntrustedDomain &&
+        klass->ShouldSkipHiddenApiChecks() &&
+        Runtime::Current()->IsJavaDebuggable()) {
+      // Class is known, it is marked trusted and we are in debuggable mode.
+      domain = Init(/* is_trusted_domain */ true);
+    }
+
+    return domain;
   }
 
-  bool is_trusted_;
+  const ObjPtr<mirror::Class> klass_;
+  const DexFile* const dex_file_;
+  const Domain domain_;
 };
 
 class ScopedHiddenApiEnforcementPolicySetting {
@@ -167,6 +198,12 @@ class MemberSignature {
 // NB: This is an O(N) operation, linear with the number of members in the class def.
 template<typename T>
 uint32_t GetDexFlags(T* member) REQUIRES_SHARED(Locks::mutator_lock_);
+
+template<typename T>
+void MaybeReportCorePlatformApiViolation(T* member,
+                                         const AccessContext& caller_context,
+                                         AccessMethod access_method)
+    REQUIRES_SHARED(Locks::mutator_lock_);
 
 template<typename T>
 bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod access_method)
@@ -309,45 +346,82 @@ inline bool ShouldDenyAccessToMember(T* member,
                                      AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(member != nullptr);
+  const uint32_t runtime_flags = GetRuntimeFlags(member);
 
   // Exit early if member is public API. This flag is also set for non-boot class
   // path fields/methods.
-  if ((GetRuntimeFlags(member) & kAccPublicApi) != 0) {
+  if ((runtime_flags & kAccPublicApi) != 0) {
     return false;
   }
 
-  // Exit early if access checks are completely disabled.
-  if (Runtime::Current()->GetHiddenApiEnforcementPolicy() == EnforcementPolicy::kDisabled) {
+  // Determine which domain the caller and callee belong to.
+  // This can be *very* expensive. This is why ShouldDenyAccessToMember
+  // should not be called on every individual access.
+  const AccessContext caller_context = fn_get_access_context();
+  const AccessContext callee_context(member->GetDeclaringClass());
+
+  // Non-boot classpath callers should have exited early.
+  DCHECK(!callee_context.IsUntrustedDomain());
+
+  // Check if the caller is always allowed to access members in the callee context.
+  if (caller_context.CanAlwaysAccess(callee_context)) {
     return false;
   }
 
-  // Check if caller is exempted from access checks.
-  // This can be *very* expensive. Save it for last.
-  if (fn_get_access_context().IsTrusted()) {
-    return false;
+  // Check if this is platform accessing core platform. We may warn if `member` is
+  // not part of core platform API.
+  switch (caller_context.GetDomain()) {
+    case Domain::kApplication: {
+      DCHECK(!callee_context.IsUntrustedDomain());
+
+      // Exit early if access checks are completely disabled.
+      EnforcementPolicy policy = Runtime::Current()->GetHiddenApiEnforcementPolicy();
+      if (policy == EnforcementPolicy::kDisabled) {
+        return false;
+      }
+
+      // Decode hidden API access flags from the dex file.
+      // This is an O(N) operation scaling with the number of fields/methods
+      // in the class. Only do this on slow path and only do it once.
+      ApiList api_list(detail::GetDexFlags(member));
+      DCHECK(api_list.IsValid());
+
+      // Member is hidden and caller is not exempted. Enter slow path.
+      return detail::ShouldDenyAccessToMemberImpl(member, api_list, access_method);
+    }
+
+    case Domain::kPlatform: {
+      DCHECK(callee_context.GetDomain() == Domain::kCorePlatform);
+
+      // Member is part of core platform API. Accessing it is allowed.
+      if ((runtime_flags & kAccCorePlatformApi) != 0) {
+        return false;
+      }
+
+      EnforcementPolicy policy = Runtime::Current()->GetCorePlatformApiEnforcementPolicy();
+      if (policy == EnforcementPolicy::kDisabled) {
+        return false;
+      }
+
+      detail::MaybeReportCorePlatformApiViolation(member, caller_context, access_method);
+      return policy == EnforcementPolicy::kEnabled;
+    }
+
+    case Domain::kCorePlatform: {
+      LOG(FATAL) << "CorePlatform domain should be allowed to access all domains";
+      UNREACHABLE();
+    }
   }
-
-  // Decode hidden API access flags from the dex file.
-  // This is an O(N) operation scaling with the number of fields/methods
-  // in the class. Only do this on slow path and only do it once.
-  ApiList api_list(detail::GetDexFlags(member));
-  DCHECK(api_list.IsValid());
-
-  // Member is hidden and caller is not exempted. Enter slow path.
-  return detail::ShouldDenyAccessToMemberImpl(member, api_list, access_method);
 }
 
 // Helper method for callers where access context can be determined beforehand.
 // Wraps AccessContext in a lambda and passes it to the real ShouldDenyAccessToMember.
 template<typename T>
 inline bool ShouldDenyAccessToMember(T* member,
-                                     AccessContext access_context,
+                                     const AccessContext& access_context,
                                      AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
-  return ShouldDenyAccessToMember(
-      member,
-      [&] () REQUIRES_SHARED(Locks::mutator_lock_) { return access_context; },
-      access_method);
+  return ShouldDenyAccessToMember(member, [&]() { return access_context; }, access_method);
 }
 
 }  // namespace hiddenapi
