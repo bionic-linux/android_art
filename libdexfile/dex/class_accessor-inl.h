@@ -54,9 +54,9 @@ inline ClassAccessor::ClassAccessor(const DexFile& dex_file,
       num_direct_methods_(ptr_pos_ != nullptr ? DecodeUnsignedLeb128(&ptr_pos_) : 0u),
       num_virtual_methods_(ptr_pos_ != nullptr ? DecodeUnsignedLeb128(&ptr_pos_) : 0u) {
   if (parse_hiddenapi_class_data && class_def_index != DexFile::kDexNoIndex32) {
-    const DexFile::HiddenapiClassData* hiddenapi_class_data = dex_file.GetHiddenapiClassData();
-    if (hiddenapi_class_data != nullptr) {
-      hiddenapi_ptr_pos_ = hiddenapi_class_data->GetFlagsPointer(class_def_index);
+    const DexFile::HiddenapiItem* hiddenapi_item = dex_file.GetHiddenapiItem();
+    if (hiddenapi_item != nullptr) {
+      hiddenapi_ptr_pos_ = hiddenapi_item->GetDataForClass(class_def_index);
     }
   }
 }
