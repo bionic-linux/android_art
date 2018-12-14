@@ -134,7 +134,7 @@ class DexFile {
     kDexTypeAnnotationItem           = 0x2004,
     kDexTypeEncodedArrayItem         = 0x2005,
     kDexTypeAnnotationsDirectoryItem = 0x2006,
-    kDexTypeHiddenapiClassData       = 0xF000,
+    kDexTypeHiddenapiItem            = 0xF000,
   };
 
   // MethodHandle Types
@@ -608,13 +608,12 @@ class DexFile {
     return DataPointer<dex::AnnotationItem>(offset);
   }
 
-  ALWAYS_INLINE const dex::HiddenapiClassData* GetHiddenapiClassDataAtOffset(uint32_t offset)
-      const {
-    return DataPointer<dex::HiddenapiClassData>(offset);
+  ALWAYS_INLINE const dex::HiddenapiItem* GetHiddenapiItemAtOffset(uint32_t offset) const {
+    return DataPointer<dex::HiddenapiItem>(offset);
   }
 
-  ALWAYS_INLINE const dex::HiddenapiClassData* GetHiddenapiClassData() const {
-    return hiddenapi_class_data_;
+  ALWAYS_INLINE const dex::HiddenapiItem* GetHiddenapiItem() const {
+    return hiddenapi_item_;
   }
 
   const dex::AnnotationItem* GetAnnotationItem(const dex::AnnotationSetItem* set_item,
@@ -859,9 +858,9 @@ class DexFile {
   // Number of elements in the call sites list.
   size_t num_call_site_ids_;
 
-  // Points to the base of the hiddenapi class data item_, or nullptr if the dex
+  // Points to the base of the hiddenapi data item, or nullptr if the dex
   // file does not have one.
-  const dex::HiddenapiClassData* hiddenapi_class_data_;
+  const dex::HiddenapiItem* hiddenapi_item_;
 
   // If this dex file was loaded from an oat file, oat_dex_file_ contains a
   // pointer to the OatDexFile it was loaded from. Otherwise oat_dex_file_ is
