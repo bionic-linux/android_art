@@ -83,6 +83,7 @@ NO_RETURN static void Usage(const char* fmt, ...) {
   UsageError("  Command \"list\": dump lists of public and private API");
   UsageError("    --boot-dex=<filename>: dex file which belongs to boot class path");
   UsageError("    --public-stub-classpath=<filenames>:");
+  UsageError("    --core-platform-stub-classpath=<filenames>:");
   UsageError("        colon-separated list of dex/apk files which form API stubs of boot");
   UsageError("        classpath. Multiple classpaths can be specified");
   UsageError("");
@@ -602,9 +603,9 @@ class HiddenapiClassDataBuilder final {
   // between BeginClassDef and EndClassDef in the order of appearance of
   // fields/methods in the class data stream.
   void WriteFlags(ApiList flags) {
-    uint32_t uint_flags = flags.GetIntValue();
-    EncodeUnsignedLeb128(&data_, uint_flags);
-    class_def_has_non_zero_flags_ |= (uint_flags != 0u);
+    uint32_t dex_flags = flags.ToDexFlags();
+    EncodeUnsignedLeb128(&data_, dex_flags);
+    class_def_has_non_zero_flags_ |= (dex_flags != 0u);
   }
 
   // Return backing data, assuming that all flags have been written.
@@ -909,6 +910,10 @@ class HiddenApi final {
             stub_classpaths_.push_back(std::make_pair(
                 option.substr(strlen("--public-stub-classpath=")).ToString(),
                 ApiList::Whitelist()));
+          } else if (option.starts_with("--core-platform-stub-classpath=")) {
+            stub_classpaths_.push_back(std::make_pair(
+                option.substr(strlen("--core-platform-stub-classpath=")).ToString(),
+                ApiList::CorePlatformApi()));
           } else if (option.starts_with("--out-api-flags=")) {
             api_flags_path_ = option.substr(strlen("--out-api-flags=")).ToString();
           } else {
@@ -984,15 +989,19 @@ class HiddenApi final {
 
     for (std::string line; std::getline(api_file, line);) {
       std::vector<std::string> values = android::base::Split(line, ",");
-      CHECK_EQ(values.size(), 2u) << "Currently only signature and one flag are supported";
 
       const std::string& signature = values[0];
       CHECK(api_flag_map.find(signature) == api_flag_map.end()) << "Duplicate entry: " << signature;
 
-      const std::string& flag_str = values[1];
-      ApiList membership = ApiList::FromName(flag_str);
-      CHECK(membership.IsValid()) << "Unknown ApiList name: " << flag_str;
+      ApiList membership;
+      for (size_t i = 1; i < values.size(); ++i) {
+        const std::string& flag_str = values[i];
+        ApiList flag = ApiList::FromName(flag_str);
+        CHECK(!flag.IsEmpty()) << "Unknown flag: " << flag_str;
+        membership |= flag;
+      }
 
+      CHECK(membership.IsValid()) << "Invalid flags: " << line;
       api_flag_map.emplace(signature, membership);
     }
 
@@ -1022,7 +1031,7 @@ class HiddenApi final {
 
     // Mark all boot dex members private.
     boot_classpath.ForEachDexMember([&](const DexMember& boot_member) {
-      boot_members[boot_member.GetApiEntry()] = ApiList::Invalid();
+      boot_members[boot_member.GetApiEntry()] = ApiList::Empty();
     });
 
     // Resolve each SDK dex member against the framework and mark it white.
@@ -1044,11 +1053,10 @@ class HiddenApi final {
                   std::string entry = boot_member.GetApiEntry();
                   auto it = boot_members.find(entry);
                   CHECK(it != boot_members.end());
-                  if (it->second.IsValid()) {
-                    CHECK_EQ(it->second, stub_api_list);
+                  if (it->second.Contains(stub_api_list)) {
                     return false;  // has been marked before
                   } else {
-                    it->second = stub_api_list;
+                    it->second |= stub_api_list;
                     return true;  // marked for the first time
                   }
                 });
@@ -1066,10 +1074,10 @@ class HiddenApi final {
     // Write into public/private API files.
     std::ofstream file_flags(api_flags_path_.c_str());
     for (const auto& entry : boot_members) {
-      if (entry.second.IsValid()) {
-        file_flags << entry.first << "," << entry.second << std::endl;
-      } else {
+      if (entry.second.IsEmpty()) {
         file_flags << entry.first << std::endl;
+      } else {
+        file_flags << entry.first << "," << entry.second << std::endl;
       }
     }
     file_flags.close();
