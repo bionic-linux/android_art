@@ -614,8 +614,12 @@ void DexLayout::DumpFileHeader() {
   fprintf(out_file_, "class_defs_off      : %d (0x%06x)\n",
           header_->ClassDefs().GetOffset(), header_->ClassDefs().GetOffset());
   fprintf(out_file_, "data_size           : %d\n", header_->DataSize());
-  fprintf(out_file_, "data_off            : %d (0x%06x)\n\n",
+  fprintf(out_file_, "data_off            : %d (0x%06x)\n",
           header_->DataOffset(), header_->DataOffset());
+  if (header_->HiddenapiModifiers() != 0) {
+    fprintf(out_file_, "hiddenapi_modifiers : 0x%06x\n", header_->HiddenapiModifiers());
+  }
+  fprintf(out_file_, "\n");
 }
 
 /*
