@@ -119,7 +119,7 @@ DexFile::DexFile(const uint8_t* base,
       num_method_handles_(0),
       call_site_ids_(nullptr),
       num_call_site_ids_(0),
-      hiddenapi_class_data_(nullptr),
+      hiddenapi_item_(nullptr),
       oat_dex_file_(oat_dex_file),
       container_(std::move(container)),
       is_compact_dex_(is_compact_dex),
@@ -195,8 +195,8 @@ void DexFile::InitializeSectionsFromMapList() {
     } else if (map_item.type_ == kDexTypeCallSiteIdItem) {
       call_site_ids_ = reinterpret_cast<const CallSiteIdItem*>(Begin() + map_item.offset_);
       num_call_site_ids_ = map_item.size_;
-    } else if (map_item.type_ == kDexTypeHiddenapiClassData) {
-      hiddenapi_class_data_ = GetHiddenapiClassDataAtOffset(map_item.offset_);
+    } else if (map_item.type_ == kDexTypeHiddenapiItem) {
+      hiddenapi_item_ = GetHiddenapiItemAtOffset(map_item.offset_);
     } else {
       // Pointers to other sections are not necessary to retain in the DexFile struct.
       // Other items have pointers directly into their data.

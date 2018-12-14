@@ -462,27 +462,28 @@ void DexWriter::WriteAnnotationsDirectories(Stream* stream) {
   }
 }
 
-void DexWriter::WriteHiddenapiClassData(Stream* stream) {
+void DexWriter::WriteHiddenapiItem(Stream* stream) {
   if (header_->HiddenapiClassDatas().Empty()) {
     return;
   }
   DCHECK_EQ(header_->HiddenapiClassDatas().Size(), header_->ClassDefs().Size());
 
-  stream->AlignTo(SectionAlignment(DexFile::kDexTypeHiddenapiClassData));
+  stream->AlignTo(SectionAlignment(DexFile::kDexTypeHiddenapiItem));
   const uint32_t start = stream->Tell();
 
-  // Compute offsets for each class def and write the header.
-  // data_header[0]: total size of the section
-  // data_header[i + 1]: offset of class def[i] from the beginning of the section,
-  //                     or zero if no data
-  std::vector<uint32_t> data_header(header_->ClassDefs().Size() + 1, 0);
-  data_header[0] = sizeof(uint32_t) * (header_->ClassDefs().Size() + 1);
+  DexFile::HiddenapiItem item_header;
+  item_header.size_ = item_header.header_size_ = item_header.class_data_offset_ =
+      sizeof(DexFile::HiddenapiItem);
+
+  std::vector<uint32_t> class_data_header(header_->ClassDefs().Size(), 0);
+  item_header.size_ += sizeof(uint32_t) * class_data_header.size();
   for (uint32_t i = 0; i < header_->ClassDefs().Size(); ++i) {
-    uint32_t item_size = header_->HiddenapiClassDatas()[i]->ItemSize();
-    data_header[i + 1] = item_size == 0u ? 0 : data_header[0];
-    data_header[0] += item_size;
+    uint32_t class_data_size = header_->HiddenapiClassDatas()[i]->ItemSize();
+    class_data_header[i] = class_data_size == 0u ? 0 : item_header.size_;
+    item_header.size_ += class_data_size;
   }
-  stream->Write(data_header.data(), sizeof(uint32_t) * data_header.size());
+  stream->Write(&item_header, item_header.header_size_);
+  stream->Write(class_data_header.data(), sizeof(uint32_t) * class_data_header.size());
 
   // Write class data streams.
   for (uint32_t i = 0; i < header_->ClassDefs().Size(); ++i) {
@@ -490,10 +491,10 @@ void DexWriter::WriteHiddenapiClassData(Stream* stream) {
     const auto& item = header_->HiddenapiClassDatas()[i];
     DCHECK(item->GetClassDef() == class_def);
 
-    if (data_header[i + 1] != 0u) {
+    if (class_data_header[i] != 0u) {
       dex_ir::ClassData* class_data = class_def->GetClassData();
       DCHECK(class_data != nullptr);
-      DCHECK_EQ(data_header[i + 1], stream->Tell() - start);
+      DCHECK_EQ(class_data_header[i], stream->Tell() - start);
       for (const dex_ir::FieldItem& field : *class_data->StaticFields()) {
         stream->WriteUleb128(item->GetFlags(&field));
       }
@@ -508,7 +509,7 @@ void DexWriter::WriteHiddenapiClassData(Stream* stream) {
       }
     }
   }
-  DCHECK_EQ(stream->Tell() - start, data_header[0]);
+  DCHECK_EQ(stream->Tell() - start, item_header.size_);
 
   if (compute_offsets_ && start != stream->Tell()) {
     header_->HiddenapiClassDatas().SetOffset(start);
@@ -783,7 +784,7 @@ void DexWriter::GenerateAndWriteMapItems(Stream* stream) {
   queue.AddIfNotEmpty(MapItem(DexFile::kDexTypeAnnotationsDirectoryItem,
                               header_->AnnotationsDirectoryItems().Size(),
                               header_->AnnotationsDirectoryItems().GetOffset()));
-  queue.AddIfNotEmpty(MapItem(DexFile::kDexTypeHiddenapiClassData,
+  queue.AddIfNotEmpty(MapItem(DexFile::kDexTypeHiddenapiItem,
                               header_->HiddenapiClassDatas().Empty() ? 0u : 1u,
                               header_->HiddenapiClassDatas().GetOffset()));
   WriteMapItems(stream, &queue);
@@ -885,7 +886,7 @@ bool DexWriter::Write(DexContainer* output, std::string* error_msg) {
   WriteTypeLists(stream);
   WriteClassDatas(stream);
   WriteStringDatas(stream);
-  WriteHiddenapiClassData(stream);
+  WriteHiddenapiItem(stream);
 
   // Write delayed id sections that depend on data sections.
   {
