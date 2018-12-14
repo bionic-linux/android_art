@@ -182,8 +182,14 @@ ALWAYS_INLINE inline uint32_t CreateRuntimeFlags(const ClassAccessor::BaseItem& 
   DCHECK(AreValidDexFlags(dex_flags));
 
   ApiList api_list = ApiList::FromDexFlags(dex_flags);
-  if (api_list == ApiList::Whitelist()) {
+  if (api_list.Contains(ApiList::Whitelist())) {
     runtime_flags |= kAccPublicApi;
+  } else {
+    // Only add domain-specific flags for non-public members.
+    // This simplifies hardcoded values for intrinsics.
+    if (api_list.Contains(ApiList::CorePlatformApi())) {
+      runtime_flags |= kAccCorePlatformApi;
+    }
   }
 
   DCHECK_EQ(runtime_flags & kAccHiddenapiBits, runtime_flags)
