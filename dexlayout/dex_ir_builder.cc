@@ -634,6 +634,8 @@ void BuilderMaps::AddHiddenapiItemFromMapListSection(const DexFile& dex_file,  u
   const DexFile::HiddenapiItem* hiddenapi_item = dex_file.GetHiddenapiItemAtOffset(offset);
   DCHECK(hiddenapi_item == dex_file.GetHiddenapiItem());
 
+  header_->SetHiddenapiModifiers(hiddenapi_item->dex_modifiers_);
+
   for (auto& class_def : header_->ClassDefs()) {
     uint32_t index = class_def->GetIndex();
     ClassData* class_data = class_def->GetClassData();

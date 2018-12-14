@@ -463,17 +463,25 @@ void DexWriter::WriteAnnotationsDirectories(Stream* stream) {
 }
 
 void DexWriter::WriteHiddenapiItem(Stream* stream) {
-  if (header_->HiddenapiClassDatas().Empty()) {
+  if (!header_->ShouldGenerateHiddenapiItem()) {
     return;
   }
-  DCHECK_EQ(header_->HiddenapiClassDatas().Size(), header_->ClassDefs().Size());
 
   stream->AlignTo(SectionAlignment(DexFile::kDexTypeHiddenapiItem));
   const uint32_t start = stream->Tell();
 
   DexFile::HiddenapiItem item_header;
-  item_header.size_ = item_header.header_size_ = item_header.class_data_offset_ =
-      sizeof(DexFile::HiddenapiItem);
+  item_header.size_ = item_header.header_size_ = sizeof(DexFile::HiddenapiItem);
+  item_header.dex_modifiers_ = header_->HiddenapiModifiers();
+
+  if (header_->HiddenapiClassDatas().Empty()) {
+    item_header.class_data_offset_ = 0;
+    stream->Write(&item_header, item_header.header_size_);
+    return;
+  }
+
+  DCHECK_EQ(header_->HiddenapiClassDatas().Size(), header_->ClassDefs().Size());
+  item_header.class_data_offset_ = item_header.header_size_;
 
   std::vector<uint32_t> class_data_header(header_->ClassDefs().Size(), 0);
   item_header.size_ += sizeof(uint32_t) * class_data_header.size();
@@ -482,6 +490,7 @@ void DexWriter::WriteHiddenapiItem(Stream* stream) {
     class_data_header[i] = class_data_size == 0u ? 0 : item_header.size_;
     item_header.size_ += class_data_size;
   }
+
   stream->Write(&item_header, item_header.header_size_);
   stream->Write(class_data_header.data(), sizeof(uint32_t) * class_data_header.size());
 
