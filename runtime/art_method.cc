@@ -726,7 +726,7 @@ void ArtMethod::SetIntrinsic(uint32_t intrinsic) {
     // these because (a) warnings on greylist do not change semantics, and
     // (b) only VarHandle intrinsics are blacklisted at the moment and they
     // should not be used outside tests with disabled API checks.
-    if ((hiddenapi_flags & kAccHiddenapiBits) == 0) {
+    if ((hiddenapi_flags & kAccHiddenapiBits) != 0) {
       DCHECK_EQ(hiddenapi_flags, hiddenapi::GetRuntimeFlags(this)) << PrettyMethod();
     }
   } else {
