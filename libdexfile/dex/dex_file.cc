@@ -123,7 +123,8 @@ DexFile::DexFile(const uint8_t* base,
       oat_dex_file_(oat_dex_file),
       container_(std::move(container)),
       is_compact_dex_(is_compact_dex),
-      is_platform_dex_(false) {
+      is_platform_dex_(false),
+      is_core_platform_dex_(false) {
   CHECK(begin_ != nullptr) << GetLocation();
   CHECK_GT(size_, 0U) << GetLocation();
   // Check base (=header) alignment.
@@ -197,6 +198,8 @@ void DexFile::InitializeSectionsFromMapList() {
       num_call_site_ids_ = map_item.size_;
     } else if (map_item.type_ == kDexTypeHiddenapiItem) {
       hiddenapi_item_ = GetHiddenapiItemAtOffset(map_item.offset_);
+      is_core_platform_dex_ =
+          ((hiddenapi_item_->dex_modifiers_ & dex::HiddenapiItem::kMod_CorePlatform) != 0);
     } else {
       // Pointers to other sections are not necessary to retain in the DexFile struct.
       // Other items have pointers directly into their data.
