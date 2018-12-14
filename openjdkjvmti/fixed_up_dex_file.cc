@@ -146,9 +146,7 @@ std::unique_ptr<FixedUpDexFile> FixedUpDexFile::Create(const art::DexFile& origi
     return nullptr;
   }
 
-  if (original.IsPlatformDexFile()) {
-    const_cast<art::DexFile*>(new_dex_file.get())->SetIsPlatformDexFile();
-  }
+  const_cast<art::DexFile*>(new_dex_file.get())->SetHiddenapiDomain(original.GetHiddenapiDomain());
 
   DoDexUnquicken(*new_dex_file, original);
 
