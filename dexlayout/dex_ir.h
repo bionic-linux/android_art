@@ -511,6 +511,13 @@ class Header : public Item {
     return support_default_methods_;
   }
 
+  uint32_t HiddenapiModifiers() const { return hiddenapi_modifiers_; }
+  void SetHiddenapiModifiers(uint32_t modifiers) { hiddenapi_modifiers_ = modifiers; }
+
+  bool ShouldGenerateHiddenapiItem() const {
+    return (hiddenapi_modifiers_ != 0) || !hiddenapi_class_datas_.Empty();
+  }
+
  private:
   uint8_t magic_[8];
   uint32_t checksum_;
@@ -522,6 +529,7 @@ class Header : public Item {
   uint32_t link_offset_;
   uint32_t data_size_;
   uint32_t data_offset_;
+  uint32_t hiddenapi_modifiers_;
   const bool support_default_methods_;
 
   void ConstructorHelper(const uint8_t* magic,
@@ -542,6 +550,7 @@ class Header : public Item {
     link_offset_ = link_offset;
     data_size_ = data_size;
     data_offset_ = data_offset;
+    hiddenapi_modifiers_ = 0;
     memcpy(magic_, magic, sizeof(magic_));
     memcpy(signature_, signature, sizeof(signature_));
   }
