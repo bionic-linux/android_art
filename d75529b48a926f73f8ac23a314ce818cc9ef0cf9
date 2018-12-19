@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb985639_3e798e60",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-12-19T21:26:07Z",
+      "side": 1,
+      "message": "Can we include the units here? \"per CPU sec\"? The unit should probably be scaled to be seconds, if it\u0027s not currently. Or you could say e.g. MBytes / CPU sec.",
+      "range": {
+        "startLine": 344,
+        "startChar": 57,
+        "endLine": 344,
+        "endChar": 70
+      },
+      "revId": "d75529b48a926f73f8ac23a314ce818cc9ef0cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
