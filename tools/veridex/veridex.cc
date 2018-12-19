@@ -126,6 +126,7 @@ class Veridex {
   static int Run(int argc, char** argv) {
     VeridexOptions options;
     ParseArgs(&options, argc, argv);
+    android::base::InitLogging(argv);
 
     if (!options.dex_file) {
       LOG(ERROR) << "Required argument '" << kDexFileOption << "' not provided.";
@@ -290,7 +291,7 @@ class Veridex {
                                  error_msg,
                                  dex_files)) {
       if (error_code == DexFileLoaderErrorCode::kEntryNotFound) {
-        LOG(INFO) << "No .dex found, skipping analysis.";
+        LOG(DEBUG) << "No .dex found, skipping analysis.";
         return true;
       }
       return false;
