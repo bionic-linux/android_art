@@ -290,7 +290,7 @@ class Veridex {
                                  error_msg,
                                  dex_files)) {
       if (error_code == DexFileLoaderErrorCode::kEntryNotFound) {
-        LOG(INFO) << "No .dex found, skipping analysis.";
+        LOG(DEBUG) << "No .dex found, skipping analysis.";
         return true;
       }
       return false;
