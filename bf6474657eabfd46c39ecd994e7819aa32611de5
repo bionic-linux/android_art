@@ -46,6 +46,30 @@
       "revId": "bf6474657eabfd46c39ecd994e7819aa32611de5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24cfc616_8736a9b7",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-19T16:04:00Z",
+      "side": 1,
+      "message": "I see. The log message might read surprising though, there\u0027s nothing \"erroneous\" with the class proper, just that it could not be fully resolved. Maybe change it to \"Removing class that could not be resolved..\" ?",
+      "parentUuid": "508700ca_89c570f9",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 39
+      },
+      "revId": "bf6474657eabfd46c39ecd994e7819aa32611de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
