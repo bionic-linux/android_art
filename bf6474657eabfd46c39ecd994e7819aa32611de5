@@ -22,6 +22,30 @@
       "revId": "bf6474657eabfd46c39ecd994e7819aa32611de5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508700ca_89c570f9",
+        "filename": "compiler/driver/compiler_driver.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-19T15:42:14Z",
+      "side": 1,
+      "message": "We have tried to resolve the class, therefore it is either resolved or \"unresolved erroneous\".",
+      "parentUuid": "8f713caf_2522378b",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1239,
+        "endChar": 39
+      },
+      "revId": "bf6474657eabfd46c39ecd994e7819aa32611de5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
