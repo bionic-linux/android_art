@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f3405d_d68b8627",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2018-12-20T18:55:45Z",
+      "side": 1,
+      "message": "This is OK, and much clearer, though it seems a bit verbose. I might use:\n\"Average bytes allocated at GC start, weighted by CPU time between GCs\".",
+      "range": {
+        "startLine": 344,
+        "startChar": 25,
+        "endLine": 346,
+        "endChar": 31
+      },
+      "revId": "2300b3a1a726540c1a6f19ccf7eafbcd0675b2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
