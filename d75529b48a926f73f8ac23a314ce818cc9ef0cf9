@@ -46,6 +46,30 @@
       "revId": "d75529b48a926f73f8ac23a314ce818cc9ef0cf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d9bb33_dd28a37b",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-20T14:31:57Z",
+      "side": 1,
+      "message": "Instead of\n\n  \"Pre GC weighted bytes allocated over CPU time: \"\n\nmaybe say:\n\n  \"Average bytes allocated between two GC cycles, weighted by the process CPU time elapsed between the beginning of two GC consecutive GC cycles: \"\n\n(and likewise for the \"post\" version of this metric)?",
+      "parentUuid": "431c17f4_4fc8a8bd",
+      "range": {
+        "startLine": 344,
+        "startChar": 57,
+        "endLine": 344,
+        "endChar": 70
+      },
+      "revId": "d75529b48a926f73f8ac23a314ce818cc9ef0cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
