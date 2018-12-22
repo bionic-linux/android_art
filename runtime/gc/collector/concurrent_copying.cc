@@ -2167,8 +2167,9 @@ inline void ConcurrentCopying::ProcessMarkStackRef(mirror::Object* to_ref) {
       }
       break;
     case space::RegionSpace::RegionType::kRegionTypeToSpace:
-      if (kEnableGenerationalConcurrentCopyingCollection) {
-        // Copied to to-space, set the bit so that the next GC can scan objects.
+      if (kEnableGenerationalConcurrentCopyingCollection
+          && !region_space_->IsInAgedRegion(to_ref)) {
+        // Copied to old-generation, set the bit so that the next GC can scan objects.
         region_space_bitmap_->Set(to_ref);
       }
       perform_scan = true;
@@ -3254,8 +3255,14 @@ mirror::Object* ConcurrentCopying::Copy(Thread* const self,
   size_t bytes_allocated = 0U;
   size_t dummy;
   bool fall_back_to_non_moving = false;
-  mirror::Object* to_ref = region_space_->AllocNonvirtual</*kForEvac=*/ true>(
-      region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
+  mirror::Object* to_ref;
+  if (region_space_->IsInNewlyAllocatedRegion(from_ref)) {
+    to_ref = region_space_->AllocNonvirtual</*kForEvac=*/ true, /*kAged*/ true>(
+        region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
+  } else {
+    to_ref = region_space_->AllocNonvirtual</*kForEvac=*/ true, /*kAged*/ false>(
+        region_space_alloc_size, &region_space_bytes_allocated, nullptr, &dummy);
+  }
   bytes_allocated = region_space_bytes_allocated;
   if (LIKELY(to_ref != nullptr)) {
     DCHECK_EQ(region_space_alloc_size, region_space_bytes_allocated);

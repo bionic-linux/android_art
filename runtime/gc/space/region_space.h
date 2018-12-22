@@ -76,7 +76,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
                                     /* out */ size_t* bytes_tl_bulk_allocated)
       override REQUIRES(Locks::mutator_lock_) REQUIRES(!region_lock_);
   // The main allocation routine.
-  template<bool kForEvac>
+  template<bool kForEvac, bool kAged = false>
   ALWAYS_INLINE mirror::Object* AllocNonvirtual(size_t num_bytes,
                                                 /* out */ size_t* bytes_allocated,
                                                 /* out */ size_t* usable_size,
@@ -229,7 +229,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
   // The region size.
   static constexpr size_t kRegionSize = 256 * KB;
 
-  bool IsInFromSpace(mirror::Object* ref) {
+  bool IsInFromSpace(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       Region* r = RefToRegionUnlocked(ref);
       return r->IsInFromSpace();
@@ -242,7 +242,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return regions_[idx].IsNewlyAllocated();
   }
 
-  bool IsInNewlyAllocatedRegion(mirror::Object* ref) {
+  bool IsInNewlyAllocatedRegion(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       Region* r = RefToRegionUnlocked(ref);
       return r->IsNewlyAllocated();
@@ -250,7 +250,15 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return false;
   }
 
-  bool IsInUnevacFromSpace(mirror::Object* ref) {
+  bool IsInAgedRegion(mirror::Object* ref) const {
+    if (HasAddress(ref)) {
+      Region* r = RefToRegionUnlocked(ref);
+      return r->IsRegionAged();
+    }
+    return false;
+  }
+
+  bool IsInUnevacFromSpace(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       Region* r = RefToRegionUnlocked(ref);
       return r->IsInUnevacFromSpace();
@@ -258,7 +266,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return false;
   }
 
-  bool IsLargeObject(mirror::Object* ref) {
+  bool IsLargeObject(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       Region* r = RefToRegionUnlocked(ref);
       return r->IsLarge();
@@ -266,7 +274,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return false;
   }
 
-  bool IsInToSpace(mirror::Object* ref) {
+  bool IsInToSpace(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       Region* r = RefToRegionUnlocked(ref);
       return r->IsInToSpace();
@@ -276,7 +284,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
   // If `ref` is in the region space, return the type of its region;
   // otherwise, return `RegionType::kRegionTypeNone`.
-  RegionType GetRegionType(mirror::Object* ref) {
+  RegionType GetRegionType(mirror::Object* ref) const {
     if (HasAddress(ref)) {
       return GetRegionTypeUnsafe(ref);
     }
@@ -285,7 +293,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
   // Unsafe version of RegionSpace::GetRegionType.
   // Precondition: `ref` is in the region space.
-  RegionType GetRegionTypeUnsafe(mirror::Object* ref) {
+  RegionType GetRegionTypeUnsafe(mirror::Object* ref) const {
     DCHECK(HasAddress(ref)) << ref;
     Region* r = RefToRegionUnlocked(ref);
     return r->Type();
@@ -385,6 +393,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
           objects_allocated_(0),
           alloc_time_(0),
           is_newly_allocated_(false),
+          is_aged_(false),
           is_a_tlab_(false),
           state_(RegionState::kRegionStateAllocated),
           type_(RegionType::kRegionTypeToSpace) {}
@@ -400,6 +409,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
       alloc_time_ = 0;
       live_bytes_ = static_cast<size_t>(-1);
       is_newly_allocated_ = false;
+      is_aged_ = false;
       is_a_tlab_ = false;
       thread_ = nullptr;
       DCHECK_LT(begin, end);
@@ -448,6 +458,15 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
     void SetNewlyAllocated() {
       is_newly_allocated_ = true;
+    }
+
+    void SetRegionAged() {
+      DCHECK(!is_newly_allocated_);
+      is_aged_ = true;
+    }
+
+    bool IsRegionAged() {
+      return is_aged_;
     }
 
     // Non-large, non-large-tail allocated.
@@ -507,6 +526,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     void SetAsFromSpace() {
       DCHECK(!IsFree() && IsInToSpace());
       type_ = RegionType::kRegionTypeFromSpace;
+      DCHECK(!(IsNewlyAllocated() && IsRegionAged()));
       if (IsNewlyAllocated()) {
         // Clear the "newly allocated" status here, as we do not want the
         // GC to see it when encountering references in the from-space.
@@ -514,7 +534,10 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
         // Invariant: There should be no newly-allocated region in the
         // from-space (when the from-space exists, which is between the calls
         // to RegionSpace::SetFromSpace and RegionSpace::ClearFromSpace).
-        is_newly_allocated_ = false;
+        if (!IsAllocated()) {
+          // Clear for large and large-tail regions.
+          is_newly_allocated_ = false;
+        }
       }
       // Set live bytes to an invalid value, as we have made an
       // evacuation decision (possibly based on the percentage of live
@@ -531,6 +554,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
       DCHECK(kEnableGenerationalConcurrentCopyingCollection || clear_live_bytes);
       DCHECK(!IsFree() && IsInToSpace());
       type_ = RegionType::kRegionTypeUnevacFromSpace;
+      DCHECK(!(IsNewlyAllocated() && IsRegionAged()));
       if (IsNewlyAllocated()) {
         // A newly allocated region set as unevac from-space must be
         // a large or large tail region.
@@ -546,6 +570,8 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
         // from-space (when the from-space exists, which is between the calls
         // to RegionSpace::SetFromSpace and RegionSpace::ClearFromSpace).
         is_newly_allocated_ = false;
+      } else if (IsRegionAged()) {
+        is_aged_ = false;
       }
       if (clear_live_bytes) {
         // Reset the live bytes, as we have made a non-evacuation
@@ -633,6 +659,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     // Note that newly allocated and evacuated regions use -1 as
     // special value for `live_bytes_`.
     bool is_newly_allocated_;           // True if it's allocated after the last collection.
+    bool is_aged_;                      // True if it's a aged to-space region.
     bool is_a_tlab_;                    // True if it's a tlab.
     RegionState state_;                 // The region state (see RegionState).
     RegionType type_;                   // The region type (see RegionType).
@@ -645,7 +672,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return RefToRegionLocked(ref);
   }
 
-  Region* RefToRegionUnlocked(mirror::Object* ref) NO_THREAD_SAFETY_ANALYSIS {
+  Region* RefToRegionUnlocked(mirror::Object* ref) const NO_THREAD_SAFETY_ANALYSIS {
     // For a performance reason (this is frequently called via
     // RegionSpace::IsInFromSpace, etc.) we avoid taking a lock here.
     // Note that since we only change a region from to-space to (evac)
@@ -656,7 +683,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
     return RefToRegionLocked(ref);
   }
 
-  Region* RefToRegionLocked(mirror::Object* ref) REQUIRES(region_lock_) {
+  Region* RefToRegionLocked(mirror::Object* ref) const REQUIRES(region_lock_) {
     DCHECK(HasAddress(ref));
     uintptr_t offset = reinterpret_cast<uintptr_t>(ref) - reinterpret_cast<uintptr_t>(Begin());
     size_t reg_idx = offset / kRegionSize;
@@ -756,6 +783,7 @@ class RegionSpace final : public ContinuousMemMapAllocSpace {
 
   Region* current_region_;         // The region currently used for allocation.
   Region* evac_region_;            // The region currently used for evacuation.
+  Region* aged_region_;            // The region currently usef for aged evacuation.
   Region full_region_;             // The dummy/sentinel region that looks full.
 
   // Index into the region array pointing to the starting region when

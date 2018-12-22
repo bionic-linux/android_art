@@ -47,29 +47,34 @@ inline mirror::Object* RegionSpace::AllocThreadUnsafe(Thread* self,
   return Alloc(self, num_bytes, bytes_allocated, usable_size, bytes_tl_bulk_allocated);
 }
 
-template<bool kForEvac>
+template<bool kForEvac, bool kAged>
 inline mirror::Object* RegionSpace::AllocNonvirtual(size_t num_bytes,
                                                     /* out */ size_t* bytes_allocated,
                                                     /* out */ size_t* usable_size,
                                                     /* out */ size_t* bytes_tl_bulk_allocated) {
+  DCHECK(kForEvac || !kAged);
   DCHECK_ALIGNED(num_bytes, kAlignment);
   mirror::Object* obj;
   if (LIKELY(num_bytes <= kRegionSize)) {
     // Non-large object.
-    obj = (kForEvac ? evac_region_ : current_region_)->Alloc(num_bytes,
-                                                             bytes_allocated,
-                                                             usable_size,
-                                                             bytes_tl_bulk_allocated);
+    obj = (kForEvac
+           ? (kAged ? aged_region_ : evac_region_)
+           : current_region_)->Alloc(num_bytes,
+                                     bytes_allocated,
+                                     usable_size,
+                                     bytes_tl_bulk_allocated);
     if (LIKELY(obj != nullptr)) {
       return obj;
     }
     MutexLock mu(Thread::Current(), region_lock_);
     // Retry with current region since another thread may have updated
-    // current_region_ or evac_region_.  TODO: fix race.
-    obj = (kForEvac ? evac_region_ : current_region_)->Alloc(num_bytes,
-                                                             bytes_allocated,
-                                                             usable_size,
-                                                             bytes_tl_bulk_allocated);
+    // current_region_, evac_region_ or aged_region_.  TODO: fix race.
+    obj = (kForEvac
+           ? (kAged ? aged_region_ : evac_region_)
+           : current_region_)->Alloc(num_bytes,
+                                     bytes_allocated,
+                                     usable_size,
+                                     bytes_tl_bulk_allocated);
     if (LIKELY(obj != nullptr)) {
       return obj;
     }
@@ -80,7 +85,12 @@ inline mirror::Object* RegionSpace::AllocNonvirtual(size_t num_bytes,
       // Do our allocation before setting the region, this makes sure no threads race ahead
       // and fill in the region before we allocate the object. b/63153464
       if (kForEvac) {
-        evac_region_ = r;
+        if (kAged) {
+          r->SetRegionAged();
+          aged_region_ = r;
+        } else {
+          evac_region_ = r;
+        }
       } else {
         current_region_ = r;
       }

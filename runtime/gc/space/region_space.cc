@@ -113,6 +113,7 @@ RegionSpace::RegionSpace(const std::string& name, MemMap&& mem_map)
       non_free_region_index_limit_(0U),
       current_region_(&full_region_),
       evac_region_(nullptr),
+      aged_region_(nullptr),
       cyclic_alloc_region_index_(0U) {
   CHECK_ALIGNED(mem_map_.Size(), kRegionSize);
   CHECK_ALIGNED(mem_map_.Begin(), kRegionSize);
@@ -187,7 +188,12 @@ inline bool RegionSpace::Region::ShouldBeEvacuated(EvacMode evac_mode) {
   // - the evacuation is forced (`evac_mode == kEvacModeForceAll`); or
   // - the region was allocated after the start of the previous GC (newly allocated region); or
   // - the live ratio is below threshold (`kEvacuateLivePercentThreshold`).
-  if (UNLIKELY(evac_mode == kEvacModeForceAll)) {
+  if (UNLIKELY(evac_mode == kEvacModeForceAll)
+      || (evac_mode == kEvacModeNewlyAllocated && IsRegionAged())) {
+    // In young-gen collection evacuate every aged region. In two-phase
+    // full-heap GC we have already computed live_bytes, so take decision based
+    // on that.
+    // TODO: check that an aged region cannot be large (or large-tail).
     return true;
   }
   bool result = false;
@@ -364,11 +370,12 @@ void RegionSpace::SetFromSpace(accounting::ReadBarrierTable* rb_table,
       }
     }
     // Invariant: There should be no newly-allocated region in the from-space.
-    DCHECK(!r->is_newly_allocated_);
+    // DCHECK(!r->is_newly_allocated_);
   }
   DCHECK_EQ(num_expected_large_tails, 0U);
   current_region_ = &full_region_;
   evac_region_ = &full_region_;
+  aged_region_ = &full_region_;
 }
 
 static void ZeroAndProtectRegion(uint8_t* begin, uint8_t* end) {
@@ -548,6 +555,7 @@ void RegionSpace::ClearFromSpace(/* out */ uint64_t* cleared_bytes,
   // Update non_free_region_index_limit_.
   SetNonFreeRegionLimit(new_non_free_region_index_limit);
   evac_region_ = nullptr;
+  aged_region_ = nullptr;
   num_non_free_regions_ += num_evac_regions_;
   num_evac_regions_ = 0;
 }
@@ -691,6 +699,7 @@ void RegionSpace::Clear() {
   DCHECK_EQ(num_non_free_regions_, 0u);
   current_region_ = &full_region_;
   evac_region_ = &full_region_;
+  aged_region_ = &full_region_;
 }
 
 void RegionSpace::Protect() {
@@ -872,6 +881,7 @@ void RegionSpace::Region::Clear(bool zero_and_release_pages) {
     ZeroAndProtectRegion(begin_, end_);
   }
   is_newly_allocated_ = false;
+  is_aged_ = false;
   is_a_tlab_ = false;
   thread_ = nullptr;
 }
