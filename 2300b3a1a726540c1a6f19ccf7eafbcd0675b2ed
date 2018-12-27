@@ -22,6 +22,30 @@
       "revId": "2300b3a1a726540c1a6f19ccf7eafbcd0675b2ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa2a8d7_a4c2724d",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1384552
+      },
+      "writtenOn": "2018-12-27T17:13:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f3405d_d68b8627",
+      "range": {
+        "startLine": 344,
+        "startChar": 25,
+        "endLine": 346,
+        "endChar": 31
+      },
+      "revId": "2300b3a1a726540c1a6f19ccf7eafbcd0675b2ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
