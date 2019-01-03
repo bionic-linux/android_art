@@ -40,6 +40,7 @@
 #include "base/safe_map.h"
 #include "base/utils.h"
 #include "class_table.h"
+#include "gc/space/region_space.h"
 #include "image.h"
 #include "intern_table.h"
 #include "lock_word.h"
@@ -279,7 +280,7 @@ class ImageWriter final {
 
    private:
     // Must be the same size as LockWord, any larger and we would truncate the data.
-    const uint32_t lockword_;
+    uint32_t lockword_;
   };
 
   struct ImageInfo {
@@ -397,6 +398,9 @@ class ImageWriter final {
 
     // Class table associated with this image for serialization.
     std::unique_ptr<ClassTable> class_table_;
+
+    // Padding objects to ensure region alignment (if required).
+    std::vector<size_t> padding_object_offsets_;
   };
 
   // We use the lock word to store the offset of the object in the image.
@@ -797,6 +801,12 @@ class ImageWriter final {
 
   // Set of objects known to be dirty in the image. Can be nullptr if there are none.
   const HashSet<std::string>* dirty_image_objects_;
+
+  // Objects are guaranteed to not cross the region size boundary.
+  size_t region_size_ = gc::space::RegionSpace::kRegionSize;
+
+  // Region alignment bytes wasted.
+  size_t region_alignment_wasted_ = 0u;
 
   class ImageFileGuard;
   class FixupClassVisitor;
