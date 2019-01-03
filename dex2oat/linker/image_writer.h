@@ -279,7 +279,7 @@ class ImageWriter final {
 
    private:
     // Must be the same size as LockWord, any larger and we would truncate the data.
-    const uint32_t lockword_;
+    uint32_t lockword_;
   };
 
   struct ImageInfo {
@@ -797,6 +797,9 @@ class ImageWriter final {
 
   // Set of objects known to be dirty in the image. Can be nullptr if there are none.
   const HashSet<std::string>* dirty_image_objects_;
+
+  // Objects are guaranteed to not cross the region size boundary.
+  size_t region_size_ = 0u;
 
   class ImageFileGuard;
   class FixupClassVisitor;

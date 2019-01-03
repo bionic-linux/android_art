@@ -2423,10 +2423,31 @@ void ImageWriter::CalculateNewObjectOffsets() {
   }
 
   // Calculate bin slot offsets.
-  for (ImageInfo& image_info : image_infos_) {
+  for (size_t oat_index = 0; oat_index < image_infos_.size(); ++oat_index) {
+    ImageInfo& image_info = image_infos_[oat_index];
     size_t bin_offset = image_objects_offset_begin_;
+    // Need to visit the objects in bin order since alignment requirements might change the
+    // section sizes.
+    using BinPair = std::pair<BinSlot, ObjPtr<mirror::Object>>;
+    std::vector<BinPair> objects;
+    heap->VisitObjects([&](mirror::Object* obj)
+        REQUIRES_SHARED(Locks::mutator_lock_) {
+      // Only visit the oat index for the current image.
+      if (IsImageObject(obj) && GetOatIndex(obj) == oat_index) {
+        objects.emplace_back(GetImageBinSlot(obj), obj);
+      }
+    });
+    std::sort(objects.begin(), objects.end(), [](const BinPair& a, const BinPair& b) -> bool {
+      if (a.first.GetBin() != b.first.GetBin()) {
+        return a.first.GetBin() < b.first.GetBin();
+      }
+      // Note that the index is really the relative offset in this case.
+      return a.first.GetIndex() < b.first.GetIndex();
+    });
+    auto it = objects.begin();
     for (size_t i = 0; i != kNumberOfBins; ++i) {
-      switch (static_cast<Bin>(i)) {
+      auto bin = static_cast<Bin>(i);
+        switch (bin) {
         case Bin::kArtMethodClean:
         case Bin::kArtMethodDirty: {
           bin_offset = RoundUp(bin_offset, method_alignment);
@@ -2445,7 +2466,32 @@ void ImageWriter::CalculateNewObjectOffsets() {
         }
       }
       image_info.bin_slot_offsets_[i] = bin_offset;
-      bin_offset += image_info.bin_slot_sizes_[i];
+
+      // If the bin is for mirror objects, assign the offsets since we may need to change sizes
+      // from alignment requirements.
+      if (i < static_cast<size_t>(Bin::kMirrorCount)) {
+        const size_t start_offset = bin_offset;
+        // Visit and assign offsets for all objects of the bin type.
+        while (it != objects.end() && it->first.GetBin() == bin) {
+          ObjPtr<mirror::Object> obj(it->second);
+          const size_t object_size = RoundUp(obj->SizeOf(), kObjectAlignment);
+          // If the object spans region bondaries, add padding objects between.
+          if (region_size_ != 0u &&
+              RoundUp(bin_offset, region_size_) !=
+                  RoundUp(bin_offset + object_size, region_size_)) {
+            // Add padding objects until aligned.
+            while (!IsAlignedParam(bin_offset, region_size_)) {
+              bin_offset += kObjectAlignment;
+            }
+          }
+          SetImageOffset(obj.Ptr(), bin_offset);
+          bin_offset = bin_offset + object_size;
+          ++it;
+        }
+        image_info.bin_slot_sizes_[i] = bin_offset - start_offset;
+      } else {
+        bin_offset += image_info.bin_slot_sizes_[i];
+      }
     }
     // NOTE: There may be additional padding between the bin slots and the intern table.
     DCHECK_EQ(image_info.image_end_,
@@ -2460,17 +2506,6 @@ void ImageWriter::CalculateNewObjectOffsets() {
     image_info.image_size_ = RoundUp(image_info.CreateImageSections().first, kPageSize);
     // There should be no gaps until the next image.
     image_offset += image_info.image_size_;
-  }
-
-  // Transform each object's bin slot into an offset which will be used to do the final copy.
-  {
-    auto unbin_objects_into_offset = [&](mirror::Object* obj)
-        REQUIRES_SHARED(Locks::mutator_lock_) {
-      if (IsImageObject(obj)) {
-        UnbinObjectsIntoOffset(obj);
-      }
-    };
-    heap->VisitObjects(unbin_objects_into_offset);
   }
 
   size_t i = 0;
