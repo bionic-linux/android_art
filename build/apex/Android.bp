@@ -194,6 +194,13 @@ art_apex {
     },
     key: "com.android.runtime.key",
     target: {
+        // Not worth dealing with now.
+        host: {
+            enabled: false,
+        },
+        linux_bionic: {
+            enabled: true,
+        },
         darwin: {
             enabled: false,
         },
