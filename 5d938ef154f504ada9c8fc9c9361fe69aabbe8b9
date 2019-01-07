@@ -22,6 +22,30 @@
       "revId": "5d938ef154f504ada9c8fc9c9361fe69aabbe8b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca596135_f564b920",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-07T16:55:14Z",
+      "side": 0,
+      "message": "I thought we eventually decided not to make `libart_fake` part of the Runtime APEX, as we did not plan to make it updatable. Orion, Nicolas, is this still the plan?",
+      "parentUuid": "b2cde7ad_4c386bfd",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "5d938ef154f504ada9c8fc9c9361fe69aabbe8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
