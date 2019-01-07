@@ -70,6 +70,30 @@
       "revId": "5d938ef154f504ada9c8fc9c9361fe69aabbe8b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c43d9a_4f099b3d",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-07T18:39:07Z",
+      "side": 0,
+      "message": "I\u0027ve split that part from this CL and moved it to another CL with a more descriptive commit message: https://android-review.googlesource.com/c/platform/art/+/862690.",
+      "parentUuid": "0b929289_fb798235",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 1
+      },
+      "revId": "5d938ef154f504ada9c8fc9c9361fe69aabbe8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
