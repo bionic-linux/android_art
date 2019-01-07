@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c85ed5f7_caf88bad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-07T12:37:52Z",
+      "side": 1,
+      "message": "I\u0027d use \"heap poisoning\" here to disambiguate, as we also have \"object reference poisoning\" (implemented by `ObjPtr`) in ART.",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "928e26131b0e25daba67a2c7a60de39dd7ab940d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c0ba3e7_1b975d53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-07T12:37:52Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "928e26131b0e25daba67a2c7a60de39dd7ab940d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
