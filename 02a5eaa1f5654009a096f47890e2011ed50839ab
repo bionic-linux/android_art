@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52ee8b42_6abf3cf9",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-08T09:31:58Z",
+      "side": 1,
+      "message": "Probably a helper in ArtMethod would be beneficial here, eg:\nArtMethod::IsDeadReferenceSafe().",
+      "range": {
+        "startLine": 833,
+        "startChar": 2,
+        "endLine": 833,
+        "endChar": 74
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f99574_1da308f9",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-08T09:31:58Z",
+      "side": 1,
+      "message": "We should find a way to cache this, or track it when building the graph. Inlining is already pretty expensive :(",
+      "range": {
+        "startLine": 838,
+        "startChar": 23,
+        "endLine": 838,
+        "endChar": 53
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cc30db_d8ab71a0",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-08T09:31:58Z",
+      "side": 1,
+      "message": "This has the potential to be very expensive (doing annotation lookups on all field/method accesses).",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
