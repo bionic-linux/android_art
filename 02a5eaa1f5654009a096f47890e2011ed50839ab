@@ -68,6 +68,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4834180_e04fba0a",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-01-09T06:31:26Z",
+      "side": 1,
+      "message": "I should probably first compute whether the class has any ReachabilitySensitive accesses, which should be rare. Do you think the is important for the initial version? This code should only be called if there is a DeadReferenceSafe annotation, which will initially be extremely rare.\n\nMy mental model was that this may increase cost by percents rather than integral multiples when there is a DeadReferenceSafe annotation. Is that likely to be wrong?",
+      "parentUuid": "f6cc30db_d8ab71a0",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
