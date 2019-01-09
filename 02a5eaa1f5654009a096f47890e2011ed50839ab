@@ -116,6 +116,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413ecc48_1025e4ec",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-01-09T19:36:46Z",
+      "side": 1,
+      "message": "I should better document the overall plan here. The intent is to (for now, temporarily in Q) annotate classes with @DeadReferenceSafe, if we have determined that they are sufficiently annotated with @ReachabilitySensitive/reachabilityFence() that it is OK to perform dead reference elimination. The CL is intended to be a cheap no-op on any class that is not annotated with @DeadReferenceSafe.\n\n@ReachabilitySensitive mostly makes sense only in the presence of @DeadReferenceSafe. And the intent is to eventually (in R?) make @DeadReferenceSafe the default, at which point all your performance concerns definitely matter. (I say \"mostly\", because the d8/r8 situation is a bit different. But for ART this is completely true.)\n\nThe only benefit in Q is that we can get experience, and if we get another \"leaks due to a retained dead reference bug\", we\u0027ll have an easy fix available. And it probably makes sense to enable it in a few selective cases, where we know that we have loops containing blocking calls that are prone to this.\n\nI now copied you on the CL that defines @DeadReferenceSafe. But I\u0027m getting convinced that this isn\u0027t quite right, in that it should also implicitly apply to inner classes. Even my tests are a bit painful to write otherwise.",
+      "parentUuid": "525b5ac6_9f4b3b4b",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
