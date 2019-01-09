@@ -92,6 +92,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "525b5ac6_9f4b3b4b",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-09T09:25:44Z",
+      "side": 1,
+      "message": "Should it be a (javac? dx?) compile time error if a method has DeadReferenceSafe though accesses a ReachabilitySensitive field?",
+      "parentUuid": "f4834180_e04fba0a",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
