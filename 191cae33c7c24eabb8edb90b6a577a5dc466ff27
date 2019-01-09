@@ -22,6 +22,53 @@
       "revId": "191cae33c7c24eabb8edb90b6a577a5dc466ff27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b16481_72a66d82",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-09T11:55:40Z",
+      "side": 1,
+      "message": "Yes, I think this should be temporary. We need to update the Buildbot recipe to use `--mode\u003ddevice_testdex` first.\n\nI\u0027d add a TODO about that here.",
+      "parentUuid": "452dd24c_7bcb9961",
+      "range": {
+        "startLine": 128,
+        "startChar": 26,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "191cae33c7c24eabb8edb90b6a577a5dc466ff27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39abc268_37e6a4be",
+        "filename": "tools/run-libcore-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-09T11:55:40Z",
+      "side": 1,
+      "message": "Ditto, I\u0027d add a TODO.",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 91
+      },
+      "revId": "191cae33c7c24eabb8edb90b6a577a5dc466ff27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
