@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "452dd24c_7bcb9961",
+        "filename": "tools/run-jdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-01-09T10:04:55Z",
+      "side": 1,
+      "message": "Ugly and potentially surprising to engineers, but gets us out of a hole.\n\nSuggestion for future: I wonder if the input args should be used to generate \"output args\" rather than mutating \"args\" itself (which seems a bit icky). Presumably adding --mode\u003ddevice_testdex to the end means it\u0027s processed again later. More work but might be clearer.",
+      "range": {
+        "startLine": 128,
+        "startChar": 26,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "191cae33c7c24eabb8edb90b6a577a5dc466ff27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
