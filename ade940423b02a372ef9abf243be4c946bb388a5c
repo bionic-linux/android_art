@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "bd3748df_d05c30ec",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a210d3_a5d0fd72",
+      "range": {
+        "startLine": 2449,
+        "startChar": 17,
+        "endLine": 2449,
+        "endChar": 28
+      },
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7c3df35_727eca37",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff08830_45172703",
+      "range": {
+        "startLine": 2449,
+        "startChar": 6,
+        "endLine": 2449,
+        "endChar": 10
+      },
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbe65dbf_3f5f11b6",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 8
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "afed46af_a4456b8a",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2450,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbe65dbf_3f5f11b6",
+      "range": {
+        "startLine": 2450,
+        "startChar": 6,
+        "endLine": 2450,
+        "endChar": 8
+      },
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f831d55_693804b9",
         "filename": "dex2oat/linker/image_writer.cc",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2019-01-10T22:55:00Z",
       "side": 1,
       "message": "Nit: it\u0027s better to avoid defaults so that the compiler warns you when the enum changes.",
+      "range": {
+        "startLine": 2464,
+        "startChar": 8,
+        "endLine": 2464,
+        "endChar": 15
+      },
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed264c70_91aa5409",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2464,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "There are a lot of enum values, are they worth all handling?",
+      "parentUuid": "0f831d55_693804b9",
       "range": {
         "startLine": 2464,
         "startChar": 8,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "e7e872c2_7e92ceb4",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 8
+      },
+      "lineNbr": 2470,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742ce24e_c59d5cf6",
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8e66d14_e028849e",
         "filename": "dex2oat/linker/image_writer.h",
         "patchSetId": 8
@@ -131,6 +245,30 @@
       "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86851b7d_a04c12df",
+        "filename": "dex2oat/linker/image_writer.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T23:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e66d14_e028849e",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "ade940423b02a372ef9abf243be4c946bb388a5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
