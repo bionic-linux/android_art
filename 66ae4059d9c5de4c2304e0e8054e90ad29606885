@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36c5f0f8_1e649918",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-10T00:28:23Z",
+      "side": 1,
+      "message": "NIT: Should probably go in the \"Doesn\u0027t run on RI.\" list below (at line 1080).",
+      "range": {
+        "startLine": 1060,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 35
+      },
+      "revId": "66ae4059d9c5de4c2304e0e8054e90ad29606885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
