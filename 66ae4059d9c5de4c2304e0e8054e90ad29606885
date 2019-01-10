@@ -22,6 +22,30 @@
       "revId": "66ae4059d9c5de4c2304e0e8054e90ad29606885",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a83598_6dfafd71",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-01-10T21:03:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36c5f0f8_1e649918",
+      "range": {
+        "startLine": 1060,
+        "startChar": 0,
+        "endLine": 1060,
+        "endChar": 35
+      },
+      "revId": "66ae4059d9c5de4c2304e0e8054e90ad29606885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
