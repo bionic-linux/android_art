@@ -164,6 +164,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "579ad2c9_dfdfc069",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-01-11T18:47:47Z",
+      "side": 1,
+      "message": "That\u0027s not really consistent with my usage model. I want to be able to add @ReachabilitySensitive declarations in the right places, and then add @DeadReferenceSafe to indicate that I\u0027m done and the class is now sufficiently annotated to be safely compiled with dead reference elimination. This gives us a way to incrementally annotate e.g. frameworks classes until we\u0027re ready to throw the switch and make @DeadReferenceSafe the default.\n\nI attempted to clarify this in go/aog/859850. (Tobias again has a bunch of good comments, but I think we\u0027re converging.)\n\nThe (currently still non-functional) test case I just added this CL is an illustration.",
+      "parentUuid": "c7b085bd_81573888",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
