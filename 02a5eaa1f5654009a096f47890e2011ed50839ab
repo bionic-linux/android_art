@@ -140,6 +140,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b085bd_81573888",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-11T11:35:27Z",
+      "side": 1,
+      "message": "I see, thanks for explaining the context.\n\nIn the first version, could we make it a compile time / verification error to have a DeadReferenceSafe class use a @ReachabilitySensitive access?",
+      "parentUuid": "413ecc48_1025e4ec",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
