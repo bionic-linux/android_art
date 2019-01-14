@@ -188,6 +188,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b9c831_7b235b28",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-14T09:11:21Z",
+      "side": 1,
+      "message": "Ack. Let me know if/when you need a full review of the CL - Overall, I think the code is fine.",
+      "parentUuid": "579ad2c9_dfdfc069",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
