@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2664d2eb_709c9c5e",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Sry, should be kValueBitSize (line 78). Fixed.",
+      "parentUuid": "45177c33_eeadb86c",
+      "range": {
+        "startLine": 98,
+        "startChar": 42,
+        "endLine": 98,
+        "endChar": 58
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fb2c6b3_9c5c1358",
         "filename": "libartbase/base/hiddenapi_flags.h",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4c16d2d_c2fdefc5",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fb2c6b3_9c5c1358",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 65
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "7ad9f1dd_f26ad4e6",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8493d305_a986739a",
+      "range": {
+        "startLine": 224,
+        "startChar": 35,
+        "endLine": 224,
+        "endChar": 36
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ad992_f01da7fd",
+        "filename": "libartbase/base/hiddenapi_flags.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e371a466_d8a9d078",
+      "range": {
+        "startLine": 224,
+        "startChar": 43,
+        "endLine": 224,
+        "endChar": 44
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3771d15a_a641a508",
         "filename": "runtime/hidden_api.cc",
         "patchSetId": 10
@@ -105,6 +201,30 @@
       "writtenOn": "2019-01-14T15:51:44Z",
       "side": 1,
       "message": "Add a comment.",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 46
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbbc7a0b_5b3d76a3",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "I\u0027ll be more courageous and turn this into a DCHECK - it should only be null for runtime methods, and those should not be resolvable by bytecode.",
+      "parentUuid": "3771d15a_a641a508",
       "range": {
         "startLine": 303,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "cb6b9368_b1e854e9",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 10
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Same here. AFAICT, class def should always be set for initialized Classes",
+      "parentUuid": "fea70c2a_715e6677",
+      "range": {
+        "startLine": 319,
+        "startChar": 23,
+        "endLine": 319,
+        "endChar": 32
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a998a8d0_7f035a6e",
         "filename": "runtime/hidden_api.h",
         "patchSetId": 10
@@ -160,6 +304,30 @@
       "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9f61c6_9f915352",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T16:28:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a998a8d0_7f035a6e",
+      "range": {
+        "startLine": 187,
+        "startChar": 42,
+        "endLine": 187,
+        "endChar": 52
+      },
+      "revId": "2dd2b679a96d3ab58a320f415f035e04e4a92d8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
