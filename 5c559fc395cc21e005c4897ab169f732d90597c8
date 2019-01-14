@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb01d522_437c1676",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T10:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e68648_649bd20c",
+      "revId": "5c559fc395cc21e005c4897ab169f732d90597c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50859d42_39995665",
         "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "5c559fc395cc21e005c4897ab169f732d90597c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edde376b_cecc7866",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-14T10:59:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50859d42_39995665",
+      "range": {
+        "startLine": 179,
+        "startChar": 29,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "5c559fc395cc21e005c4897ab169f732d90597c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
