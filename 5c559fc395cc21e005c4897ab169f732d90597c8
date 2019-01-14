@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e68648_649bd20c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-01-14T10:32:22Z",
+      "side": 1,
+      "message": "atest class2greylisttest ?",
+      "revId": "5c559fc395cc21e005c4897ab169f732d90597c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50859d42_39995665",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-01-14T10:32:22Z",
+      "side": 1,
+      "message": "If you do:\n\n  Splitter.on(\",\").splitToList(s)\n\nIt gives you an iterable so you can avoid the Arrays.asList below (com.google.common.base.Splitter)",
+      "range": {
+        "startLine": 179,
+        "startChar": 29,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "5c559fc395cc21e005c4897ab169f732d90597c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
