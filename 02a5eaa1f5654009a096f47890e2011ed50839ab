@@ -212,6 +212,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ccaeb6d_a103acba",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-01-15T02:09:08Z",
+      "side": 1,
+      "message": "Thanks!\n\nI\u0027m running into another issue that you might be able to shed some light on. It seems that I should also be able to deal with quickened code here? Which means that it\u0027s important that I handle especially IGET*_QUICK. Which I think means that I have to be able to map back from an offset to a field. Is that correct? Is there an easy way to do that?\n\nINVOKE_*QUICK seems to raise similar issues. I spent some time investigating, and it seemed there was no fast mechanism to map from vtable offsets to method ids? If necessary, I can probably punt the INVOKE issue by implementing my earlier proposal to see if there are any @ReachabilitySensitive methods annotations in the class. Those will be so rare that just punting back to the current state when we see one is probably fine. The field annotations are much more important.",
+      "parentUuid": "71b9c831_7b235b28",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
