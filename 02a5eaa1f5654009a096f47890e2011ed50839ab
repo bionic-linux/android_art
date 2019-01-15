@@ -236,6 +236,30 @@
       "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a5464c_0ec2acda",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-15T13:00:03Z",
+      "side": 1,
+      "message": "Indeed, you\u0027ll have to deal with quickened opcodes. We do store the mapping back to the original offset in the dex file, and for example the compiler is using that mapping to decode the instruction. See instruction_builder.cc\u0027s handling of *_QUICK instructions.",
+      "parentUuid": "5ccaeb6d_a103acba",
+      "range": {
+        "startLine": 1344,
+        "startChar": 5,
+        "endLine": 1344,
+        "endChar": 35
+      },
+      "revId": "02a5eaa1f5654009a096f47890e2011ed50839ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
