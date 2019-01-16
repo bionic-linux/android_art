@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b3c5a1c2_9837ae73",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-16T22:48:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "848273a5_edf1d523",
+      "revId": "8064ad9435b1a6fd518773c5549a054594fa7b23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f20bc22c_82bee8d5",
         "filename": "runtime/jni/java_vm_ext.cc",
         "patchSetId": 1
