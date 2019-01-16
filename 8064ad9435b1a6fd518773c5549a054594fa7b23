@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f20bc22c_82bee8d5",
+        "filename": "runtime/jni/java_vm_ext.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-16T21:52:44Z",
+      "side": 1,
+      "message": "I suppose this is more for peace of mind rather than being strictly necessary?",
+      "range": {
+        "startLine": 966,
+        "startChar": 33,
+        "endLine": 966,
+        "endChar": 40
+      },
+      "revId": "8064ad9435b1a6fd518773c5549a054594fa7b23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
