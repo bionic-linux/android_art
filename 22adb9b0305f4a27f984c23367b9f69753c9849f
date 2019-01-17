@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e6b68c6_f731eb17",
+        "filename": "libartbase/base/hiddenapi_domain.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "Please add comments.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a634ad89_2e6a6137",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "Looks like something you should put next to the definition of Domain.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 83
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd08683_5333c8e3",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "I\u0027d avoid introducing new names.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 66
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0288c773_97e9e1cd",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "ComputeDomain?",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7310a768_3164fc90",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "ComputeDomain ?",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 20
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dbf2769_63b2801b",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "ComputeDomain?",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 20
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe3a9d48_bbbb25e1",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "Add a comment why you\u0027re now keeping those around. Keeping ObjPtr as you know, could be a problem.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 33
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a98aa9f_96601f63",
+        "filename": "runtime/native/dalvik_system_DexFile.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "Add a comment why dex files here are CorePlatform.",
+      "range": {
+        "startLine": 840,
+        "startChar": 74,
+        "endLine": 840,
+        "endChar": 87
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a338766c_cce184cb",
+        "filename": "runtime/native/java_lang_Class.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 41
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae220fe3_c5eba5c4",
+        "filename": "runtime/native/java_lang_Class.cc",
+        "patchSetId": 14
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 511,
+        "startChar": 36,
+        "endLine": 511,
+        "endChar": 45
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23be4486_92c0d440",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T13:00:53Z",
+      "side": 1,
+      "message": "@CorePlatformApi ?",
+      "range": {
+        "startLine": 1085,
+        "startChar": 30,
+        "endLine": 1085,
+        "endChar": 47
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
