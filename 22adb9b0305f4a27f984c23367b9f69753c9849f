@@ -252,6 +252,30 @@
       "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6441f38b_4ddb0adc",
+        "filename": "runtime/runtime.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-01-17T13:46:21Z",
+      "side": 1,
+      "message": "I\u0027m guilty of using @CorePlatformAPI in lots of places as shorthand, but that\u0027s just the annotation mechanism we use to define it so strictly we probably should refer to just \"core platform API\" in the (very unlikely event) that we change the way we define the API surface. \n\nAlso, I suppose, @CorePlatformAPI is only used to define the elements of the core platform API that are *on top* of the public SDK API. Whether we consider the core platform API \"the extras\" or the union of both is probably open, though I tend to think of \"core platform API\" as being the entire thing.",
+      "parentUuid": "23be4486_92c0d440",
+      "range": {
+        "startLine": 1085,
+        "startChar": 30,
+        "endLine": 1085,
+        "endChar": 47
+      },
+      "revId": "22adb9b0305f4a27f984c23367b9f69753c9849f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
