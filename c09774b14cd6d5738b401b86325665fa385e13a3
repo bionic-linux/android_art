@@ -22,6 +22,30 @@
       "revId": "c09774b14cd6d5738b401b86325665fa385e13a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cec19b4_ea29f51b",
+        "filename": "runtime/stack.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-01-17T11:45:41Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "3b269644_3b0ce781",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "c09774b14cd6d5738b401b86325665fa385e13a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
