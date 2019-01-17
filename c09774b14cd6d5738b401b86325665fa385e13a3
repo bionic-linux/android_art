@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc18dc2c_73623a82",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-01-17T15:52:16Z",
+      "side": 1,
+      "message": "Why does this have to be a unique_ptr?",
+      "range": {
+        "startLine": 819,
+        "startChar": 10,
+        "endLine": 819,
+        "endChar": 28
+      },
+      "revId": "c09774b14cd6d5738b401b86325665fa385e13a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b269644_3b0ce781",
         "filename": "runtime/stack.h",
         "patchSetId": 1
