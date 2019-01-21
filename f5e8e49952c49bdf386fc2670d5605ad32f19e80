@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "37f28a2f_99560498",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-21T14:50:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7b0f2eac_46ad41f0",
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e1e7264_0138b6d5",
         "filename": "tools/run-gtests.sh",
         "patchSetId": 1
