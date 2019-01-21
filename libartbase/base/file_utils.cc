@@ -290,7 +290,9 @@ bool LocationIsOnSystem(const char* path) {
 #endif
 }
 
-bool LocationIsOnSystemFramework(const char* full_path) {
+namespace {
+
+bool LocationIsOnAndroidRootPath(const char* full_path, const char* android_root_relative_path) {
   std::string error_msg;
   std::string root_path = GetAndroidRootSafe(&error_msg);
   if (root_path.empty()) {
@@ -298,8 +300,18 @@ bool LocationIsOnSystemFramework(const char* full_path) {
     // TODO(dbrazdil): change to stricter GetAndroidRoot() once b/76452688 is resolved.
     return false;
   }
-  std::string framework_path = root_path + "/framework/";
-  return android::base::StartsWith(full_path, framework_path);
+  std::string absolute_root_path = root_path + android_root_relative_path;
+  return android::base::StartsWith(full_path, absolute_root_path);
+}
+
+}  // namespace
+
+bool LocationIsOnRuntimeModule(const char* full_path) {
+  return LocationIsOnAndroidRootPath(full_path, "/com.android.runtime/");
+}
+
+bool LocationIsOnSystemFramework(const char* full_path) {
+  return LocationIsOnAndroidRootPath(full_path, "/framework/");
 }
 
 int DupCloexec(int fd) {
