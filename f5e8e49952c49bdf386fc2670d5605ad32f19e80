@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b0f2eac_46ad41f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-21T14:38:34Z",
+      "side": 1,
+      "message": "We should move away from running tests through make, so I think we should stick to it. If we\u0027re lossing functionality and the bug is fixed, we can still have that script call \"make test-art-target-gtest\", which will make things more flexible for the buildbot (ie, no need to update the recipes).",
+      "parentUuid": "53e7801d_31ba5ebd",
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e1e7264_0138b6d5",
         "filename": "tools/run-gtests.sh",
         "patchSetId": 1
@@ -62,6 +80,54 @@
       "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cd8b705_b1ac1388",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-21T14:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "283782e7_e1e31e93",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73e4e666_85334ce9",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-21T14:38:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e1e7264_0138b6d5",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
