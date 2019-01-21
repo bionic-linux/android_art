@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53e7801d_31ba5ebd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-21T14:31:41Z",
+      "side": 1,
+      "message": "Should it be mentioned here that this is a temporary workaround?",
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1e7264_0138b6d5",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-21T14:31:41Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "283782e7_e1e31e93",
+        "filename": "tools/run-gtests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-21T14:31:41Z",
+      "side": 1,
+      "message": "Nit: Extra space.",
+      "range": {
+        "startLine": 35,
+        "startChar": 15,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "f5e8e49952c49bdf386fc2670d5605ad32f19e80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
