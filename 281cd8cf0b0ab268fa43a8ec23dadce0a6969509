@@ -22,6 +22,30 @@
       "revId": "281cd8cf0b0ab268fa43a8ec23dadce0a6969509",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddf3e5a_52d37add",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-22T14:54:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "328eb880_889fde72",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "281cd8cf0b0ab268fa43a8ec23dadce0a6969509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
