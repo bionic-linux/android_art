@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01c13251_83f7de3a",
+        "filename": "test/674-hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-22T16:41:00Z",
+      "side": 1,
+      "message": "nit: if (value) ?",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "74d488494187395d9d305159f54fc679e8219e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
