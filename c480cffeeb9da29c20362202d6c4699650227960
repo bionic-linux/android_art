@@ -16,6 +16,24 @@
       "revId": "c480cffeeb9da29c20362202d6c4699650227960",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ad3279_4d926b70",
+        "filename": "libdexfile/dex/art_dex_file_loader.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-01-22T16:22:33Z",
+      "side": 1,
+      "message": "Yes, I would have thought this was the natural style too, but have been previously educated that our director prefers early return and told it\u0027s in the style guide. I failed to find a clear articulation of the latter, but whatever makes people happy...",
+      "parentUuid": "1d0352f2_5ae69af1",
+      "revId": "c480cffeeb9da29c20362202d6c4699650227960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
