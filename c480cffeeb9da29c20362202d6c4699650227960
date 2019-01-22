@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0352f2_5ae69af1",
+        "filename": "libdexfile/dex/art_dex_file_loader.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-22T15:31:26Z",
+      "side": 1,
+      "message": "nit: this looks odd. how about:\n\nif (dex_file !\u003d nullptr) {\n  ... set domain\n}",
+      "revId": "c480cffeeb9da29c20362202d6c4699650227960",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
