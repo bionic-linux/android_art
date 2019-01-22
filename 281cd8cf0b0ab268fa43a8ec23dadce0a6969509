@@ -46,6 +46,23 @@
       "revId": "281cd8cf0b0ab268fa43a8ec23dadce0a6969509",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87e1f20e_ca487dbc",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-22T14:54:40Z",
+      "side": 1,
+      "message": "Nit: Perhaps an empty line here.",
+      "revId": "281cd8cf0b0ab268fa43a8ec23dadce0a6969509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
