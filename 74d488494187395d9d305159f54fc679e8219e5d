@@ -22,6 +22,30 @@
       "revId": "74d488494187395d9d305159f54fc679e8219e5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd62ce3c_01df8e25",
+        "filename": "test/674-hiddenapi/hiddenapi.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-22T17:00:15Z",
+      "side": 1,
+      "message": "This is the JNI way. JNI_FALSE may not be the same value as C++ false",
+      "parentUuid": "01c13251_83f7de3a",
+      "range": {
+        "startLine": 87,
+        "startChar": 6,
+        "endLine": 87,
+        "endChar": 24
+      },
+      "revId": "74d488494187395d9d305159f54fc679e8219e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
