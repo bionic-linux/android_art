@@ -144,6 +144,10 @@ function check_library {
     || fail_check "Cannot find library '$1' in mounted image"
 }
 
+function check_java_library {
+  [[ -x "$mount_point/javalib/$1" ]] || fail_check "Cannot find java library '$1' in mounted image"
+}
+
 # Check contents of APEX payload located in `$mount_point`.
 function check_release_contents {
   # Check that the mounted image contains an APEX manifest.
@@ -189,6 +193,13 @@ function check_release_contents {
   #   ...
   #
   # ?
+
+  # TODO: Enable once the jars are in the host apex
+  # check_java_library core-oj.jar
+  # check_java_library core-libart.jar
+  # check_java_library okhttp.jar
+  # check_java_library bouncycastle.jar
+  # check_java_library apache-xml.jar
 }
 
 # Check debug contents of APEX payload located in `$mount_point`.
