@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b405fcc_abf72f2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T13:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de30011_271f937c",
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4849ac5_09ced7ce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-23T12:19:12Z",
       "side": 1,
       "message": "I\u0027d also extend art/build/apex/runtests.sh and mention it here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152d337b_754b0f98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T13:06:42Z",
+      "side": 1,
+      "message": "This looks like testing only the host apex? I\u0027ve added the check rules, but commented them for now.",
+      "parentUuid": "a4849ac5_09ced7ce",
       "range": {
         "startLine": 9,
         "startChar": 0,
@@ -56,6 +98,24 @@
       "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80d4c7e_6a67e220",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T13:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b5f8f4e_8c3e1a7f",
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
