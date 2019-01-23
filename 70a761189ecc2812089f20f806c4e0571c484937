@@ -22,6 +22,30 @@
       "revId": "70a761189ecc2812089f20f806c4e0571c484937",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375b1d11_a352be69",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-23T18:25:04Z",
+      "side": 1,
+      "message": "Yes, it\u0027s necessary after the move. http://r.android.com/c/platform/system/core/+/880598/1#message-5decf5b8a4cacf642b8bc9de5881225038b3d37e",
+      "parentUuid": "3b265700_897dcbfc",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "70a761189ecc2812089f20f806c4e0571c484937",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
