@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f07d6c29_20c22467",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T12:01:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d660e3b1_2e5e91cc",
+      "revId": "ce99df42b37cdee74e82b74273ca724c453bd4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fb2292b_44a83619",
         "filename": "build/apex/Android.bp",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-22T21:24:59Z",
       "side": 1,
       "message": "Need those here too.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 10
+      },
+      "revId": "ce99df42b37cdee74e82b74273ca724c453bd4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cdba04c_94ea2fa6",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T12:01:17Z",
+      "side": 1,
+      "message": "These can be done at a later stage (and are the the -hostdex variants).",
+      "parentUuid": "5fb2292b_44a83619",
       "range": {
         "startLine": 181,
         "startChar": 0,
