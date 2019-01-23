@@ -22,6 +22,30 @@
       "revId": "35c37866e7b1a9f836b1fd3efb4ea775e13417fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba834b1d_1c7e8a3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-01-23T22:29:32Z",
+      "side": 1,
+      "message": "- apps + system server have filenames\n- boot classpath elements have full paths\n\nI expanded the comments",
+      "parentUuid": "fa56d849_73956120",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "35c37866e7b1a9f836b1fd3efb4ea775e13417fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
