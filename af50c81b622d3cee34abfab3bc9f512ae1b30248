@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e28b6dae_61ed2b73",
+        "filename": "build/apex/runtests.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T13:24:17Z",
+      "side": 1,
+      "message": "You could move this to a `check_target_only_contents` function and add calls to it after lines 300 and 333.",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 37
+      },
+      "revId": "af50c81b622d3cee34abfab3bc9f512ae1b30248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

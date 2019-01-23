@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "15ef7f0c_e6a7a621",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T13:24:17Z",
+      "side": 1,
+      "message": "The script `art/build/apex/runtests.sh` is testing all the Runtime APEX modules:\n- com.android.runtime.release\n- com.android.runtime.debug\n- com.android.runtime.host",
+      "parentUuid": "152d337b_754b0f98",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b5f8f4e_8c3e1a7f",
         "filename": "build/apex/Android.bp",
         "patchSetId": 2
