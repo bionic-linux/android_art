@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6de30011_271f937c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T12:18:04Z",
+      "side": 1,
+      "message": "I\u0027d add the relevant bugs (at least 110870380).",
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b5f8f4e_8c3e1a7f",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T12:18:04Z",
+      "side": 1,
+      "message": "I\u0027d use `libcore_target_java_libs`, to be consistent with the other variable names used in this file. Or even `libcore_java_libs`, as I expect these to be included in module `com.android.runtime.host` eventually.",
+      "revId": "262361f6901a9cdf258229a2602c89c887d8d1e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
