@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82f6b59f_0fda14cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-24T09:27:41Z",
+      "side": 1,
+      "message": "If boot classpath is the exception, should we approach filenames instead? I assume full paths may be something the security team would prefer not to have.",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "876a2ab77ce27c23cfe5cdc7d28ea79aae958a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
