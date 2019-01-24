@@ -22,6 +22,30 @@
       "revId": "876a2ab77ce27c23cfe5cdc7d28ea79aae958a12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8b53ac_3b8b5a09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-01-24T18:28:32Z",
+      "side": 1,
+      "message": "Filenames cause a certain discrepancy in the overall flow. Moving to pure filename based solution also adds a bit more work.\n\n- when the apps starts, the framework registers the applications code paths for profiling. When doing so, it uses the absolute locations it has. At this step we don\u0027t know anything about checksums.\n- the runtime does not store the actual paths anywhere in the dex files (it only uses the \"dex locations\"). Probably we can find them since we have stuff mapped, but not directly available.\n- so with only filenames we have a weaker link between the two;\n\nI think from a functional perspective there\u0027s not a big deal to go full on filenames. There are some rare edge case (e.g. shared apps using the same uid), but we could make it work.\n\nLet\u0027s get this in to unblock things, and I\u0027ll look to see if we can add additional checks.",
+      "parentUuid": "82f6b59f_0fda14cd",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 20,
+        "endChar": 0
+      },
+      "revId": "876a2ab77ce27c23cfe5cdc7d28ea79aae958a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
