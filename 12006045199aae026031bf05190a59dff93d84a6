@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e41b86df_f8db56f5",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "Can you add a comment here, warning about the compute time of MethodContainsRSensitiveAccess (so that a refactoring has less chance of doing the wrong thing).",
+      "range": {
+        "startLine": 1796,
+        "startChar": 0,
+        "endLine": 1796,
+        "endChar": 99
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9444006_fba93374",
+        "filename": "compiler/optimizing/inliner.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "Can you add a comment?",
+      "range": {
+        "startLine": 2033,
+        "startChar": 0,
+        "endLine": 2035,
+        "endChar": 3
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd7edbd_8ad05b0d",
+        "filename": "compiler/optimizing/nodes.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "drop ?",
+      "range": {
+        "startLine": 717,
+        "startChar": 13,
+        "endLine": 717,
+        "endChar": 14
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09c72ef_8c203625",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "I would indeed get it from the ArtMethod. Note that ArtMethod may be null, which means we haven\u0027t resolved its declaring class. So if it\u0027s null, I\u0027d just not query if there is an annotation.",
+      "range": {
+        "startLine": 833,
+        "startChar": 0,
+        "endLine": 834,
+        "endChar": 80
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c50862_bc29133b",
+        "filename": "compiler/optimizing/optimizing_compiler.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "ditto about adding a comment.",
+      "range": {
+        "startLine": 838,
+        "startChar": 23,
+        "endLine": 838,
+        "endChar": 53
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6bdd67_a2add2d6",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "range": {
+        "startLine": 1349,
+        "startChar": 0,
+        "endLine": 1349,
+        "endChar": 47
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51843c6_533ed578",
+        "filename": "runtime/dex/dex_file_annotations.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "nit: only 4 spaces.",
+      "range": {
+        "startLine": 1356,
+        "startChar": 0,
+        "endLine": 1356,
+        "endChar": 9
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "868b78a4_543a414f",
+        "filename": "runtime/oat_file.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-25T10:42:09Z",
+      "side": 1,
+      "message": "nit: alignment of parameters.",
+      "range": {
+        "startLine": 1837,
+        "startChar": 44,
+        "endLine": 1837,
+        "endChar": 77
+      },
+      "revId": "12006045199aae026031bf05190a59dff93d84a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
