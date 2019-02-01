@@ -16,6 +16,24 @@
       "revId": "aac064e3d54057c739870e69f084912278cd7cc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5de97d_57ff793e",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-02-01T19:28:27Z",
+      "side": 1,
+      "message": "\u003e Update tester for this.\n\nWill do in a follow up.",
+      "parentUuid": "6b7849db_bedcc265",
+      "revId": "aac064e3d54057c739870e69f084912278cd7cc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
