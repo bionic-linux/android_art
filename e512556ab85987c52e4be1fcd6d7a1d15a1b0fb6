@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "662b0542_446478af",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-07T15:57:35Z",
+      "side": 1,
+      "message": "intmax_t?",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "e512556ab85987c52e4be1fcd6d7a1d15a1b0fb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06e9e84_c3902c56",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-07T15:57:35Z",
+      "side": 1,
+      "message": "uintmax_t?",
+      "range": {
+        "startLine": 208,
+        "startChar": 18,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "e512556ab85987c52e4be1fcd6d7a1d15a1b0fb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
