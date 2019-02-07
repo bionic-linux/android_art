@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ef16e7f_941480dd",
+        "filename": "cmdline/cmdline.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-02-07T20:09:34Z",
+      "side": 1,
+      "message": "Why isn\u0027t it just \u0027option\u0027 ?",
+      "range": {
+        "startLine": 186,
+        "startChar": 47,
+        "endLine": 186,
+        "endChar": 74
+      },
+      "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
