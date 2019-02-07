@@ -22,6 +22,23 @@
       "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b242f74d_58c8e785",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-02-07T20:12:07Z",
+      "side": 1,
+      "message": "If this was a std::string_view , we can still get the raw_option out with view.data()",
+      "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
