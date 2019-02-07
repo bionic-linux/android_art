@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24b8f2c0_413d45e7",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-07T16:08:12Z",
+      "side": 1,
+      "message": "android::base::ParseInt() is using \"long long int\" internally, so I\u0027d keep this as int64_t for now, preserving the old behavior.",
+      "parentUuid": "662b0542_446478af",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 9
+      },
+      "revId": "e512556ab85987c52e4be1fcd6d7a1d15a1b0fb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b06e9e84_c3902c56",
         "filename": "profman/profman.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e512556ab85987c52e4be1fcd6d7a1d15a1b0fb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aea0dbb1_21e20703",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-07T16:08:12Z",
+      "side": 1,
+      "message": "This is tied to the int64_t above.",
+      "parentUuid": "b06e9e84_c3902c56",
+      "range": {
+        "startLine": 208,
+        "startChar": 18,
+        "endLine": 208,
+        "endChar": 26
+      },
+      "revId": "e512556ab85987c52e4be1fcd6d7a1d15a1b0fb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
