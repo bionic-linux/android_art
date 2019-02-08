@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53390334_933b6e88",
+        "filename": "cmdline/cmdline.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-08T10:27:10Z",
+      "side": 1,
+      "message": "raw_option is null-terminated. std::string_view by definition does not need to be.",
+      "parentUuid": "2ef16e7f_941480dd",
+      "range": {
+        "startLine": 186,
+        "startChar": 47,
+        "endLine": 186,
+        "endChar": 74
+      },
+      "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b242f74d_58c8e785",
         "filename": "imgdiag/imgdiag.cc",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91aea54b_75223e79",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-08T10:27:10Z",
+      "side": 1,
+      "message": "std::string_view::data() does not promise you a null-terminated string. All the data() calls that we\u0027ve previously had here were relying on something not promised by the interface.",
+      "parentUuid": "b242f74d_58c8e785",
+      "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
