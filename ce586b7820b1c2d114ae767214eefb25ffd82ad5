@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "767d5307_23f57484",
+        "filename": "dex2oat/linker/arm/relative_patcher_thumb2_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-08T18:49:43Z",
+      "side": 1,
+      "message": "Nit: 9u",
+      "revId": "ce586b7820b1c2d114ae767214eefb25ffd82ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99f7df17_9bd55e5c",
+        "filename": "dex2oat/linker/arm/relative_patcher_thumb2_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-08T18:49:43Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 550,
+        "startChar": 42,
+        "endLine": 550,
+        "endChar": 43
+      },
+      "revId": "ce586b7820b1c2d114ae767214eefb25ffd82ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6122b72_9d84fa45",
+        "filename": "dex2oat/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-08T18:49:43Z",
+      "side": 1,
+      "message": "Nit: 64u",
+      "range": {
+        "startLine": 669,
+        "startChar": 42,
+        "endLine": 669,
+        "endChar": 44
+      },
+      "revId": "ce586b7820b1c2d114ae767214eefb25ffd82ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14a714bf_28df0676",
+        "filename": "dex2oat/linker/arm64/relative_patcher_arm64_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-08T18:49:43Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "ce586b7820b1c2d114ae767214eefb25ffd82ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
