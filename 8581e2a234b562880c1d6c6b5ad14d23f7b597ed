@@ -81,6 +81,24 @@
       "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4d0b156_7e14b1f0",
+        "filename": "imgdiag/imgdiag.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1677,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2019-02-08T19:55:36Z",
+      "side": 1,
+      "message": "Thanks for elaborating.",
+      "parentUuid": "91aea54b_75223e79",
+      "revId": "8581e2a234b562880c1d6c6b5ad14d23f7b597ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
