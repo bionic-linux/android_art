@@ -303,6 +303,21 @@ public class AhatClassInstance extends AhatInstance {
     return bitmap;
   }
 
+  /**
+   * Map the size stored in a NtiveAllocationRegistry to an actual (sometimes very approximate)
+   * size in bytes.
+   */
+  private static long interpretedSize(long storedSize) {
+    if (storedSize == 0) {
+      // Malloc memory only, though we don't know how much. Return a clearly made up number.
+      return 999;
+    } else if (storedSize < 0) {
+      // Malloc()-allocated memory, approximate size is known.
+      return -storedSize;
+    }
+    return storedSize;
+  }
+
   @Override
   RegisteredNativeAllocation asRegisteredNativeAllocation() {
     if (!isInstanceOfClass("sun.misc.Cleaner")) {
@@ -342,7 +357,7 @@ public class AhatClassInstance extends AhatInstance {
 
     RegisteredNativeAllocation rna = new RegisteredNativeAllocation();
     rna.referent = referent.asAhatInstance();
-    rna.size = size.asLong();
+    rna.size = interpretedSize(size.asLong());
     return rna;
   }
 
