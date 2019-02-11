@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38191e7b_c59eb713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-02-11T16:08:27Z",
+      "side": 1,
+      "message": "You\u0027ll need to teach AndroidStudio too.\n\nMaybe it would be easier to modify NativeAllocationRegistry to keep \u0027size\u0027 as the magnitude of the size and add an extra boolean to indicate the sign? Then you wouldn\u0027t need an ahat or AndroidStudio change. I don\u0027t feel strongly one way or the other.",
+      "revId": "925b036a4517c918c613e159a28625b96de6a7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88cddfd_16b49c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-02-11T16:08:27Z",
+      "side": 1,
+      "message": "It would be good to add a unit test for this case to art/tools/ahat/src/test/com/android/ahat/NativeAllocationTest.java. You\u0027ll want to add a new registered native allocation to src/test-dump/DumpedStuff.java.\n\nYou can run the ahat unit tests with \u0027atest ahat-tests\u0027",
+      "revId": "925b036a4517c918c613e159a28625b96de6a7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa38ddd7_5a7d0aa5",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-02-11T16:08:27Z",
+      "side": 1,
+      "message": "nit: my preference would be to inline this logic directly where it is used rather than pull it out into a helper function.",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 56
+      },
+      "revId": "925b036a4517c918c613e159a28625b96de6a7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4a8845_3ffc1ff9",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/AhatClassInstance.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1057373
+      },
+      "writtenOn": "2019-02-11T16:08:27Z",
+      "side": 1,
+      "message": "Better to leave as \u00270\u0027 I think.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 17
+      },
+      "revId": "925b036a4517c918c613e159a28625b96de6a7df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
