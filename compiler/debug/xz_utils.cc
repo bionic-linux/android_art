@@ -48,7 +48,8 @@ static void XzCompressChunk(ArrayRef<const uint8_t> src, std::vector<uint8_t>* d
   XzInitCrc();
   CLzma2EncProps lzma2Props;
   Lzma2EncProps_Init(&lzma2Props);
-  lzma2Props.lzmaProps.level = 1;  // Fast compression.
+  // Prefer compression speed on target and size on host.
+  lzma2Props.lzmaProps.level = kIsTargetBuild ? 1 : 7;
   Lzma2EncProps_Normalize(&lzma2Props);
   CXzProps props;
   XzProps_Init(&props);
