@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f765e5b8_a996b1eb",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1711,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-14T15:46:30Z",
+      "side": 1,
+      "message": "This is atypical for our VLOG use. Consider moving it into the conditional and elide the parameter.",
+      "revId": "466539fac6d08828eb7b7ed686c92cffef369862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
