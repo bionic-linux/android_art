@@ -28,6 +28,10 @@ cc_defaults {
 
     shared_libs: [
         "libbase",
+        // TODO(b/124439236): Move the following two libs to "required" when it
+        // works with APEX library dependencies.
+        "libjdwp",
+        "libdt_fd_forward",
     ],
     target: {
         host: {
@@ -49,10 +53,6 @@ cc_defaults {
         },
     },
     symlink_preferred_arch: true,
-    required: [
-        "libjdwp",
-        "libdt_fd_forward",
-    ],
 }
 
 art_cc_library {
