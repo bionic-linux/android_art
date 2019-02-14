@@ -1708,6 +1708,7 @@ void AppImageLoadingHelper::HandleAppImageStrings(gc::space::ImageSpace* space) 
   };
 
   bool update_intern_strings;
+  VLOG(image) << "AppImage:load_startup_cache = " << load_startup_cache;
   if (load_startup_cache) {
     // Only add the intern table if we are using the startup cache. Otherwise,
     // UpdateInternStrings adds the strings to the intern table.
