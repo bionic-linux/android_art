@@ -16,6 +16,24 @@
       "revId": "ce589801cbc0fbf1aa5f3e83434c26a2dff8af46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f765c61f_03520f9c",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-21T15:45:35Z",
+      "side": 1,
+      "message": "Ah thank you for reminding this to me! You\u0027re right then it\u0027s not just heap poisoning, looks like it\u0027s walleye specific.\n\nI\u0027m hesitant in filing a bug that I don\u0027t think is worth investigating. The test has been written for Q, and there as been issues already around kernel versions. I\u0027ll mark that in the description.",
+      "parentUuid": "cf74f0f4_9794d30b",
+      "revId": "ce589801cbc0fbf1aa5f3e83434c26a2dff8af46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
