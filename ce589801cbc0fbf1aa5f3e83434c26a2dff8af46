@@ -34,6 +34,24 @@
       "revId": "ce589801cbc0fbf1aa5f3e83434c26a2dff8af46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c72a7f27_351c04d8",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-21T15:52:51Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "f765c61f_03520f9c",
+      "revId": "ce589801cbc0fbf1aa5f3e83434c26a2dff8af46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
