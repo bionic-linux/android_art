@@ -34,6 +34,24 @@
       "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf49bb4e_10cb59ed",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4639,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-21T13:32:03Z",
+      "side": 1,
+      "message": "Would you rather I cache it in the runtime or class linker? IsUsingDefaultBootImageLocation does string compare which is annoying to do for each class that ends up here.",
+      "parentUuid": "b05475ae_35f19930",
+      "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
