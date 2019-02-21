@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf74f0f4_9794d30b",
+        "filename": "tools/libcore_failures.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-02-21T15:39:04Z",
+      "side": 1,
+      "message": "Do we have a tracking bug for this issue? It\u0027d be good to understand why this is happening on heap poisoning configurations.\n\nAlso, is this issue also happening on walleye-armv7-poison-debug, where heap poisoning is currently disabled (b/123499955)?",
+      "revId": "ce589801cbc0fbf1aa5f3e83434c26a2dff8af46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
