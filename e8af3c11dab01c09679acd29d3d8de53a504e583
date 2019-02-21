@@ -52,6 +52,24 @@
       "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48606f2_1326940c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4639,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-02-21T15:32:56Z",
+      "side": 1,
+      "message": "It would probably make the most sense to transparently cache it in Runtime.",
+      "parentUuid": "bf49bb4e_10cb59ed",
+      "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
