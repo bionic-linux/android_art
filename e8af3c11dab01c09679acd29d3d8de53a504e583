@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "275dcf97_1c746efe",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4639,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-02-21T10:00:17Z",
+      "side": 1,
+      "message": "Had to look up that the \u0027static\u0027 will not be initialized before Runtime. A comment would have helped but it\u0027s also on me for not knowing the lifetime of static local variables.",
+      "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
