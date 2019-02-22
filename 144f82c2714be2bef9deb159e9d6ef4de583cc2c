@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8a4911b_ed0e4f70",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 4650,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-02-22T19:56:16Z",
+      "side": 1,
+      "message": "This is a terribly hacky place to put this. Absolutely not obvious. This should have gone into VerifyClass instead.",
+      "range": {
+        "startLine": 4639,
+        "startChar": 0,
+        "endLine": 4650,
+        "endChar": 7
+      },
+      "revId": "144f82c2714be2bef9deb159e9d6ef4de583cc2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
