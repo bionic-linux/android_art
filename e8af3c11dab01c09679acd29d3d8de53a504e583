@@ -70,6 +70,24 @@
       "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0010ce3_e84773b7",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 4639,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-22T08:48:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48606f2_1326940c",
+      "revId": "e8af3c11dab01c09679acd29d3d8de53a504e583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
