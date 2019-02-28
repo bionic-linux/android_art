@@ -221,6 +221,13 @@ template<typename T>
 bool ShouldDenyAccessToMemberImpl(T* member, ApiList api_list, AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_);
 
+inline ArtField* GetInterfaceMemberIfProxy(ArtField* field) { return field; }
+
+inline ArtMethod* GetInterfaceMemberIfProxy(ArtMethod* method)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  return method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
+}
+
 }  // namespace detail
 
 // Returns access flags for the runtime representation of a class member (ArtField/ArtMember).
@@ -358,6 +365,10 @@ inline bool ShouldDenyAccessToMember(T* member,
                                      AccessMethod access_method)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   DCHECK(member != nullptr);
+
+  // If this is a proxy method, look at the interface method instead.
+  member = detail::GetInterfaceMemberIfProxy(member);
+
   const uint32_t runtime_flags = GetRuntimeFlags(member);
 
   // Exit early if member is public API. This flag is also set for non-boot class
