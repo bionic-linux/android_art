@@ -22,6 +22,30 @@
       "revId": "42ba0bdba65d5199196d723ee1355af58acc837a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580c66bf_042e3036",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-02-28T20:27:31Z",
+      "side": 1,
+      "message": "Good point. Done",
+      "parentUuid": "8054e831_88972f5a",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 53
+      },
+      "revId": "42ba0bdba65d5199196d723ee1355af58acc837a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
