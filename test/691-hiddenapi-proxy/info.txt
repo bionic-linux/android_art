@@ -1,0 +1,1 @@
+Tests that inspecting Proxy classes with reflection does not crash ART.
