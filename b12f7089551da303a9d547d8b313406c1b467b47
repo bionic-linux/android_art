@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f474c2db_08d6b5ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-01T23:31:38Z",
+      "side": 1,
+      "message": "Add the new order in the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "b12f7089551da303a9d547d8b313406c1b467b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
