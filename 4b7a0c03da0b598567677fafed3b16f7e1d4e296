@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1cbf4a4d_efb77958",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-01T22:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e32907ae_ef37d757",
+      "range": {
+        "startLine": 14,
+        "startChar": 19,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "4b7a0c03da0b598567677fafed3b16f7e1d4e296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d7f994b_b1051230",
         "filename": "runtime/hidden_api.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-01T16:23:01Z",
       "side": 1,
       "message": "I should ask you to #include base/enums.h, but nobody ever does.",
+      "range": {
+        "startLine": 228,
+        "startChar": 43,
+        "endLine": 228,
+        "endChar": 62
+      },
+      "revId": "4b7a0c03da0b598567677fafed3b16f7e1d4e296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d90e096a_962d2467",
+        "filename": "runtime/hidden_api.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-01T22:27:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6d7f994b_b1051230",
       "range": {
         "startLine": 228,
         "startChar": 43,
