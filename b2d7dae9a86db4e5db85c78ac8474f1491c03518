@@ -16,6 +16,24 @@
       "revId": "b2d7dae9a86db4e5db85c78ac8474f1491c03518",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d26b35_b8c9d25c",
+        "filename": "test/691-hiddenapi-proxy/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-01T13:41:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3094a976_1139d5cb",
+      "revId": "b2d7dae9a86db4e5db85c78ac8474f1491c03518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
