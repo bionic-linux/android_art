@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3094a976_1139d5cb",
+        "filename": "test/691-hiddenapi-proxy/info.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-01T11:49:53Z",
+      "side": 1,
+      "message": "Mention how it relates with hidden API?",
+      "revId": "b2d7dae9a86db4e5db85c78ac8474f1491c03518",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
