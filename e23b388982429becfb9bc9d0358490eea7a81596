@@ -22,6 +22,30 @@
       "revId": "e23b388982429becfb9bc9d0358490eea7a81596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039b6682_b069e44b",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1712,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-03-01T20:23:01Z",
+      "side": 1,
+      "message": "Depends, we can probably still detect if the flag is off by checking that the output is not present.",
+      "parentUuid": "c459bb0d_c34e0864",
+      "range": {
+        "startLine": 1711,
+        "startChar": 0,
+        "endLine": 1712,
+        "endChar": 49
+      },
+      "revId": "e23b388982429becfb9bc9d0358490eea7a81596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
