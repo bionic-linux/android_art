@@ -68,6 +68,9 @@ GarbageCollector::GarbageCollector(Heap* heap, const std::string& name)
       name_(name),
       pause_histogram_((name_ + " paused").c_str(), kPauseBucketSize, kPauseBucketCount),
       rss_histogram_((name_ + " peak-rss").c_str(), /*Initial bucket width*/1, /*bucket count*/20),
+      freed_bytes_histogram_((name_ + " freed-bytes").c_str(),
+                             /*initial bucket width*/ 1,
+                             /*bucket count*/ 20),
       cumulative_timings_(name),
       pause_histogram_lock_("pause histogram lock", kDefaultMutexLevel, true),
       is_transaction_active_(false) {
@@ -85,6 +88,7 @@ void GarbageCollector::ResetCumulativeStatistics() {
   total_freed_objects_ = 0u;
   total_freed_bytes_ = 0;
   rss_histogram_.Reset();
+  freed_bytes_histogram_.Reset();
   MutexLock mu(Thread::Current(), pause_histogram_lock_);
   pause_histogram_.Reset();
 }
@@ -157,6 +161,8 @@ void GarbageCollector::Run(GcCause gc_cause, bool clear_soft_references) {
       current_iteration->GetFreedLargeObjects();
   total_freed_bytes_ += current_iteration->GetFreedBytes() +
       current_iteration->GetFreedLargeObjectBytes();
+  freed_bytes_histogram_.AddValue((current_iteration->GetFreedBytes() +
+                                  current_iteration->GetFreedLargeObjectBytes()) / MB);
   uint64_t end_time = NanoTime();
   uint64_t thread_cpu_end_time = ThreadCpuNanoTime();
   total_thread_cpu_time_ns_ += thread_cpu_end_time - thread_cpu_start_time;
@@ -218,6 +224,7 @@ void GarbageCollector::ResetMeasurements() {
   }
   cumulative_timings_.Reset();
   rss_histogram_.Reset();
+  freed_bytes_histogram_.Reset();
   total_thread_cpu_time_ns_ = 0u;
   total_time_ns_ = 0u;
   total_freed_objects_ = 0u;
@@ -296,6 +303,15 @@ void GarbageCollector::DumpPerformanceInfo(std::ostream& os) {
        << " Min: " << PrettySize(rss_histogram_.Min() * MB) << "\n";
     os << "Peak-rss Histogram: ";
     rss_histogram_.DumpBins(os);
+    os << "\n";
+  }
+  if (freed_bytes_histogram_.SampleSize() > 0) {
+    os << freed_bytes_histogram_.Name()
+       << ": Avg: " << PrettySize(freed_bytes_histogram_.Mean() * MB)
+       << " Max: " << PrettySize(freed_bytes_histogram_.Max() * MB)
+       << " Min: " << PrettySize(freed_bytes_histogram_.Min() * MB) << "\n";
+    os << "Freed-bytes histogram: ";
+    freed_bytes_histogram_.DumpBins(os);
     os << "\n";
   }
   double cpu_seconds = NsToMs(GetTotalCpuTime()) / 1000.0;
