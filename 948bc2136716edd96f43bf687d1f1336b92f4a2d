@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac1a4c21_824a07f1",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-03-05T22:29:23Z",
+      "side": 1,
+      "message": "This seems to needlessly restrict accuracy for small heap apps. Why not do KB with an initial bucket width in the 10 to 100 range? It looks like the Histogram mechanism will then dynamically adjust correctly.",
+      "range": {
+        "startLine": 170,
+        "startChar": 82,
+        "endLine": 170,
+        "endChar": 86
+      },
+      "revId": "948bc2136716edd96f43bf687d1f1336b92f4a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
