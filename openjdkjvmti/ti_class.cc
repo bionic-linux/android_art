@@ -254,8 +254,8 @@ struct ClassCallback : public art::ClassLoadCallback {
       }
 
       // TODO Check Redefined dex file for all invariants.
-      LOG(WARNING) << "Dex file created by class-definition time transformation of "
-                   << descriptor << " is not checked for all retransformation invariants.";
+      LOG(INFO) << "Dex file created by class-definition time transformation of "
+                << descriptor << " is not checked for all retransformation invariants.";
 
       if (!ClassLoaderHelper::AddToClassLoader(self, class_loader, dex_file.get())) {
         LOG(ERROR) << "Unable to add " << descriptor << " to class loader!";
