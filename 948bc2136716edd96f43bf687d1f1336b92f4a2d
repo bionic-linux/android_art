@@ -22,6 +22,30 @@
       "revId": "948bc2136716edd96f43bf687d1f1336b92f4a2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f225586_5804d1e9",
+        "filename": "runtime/gc/collector/garbage_collector.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-03-06T22:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1a4c21_824a07f1",
+      "range": {
+        "startLine": 170,
+        "startChar": 82,
+        "endLine": 170,
+        "endChar": 86
+      },
+      "revId": "948bc2136716edd96f43bf687d1f1336b92f4a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
