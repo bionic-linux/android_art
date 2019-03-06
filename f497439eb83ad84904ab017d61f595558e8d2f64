@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98430769_ee30e6d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-06T16:14:05Z",
+      "side": 1,
+      "message": "That isn\u0027t standard in Android (see parts of build/ and development). It will be less controversial and disruptive if you remove this part of the change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f497439eb83ad84904ab017d61f595558e8d2f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
