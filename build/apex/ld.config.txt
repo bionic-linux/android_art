@@ -26,6 +26,9 @@ namespace.default.link.platform.allow_all_shared_libs = true
 
 # Keep in sync with the default namespace in /system/etc/ld.config.txt.
 namespace.platform.isolated = true
+# Make the platform namespace visible, so that app native code can
+# load its libraries (e.g. libc.so).
+namespace.platform.visible = true
 namespace.platform.search.paths = /system/${LIB}
 namespace.platform.asan.search.paths = /data/asan/system/${LIB}
 namespace.platform.links = default
