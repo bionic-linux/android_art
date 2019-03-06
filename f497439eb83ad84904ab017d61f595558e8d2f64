@@ -22,6 +22,30 @@
       "revId": "f497439eb83ad84904ab017d61f595558e8d2f64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39a0c87f_06b7e6c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-03-06T16:58:43Z",
+      "side": 1,
+      "message": "Sure, I wonder why the default pylint config enforces 4 then",
+      "parentUuid": "98430769_ee30e6d7",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f497439eb83ad84904ab017d61f595558e8d2f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
