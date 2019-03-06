@@ -89,8 +89,11 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
            fi
     }
 
+    # Remove /bionic from chroot.
+    adb shell rm -rf "$ART_TEST_CHROOT/bionic"
+
     # Remove /apex from chroot.
-    remove_filesystem_from_chroot apex tmpfs true
+    adb shell rm -rf "$ART_TEST_CHROOT/apex"
 
     # Remove /dev from chroot.
     remove_filesystem_from_chroot dev tmpfs true
