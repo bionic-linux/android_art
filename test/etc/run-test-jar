@@ -773,7 +773,11 @@ if [ ${#VDEX_NAME} -gt $max_filename_size ]; then
     exit 1
 fi
 
-BIN_DIR=$ANDROID_ROOT/bin
+# Run binaries (`dex2oat(d)`, `dalvikvm`, `profman`) from the Runtime APEX's
+# `bin` directory. This means the linker will observe the Runtime APEX linker
+# configuration file (`/apex/com.android.runtime/etc/ld.config.txt`) for these
+# binaries.
+BIN_DIR=$ANDROID_RUNTIME_ROOT/bin
 
 profman_cmdline="true"
 dex2oat_cmdline="true"
@@ -989,7 +993,23 @@ if [ "$HOST" = "n" ]; then
       fi
     fi
 
-    LD_LIBRARY_PATH=/data/$TEST_DIRECTORY/art/$ISA
+    LD_LIBRARY_PATH="/data/$TEST_DIRECTORY/art/$ISA"
+    # Needed to access the boot (core) image files.
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/data/art-test/$ISA"
+    # Needed to access the test's Odex files.
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$DEX_LOCATION/oat/$ISA"
+    # TODO: Without this, every test that dynamically loads `libarttest(d).so`
+    # (via the `System.loadLibrary(args[0])` Java call) fails with this
+    # exception:
+    #
+    #   Exception in thread "main" java.lang.UnsatisfiedLinkError: dlopen failed: library "libc.so" not found
+    #           at java.lang.Runtime.loadLibrary0(Runtime.java:1071)
+    #           at java.lang.Runtime.loadLibrary0(Runtime.java:1007)
+    #           at java.lang.System.loadLibrary(System.java:1667)
+    #           at Main.main(Main.java:27)
+    #
+    # There must be a better way to handle this.
+    LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$ANDROID_RUNTIME_ROOT/$LIBRARY_DIRECTORY/bionic"
     if [ "$ANDROID_ROOT" != "/system" ]; then
       # Current default installation is dalvikvm 64bits and dex2oat 32bits,
       # so we can only use LD_LIBRARY_PATH when testing on a local
