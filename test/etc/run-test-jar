@@ -966,7 +966,7 @@ if [ "$HOST" = "n" ]; then
       fi
     fi
 
-    LD_LIBRARY_PATH=/data/$TEST_DIRECTORY/art/$ISA
+    LD_LIBRARY_PATH="/data/$TEST_DIRECTORY/art/$ISA:$ANDROID_RUNTIME_ROOT/$LIBRARY_DIRECTORY"
     if [ "$ANDROID_ROOT" != "/system" ]; then
       # Current default installation is dalvikvm 64bits and dex2oat 32bits,
       # so we can only use LD_LIBRARY_PATH when testing on a local
