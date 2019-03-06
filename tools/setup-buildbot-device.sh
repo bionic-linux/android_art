@@ -17,7 +17,9 @@
 # The work does by this script is (mostly) undone by tools/teardown-buildbot-device.sh.
 # Make sure to keep these files in sync.
 
+red='\033[0;31m'
 green='\033[0;32m'
+yellow='\033[0;33m'
 nc='\033[0m'
 
 if [ "$1" = --verbose ]; then
@@ -120,6 +122,83 @@ else
   for i in $processes; do adb shell kill -9 $i; done
 fi
 
+# Chroot environment.
+# ===================
+
+# Linker configuration.
+# ---------------------
+
+# Default linker configuration file name/stem.
+ld_config_file_path="/system/etc/ld.config.txt";
+# VNDK-lite linker configuration file name.
+ld_config_vndk_lite_file_path="/system/etc/ld.config.vndk_lite.txt";
+
+# Find linker configuration path name on the "host system".
+#
+# The logic here partly replicates (and simplifies) Bionic's linker logic around
+# configuration file search (see `get_ld_config_file_path` in
+# bionic/linker/linker.cpp).
+get_ld_host_system_config_file_path() {
+  # Check whether the "host device" uses a VNDK-lite linker configuration.
+  local vndk_lite=$(adb shell getprop "ro.vndk.lite" false)
+  if [[ "$vndk_lite" = true ]]; then
+    if adb shell test -f "$ld_config_vndk_lite_file_path"; then
+      echo "$ld_config_vndk_lite_file_path"
+      return
+    fi
+  fi
+  # Check the "host device"'s VNDK version, if any.
+  local vndk_version=$(adb shell getprop "ro.vndk.version")
+  if [[ -n "$vndk_version" ]] && [[ "$vndk_version" != current ]]; then
+    # Insert the VNDK version after the last period (and add another period).
+    local ld_config_file_vdnk_path=$(echo "$ld_config_file_path" \
+      | sed -e "s/^\\(.*\\)\\.\\([^.]\\)/\\1.${vndk_version}.\\2/")
+    if adb shell test -f "$ld_config_file_vdnk_path"; then
+      echo "$ld_config_file_vdnk_path"
+      return
+    fi
+  else
+    if adb shell test -f "$ld_config_file_path"; then
+      echo "$ld_config_file_path"
+      return
+    fi
+  fi
+  # If all else fails, return the default linker configuration name.
+  echo -e "${yellow}Cannot find linker configuration; using default path name.${nc}" >&2
+  echo "$ld_config_file_path"
+  return
+}
+
+# Find linker configuration path name on the "guest system".
+#
+# The logic here tries to "guess" the name of the linker configuration file,
+# based on the contents of the build directory.
+# Note: This requires that the "guest system" is built (e.g. by running
+# art/tools/buildbot-build.sh) before running this script.
+get_ld_guest_system_config_file_path() {
+  if [[ -z "$ANDROID_PRODUCT_OUT" ]]; then
+    echo -e "${red}ANDROID_PRODUCT_OUT environment variable is empty;" \
+      "did you forget to run \`lunch\`${nc}?" >&2
+    exit 1
+  fi
+  local ld_config_file_location="$ANDROID_PRODUCT_OUT/system/etc"
+  local ld_config_file_path_number=$(find "$ld_config_file_location" -name "ld.*.txt" | wc -l)
+  if [[ "$ld_config_file_path_number" -eq 0 ]]; then
+    echo -e "${red}No linker configuration file found in \`$ld_config_file_location\`${nc}" >&2
+    exit 1
+  fi
+  if [[ "$ld_config_file_path_number" -gt 1 ]]; then
+    echo -e \
+      "${red}More than one linker configuration file found in \`$ld_config_file_location\`${nc}" >&2
+    exit 1
+  fi
+  # Strip the build prefix to make the path name relative to the "guest root directory".
+  find "$ld_config_file_location" -name "ld.*.txt" | sed -e "s|^$ANDROID_PRODUCT_OUT||"
+}
+
+# Chroot environment setup.
+# -------------------------
+
 if [[ -n "$ART_TEST_CHROOT" ]]; then
   # Prepare the chroot dir.
   echo -e "${green}Prepare the chroot dir in $ART_TEST_CHROOT${nc}"
@@ -134,8 +213,9 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
   # This is required to have Android system properties work from the chroot.
   # Notes:
   # - In Android N, only '/property_contexts' is expected.
-  # - In Android O, property_context files are expected under /system and /vendor.
-  # (See bionic/libc/bionic/system_properties.cpp for more information.)
+  # - In Android O+, property_context files are expected under /system and /vendor.
+  # (See bionic/libc/bionic/system_properties.cpp or
+  # bionic/libc/system_properties/contexts_split.cpp for more information.)
   property_context_files="/property_contexts \
     /system/etc/selinux/plat_property_contexts \
     /vendor/etc/selinux/nonplat_property_context \
@@ -154,7 +234,25 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
 
   # Populate /etc in chroot with required files.
   adb shell mkdir -p "$ART_TEST_CHROOT/system/etc"
-  adb shell "cd $ART_TEST_CHROOT && ln -s system/etc etc"
+  adb shell "cd $ART_TEST_CHROOT && ln -sf system/etc etc"
+
+  # Check the linker configurations files on the "host system" and the "guest
+  # system". If these file names are different, create a symlink from the "host
+  # system" linker configuration file to the "guest system" linker configuration
+  # file within the chroot environment.
+  ld_host_system_config_file_path=$(get_ld_host_system_config_file_path)
+  echo -e \
+    "${green}Find host system linker configuration: \`$ld_host_system_config_file_path\`${nc}"
+  ld_guest_system_config_file_path=$(get_ld_guest_system_config_file_path)
+  echo -e \
+    "${green}Find guest system linker configuration: \`$ld_guest_system_config_file_path\`${nc}"
+  if [[ "$ld_host_system_config_file_path" != "$ld_guest_system_config_file_path" ]]; then
+    echo -e "${green}Create linker configuration symlink in chroot environment:" \
+      "\`$ART_TEST_CHROOT/$ld_host_system_config_file_path\`" \
+      "-> \`$ld_guest_system_config_file_path\`${nc}"
+    adb shell \
+      ln -sf "$ld_guest_system_config_file_path" "$ART_TEST_CHROOT/$ld_host_system_config_file_path"
+  fi
 
   # Provide /proc in chroot.
   adb shell mkdir -p "$ART_TEST_CHROOT/proc"
@@ -174,8 +272,12 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
   adb shell mount | grep -q "^tmpfs on $ART_TEST_CHROOT/dev type tmpfs " \
     || adb shell mount -o bind /dev "$ART_TEST_CHROOT/dev"
 
-  # Create /apex tmpfs in chroot.
+  # Create /apex directory in chroot.
+  #
+  # Note that we do not mount a tmpfs in this directory, as we simply copy the
+  # contents of the flattened Runtime APEX in it during the execution of
+  # art/tools/buildbot-sync.sh. (This may change in the future, if we start
+  # using scripts art/tools/mount-buildbot-apexes.sh and
+  # art/tools/unmount-buildbot-apexes.sh.)
   adb shell mkdir -p "$ART_TEST_CHROOT/apex"
-  adb shell mount | grep -q "^tmpfs on $ART_TEST_CHROOT/apex type tmpfs " \
-    || adb shell mount -t tmpfs -o nodev,noexec,nosuid tmpfs "$ART_TEST_CHROOT/apex"
 fi
