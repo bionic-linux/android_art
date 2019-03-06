@@ -62,6 +62,34 @@ $(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/nativetest*/)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/nativetest*/)
 $(call add-clean-step, rm -rf $(PRODUCT_OUT)/data/nativetest*/)
 
+# Remove artifacts that used to be generated (as a workaround for
+# improper Runtime APEX support) by tools/buildbot-build.sh via the
+# `standalone-apex-files` Make rule.
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/linker*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libc.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libdexfile_external.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libdl.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libm.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libnativebridge.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libnativehelper.so)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libnativeloader.so)
+# Remove artifacts that used to be generated (as a workaround for
+# improper Runtime APEX support) by tools/buildbot-build.sh via the
+# `icu-data-art-test` Make rule.
+$(call add-clean-step, rm -rf $(PRODUCT_OUT)/system/etc/icu)
+# Remove artifacts that used to be generated in /system/bin as
+# dependencies of ART gtests and run-tests (they are now provided by
+# the Runtime APEX).
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/dalvikvm*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/dex2oat*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/dexdiag)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/dexlist)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/dexoptanalyzer*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/imgdiag*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/oatdump*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/bin/profman*)
+$(call add-clean-step, rm -f $(PRODUCT_OUT)/system/lib*/libopenjdkjvmti*.so)
+
 # ************************************************
 # NEWER CLEAN STEPS MUST BE AT THE END OF THE LIST
 # ************************************************
