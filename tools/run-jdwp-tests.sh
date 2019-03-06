@@ -239,6 +239,13 @@ if [[ $mode == "target" ]]; then
   if [[ -n "$ART_TEST_CHROOT" ]]; then
     # Set Vogar's `--chroot` option.
     chroot_option="--chroot $ART_TEST_CHROOT"
+    # Honor environment variable ART_TEST_LD_CONFIG_FILE.
+    # This variable can be used to select a VNDK-lite linker namespace
+    # configuration in a chroot directory on a "host" device with a non-VNDK
+    # system (i.e. before Android 8.0).
+    if [[ -n "$ART_TEST_LD_CONFIG_FILE" ]]; then
+      chroot_option="$chroot_option --chroot-env \"LD_CONFIG_FILE=$ART_TEST_LD_CONFIG_FILE\""
+    fi
     # Adjust settings for chroot environment.
     art="/system/bin/art"
     art_debugee="sh /system/bin/art"

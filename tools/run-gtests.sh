@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 #
 # Copyright (C) 2019 The Android Open Source Project
 #
@@ -16,6 +16,11 @@
 
 # Script to run all gtests located under $ART_TEST_CHROOT/data/nativetest{64}
 
+if [[ -z "$ART_TEST_CHROOT" ]]; then
+  echo 'ART_TEST_CHROOT environment variable is empty; please set it before running this script.'
+  exit 1
+fi
+
 ADB="${ADB:-adb}"
 all_tests=()
 failing_tests=()
@@ -32,9 +37,18 @@ function fail {
 add_tests "/data/nativetest"
 add_tests "/data/nativetest64"
 
+# Honor environment variable ART_TEST_LD_CONFIG_FILE.
+# This variable can be used to select a VNDK-lite linker namespace configuration
+# in a chroot directory on a "host" device with a non-VNDK system (i.e. before
+# Android 8.0).
+test_env=
+if [[ -n "$ART_TEST_LD_CONFIG_FILE" ]]; then
+  test_env="env LD_CONFIG_FILE=\"$ART_TEST_LD_CONFIG_FILE\""
+fi
+
 for i in $all_tests; do
-  echo $i
-  ${ADB} shell "chroot $ART_TEST_CHROOT env LD_LIBRARY_PATH= ANDROID_ROOT='/system' ANDROID_RUNTIME_ROOT=/system $i" || fail $i
+  echo "$i"
+  ${ADB} shell env $test_env chroot "$ART_TEST_CHROOT" "$i" || fail "$i"
 done
 
 if [ -n "$failing_tests" ]; then
