@@ -28,22 +28,85 @@ if [[ "$@" == *"--interpreter"* ]]; then
   patch -s expected.txt <interpreter-expected.patch
 fi
 
+# Provide additional runtime options when running on device.
+extra_runtime_options=
+if  [[ "$@" != *"--host"* ]]; then
+  # Copied from `test/etc/run-test-jar` and adapted.
+  # TODO: Refactor this logic to avoid code duplication.
+  ARCHITECTURES_32="(arm|x86|mips|none)"
+  ARCHITECTURES_64="(arm64|x86_64|mips64|none)"
+  # Determine the target ISA.
+  if  [[ "$@" == *"--64"* ]]; then
+    ARCHITECTURES_PATTERN="${ARCHITECTURES_64}"
+    TEST_DIRECTORY="nativetest64"
+  else
+    ARCHITECTURES_PATTERN="${ARCHITECTURES_32}"
+    TEST_DIRECTORY="nativetest"
+  fi
+
+  # Need to be root to query /data/dalvik-cache
+  adb root > /dev/null
+  adb wait-for-device
+  ISA=
+  ISA_adb_invocation=
+  ISA_outcome=
+  # We iterate a few times to workaround an adb issue. b/32655576
+  for i in {1..10}; do
+    ISA_adb_invocation=$(adb shell ls -F /data/dalvik-cache)
+    ISA_outcome=$?
+    ISA=$(echo $ISA_adb_invocation | grep -Ewo "${ARCHITECTURES_PATTERN}")
+    if [ x"$ISA" != "x" ]; then
+      break;
+    fi
+  done
+  if [ x"$ISA" = "x" ]; then
+    echo "Unable to determine architecture"
+    # Print a few things for helping diagnosing the problem.
+    echo "adb invocation output: $ISA_adb_invocation"
+    echo "adb invocation outcome: $ISA_outcome"
+    echo $(adb shell ls -F /data/dalvik-cache)
+    echo $(adb shell ls /data/dalvik-cache)
+    echo ${ARCHITECTURES_PATTERN}
+    echo $(adb shell ls -F /data/dalvik-cache | grep -Ewo "${ARCHITECTURES_PATTERN}")
+    exit 1
+  fi
+
+  # Path to native libraries installed on the device for testing purposes.
+  test_native_lib_path=/data/${TEST_DIRECTORY}/art/${ISA}
+
+  # The linker configuration used for dalvikvm(64) in the Runtime APEX
+  # requires us to pass the full path to the agent to the runtime when
+  # running on device.
+  agent=${test_native_lib_path}/${agent}
+
+  # The above agent path is an absolute one; append the root directory to the
+  # library path so that the agent can be found via the `java.library.path`
+  # system property (see method `Main.find` in
+  # test/909-attach-agent/src-art/Main.java).
+  extra_runtime_options="--runtime-option -Djava.library.path=${test_native_lib_path}:/"
+fi
+
 export ANDROID_LOG_TAGS='*:f'
 ./default-run "$@" --android-runtime-option -Xplugin:${plugin} \
                    --android-runtime-option -Xcompiler-option \
                    --android-runtime-option --debuggable \
+                   $extra_runtime_options \
                    --args agent:${agent}=909-attach-agent
 return_status1=$?
 
 ./default-run "$@" --android-runtime-option -Xcompiler-option \
                    --android-runtime-option --debuggable \
+                   $extra_runtime_options \
                    --args agent:${agent}=909-attach-agent
 return_status2=$?
 
-./default-run "$@" --args agent:${agent}=909-attach-agent --external-log-tags
+./default-run "$@" $extra_runtime_options \
+                   --args agent:${agent}=909-attach-agent \
+                   --external-log-tags
 return_status3=$?
 
-./default-run "$@" --args agent:${agent}=909-attach-agent \
+./default-run "$@" $extra_runtime_options \
+                   --args agent:${agent}=909-attach-agent \
                    --args disallow-debugging \
                    --external-log-tags
 return_status4=$?

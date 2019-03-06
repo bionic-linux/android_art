@@ -18,6 +18,58 @@ plugin=libartagentd.so
 if  [[ "$@" == *"-O"* ]]; then
   plugin=libartagent.so
 fi
+
+# Adjust the agent path when running on device.
+if  [[ "$@" != *"--host"* ]]; then
+  # Copied from `test/etc/run-test-jar` and adapted.
+  # TODO: Refactor this logic to avoid code duplication.
+  ARCHITECTURES_32="(arm|x86|mips|none)"
+  ARCHITECTURES_64="(arm64|x86_64|mips64|none)"
+  # Determine the target ISA.
+  if  [[ "$@" == *"--64"* ]]; then
+    ARCHITECTURES_PATTERN="${ARCHITECTURES_64}"
+    TEST_DIRECTORY="nativetest64"
+  else
+    ARCHITECTURES_PATTERN="${ARCHITECTURES_32}"
+    TEST_DIRECTORY="nativetest"
+  fi
+
+  # Need to be root to query /data/dalvik-cache
+  adb root > /dev/null
+  adb wait-for-device
+  ISA=
+  ISA_adb_invocation=
+  ISA_outcome=
+  # We iterate a few times to workaround an adb issue. b/32655576
+  for i in {1..10}; do
+    ISA_adb_invocation=$(adb shell ls -F /data/dalvik-cache)
+    ISA_outcome=$?
+    ISA=$(echo $ISA_adb_invocation | grep -Ewo "${ARCHITECTURES_PATTERN}")
+    if [ x"$ISA" != "x" ]; then
+      break;
+    fi
+  done
+  if [ x"$ISA" = "x" ]; then
+    echo "Unable to determine architecture"
+    # Print a few things for helping diagnosing the problem.
+    echo "adb invocation output: $ISA_adb_invocation"
+    echo "adb invocation outcome: $ISA_outcome"
+    echo $(adb shell ls -F /data/dalvik-cache)
+    echo $(adb shell ls /data/dalvik-cache)
+    echo ${ARCHITECTURES_PATTERN}
+    echo $(adb shell ls -F /data/dalvik-cache | grep -Ewo "${ARCHITECTURES_PATTERN}")
+    exit 1
+  fi
+
+  # Path to native libraries installed on the device for testing purposes.
+  test_native_lib_path=/data/${TEST_DIRECTORY}/art/${ISA}
+
+  # The linker configuration used for dalvikvm(64) in the Runtime APEX
+  # requires us to pass the full path to the agent to the runtime when
+  # running on device.
+  plugin=${test_native_lib_path}/${plugin}
+fi
+
 ./default-run "$@" --runtime-option -agentpath:${plugin}=test_900 \
                    --runtime-option -agentpath:${plugin}=test_900_round_2 \
                    --android-runtime-option -Xplugin:${plugin}
