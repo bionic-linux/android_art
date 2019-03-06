@@ -165,6 +165,13 @@ if $device_mode; then
     # Set Vogar's `--chroot` option.
     vogar_args="$vogar_args --chroot $ART_TEST_CHROOT"
     vogar_args="$vogar_args --device-dir=/tmp"
+    # Honor environment variable ART_TEST_LD_CONFIG_FILE.
+    # This variable can be used to select a VNDK-lite linker namespace
+    # configuration in a chroot directory on a "host" device with a non-VNDK
+    # system (i.e. before Android 8.0).
+    if [[ -n "$ART_TEST_LD_CONFIG_FILE" ]]; then
+      vogar_args="$vogar_args --chroot-env \"LD_CONFIG_FILE=$ART_TEST_LD_CONFIG_FILE\""
+    fi
   else
     # When not using a chroot on device, set Vogar's work directory to
     # /data/local/tmp.

@@ -407,6 +407,15 @@ while true; do
         fi
         run_args="${run_args} --android-runtime-root $1"
         shift
+    elif [ "x$1" = "x--ld-config-file" ]; then
+        shift
+        if [ "x$1" = "x" ]; then
+            echo "$0 missing argument to --ld-config-file" 1>&2
+            usage="yes"
+            break
+        fi
+        run_args="${run_args} --ld-config-file $1"
+        shift
     elif [ "x$1" = "x--update" ]; then
         update_mode="yes"
         shift
@@ -787,6 +796,11 @@ if [ "$usage" = "yes" ]; then
         echo "    --android-runtime-root [path]"
         echo "                          The path on target for the Android Runtime root."
         echo "                          (/apex/com.android.runtime by default)."
+        echo "    --ld-config-file [path]"
+        echo "                          The path on target to the linker configuration file"
+        echo "                          (not defined by default). Note: The linker will ignore"
+        echo "                          this option when executed on a device running a 'user'"
+        echo "                          build."
         echo "    --dex2oat-swap        Use a dex2oat swap file."
         echo "    --instruction-set-features [string]"
         echo "                          Set instruction-set-features for compilation."

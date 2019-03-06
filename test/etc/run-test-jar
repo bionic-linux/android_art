@@ -349,6 +349,10 @@ while true; do
         shift
         ANDROID_RUNTIME_ROOT="$1"
         shift
+    elif [ "x$1" = "x--ld-config-file" ]; then
+        shift
+        LOCAL_LD_CONFIG_FILE="$1"
+        shift
     elif [ "x$1" = "x--instruction-set-features" ]; then
         shift
         INSTRUCTION_SET_FEATURES="$1"
@@ -966,7 +970,16 @@ if [ "$HOST" = "n" ]; then
       fi
     fi
 
-    LD_LIBRARY_PATH=/data/$TEST_DIRECTORY/art/$ISA
+    # Honor option `--ld-config-file`.
+    # This option can be used to select a VNDK-lite linker namespace
+    # configuration in a chroot directory on a "host" device with a non-VNDK
+    # system (i.e. before Android 8.0).
+    maybe_define_ld_config_file=true
+    if [ -n "$LOCAL_LD_CONFIG_FILE" ]; then
+      maybe_define_ld_config_file="export LD_CONFIG_FILE=\"$LOCAL_LD_CONFIG_FILE\""
+    fi
+
+    LD_LIBRARY_PATH="/data/$TEST_DIRECTORY/art/$ISA"
     if [ "$ANDROID_ROOT" != "/system" ]; then
       # Current default installation is dalvikvm 64bits and dex2oat 32bits,
       # so we can only use LD_LIBRARY_PATH when testing on a local
@@ -996,6 +1009,7 @@ if [ "$HOST" = "n" ]; then
              export ANDROID_LOG_TAGS=$ANDROID_LOG_TAGS && \
              rm -rf ${DEX_LOCATION}/dalvik-cache/ && \
              mkdir -p ${mkdir_locations} && \
+             $maybe_define_ld_config_file && \
              export LD_LIBRARY_PATH=$LD_LIBRARY_PATH && \
              export PATH=$BIN_DIR:$PATH && \
              $profman_cmdline && \
