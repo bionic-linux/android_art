@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 #
 # Copyright (C) 2018 The Android Open Source Project
 #
@@ -14,17 +14,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Push ART artifacts and its dependencies to a chroot directory for on-device testing.
+
 adb wait-for-device
 
-if [[ -z "${ANDROID_PRODUCT_OUT}" ]]; then
+if [[ -z "$ANDROID_BUILD_TOP" ]]; then
+  echo 'ANDROID_BUILD_TOP environment variable is empty; did you forget to run `lunch`?'
+  exit 1
+fi
+
+if [[ -z "$ANDROID_PRODUCT_OUT" ]]; then
   echo 'ANDROID_PRODUCT_OUT environment variable is empty; did you forget to run `lunch`?'
   exit 1
 fi
 
-if [[ -z "${ART_TEST_CHROOT}" ]]; then
-  echo 'ART_TEST_CHROOT environment variable is empty'
+if [[ -z "$ART_TEST_CHROOT" ]]; then
+  echo 'ART_TEST_CHROOT environment variable is empty; please set it before running this script.'
   exit 1
 fi
 
-adb push ${ANDROID_PRODUCT_OUT}/system ${ART_TEST_CHROOT}/
-adb push ${ANDROID_PRODUCT_OUT}/data ${ART_TEST_CHROOT}/
+# Sync the system directory to the chroot.
+adb push "$ANDROID_PRODUCT_OUT/system" "$ART_TEST_CHROOT/"
+# Overwrite the default public.libraries.txt file with a smaller one that
+# contains only the public libraries pushed to the chroot directory.
+adb push "$ANDROID_BUILD_TOP/art/tools/public.libraries.buildbot.txt" \
+  "$ART_TEST_CHROOT/system/etc/public.libraries.txt"
+
+# Sync the data directory to the chroot.
+adb push "$ANDROID_PRODUCT_OUT/data" "$ART_TEST_CHROOT/"
+
+# Sync the Runtime APEX undex /apex in the chroot.
+adb push \
+  "$ANDROID_PRODUCT_OUT/apex/com.android.runtime.debug" "$ART_TEST_CHROOT/apex/com.android.runtime"

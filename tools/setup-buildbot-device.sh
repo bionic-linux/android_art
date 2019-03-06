@@ -154,7 +154,7 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
 
   # Populate /etc in chroot with required files.
   adb shell mkdir -p "$ART_TEST_CHROOT/system/etc"
-  adb shell "cd $ART_TEST_CHROOT && ln -s system/etc etc"
+  adb shell "cd $ART_TEST_CHROOT && ln -sf system/etc etc"
 
   # Provide /proc in chroot.
   adb shell mkdir -p "$ART_TEST_CHROOT/proc"
@@ -174,8 +174,44 @@ if [[ -n "$ART_TEST_CHROOT" ]]; then
   adb shell mount | grep -q "^tmpfs on $ART_TEST_CHROOT/dev type tmpfs " \
     || adb shell mount -o bind /dev "$ART_TEST_CHROOT/dev"
 
-  # Create /apex tmpfs in chroot.
+  # Create /apex directory in chroot.
+  #
+  # Note that we do not mount a tmpfs in this directory, as we directly copy the
+  # contents of the Runtime APEX in it. (This may change in the future, if we
+  # start using scripts art/tools/mount-buildbot-apexes.sh and
+  # art/tools/unmount-buildbot-apexes.sh.)
   adb shell mkdir -p "$ART_TEST_CHROOT/apex"
-  adb shell mount | grep -q "^tmpfs on $ART_TEST_CHROOT/apex type tmpfs " \
-    || adb shell mount -t tmpfs -o nodev,noexec,nosuid tmpfs "$ART_TEST_CHROOT/apex"
+
+  # Provide /bionic in chroot.
+  #
+  # Provide Bionic artifacts under /bionic in chroot using symlinks to Bionic
+  # bootstrap artifacts.
+  #
+  # In a standard Android Q system image, a Bionic library under
+  # /system/lib(64)/$lib is a symbolic link to /bionic/lib(64)/$lib, which
+  # serves as a mount point for either:
+  # - a bootstrap library (/system/lib(64)/bootstrap/$lib); or
+  # - a Runtime APEX library (/apex/com.android.runtime/lib(64)/bionic/$lib).
+  #
+  # Likewise for the linker under /system/bin/linker(64), which is a symbolic
+  # link to /bionic/bin/linker(64), which serves as a mount point for either:
+  # - a bootstrap linker (/system/bin/bootstrap/linker(64)); or
+  # - a Runtime APEX linker (/apex/com.android.runtime/bin/linker(64)).
+  #
+  # As a simplification, we simply provide a rigid symlinks from /bionic files
+  # to Bionic bootstrap artifacts within the chroot dir.
+  lib_dirs="lib lib64"
+  bionic_libs="libc.so libdl.so libm.so"
+  for lib_dir in $lib_dirs; do
+    adb shell mkdir -p "$ART_TEST_CHROOT/bionic/$lib_dir"
+    for lib in $bionic_libs; do
+      adb shell \
+        "cd $ART_TEST_CHROOT/bionic/$lib_dir && ln -sf ../../system/$lib_dir/bootstrap/$lib $lib"
+    done
+  done
+  bionic_linkers="linker linker64"
+  adb shell mkdir -p "$ART_TEST_CHROOT/bionic/bin"
+  for linker in $bionic_linkers; do
+    adb shell "cd $ART_TEST_CHROOT/bionic/bin && ln -sf ../../system/bin/bootstrap/$linker $linker"
+  done
 fi
