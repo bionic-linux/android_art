@@ -74,13 +74,7 @@ ART_HOST_DEPENDENCIES += $(ART_HOST_SHARED_LIBRARY_DEBUG_DEPENDENCIES)
 endif
 
 ART_TARGET_DEPENDENCIES := \
-  $(ART_TARGET_EXECUTABLES) \
-  $(ART_TARGET_DEX_DEPENDENCIES) \
-  $(ART_TARGET_SHARED_LIBRARY_DEPENDENCIES)
-
-ifeq ($(ART_BUILD_TARGET_DEBUG),true)
-ART_TARGET_DEPENDENCIES += $(ART_TARGET_SHARED_LIBRARY_DEBUG_DEPENDENCIES)
-endif
+  $(ART_TARGET_DEX_DEPENDENCIES)
 
 ########################################################################
 # test rules
@@ -532,6 +526,15 @@ PRIVATE_RUNTIME_DEPENDENCY_LIBS := \
   lib/libandroidio.so \
   lib64/libandroidio.so \
 
+# Generate copies of Bionic bootstrap artifacts and Runtime APEX
+# libraries in the `system` (TARGET_OUT) directory. This is dangerous
+# as these files could inadvertently stay in this directory and be
+# included in a system image.
+#
+# This target is only used by Golem now.
+#
+# TODO(b/121117762): Remove this when Golem has full support for the
+# Runtime APEX.
 .PHONY: standalone-apex-files
 standalone-apex-files: libc.bootstrap libdl.bootstrap libm.bootstrap linker com.android.runtime.debug
 	for f in $(PRIVATE_BIONIC_FILES); do \
