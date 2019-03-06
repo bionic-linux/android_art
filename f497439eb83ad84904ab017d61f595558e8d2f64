@@ -46,6 +46,30 @@
       "revId": "f497439eb83ad84904ab017d61f595558e8d2f64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feaf7759_ffc0aae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-06T17:06:53Z",
+      "side": 1,
+      "message": "Because nobody ever runs pylint...",
+      "parentUuid": "39a0c87f_06b7e6c0",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f497439eb83ad84904ab017d61f595558e8d2f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
