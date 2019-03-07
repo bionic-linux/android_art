@@ -22,6 +22,75 @@
       "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e70648_0e6605ce",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-07T17:10:32Z",
+      "side": 1,
+      "message": "\"Must happen at most once\" would indicate a DCHECK here. This shouldn\u0027t fail.",
+      "range": {
+        "startLine": 2779,
+        "startChar": 4,
+        "endLine": 2779,
+        "endChar": 11
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a4f35f_5434dcaf",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2781,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-07T17:10:32Z",
+      "side": 1,
+      "message": "Considering this is in runtime (and the \"API doc\" on the declaration), I don\u0027t think profiler is the right thing. Why not startup?",
+      "range": {
+        "startLine": 2781,
+        "startChar": 7,
+        "endLine": 2781,
+        "endChar": 15
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e042a02a_d939064a",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2787,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-07T17:10:32Z",
+      "side": 1,
+      "message": "Mention in the commit message, or move to its own CL.",
+      "range": {
+        "startLine": 2786,
+        "startChar": 2,
+        "endLine": 2787,
+        "endChar": 21
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
