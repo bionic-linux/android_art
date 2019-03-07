@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "949ecc52_e2763357",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-07T15:56:58Z",
+      "side": 1,
+      "message": "They are the same (because we build both of them before testing). But when I tried the Runtime APEX libraries I had linking failures, so I reverted back to bootstrap libraries, which worked fine.\n\nI have identified other linker-related issues that I have started to fix and will upload in a future patch set.\n\nNote that most of this is expected to eventually disappear with https://android-review.googlesource.com/q/hashtag:%22apex_earlymount%22+(status:open%20OR%20status:merged). I am keeping it for now.",
+      "parentUuid": "4cbb690b_410a327a",
+      "range": {
+        "startLine": 202,
+        "startChar": 14,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c214cbeb_c43fc47d",
         "filename": "tools/setup-buildbot-device.sh",
         "patchSetId": 2
@@ -95,6 +119,54 @@
     },
     {
       "key": {
+        "uuid": "8d31874f_fa56ef48",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-07T15:56:58Z",
+      "side": 1,
+      "message": "I cannot use `$ART_TEST_CHROOT` in the destination of the link, as we will be using this link from within the chroot environment.\n\nToybox ln does not support option `-r`.",
+      "parentUuid": "1f4b685d_470f9775",
+      "range": {
+        "startLine": 209,
+        "startChar": 55,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3319dd1a_2b004806",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-07T15:56:58Z",
+      "side": 1,
+      "message": "Thanks; this is indeed better. Done in PS3.",
+      "parentUuid": "c214cbeb_c43fc47d",
+      "range": {
+        "startLine": 209,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 44
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa6c28c6_1bbd78d6",
         "filename": "tools/setup-buildbot-device.sh",
         "patchSetId": 2
@@ -138,6 +210,54 @@
       "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e680fcc_cf31e3ba",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-07T15:56:58Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "c1b23c81_52974e25",
+      "range": {
+        "startLine": 215,
+        "startChar": 56,
+        "endLine": 215,
+        "endChar": 61
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87220fa9_4db12a1a",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-07T15:56:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6c28c6_1bbd78d6",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 45
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
