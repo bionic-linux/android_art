@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "054ad641_4cbab6d3",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-07T15:37:11Z",
+      "side": 1,
+      "message": "Why do you need an internal version? Looks to me you could just inline this in its caller.",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
