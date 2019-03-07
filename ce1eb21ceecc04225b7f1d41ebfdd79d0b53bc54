@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eced1608_55bf07e7",
+        "filename": "runtime/jit/profile_saver.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-03-07T17:42:18Z",
+      "side": 1,
+      "message": "Sure, I just did it this way to avoid accessing instance_ as much.",
+      "parentUuid": "054ad641_4cbab6d3",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14e70648_0e6605ce",
         "filename": "runtime/runtime.cc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbb4158_dfb421e0",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2779,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-03-07T17:42:18Z",
+      "side": 1,
+      "message": "Right now, it will be called up to twice, once from profile saver and up to once externally. Added a comment.",
+      "parentUuid": "14e70648_0e6605ce",
+      "range": {
+        "startLine": 2779,
+        "startChar": 4,
+        "endLine": 2779,
+        "endChar": 11
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9f08d1fd_8a7ad817",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2781,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-03-07T17:42:18Z",
+      "side": 1,
+      "message": "Forgot about startup tag.",
+      "parentUuid": "16a4f35f_5434dcaf",
+      "range": {
+        "startLine": 2781,
+        "startChar": 7,
+        "endLine": 2781,
+        "endChar": 15
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e042a02a_d939064a",
         "filename": "runtime/runtime.cc",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52d0817_6b497042",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 2787,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-03-07T17:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e042a02a_d939064a",
+      "range": {
+        "startLine": 2786,
+        "startChar": 2,
+        "endLine": 2787,
+        "endChar": 21
+      },
+      "revId": "ce1eb21ceecc04225b7f1d41ebfdd79d0b53bc54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
