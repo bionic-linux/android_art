@@ -479,7 +479,7 @@ std::vector<std::unique_ptr<const DexFile>> OatFileManager::OpenDexFilesFromOat(
   }
 
   OatFileAssistant oat_file_assistant(dex_location,
-                                      kRuntimeISA,
+                                      Runtime::GetQuickCodeISA(),
                                       runtime->GetOatFilesExecutable(),
                                       only_use_system_oat_files_);
 

@@ -306,6 +306,7 @@ art_cc_library {
             shared: {
                 shared_libs: [
                     "libvixld",
+                    "libartd-simulator"
                 ],
                 // Export vixl headers as they are included in this library's exported headers.
                 export_shared_lib_headers: [
