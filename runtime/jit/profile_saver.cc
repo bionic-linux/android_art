@@ -98,6 +98,7 @@ ProfileSaver::ProfileSaver(const ProfileSaverOptions& options,
       max_number_of_profile_entries_cached_(0),
       total_number_of_hot_spikes_(0),
       total_number_of_wake_ups_(0),
+      startup_completed_(false),
       options_(options) {
   DCHECK(options_.IsEnabled());
   AddTrackedLocations(output_filename, code_paths);
@@ -107,6 +108,21 @@ ProfileSaver::~ProfileSaver() {
   for (auto& it : profile_cache_) {
     delete it.second;
   }
+}
+
+void ProfileSaver::NotifyStartupCompleted() {
+  MutexLock mu(Thread::Current(), *Locks::profiler_lock_);
+  if (instance_ == nullptr || instance_->shutting_down_) {
+    return;
+  }
+  instance_->NotifyStartupCompletedInternal();
+}
+
+void ProfileSaver::NotifyStartupCompletedInternal() {
+  Thread* self = Thread::Current();
+  MutexLock mu(self, wait_lock_);
+  startup_completed_ = true;
+  period_condition_.Signal(self);
 }
 
 void ProfileSaver::Run() {
@@ -120,7 +136,7 @@ void ProfileSaver::Run() {
   {
     MutexLock mu(self, wait_lock_);
     const uint64_t end_time = NanoTime() + MsToNs(options_.GetSaveResolvedClassesDelayMs());
-    while (true) {
+    while (!startup_completed_) {
       const uint64_t current_time = NanoTime();
       if (current_time >= end_time) {
         break;
@@ -128,9 +144,13 @@ void ProfileSaver::Run() {
       period_condition_.TimedWait(self, NsToMs(end_time - current_time), 0);
     }
     total_ms_of_sleep_ += options_.GetSaveResolvedClassesDelayMs();
+    startup_completed_ = true;
   }
-  FetchAndCacheResolvedClassesAndMethods(/*startup=*/ true);
+  // Tell the runtime that startup is completed if it has not already been notified.
+  // TODO: We should use another thread to do this in case the profile saver is not running.
+  Runtime::Current()->NotifyStartupCompleted();
 
+  FetchAndCacheResolvedClassesAndMethods(/*startup=*/ true);
 
   // When we save without waiting for JIT notifications we use a simple
   // exponential back off policy bounded by max_wait_without_jit.

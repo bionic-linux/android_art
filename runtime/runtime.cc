@@ -2773,4 +2773,22 @@ void Runtime::WaitForThreadPoolWorkersToStart() {
   }
 }
 
+void Runtime::NotifyStartupCompleted() {
+  bool expected = false;
+  if (!startup_completed_.compare_exchange_strong(expected, true, std::memory_order_seq_cst)) {
+    return;
+  }
+  VLOG(profiler) << "Startup completed notified";
+
+  // Notify the profiler saver that startup is now completed.
+  ProfileSaver::NotifyStartupCompleted();
+
+  // Delete the thread pool that was mostly used for startup optimizations.
+  DeleteThreadPool();
+}
+
+bool Runtime::GetStartupCompleted() const {
+  return startup_completed_.load(std::memory_order_seq_cst);
+}
+
 }  // namespace art

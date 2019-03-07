@@ -59,6 +59,9 @@ class ProfileSaver {
   // Just for testing purposes.
   static bool HasSeenMethod(const std::string& profile, bool hot, MethodReference ref);
 
+  // Notify that startup has completed.
+  static void NotifyStartupCompleted();
+
  private:
   ProfileSaver(const ProfileSaverOptions& options,
                const std::string& output_filename,
@@ -104,10 +107,13 @@ class ProfileSaver {
   // and put the result in tracked_dex_base_locations_.
   void ResolveTrackedLocations() REQUIRES(!Locks::profiler_lock_);
 
+  void NotifyStartupCompletedInternal();
+
   // The only instance of the saver.
   static ProfileSaver* instance_ GUARDED_BY(Locks::profiler_lock_);
   // Profile saver thread.
   static pthread_t profiler_pthread_ GUARDED_BY(Locks::profiler_lock_);
+
 
   jit::JitCodeCache* jit_code_cache_;
 
@@ -148,6 +154,7 @@ class ProfileSaver {
   uint64_t max_number_of_profile_entries_cached_;
   uint64_t total_number_of_hot_spikes_;
   uint64_t total_number_of_wake_ups_;
+  bool startup_completed_ GUARDED_BY(wait_lock_);
 
   const ProfileSaverOptions options_;
   DISALLOW_COPY_AND_ASSIGN(ProfileSaver);
