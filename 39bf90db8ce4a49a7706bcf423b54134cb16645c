@@ -22,6 +22,24 @@
       "revId": "39bf90db8ce4a49a7706bcf423b54134cb16645c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8b49a2f_74883454",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-03-07T11:58:05Z",
+      "side": 1,
+      "message": "All the bool returns are unused actually, since the only think that is checked is error_count\nI\u0027ll remove them all",
+      "parentUuid": "d03806e7_f65edc75",
+      "revId": "39bf90db8ce4a49a7706bcf423b54134cb16645c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
