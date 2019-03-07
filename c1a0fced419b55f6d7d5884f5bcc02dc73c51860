@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cbb690b_410a327a",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-07T12:00:10Z",
+      "side": 1,
+      "message": "Why bootstrap and not the apex? (Are they the same? Or are the differences important?) The latter would possibly reduce the changes we need to do here when changing the test to use the final apex.",
+      "range": {
+        "startLine": 202,
+        "startChar": 14,
+        "endLine": 202,
+        "endChar": 23
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c214cbeb_c43fc47d",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-07T12:00:10Z",
+      "side": 1,
+      "message": "You do not need to \"cd\". Simply\n  ln -sf \"../../system/$lib_dir/bootstrap/$lib\" \"$ART_TEST_CHROOT/bionic/$lib_dir/$lib\"",
+      "range": {
+        "startLine": 209,
+        "startChar": 9,
+        "endLine": 209,
+        "endChar": 44
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa6c28c6_1bbd78d6",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-07T12:00:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 45
+      },
+      "revId": "c1a0fced419b55f6d7d5884f5bcc02dc73c51860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
