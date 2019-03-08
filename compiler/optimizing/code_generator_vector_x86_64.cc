@@ -203,7 +203,7 @@ void InstructionCodeGeneratorX86_64::VisitVecReduce(HVecReduce* instruction) {
       DCHECK_EQ(4u, instruction->GetVectorLength());
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
-          __ movaps(dst, src);
+          CpuHasAVXorAVX2FeatureFlag()?__ vmovaps(dst, src):__ movaps(dst, src);
           __ phaddd(dst, dst);
           __ phaddd(dst, dst);
           break;
@@ -219,8 +219,8 @@ void InstructionCodeGeneratorX86_64::VisitVecReduce(HVecReduce* instruction) {
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
       switch (instruction->GetReductionKind()) {
         case HVecReduce::kSum:
-          __ movaps(tmp, src);
-          __ movaps(dst, src);
+          CpuHasAVXorAVX2FeatureFlag()?__ vmovaps(tmp, src):__ movaps(tmp, src);
+          CpuHasAVXorAVX2FeatureFlag()?__ vmovaps(dst, src):__ movaps(dst, src);
           __ punpckhqdq(tmp, tmp);
           __ paddq(dst, tmp);
           break;
@@ -317,7 +317,11 @@ void InstructionCodeGeneratorX86_64::VisitVecAbs(HVecAbs* instruction) {
     case DataType::Type::kInt32: {
       DCHECK_EQ(4u, instruction->GetVectorLength());
       XmmRegister tmp = locations->GetTemp(0).AsFpuRegister<XmmRegister>();
-      __ movaps(dst, src);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        __ vmovaps(dst, src);
+      } else {
+        __ movaps(dst, src);
+      }
       __ pxor(tmp, tmp);
       __ pcmpgtd(tmp, dst);
       __ pxor(dst, tmp);
@@ -1191,8 +1195,12 @@ void InstructionCodeGeneratorX86_64::VisitVecLoad(HVecLoad* instruction) {
         __ jmp(&done);
         // Load 8 direct uncompressed chars.
         __ Bind(&not_compressed);
-        is_aligned16 ?  __ movdqa(reg, address) :  __ movdqu(reg, address);
-        __ Bind(&done);
+        if (CpuHasAVXorAVX2FeatureFlag()) {
+          is_aligned16 ?  __ vmovdqa(reg, address) :  __ vmovdqu(reg, address);
+        } else {
+           is_aligned16 ?  __ movdqa(reg, address) :  __ movdqu(reg, address);
+        }
+          __ Bind(&done);
         return;
       }
       FALLTHROUGH_INTENDED;
@@ -1203,15 +1211,27 @@ void InstructionCodeGeneratorX86_64::VisitVecLoad(HVecLoad* instruction) {
     case DataType::Type::kInt64:
       DCHECK_LE(2u, instruction->GetVectorLength());
       DCHECK_LE(instruction->GetVectorLength(), 16u);
-      is_aligned16 ? __ movdqa(reg, address) : __ movdqu(reg, address);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovdqa(reg, address) : __ vmovdqu(reg, address);
+      } else {
+        is_aligned16 ? __ movdqa(reg, address) : __ movdqu(reg, address);
+      }
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      is_aligned16 ? __ movaps(reg, address) : __ movups(reg, address);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovaps(reg, address) : __ vmovups(reg, address);
+      } else {
+        is_aligned16 ? __ movaps(reg, address) : __ movups(reg, address);
+      }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      is_aligned16 ? __ movapd(reg, address) : __ movupd(reg, address);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovapd(reg, address) : __ vmovupd(reg, address);
+      } else {
+        is_aligned16 ? __ movapd(reg, address) : __ movupd(reg, address);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
@@ -1239,15 +1259,27 @@ void InstructionCodeGeneratorX86_64::VisitVecStore(HVecStore* instruction) {
     case DataType::Type::kInt64:
       DCHECK_LE(2u, instruction->GetVectorLength());
       DCHECK_LE(instruction->GetVectorLength(), 16u);
-      is_aligned16 ? __ movdqa(address, reg) : __ movdqu(address, reg);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovdqa(address, reg) : __ vmovdqu(address, reg);
+      } else {
+        is_aligned16 ? __ movdqa(address, reg) : __ movdqu(address, reg);
+      }
       break;
     case DataType::Type::kFloat32:
       DCHECK_EQ(4u, instruction->GetVectorLength());
-      is_aligned16 ? __ movaps(address, reg) : __ movups(address, reg);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovaps(address, reg) : __ vmovups(address, reg);
+      } else {
+        is_aligned16 ? __ movaps(address, reg) : __ movups(address, reg);
+      }
       break;
     case DataType::Type::kFloat64:
       DCHECK_EQ(2u, instruction->GetVectorLength());
-      is_aligned16 ? __ movapd(address, reg) : __ movupd(address, reg);
+      if (CpuHasAVXorAVX2FeatureFlag()) {
+        is_aligned16 ? __ vmovapd(address, reg) : __ vmovupd(address, reg);
+      } else {
+        is_aligned16 ? __ movapd(address, reg) : __ movupd(address, reg);
+      }
       break;
     default:
       LOG(FATAL) << "Unsupported SIMD type: " << instruction->GetPackedType();
