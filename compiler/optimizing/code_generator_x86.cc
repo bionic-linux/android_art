@@ -1038,7 +1038,7 @@ CodeGeneratorX86::CodeGeneratorX86(HGraph* graph,
       location_builder_(graph, this),
       instruction_visitor_(graph, this),
       move_resolver_(graph->GetAllocator(), this),
-      assembler_(graph->GetAllocator()),
+      assembler_(graph->GetAllocator(), this->GetInstructionSetFeatures()),
       boot_image_method_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       method_bss_entry_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
       boot_image_type_patches_(graph->GetAllocator()->Adapter(kArenaAllocCodeGenerator)),
@@ -8237,6 +8237,7 @@ class JumpTableRIPFixup : public RIPFixup {
 void CodeGeneratorX86::Finalize(CodeAllocator* allocator) {
   // Generate the constant area if needed.
   X86Assembler* assembler = GetAssembler();
+
   if (!assembler->IsConstantAreaEmpty() || !fixups_to_jump_tables_.empty()) {
     // Align to 4 byte boundary to reduce cache misses, as the data is 4 and 8
     // byte values.
