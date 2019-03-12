@@ -22,6 +22,30 @@
       "revId": "60a2aeff4e091ff27351a0ad3e01aa480ee12ad6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac796314_1a76cd3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-12T12:39:06Z",
+      "side": 1,
+      "message": "Done in PS7.",
+      "parentUuid": "7bc90744_6acd5097",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "60a2aeff4e091ff27351a0ad3e01aa480ee12ad6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
