@@ -22,6 +22,30 @@
       "revId": "e484e14b75915c57c69dd893d85aff74e6f2b8c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6a1953_2bdd1d81",
+        "filename": "runtime/gc/space/image_space.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 2108,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-12T15:12:39Z",
+      "side": 1,
+      "message": "This retains old behavior of never validating system files as-is, so I\u0027ll leave it for this CL. But I\u0027ll adopt your change in a follow-up.",
+      "parentUuid": "f5048ac9_226ad672",
+      "range": {
+        "startLine": 2108,
+        "startChar": 88,
+        "endLine": 2108,
+        "endChar": 93
+      },
+      "revId": "e484e14b75915c57c69dd893d85aff74e6f2b8c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
