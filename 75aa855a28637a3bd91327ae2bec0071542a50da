@@ -46,6 +46,30 @@
       "revId": "75aa855a28637a3bd91327ae2bec0071542a50da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f527c7_43f40afe",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-12T17:57:05Z",
+      "side": 1,
+      "message": "SIMD is a graph flag - in your case, it\u0027s all down to the instruction set which could make sense to pass to the assemblers.",
+      "parentUuid": "2973bddd_7fd6bf26",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "75aa855a28637a3bd91327ae2bec0071542a50da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
