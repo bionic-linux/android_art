@@ -28,7 +28,8 @@
 #include <vector>
 
 #include <android-base/parseint.h>
-#include "android-base/stringprintf.h"
+#include <android-base/stringprintf.h>
+#include <android-base/strings.h>
 
 #include "art_field-inl.h"
 #include "art_method-inl.h"
@@ -37,14 +38,15 @@
 #include "base/string_view_cpp20.h"
 #include "base/unix_file/fd_file.h"
 #include "class_linker.h"
-#include "gc/heap.h"
+#include "dex/descriptors_names.h"
 #include "gc/space/image_space.h"
 #include "image-inl.h"
 #include "mirror/class-inl.h"
 #include "mirror/object-inl.h"
 #include "oat.h"
 #include "oat_file.h"
-#include "oat_file_manager.h"
+#include "runtime.h"
+#include "runtime_options.h"
 #include "scoped_thread_state_change-inl.h"
 
 #include "backtrace/BacktraceMap.h"
@@ -59,6 +61,8 @@ namespace art {
 using android::base::StringPrintf;
 
 namespace {
+
+using ImageSpaceUniquePtr = std::unique_ptr<gc::space::ImageSpace>;
 
 constexpr size_t kMaxAddressPrint = 5;
 
@@ -92,20 +96,236 @@ struct MappingData {
   std::set<size_t> dirty_page_set;
 };
 
-static std::string GetClassDescriptor(mirror::Class* klass)
+class BootImageContainer {
+ public:
+  bool Init(std::ostream& os,
+            const std::vector<std::string>& boot_class_path,
+            const std::vector<std::string>& boot_class_path_locations,
+            const std::string& boot_image_location,
+            InstructionSet instruction_set) REQUIRES_SHARED(Locks::mutator_lock_) {
+    // Load boot image.
+    MemMap extra_reservation;
+    if (!gc::space::ImageSpace::LoadBootImage(boot_class_path,
+                                              boot_class_path_locations,
+                                              boot_image_location,
+                                              instruction_set,
+                                              gc::space::ImageSpaceLoadingOrder::kSystemFirst,
+                                              /* relocate= */ false,
+                                              /* executable= */ false,
+                                              /* is_zygote= */ false,
+                                              /* extra_reservaton_size= */ 0u,
+                                              &boot_image_spaces_,
+                                              &extra_reservation)) {
+      os << "Failed to open boot image.\n";
+      return false;
+    }
+    DCHECK(!extra_reservation.IsValid());
+    DCHECK(!boot_image_spaces_.empty());
+    size_t num_image_spaces = boot_image_spaces_.size();
+
+    // Open dex files.
+    dex_files_.resize(num_image_spaces);
+    for (size_t image_index = 0; image_index != num_image_spaces; ++image_index) {
+      ObjPtr<mirror::ObjectArray<mirror::DexCache>> dex_caches = GetDexCaches(image_index);
+      const OatFile* oat_file = boot_image_spaces_[image_index]->GetOatFile();
+      const std::vector<const OatDexFile*>& oat_dex_files = oat_file->GetOatDexFiles();
+      size_t num_dex_files = oat_dex_files.size();
+      CHECK_EQ(num_dex_files, static_cast<size_t>(dex_caches->GetLength<kVerifyNone>()));
+      dex_files_[image_index].resize(num_dex_files);
+      for (size_t i = 0; i != num_dex_files; ++i) {
+        ObjPtr<mirror::DexCache> dex_cache =
+            dex_caches->GetWithoutChecks<kVerifyNone, kWithoutReadBarrier>(i);
+        ObjPtr<mirror::String> location =
+            dex_cache->GetLocation<kVerifyNone, kWithoutReadBarrier>();
+        CHECK(location->Equals(oat_dex_files[i]->GetDexFileLocation().c_str()));
+        std::string error_msg;
+        dex_files_[image_index][i] = oat_dex_files[i]->OpenDexFile(&error_msg);
+        if (dex_files_[image_index][i] == nullptr) {
+          os << "Failed to open dex file, error: " << error_msg;
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
+  const std::vector<ImageSpaceUniquePtr>& GetBootImageSpaces() const {
+    return boot_image_spaces_;
+  }
+
+  const DexFile& GetDexFile(ObjPtr<mirror::DexCache> dex_cache) const
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    auto it = std::find_if(
+        boot_image_spaces_.begin(),
+        boot_image_spaces_.end(),
+        [=](const ImageSpaceUniquePtr& space) REQUIRES_SHARED(Locks::mutator_lock_) {
+          return space->Contains(dex_cache.Ptr());
+        });
+    CHECK(it != boot_image_spaces_.end());
+    size_t image_index = std::distance(boot_image_spaces_.begin(), it);
+    ObjPtr<mirror::ObjectArray<mirror::DexCache>> dex_caches = GetDexCaches(image_index);
+    for (int32_t i = 0, length = dex_caches->GetLength(); i != length; ++i) {
+      if (dex_caches->GetWithoutChecks<kVerifyNone, kWithoutReadBarrier>(i) == dex_cache) {
+        return *(dex_files_[image_index][i]);
+      }
+    }
+    LOG(FATAL) << "Failed to find DexFile for DexCache "
+        << dex_cache->GetLocation<kVerifyNone, kWithoutReadBarrier>()->ToModifiedUtf8();
+    UNREACHABLE();
+  }
+
+ private:
+  ObjPtr<mirror::ObjectArray<mirror::DexCache>> GetDexCaches(size_t image_index) const
+      REQUIRES_SHARED(Locks::mutator_lock_) {
+    const ImageHeader& image_header = boot_image_spaces_[image_index]->GetImageHeader();
+    image_header.GetImageRoot<kWithoutReadBarrier>(ImageHeader::kDexCaches);
+    ObjPtr<mirror::Object> dex_caches_object = image_header.GetImageRoot(ImageHeader::kDexCaches);
+    DCHECK(dex_caches_object != nullptr);
+    return dex_caches_object->AsObjectArray<mirror::DexCache, kVerifyNone>();
+  }
+
+  std::vector<ImageSpaceUniquePtr> boot_image_spaces_;
+  std::vector<std::vector<std::unique_ptr<const DexFile>>> dex_files_;
+};
+
+
+static std::string GetClassDescriptor(ObjPtr<mirror::Class> klass,
+                                      const BootImageContainer& boot_image_container)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   CHECK(klass != nullptr);
 
-  std::string descriptor;
-  const char* descriptor_str = klass->GetDescriptor(&descriptor /*out*/);
+  // Note: We cannot use klass->GetDescriptor(.) directly because the DexCache does not have
+  // the dex_file_ initialized and we need to get the DexFile from the boot_image_container.
+  std::string result;
+  size_t dim = 0u;
+  while (klass->IsArrayClass<kVerifyNone>()) {
+    ++dim;
+    klass = klass->GetComponentType<kVerifyNone, kWithoutReadBarrier>();
+  }
+  if (klass->IsPrimitive<kVerifyNone>()) {
+    result = Primitive::Descriptor(klass->GetPrimitiveType<kVerifyNone>());
+  } else if (klass->IsProxyClass<kVerifyNone>()) {
+    result = DotToDescriptor(
+        klass->GetName<kVerifyNone, kWithoutReadBarrier>()->ToModifiedUtf8().c_str());
+  } else {
+    ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache<kVerifyNone, kWithoutReadBarrier>();
+    const DexFile& dex_file = boot_image_container.GetDexFile(dex_cache);
+    const dex::TypeId& type_id = dex_file.GetTypeId(klass->GetDexTypeIndex<kVerifyNone>());
+    return dex_file.GetTypeDescriptor(type_id);
+  }
+  if (dim != 0u) {
+    result.insert(0u, dim, '[');
+  }
 
-  return std::string(descriptor_str);
+  return result;
 }
 
-static std::string PrettyFieldValue(ArtField* field, mirror::Object* object)
+static std::string PrettyClass(ObjPtr<mirror::Class> klass,
+                               const BootImageContainer& boot_image_container)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  if (klass == nullptr) {
+    return "null";
+  }
+  std::string result;
+  result += "java.lang.Class<";
+  result += art::PrettyDescriptor(GetClassDescriptor(klass, boot_image_container).c_str());
+  result += ">";
+  return result;
+}
+
+const char* GetFieldTypeDescriptor(ArtField* field, const BootImageContainer& boot_image_container)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  uint32_t field_index = field->GetDexFieldIndex();
+  ObjPtr<mirror::Class> klass = field->GetDeclaringClass<kWithoutReadBarrier>();
+  if (UNLIKELY(klass->IsProxyClass<kVerifyNone>())) {
+    DCHECK(field->IsStatic());
+    DCHECK_LT(field_index, 2U);
+    // 0 == Class[] interfaces; 1 == Class[][] throws;
+    return field_index == 0 ? "[Ljava/lang/Class;" : "[[Ljava/lang/Class;";
+  }
+  ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache<kVerifyNone, kWithoutReadBarrier>();
+  const DexFile& dex_file = boot_image_container.GetDexFile(dex_cache);
+  const dex::FieldId& field_id = dex_file.GetFieldId(field_index);
+  return dex_file.GetFieldTypeDescriptor(field_id);
+}
+
+static std::string GetFieldName(ArtField* field, const BootImageContainer& boot_image_container)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  uint32_t field_index = field->GetDexFieldIndex();
+  ObjPtr<mirror::Class> klass = field->GetDeclaringClass<kWithoutReadBarrier>();
+  if (UNLIKELY(klass->IsProxyClass<kVerifyNone>())) {
+    DCHECK(field->IsStatic());
+    DCHECK_LT(field_index, 2U);
+    return field_index == 0 ? "interfaces" : "throws";
+  }
+  ObjPtr<mirror::DexCache> dex_cache = klass->GetDexCache<kVerifyNone, kWithoutReadBarrier>();
+  const DexFile& dex_file = boot_image_container.GetDexFile(dex_cache);
+  return dex_file.GetFieldName(dex_file.GetFieldId(field_index));
+}
+
+static inline ArtField* FindFieldContainingOffset(
+    const IterationRange<StrideIterator<ArtField>>& fields,
+    uint32_t field_offset,
+    const BootImageContainer& boot_image_container) REQUIRES_SHARED(Locks::mutator_lock_) {
+  for (ArtField& field : fields) {
+    const uint32_t offset = field.GetOffset().Uint32Value();
+    Primitive::Type type = Primitive::GetType(
+        GetFieldTypeDescriptor(&field, boot_image_container)[0]);
+    const size_t field_size = Primitive::ComponentSize(type);
+    DCHECK_GT(field_size, 0u);
+    if (offset <= field_offset && field_offset < offset + field_size) {
+      return &field;
+    }
+  }
+  return nullptr;
+}
+
+static ArtField* FindInstanceFieldContainingOffset(ObjPtr<mirror::Class> klass,
+                                                   uint32_t field_offset,
+                                                   const BootImageContainer& boot_image_container)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  DCHECK(klass != nullptr);
+  do {
+    ArtField* field =
+        FindFieldContainingOffset(klass->GetIFields(), field_offset, boot_image_container);
+    if (field != nullptr) {
+      return field;
+    }
+    klass = klass->GetSuperClass<kVerifyNone, kWithoutReadBarrier>();
+  } while (klass != nullptr);
+  return nullptr;
+}
+
+static ArtField* FindStaticFieldContainingOffset(ObjPtr<mirror::Class> klass,
+                                                 uint32_t field_offset,
+                                                 const BootImageContainer& boot_image_container)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  return FindFieldContainingOffset(klass->GetSFields(), field_offset, boot_image_container);
+}
+
+static std::string PrettyField(ArtField* field,
+                               const BootImageContainer& boot_image_container,
+                               bool with_type = true)
+    REQUIRES_SHARED(Locks::mutator_lock_) {
+  CHECK(field != nullptr);
+  std::string result;
+  if (with_type) {
+    result += PrettyDescriptor(GetFieldTypeDescriptor(field, boot_image_container));
+    result += ' ';
+  }
+  result += PrettyDescriptor(
+      GetClassDescriptor(field->GetDeclaringClass(), boot_image_container).c_str());
+  result += '.';
+  result += GetFieldName(field, boot_image_container);
+  return result;
+}
+
+static std::string PrettyFieldValue(ArtField* field,
+                                    mirror::Object* object,
+                                    const BootImageContainer& boot_image_container)
     REQUIRES_SHARED(Locks::mutator_lock_) {
   std::ostringstream oss;
-  switch (field->GetTypeAsPrimitiveType()) {
+  switch (Primitive::GetType(GetFieldTypeDescriptor(field, boot_image_container)[0])) {
     case Primitive::kPrimNot: {
       oss << object->GetFieldObject<mirror::Object, kVerifyNone, kWithoutReadBarrier>(
           field->GetOffset());
@@ -228,11 +448,13 @@ struct RegionCommon {
   RegionCommon(std::ostream* os,
                std::vector<uint8_t>* remote_contents,
                std::vector<uint8_t>* zygote_contents,
+               const BootImageContainer& boot_image_container,
                const backtrace_map_t& boot_map,
                const ImageHeader& image_header) :
     os_(*os),
     remote_contents_(remote_contents),
     zygote_contents_(zygote_contents),
+    boot_image_container_(boot_image_container),
     boot_map_(boot_map),
     image_header_(image_header),
     different_entries_(0),
@@ -304,6 +526,7 @@ struct RegionCommon {
   std::vector<uint8_t>* remote_contents_;
   // The byte contents of the zygote process' image.
   std::vector<uint8_t>* zygote_contents_;
+  const BootImageContainer& boot_image_container_;
   const backtrace_map_t& boot_map_;
   const ImageHeader& image_header_;
 
@@ -355,9 +578,8 @@ class ImgObjectVisitor : public ObjectVisitor {
 
   void Visit(mirror::Object* object) override REQUIRES_SHARED(Locks::mutator_lock_) {
     // Sanity check that we are reading a real mirror::Object
-    CHECK(object->GetClass() != nullptr) << "Image object at address "
-                                         << object
-                                         << " has null class";
+    CHECK((object->GetClass<kVerifyNone, kWithoutReadBarrier>()) != nullptr)
+        << "Image object at address " << object << " has null class";
     if (kUseBakerReadBarrier) {
       object->AssertReadBarrierState();
     }
@@ -376,10 +598,16 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
   RegionSpecializedBase(std::ostream* os,
                         std::vector<uint8_t>* remote_contents,
                         std::vector<uint8_t>* zygote_contents,
+                        const BootImageContainer& boot_image_container,
                         const backtrace_map_t& boot_map,
                         const ImageHeader& image_header,
                         bool dump_dirty_objects)
-      : RegionCommon<mirror::Object>(os, remote_contents, zygote_contents, boot_map, image_header),
+      : RegionCommon<mirror::Object>(os,
+                                     remote_contents,
+                                     zygote_contents,
+                                     boot_image_container,
+                                     boot_map,
+                                     image_header),
         os_(*os),
         dump_dirty_objects_(dump_dirty_objects) { }
 
@@ -396,19 +624,19 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
   void VisitEntry(mirror::Object* entry)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     // Unconditionally store the class descriptor in case we need it later
-    mirror::Class* klass = entry->GetClass();
-    class_data_[klass].descriptor = GetClassDescriptor(klass);
+    mirror::Class* klass = entry->GetClass<kVerifyNone, kWithoutReadBarrier>();
+    class_data_[klass].descriptor = GetClassDescriptor(klass, boot_image_container_);
   }
 
   void AddCleanEntry(mirror::Object* entry)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    class_data_[entry->GetClass()].AddCleanObject();
+    class_data_[entry->GetClass<kVerifyNone, kWithoutReadBarrier>()].AddCleanObject();
   }
 
   void AddFalseDirtyEntry(mirror::Object* entry)
       REQUIRES_SHARED(Locks::mutator_lock_) {
     RegionCommon<mirror::Object>::AddFalseDirtyEntry(entry);
-    class_data_[entry->GetClass()].AddFalseDirtyObject(entry);
+    class_data_[entry->GetClass<kVerifyNone, kWithoutReadBarrier>()].AddFalseDirtyObject(entry);
   }
 
   void AddDirtyEntry(mirror::Object* entry, mirror::Object* entry_remote)
@@ -417,8 +645,8 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
     ++different_entries_;
     dirty_entry_bytes_ += entry_size;
     // Log dirty count and objects for class objects only.
-    mirror::Class* klass = entry->GetClass();
-    if (klass->IsClassClass()) {
+    ObjPtr<mirror::Class> klass = entry->GetClass<kVerifyNone, kWithoutReadBarrier>();
+    if (klass->IsClassClass<kVerifyNone>()) {
       // Increment counts for the fields that are dirty
       const uint8_t* current = reinterpret_cast<const uint8_t*>(entry);
       const uint8_t* current_remote = reinterpret_cast<const uint8_t*>(entry_remote);
@@ -429,7 +657,7 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       }
       dirty_entries_.push_back(entry);
     }
-    class_data_[klass].AddDirtyObject(entry, entry_remote);
+    class_data_[klass.Ptr()].AddDirtyObject(entry, entry_remote);
   }
 
   void DiffEntryContents(mirror::Object* entry,
@@ -439,13 +667,14 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       REQUIRES_SHARED(Locks::mutator_lock_) {
     const char* tabs = "    ";
     // Attempt to find fields for all dirty bytes.
-    mirror::Class* klass = entry->GetClass();
-    if (entry->IsClass()) {
-      os_ << tabs
-          << "Class " << mirror::Class::PrettyClass(entry->AsClass()) << " " << entry << "\n";
+    ObjPtr<mirror::Class> klass = entry->GetClass<kVerifyNone, kWithoutReadBarrier>();
+    if (klass->IsClassClass<kVerifyNone>()) {
+      os_ << tabs << "Class "
+          << PrettyClass(entry->AsClass<kVerifyNone>(), this->boot_image_container_)
+          << " " << entry << "\n";
     } else {
-      os_ << tabs
-          << "Instance of " << mirror::Class::PrettyClass(klass) << " " << entry << "\n";
+      os_ << tabs << "Instance of " << PrettyClass(klass, this->boot_image_container_)
+          << " " << entry << "\n";
     }
 
     std::unordered_set<ArtField*> dirty_instance_fields;
@@ -456,19 +685,21 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
     mirror::Object* remote_entry = reinterpret_cast<mirror::Object*>(remote_bytes);
     for (size_t i = 0, count = entry->SizeOf(); i < count; ++i) {
       if (base_ptr[i] != remote_bytes[i]) {
-        ArtField* field = ArtField::FindInstanceFieldWithOffset</*exact*/false>(klass, i);
+        ArtField* field = FindInstanceFieldContainingOffset(klass, i, this->boot_image_container_);
         if (field != nullptr) {
           dirty_instance_fields.insert(field);
-        } else if (entry->IsClass()) {
-          field = ArtField::FindStaticFieldWithOffset</*exact*/false>(entry->AsClass(), i);
+        } else if (entry->IsClass<kVerifyNone>()) {
+          field = FindStaticFieldContainingOffset(
+              entry->AsClass<kVerifyNone>(), i, this->boot_image_container_);
           if (field != nullptr) {
             dirty_static_fields.insert(field);
           }
         }
         if (field == nullptr) {
-          if (klass->IsArrayClass()) {
-            ObjPtr<mirror::Class> component_type = klass->GetComponentType();
-            Primitive::Type primitive_type = component_type->GetPrimitiveType();
+          if (klass->IsArrayClass<kVerifyNone>()) {
+            ObjPtr<mirror::Class> component_type =
+                klass->GetComponentType<kVerifyNone, kWithoutReadBarrier>();
+            Primitive::Type primitive_type = component_type->GetPrimitiveType<kVerifyNone>();
             size_t component_size = Primitive::ComponentSize(primitive_type);
             size_t data_offset = mirror::Array::DataOffset(component_size).Uint32Value();
             DCHECK_ALIGNED_PARAM(data_offset, component_size);
@@ -488,9 +719,10 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
     if (!dirty_instance_fields.empty()) {
       os_ << tabs << "Dirty instance fields " << dirty_instance_fields.size() << "\n";
       for (ArtField* field : dirty_instance_fields) {
-        os_ << tabs << ArtField::PrettyField(field)
-            << " original=" << PrettyFieldValue(field, entry)
-            << " remote=" << PrettyFieldValue(field, remote_entry) << "\n";
+        os_ << tabs << PrettyField(field, this->boot_image_container_)
+            << " original=" << PrettyFieldValue(field, entry, this->boot_image_container_)
+            << " remote=" << PrettyFieldValue(field, remote_entry, this->boot_image_container_)
+            << "\n";
       }
     }
     if (!dirty_static_fields.empty()) {
@@ -499,9 +731,10 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       }
       os_ << tabs << "Dirty static fields " << dirty_static_fields.size() << "\n";
       for (ArtField* field : dirty_static_fields) {
-        os_ << tabs << ArtField::PrettyField(field)
-            << " original=" << PrettyFieldValue(field, entry)
-            << " remote=" << PrettyFieldValue(field, remote_entry) << "\n";
+        os_ << tabs << PrettyField(field, this->boot_image_container_)
+            << " original=" << PrettyFieldValue(field, entry, this->boot_image_container_)
+            << " remote=" << PrettyFieldValue(field, remote_entry, this->boot_image_container_)
+            << "\n";
       }
     }
     os_ << "\n";
@@ -531,7 +764,7 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
           class_data.dirty_object_byte_count * 1.0f / object_sizes;
       float avg_object_size = object_sizes * 1.0f / dirty_object_count;
       const std::string& descriptor = class_data.descriptor;
-      os_ << "    " << mirror::Class::PrettyClass(klass) << " ("
+      os_ << "    " << PrettyClass(klass, this->boot_image_container_) << " ("
           << "objects: " << dirty_object_count << ", "
           << "avg dirty bytes: " << avg_dirty_bytes_per_class << ", "
           << "avg object size: " << avg_object_size << ", "
@@ -572,7 +805,7 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
       size_t object_sizes = class_data.false_dirty_byte_count;
       float avg_object_size = object_sizes * 1.0f / object_count;
       const std::string& descriptor = class_data.descriptor;
-      os_ << "    " << mirror::Class::PrettyClass(klass) << " ("
+      os_ << "    " << PrettyClass(klass, this->boot_image_container_) << " ("
           << "objects: " << object_count << ", "
           << "avg object size: " << avg_object_size << ", "
           << "total bytes: " << object_sizes << ", "
@@ -589,7 +822,8 @@ class RegionSpecializedBase<mirror::Object> : public RegionCommon<mirror::Object
             [](const ClassData& d) { return d.clean_object_count; });
     os_ << "\n" << "  Clean object count by class:\n";
     for (const auto& vk_pair : clean_object_class_values) {
-      os_ << "    " << mirror::Class::PrettyClass(vk_pair.second) << " (" << vk_pair.first << ")\n";
+      os_ << "    " << PrettyClass(vk_pair.second, this->boot_image_container_)
+          << " (" << vk_pair.first << ")\n";
     }
   }
 
@@ -704,17 +938,22 @@ class RegionSpecializedBase<ArtMethod> : public RegionCommon<ArtMethod> {
   RegionSpecializedBase(std::ostream* os,
                         std::vector<uint8_t>* remote_contents,
                         std::vector<uint8_t>* zygote_contents,
+                        const BootImageContainer& boot_image_container,
                         const backtrace_map_t& boot_map,
                         const ImageHeader& image_header,
                         bool dump_dirty_objects ATTRIBUTE_UNUSED)
-      : RegionCommon<ArtMethod>(os, remote_contents, zygote_contents, boot_map, image_header),
+      : RegionCommon<ArtMethod>(os,
+                                remote_contents,
+                                zygote_contents,
+                                boot_image_container,
+                                boot_map,
+                                image_header),
         os_(*os) {
     // Prepare the table for offset to member lookups.
     ArtMethod* art_method = reinterpret_cast<ArtMethod*>(&(*remote_contents)[0]);
     art_method->VisitMembers(member_info_);
     // Prepare the table for address to symbolic entry point names.
     BuildEntryPointNames();
-    class_linker_ = Runtime::Current()->GetClassLinker();
   }
 
   // Define a common public type name for use by RegionData.
@@ -837,34 +1076,47 @@ class RegionSpecializedBase<ArtMethod> : public RegionCommon<ArtMethod> {
   std::ostream& os_;
   MemberInfo member_info_;
   std::map<const void*, std::string> entry_point_names_;
-  ClassLinker* class_linker_;
 
   // Compute a map of addresses to names in the boot OAT file(s).
   void BuildEntryPointNames() {
-    OatFileManager& oat_file_manager = Runtime::Current()->GetOatFileManager();
-    std::vector<const OatFile*> boot_oat_files = oat_file_manager.GetBootOatFiles();
-    for (const OatFile* oat_file : boot_oat_files) {
-      const OatHeader& oat_header = oat_file->GetOatHeader();
-      const void* jdl = oat_header.GetJniDlsymLookup();
-      if (jdl != nullptr) {
-        entry_point_names_[jdl] = "JniDlsymLookup (from boot oat file)";
+    ArrayRef<const ImageSpaceUniquePtr> image_spaces(boot_image_container_.GetBootImageSpaces());
+    DCHECK(!image_spaces.empty());
+    if (kIsDebugBuild) {
+      // Check that the non-primary oat files do not contain any trampolines.
+      for (const ImageSpaceUniquePtr& space : image_spaces.SubArray(1u)) {
+        const OatFile* oat_file = space->GetOatFile();
+        CHECK(oat_file != nullptr);
+        const OatHeader& oat_header = oat_file->GetOatHeader();
+        CHECK(oat_header.GetJniDlsymLookup() == nullptr);
+        CHECK(oat_header.GetQuickGenericJniTrampoline() == nullptr);
+        CHECK(oat_header.GetQuickResolutionTrampoline() == nullptr);
+        CHECK(oat_header.GetQuickImtConflictTrampoline() == nullptr);
+        CHECK(oat_header.GetQuickToInterpreterBridge() == nullptr);
       }
-      const void* qgjt = oat_header.GetQuickGenericJniTrampoline();
-      if (qgjt != nullptr) {
-        entry_point_names_[qgjt] = "QuickGenericJniTrampoline (from boot oat file)";
-      }
-      const void* qrt = oat_header.GetQuickResolutionTrampoline();
-      if (qrt != nullptr) {
-        entry_point_names_[qrt] = "QuickResolutionTrampoline (from boot oat file)";
-      }
-      const void* qict = oat_header.GetQuickImtConflictTrampoline();
-      if (qict != nullptr) {
-        entry_point_names_[qict] = "QuickImtConflictTrampoline (from boot oat file)";
-      }
-      const void* q2ib = oat_header.GetQuickToInterpreterBridge();
-      if (q2ib != nullptr) {
-        entry_point_names_[q2ib] = "QuickToInterpreterBridge (from boot oat file)";
-      }
+    }
+    // Record trampolines from the primary oat file.
+    const OatFile* oat_file = image_spaces[0]->GetOatFile();
+    CHECK(oat_file != nullptr);
+    const OatHeader& oat_header = oat_file->GetOatHeader();
+    const void* jdl = oat_header.GetJniDlsymLookup();
+    if (jdl != nullptr) {
+      entry_point_names_[jdl] = "JniDlsymLookup (from boot oat file)";
+    }
+    const void* qgjt = oat_header.GetQuickGenericJniTrampoline();
+    if (qgjt != nullptr) {
+      entry_point_names_[qgjt] = "QuickGenericJniTrampoline (from boot oat file)";
+    }
+    const void* qrt = oat_header.GetQuickResolutionTrampoline();
+    if (qrt != nullptr) {
+      entry_point_names_[qrt] = "QuickResolutionTrampoline (from boot oat file)";
+    }
+    const void* qict = oat_header.GetQuickImtConflictTrampoline();
+    if (qict != nullptr) {
+      entry_point_names_[qict] = "QuickImtConflictTrampoline (from boot oat file)";
+    }
+    const void* q2ib = oat_header.GetQuickToInterpreterBridge();
+    if (q2ib != nullptr) {
+      entry_point_names_[q2ib] = "QuickToInterpreterBridge (from boot oat file)";
     }
   }
 
@@ -884,16 +1136,6 @@ class RegionSpecializedBase<ArtMethod> : public RegionCommon<ArtMethod> {
           intval = *reinterpret_cast<const uint64_t*>(bytes);
         }
         const void* addr = reinterpret_cast<const void*>(intval);
-        // Match the address against those that have Is* methods in the ClassLinker.
-        if (class_linker_->IsQuickToInterpreterBridge(addr)) {
-          return "QuickToInterpreterBridge";
-        } else if (class_linker_->IsQuickGenericJniStub(addr)) {
-          return "QuickGenericJniStub";
-        } else if (class_linker_->IsQuickResolutionStub(addr)) {
-          return "QuickResolutionStub";
-        } else if (class_linker_->IsJniDlsymLookupStub(addr)) {
-          return "JniDlsymLookupStub";
-        }
         // Match the address against those that we saved from the boot OAT files.
         if (entry_point_names_.find(addr) != entry_point_names_.end()) {
           return entry_point_names_[addr];
@@ -910,7 +1152,7 @@ class RegionSpecializedBase<ArtMethod> : public RegionCommon<ArtMethod> {
                         ObjPtr<mirror::Class> declaring_class,
                         ObjPtr<mirror::Class> remote_declaring_class)
       REQUIRES_SHARED(Locks::mutator_lock_) {
-    PointerSize pointer_size = InstructionSetPointerSize(Runtime::Current()->GetInstructionSet());
+    PointerSize pointer_size = image_header_.GetPointerSize();
     os_ << "        " << reinterpret_cast<const void*>(art_method) << " ";
     os_ << "  entryPointFromJni: "
         << reinterpret_cast<const void*>(art_method->GetDataPtrSize(pointer_size)) << ", ";
@@ -938,12 +1180,14 @@ class RegionData : public RegionSpecializedBase<T> {
   RegionData(std::ostream* os,
              std::vector<uint8_t>* remote_contents,
              std::vector<uint8_t>* zygote_contents,
+             const BootImageContainer& boot_image_container,
              const backtrace_map_t& boot_map,
              const ImageHeader& image_header,
              bool dump_dirty_objects)
       : RegionSpecializedBase<T>(os,
                                  remote_contents,
                                  zygote_contents,
+                                 boot_image_container,
                                  boot_map,
                                  image_header,
                                  dump_dirty_objects),
@@ -966,7 +1210,7 @@ class RegionData : public RegionSpecializedBase<T> {
         },
         begin_image_ptr,
         mapping_data.dirty_page_set);
-    PointerSize pointer_size = InstructionSetPointerSize(Runtime::Current()->GetInstructionSet());
+    PointerSize pointer_size = this->image_header_.GetPointerSize();
     RegionSpecializedBase<T>::VisitEntries(&visitor,
                                            const_cast<uint8_t*>(begin_image_ptr),
                                            pointer_size);
@@ -1105,31 +1349,36 @@ class RegionData : public RegionSpecializedBase<T> {
 class ImgDiagDumper {
  public:
   explicit ImgDiagDumper(std::ostream* os,
+                         InstructionSet instruction_set,
+                         const std::vector<std::string>&& boot_class_path,
+                         const std::vector<std::string>&& boot_class_path_locations,
+                         const std::string boot_image_location,
                          pid_t image_diff_pid,
                          pid_t zygote_diff_pid,
                          bool dump_dirty_objects)
       : os_(os),
-        image_diff_pid_(image_diff_pid),
-        zygote_diff_pid_(zygote_diff_pid),
-        dump_dirty_objects_(dump_dirty_objects),
-        zygote_pid_only_(false) {}
+        instruction_set_(instruction_set),
+        boot_class_path_(boot_class_path),
+        boot_class_path_locations_(boot_class_path_locations),
+        boot_image_location_(boot_image_location),
+        // To avoid the combinations of command-line argument use cases:
+        // If the user invoked with only --zygote-diff-pid, shuffle that to
+        // image_diff_pid_, invalidate zygote_diff_pid_, and remember that
+        // image_diff_pid_ is now special.
+        zygote_pid_only_(image_diff_pid < 0),
+        image_diff_pid_(zygote_pid_only_ ? zygote_diff_pid : image_diff_pid),
+        zygote_diff_pid_(zygote_pid_only_ ? -1 : zygote_diff_pid),
+        dump_dirty_objects_(dump_dirty_objects) {
+  }
 
-  bool Init() {
+  bool Init() REQUIRES_SHARED(Locks::mutator_lock_) {
     std::ostream& os = *os_;
 
-    if (image_diff_pid_ < 0 && zygote_diff_pid_ < 0) {
+    if (image_diff_pid_ < 0) {
+      CHECK(zygote_pid_only_);
+      CHECK_EQ(zygote_diff_pid_, -1);
       os << "Either --image-diff-pid or --zygote-diff-pid (or both) must be specified.\n";
       return false;
-    }
-
-    // To avoid the combinations of command-line argument use cases:
-    // If the user invoked with only --zygote-diff-pid, shuffle that to
-    // image_diff_pid_, invalidate zygote_diff_pid_, and remember that
-    // image_diff_pid_ is now special.
-    if (image_diff_pid_ < 0) {
-      image_diff_pid_ = zygote_diff_pid_;
-      zygote_diff_pid_ = -1;
-      zygote_pid_only_ = true;
     }
 
     {
@@ -1203,14 +1452,21 @@ class ImgDiagDumper {
       return false;
     }
 
-    // Note: the boot image is not really clean but close enough.
-    // For now, log pages found to be dirty.
-    // TODO: Rewrite imgdiag to load boot image without creating a runtime.
+    // Load the boot image.
+    const std::vector<std::string>& boot_class_path_locations =
+        boot_class_path_locations_.empty() ? boot_class_path_ : boot_class_path_locations_;
+    if (!boot_image_container_.Init(os,
+                                    boot_class_path_,
+                                    boot_class_path_locations,
+                                    boot_image_location_,
+                                    instruction_set_)) {
+      return false;
+    }
+
+    // Check that the loaded boot image is really clean.
     // FIXME: The following does not reliably detect dirty pages.
-    Runtime* runtime = Runtime::Current();
-    CHECK(!runtime->ShouldRelocate());
     size_t total_dirty_pages = 0u;
-    for (gc::space::ImageSpace* space : runtime->GetHeap()->GetBootImageSpaces()) {
+    for (const ImageSpaceUniquePtr& space : GetBootImageSpaces()) {
       const ImageHeader& image_header = space->GetImageHeader();
       const uint8_t* image_begin = image_header.GetImageBegin();
       const uint8_t* image_end = AlignUp(image_begin + image_header.GetImageSize(), kPageSize);
@@ -1252,9 +1508,13 @@ class ImgDiagDumper {
       if (num_dirty_pages != 0u) {
         DCHECK(first_dirty_page.has_value());
         os << "Found " << num_dirty_pages << " dirty pages for " << space->GetImageLocation()
-           << ", first dirty page: " << first_dirty_page.value_or(0u);
+           << ", first dirty page: " << first_dirty_page.value_or(0u) << "\n";
         total_dirty_pages += num_dirty_pages;
       }
+    }
+    if (total_dirty_pages != 0u) {
+      os << "Aborting: found dirty pages in boot image that should have been clean.";
+      return false;
     }
 
     // Commit the mappings and files.
@@ -1271,6 +1531,10 @@ class ImgDiagDumper {
     kpagecount_file_ = std::move(*kpagecount_file);
 
     return true;
+  }
+
+  const std::vector<ImageSpaceUniquePtr>& GetBootImageSpaces() const {
+    return boot_image_container_.GetBootImageSpaces();
   }
 
   bool Dump(const ImageHeader& image_header, const std::string& image_location)
@@ -1552,6 +1816,7 @@ class ImgDiagDumper {
     RegionData<mirror::Object> object_region_data(os_,
                                                   &remote_contents,
                                                   &zygote_contents,
+                                                  boot_image_container_,
                                                   boot_map,
                                                   image_header,
                                                   dump_dirty_objects_);
@@ -1563,6 +1828,7 @@ class ImgDiagDumper {
     RegionData<ArtMethod> artmethod_region_data(os_,
                                                 &remote_contents,
                                                 &zygote_contents,
+                                                boot_image_container_,
                                                 boot_map,
                                                 image_header,
                                                 dump_dirty_objects_);
@@ -1747,11 +2013,17 @@ class ImgDiagDumper {
   static constexpr uint64_t kPageFlagsMmapMask = (1ULL << 11);  // in /proc/kpageflags
 
 
-  std::ostream* os_;
-  pid_t image_diff_pid_;  // Dump image diff against boot.art if pid is non-negative
-  pid_t zygote_diff_pid_;  // Dump image diff against zygote boot.art if pid is non-negative
-  bool dump_dirty_objects_;  // Adds dumping of objects that are dirty.
-  bool zygote_pid_only_;  // The user only specified a pid for the zygote.
+  std::ostream* const os_;
+  const InstructionSet instruction_set_;
+  const std::vector<std::string> boot_class_path_;
+  const std::vector<std::string> boot_class_path_locations_;
+  const std::string boot_image_location_;
+  const bool zygote_pid_only_;  // The user only specified a pid for the zygote.
+  const pid_t image_diff_pid_;  // Dump image diff against boot.art if pid is non-negative
+  const pid_t zygote_diff_pid_;  // Dump image diff against zygote boot.art if pid is non-negative
+  const bool dump_dirty_objects_;  // Adds dumping of objects that are dirty.
+
+  BootImageContainer boot_image_container_;
 
   // BacktraceMap used for finding the memory mapping of the image file.
   std::unique_ptr<BacktraceMap> image_proc_maps_;
@@ -1777,23 +2049,26 @@ class ImgDiagDumper {
   DISALLOW_COPY_AND_ASSIGN(ImgDiagDumper);
 };
 
-static int DumpImage(Runtime* runtime,
-                     std::ostream* os,
+static int DumpImage(std::ostream* os,
+                     InstructionSet instruction_set,
+                     const std::vector<std::string>&& boot_class_path,
+                     const std::vector<std::string>&& boot_class_path_locations,
+                     const std::string boot_image_location,
                      pid_t image_diff_pid,
                      pid_t zygote_diff_pid,
-                     bool dump_dirty_objects) {
-  ScopedObjectAccess soa(Thread::Current());
-  gc::Heap* heap = runtime->GetHeap();
-  const std::vector<gc::space::ImageSpace*>& image_spaces = heap->GetBootImageSpaces();
-  CHECK(!image_spaces.empty());
+                     bool dump_dirty_objects) REQUIRES_SHARED(Locks::mutator_lock_) {
   ImgDiagDumper img_diag_dumper(os,
+                                instruction_set,
+                                std::move(boot_class_path),
+                                std::move(boot_class_path_locations),
+                                boot_image_location,
                                 image_diff_pid,
                                 zygote_diff_pid,
                                 dump_dirty_objects);
   if (!img_diag_dumper.Init()) {
     return EXIT_FAILURE;
   }
-  for (gc::space::ImageSpace* image_space : image_spaces) {
+  for (const ImageSpaceUniquePtr& image_space : img_diag_dumper.GetBootImageSpaces()) {
     const ImageHeader& image_header = image_space->GetImageHeader();
     if (!image_header.IsValid()) {
       fprintf(stderr, "Invalid image header %s\n", image_space->GetImageLocation().c_str());
@@ -1853,6 +2128,11 @@ struct ImgDiagArgs : public CmdlineArgs {
       return parent_checks;
     }
 
+    // Check boot image as if we needed runtime.
+    if (!ParseCheckBootImage(error_msg)) {
+      return kParseError;
+    }
+
     // Perform our own checks.
 
     if (kill(image_diff_pid_,
@@ -1904,11 +2184,78 @@ struct ImgDiagArgs : public CmdlineArgs {
 };
 
 struct ImgDiagMain : public CmdlineMain<ImgDiagArgs> {
-  bool ExecuteWithRuntime(Runtime* runtime) override {
-    CHECK(args_ != nullptr);
+  bool NeedsRuntime() override {
+    return false;
+  }
 
-    return DumpImage(runtime,
-                     args_->os_,
+  bool ExecuteWithoutRuntime() override {
+    CHECK(args_ != nullptr);
+    std::ostream& os = *args_->os_;
+
+    // Get the boot class path.
+    RuntimeOptions runtime_options;
+    for (const char* runtime_arg : args_->runtime_args_) {
+      runtime_options.push_back(std::make_pair(runtime_arg, nullptr));
+    }
+    RuntimeArgumentMap runtime_args;
+    if (!Runtime::ParseOptions(runtime_options, /* ignore_unrecognized= */ false, &runtime_args)) {
+      os << "Failed to parse runtime options.\n";
+      return false;
+    }
+    std::vector<std::string> boot_class_path =
+        runtime_args.ReleaseOrDefault(RuntimeArgumentMap::BootClassPath);
+    std::vector<std::string> boot_class_path_locations =
+        runtime_args.ReleaseOrDefault(RuntimeArgumentMap::BootClassPathLocations);
+    CHECK(boot_class_path_locations.empty() ||
+          boot_class_path_locations.size() == boot_class_path.size());
+    if (boot_class_path.empty()) {
+      // Try to extract the boot class path from the system boot image.
+      std::string system_oat_filename = ImageHeader::GetOatLocationFromImageLocation(
+          GetSystemImageFilename(args_->boot_image_location_, args_->instruction_set_));
+      std::string system_oat_location =
+          ImageHeader::GetOatLocationFromImageLocation(args_->boot_image_location_);
+      std::string error_msg;
+      std::unique_ptr<OatFile> oat_file(OatFile::Open(/*zip_fd=*/ -1,
+                                                      system_oat_filename,
+                                                      system_oat_location,
+                                                      /*executable=*/ false,
+                                                      /*low_4gb=*/ false,
+                                                      /*abs_dex_location=*/ nullptr,
+                                                      /*reservation=*/ nullptr,
+                                                      &error_msg));
+      if (oat_file == nullptr) {
+        os << "Could not open boot oat file for extracting boot class path: " << error_msg;
+        return false;
+      }
+      const OatHeader& oat_header = oat_file->GetOatHeader();
+      const char* oat_boot_class_path = oat_header.GetStoreValueByKey(OatHeader::kBootClassPathKey);
+      if (oat_boot_class_path != nullptr) {
+        boot_class_path = android::base::Split(oat_boot_class_path, ":");
+      }
+      if (boot_class_path.empty()) {
+        os << "Boot class path missing from boot image oat file " << oat_file->GetLocation();
+        return false;
+      }
+    }
+
+    // Initialize needed resources and release them when leaving the function.
+    struct UpDown {
+      // We pretend to acquire and release the mutator lock; locking is not actually
+      // possible without a Thread object which cannot be constructed without a Runtime.
+      UpDown() ACQUIRE(*Locks::mutator_lock_) NO_THREAD_SAFETY_ANALYSIS {
+        MemMap::Init();
+      }
+      ~UpDown() RELEASE(*Locks::mutator_lock_) NO_THREAD_SAFETY_ANALYSIS {
+        MemMap::Shutdown();
+      }
+    };
+    UpDown up_down;
+
+    return DumpImage(args_->os_,
+                     args_->instruction_set_,
+                     std::move(boot_class_path),
+                     std::move(boot_class_path_locations),
+                     args_->boot_image_location_,
                      args_->image_diff_pid_,
                      args_->zygote_diff_pid_,
                      args_->dump_dirty_objects_) == EXIT_SUCCESS;

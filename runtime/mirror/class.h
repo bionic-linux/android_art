@@ -1070,17 +1070,19 @@ class MANAGED Class final : public Object {
   ObjPtr<ClassExt> EnsureExtDataPresent(Thread* self)
       REQUIRES_SHARED(Locks::mutator_lock_) REQUIRES(!Roles::uninterruptible_);
 
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   uint16_t GetDexClassDefIndex() REQUIRES_SHARED(Locks::mutator_lock_) {
-    return GetField32(OFFSET_OF_OBJECT_MEMBER(Class, dex_class_def_idx_));
+    return GetField32<kVerifyFlags>(OFFSET_OF_OBJECT_MEMBER(Class, dex_class_def_idx_));
   }
 
   void SetDexClassDefIndex(uint16_t class_def_idx) REQUIRES_SHARED(Locks::mutator_lock_) {
     SetField32Transaction(OFFSET_OF_OBJECT_MEMBER(Class, dex_class_def_idx_), class_def_idx);
   }
 
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags>
   dex::TypeIndex GetDexTypeIndex() REQUIRES_SHARED(Locks::mutator_lock_) {
-    return dex::TypeIndex(
-        static_cast<uint16_t>(GetField32(OFFSET_OF_OBJECT_MEMBER(Class, dex_type_idx_))));
+    return dex::TypeIndex(static_cast<uint16_t>(
+        GetField32<kVerifyFlags>(OFFSET_OF_OBJECT_MEMBER(Class, dex_type_idx_))));
   }
 
   void SetDexTypeIndex(dex::TypeIndex type_idx) REQUIRES_SHARED(Locks::mutator_lock_) {

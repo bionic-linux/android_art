@@ -209,8 +209,11 @@ class MANAGED DexCache final : public Object {
   void FixupResolvedCallSites(GcRoot<mirror::CallSite>* dest, const Visitor& visitor)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
+  template<VerifyObjectFlags kVerifyFlags = kDefaultVerifyFlags,
+           ReadBarrierOption kReadBarrierOption = kWithReadBarrier>
   String* GetLocation() REQUIRES_SHARED(Locks::mutator_lock_) {
-    return GetFieldObject<String>(OFFSET_OF_OBJECT_MEMBER(DexCache, location_));
+    return GetFieldObject<String, kVerifyFlags, kReadBarrierOption>(
+        OFFSET_OF_OBJECT_MEMBER(DexCache, location_));
   }
 
   static constexpr MemberOffset StringsOffset() {

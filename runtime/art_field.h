@@ -180,17 +180,11 @@ class ArtField final {
     return (GetAccessFlags() & kAccVolatile) != 0;
   }
 
-  // Returns an instance field with this offset in the given class or null if not found.
-  // If kExactOffset is true then we only find the matching offset, not the field containing the
-  // offset.
-  template <bool kExactOffset = true>
+  // Returns an instance field with this exact offset in the given class or null if not found.
   static ArtField* FindInstanceFieldWithOffset(ObjPtr<mirror::Class> klass, uint32_t field_offset)
       REQUIRES_SHARED(Locks::mutator_lock_);
 
-  // Returns a static field with this offset in the given class or null if not found.
-  // If kExactOffset is true then we only find the matching offset, not the field containing the
-  // offset.
-  template <bool kExactOffset = true>
+  // Returns a static field with this exact offset in the given class or null if not found.
   static ArtField* FindStaticFieldWithOffset(ObjPtr<mirror::Class> klass, uint32_t field_offset)
       REQUIRES_SHARED(Locks::mutator_lock_);
 

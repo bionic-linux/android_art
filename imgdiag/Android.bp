@@ -29,6 +29,7 @@ cc_defaults {
     shared_libs: [
         "libbacktrace",
         "libbase",
+        "libdexfile",
     ],
     target: {
         host: {
