@@ -70,6 +70,30 @@
       "revId": "75aa855a28637a3bd91327ae2bec0071542a50da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e16980ff_623860bc",
+        "filename": "compiler/optimizing/code_generator_vector_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-03-14T04:42:57Z",
+      "side": 1,
+      "message": "Thanks for your comments. Moved the verification logic to Assembler",
+      "parentUuid": "a7f527c7_43f40afe",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 11
+      },
+      "revId": "75aa855a28637a3bd91327ae2bec0071542a50da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
