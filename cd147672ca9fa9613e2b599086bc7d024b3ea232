@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf45940_26e4f1f5",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 8241,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-15T10:53:31Z",
+      "side": 1,
+      "message": "I think this should be done when creating the assembler, not in CodeGen::Finalize.",
+      "range": {
+        "startLine": 8240,
+        "startChar": 0,
+        "endLine": 8241,
+        "endChar": 84
+      },
+      "revId": "cd147672ca9fa9613e2b599086bc7d024b3ea232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16566917_831828f9",
+        "filename": "compiler/optimizing/code_generator_x86_64.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-15T10:53:31Z",
+      "side": 1,
+      "message": "No need?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "cd147672ca9fa9613e2b599086bc7d024b3ea232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
