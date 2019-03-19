@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63b2022c_a809f758",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 10
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-19T11:30:00Z",
+      "side": 1,
+      "message": "I think that\u0027s because we are now using a \"correct\" linker namespace configuration (the one that comes with the Runtime APEX). I need to check how this is handled on device with reals apps; maybe there\u0027s a cleaner way.",
+      "parentUuid": "232298ac_467de74a",
+      "range": {
+        "startLine": 979,
+        "startChar": 3,
+        "endLine": 980,
+        "endChar": 61
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50198d3e_8aa8eed0",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-19T10:55:47Z",
       "side": 1,
       "message": "I guess a closer relationship between linker namespace and LD_LIBRARY_PATH? I don\u0027t know how they work together.",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 992,
+        "endChar": 86
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2763542_0ba13058",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 10
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-19T11:30:00Z",
+      "side": 1,
+      "message": "Yes, I need to investigate how this is handled for real apps on device loading a native library linked to libc.so.",
+      "parentUuid": "50198d3e_8aa8eed0",
       "range": {
         "startLine": 991,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1b55e8f6_5f53f99b",
+        "filename": "test/run-test",
+        "patchSetId": 10
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-19T11:30:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure we could run (all) run-tests on user builds, because some (all?) of them rely on root access and no enforcement of SELinux policies.\n\nBut anyway, this is now gone in PS11, as we no longer need the LD_CONFIG_FILE hackery. (I somehow missed this in PS9; sorry about that.)",
+      "parentUuid": "11051b3d_1f058fdb",
+      "range": {
+        "startLine": 801,
+        "startChar": 66,
+        "endLine": 803,
+        "endChar": 47
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fcc51b60_02a8f6ef",
         "filename": "tools/art",
         "patchSetId": 10
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ab2fa7ad_aa90ac7c",
+        "filename": "tools/art",
+        "patchSetId": 10
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-19T11:30:00Z",
+      "side": 1,
+      "message": "I\u0027ve tried to support the uses cases where \"$ANDROID_ROOT !\u003d /system\" on target so far, but it seems fair to break it now. Fixed in PS11.",
+      "parentUuid": "fcc51b60_02a8f6ef",
+      "range": {
+        "startLine": 418,
+        "startChar": 26,
+        "endLine": 418,
+        "endChar": 42
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62c89777_24e1a76b",
         "filename": "tools/setup-buildbot-device.sh",
         "patchSetId": 10
@@ -114,6 +210,30 @@
       "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "644b7129_c51f0d62",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-19T11:30:00Z",
+      "side": 1,
+      "message": "We are executing binaries that live both inside and outside the Runtime APEX in the chroot environment, so we cannot use the `LD_CONFIG_FILE` variable which overwrites the whole linker configuration file selection logic.\n\nI agree that the added complexity of the set-up is annoying, but I don\u0027t expect much changes in this area in the future, as we mimic Bionic\u0027 linker logic here. I think this is also saner, as we what we execute in the chroot environment is closer to what would happen on a real device. In the past, diverging from standard Android behavior has created issues. Note that not using `LD_CONFIG_FILE` also has the benefit of not requiring special plumbing throughout all ART Buildbot harness and tests scripts/tools (including Vogar).\n\nThe logic here is also made to support old devices that have a linker configuration file with a different name that the one we build for the chroot environment.",
+      "parentUuid": "62c89777_24e1a76b",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
