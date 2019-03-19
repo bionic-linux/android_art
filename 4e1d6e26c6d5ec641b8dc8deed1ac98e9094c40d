@@ -234,6 +234,30 @@
       "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afa07729_d75360e8",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-03-19T17:56:49Z",
+      "side": 1,
+      "message": "Linker config selection logic is likely to change, even fairly soon: go/manageable-linker-config. I don\u0027t think this will work then, but I also don\u0027t think we can do anything here that will insulate us from breakages due to that (there won\u0027t even be a static config anywhere to point $LD_CONFIG_FILE at). I suggest chiming in on that doc to ensure there\u0027s a story about chroot execution.",
+      "parentUuid": "644b7129_c51f0d62",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
