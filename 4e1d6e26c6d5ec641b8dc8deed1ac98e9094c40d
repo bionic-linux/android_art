@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "232298ac_467de74a",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 10
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-19T10:55:47Z",
+      "side": 1,
+      "message": "Why do we need this now?",
+      "range": {
+        "startLine": 979,
+        "startChar": 3,
+        "endLine": 980,
+        "endChar": 61
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50198d3e_8aa8eed0",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 10
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-19T10:55:47Z",
+      "side": 1,
+      "message": "I guess a closer relationship between linker namespace and LD_LIBRARY_PATH? I don\u0027t know how they work together.",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 992,
+        "endChar": 86
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11051b3d_1f058fdb",
+        "filename": "test/run-test",
+        "patchSetId": 10
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-19T10:55:47Z",
+      "side": 1,
+      "message": "This looks unprecendented? Or have we ever been able to run run-tests on a user build?",
+      "range": {
+        "startLine": 801,
+        "startChar": 66,
+        "endLine": 803,
+        "endChar": 47
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc51b60_02a8f6ef",
+        "filename": "tools/art",
+        "patchSetId": 10
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-19T10:55:47Z",
+      "side": 1,
+      "message": "Should you drop this?",
+      "range": {
+        "startLine": 418,
+        "startChar": 26,
+        "endLine": 418,
+        "endChar": 42
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c89777_24e1a76b",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-19T10:55:47Z",
+      "side": 1,
+      "message": "Can we not stick to an ART-specific linker namespace file?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
