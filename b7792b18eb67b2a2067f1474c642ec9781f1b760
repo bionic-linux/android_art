@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38eae48b_10d67720",
+        "filename": "compiler/utils/x86/assembler_x86.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-03-20T07:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab3da9b_b368ed38",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "b7792b18eb67b2a2067f1474c642ec9781f1b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feb7d945_14da86b6",
         "filename": "compiler/utils/x86_64/assembler_x86_64.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "eaf0c6e6_33b0b720",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-03-20T07:58:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feb7d945_14da86b6",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 56
+      },
+      "revId": "b7792b18eb67b2a2067f1474c642ec9781f1b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3643d23f_3b9e17d6",
         "filename": "runtime/arch/x86/instruction_set_features_x86.h",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "b7792b18eb67b2a2067f1474c642ec9781f1b760",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8f95bee_a269b379",
+        "filename": "runtime/arch/x86/instruction_set_features_x86.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-03-20T07:58:01Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "3643d23f_3b9e17d6",
+      "revId": "b7792b18eb67b2a2067f1474c642ec9781f1b760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
