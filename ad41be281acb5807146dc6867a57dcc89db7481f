@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a31dc76f_96c728a1",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-20T18:28:40Z",
+      "side": 1,
+      "message": "const ?",
+      "range": {
+        "startLine": 339,
+        "startChar": 33,
+        "endLine": 339,
+        "endChar": 34
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59aa6ffd_8bef6788",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-20T18:28:40Z",
+      "side": 1,
+      "message": "Is that used ?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 29
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "238c7462_0729fa97",
+        "filename": "libdexfile/dex/art_dex_file_loader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-20T18:28:40Z",
+      "side": 1,
+      "message": "Why do we need a new method? Even before we passed the fd for the base apk, is the problem that we hardcoded that it was a zip fd?",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d365a7fa_61343731",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-20T18:28:40Z",
+      "side": 1,
+      "message": "Why can\u0027t you use FlattenOpenedDexFiles ?",
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
