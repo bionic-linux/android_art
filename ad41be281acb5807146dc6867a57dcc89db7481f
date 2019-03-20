@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "dc7c172e_3655e35c",
+        "filename": "libdexfile/dex/art_dex_file_loader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-20T18:53:38Z",
+      "side": 1,
+      "message": "Yep, we do pass FD for the input dex but that logic goes through OatWriter [1, 2] which \n- assumes the file is a zip\n- opens the zip in memory and then uses other ArtDexFileLoader functions to open the zip entries as dex files\n\nAFAIK, there isn\u0027t a function for loading DEX or ZIP from an FD like this.\n\n[1] https://cs.corp.google.com/aosp-master/art/dex2oat/dex2oat.cc?rcl\u003da040ddc1378118ac6b3735fa8333c1a19e646fe1\u0026l\u003d2359\n[2] https://cs.corp.google.com/aosp-master/art/dex2oat/linker/oat_writer.cc?rcl\u003da040ddc1378118ac6b3735fa8333c1a19e646fe1\u0026l\u003d538",
+      "parentUuid": "238c7462_0729fa97",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 89,
+        "endChar": 0
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d365a7fa_61343731",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 2
@@ -85,6 +109,24 @@
       "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e777a053_cf2f34bc",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-20T18:53:38Z",
+      "side": 1,
+      "message": "Because dexoptanalyzer is not allowed to open the files, so we can only flatten the classpath strings",
+      "parentUuid": "d365a7fa_61343731",
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
