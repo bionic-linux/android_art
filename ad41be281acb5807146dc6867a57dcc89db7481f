@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0f8f0c2_5a790872",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T12:35:32Z",
+      "side": 1,
+      "message": "Done\nI went with zero simply because that is the unix value for success. You\u0027re right that we could use a different value as a sanity check that dexoptanalyzer actually entered the flatten-context code path.",
+      "parentUuid": "bc9a3e2f_405e231e",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a31dc76f_96c728a1",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9b543dfb_5785651b",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T12:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a31dc76f_96c728a1",
+      "range": {
+        "startLine": 339,
+        "startChar": 33,
+        "endLine": 339,
+        "endChar": 34
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59aa6ffd_8bef6788",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17335877_8414d209",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T12:35:32Z",
+      "side": 1,
+      "message": "Well spotted.",
+      "parentUuid": "59aa6ffd_8bef6788",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 29
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "8138f326_2db89ec0",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T12:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711f46bf_7472b422",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 102
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d365a7fa_61343731",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 2
@@ -196,6 +292,30 @@
       "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7046ca9f_7f88c2af",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-03-21T12:35:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06757e15_8ae40b8c",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 77
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
