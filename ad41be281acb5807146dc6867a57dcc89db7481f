@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bc9a3e2f_405e231e",
+        "filename": "dexoptanalyzer/dexoptanalyzer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T02:11:30Z",
+      "side": 1,
+      "message": "I\u0027m a bit inclined to use a non-overlapping value here. Can be convinced otherwise :)",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a31dc76f_96c728a1",
         "filename": "dexoptanalyzer/dexoptanalyzer.cc",
         "patchSetId": 2
@@ -95,6 +118,29 @@
     },
     {
       "key": {
+        "uuid": "711f46bf_7472b422",
+        "filename": "runtime/class_loader_context.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T02:11:30Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 102
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d365a7fa_61343731",
         "filename": "runtime/class_loader_context.cc",
         "patchSetId": 2
@@ -127,6 +173,29 @@
       "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06757e15_8ae40b8c",
+        "filename": "runtime/class_loader_context.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-21T02:11:30Z",
+      "side": 1,
+      "message": "Document how you handle the empty list (when the files are opened using their fds vs names)",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 74,
+        "endChar": 77
+      },
+      "revId": "ad41be281acb5807146dc6867a57dcc89db7481f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
