@@ -119,7 +119,9 @@ ObjPtr<String> String::DoReplace(Thread* self, Handle<String> src, uint16_t old_
   return string;
 }
 
-String* String::AllocFromStrings(Thread* self, Handle<String> string, Handle<String> string2) {
+ObjPtr<String> String::AllocFromStrings(Thread* self,
+                                        Handle<String> string,
+                                        Handle<String> string2) {
   int32_t length = string->GetLength();
   int32_t length2 = string2->GetLength();
   gc::AllocatorType allocator_type = Runtime::Current()->GetHeap()->GetCurrentAllocator();
@@ -156,7 +158,9 @@ String* String::AllocFromStrings(Thread* self, Handle<String> string, Handle<Str
   return new_string.Ptr();
 }
 
-String* String::AllocFromUtf16(Thread* self, int32_t utf16_length, const uint16_t* utf16_data_in) {
+ObjPtr<String> String::AllocFromUtf16(Thread* self,
+                                      int32_t utf16_length,
+                                      const uint16_t* utf16_data_in) {
   CHECK(utf16_data_in != nullptr || utf16_length == 0);
   gc::AllocatorType allocator_type = Runtime::Current()->GetHeap()->GetCurrentAllocator();
   const bool compressible = kUseStringCompression &&
@@ -178,23 +182,23 @@ String* String::AllocFromUtf16(Thread* self, int32_t utf16_length, const uint16_
   return string.Ptr();
 }
 
-String* String::AllocFromModifiedUtf8(Thread* self, const char* utf) {
+ObjPtr<String> String::AllocFromModifiedUtf8(Thread* self, const char* utf) {
   DCHECK(utf != nullptr);
   size_t byte_count = strlen(utf);
   size_t char_count = CountModifiedUtf8Chars(utf, byte_count);
   return AllocFromModifiedUtf8(self, char_count, utf, byte_count);
 }
 
-String* String::AllocFromModifiedUtf8(Thread* self,
-                                      int32_t utf16_length,
-                                      const char* utf8_data_in) {
+ObjPtr<String> String::AllocFromModifiedUtf8(Thread* self,
+                                             int32_t utf16_length,
+                                             const char* utf8_data_in) {
   return AllocFromModifiedUtf8(self, utf16_length, utf8_data_in, strlen(utf8_data_in));
 }
 
-String* String::AllocFromModifiedUtf8(Thread* self,
-                                      int32_t utf16_length,
-                                      const char* utf8_data_in,
-                                      int32_t utf8_length) {
+ObjPtr<String> String::AllocFromModifiedUtf8(Thread* self,
+                                             int32_t utf16_length,
+                                             const char* utf8_data_in,
+                                             int32_t utf8_length) {
   gc::AllocatorType allocator_type = Runtime::Current()->GetHeap()->GetCurrentAllocator();
   const bool compressible = kUseStringCompression && (utf16_length == utf8_length);
   const int32_t utf16_length_with_flag = String::GetFlaggedCount(utf16_length, compressible);
