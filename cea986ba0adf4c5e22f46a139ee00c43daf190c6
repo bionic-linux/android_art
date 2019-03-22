@@ -16,6 +16,24 @@
       "revId": "cea986ba0adf4c5e22f46a139ee00c43daf190c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7676eb18_190d495c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3084,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T15:46:07Z",
+      "side": 1,
+      "message": "Done (assuming the comment was aimed at the word \"at\").",
+      "parentUuid": "d9145c69_3e135b43",
+      "revId": "cea986ba0adf4c5e22f46a139ee00c43daf190c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
