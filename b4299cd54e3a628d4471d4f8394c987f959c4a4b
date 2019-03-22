@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64aa19fc_3cd8494c",
+        "filename": "compiler/optimizing/code_generator_x86.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "If you keep calling the old constructor here and for x86_64, the tests will pass and we can submit this CL. Enabling it and fixing oatdump can be done in a separate change afterwards.",
+      "range": {
+        "startLine": 1041,
+        "startChar": 38,
+        "endLine": 1041,
+        "endChar": 73
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "847edcb5_5ad228b8",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "This pattern is currently untested. You should add an AssemblerX86_64AVXTest class that sets up the InstructionSetFeatures for the assembler and add TEST_F(AssemblerX86_64AVXTest, Movaps) and similar tests for the other instructions to test that they produce the \"v\" versions.",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 3
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af1f582_d27131a3",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "One parameter per line, please. Or break after the \u0027(\u0027 and put all parameters on one line with 4-space indentation.",
+      "range": {
+        "startLine": 444,
+        "startChar": 36,
+        "endLine": 445,
+        "endChar": 66
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237cc72b_a87a9e46",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "One parameter per line and a parameter name comment for the \"false\".",
+      "range": {
+        "startLine": 447,
+        "startChar": 36,
+        "endLine": 448,
+        "endChar": 48
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92e7d084_08535214",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "/*W\u003d*/ false",
+      "range": {
+        "startLine": 449,
+        "startChar": 36,
+        "endLine": 449,
+        "endChar": 50
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9bc97fe_4aef4b9e",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "Keep the old format: \"/*is_two_byte\u003d*/ false\".",
+      "range": {
+        "startLine": 2086,
+        "startChar": 44,
+        "endLine": 2086,
+        "endChar": 65
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cadd5877_e1a584a4",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4464,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef33261_e72a40a6",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 4495,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f17f8e_17cc3626",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-22T10:05:45Z",
+      "side": 1,
+      "message": "Lines too long. Break after \u0027(\u0027 or have one paramater per line.",
+      "range": {
+        "startLine": 989,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 101
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
