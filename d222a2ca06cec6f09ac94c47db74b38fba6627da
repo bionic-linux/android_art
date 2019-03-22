@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b564c255_95a27ee2",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3083,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-03-22T12:02:05Z",
+      "side": 1,
+      "message": "runtime",
+      "range": {
+        "startLine": 3083,
+        "startChar": 10,
+        "endLine": 3083,
+        "endChar": 18
+      },
+      "revId": "d222a2ca06cec6f09ac94c47db74b38fba6627da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51582899_c6172cb0",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 3084,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-03-22T12:02:05Z",
+      "side": 1,
+      "message": "during execution",
+      "range": {
+        "startLine": 3084,
+        "startChar": 77,
+        "endLine": 3084,
+        "endChar": 88
+      },
+      "revId": "d222a2ca06cec6f09ac94c47db74b38fba6627da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
