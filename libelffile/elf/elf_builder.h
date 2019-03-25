@@ -798,6 +798,21 @@ class ElfBuilder final {
      return stream_.Seek(RoundUp(stream_.Seek(0, kSeekCurrent), alignment), kSeekSet);
   }
 
+  static InstructionSet GetIsaFromHeader(const Elf_Ehdr& header) {
+    switch (header.e_machine) {
+      case EM_ARM:
+        return InstructionSet::kThumb2;
+      case EM_AARCH64:
+        return InstructionSet::kArm64;
+      case EM_386:
+        return InstructionSet::kX86;
+      case EM_X86_64:
+        return InstructionSet::kX86_64;
+    }
+    LOG(FATAL) << "Unknown architecture: " << header.e_machine;
+    UNREACHABLE();
+  }
+
  private:
   static Elf_Ehdr MakeElfHeader(InstructionSet isa) {
     Elf_Ehdr elf_header = Elf_Ehdr();
@@ -832,6 +847,7 @@ class ElfBuilder final {
         LOG(FATAL) << "Unknown instruction set " << isa;
       }
     }
+    DCHECK_EQ(GetIsaFromHeader(elf_header), isa);
 
     elf_header.e_ident[EI_MAG0]       = ELFMAG0;
     elf_header.e_ident[EI_MAG1]       = ELFMAG1;
