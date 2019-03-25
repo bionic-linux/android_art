@@ -25,10 +25,20 @@ art_cc_defaults {
         "stream/output_stream.cc",
         "stream/vector_output_stream.cc",
     ],
-    shared_libs: [
-        "libartbase",
-        "libbase",
-    ],
+    target: {
+      android: {
+        shared_libs: [
+            "libartbase",
+            "libbase",
+        ],
+      },
+      host: {
+        static_libs: [
+            "libartbase",
+            "libbase",
+        ],
+      },
+    },
 }
 
 art_cc_library_static {
