@@ -84,8 +84,14 @@ class ElfDebugReader {
     }
   }
 
-  explicit ElfDebugReader(std::vector<uint8_t>& file)
+  explicit ElfDebugReader(const std::vector<uint8_t>& file)
       : ElfDebugReader(ArrayRef<const uint8_t>(file)) {
+  }
+
+  static bool IsValidElfHeader(const std::vector<uint8_t>& data) {
+    static constexpr int kBitness = sizeof(Elf_Addr) == 4 ? /*32bit*/ 1 : /*64bit*/ 2;
+    static constexpr char kMagic[] = { 0x7f, 'E', 'L', 'F', kBitness };
+    return data.size() >= sizeof(kMagic) && memcmp(data.data(), kMagic, sizeof(kMagic)) == 0;
   }
 
   const Elf_Ehdr* GetHeader() { return header_; }
