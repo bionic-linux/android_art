@@ -46,6 +46,30 @@
       "revId": "4ed5cc47cc415bcf1274708a90ed7796886d36f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7dd80dc7_6501e9ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-03-25T10:26:37Z",
+      "side": 1,
+      "message": "OK, agree it\u0027s trivial and can stay here if you want. However, \"Test: Rely on Treehugger.\" suggests non-local testing in the git history.",
+      "parentUuid": "b5bc5767_3a59ce97",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "4ed5cc47cc415bcf1274708a90ed7796886d36f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
