@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ca17bfdc_2cb18f93",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-03-25T09:50:41Z",
+      "side": 1,
+      "message": "Currently, we have added \nTEST_F(AssemblerX86Test, VMovapsStore) {\n  DriverStr(RepeatAF(\u0026x86::X86Assembler::vmovaps, \"vmovaps %{reg}, {mem}\"), \"vmovaps_store\");\n}\nfunctions in assembler_x86_test.cc . This test will get invoked by default when we run gtest. Do you want us to invoke this test only if AVX/AVX2 flag is turned on?\n\nThis what we are planning, Create AssemblerX86_64AVXTest which inherits AssemblerX86Test and all the test functions related to v versions will be invoked only based on CpuHasAVXorAVX2FeatureFlag  \n\nPl advise..",
+      "parentUuid": "847edcb5_5ad228b8",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 3
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9af1f582_d27131a3",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 4
