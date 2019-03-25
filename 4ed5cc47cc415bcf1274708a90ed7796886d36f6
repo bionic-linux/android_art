@@ -70,6 +70,30 @@
       "revId": "4ed5cc47cc415bcf1274708a90ed7796886d36f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad292c83_3d5b8081",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-25T14:38:37Z",
+      "side": 1,
+      "message": "Actually, I\u0027ve moved it to another CL as the obj_ptr.h also needs cleanup.",
+      "parentUuid": "7dd80dc7_6501e9ac",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "4ed5cc47cc415bcf1274708a90ed7796886d36f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
