@@ -46,6 +46,30 @@
       "revId": "ef1dba4c27490224c9df5e917fc53b5242340bf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e67b5207_6623e725",
+        "filename": "libelffile/elf/elf_builder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-03-25T15:07:06Z",
+      "side": 1,
+      "message": "The output of readelf looks as expected, and produces no warnings.",
+      "parentUuid": "494d7428_b4216ea3",
+      "range": {
+        "startLine": 398,
+        "startChar": 6,
+        "endLine": 400,
+        "endChar": 31
+      },
+      "revId": "ef1dba4c27490224c9df5e917fc53b5242340bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
