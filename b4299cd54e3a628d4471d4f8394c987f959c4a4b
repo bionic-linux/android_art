@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "66e0cc67_3c080c6e",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-25T10:47:54Z",
+      "side": 1,
+      "message": "Please create the AssemblerX86_64AVXTest that inherits AssemblerX86_64Test (you can keep it in the same file) and overrides CreateAssembler(.) to pass appropriate InstructionSetFeatures. You do not need to replicate all the tests for the AVX case, only those that take a different path depending on CpuHasAVXorAVX2FeatureFlag().\n\nRegarding the Vmovaps and similar tests, you can move them to the AssemblerX86_64AVXTest. This would allow adding `DCHECK(CpuHasAVXorAVX2FeatureFlag())` in the `X86_64Assembler::vmovaps()` and similar functions.",
+      "parentUuid": "ca17bfdc_2cb18f93",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 3
+      },
+      "revId": "b4299cd54e3a628d4471d4f8394c987f959c4a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9af1f582_d27131a3",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 4
