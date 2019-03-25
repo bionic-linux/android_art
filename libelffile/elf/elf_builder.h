@@ -447,8 +447,8 @@ class ElfBuilder final {
     off_t digest_start_;
   };
 
-  ElfBuilder(InstructionSet isa, OutputStream* output)
-      : isa_(isa),
+  ElfBuilder(Elf_Ehdr elf_header, OutputStream* output)
+      : elf_header_(elf_header),
         stream_(output),
         rodata_(this, ".rodata", SHT_PROGBITS, SHF_ALLOC, nullptr, 0, kPageSize, 0),
         text_(this, ".text", SHT_PROGBITS, SHF_ALLOC | SHF_EXECINSTR, nullptr, 0, kPageSize, 0),
@@ -483,9 +483,16 @@ class ElfBuilder final {
     dynamic_.phdr_type_ = PT_DYNAMIC;
     build_id_.phdr_type_ = PT_NOTE;
   }
+  ElfBuilder(InstructionSet isa, OutputStream* output)
+    : ElfBuilder(MakeElfHeader(isa), output) {
+    isa_ = isa;
+  }
   ~ElfBuilder() {}
 
-  InstructionSet GetIsa() { return isa_; }
+  InstructionSet GetIsa() {
+    CHECK_NE(isa_, InstructionSet::kNone);
+    return isa_;
+  }
   BuildIdSection* GetBuildId() { return &build_id_; }
   Section* GetRoData() { return &rodata_; }
   Section* GetText() { return &text_; }
@@ -565,7 +572,9 @@ class ElfBuilder final {
     stream_.Flush();
 
     // The main ELF header.
-    Elf_Ehdr elf_header = MakeElfHeader(isa_);
+    Elf_Ehdr elf_header = elf_header_;
+    elf_header.e_phoff = 0;
+    elf_header.e_phnum = 0;
     elf_header.e_shoff = section_headers_offset;
     elf_header.e_shnum = shdrs.size();
     elf_header.e_shstrndx = shstrtab_.GetSectionIndex();
@@ -794,6 +803,11 @@ class ElfBuilder final {
     return &stream_;
   }
 
+  void SetVirtualAddress(Elf_Addr virtual_address) {
+    DCHECK_LE(virtual_address_, virtual_address);
+    virtual_address_ = virtual_address;
+  }
+
   off_t AlignFileOffset(size_t alignment) {
      return stream_.Seek(RoundUp(stream_.Seek(0, kSeekCurrent), alignment), kSeekSet);
   }
@@ -931,7 +945,8 @@ class ElfBuilder final {
     return phdrs;
   }
 
-  InstructionSet isa_;
+  const Elf_Ehdr elf_header_;
+  InstructionSet isa_ = InstructionSet::kNone;
 
   ErrorDelayingOutputStream stream_;
 
