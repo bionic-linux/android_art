@@ -46,6 +46,30 @@
       "revId": "5660a5838772ec72f7f85bf5b46a274345bede78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c969c612_05ae7c0a",
+        "filename": "runtime/oat_file_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2019-03-28T18:29:28Z",
+      "side": 1,
+      "message": "\"enable\" or \"allow\" then?",
+      "parentUuid": "2ac97acd_25e7488d",
+      "range": {
+        "startLine": 104,
+        "startChar": 32,
+        "endLine": 104,
+        "endChar": 40
+      },
+      "revId": "5660a5838772ec72f7f85bf5b46a274345bede78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
