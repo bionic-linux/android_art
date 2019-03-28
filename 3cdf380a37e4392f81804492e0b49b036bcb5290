@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77338109_f5a425f4",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-28T20:03:17Z",
+      "side": 1,
+      "message": "I needed to add this to solve my issues with libarttest(d).so not able to find libc.so (see https://android-review.googlesource.com/c/platform/art/+/921093/8..9/test/etc/run-test-jar#974).\n\nThis seems like a genuine omission, given the comment line 27 and the dual configuration in /system/etc/ld.config.txt. Martin, Jiyong, what do you think?\n\nAlso, I was thinking about submitting this change in a separate CL; would that make sense to you?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

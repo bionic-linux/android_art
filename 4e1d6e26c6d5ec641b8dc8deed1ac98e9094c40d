@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "009a847b_3cae9370",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 10
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-28T20:03:17Z",
+      "side": 1,
+      "message": "This is addressed in PS13.",
+      "parentUuid": "e2763542_0ba13058",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 992,
+        "endChar": 86
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11051b3d_1f058fdb",
         "filename": "test/run-test",
         "patchSetId": 10
@@ -249,6 +273,30 @@
       "side": 1,
       "message": "Linker config selection logic is likely to change, even fairly soon: go/manageable-linker-config. I don\u0027t think this will work then, but I also don\u0027t think we can do anything here that will insulate us from breakages due to that (there won\u0027t even be a static config anywhere to point $LD_CONFIG_FILE at). I suggest chiming in on that doc to ensure there\u0027s a story about chroot execution.",
       "parentUuid": "644b7129_c51f0d62",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 1
+      },
+      "revId": "4e1d6e26c6d5ec641b8dc8deed1ac98e9094c40d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91aec2cc_8e830877",
+        "filename": "tools/setup-buildbot-device.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-03-28T20:03:17Z",
+      "side": 1,
+      "message": "Thanks for the heads-up! I\u0027ll check the document.",
+      "parentUuid": "afa07729_d75360e8",
       "range": {
         "startLine": 131,
         "startChar": 0,
