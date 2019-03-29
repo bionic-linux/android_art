@@ -39,18 +39,18 @@ class DexDiagTest : public CommonArtTest {
 
   // Path to the dexdiag(d?)[32|64] binary.
   std::string GetDexDiagFilePath() {
-    std::string root = GetTestAndroidRoot();
+    std::string path = GetAndroidRuntimeBinDir();
 
-    root += "/bin/";
-    root += kDexDiagBinaryName;
+    path += '/';
+    path += kDexDiagBinaryName;
 
-    std::string root32 = root + "32";
+    std::string path32 = path + "32";
     // If we have both a 32-bit and a 64-bit build, the 32-bit file will have a 32 suffix.
-    if (OS::FileExists(root32.c_str()) && !Is64BitInstructionSet(kRuntimeISA)) {
-      return root32;
+    if (OS::FileExists(path32.c_str()) && !Is64BitInstructionSet(kRuntimeISA)) {
+      return path32;
     } else {
       // This is a 64-bit build or only a single build exists.
-      return root;
+      return path;
     }
   }
 

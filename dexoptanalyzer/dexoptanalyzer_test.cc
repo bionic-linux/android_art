@@ -25,8 +25,8 @@ namespace art {
 class DexoptAnalyzerTest : public DexoptTest {
  protected:
   std::string GetDexoptAnalyzerCmd() {
-    std::string file_path = GetTestAndroidRoot();
-    file_path += "/bin/dexoptanalyzer";
+    std::string file_path = GetAndroidRuntimeBinDir();
+    file_path += "/dexoptanalyzer";
     if (kIsDebugBuild) {
       file_path += "d";
     }

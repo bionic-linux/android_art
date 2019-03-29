@@ -198,8 +198,8 @@ class ProfileAssistantTest : public CommonRuntimeTest {
   }
 
   std::string GetProfmanCmd() {
-    std::string file_path = GetTestAndroidRoot();
-    file_path += "/bin/profman";
+    std::string file_path = GetAndroidRuntimeBinDir();
+    file_path += "/profman";
     if (kIsDebugBuild) {
       file_path += "d";
     }
