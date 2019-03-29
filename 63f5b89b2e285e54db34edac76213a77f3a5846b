@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d89bbf8d_33fc147b",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2480,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-03-29T10:01:08Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 2480,
+        "startChar": 48,
+        "endLine": 2480,
+        "endChar": 52
+      },
+      "revId": "63f5b89b2e285e54db34edac76213a77f3a5846b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
