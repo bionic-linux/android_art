@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b17e3b_55cb795f",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-29T09:29:16Z",
+      "side": 1,
+      "message": "So pre-fork we allow, post-fork we block? And we only allow pre-fork for the case of system server, which needs to load artifacts from dalvik-cache?\n\nI find all this a bit messy TBH. At least being explicit in the method names could help, eg:\nGetOatFileManager()-\u003eTemporarilyAllowNonSystemOatFiles() with a comment that this is to only pick up fs-veritied oat files, and how do we guarantee this.",
+      "range": {
+        "startLine": 634,
+        "startChar": 47,
+        "endLine": 634,
+        "endChar": 63
+      },
+      "revId": "c41658e1aa46e7cbd2882e14e05dd94b8178f829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
