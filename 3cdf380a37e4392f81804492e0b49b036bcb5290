@@ -22,6 +22,30 @@
       "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca02ff5_c3fc58c0",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-29T01:07:25Z",
+      "side": 1,
+      "message": "Yeah, I agree with this change. And I have no preference on whether this should be a separate CL or not.",
+      "parentUuid": "77338109_f5a425f4",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
