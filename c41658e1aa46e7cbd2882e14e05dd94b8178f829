@@ -22,6 +22,30 @@
       "revId": "c41658e1aa46e7cbd2882e14e05dd94b8178f829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5d8db2_f0b81727",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-03-29T20:49:41Z",
+      "side": 1,
+      "message": "As-is, this is an improvement over the status quo, because it extends the range of guaranteed non-pickup. So I don\u0027t see this as messy.\n\nThe smallest window would require new hooks specifically around the preload code. I decided not to approximate by putting this into the JIT hook (which is technically named generically for the system server), because the comments in that method are very specificly tuned to the system server JIT.\n\nThere\u0027s also the question of child zygotes, and the code flow isn\u0027t as obvious there.\n\n\nOverall, this code relies, as pretty much everything, on a tight coupling of what happens at fork time, and that has been acceptable in the past. I don\u0027t see a reason to make this more complicated at this point in time.",
+      "parentUuid": "72b17e3b_55cb795f",
+      "range": {
+        "startLine": 634,
+        "startChar": 47,
+        "endLine": 634,
+        "endChar": 63
+      },
+      "revId": "c41658e1aa46e7cbd2882e14e05dd94b8178f829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
