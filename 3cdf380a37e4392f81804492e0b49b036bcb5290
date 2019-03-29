@@ -70,6 +70,30 @@
       "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5777b93_ec57c58d",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-03-29T14:14:09Z",
+      "side": 1,
+      "message": "\u003e This seems like a genuine omission,\n\nNot quite, http://r.android.com/879990 intended to add it, but put it in the wrong section \"default\" above instead. Would you like to fix that too? Otherwise I\u0027ll do it.\n\n\u003e talks about loading libopenjdk.so, which is no longer applicable since it\u0027s now in the Runtime APEX\n\nIn [1] I claim that it is indeed necessary, but now I can\u0027t recall why (and it boots and runs CtsCompilationTestCases fine). Anyway, since you got a better reason for it now we can replace that comment.\n\n[1] http://r.android.com/c/platform/system/core/+/880598/1#message-5decf5b8a4cacf642b8bc9de5881225038b3d37e",
+      "parentUuid": "ad21b435_e7e1ae81",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
