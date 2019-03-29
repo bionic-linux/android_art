@@ -765,8 +765,8 @@ std::string Runtime::GetCompilerExecutable() const {
   if (!compiler_executable_.empty()) {
     return compiler_executable_;
   }
-  std::string compiler_executable(GetAndroidRoot());
-  compiler_executable += (kIsDebugBuild ? "/bin/dex2oatd" : "/bin/dex2oat");
+  std::string compiler_executable(GetAndroidRuntimeBinDir());
+  compiler_executable += (kIsDebugBuild ? "/dex2oatd" : "/dex2oat");
   return compiler_executable;
 }
 
