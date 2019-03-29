@@ -46,6 +46,30 @@
       "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad21b435_e7e1ae81",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-03-29T12:55:33Z",
+      "side": 1,
+      "message": "I don\u0027t understand why something does dlopen on libc.so. Could you give a little more detail on that?\n\n(The corresponding line in system/etc/ld.config.txt talks about loading libopenjdk.so, which is no longer applicable since it\u0027s now in the Runtime APEX. It ought to be motivated with a still applicable case, but that\u0027s another matter.)\n\nSlight preference for separate CL in case either gets reverted, but up to you.",
+      "parentUuid": "aca02ff5_c3fc58c0",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
