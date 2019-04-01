@@ -46,6 +46,30 @@
       "revId": "c41658e1aa46e7cbd2882e14e05dd94b8178f829",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cce08f_657694ca",
+        "filename": "runtime/runtime.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-04-01T09:28:45Z",
+      "side": 1,
+      "message": "What I find messy is the multitude of places we now call SetOnlyUseSystemOatFiles. As this is for security purposes, we shouldn\u0027t take this lightly.\n\nDo we still need this once we have proper labels on files? Should we rename this to SetOnlyUseVeritiedFiles ?",
+      "parentUuid": "bc5d8db2_f0b81727",
+      "range": {
+        "startLine": 634,
+        "startChar": 47,
+        "endLine": 634,
+        "endChar": 63
+      },
+      "revId": "c41658e1aa46e7cbd2882e14e05dd94b8178f829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
