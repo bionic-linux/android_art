@@ -16,6 +16,24 @@
       "revId": "a8d23cb7febebc44ddfc03a3a135bb983eb95029",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef6ec20_ee12eea3",
+        "filename": "dexlayout/dexlayout_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2019-04-08T20:44:18Z",
+      "side": 1,
+      "message": "In separate CL uploaded oag/941339 for review.",
+      "parentUuid": "d166fd10_fbb299c9",
+      "revId": "a8d23cb7febebc44ddfc03a3a135bb983eb95029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
