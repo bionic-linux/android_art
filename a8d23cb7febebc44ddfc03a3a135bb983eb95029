@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d166fd10_fbb299c9",
+        "filename": "dexlayout/dexlayout_test.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-08T20:32:43Z",
+      "side": 1,
+      "message": "Sort.",
+      "revId": "a8d23cb7febebc44ddfc03a3a135bb983eb95029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
