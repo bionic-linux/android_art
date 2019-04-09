@@ -1,0 +1,250 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "551f52e3_51cd53cb",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "/* R\u003d */ false",
+      "range": {
+        "startLine": 441,
+        "startChar": 42,
+        "endLine": 441,
+        "endChar": 55
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc9b56eb_116315a3",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Remove space.",
+      "range": {
+        "startLine": 753,
+        "startChar": 49,
+        "endLine": 753,
+        "endChar": 50
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e5f664_db879a9e",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3421,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "This didn\u0027t need to be split across 4 lines, but it\u0027s OK to keep this way if you want.",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6192ca_204e8558",
+        "filename": "compiler/utils/x86/assembler_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Line break here.",
+      "range": {
+        "startLine": 314,
+        "startChar": 29,
+        "endLine": 314,
+        "endChar": 30
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20089c66_3e7f9c82",
+        "filename": "compiler/utils/x86/assembler_x86.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Align under \"Assembler\". (That should also take care about the lines being too long.)",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0123ca70_a2815ab5",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Add \"TEST_F(AssemblerX86AVXTest, Movaps)\" and similar tests.",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d820ecd0_7c8c1203",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Change to \"/* X\u003d */ false\". We use clang-tidy to do parameter name checks. (Same for all similar the parameters below.)",
+      "range": {
+        "startLine": 451,
+        "startChar": 36,
+        "endLine": 451,
+        "endChar": 54
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5479d11_4a3eb6d7",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Remove extra space, same on the next line.",
+      "range": {
+        "startLine": 511,
+        "startChar": 40,
+        "endLine": 511,
+        "endChar": 41
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95391bd1_28cff0f5",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 617,
+        "startChar": 40,
+        "endLine": 617,
+        "endChar": 41
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e78b3d1_814e9b41",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Line break here.",
+      "range": {
+        "startLine": 359,
+        "startChar": 29,
+        "endLine": 359,
+        "endChar": 30
+      },
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986df08e_c91fecae",
+        "filename": "compiler/utils/x86_64/assembler_x86_64_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "Also add the \"TEST_F(AssemblerX86_64AVXTest, Movaps)\" to check that movaps() emits VMOVAPS for that case. Add similar tests below.",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b91b62a4_2b3a871e",
+        "filename": "disassembler/disassembler_x86.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-09T10:01:54Z",
+      "side": 1,
+      "message": "If you want to delay changes to disassembler for a follow-up change, please undo all changes in this file. You may find it useful to do \"git reset HEAD~1 -- disassembler/disassembler_x86.cc\".",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
