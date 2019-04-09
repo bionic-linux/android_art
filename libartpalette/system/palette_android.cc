@@ -25,11 +25,13 @@
 
 #include <mutex>
 
+#include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/macros.h>
 #include <cutils/sched_policy.h>
 #include <cutils/trace.h>
 #include <log/event_tag_map.h>
+#include <tombstoned/tombstoned.h>
 #include <utils/Thread.h>
 
 #include "palette_system.h"
@@ -102,6 +104,22 @@ enum PaletteStatus PaletteSchedGetPriority(int32_t tid, /*out*/int32_t* managed_
   }
   *managed_priority = art::palette::kMaxManagedThreadPriority;
   return PaletteStatus::kOkay;
+}
+
+enum PaletteStatus PaletteTombstonedMessage(/*in*/const char* msg, size_t msg_len) {
+  android::base::unique_fd tombstone_fd;
+  android::base::unique_fd output_fd;
+  if (!tombstoned_connect(getpid(), &tombstone_fd, &output_fd, kDebuggerdJavaBacktrace)) {
+    return PaletteStatus::kCheckErrno;
+  }
+
+  bool success = android::base::WriteFully(output_fd, msg, msg_len);
+
+  if (!tombstoned_notify_completion(tombstone_fd)) {
+    success = false;
+  }
+
+  return success ? PaletteStatus::kOkay : PaletteStatus::kCheckErrno;
 }
 
 enum PaletteStatus PaletteTraceEnabled(/*out*/int32_t* enabled) {
