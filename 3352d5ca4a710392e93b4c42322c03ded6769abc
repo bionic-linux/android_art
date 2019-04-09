@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01af9ac1_8909d76e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "Can you modify first line commit msg to something like you have below:\n\n\"Override Object#hashCode\"\n\nNo need to mention google3 in it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51d0bbf_f8919de9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "Can you avoid referencing go links since this is open source and cannot be referenced outside Google. Just add the motivation, \"as per the Object#hashCode contract, we must override it if we override Object#equals\"\n\nDitto below",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 77
+      },
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13d889ba_9da96e0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "Can you add a \"Test:\" tag and run `atest ahat-tests`",
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3244e81d_149a28a9",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/DiffedFieldValue.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "nit: remove new line",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4f68c5a_d88c7eea",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Parser.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 1117,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 0
+      },
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce5acf51_ba5b15f2",
+        "filename": "tools/ahat/src/main/com/android/ahat/heapdump/Value.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-09T19:26:50Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 552,
+        "startChar": 0,
+        "endLine": 553,
+        "endChar": 0
+      },
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
