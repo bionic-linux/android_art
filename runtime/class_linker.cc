@@ -2038,7 +2038,7 @@ bool ClassLinker::AddImageSpace(
     std::string dex_file_location = dex_cache->GetLocation()->ToModifiedUtf8();
     DCHECK_EQ(dex_location, DexFileLoader::GetBaseLocation(dex_file_location));
     std::unique_ptr<const DexFile> dex_file = OpenOatDexFile(oat_file,
-                                                             dex_file_location,
+                                                             dex_file_location.c_str(),
                                                              error_msg);
     if (dex_file == nullptr) {
       return false;
