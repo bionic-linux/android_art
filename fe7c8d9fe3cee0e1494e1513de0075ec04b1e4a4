@@ -22,6 +22,30 @@
       "revId": "fe7c8d9fe3cee0e1494e1513de0075ec04b1e4a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85cc5cfc_db7c22e1",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-04-10T13:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be62d952_53fbeb5d",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 30
+      },
+      "revId": "fe7c8d9fe3cee0e1494e1513de0075ec04b1e4a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
