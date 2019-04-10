@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbe099b4_f0ca29e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-10T16:22:00Z",
+      "side": 1,
+      "message": "I think this rather fits b/129063331",
+      "revId": "baea05702528a90efa153f9f9ef6978bd68eef49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
