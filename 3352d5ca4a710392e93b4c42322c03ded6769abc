@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "244fc6c3_b3e6cb1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1475951
+      },
+      "writtenOn": "2019-04-10T20:07:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c9d53f3_48f342b3",
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3244e81d_149a28a9",
         "filename": "tools/ahat/src/main/com/android/ahat/heapdump/DiffedFieldValue.java",
         "patchSetId": 3
