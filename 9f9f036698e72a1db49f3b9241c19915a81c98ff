@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "177d1448_65c39eeb",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-10T15:46:32Z",
+      "side": 1,
+      "message": "Could this be documented as a precondition on argument `subdir` in a comment preceding the definition of IsLocationOnModule?\n\nBTW, why forcing the user of this function to pass a `subdir` starting with a slash?",
+      "range": {
+        "startLine": 342,
+        "startChar": 7,
+        "endLine": 343,
+        "endChar": 47
+      },
+      "revId": "9f9f036698e72a1db49f3b9241c19915a81c98ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
