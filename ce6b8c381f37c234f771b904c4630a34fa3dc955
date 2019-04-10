@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f194af0_d6ccf92d",
+        "filename": "runtime/gc/heap.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-10T10:45:48Z",
+      "side": 1,
+      "message": "Maybe use `desired_collector_type` (with no trailing underscore) here?",
+      "range": {
+        "startLine": 1349,
+        "startChar": 13,
+        "endLine": 1349,
+        "endChar": 36
+      },
+      "revId": "ce6b8c381f37c234f771b904c4630a34fa3dc955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
