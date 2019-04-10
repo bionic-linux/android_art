@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2bd3435_3f87ed77",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-04-10T08:17:31Z",
+      "side": 1,
+      "message": "Looks like all this logic (and the 32/64 suffix) could be factored into one helper method?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
