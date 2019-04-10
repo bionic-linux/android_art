@@ -22,6 +22,30 @@
       "revId": "9f9f036698e72a1db49f3b9241c19915a81c98ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7add6b53_1cf97e70",
+        "filename": "libartbase/base/file_utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-04-10T16:35:42Z",
+      "side": 1,
+      "message": "Done\nWhy force: I actually don\u0027t care, as long as all users do the same thing. I picked what looked visually nice and kept the logic simple. I could add logic which tests if there are slashes and builds the path accordingly, but we never do that at the moment.",
+      "parentUuid": "177d1448_65c39eeb",
+      "range": {
+        "startLine": 342,
+        "startChar": 7,
+        "endLine": 343,
+        "endChar": 47
+      },
+      "revId": "9f9f036698e72a1db49f3b9241c19915a81c98ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
