@@ -22,6 +22,30 @@
       "revId": "586e37bbfb0a98b52c904c86cfade845072eaf1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfa0b4b1_9981907e",
+        "filename": "build/apex/art_apex_boot_integrity.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-10T22:18:57Z",
+      "side": 1,
+      "message": "It\u0027s a catch-all for the system server.",
+      "parentUuid": "a0f2dc56_1ca33146",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 106
+      },
+      "revId": "586e37bbfb0a98b52c904c86cfade845072eaf1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
