@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "2c9d53f3_48f342b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-10T19:50:05Z",
+      "side": 1,
+      "message": "Then add message that passed the tests using Forrest instead. So:\n\nTest: Passed art/ahat_unit_tests using Forrest",
+      "parentUuid": "33c78d59_c365b493",
+      "revId": "3352d5ca4a710392e93b4c42322c03ded6769abc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3244e81d_149a28a9",
         "filename": "tools/ahat/src/main/com/android/ahat/heapdump/DiffedFieldValue.java",
         "patchSetId": 3

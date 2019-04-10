@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "319041d1_ba2218ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1346941
+      },
+      "writtenOn": "2019-04-10T19:50:05Z",
+      "side": 1,
+      "message": "Please wrap at 72 chars: https://source.android.com/setup/contribute/submit-patches",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 85
+      },
+      "revId": "f94bf08f99829050a184e551997d47ab2c7ddba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
