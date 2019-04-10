@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "df79f83b_1e4ff2ee",
+        "filename": "dexlayout/dexdiag_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-10T12:41:39Z",
+      "side": 1,
+      "message": "Change to a single expression?\n\n(There are several other cases of this on the lines you touch in this CL. Since it\u0027s a cleanup thing too, it\u0027s worth considering doing it here.)",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c45b1d0_5c0676d7",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-10T12:41:39Z",
+      "side": 1,
+      "message": "\u0027d\u0027",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2bd3435_3f87ed77",
         "filename": "oatdump/oatdump_test.h",
         "patchSetId": 1
