@@ -94,6 +94,30 @@
       "revId": "7c018c94d454b818ac08870acad5040968f8058d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53443b83_0af4de64",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-11T15:19:16Z",
+      "side": 1,
+      "message": "Now also with proper care taken to truncation on failure. Only difference is that any error from ftruncate doesn\u0027t clobber errno, as it did in the Erase() call.",
+      "parentUuid": "9c1dad09_39c9d697",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "7c018c94d454b818ac08870acad5040968f8058d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
