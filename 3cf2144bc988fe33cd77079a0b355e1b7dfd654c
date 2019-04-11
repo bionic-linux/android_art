@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "690eddb9_dfbd2c40",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-04-11T19:54:40Z",
+      "side": 1,
+      "message": "There\u0027s nothing we can do if we notice I/O failure as a result of close, because the fd gets closed either way (and release sets output_fd to -1, so all of the stuff below is guaranteed to fail). We should have noticed as a result of fsync, anyway, so just delete this?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6800a503_af101631",
         "filename": "runtime/signal_catcher.cc",
         "patchSetId": 6
