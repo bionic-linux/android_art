@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "29e8f5fb_918b763c",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-11T17:34:10Z",
+      "side": 1,
+      "message": "\u003e If ftruncate() appears in this branch, can there be shared fsync() and close()/output_fd.reset() path?\n\nIt can, but in one branch errno should reflect their outcome, in the other it should not, which makes for some fiddly conditional logic. I\u0027ve added fsync to the failure cleanup though.\n\n\u003e Maybe we should be logging when the latter ftruncate() / close() fail?\n\nNot sure what \"latter\" means there. In the failure cleanup path they\u0027d only show cascade errors, and I think it\u0027s fairly unlikely that they\u0027d add any valuable debugging info.\n\nIn the success path the caller gets the error info from them, so the only info not available is the exact call that failed. Could add more logging for that, if that\u0027s what you asked for?\n\n\u003e It\u0027s not clear what the caller would be able to do anyway.\n\nI don\u0027t think the caller can handle errors any better than it is (besides also printing the errno error, which I just added).",
+      "parentUuid": "983f2ce4_35abbf7c",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07df49ed_a66be4d8",
         "filename": "libartpalette/system/palette_android.cc",
         "patchSetId": 4
