@@ -22,6 +22,30 @@
       "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43fbd990_81ad51ae",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-11T15:39:28Z",
+      "side": 1,
+      "message": "I just copied that from [1]. You\u0027re right the man page doesn\u0027t mention EINTR, but I reckon fsync is I/O blocking so ought to be susceptible to signal interrupts (although perhaps not in this particular case since Linux doesn\u0027t consider \"disk\" storage a \"slow\" device). Still, in the general case, I wonder if it might be an omission on the man page.\n\n[1] http://cs/aosp-master/art/libartbase/base/unix_file/fd_file.cc?l\u003d347-351\u0026rcl\u003dd03e8dd6c824352fb2281d333d4e134458776fa1",
+      "parentUuid": "07df49ed_a66be4d8",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
