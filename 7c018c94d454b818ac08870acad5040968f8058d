@@ -22,6 +22,30 @@
       "revId": "7c018c94d454b818ac08870acad5040968f8058d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a89927_7426b88f",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-11T12:30:11Z",
+      "side": 1,
+      "message": "Oops, the close call fell off, thanks.\n\nAs for flushing, this is a unix socket so afaict the fsync done in Erase etc won\u0027t do anything on it. If this socket API needs synchronisation between output_fd and tombstone_fd, then I think it\u0027d have to be done some other way (unless sockets behave differently in Bionic).",
+      "parentUuid": "3cb49adb_4e8ad8d3",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "7c018c94d454b818ac08870acad5040968f8058d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
