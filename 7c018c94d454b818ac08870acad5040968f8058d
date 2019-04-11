@@ -46,6 +46,30 @@
       "revId": "7c018c94d454b818ac08870acad5040968f8058d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40bfc9e8_a688927d",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-04-11T12:53:13Z",
+      "side": 1,
+      "message": "Perhaps a comment here is necessary too as naively it looks like the earlier code assumed output_fd is a file descriptor passed by unix socket. It would either be properly flushed to disk or truncated to zero length.",
+      "parentUuid": "f8a89927_7426b88f",
+      "range": {
+        "startLine": 116,
+        "startChar": 17,
+        "endLine": 116,
+        "endChar": 68
+      },
+      "revId": "7c018c94d454b818ac08870acad5040968f8058d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
