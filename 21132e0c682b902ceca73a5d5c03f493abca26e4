@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07df49ed_a66be4d8",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-11T15:26:25Z",
+      "side": 1,
+      "message": "Does this make sense for an `fsync` call? It seems `EINTR` is not part of the errors that may be set by `fsync` (http://man7.org/linux/man-pages/man2/fdatasync.2.html).",
+      "range": {
+        "startLine": 119,
+        "startChar": 13,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
