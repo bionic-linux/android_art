@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c587176_99bf1d06",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-04-11T07:12:59Z",
+      "side": 1,
+      "message": "nit: high-level comments of why you need these would be nice.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 11
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46800c62_87e8717d",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-04-11T07:12:59Z",
+      "side": 1,
+      "message": "nit: I\u0027d document this.",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 11
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "856432a4_85f741f0",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-04-11T07:12:59Z",
+      "side": 1,
+      "message": "nit: add a comment why are you doing this now and not earlier (essentially the commit message)",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
