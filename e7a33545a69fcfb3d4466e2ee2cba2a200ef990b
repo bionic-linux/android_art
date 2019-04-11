@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4279b6a3_bd9f0d43",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "C++17: deprecated class template std::iterator\u003c\u003e. (I don\u0027t know why as it\u0027s quite useful.)\n\nNote that here you should define pointer_type and reference_type as void because they do not make sense for an iterator with operator*() that returns the result by value.",
+      "range": {
+        "startLine": 146,
+        "startChar": 33,
+        "endLine": 146,
+        "endChar": 93
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c587176_99bf1d06",
         "filename": "openjdkjvmti/ti_redefine.cc",
         "patchSetId": 2
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 148,
         "endChar": 11
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2498bd20_2bce62a4",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "Avoid the extra lookup:\n\n    map_-\u003eobsolete_methods_-\u003eGetElementPtrSize\u003cart::ArtMethod*\u003e(\n        iter_-\u003esecond, art::kRuntimePointerSize)",
+      "range": {
+        "startLine": 150,
+        "startChar": 33,
+        "endLine": 150,
+        "endChar": 72
       },
       "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -48,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "fe692c5a_6b2a302d",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "Why are the operator++()s marked as const? They should not be const and this should not be mutable.",
+      "parentUuid": "46800c62_87e8717d",
+      "range": {
+        "startLine": 180,
+        "startChar": 4,
+        "endLine": 180,
+        "endChar": 11
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "856432a4_85f741f0",
         "filename": "openjdkjvmti/ti_redefine.cc",
         "patchSetId": 2
@@ -59,6 +129,104 @@
       "writtenOn": "2019-04-11T07:12:59Z",
       "side": 1,
       "message": "nit: add a comment why are you doing this now and not earlier (essentially the commit message)",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4cd75a_746a8ae1",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "And there may be more than one method.",
+      "parentUuid": "856432a4_85f741f0",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c3d7098_510e06d9",
+        "filename": "test/1960-obsolete-jit-multithread-native/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41f95047_50af5d88",
+        "filename": "test/1960-obsolete-jit-multithread-native/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "Unused?",
+      "range": {
+        "startLine": 160,
+        "startChar": 6,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff47ca7f_3fa76552",
+        "filename": "test/1961-obsolete-jit-multithread/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "indentation",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ffaff1_1d885ad6",
+        "filename": "test/1961-obsolete-jit-multithread/src/Main.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T09:35:41Z",
+      "side": 1,
+      "message": "Unused?",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 39
+      },
       "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
