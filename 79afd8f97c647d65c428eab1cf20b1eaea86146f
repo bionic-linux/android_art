@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15740f63_07127f69",
+        "filename": "dexlayout/dexdiag_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-11T17:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df79f83b_1e4ff2ee",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 31
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c45b1d0_5c0676d7",
         "filename": "imgdiag/imgdiag_test.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d259f061_55c70cad",
+        "filename": "imgdiag/imgdiag_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-11T17:11:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c45b1d0_5c0676d7",
+      "range": {
+        "startLine": 70,
+        "startChar": 14,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2bd3435_3f87ed77",
         "filename": "oatdump/oatdump_test.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b962b558_0179e8bc",
+        "filename": "oatdump/oatdump_test.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-11T17:11:25Z",
+      "side": 1,
+      "message": "ART gtests have different ways of building the path to the ART binaries they use, probably for historical reasons (and also because we have complex build rules for ART binaries). I\u0027ll try to refactor this in another CL.",
+      "parentUuid": "b2bd3435_3f87ed77",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 16
+      },
+      "revId": "79afd8f97c647d65c428eab1cf20b1eaea86146f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
