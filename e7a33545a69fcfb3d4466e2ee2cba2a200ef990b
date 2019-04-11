@@ -153,6 +153,23 @@
     },
     {
       "key": {
+        "uuid": "94efeb2a_2db4dbea",
+        "filename": "openjdkjvmti/ti_redefine.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-11T10:43:52Z",
+      "side": 1,
+      "message": "Now that we\u0027re doing this after the stack walk, we can clean up the JitCodeCache::LookupMethodHeader() to simply assert that `found_method \u003d\u003d method`.",
+      "revId": "e7a33545a69fcfb3d4466e2ee2cba2a200ef990b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c3d7098_510e06d9",
         "filename": "test/1960-obsolete-jit-multithread-native/src/Main.java",
         "patchSetId": 2
