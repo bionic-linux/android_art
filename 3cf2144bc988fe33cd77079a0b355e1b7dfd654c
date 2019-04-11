@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6800a503_af101631",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-11T17:45:04Z",
+      "side": 1,
+      "message": "I\u0027d replace this with:\n\n  #include \u003ccsignal\u003e\n  #include \u003ccstdlib\u003e\n  #include \u003ccstring\u003e\n\nas this is a C++ file.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
