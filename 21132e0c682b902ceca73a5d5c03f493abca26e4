@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "41cd1325_8e78df2a",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-04-12T13:36:55Z",
+      "side": 1,
+      "message": "Thanks for the logging higher up.\n\nIt looked here that consing up the combined path might be cleaner, but does have to conditionally save errno.\n\nint first_errno \u003d 0;                                                                                                                                                                                                                           \nif (!android::base::WriteFully(output_fd, msg, msg_len)) {                                                                                                                                                                                     \n  first_errno \u003d errno;                                                                                                                                                                                                                         \n  TEMP_FAILURE_RETRY(ftruncate(output_fd, 0));                                                                                                                                                                                                 \n}                                                                                                                                                                                                                                              \n                                                                                                                                                                                                                                               \nif (TEMP_FAILURE_RETRY(fsync(output_fd)) \u003d\u003d -1) {                                                                                                                                                                                              \n  first_errno \u003d (first_errno \u003d\u003d 0) ? errno : first_errno;                                                                                                                                                                                      \n}                                                                                                                                                                                                                                              \n                                                                                                                                                                                                                                               \n...\nerrno \u003d first_errno;\n\nFine as-is.",
+      "parentUuid": "29e8f5fb_918b763c",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07df49ed_a66be4d8",
         "filename": "libartpalette/system/palette_android.cc",
         "patchSetId": 4

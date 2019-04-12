@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b7693b87_6c5a110f",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-04-12T13:36:55Z",
+      "side": 1,
+      "message": "For some debuggability it may help to report the error source of the error to the caller here (write, fsync, close). These failures are all exceptional and have overlapping errno side-effects.",
+      "parentUuid": "5d216aea_bca1bda2",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6800a503_af101631",
         "filename": "runtime/signal_catcher.cc",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Sounds like a cleanup to do separately across the code base, but ok.",
       "parentUuid": "6800a503_af101631",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e05707b_505a3483",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-04-12T13:36:55Z",
+      "side": 1,
+      "message": "It\u0027s fine to push back on this here.",
+      "parentUuid": "ffa3ac7e_9d4d0b06",
       "range": {
         "startLine": 21,
         "startChar": 0,
