@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fa94c4e_651416ca",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-12T15:31:46Z",
+      "side": 1,
+      "message": "Could you make this part of the previous assignment to `ART_GTEST_oatdump_test_HOST_DEPS` (lines 351–356)?",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "a786ed70d8f7fbfde30e14c29f80aa7b09807dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a71d507d_d58416de",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-12T15:31:46Z",
+      "side": 1,
+      "message": "Likewise, could you make this part of the previous assignment to `ART_GTEST_oatdump_test_TARGET_DEPS` (lines 357–361)?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 36
+      },
+      "revId": "a786ed70d8f7fbfde30e14c29f80aa7b09807dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
