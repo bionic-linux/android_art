@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "3488cff5_97780371",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-12T17:55:47Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what it would entail. Imo it gets harder to convince oneself that the right errno gets propagated, so I favour this in spite of the few lines of duplication.\n\n\u003e Fine as-is.\n\nThanks.",
+      "parentUuid": "41cd1325_8e78df2a",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 20
+      },
+      "revId": "21132e0c682b902ceca73a5d5c03f493abca26e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07df49ed_a66be4d8",
         "filename": "libartpalette/system/palette_android.cc",
         "patchSetId": 4

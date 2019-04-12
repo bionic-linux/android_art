@@ -22,6 +22,30 @@
       "revId": "5cf92db9c69fac748f9f78e08d336f77ba284dd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7fd8f80_958ec5f1",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-12T17:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0e7caa0_60f58be8",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "5cf92db9c69fac748f9f78e08d336f77ba284dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
