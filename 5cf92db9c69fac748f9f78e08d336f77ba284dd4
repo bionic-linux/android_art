@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e7caa0_60f58be8",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-04-12T13:21:31Z",
+      "side": 1,
+      "message": "Style: Add parentheses around expression.",
+      "range": {
+        "startLine": 124,
+        "startChar": 13,
+        "endLine": 124,
+        "endChar": 28
+      },
+      "revId": "5cf92db9c69fac748f9f78e08d336f77ba284dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
