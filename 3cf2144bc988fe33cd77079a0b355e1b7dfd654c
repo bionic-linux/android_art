@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d216aea_bca1bda2",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-12T13:03:19Z",
+      "side": 1,
+      "message": "close() can still fail with the badly specified EIO, and I think it\u0027s better to not leave the question open whether that can possibly matter after successful write and sync (also without making assumptions about the type of the fd). It should however not count EINTR as a failure, that\u0027s true - fixed.\n\n\u003e so all of the stuff below is guaranteed to fail\n\nYes, if the failure happens here, but it\u0027s the same failure cleanup for all errors and it doesn\u0027t matter if some or all the calls in the saved_errno block fail.",
+      "parentUuid": "690eddb9_dfbd2c40",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6800a503_af101631",
         "filename": "runtime/signal_catcher.cc",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa3ac7e_9d4d0b06",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-12T13:03:19Z",
+      "side": 1,
+      "message": "Sounds like a cleanup to do separately across the code base, but ok.",
+      "parentUuid": "6800a503_af101631",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
