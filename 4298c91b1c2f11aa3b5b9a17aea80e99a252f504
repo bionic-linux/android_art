@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62d79e5b_0e29e312",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-12T16:34:12Z",
+      "side": 1,
+      "message": "Looks like this could be an anonymous helper that isn\u0027t in the API?",
+      "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
