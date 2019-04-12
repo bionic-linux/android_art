@@ -16,6 +16,24 @@
       "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b4215e_7987a21f",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-12T18:10:54Z",
+      "side": 1,
+      "message": "Private functions are not really part of the API but I can make it a free function, it only needs to access the `thread_`, available through the public `GetThread()`.",
+      "parentUuid": "62d79e5b_0e29e312",
+      "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
