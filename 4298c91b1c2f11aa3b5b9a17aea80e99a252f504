@@ -34,6 +34,24 @@
       "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbcab97_d46b9bbb",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-12T18:13:51Z",
+      "side": 1,
+      "message": "I use API loosely, as something that\u0027s in a header (and so changes require a recompile of clients).\n\n(I don\u0027t care too much about this, though, feel free to resolve)",
+      "parentUuid": "11b4215e_7987a21f",
+      "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
