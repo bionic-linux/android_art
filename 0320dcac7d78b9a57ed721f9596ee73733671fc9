@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01f51d98_3e427fd2",
+        "filename": "oatdump/oatdump.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-04-15T17:30:44Z",
+      "side": 1,
+      "message": "Maybe it would make sense to consolidate this in a helper. I vaguely think there\u0027s a lot of these.",
+      "range": {
+        "startLine": 2122,
+        "startChar": 4,
+        "endLine": 2126,
+        "endChar": 57
+      },
+      "revId": "0320dcac7d78b9a57ed721f9596ee73733671fc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
