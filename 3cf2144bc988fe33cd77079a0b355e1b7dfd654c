@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "939b63f0_2844249c",
+        "filename": "libartpalette/system/palette_android.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-04-15T08:28:15Z",
+      "side": 1,
+      "message": "The suggestion for logging here was made earlier since the behaviour changed from the earlier code. The comment now addressed was a second attempt to provide more useful information.",
+      "parentUuid": "9cba0628_d1caa2d7",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "3cf2144bc988fe33cd77079a0b355e1b7dfd654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6800a503_af101631",
         "filename": "runtime/signal_catcher.cc",
         "patchSetId": 6
