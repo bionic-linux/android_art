@@ -122,6 +122,24 @@
     },
     {
       "key": {
+        "uuid": "810019f7_dfe8804c",
+        "filename": "compiler/utils/x86/assembler_x86_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-04-15T07:52:21Z",
+      "side": 1,
+      "message": "Thanks for the comments. As per the current code flow, if we enable AVXTest then movaps functionality will be implemented on vmovaps. This will create a mismatch between the disassembled output. i.e movaps decoded output will not match with vmovaps. This will lead to test case failure.\n\nPl. advice.",
+      "parentUuid": "0123ca70_a2815ab5",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d820ecd0_7c8c1203",
         "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
         "patchSetId": 5
