@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e97f94a0_ee159f89",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3615,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-04-22T20:26:23Z",
+      "side": 1,
+      "message": "Add space between \u003c\u003citerator?",
+      "range": {
+        "startLine": 3615,
+        "startChar": 0,
+        "endLine": 3615,
+        "endChar": 67
+      },
+      "revId": "b320f57a8bcd15dac807993d7e316b747b75ce1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
