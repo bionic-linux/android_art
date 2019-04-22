@@ -42,7 +42,7 @@ template <class Value> class Histogram {
   // Used by the cumulative timing logger to search the histogram set using for an existing split
   // with the same name using CumulativeLogger::HistogramComparator.
   explicit Histogram(const char* name);
-  // This is the expected constructor when creating new Histograms.
+  // This is the expected constructor when creating new Histograms. Max_buckets must be even.
   Histogram(const char* name, Value initial_bucket_width, size_t max_buckets = 100);
   void AddValue(Value);
   void AdjustAndAddValue(Value);  // Add a value after dividing it by kAdjust.
