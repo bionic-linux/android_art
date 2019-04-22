@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23fef9e3_aa214e17",
+        "filename": "runtime/verifier/method_verifier.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3772,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2019-04-22T22:01:34Z",
+      "side": 1,
+      "message": "remove dead code?",
+      "range": {
+        "startLine": 3769,
+        "startChar": 0,
+        "endLine": 3772,
+        "endChar": 33
+      },
+      "revId": "684eecda5f30dc6cff2dc9d63f1be2f494879020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
