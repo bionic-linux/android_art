@@ -22,6 +22,30 @@
       "revId": "40e49c4516065917d4b1db8f4d3f1d0c158a19e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2a42a1f_7b55a27e",
+        "filename": "disassembler/disassembler_x86.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-04-24T11:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13a37ad4_efe6849d",
+      "range": {
+        "startLine": 404,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 23
+      },
+      "revId": "40e49c4516065917d4b1db8f4d3f1d0c158a19e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
