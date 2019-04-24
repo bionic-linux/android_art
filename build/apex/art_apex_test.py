@@ -447,7 +447,7 @@ class ReleaseChecker:
 
     # Allow extra dependencies that appear in ASAN builds.
     self._checker.check_optional_native_library('libclang_rt.asan*')
-    self._checker.check_optional_native_library('libclang_rt.hwasan*')
+    self._checker.check_optional_native_library('bionic/libclang_rt.hwasan*')
     self._checker.check_optional_native_library('libclang_rt.ubsan*')
 
 
