@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "897b9e62_5fe7f218",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-25T12:55:46Z",
+      "side": 1,
+      "message": "The special bind mount no longer exists. Nevertheless, I don\u0027t think we have to have the clang library in the same directory as libc and its friends. AFAIK, no one is hard-coding the path /system/lib/libclang_rt.hwasan-arm64-android.so. It is always accessed via its SONAME. So ld,config.txt is enough to locate the library under /apex/com.android.runtime/lib/",
+      "parentUuid": "6b0d3644_5c6d7e6f",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35624151_ffaf1415",
         "filename": "build/apex/Android.bp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-25T11:43:31Z",
       "side": 1,
       "message": "Does this work in non-hwasan builds?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229041ae_c1c59dcd",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-25T12:55:46Z",
+      "side": 1,
+      "message": "I think in that case (or when this is built for x86), this entry is silently ignored because the lib is disabled then.\nHowever, as I commented in the soong change, this looks dangerous as it allows people to reference disable module without being notified.\n\nI think you need to amend apex.go to support things like\n\ntarget: {\n    arm64: {\n        native_shared_libs: [...]\n    }\n}",
+      "parentUuid": "35624151_ffaf1415",
       "range": {
         "startLine": 48,
         "startChar": 4,
