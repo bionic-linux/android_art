@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b0d3644_5c6d7e6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-25T11:43:31Z",
+      "side": 1,
+      "message": "Bionic libs have special bind mounts to appear in /system/lib after the APEX is mounted. That\u0027s why they are in the \"bionic\" subdirectory in the APEX - it\u0027s just for storage, they\u0027re never loaded from there. Does this mean libclang_rt needs the same thing? +jiyong",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35624151_ffaf1415",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-25T11:43:31Z",
+      "side": 1,
+      "message": "Does this work in non-hwasan builds?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11179575_58740a45",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-25T11:43:31Z",
+      "side": 1,
+      "message": "So the old file pattern was wrong here?",
+      "range": {
+        "startLine": 450,
+        "startChar": 49,
+        "endLine": 450,
+        "endChar": 56
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
