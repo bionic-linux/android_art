@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c74e1c3b_777fb9ec",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-26T10:12:28Z",
+      "side": 1,
+      "message": "\u003e if libc depends on HWASAN, then we need to ship the HWASAN runtime in the runtime APEX.\n\nI believe that is already done by the build system. If not, it\u0027s a build system bug. Please file me a bug.",
+      "parentUuid": "efb4f74f_6cf8b374",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11179575_58740a45",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
