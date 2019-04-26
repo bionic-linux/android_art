@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "ac299cf7_0dc0d240",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T19:33:29Z",
+      "side": 1,
+      "message": "It is done by the build system in the case where the library is not an LL-NDK library. LL-NDK libraries are either placed in an APEX via a direct dependency or in /system/${LIB} (if not in an APEX). The HWASAN runtime is an LL-NDK library, but it was not properly specified as such (because it needs a stub to be specified in the library rule). That\u0027s what my change to prebuilts/clang fixes. As a result, it is not directly depended on by an APEX, so without my changes to Soong it is placed in /system/${LIB}, which is not what we want.\n\nWe could imagine implementing a rule such as \"if an APEX directly depends on an LL-NDK library, all of the indirect dependencies of the LL-NDK library are treated as direct dependencies, and thus placed in the APEX\". But that doesn\u0027t always seem like the right thing to do. (Imagine two APEXes, A and B, that each provide an LL-NDK library, where A\u0027s library depends on B\u0027s library. That doesn\u0027t mean that A should also package B\u0027s library.) That tells me that HWASAN is a special case and it ought to be implemented in Soong.",
+      "parentUuid": "c74e1c3b_777fb9ec",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11179575_58740a45",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
