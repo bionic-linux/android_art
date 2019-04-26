@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8927697e_ab268202",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:07:50Z",
+      "side": 1,
+      "message": "Makes sense. This required adding /apex/com.android.runtime/${LIB} to search paths in various ld.config.txt files.",
+      "parentUuid": "897b9e62_5fe7f218",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35624151_ffaf1415",
         "filename": "build/apex/Android.bp",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "efb4f74f_6cf8b374",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:07:50Z",
+      "side": 1,
+      "message": "Hmm, that wouldn\u0027t be quite right either. The reason is that we don\u0027t need or want to ship the HWASAN runtime in a non-HWASANified runtime APEX. Basically what we want is: if libc depends on HWASAN, then we need to ship the HWASAN runtime in the runtime APEX.\n\nSince this seemed too special-purpose to be expressed in a .bp file, I decided to implement it directly in soong.\n\nAs a result, the changes to ART are no longer required and I\u0027ve abandoned this change.",
+      "parentUuid": "229041ae_c1c59dcd",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11179575_58740a45",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
@@ -107,6 +155,30 @@
       "writtenOn": "2019-04-25T11:43:31Z",
       "side": 1,
       "message": "So the old file pattern was wrong here?",
+      "range": {
+        "startLine": 450,
+        "startChar": 49,
+        "endLine": 450,
+        "endChar": 56
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c3ac8b_94634959",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:07:50Z",
+      "side": 1,
+      "message": "As a consequence of the previous revision of this change, the hwasan runtime was moved to the bionic directory, requiring this test update. But now that the runtime has been moved back, this change is no longer necessary.",
+      "parentUuid": "11179575_58740a45",
       "range": {
         "startLine": 450,
         "startChar": 49,
