@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "ae3663bb_7a0a723d",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-29T22:58:30Z",
+      "side": 1,
+      "message": "\u003e Since the HWASAN runtime libraries are currently reporting false for cc.IsStubs(), it should be included to any APEX that has direct or indirect dependencies to it.\n\nYes but this means that HWASAN runtimes are currently being included in all APEXes, not just com.android.runtime.*. Because we have multiple copies of the runtime, it could lead to the runtime being loaded multiple times, which is one of the things that I\u0027m trying to fix.\n\n\u003e This works except for the indirect dependencies which themselves are stubs, isn\u0027t it?\n\nI don\u0027t know how the interaction between stubs and real libraries works, but I\u0027ve only ever seen the real library being depended on internally. Anyway, it still doesn\u0027t solve the problem of where to place each LL-NDK library.",
+      "parentUuid": "d22868f5_aefbfca4",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11179575_58740a45",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
