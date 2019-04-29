@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "d22868f5_aefbfca4",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-29T06:58:26Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s weird. Since the HWASAN runtime libraries are currently reporting false for cc.IsStubs(), it should be included to any APEX that has direct or indirect dependencies to it.\n\n\u003e \"if an APEX directly depends on an LL-NDK library, all of the indirect dependencies of the LL-NDK library are treated as direct dependencies, and thus placed in the APEX\"\n\nThis works except for the indirect dependencies which themselves are stubs, isn\u0027t it?",
+      "parentUuid": "ac299cf7_0dc0d240",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "d6cca1142fc77d00395f40b49366d74d1a681eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11179575_58740a45",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
