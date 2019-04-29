@@ -94,6 +94,30 @@
       "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7370b8b_4d272140",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-29T15:20:26Z",
+      "side": 1,
+      "message": "I think this has been resolved with http://r.android.com/q/topic:%2522runtime-namespace-links-for-art%2522+author:mast",
+      "parentUuid": "d5777b93_ec57c58d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

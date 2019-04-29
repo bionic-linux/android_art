@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1953e0f0_e371e62e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-29T15:20:26Z",
+      "side": 1,
+      "message": "Nit: Grammar.",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 39
+      },
+      "revId": "c9f8d7e50d959f9dadfd29476a0bb8f2efc87f76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
