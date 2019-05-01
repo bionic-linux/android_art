@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "584cde64_90db7531",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-01T16:09:46Z",
+      "side": 1,
+      "message": "This was left out intentionally in http://r.android.com/943494 since PaletteTombstonedMessage itself log errors that include the errno reason.",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "653f3a6f5d97ee830004c3558ee474f5d9686070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
