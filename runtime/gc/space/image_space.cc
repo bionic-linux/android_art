@@ -979,6 +979,8 @@ class ImageSpace::Loader {
       }
       if (use_parallel) {
         ScopedTrace trace("Waiting for workers");
+				// Go to native since we don't want to suspend while holding the mutator lock.
+				ScopedThreadSuspension(Thread::Current(), kNative); 
         pool->Wait(self, true, false);
       }
       const uint64_t time = NanoTime() - start;
