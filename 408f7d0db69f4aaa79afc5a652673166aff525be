@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d71505c3_9d01bd80",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-02T16:31:51Z",
+      "side": 1,
+      "message": "I missed this. Currently these libs end up both in the APEX and in system: http://cs/aosp-master/build/make/target/product/base_system.mk?l\u003d125-126\u0026rcl\u003dad52781bdc15c637fd1aa9833c16011065bbe851 Is that intentional?",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 59
+      },
+      "revId": "408f7d0db69f4aaa79afc5a652673166aff525be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
