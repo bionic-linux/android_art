@@ -22,6 +22,30 @@
       "revId": "653f3a6f5d97ee830004c3558ee474f5d9686070",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2728fabc_b34b023e",
+        "filename": "runtime/signal_catcher.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-02T12:39:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "584cde64_90db7531",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "653f3a6f5d97ee830004c3558ee474f5d9686070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
