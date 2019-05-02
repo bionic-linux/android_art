@@ -118,6 +118,30 @@
       "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aede939_481b8d52",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-05-02T17:53:58Z",
+      "side": 1,
+      "message": "I had moved this changed to a separate CL (https://android-review.googlesource.com/c/platform/art/+/944944/), that I have just abandoned, as it has been superseded by your CL (https://android-review.googlesource.com/c/platform/art/+/954609/).",
+      "parentUuid": "d5777b93_ec57c58d",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "3cdf380a37e4392f81804492e0b49b036bcb5290",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
