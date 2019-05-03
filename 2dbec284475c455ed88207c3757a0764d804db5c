@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579904a5_1bdbcd13",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-03T10:22:56Z",
+      "side": 1,
+      "message": "This looks quite subtle: two targets depended (and still depend) on libdexfile_external-defaults and this CL moves the darwin enabled flag from the defaults to the two targets.\n\nWhat is the net change?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 6
+      },
+      "revId": "2dbec284475c455ed88207c3757a0764d804db5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
