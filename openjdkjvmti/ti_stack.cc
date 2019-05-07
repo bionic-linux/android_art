@@ -282,9 +282,6 @@ jvmtiError StackUtil::GetStackTrace(jvmtiEnv* jvmti_env ATTRIBUTE_UNUSED,
       return ERR(THREAD_NOT_ALIVE);
     }
     *count_ptr = static_cast<jint>(closure.index);
-    if (closure.index < static_cast<size_t>(start_depth)) {
-      return ERR(ILLEGAL_ARGUMENT);
-    }
     return ERR(NONE);
   } else {
     GetStackTraceVectorClosure closure(0, 0);
