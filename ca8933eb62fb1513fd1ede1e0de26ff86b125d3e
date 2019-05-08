@@ -471,6 +471,24 @@
     },
     {
       "key": {
+        "uuid": "4575cb06_6a2c0e31",
+        "filename": "compiler/utils/x86_64/assembler_x86_64_test.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-08T11:09:15Z",
+      "side": 1,
+      "message": "As Nicolas already merged this CL, I\u0027ve added the tests in https://android-review.googlesource.com/958219 .",
+      "parentUuid": "76c9697b_03298798",
+      "revId": "ca8933eb62fb1513fd1ede1e0de26ff86b125d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b91b62a4_2b3a871e",
         "filename": "disassembler/disassembler_x86.cc",
         "patchSetId": 5
