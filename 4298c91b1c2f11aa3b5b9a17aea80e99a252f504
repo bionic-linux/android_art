@@ -52,6 +52,24 @@
       "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6888889d_8a9a591d",
+        "filename": "runtime/stack.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-08T08:47:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4cbcab97_d46b9bbb",
+      "revId": "4298c91b1c2f11aa3b5b9a17aea80e99a252f504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
