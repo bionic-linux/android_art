@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f0da53c_75a5fc19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-23T13:16:51Z",
+      "side": 1,
+      "message": "As a heads-up, this wasn\u0027t added for specifically for dual view.\n\nAs the code comment says, the necessary synchronization is not present in the ARM mprotect() code path.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "869e31d6_b7817178",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-23T13:16:51Z",
+      "side": 1,
+      "message": "Can we explain why?",
+      "range": {
+        "startLine": 1063,
+        "startChar": 24,
+        "endLine": 1063,
+        "endChar": 60
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4b9507_ca11139c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-23T13:16:51Z",
+      "side": 1,
+      "message": "s/bwtween/between/",
+      "range": {
+        "startLine": 1063,
+        "startChar": 9,
+        "endLine": 1063,
+        "endChar": 16
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15445ed9_10b78aee",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-23T13:16:51Z",
+      "side": 1,
+      "message": "Can we guard this with \"if (HasDualCodeMapping()\"?",
+      "range": {
+        "startLine": 1065,
+        "startChar": 6,
+        "endLine": 1065,
+        "endChar": 104
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
