@@ -22,6 +22,30 @@
       "revId": "e65a9fd35c3367e4f9cbae4002af35d397bb34e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a0afa23_b8248d0b",
+        "filename": "libartbase/base/os_linux.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-05-23T20:33:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f7c688_5bae6f1e",
+      "range": {
+        "startLine": 65,
+        "startChar": 51,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "e65a9fd35c3367e4f9cbae4002af35d397bb34e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
