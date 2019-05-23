@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6594746f_d5d11a98",
+        "filename": "libartbase/base/os_linux.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-05-23T20:41:06Z",
+      "side": 1,
+      "message": "That should be 4-space indent.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 4
+      },
+      "revId": "8c196fe132fe6f2f2bb4af44a8d17e4f4e65b7af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
