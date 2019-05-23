@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77f7c688_5bae6f1e",
+        "filename": "libartbase/base/os_linux.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-05-23T20:28:44Z",
+      "side": 1,
+      "message": "As you touch it, consider doing this properly?\n\n S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH",
+      "range": {
+        "startLine": 65,
+        "startChar": 51,
+        "endLine": 65,
+        "endChar": 55
+      },
+      "revId": "e65a9fd35c3367e4f9cbae4002af35d397bb34e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
