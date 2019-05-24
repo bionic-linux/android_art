@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "d27efdc2_4d387faa",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1371486
+      },
+      "writtenOn": "2019-05-24T02:32:07Z",
+      "side": 1,
+      "message": "Thanks for correcting.",
+      "parentUuid": "8a4b9507_ca11139c",
+      "range": {
+        "startLine": 1063,
+        "startChar": 9,
+        "endLine": 1063,
+        "endChar": 16
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15445ed9_10b78aee",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "side": 1,
       "message": "How does memcmp work around the problem? It presumably doesn\u0027t have any impact on the instruction pipelines of the other cores? Is the real benefit here the added delay increasing the odds of draining instruction fetch queues? If so, it\u0027s not clear that the length of the delay should be proportional to the code size.",
       "parentUuid": "15445ed9_10b78aee",
+      "range": {
+        "startLine": 1065,
+        "startChar": 6,
+        "endLine": 1065,
+        "endChar": 104
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f1941b_98ea6ec4",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1371486
+      },
+      "writtenOn": "2019-05-24T02:32:07Z",
+      "side": 1,
+      "message": "Agree. Actually, We had some tests that are not working except memcmp.\nIf you have better idea, please let me know.\nInline asm memory command\nReproduce rate: 1/1\n@@ -965,8 +967,9 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,\n   // finish.\n   WaitForPotentialCollectionToCompleteRunnable(self);\n   {\n+        asm volatile(\"\": : : \"memory\");\n     ScopedCodeCacheWrite scc(this);\n-\n     size_t alignment \u003d GetInstructionSetAlignment(kRuntimeISA);\n     // Ensure the header ends up at expected instruction alignment.\n     size_t header_size \u003d RoundUp(sizeof(OatQuickMethodHeader), alignment);\n@@ -1038,6 +1041,8 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,\n     art::membarrier(art::MembarrierCommand::kPrivateExpeditedSyncCore);\n\n     number_of_compilations_++;\n+        asm volatile(\"\": : : \"memory\");\n   }\n\n   // We need to update the entry point in the runnable state for the instrumentation.\n\n\nRefer to P0 behaviors, mprotect one page size before flush roots_data.\nReproduce rate: 1/27\ndiff --git a/runtime/jit/jit_code_cache.cc b/runtime/jit/jit_code_cache.cc\nindex fee5becd75..b57c6ea973 100644\n--- a/runtime/jit/jit_code_cache.cc\n+++ b/runtime/jit/jit_code_cache.cc\n@@ -570,29 +570,38 @@ const void* JitCodeCache::GetZygoteSavedEntryPoint(ArtMethod* method) {\n\n class ScopedCodeCacheWrite : ScopedTrace {\n  public:\n-  explicit ScopedCodeCacheWrite(const JitCodeCache* const code_cache)\n+  explicit ScopedCodeCacheWrite(const JitCodeCache* const code_cache, bool only_for_tlb_shootdown \u003d false)\n       : ScopedTrace(\"ScopedCodeCacheWrite\"),\n-        code_cache_(code_cache) {\n-    ScopedTrace trace(\"mprotect all\");\n-    const MemMap* const updatable_pages \u003d code_cache_-\u003eGetUpdatableCodeMapping();\n-    if (updatable_pages !\u003d nullptr) {\n-      int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtRW : kProtRWX;\n-      CheckedCall(mprotect, \"Cache +W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n-    }\n-  }\n+      code_cache_(code_cache),\n+      only_for_tlb_shootdown_(only_for_tlb_shootdown){\n+        ScopedTrace trace(\"mprotect all\");\n+        if (only_for_tlb_shootdown) {\n+          CheckedCall(mprotect, \"Cache +W\",code_cache_-\u003eexec_pages_.Begin(), kPageSize, kProtRWX);\n+        } else {\n+          const MemMap* const updatable_pages \u003d code_cache_-\u003eGetUpdatableCodeMapping();\n+          if (updatable_pages !\u003d nullptr) {\n+            int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtRW : kProtRWX;\n+            CheckedCall(mprotect, \"Cache +W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n+          }\n+        }\n+      }\n\n   ~ScopedCodeCacheWrite() {\n     ScopedTrace trace(\"mprotect code\");\n     const MemMap* const updatable_pages \u003d code_cache_-\u003eGetUpdatableCodeMapping();\n-    if (updatable_pages !\u003d nullptr) {\n-      int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtR : kProtRX;\n-      CheckedCall(mprotect, \"Cache -W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n+    if (only_for_tlb_shootdown_) {\n+      CheckedCall(mprotect, \"Cache -W\",code_cache_-\u003eexec_pages_.Begin(), kPageSize, kProtRX);\n+    } else{\n+      if (updatable_pages !\u003d nullptr) {\n+        int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtR : kProtRX;\n+        CheckedCall(mprotect, \"Cache -W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n+      }\n     }\n   }\n\n  private:\n   const JitCodeCache* const code_cache_;\n-\n+  const bool only_for_tlb_shootdown_;\n   DISALLOW_COPY_AND_ASSIGN(ScopedCodeCacheWrite);\n };\n\n@@ -1114,6 +1123,7 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,\n       DCHECK_LE(roots_data, stack_map);\n       FillRootTable(roots_data, roots);\n       {\n+          ScopedCodeCacheWrite scc(this, true);\n         // Flush data cache, as compiled code references literals in it.\n         FlushDataCache(roots_data, roots_data + data_size);\n       }\n\n\nmprotect exec and non_exec pages together.\nReproduce rate: 1/75\ndiff --git a/runtime/jit/jit_code_cache.cc b/runtime/jit/jit_code_cache.cc\nindex fee5becd75..3627f4603f 100644\n--- a/runtime/jit/jit_code_cache.cc\n+++ b/runtime/jit/jit_code_cache.cc\n@@ -572,14 +572,15 @@ class ScopedCodeCacheWrite : ScopedTrace {\n  public:\n   explicit ScopedCodeCacheWrite(const JitCodeCache* const code_cache)\n       : ScopedTrace(\"ScopedCodeCacheWrite\"),\n-        code_cache_(code_cache) {\n-    ScopedTrace trace(\"mprotect all\");\n-    const MemMap* const updatable_pages \u003d code_cache_-\u003eGetUpdatableCodeMapping();\n-    if (updatable_pages !\u003d nullptr) {\n-      int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtRW : kProtRWX;\n-      CheckedCall(mprotect, \"Cache +W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n-    }\n-  }\n+      code_cache_(code_cache) {\n+        ScopedTrace trace(\"mprotect all\");\n+        const MemMap* const updatable_pages \u003d code_cache_-\u003eGetUpdatableCodeMapping();\n+        if (updatable_pages !\u003d nullptr) {\n+          int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtRW : kProtRWX;\n+          CheckedCall(mprotect, \"Cache +W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n+          CheckedCall(mprotect, \"Cache +W\", code_cache_-\u003eexec_pages_.Begin(), code_cache_-\u003eexec_pages_.Size(), prot);\n+        }\n+      }\n\n   ~ScopedCodeCacheWrite() {\n     ScopedTrace trace(\"mprotect code\");\n@@ -587,12 +588,12 @@ class ScopedCodeCacheWrite : ScopedTrace {\n     if (updatable_pages !\u003d nullptr) {\n       int prot \u003d code_cache_-\u003eHasDualCodeMapping() ? kProtR : kProtRX;\n       CheckedCall(mprotect, \"Cache -W\", updatable_pages-\u003eBegin(), updatable_pages-\u003eSize(), prot);\n+      CheckedCall(mprotect, \"Cache +W\", code_cache_-\u003eexec_pages_.Begin(), code_cache_-\u003eexec_pages_.Size(), prot);\n     }\n   }\n\n  private:\n   const JitCodeCache* const code_cache_;\n-\n   DISALLOW_COPY_AND_ASSIGN(ScopedCodeCacheWrite);\n };\n\n\nRefer to __builtin___clear_cache of arm64 behaviors, change ishst to ish.\nReproduce rate: 1/7\ndiff --git a/arch/arm/mm/cache-v7.S b/arch/arm/mm/cache-v7.S \nindex 7a0801838869..0196901783c0 100644 \n--- a/arch/arm/mm/cache-v7.S \n+++ b/arch/arm/mm/cache-v7.S \n@@ -289,7 +289,7 @@ ENTRY(v7_coherent_user_range) \n        add     r12, r12, r2 \n        cmp     r12, r1 \n        blo     1b \n-       dsb     ishst \n+       dsb     ish \n        icache_line_size r2, r3 \n        sub     r3, r2, #1 \n        bic     r12, r0, r3 \n@@ -301,7 +301,7 @@ ENTRY(v7_coherent_user_range) \n        mov     r0, #0 \n        ALT_SMP(mcr     p15, 0, r0, c7, c1, 6)  @ invalidate BTB Inner Shareable \n        ALT_UP(mcr      p15, 0, r0, c7, c5, 6)  @ invalidate BTB \n-       dsb     ishst \n+       dsb     ish \n        isb \n        ret     lr",
+      "parentUuid": "f50a4e83_e692983b",
       "range": {
         "startLine": 1065,
         "startChar": 6,
