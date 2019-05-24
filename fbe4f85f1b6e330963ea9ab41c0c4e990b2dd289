@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "d6674a8d_63dbe1b9",
+        "filename": "libartbase/base/bit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-05-24T23:24:49Z",
+      "side": 1,
+      "message": "Probably... but even then it is likely better to keep it around as reference.",
+      "parentUuid": "3a33fc82_119b9f75",
+      "range": {
+        "startLine": 248,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 13
+      },
+      "revId": "fbe4f85f1b6e330963ea9ab41c0c4e990b2dd289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a64d719_afcf4167",
         "filename": "libartbase/base/bit_memory_region.h",
         "patchSetId": 1
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "91002162_27131c50",
+        "filename": "libartbase/base/bit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-05-24T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a64d719_afcf4167",
+      "range": {
+        "startLine": 255,
+        "startChar": 39,
+        "endLine": 255,
+        "endChar": 50
+      },
+      "revId": "fbe4f85f1b6e330963ea9ab41c0c4e990b2dd289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96c2ec14_8cdf699c",
         "filename": "libartbase/base/bit_memory_region.h",
         "patchSetId": 1
@@ -93,6 +141,30 @@
       "writtenOn": "2019-05-24T21:19:31Z",
       "side": 1,
       "message": "That expression looks terrible :-)",
+      "range": {
+        "startLine": 263,
+        "startChar": 49,
+        "endLine": 263,
+        "endChar": 72
+      },
+      "revId": "fbe4f85f1b6e330963ea9ab41c0c4e990b2dd289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b47fbdb_dd56a5d5",
+        "filename": "libartbase/base/bit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-05-24T23:24:49Z",
+      "side": 1,
+      "message": "Well... doing the i++ in the for statement was way worse.\nAdvance exactly when consume kind of works.",
+      "parentUuid": "96c2ec14_8cdf699c",
       "range": {
         "startLine": 263,
         "startChar": 49,
