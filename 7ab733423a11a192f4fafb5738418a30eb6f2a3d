@@ -163,6 +163,30 @@
       "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f5984f9_f7d56706",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-05-24T10:45:25Z",
+      "side": 1,
+      "message": "Commented on b/132205399. We appreciate the need to fix this and the effort in investigating.\n\nCan you try replacing memcmp with a delay loop to test out Hans\u0027s theory?\n\nAre the inline patches here things that have been attempted? ie they are not applied at the same time as the memcmp change here?",
+      "parentUuid": "f7f1941b_98ea6ec4",
+      "range": {
+        "startLine": 1065,
+        "startChar": 6,
+        "endLine": 1065,
+        "endChar": 104
+      },
+      "revId": "7ab733423a11a192f4fafb5738418a30eb6f2a3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
