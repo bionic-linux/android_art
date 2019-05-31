@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "793c8087_c39096c6",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Not done in PS2/PS3. (Though you addressed another indentation issue that I missed.)",
+      "parentUuid": "4f427acc_86f0605f",
+      "range": {
+        "startLine": 1949,
+        "startChar": 10,
+        "endLine": 1949,
+        "endChar": 11
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b90fe2d_f49fcbd9",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c104bd1_8747d935",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Not done in PS2/PS3.",
+      "parentUuid": "5b90fe2d_f49fcbd9",
+      "range": {
+        "startLine": 1960,
+        "startChar": 10,
+        "endLine": 1960,
+        "endChar": 11
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -342,6 +390,30 @@
     },
     {
       "key": {
+        "uuid": "1d327188_b614e76d",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a921d7_94fea687",
+      "range": {
+        "startLine": 1076,
+        "startChar": 2,
+        "endLine": 1076,
+        "endChar": 18
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eace8805_39a102e0",
         "filename": "compiler/utils/x86/assembler_x86.cc",
         "patchSetId": 1
@@ -365,6 +437,30 @@
     },
     {
       "key": {
+        "uuid": "adadeb24_5ba6a4ad",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eace8805_39a102e0",
+      "range": {
+        "startLine": 1078,
+        "startChar": 18,
+        "endLine": 1078,
+        "endChar": 46
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "473ecffa_d2fc1cb6",
         "filename": "compiler/utils/x86/assembler_x86.cc",
         "patchSetId": 1
@@ -379,6 +475,24 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ca6920_f20d9c3a",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "473ecffa_d2fc1cb6",
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -426,6 +540,30 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54dd00be_2fb8cf7e",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Not done in PS2/PS3.",
+      "parentUuid": "7aabee2a_62620ee1",
+      "range": {
+        "startLine": 1099,
+        "startChar": 33,
+        "endLine": 1099,
+        "endChar": 61
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -590,6 +728,30 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f42baa_6e90bacc",
+        "filename": "compiler/utils/x86_64/assembler_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81664a2c_ef58c230",
+      "range": {
+        "startLine": 874,
+        "startChar": 51,
+        "endLine": 874,
+        "endChar": 56
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

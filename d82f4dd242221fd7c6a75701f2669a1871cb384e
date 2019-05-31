@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11e18ee6_76cad8fc",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1953,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "line too long; you can check for long lines in the patch with\n\n    git log -n1 -p | grep -E \u0027^\\+.{101}\u0027",
+      "revId": "d82f4dd242221fd7c6a75701f2669a1871cb384e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8652f383_55a1f03f",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1964,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T09:16:02Z",
+      "side": 1,
+      "message": "Line too long.",
+      "revId": "d82f4dd242221fd7c6a75701f2669a1871cb384e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
