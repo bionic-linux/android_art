@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd02d30e_7374b43e",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 5
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T15:45:44Z",
+      "side": 1,
+      "message": "This also needs to be guarded. Same for kSub. And then the `isa_features` variable above would be unused for non-x86 targets (and fail to build), so it should probably be moved here and copied below.\n\nThat made me realize that you\u0027re not checking the target instruction set here. You should not call AsX86InstructionSetFeatures() before you\u0027ve verified the instruction set.",
+      "range": {
+        "startLine": 1950,
+        "startChar": 6,
+        "endLine": 1955,
+        "endChar": 12
+      },
+      "revId": "47403d8e73dd70a9df4c26246b6445efa2f43454",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
