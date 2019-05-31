@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fed9ec2_479fd26e",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-05-31T14:25:16Z",
+      "side": 1,
+      "message": "TreeHugger shows some errors, starting with\n\n  art/compiler/optimizing/loop_optimization.cc:355:18: error: no member named \u0027IsVecAvxAdd\u0027 in \u0027art::HVecOperation\u0027\n\nYou need to guard these things with\n\n  #if defined(ART_ENABLE_CODEGEN_x86) || defined(ART_ENABLE_CODEGEN_x86_64)\n\njust like you guard the #include in nodes.h .",
+      "range": {
+        "startLine": 355,
+        "startChar": 6,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "f9c35bac90262d8cd288fe35b494d50820f9046d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
