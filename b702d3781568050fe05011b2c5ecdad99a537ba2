@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1adb38d5_30cb5570",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1949,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-05-31T09:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "793c8087_c39096c6",
+      "range": {
+        "startLine": 1949,
+        "startChar": 10,
+        "endLine": 1949,
+        "endChar": 11
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b90fe2d_f49fcbd9",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 1
@@ -141,6 +165,30 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a08c5d_a6de1001",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-05-31T09:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c104bd1_8747d935",
+      "range": {
+        "startLine": 1960,
+        "startChar": 10,
+        "endLine": 1960,
+        "endChar": 11
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -564,6 +612,30 @@
       "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c1f0f9_3e94b6e0",
+        "filename": "compiler/utils/x86/assembler_x86.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-05-31T09:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54dd00be_2fb8cf7e",
+      "range": {
+        "startLine": 1099,
+        "startChar": 33,
+        "endLine": 1099,
+        "endChar": 61
+      },
+      "revId": "b702d3781568050fe05011b2c5ecdad99a537ba2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
