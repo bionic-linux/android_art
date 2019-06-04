@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3015c20_055a0e26",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T16:07:00Z",
+      "side": 1,
+      "message": "jit-at-first use: Maybe kPreCompile and drop the ProfileInfo cration above?",
+      "range": {
+        "startLine": 941,
+        "startChar": 68,
+        "endLine": 941,
+        "endChar": 76
+      },
+      "revId": "78a214cd2bf4fa827b355d22a0482ae57719cd7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bf84ff2_de1f6278",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T16:07:00Z",
+      "side": 1,
+      "message": "old typo",
+      "range": {
+        "startLine": 1134,
+        "startChar": 47,
+        "endLine": 1134,
+        "endChar": 53
+      },
+      "revId": "78a214cd2bf4fa827b355d22a0482ae57719cd7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
