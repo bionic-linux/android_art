@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ee85e9ee_62e8613a",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-06-04T10:47:47Z",
+      "side": 1,
+      "message": "compiler throws this jump bypasses variable initialization error with this\n const InstructionSetFeatures* var \u003d compiler_options_-\u003eGetInstructionSetFeatures(); Done.",
+      "parentUuid": "1a418789_c72fd597",
+      "range": {
+        "startLine": 1950,
+        "startChar": 6,
+        "endLine": 1951,
+        "endChar": 68
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5de32d1_ed26be65",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2019-06-04T09:21:01Z",
       "side": 1,
       "message": "I\u0027m not too fond of the extra copy of the else block. I think we should break the line right here (between \"else\" and \"{\") and insert the #endif, then remove the whole \"#else ... #endif\" below.\n\n  #if ...\n  if ((... kX86 ||\n       ... kX86_64) \u0026\u0026\n      compiler_options_-\u003eGetInstructionSetFeatures()-\u003eAsX86InstructionSetFeatures()\n          -\u003eHasAVX2()) {\n    GENERATE_VEC...\n  } else\n  #endif\n  {\n    GENERATE_VEC...\n  }",
+      "range": {
+        "startLine": 1959,
+        "startChar": 12,
+        "endLine": 1959,
+        "endChar": 13
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e3969ce_81876215",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-06-04T10:47:47Z",
+      "side": 1,
+      "message": "Repo hooks does\u0027nt allow this code . Throws below error :\nAn else should appear on the same line as the preceding }.",
+      "parentUuid": "d5de32d1_ed26be65",
       "range": {
         "startLine": 1959,
         "startChar": 12,
