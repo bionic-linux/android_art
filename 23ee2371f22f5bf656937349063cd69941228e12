@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "677d8489_5dd1b89a",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-06-04T17:03:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "569f61c4_d5474030",
+      "range": {
+        "startLine": 488,
+        "startChar": 8,
+        "endLine": 488,
+        "endChar": 40
+      },
+      "revId": "23ee2371f22f5bf656937349063cd69941228e12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f47cc44d_f75c3833",
         "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "23ee2371f22f5bf656937349063cd69941228e12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba75f436_0d7aaa19",
+        "filename": "runtime/interpreter/interpreter_switch_impl-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-06-04T17:03:59Z",
+      "side": 1,
+      "message": "Done - I kept it exactly as it was.\n\nRefactoring the exception handling is on my to-do list.",
+      "parentUuid": "f47cc44d_f75c3833",
+      "revId": "23ee2371f22f5bf656937349063cd69941228e12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
