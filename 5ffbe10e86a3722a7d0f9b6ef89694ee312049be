@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0d6b7364_0c39a16a",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T12:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482e4e4e_67ebdb95",
+      "range": {
+        "startLine": 356,
+        "startChar": 6,
+        "endLine": 356,
+        "endChar": 33
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a418789_c72fd597",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 6
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2645c8ca_4e8f29bc",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T12:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee85e9ee_62e8613a",
+      "range": {
+        "startLine": 1950,
+        "startChar": 6,
+        "endLine": 1951,
+        "endChar": 68
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5de32d1_ed26be65",
         "filename": "compiler/optimizing/loop_optimization.cc",
         "patchSetId": 6
@@ -107,6 +155,30 @@
       "side": 1,
       "message": "Repo hooks does\u0027nt allow this code . Throws below error :\nAn else should appear on the same line as the preceding }.",
       "parentUuid": "d5de32d1_ed26be65",
+      "range": {
+        "startLine": 1959,
+        "startChar": 12,
+        "endLine": 1959,
+        "endChar": 13
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87be538f_a5abaa10",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T12:54:03Z",
+      "side": 1,
+      "message": "That\u0027s annoying. But GENERATE_VEC() ends with a \"break\", so the \"else\" is not really necessary; drop it and the pre-upload hook shall not reject it. However, you should add a comment about the flow. Something like\n\n  #if ...\n  if ((... kX86 ||\n       ... kX86_64) \u0026\u0026\n      compiler_options_-\u003eGetInstructionSetFeatures()-\u003eAsX86InstructionSetFeatures()\n          -\u003eHasAVX2()) {\n    GENERATE_VEC...\n    UNREACHABLE();  // GENERATE_VEC() ends with a \"break\".\n  }\n  #endif\n  GENERATE_VEC...\n\nMaybe I\u0027ll prepare a change to move the \"break\" out of GENERATE_VEC() later. I\u0027d rather duplicate it than hide it.",
+      "parentUuid": "6e3969ce_81876215",
       "range": {
         "startLine": 1959,
         "startChar": 12,
