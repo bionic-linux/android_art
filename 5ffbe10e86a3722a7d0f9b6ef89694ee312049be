@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482e4e4e_67ebdb95",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T09:21:01Z",
+      "side": 1,
+      "message": "Please move this to the other #if block, one such block is enough.",
+      "range": {
+        "startLine": 356,
+        "startChar": 6,
+        "endLine": 356,
+        "endChar": 33
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a418789_c72fd597",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1951,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T09:21:01Z",
+      "side": 1,
+      "message": "I\u0027m surprised that the compiler does not reject this code the same way as it does when you make a single definition statement. (\"error: cannot jump from switch statement to this case label\", \"note: jump bypasses variable initialization\")\n\nGiven that it\u0027s used just once, I\u0027d prefer the \"compiler_options_-\u003eGetInstructionSetFeatures()\" to be used below in place of \"isa_features\". However, this will make that line too long and you should insert a line break before \"-\u003eHasAVX2()\" with 4-space indentation.",
+      "range": {
+        "startLine": 1950,
+        "startChar": 6,
+        "endLine": 1951,
+        "endChar": 68
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5de32d1_ed26be65",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-04T09:21:01Z",
+      "side": 1,
+      "message": "I\u0027m not too fond of the extra copy of the else block. I think we should break the line right here (between \"else\" and \"{\") and insert the #endif, then remove the whole \"#else ... #endif\" below.\n\n  #if ...\n  if ((... kX86 ||\n       ... kX86_64) \u0026\u0026\n      compiler_options_-\u003eGetInstructionSetFeatures()-\u003eAsX86InstructionSetFeatures()\n          -\u003eHasAVX2()) {\n    GENERATE_VEC...\n  } else\n  #endif\n  {\n    GENERATE_VEC...\n  }",
+      "range": {
+        "startLine": 1959,
+        "startChar": 12,
+        "endLine": 1959,
+        "endChar": 13
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
