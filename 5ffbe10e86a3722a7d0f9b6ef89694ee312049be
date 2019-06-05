@@ -188,6 +188,30 @@
       "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aedc74a_8329c684",
+        "filename": "compiler/optimizing/loop_optimization.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-06-05T12:13:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87be538f_a5abaa10",
+      "range": {
+        "startLine": 1959,
+        "startChar": 12,
+        "endLine": 1959,
+        "endChar": 13
+      },
+      "revId": "5ffbe10e86a3722a7d0f9b6ef89694ee312049be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
