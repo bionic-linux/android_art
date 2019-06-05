@@ -16,6 +16,24 @@
       "revId": "b6790d58e4544c13df857af93dcebc3414674ee0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad77c831_b05a7f72",
+        "filename": "test/566-polymorphic-inlining/polymorphic_inline.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-05T12:40:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6c8e33_da3f326b",
+      "revId": "b6790d58e4544c13df857af93dcebc3414674ee0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
