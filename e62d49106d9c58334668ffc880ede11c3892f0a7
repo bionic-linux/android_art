@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f3989fc_b1f9e7e8",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-06-06T13:01:51Z",
+      "side": 1,
+      "message": "TODO Fix tabs",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 1
+      },
+      "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca3c7df2_27462c9a",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2019-06-06T13:01:51Z",
+      "side": 1,
+      "message": "Need some help here. Think this is an indirect check for /system environments that my change will break. There may be a better signal to use.",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
