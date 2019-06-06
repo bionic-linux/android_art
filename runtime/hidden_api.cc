@@ -77,7 +77,9 @@ static Domain DetermineDomainFromLocation(const std::string& dex_location,
                                           ObjPtr<mirror::ClassLoader> class_loader) {
   // If running with APEX, check `path` against known APEX locations.
   // These checks will be skipped on target buildbots where ANDROID_RUNTIME_ROOT
-  // is set to "/system".
+  // is set to "/system/etc/runtime_module".
+  // TODO(nfuller): Probably need to fix this check. ANDROID_ROOT=/system,
+  // ANDROID_RUNTIME_ROOT=/system/etc/runtime_module
   if (RuntimeModuleRootDistinctFromAndroidRoot()) {
     if (LocationIsOnRuntimeModule(dex_location.c_str()) ||
         LocationIsOnConscryptModule(dex_location.c_str())) {
