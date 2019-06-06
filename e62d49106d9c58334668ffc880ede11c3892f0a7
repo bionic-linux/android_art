@@ -69,6 +69,30 @@
       "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ec00b1_4d492c8c",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-06-06T15:48:46Z",
+      "side": 1,
+      "message": "Sorry, should have better documented my reasoning here. It just tries to detect when we\u0027re running without a runtime module.\n\nIf ANDROID_RUNTIME_ROOT\u003d\u003d\"/system/\", then we would mark everything in /system (even /system/app/) as core platform (because LocationIsOnRuntimeModule would be true). Instead we fall back to only /system/framework and boot classpath being platform (lines 94-102).\n\nSetting runtime root to \"/system/etc/runtime_module\" should therefore be fine because it won\u0027t cause the same problem.\n\nIn fact, you should turn RuntimeModuleRootDistinctFromAndroidRoot into a DCHECK if it should always be true from now on.",
+      "parentUuid": "4dce4923_ac765fba",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
