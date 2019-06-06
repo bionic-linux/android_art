@@ -45,6 +45,30 @@
       "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dce4923_ac765fba",
+        "filename": "runtime/hidden_api.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-06T15:27:03Z",
+      "side": 1,
+      "message": "Adding David to the CL to comment on this.\n\nAlso, maybe we could add:\n\n  DCHECK(RuntimeModuleRootDistinctFromAndroidRoot());\n\nonce we no longer set ANDROID_RUNTIME_ROOT to \"/system\" anywhere?",
+      "parentUuid": "ca3c7df2_27462c9a",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "e62d49106d9c58334668ffc880ede11c3892f0a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
