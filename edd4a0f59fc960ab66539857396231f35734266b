@@ -22,6 +22,30 @@
       "revId": "edd4a0f59fc960ab66539857396231f35734266b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60462a9_1345a1b3",
+        "filename": "runtime/mirror/dex_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-06-07T16:05:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ca639d9_ae3912fa",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 30
+      },
+      "revId": "edd4a0f59fc960ab66539857396231f35734266b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
