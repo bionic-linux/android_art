@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7bc7a3b_28f0f19e",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-06-10T16:22:55Z",
+      "side": 1,
+      "message": "This was meant to be a temporary change, so a full change would make this obsolete. The comment is still correct - on linux hosts that aren\u0027t super old this is the same, just expressed symbolically.",
+      "parentUuid": "ffa58be2_d42efe86",
+      "range": {
+        "startLine": 882,
+        "startChar": 10,
+        "endLine": 882,
+        "endChar": 20
+      },
+      "revId": "15b30ccf95929163f1ead74f8ee8d8ff5e78cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "181efe03_213714cc",
         "filename": "test/etc/run-test-jar",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "15b30ccf95929163f1ead74f8ee8d8ff5e78cccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8cefd9c_bb80228d",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-06-10T16:22:55Z",
+      "side": 1,
+      "message": "Same as above.",
+      "parentUuid": "181efe03_213714cc",
+      "range": {
+        "startLine": 884,
+        "startChar": 55,
+        "endLine": 884,
+        "endChar": 57
+      },
+      "revId": "15b30ccf95929163f1ead74f8ee8d8ff5e78cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
