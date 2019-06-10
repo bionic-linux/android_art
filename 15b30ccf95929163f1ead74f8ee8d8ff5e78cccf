@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffa58be2_d42efe86",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-10T07:04:18Z",
+      "side": 1,
+      "message": "Update?",
+      "range": {
+        "startLine": 882,
+        "startChar": 10,
+        "endLine": 882,
+        "endChar": 20
+      },
+      "revId": "15b30ccf95929163f1ead74f8ee8d8ff5e78cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181efe03_213714cc",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-10T07:04:18Z",
+      "side": 1,
+      "message": "nit: add a global variable with comment.",
+      "range": {
+        "startLine": 884,
+        "startChar": 55,
+        "endLine": 884,
+        "endChar": 57
+      },
+      "revId": "15b30ccf95929163f1ead74f8ee8d8ff5e78cccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
