@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b356d5b3_db814fa6",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 22
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-12T14:47:55Z",
+      "side": 1,
+      "message": "What\u0027s that?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 4
+      },
+      "revId": "8bf0d46066d11d0b2122e3680801875a4b1a63be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa106514_9b0d9b64",
+        "filename": "test/900-hello-plugin/run",
+        "patchSetId": 22
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-12T14:47:55Z",
+      "side": 1,
+      "message": "Can we address this TODO now?",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 56
+      },
+      "revId": "8bf0d46066d11d0b2122e3680801875a4b1a63be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
