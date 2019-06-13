@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8885c41_df15c73d",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-13T17:04:58Z",
+      "side": 0,
+      "message": "Isn\u0027t this still necessary for Golem?",
+      "range": {
+        "startLine": 101,
+        "startChar": 70,
+        "endLine": 101,
+        "endChar": 79
+      },
+      "revId": "380f0d8db56b5fcf6e7181184fdae9f303ad7ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
