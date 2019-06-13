@@ -22,6 +22,30 @@
       "revId": "380f0d8db56b5fcf6e7181184fdae9f303ad7ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230a496c_c8ae65dd",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-13T18:39:56Z",
+      "side": 0,
+      "message": "No, for historical reasons, Golem\u0027s build rules are in `Android.mk` (targets `build-art-*-golem`). I\u0027ll try to refactor this when I add support for the Runtime APEX to Golem.",
+      "parentUuid": "d8885c41_df15c73d",
+      "range": {
+        "startLine": 101,
+        "startChar": 70,
+        "endLine": 101,
+        "endChar": 79
+      },
+      "revId": "380f0d8db56b5fcf6e7181184fdae9f303ad7ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
