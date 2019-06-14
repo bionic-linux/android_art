@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "15687101_e37d8526",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-14T12:56:03Z",
+      "side": 1,
+      "message": "Sorry, maybe this should remain.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 60
+      },
+      "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5518deb5_d264df09",
         "filename": "CleanSpec.mk",
         "patchSetId": 24
@@ -190,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "f8725992_cd7f7d3b",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 24
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-14T12:56:03Z",
+      "side": 1,
+      "message": "Oh, was hoping it wouldn\u0027t require another script. An option is to put these code snippets in a single source\u0027d file, but it\u0027s fine to leave that for now.",
+      "parentUuid": "f64bb8aa_89c4c7fa",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 4
+      },
+      "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "83a441e8_564cc00c",
         "filename": "test/utils/get-test-native-lib-path",
         "patchSetId": 24
@@ -360,6 +407,24 @@
       "side": 1,
       "message": "I\u0027m not sure to follow; are you referring to the removal of `linker` from `make_command`? This looks fine on my browser.",
       "parentUuid": "e632df21_39019a46",
+      "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4610e708_38b474ad",
+        "filename": "tools/buildbot-build.sh",
+        "patchSetId": 24
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-14T12:56:03Z",
+      "side": 1,
+      "message": "Nvm, really. Somehow the double quotes get mismatched on this line so all following lines have string/non-string highlighting inverted. It\u0027s only Gerrit. I ought to open a ticket about it.",
+      "parentUuid": "bec50f86_639b9479",
       "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
