@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78ced68b_6ac857bf",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-17T17:57:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure it is possible to depend on a artifact within an APEX; Martin, what do you think? I\u0027ve added comments in the meantime.\n\nAlso, as this is for target gtests, I now think this should be moved to a different CL.",
+      "parentUuid": "c87fe0d1_f80e7733",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0c8bb8_58c33686",
         "filename": "test/909-attach-agent/run",
         "patchSetId": 26
@@ -36,6 +60,30 @@
       "writtenOn": "2019-06-17T09:18:07Z",
       "side": 1,
       "message": "This looks almost like the file before in the CL? Consider sharing it?\n\nWhy do we need this now?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b327aaba_019eeb1a",
+        "filename": "test/909-attach-agent/run",
+        "patchSetId": 26
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-17T17:57:39Z",
+      "side": 1,
+      "message": "Because we are using the Runtime APEX\u0027s linker configuration, we now need to do a couple of things in this test that were not required before:\n- determining and passing the full path to the JVMTI agent;\n- adding the (full-path) location of the JVMTI agent to the java.library.path system property (used in some lookup logic specific to this test).\n\nI\u0027m not sure we would gain much from trying to refactor this further (I\u0027d expect the overall code to be larger). Implementing modularity in shell scripts is cumbersome, as we have to implement several redundant checks (checking that `ANDROID_BUILD_TOP` is defined) and, pass information (e.g. the bitness in this case), etc.",
+      "parentUuid": "ea0c8bb8_58c33686",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b296f6b0_2d2d59fd",
+        "filename": "tools/buildbot-sync.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-17T17:57:39Z",
+      "side": 1,
+      "message": "I\u0027ve added some comments in PS27.",
+      "parentUuid": "f622006b_af7092fd",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

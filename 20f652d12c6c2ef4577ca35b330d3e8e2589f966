@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "051e5e49_ecf6cdbd",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 24
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-17T17:57:39Z",
+      "side": 1,
+      "message": "Yes – note that this was preserved in PS25 and PS26.",
+      "parentUuid": "15687101_e37d8526",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 60
+      },
+      "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5518deb5_d264df09",
         "filename": "CleanSpec.mk",
         "patchSetId": 24
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "Oh, was hoping it wouldn\u0027t require another script. An option is to put these code snippets in a single source\u0027d file, but it\u0027s fine to leave that for now.",
       "parentUuid": "f64bb8aa_89c4c7fa",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 4
+      },
+      "revId": "20f652d12c6c2ef4577ca35b330d3e8e2589f966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3297ab91_ca130271",
+        "filename": "test/etc/run-test-jar",
+        "patchSetId": 24
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-17T17:57:39Z",
+      "side": 1,
+      "message": "I agree, but modularity in shell scripts is a bit awkward; I like the \"minimal tool\" approach.",
+      "parentUuid": "f8725992_cd7f7d3b",
       "range": {
         "startLine": 441,
         "startChar": 0,
