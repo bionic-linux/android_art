@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87fe0d1_f80e7733",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-17T09:18:07Z",
+      "side": 1,
+      "message": "Somewhow would be nice not to lose which binary we\u0027re actually interested in. But not sure if \"com.android.runtime.debug/dexoptanalyzerd\" can be expressed?",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0c8bb8_58c33686",
+        "filename": "test/909-attach-agent/run",
+        "patchSetId": 26
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-17T09:18:07Z",
+      "side": 1,
+      "message": "This looks almost like the file before in the CL? Consider sharing it?\n\nWhy do we need this now?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f622006b_af7092fd",
+        "filename": "tools/buildbot-sync.sh",
+        "patchSetId": 26
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-17T09:18:07Z",
+      "side": 1,
+      "message": "Add a comment why things could be different and why you need to do all this?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
