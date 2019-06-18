@@ -73,6 +73,29 @@
     },
     {
       "key": {
+        "uuid": "80bcfc61_65959b4a",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-18T12:38:23Z",
+      "side": 1,
+      "message": "Martin, do you think this is reasonable? I was also thinking about creating a linker configuration file specific to the Debug Runtime APEX, and move this change to that file.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0c8bb8_58c33686",
         "filename": "test/909-attach-agent/run",
         "patchSetId": 26
