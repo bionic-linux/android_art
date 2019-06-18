@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "78b07ebf_2095a737",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-18T16:12:25Z",
+      "side": 1,
+      "message": "\u003e I\u0027m not sure what the win is with having it in the debug APEX only. We want to be able to test with the release build, right?\n\nThis needs to be discussed. At the moment:\n\n- we are only using/planning to use the Debug Runtime APEX for ART testing;\n- the Debug Runtime APEX is a superset of the Release Runtime APEX, so we\u0027re not missing any coverage.\n\nI\u0027ll add a TODO.",
+      "parentUuid": "cae7a03d_3150a7a8",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0c8bb8_58c33686",
         "filename": "test/909-attach-agent/run",
         "patchSetId": 26
