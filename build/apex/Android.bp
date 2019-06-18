@@ -94,7 +94,18 @@ art_tools_common_binaries = [
 
 // Tools common to both device and host debug APEXes.
 art_tools_debug_binaries = [
+    "art_verifier",
+    "art_verifierd",
+    "dexanalyze",
     "dexdiag",
+    "dexlayout",
+    "dexlayoutd",
+    "veridex",
+]
+
+art_tools_debug_binaries_both = [
+    "imgdiag",
+    "imgdiagd",
 ]
 
 // Tools exclusively for the device APEX derived from art-tools in art/Android.mk.
@@ -259,6 +270,9 @@ apex {
             binaries: art_tools_debug_binaries +
                 art_tools_debug_device_only_binaries,
         },
+        both: {
+            binaries: art_tools_debug_binaries_both,
+        }
     },
     certificate: ":com.android.runtime.debug.certificate",
 }
@@ -286,7 +300,8 @@ art_apex_test {
     multilib: {
         both: {
             binaries: art_runtime_base_binaries_both +
-                art_runtime_debug_binaries_both_host,
+                art_runtime_debug_binaries_both_host +
+                art_tools_debug_binaries_both,
         },
         first: {
             binaries: art_tools_common_binaries + // Host APEX is always debug.

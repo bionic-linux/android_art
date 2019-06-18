@@ -520,10 +520,18 @@ class DebugChecker:
 
   def run(self):
     # Check binaries for ART.
+    self._checker.check_executable('art_verifier')
     self._checker.check_executable('dexdiag')
+    self._checker.check_executable('dexanalyze')
+    self._checker.check_executable('dexlayout')
+    self._checker.check_symlinked_multilib_executable('imgdiag')
+    self._checker.check_executable('veridex')
 
     # Check debug binaries for ART.
+    self._checker.check_executable('art_verifierd')
+    self._checker.check_executable('dexlayoutd')
     self._checker.check_executable('dexoptanalyzerd')
+    self._checker.check_symlinked_multilib_executable('imgdiagd')
     self._checker.check_executable('profmand')
 
     # Check internal libraries for ART.
@@ -552,6 +560,7 @@ class DebugTargetChecker:
     # Check ART debug binaries.
     self._checker.check_executable('dex2oatd')
     self._checker.check_executable('oatdumpd')
+    self._checker.check_symlinked_multilib_executable('imgdiag')
 
     # Check ART internal libraries.
     self._checker.check_native_library('libdexfiled_external')
