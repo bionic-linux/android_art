@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "3e5749e9_05dc9bc2",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-18T16:44:01Z",
+      "side": 1,
+      "message": "Thanks.\n\n\u003e we are only using/planning to use the Debug Runtime APEX for ART testing\n\nThat might not be a conflicting goal, I wasn\u0027t sure of the implications of the debug APEX. As long as we can build for release and test with the non-d libs as well then I don\u0027t see any issue.",
+      "parentUuid": "60e90794_28d2f2b8",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea0c8bb8_58c33686",
         "filename": "test/909-attach-agent/run",
         "patchSetId": 26
