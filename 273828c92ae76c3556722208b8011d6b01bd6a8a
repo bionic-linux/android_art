@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "cae7a03d_3150a7a8",
+        "filename": "build/apex/ld.config.txt",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-18T15:17:12Z",
+      "side": 1,
+      "message": "It\u0027s a necessary step until the test APEX is a reality, isn\u0027t it? At that point it\u0027d be nice to be able to remove it from release and debug APEXes. (We\u0027d also need to figure out if we want to introduce a %FOO% postprocessing step here like there is in system/core/rootdir.)\n\nI\u0027m not sure what the win is with having it in the debug APEX only. We want to be able to test with the release build, right? Btw, do we need to split the test APEX into debug and release variants too?\n\nIn any case, assuming this is a temporary measure, a TODO in the comment would be good.",
+      "parentUuid": "80bcfc61_65959b4a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 41
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea0c8bb8_58c33686",
         "filename": "test/909-attach-agent/run",
         "patchSetId": 26
