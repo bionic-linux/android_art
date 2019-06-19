@@ -267,14 +267,16 @@ bool Jit::CompileMethod(ArtMethod* method, Thread* self, bool baseline, bool osr
     return false;
   }
 
+  JitMemoryRegion* region = Runtime::Current()->IsZygote()
+      ? GetCodeCache()->GetSharedRegion()
+      : GetCodeCache()->GetPrivateRegion();
+
   // If we get a request to compile a proxy method, we pass the actual Java method
   // of that proxy method, as the compiler does not expect a proxy method.
   ArtMethod* method_to_compile = method->GetInterfaceMethodIfProxy(kRuntimePointerSize);
-  if (!code_cache_->NotifyCompilationOf(method_to_compile, self, osr, prejit)) {
+  if (!code_cache_->NotifyCompilationOf(method_to_compile, self, osr, prejit, region)) {
     return false;
   }
-
-  JitMemoryRegion* region = GetCodeCache()->GetPrivateRegion();
 
   VLOG(jit) << "Compiling method "
             << ArtMethod::PrettyMethod(method_to_compile)

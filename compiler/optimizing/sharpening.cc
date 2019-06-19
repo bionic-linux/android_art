@@ -19,6 +19,7 @@
 #include "art_method-inl.h"
 #include "base/casts.h"
 #include "base/enums.h"
+#include "base/logging.h"
 #include "class_linker.h"
 #include "code_generator.h"
 #include "driver/compiler_options.h"
@@ -175,7 +176,15 @@ HLoadClass::LoadKind HSharpening::ComputeLoadClassKind(
         if (is_in_boot_image) {
           desired_load_kind = HLoadClass::LoadKind::kJitBootImageAddress;
         } else if (klass != nullptr) {
-          desired_load_kind = HLoadClass::LoadKind::kJitTableAddress;
+          if (codegen->GetGraph()->IsCompilingForSharedJitCode() &&
+              runtime->GetHeap()->IsMovableObject(klass.Get())) {
+            // Shared JIT code cannot encode a literal that the GC can move.
+            VLOG(jit) << "Unable to encode in shared region class literal: "
+                      << klass->PrettyClass();
+            desired_load_kind = HLoadClass::LoadKind::kRuntimeCall;
+          } else {
+            desired_load_kind = HLoadClass::LoadKind::kJitTableAddress;
+          }
         } else {
           // Class not loaded yet. This happens when the dex code requesting
           // this `HLoadClass` hasn't been executed in the interpreter.
@@ -331,8 +340,15 @@ void HSharpening::ProcessLoadString(
       DCHECK(!codegen->GetCompilerOptions().GetCompilePic());
       string = class_linker->LookupString(string_index, dex_cache.Get());
       if (string != nullptr) {
-        if (runtime->GetHeap()->ObjectIsInBootImageSpace(string)) {
+        gc::Heap* heap = runtime->GetHeap();
+        if (heap->ObjectIsInBootImageSpace(string)) {
           desired_load_kind = HLoadString::LoadKind::kJitBootImageAddress;
+        } else if (codegen->GetGraph()->IsCompilingForSharedJitCode() &&
+                    heap->IsMovableObject(string)) {
+          // Shared JIT code cannot encode a literal that the GC can move.
+          VLOG(jit) << "Unable to encode in shared region string literal: "
+                    << string->ToModifiedUtf8();
+          desired_load_kind = HLoadString::LoadKind::kRuntimeCall;
         } else {
           desired_load_kind = HLoadString::LoadKind::kJitTableAddress;
         }

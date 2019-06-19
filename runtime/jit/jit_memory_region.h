@@ -67,6 +67,10 @@ class JitMemoryRegion {
   uint8_t* AllocateData(size_t data_size) REQUIRES(Locks::jit_lock_);
   void FreeData(uint8_t* data) REQUIRES(Locks::jit_lock_);
 
+  bool IsInvalid() const NO_THREAD_SAFETY_ANALYSIS {
+    return exec_mspace_ == nullptr && data_mspace_ == nullptr;
+  }
+
   bool HasDualCodeMapping() const {
     return non_exec_pages_.IsValid();
   }
