@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2efd303_89f21636",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-19T12:53:28Z",
+      "side": 1,
+      "message": "It\u0027s not strictly necessary to include veridex for the sake of avoiding ART internal libs in system, because it links statically. That said, I don\u0027t have anything against it, if there are other reasons.",
+      "range": {
+        "startLine": 101,
+        "startChar": 5,
+        "endLine": 101,
+        "endChar": 12
+      },
+      "revId": "dc437a4230bd6ff9fef40bac9538e676f7251649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26436a70_7799167a",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-19T12:53:28Z",
+      "side": 1,
+      "message": "Nit: Other multilib clauses have this first.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 9
+      },
+      "revId": "dc437a4230bd6ff9fef40bac9538e676f7251649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "958846a0_d449a95c",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-19T12:53:28Z",
+      "side": 1,
+      "message": "Covered by the call in DebugChecker?",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 64
+      },
+      "revId": "dc437a4230bd6ff9fef40bac9538e676f7251649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
