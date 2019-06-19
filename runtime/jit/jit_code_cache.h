@@ -96,7 +96,11 @@ class JitCodeCache {
                               std::string* error_msg);
   ~JitCodeCache();
 
-  bool NotifyCompilationOf(ArtMethod* method, Thread* self, bool osr, bool prejit)
+  bool NotifyCompilationOf(ArtMethod* method,
+                           Thread* self,
+                           bool osr,
+                           bool prejit,
+                           JitMemoryRegion* region)
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::jit_lock_);
 
@@ -215,7 +219,7 @@ class JitCodeCache {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   bool OwnsSpace(const void* mspace) const NO_THREAD_SAFETY_ANALYSIS {
-    return private_region_.OwnsSpace(mspace);
+    return private_region_.OwnsSpace(mspace) || shared_region_.OwnsSpace(mspace);
   }
 
   void* MoreCore(const void* mspace, intptr_t increment);
@@ -279,6 +283,8 @@ class JitCodeCache {
   void ClearEntryPointsInZygoteExecSpace() REQUIRES(!Locks::jit_lock_) REQUIRES(Locks::mutator_lock_);
 
   JitMemoryRegion* GetPrivateRegion() { return &private_region_; }
+  JitMemoryRegion* GetSharedRegion() { return &shared_region_; }
+  bool IsSharedRegion(const JitMemoryRegion& region) const { return &region == &shared_region_; }
 
  private:
   JitCodeCache();
