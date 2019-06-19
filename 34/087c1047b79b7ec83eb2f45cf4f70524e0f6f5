@@ -1,0 +1,8 @@
+Verified+1: Martin Stjernholm <mast@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Martin Stjernholm <mast@google.com>
+Submitted-at: Wed, 19 Jun 2019 17:26:23 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/art/+/985494
+Project: platform/art
+Branch: refs/heads/master
