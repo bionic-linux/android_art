@@ -1,6 +1,7 @@
 package com.android.class2greylist;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableSet;
 
 import org.apache.bcel.Const;
@@ -38,6 +39,7 @@ public class UnsupportedAppUsageAnnotationHandler extends AnnotationHandler {
     private final Predicate<ClassMember> mClassMemberFilter;
     private final Map<Integer, String> mSdkVersionToFlagMap;
     private final AnnotationConsumer mAnnotationConsumer;
+    private final Integer mLatestSdkVersion;
 
     private ApiResolver mApiResolver;
 
@@ -65,22 +67,23 @@ public class UnsupportedAppUsageAnnotationHandler extends AnnotationHandler {
 
     public UnsupportedAppUsageAnnotationHandler(Status status,
             AnnotationConsumer annotationConsumer, Set<String> publicApis,
-            Map<Integer, String> sdkVersionToFlagMap) {
+            Map<Integer, String> sdkVersionToFlagMap, Integer latestSdkVersion) {
         this(status, annotationConsumer,
                 member -> !(member.isBridgeMethod && publicApis.contains(member.signature)),
-                sdkVersionToFlagMap);
-        mApiResolver = new ApiResolver(publicApis);
+                sdkVersionToFlagMap, latestSdkVersion);
+        mApiResolver = new ApiResolver(publicApis, latestSdkVersion);
     }
 
     @VisibleForTesting
     public UnsupportedAppUsageAnnotationHandler(Status status,
             AnnotationConsumer annotationConsumer, Predicate<ClassMember> memberFilter,
-            Map<Integer, String> sdkVersionToFlagMap) {
+            Map<Integer, String> sdkVersionToFlagMap, Integer latestSdkVersion) {
         mStatus = status;
         mAnnotationConsumer = annotationConsumer;
         mClassMemberFilter = memberFilter;
         mSdkVersionToFlagMap = sdkVersionToFlagMap;
         mApiResolver = new ApiResolver();
+        mLatestSdkVersion = latestSdkVersion;
     }
 
     @Override
@@ -159,10 +162,17 @@ public class UnsupportedAppUsageAnnotationHandler extends AnnotationHandler {
                     mSdkVersionToFlagMap.keySet());
             return;
         }
+
         try {
-            mApiResolver.resolvePublicAlternatives(publicAlternativesString, signature);
+            mApiResolver.resolvePublicAlternatives(publicAlternativesString, signature,
+                    maxTargetSdk);
         } catch (JavadocLinkSyntaxError | AlternativeNotFoundError e) {
             context.reportError(e.toString());
+        } catch (RequiredAlternativeNotSpecifiedError e) {
+            context.reportError("Signature %s moved to %s without specifying public "
+                            + "alternatives; Refer to go/unsupportedappusage-public-alternatives "
+                            + "for details.",
+                    signature, mSdkVersionToFlagMap.get(maxTargetSdk));
         }
 
         // Consume this annotation if it matches the predicate.
