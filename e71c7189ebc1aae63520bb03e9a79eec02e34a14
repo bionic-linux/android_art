@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8f40b7f_942d50c9",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3024,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-06-21T16:09:36Z",
+      "side": 1,
+      "message": "We\u0027re calling loadClass here which will call findClass. How is this not a loop?",
+      "range": {
+        "startLine": 3022,
+        "startChar": 0,
+        "endLine": 3024,
+        "endChar": 77
+      },
+      "revId": "e71c7189ebc1aae63520bb03e9a79eec02e34a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
