@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12f9835e_930568d0",
+        "filename": "runtime/class_linker.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-21T12:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7af48bc1_46ce81cd",
+      "range": {
+        "startLine": 172,
+        "startChar": 24,
+        "endLine": 172,
+        "endChar": 47
+      },
+      "revId": "90a7a88c6702415fd5b354d0d310b49a7de99643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ba806e4_cd6f157d",
         "filename": "runtime/native/dalvik_system_BaseDexClassLoader.cc",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f03aded6_f1cfdb02",
+        "filename": "runtime/native/dalvik_system_BaseDexClassLoader.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-21T12:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ba806e4_cd6f157d",
+      "range": {
+        "startLine": 57,
+        "startChar": 4,
+        "endLine": 57,
+        "endChar": 8
+      },
+      "revId": "90a7a88c6702415fd5b354d0d310b49a7de99643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a48e1a_cf2ad25b",
         "filename": "runtime/native/dalvik_system_BaseDexClassLoader.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "90a7a88c6702415fd5b354d0d310b49a7de99643",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a6d0f12_eb7e0201",
+        "filename": "runtime/native/dalvik_system_BaseDexClassLoader.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-21T12:13:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a48e1a_cf2ad25b",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "90a7a88c6702415fd5b354d0d310b49a7de99643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
