@@ -32,6 +32,7 @@ public class Main {
       testTransitive2();
       testTransitive3();
       testTransitive4();
+      SubClassLoader.testFindClassOneLibrary();
     }
 
     public static void assertIdentical(Object expected, Object actual) {
@@ -56,7 +57,7 @@ public class Main {
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader(MAIN_JAR_FILE, null, bootLoader, sharedLibraries);
       cls = delegateLast.loadClass("Main");
@@ -64,7 +65,7 @@ public class Main {
       cls = delegateLast.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
     }
-    
+
     public static void testTwoLibraries1() throws Exception {
       ClassLoader[] sharedLibraries = {
           new PathClassLoader(MAIN_JAR_FILE, null, bootLoader),
@@ -75,7 +76,7 @@ public class Main {
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraries[1], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader(MAIN_JAR_FILE, null, bootLoader, sharedLibraries);
       cls = delegateLast.loadClass("Main");
@@ -83,7 +84,7 @@ public class Main {
       cls = delegateLast.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraries[1], cls.getClassLoader());
     }
-    
+
     public static void testTwoLibraries2() throws Exception {
       ClassLoader[] sharedLibraries = {
           new PathClassLoader(EX_JAR_FILE, null, bootLoader),
@@ -94,7 +95,7 @@ public class Main {
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast = new DelegateLastClassLoader("", null, bootLoader, sharedLibraries);
       cls = delegateLast.loadClass("Main");
       assertIdentical(sharedLibraries[0], cls.getClassLoader());
@@ -115,7 +116,7 @@ public class Main {
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader("", null, bootLoader, sharedLibraryLevel1);
       cls = delegateLast.loadClass("Main");
@@ -123,7 +124,7 @@ public class Main {
       cls = delegateLast.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
     }
-    
+
     public static void testTransitive2() throws Exception {
       ClassLoader[] sharedLibraryLevel2 = {
           new PathClassLoader(MAIN_JAR_FILE, null, bootLoader),
@@ -137,7 +138,7 @@ public class Main {
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel1[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader("", null, bootLoader, sharedLibraryLevel1);
       cls = delegateLast.loadClass("Main");
@@ -160,7 +161,7 @@ public class Main {
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel1[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader("", null, bootLoader, sharedLibraryLevel1);
       cls = delegateLast.loadClass("Main");
@@ -168,7 +169,7 @@ public class Main {
       cls = delegateLast.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel1[0], cls.getClassLoader());
     }
-    
+
     public static void testTransitive4() throws Exception {
       ClassLoader[] sharedLibraryLevel2 = {
           new PathClassLoader(EX_JAR_FILE, null, bootLoader),
@@ -183,12 +184,49 @@ public class Main {
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
       cls = delegateFirst.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
-      
+
       ClassLoader delegateLast =
           new DelegateLastClassLoader("", null, bootLoader, sharedLibraryLevel1);
       cls = delegateLast.loadClass("Main");
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
       cls = delegateLast.loadClass("SharedLibraryOne");
       assertIdentical(sharedLibraryLevel2[0], cls.getClassLoader());
+    }
+
+    // A version of testOneLibrary but using findClass instead, which
+    // has its own fast path.
+    static class SubClassLoader extends PathClassLoader {
+
+      public SubClassLoader(String dexPath, ClassLoader parent) {
+        super(dexPath, parent);
+      }
+
+      public SubClassLoader(String dexPath,
+            String librarySearchPath, ClassLoader parent, ClassLoader[] libraries) {
+        super(dexPath, librarySearchPath, parent, libraries);
+      }
+
+      protected Class<?> findClass(String name) throws ClassNotFoundException {
+        return super.findClass(name);
+      }
+
+      public static void testFindClassOneLibrary() throws Exception {
+        ClassLoader[] sharedLibraries = {
+            new SubClassLoader(EX_JAR_FILE, bootLoader),
+        };
+        SubClassLoader loader =
+            new SubClassLoader(MAIN_JAR_FILE, null, bootLoader, sharedLibraries);
+        Class<?> cls = loader.findClass("Main");
+        assertIdentical(sharedLibraries[0], cls.getClassLoader());
+        cls = loader.findClass("SharedLibraryOne");
+        assertIdentical(sharedLibraries[0], cls.getClassLoader());
+
+        try {
+          loader.findClass("Unknown");
+          throw new Error("Expected ClassNotFoundException");
+        } catch (ClassNotFoundException e) {
+          // expected
+        }
+      }
     }
 }

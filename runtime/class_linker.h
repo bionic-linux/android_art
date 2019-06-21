@@ -169,6 +169,25 @@ class ClassLinker {
       REQUIRES_SHARED(Locks::mutator_lock_)
       REQUIRES(!Locks::dex_lock_);
 
+  // Finds a class in a {Path/Dex/InMemory}ClassLoader, loading it if necessary without using JNI.
+  // Hash function is supposed to be ComputeModifiedUtf8Hash(descriptor). Returns true if the
+  // class-loader chain could be handled, false otherwise, i.e., a non-supported class-loader
+  // was encountered while walking the parent chain (currently only BootClassLoader and
+  // PathClassLoader are supported).
+  bool FindClassInBaseDexClassLoader(ScopedObjectAccessAlreadyRunnable& soa,
+                                     Thread* self,
+                                     const char* descriptor,
+                                     size_t hash,
+                                     Handle<mirror::ClassLoader> class_loader,
+                                     /*out*/ ObjPtr<mirror::Class>* result)
+      REQUIRES_SHARED(Locks::mutator_lock_)
+      REQUIRES(!Locks::dex_lock_);
+
+  // Throws a ClassNotFoundException if the fast path is enabled and we're not
+  // running debuggable. Returns whether the exception is thrown.
+  bool MaybeThrowFastClassNotFoundException(Thread* self, const char* class_name_string)
+      REQUIRES_SHARED(Locks::mutator_lock_);
+
   // Finds a class by its descriptor using the "system" class loader, ie by searching the
   // boot_class_path_.
   ObjPtr<mirror::Class> FindSystemClass(Thread* self, const char* descriptor)
@@ -878,20 +897,6 @@ class ClassLinker {
       REQUIRES_SHARED(Locks::mutator_lock_);
 
   void FixupStaticTrampolines(ObjPtr<mirror::Class> klass) REQUIRES_SHARED(Locks::mutator_lock_);
-
-  // Finds a class in a Path- or DexClassLoader, loading it if necessary without using JNI. Hash
-  // function is supposed to be ComputeModifiedUtf8Hash(descriptor). Returns true if the
-  // class-loader chain could be handled, false otherwise, i.e., a non-supported class-loader
-  // was encountered while walking the parent chain (currently only BootClassLoader and
-  // PathClassLoader are supported).
-  bool FindClassInBaseDexClassLoader(ScopedObjectAccessAlreadyRunnable& soa,
-                                     Thread* self,
-                                     const char* descriptor,
-                                     size_t hash,
-                                     Handle<mirror::ClassLoader> class_loader,
-                                     /*out*/ ObjPtr<mirror::Class>* result)
-      REQUIRES_SHARED(Locks::mutator_lock_)
-      REQUIRES(!Locks::dex_lock_);
 
   bool FindClassInSharedLibraries(ScopedObjectAccessAlreadyRunnable& soa,
                                   Thread* self,

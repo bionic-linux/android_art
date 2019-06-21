@@ -2898,6 +2898,19 @@ ObjPtr<mirror::Class> ClassLinker::FindClassInBaseDexClassLoaderClassPath(
   return ret;
 }
 
+bool ClassLinker::MaybeThrowFastClassNotFoundException(Thread* self,
+                                                       const char* class_name_string) {
+  if (fast_class_not_found_exceptions_ &&
+      !Runtime::Current()->IsJavaDebuggable()) {
+    // For known hierarchy, we know that the class is going to throw an exception. If we aren't
+    // debuggable, optimize this path by throwing directly here without going back to Java
+    // language. This reduces how many ClassNotFoundExceptions happen.
+    self->ThrowNewExceptionF("Ljava/lang/ClassNotFoundException;", "%s", class_name_string);
+    return true;
+  }
+  return false;
+}
+
 ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
                                              const char* descriptor,
                                              Handle<mirror::ClassLoader> class_loader) {
@@ -2992,16 +3005,8 @@ ObjPtr<mirror::Class> ClassLinker::FindClass(Thread* self,
 
       std::string class_name_string(descriptor + 1, descriptor_length - 2);
       std::replace(class_name_string.begin(), class_name_string.end(), '/', '.');
-      if (known_hierarchy &&
-          fast_class_not_found_exceptions_ &&
-          !Runtime::Current()->IsJavaDebuggable()) {
-        // For known hierarchy, we know that the class is going to throw an exception. If we aren't
-        // debuggable, optimize this path by throwing directly here without going back to Java
-        // language. This reduces how many ClassNotFoundExceptions happen.
-        self->ThrowNewExceptionF("Ljava/lang/ClassNotFoundException;",
-                                 "%s",
-                                 class_name_string.c_str());
-      } else {
+      if (!known_hierarchy ||
+          !MaybeThrowFastClassNotFoundException(self, class_name_string.c_str())) {
         ScopedLocalRef<jobject> class_loader_object(
             soa.Env(), soa.AddLocalReference<jobject>(class_loader.Get()));
         ScopedLocalRef<jobject> result(soa.Env(), nullptr);
