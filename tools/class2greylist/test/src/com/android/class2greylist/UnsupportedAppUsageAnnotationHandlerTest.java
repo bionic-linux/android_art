@@ -77,7 +77,7 @@ public class UnsupportedAppUsageAnnotationHandlerTest extends AnnotationHandlerT
             Predicate<UnsupportedAppUsageAnnotationHandler.ClassMember> greylistFilter,
             Map<Integer, String> validMaxTargetSdkValues) {
         return new UnsupportedAppUsageAnnotationHandler(
-                mStatus, mConsumer, greylistFilter, validMaxTargetSdkValues);
+                mStatus, mConsumer, greylistFilter, validMaxTargetSdkValues, null);
     }
 
     @Test
@@ -436,7 +436,8 @@ public class UnsupportedAppUsageAnnotationHandlerTest extends AnnotationHandlerT
                                 mStatus,
                                 mConsumer,
                                 publicApis,
-                                NULL_SDK_MAP));
+                                NULL_SDK_MAP,
+                                null));
         new AnnotationVisitor(mJavac.getCompiledClass("a.b.Base"), mStatus, handlerMap).visit();
         new AnnotationVisitor(mJavac.getCompiledClass("a.b.Class"), mStatus, handlerMap).visit();
 

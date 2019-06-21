@@ -28,6 +28,7 @@ import java.util.stream.Collectors;
 public class ApiResolver {
     private final List<ApiComponents> mPotentialPublicAlternatives;
     private final Set<PackageAndClassName> mPublicApiClasses;
+    private final Integer mCurrentSdkVersion;
 
     private static final Pattern LINK_TAG_PATTERN = Pattern.compile("\\{@link ([^\\}]+)\\}");
     private static final Pattern CODE_TAG_PATTERN = Pattern.compile("\\{@code ([^\\}]+)\\}");
@@ -35,9 +36,10 @@ public class ApiResolver {
     public ApiResolver() {
         mPotentialPublicAlternatives = null;
         mPublicApiClasses = null;
+        mCurrentSdkVersion = null;
     }
 
-    public ApiResolver(Set<String> publicApis) {
+    public ApiResolver(Set<String> publicApis, Integer currentSdkVersion) {
         mPotentialPublicAlternatives = publicApis.stream()
                 .map(api -> {
                     try {
@@ -50,6 +52,7 @@ public class ApiResolver {
         mPublicApiClasses = mPotentialPublicAlternatives.stream()
                 .map(api -> api.getPackageAndClassName())
                 .collect(Collectors.toCollection(HashSet::new));
+        mCurrentSdkVersion = currentSdkVersion;
     }
 
     /**
@@ -58,8 +61,14 @@ public class ApiResolver {
      * @param publicAlternativesString String containing public alternative explanations.
      * @param signature                Signature of the member that has the annotation.
      */
-    public void resolvePublicAlternatives(String publicAlternativesString, String signature)
-            throws JavadocLinkSyntaxError, AlternativeNotFoundError {
+    public void resolvePublicAlternatives(String publicAlternativesString, String signature,
+                                          Integer maxSdkVersion)
+            throws JavadocLinkSyntaxError, AlternativeNotFoundError,
+                    RequiredAlternativeNotSpecifiedError {
+        if (Strings.isNullOrEmpty(publicAlternativesString) && maxSdkVersion != null
+                && maxSdkVersion.equals(mCurrentSdkVersion)) {
+            throw new RequiredAlternativeNotSpecifiedError();
+        }
         if (publicAlternativesString != null && mPotentialPublicAlternatives != null) {
             // Grab all instances of type {@link foo}
             Matcher matcher = LINK_TAG_PATTERN.matcher(publicAlternativesString);
