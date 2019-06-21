@@ -62,6 +62,8 @@ public class Class2Greylist {
     public static final String FLAG_PUBLIC_API = "public-api";
 
     private static final Map<Integer, String> TARGET_SDK_TO_LIST_MAP;
+
+    private static final Integer LATEST_SDK_VERSION = new Integer(29);
     static {
         Map<Integer, String> map = new HashMap<>();
         map.put(null, FLAG_GREYLIST);
@@ -192,7 +194,7 @@ public class Class2Greylist {
         Builder<String, AnnotationHandler> builder = ImmutableMap.builder();
         UnsupportedAppUsageAnnotationHandler greylistAnnotationHandler =
                 new UnsupportedAppUsageAnnotationHandler(
-                    mStatus, mOutput, mPublicApis, TARGET_SDK_TO_LIST_MAP);
+                    mStatus, mOutput, mPublicApis, TARGET_SDK_TO_LIST_MAP, LATEST_SDK_VERSION);
         GREYLIST_ANNOTATIONS
             .forEach(a -> addRepeatedAnnotationHandlers(
                 builder,
