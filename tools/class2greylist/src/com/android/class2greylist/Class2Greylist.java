@@ -62,6 +62,7 @@ public class Class2Greylist {
     public static final String FLAG_PUBLIC_API = "public-api";
 
     private static final Map<Integer, String> TARGET_SDK_TO_LIST_MAP;
+
     static {
         Map<Integer, String> map = new HashMap<>();
         map.put(null, FLAG_GREYLIST);
