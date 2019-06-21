@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6bddd81_0625526e",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-06-21T15:00:50Z",
+      "side": 1,
+      "message": "Oddly worded.",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 11
+      },
+      "revId": "687b04398f0884a573f0e93fb922be8a83ea7363",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7364eb_fba58028",
+        "filename": "runtime/jit/jit_memory_region.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-06-21T15:00:50Z",
+      "side": 1,
+      "message": "Not a change for this CL, but isn\u0027t a memory barrier potentially enough here? And maybe nothing required here as get that when dropping the jit_lock_...",
+      "range": {
+        "startLine": 401,
+        "startChar": 2,
+        "endLine": 401,
+        "endChar": 76
+      },
+      "revId": "687b04398f0884a573f0e93fb922be8a83ea7363",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
