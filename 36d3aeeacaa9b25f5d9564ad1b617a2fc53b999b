@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c85acd38_c76ad104",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/ApiResolver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-06-24T10:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "663c3956_f138ab89",
+      "range": {
+        "startLine": 69,
+        "startChar": 40,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df9aa5ba_dd16fdbe",
         "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "801685d4_bf702193",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-06-24T10:33:08Z",
+      "side": 1,
+      "message": "Actually, I wonder whether this is needed anymore, based on your comment in ApiResolver. Whether restricting to max-q, max-r ... max-z, a public alternative should be provided; the restriction this would help enforce would be not adding _new_ max-o restrictions now, which is sort of out of scope.",
+      "parentUuid": "df9aa5ba_dd16fdbe",
+      "range": {
+        "startLine": 66,
+        "startChar": 54,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a08e60_0df9ceec",
         "filename": "tools/class2greylist/src/com/android/class2greylist/RequiredAlternativeNotSpecifiedError.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c79c00_f1451558",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/RequiredAlternativeNotSpecifiedError.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-06-24T10:33:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2a08e60_0df9ceec",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
