@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ab00e5_6e3d683b",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-06-24T13:55:16Z",
+      "side": 1,
+      "message": "nit: this file wasn\u0027t really changed - revert it?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "0cb322da995d1d406040908f5bdc47b444d7c7c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3315ccd8_b0e36216",
+        "filename": "tools/class2greylist/test/src/com/android/class2greylist/ApiResolverTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-06-24T13:55:16Z",
+      "side": 1,
+      "message": "Also test the positive test? publicAlternativesString \u003d null, maxTargetSdk \u003c 29",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 5
+      },
+      "revId": "0cb322da995d1d406040908f5bdc47b444d7c7c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
