@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "663c3956_f138ab89",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/ApiResolver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-06-24T08:33:21Z",
+      "side": 1,
+      "message": "isn\u0027t this really \"firstSdkVersionToRequirePublicAlternatives\"? (we wouldn\u0027t want to up it after R is launched, just have a \u003e\u003d check here?)",
+      "range": {
+        "startLine": 69,
+        "startChar": 40,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df9aa5ba_dd16fdbe",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-06-24T08:33:21Z",
+      "side": 1,
+      "message": "As a follow up, might be worth passing this in (the build system must have it somewhere).\n\nYou should be able to use build var PLATFORM_SDK_VERSION here (that\u0027s an Android.mk thing... the same must exist in bp somewhere). Though I think that\u0027s the current version, not the latest frozen (which is what we want here?)",
+      "range": {
+        "startLine": 66,
+        "startChar": 54,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a08e60_0df9ceec",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/RequiredAlternativeNotSpecifiedError.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-06-24T08:33:21Z",
+      "side": 1,
+      "message": "some javadoc to explain why this is thrown would be nice",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
