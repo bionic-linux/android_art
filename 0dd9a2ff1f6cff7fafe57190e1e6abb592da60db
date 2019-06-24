@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62f08707_07b37ecd",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "Obsolete comment.",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 71
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e9a762_d81b71a7",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "This is incorrect for methods allocated after fork if you want to signal the child about newly compiled methods.",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 59
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765cbc8c_bf402f3a",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "Some non-moveable objects allocated after the fork may also need kRuntimeCall if you want to signal the child about newly compiled methods.",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee5b6820_a6151f21",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "And the HClinitCheck requirement also needs to be indicated by HInstructionBuilder::IsInitialized() for classes initialized after the fork if you want to signal the child about newly compiled methods.",
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91e66537_942491eb",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "Some non-moveable objects allocated after the fork may also need kRuntimeCall if you want to signal the child about newly compiled methods.",
+      "range": {
+        "startLine": 347,
+        "startChar": 20,
+        "endLine": 347,
+        "endChar": 49
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e331c06f_a06c0344",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "Too weak and therefore misleading on its own.",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 74
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d7b29c_9a693cca",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-24T11:07:42Z",
+      "side": 1,
+      "message": "std::swap(). The move conceptually leaves private_region_ is a state that\u0027s suitable only for destruction.",
+      "range": {
+        "startLine": 1784,
+        "startChar": 4,
+        "endLine": 1784,
+        "endChar": 48
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
