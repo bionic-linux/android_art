@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8e66b91d_406d54ce",
+        "filename": "build/Android.gtest.mk",
+        "patchSetId": 26
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-06-24T12:30:35Z",
+      "side": 1,
+      "message": "\u003e Also, as this is for target gtests, I now think this should be moved to a different CL.\n\nPlease ignore this comment; these are dependencies of ART gtests on ART binaries (which are now in the Runtime APEX), so these changes are fine.",
+      "parentUuid": "e3426c21_f6b2644c",
+      "range": {
+        "startLine": 283,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 27
+      },
+      "revId": "273828c92ae76c3556722208b8011d6b01bd6a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80bcfc61_65959b4a",
         "filename": "build/apex/ld.config.txt",
         "patchSetId": 26
