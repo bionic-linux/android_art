@@ -46,6 +46,30 @@
       "revId": "e71c7189ebc1aae63520bb03e9a79eec02e34a14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38fd692b_db1dd08c",
+        "filename": "runtime/class_linker.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 3024,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-06-24T16:44:31Z",
+      "side": 1,
+      "message": "If the parent of a BaseDexClassLoader is unsupported, this path should be called. Where am I going wrong?",
+      "parentUuid": "4ffea689_d45784c0",
+      "range": {
+        "startLine": 3022,
+        "startChar": 0,
+        "endLine": 3024,
+        "endChar": 77
+      },
+      "revId": "e71c7189ebc1aae63520bb03e9a79eec02e34a14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
