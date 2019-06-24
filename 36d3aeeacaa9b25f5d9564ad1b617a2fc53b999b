@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b3a9a701_1e395f6b",
+        "filename": "tools/class2greylist/src/com/android/class2greylist/Class2Greylist.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-06-24T12:41:12Z",
+      "side": 1,
+      "message": "Forgot to remove this constant in patchset 3, removed it in patchset 4.",
+      "parentUuid": "958b446b_8788e735",
+      "range": {
+        "startLine": 66,
+        "startChar": 54,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "36d3aeeacaa9b25f5d9564ad1b617a2fc53b999b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2a08e60_0df9ceec",
         "filename": "tools/class2greylist/src/com/android/class2greylist/RequiredAlternativeNotSpecifiedError.java",
         "patchSetId": 2
