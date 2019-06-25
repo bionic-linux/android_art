@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96032395_45e6b106",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62f08707_07b37ecd",
+      "range": {
+        "startLine": 102,
+        "startChar": 11,
+        "endLine": 102,
+        "endChar": 71
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78e9a762_d81b71a7",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "15c51070_de300b4e",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78e9a762_d81b71a7",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 59
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "765cbc8c_bf402f3a",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-06-24T11:07:42Z",
       "side": 1,
       "message": "Some non-moveable objects allocated after the fork may also need kRuntimeCall if you want to signal the child about newly compiled methods.",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d1ed9f6_f047ce31",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "I\u0027ve moved the logic of knowing whether we can be encoded in the JIT code. For now, I\u0027ll keep the IsMovable check to avoid any performance changes, but as you point out, I\u0027ll adjust that in the CL that will share future code with children.",
+      "parentUuid": "765cbc8c_bf402f3a",
       "range": {
         "startLine": 180,
         "startChar": 14,
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "455e0b1a_2f72bd3b",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "Yes, ditto will take care of it in the next CL.",
+      "parentUuid": "ee5b6820_a6151f21",
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91e66537_942491eb",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 4
@@ -99,6 +189,30 @@
       "writtenOn": "2019-06-24T11:07:42Z",
       "side": 1,
       "message": "Some non-moveable objects allocated after the fork may also need kRuntimeCall if you want to signal the child about newly compiled methods.",
+      "range": {
+        "startLine": 347,
+        "startChar": 20,
+        "endLine": 347,
+        "endChar": 49
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc18475_42d67e84",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "91e66537_942491eb",
       "range": {
         "startLine": 347,
         "startChar": 20,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "a8ece83a_18967510",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll adjust that in the follow-up CL.",
+      "parentUuid": "e331c06f_a06c0344",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 74
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76d7b29c_9a693cca",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 4
@@ -154,6 +292,30 @@
       "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe388ec7_1aa7af96",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T11:43:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d7b29c_9a693cca",
+      "range": {
+        "startLine": 1784,
+        "startChar": 4,
+        "endLine": 1784,
+        "endChar": 48
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
