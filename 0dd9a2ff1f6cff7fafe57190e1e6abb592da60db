@@ -220,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "defd971a_b67712dc",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T12:09:28Z",
+      "side": 1,
+      "message": "Done, by adding a Jit::CanAssumeInitialized helper like the other CanEncode helpers.",
+      "parentUuid": "c43b92ec_89e5b557",
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91e66537_942491eb",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 4
