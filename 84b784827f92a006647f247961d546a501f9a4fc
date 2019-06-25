@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa8e608_988f6ca7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T13:32:22Z",
+      "side": 1,
+      "message": "bin",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "84b784827f92a006647f247961d546a501f9a4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a822fc_47c45948",
+        "filename": "dex2oat/linker/image_writer.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-06-25T13:32:22Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 1858,
+        "startChar": 29,
+        "endLine": 1858,
+        "endChar": 32
+      },
+      "revId": "84b784827f92a006647f247961d546a501f9a4fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
