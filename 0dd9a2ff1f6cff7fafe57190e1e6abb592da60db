@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f14f2e1f_7d0c7b6a",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-25T11:56:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d1ed9f6_f047ce31",
+      "range": {
+        "startLine": 180,
+        "startChar": 14,
+        "endLine": 180,
+        "endChar": 62
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee5b6820_a6151f21",
         "filename": "compiler/optimizing/sharpening.cc",
         "patchSetId": 4
@@ -175,6 +199,24 @@
       "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c43b92ec_89e5b557",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-25T11:56:11Z",
+      "side": 1,
+      "message": "Ack, though a comment in HInstructionBuilder::IsInitialized() would be appreciated.",
+      "parentUuid": "455e0b1a_2f72bd3b",
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +267,30 @@
     },
     {
       "key": {
+        "uuid": "e6b068cd_9366556e",
+        "filename": "compiler/optimizing/sharpening.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-25T11:56:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9fc18475_42d67e84",
+      "range": {
+        "startLine": 347,
+        "startChar": 20,
+        "endLine": 347,
+        "endChar": 49
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e331c06f_a06c0344",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 4
@@ -269,6 +335,30 @@
       "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7437f39_1f9beefa",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-06-25T11:56:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8ece83a_18967510",
+      "range": {
+        "startLine": 418,
+        "startChar": 6,
+        "endLine": 418,
+        "endChar": 74
+      },
+      "revId": "0dd9a2ff1f6cff7fafe57190e1e6abb592da60db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
