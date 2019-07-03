@@ -22,6 +22,30 @@
       "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31ee30e9_01371fd6",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-07-03T16:55:37Z",
+      "side": 1,
+      "message": "I missed that. I agree this looks strange.",
+      "parentUuid": "da347eac_5f265453",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 80
+      },
+      "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
