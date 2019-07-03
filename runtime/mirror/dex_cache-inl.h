@@ -105,7 +105,7 @@ inline String* DexCache::GetResolvedString(dex::StringIndex string_idx) {
 inline void DexCache::SetResolvedString(dex::StringIndex string_idx, ObjPtr<String> resolved) {
   DCHECK(resolved != nullptr);
   GetStrings()[StringSlotIndex(string_idx)].store(
-      StringDexCachePair(resolved, string_idx.index_), std::memory_order_relaxed);
+      StringDexCachePair(resolved, string_idx.index_), std::memory_order_release);
   Runtime* const runtime = Runtime::Current();
   if (UNLIKELY(runtime->IsActiveTransaction())) {
     DCHECK(runtime->IsAotCompiler());
@@ -201,7 +201,7 @@ inline MethodType* DexCache::GetResolvedMethodType(dex::ProtoIndex proto_idx) {
 inline void DexCache::SetResolvedMethodType(dex::ProtoIndex proto_idx, MethodType* resolved) {
   DCHECK(resolved != nullptr);
   GetResolvedMethodTypes()[MethodTypeSlotIndex(proto_idx)].store(
-      MethodTypeDexCachePair(resolved, proto_idx.index_), std::memory_order_relaxed);
+      MethodTypeDexCachePair(resolved, proto_idx.index_), std::memory_order_release);
   // TODO: Fine-grained marking, so that we don't need to go through all arrays in full.
   WriteBarrier::ForEveryFieldWrite(this);
 }
