@@ -201,9 +201,9 @@ class ArtMethod final {
   }
 
   bool IsMiranda() {
-    // The kAccMiranda flag value is used with a different meaning for native methods,
-    // so we need to check the kAccNative flag as well.
-    return (GetAccessFlags() & (kAccNative | kAccMiranda)) == kAccMiranda;
+    // The kAccMiranda flag value is used with a different meaning for native methods and methods
+    // marked kAccCompileDontBother, so we need to check these flags as well.
+    return (GetAccessFlags() & (kAccNative | kAccMiranda | kAccCompileDontBother)) == kAccMiranda;
   }
 
   // Returns true if invoking this method will not throw an AbstractMethodError or
@@ -212,15 +212,34 @@ class ArtMethod final {
     return !IsAbstract() && !IsDefaultConflicting();
   }
 
+  bool IsZygoteCompiled() {
+    uint32_t expected = (kAccMiranda | kAccCompileDontBother);
+    return (GetAccessFlags() & expected) == expected;
+  }
+
+  void SetZygoteCompiled() {
+    DCHECK(IsInvokable());
+    DCHECK(IsCompilable());
+    AddAccessFlags(kAccMiranda | kAccCompileDontBother);
+  }
+
+  void ClearZygoteCompiled() {
+    ClearAccessFlags(kAccMiranda | kAccCompileDontBother);
+  }
+
   bool IsCompilable() {
     if (IsIntrinsic()) {
       // kAccCompileDontBother overlaps with kAccIntrinsicBits.
+      return true;
+    }
+    if (IsZygoteCompiled()) {
       return true;
     }
     return (GetAccessFlags() & kAccCompileDontBother) == 0;
   }
 
   void SetDontCompile() {
+    CHECK(!IsMiranda());
     AddAccessFlags(kAccCompileDontBother);
   }
 

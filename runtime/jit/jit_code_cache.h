@@ -78,6 +78,53 @@ class MarkCodeClosure;
 // of garbage collecting code.
 using CodeCacheBitmap = gc::accounting::MemoryRangeBitmap<kJitCodeAccountingBytes>;
 
+// Class abstraction over a map of ArtMethod -> compiled code, where the
+// ArtMethod are compiled by the zygote, and the map acts as a communication
+// channel between the zygote and the other processes.
+// For the zygote process, this map is the only map it is placing the compiled
+// code. JitCodeCache.method_code_map_ is empty.
+class ZygoteMap {
+ public:
+  explicit ZygoteMap(JitMemoryRegion* region) : map_(nullptr), capacity_(0), region_(region) {}
+
+  // Initialize the data structure so it can hold `number_of_methods` mappings.
+  // Note that the map is fixed size and never grows.
+  void Initialize(uint32_t number_of_methods) REQUIRES(!Locks::jit_lock_);
+
+  // Add the mapping method -> code.
+  void Put(const void* code, ArtMethod* method) REQUIRES(Locks::jit_lock_);
+
+  // Return the code pointer for the given method. If pc is not zero, check that
+  // the pc falls into that code range. Return null otherwise.
+  const void* GetCodeFor(ArtMethod* method, uintptr_t pc = 0) const;
+
+  // Return whether the map has associated code for the given method.
+  bool ContainsMethod(ArtMethod* method) const {
+    return GetCodeFor(method) != nullptr;
+  }
+
+ private:
+  struct Entry {
+    ArtMethod* method;
+    // Note we currently only allocate code in the low 4g, so we could just reserve 4 bytes
+    // for the code pointer. For simplicity and in the case we move to 64bit
+    // addresses for code, just keep it void* for now.
+    const void* code_ptr;
+  };
+
+  // Pointer to the map, allocated with `region_`. Implementation note: for
+  // simplicity, we use linear probing.
+  Entry* map_;
+
+  // Capacity of the map. Must be a power of two.
+  uint32_t capacity_;
+
+  // The region in which the map is allocated.
+  JitMemoryRegion* const region_;
+
+  DISALLOW_COPY_AND_ASSIGN(ZygoteMap);
+};
+
 class JitCodeCache {
  public:
   static constexpr size_t kMaxCapacity = 64 * MB;
@@ -260,6 +307,9 @@ class JitCodeCache {
   bool GetGarbageCollectCodeUnsafe() const NO_THREAD_SAFETY_ANALYSIS {
     return garbage_collect_code_;
   }
+  ZygoteMap* GetSharedMap() {
+    return &shared_map_;
+  }
 
   // If Jit-gc has been disabled (and instrumentation has been enabled) this will return the
   // jit-compiled entrypoint for this method.  Otherwise it will return null.
@@ -422,6 +472,10 @@ class JitCodeCache {
 
   // ProfilingInfo objects we have allocated.
   std::vector<ProfilingInfo*> profiling_infos_ GUARDED_BY(Locks::jit_lock_);
+
+  // Methods that the zygote has compiled and can be shared across processes
+  // forked from the zygote.
+  ZygoteMap shared_map_;
 
   // -------------- JIT GC related data structures ----------------------- //
 
