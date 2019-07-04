@@ -22,6 +22,30 @@
       "revId": "c95637fea0de1dbc82e4ac4e4d35ea7e95618df3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca19e93_ae71574b",
+        "filename": "build/Android.common_path.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-04T17:44:18Z",
+      "side": 1,
+      "message": "Yes – We recently evoked the possibility that the runtime module\u0027s name may have to change in the future.\n\nMore generally, I think we should also avoid using \"literals\" (file and file-like names) directly. Think of this as a constant.",
+      "parentUuid": "2a13cb48_85a64d9a",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "c95637fea0de1dbc82e4ac4e4d35ea7e95618df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
