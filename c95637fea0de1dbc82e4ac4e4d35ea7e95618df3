@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a13cb48_85a64d9a",
+        "filename": "build/Android.common_path.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-04T17:37:35Z",
+      "side": 1,
+      "message": "What do we gain with this indirection? Are there cases when these apex names would change?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "c95637fea0de1dbc82e4ac4e4d35ea7e95618df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
