@@ -46,6 +46,30 @@
       "revId": "c95637fea0de1dbc82e4ac4e4d35ea7e95618df3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc9eda81_37d95723",
+        "filename": "build/Android.common_path.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-04T21:26:30Z",
+      "side": 1,
+      "message": "In ordinary code constants have some use to avoid spellos. In most cases here they\u0027re used as module names, so they\u0027re effectively identifiers already and hence not susceptible to that. Granted, there are also two cases where they\u0027re used to build paths, but imho neither that nor the prospect of a future APEX rename (which would need a search-and-replace anyway) motivates this extra complexity.\n\nBut sure, it\u0027s a matter of judgement; one can go either way on it.",
+      "parentUuid": "7ca19e93_ae71574b",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 51
+      },
+      "revId": "c95637fea0de1dbc82e4ac4e4d35ea7e95618df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
