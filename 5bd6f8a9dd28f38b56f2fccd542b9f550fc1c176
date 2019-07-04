@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc4abacc_8af65333",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "You should define a new name even if you want to reuse the same value.",
+      "range": {
+        "startLine": 216,
+        "startChar": 25,
+        "endLine": 216,
+        "endChar": 36
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7debf5ea_edff7592",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "DCHECK()?",
+      "range": {
+        "startLine": 242,
+        "startChar": 4,
+        "endLine": 242,
+        "endChar": 9
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2d8d4c_8029fa0b",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "0u, same below.",
+      "range": {
+        "startLine": 759,
+        "startChar": 11,
+        "endLine": 759,
+        "endChar": 12
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a1284b3_24abb850",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "Rename to `index` as you\u0027re using this to iterate over the array.",
+      "range": {
+        "startLine": 1806,
+        "startChar": 9,
+        "endLine": 1806,
+        "endChar": 13
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9edcb9eb_f77da22c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "1u",
+      "range": {
+        "startLine": 1806,
+        "startChar": 42,
+        "endLine": 1806,
+        "endChar": 43
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140293de_b047e10f",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "Put the increment on its own line.",
+      "range": {
+        "startLine": 1823,
+        "startChar": 8,
+        "endLine": 1823,
+        "endChar": 14
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b1d545_ea41b4e4",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "I prefer `while (true) { ... }` over `do { ... } while (true);`.",
+      "range": {
+        "startLine": 1826,
+        "startChar": 4,
+        "endLine": 1826,
+        "endChar": 17
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71df652f_0d84e08d",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "index",
+      "range": {
+        "startLine": 1833,
+        "startChar": 9,
+        "endLine": 1833,
+        "endChar": 13
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab158abf_9e0dcad6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "Put the increment on its own line. (No need for \"else\" after a block with \"break\".)",
+      "range": {
+        "startLine": 1839,
+        "startChar": 15,
+        "endLine": 1839,
+        "endChar": 21
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a064109_3730e5dc",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "This is a hash map, linear probing is used only for GetCodeFor(nullptr, pc) in debug mode.",
+      "range": {
+        "startLine": 115,
+        "startChar": 51,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24bb651d_1492f799",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "Could use ArrayRef\u003cEntry\u003e.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c55b773b_a9bc31b2",
+        "filename": "runtime/jit/jit_memory_region.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-04T13:01:45Z",
+      "side": 1,
+      "message": "The only caller that needs this is ZygoteMap::Initialize() and you should move this code there.",
+      "range": {
+        "startLine": 477,
+        "startChar": 2,
+        "endLine": 479,
+        "endChar": 3
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
