@@ -892,6 +892,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b1ccb4_126e6d39",
+        "filename": "runtime/jit/jit_memory_region.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T10:37:55Z",
+      "side": 1,
+      "message": "Yes, please. Something like\n\n  template \u003ctypename T\u003e void Fill(T* address, size_t n, const T\u0026 t) { std::fill_n(...); }",
+      "parentUuid": "77798a0b_1cf95d97",
+      "range": {
+        "startLine": 477,
+        "startChar": 2,
+        "endLine": 479,
+        "endChar": 3
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
