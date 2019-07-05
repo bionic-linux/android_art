@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99a3bd05_07654561",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4abacc_8af65333",
+      "range": {
+        "startLine": 216,
+        "startChar": 25,
+        "endLine": 216,
+        "endChar": 36
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7debf5ea_edff7592",
         "filename": "runtime/art_method.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2d2fd195_892c763e",
+        "filename": "runtime/art_method.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7debf5ea_edff7592",
+      "range": {
+        "startLine": 242,
+        "startChar": 4,
+        "endLine": 242,
+        "endChar": 9
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d2d8d4c_8029fa0b",
         "filename": "runtime/jit/jit.cc",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a09599_0f55a117",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d2d8d4c_8029fa0b",
+      "range": {
+        "startLine": 759,
+        "startChar": 11,
+        "endLine": 759,
+        "endChar": 12
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,78 @@
     },
     {
       "key": {
+        "uuid": "9a30bf2c_fa905ed6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a1284b3_24abb850",
+      "range": {
+        "startLine": 1806,
+        "startChar": 9,
+        "endLine": 1806,
+        "endChar": 13
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba16ee3f_6e061fc2",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9edcb9eb_f77da22c",
+      "range": {
+        "startLine": 1806,
+        "startChar": 42,
+        "endLine": 1806,
+        "endChar": 43
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49bf7c4c_a07988f1",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "capacity is set line 1779 as power of 2. Do you want to DCHECK that here too?",
+      "parentUuid": "52a42b83_5033c3da",
+      "range": {
+        "startLine": 1806,
+        "startChar": 30,
+        "endLine": 1806,
+        "endChar": 43
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df8b6419_2a3cd444",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6de0a81_dbd5da72",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8b6419_2a3cd444",
+      "range": {
+        "startLine": 1807,
+        "startChar": 2,
+        "endLine": 1807,
+        "endChar": 6
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +377,54 @@
     },
     {
       "key": {
+        "uuid": "608b56d2_c7205b31",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140293de_b047e10f",
+      "range": {
+        "startLine": 1823,
+        "startChar": 8,
+        "endLine": 1823,
+        "endChar": 14
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "244c4de0_ceccfb2b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc1e81b8_ab8616ed",
+      "range": {
+        "startLine": 1823,
+        "startChar": 8,
+        "endLine": 1823,
+        "endChar": 27
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87b1d545_ea41b4e4",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -229,6 +445,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca522e8_255d9106",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87b1d545_ea41b4e4",
+      "range": {
+        "startLine": 1826,
+        "startChar": 4,
+        "endLine": 1826,
+        "endChar": 17
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "380e7f22_0ccf32db",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1833,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71df652f_0d84e08d",
+      "range": {
+        "startLine": 1833,
+        "startChar": 9,
+        "endLine": 1833,
+        "endChar": 13
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89b59cd1_62c2618b",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "4ff8d98a_b8869a3e",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89b59cd1_62c2618b",
+      "range": {
+        "startLine": 1834,
+        "startChar": 2,
+        "endLine": 1834,
+        "endChar": 6
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a505af85_4afc5cc1",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -289,6 +577,30 @@
       "writtenOn": "2019-07-05T07:20:41Z",
       "side": 1,
       "message": "Are there any memory synchronization issues here?",
+      "range": {
+        "startLine": 1837,
+        "startChar": 5,
+        "endLine": 1837,
+        "endChar": 56
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7a34aab_6e620056",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Added a comment.",
+      "parentUuid": "a505af85_4afc5cc1",
       "range": {
         "startLine": 1837,
         "startChar": 5,
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "2c0e47c3_d8168226",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab158abf_9e0dcad6",
+      "range": {
+        "startLine": 1839,
+        "startChar": 15,
+        "endLine": 1839,
+        "endChar": 21
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "854a8b97_aa1a7be3",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
@@ -344,6 +680,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be0504c_61582d66",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "854a8b97_aa1a7be3",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -370,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "c3eaceac_f88dae64",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a064109_3730e5dc",
+      "range": {
+        "startLine": 115,
+        "startChar": 51,
+        "endLine": 116,
+        "endChar": 39
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24bb651d_1492f799",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
@@ -390,6 +774,30 @@
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3babb90_14e9b6aa",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24bb651d_1492f799",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 20
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "e74dc327_98ab791f",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "316b4840_78f3e202",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 24
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c55b773b_a9bc31b2",
         "filename": "runtime/jit/jit_memory_region.cc",
         "patchSetId": 1
@@ -427,6 +859,30 @@
       "writtenOn": "2019-07-04T13:01:45Z",
       "side": 1,
       "message": "The only caller that needs this is ZygoteMap::Initialize() and you should move this code there.",
+      "range": {
+        "startLine": 477,
+        "startChar": 2,
+        "endLine": 479,
+        "endChar": 3
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77798a0b_1cf95d97",
+        "filename": "runtime/jit/jit_memory_region.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T08:59:16Z",
+      "side": 1,
+      "message": "Right, but the caller gets a non-writable mapping to that address, so it cannot call memset on it. Would you prefer I add a method in JitMemoryRegion that just initializes the memory?",
+      "parentUuid": "c55b773b_a9bc31b2",
       "range": {
         "startLine": 477,
         "startChar": 2,
