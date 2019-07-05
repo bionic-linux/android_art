@@ -117,6 +117,52 @@
     },
     {
       "key": {
+        "uuid": "52a42b83_5033c3da",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "static assert that capacity_ is a power of 2.",
+      "range": {
+        "startLine": 1806,
+        "startChar": 30,
+        "endLine": 1806,
+        "endChar": 43
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8b6419_2a3cd444",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "Comment on how this is synchronized and how you know this loop eventually terminates.",
+      "range": {
+        "startLine": 1807,
+        "startChar": 2,
+        "endLine": 1807,
+        "endChar": 6
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "140293de_b047e10f",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -133,6 +179,29 @@
         "startChar": 8,
         "endLine": 1823,
         "endChar": 14
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1e81b8_ab8616ed",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "index \u003d (index + 1) \u0026 (capacity_ - 1);",
+      "range": {
+        "startLine": 1823,
+        "startChar": 8,
+        "endLine": 1823,
+        "endChar": 27
       },
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -186,6 +255,52 @@
     },
     {
       "key": {
+        "uuid": "89b59cd1_62c2618b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1834,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "Comment on eventual termination here, ie does this loop ever want to make more than capacity_ steps here? Can this get full?",
+      "range": {
+        "startLine": 1834,
+        "startChar": 2,
+        "endLine": 1834,
+        "endChar": 6
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a505af85_4afc5cc1",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "Are there any memory synchronization issues here?",
+      "range": {
+        "startLine": 1837,
+        "startChar": 5,
+        "endLine": 1837,
+        "endChar": 56
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab158abf_9e0dcad6",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 1
@@ -202,6 +317,29 @@
         "startChar": 15,
         "endLine": 1839,
         "endChar": 21
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854a8b97_aa1a7be3",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "Comment here or below about expectations on the region wrt who can read and write and visibility of writes.",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 54
       },
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -248,6 +386,29 @@
         "startChar": 2,
         "endLine": 120,
         "endChar": 20
+      },
+      "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316b4840_78f3e202",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-05T07:20:41Z",
+      "side": 1,
+      "message": "Consider \u0027zygote\u0027 rather than \u0027shared\u0027.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 24
       },
       "revId": "5bd6f8a9dd28f38b56f2fccd542b9f550fc1c176",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
