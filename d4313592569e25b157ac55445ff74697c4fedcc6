@@ -46,6 +46,30 @@
       "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910f5acd_dfd0ff60",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T08:54:16Z",
+      "side": 1,
+      "message": "Should I change loads to std::memory_order_consume? Though\n\n  https://en.cppreference.com/w/cpp/atomic/memory_order#Release-Consume_ordering\n\nsays that \"[t]he specification of release-consume ordering is being revised, and the use of memory_order_consume is temporarily discouraged. (since C++17)\" On the other hand, we\u0027re relying on implicit consume semantics (or data dependencies) in other places.",
+      "parentUuid": "31ee30e9_01371fd6",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 80
+      },
+      "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
