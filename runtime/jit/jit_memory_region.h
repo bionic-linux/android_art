@@ -87,7 +87,7 @@ class JitMemoryRegion {
                               bool has_should_deoptimize_flag)
       REQUIRES(Locks::jit_lock_);
   void FreeCode(const uint8_t* code) REQUIRES(Locks::jit_lock_);
-  uint8_t* AllocateData(size_t data_size) REQUIRES(Locks::jit_lock_);
+  uint8_t* AllocateData(size_t data_size, bool initialize = false) REQUIRES(Locks::jit_lock_);
   void FreeData(uint8_t* data) REQUIRES(Locks::jit_lock_);
 
   // Emit roots and stack map into the memory pointed by `roots_data`.
@@ -109,6 +109,13 @@ class JitMemoryRegion {
 
   bool IsValid() const NO_THREAD_SAFETY_ANALYSIS {
     return exec_mspace_ != nullptr || data_mspace_ != nullptr;
+  }
+
+  // Generic helper for writing abritrary data in the data portion of the
+  // region.
+  template <typename T>
+  void WriteData(T* address, const T& value) {
+    *GetWritableDataAddress(address) = value;
   }
 
   bool HasDualCodeMapping() const {

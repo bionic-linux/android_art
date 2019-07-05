@@ -472,8 +472,11 @@ void JitMemoryRegion::FreeCode(const uint8_t* code) {
   mspace_free(exec_mspace_, const_cast<uint8_t*>(code));
 }
 
-uint8_t* JitMemoryRegion::AllocateData(size_t data_size) {
+uint8_t* JitMemoryRegion::AllocateData(size_t data_size, bool initialize) {
   void* result = mspace_malloc(data_mspace_, data_size);
+  if (initialize) {
+    memset(result, 0, data_size);
+  }
   used_memory_for_data_ += mspace_usable_size(result);
   return reinterpret_cast<uint8_t*>(GetNonWritableDataAddress(result));
 }
