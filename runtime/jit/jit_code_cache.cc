@@ -222,6 +222,7 @@ JitCodeCache* JitCodeCache::Create(bool used_only_for_profile_data,
 JitCodeCache::JitCodeCache()
     : is_weak_access_enabled_(true),
       inline_cache_cond_("Jit inline cache condition variable", *Locks::jit_lock_),
+      shared_map_(&shared_region_),
       lock_cond_("Jit code cache condition variable", *Locks::jit_lock_),
       collection_in_progress_(false),
       last_collection_increased_code_cache_(false),
@@ -265,6 +266,9 @@ bool JitCodeCache::ContainsMethod(ArtMethod* method) {
       if (it.second == method) {
         return true;
       }
+    }
+    if (shared_map_.ContainsMethod(method)) {
+      return true;
     }
   }
   return false;
@@ -747,7 +751,11 @@ uint8_t* JitCodeCache::CommitCodeInternal(Thread* self,
         }
       }
     } else {
-      method_code_map_.Put(code_ptr, method);
+      if (method->IsZygoteCompiled() && IsSharedRegion(*region)) {
+        shared_map_.Put(code_ptr, method);
+      } else {
+        method_code_map_.Put(code_ptr, method);
+      }
       if (osr) {
         number_of_osr_compilations_++;
         osr_code_map_.Put(method, code_ptr);
@@ -1350,6 +1358,11 @@ OatQuickMethodHeader* JitCodeCache::LookupMethodHeader(uintptr_t pc, ArtMethod* 
     if (!method_header->Contains(pc)) {
       return nullptr;
     }
+  } else if (shared_region_.IsInExecSpace(reinterpret_cast<const void*>(pc))) {
+    const void* code_ptr = shared_map_.GetCodeFor(method, pc);
+    CHECK(code_ptr != nullptr);
+    method_header = OatQuickMethodHeader::FromCodePointer(code_ptr);
+    found_method = method;
   } else {
     auto it = method_code_map_.lower_bound(reinterpret_cast<const void*>(pc));
     if (it != method_code_map_.begin()) {
@@ -1700,6 +1713,12 @@ void JitCodeCache::InvalidateCompiledCodeFor(ArtMethod* method,
       osr_code_map_.erase(it);
     }
   }
+
+  // In case the method was compiled by the zygote, clear that information so we
+  // can recompile it ourselves.
+  if (method->IsZygoteCompiled()) {
+    method->ClearZygoteCompiled();
+  }
 }
 
 void JitCodeCache::Dump(std::ostream& os) {
@@ -1753,6 +1772,75 @@ void JitCodeCache::PostForkChildAction(bool is_system_server, bool is_zygote) {
 
 JitMemoryRegion* JitCodeCache::GetCurrentRegion() {
   return Runtime::Current()->IsZygote() ? &shared_region_ : &private_region_;
+}
+
+void ZygoteMap::Initialize(uint32_t number_of_methods) {
+  MutexLock mu(Thread::Current(), *Locks::jit_lock_);
+  capacity_ = RoundUpToPowerOfTwo(number_of_methods * 100 / 70);
+  map_ = reinterpret_cast<Entry*>(
+      region_->AllocateData(capacity_ * sizeof(Entry), /* initialize= */ true));
+  CHECK(map_ != nullptr);
+}
+
+const void* ZygoteMap::GetCodeFor(ArtMethod* method, uintptr_t pc) const {
+  if (map_ == nullptr) {
+    return nullptr;
+  }
+
+  if (method == nullptr) {
+    // Do a linear search. This should only be used in debug builds.
+    CHECK(kIsDebugBuild);
+    for (uint32_t i = 0; i < capacity_; ++i) {
+      const void* code_ptr = map_[i].code_ptr;
+      if (code_ptr != nullptr) {
+        OatQuickMethodHeader* method_header = OatQuickMethodHeader::FromCodePointer(code_ptr);
+        if (method_header->Contains(pc)) {
+          return code_ptr;
+        }
+      }
+    }
+    return nullptr;
+  }
+
+  std::hash<ArtMethod*> hf;
+  size_t hash = hf(method) & (capacity_ - 1);
+  do {
+    const Entry& entry = map_[hash];
+    if (entry.method == nullptr) {
+      // Not compiled yet.
+      return nullptr;
+    }
+    if (entry.method == method) {
+      if (entry.code_ptr == nullptr) {
+        // Not compiled yet.
+        return nullptr;
+      }
+      if (pc != 0) {
+        CHECK(OatQuickMethodHeader::FromCodePointer(entry.code_ptr)->Contains(pc));
+      }
+      return entry.code_ptr;
+    }
+    if (++hash == capacity_) {
+      hash = 0;
+    }
+  } while (true);
+}
+
+void ZygoteMap::Put(const void* code, ArtMethod* method) {
+  CHECK(map_ != nullptr);
+  CHECK(Runtime::Current()->IsZygote());
+  std::hash<ArtMethod*> hf;
+  size_t hash = hf(method) & (capacity_ - 1);
+  do {
+    Entry* entry = &map_[hash];
+    if (entry->method == nullptr) {
+      region_->WriteData(entry, Entry { method, code });
+      break;
+    } else if (++hash == capacity_) {
+      hash = 0;
+    }
+  } while (true);
+  DCHECK_EQ(GetCodeFor(method), code);
 }
 
 }  // namespace jit
