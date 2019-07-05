@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "593585e4_18091dc9",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46c7529f_900c4726",
+      "range": {
+        "startLine": 781,
+        "startChar": 28,
+        "endLine": 781,
+        "endChar": 29
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d087bac_13df5f7d",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53b4568_7a52c451",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d087bac_13df5f7d",
+      "range": {
+        "startLine": 1780,
+        "startChar": 18,
+        "endLine": 1780,
+        "endChar": 21
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8a3d1594_f46a17d0",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90be7763_4a7e29f3",
+      "range": {
+        "startLine": 1790,
+        "startChar": 11,
+        "endLine": 1790,
+        "endChar": 22
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f360dcf2_40689553",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171eaeeb_36c4a9e3",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1797,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f360dcf2_40689553",
+      "range": {
+        "startLine": 1797,
+        "startChar": 9,
+        "endLine": 1797,
+        "endChar": 45
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "1c79bec1_3e9b1131",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789890ad_6251ea76",
+      "range": {
+        "startLine": 1813,
+        "startChar": 43,
+        "endLine": 1813,
+        "endChar": 48
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b83bf49_bd587908",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2019-07-05T09:17:40Z",
       "side": 1,
       "message": "... before fork",
+      "range": {
+        "startLine": 1823,
+        "startChar": 48,
+        "endLine": 1823,
+        "endChar": 64
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19290799_f71dd9b3",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "No, that\u0027s concurrently - the map is populated while the child is running.",
+      "parentUuid": "1b83bf49_bd587908",
       "range": {
         "startLine": 1823,
         "startChar": 48,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "da1423b0_befb145f",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "In case there is no method in the profile, or if the allocation fails.",
+      "parentUuid": "e03a2550_fdc08d5a",
+      "range": {
+        "startLine": 1837,
+        "startChar": 11,
+        "endLine": 1837,
+        "endChar": 22
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bed93b81_32bd16e6",
         "filename": "runtime/jit/jit_code_cache.cc",
         "patchSetId": 3
@@ -183,6 +351,30 @@
       "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d64bd2b_708788cb",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed93b81_32bd16e6",
+      "range": {
+        "startLine": 1847,
+        "startChar": 2,
+        "endLine": 1847,
+        "endChar": 16
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "28372e2a_0a9972b4",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7f9cc8e_be546306",
+      "range": {
+        "startLine": 1857,
+        "startChar": 4,
+        "endLine": 1857,
+        "endChar": 35
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55c79c9f_c25a1a8f",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 3
@@ -223,6 +439,24 @@
       "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a468d9e_2dd0dd33",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-05T09:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c79c9f_c25a1a8f",
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
