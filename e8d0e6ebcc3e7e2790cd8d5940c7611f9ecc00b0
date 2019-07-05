@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f968ad_7c44f05b",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T10:18:25Z",
+      "side": 1,
+      "message": "Remove or replace with \"new entries\".\n\nMy previous comment was closely related to the one on line 1823 in PS3 where you corrected me.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 49,
+        "endLine": 1814,
+        "endChar": 63
+      },
+      "revId": "e8d0e6ebcc3e7e2790cd8d5940c7611f9ecc00b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
