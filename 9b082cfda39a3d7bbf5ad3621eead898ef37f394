@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46c7529f_900c4726",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "0u",
+      "range": {
+        "startLine": 781,
+        "startChar": 28,
+        "endLine": 781,
+        "endChar": 29
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d087bac_13df5f7d",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "Because of the RoundUpToPowerOfTwo() this is between 35% and 70%. Maybe 40%-80% would be good enough.",
+      "range": {
+        "startLine": 1780,
+        "startChar": 18,
+        "endLine": 1780,
+        "endChar": 21
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90be7763_4a7e29f3",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "empty()",
+      "range": {
+        "startLine": 1790,
+        "startChar": 11,
+        "endLine": 1790,
+        "endChar": 22
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f360dcf2_40689553",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1797,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "const Entry\u0026 entry : map_",
+      "range": {
+        "startLine": 1797,
+        "startChar": 9,
+        "endLine": 1797,
+        "endChar": 45
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "789890ad_6251ea76",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "... code pointers",
+      "range": {
+        "startLine": 1813,
+        "startChar": 43,
+        "endLine": 1813,
+        "endChar": 48
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b83bf49_bd587908",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1823,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "... before fork",
+      "range": {
+        "startLine": 1823,
+        "startChar": 48,
+        "endLine": 1823,
+        "endChar": 64
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e03a2550_fdc08d5a",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1837,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "empty()\n\nCan this happen?",
+      "range": {
+        "startLine": 1837,
+        "startChar": 11,
+        "endLine": 1837,
+        "endChar": 22
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed93b81_32bd16e6",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "Unnecessary, I think. That warning is only enabled in debug builds where the DCHECK() below uses this.",
+      "range": {
+        "startLine": 1847,
+        "startChar": 2,
+        "endLine": 1847,
+        "endChar": 16
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f9cc8e_be546306",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "Or you could remember the initial index and DCHECK_NE().\n\nThe loop in GetCodeFor() is the same, so it should have an identical DCHECK().",
+      "range": {
+        "startLine": 1857,
+        "startChar": 4,
+        "endLine": 1857,
+        "endChar": 35
+      },
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55c79c9f_c25a1a8f",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-05T09:17:40Z",
+      "side": 1,
+      "message": "#include \"base/array_ref.h\"",
+      "revId": "9b082cfda39a3d7bbf5ad3621eead898ef37f394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
