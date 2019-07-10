@@ -36,7 +36,7 @@
   V(0x0E, RETURN_VOID, "return-void", k10x, kIndexNone, kReturn, 0, kVerifyNothing) \
   V(0x0F, RETURN, "return", k11x, kIndexNone, kReturn, 0, kVerifyRegA) \
   V(0x10, RETURN_WIDE, "return-wide", k11x, kIndexNone, kReturn, 0, kVerifyRegAWide) \
-  V(0x11, RETURN_OBJECT, "return-object", k11x, kIndexNone, kReturn, 0, kVerifyRegA) \
+  V(0x11, RETURN_OBJECT, "return-object", k11x, kIndexNone, kReturn | kCompatThrow, 0, kVerifyRegA) \
   V(0x12, CONST_4, "const/4", k11n, kIndexNone, kContinue, kRegBFieldOrConstant, kVerifyRegA) \
   V(0x13, CONST_16, "const/16", k21s, kIndexNone, kContinue, kRegBFieldOrConstant, kVerifyRegA) \
   V(0x14, CONST, "const", k31i, kIndexNone, kContinue, kRegBFieldOrConstant, kVerifyRegA) \

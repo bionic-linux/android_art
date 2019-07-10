@@ -2052,7 +2052,8 @@ bool MethodVerifier<kVerifierDebug>::CodeFlowVerifyInstruction(uint32_t* start_g
    * from the "successful" code path (e.g. a check-cast that "improves"
    * a type) to be visible to the exception handler.
    */
-  if ((opcode_flags & Instruction::kThrow) != 0 && CurrentInsnFlags()->IsInTry()) {
+  if ((opcode_flags & (Instruction::kThrow | Instruction::kCompatThrow)) != 0 &&
+      CurrentInsnFlags()->IsInTry()) {
     saved_line_->CopyFromLine(work_line_.get());
   } else if (kIsDebugBuild) {
     saved_line_->FillWithGarbage();
@@ -5556,7 +5557,7 @@ std::ostream& MethodVerifier::Fail(VerifyError error, bool pending_exc) {
             const Instruction& inst = code_item_accessor_.InstructionAt(work_insn_idx_);
             int opcode_flags = Instruction::FlagsOf(inst.Opcode());
 
-            if ((opcode_flags & Instruction::kThrow) == 0 &&
+            if ((opcode_flags & (Instruction::kThrow | Instruction::kCompatThrow)) == 0 &&
                 GetInstructionFlags(work_insn_idx_).IsInTry()) {
               saved_line_->CopyFromLine(work_line_.get());
             }

@@ -142,14 +142,15 @@ class Instruction {
   };
 
   enum Flags : uint8_t {
-    kBranch              = 0x01,  // conditional or unconditional branch
-    kContinue            = 0x02,  // flow can continue to next statement
-    kSwitch              = 0x04,  // switch statement
-    kThrow               = 0x08,  // could cause an exception to be thrown
-    kReturn              = 0x10,  // returns, no additional statements
-    kInvoke              = 0x20,  // a flavor of invoke
-    kUnconditional       = 0x40,  // unconditional branch
-    kExperimental        = 0x80,  // is an experimental opcode
+    kBranch              =  0x01,  // conditional or unconditional branch
+    kContinue            =  0x02,  // flow can continue to next statement
+    kSwitch              =  0x04,  // switch statement
+    kThrow               =  0x08,  // could cause an exception to be thrown
+    kReturn              =  0x10,  // returns, no additional statements
+    kInvoke              =  0x20,  // a flavor of invoke
+    kUnconditional       =  0x40,  // unconditional branch
+    kExperimental        =  0x80,  // is an experimental opcode
+    kCompatThrow         = 0x100,  // may end up throwing for compatibility reasons
   };
 
   // Old flags. Keeping them around in case we might need them again some day.
