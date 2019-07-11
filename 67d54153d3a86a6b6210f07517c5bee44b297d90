@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8b5a5d2_74bf5046",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-11T20:05:31Z",
+      "side": 1,
+      "message": "While CPU time would be interesting, but I don\u0027t know how you can do this with our current setup and getrusage. The problem with RUSAGE_CHILDREN is that it would get all children, including other children running (more precisely having finished) in parallel? Extending the runner to report its BOTH time sounds a bit complicated.\n\nI guess maybe with a ProcessPoolExecutor? But I don\u0027t really know. So I\u0027ll leave this for a follow-up, wallclock is good enough for my purposes.",
+      "parentUuid": "24600a88_e5a395d8",
+      "range": {
+        "startLine": 537,
+        "startChar": 24,
+        "endLine": 537,
+        "endChar": 45
+      },
+      "revId": "67d54153d3a86a6b6210f07517c5bee44b297d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f592545b_712874ee",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7a718646_e157eb5f",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-11T20:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f592545b_712874ee",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 569,
+        "endChar": 104
+      },
+      "revId": "67d54153d3a86a6b6210f07517c5bee44b297d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47f54da8_31e68932",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-10T17:30:22Z",
       "side": 1,
       "message": "I\u0027d add the time unit to this string format.",
+      "range": {
+        "startLine": 598,
+        "startChar": 14,
+        "endLine": 598,
+        "endChar": 20
+      },
+      "revId": "67d54153d3a86a6b6210f07517c5bee44b297d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b0d81a_27f9a06c",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-11T20:05:31Z",
+      "side": 1,
+      "message": "str(timedelta) already has a well-defined format. Sample of this output:\n\n  (0:00:02.671911)",
+      "parentUuid": "47f54da8_31e68932",
       "range": {
         "startLine": 598,
         "startChar": 14,
