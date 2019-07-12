@@ -226,6 +226,10 @@ art_cc_library {
                 shared_libs: [
                     "libvixl",
                 ],
+                // Export vixl headers as they are included in this library's exported headers.
+                export_shared_lib_headers: [
+                    "libvixl",
+                ],
             },
         },
         arm64: {
@@ -237,6 +241,10 @@ art_cc_library {
             },
             shared: {
                 shared_libs: [
+                    "libvixl",
+                ],
+                // Export vixl headers as they are included in this library's exported headers.
+                export_shared_lib_headers: [
                     "libvixl",
                 ],
             },
@@ -290,6 +298,10 @@ art_cc_library {
                 shared_libs: [
                     "libvixld",
                 ],
+                // Export vixl headers as they are included in this library's exported headers.
+                export_shared_lib_headers: [
+                    "libvixld",
+                ],
             },
         },
         arm64: {
@@ -301,6 +313,10 @@ art_cc_library {
             },
             shared: {
                 shared_libs: [
+                    "libvixld",
+                ],
+                // Export vixl headers as they are included in this library's exported headers.
+                export_shared_lib_headers: [
                     "libvixld",
                 ],
             },
