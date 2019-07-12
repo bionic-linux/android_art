@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2d3021c7_ffdbe68b",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-12T17:29:16Z",
+      "side": 1,
+      "message": "RUSAGE_CHILDREN returns \"resource usage statistics for all children of the calling process that have terminated and been waited for\". So basically keep a global variable children_accumulated_time and then something like this after proc.wait() below:\n\n   rusage \u003d resource.getrusage(resource.RUSAGE_CHILDREN)\n   test_end_time \u003d rusage.ru_utime + rusage.ru_stime\n   test_time \u003d test_end_time - children_accumulated_time\n   children_accumulated_time \u003d test_end_time\n\nStill a risk for races, which can be fixed with a dedicated wait thread. Even without that I\u0027d say it\u0027s overall a lot less of a lie, though.\n\n\u003e wallclock is good enough for my purposes\n\nThat\u0027s not what worries me, it\u0027s rather everyone else that might be tempted to the mistake of drawing any sort of conclusion from these numbers.\n\nBtw, if wall time is really the better option then there\u0027s time.monotonic(), at least.",
+      "parentUuid": "e8b5a5d2_74bf5046",
+      "range": {
+        "startLine": 537,
+        "startChar": 24,
+        "endLine": 537,
+        "endChar": 45
+      },
+      "revId": "67d54153d3a86a6b6210f07517c5bee44b297d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f592545b_712874ee",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 1
