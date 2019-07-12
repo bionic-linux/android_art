@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c6f2e3c6_8f7d9383",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-12T17:49:49Z",
+      "side": 1,
+      "message": "Yeah, that race risk makes this just as errorprone to me. Running the default 48 tests in parallel sounds to me like it\u0027s probably unavoidable - though I don\u0027t know how Python semantics might play into avoiding races here (right now, though I hear there are possible changes coming).\n\nAlso note a downside of CPU time: this is host side. You\u0027ll basically get \u0027~0\u0027 for target tests this way.\n\nLast but not least: using -j 1 will give approximately the time that\u0027s interesting, maybe. (Of course there\u0027s scaling across CPUs that\u0027s not captured and interesting, but)\n\n\nmonotonic is probably a good improvement. Also, what do you think about printing \"([time] wall)\" to make it clear what\u0027s listed?",
+      "parentUuid": "2d3021c7_ffdbe68b",
+      "range": {
+        "startLine": 537,
+        "startChar": 24,
+        "endLine": 537,
+        "endChar": 45
+      },
+      "revId": "67d54153d3a86a6b6210f07517c5bee44b297d90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f592545b_712874ee",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 1
