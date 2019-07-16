@@ -71,7 +71,7 @@ static constexpr const char* kAndroidRootDefaultPath = "/system";
 static constexpr const char* kAndroidDataEnvVar = "ANDROID_DATA";
 static constexpr const char* kAndroidDataDefaultPath = "/data";
 static constexpr const char* kAndroidRuntimeRootEnvVar = "ANDROID_RUNTIME_ROOT";
-static constexpr const char* kAndroidRuntimeApexDefaultPath = "/apex/com.android.runtime";
+static constexpr const char* kAndroidArtApexDefaultPath = "/apex/com.android.art";
 static constexpr const char* kAndroidConscryptRootEnvVar = "ANDROID_CONSCRYPT_ROOT";
 static constexpr const char* kAndroidConscryptApexDefaultPath = "/apex/com.android.conscrypt";
 
@@ -81,7 +81,7 @@ static constexpr const char* kAndroidConscryptApexDefaultPath = "/apex/com.andro
 // - on host this "root" is normally the Android Root (e.g. something like
 //   "$ANDROID_BUILD_TOP/out/host/linux-x86/");
 // - on target this "root" is normally the Android Runtime Root
-//   ("/apex/com.android.runtime").
+//   ("/apex/com.android.art").
 // Return the empty string if that directory cannot be found or if this code is
 // run on Windows or macOS.
 static std::string GetRootContainingLibartbase() {
@@ -187,7 +187,7 @@ static const char* GetAndroidDir(const char* env_var, const char* default_dir) {
 
 static std::string GetAndroidRuntimeRootSafe(bool must_exist, /*out*/ std::string* error_msg) {
 #ifdef _WIN32
-  UNUSED(kAndroidRuntimeRootEnvVar, kAndroidRuntimeApexDefaultPath, GetRootContainingLibartbase);
+  UNUSED(kAndroidRuntimeRootEnvVar, kAndroidArtApexDefaultPath, GetRootContainingLibartbase);
   UNUSED(must_exist);
   *error_msg = "GetAndroidRuntimeRootSafe unsupported for Windows.";
   return "";
@@ -206,7 +206,7 @@ static std::string GetAndroidRuntimeRootSafe(bool must_exist, /*out*/ std::strin
 
   // On target, libartbase is normally installed in
   // "$ANDROID_RUNTIME_ROOT/lib(64)" (e.g. something like
-  // "/apex/com.android.runtime/lib(64)". Use this information to infer the
+  // "/apex/com.android.art/lib(64)". Use this information to infer the
   // location of the Android Runtime Root (on target only).
   if (kIsTargetBuild) {
     // *However*, a copy of libartbase may still be installed outside the
@@ -229,12 +229,12 @@ static std::string GetAndroidRuntimeRootSafe(bool must_exist, /*out*/ std::strin
   }
 
   // Try the default path.
-  if (must_exist && !OS::DirectoryExists(kAndroidRuntimeApexDefaultPath)) {
+  if (must_exist && !OS::DirectoryExists(kAndroidArtApexDefaultPath)) {
     *error_msg = StringPrintf("Failed to find default Android Runtime Root directory %s",
-                              kAndroidRuntimeApexDefaultPath);
+                              kAndroidArtApexDefaultPath);
     return "";
   }
-  return kAndroidRuntimeApexDefaultPath;
+  return kAndroidArtApexDefaultPath;
 #endif
 }
 
@@ -254,11 +254,11 @@ std::string GetAndroidRuntimeRoot() {
 
 std::string GetAndroidRuntimeBinDir() {
   // Environment variable `ANDROID_RUNTIME_ROOT` is defined as
-  // `$ANDROID_HOST_OUT/com.android.runtime` on host. However, host ART binaries
+  // `$ANDROID_HOST_OUT/com.android.art` on host. However, host ART binaries
   // are still installed in `$ANDROID_HOST_OUT/bin` (i.e. outside the Android
   // Runtime Root). The situation is cleaner on target, where
-  // `ANDROID_RUNTIME_ROOT` is `$ANDROID_ROOT/apex/com.android.runtime` and ART
-  // binaries are installed in `$ANDROID_ROOT/apex/com.android.runtime/bin`.
+  // `ANDROID_RUNTIME_ROOT` is `$ANDROID_ROOT/apex/com.android.art` and ART
+  // binaries are installed in `$ANDROID_ROOT/apex/com.android.art/bin`.
   std::string android_runtime_root = kIsTargetBuild ? GetAndroidRuntimeRoot() : GetAndroidRoot();
   return android_runtime_root + "/bin";
 }
@@ -474,7 +474,7 @@ bool RuntimeModuleRootDistinctFromAndroidRoot() {
                                                /* must_exist= */ kIsTargetBuild,
                                                &error_msg);
   const char* runtime_root = GetAndroidDirSafe(kAndroidRuntimeRootEnvVar,
-                                               kAndroidRuntimeApexDefaultPath,
+                                               kAndroidArtApexDefaultPath,
                                                /* must_exist= */ kIsTargetBuild,
                                                &error_msg);
   return (android_root != nullptr)

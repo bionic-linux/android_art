@@ -1,4 +1,4 @@
-// Android Runtime APEX module.
+// Android Runtime and ART APEX modules.
 
 // Modules listed in LOCAL_REQUIRED_MODULES for module art-runtime in art/Android.mk.
 // - Base requirements (binaries for which both 32- and 64-bit versions are built, if relevant).
@@ -14,14 +14,14 @@ art_runtime_base_binaries_prefer32 = [
 // - Base requirements (libraries).
 //
 // Note: ART on-device chroot-based testing and benchmarking is not yet using
-// the Runtime APEX, meaning that copies of some of these libraries have to be
+// the ART APEX, meaning that copies of some of these libraries have to be
 // installed in `/system` for the ART Buildbot set-up to work properly. This is
 // done by the `standalone-apex-files` Make phony target, used by the ART
 // Buildbot and Golem (see `art/Android.mk`). If you add libraries to this list,
 // you may have to also add them to `PRIVATE_RUNTIME_DEPENDENCY_LIBS` in
 // `art/Android.mk`.
 // TODO(b/121117762): Remove this note when both the ART Buildbot and Golem use
-// the Runtime APEX.
+// the ART APEX.
 art_runtime_base_native_shared_libs = [
     // External API (having APEX stubs).
     "libdexfile_external",
@@ -126,7 +126,7 @@ art_tools_host_only_binaries = [
     "hprof-conv",
 ]
 
-// Libraries needed to use com.android.runtime.host for zipapex run-tests
+// Libraries needed to use com.android.art.host for zipapex run-tests
 art_runtime_host_run_test_libs = [
     "libartd-disassembler",
 ]
@@ -143,14 +143,14 @@ libcore_java_libs = [
 // Native libraries that support the core Java libraries.
 //
 // Note: ART on-device chroot-based testing and benchmarking is not yet using
-// the Runtime APEX, meaning that copies of some of these libraries have to be
+// the ART APEX, meaning that copies of some of these libraries have to be
 // installed in `/system` for the ART Buildbot set-up to work properly. This is
 // done by the `standalone-apex-files` Make phony target, used by the ART
 // Buildbot and Golem (see `art/Android.mk`). If you add libraries to this list,
 // you may have to also add them to `PRIVATE_RUNTIME_DEPENDENCY_LIBS` in
 // `art/Android.mk`.
 // TODO(b/121117762): Remove this note when both the ART Buildbot and Golem use
-// the Runtime APEX.
+// the ART APEX.
 libcore_native_shared_libs = [
     // External API (having APEX stubs).
     "libandroidicu",
@@ -238,7 +238,7 @@ prebuilt_etc {
     installable: false,
 }
 
-// Default values shared by device Runtime APEXes.
+// Default values shared by device ART APEXes.
 apex_defaults {
     name: "com.android.art-defaults",
     compile_multilib: "both",
@@ -272,7 +272,7 @@ apex_defaults {
     required: ["art_apex_boot_integrity"],
 }
 
-// Release version of the Runtime APEX module (not containing debug
+// Release version of the ART APEX module (not containing debug
 // variants nor tools), included in user builds. Also used for
 // storage-constrained devices in userdebug and eng builds.
 apex {
@@ -281,7 +281,7 @@ apex {
     certificate: ":com.android.art.release.certificate",
 }
 
-// "Debug" version of the Runtime APEX module (containing both release and
+// "Debug" version of the ART APEX module (containing both release and
 // debug variants, as well as additional tools), included in userdebug and
 // eng build.
 apex {

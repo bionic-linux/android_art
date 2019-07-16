@@ -110,9 +110,9 @@ function fail_check {
 # Test all modules
 
 apex_modules=(
-  "com.android.runtime.release"
-  "com.android.runtime.debug"
-  "com.android.runtime.host"
+  "com.android.art.release"
+  "com.android.art.debug"
+  "com.android.art.host"
 )
 
 # Build the APEX packages (optional).
