@@ -1491,9 +1491,6 @@ extern "C" const void* artQuickResolutionTrampoline(
       } else if (invoke_type == kStatic) {
         // Class is still initializing, go to JIT or oat and grab code (trampoline must be
         // left in place until class is initialized to stop races between threads).
-        if (Runtime::Current()->GetJit() != nullptr) {
-          code = Runtime::Current()->GetJit()->GetCodeCache()->GetZygoteSavedEntryPoint(called);
-        }
         if (code == nullptr) {
           code = linker->GetQuickOatCodeFor(called);
         }
