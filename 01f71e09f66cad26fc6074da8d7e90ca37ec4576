@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf3692fd_4e1f68a7",
+        "filename": "runtime/entrypoints/quick/quick_trampoline_entrypoints.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-18T08:47:46Z",
+      "side": 1,
+      "message": "Always true now.",
+      "range": {
+        "startLine": 1494,
+        "startChar": 12,
+        "endLine": 1494,
+        "endChar": 27
+      },
+      "revId": "01f71e09f66cad26fc6074da8d7e90ca37ec4576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e6a53d6_ff912379",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-07-18T08:47:46Z",
+      "side": 1,
+      "message": "Do we need to update JIT GC to deal with this map?",
+      "range": {
+        "startLine": 471,
+        "startChar": 35,
+        "endLine": 471,
+        "endChar": 62
+      },
+      "revId": "01f71e09f66cad26fc6074da8d7e90ca37ec4576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
