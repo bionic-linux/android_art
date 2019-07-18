@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f843a1f0_ba2969d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-18T20:09:48Z",
+      "side": 1,
+      "message": "Is this something that already exists?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2143a7e_d2878d04",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-18T20:09:48Z",
+      "side": 1,
+      "message": "Is it worth controlling visibility within the /art tree?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 43
+      },
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e8756f_cff43728",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-18T20:09:48Z",
+      "side": 1,
+      "message": "I might be wrong, but this makes the include files in turn include headers from a prebuilt NDK version, doesn\u0027t it? That might cause compilation problems with other translation units, and linking might happen to different versions of the libs.\n\nThat doesn\u0027t look like an immediate problem here, because I cannot find any other use of this header module. Still, I suggest changing its name to libart_runtime_headers_ndk to point out that it depends on the NDK.",
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
