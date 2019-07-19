@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6026552a_663bff48",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-19T14:19:17Z",
+      "side": 1,
+      "message": "IS libunwind the reason we need a thread local value?",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dae5b50_6905ce7e",
+        "filename": "runtime/hidden_api_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-19T14:19:17Z",
+      "side": 1,
+      "message": "calling",
+      "range": {
+        "startLine": 36,
+        "startChar": 42,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcb4fc24_af6ccade",
+        "filename": "runtime/hidden_api_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-19T14:19:17Z",
+      "side": 1,
+      "message": "Use ValueObject instead?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
