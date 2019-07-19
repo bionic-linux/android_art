@@ -128,6 +128,24 @@
       "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fe9acd0_eead9c18",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-19T17:07:09Z",
+      "side": 1,
+      "message": "My concern is that this might affect the -I options but not -L, causing a potential mismatch between compiled and linked symbols. I think I saw some problems along those lines when I investigated moving all of ART/libcore to NDK, but I\u0027m not sure.",
+      "parentUuid": "3cf39a50_9ad6c8f9",
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
