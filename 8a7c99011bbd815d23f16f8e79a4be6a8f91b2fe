@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "604664cb_3a0891e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-19T10:10:29Z",
+      "side": 1,
+      "message": "No. The neverallow mechanism provides a framework that can be extended to do this sorts of checks but it does not support this specific use case it at the moment.",
+      "parentUuid": "f843a1f0_ba2969d9",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 28
+      },
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2143a7e_d2878d04",
         "filename": "libdexfile/Android.bp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "91362689_320ff784",
+        "filename": "libdexfile/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-19T10:10:29Z",
+      "side": 1,
+      "message": "Probably not.",
+      "parentUuid": "b2143a7e_d2878d04",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 43
+      },
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51e8756f_cff43728",
         "filename": "runtime/Android.bp",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cf39a50_9ad6c8f9",
+        "filename": "runtime/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-19T10:10:29Z",
+      "side": 1,
+      "message": "Renamed as requested.\n\nFYI cc_library_headers only provides headers so should not affect linking. Based on similar changes I have made elsewhere switching a cc_library_headers module to build against the NDK has no adverse effect on targets that depend upon it, whether they themselves build against the NDK or not.",
+      "parentUuid": "51e8756f_cff43728",
+      "revId": "8a7c99011bbd815d23f16f8e79a4be6a8f91b2fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
