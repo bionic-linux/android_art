@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "49e00b3d_77a959dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-22T16:50:14Z",
+      "side": 1,
+      "message": "Can you give reasons for this design (commit message or code docs)? It requires mixing code as a downside, so the upside should be made explicit.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c7b444b_cb74f97b",
         "filename": "runtime/hidden_api_jni.cc",
         "patchSetId": 3
@@ -13,6 +36,52 @@
       "writtenOn": "2019-07-22T08:57:09Z",
       "side": 1,
       "message": "Line too long",
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e97ee2_b5ac8470",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-22T16:50:14Z",
+      "side": 1,
+      "message": "A thread_local is relatively expensive. You already require instrumenting core classes. So add to Thread, instead?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 12
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43bf7680_9d6c2afd",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-22T16:50:14Z",
+      "side": 1,
+      "message": "I don\u0027t like this. It means it\u0027s really hard to figure out whether the instrumentation is actually complete.\n\nThis needs at least documentation on what the expected null cases are (and if possible debug checks).",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 23
+      },
       "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
