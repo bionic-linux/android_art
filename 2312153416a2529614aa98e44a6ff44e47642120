@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53b2c816_97eba75c",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-22T08:45:21Z",
+      "side": 1,
+      "message": "A thread_local is used because the checked JNI methods call the equivalent methods on the non-checked* JNI methods and we can\u0027t change those interfaces. e.g.\n\n  GetFieldID is a method in the native JNI interface.\n\n  GetFieldID() [ checked_jni.cc ] calls\n    GetFieldIDInternal [ checked_jni.cc ] calls\n      GetFieldID() [ jni_internal.cc ]\n\n* Actually calls base(env), but standard redirection is to plain JNI methods.",
+      "parentUuid": "6026552a_663bff48",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 12
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3dae5b50_6905ce7e",
         "filename": "runtime/hidden_api_jni.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "45facd86_56320fce",
+        "filename": "runtime/hidden_api_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-22T08:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dae5b50_6905ce7e",
+      "range": {
+        "startLine": 36,
+        "startChar": 42,
+        "endLine": 36,
+        "endChar": 50
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcb4fc24_af6ccade",
         "filename": "runtime/hidden_api_jni.h",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "2312153416a2529614aa98e44a6ff44e47642120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3551dce_a44d90d3",
+        "filename": "runtime/hidden_api_jni.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-22T08:45:21Z",
+      "side": 1,
+      "message": "Used DISALLOW_ALLOCATION() from base/macros.h.",
+      "parentUuid": "dcb4fc24_af6ccade",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "2312153416a2529614aa98e44a6ff44e47642120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
