@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a94d354_694806ee",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T16:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0ca8c5_09ad4bdb",
+      "range": {
+        "startLine": 221,
+        "startChar": 100,
+        "endLine": 221,
+        "endChar": 104
+      },
+      "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80ea0f6_92ea599f",
         "filename": "runtime/hidden_api_jni.cc",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7049b36e_92549a57",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T16:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80ea0f6_92ea599f",
+      "range": {
+        "startLine": 229,
+        "startChar": 100,
+        "endLine": 229,
+        "endChar": 104
+      },
+      "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d9558a6a_3b91acfc",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T16:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "601581bf_e52ac114",
+      "range": {
+        "startLine": 91,
+        "startChar": 100,
+        "endLine": 91,
+        "endChar": 105
+      },
+      "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78562284_2745d7ce",
         "filename": "runtime/jni/jni_internal.cc",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afac2044_3dec4a6f",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T16:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78562284_2745d7ce",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 6
+      },
+      "revId": "86a89d019a3ffbf8b550d2496f783e4b0a010291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
