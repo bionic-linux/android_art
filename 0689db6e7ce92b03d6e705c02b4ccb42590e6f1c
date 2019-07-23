@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "217126be_c94decf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-23T15:13:25Z",
+      "side": 1,
+      "message": "Nope, comments are OK with me. There are trade-offs everywhere. Just wanted documentation that indicates why we\u0027re doing it.",
+      "parentUuid": "7cf4c177_b8611c9f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c7b444b_cb74f97b",
         "filename": "runtime/hidden_api_jni.cc",
         "patchSetId": 3
