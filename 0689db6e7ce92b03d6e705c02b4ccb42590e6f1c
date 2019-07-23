@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7cf4c177_b8611c9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T14:01:13Z",
+      "side": 1,
+      "message": "There are more comments in the commit message and code. Not sure if this will address your concern, but if you see a better approach, totally fine to go with that. This is an irksome piece of code to have in the run-time.",
+      "parentUuid": "49e00b3d_77a959dc",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c7b444b_cb74f97b",
         "filename": "runtime/hidden_api_jni.cc",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597c3eb9_10b7454a",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T14:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c7b444b_cb74f97b",
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8066d065_219210dc",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T14:01:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e97ee2_b5ac8470",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 12
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43bf7680_9d6c2afd",
         "filename": "runtime/jni/jni_internal.cc",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0acc3594_0d0ba3bc",
+        "filename": "runtime/jni/jni_internal.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-23T14:01:13Z",
+      "side": 1,
+      "message": "Gone.",
+      "parentUuid": "43bf7680_9d6c2afd",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 92,
+        "endChar": 23
+      },
+      "revId": "0689db6e7ce92b03d6e705c02b4ccb42590e6f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
