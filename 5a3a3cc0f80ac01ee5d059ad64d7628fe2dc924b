@@ -46,6 +46,30 @@
       "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5976239f_76535a9b",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-24T16:38:39Z",
+      "side": 1,
+      "message": "Not bit_struct, that seems overkill. Simple bit_cast to cast the struct to and from a uint32_t in a not-UB manner, instead of using a union.",
+      "parentUuid": "898e8cf1_cbebe27b",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
