@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96d08edc_8eb2a4c0",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T08:24:51Z",
+      "side": 1,
+      "message": "Not sure I understand the relation \"storing dex files -\u003e make it static\" ? Also note that this mimics the ProfileCompilationInfo API with bool Load / bool Save.",
+      "parentUuid": "18e48c19_9eb8f5f6",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d747cf9b_5f8a2ea2",
         "filename": "libprofile/profile/profile_boot_info.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4449f734_a8ace21b",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T08:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d747cf9b_5f8a2ea2",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24fa1ad8_7cdb9ccc",
         "filename": "libprofile/profile/profile_boot_info_test.cc",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-07-24T08:10:32Z",
       "side": 1,
       "message": "move this last to verify that the ordering is preserve (not sorted).",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d844ec5f_95f2714e",
+        "filename": "libprofile/profile/profile_boot_info_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T08:24:51Z",
+      "side": 1,
+      "message": "Good idea! Done.",
+      "parentUuid": "24fa1ad8_7cdb9ccc",
       "range": {
         "startLine": 75,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b51ede35_438b4558",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T08:24:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69868bfe_ec123bf4",
+      "range": {
+        "startLine": 1112,
+        "startChar": 6,
+        "endLine": 1112,
+        "endChar": 23
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
