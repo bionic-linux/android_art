@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1627f765_a147e990",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-24T15:42:15Z",
+      "side": 1,
+      "message": "Just out of curiosity, why not bool? Is this to somehow to not make this undefined behavior (seems there\u0027s some indication that that may be possible when the types are the same?), please document.\n\n(May in general be better to avoid any such issue in general and use bit_cast?)",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
