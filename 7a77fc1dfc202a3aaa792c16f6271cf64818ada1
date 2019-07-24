@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e48c19_9eb8f5f6",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-24T08:10:32Z",
+      "side": 1,
+      "message": "since this stores the dex_files, consider making it static an return a ProfileBootInfo*.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d747cf9b_5f8a2ea2",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-24T08:10:32Z",
+      "side": 1,
+      "message": "add docs about the meaning of the pair.",
+      "range": {
+        "startLine": 62,
+        "startChar": 45,
+        "endLine": 62,
+        "endChar": 53
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fa1ad8_7cdb9ccc",
+        "filename": "libprofile/profile/profile_boot_info_test.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-24T08:10:32Z",
+      "side": 1,
+      "message": "move this last to verify that the ordering is preserve (not sorted).",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 41
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69868bfe_ec123bf4",
+        "filename": "profman/profman.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-24T08:10:32Z",
+      "side": 1,
+      "message": "Add some docs on the differences between this method and CreateBootImageProfile.\n\n(The later is obsolete now actually, since we no longer use it to generate the current boot profile.)",
+      "range": {
+        "startLine": 1112,
+        "startChar": 6,
+        "endLine": 1112,
+        "endChar": 23
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
