@@ -22,6 +22,30 @@
       "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898e8cf1_cbebe27b",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-24T16:08:25Z",
+      "side": 1,
+      "message": "There wasn\u0027t a conscious choice not to use bool, rather just a decision that a single bit was necessary to represent the value.\n\nI don\u0027t think bit_struct solves any issues here, but if it doesn\u0027t add any bloat then we can do that.",
+      "parentUuid": "1627f765_a147e990",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
