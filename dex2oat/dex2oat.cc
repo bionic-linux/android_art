@@ -1470,7 +1470,7 @@ class Dex2Oat final {
         Runtime* runtime = Runtime::Current();
         key_value_store_->Put(OatHeader::kBootClassPathKey,
                               android::base::Join(runtime->GetBootClassPathLocations(), ':'));
-        std::vector<ImageSpace*> image_spaces = runtime->GetHeap()->GetBootImageSpaces();
+        ArrayRef<ImageSpace* const> image_spaces(runtime->GetHeap()->GetBootImageSpaces());
         const std::vector<const DexFile*>& bcp_dex_files =
             runtime->GetClassLinker()->GetBootClassPath();
         key_value_store_->Put(
