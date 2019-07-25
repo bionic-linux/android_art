@@ -70,6 +70,30 @@
       "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f19976e_900f0231",
+        "filename": "runtime/hidden_api_jni.cc",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-07-25T08:00:09Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "5976239f_76535a9b",
+      "range": {
+        "startLine": 229,
+        "startChar": 6,
+        "endLine": 229,
+        "endChar": 14
+      },
+      "revId": "5a3a3cc0f80ac01ee5d059ad64d7628fe2dc924b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
