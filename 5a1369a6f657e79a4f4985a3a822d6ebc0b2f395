@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a001402b_b08501e6",
+        "filename": "libprofile/profile/profile_boot_info.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-25T02:18:51Z",
+      "side": 1,
+      "message": "I think you need to abort here. Otherwise you may read up indices that do not correspond to an element from dex_file_",
+      "range": {
+        "startLine": 90,
+        "startChar": 6,
+        "endLine": 90,
+        "endChar": 81
+      },
+      "revId": "5a1369a6f657e79a4f4985a3a822d6ebc0b2f395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e3e5d7_9799c863",
+        "filename": "libprofile/profile/profile_boot_info.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-25T02:18:51Z",
+      "side": 1,
+      "message": "Can you read the individual elements separably? It will offer protection if the pair type changes (e.g. uint32_t -\u003e uint16_t which may add padding)",
+      "range": {
+        "startLine": 97,
+        "startChar": 21,
+        "endLine": 97,
+        "endChar": 75
+      },
+      "revId": "5a1369a6f657e79a4f4985a3a822d6ebc0b2f395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e880e7b_6089ee04",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-25T02:18:51Z",
+      "side": 1,
+      "message": "I\u0027d move to cc. If there\u0027s a need to add a LOG here for debugging, it will be a pain to recompile :)",
+      "range": {
+        "startLine": 40,
+        "startChar": 7,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "5a1369a6f657e79a4f4985a3a822d6ebc0b2f395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99088d32_2c87f2a2",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-25T02:18:51Z",
+      "side": 1,
+      "message": "maybe use uint16_t?",
+      "range": {
+        "startLine": 71,
+        "startChar": 34,
+        "endLine": 71,
+        "endChar": 42
+      },
+      "revId": "5a1369a6f657e79a4f4985a3a822d6ebc0b2f395",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

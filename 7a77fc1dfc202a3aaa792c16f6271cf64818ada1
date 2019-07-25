@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "852cdaa3_d20b2e83",
+        "filename": "libprofile/profile/profile_boot_info.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-25T02:18:51Z",
+      "side": 1,
+      "message": "I was referring to the fact that the dex_files will be persisted in the object as well.\n\nMaybe adding a doc line saying that the BootProfileInfo will store internally the dex files pointers will be enough.",
+      "parentUuid": "96d08edc_8eb2a4c0",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "7a77fc1dfc202a3aaa792c16f6271cf64818ada1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d747cf9b_5f8a2ea2",
         "filename": "libprofile/profile/profile_boot_info.h",
         "patchSetId": 1
