@@ -37,6 +37,7 @@
 #include "base/os.h"
 #include "base/scoped_flock.h"
 #include "base/stl_util.h"
+#include "base/string_view_cpp20.h"
 #include "base/systrace.h"
 #include "base/time_utils.h"
 #include "base/utils.h"
@@ -2350,100 +2351,52 @@ bool ImageSpace::ValidateOatFile(const OatFile& oat_file, std::string* error_msg
   return true;
 }
 
-std::string ImageSpace::GetBootClassPathChecksums(ArrayRef<const std::string> boot_class_path,
-                                                  const std::string& image_location,
-                                                  InstructionSet image_isa,
-                                                  ImageSpaceLoadingOrder order,
-                                                  /*out*/std::string* error_msg) {
-  std::string system_filename;
-  bool has_system = false;
-  std::string cache_filename;
-  bool has_cache = false;
-  bool dalvik_cache_exists = false;
-  bool is_global_cache = false;
-  if (!FindImageFilename(image_location.c_str(),
-                         image_isa,
-                         &system_filename,
-                         &has_system,
-                         &cache_filename,
-                         &dalvik_cache_exists,
-                         &has_cache,
-                         &is_global_cache)) {
-    *error_msg = StringPrintf("Unable to find image file for %s and %s",
-                              image_location.c_str(),
-                              GetInstructionSetString(image_isa));
-    return std::string();
-  }
-
-  DCHECK(has_system || has_cache);
-  const std::string& filename = (order == ImageSpaceLoadingOrder::kSystemFirst)
-      ? (has_system ? system_filename : cache_filename)
-      : (has_cache ? cache_filename : system_filename);
-  std::unique_ptr<ImageHeader> header = ReadSpecificImageHeader(filename.c_str(), error_msg);
-  if (header == nullptr) {
-    return std::string();
-  }
-  if (header->GetComponentCount() == 0u || header->GetComponentCount() > boot_class_path.size()) {
-    *error_msg = StringPrintf("Unexpected component count in %s, received %u, "
-                                  "expected non-zero and <= %zu",
-                              filename.c_str(),
-                              header->GetComponentCount(),
-                              boot_class_path.size());
-    return std::string();
-  }
-
-  std::string boot_image_checksum =
-      StringPrintf("i;%d/%08x", header->GetComponentCount(), header->GetImageChecksum());
-  ArrayRef<const std::string> boot_class_path_tail =
-      ArrayRef<const std::string>(boot_class_path).SubArray(header->GetComponentCount());
-  for (const std::string& bcp_filename : boot_class_path_tail) {
-    std::vector<std::unique_ptr<const DexFile>> dex_files;
-    const ArtDexFileLoader dex_file_loader;
-    if (!dex_file_loader.Open(bcp_filename.c_str(),
-                              bcp_filename,  // The location does not matter here.
-                              /*verify=*/ false,
-                              /*verify_checksum=*/ false,
-                              error_msg,
-                              &dex_files)) {
-      return std::string();
-    }
-    DCHECK(!dex_files.empty());
-    StringAppendF(&boot_image_checksum, ":d");
-    for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
-      StringAppendF(&boot_image_checksum, "/%08x", dex_file->GetLocationChecksum());
+static void DCheckOatFileLocations(const OatFile* oat_file,
+                                   const std::vector<const DexFile*>& boot_class_path,
+                                   size_t bcp_pos) {
+  if (kIsDebugBuild) {
+    size_t num_dex_files = oat_file->GetOatDexFiles().size();
+    CHECK_NE(num_dex_files, 0u);
+    CHECK_LE(oat_file->GetOatDexFiles().size(), boot_class_path.size() - bcp_pos);
+    for (size_t i = 0; i != num_dex_files; ++i) {
+      CHECK_EQ(oat_file->GetOatDexFiles()[i]->GetDexFileLocation(),
+               boot_class_path[bcp_pos + i]->GetLocation());
     }
   }
-  return boot_image_checksum;
 }
 
 std::string ImageSpace::GetBootClassPathChecksums(
-    const std::vector<ImageSpace*>& image_spaces,
+    ArrayRef<ImageSpace* const> image_spaces,
     const std::vector<const DexFile*>& boot_class_path) {
-  size_t pos = 0u;
+  DCHECK(!boot_class_path.empty());
+  size_t bcp_pos = 0u;
   std::string boot_image_checksum;
 
-  if (!image_spaces.empty()) {
-    const ImageHeader& primary_header = image_spaces.front()->GetImageHeader();
-    uint32_t component_count = primary_header.GetComponentCount();
-    DCHECK_EQ(component_count, image_spaces.size());
-    boot_image_checksum =
-        StringPrintf("i;%d/%08x", component_count, primary_header.GetImageChecksum());
-    for (const ImageSpace* space : image_spaces) {
-      size_t num_dex_files = space->oat_file_non_owned_->GetOatDexFiles().size();
-      if (kIsDebugBuild) {
-        CHECK_NE(num_dex_files, 0u);
-        CHECK_LE(space->oat_file_non_owned_->GetOatDexFiles().size(), boot_class_path.size() - pos);
-        for (size_t i = 0; i != num_dex_files; ++i) {
-          CHECK_EQ(space->oat_file_non_owned_->GetOatDexFiles()[i]->GetDexFileLocation(),
-                   boot_class_path[pos + i]->GetLocation());
-        }
-      }
-      pos += num_dex_files;
+  for (size_t image_pos = 0u, size = image_spaces.size(); image_pos != size; ) {
+    const ImageSpace* main_space = image_spaces[image_pos];
+    // Caller must make sure that the image spaces correspond to the head of the BCP.
+    DCHECK_NE(main_space->oat_file_non_owned_->GetOatDexFiles().size(), 0u);
+    DCHECK_EQ(main_space->oat_file_non_owned_->GetOatDexFiles()[0]->GetDexFileLocation(),
+              boot_class_path[bcp_pos]->GetLocation());
+    const ImageHeader& current_header = main_space->GetImageHeader();
+    uint32_t component_count = current_header.GetComponentCount();
+    DCHECK_NE(component_count, 0u);
+    DCHECK_LE(component_count, image_spaces.size() - image_pos);
+    StringAppendF(&boot_image_checksum,
+                  "%si;%d/%08x",
+                  (image_pos == 0u) ? "" : ":",
+                  component_count,
+                  current_header.GetImageChecksum());
+    for (size_t component_index = 0; component_index != component_count; ++component_index) {
+      const ImageSpace* space = image_spaces[image_pos + component_index];
+      DCheckOatFileLocations(space->oat_file_non_owned_, boot_class_path, bcp_pos);
+      bcp_pos += space->oat_file_non_owned_->GetOatDexFiles().size();
     }
+    image_pos += component_count;
   }
 
   ArrayRef<const DexFile* const> boot_class_path_tail =
-      ArrayRef<const DexFile* const>(boot_class_path).SubArray(pos);
+      ArrayRef<const DexFile* const>(boot_class_path).SubArray(bcp_pos);
   DCHECK(boot_class_path_tail.empty() ||
          !DexFileLoader::IsMultiDexLocation(boot_class_path_tail.front()->GetLocation().c_str()));
   for (const DexFile* dex_file : boot_class_path_tail) {
@@ -2455,15 +2408,258 @@ std::string ImageSpace::GetBootClassPathChecksums(
   return boot_image_checksum;
 }
 
+static inline bool CheckAndRemoveSeparators(/*inout*/std::string_view* oat_checksums,
+                                            /*inout*/std::string_view* oat_boot_class_path) {
+  if (StartsWith(*oat_checksums, ":") && StartsWith(*oat_boot_class_path, ":")) {
+    oat_checksums->remove_prefix(1u);
+    oat_boot_class_path->remove_prefix(1u);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+bool ImageSpace::VerifyBootClassPathChecksums(std::string_view oat_checksums,
+                                              ArrayRef<const std::string> boot_class_path,
+                                              const std::string& image_location,
+                                              InstructionSet image_isa,
+                                              ImageSpaceLoadingOrder order,
+                                              /*out*/std::string* error_msg) {
+  if (oat_checksums.empty()) {
+    *error_msg = "Empty checksums.";
+    return false;
+  }
+
+  bool load_extensions = EndsWith(image_location, ":*");
+  std::string actual_image_location =
+      load_extensions ? image_location.substr(0u, image_location.size() - 2u) : image_location;
+  std::string system_filename;
+  bool has_system = false;
+  std::string cache_filename;
+  bool has_cache = false;
+  bool dalvik_cache_exists = false;
+  bool is_global_cache = false;
+  if (!FindImageFilename(actual_image_location.c_str(),
+                         image_isa,
+                         &system_filename,
+                         &has_system,
+                         &cache_filename,
+                         &dalvik_cache_exists,
+                         &has_cache,
+                         &is_global_cache)) {
+    *error_msg = StringPrintf("Unable to find image file for %s and %s",
+                              image_location.c_str(),
+                              GetInstructionSetString(image_isa));
+    return false;
+  }
+
+  DCHECK(has_system || has_cache);
+  const std::string& filename = (order == ImageSpaceLoadingOrder::kSystemFirst)
+      ? (has_system ? system_filename : cache_filename)
+      : (has_cache ? cache_filename : system_filename);
+
+  size_t bcp_size = boot_class_path.size();
+  size_t bcp_pos = 0u;
+  while (StartsWith(oat_checksums, "i")) {
+    std::string current_filename = filename;
+    if (bcp_pos != 0u) {
+      if (!load_extensions) {
+        *error_msg = "Checksum specifies boot image extension but extensions are not used.";
+        return false;
+      }
+      std::vector<std::string> expanded = ExpandMultiImageLocations(
+          {boot_class_path[bcp_pos]},
+          filename,
+          /*boot_image_extension=*/ true);
+      DCHECK_EQ(expanded.size(), 1u);
+      current_filename = expanded[0];
+    }
+    std::unique_ptr<ImageHeader> header =
+        ReadSpecificImageHeader(current_filename.c_str(), error_msg);
+    if (header == nullptr) {
+      return false;
+    }
+    if (header->GetComponentCount() == 0u || header->GetComponentCount() > bcp_size - bcp_pos) {
+      *error_msg = StringPrintf("Unexpected component count in %s, received %u, "
+                                    "expected non-zero and <= %zu",
+                                current_filename.c_str(),
+                                header->GetComponentCount(),
+                                bcp_size - bcp_pos);
+      return false;
+    }
+    std::string image_checksum =
+        StringPrintf("i;%d/%08x", header->GetComponentCount(), header->GetImageChecksum());
+    if (!StartsWith(oat_checksums, image_checksum)) {
+      *error_msg = StringPrintf("Image checksum mismatch, expected %s to start with %s",
+                                std::string(oat_checksums).c_str(),
+                                image_checksum.c_str());
+      return false;
+    }
+    oat_checksums.remove_prefix(image_checksum.size());
+    bcp_pos += header->GetComponentCount();
+    if (oat_checksums.empty()) {
+      if (bcp_pos != bcp_size) {
+        *error_msg = StringPrintf("Checksum too short, missing %zu more components.",
+                                  bcp_size - bcp_pos);
+        return false;
+      }
+      return true;
+    }
+    if (!StartsWith(oat_checksums, ":")) {
+      *error_msg = StringPrintf("Missing ':' separator at start of %s",
+                                std::string(oat_checksums).c_str());
+      return false;
+    }
+    oat_checksums.remove_prefix(1u);
+  }
+
+  for ( ; bcp_pos != bcp_size; ++bcp_pos) {
+    if (!StartsWith(oat_checksums, "d")) {
+      *error_msg = StringPrintf("Missing dex checksums, expected %s to start with 'd'",
+                                std::string(oat_checksums).c_str());
+      return false;
+    }
+    oat_checksums.remove_prefix(1u);
+
+    const std::string& bcp_filename = boot_class_path[bcp_pos];
+    std::vector<std::unique_ptr<const DexFile>> dex_files;
+    const ArtDexFileLoader dex_file_loader;
+    if (!dex_file_loader.Open(bcp_filename.c_str(),
+                              bcp_filename,  // The location does not matter here.
+                              /*verify=*/ false,
+                              /*verify_checksum=*/ false,
+                              error_msg,
+                              &dex_files)) {
+      return false;
+    }
+    DCHECK(!dex_files.empty());
+    for (const std::unique_ptr<const DexFile>& dex_file : dex_files) {
+      std::string dex_file_checksum = StringPrintf("/%08x", dex_file->GetLocationChecksum());
+      if (!StartsWith(oat_checksums, dex_file_checksum)) {
+        *error_msg = StringPrintf("Dex checksum mismatch, expected %s to start with %s",
+                                  std::string(oat_checksums).c_str(),
+                                  dex_file_checksum.c_str());
+        return false;
+      }
+      oat_checksums.remove_prefix(dex_file_checksum.size());
+    }
+    if (bcp_pos + 1u != bcp_size) {
+      if (!StartsWith(oat_checksums, ":")) {
+        *error_msg = StringPrintf("Missing ':' separator at start of %s",
+                                  std::string(oat_checksums).c_str());
+        return false;
+      }
+    }
+  }
+  if (!oat_checksums.empty()) {
+    *error_msg = StringPrintf("Checksum too long, unexpected tail %s",
+                              std::string(oat_checksums).c_str());
+    return false;
+  }
+  return true;
+}
+
+bool ImageSpace::VerifyBootClassPathChecksums(
+    std::string_view oat_checksums,
+    std::string_view oat_boot_class_path,
+    const std::vector<ImageSpace*>& image_spaces,
+    const std::vector<const DexFile*>& boot_class_path) {
+  if (oat_checksums.empty() || oat_boot_class_path.empty()) {
+    return false;
+  }
+
+  size_t bcp_pos = 0u;
+  size_t bcp_size = boot_class_path.size();
+
+  // First, verify image checksums.
+  size_t image_pos = 0u;
+  while (image_pos != image_spaces.size() && StartsWith(oat_checksums, "i")) {
+    // Verify the current image checksum.
+    const ImageHeader& current_header = image_spaces[image_pos]->GetImageHeader();
+    uint32_t component_count = current_header.GetComponentCount();
+    DCHECK_NE(component_count, 0u);
+    DCHECK_LE(component_count, image_spaces.size() - image_pos);
+    std::string image_checksum =
+        StringPrintf("i;%d/%08x", component_count, current_header.GetImageChecksum());
+    if (!StartsWith(oat_checksums, image_checksum)) {
+      return false;
+    }
+    oat_checksums.remove_prefix(image_checksum.size());
+
+    // Verify the oat boot class path components corresponding to the current image.
+    for (size_t component_index = 0; component_index != component_count; ++component_index) {
+      const std::string& component_location = boot_class_path[bcp_pos]->GetLocation();
+      if (component_index != 0u) {
+        if (!StartsWith(oat_boot_class_path, ":")) {
+          return false;
+        }
+        oat_boot_class_path.remove_prefix(1u);
+      }
+      if (!StartsWith(oat_boot_class_path, component_location)) {
+        return false;
+      }
+      oat_boot_class_path.remove_prefix(component_location.size());
+      const OatFile* oat_file = image_spaces[image_pos + component_index]->oat_file_non_owned_;
+      DCheckOatFileLocations(oat_file, boot_class_path, bcp_pos);
+      bcp_pos += oat_file->GetOatDexFiles().size();
+    }
+
+    if (!CheckAndRemoveSeparators(&oat_checksums, &oat_boot_class_path)) {
+      return oat_checksums.empty() && oat_boot_class_path.empty();
+    }
+
+    image_pos += component_count;
+  }
+
+  // Then verify dex file checksums for the BCP tail.
+  while (bcp_pos != bcp_size && !oat_checksums.empty() && oat_checksums[0] == 'd') {
+    oat_checksums.remove_prefix(1u);
+    // Determine the number of dex files in this component.
+    DCHECK(!DexFileLoader::IsMultiDexLocation(boot_class_path[bcp_pos]->GetLocation().c_str()));
+    size_t num_dex_files = 1u;
+    while (bcp_pos + num_dex_files != bcp_size &&
+           DexFileLoader::IsMultiDexLocation(
+               boot_class_path[bcp_pos + num_dex_files]->GetLocation().c_str())) {
+      ++num_dex_files;
+    }
+    // Verify the dex file checksums for this component.
+    for (size_t i = 0; i != num_dex_files; ++i) {
+      std::string dex_checksum =
+          StringPrintf("/%08x", boot_class_path[bcp_pos + i]->GetLocationChecksum());
+      if (!StartsWith(oat_checksums, dex_checksum)) {
+        return false;
+      }
+      oat_checksums.remove_prefix(dex_checksum.size());
+    }
+    // Verify the oat boot class path for this component.
+    const std::string& component_location = boot_class_path[bcp_pos]->GetLocation();
+    if (!StartsWith(oat_boot_class_path, component_location)) {
+      return false;
+    }
+    oat_boot_class_path.remove_prefix(component_location.size());
+
+    if (!CheckAndRemoveSeparators(&oat_checksums, &oat_boot_class_path)) {
+      return oat_checksums.empty() && oat_boot_class_path.empty();
+    }
+
+    bcp_pos += num_dex_files;
+  }
+
+  return false;
+}
+
 std::vector<std::string> ImageSpace::ExpandMultiImageLocations(
     const std::vector<std::string>& dex_locations,
-    const std::string& image_location) {
-  return ExpandMultiImageLocations(ArrayRef<const std::string>(dex_locations), image_location);
+    const std::string& image_location,
+    bool boot_image_extension) {
+  return ExpandMultiImageLocations(
+      ArrayRef<const std::string>(dex_locations), image_location, boot_image_extension);
 }
 
 std::vector<std::string> ImageSpace::ExpandMultiImageLocations(
     ArrayRef<const std::string> dex_locations,
-    const std::string& image_location) {
+    const std::string& image_location,
+    bool boot_image_extension) {
   DCHECK(!dex_locations.empty());
 
   // Find the path.
@@ -2492,10 +2688,14 @@ std::vector<std::string> ImageSpace::ExpandMultiImageLocations(
 
   std::vector<std::string> locations;
   locations.reserve(dex_locations.size());
-  locations.push_back(image_location);
+  size_t start_index = 0u;
+  if (!boot_image_extension) {
+    start_index = 1u;
+    locations.push_back(image_location);
+  }
 
-  // Now create the other names. Use a counted loop to skip the first one.
-  for (size_t i = 1u; i < dex_locations.size(); ++i) {
+  // Now create the other names. Use a counted loop to skip the first one if needed.
+  for (size_t i = start_index; i < dex_locations.size(); ++i) {
     // Replace path with `base` (i.e. image path and prefix) and replace the original
     // extension (if any) with `extension`.
     std::string name = dex_locations[i];

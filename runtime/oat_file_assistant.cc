@@ -604,10 +604,12 @@ const std::vector<uint32_t>* OatFileAssistant::GetRequiredDexChecksums() {
 }
 
 bool OatFileAssistant::ValidateBootClassPathChecksums(const OatFile& oat_file) {
-  // Get the BCP from the oat file.
+  // Get the checksums and the BCP from the oat file.
+  const char* oat_boot_class_path_checksums =
+      oat_file.GetOatHeader().GetStoreValueByKey(OatHeader::kBootClassPathChecksumsKey);
   const char* oat_boot_class_path =
       oat_file.GetOatHeader().GetStoreValueByKey(OatHeader::kBootClassPathKey);
-  if (oat_boot_class_path == nullptr) {
+  if (oat_boot_class_path_checksums == nullptr || oat_boot_class_path == nullptr) {
     return false;
   }
 
@@ -635,47 +637,44 @@ bool OatFileAssistant::ValidateBootClassPathChecksums(const OatFile& oat_file) {
     return false;
   }
 
-  // Get the checksums.
-  const char* oat_boot_class_path_checksums =
-      oat_file.GetOatHeader().GetStoreValueByKey(OatHeader::kBootClassPathChecksumsKey);
-  if (oat_boot_class_path_checksums == nullptr) {
-    return false;
+  std::string_view checksums_view(oat_boot_class_path_checksums);
+  if (component_count == cached_boot_class_path_checksum_component_count_ &&
+      checksums_view == cached_boot_class_path_checksums_) {
+    return true;
   }
 
-  // Retrieve checksums for this portion of the BCP if we do not have them cached.
-  if (cached_boot_class_path_checksum_component_count_ != component_count) {
-    ArrayRef<const std::string> boot_class_path(runtime->GetBootClassPath());
-    std::string error_msg;
-    std::string boot_class_path_checksums = gc::space::ImageSpace::GetBootClassPathChecksums(
-        boot_class_path.SubArray(/* pos= */ 0u, component_count),
-        runtime->GetImageLocation(),
-        isa_,
-        runtime->GetImageSpaceLoadingOrder(),
-        &error_msg);
-    if (boot_class_path_checksums.empty()) {
-      VLOG(oat) << "No image for oat image checksum to match against.";
+  ArrayRef<const std::string> boot_class_path(runtime->GetBootClassPath());
+  std::string error_msg;
+  bool result = gc::space::ImageSpace::VerifyBootClassPathChecksums(
+      checksums_view,
+      boot_class_path.SubArray(/*pos=*/ 0u, component_count),
+      runtime->GetImageLocation(),
+      isa_,
+      runtime->GetImageSpaceLoadingOrder(),
+      &error_msg);
+  if (!result) {
+    VLOG(oat) << "Failed to verify checksums of oat file " << oat_file.GetLocation()
+        << " error: " << error_msg;
 
-      if (HasOriginalDexFiles()) {
-        return false;
-      }
-
-      // If there is no original dex file to fall back to, grudgingly accept
-      // the oat file. This could technically lead to crashes, but there's no
-      // way we could find a better oat file to use for this dex location,
-      // and it's better than being stuck in a boot loop with no way out.
-      // The problem will hopefully resolve itself the next time the runtime
-      // starts up.
-      LOG(WARNING) << "Dex location " << dex_location_ << " does not seem to include dex file. "
-          << "Allow oat file use. This is potentially dangerous.";
-
-      return true;
+    if (HasOriginalDexFiles()) {
+      return false;
     }
-    cached_boot_class_path_checksum_component_count_ = component_count;
-    cached_boot_class_path_checksums_ = boot_class_path_checksums;
+
+    // If there is no original dex file to fall back to, grudgingly accept
+    // the oat file. This could technically lead to crashes, but there's no
+    // way we could find a better oat file to use for this dex location,
+    // and it's better than being stuck in a boot loop with no way out.
+    // The problem will hopefully resolve itself the next time the runtime
+    // starts up.
+    LOG(WARNING) << "Dex location " << dex_location_ << " does not seem to include dex file. "
+        << "Allow oat file use. This is potentially dangerous.";
+    return true;
   }
 
-  // Compare the checksums.
-  return cached_boot_class_path_checksums_ == oat_boot_class_path_checksums;
+  // This checksum has been validated, so save it.
+  cached_boot_class_path_checksum_component_count_ = component_count;
+  cached_boot_class_path_checksums_ = checksums_view;
+  return true;
 }
 
 OatFileAssistant::OatFileInfo& OatFileAssistant::GetBestInfo() {
