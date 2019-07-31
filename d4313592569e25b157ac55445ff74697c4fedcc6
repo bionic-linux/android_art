@@ -70,6 +70,30 @@
       "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700d67b1_9599a351",
+        "filename": "runtime/mirror/dex_cache-inl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1042828
+      },
+      "writtenOn": "2019-07-31T22:00:47Z",
+      "side": 1,
+      "message": "I don\u0027t think that using memory_order_consume is useful. It should get compiled to acquire at the moment. If this is sufficiently performance critical, and it\u0027s unlikely to break anything,  I would cheat and use memory_order_relaxed, with a comment on the load to that effect. We do that in some other places. It\u0027s not great, but there doesn\u0027t currently seem to be a great alternative. The Linux kernel also does this, and we heavily rely on it for Java final fields.\n\nI would interpret \"unlikely to break anything\" as \"the dependent operations are direct chains of compiler-unpredictable heap pointer dereferences from the result, with no pointer comparisons in sight anywhere\". IIUC, that\u0027s true here. There are integers involved, but they\u0027re only used to check for validity and don\u0027t really participate in the dereference chain (e.g. as an index).\n\nThe canonical bad case where this can break is:\n\nr1 \u003d x.load(memory_order_relaxed);\nif (r \u003d\u003d my_other_ptr) {\n  r2 \u003d r1-\u003ea;  // Compiler loads my_other_ptr-\u003ea instead\n}\n\nr1 \u003d x.load(memory_order_relaxed); r2 \u003d r1-\u003ea; by itself can still break if the compiler speculates in a particular result from the first load. But that seems really unlikely.",
+      "parentUuid": "910f5acd_dfd0ff60",
+      "range": {
+        "startLine": 108,
+        "startChar": 60,
+        "endLine": 108,
+        "endChar": 80
+      },
+      "revId": "d4313592569e25b157ac55445ff74697c4fedcc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
