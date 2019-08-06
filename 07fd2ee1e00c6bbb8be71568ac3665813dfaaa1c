@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "861dc37f_d43300b1",
+        "filename": "compiler/optimizing/code_generator_vector_x86_64.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-08-06T08:48:59Z",
+      "side": 1,
+      "message": "Should emit vxorps in this case too",
+      "revId": "07fd2ee1e00c6bbb8be71568ac3665813dfaaa1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
