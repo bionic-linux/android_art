@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f84949b_848f6d3c",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-12T17:03:16Z",
+      "side": 1,
+      "message": "Maybe add an assertion for this here?",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f478efee_67390369",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-12T17:03:16Z",
+      "side": 1,
+      "message": "Style:\n\n  static_cast\u003csize_t\u003e(-1)",
+      "range": {
+        "startLine": 345,
+        "startChar": 29,
+        "endLine": 345,
+        "endChar": 39
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97afc8db_9cb8b85a",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-12T17:03:16Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 981,
+        "startChar": 15,
+        "endLine": 981,
+        "endChar": 20
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3461e845_f958314a",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-12T17:03:16Z",
+      "side": 1,
+      "message": "Style:\n\n  Heap* heap",
+      "range": {
+        "startLine": 981,
+        "startChar": 2,
+        "endLine": 981,
+        "endChar": 12
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "281265d2_c888cf15",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-12T17:03:16Z",
+      "side": 1,
+      "message": "Replace with\n\n  EvacBytes()\n\n?",
+      "range": {
+        "startLine": 982,
+        "startChar": 50,
+        "endLine": 982,
+        "endChar": 81
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
