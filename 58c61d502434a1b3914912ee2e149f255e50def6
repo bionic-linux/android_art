@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2a6de656_a8f0001f",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-13T18:53:52Z",
+      "side": 1,
+      "message": "Yes, I was talking about `Heap::thread_running_gc_`. It\u0027s also updated in `art::gc::Heap::StartGC` and `art::gc::Heap::FinishGC`.",
+      "parentUuid": "883c8f82_6a9bfbdf",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f478efee_67390369",
         "filename": "runtime/gc/space/region_space-inl.h",
         "patchSetId": 2
