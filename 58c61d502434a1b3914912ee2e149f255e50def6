@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "883c8f82_6a9bfbdf",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T18:48:44Z",
+      "side": 1,
+      "message": "I\u0027m assuming you are talking about Heap\u0027s thread_running_gc_ and not ConcurrentCopying\u0027s. I could find it being updated only in GCCriticalSection. I doubt we can rely on it.",
+      "parentUuid": "3a55829b_e56d6858",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f478efee_67390369",
         "filename": "runtime/gc/space/region_space-inl.h",
         "patchSetId": 2
