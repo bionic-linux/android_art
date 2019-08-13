@@ -116,6 +116,30 @@
       "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ed9860_f6ccc231",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-08-13T21:08:54Z",
+      "side": 1,
+      "message": "I don\u0027t think so TBH. If someone wanted to do that they can just make an agent that loops in Agent_OnLoad. I\u0027m not even sure we could guarantee we\u0027d be able to detect that (symlinks, etc).",
+      "parentUuid": "8e2f5c24_2540a194",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
