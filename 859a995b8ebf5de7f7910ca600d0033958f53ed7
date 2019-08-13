@@ -93,6 +93,29 @@
       "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e2f5c24_2540a194",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2019-08-13T21:03:50Z",
+      "side": 1,
+      "message": "Is it worth checking if any of the agents in the input is not this agent again so we don\u0027t get into infinite loops?",
+      "range": {
+        "startLine": 102,
+        "startChar": 19,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
