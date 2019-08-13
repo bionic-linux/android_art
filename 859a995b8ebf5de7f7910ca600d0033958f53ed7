@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "67e8fd31_83815413",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-08-13T20:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0e3ba64_ffaad9e2",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e36bc12_28bed133",
         "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1540350_b220db6c",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-08-13T20:52:54Z",
+      "side": 1,
+      "message": "It probably wouldn\u0027t cause much of a problem in practice but good point.\n\nDone",
+      "parentUuid": "0e36bc12_28bed133",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
