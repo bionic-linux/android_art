@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "d6d82c5b_de92f08f",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T19:32:09Z",
+      "side": 1,
+      "message": "Yes. But these functions are only called in GCCriticalSection (also in TrimSpaces but to pretend we are doing a GC).",
+      "parentUuid": "2a6de656_a8f0001f",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f478efee_67390369",
         "filename": "runtime/gc/space/region_space-inl.h",
         "patchSetId": 2
