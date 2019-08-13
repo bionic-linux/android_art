@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13166bae_5c4f0a6d",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T17:49:10Z",
+      "side": 1,
+      "message": "That\u0027s a good idea! But how do you suggest I check if GC is running or not?",
+      "parentUuid": "6f84949b_848f6d3c",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f478efee_67390369",
         "filename": "runtime/gc/space/region_space-inl.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c151ddd_2cbec6b0",
+        "filename": "runtime/gc/space/region_space-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T17:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f478efee_67390369",
+      "range": {
+        "startLine": 345,
+        "startChar": 29,
+        "endLine": 345,
+        "endChar": 39
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "d482fe3a_b7213c5b",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T17:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3461e845_f958314a",
+      "range": {
+        "startLine": 981,
+        "startChar": 2,
+        "endLine": 981,
+        "endChar": 12
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a6e63f5_0c74deb5",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T17:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97afc8db_9cb8b85a",
+      "range": {
+        "startLine": 981,
+        "startChar": 15,
+        "endLine": 981,
+        "endChar": 20
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "281265d2_c888cf15",
         "filename": "runtime/gc/space/region_space.cc",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b802af30_6e46738e",
+        "filename": "runtime/gc/space/region_space.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1258954
+      },
+      "writtenOn": "2019-08-13T17:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "281265d2_c888cf15",
+      "range": {
+        "startLine": 982,
+        "startChar": 50,
+        "endLine": 982,
+        "endChar": 81
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
