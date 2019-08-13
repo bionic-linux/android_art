@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3a55829b_e56d6858",
+        "filename": "runtime/gc/heap-inl.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-13T18:10:52Z",
+      "side": 1,
+      "message": "Maybe you could check whether `thread_running_gc_` is null or not?",
+      "parentUuid": "13166bae_5c4f0a6d",
+      "range": {
+        "startLine": 162,
+        "startChar": 29,
+        "endLine": 163,
+        "endChar": 30
+      },
+      "revId": "58c61d502434a1b3914912ee2e149f255e50def6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f478efee_67390369",
         "filename": "runtime/gc/space/region_space-inl.h",
         "patchSetId": 2
