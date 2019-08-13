@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e3ba64_ffaad9e2",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2019-08-13T20:40:08Z",
+      "side": 1,
+      "message": "Nit:\ndon\u0027t do if ( ... !\u003d ...) A else B.\nprefer if ( ... \u003d\u003d ... ) B else A",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e36bc12_28bed133",
+        "filename": "tools/jvmti-agents/chain-agents/chainagents.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1103743
+      },
+      "writtenOn": "2019-08-13T20:40:08Z",
+      "side": 1,
+      "message": "Is there an issue here if the load function fails after the unload has been registered?  What happens when we try to unload something that didn\u0027t load?",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 56
+      },
+      "revId": "859a995b8ebf5de7f7910ca600d0033958f53ed7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
