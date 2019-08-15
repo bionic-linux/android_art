@@ -386,7 +386,9 @@ MemMap MemMap::MapAnonymous(const char* name,
                 actual,
                 page_aligned_byte_count,
                 prot,
-                reuse);
+                flags,
+                reuse,
+                /* redzone_size= */ 0);
 }
 
 MemMap MemMap::MapDummy(const char* name, uint8_t* addr, size_t byte_count) {
@@ -394,7 +396,15 @@ MemMap MemMap::MapDummy(const char* name, uint8_t* addr, size_t byte_count) {
     return Invalid();
   }
   const size_t page_aligned_byte_count = RoundUp(byte_count, kPageSize);
-  return MemMap(name, addr, byte_count, addr, page_aligned_byte_count, 0, /* reuse= */ true);
+  return MemMap(name,
+                addr,
+                byte_count,
+                addr,
+                page_aligned_byte_count,
+                /* prot= */ 0,
+                /* flags= */ 0,
+                /* reuse= */ true,
+                /* redzone_size= */ 0);
 }
 
 template<typename A, typename B>
@@ -582,6 +592,7 @@ MemMap MemMap::MapFileAtAddress(uint8_t* expected_ptr,
                 actual,
                 page_aligned_byte_count,
                 prot,
+                flags,
                 reuse,
                 redzone_size);
 }
@@ -670,15 +681,17 @@ void MemMap::SwapMembers(MemMap& other) {
   std::swap(base_begin_, other.base_begin_);
   std::swap(base_size_, other.base_size_);
   std::swap(prot_, other.prot_);
+  std::swap(flags_, other.flags_);
   std::swap(reuse_, other.reuse_);
   std::swap(already_unmapped_, other.already_unmapped_);
   std::swap(redzone_size_, other.redzone_size_);
 }
 
 MemMap::MemMap(const std::string& name, uint8_t* begin, size_t size, void* base_begin,
-               size_t base_size, int prot, bool reuse, size_t redzone_size)
+               size_t base_size, int prot, int flags, bool reuse, size_t redzone_size)
     : name_(name), begin_(begin), size_(size), base_begin_(base_begin), base_size_(base_size),
-      prot_(prot), reuse_(reuse), already_unmapped_(false), redzone_size_(redzone_size) {
+      prot_(prot), flags_(flags), reuse_(reuse), already_unmapped_(false),
+      redzone_size_(redzone_size) {
   if (size_ == 0) {
     CHECK(begin_ == nullptr);
     CHECK(base_begin_ == nullptr);
@@ -772,14 +785,30 @@ MemMap MemMap::RemapAtEnd(uint8_t* new_end,
   size_ = new_size;
   base_size_ = new_base_size;
   // Return the new mapping.
-  return MemMap(tail_name, actual, tail_size, actual, tail_base_size, tail_prot, false);
+  return MemMap(tail_name,
+                actual,
+                tail_size,
+                actual,
+                tail_base_size,
+                tail_prot,
+                flags,
+                /* reuse= */ false,
+                /* redzone_size= */ 0);
 }
 
 MemMap MemMap::TakeReservedMemory(size_t byte_count) {
   uint8_t* begin = Begin();
   ReleaseReservedMemory(byte_count);  // Performs necessary DCHECK()s on this reservation.
   size_t base_size = RoundUp(byte_count, kPageSize);
-  return MemMap(name_, begin, byte_count, begin, base_size, prot_, /* reuse= */ false);
+  return MemMap(name_,
+                begin,
+                byte_count,
+                begin,
+                base_size,
+                prot_,
+                flags_,
+                /* reuse= */ false,
+                /* redzone_size= */ 0);
 }
 
 void MemMap::ReleaseReservedMemory(size_t byte_count) {

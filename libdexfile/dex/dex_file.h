@@ -58,6 +58,7 @@ class DexFileContainer {
   virtual ~DexFileContainer() { }
   virtual int GetPermissions() = 0;
   virtual bool IsReadOnly() = 0;
+  virtual bool IsBackedByFile() = 0;
   virtual bool EnableWrite() = 0;
   virtual bool DisableWrite() = 0;
 
