@@ -50,6 +50,10 @@ class VectorContainer : public DexFileContainer {
     return false;
   }
 
+  bool IsBackedByFile() override {
+    return false;
+  }
+
  private:
   std::vector<uint8_t> vector_;
   DISALLOW_COPY_AND_ASSIGN(VectorContainer);

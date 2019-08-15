@@ -72,6 +72,10 @@ class MemMapContainer : public DexFileContainer {
     }
   }
 
+  bool IsBackedByFile() override {
+    return (mem_map_.GetFlags() & MAP_ANONYMOUS) == 0;
+  }
+
  private:
   MemMap mem_map_;
   DISALLOW_COPY_AND_ASSIGN(MemMapContainer);

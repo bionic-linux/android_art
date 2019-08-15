@@ -57,6 +57,7 @@ class MappedFileContainer : public DexFileContainer {
   ~MappedFileContainer() override {}
   int GetPermissions() override { return 0; }
   bool IsReadOnly() override { return true; }
+  bool IsBackedByFile() override { return true; }
   bool EnableWrite() override { return false; }
   bool DisableWrite() override { return false; }
 

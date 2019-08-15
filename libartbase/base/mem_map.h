@@ -237,6 +237,9 @@ class MemMap {
   int GetProtect() const {
     return prot_;
   }
+  int GetFlags() const {
+    return flags_;
+  }
 
   uint8_t* Begin() const {
     return begin_;
@@ -329,8 +332,9 @@ class MemMap {
          void* base_begin,
          size_t base_size,
          int prot,
+         int flags,
          bool reuse,
-         size_t redzone_size = 0) REQUIRES(!MemMap::mem_maps_lock_);
+         size_t redzone_size) REQUIRES(!MemMap::mem_maps_lock_);
 
   void DoReset();
   void Invalidate();
@@ -383,6 +387,7 @@ class MemMap {
   void* base_begin_ = nullptr;  // Page-aligned base address. May be changed by AlignBy.
   size_t base_size_ = 0u;       // Length of mapping. May be changed by RemapAtEnd (ie Zygote).
   int prot_ = 0;                // Protection of the map.
+  int flags_ = 0;               // Flags passed at creation of the map (eg MAP_SHARED).
 
   // When reuse_ is true, this is just a view of an existing mapping
   // and we do not take ownership and are not responsible for
