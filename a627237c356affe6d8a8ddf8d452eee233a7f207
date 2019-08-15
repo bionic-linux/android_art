@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78e4bccf_bccedffa",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-08-15T23:21:00Z",
+      "side": 1,
+      "message": "SelfDeletingTask",
+      "range": {
+        "startLine": 632,
+        "startChar": 44,
+        "endLine": 632,
+        "endChar": 48
+      },
+      "revId": "a627237c356affe6d8a8ddf8d452eee233a7f207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda6d7b2_0e259060",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-08-15T23:21:00Z",
+      "side": 1,
+      "message": "Can we be sure that none of the Dex files will be extracted into memory? If they are, it will zero them out.",
+      "range": {
+        "startLine": 639,
+        "startChar": 19,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "a627237c356affe6d8a8ddf8d452eee233a7f207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
