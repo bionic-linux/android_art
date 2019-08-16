@@ -141,6 +141,30 @@
       "revId": "a627237c356affe6d8a8ddf8d452eee233a7f207",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c765240_ad55dff8",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-08-16T14:20:05Z",
+      "side": 1,
+      "message": "Latest PS stores in MemMap the flags passed at creation, just like we keep around the protection flags.",
+      "parentUuid": "6fd87c0e_3d5359c5",
+      "range": {
+        "startLine": 639,
+        "startChar": 19,
+        "endLine": 639,
+        "endChar": 26
+      },
+      "revId": "a627237c356affe6d8a8ddf8d452eee233a7f207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
