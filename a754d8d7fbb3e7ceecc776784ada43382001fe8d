@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee51e089_f8f18e44",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-08-20T10:30:58Z",
+      "side": 1,
+      "message": "Indeed - though I\u0027m always hesitant to rely on a language\u0027s division semantics :)",
+      "parentUuid": "ad131f6f_ae022d60",
+      "range": {
+        "startLine": 340,
+        "startChar": 50,
+        "endLine": 340,
+        "endChar": 76
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86a04325_cb382264",
         "filename": "libartbase/base/utils.cc",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "818d3138_1836346a",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-08-20T10:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86a04325_cb382264",
+      "range": {
+        "startLine": 342,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7cd2d49_052d834e",
         "filename": "libartbase/base/utils.cc",
         "patchSetId": 6
@@ -68,6 +116,30 @@
       "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8134ca91_a7d6efbf",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-08-20T10:30:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7cd2d49_052d834e",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 63
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
