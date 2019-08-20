@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad131f6f_ae022d60",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-08-20T09:58:24Z",
+      "side": 1,
+      "message": "Not needed due to division in index calculation.",
+      "range": {
+        "startLine": 340,
+        "startChar": 50,
+        "endLine": 340,
+        "endChar": 76
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a04325_cb382264",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-08-20T09:58:24Z",
+      "side": 1,
+      "message": "unique_fd?",
+      "range": {
+        "startLine": 342,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 5
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7cd2d49_052d834e",
+        "filename": "libartbase/base/utils.cc",
+        "patchSetId": 6
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-08-20T09:58:24Z",
+      "side": 1,
+      "message": "Add reference to linux/Documentation/admin-guide/mm/pagemap.rst",
+      "range": {
+        "startLine": 353,
+        "startChar": 2,
+        "endLine": 353,
+        "endChar": 63
+      },
+      "revId": "a754d8d7fbb3e7ceecc776784ada43382001fe8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
