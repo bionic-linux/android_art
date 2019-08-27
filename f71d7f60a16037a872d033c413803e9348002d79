@@ -22,6 +22,30 @@
       "revId": "f71d7f60a16037a872d033c413803e9348002d79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba35b9c6_9ea1a598",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-27T16:53:35Z",
+      "side": 1,
+      "message": "Well, this file currently contains both. I opted to remove this title altogether since each got its own further down.",
+      "parentUuid": "71c7d19c_64e43b62",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "f71d7f60a16037a872d033c413803e9348002d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
