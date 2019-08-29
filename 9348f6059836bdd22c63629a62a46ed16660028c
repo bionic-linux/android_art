@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81479cea_3fcb434a",
+        "filename": "CleanSpec.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-29T19:33:07Z",
+      "side": 1,
+      "message": "I noticed this isn\u0027t covered by \"m installclean\" either - got http://r.android.com/1110521 out.",
+      "range": {
+        "startLine": 98,
+        "startChar": 44,
+        "endLine": 98,
+        "endChar": 58
+      },
+      "revId": "9348f6059836bdd22c63629a62a46ed16660028c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
