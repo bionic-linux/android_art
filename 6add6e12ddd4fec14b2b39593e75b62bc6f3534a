@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9741060f_2d97949f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-09-03T23:06:35Z",
+      "side": 1,
+      "message": "(and, no, ccross doesn\u0027t know why this has become an issue now despite not having been touched for years...)",
+      "revId": "6add6e12ddd4fec14b2b39593e75b62bc6f3534a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
