@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41bfa418_01ed6d81",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2019-09-06T17:07:13Z",
+      "side": 1,
+      "message": "IIUC, this should be \u0027lib64/arm64\u0027",
+      "range": {
+        "startLine": 548,
+        "startChar": 31,
+        "endLine": 548,
+        "endChar": 40
+      },
+      "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
