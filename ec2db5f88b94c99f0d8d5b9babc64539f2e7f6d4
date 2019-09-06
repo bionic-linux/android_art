@@ -46,6 +46,30 @@
       "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c590f5e_b0fafdd5",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1069898
+      },
+      "writtenOn": "2019-09-06T17:54:34Z",
+      "side": 1,
+      "message": "cf_x86_64 declares arm and arm64 support as 3rd and 4th archs, and puts support libraries to\n\u0027system/lib/arm\u0027 and\n\u0027system/lib64/arm64\u0027",
+      "parentUuid": "e917480f_737fa5aa",
+      "range": {
+        "startLine": 548,
+        "startChar": 31,
+        "endLine": 548,
+        "endChar": 40
+      },
+      "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
