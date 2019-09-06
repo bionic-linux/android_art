@@ -22,6 +22,30 @@
       "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e917480f_737fa5aa",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-06T17:32:39Z",
+      "side": 1,
+      "message": "I don\u0027t think the two arches have to have the same bitness, and the targets I\u0027ve looked at only have had (32 bit) arm as second arch. If there are targets with arm64 as 2nd arch I suspect we should add \"arm64\" to all these, but it was only intended as a quick fix to address the build failures. Do you know a target that fails?",
+      "parentUuid": "41bfa418_01ed6d81",
+      "range": {
+        "startLine": 548,
+        "startChar": 31,
+        "endLine": 548,
+        "endChar": 40
+      },
+      "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
