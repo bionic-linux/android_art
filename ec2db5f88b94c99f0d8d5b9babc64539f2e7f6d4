@@ -70,6 +70,30 @@
       "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea7c5da_15e3077b",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-09T17:45:55Z",
+      "side": 1,
+      "message": "Those are for the NDK translation proxy libs, aren\u0027t they? They no longer show up at all in APEXes, which iiuc is a good thing (b/131155689).\n\n$ lunch cf_x86_64_phone \u0026\u0026 m installclean \u0026\u0026 m\n$ ls out/target/product/vsoc_x86_64/apex/com.android.art.debug/lib*/arm*\nls: No match.",
+      "parentUuid": "9c590f5e_b0fafdd5",
+      "range": {
+        "startLine": 548,
+        "startChar": 31,
+        "endLine": 548,
+        "endChar": 40
+      },
+      "revId": "ec2db5f88b94c99f0d8d5b9babc64539f2e7f6d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
