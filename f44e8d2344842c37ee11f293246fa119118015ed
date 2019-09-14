@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50422dae_443eac5b",
+        "filename": "dex2oat/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-09-14T01:01:35Z",
+      "side": 1,
+      "message": "Won\u0027t this make it a shared dependency for static dex2oat?",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "f44e8d2344842c37ee11f293246fa119118015ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
