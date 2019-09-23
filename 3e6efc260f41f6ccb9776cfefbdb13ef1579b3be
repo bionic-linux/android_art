@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1575c02e_53411474",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-09-23T17:51:12Z",
+      "side": 1,
+      "message": "Is this still required?",
+      "range": {
+        "startLine": 714,
+        "startChar": 8,
+        "endLine": 714,
+        "endChar": 24
+      },
+      "revId": "3e6efc260f41f6ccb9776cfefbdb13ef1579b3be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
