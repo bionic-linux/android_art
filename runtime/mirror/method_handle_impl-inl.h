@@ -21,6 +21,7 @@
 
 #include "art_method-inl.h"
 #include "object-inl.h"
+#include "reflective_handle_scope.h"
 
 namespace art {
 namespace mirror {

@@ -24,6 +24,7 @@
 #include "handle_wrapper.h"
 #include "mirror/object_reference-inl.h"
 #include "obj_ptr-inl.h"
+#include "reflective_handle_scope-inl.h"
 #include "thread-current-inl.h"
 #include "verify_object.h"
 
