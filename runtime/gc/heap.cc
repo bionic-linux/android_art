@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "android-base/stringprintf.h"
+#include "android-base/thread_annotations.h"
 
 #include "allocation_listener.h"
 #include "art_field-inl.h"
@@ -92,6 +93,7 @@
 #include "nativehelper/scoped_local_ref.h"
 #include "obj_ptr-inl.h"
 #include "reflection.h"
+#include "reflective_handle_scope.h"
 #include "runtime.h"
 #include "scoped_thread_state_change-inl.h"
 #include "thread_list.h"
