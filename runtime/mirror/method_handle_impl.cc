@@ -18,6 +18,7 @@
 
 #include "class-alloc-inl.h"
 #include "class_root.h"
+#include "reflective_handle_scope.h"
 
 namespace art {
 namespace mirror {
