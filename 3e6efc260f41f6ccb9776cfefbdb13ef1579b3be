@@ -22,6 +22,30 @@
       "revId": "3e6efc260f41f6ccb9776cfefbdb13ef1579b3be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b62f75_e2303fa9",
+        "filename": "libprofile/profile/profile_compilation_info.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-09-24T23:21:45Z",
+      "side": 1,
+      "message": "Nop, but this method is gonna be deleted in a follow up CL, so I\u0027ll keep it as is to avoid merge conflicts.",
+      "parentUuid": "1575c02e_53411474",
+      "range": {
+        "startLine": 714,
+        "startChar": 8,
+        "endLine": 714,
+        "endChar": 24
+      },
+      "revId": "3e6efc260f41f6ccb9776cfefbdb13ef1579b3be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
