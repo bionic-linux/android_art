@@ -29,6 +29,7 @@
 #include "method_type-inl.h"
 #include "object_array-alloc-inl.h"
 #include "obj_ptr-inl.h"
+#include "reflective_handle_scope.h"
 #include "well_known_classes.h"
 
 namespace art {
