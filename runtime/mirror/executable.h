@@ -20,6 +20,7 @@
 #include "accessible_object.h"
 #include "object.h"
 #include "read_barrier_option.h"
+#include "reflective_handle_scope.h"
 
 namespace art {
 

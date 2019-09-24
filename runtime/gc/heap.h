@@ -42,6 +42,7 @@
 #include "offsets.h"
 #include "process_state.h"
 #include "read_barrier_config.h"
+#include "reflective_handle_scope.h"
 #include "runtime_globals.h"
 #include "verify_object.h"
 

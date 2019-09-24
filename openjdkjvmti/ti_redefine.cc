@@ -112,6 +112,7 @@
 #include "non_debuggable_classes.h"
 #include "obj_ptr.h"
 #include "object_lock.h"
+#include "reflective_handle_scope.h"
 #include "runtime.h"
 #include "runtime_globals.h"
 #include "stack.h"

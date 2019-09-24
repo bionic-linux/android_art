@@ -36,6 +36,7 @@
 #include "nativehelper/scoped_local_ref.h"
 #include "obj_ptr-inl.h"
 #include "runtime.h"
+#include "reflective_handle_scope-inl.h"
 #include "scoped_thread_state_change-inl.h"
 #include "scoped_thread_state_change.h"
 #include "thread-current-inl.h"

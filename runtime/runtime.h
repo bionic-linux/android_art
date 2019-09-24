@@ -43,6 +43,7 @@
 #include "offsets.h"
 #include "process_state.h"
 #include "quick/quick_method_frame_info.h"
+#include "reflective_handle_scope.h"
 #include "reflective_value_visitor.h"
 #include "runtime_stats.h"
 
