@@ -301,6 +301,11 @@ static jobject DexFile_openInMemoryDexFilesNative(JNIEnv* env,
   return CreateCookieFromOatFileManagerResult(env, dex_files, oat_file, error_msgs);
 }
 
+// TODO(b/141622862): stop leaks
+extern "C" const char *__asan_default_options() {
+    return "detect_leaks=0";
+}
+
 // TODO(calin): clean up the unused parameters (here and in libcore).
 static jobject DexFile_openDexFileNative(JNIEnv* env,
                                          jclass,
