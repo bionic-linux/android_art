@@ -171,4 +171,8 @@ RUNTIME_OPTIONS_KEY (gc::space::ImageSpaceLoadingOrder, \
 RUNTIME_OPTIONS_KEY (bool,                FastClassNotFoundException,     true)
 RUNTIME_OPTIONS_KEY (bool,                VerifierMissingKThrowFatal,     true)
 
+RUNTIME_OPTIONS_KEY (Unit,                DeoptimizeBootImage)
+
+
+
 #undef RUNTIME_OPTIONS_KEY

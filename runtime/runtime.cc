@@ -1578,9 +1578,9 @@ bool Runtime::Init(RuntimeArgumentMap&& runtime_options_in) {
       }
       class_linker_->AddExtraBootDexFiles(self, std::move(extra_boot_class_path));
     }
-    if (IsJavaDebuggable()) {
-      // Now that we have loaded the boot image, deoptimize its methods if we are running
-      // debuggable, as the code may have been compiled non-debuggable.
+    if (IsJavaDebuggable() || runtime_options.Exists(Opt::DeoptimizeBootImage)) {
+      // Deoptimize the boot image if debuggable  as the code may have been compiled non-debuggable.
+      // Also debuggable if explicitly asked to by runtime option.
       ScopedThreadSuspension sts(self, ThreadState::kNative);
       ScopedSuspendAll ssa(__FUNCTION__);
       DeoptimizeBootImage();
