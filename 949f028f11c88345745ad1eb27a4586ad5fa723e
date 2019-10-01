@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c35c9af2_03959cd4",
+        "filename": "runtime/reflective_handle.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "Please add comments in this file, eg high-level comments on what these classes are about.",
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3287e7c0_8ba1416c",
+        "filename": "runtime/reflective_handle_scope.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "ditto on comments.",
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700474c4_213ee79e",
+        "filename": "test/1985-structural-redefine-stack-scope/src/Main.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "assertEquals(\"Foo value is \" + f.get(null), Transform.foo);",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 54
+      },
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "127bf190_2b1b7712",
+        "filename": "test/1985-structural-redefine-stack-scope/src/Main.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "assertEquals(j.invokeExact(), Transform.foo);",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 58
+      },
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f765148f_768e1894",
+        "filename": "test/1986-structural-redefine-multi-thread-stack-scope/expected.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "Ditto about putting the asserts in the test file instead of a golden file.",
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73fd82d_d96078ab",
+        "filename": "test/1987-structural-redefine-recurisive-stack-scope/expected.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T09:21:38Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "949f028f11c88345745ad1eb27a4586ad5fa723e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
