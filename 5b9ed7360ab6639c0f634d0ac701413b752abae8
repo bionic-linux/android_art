@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e0d6e2d_3e9e75f7",
+        "filename": "test/1985-structural-redefine-stack-scope/src/Main.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-01T17:54:29Z",
+      "side": 1,
+      "message": "nit: \"Expected \" + b + \", got \" + a.",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "5b9ed7360ab6639c0f634d0ac701413b752abae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
