@@ -22,6 +22,30 @@
       "revId": "5b9ed7360ab6639c0f634d0ac701413b752abae8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3e27d8_71967845",
+        "filename": "test/1985-structural-redefine-stack-scope/src/Main.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-01T18:09:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0d6e2d_3e9e75f7",
+      "range": {
+        "startLine": 60,
+        "startChar": 22,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "5b9ed7360ab6639c0f634d0ac701413b752abae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
