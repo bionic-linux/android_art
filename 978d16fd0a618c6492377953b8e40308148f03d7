@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7efa7d67_fc430a63",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-02T20:54:43Z",
+      "side": 1,
+      "message": "Done. This is actually a bit incorrect.",
+      "parentUuid": "dafe096e_56be3718",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be79987d_4bc448e3",
         "filename": "runtime/jni/jni_id_manager.cc",
         "patchSetId": 13
@@ -45,6 +69,30 @@
       "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8c173b_fb94fbfc",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-02T20:54:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be79987d_4bc448e3",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3c29ae6b_7b3a876a",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-02T20:54:43Z",
+      "side": 1,
+      "message": "std::for_each is implemented\n\nfor (auto it \u003d begin; it !\u003d end; ++it) {\n  thunk(*it);\n}\n\nso it cannot be used. We need to update the value.",
+      "parentUuid": "1cade39e_ad4efac2",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 66
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d73f06d_c5c3e8ec",
         "filename": "runtime/jni/jni_id_manager.cc",
         "patchSetId": 13
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "357d7514_ded5a2df",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-02T20:54:43Z",
+      "side": 1,
+      "message": "see above.",
+      "parentUuid": "4d73f06d_c5c3e8ec",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 64
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04b97600_ff1332fd",
         "filename": "runtime/reflective_handle.h",
         "patchSetId": 13
@@ -114,6 +210,30 @@
       "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e47836_11b14e87",
+        "filename": "runtime/reflective_handle.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-02T20:54:43Z",
+      "side": 1,
+      "message": "Hope we get it in a test :(\n\nThe problem is that unlike for ObjPtr there are plenty of places where we don\u0027t need/want to update them over suspend points.",
+      "parentUuid": "04b97600_ff1332fd",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
