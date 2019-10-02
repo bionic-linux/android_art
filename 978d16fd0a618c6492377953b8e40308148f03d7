@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c8068b50_cf184096",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T23:25:42Z",
+      "side": 1,
+      "message": "You can still update the value if you use a reference i.e. ArtMethod*\u0026 I think, but it\u0027s not a big deal.",
+      "parentUuid": "357d7514_ded5a2df",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 64
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04b97600_ff1332fd",
         "filename": "runtime/reflective_handle.h",
         "patchSetId": 13
