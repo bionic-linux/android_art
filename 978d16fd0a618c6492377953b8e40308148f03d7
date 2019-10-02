@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dafe096e_56be3718",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T20:17:20Z",
+      "side": 1,
+      "message": "Add a comment that the getters have side effects? Also the usage of ternary here looks strange.",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 21
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be79987d_4bc448e3",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T20:17:20Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cade39e_ad4efac2",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T20:17:20Z",
+      "side": 1,
+      "message": "Could use for each here I suppose. for (ArtMethod*\u0026 method : methods_) or similar",
+      "range": {
+        "startLine": 517,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 66
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d73f06d_c5c3e8ec",
+        "filename": "runtime/jni/jni_id_manager.cc",
+        "patchSetId": 13
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T20:17:20Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 523,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 64
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b97600_ff1332fd",
+        "filename": "runtime/reflective_handle.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-10-02T20:17:20Z",
+      "side": 1,
+      "message": "Whats the plan for detecting all the bugs where people forget to put their ArtMethod/ArtField in a ReflectiveHandle?",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "978d16fd0a618c6492377953b8e40308148f03d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
