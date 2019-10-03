@@ -34,6 +34,24 @@
       "revId": "05654d34064f231cbe4ea0fed5f2e893dfb72cc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23a059dd_8ef89481",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-03T16:33:13Z",
+      "side": 1,
+      "message": "Only if we have to imo. After all, the goal is to move away auto-detection instead.",
+      "parentUuid": "7a1693bd_53794fb3",
+      "revId": "05654d34064f231cbe4ea0fed5f2e893dfb72cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

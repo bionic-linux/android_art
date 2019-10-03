@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0f4e9d9_bddd191b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-03T16:33:13Z",
+      "side": 1,
+      "message": "The single host APEX we got today is debug. This is to pave the way for a release variant of it? If so, what\u0027s the reason?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5dfedbc_54cae10a",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-03T16:33:13Z",
+      "side": 1,
+      "message": "Another code path that gets missed. I suggest just moving down the condition that looks at test_args.flavor until after the auto processing below, or equivalently move up all of 1072-1098 before the block of arg tests above.\n\nAnd/or clean up these legacy flags.",
+      "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
