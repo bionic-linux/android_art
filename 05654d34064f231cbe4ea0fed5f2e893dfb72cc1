@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dec48b3f_3cec2773",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-03T15:16:08Z",
+      "side": 1,
+      "message": "What if --flavor\u003dauto detects testing?",
+      "revId": "05654d34064f231cbe4ea0fed5f2e893dfb72cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
