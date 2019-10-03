@@ -1045,8 +1045,8 @@ def art_apex_test_main(test_args):
   if test_args.size and not (test_args.list or test_args.tree):
     logging.error("--size set but neither --list nor --tree set")
     return 1
-  if test_args.host and test_args.flavor:
-    logging.error("Both of --host and --flavor set")
+  if test_args.host and test_args.flavor == 'testing':
+    logging.error("Both of --host and --flavor testing set")
     return 1
   if test_args.host and test_args.testing:
     logging.error("Both of --host and --testing set")
