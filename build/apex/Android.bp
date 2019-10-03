@@ -241,6 +241,10 @@ prebuilt_etc {
     installable: false,
 }
 
+prebuilt_boot {
+    name: "com.android.art.boot.art",
+}
+
 // Default values shared by device ART APEXes.
 apex_defaults {
     name: "com.android.art-defaults",
@@ -269,6 +273,7 @@ apex_defaults {
         "art_preinstall_hook_system_server",
         "art_prepostinstall_utils",
     ],
+    boot_images: ["com.android.art.boot.art"],
     prebuilts: ["com.android.art.ld.config.txt"],
     key: "com.android.art.key",
     required: [
