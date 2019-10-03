@@ -1063,9 +1063,6 @@ def art_apex_test_main(test_args):
   if test_args.size and not (test_args.list or test_args.tree):
     logging.error("--size set but neither --list nor --tree set")
     return 1
-  if test_args.host and test_args.flavor:
-    logging.error("Both of --host and --flavor set")
-    return 1
   if test_args.host and test_args.testing:
     logging.error("Both of --host and --testing set")
     return 1
@@ -1085,6 +1082,37 @@ def art_apex_test_main(test_args):
     logging.error("Need debugfs.")
     return 1
 
+  # Handle legacy flavor flags.
+  if test_args.debug:
+    logging.warning('Using deprecated option --debug')
+    test_args.flavor = FLAVOR_DEBUG
+  if test_args.testing:
+    logging.warning('Using deprecated option --testing')
+    test_args.flavor = FLAVOR_TESTING
+
+  if test_args.host and test_args.flavor == 'release':
+    logging.error("Both of --host and --flavor release set")
+    return 1
+  if test_args.host and test_args.flavor == 'testing':
+    logging.error("Both of --host and --flavor testing set")
+    return 1
+
+  # Handle new flavor flag.
+  if test_args.flavor == FLAVOR_AUTO:
+    logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
+    for flavor in [ FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING ]:
+      flavor_pattern = '*.%s*' % flavor
+      if fnmatch.fnmatch(test_args.apex, flavor_pattern):
+        test_args.flavor = flavor
+        if test_args.host and test_args.flavor != FLAVOR_DEBUG:
+          logging.error("Using option --host with auto-detected non-Debug APEX")
+          return 1
+        break
+    if test_args.flavor == FLAVOR_AUTO:
+      logging.error('  Could not detect APEX flavor, neither \'%s\', \'%s\' nor \'%s\' in \'%s\'',
+                  FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING, test_args.apex)
+      return 1
+
   try:
     if test_args.host:
       apex_provider = HostApexProvider(test_args.apex, test_args.tmpdir)
@@ -1103,25 +1131,6 @@ def art_apex_test_main(test_args):
   if test_args.list:
     List(apex_provider, test_args.size).print_list()
     return 0
-
-  # Handle legacy flavor flags.
-  if test_args.debug:
-    logging.warning('Using deprecated option --debug')
-    test_args.flavor = FLAVOR_DEBUG
-  if test_args.testing:
-    logging.warning('Using deprecated option --testing')
-    test_args.flavor = FLAVOR_TESTING
-  if test_args.flavor == FLAVOR_AUTO:
-    logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
-    for flavor in [ FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING ]:
-      flavor_pattern = '*.%s*' % flavor
-      if fnmatch.fnmatch(test_args.apex, flavor_pattern):
-        test_args.flavor = flavor
-        break
-    if test_args.flavor == FLAVOR_AUTO:
-      logging.error('  Could not detect APEX flavor, neither \'%s\', \'%s\' nor \'%s\' in \'%s\'',
-                  FLAVOR_RELEASE, FLAVOR_DEBUG, FLAVOR_TESTING, test_args.apex)
-      return 1
 
   checkers = []
   if test_args.bitness == BITNESS_AUTO:
