@@ -519,7 +519,6 @@ class ReleaseTargetChecker:
     # Check the APEX package scripts.
     self._checker.check_executable('art_postinstall_hook')
     self._checker.check_executable('art_preinstall_hook')
-    self._checker.check_executable('art_preinstall_hook_boot')
     self._checker.check_executable('art_preinstall_hook_system_server')
     self._checker.check_executable('art_prepostinstall_utils')
 
