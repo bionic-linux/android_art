@@ -376,7 +376,7 @@ static uint32_t g_jit_num_unpacked_entries = 0;
 // Split the JIT code cache into groups of fixed size and create single JITCodeEntry for each group.
 // The start address of method's code determines which group it belongs to.  The end is irrelevant.
 // New mini debug infos will be merged if possible, and entries for GCed functions will be removed.
-static void RepackEntries(bool compress, ArrayRef<const void*> removed)
+static void RepackEntries(bool compress_entries, ArrayRef<const void*> removed)
     REQUIRES(g_jit_debug_lock) {
   DCHECK(std::is_sorted(removed.begin(), removed.end()));
   jit::Jit* jit = Runtime::Current()->GetJit();
@@ -394,7 +394,7 @@ static void RepackEntries(bool compress, ArrayRef<const void*> removed)
       break;  // Memory owned by the zygote process (read-only for an app).
     }
     if (it->allow_packing_) {
-      if (!compress && it->is_compressed_ && removed.empty()) {
+      if (!compress_entries && it->is_compressed_ && removed.empty()) {
         continue;  // If we are not compressing, also avoid decompressing.
       }
       entries.push_back(it);
@@ -419,6 +419,9 @@ static void RepackEntries(bool compress, ArrayRef<const void*> removed)
     auto removed_end = std::lower_bound(removed.begin(), removed.end(), group_end);
     CHECK(removed_end >= removed_begin);
     ArrayRef<const void*> removed_subset(&*removed_begin, removed_end - removed_begin);
+
+    // Optimization: Don't compress the last group since it will likely change again soon.
+    bool compress = compress_entries && end != entries.end();
 
     // Bail out early if there is nothing to do for this group.
     if (elfs.size() == 1 && removed_subset.empty() && (*begin)->is_compressed_ == compress) {
