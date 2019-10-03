@@ -16,6 +16,24 @@
       "revId": "05654d34064f231cbe4ea0fed5f2e893dfb72cc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1693bd_53794fb3",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-03T15:54:53Z",
+      "side": 1,
+      "message": "Good catch; I adjusted the logic in PS2.\n\nAs a side note, we don\u0027t have an auto-detection concept for option `--host`; maybe we could also consider that.",
+      "parentUuid": "dec48b3f_3cec2773",
+      "revId": "05654d34064f231cbe4ea0fed5f2e893dfb72cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
