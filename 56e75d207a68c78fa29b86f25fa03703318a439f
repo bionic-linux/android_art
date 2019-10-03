@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e533289_c9154a92",
+        "filename": "tools/run-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-03T10:45:47Z",
+      "side": 1,
+      "message": "Given jdwp is going away, why do we not just remove those tests?",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "56e75d207a68c78fa29b86f25fa03703318a439f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
