@@ -1045,8 +1045,8 @@ def art_apex_test_main(test_args):
   if test_args.size and not (test_args.list or test_args.tree):
     logging.error("--size set but neither --list nor --tree set")
     return 1
-  if test_args.host and test_args.flavor:
-    logging.error("Both of --host and --flavor set")
+  if test_args.host and test_args.flavor == 'testing':
+    logging.error("Both of --host and --flavor testing set")
     return 1
   if test_args.host and test_args.testing:
     logging.error("Both of --host and --testing set")
@@ -1069,6 +1069,34 @@ def art_apex_test_main(test_args):
   if test_args.bitness not in ['32', '64', 'multilib', 'auto']:
     logging.error('--bitness needs to be one of 32|64|multilib|auto')
 
+  # Handle legacy flavor flags.
+  if test_args.debug:
+    logging.warning('Using deprecated option --debug')
+    test_args.flavor='debug'
+  if test_args.testing:
+    logging.warning('Using deprecated option --testing')
+    test_args.flavor='testing'
+
+  if test_args.flavor == 'auto':
+    logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
+    if fnmatch.fnmatch(test_args.apex, '*.release*'):
+      logging.warning('  Detected Release APEX')
+      test_args.flavor='release'
+    elif fnmatch.fnmatch(test_args.apex, '*.debug*'):
+      logging.warning('  Detected Debug APEX')
+      test_args.flavor='debug'
+    elif fnmatch.fnmatch(test_args.apex, '*.testing*'):
+      logging.warning('  Detected Testing APEX')
+      test_args.flavor='testing'
+      if test_args.host:
+        logging.error("Using option --host with auto-detected Testing APEX")
+        return 1
+    else:
+      logging.error('  Could not detect APEX flavor, neither \'release\', \'debug\' nor ' +
+                    '\'testing\' in \'%s\'',
+          test_args.apex)
+      return 1
+
   try:
     if test_args.host:
       apex_provider = HostApexProvider(test_args.apex, test_args.tmpdir)
@@ -1087,30 +1115,6 @@ def art_apex_test_main(test_args):
   if test_args.list:
     List(apex_provider, test_args.size).print_list()
     return 0
-
-  # Handle legacy flavor flags.
-  if test_args.debug:
-    logging.warning('Using deprecated option --debug')
-    test_args.flavor='debug'
-  if test_args.testing:
-    logging.warning('Using deprecated option --testing')
-    test_args.flavor='testing'
-  if test_args.flavor == 'auto':
-    logging.warning('--flavor=auto, trying to autodetect. This may be incorrect!')
-    if fnmatch.fnmatch(test_args.apex, '*.release*'):
-      logging.warning('  Detected Release APEX')
-      test_args.flavor='release'
-    elif fnmatch.fnmatch(test_args.apex, '*.debug*'):
-      logging.warning('  Detected Debug APEX')
-      test_args.flavor='debug'
-    elif fnmatch.fnmatch(test_args.apex, '*.testing*'):
-      logging.warning('  Detected Testing APEX')
-      test_args.flavor='testing'
-    else:
-      logging.error('  Could not detect APEX flavor, neither \'release\', \'debug\' nor ' +
-                    '\'testing\' in \'%s\'',
-          test_args.apex)
-      return 1
 
   checkers = []
   if test_args.bitness == 'auto':
