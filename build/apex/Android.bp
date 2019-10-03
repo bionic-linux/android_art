@@ -265,10 +265,10 @@ apex_defaults {
     binaries: [
         "art_postinstall_hook",
         "art_preinstall_hook",
-        "art_preinstall_hook_boot",
         "art_preinstall_hook_system_server",
         "art_prepostinstall_utils",
     ],
+    boot_images: ["dex_bootjars_global"],
     prebuilts: ["com.android.art.ld.config.txt"],
     key: "com.android.art.key",
     required: [
@@ -498,11 +498,6 @@ cc_prebuilt_binary {
 sh_binary {
     name: "art_preinstall_hook",
     src: "art_preinstall_hook.sh",
-}
-
-sh_binary {
-    name: "art_preinstall_hook_boot",
-    src: "art_preinstall_hook_boot.sh",
 }
 
 sh_binary {

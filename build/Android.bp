@@ -241,3 +241,8 @@ art_debug_defaults {
         },
     },
 }
+
+// the unique dexpreopt module (used by ART apex and dex_bootjars_singleton)
+dex_bootjars {
+    name: "dex_bootjars_global",
+}
