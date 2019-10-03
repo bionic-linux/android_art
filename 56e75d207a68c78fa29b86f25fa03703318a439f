@@ -22,6 +22,30 @@
       "revId": "56e75d207a68c78fa29b86f25fa03703318a439f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70c3ab6_a88e9a55",
+        "filename": "tools/run-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-10-03T20:49:52Z",
+      "side": 1,
+      "message": "This seemed easier. Also we\u0027ve generally tried to keep the test suite pretty static (modulo a few bug fixes).\n\nI can just remove them if you want.",
+      "parentUuid": "5e533289_c9154a92",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "56e75d207a68c78fa29b86f25fa03703318a439f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
