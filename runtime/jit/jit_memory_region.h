@@ -81,11 +81,13 @@ class JitMemoryRegion {
 
   // Copy the code into the region, and allocate an OatQuickMethodHeader.
   // Callers should not write into the returned memory, as it may be read-only.
-  const uint8_t* AllocateCode(const uint8_t* code,
-                              size_t code_size,
-                              const uint8_t* stack_map,
-                              bool has_should_deoptimize_flag)
+  const uint8_t* CommitCode(ArrayRef<const uint8_t> reserved_code,
+                            size_t header_size,
+                            ArrayRef<const uint8_t> code,
+                            const uint8_t* stack_map,
+                            bool has_should_deoptimize_flag)
       REQUIRES(Locks::jit_lock_);
+  const uint8_t* AllocateCode(size_t code_size) REQUIRES(Locks::jit_lock_);
   void FreeCode(const uint8_t* code) REQUIRES(Locks::jit_lock_);
   const uint8_t* AllocateData(size_t data_size) REQUIRES(Locks::jit_lock_);
   void FreeData(const uint8_t* data) REQUIRES(Locks::jit_lock_);
