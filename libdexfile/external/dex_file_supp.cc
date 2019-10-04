@@ -45,33 +45,44 @@ DEFINE_DLFUNC_PTR(DexFile, ExtDexFileFree);
 
 #undef DEFINE_DLFUNC_PTR
 
-void LoadLibdexfileExternal() {
+bool TryLoadLibdexfileExternal(std::string* err_msg) {
 #if defined(STATIC_LIB)
   // Nothing to do here since all function pointers are initialised statically.
+  return true;
 #elif defined(NO_DEXFILE_SUPPORT)
-  LOG_FATAL("Dex file support not available.");
+  *err_msg = "Dex file support not available.";
+  return false;
 #else
-  static std::once_flag dlopen_once;
-  std::call_once(dlopen_once, []() {
-    // Check which version is already loaded to avoid loading both debug and release builds.
-    // We might also be backtracing from separate process, in which case neither is loaded.
+  // Use a plain old mutex since we want to try again if loading fails (to set
+  // err_msg, if nothing else).
+  static std::mutex load_mutex;
+  static bool is_loaded = false;
+  std::lock_guard<std::mutex> lock(load_mutex);
+
+  if (!is_loaded) {
+    // Check which version is already loaded to avoid loading both debug and
+    // release builds. We might also be backtracing from separate process, in
+    // which case neither is loaded.
     const char* so_name = "libdexfiled_external.so";
     void* handle = dlopen(so_name, RTLD_NOLOAD | RTLD_NOW | RTLD_NODELETE);
     if (handle == nullptr) {
       so_name = "libdexfile_external.so";
       handle = dlopen(so_name, RTLD_NOW | RTLD_GLOBAL | RTLD_NODELETE);
     }
-    LOG_ALWAYS_FATAL_IF(handle == nullptr, "Failed to load %s: %s", so_name, dlerror());
+    if (handle == nullptr) {
+      *err_msg = std::string("Failed to load ") + so_name + ": " + dlerror();
+      return false;
+    }
 
 #define SET_DLFUNC_PTR(CLASS, DLFUNC) \
-  do { \
-    CLASS::g_##DLFUNC = reinterpret_cast<decltype(DLFUNC)*>(dlsym(handle, #DLFUNC)); \
-    LOG_ALWAYS_FATAL_IF(CLASS::g_##DLFUNC == nullptr, \
-                        "Failed to find %s in %s: %s", \
-                        #DLFUNC, \
-                        so_name, \
-                        dlerror()); \
-  } while (0)
+    do { \
+      CLASS::g_##DLFUNC = reinterpret_cast<decltype(DLFUNC)*>(dlsym(handle, #DLFUNC)); \
+      if (CLASS::g_##DLFUNC == nullptr) { \
+        *err_msg = std::string("Failed to find ") + #DLFUNC + \
+                   " in " + so_name + ": " + dlerror(); \
+        return false; \
+      } \
+    } while (0)
 
     SET_DLFUNC_PTR(DexString, ExtDexFileMakeString);
     SET_DLFUNC_PTR(DexString, ExtDexFileGetString);
@@ -83,8 +94,17 @@ void LoadLibdexfileExternal() {
     SET_DLFUNC_PTR(DexFile, ExtDexFileFree);
 
 #undef SET_DLFUNC_PTR
-  });
+    is_loaded = true;
+  }
+
+  return is_loaded;
 #endif  // !defined(NO_DEXFILE_SUPPORT) && !defined(STATIC_LIB)
+}
+
+void LoadLibdexfileExternal() {
+  if (std::string err_msg; !TryLoadLibdexfileExternal(&err_msg)) {
+    LOG_FATAL(err_msg);
+  }
 }
 
 DexFile::~DexFile() { g_ExtDexFileFree(ext_dex_file_); }

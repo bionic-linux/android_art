@@ -33,6 +33,12 @@
 namespace art_api {
 namespace dex {
 
+// Returns true if libdexfile_external.so is already loaded. Otherwise tries to
+// load it and returns true if successful. Otherwise returns false and sets
+// *error_msg. If false is returned then calling any function below may abort
+// the process.
+bool TryLoadLibdexfileExternal(std::string *error_msg);
+
 // Loads the libdexfile_external.so library and sets up function pointers.
 // Aborts with a fatal error on any error. For internal use by the classes
 // below.
@@ -75,7 +81,7 @@ class DexString final {
   }
 
  private:
-  friend void LoadLibdexfileExternal();
+  friend bool TryLoadLibdexfileExternal(std::string *error_msg);
   friend class DexFile;
   friend bool operator==(const DexString&, const DexString&);
   explicit DexString(const ExtDexFileString* ext_string) : ext_string_(ext_string) {}
@@ -203,7 +209,7 @@ class DexFile {
   }
 
  private:
-  friend void LoadLibdexfileExternal();
+  friend bool TryLoadLibdexfileExternal(std::string *error_msg);
   explicit DexFile(ExtDexFile* ext_dex_file) : ext_dex_file_(ext_dex_file) {}
   ExtDexFile* ext_dex_file_;  // Owned instance. nullptr only in moved-from zombies.
 
