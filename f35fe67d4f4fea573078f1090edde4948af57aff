@@ -94,6 +94,30 @@
       "revId": "f35fe67d4f4fea573078f1090edde4948af57aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76b0888_e839dbf5",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-04T17:14:19Z",
+      "side": 1,
+      "message": "No, `m !\u003d method` just means we were asked to JIT native method thunks for two or more methods that have the same shorty and relevant flags (thus the same thunk), so we commit the code to all those methods.\n\nBut I agree that even before this CL, there are races that can lead to a missed entrypoint update. So we can commit this as is.",
+      "parentUuid": "a1b7ba7e_4dfbf5fa",
+      "range": {
+        "startLine": 760,
+        "startChar": 11,
+        "endLine": 760,
+        "endChar": 63
+      },
+      "revId": "f35fe67d4f4fea573078f1090edde4948af57aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
