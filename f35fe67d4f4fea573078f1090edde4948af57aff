@@ -46,6 +46,30 @@
       "revId": "f35fe67d4f4fea573078f1090edde4948af57aff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0092f19_099edf61",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-04T16:51:06Z",
+      "side": 1,
+      "message": "I see.\n\nSo, the worst that can happen is that we erroneously keep the old entrypoint here. How do we ensure that we do not keep it indefinitely? Should we ClearMethodCounter()?",
+      "parentUuid": "020ecea5_5e32b4be",
+      "range": {
+        "startLine": 760,
+        "startChar": 11,
+        "endLine": 760,
+        "endChar": 63
+      },
+      "revId": "f35fe67d4f4fea573078f1090edde4948af57aff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
