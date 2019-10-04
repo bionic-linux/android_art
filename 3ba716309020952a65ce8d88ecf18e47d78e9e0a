@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e2a6185_bab2470a",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-04T14:23:07Z",
+      "side": 1,
+      "message": "Perhaps slightly clearer if there\u0027s a comment here that these are initialized by TryLoadLibdexfileExternal. Up to you.",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "3ba716309020952a65ce8d88ecf18e47d78e9e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4913dca5_89aa9b22",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-04T14:23:07Z",
+      "side": 1,
+      "message": "Same here and again up to you.",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 72
+      },
+      "revId": "3ba716309020952a65ce8d88ecf18e47d78e9e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
