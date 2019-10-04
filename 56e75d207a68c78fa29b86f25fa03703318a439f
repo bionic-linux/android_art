@@ -46,6 +46,30 @@
       "revId": "56e75d207a68c78fa29b86f25fa03703318a439f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05f65a28_b8892085",
+        "filename": "tools/run-libjdwp-tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-04T09:12:00Z",
+      "side": 1,
+      "message": "I\u0027ll leave it up to you how you want to handle this, but why is it easier? Removing the tests doesn\u0027t require new code to handle a new \u0027skip\u0027 argument.",
+      "parentUuid": "f70c3ab6_a88e9a55",
+      "range": {
+        "startLine": 27,
+        "startChar": 41,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "56e75d207a68c78fa29b86f25fa03703318a439f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
