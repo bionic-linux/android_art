@@ -68,6 +68,29 @@
       "revId": "b1f23a8b4eb9921ee168f607f3e7ac4735bf430e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f44b8ec7_5d7ab724",
+        "filename": "test/956-methodhandles/src/Main.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-04T08:41:34Z",
+      "side": 1,
+      "message": "Suggest keeping separate from invoke() test, e.g. instantiate handle then check the invoke.",
+      "range": {
+        "startLine": 1833,
+        "startChar": 0,
+        "endLine": 1838,
+        "endChar": 46
+      },
+      "revId": "b1f23a8b4eb9921ee168f607f3e7ac4735bf430e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
