@@ -350,41 +350,36 @@ void* JitMemoryRegion::MoreCore(const void* mspace, intptr_t increment) NO_THREA
   }
 }
 
-const uint8_t* JitMemoryRegion::AllocateCode(const uint8_t* code,
-                                             size_t code_size,
-                                             const uint8_t* stack_map,
-                                             bool has_should_deoptimize_flag) {
+const uint8_t* JitMemoryRegion::CommitCode(ArrayRef<const uint8_t> reserved_code,
+                                           ArrayRef<const uint8_t> code,
+                                           const uint8_t* stack_map,
+                                           bool has_should_deoptimize_flag) {
+  DCHECK(IsInExecSpace(reserved_code.data()));
   ScopedCodeCacheWrite scc(*this);
 
   size_t alignment = GetInstructionSetAlignment(kRuntimeISA);
-  // Ensure the header ends up at expected instruction alignment.
-  size_t header_size = RoundUp(sizeof(OatQuickMethodHeader), alignment);
-  size_t total_size = header_size + code_size;
+  size_t header_size = OatQuickMethodHeader::InstructionAlignedSize();
+  size_t total_size = header_size + code.size();
 
   // Each allocation should be on its own set of cache lines.
   // `total_size` covers the OatQuickMethodHeader, the JIT generated machine code,
   // and any alignment padding.
   DCHECK_GT(total_size, header_size);
-  uint8_t* w_memory = reinterpret_cast<uint8_t*>(
-      mspace_memalign(exec_mspace_, alignment, total_size));
-  if (UNLIKELY(w_memory == nullptr)) {
-    return nullptr;
-  }
-  uint8_t* x_memory = GetExecutableAddress(w_memory);
+  uint8_t* x_memory = const_cast<uint8_t*>(reserved_code.data());
+  uint8_t* w_memory = const_cast<uint8_t*>(GetNonExecutableAddress(x_memory));
   // Ensure the header ends up at expected instruction alignment.
   DCHECK_ALIGNED_PARAM(reinterpret_cast<uintptr_t>(w_memory + header_size), alignment);
-  used_memory_for_code_ += mspace_usable_size(w_memory);
   const uint8_t* result = x_memory + header_size;
 
   // Write the code.
-  std::copy(code, code + code_size, w_memory + header_size);
+  std::copy(code.begin(), code.end(), w_memory + header_size);
 
   // Write the header.
   OatQuickMethodHeader* method_header =
       OatQuickMethodHeader::FromCodePointer(w_memory + header_size);
   new (method_header) OatQuickMethodHeader(
       (stack_map != nullptr) ? result - stack_map : 0u,
-      code_size);
+      code.size());
   if (has_should_deoptimize_flag) {
     method_header->SetHasShouldDeoptimizeFlag();
   }
@@ -468,6 +463,16 @@ bool JitMemoryRegion::CommitData(const uint8_t* readonly_roots_data,
     return false;
   }
   return true;
+}
+
+const uint8_t* JitMemoryRegion::AllocateCode(size_t size) {
+  size_t alignment = GetInstructionSetAlignment(kRuntimeISA);
+  void* result = mspace_memalign(exec_mspace_, alignment, size);
+  if (UNLIKELY(result == nullptr)) {
+    return nullptr;
+  }
+  used_memory_for_code_ += mspace_usable_size(result);
+  return reinterpret_cast<uint8_t*>(GetExecutableAddress(result));
 }
 
 void JitMemoryRegion::FreeCode(const uint8_t* code) {
