@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec08c03e_ec41ad8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-07T21:03:21Z",
+      "side": 1,
+      "message": "since",
+      "range": {
+        "startLine": 12,
+        "startChar": 15,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13fe16ea_ca55e80a",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-07T21:03:21Z",
+      "side": 1,
+      "message": "Good to move this between Reserve and Free perhaps.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06572c34_f0cc8581",
+        "filename": "runtime/jit/jit_memory_region.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-07T21:03:21Z",
+      "side": 1,
+      "message": "Update comment? Clarify difference between reserved_code and code, ie former includes header and code and is effectively writable despite being const, later is generated.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
