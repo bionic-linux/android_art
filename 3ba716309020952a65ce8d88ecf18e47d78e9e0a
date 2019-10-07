@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "343a2d05_049e897f",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e2a6185_bab2470a",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "3ba716309020952a65ce8d88ecf18e47d78e9e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4913dca5_89aa9b22",
         "filename": "libdexfile/external/include/art_api/dex_file_support.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-04T14:23:07Z",
       "side": 1,
       "message": "Same here and again up to you.",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 72
+      },
+      "revId": "3ba716309020952a65ce8d88ecf18e47d78e9e0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26079c43_4a76098d",
+        "filename": "libdexfile/external/include/art_api/dex_file_support.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T17:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4913dca5_89aa9b22",
       "range": {
         "startLine": 221,
         "startChar": 2,
