@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "e9d3aa51_9237d337",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-08T12:16:55Z",
+      "side": 1,
+      "message": "nit: I\u0027d recompute those to avoid the already dense API.",
+      "range": {
+        "startLine": 632,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 55
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bebdc077_fc62bbf5",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-08T12:16:55Z",
+      "side": 1,
+      "message": "nit: add a comment about the loop.",
+      "range": {
+        "startLine": 918,
+        "startChar": 0,
+        "endLine": 918,
+        "endChar": 31
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "13fe16ea_ca55e80a",
         "filename": "runtime/jit/jit_code_cache.h",
         "patchSetId": 1
@@ -41,6 +87,29 @@
         "startChar": 0,
         "endLine": 192,
         "endChar": 34
+      },
+      "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2070933_69cca42e",
+        "filename": "runtime/jit/jit_code_cache.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-08T12:16:55Z",
+      "side": 1,
+      "message": "Update comment.",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 54
       },
       "revId": "75353d81046a38651f0e922d2f557cf1143ffc23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
