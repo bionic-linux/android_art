@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "146a0474_ae103c18",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-10T12:26:32Z",
+      "side": 1,
+      "message": "present in \"devices\"?",
+      "range": {
+        "startLine": 730,
+        "startChar": 15,
+        "endLine": 730,
+        "endChar": 32
+      },
+      "revId": "82075121308690284b87cc88691c30e64f898c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
