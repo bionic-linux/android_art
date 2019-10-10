@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c5afff64_957741e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-10T15:27:18Z",
+      "side": 1,
+      "message": "The symbolizer script uses unstripped libart(d)-compiler.so which still contains the debug symbols.",
+      "parentUuid": "615f10b8_dd838fd2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "4851b338a5be0854f637db8bf44da7caedfdd47f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dc91904_a3a3e440",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "4851b338a5be0854f637db8bf44da7caedfdd47f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89de4488_1776b82e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-10T15:27:18Z",
+      "side": 1,
+      "message": "I used the wording \"libartd-compiler library\" as by convention it\u0027s a .a file rather than .so .",
+      "parentUuid": "3dc91904_a3a3e440",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 38
+      },
+      "revId": "4851b338a5be0854f637db8bf44da7caedfdd47f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
