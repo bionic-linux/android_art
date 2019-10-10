@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "e19ae8d0_739f789b",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-10T12:27:51Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \"fugu\", given the description on line 101?",
+      "range": {
+        "startLine": 100,
+        "startChar": 19,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "82075121308690284b87cc88691c30e64f898c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "146a0474_ae103c18",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
