@@ -22,6 +22,30 @@
       "revId": "99717994b100ae7e2f3c4ce0d1227e5f6cca8807",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "693082a9_4fe10359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-11T13:01:48Z",
+      "side": 1,
+      "message": "Added a comment to the .h file. Also marked namespaces in tests as HIDDEN so that they do not clutter the search for missing attributes:\n\n    git grep -E \u0027^namespace art \\{\u0027 compiler/optimizing/",
+      "parentUuid": "16ab2199_c9326ed4",
+      "range": {
+        "startLine": 10,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "99717994b100ae7e2f3c4ce0d1227e5f6cca8807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
