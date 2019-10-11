@@ -71,6 +71,54 @@
     },
     {
       "key": {
+        "uuid": "03cafc00_e494d237",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-11T08:08:16Z",
+      "side": 1,
+      "message": "Yes, this is an artifact of still testing locally on taimen.",
+      "parentUuid": "1bd4d4c2_b61bfab0",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "82075121308690284b87cc88691c30e64f898c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4cfb27d8_46a255fb",
+        "filename": "test/knownfailures.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-11T08:08:16Z",
+      "side": 1,
+      "message": "Yes, this is an artifact of still testing locally on taimen.",
+      "parentUuid": "e19ae8d0_739f789b",
+      "range": {
+        "startLine": 100,
+        "startChar": 19,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "82075121308690284b87cc88691c30e64f898c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "146a0474_ae103c18",
         "filename": "test/testrunner/testrunner.py",
         "patchSetId": 2
@@ -91,6 +139,30 @@
       "revId": "82075121308690284b87cc88691c30e64f898c37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d2aa57_6639fda0",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-11T08:08:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "146a0474_ae103c18",
+      "range": {
+        "startLine": 730,
+        "startChar": 15,
+        "endLine": 730,
+        "endChar": 32
+      },
+      "revId": "82075121308690284b87cc88691c30e64f898c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
