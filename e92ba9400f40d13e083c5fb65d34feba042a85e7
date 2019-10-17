@@ -22,6 +22,30 @@
       "revId": "e92ba9400f40d13e083c5fb65d34feba042a85e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30b9ef4b_24c6f3df",
+        "filename": "test/testrunner/testrunner.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2019-10-17T15:30:54Z",
+      "side": 1,
+      "message": "No. I just want to print the backtrace several times (once every minute).\nThen we can see if the test is making progress and if there and patterns.",
+      "parentUuid": "05992145_eeea1c75",
+      "range": {
+        "startLine": 602,
+        "startChar": 10,
+        "endLine": 602,
+        "endChar": 11
+      },
+      "revId": "e92ba9400f40d13e083c5fb65d34feba042a85e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
