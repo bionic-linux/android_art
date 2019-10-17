@@ -58,7 +58,7 @@ art_cc_library {
 cc_library {
     name: "libadbconnection_server",
     visibility: [
-        // TODO(b/133140750): Clean this up.
+        "//art/build/apex",
         "//system/core/adb",
     ],
     srcs: ["adbconnection_server.cc"],

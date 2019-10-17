@@ -272,6 +272,12 @@ apex_defaults {
 apex {
     name: "com.android.art.release",
     defaults: ["com.android.art-defaults"],
+    native_shared_libs: [
+        // The adbd apex loads the server side of libadbconnection from the ART apex,
+        // so that the protocol can be updated indepedently of the adbd apex.
+        "libadbconnection_server",
+    ],
+
     certificate: ":com.android.art.certificate",
 }
 
@@ -281,6 +287,12 @@ apex {
 apex {
     name: "com.android.art.debug",
     defaults: ["com.android.art-dev-defaults"],
+    native_shared_libs: [
+        // The adbd apex loads the server side of libadbconnection from the ART apex,
+        // so that the protocol can be updated indepedently of the adbd apex.
+        "libadbconnection_server",
+    ],
+
     certificate: ":com.android.art.certificate",
 }
 
