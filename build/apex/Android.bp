@@ -34,6 +34,9 @@ art_runtime_base_native_shared_libs = [
     // libadbconnection is internal and loaded with dlopen(), but it cannot use
     // "required" because of cyclic dependency (b/124505714).
     "libadbconnection",
+    // The adbd apex loads the server side of libadbconnection from the ART apex,
+    // so that the socket handling can be updated indepedently of the adbd apex.
+    "libadbconnection_server",
     // TODO(b/124476339): Clean up the following libraries once "required"
     // dependencies work with APEX libraries.
     "libart",
