@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4df998e_851e5154",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2019-10-17T14:26:18Z",
+      "side": 1,
+      "message": "I am sure there is a reason, but why this rather than it-\u003eToStdString()?",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "4d319c7a2a5473d86a8db6afd14a6dda47c84697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
