@@ -37,6 +37,7 @@
 #include "debugger_interface.h"
 #include "dex/dex_file_loader.h"
 #include "dex/method_reference.h"
+#include "entrypoints/entrypoint_utils-inl.h"
 #include "entrypoints/runtime_asm_entrypoints.h"
 #include "gc/accounting/bitmap-inl.h"
 #include "gc/allocator/dlmalloc.h"
@@ -126,9 +127,21 @@ class JitCodeCache::JniStubData {
     for (ArtMethod* m : GetMethods()) {
       // Because `m` might be in the process of being deleted:
       // - Call the dedicated method instead of the more generic UpdateMethodsCode
-      // - Check the class status without a read barrier.
-      // TODO: Use ReadBarrier::IsMarked() if not null to check the class status.
-      if (!m->NeedsInitializationCheck<kWithoutReadBarrier>()) {
+      // - Check the class status without a full read barrier; use ReadBarrier::IsMarked().
+      bool can_set_entrypoint = true;
+      if (NeedsClinitCheckBeforeCall(m)) {
+        // To avoid resurrecting an unreachable object, check if it's already marked.
+        // If yes, check the status of the to-space class object as intended.
+        // Otherwise, there is no to-space object and the from-space class object
+        // contains the most recent value of the status field; even if this races
+        // with another thread doing a read barrier and updating the status, that's
+        // no different from a race with thread that just updates the status.
+        ObjPtr<mirror::Class> klass = m->GetDeclaringClass<kWithoutReadBarrier>();
+        ObjPtr<mirror::Class> marked = ReadBarrier::IsMarked(klass.Ptr());
+        ObjPtr<mirror::Class> checked_klass = (marked != nullptr) ? marked : klass;
+        can_set_entrypoint = checked_klass->IsVisiblyInitialized();
+      }
+      if (can_set_entrypoint) {
         instrum->UpdateNativeMethodsCodeToJitCode(m, entrypoint);
       }
     }
@@ -730,7 +743,8 @@ bool JitCodeCache::Commit(Thread* self,
       if (osr) {
         number_of_osr_compilations_++;
         osr_code_map_.Put(method, code_ptr);
-      } else if (method->NeedsInitializationCheck()) {
+      } else if (NeedsClinitCheckBeforeCall(method) &&
+                 !method->GetDeclaringClass()->IsVisiblyInitialized()) {
         // This situation currently only occurs in the jit-zygote mode.
         DCHECK(Runtime::Current()->IsUsingApexBootImageLocation());
         DCHECK(!garbage_collect_code_);
@@ -1559,21 +1573,27 @@ bool JitCodeCache::NotifyCompilationOf(ArtMethod* method,
     return false;
   }
 
-  if (method->NeedsInitializationCheck() && !prejit) {
-    // Unless we're pre-jitting, we currently don't save the JIT compiled code if we cannot
-    // update the entrypoint due to needing an initialization check.
-    if (method->GetDeclaringClass()->IsInitialized()) {
-      // Request visible initialization but do not block to allow compiling other methods.
-      // Hopefully, this will complete by the time the method becomes hot again.
-      Runtime::Current()->GetClassLinker()->MakeInitializedClassesVisiblyInitialized(
-          self, /*wait=*/ false);
+  if (NeedsClinitCheckBeforeCall(method) && !prejit) {
+    // We do not need a synchronization barrier for checking the visibly initialized status
+    // or checking the initialized status just for requesting visible initialization.
+    ClassStatus status = method->GetDeclaringClass()
+        ->GetStatus<kDefaultVerifyFlags, /*kWithSynchronizationBarrier=*/ false>();
+    if (status != ClassStatus::kVisiblyInitialized) {
+      // Unless we're pre-jitting, we currently don't save the JIT compiled code if we cannot
+      // update the entrypoint due to needing an initialization check.
+      if (status == ClassStatus::kInitialized) {
+        // Request visible initialization but do not block to allow compiling other methods.
+        // Hopefully, this will complete by the time the method becomes hot again.
+        Runtime::Current()->GetClassLinker()->MakeInitializedClassesVisiblyInitialized(
+            self, /*wait=*/ false);
+      }
+      VLOG(jit) << "Not compiling "
+                << method->PrettyMethod()
+                << " because it has the resolution stub";
+      // Give it a new chance to be hot.
+      ClearMethodCounter(method, /*was_warm=*/ false);
+      return false;
     }
-    VLOG(jit) << "Not compiling "
-              << method->PrettyMethod()
-              << " because it has the resolution stub";
-    // Give it a new chance to be hot.
-    ClearMethodCounter(method, /*was_warm=*/ false);
-    return false;
   }
 
   MutexLock mu(self, *Locks::jit_lock_);
