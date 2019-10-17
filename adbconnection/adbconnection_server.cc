@@ -111,7 +111,7 @@ void adbconnection_listen(void (*callback)(int fd, pid_t pid)) {
 
         // Massively oversized buffer: we're expecting an int32_t from the other end.
         char buf[32];
-        int rc = TEMP_FAILURE_RETRY(recv(it->get(), buf, sizeof(buf), MSG_DONTWAIT));
+        rc = TEMP_FAILURE_RETRY(recv(it->get(), buf, sizeof(buf), MSG_DONTWAIT));
         if (rc != 4) {
           LOG(ERROR)
               << "received data of incorrect size from JDWP client: read " << rc
