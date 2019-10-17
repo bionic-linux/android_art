@@ -22,6 +22,30 @@
       "revId": "4d319c7a2a5473d86a8db6afd14a6dda47c84697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53126ffb_12b4e65d",
+        "filename": "perfetto_hprof/perfetto_hprof.cc",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1040443
+      },
+      "writtenOn": "2019-10-17T14:41:37Z",
+      "side": 1,
+      "message": "I couldn\u0027t implement the operator-\u003e because of... this code, was using operator-\u003e expecting a Field, so I kept -\u003e to avoid an atomic change.\nBut even now, I feel operator-\u003e would be quite brittle. If you look at how it\u0027s implemented that would require returning a pointer to a temporary stack object, that can be easily misused. i.e. it would look like:\n\nstring* operator-\u003e() {\n  std::string val;\n  field_-\u003eget(\u0026val);\n  return \u0026val;\n}\n\nEven with C++11 I think this would be borderline I am not sure it would guarantee that the stack allocated object would outlive **and retain the pointer address** the call.\nInstead by returning the value we just relying on the return value to have valid lifetime, which is well defined.\nAnd because of RVO it should really have the same cost and not require any copies.",
+      "parentUuid": "d4df998e_851e5154",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 151,
+        "endChar": 48
+      },
+      "revId": "4d319c7a2a5473d86a8db6afd14a6dda47c84697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
