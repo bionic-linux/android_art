@@ -22,6 +22,30 @@
       "revId": "e2bd9344e5b18d55594235fae6c312d66133268d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98bb56ef_c902c33c",
+        "filename": "runtime/jit/jit_code_cache.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-18T08:32:52Z",
+      "side": 1,
+      "message": "The GC can take a substantial amount of time, so we could visibly initialize the class, hit the threshold and compile the thunk while the method\u0027s declaring class field still points to the from-space with the old status.\n\nI want to avoid the case where we compile a thunk and do not store the entrypoint in any method at all. I was thinking about\n\n  if (m \u003d\u003d method) check/kWithReadBarrier\n  else check/kWithoutReadBarrier\n\nwhere I would need to pass the `method` for comparison. But I settled for the approach in this CL as it essentially eliminates spurious failures for other `m`s and does not need to differentiate based on `m \u003d\u003d method`.\n\nCheck/kWithoutReadBarrier can fail under normal execution. The check using IsMarked() can fail only in the JITting zygote for a class that\u0027s being concurrently intialized.",
+      "parentUuid": "000f97c5_a59ae637",
+      "range": {
+        "startLine": 136,
+        "startChar": 20,
+        "endLine": 136,
+        "endChar": 41
+      },
+      "revId": "e2bd9344e5b18d55594235fae6c312d66133268d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
