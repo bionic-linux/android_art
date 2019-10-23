@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e5dddc0_dddbc3aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "Bug: 142945903",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8010fb08_6f2671ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "Aren\u0027t there tests for adb that exercise the connection?",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6339ee_625241ed",
+        "filename": "adbconnection/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "As a matter of convention, please just use \"//art:__subpackages__\". We\u0027re not trying to enforce visibility restrictions locally within /art.\n\nOr even better, can we use art_defaults here, for the sake of consistency?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4461263a_96c48b3e",
+        "filename": "adbconnection/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "You need a stubs{} clause here with a symbol file to create proper APEX stubs. See libnativeloader for an example.",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1c9d01_e5aa54f6",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "You\u0027ll also need to add the library to art_apex_test.py. Please test it with art/build/apex/runtests.sh.",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e3319b_c2659904",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "Please add the library here instead.",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51b980a8_e05f88c4",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-23T14:32:00Z",
+      "side": 1,
+      "message": "It\u0027s just the pipe handling that\u0027s encapsulated, not the protocol on the pipe, right?\n\nAlso suggest moving this comment to the stubs clause in the libadbconnection_server rule.",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 31
+      },
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
