@@ -22,6 +22,29 @@
       "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be0f5902_64e11a8f",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-24T14:57:50Z",
+      "side": 1,
+      "message": "Please move it up under the \"External API\" comment above, to make it clear that that is what it is (as opposed to the other internal stuff we have to list here).\n\nI\u0027d also still prefer that the comment about the user is in adbconnection/Android.bp instead - we\u0027re not trying to document the rationale for the other libraries here.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
