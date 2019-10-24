@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac55617_520b06e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T12:34:26Z",
+      "side": 1,
+      "message": "Could you also add:\n\n  Test: art/build/apex/runtests.sh\n\nhere?\n\nNote: There is a known failure with those tests on the `com.android.art.host` package (\"Both of --host and --flavor set\"), tracked in b/142938159 (fix pending: https://android-review.googlesource.com/c/platform/art/+/1133395) – you can safely ignore it.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 102
+      },
+      "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

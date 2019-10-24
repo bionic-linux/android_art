@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "6225f4f3_a4df162b",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T12:34:26Z",
+      "side": 1,
+      "message": "Yes, this is a known issue (b/142938159); I\u0027ll try to get it fixed ASAP.",
+      "parentUuid": "200760e0_b224f2ba",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e3319b_c2659904",
         "filename": "build/apex/Android.bp",
         "patchSetId": 1
