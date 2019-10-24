@@ -81,6 +81,24 @@
       "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a502cbd3_091cbdaa",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T14:43:01Z",
+      "side": 1,
+      "message": "Actually, I refactored these checks a bit more in PS7 as you suggested.",
+      "parentUuid": "a57efdb1_54e1fb91",
+      "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
