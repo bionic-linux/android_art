@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "432ca4dd_8cb679f5",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-24T15:46:57Z",
+      "side": 1,
+      "message": "We could group all the host restrictions here. Maybe not for this CL, but we have other host specific checks on L1045 and L1066.",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 12
+      },
+      "revId": "dbd6a14125be935b595b140b03694dcedd5a7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
