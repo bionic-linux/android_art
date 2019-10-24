@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a5b0917_a41b54c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T14:13:54Z",
+      "side": 1,
+      "message": "Not sure; Alex, do we have plans to support a release host APEX?.\n\nAnyway, I changed the code to allow `--host` only with Debug APEXes.",
+      "parentUuid": "b0f4e9d9_bddd191b",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5dfedbc_54cae10a",
         "filename": "build/apex/art_apex_test.py",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57efdb1_54e1fb91",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T14:13:54Z",
+      "side": 1,
+      "message": "Done.\n\nI\u0027m cleaning up the legacy flags in another CL (https://android-review.googlesource.com/c/platform/art/+/1119212).",
+      "parentUuid": "a5dfedbc_54cae10a",
+      "revId": "58ddcb991b2b365e9a7aa4c58e7ccbb0e525c84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
