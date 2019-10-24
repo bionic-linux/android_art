@@ -22,6 +22,30 @@
       "revId": "dbd6a14125be935b595b140b03694dcedd5a7d6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd4f83a0_b7c10caf",
+        "filename": "build/apex/art_apex_test.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1111,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-24T16:59:24Z",
+      "side": 1,
+      "message": "Right; we can do this in a follow-up CL.",
+      "parentUuid": "432ca4dd_8cb679f5",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1111,
+        "endChar": 12
+      },
+      "revId": "dbd6a14125be935b595b140b03694dcedd5a7d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
