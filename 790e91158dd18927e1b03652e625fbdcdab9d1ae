@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82b2f882_c696e946",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T20:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ac55617_520b06e5",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 102
+      },
+      "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be0f5902_64e11a8f",
         "filename": "build/apex/Android.bp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577b9ceb_4741d0c0",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T20:28:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be0f5902_64e11a8f",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
