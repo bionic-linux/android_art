@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9eb410be_ab6f100d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e5dddc0_dddbc3aa",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8010fb08_6f2671ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34308cb0_14e9a9ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Yeah, but those are going to pass regardless of what happens here, since the code is the currently same in both apexes. The real problem is if adbd gets its copy of libadbconnection_server from its own apex lib directory.\n\nAdded the command I was using to test this to the Test: list.",
+      "parentUuid": "8010fb08_6f2671ea",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "25d57518_c3405970",
+        "filename": "adbconnection/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6339ee_625241ed",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 26
+      },
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4461263a_96c48b3e",
         "filename": "adbconnection/Android.bp",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e49c3b_ff74246d",
+        "filename": "adbconnection/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4461263a_96c48b3e",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "200760e0_b224f2ba",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "I added the library to the test, but the test script appears to fail on a completely clean aosp/master checkout with the following message:\n\n./art/build/apex/runtests.sh: Checking APEX package com.android.art.host\n./art/build/apex/runtests.sh: APEX package path: /android/aosp2/out/host/linux-x86/apex/com.android.art.host.zipapex\nBoth of --host and --flavor set\n./art/build/apex/runtests.sh: FAILED: Checks failed on com.android.art.host",
+      "parentUuid": "0b1c9d01_e5aa54f6",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e3319b_c2659904",
         "filename": "build/apex/Android.bp",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab6d84b6_15f29244",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e3319b_c2659904",
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -130,6 +244,30 @@
       "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "825eb5da_d5a24dd1",
+        "filename": "build/apex/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-24T00:36:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b980a8_e05f88c4",
+      "range": {
+        "startLine": 277,
+        "startChar": 19,
+        "endLine": 277,
+        "endChar": 31
+      },
+      "revId": "da37c4ae18fb4a439df3c2fab4a59faecdd6a179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
