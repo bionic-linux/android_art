@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06b490c5_b8584a1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2019-10-25T22:49:40Z",
+      "side": 1,
+      "message": "Oops: the fix here was actually broken, because it reassigned the variable used as part of the loop condition, which results in us iterating past the end of the array. Fixed the warning correctly in PS4.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 44
+      },
+      "revId": "67eab6b00dda7412923e5c53234b7858e1d5645f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
