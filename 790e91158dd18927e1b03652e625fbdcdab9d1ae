@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aa67e4d5_39ff2f1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-10-26T08:27:19Z",
+      "side": 1,
+      "message": "Thanks!\n\n\u003e Note: There is a known failure with those tests on the `com.android.art.host` package (\"Both of --host and --flavor set\"), tracked in b/142938159 (fix pending: https://android-review.googlesource.com/c/platform/art/+/1133395) – you can safely ignore it.\n\nThis failure is now fixed, BTW.",
+      "parentUuid": "82b2f882_c696e946",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 102
+      },
+      "revId": "790e91158dd18927e1b03652e625fbdcdab9d1ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be0f5902_64e11a8f",
         "filename": "build/apex/Android.bp",
         "patchSetId": 2
