@@ -44,6 +44,12 @@ cc_binary {
         darwin: {
             enabled: true,
         },
+        host: {
+            cflags: [
+                "-mno-sse4.2",
+                "-mno-popcnt",
+            ],
+        },
     },
 }
 
