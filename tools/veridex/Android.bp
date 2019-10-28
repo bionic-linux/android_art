@@ -28,6 +28,12 @@ cc_binary {
         "-Wall",
         "-Werror",
     ],
+    host: {
+        cflags: [
+            "-mno-sse4.2",
+            "-mno-popcnt",
+        ],
+    },
     static_libs: [
         "libdexfile",
         "libartbase",
