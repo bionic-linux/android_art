@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9f607b4_293a676b",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-29T09:22:27Z",
+      "side": 1,
+      "message": ".Reset() or \u003d MemMap.Invalid() might be slightly clearer. Comments are good though.",
+      "range": {
+        "startLine": 627,
+        "startChar": 28,
+        "endLine": 627,
+        "endChar": 37
+      },
+      "revId": "660eda979d7429166f400c9017debb32a55df053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd1e8f80_2fd2b02a",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-29T09:22:27Z",
+      "side": 1,
+      "message": "too long.",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 101
+      },
+      "revId": "660eda979d7429166f400c9017debb32a55df053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d6386b2_a625a381",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-29T09:22:27Z",
+      "side": 1,
+      "message": "remap",
+      "range": {
+        "startLine": 684,
+        "startChar": 72,
+        "endLine": 684,
+        "endChar": 78
+      },
+      "revId": "660eda979d7429166f400c9017debb32a55df053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61491385_2978eb87",
+        "filename": "runtime/jit/jit.cc",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-29T09:22:27Z",
+      "side": 1,
+      "message": "Existing code, but a comment on the consequences of this failure would be good.",
+      "range": {
+        "startLine": 704,
+        "startChar": 8,
+        "endLine": 704,
+        "endChar": 96
+      },
+      "revId": "660eda979d7429166f400c9017debb32a55df053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bec1352_3cc37a51",
+        "filename": "runtime/jit/jit.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2019-10-29T09:22:27Z",
+      "side": 1,
+      "message": "Created by the zygote and inherited by child processes.",
+      "range": {
+        "startLine": 444,
+        "startChar": 23,
+        "endLine": 444,
+        "endChar": 34
+      },
+      "revId": "660eda979d7429166f400c9017debb32a55df053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
