@@ -355,4 +355,22 @@ bool IsAddressKnownBackedByFileOrShared(const void* addr) {
   return (flags & (1LL << 61)) != 0;
 }
 
+int GetTaskCount() {
+  DIR* directory = opendir("/proc/self/task");
+  if (directory == nullptr) {
+    return -1;
+  }
+
+  uint32_t count = 0;
+  struct dirent* entry = nullptr;
+  while ((entry = readdir(directory)) != nullptr) {
+    if ((strcmp(entry->d_name, ".") == 0) || (strcmp(entry->d_name, "..") == 0)) {
+      continue;
+    }
+    ++count;
+  }
+  closedir(directory);
+  return count;
+}
+
 }  // namespace art

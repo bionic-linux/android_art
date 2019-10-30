@@ -16,6 +16,7 @@
 
 #include "file_utils.h"
 
+#include <dirent.h>
 #include <inttypes.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -37,7 +38,6 @@
 #undef DEFINED_GNU_SOURCE
 #endif
 #endif
-
 
 #include <memory>
 
