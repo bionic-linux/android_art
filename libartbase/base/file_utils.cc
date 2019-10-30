@@ -16,6 +16,7 @@
 
 #include "file_utils.h"
 
+#include <dirent.h>
 #include <inttypes.h>
 #include <sys/stat.h>
 #include <sys/types.h>
@@ -37,7 +38,6 @@
 #undef DEFINED_GNU_SOURCE
 #endif
 #endif
-
 
 #include <memory>
 
@@ -486,6 +486,24 @@ int DupCloexec(int fd) {
 #else
   return dup(fd);
 #endif
+}
+
+int GetNumberOfFilesInDirectory(const char* path) {
+  DIR* directory = opendir(path);
+  if (directory == nullptr) {
+    return -1;
+  }
+
+  uint32_t count = 0;
+  struct dirent* entry = nullptr;
+  while ((entry = readdir(directory)) != nullptr) {
+    if ((strcmp(entry->d_name, ".") == 0) || (strcmp(entry->d_name, "..") == 0)) {
+      continue;
+    }
+    ++count;
+  }
+  closedir(directory);
+  return count;
 }
 
 }  // namespace art

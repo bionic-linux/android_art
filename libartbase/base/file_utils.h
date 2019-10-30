@@ -119,6 +119,10 @@ int DupCloexec(int fd);
 // Returns true if `path` begins with a slash.
 inline bool IsAbsoluteLocation(const std::string& path) { return !path.empty() && path[0] == '/'; }
 
+// Returns the number of direct files under a directory. Returns -1 if there was
+// an error opening the path.
+int GetNumberOfFilesInDirectory(const char* path);
+
 }  // namespace art
 
 #endif  // ART_LIBARTBASE_BASE_FILE_UTILS_H_
